@@ -1,0 +1,152 @@
+unit unPerda;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
+  DBClient, Provider, SqlExpr, StdCtrls, DBCtrls, VarGlobal,
+  PLDBEditDateTimePicker, PLDBEdit, Mask, FMTBcd, System.Actions;
+
+type
+  TfrmPerda = class(TfrmPadrao)
+    sqldPadrao: TSQLDataSet;
+    sqldPadraoCODIGO: TIntegerField;
+    sqldPadraoCODPRODUTO: TIntegerField;
+    sqldPadraoDESCRICAO: TStringField;
+    sqldPadraoDATA: TDateField;
+    sqldPadraoMOTIVO: TStringField;
+    sqldPadraoOBS: TMemoField;
+    dspPadrao: TDataSetProvider;
+    cdsPadrao: TClientDataSet;
+    cdsPadraoCODIGO: TIntegerField;
+    cdsPadraoCODPRODUTO: TIntegerField;
+    cdsPadraoDESCRICAO: TStringField;
+    cdsPadraoDATA: TDateField;
+    cdsPadraoMOTIVO: TStringField;
+    cdsPadraoOBS: TMemoField;
+    sqldProduto: TSQLDataSet;
+    dspProduto: TDataSetProvider;
+    cdsProduto: TClientDataSet;
+    lbQtde: TLabel;
+    lbPreco: TLabel;
+    lbObs: TLabel;
+    dbQtde: TDBEdit;
+    dbPreco: TDBEdit;
+    dbrgrpMOTIVO: TDBRadioGroup;
+    dbProduto: TPLDBEdit;
+    dbdData: TPLDBEditDateTimePicker;
+    dbmOBS: TDBMemo;
+    N5: TMenuItem;
+    lbPrecoCusto: TLabel;
+    sqldProdutoIDPRODUTO: TIntegerField;
+    sqldProdutoCODBARRA: TStringField;
+    sqldProdutoDESCRICAO: TStringField;
+    sqldProdutoABREVIACAO: TStringField;
+    sqldProdutoVENDA: TFMTBCDField;
+    sqldProdutoCUSTO: TFMTBCDField;
+    cdsProdutoIDPRODUTO: TIntegerField;
+    cdsProdutoCODBARRA: TStringField;
+    cdsProdutoDESCRICAO: TStringField;
+    cdsProdutoABREVIACAO: TStringField;
+    cdsProdutoVENDA: TFMTBCDField;
+    cdsProdutoCUSTO: TFMTBCDField;
+    sqldPadraoQTDE: TIntegerField;
+    sqldPadraoPRECO: TFMTBCDField;
+    cdsPadraoQTDE: TIntegerField;
+    cdsPadraoPRECO: TFMTBCDField;
+    procedure dbProdutoClickButton(Sender: TObject);
+    procedure cdsPadraoCODPRODUTOValidate(Sender: TField);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
+    procedure actPrintExecute(Sender: TObject);
+    procedure actPrintPersonExecute(Sender: TObject);
+  private
+  public
+  end;
+
+var
+  frmPerda: TfrmPerda;
+
+implementation
+
+uses Funcoes, ConstPadrao,  unModeloConsulta, unPrevPerda,
+     uConfiguraRelatorio, unGeraRelatorio;
+
+{$R *.dfm}
+
+procedure TfrmPerda.dbProdutoClickButton(Sender: TObject);
+begin
+  inherited;
+  if ModoInsertEdit(cdsPadrao) then
+    if TfrmModeloConsulta.Execute('Produto', cdsProduto, FN_PRODUTOS, DL_PRODUTOS) then
+    begin
+      cdsPadraoCODPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
+      cdsPadraoPRECO.AsFloat        := cdsProdutoCUSTO.AsFloat;
+    end;
+end;
+
+procedure TfrmPerda.cdsPadraoCODPRODUTOValidate(Sender: TField);
+var
+  NomeProduto: string;
+begin
+  NomeProduto := GetFieldByID(GetConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
+    Sender.AsInteger);
+  if NomeProduto <> '' then
+    cdsPadraoDESCRICAO.AsString := NomeProduto;
+end;
+
+procedure TfrmPerda.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if cdsProduto.Active then
+    cdsProduto.Close;
+  inherited;
+end;
+
+procedure TfrmPerda.FormShow(Sender: TObject);
+begin
+  inherited;
+  cdsProduto.Open;
+end;
+
+procedure TfrmPerda.FormCreate(Sender: TObject);
+begin
+  inherited;
+  FieldNames := FN_PERDAS;
+  DisplayLabels := DL_PERDAS;
+  aCaption := 'Perdas';
+end;
+
+procedure TfrmPerda.cdsPadraoAfterInsert(DataSet: TDataSet);
+begin
+  inherited;
+  Incrementa('PERDA', cdsPadraoCODIGO, GetConnection);
+  SetFocusIfCan(dbProduto);
+end;
+
+procedure TfrmPerda.actPrintExecute(Sender: TObject);
+begin
+  inherited;
+  with TfrmPrevPerda.Create(Self) do
+  try
+    cdsPadrao.Open;
+    //lbTitulo.Caption := 'Listagem de perdas';
+    PrintIfNotEmptyRL(rrPadrao);
+  finally
+    Free;
+  end;
+end;
+
+procedure TfrmPerda.actPrintPersonExecute(Sender: TObject);
+begin
+  TfrmGeraRelatorio.Execute('Perdas', 'VIEWPERDAS', GetConnection);
+end;
+
+initialization
+  RegisterClass(TfrmPerda);
+finalization
+  UnRegisterClass(TfrmPerda);
+end.
+

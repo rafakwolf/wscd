@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8F7C90AE-087E-4D20-9B1F-D001E79AB71D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="WSCD.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="WSCD">
+        <MSBuild Projects="WSCD.dproj"/>
+    </Target>
+    <Target Name="WSCD:Clean">
+        <MSBuild Projects="WSCD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WSCD:Make">
+        <MSBuild Projects="WSCD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="WSCD"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="WSCD:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="WSCD:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
