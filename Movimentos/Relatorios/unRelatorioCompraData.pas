@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls, PLDBEditDateTimePicker, FMTBcd;
+  DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask;
 
 const
   cs_nf_data: string = 'select '+
@@ -34,8 +34,8 @@ const
 
 type
   TfrmRelatorioCompraData = class(TfrmDialogoRelatorioPadrao)
-    edDataIni: TPLDBEditDateTimePicker;
-    edDataFim: TPLDBEditDateTimePicker;
+    edDataIni: TDBEdit;
+    edDataFim: TDBEdit;
     sqldSelecao: TSQLDataSet;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
@@ -63,9 +63,9 @@ uses Funcoes, unPrevCompras, uConfiguraRelatorio;
 
 procedure TfrmRelatorioCompraData.Imprimir(p: Boolean);
 begin
-  if ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime,
-    cdsSelecaoDATAFIM.AsDateTime, edDataIni)then
-  begin
+//  if ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime,
+//    cdsSelecaoDATAFIM.AsDateTime, edDataIni)then
+//  begin
     with TfrmPrevCompras.Create(Self), cdsPadrao do
     try
       Close;
@@ -73,13 +73,13 @@ begin
       Params.ParamByName('DATAI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
       Params.ParamByName('DATAF').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
       Open;
-      Titulo := 'Compras do período: ' + edDataIni.DBEdit.Text + ' até ' + edDataFim.DBEdit.Text;
+      Titulo := 'Compras do período: ' + edDataIni.Text + ' até ' + edDataFim.Text;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
       cdsPadrao.Close;
       Free;
     end;
-  end;
+  //end;
 end;
 
 procedure TfrmRelatorioCompraData.btnVisualizarClick(Sender: TObject);

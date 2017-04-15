@@ -299,7 +299,7 @@ object frmImportaOrcam: TfrmImportaOrcam
       ParentFont = False
     end
   end
-  object sqldVenda: TPLSQLDataSet
+  object sqldVenda: TSQLDataSet
     CommandText = 
       'insert into VENDA(CODIGO, CODCLIENTE, IDVENDEDOR, DATA,'#13#10'  OBS, ' +
       'TOTALDESCTO, TOTAL, CONCLUIDA, BAIXADO, CANCELADO)'#13#10'values(:ID, ' +
@@ -357,10 +357,10 @@ object frmImportaOrcam: TfrmImportaOrcam
         Name = 'CANCEL'
         ParamType = ptInput
       end>
-    Left = 120
-    Top = 192
+    Left = 72
+    Top = 208
   end
-  object sqldItemVenda: TPLSQLDataSet
+  object sqldItemVenda: TSQLDataSet
     CommandText = 
       'insert into ITEMVENDA(CODIGO, CODPRODUTO, QTD, CUSTO,'#13#10'  VENDA, ' +
       'DESCTO, VALORDESCTO, TOTAL, COMISSAO, VALORCOMISSAO)'#13#10'values(:ID' +
@@ -418,22 +418,22 @@ object frmImportaOrcam: TfrmImportaOrcam
         Name = 'VLRCOM'
         ParamType = ptInput
       end>
-    Left = 152
-    Top = 192
+    Left = 176
+    Top = 224
   end
   object dtOrcam: TDataSetProvider
     DataSet = sqlOrcam
     Options = [poAllowCommandText]
-    Left = 134
-    Top = 106
+    Left = 150
+    Top = 82
   end
   object cdsOrcam: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dtOrcam'
     AfterScroll = cdsOrcamAfterScroll
-    Left = 165
-    Top = 105
+    Left = 229
+    Top = 89
     object cdsOrcamCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -485,8 +485,8 @@ object frmImportaOrcam: TfrmImportaOrcam
     Aggregates = <>
     DataSetField = cdsOrcamsqlDetOrcam
     Params = <>
-    Left = 165
-    Top = 136
+    Left = 205
+    Top = 160
     object cdsDetOrcamCODIGO: TIntegerField
       FieldName = 'CODIGO'
     end
@@ -534,8 +534,8 @@ object frmImportaOrcam: TfrmImportaOrcam
   end
   object dsLink: TDataSource
     DataSet = sqlOrcam
-    Left = 135
-    Top = 136
+    Left = 143
+    Top = 152
   end
   object sqlOrcam: TSQLDataSet
     CommandText = 
@@ -546,8 +546,8 @@ object frmImportaOrcam: TfrmImportaOrcam
       'LI.CODCLIENTE)'#13#10'ORDER BY ORC.CODIGO'
     MaxBlobSize = -1
     Params = <>
-    Left = 104
-    Top = 106
+    Left = 72
+    Top = 82
     object sqlOrcamCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -604,8 +604,8 @@ object frmImportaOrcam: TfrmImportaOrcam
         ParamType = ptInput
         Size = 4
       end>
-    Left = 104
-    Top = 136
+    Left = 80
+    Top = 144
     object sqlDetOrcamCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -645,13 +645,13 @@ object frmImportaOrcam: TfrmImportaOrcam
   object dsOrcam: TDataSource
     AutoEdit = False
     DataSet = cdsOrcam
-    Left = 200
-    Top = 104
+    Left = 304
+    Top = 88
   end
   object dsDetOrcam: TDataSource
     AutoEdit = False
     DataSet = cdsDetOrcam
-    Left = 200
-    Top = 136
+    Left = 288
+    Top = 160
   end
 end

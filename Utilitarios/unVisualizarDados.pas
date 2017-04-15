@@ -5,33 +5,33 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, ExtCtrls, DBClient,
-  PLClientDataSet, Provider, PLDataSetProvider, DB, SqlExpr, PLSQLDataSet,
+  Datasnap.Provider, DB, Data.SqlExpr,
   Buttons, FMTBcd;
 
 type
   TfrmVisualizarDados = class(TForm)
     dbgrdDados: TDBGrid;
     pnlTop: TPanel;
-    sqldTabelas: TPLSQLDataSet;
-    dspTabelas: TPLDataSetProvider;
-    cdsTabelas: TPLClientDataSet;
+    sqldTabelas: TSQLDataSet;
+    dspTabelas: TDataSetProvider;
+    cdsTabelas: TClientDataSet;
     sqldTabelasTABELA: TStringField;
     cdsTabelasTABELA: TStringField;
     dsTabelas: TDataSource;
-    sqldDados: TPLSQLDataSet;
-    dspDados: TPLDataSetProvider;
-    cdsDados: TPLClientDataSet;
+    sqldDados: TSQLDataSet;
+    dspDados: TDataSetProvider;
+    cdsDados: TClientDataSet;
     dsDados: TDataSource;
     btnExecuteSQL: TBitBtn;
     cbbTabela: TComboBox;
     lblTabela: TLabel;
-    sqldUpdate: TPLSQLDataSet;
-    sqldFilter: TPLSQLDataSet;
+    sqldUpdate: TSQLDataSet;
+    sqldFilter: TSQLDataSet;
     sqldFilterCAMPO: TStringField;
     sqldFilterTIPO: TStringField;
     sqldFilterVALOR: TStringField;
-    dspFilter: TPLDataSetProvider;
-    cdsFilter: TPLClientDataSet;
+    dspFilter: TDataSetProvider;
+    cdsFilter: TClientDataSet;
     dsFilter: TDataSource;
     cdsFilterCAMPO: TStringField;
     cdsFilterTIPO: TStringField;
@@ -181,7 +181,7 @@ begin
           dbgrdDados.ReadOnly := True;
         end;
       finally
-        CriaTxt(DiretorioSistema+'SQL.txt', SQL);
+        //CriaTxt(ExtractFilePath(ParamStr(0))+'SQL.txt', SQL);
         SetCaption(GetTableNameFromSQLText(SQL));
       end;
   end;
@@ -388,8 +388,8 @@ var
 begin
   Tabela := Trim(cbbTabela.Text);
   
-  if (Tabela <> '') then
-    Incrementa(Tabela,cdsDados.Fields[0],sqldDados.SQLConnection);
+//  if (Tabela <> '') then
+//    Incrementa(Tabela,cdsDados.Fields[0],sqldDados.SQLConnection);
 end;
 
 procedure TfrmVisualizarDados.btnCancelarClick(Sender: TObject);
@@ -504,7 +504,7 @@ begin
     ' e não pode ser utilizado o valor informado.'+#13+'Verifique o valor e o tipo escolhido para o filtro'+
     #13#13+'Mensagem original:'+#13+e.Message;
 
-  MsgErro(msg);
+  MsgErro('',msg);
 end;
 
 procedure TfrmVisualizarDados.cdsFilterAfterPost(DataSet: TDataSet);
@@ -556,8 +556,8 @@ end;
 
 procedure TfrmVisualizarDados.dbgrdDadosTitleClick(Column: TColumn);
 begin
-  if cdsDados.Active then
-    OrdenaColunasGrid(dbgrdDados,Column,cdsDados);
+//  if cdsDados.Active then
+//    //OrdenaColunasGrid(dbgrdDados,Column,cdsDados);
 end;
 
 initialization

@@ -10,7 +10,7 @@ inherited frmContasPagas: TfrmContasPagas
   OnResize = FormResize
   OnShow = FormShow
   ExplicitWidth = 936
-  ExplicitHeight = 478
+  ExplicitHeight = 479
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
@@ -710,8 +710,8 @@ inherited frmContasPagas: TfrmContasPagas
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 328
-    Top = 208
+    Left = 376
+    Top = 216
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -722,7 +722,7 @@ inherited frmContasPagas: TfrmContasPagas
         ParamType = ptInput
       end>
     ProviderName = 'dspPadrao'
-    Left = 360
+    Left = 456
     Top = 208
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
@@ -816,7 +816,7 @@ inherited frmContasPagas: TfrmContasPagas
   end
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 392
+    Left = 536
     Top = 208
   end
   object mmContasPagas: TMainMenu
@@ -857,15 +857,15 @@ inherited frmContasPagas: TfrmContasPagas
   end
   object dspEstorno: TDataSetProvider
     DataSet = sqldEstorno
-    Left = 152
-    Top = 272
+    Left = 208
+    Top = 280
   end
   object cdsEstorno: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspEstorno'
-    Left = 184
-    Top = 272
+    Left = 296
+    Top = 280
     object cdsEstornoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -874,7 +874,7 @@ inherited frmContasPagas: TfrmContasPagas
       FieldName = 'ORIGEM'
     end
   end
-  object sqldContaEstorno: TPLSQLDataSet
+  object sqldContaEstorno: TSQLDataSet
     CommandText = 'delete from CONTASPAGAR'#13#10'where ORIGEM = :CODIGO'
     MaxBlobSize = -1
     Params = <

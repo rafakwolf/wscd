@@ -5,16 +5,16 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
-  Grids, DBGrids, DBClient, PLClientDataSet, Provider,
-  PLDataSetProvider, SqlExpr, PLSQLDataSet, ConstPadrao, DateUtils, FMTBcd,
+  Grids, DBGrids, DBClient,
+  Datasnap.Provider,  Data.SqlExpr, ConstPadrao, DateUtils, FMTBcd,
   System.Actions;
 
 type
   TfrmPromocao = class(TfrmPadrao)
     dbgrdPromocao: TDBGrid;
-    sqldPadrao: TPLSQLDataSet;
-    dspPadrao: TPLDataSetProvider;
-    cdsPadrao: TPLClientDataSet;
+    sqldPadrao: TSQLDataSet;
+    dspPadrao: TDataSetProvider;
+    cdsPadrao: TClientDataSet;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoPRODUTO: TIntegerField;
     sqldPadraoABREVIACAO: TStringField;
@@ -29,9 +29,9 @@ type
     cdsPadraoPRECO: TFMTBCDField;
     cdsPadraoINICIO: TDateField;
     cdsPadraoFIM: TDateField;
-    sqldProduto: TPLSQLDataSet;
-    dspProduto: TPLDataSetProvider;
-    cdsProduto: TPLClientDataSet;
+    sqldProduto: TSQLDataSet;
+    dspProduto: TDataSetProvider;
+    cdsProduto: TClientDataSet;
     sqldProdutoCODBARRA: TStringField;
     sqldProdutoABREVIACAO: TStringField;
     sqldProdutoVENDA: TFMTBCDField;
@@ -43,13 +43,13 @@ type
     sqldPadraoDESCONTO: TFMTBCDField;
     cdsPadraoDESCONTO: TFMTBCDField;
     N5: TMenuItem;
-    sqldSpDesmarcaPromocao: TPLSQLDataSet;
+    sqldSpDesmarcaPromocao: TSQLDataSet;
     N6: TMenuItem;
     miInserirProdutos: TMenuItem;
     miProdutosGrupo: TMenuItem;
-    sqldGrupo: TPLSQLDataSet;
-    dspGrupo: TPLDataSetProvider;
-    cdsGrupo: TPLClientDataSet;
+    sqldGrupo: TSQLDataSet;
+    dspGrupo: TDataSetProvider;
+    cdsGrupo: TClientDataSet;
     cdsGrupoCODGRUPO: TIntegerField;
     cdsGrupoDESCRICAO: TStringField;
     sqldGrupoCODGRUPO: TIntegerField;
@@ -58,9 +58,9 @@ type
     cdsProdutoCODGRUPO: TIntegerField;
     miExcluirtodas: TMenuItem;
     miProdutosFornecedor: TMenuItem;
-    sqldForn: TPLSQLDataSet;
-    dspForn: TPLDataSetProvider;
-    cdsForn: TPLClientDataSet;
+    sqldForn: TSQLDataSet;
+    dspForn: TDataSetProvider;
+    cdsForn: TClientDataSet;
     sqldProdutoCODFORNECEDOR: TIntegerField;
     cdsProdutoCODFORNECEDOR: TIntegerField;
     sqldFornCODFORNECEDOR: TIntegerField;
@@ -94,7 +94,7 @@ var
 
 implementation
 
-uses Funcoes, unModeloConsulta, unPrevPromocao, uConfiguraRelatorio;
+uses Funcoes, unModeloConsulta, unPrevPromocao, uConfiguraRelatorio, udatabaseutils;
 
 {$R *.dfm}
 
@@ -135,7 +135,7 @@ end;
 procedure TfrmPromocao.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('PROMOCAO', cdsPadraoCODIGO, sqldPadrao.SQLConnection);
+  //Incrementa('PROMOCAO', cdsPadraoCODIGO, sqldPadrao.SQLConnection);
   cdsPadraoPRODUTO.FocusControl;
 end;
 
@@ -272,7 +272,7 @@ begin
   inherited;
   if not MsgSN('Deseja realmente excluir todas as promoções?') then
     Exit;
-  with TPLSQLDataSet.Create(nil) do
+  with TSQLDataSet.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
     CommandText := 'delete from PROMOCAO';

@@ -33,7 +33,7 @@ var
 
 implementation
 
-uses uConfiguraRelatorio, VarGlobal;
+uses VarGlobal;
 
 {$R *.dfm}
 
@@ -53,7 +53,7 @@ procedure TfrmModeloRelatorio.rrPadraoBeforePrint(Sender: TObject;
 var
   x: Integer;  
 begin
-  ConfigRelatorioRL(rrPadrao, rlmCabecalho, imgLogo);
+  //ConfigRelatorioRL(rrPadrao, rlmCabecalho, imgLogo);
 
   imgLogo.Height := 75;
   imgLogo.Width  := 98;

@@ -5,14 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr, DBCtrls,
-  DBClient, Provider, ConstPadrao, Mask, PLDBEdit, FMTBcd;
+  DBClient, Provider, ConstPadrao, Mask,  FMTBcd;
 
 type
   TfrmPrevNotaProm = class(TForm)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCliente: TPLDBEdit;
+    dbeCliente: TDBEdit;
     pnlBotoes: TPanel;
     btnImp: TBitBtn;
     btnCancel: TBitBtn;

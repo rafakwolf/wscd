@@ -6,15 +6,15 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, DB, DBClient, Provider, SqlExpr, Menus,
   ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls, Mask,
-  DBCtrls, PLDBEdit, FMTBcd, System.Actions;
+  DBCtrls,  FMTBcd, System.Actions;
 
 type
   TfrmCadastroUnidade = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodUnidade: TPLDBEdit;
-    dbeNomeUnidade: TPLDBEdit;
+    dbeCodUnidade: TDBEdit;
+    dbeNomeUnidade: TDBEdit;
     sqldPadraoCODUNIDADE: TIntegerField;
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoCODUNIDADE: TIntegerField;
@@ -38,7 +38,7 @@ uses
 procedure TfrmCadastroUnidade.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('UNIDADES', cdsPadraoCODUNIDADE, GetConnection);
+  //Incrementa('UNIDADES', cdsPadraoCODUNIDADE, GetConnection);
   SetFocusIfCan(dbeNomeUnidade);
 end;
 

@@ -6,12 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DBClient, Provider,
   DB, SqlExpr, StdCtrls, Buttons, ExtCtrls, SQLTimST, ComCtrls,
-  PLDBEditDateTimePicker, Mask, DBCtrls, PLDBEdit, FMTBcd;
+   Mask, DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioProdutoVencimento = class(TfrmDialogoRelatorioPadrao)
     rgTipo: TRadioGroup;
-    dbdDataVenc: TPLDBEditDateTimePicker;
+    dbdDataVenc: TDBEdit;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
@@ -30,9 +30,9 @@ type
     cdsGrupo: TClientDataSet;
     cdsGrupoCODGRUPO: TIntegerField;
     cdsGrupoDESCRICAO: TStringField;
-    dbeUnidade: TPLDBEdit;
-    dbeForn: TPLDBEdit;
-    dbeGrupo: TPLDBEdit;
+    dbeUnidade: TDBEdit;
+    dbeForn: TDBEdit;
+    dbeGrupo: TDBEdit;
     sqldFornCODFORNECEDOR: TIntegerField;
     sqldFornFANTAZIA: TStringField;
     sqldFornCNPJ: TStringField;
@@ -132,8 +132,7 @@ begin
   inherited;
   with TfrmPrevProdutosVencimento.Create(Self) do
   try
-    if ValidaFieldsVazios([cdsSelecaoDATA], ['Data Limite'],
-      False, True, True, tmRelatorio) = '' then
+    if ValidaFieldsVazios([cdsSelecaoDATA], ['Data Limite']) = '' then
     begin
       cdsPadrao.Close;
 
@@ -150,7 +149,7 @@ begin
         IfThen(rgTipo.ItemIndex = 3, cdsFornCODFORNECEDOR.AsInteger, -1);
 
       cdsPadrao.Open;
-      Data := dbdDataVenc.DBEdit.Text;
+      Data := dbdDataVenc.Text;
       PrintIfNotEmptyRL(rrPadrao);
     end;
   finally

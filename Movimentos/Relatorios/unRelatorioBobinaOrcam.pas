@@ -86,7 +86,7 @@ var
 
   function Centraliza(const s: String): String;
   begin
-    Result := CentralizaTexto(s, Global.ColunaOrcamBobina, True);
+    Result := CentralizaTexto(s, Global.ColunaOrcamBobina{, True});
   end;
 
 begin
@@ -117,7 +117,7 @@ begin
 
       Add(IntToStr(cdsDetOrcamCODPRODUTO.AsInteger)+' - '+
         Copy(cdsDetOrcamNOMEPRODUTO.AsString, 1,
-        Col-ContaCaracs(IntToStr(cdsDetOrcamCODPRODUTO.AsInteger)+' - ')));
+        Col-(IntToStr(cdsDetOrcamCODPRODUTO.AsInteger)+' - ').Length));
 
       Add('   '+FloatToStr(cdsDetOrcamQTDE.AsFloat)+' x '+
         FormatFloat('#,##0.00', cdsDetOrcamVENDA.AsFloat)+' - '+

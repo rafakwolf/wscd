@@ -6,8 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, DBCtrls, StdCtrls, DB, Mask, Grids, DBGrids, Buttons,
   SqlExpr, Menus, ComCtrls, DBClient,
-  Provider, ConstPadrao, PLDBEdit, PLDBEditDateTimePicker, PLSQLDataSet,
-  PLClientDataSet, PLDataSetProvider, FMTBcd;
+  Provider, ConstPadrao, FMTBcd;
 
 type
   TfrmOrcamentos = class(TForm)
@@ -59,14 +58,14 @@ type
     sqlProdutos: TSQLDataSet;
     dspProdutos: TDataSetProvider;
     cdsProdutos: TClientDataSet;
-    dbCodCliente: TPLDBEdit;
-    dbProduto: TPLDBEdit;
-    dbQtde: TPLDBEdit;
-    dbCusto: TPLDBEdit;
-    dbVenda: TPLDBEdit;
-    dbDescto: TPLDBEdit;
-    dbValorDescto: TPLDBEdit;
-    dbTotalItem: TPLDBEdit;
+    dbCodCliente: TDBEdit;
+    dbProduto: TDBEdit;
+    dbQtde: TDBEdit;
+    dbCusto: TDBEdit;
+    dbVenda: TDBEdit;
+    dbDescto: TDBEdit;
+    dbValorDescto: TDBEdit;
+    dbTotalItem: TDBEdit;
     btnInsereProduto: TBitBtn;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
@@ -75,7 +74,7 @@ type
     sqldCliente: TSQLDataSet;
     dspCliente: TDataSetProvider;
     cdsCliente: TClientDataSet;
-    dbdDataOrcam: TPLDBEditDateTimePicker;
+    dbdDataOrcam: TDBEdit;
     cdsOrcamCODIGO: TIntegerField;
     cdsOrcamCODCLIENTE: TIntegerField;
     cdsOrcamNOMECLIENTE: TStringField;
@@ -109,11 +108,11 @@ type
     stbOrcamento: TStatusBar;
     N6: TMenuItem;
     miReabrir: TMenuItem;
-    dbeIdVendedor: TPLDBEdit;
+    dbeIdVendedor: TDBEdit;
     dbeVendedor: TDBEdit;
-    sqldVendedor: TPLSQLDataSet;
-    dspVendedor: TPLDataSetProvider;
-    cdsVendedor: TPLClientDataSet;
+    sqldVendedor: TSQLDataSet;
+    dspVendedor: TDataSetProvider;
+    cdsVendedor: TClientDataSet;
     sqldVendedorIDVENDEDOR: TIntegerField;
     sqldVendedorVENDEDOR: TStringField;
     sqldVendedorATIVO: TStringField;
@@ -122,7 +121,7 @@ type
     cdsVendedorATIVO: TStringField;
     cdsOrcamIDVENDEDOR: TIntegerField;
     cdsOrcamVENDEDOR: TStringField;
-    spDeleta: TPLSQLDataSet;
+    spDeleta: TSQLDataSet;
     sqldClienteCODCLIENTE: TIntegerField;
     sqldClienteNOME: TStringField;
     sqldClienteTELEFONE: TStringField;
@@ -275,8 +274,8 @@ var
 implementation
 
 uses  unCliente, Funcoes, unModeloConsulta, VarGlobal, unPrevOrcammento,
-     uConfiguraRelatorio, unFiltroSimples, FuncoesWin, unRelatorioBobinaOrcam,
-  unAguarde;
+     uConfiguraRelatorio, unFiltroSimples, unRelatorioBobinaOrcam,
+  unAguarde, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -345,22 +344,23 @@ end;
 
 procedure TfrmOrcamentos.btnAnteriorClick(Sender: TObject);
 begin
-  Anterior(cdsOrcam);
+//  Anterior(cdsOrcam);
+  cdsOrcam.Prior;
 end;
 
 procedure TfrmOrcamentos.btnPrimeiroClick(Sender: TObject);
 begin
-  Primeiro(cdsOrcam);
+cdsOrcam.First;  //Primeiro(cdsOrcam);
 end;
 
 procedure TfrmOrcamentos.btnProximoClick(Sender: TObject);
 begin
-  Proximo(cdsOrcam);
+  cdsOrcam.Next; //Proximo(cdsOrcam);
 end;
 
 procedure TfrmOrcamentos.btnUltimoClick(Sender: TObject);
 begin
-  Ultimo(cdsOrcam);
+  cdsOrcam.Last;//Ultimo(cdsOrcam);
 end;
 
 procedure TfrmOrcamentos.btnFecharClick(Sender: TObject);
@@ -407,7 +407,7 @@ end;
 
 procedure TfrmOrcamentos.miContarClick(Sender: TObject);
 begin
-  Ed_Quantificar(cdsOrcam, Self);
+  //Ed_Quantificar(cdsOrcam, Self);
 end;
 
 procedure TfrmOrcamentos.FormClose(Sender: TObject;
@@ -425,7 +425,8 @@ begin
   try
     if ValidaFieldsVazios([cdsOrcamCODCLIENTE, cdsOrcamDATA, cdsOrcamIDVENDEDOR],
       ['Cliente', 'Data', 'Vendedor']) = '' then
-      Salvar(cdsOrcam)
+      //Salvar(cdsOrcam)
+      cdsOrcam.ApplyUpdates(0)
     else
       MsgCuidado('Orçamento incompleto.');
   except
@@ -471,7 +472,7 @@ begin
   end;
 
   Percent := 0;
-  if(ObterValor(Percent))then
+  if(ObterValor(Percent,'',''))then
   if(Percent <> 0)then
   begin
     Valor := (cdsOrcamTOTAL.AsFloat * (Percent/100));
@@ -653,8 +654,8 @@ begin
       cdsSelecao.Open;
       dbProduto.SetFocus;
 
-      if MsgSN('Inserir novo produto?') then
-        dbProduto.OnClickButton(Sender);
+//      if MsgSN('Inserir novo produto?') then
+//        dbProduto.OnClickButton(Sender);
 
     end
     else
@@ -736,7 +737,7 @@ end;
 
 procedure TfrmOrcamentos.cdsOrcamAfterInsert(DataSet: TDataSet);
 begin
-  Incrementa('ORCAMENTO', cdsOrcamCODIGO, GetConnection);
+  //Incrementa('ORCAMENTO', cdsOrcamCODIGO, GetConnection);
 end;
 
 procedure TfrmOrcamentos.dsOrcamStateChange(Sender: TObject);

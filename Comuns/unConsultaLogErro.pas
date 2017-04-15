@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, Mask, Grids, DBGrids, DateUtils,
-  ExtCtrls, DB, ShellAPI, SqlExpr, Provider, DBClient,
-  PLClientDataSet, PLSQLDataSet, FMTBcd;
+  ExtCtrls, DB, ShellAPI, Provider, DBClient,
+  Data.SqlExpr, FMTBcd;
 
 type
   TfrmConsultaLogErro = class(TfrmSimplePadrao)
@@ -22,13 +22,13 @@ type
     btnFechar: TBitBtn;
     sdlgLogErro: TSaveDialog;
     btnLimpar: TBitBtn;
-    sqldLogErro: TPLSQLDataSet;
+    sqldLogErro: TSQLDataSet;
     sqldLogErroIDLOGERRO: TIntegerField;
     sqldLogErroDATAHORA: TSQLTimeStampField;
     sqldLogErroFORM: TStringField;
     sqldLogErroCONTROLE: TStringField;
     sqldLogErroMSG: TStringField;
-    cdsLogErro: TPLClientDataSet;
+    cdsLogErro: TClientDataSet;
     cdsLogErroIDLOGERRO: TIntegerField;
     cdsLogErroDATAHORA: TSQLTimeStampField;
     cdsLogErroFORM: TStringField;
@@ -146,7 +146,7 @@ begin
       EnableControls;
     end;
 
-    sdlgLogErro.InitialDir := DiretorioSistema;
+    sdlgLogErro.InitialDir := ExtractFilePath(ParamStr(0));
     sdlgLogErro.FileName := 'Relatório de erros.txt';
     frmAguarde.Fecha;
     if sdlgLogErro.Execute then
@@ -214,7 +214,7 @@ procedure TfrmConsultaLogErro.dbgrdLogDrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   inherited;
-  GridZebrado(dsLogErro.DataSet.RecNo, dbgrdLog, Rect, DataCol, Column, State);
+  //GridZebrado(dsLogErro.DataSet.RecNo, dbgrdLog, Rect, DataCol, Column, State);
 end;
 
 initialization

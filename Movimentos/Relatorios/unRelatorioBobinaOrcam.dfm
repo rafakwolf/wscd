@@ -6,7 +6,7 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
   ClientWidth = 361
   OldCreateOrder = True
   ExplicitWidth = 377
-  ExplicitHeight = 483
+  ExplicitHeight = 484
   PixelsPerInch = 96
   TextHeight = 13
   object lbCopias: TLabel
@@ -42,7 +42,6 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
     Width = 81
     Height = 25
     Caption = 'Cancelar'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -95,7 +94,6 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 2
     OnClick = btnCancelarClick
   end
@@ -105,7 +103,6 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
     Width = 89
     Height = 25
     Caption = 'Imprimir'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -158,7 +155,6 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9A9A9A9A9
       A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 3
     OnClick = btnOkClick
   end
@@ -184,7 +180,6 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       'ENS,'#13#10'    orc.STATUS,'#13#10'    orc.CONCLUIDO'#13#10'from ORCAMENTO orc'#13#10'le' +
       'ft join CLIENTES cli on (orc.Codcliente = cli.Codcliente)'#13#10'where' +
       ' orc.CODIGO = :IDORCAM'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <
       item
@@ -239,7 +234,6 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       ','#13#10'    iorc.DESCTO,'#13#10'    iorc.VALORDESCTO,'#13#10'    iorc.TOTAL '#13#10'fro' +
       'm ITEMORCAMENTO iorc'#13#10'left join PRODUTOS prod on (iorc.Codprodut' +
       'o = prod.Idproduto)'#13#10'where iorc.CODIGO = :CODIGO'
-    DbxCommandType = 'Dbx.SQL'
     DataSource = dsLink
     MaxBlobSize = -1
     Params = <

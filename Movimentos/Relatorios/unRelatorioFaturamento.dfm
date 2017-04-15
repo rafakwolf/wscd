@@ -23,7 +23,7 @@ inherited frmRelatorioFaturamento: TfrmRelatorioFaturamento
     Caption = 'Mostrar pre'#231'o de custo'
     TabOrder = 2
   end
-  object dbeForn: TPLDBEdit [2]
+  object dbeForn: TDBEdit [2]
     Left = 16
     Top = 24
     Width = 371

@@ -9,7 +9,7 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
   OldCreateOrder = True
   OnShow = FormShow
   ExplicitWidth = 798
-  ExplicitHeight = 389
+  ExplicitHeight = 390
   PixelsPerInch = 96
   TextHeight = 13
   object dbgrdVendaNaoConc: TDBGrid
@@ -218,7 +218,7 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
     NumGlyphs = 2
     TabOrder = 2
   end
-  object sqldVenda: TPLSQLDataSet
+  object sqldVenda: TSQLDataSet
     CommandText = 
       'select'#13#10'  v.CODIGO,'#13#10'  v.DATA,'#13#10'  v.CODCLIENTE,'#13#10'  c.NOME,'#13#10'  v.' +
       'TOTAL,'#13#10'  v.CONCLUIDA'#13#10'from VENDA v'#13#10'left join CLIENTES c ON (c.' +
@@ -252,13 +252,13 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
       Size = 1
     end
   end
-  object dspVenda: TPLDataSetProvider
+  object dspVenda: TDataSetProvider
     DataSet = sqldVenda
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 288
     Top = 152
   end
-  object cdsVenda: TPLClientDataSet
+  object cdsVenda: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspVenda'

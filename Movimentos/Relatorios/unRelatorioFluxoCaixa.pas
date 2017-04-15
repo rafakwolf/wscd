@@ -5,14 +5,15 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls, PLDBEditDateTimePicker, FMTBcd;
+  DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask,
+  System.StrUtils;
 
 type
   TfrmRelatorioFluxoCaixa = class(TfrmDialogoRelatorioPadrao)
     rgRelatorio: TRadioGroup;
     rgOrdem: TRadioGroup;
-    dbDataF: TPLDBEditDateTimePicker;
-    dbDataI: TPLDBEditDateTimePicker;
+    dbDataF: TDBEdit;
+    dbDataI: TDBEdit;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
@@ -55,9 +56,9 @@ begin
   SQL := 'select * from STPRELCAIXATIPOCONTA '+
          '(:PDATAINI, :PDATAFIM, :PTIPOCONTA, :PORDEM)';
 
-  if not ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime,
-    cdsSelecaoDATAFIM.AsDateTime, dbDataI) then
-    Exit;
+//  if not ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime,
+//    cdsSelecaoDATAFIM.AsDateTime, dbDataI) then
+//    Exit;
 
   if(rgRelatorio.ItemIndex = -1)or(rgOrdem.ItemIndex = -1)then
   begin

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, DB, Grids, DBGrids, Buttons, DBClient, Provider, SqlExpr,
-  Menus, ComCtrls, ConstPadrao, FuncoesWin, DBXCommon, FMTBcd, unSimplePadrao;
+  Menus, ComCtrls, ConstPadrao, DBXCommon, FMTBcd, unSimplePadrao;
 
 const
   SQLPadrao90Dias: string = 'select '+
@@ -296,9 +296,9 @@ begin
           end;
         end
         else
-          MsgErro(UM_DATAINVALIDA);
+          MsgErro('',UM_DATAINVALIDA);
 
-        MsgAviso('Exclusão concluida com sucesso.');
+        MsgAviso('','Exclusão concluida com sucesso.');
       end;
     except
       raise Exception.Create('Erro excluindo caixa por periodo');
@@ -334,7 +334,7 @@ begin
       end;
     end
     else
-      MsgErro(UM_DATAINVALIDA);
+      MsgErro('',UM_DATAINVALIDA);
   end;
 end;
 
@@ -350,7 +350,7 @@ begin
 
     if cdsPadrao.IsEmpty then
     begin
-      MsgCuidado(UM_PESQUISAVAZIO);
+      MsgCuidado('',UM_PESQUISAVAZIO);
       cdsPadrao.Filtered := False;
       Exit;
     end;
@@ -433,7 +433,7 @@ end;
 
 procedure TfrmCaixa.miContarRegClick(Sender: TObject);
 begin
-  Ed_Quantificar(cdsPadrao, frmCaixa);
+  ////Ed_Quantificar(cdsPadrao, frmCaixa);
   miLimpaFiltro.Click;
 end;
 
@@ -671,7 +671,7 @@ end;
 
 procedure TfrmCaixa.btnLocateClick(Sender: TObject);
 begin
-  Ed_Localizar(cdsPadrao, Self, dbgdCaixa);
+  //Ed_Localizar(cdsPadrao, Self, dbgdCaixa);
 end;
 
 procedure TfrmCaixa.dsCaixaStateChange(Sender: TObject);

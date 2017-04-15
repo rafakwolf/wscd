@@ -7,7 +7,7 @@ inherited frmRelatorioClienteCidade: TfrmRelatorioClienteCidade
   ExplicitHeight = 182
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCidade: TPLDBEdit [0]
+  object dbeCidade: TDBEdit [0]
     Left = 16
     Top = 48
     Width = 339

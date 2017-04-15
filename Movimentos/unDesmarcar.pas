@@ -30,18 +30,18 @@ var
 
 implementation
 
-uses Funcoes, VarGlobal;
+uses Funcoes, VarGlobal, uDatabaseutils;
 
 {$R *.dfm}
 
 procedure TfrmDesmarcar.DesmarcaNovos;
 begin
-  UpdateSingleField('update PRODUTOS set NOVO = 0', GetConnection);
+  UpdateSingleField('update PRODUTOS set NOVO = 0');
 end;
 
 procedure TfrmDesmarcar.DesmarcaAlterados;
 begin
-  UpdateSingleField('update PRODUTOS set ALTERADO = 0', GetConnection);
+  UpdateSingleField('update PRODUTOS set ALTERADO = 0');
 end;
 
 procedure TfrmDesmarcar.CancelClick(Sender: TObject);

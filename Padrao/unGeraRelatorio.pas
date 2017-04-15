@@ -585,7 +585,7 @@ begin
 
   if Col > 160 then
   begin
-    MsgAviso('Os campos marcados precisam de '+IntToStr(Col)+' por linha para serem exibidos, '+
+    MsgAviso('','Os campos marcados precisam de '+IntToStr(Col)+' por linha para serem exibidos, '+
       'e são permitidos apenas 160 caracteres em cada linha.'+#13#10+
       'Será necessário desmarcar alguns campos para que possa ser gerado o relatório.');
     Exit;
@@ -593,7 +593,7 @@ begin
 
   if not CamposMarcados(ListColPrint) then
   begin
-    MsgCuidado('Não existem campos marcados para impressão.');
+    MsgCuidado('','Não existem campos marcados para impressão.');
     Exit;
   end;
   {
@@ -738,7 +738,7 @@ begin
     CommandText := 'select sum('+pFieldName+') as SOMA from '+FOriginalTableName;
     Open;
     if not tipo_moeda then
-      Result := FloatToStr(RoundFloat(FieldByName('SOMA').AsFloat, 2))
+      Result := FloatToStr(Round(FieldByName('SOMA').AsFloat))
     else
       Result := FormatFloat('#,##0.00', FieldByName('SOMA').AsFloat);
   finally

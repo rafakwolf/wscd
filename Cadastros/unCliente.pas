@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, SqlExpr, DBCtrls, PLDBEditDateTimePicker,
-  Mask, PLDBEdit, DBClient, Provider, StrUtils, PLDBImage, ExtDlgs, FMTBcd,
+  ExtCtrls, ComCtrls, SqlExpr, DBCtrls, 
+  Mask,  DBClient, Provider, StrUtils,  ExtDlgs, FMTBcd,
   System.Actions;
 
 type
@@ -59,41 +59,41 @@ type
     N9: TMenuItem;
     miFiltros: TMenuItem;
     miFiltroCidade: TMenuItem;
-    dbeNome: TPLDBEdit;
-    dbeEndereco: TPLDBEdit;
-    dbeCidade: TPLDBEdit;
-    dbeBairro: TPLDBEdit;
-    dbeCep: TPLDBEdit;
-    dbeTelefone: TPLDBEdit;
-    dbeRg: TPLDBEdit;
-    dbeCpf: TPLDBEdit;
-    dbeDataNasc: TPLDBEditDateTimePicker;
-    dbeLimite: TPLDBEdit;
+    dbeNome: TDBEdit;
+    dbeEndereco: TDBEdit;
+    dbeCidade: TDBEdit;
+    dbeBairro: TDBEdit;
+    dbeCep: TDBEdit;
+    dbeTelefone: TDBEdit;
+    dbeRg: TDBEdit;
+    dbeCpf: TDBEdit;
+    dbeDataNasc: TDBEdit;
+    dbeLimite: TDBEdit;
     btnObservacao: TBitBtn;
-    dbeTempoMoradia: TPLDBEdit;
-    dbeEnderecoAnterior: TPLDBEdit;
-    dbeConjuge: TPLDBEdit;
-    dbePai: TPLDBEdit;
-    dbeMae: TPLDBEdit;
-    dbeDataCadastro: TPLDBEditDateTimePicker;
-    dbeNaturalidade: TPLDBEdit;
-    dbeEmail: TPLDBEdit;
-    dbeTrabalho: TPLDBEdit;
-    dbeCargo: TPLDBEdit;
-    dbeInicioTrabalho: TPLDBEditDateTimePicker;
-    dbeSalario: TPLDBEdit;
-    dbeLocalTrabalho: TPLDBEdit;
-    dbeRefPessoal: TPLDBEdit;
-    dbeRefComercial: TPLDBEdit;
-    dbeTelefoneComercial: TPLDBEdit;
-    dbeEstadoCivil: TPLDBEdit;
+    dbeTempoMoradia: TDBEdit;
+    dbeEnderecoAnterior: TDBEdit;
+    dbeConjuge: TDBEdit;
+    dbePai: TDBEdit;
+    dbeMae: TDBEdit;
+    dbeDataCadastro: TDBEdit;
+    dbeNaturalidade: TDBEdit;
+    dbeEmail: TDBEdit;
+    dbeTrabalho: TDBEdit;
+    dbeCargo: TDBEdit;
+    dbeInicioTrabalho: TDBEdit;
+    dbeSalario: TDBEdit;
+    dbeLocalTrabalho: TDBEdit;
+    dbeRefPessoal: TDBEdit;
+    dbeRefComercial: TDBEdit;
+    dbeTelefoneComercial: TDBEdit;
+    dbeEstadoCivil: TDBEdit;
     cdsPadraoDATA_INICIO: TDateField;
     cdsPadraoDATA_NASC: TDateField;
     cdsPadraoCADASTRO: TDateField;
     btnContas: TBitBtn;
     N10: TMenuItem;
     miAjustaCPF_CNPJ: TMenuItem;
-    dbeFax: TPLDBEdit;
+    dbeFax: TDBEdit;
     cdsPadraoSALARIO: TFMTBCDField;
     cdsPadraoLIMITE: TFMTBCDField;
     sqldPadraoCODCLIENTE: TIntegerField;
@@ -137,8 +137,8 @@ type
     grpFoto: TGroupBox;
     btnBuscar: TSpeedButton;
     btnLimpar: TSpeedButton;
-    imgFoto: TPLDBImage;
     btnWebCam: TSpeedButton;
+    imgFoto: TDBImage;
     procedure miRelClientesCidadeClick(Sender: TObject);
     procedure miRelClientesDataNascClick(Sender: TObject);
     procedure miRelAniversariantesClick(Sender: TObject);
@@ -180,7 +180,7 @@ implementation
 
 uses Funcoes, ConstPadrao, unModeloConsulta, unGeraRelatorio, uConfiguraRelatorio,
      unPrevListagemClientes, VarGlobal,  unFiltroSimples, unContasReceber,
-     Extensos, unAguarde, unFoto;
+     Extensos, unAguarde, unFoto, udatabaseutils;
 
 {$R *.dfm}
 
@@ -205,7 +205,7 @@ end;
 procedure TfrmCliente.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('CLIENTES', cdsPadraoCODCLIENTE, GetConnection);
+  //Incrementa('CLIENTES', cdsPadraoCODCLIENTE, GetConnection);
   cdsPadraoTIPO.AsString := 'F';
   cdsPadraoCADASTRO.AsDateTime := Date;
   cdsPadraoLIMITE.AsFloat := Global.LimiteCliente;
@@ -293,13 +293,13 @@ end;
 procedure TfrmCliente.dbeLimiteKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmCliente.dbeSalarioKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmCliente.btnObservacaoClick(Sender: TObject);

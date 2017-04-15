@@ -4,17 +4,17 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Mask, Grids, DBGrids, Spin, DBCtrls, PLDBEdit,
-  DBClient, PLClientDataSet, Provider, PLDataSetProvider, DB,
-  SqlExpr, PLSQLDataSet, DateUtils, ExtCtrls, FMTBcd;
+  Dialogs, StdCtrls, Buttons, Mask, Grids, DBGrids, Spin, DBCtrls, 
+  DBClient, Datasnap.Provider, DB,
+  SqlExpr, DateUtils, ExtCtrls, FMTBcd;
 
 type
   TfrmParcelaVenda = class(TForm)
     btnOk: TBitBtn;
     btnCancelar: TBitBtn;
-    dbeCodCliente: TPLDBEdit;
-    dbeNomeCliente: TPLDBEdit;
-    dbeDataVenda: TPLDBEdit;
+    dbeCodCliente: TDBEdit;
+    dbeNomeCliente: TDBEdit;
+    dbeDataVenda: TDBEdit;
     seParcelas: TSpinEdit;
     lbParcelas: TLabel;
     sePrazoInicio: TSpinEdit;
@@ -22,9 +22,9 @@ type
     seIntervalo: TSpinEdit;
     lbIntervalo: TLabel;
     dbgrdParcelas: TDBGrid;
-    sqldParcela: TPLSQLDataSet;
-    dspParcela: TPLDataSetProvider;
-    cdsParcela: TPLClientDataSet;
+    sqldParcela: TSQLDataSet;
+    dspParcela: TDataSetProvider;
+    cdsParcela: TClientDataSet;
     sqldParcelaNUMERO: TIntegerField;
     sqldParcelaVENC: TDateField;
     sqldParcelaDIA: TStringField;
@@ -35,12 +35,12 @@ type
     cdsParcelaVALOR: TFloatField;
     dsParcela: TDataSource;
     btnCalcular: TBitBtn;
-    sqldVenda: TPLSQLDataSet;
+    sqldVenda: TSQLDataSet;
     sqldVendaCODCLIENTE: TIntegerField;
     sqldVendaCLIENTE: TStringField;
     sqldVendaDATA: TDateField;
     dsVenda: TDataSource;
-    sqldReceber: TPLSQLDataSet;
+    sqldReceber: TSQLDataSet;
     sqldVendaCODIGO: TIntegerField;
     edtRestoVenda: TLabeledEdit;
     sqldVendaTOTAL: TFMTBCDField;
@@ -67,7 +67,7 @@ var
 
 implementation
 
-uses  Funcoes, VarGlobal, ConstPadrao, uClasses;
+uses  Funcoes, VarGlobal, ConstPadrao, uClasses, System.Math, udatabaseutils;
 
 {$R *.dfm}
 
@@ -104,7 +104,7 @@ begin
     else
       cdsParcelaVENC.AsDateTime := IncDay(sqldVendaDATA.AsDateTime, (seIntervalo.Value * x));
     cdsParcelaDIA.AsString := DiaSemana(cdsParcelaVENC.AsDateTime);
-    cdsParcelaVALOR.AsFloat := RoundFloat((Restante / seParcelas.Value), 2);
+    cdsParcelaVALOR.AsFloat := RoundTo((Restante / seParcelas.Value), 2);
     cdsParcela.Post;
   end;
 end;
@@ -227,7 +227,7 @@ begin
     CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
     Params.ParamByName('VENDA').AsInteger := FIdVenda;
     Open;
-    Result := RoundFloat(FieldByName('RESTO').AsFloat, 2);
+    Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
   finally
     Free;
   end;

@@ -5,15 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  
-  Mask, DBCtrls, PLDBEdit, ComCtrls, PLDBEditDateTimePicker;
+  Mask, DBCtrls,  ComCtrls;
 
 type
   TfrmRelatorioComissaoVenda = class(TfrmDialogoRelatorioPadrao)
-    dbeVendedor: TPLDBEdit;
+    dbeVendedor: TDBEdit;
     dsData: TDataSource;
-    dbdtpDataIni: TPLDBEditDateTimePicker;
-    dbdtpDataFim: TPLDBEditDateTimePicker;
+    dbdtpDataIni: TDBEdit;
+    dbdtpDataFim: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);
@@ -63,9 +62,9 @@ begin
     Exit;
   end;
   
-  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
-    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, dbdtpDataIni) then
-  begin
+//  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
+//    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, dbdtpDataIni) then
+//  begin
     with TfrmPrevComissaoVenda.Create(Self) do
     try
       cdsPadrao.Close;
@@ -86,7 +85,7 @@ begin
     finally
       Free;
     end;
-  end;
+ // end;
 end;
 
 procedure TfrmRelatorioComissaoVenda.btnVisualizarClick(Sender: TObject);

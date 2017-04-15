@@ -4,14 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils,
-  PLEdit;
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils;
 
 type
   TfrmRelatorioCaixaMensal = class(TfrmDialogoRelatorioPadrao)
     rgOrd: TRadioGroup;
-    edtMes: TPLEdit;
-    edtAno: TPLEdit;
+    edtMes: TEdit;
+    edtAno: TEdit;
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -29,7 +28,7 @@ var
 implementation
 
 uses
-  Funcoes, unPrevRelCaixa, uConfiguraRelatorio;
+  Funcoes, unPrevRelCaixa, uConfiguraRelatorio, System.StrUtils;
 
 {$R *.dfm}
 

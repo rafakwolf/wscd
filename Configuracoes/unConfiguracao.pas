@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-  PLDBEdit, ExtDlgs, FileCtrl, IdMessage, IdBaseComponent, IdComponent,
+   ExtDlgs, FileCtrl, IdMessage, IdBaseComponent, IdComponent,
   IdTCPConnection, IdTCPClient, IdMessageClient, IdSMTP,
   IdExplicitTLSClientServerBase, IdSMTPBase, FMTBcd, System.Actions;
 
@@ -53,9 +53,9 @@ type
     chBloqCli: TDBCheckBox;
     TabExportacao: TTabSheet;
     btnLocalizar: TBitBtn;
-    dbeDirExportacao: TPLDBEdit;
-    dbeSenhaCaixa: TPLDBEdit;
-    dbeSenhaProduto: TPLDBEdit;
+    dbeDirExportacao: TDBEdit;
+    dbeSenhaCaixa: TDBEdit;
+    dbeSenhaProduto: TDBEdit;
     opImagem: TOpenPictureDialog;
     rgOrientationImg: TRadioGroup;
     tsEmail: TTabSheet;
@@ -68,10 +68,10 @@ type
     btnTeste: TBitBtn;
     IdSMTP: TIdSMTP;
     IdMsg: TIdMessage;
-    dbeAliqPadrao: TPLDBEdit;
-    dbeEstoquePadrao: TPLDBEdit;
-    dbeDescontoPadrao: TPLDBEdit;
-    dbeCaixaPadrao: TPLDBEdit;
+    dbeAliqPadrao: TDBEdit;
+    dbeEstoquePadrao: TDBEdit;
+    dbeDescontoPadrao: TDBEdit;
+    dbeCaixaPadrao: TDBEdit;
     dbcbBordaEtq: TDBCheckBox;
     dbcbMostrarSaldo: TDBCheckBox;
     dbcbLanc90Dias: TDBCheckBox;
@@ -152,7 +152,7 @@ type
     sqldPadraoVERIFICA_UPD: TStringField;
     cdsPadraoVERIFICA_UPD: TStringField;
     grpContaCheque: TGroupBox;
-    dbeContaCheque: TPLDBEdit;
+    dbeContaCheque: TDBEdit;
     sqldPadraoCONTACHEQUE: TIntegerField;
     cdsPadraoCONTACHEQUE: TIntegerField;
     sqldPadraoNCONTACHEQUE: TStringField;
@@ -199,7 +199,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao, VarGlobal, unModeloConsulta, unTrocaSenhaCaixa,
-     unTrocaSenhaEstoque, FuncoesWin;
+     unTrocaSenhaEstoque, uutilfncs, crypto;
 
 {$R *.dfm}
 
@@ -207,7 +207,7 @@ procedure TfrmConfiguracao.FormCreate(Sender: TObject);
 begin
 
   cdsPadrao.Close;
-  cdsPadrao.Params.ParamByName('PCOMP').AsString := SysComputerName;
+  cdsPadrao.Params.ParamByName('PCOMP').AsString := GetComputerName;
   inherited;
 
   LockWindowUpdate(Application.MainForm.Handle);
@@ -295,7 +295,8 @@ begin
   frmSenhaEstoque := TfrmSenhaEstoque.Create(Self);
   if frmSenhaEstoque.ShowModal = mrOk then
   begin
-    Salvar(cdsPadrao);
+    //Salvar(cdsPadrao);
+    cdsPadrao.ApplyUpdates(0);
     ReabreDataSet(cdsPadrao);
   end;
 end;
@@ -317,10 +318,10 @@ begin
   btnAlterarSenhaProduto.Enabled := EditModes;
   btnAlterarSenhaCaixa.Enabled   := EditModes;
 
-  if EditModes then
-    EnableControlSubControls(grpEmail, True, -1)
-  else
-    EnableControlSubControls(grpEmail, False, -1);
+//  if EditModes then
+//    EnableControlSubControls(grpEmail, True, -1)
+//  else
+//    EnableControlSubControls(grpEmail, False, -1);
 
   chkAutenticacaoClick(Self);
 end;
@@ -334,7 +335,7 @@ begin
   begin
     if PassWord(s, '*') then
     begin
-      if s = Decript(Configuracao.SenhaCaixa) then
+      if s = EnDecrypt(Configuracao.SenhaCaixa) then
       begin
         inherited;
         PostMessageAllForms(WM_CONFIG_ALTERADO);
@@ -367,8 +368,8 @@ var
   Email: string;
 begin
   GravaDadosEmail;
-  if ObterTexto(Email, 'Digite um e-mail') then
-  begin
+//  if ObterTexto(Email, 'Digite um e-mail') then
+//  begin
     IdMsg.From.Address := edUsuario.Text; // e-mail do remetente
     IdMsg.Recipients.EMailAddresses := Email; // e-mail do destinatário
     IdMsg.Subject := 'Teste de envio'; // assunto
@@ -396,7 +397,7 @@ begin
         MsgErro('ERRO: ' + e.Message); // mensagem de erro
     end;
     MsgAviso('Teste de Envio OK!');
-  end;
+  //end;
 end;
 
 procedure TfrmConfiguracao.GravaDadosEmail;
@@ -467,7 +468,8 @@ begin
   frmSenhaCaixa := TfrmSenhaCaixa.Create(Self);
   if frmSenhaCaixa.ShowModal = mrOk then
   begin
-    Salvar(cdsPadrao);
+    //Salvar(cdsPadrao);
+    cdsPadrao.ApplyUpdates(0);
     ReabreDataSet(cdsPadrao);
   end;
 end;
@@ -538,34 +540,34 @@ procedure TfrmConfiguracao.cdsPadraoSENHACAIXAGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
   inherited;
-  Text := Decript(Sender.AsString);
+  Text := EnDecrypt(Sender.AsString);
 end;
 
 procedure TfrmConfiguracao.cdsPadraoSENHACAIXASetText(Sender: TField;
   const Text: String);
 begin
   inherited;
-  Sender.AsString := Encript(Text);
+  Sender.AsString := EnDecrypt(Text);
 end;
 
 procedure TfrmConfiguracao.cdsPadraoSENHAESTOQUEGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
   inherited;
-  Text := Decript(Sender.AsString);
+  Text := EnDecrypt(Sender.AsString);
 end;
 
 procedure TfrmConfiguracao.cdsPadraoSENHAESTOQUESetText(Sender: TField;
   const Text: String);
 begin
   inherited;
-  Sender.AsString := Encript(Text);
+  Sender.AsString := EnDecrypt(Text);
 end;
 
 procedure TfrmConfiguracao.dbeContaChequeClickButton(Sender: TObject);
 begin
   inherited;
-  if ModoEdicao(cdsPadrao) then
+  if cdsPadrao.State in [dsEdit] then
     if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
     begin
       cdsPadraoCONTACHEQUE.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;

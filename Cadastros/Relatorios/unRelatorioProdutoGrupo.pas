@@ -5,11 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, PLDBEdit;
+  DBCtrls;
 
 type
   TfrmRelatorioProdutoGrupo = class(TfrmDialogoRelatorioPadrao)
-    dbeGrupo: TPLDBEdit;
+    dbeGrupo: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbeGrupoClickButton(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

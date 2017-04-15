@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Buttons, DB, StdCtrls, Mask, DBCtrls, SqlExpr,
   DBClient, Provider, ConstPadrao, ComCtrls, unContasPagar,
-  Menus, Grids, DBGrids, PLSQLDataSet, FMTBcd, unSimplePadrao, varglobal;
+  Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal;
 
 type
   TfrmContasPagas = class(TfrmSimplePadrao)
@@ -35,7 +35,7 @@ type
     sqldEstornoORIGEM: TIntegerField;
     cdsEstornoCODIGO: TIntegerField;
     cdsEstornoORIGEM: TIntegerField;
-    sqldContaEstorno: TPLSQLDataSet;
+    sqldContaEstorno: TSQLDataSet;
     grpFiltro: TGroupBox;
     lbFiltrousado: TLabel;
     sqldPadraoCODIGO: TIntegerField;
@@ -108,7 +108,7 @@ var
 
 implementation
 
-uses Funcoes,  FuncoesWin;
+uses Funcoes, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -129,7 +129,7 @@ begin
   inherited;
   ClientHeight := 430;
   ClientWidth  := 930;
-  ReordenaBotoes([btnEstornar, btnAtualizar, btnFechar], 0);
+  ReordenaBotoes([btnEstornar, btnAtualizar, btnFechar]);
   CentralizaForm(Self);
 end;
 
@@ -332,7 +332,7 @@ end;
 
 procedure TfrmContasPagas.GradeTitleClick(Column: TColumn);
 begin
-  OrdenaColunasGrid(Grade, Column, cdsPadrao);
+  ////OrdenaColunasGrid(Grade, Column, cdsPadrao);
 end;
 
 procedure TfrmContasPagas.FormKeyDown(Sender: TObject; var Key: Word;

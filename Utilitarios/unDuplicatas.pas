@@ -5,9 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, PLDBEditDateTimePicker,
-  Mask, DBCtrls, DateUtils, PLDBEdit, PLDataSetProvider,
-  PLSQLDataSet, PLClientDataSet, RLReport, FMTBcd, System.Actions;
+  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, 
+  Mask, DBCtrls, DateUtils,
+  RLReport, FMTBcd, System.Actions;
 
 type
   TfrmDuplicatas = class(TfrmPadrao)
@@ -15,9 +15,9 @@ type
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
     lbSacado: TLabel;
-    dbeDataVenc: TPLDBEditDateTimePicker;
-    dbeDataPag: TPLDBEditDateTimePicker;
-    dbeDataEmissao: TPLDBEditDateTimePicker;
+    dbeDataVenc: TDBEdit;
+    dbeDataPag: TDBEdit;
+    dbeDataEmissao: TDBEdit;
     N6: TMenuItem;
     miImportarCliente: TMenuItem;
     miConfigurar: TMenuItem;
@@ -31,38 +31,38 @@ type
     cdsCR: TClientDataSet;
     sqldDeleta: TSQLDataSet;
     lbPracaPag: TLabel;
-    dbeCidade: TPLDBEdit;
-    sqldCidade: TPLSQLDataSet;
-    dspCidade: TPLDataSetProvider;
-    cdsCidade: TPLClientDataSet;
+    dbeCidade: TDBEdit;
+    sqldCidade: TSQLDataSet;
+    dspCidade: TDataSetProvider;
+    cdsCidade: TClientDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
     sqldCidadeCODCIDADE: TIntegerField;
     sqldCidadeDESCRICAO: TStringField;
-    dbeValor: TPLDBEdit;
-    dbeDesconto: TPLDBEdit;
+    dbeValor: TDBEdit;
+    dbeDesconto: TDBEdit;
     N9: TMenuItem;
     miFormSistema: TMenuItem;
-    dbeValorFatura: TPLDBEdit;
-    dbeNroDuplicata: TPLDBEdit;
-    dbeNroFatura: TPLDBEdit;
+    dbeValorFatura: TDBEdit;
+    dbeNroDuplicata: TDBEdit;
+    dbeNroFatura: TDBEdit;
     lbFatura: TLabel;
     lbDuplicata: TLabel;
-    dbeValorExtenso: TPLDBEdit;
-    dbeSacado: TPLDBEdit;
-    dbeCpfCnpj: TPLDBEdit;
-    dbeRgIe: TPLDBEdit;
-    dbeFoneFax: TPLDBEdit;
-    dbeCep: TPLDBEdit;
-    dbeEndereco: TPLDBEdit;
-    dbeBairro: TPLDBEdit;
-    dbeEstado: TPLDBEdit;
-    dbePracaPagamento: TPLDBEdit;
+    dbeValorExtenso: TDBEdit;
+    dbeSacado: TDBEdit;
+    dbeCpfCnpj: TDBEdit;
+    dbeRgIe: TDBEdit;
+    dbeFoneFax: TDBEdit;
+    dbeCep: TDBEdit;
+    dbeEndereco: TDBEdit;
+    dbeBairro: TDBEdit;
+    dbeEstado: TDBEdit;
+    dbePracaPagamento: TDBEdit;
     lbDatas: TLabel;
     N10: TMenuItem;
     miImportarCR: TMenuItem;
-    dbeDataImpressao: TPLDBEdit;
-    dbeImpressa: TPLDBEdit;
+    dbeDataImpressao: TDBEdit;
+    dbeImpressa: TDBEdit;
     sqldPadraoIDDUPLICATA: TIntegerField;
     sqldPadraoNRODUPLICATA: TStringField;
     sqldPadraoSACADO: TStringField;
@@ -238,20 +238,20 @@ begin
   inherited;
   if cdsPadraoIMPRESSA.AsString = 'S' then
   begin
-    case CustomMsgDlg('Esta Duplicata já foi impressa. O que deseja fazer ?',
-                    'Opçoes de Impressão', '&Excluir', '&Imprimir', '&Cancelar') of
-      ID_YES:
-      begin
-        actDelete.Execute;
-        Exit;
-      end;
-      ID_NO:
-      begin
-        ImprimirDuplicata;
-        Exit;
-      end;
-      ID_CANCEL: Exit;
-    end;
+//    case CustomMsgDlg('Esta Duplicata já foi impressa. O que deseja fazer ?',
+//                    'Opçoes de Impressão', '&Excluir', '&Imprimir', '&Cancelar') of
+//      ID_YES:
+//      begin
+//        actDelete.Execute;
+//        Exit;
+//      end;
+//      ID_NO:
+//      begin
+//        ImprimirDuplicata;
+//        Exit;
+//      end;
+//      ID_CANCEL: Exit;
+//    end;
   end
   else
   begin
@@ -355,7 +355,7 @@ begin
         cdsClienteLIMITE.AsFloat    := Global.LimiteCliente;
 
         cdsCliente.ApplyUpdates(0);
-        MsgAviso('Cliente "'+dbeSacado.Text+'" cadastrado com sucesso.');
+        MsgAviso('','Cliente "'+dbeSacado.Text+'" cadastrado com sucesso.');
       except
         raise Exception.Create('Erro ao cadastrar cliente na duplicata.');
       end;
@@ -461,7 +461,7 @@ end;
 procedure TfrmDuplicatas.AntesSalvar;
 begin
   inherited;
-  with TPLSQLDataSet.Create(nil) do
+  with TSQLDataSet.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
     CommandText := 'select count(1) from DUPLICATA where NRODUPLICATA = '+QuotedStr(dbeNroDuplicata.Text);
@@ -473,7 +473,7 @@ begin
 
   if (ModoInsert(cdsPadrao) and Repetido) then
   begin
-    MsgAviso('Já existe uma duplicata com este número.');
+    MsgAviso('','Já existe uma duplicata com este número.');
     Abort;
   end;
  {
@@ -541,7 +541,7 @@ begin
     else
     begin
       cdsPadrao.CancelUpdates;
-      MsgCuidado('Duplicata cancelada.');
+      MsgCuidado('','Duplicata cancelada.');
     end;
   end;
 end;
@@ -550,7 +550,7 @@ procedure TfrmDuplicatas.miImportarCRClick(Sender: TObject);
 
   function TotalVenda(IdVenda: Integer): Currency;
   begin
-    with TPLSQLDataSet.Create(nil)do
+    with TSQLDataSet.Create(nil)do
     try
       SQLConnection := sqldPadrao.SQLConnection;
       CommandText := 'select TOTAL from VENDA where CODIGO = '+QuotedStr(IntToStr(IdVenda));
@@ -594,7 +594,7 @@ begin
       else
       begin
         cdsPadrao.CancelUpdates;
-        MsgCuidado('Duplicata cancelada.');
+        MsgCuidado('','Duplicata cancelada.');
       end;
     end;
   end;

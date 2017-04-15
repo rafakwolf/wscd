@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls, PLDBEditDateTimePicker, Spin,
-  FMTBcd;
+  DB, DBClient, Provider, SqlExpr, ComCtrls,  Spin,
+  FMTBcd, DBCtrls, Vcl.Mask;
 
 type
   TfrmRelatorioAniversarioCliente = class(TfrmDialogoRelatorioPadrao)
@@ -21,8 +21,8 @@ type
     edAte: TSpinEdit;
     edAno: TLabeledEdit;
     pnDatas: TPanel;
-    dbeDataIni: TPLDBEditDateTimePicker;
-    dbeDataFim: TPLDBEditDateTimePicker;
+    dbeDataIni: TDBEdit;
+    dbeDataFim: TDBEdit;
     sqldSelecao: TSQLDataSet;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
@@ -81,13 +81,13 @@ begin
   case rgDatas.ItemIndex of
     0:
     begin
-      EnableControlSubControls(pnDatas, False, -1);
-      EnableControlSubControls(pnDiaMesAno, True, -1);
+      //EnableControlSubControls(pnDatas, False, -1);
+      //EnableControlSubControls(pnDiaMesAno, True, -1);
     end;
     1:
     begin
-      EnableControlSubControls(pnDatas, True, -1);
-      EnableControlSubControls(pnDiaMesAno, False, -1);
+      //EnableControlSubControls(pnDatas, True, -1);
+      //EnableControlSubControls(pnDiaMesAno, False, -1);
     end;
   end;
 end;
@@ -115,7 +115,7 @@ begin
                            'where extract(month from DATA) = :MES '+
                            'and extract(day from DATA) between :PDIAINI and :PDIAFIM '+
                            'order by DATA, NOME';
-            Params.ParamByName('MES').AsInteger     := MesNumerico(Trim(cmbMes.Text));
+            Params.ParamByName('MES').AsInteger     := cmbMes.ItemIndex+1;
             Params.ParamByName('PDIAINI').AsInteger := StrToIntDef(edDo.Text, 1);
             Params.ParamByName('PDIAFIM').AsInteger := StrToIntDef(edAte.Text, 30);
             //Params.ParamByName('PANO').AsInteger := StrToIntDef(edAno.Text, YearOf(Date));
@@ -153,7 +153,7 @@ begin
           Params.ParamByName('PTIPO').AsInteger   := rgDatas.ItemIndex;
           Params.ParamByName('PDIAINI').AsInteger := StrToIntDef(edDo.Text, 1);
           Params.ParamByName('PDIAFIM').AsInteger := StrToIntDef(edAte.Text, 30);
-          Params.ParamByName('PMES').AsInteger    := MesNumerico(Trim(cmbMes.Text));
+          Params.ParamByName('PMES').AsInteger    := cmbMes.ItemIndex+1;
           Params.ParamByName('PANO').AsInteger    := -1;//StrToIntDef(edAno.Text, YearOf(Date));
           Params.ParamByName('PDATA1').AsDate     := cdsSelecaoDATAINI.AsDateTime;
           Params.ParamByName('PDATA2').AsDate     := cdsSelecaoDATAFIM.AsDateTime;

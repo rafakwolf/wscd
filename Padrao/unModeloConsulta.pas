@@ -61,7 +61,7 @@ var
   
 implementation
 
-uses Funcoes, FuncoesWin;
+uses Funcoes;
 
 {$R *.dfm}
 
@@ -361,7 +361,7 @@ begin
       begin
         if not IsDateTime(Valor) then
         begin
-          MsgCuidado('Valor de data inválido.');
+          MsgCuidado('','Valor de data inválido.');
           SetFocusIfCan(edtPesquisa);
           FCDS.CommandText := SQL + GroupBy + ' ' + OrderBy;
         end;
@@ -370,7 +370,7 @@ begin
       begin
         if not IsNumeric(Valor) then
         begin
-          MsgCuidado('Valor numérico inválido.');
+          MsgCuidado('','Valor numérico inválido.');
           SetFocusIfCan(edtPesquisa);
           FCDS.CommandText := SQL + GroupBy + ' ' + OrderBy;
         end;
@@ -421,7 +421,7 @@ end;
 
 procedure TfrmModeloConsulta.GradeTitleClick(Column: TColumn);
 begin
-  OrdenaColunasGrid(Grade, Column, TClientDataSet(dsPadrao.DataSet));
+  ////OrdenaColunasGrid(Grade, Column, TClientDataSet(dsPadrao.DataSet));
 end;
 
 procedure TfrmModeloConsulta.FormKeyDown(Sender: TObject; var Key: Word;

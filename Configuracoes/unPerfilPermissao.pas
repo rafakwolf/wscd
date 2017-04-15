@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  PLDBEdit, Grids, DBGrids, ImgList, unPrincipal, FMTBcd, System.Actions;
+   Grids, DBGrids, ImgList, unPrincipal, FMTBcd, System.Actions,
+  System.ImageList;
 
 type
   TfrmPerfilPermissao = class(TfrmPadrao)
@@ -20,7 +21,7 @@ type
     dsLigaPerfis: TDataSource;
     cdsPadraosqldPerfisConf: TDataSetField;
     dsPerfisConf: TDataSource;
-    dbePerfil: TPLDBEdit;
+    dbePerfil: TDBEdit;
     Imagens: TImageList;
     pmLiberaBloqueia: TPopupMenu;
     miLiberar: TMenuItem;
@@ -171,8 +172,8 @@ procedure TfrmPerfilPermissao.dbgPermDrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   inherited;
-  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect,
-    DataCol, Column, State);
+//  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect,
+//    DataCol, Column, State);
 
   if (Column.Field = cdsPerfisConfLIBERADO) then
   begin
@@ -206,7 +207,7 @@ end;
 procedure TfrmPerfilPermissao.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('PERFIL', cdsPadraoIDPERFIL, GetConnection);
+  //Incrementa('PERFIL', cdsPadraoIDPERFIL, GetConnection);
   SetFocusIfCan(dbePerfil);
 end;
 

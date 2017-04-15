@@ -8,8 +8,8 @@ inherited frmFoto: TfrmFoto
   OldCreateOrder = True
   OnDestroy = FormDestroy
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
+  ExplicitWidth = 303
+  ExplicitHeight = 270
   PixelsPerInch = 96
   TextHeight = 13
   object grpFoto: TGroupBox

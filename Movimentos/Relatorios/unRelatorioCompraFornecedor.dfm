@@ -9,7 +9,7 @@ inherited frmRelatorioCompraFornecedor: TfrmRelatorioCompraFornecedor
   ExplicitHeight = 141
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeForn: TPLDBEdit [0]
+  object dbeForn: TDBEdit [0]
     Left = 16
     Top = 32
     Width = 323

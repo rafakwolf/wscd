@@ -11,7 +11,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   ExplicitWidth = 759
-  ExplicitHeight = 461
+  ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
   object lbCampo: TLabel
@@ -287,8 +287,8 @@ inherited frmListagemPrecos: TfrmListagemPrecos
   object dsProdutos: TDataSource
     AutoEdit = False
     DataSet = cdsProduto
-    Left = 232
-    Top = 192
+    Left = 400
+    Top = 168
   end
   object sqldProduto: TSQLDataSet
     CommandText = 'select * from VIEWPESQUISAPRECO'
@@ -330,15 +330,15 @@ inherited frmListagemPrecos: TfrmListagemPrecos
   object dspProduto: TDataSetProvider
     DataSet = sqldProduto
     Options = [poAllowCommandText]
-    Left = 168
-    Top = 192
+    Left = 208
+    Top = 152
   end
   object cdsProduto: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProduto'
-    Left = 200
-    Top = 192
+    Left = 296
+    Top = 176
     object cdsProdutoCODIGO: TIntegerField
       FieldName = 'CODIGO'
     end

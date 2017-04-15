@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DBClient, Provider, DB, RLTypes,
   SqlExpr, StdCtrls, Buttons, ExtCtrls, Spin, RLReport, Funcoes,
-  VarGlobal, FMTBcd;
+  VarGlobal, FMTBcd, IniFiles;
 
 type
   TTipoEtiqueta = (teProduto, teCliente);
@@ -88,7 +88,7 @@ begin
     First;
     if IsEmpty then
     begin
-      MsgAviso('Não existem etiquetas cadastradas.' + #13#10 +
+      MsgAviso('','Não existem etiquetas cadastradas.' + #13#10 +
         'Cadastre pelo menos um modelo de etiqueta e tente novamente.');
       Close;
     end;
@@ -107,15 +107,21 @@ var
   Ordem: string[1];
 begin
   inherited;
-  PreencheComboModelos;
-  Indice := cbListaEtiq.Items.IndexOf(ReadIniFile('Etiqueta', 'Nome'));
+  with TIniFile.Create(ExtractFilePath(ParamStr(0))+'cfb.ini') do try
 
-  if (Indice >= 0) then
-    cbListaEtiq.ItemIndex := Indice
-  else
-    cbListaEtiq.ItemIndex := 0;
+    PreencheComboModelos;
+    Indice := cbListaEtiq.Items.IndexOf(ReadString('Etiqueta', 'Nome',''));
 
-  Ordem := ReadIniFile('Etiqueta', 'Ordem');
+    if (Indice >= 0) then
+      cbListaEtiq.ItemIndex := Indice
+    else
+      cbListaEtiq.ItemIndex := 0;
+
+    Ordem := ReadString('Etiqueta', 'Ordem','');
+  finally
+     free;
+  end;
+
   if UpperCase(Ordem) = 'V' then
     rgTraversal.ItemIndex := 1
   else
@@ -136,14 +142,19 @@ begin
 
     if (cbListaEtiq.ItemIndex = -1) then
     begin
-      MsgAviso('Escolha um modelo de Etiqueta');
+      MsgAviso('','Escolha um modelo de Etiqueta');
       cbListaEtiq.SetFocus;
       Abort;
     end;
 
-    WriteIniFile('Etiqueta', 'Nome', cbListaEtiq.Text);
-    WriteIniFile('Etiqueta', 'Ordem',
-      Copy(rgTraversal.Items[rgTraversal.ItemIndex], 1, 1));
+    with TIniFile.Create(ExtractFilePath(Paramstr(0))+'cfg.ini') do try
+
+      WriteString('Etiqueta', 'Nome', cbListaEtiq.Text);
+      Writestring('Etiqueta', 'Ordem',
+        Copy(rgTraversal.Items[rgTraversal.ItemIndex], 1, 1));
+    finally
+      free;
+    end;
 
     cdsEtiqueta.Open;
     cdsEtiqueta.Locate('ETIQUETA', cbListaEtiq.Text, []);

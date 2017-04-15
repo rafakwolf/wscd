@@ -459,7 +459,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
       end
     end
   end
-  object sqldVenda: TPLSQLDataSet
+  object sqldVenda: TSQLDataSet
     CommandText = 
       'select'#13#10'  ven.CODIGO,'#13#10'  ven.CODCLIENTE,'#13#10'  cli.NOME as CLIENTE,' +
       #13#10'  cli.ENDERECO,'#13#10'  cli.BAIRRO,'#13#10'  cid.DESCRICAO as CIDADE,'#13#10'  ' +
@@ -545,13 +545,13 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
       Size = 1
     end
   end
-  object dspVenda: TPLDataSetProvider
+  object dspVenda: TDataSetProvider
     DataSet = sqldVenda
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 56
     Top = 360
   end
-  object cdsVenda: TPLClientDataSet
+  object cdsVenda: TClientDataSet
     Aggregates = <>
     Params = <
       item
@@ -639,7 +639,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
     Left = 120
     Top = 360
   end
-  object sqldItemVenda: TPLSQLDataSet
+  object sqldItemVenda: TSQLDataSet
     CommandText = 
       'select'#13#10'  itv.CODPRODUTO,'#13#10'  pro.DESCRICAO as PRODUTO,'#13#10'  itv.QT' +
       'D,'#13#10'  itv.VENDA,'#13#10'  itv.VALORDESCTO,'#13#10'  itv.TOTAL '#13#10'from ITEMVEN' +
@@ -684,7 +684,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
     Left = 56
     Top = 392
   end
-  object cdsItemVenda: TPLClientDataSet
+  object cdsItemVenda: TClientDataSet
     Aggregates = <>
     DataSetField = cdsVendasqldItemVenda
     Params = <>

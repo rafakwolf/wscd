@@ -8,7 +8,7 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
   Font.Name = 'Tahoma'
   OldCreateOrder = True
   ExplicitWidth = 689
-  ExplicitHeight = 411
+  ExplicitHeight = 412
   PixelsPerInch = 96
   TextHeight = 14
   object lbPeriodo: TLabel
@@ -283,23 +283,23 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
   end
   object dsLogErro: TDataSource
     DataSet = cdsLogErro
-    Left = 416
-    Top = 136
+    Left = 408
+    Top = 152
   end
   object sdlgLogErro: TSaveDialog
     DefaultExt = '*.txt'
     Filter = 'Arquivos de texto (*.txt)|*.txt'
-    Left = 488
-    Top = 128
+    Left = 496
+    Top = 136
   end
-  object sqldLogErro: TPLSQLDataSet
+  object sqldLogErro: TSQLDataSet
     CommandText = 
       'select'#13#10'  lg.IDLOGERRO, '#13#10'  lg.DATAHORA, '#13#10'  lg.FORM, '#13#10'  lg.CON' +
       'TROLE, '#13#10'  lg.MSG'#13#10'from LOGERRO lg'#13#10'order by lg.DATAHORA'
     MaxBlobSize = -1
     Params = <>
-    Left = 320
-    Top = 136
+    Left = 104
+    Top = 160
     object sqldLogErroIDLOGERRO: TIntegerField
       FieldName = 'IDLOGERRO'
       Required = True
@@ -320,12 +320,12 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
       Size = 250
     end
   end
-  object cdsLogErro: TPLClientDataSet
+  object cdsLogErro: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspLogErro'
-    Left = 384
-    Top = 136
+    Left = 312
+    Top = 152
     object cdsLogErroIDLOGERRO: TIntegerField
       FieldName = 'IDLOGERRO'
       Required = True
@@ -348,7 +348,7 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
   end
   object dspLogErro: TDataSetProvider
     DataSet = sqldLogErro
-    Left = 352
-    Top = 136
+    Left = 208
+    Top = 160
   end
 end

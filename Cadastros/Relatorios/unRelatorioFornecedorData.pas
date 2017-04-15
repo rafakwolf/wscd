@@ -5,12 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, PLDBEditDateTimePicker;
+  ComCtrls, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TfrmRelatorioFornecedorData = class(TfrmDialogoRelatorioPadrao)
-    edDataIni: TPLDBEditDateTimePicker;
-    edDataFim: TPLDBEditDateTimePicker;
+    edDataIni: TDBEdit;
+    edDataFim: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
@@ -32,9 +32,9 @@ uses
 
 procedure TfrmRelatorioFornecedorData.Imprimir(p: Boolean);
 begin
-  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
-    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, edDataIni)then
-  begin
+//  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
+//    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, edDataIni)then
+//  begin
     with TfrmPrevRelFornData.Create(Self) do
     try
       with cdsPadrao do
@@ -52,7 +52,7 @@ begin
       cdsPadrao.Close;
       Free;
     end;
-  end;
+  //end;
 end;
 
 procedure TfrmRelatorioFornecedorData.FormClose(Sender: TObject;

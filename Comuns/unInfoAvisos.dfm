@@ -9,7 +9,7 @@ inherited frmInfoAvisos: TfrmInfoAvisos
   OldCreateOrder = True
   OnShow = FormShow
   ExplicitWidth = 703
-  ExplicitHeight = 533
+  ExplicitHeight = 534
   PixelsPerInch = 96
   TextHeight = 13
   object imgInfo: TImage
@@ -1709,7 +1709,7 @@ inherited frmInfoAvisos: TfrmInfoAvisos
     TabOrder = 3
     OnClick = btnProximoClick
   end
-  object sqldCR: TPLSQLDataSet
+  object sqldCR: TSQLDataSet
     CommandText = 
       'SELECT '#13#10'  CR.CODIGO,'#13#10'  CR.VENCIMENTO,'#13#10'  CLI.NOME AS CLIENTE,'#13 +
       #10'  CR.VALOR, '#13#10'  CR.ATRASO, '#13#10'  CR.TOTAL,'#13#10'  CR.RECEBER'#13#10'FROM CO' +
@@ -1754,12 +1754,12 @@ inherited frmInfoAvisos: TfrmInfoAvisos
       FieldName = 'TOTAL'
     end
   end
-  object dspCR: TPLDataSetProvider
+  object dspCR: TDataSetProvider
     DataSet = sqldCR
     Left = 64
     Top = 224
   end
-  object cdsCR: TPLClientDataSet
+  object cdsCR: TClientDataSet
     Aggregates = <>
     Params = <
       item
@@ -1806,7 +1806,7 @@ inherited frmInfoAvisos: TfrmInfoAvisos
     Left = 128
     Top = 224
   end
-  object sqldCP: TPLSQLDataSet
+  object sqldCP: TSQLDataSet
     CommandText = 
       'SELECT '#13#10'  CP.CODIGO,'#13#10'  CP.VENCIMENTO,'#13#10'  FO.FANTAZIA AS FORNEC' +
       'EDOR,'#13#10'  CP.VALOR,'#13#10'  CP.ATRASO,'#13#10'  CP.TOTAL,'#13#10'  CP.PAGAR'#13#10'FROM ' +
@@ -1851,12 +1851,12 @@ inherited frmInfoAvisos: TfrmInfoAvisos
       FieldName = 'TOTAL'
     end
   end
-  object dspCP: TPLDataSetProvider
+  object dspCP: TDataSetProvider
     DataSet = sqldCP
     Left = 64
     Top = 256
   end
-  object cdsCP: TPLClientDataSet
+  object cdsCP: TClientDataSet
     Aggregates = <>
     Params = <
       item
@@ -1904,10 +1904,10 @@ inherited frmInfoAvisos: TfrmInfoAvisos
     Top = 256
   end
   object ilImages: TImageList
-    Left = 168
-    Top = 256
+    Left = 224
+    Top = 248
     Bitmap = {
-      494C010103000400140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000400180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2046,7 +2046,7 @@ inherited frmInfoAvisos: TfrmInfoAvisos
       C0FF81FFE3010000FFFFFFFFFF87000000000000000000000000000000000000
       000000000000}
   end
-  object sqldClientes: TPLSQLDataSet
+  object sqldClientes: TSQLDataSet
     CommandText = 
       'SELECT'#13#10'  NOME,'#13#10'  DATANASC,'#13#10'  CIDADE,'#13#10'  FONE,'#13#10'  CAST(0 AS IN' +
       'TEGER) AS IDADE,'#13#10'  CAST('#39'N'#39' AS CHAR(1)) AS MARCADO'#13#10'FROM STPGET' +
@@ -2123,12 +2123,12 @@ inherited frmInfoAvisos: TfrmInfoAvisos
       Size = 1
     end
   end
-  object dspClientes: TPLDataSetProvider
+  object dspClientes: TDataSetProvider
     DataSet = sqldClientes
     Left = 65
     Top = 289
   end
-  object cdsClientes: TPLClientDataSet
+  object cdsClientes: TClientDataSet
     Aggregates = <>
     Params = <
       item

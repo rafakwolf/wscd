@@ -6,10 +6,10 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
   ClientWidth = 310
   OldCreateOrder = True
   ExplicitWidth = 326
-  ExplicitHeight = 265
+  ExplicitHeight = 266
   PixelsPerInch = 96
   TextHeight = 13
-  object sqldCabecalho: TPLSQLDataSet
+  object sqldCabecalho: TSQLDataSet
     CommandText = 
       'select * from CONFIGNOTA'#13#10'where (TIPO = '#39'C'#39') or '#13#10'((TIPO = '#39'T'#39' )' +
       ' and (REFERENCIA = '#39'Cabe'#231'alho'#39'))'#13#10'order by LINHA, COLUNA'
@@ -50,7 +50,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Size = 1
     end
   end
-  object sqldCabItens: TPLSQLDataSet
+  object sqldCabItens: TSQLDataSet
     CommandText = 
       'select *  from CONFIGNOTA'#13#10'where ((TIPO = '#39'T'#39') and (REFERENCIA =' +
       ' '#39'Itens da nota'#39'))'#13#10'order by LINHA, COLUNA'
@@ -91,7 +91,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Size = 1
     end
   end
-  object sqldRodape: TPLSQLDataSet
+  object sqldRodape: TSQLDataSet
     CommandText = 
       'select *  from CONFIGNOTA'#13#10'where (TIPO = '#39'R'#39')'#13#10'or ((TIPO = '#39'T'#39') ' +
       'and (REFERENCIA = '#39'Rodap'#233#39'))'#13#10'order by LINHA, COLUNA'
@@ -132,7 +132,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Size = 1
     end
   end
-  object sqldVenda: TPLSQLDataSet
+  object sqldVenda: TSQLDataSet
     CommandText = 'select * from VIEWVENDA'#13#10'where CODIGO = :IDVENDA'
     MaxBlobSize = -1
     Params = <
@@ -190,7 +190,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Precision = 15
     end
   end
-  object sqldItemVenda: TPLSQLDataSet
+  object sqldItemVenda: TSQLDataSet
     CommandText = 'select * from VIEWITEMVENDA'#13#10'where CODVENDA = :IDVENDA'
     MaxBlobSize = -1
     Params = <
@@ -227,7 +227,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Precision = 15
     end
   end
-  object sqldDataItens: TPLSQLDataSet
+  object sqldDataItens: TSQLDataSet
     CommandText = 
       'select *  from CONFIGNOTA'#13#10'where ((TIPO = '#39'I'#39') and (REFERENCIA <' +
       '> '#39'Itens da nota'#39'))'#13#10'order by LINHA, COLUNA'
@@ -267,28 +267,5 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       FixedChar = True
       Size = 1
     end
-  end
-  object VDODmPrinter: TVDODmPrinter
-    ShowDialog = True
-    ShowPreview = False
-    ShowProgress = True
-    Title = 'VDOPrint Document'
-    CharMode = cmClear
-    Font.Align = faLeft
-    Font.FontType = ftDraft
-    Font.NLQFont = ntSansSerif
-    Font.Pitch = fp10cpp
-    Font.Size = fsDefault
-    Font.Style = []
-    LineSpacing = ls6lpp
-    LineSpacingCustomValue = 36
-    Paper.AutoNewPage = False
-    Paper.AutoNewPageLines = 3
-    Paper.Columns = 80
-    Paper.Lines = 66
-    Paper.MarginLeft = 0
-    Paper.MarginRight = 0
-    Left = 128
-    Top = 136
   end
 end

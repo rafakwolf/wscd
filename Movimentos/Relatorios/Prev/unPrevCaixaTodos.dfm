@@ -5,7 +5,7 @@ inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
   ClientWidth = 809
   OldCreateOrder = True
   ExplicitWidth = 825
-  ExplicitHeight = 568
+  ExplicitHeight = 569
   PixelsPerInch = 96
   TextHeight = 13
   inherited rrPadrao: TRLReport
@@ -20,12 +20,12 @@ inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
       end
     end
     inherited rbRodape: TRLBand
-      Top = 207
-      ExplicitTop = 207
+      Top = 210
+      ExplicitTop = 210
     end
     object rlbSumario: TRLBand
       Left = 38
-      Top = 191
+      Top = 194
       Width = 718
       Height = 16
       BandType = btSummary
@@ -74,7 +74,7 @@ inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
     end
     object rlgrpCaixa: TRLGroup
       Left = 38
-      Top = 136
+      Top = 139
       Width = 718
       Height = 55
       DataFields = 'CAIXA'

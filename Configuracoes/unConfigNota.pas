@@ -5,14 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  Provider, SqlExpr, DBClient, PLSQLDataSet, PLClientDataSet, PLDataSetProvider,
+  SqlExpr, DBClient, Datasnap.Provider,
   Grids, DBGrids, ConstPadrao, FMTBcd, System.Actions;
 
 type
   TfrmConfigNota = class(TfrmPadrao)
-    sqldPadrao: TPLSQLDataSet;
-    dspPadrao: TPLDataSetProvider;
-    cdsPadrao: TPLClientDataSet;
+    sqldPadrao: TSQLDataSet;
+    dspPadrao: TDataSetProvider;
+    cdsPadrao: TClientDataSet;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoCAMPO: TStringField;
     sqldPadraoLAYOUT: TStringField;
@@ -298,7 +298,7 @@ end;
 
 procedure TfrmConfigNota.actSearchExecute(Sender: TObject);
 begin
-  Ed_Localizar(cdsPadrao, Self, dbgrdCampos);
+  //Ed_Localizar(cdsPadrao, Self, dbgrdCampos);
 end;
 
 procedure TfrmConfigNota.DestacaCampo(pNomeComponent: string);

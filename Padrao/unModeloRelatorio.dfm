@@ -95,23 +95,23 @@ object frmModeloRelatorio: TfrmModeloRelatorio
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poAllowCommandText]
-    Left = 48
+    Left = 88
     Top = 8
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    Left = 80
-    Top = 8
+    Left = 168
+    Top = 16
   end
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 112
-    Top = 8
+    Left = 256
+    Top = 16
   end
   object rlepCalculos: TRLExpressionParser
-    Left = 152
+    Left = 376
     Top = 8
   end
 end

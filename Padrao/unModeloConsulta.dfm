@@ -510,7 +510,7 @@ object frmModeloConsulta: TfrmModeloConsulta
   end
   object dsPadrao: TDataSource
     AutoEdit = False
-    Left = 216
-    Top = 136
+    Left = 168
+    Top = 128
   end
 end

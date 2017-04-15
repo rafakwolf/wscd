@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls, PLDBEdit, FMTBcd;
+  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioCPFornecedor = class(TfrmDialogoRelatorioPadrao)
@@ -20,7 +20,7 @@ type
     sqldSelecaoTELEFONE: TStringField;
     cdsSelecaoCNPJ: TStringField;
     cdsSelecaoTELEFONE: TStringField;
-    dbeForn: TPLDBEdit;
+    dbeForn: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbeFornClickButton(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

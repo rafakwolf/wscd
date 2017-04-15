@@ -9,7 +9,7 @@ inherited frmDicas: TfrmDicas
   Position = poScreenCenter
   OnShow = FormShow
   ExplicitWidth = 496
-  ExplicitHeight = 262
+  ExplicitHeight = 263
   PixelsPerInch = 96
   TextHeight = 13
   object btnFecha: TBitBtn

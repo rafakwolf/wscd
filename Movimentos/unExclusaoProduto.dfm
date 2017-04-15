@@ -10,7 +10,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
   Font.Name = 'Tahoma'
   OnShow = FormShow
   ExplicitWidth = 647
-  ExplicitHeight = 424
+  ExplicitHeight = 425
   PixelsPerInch = 96
   TextHeight = 13
   object btnFechar: TSpeedButton
@@ -207,8 +207,8 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
   object dsPadrao: TDataSource
     AutoEdit = False
     DataSet = cdsPadrao
-    Left = 264
-    Top = 216
+    Left = 384
+    Top = 184
   end
   object sqlPadrao: TSQLQuery
     MaxBlobSize = -1
@@ -221,8 +221,8 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       '  EXCLUIR'
       'FROM PRODUTOS '
       'ORDER BY DESCRICAO')
-    Left = 160
-    Top = 216
+    Left = 144
+    Top = 176
     object sqlPadraoCODBARRA: TStringField
       FieldName = 'CODBARRA'
       Size = 13
@@ -242,16 +242,16 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
   end
   object dspPadrao: TDataSetProvider
     DataSet = sqlPadrao
-    Left = 192
-    Top = 216
+    Left = 216
+    Top = 176
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     PacketRecords = 100
     Params = <>
     ProviderName = 'dspPadrao'
-    Left = 224
-    Top = 216
+    Left = 296
+    Top = 184
     object cdsPadraoCODBARRA: TStringField
       FieldName = 'CODBARRA'
       Size = 13

@@ -54,7 +54,7 @@ var
 
 implementation
 
-uses Funcoes,  FuncoesWin, unAguarde;
+uses Funcoes,  unAguarde, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -165,8 +165,7 @@ begin
     TfrmAguarde.Execute('Ajustando dados...');
     inherited;
     CentralizaForm(Self);
-    UpdateSingleField('UPDATE PRODUTOS SET EXCLUIR = '+QuotedStr('N'),
-      sqlPadrao.SQLConnection);
+    UpdateSingleField('UPDATE PRODUTOS SET EXCLUIR = '+QuotedStr('N'));
     cdsPadrao.Open;
   finally
     FreeAndNil(frmAguarde);

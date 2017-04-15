@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
-  RLReport, PLClientDataSet, PLSQLDataSet, VarGlobal, RLParser, FMTBcd;
+  RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
   TfrmPrevOrcamento = class(TfrmModeloRelatorio)
@@ -32,8 +32,8 @@ type
     lbData: TRLLabel;
     rldbDATA: TRLDBText;
     dsLink: TDataSource;
-    sqldDetOrcam: TPLSQLDataSet;
-    cdsDetOrcam: TPLClientDataSet;
+    sqldDetOrcam: TSQLDataSet;
+    cdsDetOrcam: TClientDataSet;
     dsDetOrcam: TDataSource;
     lbVenda: TRLLabel;
     rldbVenda: TRLDBText;

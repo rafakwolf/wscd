@@ -4,7 +4,7 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
   ClientWidth = 800
   OldCreateOrder = True
   ExplicitWidth = 816
-  ExplicitHeight = 501
+  ExplicitHeight = 502
   PixelsPerInch = 96
   TextHeight = 13
   inherited rrPadrao: TRLReport
@@ -25,12 +25,12 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
     end
     inherited rbRodape: TRLBand
-      Top = 217
-      ExplicitTop = 217
+      Top = 220
+      ExplicitTop = 220
     end
     object rlbColunas: TRLBand
       Left = 38
-      Top = 152
+      Top = 155
       Width = 718
       Height = 16
       BeforePrint = rlbColunasBeforePrint
@@ -77,7 +77,7 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
     end
     object rlbDetalhe: TRLBand
       Left = 38
-      Top = 136
+      Top = 139
       Width = 718
       Height = 16
       BandType = btColumnHeader
@@ -141,7 +141,7 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
     end
     object rlbSumario: TRLBand
       Left = 38
-      Top = 168
+      Top = 171
       Width = 718
       Height = 49
       BandType = btSummary

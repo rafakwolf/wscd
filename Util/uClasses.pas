@@ -3,7 +3,7 @@ unit uClasses;
 interface
 
 uses
-  SysUtils, Classes, SqlExpr, DB, Forms, FuncoesWin, Funcoes, unDmPrincipal;
+  SysUtils, Classes, SqlExpr, DB, Forms, unDmPrincipal, uutilfncs, inifiles;
 
 type
   TConfigGlobal = class
@@ -403,7 +403,7 @@ begin
                    ' CONTACHEQUE '+
                    'from CONFIGURACAO '+
                    'where NOMECOMPUTADOR = :COMP';
-    Params.ParamByName('COMP').AsString := SysComputerName;
+    Params.ParamByName('COMP').AsString := GetComputerName;
     Open;
 
     if IsEmpty then
@@ -414,8 +414,8 @@ begin
         CommandType := ctStoredProc;
         DbxCommandType := 'Dbx.StoredProcedure';
         CommandText := 'STPCONFIGPADRAO';
-        Params.ParamByName('COMPUTADOR').AsString := SysComputerName;
-        Params.ParamByName('DIRETORIO').AsString  := DiretorioSistema;
+        Params.ParamByName('COMPUTADOR').AsString := GetComputerName;
+        Params.ParamByName('DIRETORIO').AsString  := ExtractFilePath( Application.ExeName );
         ExecSQL;
       finally
         Free;
@@ -566,12 +566,25 @@ end;
 
 function TConfiguracao.GetOrientPapelParede: string;
 begin
-  Result := ReadIniFile('PapelParede', 'Orientacao');
+  with TIniFile.Create(
+    IncludeTrailingPathDelimiter( ExtractFilePath( Application.ExeName ))+'cfg.ini' )do
+    try
+      Result := ReadString('PapelParede', 'Orientacao','');
+    finally
+      free;
+    end;
+
 end;
 
 function TConfiguracao.GetPapelParede: string;
 begin
-  Result := ReadIniFile('PapelParede', 'Local');
+  with TIniFile.Create(
+    IncludeTrailingPathDelimiter( ExtractFilePath( Application.ExeName ))+'cfg.ini' )do
+    try
+      Result := ReadString('PapelParede', 'Local','');
+    finally
+      free;
+    end;
 end;
 
 function TConfiguracao.getRelZebrado: Boolean;
@@ -766,12 +779,8 @@ begin
 end;
 
 function TSistema.GetVersaoApp: String;
-var
-  V1, V2, V3, V4: Word;
-  Flag: Integer;
 begin
-  GetBuildInfo(V1, V2, V3, V4, Flag, ParamStr(0));
-  Result := IntToStr(V1) + '.' + IntToStr(V2) + '.' + IntToStr(V3) + '.' + IntToStr(V4);
+  Result := GetBuildInfo(ParamStr(0));
 end;
 
 function TSistema.GetVersaoDB: String;

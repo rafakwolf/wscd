@@ -4,7 +4,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
   ClientWidth = 811
   OldCreateOrder = True
   ExplicitWidth = 827
-  ExplicitHeight = 523
+  ExplicitHeight = 524
   PixelsPerInch = 96
   TextHeight = 13
   inherited rrPadrao: TRLReport
@@ -478,7 +478,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
     Left = 46
     Top = 40
   end
-  object sqldDetOrcam: TPLSQLDataSet
+  object sqldDetOrcam: TSQLDataSet
     CommandText = 
       'select'#13#10'    iorc.CODIGO,'#13#10'    iorc.CODPRODUTO,'#13#10'    prod.Descric' +
       'ao NOMEPRODUTO,'#13#10'    iorc.QTDE,'#13#10'    iorc.CUSTO,'#13#10'    iorc.VENDA' +
@@ -531,7 +531,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
       Precision = 15
     end
   end
-  object cdsDetOrcam: TPLClientDataSet
+  object cdsDetOrcam: TClientDataSet
     Aggregates = <>
     DataSetField = cdsPadraosqldDetOrcam
     Params = <>

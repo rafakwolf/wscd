@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Buttons, DB, StdCtrls, DBCtrls, Mask, Grids, DBGrids,
-  SqlExpr, Menus, ComCtrls, DBClient, Provider, PLDBEdit, ConstPadrao,
-  PLDBEditDateTimePicker, FMTBcd, PLSQLDataSet;
+  SqlExpr, Menus, ComCtrls, DBClient, Provider,  ConstPadrao,
+   FMTBcd, uDatabaseutils;
 
 type
   TfrmNotasFiscais = class(TForm)
@@ -67,7 +67,7 @@ type
     miCompraNaoConc: TMenuItem;
     N7: TMenuItem;
     miCompraAtual: TMenuItem;
-    dbCodFornecedor: TPLDBEdit;
+    dbCodFornecedor: TDBEdit;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
@@ -75,17 +75,17 @@ type
     sqldProduto: TSQLDataSet;
     dspProdutos: TDataSetProvider;
     cdsProdutos: TClientDataSet;
-    dbProduto: TPLDBEdit;
-    dbTributacao: TPLDBEdit;
-    dbQtde: TPLDBEdit;
-    dbTotal: TPLDBEdit;
-    dbCusto: TPLDBEdit;
-    dbLucro: TPLDBEdit;
-    dbVenda: TPLDBEdit;
-    dbIPI: TPLDBEdit;
-    dbDescto: TPLDBEdit;
-    dbdDataNota: TPLDBEditDateTimePicker;
-    dbdDataEntrada: TPLDBEditDateTimePicker;
+    dbProduto: TDBEdit;
+    dbTributacao: TDBEdit;
+    dbQtde: TDBEdit;
+    dbTotal: TDBEdit;
+    dbCusto: TDBEdit;
+    dbLucro: TDBEdit;
+    dbVenda: TDBEdit;
+    dbIPI: TDBEdit;
+    dbDescto: TDBEdit;
+    dbdDataNota: TDBEdit;
+    dbdDataEntrada: TDBEdit;
     N4: TMenuItem;
     miListaFaturamForn: TMenuItem;
     sqlNFiscais: TSQLQuery;
@@ -94,8 +94,8 @@ type
     dtNFiscais: TDataSetProvider;
     cdsNFiscais: TClientDataSet;
     cdsDetNFiscais: TClientDataSet;
-    dbeCfop: TPLDBEdit;
-    dbeOperacao: TPLDBEdit;
+    dbeCfop: TDBEdit;
+    dbeOperacao: TDBEdit;
     cdsNFiscaisNUMERO: TIntegerField;
     cdsNFiscaisCODFORNECEDOR: TIntegerField;
     cdsNFiscaisFORNECEDOR: TStringField;
@@ -229,8 +229,8 @@ type
     cdsProdutosDATARECEBIDA: TDateField;
     cdsProdutosABREVIACAO: TStringField;
     cdsProdutosPROMOCAO: TStringField;
-    sqldBaixa: TPLSQLDataSet;
-    sqldEstorna: TPLSQLDataSet;
+    sqldBaixa: TSQLDataSet;
+    sqldEstorna: TSQLDataSet;
     N9: TMenuItem;
     miCadastraForn: TMenuItem;
     miCadastrarCFOP: TMenuItem;
@@ -308,8 +308,9 @@ var
 implementation
 
 uses  Funcoes, unModeloConsulta, VarGlobal, unPrevCompras,
-     uConfiguraRelatorio, unFiltroSimples, FuncoesWin, unPagamentoCheque,
-     unParcelaCompra, unPagamentoCompra, unPrevListaFaturamento, unAguarde;
+     uConfiguraRelatorio, unFiltroSimples,  unPagamentoCheque,
+     unParcelaCompra, unPagamentoCompra, unPrevListaFaturamento, unAguarde,
+  System.Math;
 
 {$R *.dfm}
 
@@ -337,9 +338,9 @@ end;
 
 function TfrmNotasFiscais.CamposNulos: Boolean;
 begin
-  Result := (ValidaFieldsVazios([cdsNFiscaisNUMERO, cdsNFiscaisCODFORNECEDOR,
-    cdsNFiscaisDATANOTA, cdsNFiscaisDATAENTRADA, cdsNFiscaisOPERACAO],
-    ['Número', 'Fornecedor', 'Data da nota', 'Data de chegada', 'Operação CFOP']) <> '');
+ // Result := (ValidaFieldsVazios([cdsNFiscaisNUMERO, cdsNFiscaisCODFORNECEDOR,
+ //   cdsNFiscaisDATANOTA, cdsNFiscaisDATAENTRADA, cdsNFiscaisOPERACAO],
+ //   ['Número', 'Fornecedor', 'Data da nota', 'Data de chegada', 'Operação CFOP']) <> '');
 end;
 
 function TfrmNotasFiscais.Duplicidade: Boolean;
@@ -444,7 +445,8 @@ procedure TfrmNotasFiscais.btnSalvarClick(Sender: TObject);
 begin
   if (not Duplicidade) and (not CamposNulos) then
   begin
-    Salvar(cdsNFiscais);
+   // Salvar(cdsNFiscais);
+   cdsNFiscais.ApplyUpdates(0);
     miConcluir.Click;
   end;
 end;
@@ -503,30 +505,35 @@ begin
     LimpaEdits;
     SetFocusIfCan(dbProduto);
 
-    if MsgSN('Inserir novo ítem?') then
-      dbProduto.OnClickButton(Sender);
+//    if MsgSN('Inserir novo ítem?') then
+//      dbProduto.OnClickButton(Sender);
   end;
 end;
 
 procedure TfrmNotasFiscais.btnPrimeiroClick(Sender: TObject);
 begin
-  Primeiro(cdsNFiscais);
+  //Primeiro(cdsNFiscais);
+  cdsNFiscais.First;
 end;
 
 procedure TfrmNotasFiscais.btnUltimoClick(Sender: TObject);
 begin
-  Ultimo(cdsNFiscais);
+//  Ultimo(cdsNFiscais);
+cdsNFiscais.Last;
 end;
 
 procedure TfrmNotasFiscais.btnAnteriorClick(Sender: TObject);
 begin
-  Anterior(cdsNFiscais);
+//  Anterior(cdsNFiscais);
+cdsNFiscais.Prior;
 end;
 
 procedure TfrmNotasFiscais.btnProximoClick(Sender: TObject);
 begin
-  Proximo(cdsNFiscais);
+//  Proximo(cdsNFiscais);
+cdsNFiscais.Next;
 end;
+
 
 procedure TfrmNotasFiscais.GradeDblClick(Sender: TObject);
 begin
@@ -651,7 +658,7 @@ end;
 
 procedure TfrmNotasFiscais.miContarClick(Sender: TObject);
 begin
-  Ed_Quantificar(cdsNFiscais, frmNotasFiscais);
+  //Ed_Quantificar(cdsNFiscais, frmNotasFiscais);
 end;
 
 procedure TfrmNotasFiscais.miEstornarClick(Sender: TObject);
@@ -770,9 +777,9 @@ procedure TfrmNotasFiscais.dbVendaExit(Sender: TObject);
 begin
   if cdsNFiscais.State in [dsEdit, dsInsert] then
   begin
-    cdsSelecaoLUCRO.AsFloat :=
-      StrToFloat(CalcMargem(FloatToStr(cdsSelecaoVENDA.AsFloat),
-                            FloatToStr(cdsSelecaoCUSTO.AsFloat)));
+//    cdsSelecaoLUCRO.AsFloat :=
+//      StrToFloat(CalcMargem(FloatToStr(cdsSelecaoVENDA.AsFloat),
+//                            FloatToStr(cdsSelecaoCUSTO.AsFloat)));
   end;
 end;
 
@@ -1115,7 +1122,7 @@ procedure TfrmNotasFiscais.PagarCompra;
       CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
       Params.ParamByName('COMPRA').AsInteger := cdsNFiscaisNUMERO.AsInteger;
       Open;
-      Result := RoundFloat(FieldByName('RESTO').AsFloat, 2);
+      Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
     finally
       Free;
     end;
@@ -1137,7 +1144,7 @@ begin
         if ObterValor(ValorDinheiro, '0', 'Total/Resto') then
         begin
 
-          if RoundFloat(ValorDinheiro, 2) > RoundFloat(Restante, 2) then
+          if RoundTo(ValorDinheiro, 2) > RoundTo(Restante, 2) then
           begin
             MsgErro('Valor digitado é maior que o resto a pagar, tente novamente.');
             Exit;

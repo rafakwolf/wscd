@@ -5357,7 +5357,7 @@ inherited frmCaixa: TfrmCaixa
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   ExplicitWidth = 964
-  ExplicitHeight = 438
+  ExplicitHeight = 439
   PixelsPerInch = 96
   TextHeight = 14
   object dbgdCaixa: TDBGrid
@@ -6002,8 +6002,8 @@ inherited frmCaixa: TfrmCaixa
     end
   end
   object mnCaixa: TMainMenu
-    Left = 48
-    Top = 113
+    Left = 280
+    Top = 105
     object miRegistro: TMenuItem
       Caption = 'Registros'
       object miNovo: TMenuItem
@@ -6125,7 +6125,7 @@ inherited frmCaixa: TfrmCaixa
     end
   end
   object PopupConsulta: TPopupMenu
-    Left = 80
+    Left = 176
     Top = 113
     object miDeleteItem: TMenuItem
       Caption = 'Excluir...'

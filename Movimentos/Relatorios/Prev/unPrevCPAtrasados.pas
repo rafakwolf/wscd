@@ -5,11 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, PLDBEdit, DB, DBClient, Provider, SqlExpr, FMTBcd;
+  DBCtrls,  DB, DBClient, Provider, SqlExpr, FMTBcd;
 
 type
   TfrmRelatorioCPAtrasados = class(TfrmDialogoRelatorioPadrao)
-    dbeFornecedor: TPLDBEdit;
+    dbeFornecedor: TDBEdit;
     sqldForn: TSQLDataSet;
     dspForn: TDataSetProvider;
     cdsForn: TClientDataSet;

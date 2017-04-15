@@ -9,7 +9,7 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   ExplicitHeight = 206
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCaixa: TPLDBEdit [0]
+  object dbeCaixa: TDBEdit [0]
     Left = 24
     Top = 40
     Width = 283
@@ -103,7 +103,7 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
     Button.AutoSize = True
     ReadOnlyChangesColor = False
   end
-  object dtpDataIni: TPLDBEditDateTimePicker [1]
+  object dtpDataIni: TDBEdit [1]
     Left = 24
     Top = 88
     Width = 145
@@ -124,7 +124,7 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
     EditLabel.LabelPosition = lpAbove
     Required = False
   end
-  object dtpDataFim: TPLDBEditDateTimePicker [2]
+  object dtpDataFim: TDBEdit [2]
     Left = 184
     Top = 88
     Width = 145

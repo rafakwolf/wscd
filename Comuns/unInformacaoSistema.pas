@@ -24,7 +24,7 @@ var
 
 implementation
 
-uses VarGlobal, Funcoes, FuncoesWin;
+uses VarGlobal, Funcoes;
 
 {$R *.dfm}
 
@@ -41,11 +41,11 @@ begin
 //  mmoInfo.Lines.Add('SISTEMA ---------------------------------------------------------------------');
 //  mmoInfo.Lines.Add('Nome................: '+Sistema.AppCaption);
 //  mmoInfo.Lines.Add('Versão..............: '+Sistema.VersaoApp);
-//  mmoInfo.Lines.Add('Pasta...............: '+DiretorioSistema);
+//  mmoInfo.Lines.Add('Pasta...............: '+ExtractFilePath(ParamStr(0)));
 //  mmoInfo.Lines.Add('');
 //
 //  mmoInfo.Lines.Add('BANCO DE DADOS --------------------------------------------------------------');
-//  mmoInfo.Lines.Add('Pasta...............: '+DiretorioSistema+'CPR.fdb');
+//  mmoInfo.Lines.Add('Pasta...............: '+ExtractFilePath(ParamStr(0))+'CPR.fdb');
 //  mmoInfo.Lines.Add('Usuário.............: '+GetDataModule.Conexao.Params.Values['user_name']);
 //  mmoInfo.Lines.Add('Versão do Servidor..: '+ObterVersaoServidor(ReadIniFile('Conexao', 'Servidor')));
 //  mmoInfo.Lines.Add('');
@@ -54,7 +54,7 @@ begin
 //  mmoInfo.Lines.Add('Nome................: '+GetOSVer);
 //  mmoInfo.Lines.Add('Versão..............: '+SysVersionStr);
 //  mmoInfo.Lines.Add('Pasta...............: '+SysWinDir);
-//  mmoInfo.Lines.Add('Computador..........: '+SysComputerName);
+//  mmoInfo.Lines.Add('Computador..........: '+GetComputerName);
 //  mmoInfo.Lines.Add('Usuário Logado......: '+SysUserName);
 end;
 

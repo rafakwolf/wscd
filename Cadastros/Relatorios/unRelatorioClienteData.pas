@@ -5,12 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls, PLDBEditDateTimePicker, FMTBcd;
+  DB, DBClient, Provider, SqlExpr, ComCtrls, FMTBcd, DBCtrls, Vcl.Mask;
 
 type
   TfrmRelatorioClienteData = class(TfrmDialogoRelatorioPadrao)
-    edDataIni: TPLDBEditDateTimePicker;
-    edDataFim: TPLDBEditDateTimePicker;
+    edDataIni: TDBEdit;
+    edDataFim: TDBEdit;
     sqldSelecao: TSQLDataSet;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
@@ -54,9 +54,9 @@ procedure TfrmRelatorioClienteData.Imprimir(p: Boolean);
 begin
   with TfrmPrevListagemClientes.Create(Self) do
   try
-    if ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime, cdsSelecaoDATAFIM.AsDateTime,
-      edDataIni)then
-    begin
+//    if ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime, cdsSelecaoDATAFIM.AsDateTime,
+//      edDataIni)then
+//    begin
       with cdsPadrao do
       begin
         Close;
@@ -78,11 +78,11 @@ begin
         Params.ParamByName('PDATAFIM').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
         Open;
       end;
-      DataIni := edDataIni.DBEdit.Text;
-      DataFim := edDataFim.DBEdit.Text;
+      DataIni := edDataIni.Text;
+      DataFim := edDataFim.Text;
       TipoRelatorio := 2;
       PrintIfNotEmptyRL(rrPadrao, p);
-    end;
+    //end;
   finally
     cdsPadrao.Close;
     Free;

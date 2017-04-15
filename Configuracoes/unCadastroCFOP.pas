@@ -6,15 +6,15 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  PLDBEdit, FMTBcd, System.Actions;
+   FMTBcd, System.Actions;
 
 type
   TfrmCadastroCFOP = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodCfop: TPLDBEdit;
-    dbeNomeCfop: TPLDBEdit;
+    dbeCodCfop: TDBEdit;
+    dbeNomeCfop: TDBEdit;
     dbmCfNota: TDBMemo;
     lblDescricao: TLabel;
     sqldPadraoNUMERO: TStringField;

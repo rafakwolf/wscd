@@ -4,15 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, DB, DBClient, PLClientDataSet, Provider,
-  PLDataSetProvider, SqlExpr, PLSQLDataSet, Grids, DBGrids, StdCtrls,
+  Dialogs, unSimplePadrao, DB, DBClient,
+  Datasnap.Provider, Data.SqlExpr, Grids, DBGrids, StdCtrls,
   Buttons, FMTBcd;
 
 type
   TfrmVendaNaoConc = class(TfrmSimplePadrao)
-    sqldVenda: TPLSQLDataSet;
-    dspVenda: TPLDataSetProvider;
-    cdsVenda: TPLClientDataSet;
+    sqldVenda: TSQLDataSet;
+    dspVenda: TDataSetProvider;
+    cdsVenda: TClientDataSet;
     dsVenda: TDataSource;
     sqldVendaCODIGO: TIntegerField;
     sqldVendaDATA: TDateField;
@@ -68,8 +68,8 @@ procedure TfrmVendaNaoConc.dbgrdVendaNaoConcDrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   inherited;
-  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect, DataCol,
-    Column, State);
+//  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect, DataCol,
+//    Column, State);
 end;
 
 initialization

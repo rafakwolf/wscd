@@ -215,14 +215,14 @@ object frmModeloEnvelope: TfrmModeloEnvelope
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poAllowCommandText]
-    Left = 72
+    Left = 128
     Top = 8
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    Left = 104
+    Left = 216
     Top = 8
     object cdsPadraoNOME: TStringField
       FieldName = 'NOME'
@@ -247,7 +247,7 @@ object frmModeloEnvelope: TfrmModeloEnvelope
   end
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 136
+    Left = 304
     Top = 8
   end
 end

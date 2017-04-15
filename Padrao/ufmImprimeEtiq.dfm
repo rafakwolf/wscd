@@ -2,11 +2,11 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
   Left = 216
   Top = 155
   Caption = 'Impress'#227'o de etiquetas'
-  ClientHeight = 156
-  ClientWidth = 417
+  ClientHeight = 250
+  ClientWidth = 523
   OldCreateOrder = True
-  ExplicitWidth = 433
-  ExplicitHeight = 194
+  ExplicitWidth = 539
+  ExplicitHeight = 289
   PixelsPerInch = 96
   TextHeight = 13
   object lbModeloEtq: TLabel [0]
@@ -34,8 +34,8 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     Caption = 'Iniciar na coluna:'
   end
   inherited pnButtons: TPanel
-    Top = 122
-    Width = 417
+    Top = 216
+    Width = 523
     ExplicitTop = 122
     ExplicitWidth = 417
     inherited btnVisualizar: TBitBtn
@@ -86,15 +86,15 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
   end
   inherited dsPadrao: TDataSource
     Left = 376
-    Top = 72
+    Top = 120
   end
   object sqldEtiqueta: TSQLDataSet
     CommandText = 'select * from ETIQUETA'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 280
-    Top = 64
+    Left = 104
+    Top = 128
     object sqldEtiquetaIDETIQUETA: TIntegerField
       FieldName = 'IDETIQUETA'
       Required = True
@@ -142,15 +142,15 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
   end
   object dspEtiqueta: TDataSetProvider
     DataSet = sqldEtiqueta
-    Left = 312
-    Top = 64
+    Left = 200
+    Top = 128
   end
   object cdsEtiqueta: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspEtiqueta'
-    Left = 344
-    Top = 64
+    Left = 280
+    Top = 120
     object cdsEtiquetaIDETIQUETA: TIntegerField
       FieldName = 'IDETIQUETA'
       Required = True

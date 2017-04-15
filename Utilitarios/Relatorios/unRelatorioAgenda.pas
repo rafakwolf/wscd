@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, DBCtrls, PLDBEdit, Mask, uConfiguraRelatorio,
+  DB, DBClient, Provider, SqlExpr, DBCtrls,  Mask, uConfiguraRelatorio,
   FMTBcd;
 
 type
@@ -13,7 +13,7 @@ type
     lbTelefone: TLabel;
     edFone: TMaskEdit;
     rgTipoRelatorio: TRadioGroup;
-    dbeNome: TPLDBEdit;
+    dbeNome: TDBEdit;
     sqldAgenda: TSQLDataSet;
     dspAgenda: TDataSetProvider;
     cdsAgenda: TClientDataSet;
@@ -138,10 +138,10 @@ end;
 procedure TfrmRelatorioAgenda.rgTipoRelatorioClick(Sender: TObject);
 begin
   inherited;
-  if rgTipoRelatorio.ItemIndex = 0 then
-    dbeNome.Button.Click
-  else if rgTipoRelatorio.ItemIndex = 1 then
-    edFone.SetFocus;
+//  if rgTipoRelatorio.ItemIndex = 0 then
+//    dbeNome.Button.Click
+//  else if rgTipoRelatorio.ItemIndex = 1 then
+//    edFone.SetFocus;
 end;
 
 procedure TfrmRelatorioAgenda.FormCreate(Sender: TObject);

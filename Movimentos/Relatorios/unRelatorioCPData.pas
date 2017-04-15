@@ -5,12 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, PLDBEditDateTimePicker;
+  ComCtrls, DBCtrls, Vcl.Mask;
 
 type
   TfrmRelatorioCPData = class(TfrmDialogoRelatorioPadrao)
-    edDataIni: TPLDBEditDateTimePicker;
-    edDataFim: TPLDBEditDateTimePicker;
+    edDataIni: TDBEdit;
+    edDataFim: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);
@@ -32,9 +32,9 @@ uses
 
 procedure TfrmRelatorioCPData.Imprimir(p: Boolean);
 begin
-  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
-    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, edDataIni)then
-  begin
+//  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
+//    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, edDataIni)then
+//  begin
     with TfrmPrevContasPagar.Create(Self) do
     try
       with cdsPadrao do
@@ -50,14 +50,14 @@ begin
           Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
         Open;
       end;
-      Titulo := 'Contas a pagar entre ' + edDataIni.DBEdit.Text + ' e ' +
-        edDataFim.DBEdit.Text;
+      Titulo := 'Contas a pagar entre ' + edDataIni.Text + ' e ' +
+        edDataFim.Text;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
       cdsPadrao.Close;
       Free;
     end;
-  end;
+ // end;
 end;
 
 procedure TfrmRelatorioCPData.FormCreate(Sender: TObject);

@@ -57,7 +57,7 @@ var
 
 implementation
 
-uses Funcoes, FuncoesWin;
+uses Funcoes;
 
 {$R *.dfm}
 
@@ -99,7 +99,7 @@ procedure TfrmListagemPrecos.GradeDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
 begin
-  GridZebrado(cdsProduto.RecNo, Grade, Rect, DataCol, Column, State);
+  //GridZebrado(cdsProduto.RecNo, Grade, Rect, DataCol, Column, State);
 end;
 
 procedure TfrmListagemPrecos.CarregaCampos;

@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Mask, DBCtrls, PLDBEdit, ExtCtrls, DBGrids,
-  DB, SqlExpr, PLSQLDataSet, FMTBcd, VarGlobal;
+  Dialogs, StdCtrls, Buttons, Mask, DBCtrls,  ExtCtrls, DBGrids,
+  DB, SqlExpr, FMTBcd, VarGlobal, uDatabaseutils;
 
 type
   TTipoCheque = (tcAVista, tcPreDatado);
@@ -14,7 +14,7 @@ type
     btnOk: TBitBtn;
     btnCancelar: TBitBtn;
     edtAgencia: TLabeledEdit;
-    dbeBanco: TPLDBEdit;
+    dbeBanco: TDBEdit;
     edtConta: TLabeledEdit;
     edtNumeroCheque: TLabeledEdit;
     edtValor: TLabeledEdit;
@@ -25,7 +25,7 @@ type
     dsSelecao: TDataSource;
     sqldCheque: TSQLDataSet;
     edtNome: TLabeledEdit;
-    sqldVenda: TPLSQLDataSet;
+    sqldVenda: TSQLDataSet;
     sqldVendaNOME: TStringField;
     sqldCompra: TSQLDataSet;
     medBandaMagnetica: TMaskEdit;
@@ -69,7 +69,8 @@ var
 
 implementation
 
-uses  Funcoes, unModeloConsulta, ConstPadrao, Extensos;
+uses  Funcoes, unModeloConsulta, ConstPadrao, Extensos, System.Math,
+  System.StrUtils;
 
 {$R *.dfm}
 
@@ -163,7 +164,7 @@ begin
 
   if FTipoChamada = tcmVenda then
   begin
-    if RoundFloat(StrToFloat(edtValor.Text), 2) > RoundFloat(RestanteVenda, 2) then
+    if RoundTo(StrToFloat(edtValor.Text), 2) > RoundTo(RestanteVenda, 2) then
     begin
       MsgErro('O valor informado para recebimento inválido, tente novamente.');
       Exit;
@@ -171,7 +172,7 @@ begin
   end
   else if FTipoChamada = tcmCompra then
   begin
-    if RoundFloat(StrToFloat(edtValor.Text), 2) > RoundFloat(RestanteCompra, 2) then
+    if RoundTo(StrToFloat(edtValor.Text), 2) > RoundTo(RestanteCompra, 2) then
     begin
       MsgErro('O valor informado para pagamento inválido, tente novamente.');
       Exit;
@@ -306,7 +307,7 @@ begin
     CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
     Params.ParamByName('VENDA').AsInteger := FIdVenda;
     Open;
-    Result := RoundFloat(FieldByName('RESTO').AsFloat, 2);
+    Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
   finally
     Free;
   end;
@@ -320,7 +321,7 @@ begin
     CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
     Params.ParamByName('COMPRA').AsInteger := FIdCompra;
     Open;
-    Result := RoundFloat(FieldByName('RESTO').AsFloat, 2);
+    Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
   finally
     Free;
   end;
@@ -330,7 +331,7 @@ procedure TfrmPagamentoCheque.medBandaMagneticaExit(Sender: TObject);
 
   function BancoExiste(IdBanco: Integer): Boolean;
   begin
-    with TPLSQLDataSet.Create(nil) do
+    with TSQLDataSet.Create(nil) do
     try
       SQLConnection := sqldCheque.SQLConnection;
       CommandText := 'select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));

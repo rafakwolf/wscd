@@ -377,7 +377,7 @@ object frmDialogoRelatorioPadrao: TfrmDialogoRelatorioPadrao
     end
   end
   object dsPadrao: TDataSource
-    Left = 56
-    Top = 32
+    Left = 48
+    Top = 16
   end
 end

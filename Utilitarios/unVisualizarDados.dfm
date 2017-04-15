@@ -1419,7 +1419,7 @@ object frmVisualizarDados: TfrmVisualizarDados
       OnClick = btnPrintClick
     end
   end
-  object sqldTabelas: TPLSQLDataSet
+  object sqldTabelas: TSQLDataSet
     CommandText = 
       'SELECT '#13#10'  R.RDB$RELATION_NAME AS TABELA '#13#10'FROM RDB$RELATIONS R'#13 +
       #10'WHERE (R.RDB$VIEW_BLR IS NULL) '#13#10'      AND ((R.RDB$SYSTEM_FLAG ' +
@@ -1427,21 +1427,21 @@ object frmVisualizarDados: TfrmVisualizarDados
       'ME'
     MaxBlobSize = -1
     Params = <>
-    Left = 224
-    Top = 136
+    Left = 152
+    Top = 96
     object sqldTabelasTABELA: TStringField
       FieldName = 'TABELA'
       FixedChar = True
       Size = 31
     end
   end
-  object dspTabelas: TPLDataSetProvider
+  object dspTabelas: TDataSetProvider
     DataSet = sqldTabelas
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 256
     Top = 136
   end
-  object cdsTabelas: TPLClientDataSet
+  object cdsTabelas: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspTabelas'
@@ -1460,19 +1460,19 @@ object frmVisualizarDados: TfrmVisualizarDados
     Left = 320
     Top = 136
   end
-  object sqldDados: TPLSQLDataSet
+  object sqldDados: TSQLDataSet
     MaxBlobSize = -1
     Params = <>
-    Left = 224
-    Top = 176
+    Left = 104
+    Top = 184
   end
-  object dspDados: TPLDataSetProvider
+  object dspDados: TDataSetProvider
     DataSet = sqldDados
     Options = [poAutoRefresh, poPropogateChanges, poAllowCommandText]
     Left = 256
     Top = 176
   end
-  object cdsDados: TPLClientDataSet
+  object cdsDados: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDados'
@@ -1489,20 +1489,20 @@ object frmVisualizarDados: TfrmVisualizarDados
     Left = 320
     Top = 176
   end
-  object sqldUpdate: TPLSQLDataSet
+  object sqldUpdate: TSQLDataSet
     MaxBlobSize = -1
     Params = <>
     Left = 272
     Top = 224
   end
-  object sqldFilter: TPLSQLDataSet
+  object sqldFilter: TSQLDataSet
     CommandText = 
       'select '#13#10'  cast(null as varchar(32)) as campo,'#13#10'  cast(null as v' +
       'archar(50)) as tipo,'#13#10'  cast(null as varchar(100)) as valor'#13#10'fro' +
       'm RDB$DATABASE'
     MaxBlobSize = -1
     Params = <>
-    Left = 232
+    Left = 136
     Top = 296
     object sqldFilterCAMPO: TStringField
       FieldName = 'CAMPO'
@@ -1517,13 +1517,13 @@ object frmVisualizarDados: TfrmVisualizarDados
       Size = 100
     end
   end
-  object dspFilter: TPLDataSetProvider
+  object dspFilter: TDataSetProvider
     DataSet = sqldFilter
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 264
     Top = 296
   end
-  object cdsFilter: TPLClientDataSet
+  object cdsFilter: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspFilter'

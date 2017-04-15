@@ -98,8 +98,8 @@ procedure TfrmCompNaoConc.GradeDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
 begin
-  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect, DataCol,
-    Column, State);
+//  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect, DataCol,
+//    Column, State);
 end;
 
 procedure TfrmCompNaoConc.FormCreate(Sender: TObject);

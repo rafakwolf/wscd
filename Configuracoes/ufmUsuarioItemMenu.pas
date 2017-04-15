@@ -5,38 +5,38 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  SqlExpr, PLSQLDataSet,ImgList, Menus, DBClient,
-  PLClientDataSet, Provider, uClassMenu, PLDataSetProvider, Mask, DBCtrls,
-  PLDBEdit, DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
-  System.Actions;
+  Data.SqlExpr,ImgList, Menus,  uClassesMenu,
+  DBClient,Datasnap.Provider, Mask, DBCtrls,
+   DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
+  System.Actions, System.ImageList;
 
 type
   TfrmUsuarioItemMenu = class(TfrmPadrao)
-    sqldMenu: TPLSQLDataSet;
+    sqldMenu: TSQLDataSet;
     ilStatusMenu: TImageList;
     pmStatusMenu: TPopupMenu;
     mniLiberado: TMenuItem;
     mniBloqueado: TMenuItem;
-    sqldLimpaAcessoUsuario: TPLSQLDataSet;
-    sqldInsereAcesso: TPLSQLDataSet;
+    sqldLimpaAcessoUsuario: TSQLDataSet;
+    sqldInsereAcesso: TSQLDataSet;
     dsAcesso: TDataSource;
     sqldMenuIDMENU: TIntegerField;
     sqldMenuMENUPAI: TIntegerField;
     sqldMenuORDEM: TIntegerField;
     sqldMenuMENUITEM: TStringField;
-    dbeNomeUsuario: TPLDBEdit;
-    dbeLogin: TPLDBEdit;
-    dbeSenha: TPLDBEdit;
-    sqldPadrao: TPLSQLDataSet;
-    dspPadrao: TPLDataSetProvider;
-    cdsPadrao: TPLClientDataSet;
+    dbeNomeUsuario: TDBEdit;
+    dbeLogin: TDBEdit;
+    dbeSenha: TDBEdit;
+    sqldPadrao: TSQLDataSet;
+    dspPadrao: TDataSetProvider;
+    cdsPadrao: TClientDataSet;
     cdsPadraoIDUSUARIOS: TIntegerField;
     cdsPadraoNOME: TStringField;
     cdsPadraoLOGIN: TStringField;
     cdsPadraoSENHA: TStringField;
-    sqldAcesso: TPLSQLDataSet;
-    dspAcesso: TPLDataSetProvider;
-    cdsAcesso: TPLClientDataSet;
+    sqldAcesso: TSQLDataSet;
+    dspAcesso: TDataSetProvider;
+    cdsAcesso: TClientDataSet;
     cdsAcessoIDMENU: TIntegerField;
     grpItemPermissao: TGroupBox;
     tvAcesso: TTreeView;
@@ -82,7 +82,7 @@ const
 
 implementation
 
-uses unPrincipal;
+uses unPrincipal, System.Math;
 
 {$R *.dfm}
 
@@ -342,14 +342,14 @@ procedure TfrmUsuarioItemMenu.cdsPadraoSENHASetText(Sender: TField;
   const Text: string);
 begin
   inherited;
-  Sender.AsString := Encript(Text);
+  //Sender.AsString := Encript(Text); TODO:
 end;
 
 procedure TfrmUsuarioItemMenu.AntesSalvar;
 begin
   inherited;
   if ValidaFieldsVazios([cdsPadraoNOME, cdsPadraoLOGIN, cdsPadraoSENHA],
-    ['Nome', 'Login', 'Senha'], False, True, True) <> '' then
+    ['Nome', 'Login', 'Senha']) <> '' then
     Abort;
 end;
 
@@ -389,7 +389,7 @@ procedure TfrmUsuarioItemMenu.cdsPadraoSENHAGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
   inherited;
-  Text := Encript(Sender.AsString);
+ // Text := Encript(Sender.AsString); TODO:
 end;
 
 procedure TfrmUsuarioItemMenu.DepoisSalvar;

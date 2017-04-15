@@ -27,7 +27,6 @@ object frmCompNaoConc: TfrmCompNaoConc
     Width = 89
     Height = 25
     Caption = '&OK'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -80,7 +79,6 @@ object frmCompNaoConc: TfrmCompNaoConc
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080}
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 0
     OnClick = btnConsultarClick
   end
@@ -90,7 +88,6 @@ object frmCompNaoConc: TfrmCompNaoConc
     Width = 89
     Height = 25
     Caption = '&Cancelar'
-    DoubleBuffered = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -134,7 +131,6 @@ object frmCompNaoConc: TfrmCompNaoConc
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 1
     OnClick = btnCancelarClick
   end
@@ -205,8 +201,8 @@ object frmCompNaoConc: TfrmCompNaoConc
   end
   object dsComp: TDataSource
     DataSet = cdsComp
-    Left = 256
-    Top = 184
+    Left = 344
+    Top = 128
   end
   object sqlComp: TSQLDataSet
     CommandText = 
@@ -214,12 +210,11 @@ object frmCompNaoConc: TfrmCompNaoConc
       'F.CODFORNECEDOR,'#13#10'  F.RAZAOSOCIAL,'#13#10'  NF.TOTAL, '#13#10'  NF.CONCLUIDA' +
       ' '#13#10'FROM NOTAS_FISCAIS NF'#13#10'LEFT JOIN FORNECEDORES F ON (F.CODFORN' +
       'ECEDOR = NF.CODFORNECEDOR)'#13#10'WHERE NF.CONCLUIDA = '#39'N'#39
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 160
-    Top = 184
+    Left = 80
+    Top = 112
     object sqlCompNUMERO: TIntegerField
       FieldName = 'NUMERO'
       Required = True
@@ -249,15 +244,15 @@ object frmCompNaoConc: TfrmCompNaoConc
   end
   object dspComp: TDataSetProvider
     DataSet = sqlComp
-    Left = 192
-    Top = 184
+    Left = 168
+    Top = 128
   end
   object cdsComp: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspComp'
-    Left = 224
-    Top = 184
+    Left = 264
+    Top = 128
     object cdsCompNUMERO: TIntegerField
       FieldName = 'NUMERO'
       Required = True

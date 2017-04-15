@@ -8,7 +8,7 @@ inherited frmInformacaoSistema: TfrmInformacaoSistema
   OldCreateOrder = True
   OnShow = FormShow
   ExplicitWidth = 660
-  ExplicitHeight = 355
+  ExplicitHeight = 356
   PixelsPerInch = 96
   TextHeight = 13
   object btnOk: TBitBtn

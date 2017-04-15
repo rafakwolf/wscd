@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  PLDBEdit, PLDBEditDateTimePicker, ConstPadrao, PLSQLDataSet, FMTBcd,
+    ConstPadrao, FMTBcd,
   System.Actions, VarGlobal;
 
 type
@@ -14,20 +14,20 @@ type
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeFornecedor: TPLDBEdit;
-    dbeDescricao: TPLDBEdit;
-    dbeValor: TPLDBEdit;
-    dbeDocumento: TPLDBEdit;
+    dbeFornecedor: TDBEdit;
+    dbeDescricao: TDBEdit;
+    dbeValor: TDBEdit;
+    dbeDocumento: TDBEdit;
     grpPagamento: TGroupBox;
-    dbeDataPagto: TPLDBEdit;
-    dbeDesconto: TPLDBEdit;
-    dbeCapitalPago: TPLDBEdit;
-    dbeJuroPago: TPLDBEdit;
-    dbeTotalPago: TPLDBEdit;
-    dbeJuros: TPLDBEdit;
-    dbeOrigem: TPLDBEdit;
-    dbdData: TPLDBEditDateTimePicker;
-    dbdVencimento: TPLDBEditDateTimePicker;
+    dbeDataPagto: TDBEdit;
+    dbeDesconto: TDBEdit;
+    dbeCapitalPago: TDBEdit;
+    dbeJuroPago: TDBEdit;
+    dbeTotalPago: TDBEdit;
+    dbeJuros: TDBEdit;
+    dbeOrigem: TDBEdit;
+    dbdData: TDBEdit;
+    dbdVencimento: TDBEdit;
     actContas: TAction;
     N5: TMenuItem;
     miConsulta: TMenuItem;
@@ -52,12 +52,12 @@ type
     cdsPadraoCOMPRA: TIntegerField;
     cdsPadraoOBS: TMemoField;
     cdsPadraoATRASO: TIntegerField;
-    dbeCompra: TPLDBEdit;
+    dbeCompra: TDBEdit;
     lbStatus: TLabel;
     miContasFornecCorrente: TMenuItem;
     N10: TMenuItem;
     miParcelamento: TMenuItem;
-    dbeValorAtual: TPLDBEdit;
+    dbeValorAtual: TDBEdit;
     cdsPadraoFANTAZIA: TStringField;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoDATA: TDateField;
@@ -85,8 +85,8 @@ type
     cdsPadraoDESCTO: TFMTBCDField;
     btnPagar: TBitBtn;
     btnContas: TBitBtn;
-    sqldDeleta: TPLSQLDataSet;
-    dbeConta: TPLDBEdit;
+    sqldDeleta: TSQLDataSet;
+    dbeConta: TDBEdit;
     sqldPadraoIDCONTA: TIntegerField;
     sqldPadraoNOME: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
@@ -128,7 +128,7 @@ var
 
 implementation
 
-uses Funcoes, unPrevContasPagar,
+uses Funcoes, unPrevContasPagar,  udatabaseutils,
      unContasPagar, unPrevCPAtrasados,  uConfiguraRelatorio,
      unPagarMan, unParcelaCPCR;
 
@@ -148,7 +148,7 @@ end;
 procedure TfrmCP.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('CONTASPAGAR', cdsPadraoCODIGO, GetConnection);
+  //TODO : Incrementa('CONTASPAGAR', cdsPadraoCODIGO, GetConnection);
   cdsPadraoDATA.AsDateTime := Date;
   cdsPadraoPAGA.AsString := 'N';
   cdsPadraoPAGAR.AsString := 'N';
@@ -304,10 +304,10 @@ end;
 procedure TfrmCP.AntesSalvar;
 begin
   inherited;
-  if not ValidaDataIniFim(cdsPadraoDATA.AsDateTime, cdsPadraoVENCIMENTO.AsDateTime,
-    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
-    True) then
-    Abort;
+//  if not ValidaDataIniFim(cdsPadraoDATA.AsDateTime, cdsPadraoVENCIMENTO.AsDateTime,
+//    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
+//    True) then
+//    Abort;
 
   if cdsPadrao.State in [dsInsert] then
   begin

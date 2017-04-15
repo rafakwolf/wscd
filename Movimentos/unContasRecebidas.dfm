@@ -10,7 +10,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
   OnResize = FormResize
   OnShow = FormShow
   ExplicitWidth = 936
-  ExplicitHeight = 478
+  ExplicitHeight = 479
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
@@ -612,7 +612,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
         ParamType = ptInput
       end>
     ProviderName = 'dspPadrao'
-    Left = 312
+    Left = 432
     Top = 144
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
@@ -722,7 +722,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
         Name = 'PCLIENTE'
         ParamType = ptInput
       end>
-    Left = 248
+    Left = 240
     Top = 144
     object sqldPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
@@ -811,11 +811,11 @@ inherited frmContasRecebidas: TfrmContasRecebidas
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 280
+    Left = 336
     Top = 144
   end
   object mmContasRecebidas: TMainMenu
-    Left = 208
+    Left = 112
     Top = 144
     object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
@@ -838,17 +838,17 @@ inherited frmContasRecebidas: TfrmContasRecebidas
   end
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 344
-    Top = 144
+    Left = 512
+    Top = 152
   end
-  object sqldConta: TPLSQLDataSet
+  object sqldConta: TSQLDataSet
     CommandText = 
       'select '#13#10'  CODIGO,'#13#10'  ORIGEM '#13#10'from CONTASRECEBER'#13#10'where RECDA =' +
       ' '#39'N'#39
     MaxBlobSize = -1
     Params = <>
-    Left = 248
-    Top = 176
+    Left = 224
+    Top = 224
     object sqldContaCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -857,17 +857,17 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       FieldName = 'ORIGEM'
     end
   end
-  object dspConta: TPLDataSetProvider
+  object dspConta: TDataSetProvider
     DataSet = sqldConta
-    Left = 280
-    Top = 176
+    Left = 304
+    Top = 224
   end
-  object cdsConta: TPLClientDataSet
+  object cdsConta: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspConta'
-    Left = 312
-    Top = 176
+    Left = 384
+    Top = 224
     object cdsContaCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -876,7 +876,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       FieldName = 'ORIGEM'
     end
   end
-  object sqldDeletaConta: TPLSQLDataSet
+  object sqldDeletaConta: TSQLDataSet
     CommandText = 'delete from CONTASRECEBER'#13#10'where ORIGEM = :CODIGO'
     MaxBlobSize = -1
     Params = <
@@ -885,7 +885,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    Left = 208
-    Top = 176
+    Left = 112
+    Top = 224
   end
 end

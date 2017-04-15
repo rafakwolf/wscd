@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons, PLEdit, FileCtrl;
+  Dialogs, StdCtrls, ExtCtrls, Buttons,  FileCtrl, uutilfncs;
 
 type
   TConnectErrorCallbackFunc      = function (AErrorMessage : PChar) : Integer;  stdcall;
@@ -21,7 +21,7 @@ type
                              AConnectErrorCallbacFunc : TConnectErrorCallbackFunc) : Integer; stdcall;
 
   TfrmExecutaScript = class(TForm)
-    edtScript: TPLEdit;
+    edtScript: TEdit;
     btnBuscaScript: TBitBtn;
     rgTipo: TRadioGroup;
     btnExecutar: TBitBtn;
@@ -65,7 +65,7 @@ var
 
 implementation
 
-uses Funcoes, FuncoesWin;
+uses Funcoes;
 
 {$R *.dfm}
 
@@ -108,12 +108,12 @@ begin
   case rgTipo.ItemIndex of
     0:
     begin
-      edtScript.EditLabel.Caption := 'Script:';
+      //edtScript.EditLabel.Caption := 'Script:';
       btnBuscaScript.Caption      := '&Script';
     end;
     1:
     begin
-      edtScript.EditLabel.Caption := 'Pasta:';
+      //edtScript.EditLabel.Caption := 'Pasta:';
       btnBuscaScript.Caption      := '&Pasta';
     end;
   end;  
@@ -205,7 +205,7 @@ begin
       script.Free;
 
     if ShowMessages then
-      MsgAviso('Script '+ExtractFileName(Path)+' executado com sucesso!');
+      MsgAviso('','Script '+ExtractFileName(Path)+' executado com sucesso!');
   end;
 end;
 
@@ -247,15 +247,15 @@ var
 begin
   LogFile := TStringList.Create;
 
-  if FileExists(DiretorioSistema+'LogScriptExec.log') then
+  if FileExists(ExtractFilePath(ParamStr(0))+'LogScriptExec.log') then
   begin
-    LogFile.LoadFromFile(DiretorioSistema+'LogScriptExec.log');
+    LogFile.LoadFromFile(ExtractFilePath(ParamStr(0))+'LogScriptExec.log');
     LogFile.Append('-------------------------------------------------');
   end;
   
   LogFile.Append(mmoLog.Lines.Text);
 
-  LogFile.SaveToFile(DiretorioSistema+'LogScriptExec.log');
+  LogFile.SaveToFile(ExtractFilePath(ParamStr(0))+'LogScriptExec.log');
 
   LogFile.Free;
 end;

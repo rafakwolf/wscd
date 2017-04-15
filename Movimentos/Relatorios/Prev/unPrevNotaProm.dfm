@@ -20,7 +20,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCliente: TPLDBEdit
+  object dbeCliente: TDBEdit
     Left = 16
     Top = 40
     Width = 411

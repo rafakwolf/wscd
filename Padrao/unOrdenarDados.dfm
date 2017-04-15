@@ -6,7 +6,7 @@ inherited frmOrdenarDados: TfrmOrdenarDados
   ClientWidth = 225
   OldCreateOrder = True
   ExplicitWidth = 241
-  ExplicitHeight = 451
+  ExplicitHeight = 452
   PixelsPerInch = 96
   TextHeight = 13
   object btnOK: TBitBtn
@@ -15,7 +15,6 @@ inherited frmOrdenarDados: TfrmOrdenarDados
     Width = 81
     Height = 25
     Caption = '&OK'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -69,7 +68,6 @@ inherited frmOrdenarDados: TfrmOrdenarDados
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     ModalResult = 1
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 0
   end
   object btnCancelar: TBitBtn
@@ -78,7 +76,6 @@ inherited frmOrdenarDados: TfrmOrdenarDados
     Width = 81
     Height = 25
     Caption = '&Cancelar'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -132,7 +129,6 @@ inherited frmOrdenarDados: TfrmOrdenarDados
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     ModalResult = 2
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 1
   end
   object clbCampos: TCheckListBox
@@ -157,25 +153,24 @@ inherited frmOrdenarDados: TfrmOrdenarDados
     TabOrder = 3
     OnClick = ckbCamposOrdenarClick
   end
-  object sqldPadrao: TPLSQLDataSet
-    DbxCommandType = 'Dbx.SQL'
+  object sqldPadrao: TSQLDataSet
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
     Left = 56
     Top = 40
   end
-  object dspPadrao: TPLDataSetProvider
+  object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poAutoRefresh, poPropogateChanges, poAllowCommandText]
-    Left = 88
-    Top = 40
+    Left = 80
+    Top = 112
   end
-  object cdsPadrao: TPLClientDataSet
+  object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    Left = 120
-    Top = 40
+    Left = 136
+    Top = 184
   end
 end

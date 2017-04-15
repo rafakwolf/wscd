@@ -3,8 +3,8 @@ unit uDmPesquisar;
 interface
 
 uses
-  SysUtils, Classes, Provider, DB, SqlExpr, DBClient, PLSQLDataSet,
-  PLDataSetProvider, PLClientDataSet, FMTBcd;
+  SysUtils, Classes, Provider, DB, SqlExpr, DBClient,
+  FMTBcd;
 
 type
   TDmPesquisar = class(TDataModule)
@@ -79,12 +79,12 @@ type
     cdsPesqAliquota: TClientDataSet;
     cdsPesqAliquotaCODALIQUOTA: TIntegerField;
     cdsPesqAliquotaDESCRICAO: TStringField;
-    sqldPesqVendedor: TPLSQLDataSet;
+    sqldPesqVendedor: TSQLDataSet;
     sqldPesqVendedorIDVENDEDOR: TIntegerField;
     sqldPesqVendedorVENDEDOR: TStringField;
     sqldPesqVendedorATIVO: TStringField;
-    dspPesqVendedor: TPLDataSetProvider;
-    cdsPesqVendedor: TPLClientDataSet;
+    dspPesqVendedor: TDataSetProvider;
+    cdsPesqVendedor: TClientDataSet;
     cdsPesqVendedorIDVENDEDOR: TIntegerField;
     cdsPesqVendedorVENDEDOR: TStringField;
     cdsPesqVendedorATIVO: TStringField;

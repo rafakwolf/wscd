@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-  PLDBEdit, FMTBcd, System.Actions, VarGlobal;
+   FMTBcd, System.Actions, VarGlobal;
 
 type
   TfrmAgenda = class(TfrmPadrao)
@@ -25,8 +25,8 @@ type
     cdsPadraoTELEFONE3: TStringField;
     cdsPadraoFAX: TStringField;
     cdsPadraoOBS: TMemoField;
-    dbeNome: TPLDBEdit;
-    dbeFax: TPLDBEdit;
+    dbeNome: TDBEdit;
+    dbeFax: TDBEdit;
     grpTelefone: TGroupBox;
     btnObs: TBitBtn;
     sqldPadraoIDAGENDA: TIntegerField;

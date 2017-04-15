@@ -62,7 +62,7 @@ var
 
 implementation
 
-uses VarGlobal, Funcoes;
+uses VarGlobal, Funcoes, udatabaseutils;
 
 {$R *.dfm}
 

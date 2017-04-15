@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList,
-  ExtCtrls, PngImageList;
+  ExtCtrls;
 
 type
   TfrmListagemProdutos = class(TForm)
@@ -15,7 +15,6 @@ type
     PopupCons: TPopupMenu;
     miFiltrar: TMenuItem;
     edtBuscaProduto: TButtonedEdit;
-    PngImageList1: TPngImageList;
     lbBuscaProduto: TLabel;
     procedure GradeDblClick(Sender: TObject);
     procedure btnOKClick(Sender: TObject);
@@ -50,7 +49,7 @@ end;
 
 procedure TfrmListagemProdutos.miFiltrarClick(Sender: TObject);
 begin
-  Ed_Localizar(dsProdutos.DataSet, Self, Grade);
+  //Ed_Localizar(dsProdutos.DataSet, Self, Grade);
 end;
 
 procedure TfrmListagemProdutos.FormKeyDown(Sender: TObject; var Key: Word;

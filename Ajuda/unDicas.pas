@@ -70,22 +70,22 @@ end;
 procedure TfrmDicas.Manipula(Dica: Integer);
 begin
   mDica.Lines.Clear;
-  case Dica of
-    1: mDica.Lines.Text := D_NOBREAK;
-    2: mDica.Lines.Text := D_LETRAS;
-    3: mDica.Lines.Text := D_ORDENAR;
-    4: mDica.Lines.Text := D_DESLIGAMENTO;
-    5: mDica.Lines.Text := D_GRUPOSPRODUTOS;
-    6: mDica.Lines.Text := D_CLIANIVERSARIANTES;
-    7: mDica.Lines.Text := D_USUARIOS;
-    8: mDica.Lines.Text := D_MENU;
-    9: mDica.Lines.Text := D_TECLAS;
-    10: mDica.Lines.Text := D_AGENDA;
-   11: mDica.Lines.Text := D_COMPUTADOR;
-   12: mDica.Lines.Text := D_BUG;
-   13: mDica.Lines.Text := D_ESTOQUE;
-   14: mDica.Lines.Text := D_BACKUP;
-  end;
+//  case Dica of
+//    1: mDica.Lines.Text := D_NOBREAK;
+//    2: mDica.Lines.Text := D_LETRAS;
+//    3: mDica.Lines.Text := D_ORDENAR;
+//    4: mDica.Lines.Text := D_DESLIGAMENTO;
+//    5: mDica.Lines.Text := D_GRUPOSPRODUTOS;
+//    6: mDica.Lines.Text := D_CLIANIVERSARIANTES;
+//    7: mDica.Lines.Text := D_USUARIOS;
+//    8: mDica.Lines.Text := D_MENU;
+//    9: mDica.Lines.Text := D_TECLAS;
+//    10: mDica.Lines.Text := D_AGENDA;
+//   11: mDica.Lines.Text := D_COMPUTADOR;
+//   12: mDica.Lines.Text := D_BUG;
+//   13: mDica.Lines.Text := D_ESTOQUE;
+//   14: mDica.Lines.Text := D_BACKUP;
+//  end;
 end;
 
 procedure TfrmDicas.btnNextClick(Sender: TObject);
@@ -110,13 +110,13 @@ var
 begin
   if cbExibir.Checked then sn := 'S'
   else sn := 'N';
-  UpdateSingleField('update CONFIGURACAO set EXIBEDICADIA = '+QuotedStr(sn), GetConnection);
+  //UpdateSingleField('update CONFIGURACAO set EXIBEDICADIA = '+QuotedStr(sn), GetConnection);
 end;
 
 procedure TfrmDicas.LeExibir;
 begin
-  cbExibir.Checked :=
-    SelectSingleField('select EXIBEDICADIA from CONFIGURACAO', GetConnection) = 'S';
+//  cbExibir.Checked :=
+//    SelectSingleField('select EXIBEDICADIA from CONFIGURACAO', GetConnection) = 'S';
 end;
 
 initialization

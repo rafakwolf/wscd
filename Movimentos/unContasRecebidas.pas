@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, Mask, DBCtrls, DB, SqlExpr, varglobal,
-  DBClient, Provider, ComCtrls, Menus, Grids, DBGrids, PLSQLDataSet, PLClientDataSet,
-  PLDataSetProvider, unContasReceber, FMTBcd, unSimplePadrao;
+  DBClient, ComCtrls, Menus, Grids, DBGrids,
+  Datasnap.Provider, unContasReceber, FMTBcd, unSimplePadrao;
 
 type
   TfrmContasRecebidas = class(TfrmSimplePadrao)
@@ -28,14 +28,14 @@ type
     miFechar: TMenuItem;
     Stb: TStatusBar;
     dsPadrao: TDataSource;
-    sqldConta: TPLSQLDataSet;
-    dspConta: TPLDataSetProvider;
-    cdsConta: TPLClientDataSet;
+    sqldConta: TSQLDataSet;
+    dspConta: TDataSetProvider;
+    cdsConta: TClientDataSet;
     cdsContaORIGEM: TIntegerField;
     sqldContaCODIGO: TIntegerField;
     sqldContaORIGEM: TIntegerField;
     cdsContaCODIGO: TIntegerField;
-    sqldDeletaConta: TPLSQLDataSet;
+    sqldDeletaConta: TSQLDataSet;
     grpFiltro: TGroupBox;
     lbFiltroUsado: TLabel;
     sqldPadraoCODIGO: TIntegerField;
@@ -108,7 +108,7 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao, FuncoesWin;
+uses Funcoes, ConstPadrao, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -332,7 +332,7 @@ end;
 
 procedure TfrmContasRecebidas.GradeTitleClick(Column: TColumn);
 begin
-  OrdenaColunasGrid(Grade, Column, cdsPadrao);
+  //OrdenaColunasGrid(Grade, Column, cdsPadrao);
 end;
 
 procedure TfrmContasRecebidas.FormKeyDown(Sender: TObject; var Key: Word;

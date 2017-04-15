@@ -4,17 +4,17 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, ComCtrls, DB, SqlExpr, PLSQLDataSet,
-  Provider, PLDataSetProvider, DBClient, PLClientDataSet, StdCtrls, Mask,
-  DBCtrls, PLDBEdit, Buttons, FMTBcd;
+  Dialogs, unSimplePadrao, ComCtrls, DB, Data.SqlExpr,
+  Datasnap.Provider, DBClient, StdCtrls, Mask,
+  DBCtrls,  Buttons, FMTBcd;
 
 type
   TfrmConfigNotaMan = class(TfrmSimplePadrao)
     pgcCadastro: TPageControl;
     tsCadastro: TTabSheet;
-    sqldPadrao: TPLSQLDataSet;
-    dspPadrao: TPLDataSetProvider;
-    cdsPadrao: TPLClientDataSet;
+    sqldPadrao: TSQLDataSet;
+    dspPadrao: TDataSetProvider;
+    cdsPadrao: TClientDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoCAMPO: TStringField;
@@ -32,10 +32,10 @@ type
     cdsPadraoLINHA: TIntegerField;
     cdsPadraoCOLUNA: TIntegerField;
     cdsPadraoIMPRIMIR: TStringField;
-    dbeCampoDescricao: TPLDBEdit;
-    dbeLayOut: TPLDBEdit;
-    dbeLinha: TPLDBEdit;
-    dbeColuna: TPLDBEdit;
+    dbeCampoDescricao: TDBEdit;
+    dbeLayOut: TDBEdit;
+    dbeLinha: TDBEdit;
+    dbeColuna: TDBEdit;
     btnCancelar: TBitBtn;
     btnOk: TBitBtn;
     dbckbImprimir: TDBCheckBox;
@@ -67,7 +67,7 @@ var
 
 implementation
 
-uses Funcoes,  ConstPadrao, VarGlobal;
+uses Funcoes,  ConstPadrao, VarGlobal, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -182,7 +182,7 @@ begin
     if not IsEmpty then
     begin
       Close;
-      SetParamsNoResult(Params);
+      //SetParamsNoResult(Params);
       Open;
     end;
   end;
@@ -235,7 +235,7 @@ end;
 procedure TfrmConfigNotaMan.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('CONFIGNOTA', cdsPadraoCODIGO, GetConnection);
+  //Incrementa('CONFIGNOTA', cdsPadraoCODIGO, GetConnection);
   cdsPadraoIMPRIMIR.AsString := 'S';
 end;
 

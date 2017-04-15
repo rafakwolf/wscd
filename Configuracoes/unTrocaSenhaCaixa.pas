@@ -33,7 +33,7 @@ var
 
 implementation
 
-uses Funcoes, VarGlobal, FuncoesWin;
+uses Funcoes, VarGlobal, uUtilFncs, crypto;
 
 {$R *.dfm}
 
@@ -46,15 +46,15 @@ end;
 procedure TfrmSenhaCaixa.btnOkClick(Sender: TObject);
 begin
   cdsConfig.Close;
-  cdsConfig.Params.ParamByName('COMP').AsString := SysComputerName;
+  cdsConfig.Params.ParamByName('COMP').AsString := GetComputerName;
   cdsConfig.Open;
 
   if (edAtual.Text <> '') and (edNova.Text <> '') then
   begin
-    if Decript(cdsConfigSENHACAIXA.AsString) = edAtual.Text then
+    if EnDecrypt(cdsConfigSENHACAIXA.AsString) = edAtual.Text then
     begin
       cdsConfig.Edit;
-      cdsConfigSENHACAIXA.AsString := Trim(Encript(edNova.Text));
+      cdsConfigSENHACAIXA.AsString := Trim(EnDecrypt(edNova.Text));
       cdsConfig.ApplyUpdates(0);
       Configuracao.Atualizar;
       MsgAviso('Senha de caixa alterada!');

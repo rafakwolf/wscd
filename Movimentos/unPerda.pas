@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
   DBClient, Provider, SqlExpr, StdCtrls, DBCtrls, VarGlobal,
-  PLDBEditDateTimePicker, PLDBEdit, Mask, FMTBcd, System.Actions;
+    Mask, FMTBcd, System.Actions;
 
 type
   TfrmPerda = class(TfrmPadrao)
@@ -34,8 +34,8 @@ type
     dbQtde: TDBEdit;
     dbPreco: TDBEdit;
     dbrgrpMOTIVO: TDBRadioGroup;
-    dbProduto: TPLDBEdit;
-    dbdData: TPLDBEditDateTimePicker;
+    dbProduto: TDBEdit;
+    dbdData: TDBEdit;
     dbmOBS: TDBMemo;
     N5: TMenuItem;
     lbPrecoCusto: TLabel;
@@ -73,7 +73,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao,  unModeloConsulta, unPrevPerda,
-     uConfiguraRelatorio, unGeraRelatorio;
+     uConfiguraRelatorio, unGeraRelatorio, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -122,7 +122,7 @@ end;
 procedure TfrmPerda.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('PERDA', cdsPadraoCODIGO, GetConnection);
+  //Incrementa('PERDA', cdsPadraoCODIGO, GetConnection);
   SetFocusIfCan(dbProduto);
 end;
 

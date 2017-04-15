@@ -5,11 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, PLDBEdit, DBClient, Provider, DB, SqlExpr, FMTBcd;
+  DBCtrls,  DBClient, Provider, DB, SqlExpr, FMTBcd;
 
 type
   TfrmRelatorioCRAtraso = class(TfrmDialogoRelatorioPadrao)
-    dbeCliente: TPLDBEdit;
+    dbeCliente: TDBEdit;
     sqldCliente: TSQLDataSet;
     dspCliente: TDataSetProvider;
     cdsCliente: TClientDataSet;

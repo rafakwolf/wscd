@@ -197,7 +197,7 @@ var
 
   function Centraliza(const s: String): String;
   begin
-    Result := CentralizaTexto(s, StrToInt(edColunas.Text), True);
+    Result := CentralizaTexto(s, StrToInt(edColunas.Text));
   end;
 
   function Ajusta(const s: String): String;
@@ -235,7 +235,7 @@ begin
     Free;
   end;
   GravaOpcoes;
-  MsgAviso('Recibo impresso!');
+  MsgAviso('','Recibo impresso!');
 end;
 
 procedure TfrmImprimeRecibo.SetTelefoneEmpresa(const Value: String);

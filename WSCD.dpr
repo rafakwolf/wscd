@@ -3,36 +3,6 @@ program WSCD;
 uses
   Vcl.Forms,
   Vcl.Controls,
-  ClassesGerador in '..\Util\ClassesGerador.pas',
-  ConstPadrao in '..\Util\ConstPadrao.pas',
-  Extensos in '..\Util\Extensos.pas',
-  Funcoes in '..\Util\Funcoes.pas',
-  FuncoesWin in '..\Util\FuncoesWin.pas',
-  HDFunc in '..\Util\HDFunc.pas',
-  uBackupRestore in '..\Util\uBackupRestore.pas',
-  uCheque in '..\Util\uCheque.pas',
-  uClassMenu in '..\Util\uClassMenu.pas',
-  uConfiguraRelatorio in '..\Util\uConfiguraRelatorio.pas',
-  uSysTray in '..\Util\uSysTray.pas',
-  Validacao in '..\Util\Validacao.pas',
-  VarGlobal in '..\Util\VarGlobal.pas',
-  DBXUtils in '..\Util\Classes\DBXUtils.pas',
-  MD5 in '..\Util\Classes\MD5.pas',
-  uApplyClassProxyJson in '..\Util\Classes\uApplyClassProxyJson.pas',
-  uConfiguracao in '..\Util\Classes\uConfiguracao.pas',
-  uConverters in '..\Util\Classes\uConverters.pas',
-  uDatabaseEvents in '..\Util\Classes\uDatabaseEvents.pas',
-  uDatabaseUtils in '..\Util\Classes\uDatabaseUtils.pas',
-  uDBXConnectionParams in '..\Util\Classes\uDBXConnectionParams.pas',
-  uDebugHelper in '..\Util\Classes\uDebugHelper.pas',
-  uDialogs in '..\Util\Classes\uDialogs.pas',
-  uFirebirdBackup in '..\Util\Classes\uFirebirdBackup.pas',
-  uFirebirdMetadata in '..\Util\Classes\uFirebirdMetadata.pas',
-  uJSONArrayCds in '..\Util\Classes\uJSONArrayCds.pas',
-  uJSONBaseObject in '..\Util\Classes\uJSONBaseObject.pas',
-  uListRegisteredClasses in '..\Util\Classes\uListRegisteredClasses.pas',
-  uNetWorkList in '..\Util\Classes\uNetWorkList.pas',
-  uStringUtils in '..\Util\Classes\uStringUtils.pas',
   uClasses in 'Util\uClasses.pas',
   uNotifyEventDispatcher in 'Util\uNotifyEventDispatcher.pas',
   unDmPrincipal in 'Principal\unDmPrincipal.pas' {DmPrincipal: TDataModule},
@@ -193,11 +163,25 @@ uses
   unRelatorioProdutoVencimento in 'Cadastros\Relatorios\unRelatorioProdutoVencimento.pas' {frmRelatorioProdutoVencimento},
   unDicas in 'Ajuda\unDicas.pas' {frmDicas},
   unSobre in 'Ajuda\unSobre.pas' {frmSobre},
-  udmBase in '..\Util\DataModule\udmBase.pas' {dmBase: TDataModule},
   uDmPesquisar in 'Padrao\uDmPesquisar.pas' {DmPesquisar: TDataModule},
   udmGeralBase in 'Padrao\udmGeralBase.pas' {dmGeralBase: TDataModule},
   udmAcesso in 'Comuns\Dm\udmAcesso.pas' {dmAcesso: TDataModule},
-  unPrevRelCFOPs in 'Configuracoes\Relatorios\unPrevRelCFOPs.pas' {frmPrevRelCFOPs};
+  unPrevRelCFOPs in 'Configuracoes\Relatorios\unPrevRelCFOPs.pas' {frmPrevRelCFOPs},
+  udmBase in 'Padrao\udmBase.pas' {dmBase: TDataModule},
+  uDBXConnectionParams in 'Util\uDBXConnectionParams.pas',
+  uUtilFncs in 'Util\uUtilFncs.pas',
+  ConstPadrao in 'Util\ConstPadrao.pas',
+  Funcoes in 'Util\Funcoes.pas',
+  VarGlobal in 'Util\VarGlobal.pas',
+  DBXUtils in 'Util\DBXUtils.pas',
+  ImgUtils in 'Util\ImgUtils.pas',
+  uDatabaseUtils in 'Util\uDatabaseUtils.pas',
+  crypto in 'Util\crypto.pas',
+  ClassesGerador in 'Util\ClassesGerador.pas',
+  uConfiguraRelatorio in 'Util\uConfiguraRelatorio.pas',
+  Extensos in 'Util\Extensos.pas',
+  uCheque in 'Util\uCheque.pas',
+  uClassesMenu in 'Util\uClassesMenu.pas';
 
 {$R *.res}
 
@@ -206,6 +190,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmPrincipal, DmPrincipal);
   Application.CreateForm(TDmPesquisar, DmPesquisar);
+  Application.CreateForm(TdmBase, dmBase);
   frmAcesso := TfrmAcesso.Create(Application);
   if frmAcesso.ShowModal = mrOk then
   begin

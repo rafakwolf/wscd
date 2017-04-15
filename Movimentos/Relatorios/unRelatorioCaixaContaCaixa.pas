@@ -5,19 +5,19 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, Mask, DBCtrls, PLDBEdit,
-  ComCtrls, PLDBEditDateTimePicker, FMTBcd;
+  DB, DBClient, Provider, SqlExpr, Mask, DBCtrls, 
+  ComCtrls,  FMTBcd;
 
 type
   TfrmRelatorioCaixaContaCaixa = class(TfrmDialogoRelatorioPadrao)
-    dbeCaixa: TPLDBEdit;
+    dbeCaixa: TDBEdit;
     sqldCaixa: TSQLDataSet;
     dspCaixa: TDataSetProvider;
     cdsCaixa: TClientDataSet;
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
-    dtpDataIni: TPLDBEditDateTimePicker;
-    dtpDataFim: TPLDBEditDateTimePicker;
+    dtpDataIni: TDBEdit;
+    dtpDataFim: TDBEdit;
     dsData: TDataSource;
     procedure dbeCaixaClickButton(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);

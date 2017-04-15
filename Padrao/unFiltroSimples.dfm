@@ -689,8 +689,8 @@ object frmFiltroSimples: TfrmFiltroSimples
       'har(200)) as nome'#13#10'from rdb$database'
     MaxBlobSize = -1
     Params = <>
-    Left = 200
-    Top = 136
+    Left = 176
+    Top = 128
     object sqldFiltroCODIGO: TIntegerField
       FieldName = 'CODIGO'
     end
@@ -702,14 +702,14 @@ object frmFiltroSimples: TfrmFiltroSimples
   object dspFiltro: TDataSetProvider
     DataSet = sqldFiltro
     Options = [poAllowCommandText]
-    Left = 240
-    Top = 136
+    Left = 232
+    Top = 88
   end
   object cdsFiltro: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspFiltro'
-    Left = 272
+    Left = 280
     Top = 136
     object cdsFiltroCODIGO: TIntegerField
       FieldName = 'CODIGO'
@@ -721,7 +721,7 @@ object frmFiltroSimples: TfrmFiltroSimples
   end
   object dsFiltro: TDataSource
     DataSet = cdsFiltro
-    Left = 304
+    Left = 344
     Top = 136
   end
 end

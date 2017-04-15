@@ -4,29 +4,30 @@ inherited frmCalendario: TfrmCalendario
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Calend'#225'rio'
-  ClientHeight = 293
-  ClientWidth = 212
+  ClientHeight = 325
+  ClientWidth = 375
   Font.Name = 'MS Sans Serif'
   OldCreateOrder = True
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
+  ExplicitWidth = 381
+  ExplicitHeight = 354
   PixelsPerInch = 96
   TextHeight = 13
   object PanelDias: TPanel
     Left = 0
     Top = 54
-    Width = 212
+    Width = 375
     Height = 120
     Align = alTop
     BevelOuter = bvLowered
     ParentColor = True
     TabOrder = 0
+    ExplicitWidth = 212
     object VCalend: TCalendar
       Left = 1
       Top = 1
-      Width = 210
+      Width = 373
       Height = 118
       Align = alClient
       BorderStyle = bsNone
@@ -43,6 +44,7 @@ inherited frmCalendario: TfrmCalendario
       UseCurrentDate = False
       OnClick = VCalendClick
       OnKeyPress = FormKeyPress
+      ExplicitWidth = 210
     end
     object AlternaMes: TUpDown
       Left = 181
@@ -63,7 +65,7 @@ inherited frmCalendario: TfrmCalendario
   object PanelMes: TPanel
     Left = 0
     Top = 28
-    Width = 212
+    Width = 375
     Height = 26
     Align = alTop
     BevelOuter = bvLowered
@@ -77,11 +79,12 @@ inherited frmCalendario: TfrmCalendario
     ParentFont = False
     TabOrder = 1
     OnClick = VCalendClick
+    ExplicitWidth = 212
     object GetAno: TSpinEdit
       Left = 157
       Top = 2
       Width = 53
-      Height = 19
+      Height = 22
       Hint = 'Define ano'
       Color = 14548735
       Ctl3D = False
@@ -99,11 +102,13 @@ inherited frmCalendario: TfrmCalendario
   end
   object PanelExtra: TPanel
     Left = 0
-    Top = 176
-    Width = 212
+    Top = 208
+    Width = 375
     Height = 117
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 176
+    ExplicitWidth = 212
     object LbTitulo: TLabel
       Left = 4
       Top = 4
@@ -315,11 +320,12 @@ inherited frmCalendario: TfrmCalendario
   object PnBotoes: TPanel
     Left = 0
     Top = 0
-    Width = 212
+    Width = 375
     Height = 28
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 3
+    ExplicitWidth = 212
     object Futura: TSpeedButton
       Left = 3
       Top = 2

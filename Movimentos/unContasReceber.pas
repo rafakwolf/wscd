@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls, Mask, Buttons, DBClient, DB,
   DBCtrls, SqlExpr, Menus, ComCtrls, Provider, ConstPadrao,
-  PLSQLDataSet, FMTBcd, unSimplePadrao;
+  FMTBcd, unSimplePadrao;
 
 const
   SQLPadraoTela: string = 'select'+
@@ -123,7 +123,7 @@ type
     N3: TMenuItem;
     miRecibo: TMenuItem;
     miBuscarCliente: TMenuItem;
-    sqldDeleta: TPLSQLDataSet;
+    sqldDeleta: TSQLDataSet;
     btnFechar: TSpeedButton;
     N1: TMenuItem;
     miContasVencidas: TMenuItem;
@@ -226,8 +226,7 @@ var
 
 implementation
 
-uses Funcoes, unContasRecebidas, unModeloConsulta, VarGlobal, unRecibo, unReceberMan,
-      FuncoesWin;
+uses Funcoes, unContasRecebidas, unModeloConsulta, VarGlobal, unRecibo, unReceberMan;
 
 {$R *.dfm}
 
@@ -243,7 +242,7 @@ begin
       sqldDeleta.Close;
       sqldDeleta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
       sqldDeleta.ExecSQL;
-      RefreshDataSet(cdsPadrao);
+      ReabreDataset(cdsPadrao);
     end
     else
       MsgAviso('Não é permitido excluir uma conta já recebida.');
@@ -332,7 +331,7 @@ begin
   ClientHeight := 438;
   ClientWidth  := 762;
   CentralizaForm(Self);
-  ReordenaBotoes([btnReceber, btnExcluir, btnRecebidas, btnFechar], 0);
+  ReordenaBotoes([btnReceber, btnExcluir, btnRecebidas, btnFechar]);
   SQLPadraoCli := sqldCliente.CommandText;
 end;
 
@@ -483,7 +482,7 @@ end;
 
 procedure TfrmContasReceber.GradeTitleClick(Column: TColumn);
 begin
-  OrdenaColunasGrid(Grade, Column, cdsPadrao);
+  //OrdenaColunasGrid(Grade, Column, cdsPadrao);
 end;
 
 procedure TfrmContasReceber.GradeDrawColumnCell(Sender: TObject;

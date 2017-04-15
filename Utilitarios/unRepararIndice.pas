@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, ComCtrls, Buttons, DB,
-  SqlExpr, PLSQLDataSet, FMTBcd;
+  SqlExpr, FMTBcd;
 
 type
   TfrmRepararIndice = class(TfrmSimplePadrao)
@@ -13,10 +13,10 @@ type
     lbStatus: TLabel;
     btnReparar: TBitBtn;
     btnCancelar: TBitBtn;
-    sqldPK: TPLSQLDataSet;
+    sqldPK: TSQLDataSet;
     sqldPKPK: TStringField;
     sqldPKTABELA: TStringField;
-    sqldFK: TPLSQLDataSet;
+    sqldFK: TSQLDataSet;
     sqldFKFK: TStringField;
     sqldFKTABELA: TStringField;
     procedure btnCancelarClick(Sender: TObject);
@@ -44,7 +44,7 @@ end;
 
 procedure TfrmRepararIndice.Repara(IndexName: string);
 begin
-  with TPLSQLDataSet.Create(nil) do
+  with TSQLDataSet.Create(nil) do
   try
     //SQLConnection:= GetConnection;
     CommandText := 'set statistics index '+trim(IndexName);

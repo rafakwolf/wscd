@@ -5,25 +5,25 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, DateUtils,
-  ExtCtrls, ComCtrls, PLDBEditDateTimePicker, Mask, DBCtrls, PLDBEdit,
-  SqlExpr, Provider, DBClient, ConstPadrao, PLSQLDataSet, FMTBcd, System.Actions;
+  ExtCtrls, ComCtrls,  Mask, DBCtrls, 
+  SqlExpr, Provider, DBClient, ConstPadrao, FMTBcd, System.Actions;
 
 type
   TfrmCR = class(TfrmPadrao)
-    dbeCliente: TPLDBEdit;
-    dbeDescricao: TPLDBEdit;
-    dbeValor: TPLDBEdit;
-    dbeDocumento: TPLDBEdit;
+    dbeCliente: TDBEdit;
+    dbeDescricao: TDBEdit;
+    dbeValor: TDBEdit;
+    dbeDocumento: TDBEdit;
     grpRecebimento: TGroupBox;
-    dbeDataRecdo: TPLDBEdit;
-    dbeDesconto: TPLDBEdit;
-    dbeCapitalRecdo: TPLDBEdit;
-    dbeJuroRecdo: TPLDBEdit;
-    dbeTotalRecdo: TPLDBEdit;
-    dbeJuros: TPLDBEdit;
-    dbeOrigem: TPLDBEdit;
-    dbdData: TPLDBEditDateTimePicker;
-    dbdVencimento: TPLDBEditDateTimePicker;
+    dbeDataRecdo: TDBEdit;
+    dbeDesconto: TDBEdit;
+    dbeCapitalRecdo: TDBEdit;
+    dbeJuroRecdo: TDBEdit;
+    dbeTotalRecdo: TDBEdit;
+    dbeJuros: TDBEdit;
+    dbeOrigem: TDBEdit;
+    dbdData: TDBEdit;
+    dbdVencimento: TDBEdit;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -53,12 +53,12 @@ type
     cdsPadraoVENDA: TIntegerField;
     cdsPadraoOBS: TMemoField;
     cdsPadraoATRASO: TIntegerField;
-    dbeVenda: TPLDBEdit;
+    dbeVenda: TDBEdit;
     lbStatus: TLabel;
     miContasClienteCorrente: TMenuItem;
     N10: TMenuItem;
     miParcelamento: TMenuItem;
-    dbeValorAtual: TPLDBEdit;
+    dbeValorAtual: TDBEdit;
     cdsPadraoNOME: TStringField;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoDATA: TDateField;
@@ -87,8 +87,8 @@ type
     sqlLimiteTOTAL_CONTAS: TFloatField;
     btnContas: TBitBtn;
     btnReceber: TBitBtn;
-    sqldDeleta: TPLSQLDataSet;
-    dbeConta: TPLDBEdit;
+    sqldDeleta: TSQLDataSet;
+    dbeConta: TDBEdit;
     sqldPadraoIDCONTA: TIntegerField;
     sqldPadraoCONTA: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
@@ -136,7 +136,7 @@ implementation
 
 uses VarGlobal, Funcoes, uConfiguraRelatorio, unPrevContasReceber,
      unPrevRelCRAtrasadas, unContasReceber,  unReceberMan,
-     unParcelaCPCR;
+     unParcelaCPCR, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -154,7 +154,7 @@ begin
   FieldNames := FN_CR;
   DisplayLabels := DL_CR;
   UpdateSingleField('update CONTASRECEBER set RECEBER = '+
-    QuotedStr('N'), GetConnection);
+    QuotedStr('N'));
 
   if cdspadrao.IsEmpty then
     lbStatus.Caption := '';
@@ -163,7 +163,7 @@ end;
 procedure TfrmCR.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('CONTASRECEBER', cdsPadraoCODIGO, GetConnection);
+  //Incrementa('CONTASRECEBER', cdsPadraoCODIGO, GetConnection);
   cdsPadraoDATA.AsDateTime := Date;
   cdsPadraoVENCIMENTO.AsDateTime := IncDay(Date, Global.PrazoInicial);
   cdsPadraoJURO.AsFloat := Global.Juro;
@@ -317,9 +317,9 @@ begin
   if not GetDataModule.SituacaoClienteOk(cdsPadraoVALOR.AsFloat,
     cdsPadraoCLIENTE.AsInteger) then Abort;
 
-  if not ValidaDataIniFim(cdsPadraoDATA.AsDateTime, cdsPadraoVENCIMENTO.AsDateTime,
-    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
-    True) then Abort;
+//  if not ValidaDataIniFim(cdsPadraoDATA.AsDateTime, cdsPadraoVENCIMENTO.AsDateTime,
+//    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
+//    True) then Abort;
 
   if cdsPadrao.State in [dsInsert] then
   begin

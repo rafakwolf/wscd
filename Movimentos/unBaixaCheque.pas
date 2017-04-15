@@ -4,20 +4,20 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, PLEdit,
-  DB, DBClient, PLClientDataSet, Provider, PLDataSetProvider,
-  SqlExpr, PLSQLDataSet, Mask, FMTBcd;
+  Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, 
+  DB, DBClient, Datasnap.Provider,
+  Data.SqlExpr, Mask, FMTBcd;
 
 type
   TfrmBaixaCheque = class(TfrmSimplePadrao)
     btnOk: TBitBtn;
     btnCancelar: TBitBtn;
-    cedHistorico: TPLEdit;
+    cedHistorico: TEdit;
     dblcbContaCaixa: TDBLookupComboBox;
     lbContaCaixa: TLabel;
-    sqldCaixa: TPLSQLDataSet;
-    dspCaixa: TPLDataSetProvider;
-    cdsCaixa: TPLClientDataSet;
+    sqldCaixa: TSQLDataSet;
+    dspCaixa: TDataSetProvider;
+    cdsCaixa: TClientDataSet;
     dsCaixa: TDataSource;
     sqldCaixaCODIGO: TIntegerField;
     sqldCaixaNOME: TStringField;

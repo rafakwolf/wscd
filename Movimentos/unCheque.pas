@@ -5,31 +5,31 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  DBClient, Provider, SqlExpr, Mask, DBCtrls, PLDBEdit,
-  PLDBEditDateTimePicker, DateUtils, FMTBcd, System.Actions;
+  DBClient, Provider, SqlExpr, Mask, DBCtrls, 
+   DateUtils, FMTBcd, System.Actions;
 
 type
   TfrmCheque = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeBanco: TPLDBEdit;
-    dbeAgencia: TPLDBEdit;
-    dbeConta: TPLDBEdit;
-    dbeNumero: TPLDBEdit;
+    dbeBanco: TDBEdit;
+    dbeAgencia: TDBEdit;
+    dbeConta: TDBEdit;
+    dbeNumero: TDBEdit;
     actBaixar: TAction;
     N6: TMenuItem;
     miRepasse: TMenuItem;
-    dbdDataEmissao: TPLDBEditDateTimePicker;
-    dbdBomPara: TPLDBEditDateTimePicker;
-    dbeValor: TPLDBEdit;
-    dbeVenda: TPLDBEdit;
-    dbeCliente: TPLDBEdit;
-    dbeCompra: TPLDBEdit;
+    dbdDataEmissao: TDBEdit;
+    dbdBomPara: TDBEdit;
+    dbeValor: TDBEdit;
+    dbeVenda: TDBEdit;
+    dbeCliente: TDBEdit;
+    dbeCompra: TDBEdit;
     miChequeEmitido: TMenuItem;
     miChequeEmitidoAVista: TMenuItem;
     miChequeEmitidoAPrazo: TMenuItem;
-    dbeBandMagnetica: TPLDBEdit;
+    dbeBandMagnetica: TDBEdit;
     sqldPadraoIDCHEQUE: TIntegerField;
     sqldPadraoIDBANCO: TIntegerField;
     sqldPadraoBANCO: TStringField;
@@ -62,10 +62,10 @@ type
     cdsPadraoCOMPRA: TIntegerField;
     cdsPadraoREPASSADO: TStringField;
     cdsPadraoBANDAMAGNETICA: TStringField;
-    dbeForn: TPLDBEdit;
+    dbeForn: TDBEdit;
     sqldPadraoDATABAIXADO: TDateField;
     cdsPadraoDATABAIXADO: TDateField;
-    dbeDataBaixado: TPLDBEdit;
+    dbeDataBaixado: TDBEdit;
     actEstornarBaixa: TAction;
     Estornarbaixa1: TMenuItem;
     btnBaixar: TBitBtn;
@@ -275,12 +275,12 @@ begin
     Exit;
   end;
 
-  if not ValidaCMC7(Sender.AsString) then
-  begin
-    MsgErro('Banda magnética inválida.');
-    Sender.FocusControl;
-    Exit;
-  end;
+//  if not ValidaCMC7(Sender.AsString) then
+//  begin
+//    MsgErro('Banda magnética inválida.');
+//    Sender.FocusControl;
+//    Exit;
+//  end;
 
   //341378140090004285081430432989 -> exemplo de banda válida
 
@@ -620,9 +620,9 @@ begin
       Abort;
     end;
 
-  if not ValidaDataIniFim(cdsPadraoDATAEMISSAO.AsDateTime, cdsPadraoBOMPARA.AsDateTime,
-    dbdDataEmissao, False, True, 'A "Data de emissão" não pode ser maior que a data de "Bom para".', True) then
-    Abort;
+//  if not ValidaDataIniFim(cdsPadraoDATAEMISSAO.AsDateTime, cdsPadraoBOMPARA.AsDateTime,
+//    dbdDataEmissao, False, True, 'A "Data de emissão" não pode ser maior que a data de "Bom para".', True) then
+//    Abort;
 end;
 
 procedure TfrmCheque.miAssistenteClick(Sender: TObject);

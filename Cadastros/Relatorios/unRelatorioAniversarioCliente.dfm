@@ -4,7 +4,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
   ClientWidth = 521
   OldCreateOrder = True
   ExplicitWidth = 537
-  ExplicitHeight = 245
+  ExplicitHeight = 246
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnButtons: TPanel
@@ -132,47 +132,23 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     Height = 97
     Enabled = False
     TabOrder = 4
-    object dbeDataIni: TPLDBEditDateTimePicker
+    object dbeDataIni: TDBEdit
       Left = 8
       Top = 20
       Width = 241
       Height = 21
-      Date = 39328.001275312500000000
-      Time = 39328.001275312500000000
-      TabOrder = 0
       DataField = 'DATAINI'
       DataSource = dsPadrao
-      ReadOnly = False
-      DefaultEditMask = '!99/99/9999;1;_'
-      EditLabel.Left = 8
-      EditLabel.Top = 4
-      EditLabel.Width = 65
-      EditLabel.Height = 13
-      EditLabel.Caption = 'Data Inicial'
-      EditLabel.FocusControl = dbeDataIni
-      EditLabel.LabelPosition = lpAbove
-      Required = False
+      TabOrder = 0
     end
-    object dbeDataFim: TPLDBEditDateTimePicker
+    object dbeDataFim: TDBEdit
       Left = 8
       Top = 63
       Width = 241
       Height = 21
-      Date = 39328.001282268520000000
-      Time = 39328.001282268520000000
-      TabOrder = 1
       DataField = 'DATAFIM'
       DataSource = dsPadrao
-      ReadOnly = False
-      DefaultEditMask = '!99/99/9999;1;_'
-      EditLabel.Left = 8
-      EditLabel.Top = 47
-      EditLabel.Width = 57
-      EditLabel.Height = 13
-      EditLabel.Caption = 'Data Final'
-      EditLabel.FocusControl = dbeDataFim
-      EditLabel.LabelPosition = lpAbove
-      Required = False
+      TabOrder = 1
     end
   end
   inherited dsPadrao: TDataSource

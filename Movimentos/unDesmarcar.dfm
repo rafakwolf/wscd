@@ -6,8 +6,8 @@ inherited frmDesmarcar: TfrmDesmarcar
   ClientHeight = 105
   ClientWidth = 297
   Position = poScreenCenter
-  ExplicitWidth = 320
-  ExplicitHeight = 240
+  ExplicitWidth = 303
+  ExplicitHeight = 134
   PixelsPerInch = 96
   TextHeight = 13
   object Desmarcar: TSpeedButton

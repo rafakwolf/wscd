@@ -4,14 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr, PLEdit, Vcl.Imaging.pngimage;
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr,  Vcl.Imaging.pngimage;
 
 type
   TfrmAcesso = class(TForm)
     edtUsuario: TLabeledEdit;
     btnCancelar: TBitBtn;
     btnOK: TBitBtn;
-    edtSenha: TPLEdit;
+    edtSenha: TEdit;
     imgAcesso: TImage;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -39,8 +39,8 @@ var
 
 implementation
 
-uses unDmPrincipal, Funcoes, unSetupConnection, VarGlobal, FuncoesWin,
-  udmAcesso, Datasnap.DBClient;
+uses unDmPrincipal, Funcoes, unSetupConnection, VarGlobal,
+  udmAcesso, Datasnap.DBClient, uUtilFncs, IniFiles;
 
 {$R *.dfm}
 
@@ -52,13 +52,13 @@ begin
   if (Tentativa > 3) then
   begin
     Result := False;
-    MsgErro('Esgotado o número de tentativas. ' +
+    MsgErro('','Esgotado o número de tentativas. ' +
       'Por medida de segurança, o sistema será finalizado.');
     Application.Terminate;
     Exit;
   end;
 
-  if not (TrimLower(edtUsuario.Text) = 'admcpr') then
+  if not (AnsiLowerCase(edtUsuario.Text) = 'admcpr') then
   begin
     with TdmAcesso.Create(self) do
     try
@@ -115,16 +115,21 @@ begin
   btnOK.Visible := True;
   btnCancelar.Visible := True;
 
-  if not ReadIniFile('Login', 'NomeUsuario').IsEmpty then
-  begin
-    edtUsuario.Text := ReadIniFile('Login', 'NomeUsuario');
-    edtSenha.SetFocus;
-  end
-  else
-    edtUsuario.SetFocus;
+  with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
+  try
+    if not ReadString('Login', 'NomeUsuario','').IsEmpty then
+    begin
+      edtUsuario.Text := Readstring('Login', 'NomeUsuario','');
+      edtSenha.SetFocus;
+    end
+    else
+      edtUsuario.SetFocus;
+  finally
+    Free;
+  end;
 
   Repaint;
-  ForceForegroundWindow(Handle);
+  //ForceForegroundWindow(Handle);
 end;
 
 class function TfrmAcesso.Execute(LogOff: Boolean): Boolean;
@@ -143,7 +148,7 @@ procedure TfrmAcesso.btnOkClick(Sender: TObject);
 begin
   if Trim(edtUsuario.Text).IsEmpty then
   begin
-    MsgErro('Informe o usuário.');
+    MsgErro('','Informe o usuário.');
     ModalResult := mrNone;
     edtUsuario.SetFocus;
     Exit;
@@ -151,7 +156,7 @@ begin
 
   if Trim(edtSenha.Text).IsEmpty then
   begin
-    MsgErro('Informe a senha.');
+    MsgErro('','Informe a senha.');
     ModalResult := mrNone;
     edtSenha.SetFocus;
     Exit;
@@ -161,14 +166,20 @@ begin
   begin
     if ValidaLogin then
     begin
-      WriteIniFile('Login', 'NomeUsuario', edtUsuario.Text);
+      with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
+      try
+        WriteString('Login', 'NomeUsuario', edtUsuario.Text);
+      finally
+        free;
+      end;
+
       ModalResult := mrOk;
       Ok := True;
     end
     else
     begin
       ModalResult := mrNone;
-      MsgErro('Usuário ou Senha está incorreto.');
+      MsgErro('','Usuário ou Senha está incorreto.');
       if ActiveControl is TLabeledEdit then
         TLabeledEdit(ActiveControl).SelectAll;
       Abort;

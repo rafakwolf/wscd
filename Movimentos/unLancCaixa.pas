@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Buttons, StdCtrls, Mask, DBCtrls, DB, ComCtrls,
-  PLDBEditDateTimePicker, PLDBEdit, DBClient, Provider, SqlExpr, FMTBcd, VarGlobal;
+    DBClient, Provider, SqlExpr, FMTBcd, VarGlobal;
 
 type
   TfrmLancCaixa = class(TForm)
@@ -44,9 +44,9 @@ type
     rdgConta: TDBRadioGroup;
     dbDesc: TDBEdit;
     dbDoc: TDBEdit;
-    dbeCaixa: TPLDBEdit;
-    dbeData: TPLDBEditDateTimePicker;
-    dbeValor: TPLDBEdit;
+    dbeCaixa: TDBEdit;
+    dbeData: TDBEdit;
+    dbeValor: TDBEdit;
     sqldCaixasCODIGO: TIntegerField;
     sqldCaixasNOME: TStringField;
     sqldCaixasINATIVO: TStringField;
@@ -95,7 +95,7 @@ procedure TfrmLancCaixa.btnOkClick(Sender: TObject);
 begin
   if CamposNulos then
   begin
-    MsgCuidado('Preencha todos os campos');
+    MsgCuidado('','Preencha todos os campos');
     Exit;
   end
   else
@@ -134,7 +134,7 @@ function TfrmLancCaixa.CamposNulos: Boolean;
 begin
   Result := False;
   if (rdgConta.ItemIndex = -1) or
-     (ClearMask(dbeData.DBEdit.Text) = '') or
+     (ClearMask(dbeData.Text) = '') or
      (dbDesc.Text = '') or
      (dbDoc.Text = '') or
      (dbeValor.Text = '') then
@@ -183,7 +183,7 @@ end;
 
 procedure TfrmLancCaixa.dbeValorKeyPress(Sender: TObject; var Key: Char);
 begin
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmLancCaixa.cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -224,7 +224,7 @@ begin
     if not IsEmpty then
     begin
       Close;
-      SetParamsNoResult(Params);
+      //SetParamsNoResult(Params);
       Open;
     end;
   end;
@@ -283,7 +283,7 @@ begin
   begin
     if cdsCaixasINATIVO.AsString = 'S' then
     begin
-      MsgAviso('Este caixa está configurado como inativo, não pode ser utilizado.');
+      MsgAviso('','Este caixa está configurado como inativo, não pode ser utilizado.');
       cdsPadraoCODCAIXAS.Clear;
       cdsPadraoNOME.Clear;
       Exit;

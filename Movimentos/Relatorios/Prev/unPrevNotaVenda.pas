@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DBClient, PLClientDataSet, Provider,
-  PLDataSetProvider, DB, SqlExpr, PLSQLDataSet, FMTBcd;
+  Dialogs, RLReport, DBClient,
+  Datasnap.Provider, DB, Data.SqlExpr, FMTBcd;
 
 type
   TfrmPrevNotaVenda = class(TForm)
@@ -26,12 +26,12 @@ type
     rlblCep: TRLLabel;
     rlblFone: TRLLabel;
     rlblDataVenda: TRLLabel;
-    sqldVenda: TPLSQLDataSet;
-    dspVenda: TPLDataSetProvider;
-    cdsVenda: TPLClientDataSet;
+    sqldVenda: TSQLDataSet;
+    dspVenda: TDataSetProvider;
+    cdsVenda: TClientDataSet;
     dsVenda: TDataSource;
     rlsdProdutoVenda: TRLSubDetail;
-    sqldItemVenda: TPLSQLDataSet;
+    sqldItemVenda: TSQLDataSet;
     dsLigaVenda: TDataSource;
     cdsVendaCODIGO: TIntegerField;
     cdsVendaCODCLIENTE: TIntegerField;
@@ -49,7 +49,7 @@ type
     cdsVendaCONCLUIDA: TStringField;
     cdsVendaBAIXADO: TStringField;
     cdsVendasqldItemVenda: TDataSetField;
-    cdsItemVenda: TPLClientDataSet;
+    cdsItemVenda: TClientDataSet;
     dsItemVenda: TDataSource;
     cdsItemVendaCODPRODUTO: TIntegerField;
     cdsItemVendaPRODUTO: TStringField;

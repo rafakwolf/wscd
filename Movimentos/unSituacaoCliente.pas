@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, Buttons, SqlExpr, ExtCtrls, PLEdit, FMTBcd;
+  Dialogs, StdCtrls, DB, Buttons, SqlExpr, ExtCtrls,  FMTBcd;
 
 type
   TfrmSituacaoCliente = class(TForm)
@@ -14,13 +14,13 @@ type
     spSituacaoCliente: TSQLDataSet;
     cedDiasAtraso: TLabeledEdit;
     imgWarn: TImage;
-    cedCliente: TPLEdit;
-    cedDataCadastro: TPLEdit;
-    cedLimite: TPLEdit;
+    cedCliente: TEdit;
+    cedDataCadastro: TEdit;
+    cedLimite: TEdit;
     grpDadosCliente: TGroupBox;
-    cedTotalContas: TPLEdit;
-    cedTotalVencidas: TPLEdit;
-    cedPrimeiroVenc: TPLEdit;
+    cedTotalContas: TEdit;
+    cedTotalVencidas: TEdit;
+    cedPrimeiroVenc: TEdit;
     btnContasCliente: TBitBtn;
     mmoMsg: TMemo;
     spSituacaoClienteCLIENTE: TStringField;
@@ -48,7 +48,7 @@ var
 
 implementation
 
-uses Funcoes, unContasReceber;
+uses Funcoes, unContasReceber, System.Math;
 
 {$R *.dfm}
 
@@ -95,8 +95,8 @@ begin
     if (FieldByName('DIASATRASO').AsInteger > 0) then
       mmoMsg.Lines.Add('Cliente com contas vencidas');
 
-    if (RoundFloat(FieldByName('TOTALCONTAS').AsFloat, 2) >
-        RoundFloat(FieldByName('LIMITECLIENTE').AsFloat, 2)) then
+    if (RoundTo(FieldByName('TOTALCONTAS').AsFloat, 2) >
+        RoundTo(FieldByName('LIMITECLIENTE').AsFloat, 2)) then
       mmoMsg.Lines.Add('Cliente com limite insuficiente');
 
   end;

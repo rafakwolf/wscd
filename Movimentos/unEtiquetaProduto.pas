@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, Grids, DBGrids, DBClient, Provider, SqlExpr,
-  Mask, DBCtrls, PLDBEdit, FMTBcd, System.Actions, VarGlobal;
+  Mask, DBCtrls,  FMTBcd, System.Actions, VarGlobal;
 
 type
   TfrmEtiquetaProduto = class(TfrmPadrao)
@@ -14,9 +14,9 @@ type
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodBarra: TPLDBEdit;
-    dbeProduto: TPLDBEdit;
-    dbePreco: TPLDBEdit;
+    dbeCodBarra: TDBEdit;
+    dbeProduto: TDBEdit;
+    dbePreco: TDBEdit;
     miBuscaProduto: TMenuItem;
     sqldProduto: TSQLDataSet;
     dspProduto: TDataSetProvider;
@@ -139,7 +139,7 @@ end;
 procedure TfrmEtiquetaProduto.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('ETIQUETAPROD', cdsPadraoIDETIQUETAPROD, GetConnection);
+  //Incrementa('ETIQUETAPROD', cdsPadraoIDETIQUETAPROD, GetConnection);
 end;
 
 procedure TfrmEtiquetaProduto.miInserirTodosProdutosClick(Sender: TObject);

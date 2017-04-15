@@ -9,7 +9,7 @@ inherited frmRenovaChave: TfrmRenovaChave
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   ExplicitWidth = 295
-  ExplicitHeight = 229
+  ExplicitHeight = 230
   PixelsPerInch = 96
   TextHeight = 13
   object lbTitulo: TLabel

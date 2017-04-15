@@ -173,8 +173,8 @@ object frmPagamentoVenda: TfrmPagamentoVenda
   end
   object dspVenda: TDataSetProvider
     DataSet = sqldVenda
-    Left = 192
-    Top = 48
+    Left = 232
+    Top = 56
   end
   object cdsVenda: TClientDataSet
     Aggregates = <>
@@ -185,8 +185,8 @@ object frmPagamentoVenda: TfrmPagamentoVenda
         ParamType = ptInput
       end>
     ProviderName = 'dspVenda'
-    Left = 224
-    Top = 48
+    Left = 304
+    Top = 56
     object cdsVendaDATARECTO: TDateField
       FieldName = 'DATARECTO'
       DisplayFormat = 'dd/mm/yyyy'
@@ -207,7 +207,7 @@ object frmPagamentoVenda: TfrmPagamentoVenda
   end
   object dsVenda: TDataSource
     DataSet = cdsVenda
-    Left = 264
-    Top = 48
+    Left = 400
+    Top = 56
   end
 end

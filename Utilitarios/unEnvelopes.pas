@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, PLDBEdit, Mask,
+  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,  Mask,
   DBCtrls, FMTBcd, System.Actions, VarGlobal;
 
 type
@@ -37,7 +37,7 @@ type
     dbBairro: TDBEdit;
     dbCep: TDBEdit;
     dbMsg: TDBEdit;
-    dbeCidade: TPLDBEdit;
+    dbeCidade: TDBEdit;
     sqldCidade: TSQLDataSet;
     sqldCidadeCODCIDADE: TIntegerField;
     sqldCidadeDESCRICAO: TStringField;

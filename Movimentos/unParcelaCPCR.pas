@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, ComCtrls, PLDBEditDateTimePicker, DB,
-  DBClient, PLClientDataSet, Provider, PLDataSetProvider, SqlExpr,
-  PLSQLDataSet, Grids, DBGrids, Spin, StdCtrls, Mask, DBCtrls, PLDBEdit,
+  Dialogs, unSimplePadrao, ComCtrls,  DB,
+  DBClient, Datasnap.Provider, SqlExpr,
+  Grids, DBGrids, Spin, StdCtrls, Mask, DBCtrls,
   Buttons, DateUtils, FMTBcd;
 
 type
@@ -16,36 +16,36 @@ type
     lbIntervalo: TLabel;
     btnOk: TBitBtn;
     btnCancelar: TBitBtn;
-    dbeCodigo: TPLDBEdit;
-    dbeNome: TPLDBEdit;
+    dbeCodigo: TDBEdit;
+    dbeNome: TDBEdit;
     seParcelas: TSpinEdit;
     sePrazoInicio: TSpinEdit;
     seIntervalo: TSpinEdit;
     dbgrdParcelas: TDBGrid;
     btnCalcular: TBitBtn;
-    sqldParcela: TPLSQLDataSet;
+    sqldParcela: TSQLDataSet;
     sqldParcelaNUMERO: TIntegerField;
     sqldParcelaVENC: TDateField;
     sqldParcelaDIA: TStringField;
     sqldParcelaVALOR: TFloatField;
-    dspParcela: TPLDataSetProvider;
-    cdsParcela: TPLClientDataSet;
+    dspParcela: TDataSetProvider;
+    cdsParcela: TClientDataSet;
     cdsParcelaNUMERO: TIntegerField;
     cdsParcelaVENC: TDateField;
     cdsParcelaDIA: TStringField;
     cdsParcelaVALOR: TFloatField;
     dsParcela: TDataSource;
-    sqldContasPagar: TPLSQLDataSet;
-    sqldReceber: TPLSQLDataSet;
-    dbdtpData: TPLDBEditDateTimePicker;
-    dbeValor: TPLDBEdit;
-    sqldPadrao: TPLSQLDataSet;
+    sqldContasPagar: TSQLDataSet;
+    sqldReceber: TSQLDataSet;
+    dbdtpData: TDBEdit;
+    dbeValor: TDBEdit;
+    sqldPadrao: TSQLDataSet;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoNOME: TStringField;
     sqldPadraoDATA: TDateField;
     sqldPadraoVALOR: TFloatField;
-    dspPadrao: TPLDataSetProvider;
-    cdsPadrao: TPLClientDataSet;
+    dspPadrao: TDataSetProvider;
+    cdsPadrao: TClientDataSet;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoNOME: TStringField;
     cdsPadraoDATA: TDateField;
@@ -77,7 +77,8 @@ var
 
 implementation
 
-uses Funcoes,  VarGlobal, unModeloConsulta, ConstPadrao;
+uses Funcoes,  VarGlobal, unModeloConsulta, ConstPadrao, System.Math, uDatabaseutils,
+  System.StrUtils;
 
 {$R *.dfm}
 
@@ -110,7 +111,7 @@ begin
     else
       cdsParcelaVENC.AsDateTime := IncDay(cdsPadraoDATA.AsDateTime, (seIntervalo.Value * x));
     cdsParcelaDIA.AsString := DiaSemana(cdsParcelaVENC.AsDateTime);
-    cdsParcelaVALOR.AsFloat := RoundFloat((cdsPadraoVALOR.AsFloat / seParcelas.Value), 2);
+    cdsParcelaVALOR.AsFloat := RoundTo((cdsPadraoVALOR.AsFloat / seParcelas.Value), 2);
     cdsParcela.Post;
   end;
 end;
@@ -207,11 +208,11 @@ begin
   if FTipoChamada = 1 then
   begin
     Caption := 'Parcelamento de contas a pagar';
-    dbeNome.EditLabel.Caption := 'Fornecedor';
+    //TODO: dbeNome.EditLabel.Caption := 'Fornecedor';
   end
   else
   begin
-    dbeNome.EditLabel.Caption := 'Cliente';
+    //TODO: dbeNome.EditLabel.Caption := 'Cliente';
     Caption := 'Parcelamento de contas a receber';
   end;
 end;
@@ -338,9 +339,9 @@ end;
 
 procedure TfrmParcelaCPCR.dbeNomeEnter(Sender: TObject);
 begin
-  inherited;
-  if cdsPadraoNOME.IsNull then
-    TPLDBEdit(Sender).OnClickButton(Self);
+  inherited; //TODO:
+//  if cdsPadraoNOME.IsNull then
+//    TDBEdit(Sender).OnClickButton(Self);
 end;
 
 end.

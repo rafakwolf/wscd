@@ -5,7 +5,7 @@ interface
 uses
   SysUtils, Classes, DB, SqlExpr, Dialogs, Forms, Controls,
   Messages, Graphics,  Windows, FMTBcd, RLConsts,
-  udmBase, Data.DBXFirebird;
+  udmBase, Data.DBXFirebird, Datasnap.Provider, Datasnap.DBClient;
 
 type
   TDmPrincipal = class(TdmBase)
@@ -30,13 +30,12 @@ uses uDBXConnectionParams;
 {$R *.dfm}
 
 procedure TDmPrincipal.ConexaoBeforeConnect(Sender: TObject);
-var host: string;
 begin
   inherited;
   TDBXConnectionParams.setParams(Conexao,
     'localhost/3050',
     'D:\ProjetosDELPHI\WSCD\Database\CPR2.fdb',
-    'SYSDBA','masterkey','RDB$ADMIN',dtFirebird,3050);
+    'SYSDBA','masterkey','RDB$ADMIN',0,3050);
 end;
 
 procedure TDmPrincipal.DataModuleCreate(Sender: TObject);
@@ -60,7 +59,7 @@ begin
   Conexao.Open;
 end;
 
-initialization
-  RLConsts.SetVersion(3,71,'B');
+//initialization
+//  RLConsts.SetVersion(3,71,'B');
 
 end.

@@ -2032,12 +2032,12 @@ object frmPadrao: TfrmPadrao
   object dsPadrao: TDataSource
     AutoEdit = False
     OnStateChange = dsPadraoStateChange
-    Left = 119
+    Left = 207
     Top = 44
   end
   object mmPadrao: TMainMenu
-    Left = 88
-    Top = 44
+    Left = 144
+    Top = 76
     object miNavigate: TMenuItem
       Caption = 'Registros'
       object miPrimeiro: TMenuItem

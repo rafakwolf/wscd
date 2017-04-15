@@ -5,16 +5,16 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, Grids, DBGrids, StdCtrls, ExtCtrls, Buttons,
-  DB, DBClient, PLClientDataSet, Provider, PLDataSetProvider,
-  SqlExpr, PLSQLDataSet, ComCtrls, DateUtils, ImgList, FMTBcd;
+  DB, DBClient, Datasnap.Provider,
+  Data.SqlExpr, ComCtrls, DateUtils, ImgList, FMTBcd, System.ImageList;
 
 type
   TfrmInfoAvisos = class(TfrmSimplePadrao)
     imgInfo: TImage;
     lbInfo: TLabel;
-    sqldCR: TPLSQLDataSet;
-    dspCR: TPLDataSetProvider;
-    cdsCR: TPLClientDataSet;
+    sqldCR: TSQLDataSet;
+    dspCR: TDataSetProvider;
+    cdsCR: TClientDataSet;
     dsCR: TDataSource;
     sqldCRVENCIMENTO: TDateField;
     sqldCRCLIENTE: TStringField;
@@ -37,14 +37,14 @@ type
     lblData: TLabel;
     btnAnterior: TBitBtn;
     btnProximo: TBitBtn;
-    sqldCP: TPLSQLDataSet;
+    sqldCP: TSQLDataSet;
     sqldCPCODIGO: TIntegerField;
     sqldCPVENCIMENTO: TDateField;
     sqldCPFORNECEDOR: TStringField;
     sqldCPVALOR: TFMTBCDField;
     sqldCPATRASO: TIntegerField;
-    dspCP: TPLDataSetProvider;
-    cdsCP: TPLClientDataSet;
+    dspCP: TDataSetProvider;
+    cdsCP: TClientDataSet;
     cdsCPCODIGO: TIntegerField;
     cdsCPVENCIMENTO: TDateField;
     cdsCPFORNECEDOR: TStringField;
@@ -62,9 +62,9 @@ type
     cdsCRRECEBER: TStringField;
     ilImages: TImageList;
     dbgrdClientes: TDBGrid;
-    sqldClientes: TPLSQLDataSet;
-    dspClientes: TPLDataSetProvider;
-    cdsClientes: TPLClientDataSet;
+    sqldClientes: TSQLDataSet;
+    dspClientes: TDataSetProvider;
+    cdsClientes: TClientDataSet;
     dsClientes: TDataSource;
     btnEtiqCliente: TBitBtn;
     sqldClientesNOME: TStringField;
@@ -121,7 +121,8 @@ var
 implementation
 
 uses unReceberMan, unPagarMan, Funcoes, ufmImprimeEtiq, unDmPrincipal,
-  unPrevClienteAniver, uConfiguraRelatorio, unPrevEnvelopeClientes;
+  unPrevClienteAniver, uConfiguraRelatorio, unPrevEnvelopeClientes,
+  uDatabaseutils;
 
 {$R *.dfm}
 
@@ -129,9 +130,10 @@ procedure TfrmInfoAvisos.FormCreate(Sender: TObject);
 begin
   inherited;
   UpdateSingleField('update CONTASRECEBER set RECEBER = '+
-    QuotedStr('N'), sqldCR.SQLConnection);
+    QuotedStr('N'));
+
   UpdateSingleField('update CONTASPAGAR set PAGAR = '+
-    QuotedStr('N'), sqldCP.SQLConnection);
+    QuotedStr('N'));
 
   dtpData.Date := Date;
 
@@ -269,7 +271,7 @@ end;
 
 procedure TfrmInfoAvisos.TotalizaCP(Data: TDateTime);
 begin
-  with TPLSQLDataSet.Create(nil) do
+  with TSQLDataSet.Create(nil) do
   try
     SQLConnection := sqldCP.SQLConnection;
     CommandText := 'SELECT '+
@@ -287,7 +289,7 @@ end;
 
 procedure TfrmInfoAvisos.TotalizaCR(Data: TDateTime);
 begin
-  with TPLSQLDataSet.Create(nil) do
+  with TSQLDataSet.Create(nil) do
   try
     SQLConnection := sqldCP.SQLConnection;
     CommandText := 'SELECT '+

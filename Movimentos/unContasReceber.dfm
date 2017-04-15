@@ -8,8 +8,9 @@ inherited frmContasReceber: TfrmContasReceber
   ClientWidth = 762
   Menu = mnuCP
   OnShow = FormShow
+  ExplicitLeft = -17
   ExplicitWidth = 768
-  ExplicitHeight = 486
+  ExplicitHeight = 487
   PixelsPerInch = 96
   TextHeight = 13
   object Stb: TStatusBar
@@ -625,8 +626,8 @@ inherited frmContasReceber: TfrmContasReceber
     end
   end
   object mnuCP: TMainMenu
-    Left = 488
-    Top = 8
+    Left = 256
+    Top = 192
     object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
       object miReceber: TMenuItem
@@ -790,8 +791,8 @@ inherited frmContasReceber: TfrmContasReceber
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
     OnStateChange = dsPadraoStateChange
-    Left = 712
-    Top = 48
+    Left = 696
+    Top = 152
   end
   object sqldCliente: TSQLDataSet
     CommandText = 
@@ -801,8 +802,8 @@ inherited frmContasReceber: TfrmContasReceber
       'DADE = cid.CODCIDADE)'#13#10'order by cli.NOME'
     MaxBlobSize = -1
     Params = <>
-    Left = 480
-    Top = 48
+    Left = 360
+    Top = 272
     object sqldClienteCODCLIENTE: TIntegerField
       FieldName = 'CODCLIENTE'
       Required = True
@@ -836,15 +837,15 @@ inherited frmContasReceber: TfrmContasReceber
   object dspCliente: TDataSetProvider
     DataSet = sqldCliente
     Options = [poAllowCommandText]
-    Left = 512
-    Top = 48
+    Left = 440
+    Top = 272
   end
   object cdsCliente: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCliente'
-    Left = 544
-    Top = 48
+    Left = 536
+    Top = 272
     object cdsClienteCODCLIENTE: TIntegerField
       FieldName = 'CODCLIENTE'
       Required = True
@@ -893,8 +894,8 @@ inherited frmContasReceber: TfrmContasReceber
         Name = 'PCLIENTE'
         ParamType = ptInput
       end>
-    Left = 616
-    Top = 48
+    Left = 480
+    Top = 168
     object sqldPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -985,8 +986,8 @@ inherited frmContasReceber: TfrmContasReceber
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
-    Left = 648
-    Top = 48
+    Left = 560
+    Top = 160
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -997,8 +998,8 @@ inherited frmContasReceber: TfrmContasReceber
         ParamType = ptInput
       end>
     ProviderName = 'dspPadrao'
-    Left = 680
-    Top = 48
+    Left = 632
+    Top = 152
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -1092,7 +1093,7 @@ inherited frmContasReceber: TfrmContasReceber
       DisplayFormat = '#,##0.00'
     end
   end
-  object sqldDeleta: TPLSQLDataSet
+  object sqldDeleta: TSQLDataSet
     CommandText = 'STPDELCR'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'
@@ -1103,7 +1104,7 @@ inherited frmContasReceber: TfrmContasReceber
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    Left = 520
-    Top = 8
+    Left = 392
+    Top = 176
   end
 end

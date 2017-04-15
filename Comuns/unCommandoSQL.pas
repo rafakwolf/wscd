@@ -34,8 +34,8 @@ procedure TfrmCommandoSQL.FormCreate(Sender: TObject);
 begin
   CentralizaForm(Self);
   mmoSQL.Lines.Clear;
-  if FileExists(DiretorioSistema+'SQL.txt') then
-    mmoSQL.Lines.Text := LeTxt(DiretorioSistema+'SQL.txt');
+//  if FileExists(ExtractFilePath(ParamStr(0))+'SQL.txt') then
+//    mmoSQL.Lines.Text := LeTxt(ExtractFilePath(ParamStr(0))+'SQL.txt');
 end;
 
 class function TfrmCommandoSQL.Execute(
@@ -57,7 +57,7 @@ end;
 procedure TfrmCommandoSQL.btnLimparClick(Sender: TObject);
 begin
   mmoSQL.Lines.Clear;
-  CriaTxt(DiretorioSistema+'SQL.txt', mmoSQL.Lines.Text);
+  //CriaTxt(ExtractFilePath(ParamStr(0))+'SQL.txt', mmoSQL.Lines.Text);
 end;
 
 procedure TfrmCommandoSQL.FormKeyDown(Sender: TObject; var Key: Word;

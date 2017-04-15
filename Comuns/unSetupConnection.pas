@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ImgList, ComCtrls, ExtCtrls, Buttons, DB, SqlExpr;
+  Dialogs, StdCtrls, ImgList, ComCtrls, ExtCtrls, Buttons, DB, SqlExpr,
+  System.ImageList;
 
 type
   TfrmSetupConnection = class(TForm)
@@ -37,7 +38,7 @@ var
 
 implementation
 
-uses Funcoes, FuncoesWin, Types;
+uses Funcoes, Types, IniFiles;
 
 {$R *.dfm}
 
@@ -53,7 +54,7 @@ begin
   EnabledButtons(False);
   try
     sl := TStringList.Create;
-    ScanNetworkResources(RESOURCETYPE_DISK, RESOURCEDISPLAYTYPE_SERVER, sl);
+    //ScanNetworkResources(RESOURCETYPE_DISK, RESOURCEDISPLAYTYPE_SERVER, sl);
 
     for  x := 0 to sl.Count - 1 do
     begin
@@ -78,7 +79,14 @@ procedure TfrmSetupConnection.FormShow(Sender: TObject);
 var
   OldServer: String;
 begin
-  OldServer := ReadIniFile('Conexao', 'Servidor');
+  with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
+  try
+       OldServer := Readstring('Conexao', 'Servidor','localhost');
+  finally
+    free;
+  end;
+
+
   if (OldServer <> '') then
   begin
     cbbComp.ItemsEx.AddItem(OldServer, 1,1,1, 0, nil);
@@ -87,16 +95,24 @@ begin
 
   cbServidorLocal.Checked := (OldServer = '127.0.0.1');
 
-  ForceForegroundWindow(Handle);
+  //ForceForegroundWindow(Handle);
 end;
 
 procedure TfrmSetupConnection.bbConfirmaClick(Sender: TObject);
 begin
   if (cbbComp.Text <> '') then
-    WriteIniFile('Conexao', 'Servidor', cbbComp.Text)
+  begin
+
+    with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
+    try
+        Writestring('Conexao', 'Servidor', cbbComp.Text)
+    finally
+      free;
+    end;
+  end
   else
   begin
-    MsgCuidado('Escolha o servidor antes de prosseguir.');
+    MsgCuidado('','Escolha o servidor antes de prosseguir.');
     ModalResult := mrNone;
     Exit;
   end;
@@ -124,7 +140,8 @@ end;
 
 procedure TfrmSetupConnection.FormCreate(Sender: TObject);
 begin
-  SetDialogForm(Self);
+  //SetDialogForm(Self);
+
   stbStatus.SimpleText := EmptyStr;
 end;
 

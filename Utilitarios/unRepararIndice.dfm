@@ -6,7 +6,7 @@ inherited frmRepararIndice: TfrmRepararIndice
   ClientWidth = 537
   OldCreateOrder = True
   ExplicitWidth = 553
-  ExplicitHeight = 115
+  ExplicitHeight = 116
   PixelsPerInch = 96
   TextHeight = 13
   object lbStatus: TLabel
@@ -151,7 +151,7 @@ inherited frmRepararIndice: TfrmRepararIndice
     TabOrder = 2
     OnClick = btnCancelarClick
   end
-  object sqldPK: TPLSQLDataSet
+  object sqldPK: TSQLDataSet
     CommandText = 'select * from VIEWPK order by PK'
     MaxBlobSize = -1
     Params = <>
@@ -168,7 +168,7 @@ inherited frmRepararIndice: TfrmRepararIndice
       Size = 31
     end
   end
-  object sqldFK: TPLSQLDataSet
+  object sqldFK: TSQLDataSet
     CommandText = 'select * from VIEWFK order by FK'
     MaxBlobSize = -1
     Params = <>

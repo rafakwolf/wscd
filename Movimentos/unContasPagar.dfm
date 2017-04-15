@@ -9,7 +9,7 @@ inherited frmContasPagar: TfrmContasPagar
   Menu = mnuCP
   OnShow = FormShow
   ExplicitWidth = 766
-  ExplicitHeight = 473
+  ExplicitHeight = 474
   PixelsPerInch = 96
   TextHeight = 13
   object Stb: TStatusBar
@@ -848,8 +848,8 @@ inherited frmContasPagar: TfrmContasPagar
         Name = 'PFORN'
         ParamType = ptInput
       end>
-    Left = 328
-    Top = 192
+    Left = 128
+    Top = 200
     object sqldPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -936,8 +936,8 @@ inherited frmContasPagar: TfrmContasPagar
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 360
-    Top = 192
+    Left = 232
+    Top = 200
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -948,8 +948,8 @@ inherited frmContasPagar: TfrmContasPagar
         ParamType = ptInput
       end>
     ProviderName = 'dspPadrao'
-    Left = 392
-    Top = 192
+    Left = 328
+    Top = 200
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -1102,7 +1102,7 @@ inherited frmContasPagar: TfrmContasPagar
       Required = True
     end
   end
-  object sqldDeleta: TPLSQLDataSet
+  object sqldDeleta: TSQLDataSet
     CommandText = 'STPDELCP'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-  PLDBEdit, FMTBcd, System.Actions;
+   FMTBcd, System.Actions;
 
 type
   TfrmConfigGlobal = class(TfrmPadrao)
@@ -15,33 +15,33 @@ type
     cdsPadrao: TClientDataSet;
     pgcConfigGlobal: TPageControl;
     tsCrediario: TTabSheet;
-    dbeJuro: TPLDBEdit;
-    dbeIntervalo: TPLDBEdit;
-    dbePrazoInicial: TPLDBEdit;
-    dbeParcelas: TPLDBEdit;
+    dbeJuro: TDBEdit;
+    dbeIntervalo: TDBEdit;
+    dbePrazoInicial: TDBEdit;
+    dbeParcelas: TDBEdit;
     tsCliente: TTabSheet;
-    dbeLimiteCliente: TPLDBEdit;
+    dbeLimiteCliente: TDBEdit;
     tsOrcamento: TTabSheet;
-    dbeTituloOrcam: TPLDBEdit;
-    dbeColunaBobina: TPLDBEdit;
+    dbeTituloOrcam: TDBEdit;
+    dbeColunaBobina: TDBEdit;
     dbmmMsgRodape: TDBMemo;
     lbMsgOrcamRodape: TLabel;
     tsVenda: TTabSheet;
-    dbeTituloVenda: TPLDBEdit;
-    dbeColunaBobinaVenda: TPLDBEdit;
+    dbeTituloVenda: TDBEdit;
+    dbeColunaBobinaVenda: TDBEdit;
     dbmmMsgRodapeVenda: TDBMemo;
     lbMsgRodapeVenda: TLabel;
-    dbeLinhaPularOrcam: TPLDBEdit;
-    dbeLinhaPularVenda: TPLDBEdit;
-    dbePortaImpVenda: TPLDBEdit;
+    dbeLinhaPularOrcam: TDBEdit;
+    dbeLinhaPularVenda: TDBEdit;
+    dbePortaImpVenda: TDBEdit;
     tsFTP: TTabSheet;
-    dbeHost: TPLDBEdit;
-    dbeUserName: TPLDBEdit;
-    dbePassWord: TPLDBEdit;
-    dbeDiretorio: TPLDBEdit;
-    dbeTimeOut: TPLDBEdit;
+    dbeHost: TDBEdit;
+    dbeUserName: TDBEdit;
+    dbePassWord: TDBEdit;
+    dbeDiretorio: TDBEdit;
+    dbeTimeOut: TDBEdit;
     dbckbPassive: TDBCheckBox;
-    dbeIdadeCliente: TPLDBEdit;
+    dbeIdadeCliente: TDBEdit;
     sqldPadraoTAXAJURO: TFMTBCDField;
     sqldPadraoINTERVALO: TIntegerField;
     sqldPadraoPRAZOINICIAL: TIntegerField;

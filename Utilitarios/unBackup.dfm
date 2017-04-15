@@ -9,8 +9,8 @@ inherited frmBackup: TfrmBackup
   Font.Height = -12
   OldCreateOrder = True
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
+  ExplicitWidth = 441
+  ExplicitHeight = 325
   PixelsPerInch = 96
   TextHeight = 14
   object Memo: TMemo

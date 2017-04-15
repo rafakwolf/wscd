@@ -35,7 +35,7 @@ var
 implementation
 
 uses
-  Funcoes, FuncoesWin, uBackupRestore,  VarGlobal;
+  Funcoes, {FuncoesWin, uBackupRestore,}  VarGlobal;
 
 {$R *.dfm}
 
@@ -48,7 +48,7 @@ procedure TfrmRestore.btnRestaurarClick(Sender: TObject);
 var
   FileCopia, DestinoCopia, BancoAntigo, copia_descompactada: String;
   //Zip: TZip;
-  aRestore: TBackupRestore;
+ // aRestore: TBackupRestore;
   x: Integer;
 begin
   {x                   := 0;
@@ -69,8 +69,8 @@ begin
         Exit;
       end;
 
-      DestinoCopia := DiretorioSistema;
-      BancoAntigo := DiretorioSistema + 'CPR.fdb';
+      DestinoCopia := ExtractFilePath(ParamStr(0));
+      BancoAntigo := ExtractFilePath(ParamStr(0)) + 'CPR.fdb';
 
       Zip := TZip.Create;
       with Zip do
@@ -185,7 +185,7 @@ end;
 
 procedure TfrmRestore.Msg(Texto: string; pDelay: Cardinal);
 begin
-  Delay(pDelay);
+  //Delay(pDelay);
   Memo.Lines.Add(Texto);
   Application.ProcessMessages;
 end;

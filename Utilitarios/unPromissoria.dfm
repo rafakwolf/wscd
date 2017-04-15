@@ -7,7 +7,7 @@ inherited frmPromissoria: TfrmPromissoria
   OldCreateOrder = True
   OnShow = FormShow
   ExplicitWidth = 529
-  ExplicitHeight = 307
+  ExplicitHeight = 308
   PixelsPerInch = 96
   TextHeight = 13
   object bvlLinha: TBevel
@@ -41,7 +41,7 @@ inherited frmPromissoria: TfrmPromissoria
     Top = 24
     Width = 121
     Height = 21
-    EditLabel.Width = 67
+    EditLabel.Width = 66
     EditLabel.Height = 13
     EditLabel.Caption = 'Vencimento'
     TabOrder = 2
@@ -51,7 +51,7 @@ inherited frmPromissoria: TfrmPromissoria
     Top = 24
     Width = 121
     Height = 21
-    EditLabel.Width = 30
+    EditLabel.Width = 29
     EditLabel.Height = 13
     EditLabel.Caption = 'Valor'
     TabOrder = 3

@@ -5,12 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, PLDBEdit;
+  DBCtrls;
 
 type
   TfrmRelatorioEtiquetaCliente = class(TfrmDialogoRelatorioPadrao)
-    dbeCliente: TPLDBEdit;
-    dbeCidade: TPLDBEdit;
+    dbeCliente: TDBEdit;
+    dbeCidade: TDBEdit;
     rgpFiltro: TRadioGroup;
     dsCidade: TDataSource;
     procedure btnVisualizarClick(Sender: TObject);
@@ -135,12 +135,12 @@ begin
   0: begin
        dbeCliente.Visible := True;
        dbeCidade.Visible  := False;
-       dbeCliente.Button.Enabled := True;
+       //dbeCliente.Button.Enabled := True;
      end;
   1: begin
        dbeCliente.Visible := False;
        dbeCidade.Visible  := True;
-       dbeCidade.Button.Enabled := True;         
+       //dbeCidade.Button.Enabled := True;
      end;
   2: begin
        dbeCliente.Visible := False;

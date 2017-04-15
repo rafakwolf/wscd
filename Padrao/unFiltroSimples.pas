@@ -92,7 +92,7 @@ end;
 procedure TfrmFiltroSimples.ledtBuscaChange(Sender: TObject);
 begin
   if (ledtBusca.Text <> '') and (not cdsFiltro.Locate('NOME', ledtBusca.Text,[loCaseInsensitive, loPartialKey])) then
-    MsgAviso(UM_PESQUISAVAZIO);
+    MsgAviso('',UM_PESQUISAVAZIO);
 end;
 
 procedure TfrmFiltroSimples.dbgrdFiltroDblClick(Sender: TObject);

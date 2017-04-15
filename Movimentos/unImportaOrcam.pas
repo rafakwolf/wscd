@@ -5,8 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, Buttons, DB, ComCtrls,
-  DBClient, Provider, SqlExpr,
-  PLSQLDataSet, FMTBcd;
+  DBClient, Provider, SqlExpr, FMTBcd;
 
 type
   TfrmImportaOrcam = class(TForm)
@@ -17,8 +16,8 @@ type
     btnCancelar: TBitBtn;
     Grade: TDBGrid;
     Progresso: TProgressBar;
-    sqldVenda: TPLSQLDataSet;
-    sqldItemVenda: TPLSQLDataSet;
+    sqldVenda: TSQLDataSet;
+    sqldItemVenda: TSQLDataSet;
     dtOrcam: TDataSetProvider;
     cdsOrcam: TClientDataSet;
     cdsOrcamCODIGO: TIntegerField;
@@ -89,7 +88,7 @@ var
 
 implementation
 
-uses Funcoes, VarGlobal;
+uses Funcoes, VarGlobal, uDatabaseutils;
 
 {$R *.dfm}
 

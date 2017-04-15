@@ -5,9 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ExtCtrls, Buttons, SqlExpr, Types, ActnList, DB,
-  ConstPadrao, ShellAPI, ToolWin, AppEvnts, uSystray,
-  StdCtrls, DBCtrls, DBClient,
-  PLClientDataSet, Provider, PLDataSetProvider, PLSQLDataSet, ImgList,
+  ConstPadrao, ShellAPI, ToolWin, AppEvnts,  udatabaseutils, crypto,
+  StdCtrls, DBCtrls, DBClient, IniFiles,
+  Provider, ImgList,  ImgUtils,
   unAguarde, FMTBcd, System.Actions;
 
 const
@@ -301,7 +301,7 @@ type
 
     AuxWidth, AuxHeight: Integer;
     SistemaOk: Boolean;
-    FIconData: TNotifyIconDataEx;
+   // FIconData: TNotifyIconDataEx;
     FBitmap: TBitmap;
 
     copiando: Boolean;
@@ -357,92 +357,92 @@ var
 implementation
 
 uses
-  Funcoes, FuncoesWin, VarGlobal, Validacao, unAcesso,
-  unSetupConnection, unExecutaScript, uClasses, udmAcesso;
+  unAcesso, Funcoes, uUtilFncs, VarGlobal,
+  unSetupConnection, unExecutaScript, uClasses, udmAcesso, System.StrUtils;
 
 {$R *.dfm}
 
 procedure TfrmPrincipal.VerificaSerial;
 var
-  RetornoValidacao: TTipoValidacao;
+  //RetornoValidacao: TTipoValidacao;
   SimNao: Boolean;
 begin
   SimNao := False;
  // RetornoValidacao := ValidaSerial(Sistema.Serial, Empresa.Nome + Empresa.Cnpj +
  //   Empresa.Cep);
-  case RetornoValidacao of
-    tvSerialErrado, tvChaveErrada:
-      begin
-        if Application.MessageBox('A chave de liberação informada está incorreta ' +
-          'ou ainda não foi informada, os dados da empresa também podem ter sido alterados.' + #13 +
-          'Deseja efetuar a correção agora?', 'Dados incorretos',
-          MB_YESNO or MB_ICONWARNING) = ID_YES then
-          SimNao := True
-        else
-          SimNao := False;
-      end;
-    tvExpirouPrazo:
-      begin
-        if Application.MessageBox('A chave de liberação está expirada.' + #13 +
-          'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato ' +
-          'com o suporte para obter uma nova chave de liberação.' + #13 +
-          'Deseja informar uma nova chave de liberação agora?', 'Chave expirada',
-          MB_YESNO or MB_ICONWARNING) = ID_YES then
-          SimNao := True
-        else
-          SimNao := False;
-      end;
-    tvBloqueioSistema:
-      begin
-        if Application.MessageBox('CHAVE DE LIBERAÇÃO EXPIRADA.' + #13 +
-          'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias. ' +
-          'Por favor entre em contato com o suporte para obter uma nova chave de liberação.' + #13 +
-          'Deseja informar uma nova chave de liberação?',
-          'Sistema bloqueado', MB_YESNO or MB_ICONERROR) = ID_YES then
-          SimNao := True
-        else
-          SimNao := False;
-      end;
-    tvPrazoMtoLongo:
-      begin
-        if Application.MessageBox('A chave de liberação informada está fora de um período válido. ' +
-          'Verifique a data do seu computador e se a chave foi digitada corretamente.' + #13 +
-          'Deseja informar uma nova chave de liberação?',
-          'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
-          SimNao := True
-        else
-          SimNao := False;
-      end;
-    tvPrimeiroAcesso:
-      begin
-        Application.MessageBox('Primeiro acesso, informe os dados de registro do sistema.',
-          'Registro do sistema', MB_OK + MB_ICONINFORMATION);
-        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
-      end;
-  end;
-
-  if (RetornoValidacao <> tvValidacaoOk) then
-  begin
-    if (RetornoValidacao <> tvValidacaoOk) and (SimNao) then
-    begin
-      if (RetornoValidacao = tvExpirouPrazo) then
-        ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Self)
-      else
-        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
-    end
-    else if (RetornoValidacao <> tvExpirouPrazo) then
-    begin
-      if Application.MessageBox(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. ' +
-        'Para obter uma nova chave, entre em contato com o suporte.' + #13 +
-        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
-      begin
-        SistemaOk := False;
-        Application.Terminate;
-      end
-      else
-        ChamaForm('TfrmRegistro', 'Registro - Validação do serial', Self);
-    end;
-  end;
+//  case RetornoValidacao of
+//    tvSerialErrado, tvChaveErrada:
+//      begin
+//        if Application.MessageBox('A chave de liberação informada está incorreta ' +
+//          'ou ainda não foi informada, os dados da empresa também podem ter sido alterados.' + #13 +
+//          'Deseja efetuar a correção agora?', 'Dados incorretos',
+//          MB_YESNO or MB_ICONWARNING) = ID_YES then
+//          SimNao := True
+//        else
+//          SimNao := False;
+//      end;
+//    tvExpirouPrazo:
+//      begin
+//        if Application.MessageBox('A chave de liberação está expirada.' + #13 +
+//          'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato ' +
+//          'com o suporte para obter uma nova chave de liberação.' + #13 +
+//          'Deseja informar uma nova chave de liberação agora?', 'Chave expirada',
+//          MB_YESNO or MB_ICONWARNING) = ID_YES then
+//          SimNao := True
+//        else
+//          SimNao := False;
+//      end;
+//    tvBloqueioSistema:
+//      begin
+//        if Application.MessageBox('CHAVE DE LIBERAÇÃO EXPIRADA.' + #13 +
+//          'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias. ' +
+//          'Por favor entre em contato com o suporte para obter uma nova chave de liberação.' + #13 +
+//          'Deseja informar uma nova chave de liberação?',
+//          'Sistema bloqueado', MB_YESNO or MB_ICONERROR) = ID_YES then
+//          SimNao := True
+//        else
+//          SimNao := False;
+//      end;
+//    tvPrazoMtoLongo:
+//      begin
+//        if Application.MessageBox('A chave de liberação informada está fora de um período válido. ' +
+//          'Verifique a data do seu computador e se a chave foi digitada corretamente.' + #13 +
+//          'Deseja informar uma nova chave de liberação?',
+//          'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
+//          SimNao := True
+//        else
+//          SimNao := False;
+//      end;
+//    tvPrimeiroAcesso:
+//      begin
+//        Application.MessageBox('Primeiro acesso, informe os dados de registro do sistema.',
+//          'Registro do sistema', MB_OK + MB_ICONINFORMATION);
+//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
+//      end;
+//  end;
+//
+//  if (RetornoValidacao <> tvValidacaoOk) then
+//  begin
+//    if (RetornoValidacao <> tvValidacaoOk) and (SimNao) then
+//    begin
+//      if (RetornoValidacao = tvExpirouPrazo) then
+//        ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Self)
+//      else
+//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
+//    end
+//    else if (RetornoValidacao <> tvExpirouPrazo) then
+//    begin
+//      if Application.MessageBox(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. ' +
+//        'Para obter uma nova chave, entre em contato com o suporte.' + #13 +
+//        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
+//      begin
+//        SistemaOk := False;
+//        Application.Terminate;
+//      end
+//      else
+//        ChamaForm('TfrmRegistro', 'Registro - Validação do serial', Self);
+//    end;
+//  end;
 end;
 
 procedure TfrmPrincipal.actGrupoExecute(Sender: TObject);
@@ -606,7 +606,7 @@ end;
 procedure TfrmPrincipal.actOutroUsuarioExecute(Sender: TObject);
 begin
   if not TfrmAcesso.Execute(True) then
-    MsgAviso('Troca de usuário cancelada.')
+    MsgAviso('','Troca de usuário cancelada.')
   else
   begin
     SetEnableMenu(IdUsuario = 0);
@@ -661,7 +661,7 @@ begin
   begin
     if (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPEG') or
       (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPG') then
-      FBitmap := JpegToBmp(Configuracao.PapelParede)
+      FBitmap := LoadJpegIntoBitmap(Configuracao.PapelParede)
     else
       FBitmap.LoadFromFile(Configuracao.PapelParede);
   end
@@ -1031,15 +1031,19 @@ procedure TfrmPrincipal.SetStatusBar;
 var
   ServerName, ServerSeted: string;
 begin
-  ServerSeted := Trim(AnsiUpperCase(ReadIniFile('Conexao', 'Servidor')));
-  if ((ServerSeted = '127.0.0.1') or (ServerSeted = SysComputerName)) then
+  with TIniFile.Create(ExtractFilePath(ParamStr(0))+'cfg.ini')do try
+  ServerSeted := Trim(AnsiUpperCase(ReadString('Conexao', 'Servidor','localhost')));
+  if ((ServerSeted = '127.0.0.1') or (ServerSeted = GetComputerName)) then
     ServerName := 'SERVIDOR LOCAL'
   else
-    ServerName := AnsiUpperCase(Trim(ReadIniFile('Conexao', 'Servidor')));
+    ServerName := AnsiUpperCase(Trim(ReadString('Conexao', 'Servidor','localhost')));
+  finally
+    free;
+  end;
 
   sbPrincipal.Panels[0].Text := 'Usuário: ' + AnsiUpperCase(Usuario);
   sbPrincipal.Panels[1].Text := 'Dados: ' + ServerName;
-  sbPrincipal.Panels[2].Text := 'Computador: ' + SysComputerName;
+  sbPrincipal.Panels[2].Text := 'Computador: ' + GetComputerName;
 
   sbPrincipal.Update;
 end;
@@ -1107,11 +1111,11 @@ begin
       actDicaDia.Execute;
 
     { apos as atualizações vai mostrar "o que há de novo" no sistema }
-    if ReadIniFile('NEW', 'Mostrou') = 'N' then
-    begin
-      WriteIniFile('NEW', 'Mostrou', 'S');
-      ChamaHelp(Self, 6,'');
-    end;
+//    if ReadIniFile('NEW', 'Mostrou') = 'N' then
+//    begin
+//      WriteIniFile('NEW', 'Mostrou', 'S');
+//      ChamaHelp(Self, 6,'');
+//    end;
 
 //    if SistemaOk and ComputerIsServer then
 //    begin
@@ -1120,7 +1124,7 @@ begin
 //    end;
 
     frmAguarde.Fecha;
-    ForceForegroundWindow(handle);
+    //ForceForegroundWindow(handle);
   except
     on e: exception do
     begin
@@ -1146,7 +1150,7 @@ begin
   frmSetupConnection := TfrmSetupConnection.Create(Self);
   if frmSetupConnection.ShowModal = mrOk then
   begin
-    MsgAviso('Esta alteração só terá efeito da próxima vez que o sistema for iniciado.');
+    MsgAviso('','Esta alteração só terá efeito da próxima vez que o sistema for iniciado.');
   end;
 end;
 
@@ -1187,19 +1191,19 @@ begin
 //    Exit;
 //  end;
 //
-//  if FileExists(DiretorioSistema + 'UpdateCPR.exe') then
+//  if FileExists(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe') then
 //  begin
-//    if FormatDateTime('dd/mm/yyyy', FileDateToDateTime(FileAge(DiretorioSistema + 'UpdateCPR.exe')))
+//    if FormatDateTime('dd/mm/yyyy', FileDateToDateTime(FileAge(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe')))
 //      = FormatDateTime('dd/mm/yyyy', Date) then
 //    begin
 //      if MsgSN('Já existe uma atualização baixada hoje! Deseja executá-la?') then
 //      begin
-//        WinExec(PansiChar(DiretorioSistema + 'UpdateCPR.exe'), SW_SHOWNORMAL);
+//        WinExec(PansiChar(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe'), SW_SHOWNORMAL);
 //        Application.Terminate;
 //        Abort;
 //      end
 //      else
-//        DeleteFile(DiretorioSistema + 'UpdateCPR.exe');
+//        DeleteFile(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe');
 //    end;
 //  end;
 //
@@ -1233,7 +1237,7 @@ begin
     end
     else
     begin
-      WinExec(PansiChar(DiretorioSistema + 'Update.exe rede'), SW_SHOW);
+      WinExec(PansiChar(ExtractFilePath(ParamStr(0)) + 'Update.exe rede'), SW_SHOW);
       Application.Terminate;
     end;
   end
@@ -1253,7 +1257,7 @@ var
 begin       {
   Server := AnsiUpperCase(ReadIniFile('Conexao', 'Servidor'));
   Sistema.Atualizar;
-  if ((Server = '127.0.0.1') or (Server = SysComputerName)) then
+  if ((Server = '127.0.0.1') or (Server = GetComputerName)) then
   begin
     if not ValidaHD(Sistema.HD, SerialHD(Copy(Application.ExeName, 1, 1)), GetConnection) then
     begin
@@ -1405,26 +1409,26 @@ end;
 
 procedure TfrmPrincipal.CriaIcone;
 begin
-  with FIconData do
-  begin
-    cbSize := SizeOf(TNotifyIconData);
-    Wnd := Self.Handle;
-    uID := 0;
-    uCallbackMessage := WM_TRAYICON;
-    uFlags := NIF_ICON or NIF_TIP or NIF_MESSAGE;
-    hIcon := Application.Icon.Handle;
-    szTip := 'WSCD';
-  end;
-  Shell_NotifyIcon(NIM_ADD, @FIconData);
+//  with FIconData do
+//  begin
+//    cbSize := SizeOf(TNotifyIconData);
+//    Wnd := Self.Handle;
+//    uID := 0;
+//    uCallbackMessage := WM_TRAYICON;
+//    uFlags := NIF_ICON or NIF_TIP or NIF_MESSAGE;
+//    hIcon := Application.Icon.Handle;
+//    szTip := 'WSCD';
+//  end;
+//  Shell_NotifyIcon(NIM_ADD, @FIconData);
 end;
 
 procedure TfrmPrincipal.DestroyIcone;
 begin
-  FIconData.cbSize := SizeOf(TNotifyIconData);
-  FIconData.Wnd := Self.Handle;
-  FIconData.uID := 0;
-  FIconData.uFlags := 0;
-  Shell_NotifyIcon(NIM_DELETE, @FIconData);
+//  FIconData.cbSize := SizeOf(TNotifyIconData);
+//  FIconData.Wnd := Self.Handle;
+//  FIconData.uID := 0;
+//  FIconData.uFlags := 0;
+//  Shell_NotifyIcon(NIM_DELETE, @FIconData);
 end;
 
 procedure TfrmPrincipal.WMTrayIcon(var Msg: TMessage);
@@ -1512,7 +1516,7 @@ function TfrmPrincipal.ValidaDataAcesso(DataEncriptada: string;
       SQLConnection := Connection;
       Close;
       CommandText := 'UPDATE SISTEMA SET DATA_ACESSO = :PDATA_ACESSO';
-      Params.ParamByName('PDATA_ACESSO').AsString := EncriptData(DataATual);
+      Params.ParamByName('PDATA_ACESSO').AsString := EnDeCrypt( DateToStr( DataAtual));
       ExecSQL;
       Result := True;
     finally
@@ -1542,7 +1546,7 @@ begin
   end
   else
   begin
-    DataUltimoAcesso := DecriptData(DataEncriptada);
+    DataUltimoAcesso := StrToDate( EnDeCrypt(DataEncriptada) );
 
     Dias := Trunc(DataAtual - DataUltimoAcesso);
 
@@ -1589,7 +1593,7 @@ function TfrmPrincipal.ValidaHD(HD, HDGravar: string;
 begin
   Result := True;
   if Trim(HD) = '' then
-    UpdateSingleField('update SISTEMA s set s.HD = ' + QuotedStr(HDGravar), Connection)
+    UpdateSingleField('update SISTEMA s set s.HD = ' + QuotedStr(HDGravar))
   else
   begin
     if SerialHD(Copy(Application.ExeName, 1, 1)) <> HD then
@@ -1655,9 +1659,13 @@ end;
 
 function TfrmPrincipal.ComputerIsServer: Boolean;
 begin
+  with TIniFile.Create(ExtractFilePath(ParamStr(0))+'cfg.ini') do try
   Result :=
-    ((ReadIniFile('Conexao', 'Servidor') = '127.0.0.1') or
-    (ReadIniFile('Conexao', 'Servidor') = SysComputerName));
+    ((ReadString('Conexao', 'Servidor','localhost') = '127.0.0.1') or
+    (ReadString('Conexao', 'Servidor','localhost') = GetComputerName));
+  finally
+    free;
+  end;
 end;
 
 procedure TfrmPrincipal.ExportaMenu(filename: string);
@@ -1720,7 +1728,7 @@ procedure TfrmPrincipal.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (ssCtrl in Shift) and (ssAlt in Shift) and (Key = VK_F10) then
-    ExportaMenu(DiretorioSistema+'menu.sql');
+    ExportaMenu(ExtractFilePath(ParamStr(0))+'menu.sql');
 end;
 
 end.

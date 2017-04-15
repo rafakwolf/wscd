@@ -127,7 +127,7 @@ begin
     lbDesc_cpf_emit.Caption := edtCpfCnpjEmitente.Text;
     lbDesc_endereco_emit.Caption := edtEndereco.Text;
 
-    print_ := FormRadioButtons('Imprimir, Visualizar', 'Imprimir/Visualizar', 1);
+    //print_ := FormRadioButtons('Imprimir, Visualizar', 'Imprimir/Visualizar', 1);
     if print_ = 1 then
       rptPromissoria.PreviewModal
     else if print_ = 0 then

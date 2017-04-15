@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,
-  PLDBEditDateTimePicker, DBCtrls, Mask, FMTBcd, System.Actions;
+   DBCtrls, Mask, FMTBcd, System.Actions;
 
 type
   TfrmRecibo = class(TfrmPadrao)
@@ -21,7 +21,7 @@ type
     dbReferente: TDBMemo;
     dbValor: TDBEdit;
     dbValorExtenso: TDBMemo;
-    dbData: TPLDBEditDateTimePicker;
+    dbData: TDBEdit;
     sqldPadraoIDRECIBO: TIntegerField;
     sqldPadraoDATA: TDateField;
     sqldPadraoRECEBEDOR: TStringField;
@@ -84,7 +84,7 @@ begin
   end
   else
   begin
-    MsgErro('Não existem recibos cadastrados');
+    MsgErro('','Não existem recibos cadastrados');
     Exit;
   end; 
 end;
@@ -112,7 +112,7 @@ end;
 procedure TfrmRecibo.dbValorKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmRecibo.tmrImpressaoTimer(Sender: TObject);

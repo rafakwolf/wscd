@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls, Mask, DB,
-  PLDBEdit, DBClient, Provider, SqlExpr, unContasPagar, Grids,
-  DBGrids, PLSQLDataSet, PLClientDataSet, PLDataSetProvider, FMTBcd,
+   SqlExpr, unContasPagar, Grids,
+  DBGrids, DBClient,Datasnap.Provider, FMTBcd,
   unSimplePadrao;
 
 type
@@ -64,7 +64,7 @@ type
     lblVenc: TLabel;
     lblBandaMagnetica: TLabel;
     edtAgencia: TLabeledEdit;
-    dbeBanco: TPLDBEdit;
+    dbeBanco: TDBEdit;
     edtConta: TLabeledEdit;
     edtNumeroCheque: TLabeledEdit;
     edtValor: TLabeledEdit;
@@ -77,11 +77,11 @@ type
     sqldContasPagarCONTA: TStringField;
     cdsContasPagarIDCONTA: TIntegerField;
     cdsContasPagarCONTA: TStringField;
-    sqldSelecao: TPLSQLDataSet;
+    sqldSelecao: TSQLDataSet;
     sqldSelecaoIDBANCO: TIntegerField;
     sqldSelecaoBANCO: TStringField;
-    dspSelecao: TPLDataSetProvider;
-    cdsSelecao: TPLClientDataSet;
+    dspSelecao: TDataSetProvider;
+    cdsSelecao: TClientDataSet;
     cdsSelecaoIDBANCO: TIntegerField;
     cdsSelecaoBANCO: TStringField;
     dsSelecao: TDataSource;
@@ -120,8 +120,8 @@ var
 
 implementation
 
-uses  Funcoes, VarGlobal, ConstPadrao,  
-     Extensos, uDmPesquisar, uCheque;
+uses  Funcoes, VarGlobal, ConstPadrao, uDatabaseutils,
+     Extensos, uDmPesquisar, uCheque, System.Math;
 
 {$R *.dfm}
 
@@ -171,7 +171,7 @@ begin
         Exit;
       end;
 
-      if StrToFloatDef(edtTotal.Text, 0) < RoundFloat(cdsContasPagarTOTAL.AsFloat, 2) then
+      if StrToFloatDef(edtTotal.Text, 0) < RoundTo(cdsContasPagarTOTAL.AsFloat, 2) then
         PagarParcial
       else
         PagarTotal;
@@ -184,7 +184,7 @@ begin
         Exit;
       end;
 
-      if StrToFloatDef(edtValor.Text, 0) < RoundFloat(cdsContasPagarTOTAL.AsFloat, 2) then
+      if StrToFloatDef(edtValor.Text, 0) < RoundTo(cdsContasPagarTOTAL.AsFloat, 2) then
       begin
         PagarParcial;
         PagarCheque;
@@ -234,7 +234,7 @@ end;
 
 procedure TfrmPagarMan.cdsContasPagarAfterInsert(DataSet: TDataSet);
 begin
-  Incrementa('CONTASPAGAR', cdsContasPagarCODIGO, GetConnection);
+  //Incrementa('CONTASPAGAR', cdsContasPagarCODIGO, GetConnection);
 end;
 
 procedure TfrmPagarMan.btnCancelClick(Sender: TObject);
@@ -294,7 +294,7 @@ procedure TfrmPagarMan.PagarCheque;
 var
   Cheque: TCheque;
 begin
-  if StrToFloatDef(edtValor.Text, 0) = RoundFloat(cdsContasPagarTOTAL.AsFloat, 2) then
+  if StrToFloatDef(edtValor.Text, 0) = RoundTo(cdsContasPagarTOTAL.AsFloat, 2) then
     PagarTotal;
 
   Cheque := TCheque.Create(sqldContasPagar.SQLConnection);
@@ -337,7 +337,7 @@ procedure TfrmPagarMan.medtBandaMagneticaExit(Sender: TObject);
 
   function BancoExiste(IdBanco: Integer): Boolean;
   begin
-    with TPLSQLDataSet.Create(nil) do
+    with TSQLDataSet.Create(nil) do
     try
       SQLConnection := sqldContasPagar.SQLConnection;
       CommandText := 'select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));
@@ -443,14 +443,14 @@ var
 begin
   // se o valor a pagar for maior não dexa fazer nada
   if rgTipoPagamento.ItemIndex = 0 then
-    if (StrToFloatDef(edtTotal.Text, 0) > RoundFloat(cdsContasPagarTOTAL.AsFloat, 2)) then
+    if (StrToFloatDef(edtTotal.Text, 0) > RoundTo(cdsContasPagarTOTAL.AsFloat, 2)) then
     begin
       MsgCuidado('O Valor maior que o total da conta, digite o valor correto.');
       edtTotal.SetFocus;
       Exit;
     end
   else if rgTipoPagamento.ItemIndex = 1 then
-    if (StrToFloatDef(edtValor.Text, 0) > RoundFloat(cdsContasPagarTOTAL.AsFloat, 2)) then
+    if (StrToFloatDef(edtValor.Text, 0) > RoundTo(cdsContasPagarTOTAL.AsFloat, 2)) then
     begin
       MsgCuidado('O Valor maior que o total da conta, digite o valor correto.');
       edtValor.SetFocus;

@@ -48,7 +48,6 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     Width = 81
     Height = 25
     Caption = '&Ok'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -102,7 +101,6 @@ object frmSenhaCaixa: TfrmSenhaCaixa
       8080008080008080008080008080008080008080008080008080}
     ModalResult = 1
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 2
     OnClick = btnOkClick
   end
@@ -112,7 +110,6 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     Width = 81
     Height = 25
     Caption = '&Cancelar'
-    DoubleBuffered = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -157,14 +154,12 @@ object frmSenhaCaixa: TfrmSenhaCaixa
       00808000808000808000}
     ModalResult = 2
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 3
   end
   object sqldConfig: TSQLDataSet
     CommandText = 
       'select '#13#10'  SENHAESTOQUE, '#13#10'  SENHACAIXA '#13#10'from CONFIGURACAO'#13#10'whe' +
       're NOMECOMPUTADOR = :COMP'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <
       item

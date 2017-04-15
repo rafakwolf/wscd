@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, DB, DBClient, Provider, SqlExpr, Grids,
-  DBGrids, ExtCtrls, Buttons, PLEdit, Menus, FMTBcd;
+  DBGrids, ExtCtrls, Buttons,  Menus, FMTBcd;
 
 type
   TfrmPesqFone = class(TfrmSimplePadrao)
@@ -17,7 +17,7 @@ type
     dbgrdFones: TDBGrid;
     rgpPesquisa: TRadioGroup;
     edtNome: TLabeledEdit;
-    edtFone: TPLEdit;
+    edtFone: TEdit;
     mmPesqFone: TMainMenu;
     miCadastrar: TMenuItem;
     btnImprimir: TBitBtn;
@@ -103,7 +103,7 @@ procedure TfrmPesqFone.dbgrdFonesDrawColumnCell(Sender: TObject;
   State: TGridDrawState);
 begin
   inherited;
-  GridZebrado(cdsFone.RecNo, dbgrdFones, Rect, DataCol, Column, State);
+  //GridZebrado(cdsFone.RecNo, dbgrdFones, Rect, DataCol, Column, State);
 end;
 
 procedure TfrmPesqFone.rgpPesquisaClick(Sender: TObject);

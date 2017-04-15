@@ -6,7 +6,7 @@ inherited frmPromocao: TfrmPromocao
   ClientWidth = 790
   OldCreateOrder = True
   ExplicitWidth = 796
-  ExplicitHeight = 562
+  ExplicitHeight = 563
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TStatusBar
@@ -188,7 +188,7 @@ inherited frmPromocao: TfrmPromocao
       end
     end
   end
-  object sqldPadrao: TPLSQLDataSet
+  object sqldPadrao: TSQLDataSet
     CommandText = 
       'select '#13#10'  p.CODIGO, '#13#10'  p.PRODUTO, '#13#10'  pro.ABREVIACAO,'#13#10'  pro.V' +
       'ENDA,'#13#10'  p.DESCONTO,'#13#10'  p.PRECO, '#13#10'  p.INICIO, '#13#10'  p.FIM '#13#10'from ' +
@@ -231,13 +231,13 @@ inherited frmPromocao: TfrmPromocao
       FieldName = 'FIM'
     end
   end
-  object dspPadrao: TPLDataSetProvider
+  object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poAutoRefresh, poPropogateChanges, poAllowCommandText]
     Left = 200
     Top = 180
   end
-  object cdsPadrao: TPLClientDataSet
+  object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -288,7 +288,7 @@ inherited frmPromocao: TfrmPromocao
       EditMask = '!99/99/0000;1;_'
     end
   end
-  object sqldProduto: TPLSQLDataSet
+  object sqldProduto: TSQLDataSet
     CommandText = 
       'select'#13#10'  IDPRODUTO,'#13#10'  CODBARRA,'#13#10'  ABREVIACAO,'#13#10'  VENDA,'#13#10'  CO' +
       'DGRUPO,'#13#10'  CODFORNECEDOR'#13#10'from PRODUTOS'#13#10'order by ABREVIACAO'
@@ -319,13 +319,13 @@ inherited frmPromocao: TfrmPromocao
       FieldName = 'CODFORNECEDOR'
     end
   end
-  object dspProduto: TPLDataSetProvider
+  object dspProduto: TDataSetProvider
     DataSet = sqldProduto
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 464
     Top = 172
   end
-  object cdsProduto: TPLClientDataSet
+  object cdsProduto: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProduto'
@@ -354,7 +354,7 @@ inherited frmPromocao: TfrmPromocao
       FieldName = 'CODFORNECEDOR'
     end
   end
-  object sqldSpDesmarcaPromocao: TPLSQLDataSet
+  object sqldSpDesmarcaPromocao: TSQLDataSet
     CommandText = 'STPDESMARCAPROMOCAO'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'
@@ -363,7 +363,7 @@ inherited frmPromocao: TfrmPromocao
     Left = 176
     Top = 136
   end
-  object sqldGrupo: TPLSQLDataSet
+  object sqldGrupo: TSQLDataSet
     CommandText = 
       'select'#13#10'  CODGRUPO, '#13#10'  DESCRICAO'#13#10'from GRUPOS'#13#10'order by DESCRIC' +
       'AO'
@@ -380,13 +380,13 @@ inherited frmPromocao: TfrmPromocao
       Size = 80
     end
   end
-  object dspGrupo: TPLDataSetProvider
+  object dspGrupo: TDataSetProvider
     DataSet = sqldGrupo
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 464
     Top = 136
   end
-  object cdsGrupo: TPLClientDataSet
+  object cdsGrupo: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspGrupo'
@@ -401,7 +401,7 @@ inherited frmPromocao: TfrmPromocao
       Size = 80
     end
   end
-  object sqldForn: TPLSQLDataSet
+  object sqldForn: TSQLDataSet
     CommandText = 
       'select '#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'fro' +
       'm FORNECEDORES'#13#10'order by FANTAZIA'
@@ -424,13 +424,13 @@ inherited frmPromocao: TfrmPromocao
       FieldName = 'TELEFONE'
     end
   end
-  object dspForn: TPLDataSetProvider
+  object dspForn: TDataSetProvider
     DataSet = sqldForn
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 464
     Top = 208
   end
-  object cdsForn: TPLClientDataSet
+  object cdsForn: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspForn'

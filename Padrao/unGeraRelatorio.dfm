@@ -1024,19 +1024,19 @@ object frmGeraRelatorio: TfrmGeraRelatorio
   object dspRelatorio: TDataSetProvider
     DataSet = sqldRelatorio
     Options = [poAllowCommandText]
-    Left = 80
-    Top = 264
+    Left = 160
+    Top = 248
   end
   object cdsRelatorio: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspRelatorio'
-    Left = 112
-    Top = 264
+    Left = 280
+    Top = 256
   end
   object dsRelatorio: TDataSource
     DataSet = cdsRelatorio
-    Left = 144
-    Top = 264
+    Left = 280
+    Top = 184
   end
 end

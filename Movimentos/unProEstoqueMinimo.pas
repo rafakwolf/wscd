@@ -44,7 +44,7 @@ var
 
 implementation
 
-uses Funcoes, FuncoesWin;
+uses Funcoes, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -89,7 +89,7 @@ begin
   try
     if MsgSN('Deseja realmente zerar o estoque que está negativo?') then
     begin
-      UpdateSingleField('UPDATE PRODUTOS SET ESTOQUE = 0 WHERE (ESTOQUE < 0)', sqlProdEM.SQLConnection);
+      UpdateSingleField('UPDATE PRODUTOS SET ESTOQUE = 0 WHERE (ESTOQUE < 0)');
       MsgAviso('Estoque alterado com sucesso.');
       ReabreDataSet(cdsProdEM);
       Close;
@@ -114,7 +114,7 @@ procedure TfrmProEstoqueMinimo.GradeProdDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
 begin
-  GridZebrado(cdsProdEM.RecNo, GradeProd, Rect, DataCol, Column, State);
+  //GridZebrado(cdsProdEM.RecNo, GradeProd, Rect, DataCol, Column, State);
 end;
 
 procedure TfrmProEstoqueMinimo.FormKeyDown(Sender: TObject; var Key: Word;

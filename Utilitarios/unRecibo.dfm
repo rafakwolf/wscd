@@ -6,7 +6,7 @@ inherited frmRecibo: TfrmRecibo
   ClientWidth = 617
   OldCreateOrder = True
   ExplicitWidth = 623
-  ExplicitHeight = 366
+  ExplicitHeight = 367
   PixelsPerInch = 96
   TextHeight = 13
   object lbRecebedor: TLabel [0]
@@ -28,7 +28,7 @@ inherited frmRecibo: TfrmRecibo
   object lbValor: TLabel [2]
     Left = 62
     Top = 176
-    Width = 30
+    Width = 29
     Height = 13
     Caption = 'Valor'
     FocusControl = dbValor
@@ -36,31 +36,19 @@ inherited frmRecibo: TfrmRecibo
   object lbValorExtenso: TLabel [3]
     Left = 13
     Top = 245
-    Width = 79
+    Width = 78
     Height = 13
     Caption = 'Valor extenso'
     FocusControl = dbValorExtenso
   end
-  object dbData: TPLDBEditDateTimePicker [4]
+  object dbData: TDBEdit [4]
     Left = 96
     Top = 56
     Width = 186
     Height = 21
-    Date = 39244.859927488420000000
-    Time = 39244.859927488420000000
-    TabOrder = 0
     DataField = 'DATA'
     DataSource = dsPadrao
-    ReadOnly = False
-    DefaultEditMask = '!99/99/9999;1;_'
-    EditLabel.Left = 66
-    EditLabel.Top = 60
-    EditLabel.Width = 27
-    EditLabel.Height = 13
-    EditLabel.Alignment = taRightJustify
-    EditLabel.Caption = 'Data'
-    EditLabel.FocusControl = dbData
-    Required = False
+    TabOrder = 0
   end
   object dbRecebedor: TDBEdit [5]
     Left = 96

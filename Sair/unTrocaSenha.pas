@@ -69,32 +69,32 @@ procedure TfrmTrocaSenha.btGravaClick(Sender: TObject);
 begin
   if (edAtual.Text = '') then
   begin
-    MsgAviso('Digite a senha atual.');
+    MsgAviso('','Digite a senha atual.');
     edAtual.SetFocus;
     Exit;
   end;
   if (edNova.Text = '') then
   begin
-    MsgAviso('Digite a nova senha.');
+    MsgAviso('','Digite a nova senha.');
     edNova.SetFocus;
     Exit;
   end;
   if (edConfirma.Text = '') then
   begin
-    MsgAviso('Digite a senha de confirmação.');
+    MsgAviso('','Digite a senha de confirmação.');
     edConfirma.SetFocus;
     Exit;
   end;
   if (edConfirma.Text <> edNova.Text) then
   begin
-    MsgErro('Senha de confirmação não confere com a nova senha.');
+    MsgErro('','Senha de confirmação não confere com a nova senha.');
     edConfirma.SetFocus;
     Exit;
   end;
 
   if not VerificaSenhaAtual(edAtual.Text) then
   begin
-    MsgErro('A sua senha atual não confere, digite novamente.');
+    MsgErro('','A sua senha atual não confere, digite novamente.');
     edAtual.SetFocus;
     Exit;
   end;
@@ -103,10 +103,10 @@ begin
     with sqldUsuarios do
     begin
       Close;
-      Params.ParamByName('SENHA').AsString := Encript(edNova.Text);
+      Params.ParamByName('SENHA').AsString :=  edNova.Text; //Encript(edNova.Text);
       Params.ParamByName('LOGIN').AsString := Usuario;
       ExecSQL;
-      MsgAviso('Senha alterada com sucesso.');
+      MsgAviso('','Senha alterada com sucesso.');
       self.Close;
     end;
   except
@@ -121,7 +121,7 @@ begin
   begin
     Close;
     Params.ParamByName('PLOGIN').AsString := Trim(Usuario);
-    Params.ParamByName('PSENHA').AsString := Trim(Encript(Senha));
+    Params.ParamByName('PSENHA').AsString := Trim(Senha);
     Open;
     Result := (FieldByName('USERS').AsInteger > 0);
   end;

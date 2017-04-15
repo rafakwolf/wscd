@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, VarGlobal,
-  PLDBEditDateTimePicker, PLDBEdit, Mask, FMTBcd, System.Actions;
+    Mask, FMTBcd, System.Actions;
 
 type
   TfrmFornecedor = class(TfrmPadrao)
@@ -21,21 +21,21 @@ type
     cdsCidade: TClientDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
-    dbeNomeFantazia: TPLDBEdit;
-    dbeNomeRzSocial: TPLDBEdit;
-    dbeEndereco: TPLDBEdit;
-    dbeEstado: TPLDBEdit;
-    dbeBairro: TPLDBEdit;
-    dbeCep: TPLDBEdit;
-    dbeCnpj: TPLDBEdit;
-    dbeInscEstadual: TPLDBEdit;
-    dbeTelefone: TPLDBEdit;
-    dbeFax: TPLDBEdit;
-    dbeNomeVendedor: TPLDBEdit;
-    dbeEmailVendedor: TPLDBEdit;
-    dbeTelefoneVendedor: TPLDBEdit;
-    dbeCidade: TPLDBEdit;
-    dbdDataCadastro: TPLDBEditDateTimePicker;
+    dbeNomeFantazia: TDBEdit;
+    dbeNomeRzSocial: TDBEdit;
+    dbeEndereco: TDBEdit;
+    dbeEstado: TDBEdit;
+    dbeBairro: TDBEdit;
+    dbeCep: TDBEdit;
+    dbeCnpj: TDBEdit;
+    dbeInscEstadual: TDBEdit;
+    dbeTelefone: TDBEdit;
+    dbeFax: TDBEdit;
+    dbeNomeVendedor: TDBEdit;
+    dbeEmailVendedor: TDBEdit;
+    dbeTelefoneVendedor: TDBEdit;
+    dbeCidade: TDBEdit;
+    dbdDataCadastro: TDBEdit;
     btnObservacoes: TBitBtn;
     sqldPadraoCODFORNECEDOR: TIntegerField;
     sqldPadraoFANTAZIA: TStringField;
@@ -73,7 +73,7 @@ type
     cdsPadraoVENDEDOR: TStringField;
     cdsPadraoTELEFONEVENDEDOR: TStringField;
     cdsPadraoEMAILVENDEDOR: TStringField;
-    dbeEmail: TPLDBEdit;
+    dbeEmail: TDBEdit;
     sqldPadraoDATACAD: TDateField;
     cdsPadraoDATACAD: TDateField;
     btnContas: TBitBtn;
@@ -110,7 +110,7 @@ var
 implementation
 
 uses Funcoes, unModeloConsulta, ConstPadrao, unPrevRelFornData,
-     uConfiguraRelatorio, unContasPagar, Extensos, unAguarde;
+     uConfiguraRelatorio, unContasPagar, Extensos, unAguarde, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -216,7 +216,7 @@ end;
 procedure TfrmFornecedor.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('FORNECEDORES', cdsPadraoCODFORNECEDOR, sqldPadrao.SQLConnection);
+  //Incrementa('FORNECEDORES', cdsPadraoCODFORNECEDOR, sqldPadrao.SQLConnection);
   SetFocusIfCan(dbeNomeRzSocial);
 end;
 

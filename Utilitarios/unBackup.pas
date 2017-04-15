@@ -38,7 +38,7 @@ var
 implementation
 
 uses
-  Funcoes, FuncoesWin, uBackupRestore,  VarGlobal;
+  Funcoes, {FuncoesWin, uBackupRestore,}  VarGlobal, uutilfncs;
 
 {$R *.DFM}
 
@@ -59,8 +59,9 @@ end;
 
 procedure TfrmBackup.BtnOkClick(Sender: TObject);
 var
-  database_file, dir_padrao, backup_file, compact_file, compact_file_old, server_name: String;
-  aCopia: TBackupRestore;
+  database_file, dir_padrao, backup_file, compact_file,
+    compact_file_old, server_name: String;
+ // aCopia: TBackupRestore;
   //Zip: TZip;
 begin
   database_file := '';
@@ -74,12 +75,12 @@ begin
 
       server_name := ReadIniFile('Conexao', 'Servidor');
 
-      if ((server_name = '127.0.0.1') or (server_name = SysComputerName)) then
-        database_file := DiretorioSistema+'CPR.fdb'
+      if ((server_name = '127.0.0.1') or (server_name = GetComputerName)) then
+        database_file := ExtractFilePath(ParamStr(0))+'CPR.fdb'
       else
-        database_file := server_name+':'+DiretorioSistema+'CPR.fdb';
+        database_file := server_name+':'+ExtractFilePath(ParamStr(0))+'CPR.fdb';
 
-      dir_padrao := DiretorioSistema+'Backup\';
+      dir_padrao := ExtractFilePath(ParamStr(0))+'Backup\';
 
       if cbDiretorioPadrao.Checked then
         backup_file := dir_padrao
@@ -93,7 +94,7 @@ begin
       begin
         if not CreateDir(dir_padrao) then
         begin
-          MsgErro('Não foi possível criar o diretório padrão para cópia.');
+          MsgErro('','Não foi possível criar o diretório padrão para cópia.');
           Abortar := True;
           LigaBotoes;
           Exit;
@@ -110,17 +111,17 @@ begin
 //        Exit;
 //      end;
       
-      aCopia := TBackupRestore.Create;
-      with aCopia do
-      try
-        aCopia.Servidor  := server_name;
-        aCopia.Usuario   := 'SYSDBA';
-        aCopia.Senha     := 'masterkey';
-        aCopia.Log       := Memo.Lines;
-        aCopia.Copia(database_file, backup_file);
-      finally
-        aCopia.Free;
-      end;
+//      aCopia := TBackupRestore.Create;
+//      with aCopia do
+//      try
+//        aCopia.Servidor  := server_name;
+//        aCopia.Usuario   := 'SYSDBA';
+//        aCopia.Senha     := 'masterkey';
+//        aCopia.Log       := Memo.Lines;
+//        aCopia.Copia(database_file, backup_file);
+//      finally
+//        aCopia.Free;
+//      end;
 
       {Zip := TZip.Create;
       with Zip do
@@ -239,7 +240,7 @@ end;
 
 procedure TfrmBackup.Msg(Texto: string; pDelay: Cardinal);
 begin
-  Delay(pDelay);
+  //Delay(pDelay);
   Memo.Lines.Add(Texto);
 end;
 

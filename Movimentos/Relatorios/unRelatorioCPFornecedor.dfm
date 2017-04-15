@@ -7,7 +7,7 @@ inherited frmRelatorioCPFornecedor: TfrmRelatorioCPFornecedor
   ExplicitHeight = 182
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeForn: TPLDBEdit [0]
+  object dbeForn: TDBEdit [0]
     Left = 16
     Top = 48
     Width = 339

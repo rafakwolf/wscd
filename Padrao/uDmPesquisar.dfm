@@ -8,7 +8,6 @@ object DmPesquisar: TDmPesquisar
       'G_IE,'#13#10'  cli.CPF_CNPJ,'#13#10'  cli.DATA_NASC,'#13#10'  cid.DESCRICAO'#13#10'from ' +
       'CLIENTES cli'#13#10'left join CIDADES cid on (cli.CODCIDADE = cid.CODC' +
       'IDADE)'#13#10'order by cli.NOME'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -79,7 +78,6 @@ object DmPesquisar: TDmPesquisar
       'RACT(YEAR FROM CURRENT_DATE) AS DATE) DATAINI,'#13#10'  CAST('#39'30.'#39'||EX' +
       'TRACT(MONTH FROM CURRENT_DATE)||'#39'.'#39'||EXTRACT(YEAR FROM CURRENT_D' +
       'ATE) AS DATE) DATAFIM'#13#10'FROM RDB$DATABASE'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -117,7 +115,6 @@ object DmPesquisar: TDmPesquisar
   end
   object sqldPesqCidade: TSQLDataSet
     CommandText = 'select CODCIDADE, DESCRICAO from CIDADES'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -157,7 +154,6 @@ object DmPesquisar: TDmPesquisar
     CommandText = 
       'select '#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'fro' +
       'm FORNECEDORES'#13#10'order by FANTAZIA'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -207,7 +203,6 @@ object DmPesquisar: TDmPesquisar
   end
   object sqldPesqGrupo: TSQLDataSet
     CommandText = 'select '#13#10'  CODGRUPO, '#13#10'  DESCRICAO '#13#10'from GRUPOS'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -245,7 +240,6 @@ object DmPesquisar: TDmPesquisar
   end
   object sqldPesqBanco: TSQLDataSet
     CommandText = 'select '#13#10'  IDBANCO, '#13#10'  BANCO '#13#10'from BANCO'#13#10'order by BANCO'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -283,7 +277,6 @@ object DmPesquisar: TDmPesquisar
   end
   object sqldPesqCfop: TSQLDataSet
     CommandText = 'SELECT'#13#10'  NUMERO,'#13#10'  OPERACAO'#13#10'FROM CFOP'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -323,7 +316,6 @@ object DmPesquisar: TDmPesquisar
   end
   object sqldPesqCaixas: TSQLDataSet
     CommandText = 'select '#13#10'  CODIGO, '#13#10'  NOME '#13#10'from CAIXAS'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -361,7 +353,6 @@ object DmPesquisar: TDmPesquisar
   end
   object sqldPesqAliquota: TSQLDataSet
     CommandText = 'select '#13#10'  CODALIQUOTA, '#13#10'  DESCRICAO '#13#10'from ALIQUOTAS'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -395,9 +386,8 @@ object DmPesquisar: TDmPesquisar
       FieldName = 'DESCRICAO'
     end
   end
-  object sqldPesqVendedor: TPLSQLDataSet
+  object sqldPesqVendedor: TSQLDataSet
     CommandText = 'select * from VENDEDOR'#13#10'where ATIVO = '#39'S'#39
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
@@ -417,13 +407,13 @@ object DmPesquisar: TDmPesquisar
       Size = 1
     end
   end
-  object dspPesqVendedor: TPLDataSetProvider
+  object dspPesqVendedor: TDataSetProvider
     DataSet = sqldPesqVendedor
     Options = [poAllowCommandText]
     Left = 160
     Top = 448
   end
-  object cdsPesqVendedor: TPLClientDataSet
+  object cdsPesqVendedor: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPesqVendedor'

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Grids, DBGrids,
-  Mask, DBCtrls, PLDBEdit, FMTBcd, System.Actions;
+  Mask, DBCtrls,  FMTBcd, System.Actions;
 
 type
   TfrmConfiguraDuplicata = class(TfrmPadrao)
@@ -25,7 +25,7 @@ type
     cdsPadraoFONTE: TIntegerField;
     cdsPadraoTIPOFONTE: TStringField;
     cdsPadraoESTILOFONTE: TStringField;
-    dbeFontSize: TPLDBEdit;
+    dbeFontSize: TDBEdit;
     dbgrdCampos: TDBGrid;
     miVisualizar: TMenuItem;
     sqldPadraoIDCONFIGDUPLICATA: TIntegerField;
@@ -59,7 +59,7 @@ var
 
 implementation
 
-uses Funcoes, unPrevDuplicataSemForm, uConfiguraRelatorio;
+uses Funcoes, unPrevDuplicataSemForm;//, uConfiguraRelatorio;
 
 {$R *.dfm}
 
@@ -112,7 +112,7 @@ begin
   with TfrmPrevDuplicataSemForm.Create(Self) do
   try
     Config := True;
-    PrintIfNotEmptyRL(rrDuplicata);
+    //PrintIfNotEmptyRL(rrDuplicata);
   finally
     Free;
   end;

@@ -6,15 +6,15 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  PLDBEdit, FMTBcd, System.Actions;
+   FMTBcd, System.Actions;
 
 type
   TfrmCadastroGrupo = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodGrupo: TPLDBEdit;
-    dbeNomeGrupo: TPLDBEdit;
+    dbeCodGrupo: TDBEdit;
+    dbeNomeGrupo: TDBEdit;
     sqldPadraoCODGRUPO: TIntegerField;
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoCODGRUPO: TIntegerField;
@@ -38,7 +38,7 @@ uses
 procedure TfrmCadastroGrupo.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('GRUPOS', cdsPadraoCODGRUPO, GetConnection);
+  //Incrementa('GRUPOS', cdsPadraoCODGRUPO, GetConnection);
   SetFocusIfCan(dbeNomeGrupo);
 end;
 

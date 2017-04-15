@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, Spin, ExtCtrls, DB,
-  DBClient, Provider, SqlExpr, PLClientDataSet, PLDataSetProvider,
-  PLSQLDataSet, FMTBcd;
+  DBClient, Datasnap.Provider,
+  Data.SqlExpr, FMTBcd;
 
 type
   TfrmRelatorioBobinaVenda = class(TfrmSimplePadrao)
@@ -30,9 +30,9 @@ type
     cdsVendasBAIXADO: TStringField;
     cdsVendassqlItens: TDataSetField;
     cdsItens: TClientDataSet;
-    sqldPagamento: TPLSQLDataSet;
-    dspPagamento: TPLDataSetProvider;
-    cdspagamento: TPLClientDataSet;
+    sqldPagamento: TSQLDataSet;
+    dspPagamento: TDataSetProvider;
+    cdspagamento: TClientDataSet;
     sqldPagamentoFORMARECTO: TStringField;
     sqldPagamentoVALORRECDO: TFMTBCDField;
     cdspagamentoFORMARECTO: TStringField;
@@ -118,7 +118,7 @@ var
 
   function Centraliza(const s: String): String;
   begin
-    Result := CentralizaTexto(s, Global.ColunaVendaBobina, True);
+    Result := CentralizaTexto(s, Global.ColunaVendaBobina{, True});
   end;
 
 begin
@@ -149,7 +149,7 @@ begin
 
       Add(IntToStr(cdsItensCODPRODUTO.AsInteger)+' - '+
         Copy(cdsItensPRODUTO.AsString, 1,
-        Col-ContaCaracs(IntToStr(cdsItensCODPRODUTO.AsInteger)+' - ')));
+        Col-(IntToStr(cdsItensCODPRODUTO.AsInteger)+' - ').Length));
 
       Add('   '+FloatToStr(cdsItensQTD.AsFloat)+' x '+
         FormatFloat('#,##0.00', cdsItensVENDA.AsFloat)+' - '+

@@ -6,19 +6,19 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, Provider, SqlExpr, DBClient, Mask, DBCtrls,
-  PLDBEdit, FMTBcd, System.Actions;
+   FMTBcd, System.Actions;
 
 type
   TfrmBanco = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeBanco: TPLDBEdit;
+    dbeBanco: TDBEdit;
     sqldPadraoIDBANCO: TIntegerField;
     sqldPadraoBANCO: TStringField;
     cdsPadraoIDBANCO: TIntegerField;
     cdsPadraoBANCO: TStringField;
-    dbeCodCompensacao: TPLDBEdit;
+    dbeCodCompensacao: TDBEdit;
     procedure FormCreate(Sender: TObject);
   private
   public

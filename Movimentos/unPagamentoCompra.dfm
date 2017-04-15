@@ -169,12 +169,12 @@ object frmPagamentoCompra: TfrmPagamentoCompra
   end
   object dsCompra: TDataSource
     DataSet = cdsCompra
-    Left = 152
-    Top = 48
+    Left = 336
+    Top = 40
   end
   object dspCompra: TDataSetProvider
     DataSet = sqldCompra
-    Left = 88
+    Left = 136
     Top = 48
   end
   object cdsCompra: TClientDataSet
@@ -186,8 +186,8 @@ object frmPagamentoCompra: TfrmPagamentoCompra
         ParamType = ptUnknown
       end>
     ProviderName = 'dspCompra'
-    Left = 120
-    Top = 48
+    Left = 248
+    Top = 40
     object cdsCompraDATAPAGTO: TDateField
       FieldName = 'DATAPAGTO'
       DisplayFormat = 'dd/mm/yyyy'

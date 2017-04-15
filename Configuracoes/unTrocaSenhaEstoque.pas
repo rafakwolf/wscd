@@ -20,7 +20,7 @@ var
 
 implementation
 
-uses Funcoes, VarGlobal, funcoeswin;
+uses Funcoes, VarGlobal, uutilfncs, crypto;
 
 {$R *.dfm}
 
@@ -28,15 +28,15 @@ procedure TfrmSenhaEstoque.btnOkClick(Sender: TObject);
 begin
 
   cdsConfig.Close;
-  cdsConfig.Params.ParamByName('COMP').AsString := SysComputerName;
+  cdsConfig.Params.ParamByName('COMP').AsString := GetComputerName;
   cdsConfig.Open;
 
   if (edAtual.Text <> '') and (edNova.Text <> '') then
   begin
-    if cdsConfigSENHAESTOQUE.AsString = Encript(edAtual.Text) then
+    if cdsConfigSENHAESTOQUE.AsString = EnDecrypt(edAtual.Text) then
     begin
       cdsConfig.Edit;
-      cdsConfigSENHAESTOQUE.AsString := Trim(Encript(edNova.Text));
+      cdsConfigSENHAESTOQUE.AsString := Trim(EnDecrypt(edNova.Text));
       cdsConfig.ApplyUpdates(0);
       Configuracao.Atualizar;
       MsgAviso('Senha de estoque alterada!');

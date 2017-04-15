@@ -5,9 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, Buttons, Mask, DBCtrls, ComCtrls,
-  Menus, ExtCtrls, Db, SqlExpr, DBClient, Provider, PLDBEdit,
-  PLDBEditDateTimePicker, ConstPadrao, PLClientDataSet, PLDataSetProvider,
-  PLSQLDataSet, FMTBcd, unPadrao, System.Actions, Vcl.ActnList;
+  Menus, ExtCtrls, Db, DBClient,
+   ConstPadrao, Datasnap.Provider,
+  Data.SqlExpr, FMTBcd, unPadrao, System.Actions, Vcl.ActnList;
 
 type
   TfrmVendas = class(TfrmPadrao)
@@ -48,16 +48,16 @@ type
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
-    dbProduto: TPLDBEdit;
+    dbProduto: TDBEdit;
     dsSelecao: TDataSource;
-    dbQtde: TPLDBEdit;
-    dbCusto: TPLDBEdit;
-    dbVenda: TPLDBEdit;
-    dbDescto: TPLDBEdit;
-    dbValorDescto: TPLDBEdit;
-    dbTotalProduto: TPLDBEdit;
+    dbQtde: TDBEdit;
+    dbCusto: TDBEdit;
+    dbVenda: TDBEdit;
+    dbDescto: TDBEdit;
+    dbValorDescto: TDBEdit;
+    dbTotalProduto: TDBEdit;
     btnInsereProduto: TBitBtn;
-    dbCodCliente: TPLDBEdit;
+    dbCodCliente: TDBEdit;
     sqlVendas: TSQLQuery;
     sqlItens: TSQLQuery;
     dsLigaVenda: TDataSource;
@@ -77,7 +77,7 @@ type
     cdsItensCODIGO: TIntegerField;
     cdsItensCODPRODUTO: TIntegerField;
     cdsItensPRODUTO: TStringField;
-    dbdDataVenda: TPLDBEditDateTimePicker;
+    dbdDataVenda: TDBEdit;
     N10: TMenuItem;
     miVendaBobina: TMenuItem;
     dbmObs: TDBMemo;
@@ -86,26 +86,26 @@ type
     dbeTotalDesc: TDBEdit;
     lbTotal: TLabel;
     dbeTotal: TDBEdit;
-    dbeIdVendedor: TPLDBEdit;
+    dbeIdVendedor: TDBEdit;
     dbeVendedor: TDBEdit;
     dbeCliente: TDBEdit;
     bvlLinha: TBevel;
     cdsVendasIDVENDEDOR: TIntegerField;
     cdsVendasVENDEDOR: TStringField;
-    sqldVendedor: TPLSQLDataSet;
-    dspVendedor: TPLDataSetProvider;
-    cdsVendedor: TPLClientDataSet;
+    sqldVendedor: TSQLDataSet;
+    dspVendedor: TDataSetProvider;
+    cdsVendedor: TClientDataSet;
     sqldVendedorIDVENDEDOR: TIntegerField;
     sqldVendedorVENDEDOR: TStringField;
     sqldVendedorATIVO: TStringField;
     cdsVendedorIDVENDEDOR: TIntegerField;
     cdsVendedorVENDEDOR: TStringField;
     cdsVendedorATIVO: TStringField;
-    spDeleta: TPLSQLDataSet;
-    dbeCancelada: TPLDBEdit;
+    spDeleta: TSQLDataSet;
+    dbeCancelada: TDBEdit;
     N11: TMenuItem;
     miCadastroCliente: TMenuItem;
-    dbeComissao: TPLDBEdit;
+    dbeComissao: TDBEdit;
     N12: TMenuItem;
     sqldClientesCODCLIENTE: TIntegerField;
     sqldClientesNOME: TStringField;
@@ -175,8 +175,8 @@ type
     cdsProdutosESTOQUE: TIntegerField;
     cdsProdutosESTOQUEMINIMO: TIntegerField;
     cdsProdutosPROMOCAO: TStringField;
-    spEstorna: TPLSQLDataSet;
-    spBaixa: TPLSQLDataSet;
+    spEstorna: TSQLDataSet;
+    spBaixa: TSQLDataSet;
     sqlVendasCANCELADO: TStringField;
     cdsVendasCANCELADO: TStringField;
     miCadastravendedor: TMenuItem;
@@ -272,9 +272,10 @@ var
 implementation
 
 uses Funcoes, unModeloConsulta, VarGlobal, unPagamentoVenda,
-     unImportaOrcam, unFiltroSimples, FuncoesWin, unPagamentoCheque,
+     unImportaOrcam, unFiltroSimples,  unPagamentoCheque,
      unParcelaVenda, unRelatorioBobinaVenda, unPrevNotaVenda,
-     unPrevNotaVendaMatric, unAguarde, unDmPrincipal;
+     unPrevNotaVendaMatric, unAguarde, unDmPrincipal, udatabaseutils,
+  System.Math;
 
 {$R *.dfm}
 
@@ -308,22 +309,26 @@ end;
 
 procedure TfrmVendas.btnPrimeiroClick(Sender: TObject);
 begin
-  Primeiro(cdsVendas);
+//  Primeiro(cdsVendas);
+cdsVendas.First;
 end;
 
 procedure TfrmVendas.btnAnteriorClick(Sender: TObject);
 begin
-  Anterior(cdsVendas);
+  //Anterior(cdsVendas);
+  cdsVendas.Prior;
 end;
 
 procedure TfrmVendas.btnProximoClick(Sender: TObject);
 begin
-  Proximo(cdsVendas);
+  //Proximo(cdsVendas);
+  cdsVendas.Next;
 end;
 
 procedure TfrmVendas.btnUltimoClick(Sender: TObject);
 begin
-  Ultimo(cdsVendas);
+  //Ultimo(cdsVendas);
+  cdsVendas.Last;
 end;
 
 procedure TfrmVendas.FormShow(Sender: TObject);
@@ -403,7 +408,7 @@ begin
   Percent := 0;
   if (cdsVendasCONCLUIDA.AsString = 'N') then
   begin
-    if (ObterValor(Percent)) then
+    if (ObterValor(Percent,'','')) then
     if (Percent <> 0) then
     begin
       Valor := cdsVendasTOTAL.AsFloat * (Percent / 100);
@@ -447,7 +452,7 @@ end;
 
 procedure TfrmVendas.miContarClick(Sender: TObject);
 begin
-  Ed_Quantificar(cdsVendas, frmVendas);
+  //Ed_Quantificar(cdsVendas, frmVendas);
 end;
 
 procedure TfrmVendas.miImportarOrcamentoClick(Sender: TObject);
@@ -650,8 +655,8 @@ begin
       cdsSelecao.Open;
       SetFocusIfCan(dbProduto);
 
-      if MsgSN('Inserir novo produto?') then
-        dbProduto.OnClickButton(Sender);
+//      if MsgSN('Inserir novo produto?') then
+//        dbProduto.OnClickButton(Sender);
     end
     else
       MsgAviso('Selecione um produto.');
@@ -728,7 +733,7 @@ end;
 
 procedure TfrmVendas.cdsVendasAfterInsert(DataSet: TDataSet);
 begin
-  Incrementa('VENDA', cdsVendasCODIGO, GetConnection);
+  //Incrementa('VENDA', cdsVendasCODIGO, GetConnection);
 end;
 
 procedure TfrmVendas.cdsVendasCODCLIENTEValidate(Sender: TField);
@@ -762,7 +767,7 @@ begin
       (cdsVendasTOTALDESCTO.AsFloat + cdsItensVALORDESCTO.AsFloat);
     { calcula valor de comissão }
     cdsItensVALORCOMISSAO.AsFloat :=
-      RoundFloat((cdsItensTOTAL.AsFloat * cdsItensCOMISSAO.AsFloat)/100, 2);
+      RoundTo((cdsItensTOTAL.AsFloat * cdsItensCOMISSAO.AsFloat)/100, 2);
   end;
 end;
 
@@ -935,7 +940,7 @@ procedure TfrmVendas.ReceberVenda;
       CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
       Params.ParamByName('VENDA').AsInteger := cdsVendasCODIGO.AsInteger;
       Open;
-      Result := RoundFloat(FieldByName('RESTO').AsFloat, 2);
+      Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
     finally
       Free;
     end;
@@ -958,7 +963,7 @@ begin
         if ObterValor(ValorDinheiro, '0', 'Total/Resto') then
         begin
 
-          if RoundFloat(ValorDinheiro, 2) > RoundFloat(Restante, 2) then
+          if RoundTo(ValorDinheiro, 2) > RoundTo(Restante, 2) then
           begin
             MsgErro('Valor digitado é maior que o restante a receber, digite novamente.');
             Exit;

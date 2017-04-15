@@ -183,7 +183,7 @@ end;
 procedure TfrmEtiqueta.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('ETIQUETA', cdsPadraoIDETIQUETA, GetConnection);
+  //Incrementa('ETIQUETA', cdsPadraoIDETIQUETA, GetConnection);
   SetFocusIfCan(dbEtiqueta);
 end;
 

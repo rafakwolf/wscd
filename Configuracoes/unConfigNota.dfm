@@ -5,8 +5,9 @@ inherited frmConfigNota: TfrmConfigNota
   ClientHeight = 510
   ClientWidth = 1000
   OldCreateOrder = True
+  ExplicitLeft = -255
   ExplicitWidth = 1006
-  ExplicitHeight = 558
+  ExplicitHeight = 559
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TStatusBar
@@ -4617,8 +4618,8 @@ inherited frmConfigNota: TfrmConfigNota
     end
   end
   inherited actlNavigateActions: TActionList
-    Left = 920
-    Top = 4
+    Left = 800
+    Top = 108
     inherited actOrdenar: TAction
       Caption = 'Atualizar campos...'
     end
@@ -4626,20 +4627,20 @@ inherited frmConfigNota: TfrmConfigNota
   inherited dsPadrao: TDataSource
     AutoEdit = True
     DataSet = cdsPadrao
-    Left = 858
-    Top = 4
+    Left = 770
+    Top = 12
   end
   inherited mmPadrao: TMainMenu
-    Left = 888
-    Top = 4
+    Left = 704
+    Top = 108
   end
-  object sqldPadrao: TPLSQLDataSet
+  object sqldPadrao: TSQLDataSet
     CommandText = 'select * from CONFIGNOTA'#13#10'order by LINHA, COLUNA'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 763
-    Top = 5
+    Left = 515
+    Top = 13
     object sqldPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -4673,18 +4674,18 @@ inherited frmConfigNota: TfrmConfigNota
       Size = 1
     end
   end
-  object dspPadrao: TPLDataSetProvider
+  object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
-    Left = 795
-    Top = 5
+    Left = 603
+    Top = 13
   end
-  object cdsPadrao: TPLClientDataSet
+  object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
     AfterApplyUpdates = cdsPadraoAfterApplyUpdates
-    Left = 827
-    Top = 5
+    Left = 691
+    Top = 13
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -4719,8 +4720,8 @@ inherited frmConfigNota: TfrmConfigNota
     end
   end
   object pmMenuGrid: TPopupMenu
-    Left = 952
-    Top = 4
+    Left = 864
+    Top = 52
     object miAlterarP: TMenuItem
       Action = actEdit
       Caption = 'Alterar...'

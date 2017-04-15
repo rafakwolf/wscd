@@ -63,7 +63,7 @@ var
 
 implementation
 
-uses Funcoes,  ConstPadrao, unAguarde, FuncoesWin, VarGlobal;
+uses Funcoes,  ConstPadrao, unAguarde, VarGlobal, uDatabaseUtils;
 
 {$R *.dfm}
 
@@ -146,7 +146,7 @@ begin
     TfrmAguarde.Execute('Ajustando dados...');
     inherited;
     CentralizaForm(Self);
-    UpdateSingleField('update CAIXA set EXCLUIR = '+QuotedStr('N'), GetConnection);
+    UpdateSingleField('update CAIXA set EXCLUIR = '+QuotedStr('N'));
     cdsPadrao.Open;
   finally
     FreeAndNil(frmAguarde);

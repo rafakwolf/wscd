@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, Mask, DBCtrls, PLDBEdit, DBClient, Provider,
+  ExtCtrls, ComCtrls, Mask, DBCtrls,  DBClient, Provider,
   SqlExpr, FMTBcd, System.Actions;
 
 type
@@ -13,8 +13,8 @@ type
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodCaixa: TPLDBEdit;
-    dbeNomeCaixa: TPLDBEdit;
+    dbeCodCaixa: TDBEdit;
+    dbeNomeCaixa: TDBEdit;
     dbchkInativo: TDBCheckBox;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoNOME: TStringField;
@@ -43,7 +43,7 @@ uses
 procedure TfrmCadastroCaixa.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('CAIXAS', cdsPadraoCODIGO, GetConnection);
+  //Incrementa('CAIXAS', cdsPadraoCODIGO, GetConnection);
   cdsPadraoINATIVO.AsString := 'N';
   SetFocusIfCan(dbeNomeCaixa);
 end;

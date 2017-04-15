@@ -6,7 +6,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
   ClientWidth = 361
   OldCreateOrder = True
   ExplicitWidth = 377
-  ExplicitHeight = 483
+  ExplicitHeight = 484
   PixelsPerInch = 96
   TextHeight = 13
   object lbCopias: TLabel
@@ -42,7 +42,6 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     Width = 81
     Height = 25
     Caption = 'Cancelar'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -95,7 +94,6 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 2
     OnClick = btnCancelarClick
   end
@@ -105,7 +103,6 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     Width = 89
     Height = 25
     Caption = 'Imprimir'
-    DoubleBuffered = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -158,7 +155,6 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9A9A9A9A9
       A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     NumGlyphs = 2
-    ParentDoubleBuffered = False
     TabOrder = 3
     OnClick = btnOkClick
   end
@@ -405,11 +401,10 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       Precision = 15
     end
   end
-  object sqldPagamento: TPLSQLDataSet
+  object sqldPagamento: TSQLDataSet
     CommandText = 
       'select '#13#10'  FORMARECTO, '#13#10'  VALORRECDO '#13#10'from RECTOVENDA'#13#10'where I' +
       'DVENDA = :VENDA'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <
       item
@@ -428,12 +423,12 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       Precision = 15
     end
   end
-  object dspPagamento: TPLDataSetProvider
+  object dspPagamento: TDataSetProvider
     DataSet = sqldPagamento
     Left = 104
     Top = 184
   end
-  object cdspagamento: TPLClientDataSet
+  object cdspagamento: TClientDataSet
     Aggregates = <>
     Params = <
       item

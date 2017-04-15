@@ -7,7 +7,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
   ClientWidth = 769
   Font.Height = -12
   ExplicitWidth = 775
-  ExplicitHeight = 471
+  ExplicitHeight = 472
   PixelsPerInch = 96
   TextHeight = 14
   object bvlLinha: TBevel
@@ -246,8 +246,8 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
     CommandText = 'select * from CAIXA'#13#10'order by DATA'
     MaxBlobSize = -1
     Params = <>
-    Left = 152
-    Top = 152
+    Left = 160
+    Top = 136
     object sqldPadraoCODCAIXA: TIntegerField
       FieldName = 'CODCAIXA'
       Required = True
@@ -283,16 +283,16 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
   end
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
-    Left = 184
-    Top = 152
+    Left = 248
+    Top = 136
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     PacketRecords = 100
     Params = <>
     ProviderName = 'dspPadrao'
-    Left = 216
-    Top = 152
+    Left = 328
+    Top = 136
     object cdsPadraoCODCAIXA: TIntegerField
       FieldName = 'CODCAIXA'
       Required = True
@@ -330,7 +330,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
   object dsPadrao: TDataSource
     AutoEdit = False
     DataSet = cdsPadrao
-    Left = 256
-    Top = 152
+    Left = 424
+    Top = 144
   end
 end

@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Mask, DBCtrls, Buttons, DB, varglobal,
-  PLDBEdit, DBClient, Provider, SqlExpr, unContasReceber, Grids,
-  DBGrids, PLSQLDataSet, PLClientDataSet, PLDataSetProvider, FMTBcd, unSimplePadrao;
+   DBClient, Provider, SqlExpr, unContasReceber, Grids,
+  DBGrids, FMTBcd, unSimplePadrao;
 
 type
   TfrmReceberMan = class(TfrmSimplePadrao)
@@ -61,7 +61,7 @@ type
     lblBandaMagnetica: TLabel;
     bvlLinha2: TBevel;
     edtAgencia: TLabeledEdit;
-    dbeBanco: TPLDBEdit;
+    dbeBanco: TDBEdit;
     edtConta: TLabeledEdit;
     edtNumeroCheque: TLabeledEdit;
     edtValor: TLabeledEdit;
@@ -74,11 +74,11 @@ type
     sqldContaReceberNOME: TStringField;
     cdsContaReceberIDCONTA: TIntegerField;
     cdsContaReceberNOME: TStringField;
-    sqldSelecao: TPLSQLDataSet;
+    sqldSelecao: TSQLDataSet;
     sqldSelecaoIDBANCO: TIntegerField;
     sqldSelecaoBANCO: TStringField;
-    dspSelecao: TPLDataSetProvider;
-    cdsSelecao: TPLClientDataSet;
+    dspSelecao: TDataSetProvider;
+    cdsSelecao: TClientDataSet;
     cdsSelecaoIDBANCO: TIntegerField;
     cdsSelecaoBANCO: TStringField;
     dsSelecao: TDataSource;
@@ -115,8 +115,8 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao,
-     Extensos, uCheque;
+uses Funcoes, ConstPadrao, uDatabaseutils,
+     Extensos, uCheque, System.Math;
 
 {$R *.dfm}
 
@@ -131,14 +131,14 @@ var
 begin
   { o valor não pode ser maior }
   if rgReceb.ItemIndex = 0 then
-    if (StrToFloatDef(dbValor.Text, 0) > RoundFloat(cdsContaReceberTOTAL.AsFloat, 2)) then
+    if (StrToFloatDef(dbValor.Text, 0) > RoundTo(cdsContaReceberTOTAL.AsFloat, 2)) then
     begin
       MsgCuidado('O Valor maior que o total da conta, digite o valor correto.');
       dbValor.SetFocus;
       Exit;
     end
   else if rgReceb.ItemIndex = 1 then
-    if (StrToFloatDef(edtValor.Text, 0) > RoundFloat(cdsContaReceberTOTAL.AsFloat, 2)) then
+    if (StrToFloatDef(edtValor.Text, 0) > RoundTo(cdsContaReceberTOTAL.AsFloat, 2)) then
     begin
       MsgCuidado('O Valor maior que o total da conta, digite o valor correto.');
       edtValor.SetFocus;
@@ -270,14 +270,14 @@ begin
   case rgReceb.ItemIndex of
     0: // dinheiro
     begin
-      if StrToFloatDef(dbValor.Text, 0) < RoundFloat(cdsContaReceberTOTAL.AsFloat, 2) then
+      if StrToFloatDef(dbValor.Text, 0) < RoundTo(cdsContaReceberTOTAL.AsFloat, 2) then
         ReceberParcial
       else
         ReceberTotal;
     end;
     1: // cheque
     begin
-      if StrToFloatDef(edtValor.Text, 0) < RoundFloat(cdsContaReceberTOTAL.AsFloat, 2) then
+      if StrToFloatDef(edtValor.Text, 0) < RoundTo(cdsContaReceberTOTAL.AsFloat, 2) then
       begin
         ReceberParcial;
         ReceberCheque;
@@ -397,7 +397,7 @@ procedure TfrmReceberMan.ReceberCheque;
 var
   Cheque: TCheque;
 begin
-  if StrToFloatDef(edtValor.Text, 0) = RoundFloat(cdsContaReceberTOTAL.AsFloat, 2) then
+  if StrToFloatDef(edtValor.Text, 0) = RoundTo(cdsContaReceberTOTAL.AsFloat, 2) then
     ReceberTotal;
 
   Cheque := TCheque.Create(sqldContaReceber.SQLConnection);
@@ -428,7 +428,7 @@ procedure TfrmReceberMan.medtBandaMagneticaExit(Sender: TObject);
 
   function BancoExiste(IdBanco: Integer): Boolean;
   begin
-    with TPLSQLDataSet.Create(nil) do
+    with TSQLDataSet.Create(nil) do
     try
       SQLConnection := sqldContaReceber.SQLConnection;
       CommandText := 'select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));

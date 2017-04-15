@@ -5,11 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls, PLDBEdit, FMTBcd;
+  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioClienteCidade = class(TfrmDialogoRelatorioPadrao)
-    dbeCidade: TPLDBEdit;
+    dbeCidade: TDBEdit;
     sqldCidade: TSQLDataSet;
     sqldCidadeCODCIDADE: TIntegerField;
     sqldCidadeDESCRICAO: TStringField;

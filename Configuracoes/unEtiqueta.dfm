@@ -6,7 +6,7 @@ inherited frmEtiqueta: TfrmEtiqueta
   ClientWidth = 538
   OldCreateOrder = True
   ExplicitWidth = 544
-  ExplicitHeight = 532
+  ExplicitHeight = 533
   PixelsPerInch = 96
   TextHeight = 13
   object LabelEtiqueta: TLabel [0]
@@ -76,7 +76,7 @@ inherited frmEtiqueta: TfrmEtiqueta
   object Label10: TLabel [8]
     Left = 289
     Top = 386
-    Width = 99
+    Width = 98
     Height = 13
     Caption = 'Dist'#226'ncia Vertical'
     FocusControl = dbDistVert
@@ -6256,8 +6256,8 @@ inherited frmEtiqueta: TfrmEtiqueta
       800000808000008080000080800000808000}
   end
   inherited actlNavigateActions: TActionList
-    Left = 24
-    Top = 124
+    Left = 448
+    Top = 60
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
@@ -6265,8 +6265,8 @@ inherited frmEtiqueta: TfrmEtiqueta
     Top = 184
   end
   inherited mmPadrao: TMainMenu
-    Left = 56
-    Top = 124
+    Left = 432
+    Top = 4
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from ETIQUETA'

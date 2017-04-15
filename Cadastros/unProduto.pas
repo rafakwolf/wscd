@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, ConstPadrao,
-  PLDBEditDateTimePicker, Mask, DBCtrls, PLDBEdit, FMTBcd, System.Actions;
+   Mask, DBCtrls,  FMTBcd, System.Actions;
 
 type
   TfrmProduto = class(TfrmPadrao)
@@ -35,23 +35,23 @@ type
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
-    dbeCodigoInterno: TPLDBEdit;
-    dbeCodigoBarra: TPLDBEdit;
-    dbeNomeProduto: TPLDBEdit;
-    dbePeso: TPLDBEdit;
-    dbdValidade: TPLDBEditDateTimePicker;
-    dbePrecoPromocao: TPLDBEdit;
-    dbePrecoCusto: TPLDBEdit;
-    dbeLucro: TPLDBEdit;
-    dbePrecoVenda: TPLDBEdit;
-    dbeEstoque: TPLDBEdit;
-    dbeEstoqueMinimo: TPLDBEdit;
-    dbeTributacao: TPLDBEdit;
-    dbeValorEstoque: TPLDBEdit;
-    dbeQtdeRecebida: TPLDBEdit;
-    dbeFornecedor: TPLDBEdit;
-    dbeGrupo: TPLDBEdit;
-    dbeUnidade: TPLDBEdit;
+    dbeCodigoInterno: TDBEdit;
+    dbeCodigoBarra: TDBEdit;
+    dbeNomeProduto: TDBEdit;
+    dbePeso: TDBEdit;
+    dbdValidade: TDBEdit;
+    dbePrecoPromocao: TDBEdit;
+    dbePrecoCusto: TDBEdit;
+    dbeLucro: TDBEdit;
+    dbePrecoVenda: TDBEdit;
+    dbeEstoque: TDBEdit;
+    dbeEstoqueMinimo: TDBEdit;
+    dbeTributacao: TDBEdit;
+    dbeValorEstoque: TDBEdit;
+    dbeQtdeRecebida: TDBEdit;
+    dbeFornecedor: TDBEdit;
+    dbeGrupo: TDBEdit;
+    dbeUnidade: TDBEdit;
     N5: TMenuItem;
     miRelPorGrupo: TMenuItem;
     miRelValidade: TMenuItem;
@@ -123,9 +123,9 @@ type
     dbckbPromocao: TDBCheckBox;
     bvlLinha1: TBevel;
     bvlLinha2: TBevel;
-    dbeReferencia: TPLDBEdit;
+    dbeReferencia: TDBEdit;
     bvlLinha3: TBevel;
-    dbeDataReceb: TPLDBEdit;
+    dbeDataReceb: TDBEdit;
     sqldPadraoOBS: TMemoField;
     cdsPadraoOBS: TMemoField;
     btnObs: TBitBtn;
@@ -189,7 +189,7 @@ implementation
 
 uses unModeloConsulta, Funcoes, VarGlobal, unEtiquetaProduto,
       unRelatorioListaPrecos, Extensos, uConfiguraRelatorio,
-     unPrevProdutosVencimento, unAguarde;
+     unPrevProdutosVencimento, unAguarde, System.Math, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -236,7 +236,7 @@ end;
 procedure TfrmProduto.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('PRODUTOS', cdsPadraoIDPRODUTO, GetConnection);
+  //Incrementa('PRODUTOS', cdsPadraoIDPRODUTO, GetConnection);
   cdsPadraoNOVO.AsInteger          := 1;
   cdsPadraoALTERADO.AsInteger      := 0;
   cdsPadraoEXCLUIR.AsString        := 'N';
@@ -253,46 +253,46 @@ end;
 procedure TfrmProduto.dbeEstoqueKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.dbeEstoqueMinimoKeyPress(Sender: TObject;
   var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.dbePrecoCustoKeyPress(Sender: TObject;
   var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.dbeLucroKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.dbePrecoVendaKeyPress(Sender: TObject;
   var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.dbePrecoPromocaoKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.dbePesoKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.dbeLucroExit(Sender: TObject);
@@ -322,17 +322,17 @@ var
   SenhaDigitada: string;
 begin
   SenhaDigitada := EmptyStr;
-  if PassWord(SenhaDigitada, '*') then
-  begin
-    if (Decript(Senha) = SenhaDigitada) then
-    begin
-      actEdit.Execute;
-      dbeEstoqueMinimo.ReadOnly := False;
-      dbeEstoque.ReadOnly := False;
-    end
-    else
-      MsgErro('Senha Incorreta.');
-  end;
+//  if PassWord(SenhaDigitada, '*') then
+//  begin
+//    if (Decript(Senha) = SenhaDigitada) then
+//    begin
+//      actEdit.Execute;
+//      dbeEstoqueMinimo.ReadOnly := False;
+//      dbeEstoque.ReadOnly := False;
+//    end
+//    else
+//      MsgErro('Senha Incorreta.');
+//  end;
 end;
 
 procedure TfrmProduto.dbeEstoqueKeyDown(Sender: TObject; var Key: Word;
@@ -413,8 +413,8 @@ end;
 procedure TfrmProduto.dbePrecoVendaExit(Sender: TObject);
 begin
   inherited;
-  dbeLucro.Text :=
-    FloatToStr(RoundFloat(StrToFloatDef(CalcMargem(dbePrecoVenda.Text, dbePrecoCusto.Text), 0), 2));
+ // dbeLucro.Text :=
+  //  FloatToStr(RoundTo(StrToFloatDef(CalcMargem(dbePrecoVenda.Text, dbePrecoCusto.Text), 0), 2));
 end;
 
 procedure TfrmProduto.cdsPadraoAfterEdit(DataSet: TDataSet);
@@ -491,8 +491,8 @@ procedure TfrmProduto.dbeCodigoBarraKeyPress(Sender: TObject;
   var Key: Char);
 begin
   inherited;
-  if not Configuracao.LetraNumCodBarra then
-    ControlarTeclas(Key);
+  //if not Configuracao.LetraNumCodBarra then
+    //ControlarTeclas(Key);
 end;
 
 procedure TfrmProduto.AntesSalvar;
@@ -635,7 +635,7 @@ end;
 procedure TfrmProduto.cdsPadraoAfterScroll(DataSet: TDataSet);
 begin
   inherited;
-  CriaCodigo(cdsPadraoCODBARRA.AsString, imgCodbarras.Canvas);
+  //CriaCodigo(cdsPadraoCODBARRA.AsString, imgCodbarras.Canvas);
   imgCodbarras.Repaint;
 end;
 

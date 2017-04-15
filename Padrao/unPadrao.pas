@@ -131,7 +131,7 @@ var
 implementation
 
 uses unModeloConsulta, unGeraRelatorio,
-     FuncoesWin, unOrdenarDados, VarGlobal;
+      unOrdenarDados, VarGlobal;
 
 {$R *.DFM}
 
@@ -260,7 +260,7 @@ end;
 
 procedure TfrmPadrao.NumericoKeyPress(Sender: TObject; var Key: Char);
 begin
-  ControlarTeclas(Key);
+  //ControlarTeclas(Key);
 end;
 
 procedure TfrmPadrao.actAnteriorExecute(Sender: TObject);
@@ -426,8 +426,8 @@ begin
   ComponentFocusWhenPost := ActiveControl;
   SelectNext(ActiveControl, True, False);
 
-  if not VerificaFields(dsPadrao) then
-    Abort;
+//  if not VerificaFields(dsPadrao) then
+//    Abort;
 end;
 
 procedure TfrmPadrao.DepoisSalvar;
@@ -475,7 +475,7 @@ end;
 
 procedure TfrmPadrao.actContarExecute(Sender: TObject);
 begin
-  Ed_Quantificar(TClientDataSet(dsPadrao.DataSet), Self);
+  ////Ed_Quantificar(TClientDataSet(dsPadrao.DataSet), Self);
 end;
 
 function TfrmPadrao.Pesquisa(pCaption: string; pCDS: TClientDataSet;

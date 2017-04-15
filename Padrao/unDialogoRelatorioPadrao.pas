@@ -32,7 +32,7 @@ var
 implementation
 
 uses
-  Funcoes, pledit, PLDBEdit, uNotifyEventDispatcher;
+  Funcoes,   uNotifyEventDispatcher, Vcl.DBCtrls;
 
 {$R *.dfm}
 
@@ -51,8 +51,8 @@ end;
 
 procedure TfrmDialogoRelatorioPadrao.btnImprimirClick(Sender: TObject);
 begin
-  if not VerificaImpressora then
-    Abort;
+ // if not VerificaImpressora then
+  //  Abort;
 end;
 
 procedure TfrmDialogoRelatorioPadrao.FormKeyDown(Sender: TObject;
@@ -98,18 +98,18 @@ begin
 
     for I := 0 to ComponentCount-1 do
     begin
-      if Components[i] is TPLDBEdit then
+      if Components[i] is TDBEdit then
       begin
-        method := info.GetMethod( TPLDBEdit( Components[i] ).Name + 'ClickButton' );
+        method := info.GetMethod( TDBEdit( Components[i] ).Name + 'ClickButton' );
 
         if Assigned(method) then
         begin
-          TPLDBEdit( Components[i] ).VisibleButton := True;
+          //TDBEdit( Components[i] ).VisibleButton := True;
 
-          m.Data := TPLDBEdit( Components[i] );
+          m.Data := TDBEdit( Components[i] );
           m.Code := method.CodeAddress;
 
-          TPLDBEdit( Components[i] ).OnClickButton := TnotifyEvent(m);
+          //TDBEdit( Components[i] ).OnClickButton := TnotifyEvent(m);
         end;
       end;
     end;

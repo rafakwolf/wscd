@@ -9,7 +9,7 @@ inherited frmRelatorioCRAtraso: TfrmRelatorioCRAtraso
   ExplicitHeight = 165
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCliente: TPLDBEdit [0]
+  object dbeCliente: TDBEdit [0]
     Left = 16
     Top = 40
     Width = 355

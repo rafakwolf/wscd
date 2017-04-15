@@ -5,22 +5,22 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
-  DBClient, PLClientDataSet, Provider, PLDataSetProvider, SqlExpr,
-  PLSQLDataSet, StdCtrls, DBCtrls, Mask, PLDBEdit, FMTBcd, System.Actions;
+  DBClient,  Datasnap.Provider,
+  Data.SqlExpr, StdCtrls, DBCtrls, Mask,  FMTBcd, System.Actions;
 
 type
   TfrmVendedor = class(TfrmPadrao)
-    sqldPadrao: TPLSQLDataSet;
-    dspPadrao: TPLDataSetProvider;
-    cdsPadrao: TPLClientDataSet;
+    sqldPadrao: TSQLDataSet;
+    dspPadrao: TDataSetProvider;
+    cdsPadrao: TClientDataSet;
     sqldPadraoIDVENDEDOR: TIntegerField;
     sqldPadraoVENDEDOR: TStringField;
     sqldPadraoATIVO: TStringField;
     cdsPadraoIDVENDEDOR: TIntegerField;
     cdsPadraoVENDEDOR: TStringField;
     cdsPadraoATIVO: TStringField;
-    dbeVendedor: TPLDBEdit;
-    dbeIdVendedor: TPLDBEdit;
+    dbeVendedor: TDBEdit;
+    dbeIdVendedor: TDBEdit;
     dbcbAtivo: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -49,7 +49,7 @@ end;
 procedure TfrmVendedor.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  Incrementa('VENDEDOR', cdsPadraoIDVENDEDOR, GetConnection);
+  //Incrementa('VENDEDOR', cdsPadraoIDVENDEDOR, GetConnection);
   cdsPadraoATIVO.AsString := 'S';
   SetFocusIfCan(dbeVendedor);
 end;

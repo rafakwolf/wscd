@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls, Mask, Buttons, DBCtrls, DB, DbClient,
-  Menus, SqlExpr, ComCtrls, Provider, ConstPadrao, ActnList, PLSQLDataSet,
+  Menus, SqlExpr, ComCtrls, Provider, ConstPadrao, ActnList,
   FMTBcd, unSimplePadrao, System.Actions, varglobal;
 
 const
@@ -134,7 +134,7 @@ type
     btnPagas: TSpeedButton;
     actPagas: TAction;
     miPagas: TMenuItem;
-    sqldDeleta: TPLSQLDataSet;
+    sqldDeleta: TSQLDataSet;
     sqldFornCODFORNECEDOR: TIntegerField;
     sqldFornFANTAZIA: TStringField;
     sqldFornCNPJ: TStringField;
@@ -226,8 +226,7 @@ var
 implementation
 
 uses
-  Funcoes, unContasPagas, unModeloConsulta, unRecibo, 
-  FuncoesWin;
+  Funcoes, unContasPagas, unModeloConsulta, unRecibo;
 
 {$R *.dfm}
 
@@ -296,7 +295,7 @@ begin
   ClientHeight := 425;
   ClientWidth  := 760;
   CentralizaForm(Self);
-  ReordenaBotoes([btnPagar, btnExcluir, btnPagas, btnFechar], 0);
+  ReordenaBotoes([btnPagar, btnExcluir, btnPagas, btnFechar]);
   SQLPadraoForn := sqldForn.CommandText;
 end;
 
@@ -483,7 +482,7 @@ end;
 
 procedure TfrmContasPagar.GradeTitleClick(Column: TColumn);
 begin
-  OrdenaColunasGrid(Grade, Column, cdsPadrao);
+  //OrdenaColunasGrid(Grade, Column, cdsPadrao);
 end;
 
 procedure TfrmContasPagar.miVencendohojeClick(Sender: TObject);
