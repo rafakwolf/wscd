@@ -52,7 +52,6 @@ inherited frmRelatorioComissaoVenda: TfrmRelatorioComissaoVenda
     Top = 56
   end
   object dsData: TDataSource
-    DataSet = DmPesquisar.cdsPesqData
     Left = 168
     Top = 88
   end

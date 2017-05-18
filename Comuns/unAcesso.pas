@@ -11,8 +11,8 @@ type
     edtUsuario: TLabeledEdit;
     btnCancelar: TBitBtn;
     btnOK: TBitBtn;
-    edtSenha: TEdit;
     imgAcesso: TImage;
+    edtSenha: TLabeledEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -58,7 +58,7 @@ begin
     Exit;
   end;
 
-  if not (AnsiLowerCase(edtUsuario.Text) = 'admcpr') then
+  if not (AnsiLowerCase(edtUsuario.Text) = 'adm') then
   begin
     with TdmAcesso.Create(self) do
     try
@@ -129,7 +129,7 @@ begin
   end;
 
   Repaint;
-  //ForceForegroundWindow(Handle);
+  ForceForegroundWindow(Handle);
 end;
 
 class function TfrmAcesso.Execute(LogOff: Boolean): Boolean;

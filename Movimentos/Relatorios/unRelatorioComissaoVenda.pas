@@ -38,53 +38,53 @@ uses
 procedure TfrmRelatorioComissaoVenda.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqVendedor;
-  dsData.DataSet   := GetDmPesquisar.cdsPesqData;
-  {...}
-  GetDmPesquisar.cdsPesqData.Open;
-  GetDmPesquisar.cdsPesqVendedor.Close;
-  SQLpadrao := GetDmPesquisar.sqldPesqVendedor.CommandText;
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqVendedor;
+//  dsData.DataSet   := GetDmPesquisar.cdsPesqData;
+//  {...}
+//  GetDmPesquisar.cdsPesqData.Open;
+//  GetDmPesquisar.cdsPesqVendedor.Close;
+//  SQLpadrao := GetDmPesquisar.sqldPesqVendedor.CommandText;
 end;
 
 procedure TfrmRelatorioComissaoVenda.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqData.Close;
-  GetDmPesquisar.cdsPesqVendedor.Close;
+//  GetDmPesquisar.cdsPesqData.Close;
+//  GetDmPesquisar.cdsPesqVendedor.Close;
 end;
 
 procedure TfrmRelatorioComissaoVenda.Imprirmir(p: Boolean);
 begin
-  if GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').IsNull then
-  begin
-    MsgErro(UM_FILTROINVALIDO);
-    Exit;
-  end;
+//  if GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').IsNull then
+//  begin
+//    MsgErro(UM_FILTROINVALIDO);
+//    Exit;
+//  end;
   
 //  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
 //    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, dbdtpDataIni) then
 //  begin
-    with TfrmPrevComissaoVenda.Create(Self) do
-    try
-      cdsPadrao.Close;
-      cdsPadrao.Params.ParamByName('IDVEND').AsInteger :=
-        GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').AsInteger;
-      cdsPadrao.Params.ParamByName('DATAINI').AsDate :=
-        GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime;
-      cdsPadrao.Params.ParamByName('DATAFIM').AsDate :=
-        GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime;
-
-      rlblDataVendedor.Caption := IntToStr(GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').AsInteger)+' - '+
-        GetDmPesquisar.cdsPesqVendedor.FieldByName('VENDEDOR').AsString;
-      rlblDataPeriodo.Caption  := FormatDateTime('dd/mm/yyyy', GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime)+' à '+
-        FormatDateTime('dd/mm/yyyy', GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
-
-      lbTitulo.Caption := 'Comissão de vendedor';
-      PrintIfNotEmptyRL(rrPadrao, p);
-    finally
-      Free;
-    end;
+//    with TfrmPrevComissaoVenda.Create(Self) do
+//    try
+//      cdsPadrao.Close;
+//      cdsPadrao.Params.ParamByName('IDVEND').AsInteger :=
+//        GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').AsInteger;
+//      cdsPadrao.Params.ParamByName('DATAINI').AsDate :=
+//        GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime;
+//      cdsPadrao.Params.ParamByName('DATAFIM').AsDate :=
+//        GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime;
+//
+//      rlblDataVendedor.Caption := IntToStr(GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').AsInteger)+' - '+
+//        GetDmPesquisar.cdsPesqVendedor.FieldByName('VENDEDOR').AsString;
+//      rlblDataPeriodo.Caption  := FormatDateTime('dd/mm/yyyy', GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime)+' à '+
+//        FormatDateTime('dd/mm/yyyy', GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
+//
+//      lbTitulo.Caption := 'Comissão de vendedor';
+//      PrintIfNotEmptyRL(rrPadrao, p);
+//    finally
+//      Free;
+//    end;
  // end;
 end;
 
@@ -104,10 +104,10 @@ procedure TfrmRelatorioComissaoVenda.dbeVendedorClickButton(
   Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqVendedor.Close;
-  GetDmPesquisar.cdsPesqVendedor.CommandText := SQLpadrao;
-  if not TfrmModeloConsulta.Execute('Vendedor', GetDmPesquisar.cdsPesqVendedor, FN_VENDEDOR, DL_VENDEDOR) then
-    GetDmPesquisar.cdsPesqVendedor.Close;
+//  GetDmPesquisar.cdsPesqVendedor.Close;
+//  GetDmPesquisar.cdsPesqVendedor.CommandText := SQLpadrao;
+//  if not TfrmModeloConsulta.Execute('Vendedor', GetDmPesquisar.cdsPesqVendedor, FN_VENDEDOR, DL_VENDEDOR) then
+//    GetDmPesquisar.cdsPesqVendedor.Close;
 end;
 
 initialization

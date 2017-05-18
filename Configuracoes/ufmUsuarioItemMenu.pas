@@ -116,7 +116,7 @@ begin
   FieldNames       := FN_USUARIOS;
   DisplayLabels    := DL_USUARIOS;
   aCaption         := 'Usuários';
-  ComandoSQLPadrao := sqldPadrao.CommandText;
+  //ComandoSQLPadrao := sqldPadrao.CommandText;
 
   with sqldMenu do
   begin

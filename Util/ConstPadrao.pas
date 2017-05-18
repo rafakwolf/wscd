@@ -34,11 +34,11 @@ const
   FN_DUPLICATA: string = '';
   DL_DUPLICATA: string = '';
 
-  FN_CIDADES: string = '';
-  DL_CIDADES: string = '';
+  FN_CIDADES: string = 'CODCIDADE;DESCRICAO';
+  DL_CIDADES: string = 'Código;Descrição';
 
-  FN_CLIENTES: string = '';
-  DL_CLIENTES: string = '';
+  FN_CLIENTES: string = 'NOME;TELEFONE;E_MAIL;CPF_CNPJ';
+  DL_CLIENTES: string = 'Nome;Telefone;E-mail;Documento';
 
   FN_CR: string = '';
   DL_CR: string = '';

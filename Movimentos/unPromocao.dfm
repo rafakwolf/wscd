@@ -6,7 +6,7 @@ inherited frmPromocao: TfrmPromocao
   ClientWidth = 790
   OldCreateOrder = True
   ExplicitWidth = 796
-  ExplicitHeight = 563
+  ExplicitHeight = 543
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TStatusBar
@@ -155,38 +155,6 @@ inherited frmPromocao: TfrmPromocao
     DataSet = cdsPadrao
     Left = 263
     Top = 180
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 136
-    Top = 180
-    inherited miOpcoes: TMenuItem
-      object N6: TMenuItem
-        Caption = '-'
-      end
-      object miInserirProdutos: TMenuItem
-        Caption = 'Inserir'
-        object miProdutosGrupo: TMenuItem
-          Caption = 'Produtos de um grupo'
-          OnClick = miProdutosGrupoClick
-        end
-        object miProdutosFornecedor: TMenuItem
-          Caption = 'Produtos de um fornecedor'
-          OnClick = miProdutosFornecedorClick
-        end
-      end
-      object miExcluirtodas: TMenuItem
-        Caption = 'Excluir todas as promo'#231#245'es'
-        OnClick = miExcluirtodasClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Listagem de promo'#231'oes'
-      end
-      object N5: TMenuItem [1]
-        Caption = '-'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

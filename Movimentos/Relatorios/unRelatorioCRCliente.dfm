@@ -22,8 +22,8 @@ inherited frmRelatorioCRCliente: TfrmRelatorioCRCliente
   inherited pnButtons: TPanel
     Top = 102
     Width = 385
-    ExplicitTop = 106
-    ExplicitWidth = 393
+    ExplicitTop = 102
+    ExplicitWidth = 385
     inherited btnVisualizar: TBitBtn
       OnClick = btnVisualizarClick
     end

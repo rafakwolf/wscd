@@ -131,12 +131,12 @@ begin
   actPrint.Visible := False;
   actDelete.Visible := False;
   actSearch.Visible := False;
-  actPrimeiro.Visible := False;
-  actAnterior.Visible := False;
-  actProximo.Visible := False;
-  actUltimo.Visible := False;
-  miRelatorios.Visible := False;
-  miOpcoes.Visible := False;
+//  actPrimeiro.Visible := False;
+//  actAnterior.Visible := False;
+//  actProximo.Visible := False;
+//  actUltimo.Visible := False;
+//  miRelatorios.Visible := False;
+//  miOpcoes.Visible := False;
   ReordenaBotoes([btnAlterar, btnSalvar, btnCancelar, btnSair]);
   Sistema.Atualizar;
 end;
@@ -264,9 +264,9 @@ end;
 procedure TfrmDadosEmpresa.dbeCidadeClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsEdit, dsInsert] then
-    if TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
-      cdsPadraoIDCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
+//  if cdsPadrao.State in [dsEdit, dsInsert] then
+//    if TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
+//      cdsPadraoIDCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
 end;
 
 procedure TfrmDadosEmpresa.FormClose(Sender: TObject;

@@ -717,11 +717,11 @@ end;
 
 procedure TfrmNotasFiscais.dbCodFornecedorClickButton(Sender: TObject);
 begin
-  if (cdsNFiscais.State in dsEditModes) then
-    if TfrmModeloConsulta.Execute('Fornecedor', GetDmPesquisar.cdsPesqForn, FN_FORN, DL_FORN) then
-    begin
-      cdsNFiscaisCODFORNECEDOR.AsInteger := GetDmPesquisar.cdsPesqForn.FieldByName('CODFORNECEDOR').AsInteger;
-    end;
+//  if (cdsNFiscais.State in dsEditModes) then
+//    if TfrmModeloConsulta.Execute('Fornecedor', GetDmPesquisar.cdsPesqForn, FN_FORN, DL_FORN) then
+//    begin
+//      cdsNFiscaisCODFORNECEDOR.AsInteger := GetDmPesquisar.cdsPesqForn.FieldByName('CODFORNECEDOR').AsInteger;
+//    end;
 end;
 
 procedure TfrmNotasFiscais.dbProdutoClickButton(Sender: TObject);
@@ -735,24 +735,24 @@ begin
 
   if(cdsNFiscais.State in [dsInsert, dsEdit])then
   begin
-    if TfrmModeloConsulta.Execute('Busca produto', cdsProdutos, FN_PRODUTOS, DL_PRODUTOS) then
-    begin
-      cdsSelecao.Edit;
-      cdsSelecaoIDPRODUTO.AsInteger := cdsProdutosIDPRODUTO.AsInteger;
-      cdsSelecaoPRODUTO.AsString := cdsProdutosDESCRICAO.AsString;
-      cdsSelecaoIDTRIBUTACAO.AsInteger := cdsProdutosIDALIQUOTA.AsInteger;
-      cdsSelecaoTRIBUTACAO.AsString :=
-        SelectSingleField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
-          QuotedStr(IntToStr(cdsProdutosIDALIQUOTA.AsInteger)), GetConnection);
-      cdsSelecaoQTDE.AsFloat := 1;
-      cdsSelecaoTOTAL.AsFloat := 0;
-      cdsSelecaoCUSTO.AsFloat := 0;
-      cdsSelecaoLUCRO.AsFloat := cdsProdutosLUCRO.AsFloat;
-      cdsSelecaoVENDA.AsFloat := StrToFloatDef(FormatFloat('#,##0.00', cdsProdutosVENDA.AsFloat), 0);
-      cdsSelecaoIPI.AsFloat := 0;
-      cdsSelecaoDESCTO.AsFloat := 0;
-      cdsSelecao.Post;
-    end;
+//    if TfrmModeloConsulta.Execute('Busca produto', cdsProdutos, FN_PRODUTOS, DL_PRODUTOS) then
+//    begin
+//      cdsSelecao.Edit;
+//      cdsSelecaoIDPRODUTO.AsInteger := cdsProdutosIDPRODUTO.AsInteger;
+//      cdsSelecaoPRODUTO.AsString := cdsProdutosDESCRICAO.AsString;
+//      cdsSelecaoIDTRIBUTACAO.AsInteger := cdsProdutosIDALIQUOTA.AsInteger;
+//      cdsSelecaoTRIBUTACAO.AsString :=
+//        SelectSingleField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
+//          QuotedStr(IntToStr(cdsProdutosIDALIQUOTA.AsInteger)), GetConnection);
+//      cdsSelecaoQTDE.AsFloat := 1;
+//      cdsSelecaoTOTAL.AsFloat := 0;
+//      cdsSelecaoCUSTO.AsFloat := 0;
+//      cdsSelecaoLUCRO.AsFloat := cdsProdutosLUCRO.AsFloat;
+//      cdsSelecaoVENDA.AsFloat := StrToFloatDef(FormatFloat('#,##0.00', cdsProdutosVENDA.AsFloat), 0);
+//      cdsSelecaoIPI.AsFloat := 0;
+//      cdsSelecaoDESCTO.AsFloat := 0;
+//      cdsSelecao.Post;
+//    end;
   end;
 end;
 
@@ -854,11 +854,11 @@ end;
 
 procedure TfrmNotasFiscais.dbeCfopClickButton(Sender: TObject);
 begin
-  if (cdsNFiscais.State in dsEditModes) then
-    if TfrmModeloConsulta.Execute('Cfop', GetDmPesquisar.cdsPesqCfop, FN_CFOP, DL_CFOP) then
-    begin
-      cdsNFiscaisCFOP.AsInteger := StrToInt(GetDmPesquisar.cdsPesqCfop.FieldByName('NUMERO').AsString);
-    end;
+//  if (cdsNFiscais.State in dsEditModes) then
+//    if TfrmModeloConsulta.Execute('Cfop', GetDmPesquisar.cdsPesqCfop, FN_CFOP, DL_CFOP) then
+//    begin
+//      cdsNFiscaisCFOP.AsInteger := StrToInt(GetDmPesquisar.cdsPesqCfop.FieldByName('NUMERO').AsString);
+//    end;
 end;
 
 procedure TfrmNotasFiscais.cdsNFiscaisCFOPValidate(Sender: TField);

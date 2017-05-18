@@ -6,13 +6,13 @@ inherited frmDuplicatas: TfrmDuplicatas
   ClientWidth = 545
   OldCreateOrder = True
   ExplicitWidth = 551
-  ExplicitHeight = 575
+  ExplicitHeight = 555
   PixelsPerInch = 96
   TextHeight = 13
   object lbSacado: TLabel [0]
     Left = 8
     Top = 256
-    Width = 529
+    Width = 350
     Height = 16
     AutoSize = False
     Caption = 
@@ -132,7 +132,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     Top = 148
     Width = 121
     Height = 21
-    Color = clInactiveCaptionText
+    Color = clInactiveCaption
     DataField = 'VALOR'
     DataSource = dsPadrao
     TabOrder = 5
@@ -251,9 +251,9 @@ inherited frmDuplicatas: TfrmDuplicatas
     TabOrder = 17
   end
   object dbeEstado: TDBEdit [22]
-    Left = 488
+    Left = 465
     Top = 412
-    Width = 41
+    Width = 64
     Height = 21
     DataField = 'UF'
     DataSource = dsPadrao
@@ -301,9 +301,53 @@ inherited frmDuplicatas: TfrmDuplicatas
     TabOrder = 21
     ExplicitWidth = 545
   end
+  object btnCadastraSacadoCliente: TcxButton [28]
+    Left = 374
+    Top = 253
+    Width = 155
+    Height = 25
+    Caption = 'Cadastrar Cliente'
+    OptionsImage.Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000040000000C0000000A0000000400000004000000070000000A0000
+      000B0000000D0000000D0000000D0000000C0000000A00000007000000000000
+      00000000000B0B5D2FFF042D15AC0002011C32496397113866B70A3972D2093A
+      76DB0A458BFF0A448AFF083873DC07346DD4052B5AB8041F4089000000070000
+      000B00000016126737FF3CA885FF094321D47093ABFF8BB7DFFF4391D9FF2B85
+      D7FF308FE4FF308FE4FF2A84D7FF2981D3FF2A7DCAFF0B488EFF13542FBD1875
+      41FF187341FF177340FF2AC696FF24B07EFF196940FD74A0ABFFAAD2EDFF6DB6
+      EEFF3F9EEBFF3F9EEBFF46A2ECFF56ADEDFF3B89CDFF0C447FDA20824BFF7AE4
+      C9FF39CD9EFF37CC9DFF35CB9CFF33CA9BFF35C193FF278056FE518887FD7EBA
+      E3FF51A5E2FF50A6E1FF58A6DFFF1A64A9FA0C3864A3020B1329258C53FFB5F2
+      E4FFB5F2E4FFB3F2E4FF7DE6CAFF4AD2A8FF78DCC0FF3F9A6CFB133F2C89416E
+      99E03E6C9DFF366596FF184F81DB02080E260000000500000002206F45C02B95
+      5AFF299459FF299358FF9AECD6FF7DD6B9FF318D5CEC09201345000000194261
+      88DC7DA4CDFF588BC1FF1C4070DE000000190000000000000000000000020000
+      0003000000072D9B5FFF7ECEADFF257A4CCB040E092000000005020304205379
+      ACF9BDE0F5FF8BC2EBFF335C95FD0103052D0000000300000000000000000000
+      000000000002309F63FC1D5F3B9A0104020B000000010000000517335FC05C80
+      B0FFCAE8F6FF94C6E9FF375D95FF102345AC0000000900000000000000000000
+      0000000000000000000100000001000000000000000000000006205090F64F7C
+      B1FF517CAFFF2C5088FF325D98FF183871F40000000B00000000000000000000
+      0000000000000000000000000000000000000000000000000003255A9AE66C9D
+      D0FE5C8CC1FF76A5D3FF5385BEFF1C427DF70000000700000000000000000000
+      00000000000000000000000000000000000000000000000000010C1F3249255B
+      92C22E6EB0E62F72B8FA204E82C80A192D590000000300000000000000000000
+      0000000000000000000000000000000000000000000000000000000000010000
+      0002000000030000000300000003000000020000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000}
+    TabOrder = 23
+    OnClick = btnCadastraSacadoClienteClick
+  end
   inherited actlNavigateActions: TActionList
-    Left = 464
-    Top = 68
+    Left = 480
+    Top = 4
     inherited actPrint: TAction
       Hint = 'Imprimir em formul'#225'rio pr'#233'-impresso'
       ShortCut = 0
@@ -312,157 +356,8 @@ inherited frmDuplicatas: TfrmDuplicatas
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 223
-    Top = 37
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 392
-    Top = 4
-    inherited miOpcoes: TMenuItem
-      object N6: TMenuItem
-        Caption = '-'
-      end
-      object miImportarCliente: TMenuItem
-        Caption = 'Importar cliente'
-        OnClick = miImportarClienteClick
-      end
-      object miImportarCR: TMenuItem
-        Caption = 'Importar conta a receber'
-        OnClick = miImportarCRClick
-      end
-      object N10: TMenuItem
-        Caption = '-'
-      end
-      object miConfigurar: TMenuItem
-        Caption = 'Configurar para formul'#225'rio pr'#233'-impresso'
-        OnClick = miConfigurarClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Em formul'#225'rio pr'#233'-impresso...'
-      end
-      object miFormSistema: TMenuItem [1]
-        Caption = 'Em formul'#225'rio desenhado pelo sistema...'
-        OnClick = miFormSistemaClick
-      end
-      object N9: TMenuItem [2]
-        Caption = '-'
-      end
-      object miFormularioBranco: TMenuItem [3]
-        Caption = 'Formul'#225'rio em branco'
-        OnClick = miFormularioBrancoClick
-      end
-      object N5: TMenuItem [4]
-        Caption = '-'
-      end
-    end
-  end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  d.IDDUPLICATA,'#13#10'  d.NRODUPLICATA,'#13#10'  d.SACADO,'#13#10'  d.CP' +
-      'F_CNPJ,'#13#10'  d.ENDERECO,'#13#10'  d.BAIRRO,'#13#10'  d.CEP,'#13#10'  d.IDCIDADE,'#13#10'  ' +
-      'c.Descricao NOMECIDADE,'#13#10'  d.FONEFAX,'#13#10'  d.UF,'#13#10'  d.IE,'#13#10'  d.DAT' +
-      'AEMISSAO,'#13#10'  d.NROFATURA,'#13#10'  d.VALOR_FATURA,'#13#10'  d.VALOR,'#13#10'  d.DA' +
-      'TAVENC,'#13#10'  d.DESCONTO,'#13#10'  d.PRACAPAGAMENTO,'#13#10'  d.DATADESCTO,'#13#10'  ' +
-      'd.VALOREXTENSO,'#13#10'  d.DATAIMPRESSAO,'#13#10'  d.IMPRESSA'#13#10'from DUPLICAT' +
-      'A d'#13#10'left join CIDADES c on (d.Idcidade = c.Codcidade)'#13#10'order by' +
-      ' IDDUPLICATA'
-    MaxBlobSize = -1
-    Params = <>
-    Left = 120
-    Top = 37
-    object sqldPadraoIDDUPLICATA: TIntegerField
-      FieldName = 'IDDUPLICATA'
-      Required = True
-    end
-    object sqldPadraoNRODUPLICATA: TStringField
-      FieldName = 'NRODUPLICATA'
-    end
-    object sqldPadraoSACADO: TStringField
-      FieldName = 'SACADO'
-      Size = 80
-    end
-    object sqldPadraoCPF_CNPJ: TStringField
-      FieldName = 'CPF_CNPJ'
-    end
-    object sqldPadraoENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Size = 80
-    end
-    object sqldPadraoBAIRRO: TStringField
-      FieldName = 'BAIRRO'
-      Size = 80
-    end
-    object sqldPadraoCEP: TStringField
-      FieldName = 'CEP'
-      Size = 10
-    end
-    object sqldPadraoIDCIDADE: TIntegerField
-      FieldName = 'IDCIDADE'
-    end
-    object sqldPadraoNOMECIDADE: TStringField
-      FieldName = 'NOMECIDADE'
-      ProviderFlags = []
-      Size = 80
-    end
-    object sqldPadraoFONEFAX: TStringField
-      FieldName = 'FONEFAX'
-    end
-    object sqldPadraoUF: TStringField
-      FieldName = 'UF'
-      FixedChar = True
-      Size = 2
-    end
-    object sqldPadraoIE: TStringField
-      FieldName = 'IE'
-    end
-    object sqldPadraoDATAEMISSAO: TDateField
-      FieldName = 'DATAEMISSAO'
-    end
-    object sqldPadraoNROFATURA: TStringField
-      FieldName = 'NROFATURA'
-    end
-    object sqldPadraoVALOR_FATURA: TFMTBCDField
-      FieldName = 'VALOR_FATURA'
-      Precision = 15
-    end
-    object sqldPadraoVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      Precision = 15
-    end
-    object sqldPadraoDATAVENC: TDateField
-      FieldName = 'DATAVENC'
-    end
-    object sqldPadraoDESCONTO: TFMTBCDField
-      FieldName = 'DESCONTO'
-      Precision = 15
-    end
-    object sqldPadraoPRACAPAGAMENTO: TStringField
-      FieldName = 'PRACAPAGAMENTO'
-      Size = 250
-    end
-    object sqldPadraoDATADESCTO: TDateField
-      FieldName = 'DATADESCTO'
-    end
-    object sqldPadraoVALOREXTENSO: TStringField
-      FieldName = 'VALOREXTENSO'
-      Size = 250
-    end
-    object sqldPadraoDATAIMPRESSAO: TDateField
-      FieldName = 'DATAIMPRESSAO'
-    end
-    object sqldPadraoIMPRESSA: TStringField
-      FieldName = 'IMPRESSA'
-      FixedChar = True
-      Size = 1
-    end
-  end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
-    Left = 152
-    Top = 37
+    Left = 391
+    Top = 5
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -470,8 +365,8 @@ inherited frmDuplicatas: TfrmDuplicatas
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
     OnNewRecord = cdsPadraoNewRecord
-    Left = 184
-    Top = 37
+    Left = 320
+    Top = 5
     object cdsPadraoIDDUPLICATA: TIntegerField
       FieldName = 'IDDUPLICATA'
       Required = True
@@ -485,7 +380,6 @@ inherited frmDuplicatas: TfrmDuplicatas
     end
     object cdsPadraoCPF_CNPJ: TStringField
       FieldName = 'CPF_CNPJ'
-      OnSetText = cdsPadraoCPF_CNPJSetText
     end
     object cdsPadraoENDERECO: TStringField
       FieldName = 'ENDERECO'
@@ -565,280 +459,6 @@ inherited frmDuplicatas: TfrmDuplicatas
       FieldName = 'IMPRESSA'
       FixedChar = True
       Size = 1
-    end
-  end
-  object sqldCliente: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  cli.CODCLIENTE,'#13#10'  cli.TIPO, '#13#10'  cli.NOME, '#13#10'  cli.EN' +
-      'DERECO, '#13#10'  cli.CEP,'#13#10'  BAIRRO, '#13#10'  cli.TELEFONE, '#13#10'  cli.CODCID' +
-      'ADE,'#13#10'  cid.DESCRICAO,'#13#10'  cli.UF, '#13#10'  cli.CPF_CNPJ, '#13#10'  cli.RG_I' +
-      'E, '#13#10'  cli.LIMITE,'#13#10'  cli.DATA_NASC '#13#10'from CLIENTES cli'#13#10'left jo' +
-      'in CIDADES cid on (cli.CODCIDADE = cid.CODCIDADE)'#13#10'order by cli.' +
-      'NOME'
-    MaxBlobSize = -1
-    Params = <>
-    Left = 200
-    Top = 216
-    object sqldClienteCODCLIENTE: TIntegerField
-      FieldName = 'CODCLIENTE'
-      Required = True
-    end
-    object sqldClienteTIPO: TStringField
-      FieldName = 'TIPO'
-      FixedChar = True
-      Size = 1
-    end
-    object sqldClienteNOME: TStringField
-      FieldName = 'NOME'
-      Size = 80
-    end
-    object sqldClienteENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Size = 80
-    end
-    object sqldClienteCEP: TStringField
-      FieldName = 'CEP'
-      Size = 10
-    end
-    object sqldClienteBAIRRO: TStringField
-      FieldName = 'BAIRRO'
-      Size = 80
-    end
-    object sqldClienteTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-    end
-    object sqldClienteCODCIDADE: TIntegerField
-      FieldName = 'CODCIDADE'
-    end
-    object sqldClienteDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 80
-    end
-    object sqldClienteUF: TStringField
-      FieldName = 'UF'
-      FixedChar = True
-      Size = 2
-    end
-    object sqldClienteCPF_CNPJ: TStringField
-      FieldName = 'CPF_CNPJ'
-    end
-    object sqldClienteRG_IE: TStringField
-      FieldName = 'RG_IE'
-    end
-    object sqldClienteLIMITE: TFMTBCDField
-      FieldName = 'LIMITE'
-      Precision = 15
-    end
-    object sqldClienteDATA_NASC: TDateField
-      FieldName = 'DATA_NASC'
-    end
-  end
-  object dspCliente: TDataSetProvider
-    DataSet = sqldCliente
-    Options = [poAllowCommandText]
-    Left = 232
-    Top = 216
-  end
-  object cdsCliente: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCliente'
-    Left = 264
-    Top = 216
-    object cdsClienteCODCLIENTE: TIntegerField
-      FieldName = 'CODCLIENTE'
-      Required = True
-    end
-    object cdsClienteTIPO: TStringField
-      FieldName = 'TIPO'
-      FixedChar = True
-      Size = 1
-    end
-    object cdsClienteNOME: TStringField
-      FieldName = 'NOME'
-      Size = 80
-    end
-    object cdsClienteENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Size = 80
-    end
-    object cdsClienteCEP: TStringField
-      FieldName = 'CEP'
-      Size = 10
-    end
-    object cdsClienteBAIRRO: TStringField
-      FieldName = 'BAIRRO'
-      Size = 80
-    end
-    object cdsClienteTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-    end
-    object cdsClienteCODCIDADE: TIntegerField
-      FieldName = 'CODCIDADE'
-    end
-    object cdsClienteDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 80
-    end
-    object cdsClienteUF: TStringField
-      FieldName = 'UF'
-      FixedChar = True
-      Size = 2
-    end
-    object cdsClienteCPF_CNPJ: TStringField
-      FieldName = 'CPF_CNPJ'
-    end
-    object cdsClienteRG_IE: TStringField
-      FieldName = 'RG_IE'
-    end
-    object cdsClienteLIMITE: TFMTBCDField
-      FieldName = 'LIMITE'
-      Precision = 15
-    end
-    object cdsClienteDATA_NASC: TDateField
-      FieldName = 'DATA_NASC'
-    end
-  end
-  object sqldCR: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  cr.CODIGO,'#13#10'  cr.DATA,'#13#10'  cr.VENCIMENTO,'#13#10'  cr.DESCRIC' +
-      'AO, '#13#10'  cr.CLIENTE,'#13#10'  c.NOME,'#13#10'  cr.DOCUMENTO,'#13#10'  cr.VALOR,'#13#10'  ' +
-      'cr.TOTAL,'#13#10'  cr.VENDA'#13#10'from CONTASRECEBER cr'#13#10'left join CLIENTES' +
-      ' c on (c.CODCLIENTE = cr.CLIENTE)'#13#10'order by cr.DATA'
-    MaxBlobSize = -1
-    Params = <>
-    Left = 304
-    Top = 216
-    object sqldCRCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Required = True
-    end
-    object sqldCRDATA: TDateField
-      FieldName = 'DATA'
-    end
-    object sqldCRVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-    end
-    object sqldCRDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 80
-    end
-    object sqldCRCLIENTE: TIntegerField
-      FieldName = 'CLIENTE'
-    end
-    object sqldCRNOME: TStringField
-      FieldName = 'NOME'
-      Size = 80
-    end
-    object sqldCRDOCUMENTO: TStringField
-      FieldName = 'DOCUMENTO'
-    end
-    object sqldCRVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      Precision = 15
-    end
-    object sqldCRTOTAL: TFloatField
-      FieldName = 'TOTAL'
-    end
-    object sqldCRVENDA: TIntegerField
-      FieldName = 'VENDA'
-    end
-  end
-  object dspCR: TDataSetProvider
-    DataSet = sqldCR
-    Left = 336
-    Top = 216
-  end
-  object cdsCR: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCR'
-    Left = 368
-    Top = 216
-    object cdsCRCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Required = True
-    end
-    object cdsCRDATA: TDateField
-      FieldName = 'DATA'
-    end
-    object cdsCRVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-    end
-    object cdsCRDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 80
-    end
-    object cdsCRCLIENTE: TIntegerField
-      FieldName = 'CLIENTE'
-    end
-    object cdsCRNOME: TStringField
-      FieldName = 'NOME'
-      Size = 80
-    end
-    object cdsCRDOCUMENTO: TStringField
-      FieldName = 'DOCUMENTO'
-    end
-    object cdsCRVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      Precision = 15
-    end
-    object cdsCRTOTAL: TFloatField
-      FieldName = 'TOTAL'
-    end
-    object cdsCRVENDA: TIntegerField
-      FieldName = 'VENDA'
-    end
-  end
-  object sqldDeleta: TSQLDataSet
-    CommandText = 'STPDELDUPLICATA'
-    CommandType = ctStoredProc
-    DbxCommandType = 'Dbx.StoredProcedure'
-    MaxBlobSize = -1
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end>
-    Left = 472
-    Top = 4
-  end
-  object sqldCidade: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  CODCIDADE, '#13#10'DESCRICAO from CIDADES'#13#10'order by DESCRIC' +
-      'AO'
-    MaxBlobSize = -1
-    Params = <>
-    Left = 408
-    Top = 216
-    object sqldCidadeCODCIDADE: TIntegerField
-      FieldName = 'CODCIDADE'
-      Required = True
-    end
-    object sqldCidadeDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 80
-    end
-  end
-  object dspCidade: TDataSetProvider
-    DataSet = sqldCidade
-    Left = 440
-    Top = 216
-  end
-  object cdsCidade: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCidade'
-    Left = 472
-    Top = 216
-    object cdsCidadeCODCIDADE: TIntegerField
-      FieldName = 'CODCIDADE'
-      Required = True
-    end
-    object cdsCidadeDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Size = 80
     end
   end
 end

@@ -47,8 +47,8 @@ begin
       with cdsPadrao do
       begin
         Close;
-        Params.ParamByName('COD').AsInteger :=
-          GetDmPesquisar.cdsPesqFornCODFORNECEDOR.AsInteger;
+//        Params.ParamByName('COD').AsInteger :=
+//          GetDmPesquisar.cdsPesqFornCODFORNECEDOR.AsInteger;
         Open;
       end;
       PrintIfNotEmptyRL(rrPadrao, p);
@@ -62,7 +62,7 @@ end;
 procedure TfrmRelatorioProdutoEstMinForn.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqForn.Close;
+ // GetDmPesquisar.cdsPesqForn.Close;
   inherited;
 end;
 
@@ -70,11 +70,11 @@ procedure TfrmRelatorioProdutoEstMinForn.dbeFornClickButton(
   Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqForn.Close;
-  GetDmPesquisar.cdsPesqForn.CommandText := SQLPadrao;
-  if not TfrmModeloConsulta.Execute('Fornecedor', GetDmPesquisar.cdsPesqForn, FN_FORN,
-    DL_FORN) then
-    GetDmPesquisar.cdsPesqForn.Close;
+//  GetDmPesquisar.cdsPesqForn.Close;
+//  GetDmPesquisar.cdsPesqForn.CommandText := SQLPadrao;
+//  if not TfrmModeloConsulta.Execute('Fornecedor', GetDmPesquisar.cdsPesqForn, FN_FORN,
+//    DL_FORN) then
+//    GetDmPesquisar.cdsPesqForn.Close;
 end;
 
 procedure TfrmRelatorioProdutoEstMinForn.btnVisualizarClick(
@@ -93,8 +93,8 @@ end;
 procedure TfrmRelatorioProdutoEstMinForn.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqForn;
-  SQLPadrao := GetDmPesquisar.sqldPesqForn.CommandText;
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqForn;
+//  SQLPadrao := GetDmPesquisar.sqldPesqForn.CommandText;
 end;
 
 initialization

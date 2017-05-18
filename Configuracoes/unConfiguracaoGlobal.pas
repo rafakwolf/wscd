@@ -112,12 +112,12 @@ begin
   actPrint.Visible := False;
   actDelete.Visible := False;
   actSearch.Visible := False;
-  actPrimeiro.Visible := False;
-  actAnterior.Visible := False;
-  actProximo.Visible := False;
-  actUltimo.Visible := False;
-  miRelatorios.Visible := False;
-  miOpcoes.Visible := False;
+//  actPrimeiro.Visible := False;
+//  actAnterior.Visible := False;
+//  actProximo.Visible := False;
+//  actUltimo.Visible := False;
+//  miRelatorios.Visible := False;
+//  miOpcoes.Visible := False;
   ReordenaBotoes([btnAlterar, btnSalvar, btnCancelar, btnSair]);
   pgcConfigGlobal.ActivePageIndex := 0;
 end;

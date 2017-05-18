@@ -163,8 +163,8 @@ begin
   inherited;
   cdsUnidade.Close;
   cdsUnidade.CommandText := SQLUnidade;
-  if not TfrmModeloConsulta.Execute('Busca Unidade', cdsUnidade, FN_UNIDADES, DL_UNIDADES) then
-    cdsUnidade.Close;
+//  if not TfrmModeloConsulta.Execute('Busca Unidade', cdsUnidade, FN_UNIDADES, DL_UNIDADES) then
+//    cdsUnidade.Close;
 end;
 
 procedure TfrmRelatorioProdutoVencimento.dbeGrupoClickButton(Sender: TObject);
@@ -172,8 +172,8 @@ begin
   inherited;
   cdsGrupo.Close;
   cdsGrupo.CommandText := SQLGrupo;
-  if not TfrmModeloConsulta.Execute('Busca Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
-    cdsGrupo.Close;
+//  if not TfrmModeloConsulta.Execute('Busca Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
+//    cdsGrupo.Close;
 end;
 
 procedure TfrmRelatorioProdutoVencimento.dbeFornClickButton(Sender: TObject);
@@ -181,8 +181,8 @@ begin
   inherited;
   cdsForn.Close;
   cdsForn.CommandText := SQLForn;
-  if not TfrmModeloConsulta.Execute('Busca Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-    cdsForn.Close;
+//  if not TfrmModeloConsulta.Execute('Busca Fornecedor', cdsForn, FN_FORN, DL_FORN) then
+//    cdsForn.Close;
 end;
 
 initialization

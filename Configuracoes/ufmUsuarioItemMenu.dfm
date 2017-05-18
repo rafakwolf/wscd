@@ -7,7 +7,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   Font.Name = 'Tahoma'
   OldCreateOrder = True
   ExplicitWidth = 481
-  ExplicitHeight = 561
+  ExplicitHeight = 541
   PixelsPerInch = 96
   TextHeight = 13
   object dbeSenha: TDBEdit [0]
@@ -85,10 +85,6 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Left = 327
     Top = 148
   end
-  inherited mmPadrao: TMainMenu
-    Left = 172
-    Top = 364
-  end
   object sqldMenu: TSQLDataSet
     SchemaName = 'SYSDBA'
     CommandText = 
@@ -117,7 +113,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Left = 237
     Top = 364
     Bitmap = {
-      494C010102000500100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

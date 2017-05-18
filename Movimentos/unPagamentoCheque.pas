@@ -194,7 +194,7 @@ begin
     Close;
     Params.ParamByName('IDCHEQUE').AsInteger :=
       GetProximoID('CHEQUE', 'IDCHEQUE', GetConnection);
-    Params.ParamByName('IDBANCO').AsInteger := GetDmPesquisar.cdsPesqBanco.FieldByName('IDBANCO').AsInteger;
+    //Params.ParamByName('IDBANCO').AsInteger := GetDmPesquisar.cdsPesqBanco.FieldByName('IDBANCO').AsInteger;
     Params.ParamByName('AGENCIA').AsString := edtAgencia.Text;
     Params.ParamByName('CONTA').AsString := edtConta.Text;
     Params.ParamByName('NUMERO').AsString := edtNumeroCheque.Text;
@@ -364,10 +364,10 @@ begin
 
     if BancoExiste(StrToInt(varBanco)) then
     begin
-      GetDmPesquisar.cdsPesqBanco.Open;
-      GetDmPesquisar.cdsPesqBanco.Filtered := False;
-      GetDmPesquisar.cdsPesqBanco.Filter := 'IDBANCO = '+QuotedStr(varBanco);
-      GetDmPesquisar.cdsPesqBanco.Filtered := True;
+//      GetDmPesquisar.cdsPesqBanco.Open;
+//      GetDmPesquisar.cdsPesqBanco.Filtered := False;
+//      GetDmPesquisar.cdsPesqBanco.Filter := 'IDBANCO = '+QuotedStr(varBanco);
+//      GetDmPesquisar.cdsPesqBanco.Filtered := True;
     end
     else
     begin
@@ -422,8 +422,8 @@ end;
 procedure TfrmPagamentoCheque.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  if GetDmPesquisar.cdsPesqBanco.Active then
-    GetDmPesquisar.cdsPesqBanco.Close;
+//  if GetDmPesquisar.cdsPesqBanco.Active then
+//    GetDmPesquisar.cdsPesqBanco.Close;
   Action := caFree;
 end;
 

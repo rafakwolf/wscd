@@ -510,7 +510,26 @@ object frmModeloConsulta: TfrmModeloConsulta
   end
   object dsPadrao: TDataSource
     AutoEdit = False
+    DataSet = cdsPesquisa
     Left = 168
     Top = 128
+  end
+  object sqldPesquisa: TSQLDataSet
+    Params = <>
+    Left = 144
+    Top = 192
+  end
+  object dspPesquisa: TDataSetProvider
+    DataSet = sqldPesquisa
+    Options = [poAllowCommandText, poUseQuoteChar]
+    Left = 264
+    Top = 192
+  end
+  object cdsPesquisa: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspPesquisa'
+    Left = 416
+    Top = 176
   end
 end

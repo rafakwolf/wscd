@@ -40,10 +40,10 @@ begin
       with cdsPadrao do
       begin
         cdsPadrao.Close;
-        Params.ParamByName('PDATAINI').AsDate :=
-          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
-        Params.ParamByName('PDATAFIM').AsDate :=
-          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
+//        Params.ParamByName('PDATAINI').AsDate :=
+//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
+//        Params.ParamByName('PDATAFIM').AsDate :=
+//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
         cdsPadrao.Open;
       end;
         TipoRelatorio := 2;
@@ -58,15 +58,15 @@ end;
 procedure TfrmRelatorioFornecedorData.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqData.Close;
+  //GetDmPesquisar.cdsPesqData.Close;
   inherited;
 end;
 
 procedure TfrmRelatorioFornecedorData.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqData;
-  GetDmPesquisar.cdsPesqData.Open;
+ // dsPadrao.DataSet := GetDmPesquisar.cdsPesqData;
+ // GetDmPesquisar.cdsPesqData.Open;
 end;
 
 procedure TfrmRelatorioFornecedorData.btnVisualizarClick(Sender: TObject);

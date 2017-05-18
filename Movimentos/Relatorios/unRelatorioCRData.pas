@@ -34,14 +34,14 @@ uses
 procedure TfrmRelatorioCRData.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := getdmpesquisar.cdsPesqData;
-  GetDmPesquisar.cdsPesqData.Open;
+//  dsPadrao.DataSet := getdmpesquisar.cdsPesqData;
+//  GetDmPesquisar.cdsPesqData.Open;
 end;
 
 procedure TfrmRelatorioCRData.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqData.Close;
+  //GetDmPesquisar.cdsPesqData.Close;
   inherited;
 end;
 
@@ -67,10 +67,10 @@ begin
                        'and :PDATAFIM '+
                        'order by CLIENTE, DATA';
 
-        Params.ParamByName('PDATAINI').AsDate :=
-          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
-        Params.ParamByName('PDATAFIM').AsDate :=
-          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
+//        Params.ParamByName('PDATAINI').AsDate :=
+//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
+//        Params.ParamByName('PDATAFIM').AsDate :=
+//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
         Open;
       end;
       Titulo := 'Contas a Receber entre: ' + edDataIni.Text + ' e ' + edDataFim.Text;

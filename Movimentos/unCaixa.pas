@@ -507,13 +507,13 @@ end;
 
 procedure TfrmCaixa.btnFiltrarClick(Sender: TObject);
 begin
-  if not TfrmModeloConsulta.Execute('Consulta Caixa', cdsPadrao, FN_CAIXA, DL_CAIXA) then
-  begin
-    cdsPadrao.Close;
-    cdsPadrao.CommandText := SQLPadraoTela;
-    cdsPadrao.Open;
-    cdsPadrao.Last;
-  end;
+//  if not TfrmModeloConsulta.Execute('Consulta Caixa', cdsPadrao, FN_CAIXA, DL_CAIXA) then
+//  begin
+//    cdsPadrao.Close;
+//    cdsPadrao.CommandText := SQLPadraoTela;
+//    cdsPadrao.Open;
+//    cdsPadrao.Last;
+//  end;
 end;
 
 procedure TfrmCaixa.Totais_Rel(DataIni: string = ''; DataFim: string = '');

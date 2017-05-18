@@ -5,44 +5,36 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, 
-  Mask, DBCtrls, DateUtils,
-  RLReport, FMTBcd, System.Actions;
+  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,
+  Mask, DBCtrls, DateUtils, RLReport, FMTBcd, System.Actions, cxGraphics,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxButtons;
 
 type
   TfrmDuplicatas = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
     lbSacado: TLabel;
     dbeDataVenc: TDBEdit;
     dbeDataPag: TDBEdit;
     dbeDataEmissao: TDBEdit;
-    N6: TMenuItem;
-    miImportarCliente: TMenuItem;
-    miConfigurar: TMenuItem;
-    sqldCliente: TSQLDataSet;
-    dspCliente: TDataSetProvider;
-    cdsCliente: TClientDataSet;
-    N5: TMenuItem;
-    miFormularioBranco: TMenuItem;
-    sqldCR: TSQLDataSet;
-    dspCR: TDataSetProvider;
-    cdsCR: TClientDataSet;
-    sqldDeleta: TSQLDataSet;
     lbPracaPag: TLabel;
     dbeCidade: TDBEdit;
-    sqldCidade: TSQLDataSet;
-    dspCidade: TDataSetProvider;
-    cdsCidade: TClientDataSet;
-    cdsCidadeCODCIDADE: TIntegerField;
-    cdsCidadeDESCRICAO: TStringField;
-    sqldCidadeCODCIDADE: TIntegerField;
-    sqldCidadeDESCRICAO: TStringField;
     dbeValor: TDBEdit;
     dbeDesconto: TDBEdit;
-    N9: TMenuItem;
-    miFormSistema: TMenuItem;
     dbeValorFatura: TDBEdit;
     dbeNroDuplicata: TDBEdit;
     dbeNroFatura: TDBEdit;
@@ -59,33 +51,8 @@ type
     dbeEstado: TDBEdit;
     dbePracaPagamento: TDBEdit;
     lbDatas: TLabel;
-    N10: TMenuItem;
-    miImportarCR: TMenuItem;
     dbeDataImpressao: TDBEdit;
     dbeImpressa: TDBEdit;
-    sqldPadraoIDDUPLICATA: TIntegerField;
-    sqldPadraoNRODUPLICATA: TStringField;
-    sqldPadraoSACADO: TStringField;
-    sqldPadraoCPF_CNPJ: TStringField;
-    sqldPadraoENDERECO: TStringField;
-    sqldPadraoBAIRRO: TStringField;
-    sqldPadraoCEP: TStringField;
-    sqldPadraoIDCIDADE: TIntegerField;
-    sqldPadraoNOMECIDADE: TStringField;
-    sqldPadraoFONEFAX: TStringField;
-    sqldPadraoUF: TStringField;
-    sqldPadraoIE: TStringField;
-    sqldPadraoDATAEMISSAO: TDateField;
-    sqldPadraoNROFATURA: TStringField;
-    sqldPadraoVALOR_FATURA: TFMTBCDField;
-    sqldPadraoVALOR: TFMTBCDField;
-    sqldPadraoDATAVENC: TDateField;
-    sqldPadraoDESCONTO: TFMTBCDField;
-    sqldPadraoPRACAPAGAMENTO: TStringField;
-    sqldPadraoDATADESCTO: TDateField;
-    sqldPadraoVALOREXTENSO: TStringField;
-    sqldPadraoDATAIMPRESSAO: TDateField;
-    sqldPadraoIMPRESSA: TStringField;
     cdsPadraoIDDUPLICATA: TIntegerField;
     cdsPadraoNRODUPLICATA: TStringField;
     cdsPadraoSACADO: TStringField;
@@ -109,54 +76,7 @@ type
     cdsPadraoVALOREXTENSO: TStringField;
     cdsPadraoDATAIMPRESSAO: TDateField;
     cdsPadraoIMPRESSA: TStringField;
-    sqldCRCODIGO: TIntegerField;
-    sqldCRDATA: TDateField;
-    sqldCRVENCIMENTO: TDateField;
-    sqldCRDESCRICAO: TStringField;
-    sqldCRCLIENTE: TIntegerField;
-    sqldCRDOCUMENTO: TStringField;
-    sqldCRVALOR: TFMTBCDField;
-    sqldCRTOTAL: TFloatField;
-    sqldCRVENDA: TIntegerField;
-    cdsCRCODIGO: TIntegerField;
-    cdsCRDATA: TDateField;
-    cdsCRVENCIMENTO: TDateField;
-    cdsCRDESCRICAO: TStringField;
-    cdsCRCLIENTE: TIntegerField;
-    cdsCRDOCUMENTO: TStringField;
-    cdsCRVALOR: TFMTBCDField;
-    cdsCRTOTAL: TFloatField;
-    cdsCRVENDA: TIntegerField;
-    sqldClienteCODCLIENTE: TIntegerField;
-    sqldClienteTIPO: TStringField;
-    sqldClienteNOME: TStringField;
-    sqldClienteENDERECO: TStringField;
-    sqldClienteCEP: TStringField;
-    sqldClienteBAIRRO: TStringField;
-    sqldClienteTELEFONE: TStringField;
-    sqldClienteCODCIDADE: TIntegerField;
-    sqldClienteDESCRICAO: TStringField;
-    sqldClienteUF: TStringField;
-    sqldClienteCPF_CNPJ: TStringField;
-    sqldClienteRG_IE: TStringField;
-    sqldClienteLIMITE: TFMTBCDField;
-    sqldClienteDATA_NASC: TDateField;
-    cdsClienteCODCLIENTE: TIntegerField;
-    cdsClienteTIPO: TStringField;
-    cdsClienteNOME: TStringField;
-    cdsClienteENDERECO: TStringField;
-    cdsClienteCEP: TStringField;
-    cdsClienteBAIRRO: TStringField;
-    cdsClienteTELEFONE: TStringField;
-    cdsClienteCODCIDADE: TIntegerField;
-    cdsClienteDESCRICAO: TStringField;
-    cdsClienteUF: TStringField;
-    cdsClienteCPF_CNPJ: TStringField;
-    cdsClienteRG_IE: TStringField;
-    cdsClienteLIMITE: TFMTBCDField;
-    cdsClienteDATA_NASC: TDateField;
-    sqldCRNOME: TStringField;
-    cdsCRNOME: TStringField;
+    btnCadastraSacadoCliente: TcxButton;
     procedure actPrintExecute(Sender: TObject);
     procedure miConfigurarClick(Sender: TObject);
     procedure dbeValorExit(Sender: TObject);
@@ -169,12 +89,10 @@ type
     procedure cdsPadraoIDCIDADEValidate(Sender: TField);
     procedure dbeCidadeClickButton(Sender: TObject);
     procedure miFormSistemaClick(Sender: TObject);
-    procedure cdsPadraoCPF_CNPJSetText(Sender: TField; const Text: String);
-    procedure dsPadraoStateChange(Sender: TObject);
     procedure miImportarClienteClick(Sender: TObject);
     procedure miImportarCRClick(Sender: TObject);
+    procedure btnCadastraSacadoClienteClick(Sender: TObject);
   private
-    Repetido: Boolean;
     procedure CadastraCliente;
     procedure SetValoresDefault;
   public
@@ -189,7 +107,8 @@ implementation
 
 uses
   Funcoes, unModeloConsulta, Extensos, ConstPadrao,
-  unPrevDuplicataSemForm, VarGlobal, unPrevDuplicata, uConfiguraRelatorio;
+  unPrevDuplicataSemForm, VarGlobal, unPrevDuplicata, uConfiguraRelatorio,
+  udmDuplicatas, uDatabaseutils, udmCliente;
 
 {$R *.dfm}
 
@@ -226,6 +145,7 @@ procedure TfrmDuplicatas.actPrintExecute(Sender: TObject);
         Self.cdsPadraoIMPRESSA.AsString := 'S';
         Self.cdsPadraoDATAIMPRESSAO.AsDateTime := Date;
         Self.cdsPadrao.ApplyUpdates(0);
+
         // imprime
         PrintIfNotEmptyRL(rrDuplicata);
       end;
@@ -236,28 +156,7 @@ procedure TfrmDuplicatas.actPrintExecute(Sender: TObject);
 
 begin
   inherited;
-  if cdsPadraoIMPRESSA.AsString = 'S' then
-  begin
-//    case CustomMsgDlg('Esta Duplicata já foi impressa. O que deseja fazer ?',
-//                    'Opçoes de Impressão', '&Excluir', '&Imprimir', '&Cancelar') of
-//      ID_YES:
-//      begin
-//        actDelete.Execute;
-//        Exit;
-//      end;
-//      ID_NO:
-//      begin
-//        ImprimirDuplicata;
-//        Exit;
-//      end;
-//      ID_CANCEL: Exit;
-//    end;
-  end
-  else
-  begin
-    ImprimirDuplicata;
-    Exit;
-  end;
+  ImprimirDuplicata;
 end;
 
 procedure TfrmDuplicatas.miConfigurarClick(Sender: TObject);
@@ -278,7 +177,7 @@ begin
   inherited;
   if ModoInsertEdit(cdsPadrao) then
   begin
-    cdsPadraoVALOR.AsFloat         := (cdsPadraoVALOR.AsFloat - cdsPadraoDESCONTO.AsFloat);
+    cdsPadraoVALOR.AsFloat  := (cdsPadraoVALOR.AsFloat - cdsPadraoDESCONTO.AsFloat);
     cdsPadraoVALOREXTENSO.AsString := Extenso(cdsPadraoVALOR.AsFloat);
   end;
 end;
@@ -286,7 +185,6 @@ end;
 procedure TfrmDuplicatas.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  //Incrementa('DUPLICATA', cdsPadraoIDDUPLICATA, GetConnection);
   cdsPadraoNRODUPLICATA.AsString := IntToStr(cdsPadraoIDDUPLICATA.AsInteger);
   SetFocusIfCan(dbeNroFatura);
 end;
@@ -297,71 +195,31 @@ begin
   FieldNames := FN_DUPLICATA;
   DisplayLabels := DL_DUPLICATA;
   aCaption := 'Duplicatas';
+  TableName := 'DUPLICATA';
 end;
 
 procedure TfrmDuplicatas.CadastraCliente;
-var
-  ID: Integer;
-  IDCidade: Integer;
-  cadastrar: Boolean;
+var tipo: string;
 begin
-//  ID := SelectSingleField('select max(CODCLIENTE) ID from CLIENTES', GetConnection);
-//  IDCidade := SelectSingleField('select CODCIDADE IDCIDADE from CIDADES ' + #13 +
-//    'where CODCIDADE = ' + IntToStr(cdsPadraoIDCIDADE.AsInteger), GetConnection);
-
-  cdsCliente.Open;
-
-  with TSQLDataSet.Create(nil) do
+  with TDmCliente.Create(nil) do
   try
-    //SQLConnection := GetConnection;
-    CommandText := 'select count(1) as CONT from CLIENTES'+
-      ' where CPF_CNPJ like '+QuotedStr(dbeCpfCnpj.Text)+
-      ' or NOME like '+QuotedStr(dbeSacado.Text);
-    Open;
-    cadastrar := FieldByName('CONT').AsInteger = 0;
-  finally
-    Free;
-  end;
-
-  if cadastrar then
-  begin
-    if MsgSN('Cadastrar "'+cdsPadraoSACADO.AsString+'" como um novo cliente?') then
-    begin
-      try
-        cdsCliente.Insert;
-        cdsClienteCODCLIENTE.AsInteger := (ID + 1);
-
+      if IsClienteRepetido(dbeCpfCnpj.Text,dbeCpfCnpj.Text) then
+        ShowMessage('Cliente já cadastrado.')
+      else
+      begin
         if MsgSN('Este cliente é pessoa física ou pessoa jurídica?'+#13#13+
           'Sim - Pessoa Física;'+#13#10+
           'Não - Pessoa Jurídica;') then
-          cdsClienteTIPO.AsString := 'F'
+          tipo := 'F'
         else
-          cdsClienteTIPO.AsString := 'J';
+          tipo := 'J';
 
-        cdsClienteNOME.AsString     := cdsPadraoSACADO.AsString;
-        cdsClienteENDERECO.AsString := cdsPadraoENDERECO.AsString;
-        cdsClienteCEP.AsString      := cdsPadraoCEP.AsString;
-        cdsClienteBAIRRO.AsString   := cdsPadraoBAIRRO.AsString;
-        cdsClienteTELEFONE.AsString := cdsPadraoFONEFAX.AsString;
-
-        if IDCidade > 0 then
-          cdsClienteCODCIDADE.AsInteger := IDCidade
-        else
-          cdsClienteCODCIDADE.Clear;
-
-        cdsClienteUF.AsString       := cdsPadraoUF.AsString;
-        cdsClienteCPF_CNPJ.AsString := cdsPadraoCPF_CNPJ.AsString;
-        cdsClienteRG_IE.AsString    := '';
-        cdsClienteLIMITE.AsFloat    := Global.LimiteCliente;
-
-        cdsCliente.ApplyUpdates(0);
+        Cadastrar(tipo, cdsPadraoSACADO.AsString, cdsPadraoCPF_CNPJ.AsString);
         MsgAviso('','Cliente "'+dbeSacado.Text+'" cadastrado com sucesso.');
-      except
-        raise Exception.Create('Erro ao cadastrar cliente na duplicata.');
       end;
-    end;
+  finally
+    Free;
   end;
-  cdsCliente.Close;
 end;
 
 procedure TfrmDuplicatas.miFormularioBrancoClick(Sender: TObject);
@@ -405,18 +263,7 @@ end;
 procedure TfrmDuplicatas.actDeleteExecute(Sender: TObject);
 begin
   if MsgSN('Deseja realmente excluir este registro?') then
-  begin
-    with sqldDeleta do
-    try
-      Close;
-      Params.ParamByName('CODIGO').AsInteger := cdsPadraoIDDUPLICATA.AsInteger;
-      ExecSQL;
-      Close;
-    finally
-      cdsPadrao.Close;
-      cdsPadrao.Open;
-    end;
-  end;
+    TdmDuplicatas(GetDm).Delete(cdsPadraoIDDUPLICATA.AsInteger);
 end;
 
 procedure TfrmDuplicatas.cdsPadraoIDCIDADEValidate(Sender: TField);
@@ -424,8 +271,8 @@ var
   NomeCidade: string;
 begin
   inherited;
-  //NomeCidade := GetFieldByID(GetConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
-  //  Sender.AsInteger);
+  NomeCidade := GetFieldByID(GetConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
+    Sender.AsInteger);
   if NomeCidade <> '' then
     cdsPadraoNOMECIDADE.AsString := NomeCidade;
 end;
@@ -434,8 +281,8 @@ procedure TfrmDuplicatas.dbeCidadeClickButton(Sender: TObject);
 begin
   inherited;
   if cdsPadrao.State in [dsEdit, dsInsert] then
-    if TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
-      cdsPadraoIDCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
+      cdsPadraoIDCIDADE.AsInteger :=
+        TfrmModeloConsulta.Execute('Cidade', 'CIDADES', FN_CIDADES, DL_CIDADES);
 end;
 
 procedure TfrmDuplicatas.miFormSistemaClick(Sender: TObject);
@@ -444,7 +291,8 @@ begin
   with TfrmPrevDuplicata.Create(Self) do
   try
     cdsDuplicata.Close;
-    cdsDuplicata.Params.ParamByName('CODDUPLICATA').AsInteger := cdsPadraoIDDUPLICATA.AsInteger;
+    cdsDuplicata.Params.ParamByName('CODDUPLICATA').AsInteger :=
+      cdsPadraoIDDUPLICATA.AsInteger;
     cdsDuplicata.Open;
     PrintIfNotEmptyRL(rptDuplicata);
   finally
@@ -459,82 +307,50 @@ begin
 end;
 
 procedure TfrmDuplicatas.AntesSalvar;
+var Repetido: Boolean;
 begin
   inherited;
-  with TSQLDataSet.Create(nil) do
-  try
-    SQLConnection := sqldPadrao.SQLConnection;
-    CommandText := 'select count(1) from DUPLICATA where NRODUPLICATA = '+QuotedStr(dbeNroDuplicata.Text);
-    Open;
-    Repetido := Fields[0].AsInteger > 0;
-  finally
-    Free;
-  end;
+  Repetido := TdmDuplicatas(GetDm).IsDuplicataRepetida(cdsPadraoNRODUPLICATA.AsString);
 
   if (ModoInsert(cdsPadrao) and Repetido) then
   begin
     MsgAviso('','Já existe uma duplicata com este número.');
     Abort;
   end;
- {
-  if ModoInsertEdit(cdsPadrao) then
-  begin
-    if ((not ValidaCampo(dbeCpfCnpj.Text, 0)) and
-        (not ValidaCampo(dbeCpfCnpj.Text, 1))) then
-    begin
-      MsgAviso('CPF ou CNPJ inválido ou não preenchido.');
-      SetFocusIfCan(dbeCpfCnpj);
-      Abort;
-    end;
-  end;}
 end;
 
-procedure TfrmDuplicatas.cdsPadraoCPF_CNPJSetText(Sender: TField;
-  const Text: String);
-begin
-  inherited;{
-  if ValidaCampo(Text, 0) then
-    Sender.AsString := FormatarDoc(Text, 0)
-  else if ValidaCampo(Text, 1) then
-    Sender.AsString := FormatarDoc(Text, 1)
-  else
-  begin
-    MsgCuidado('CPF/CNPJ inválido.');
-    Sender.Clear;
-    Sender.FocusControl;
-    Exit;
-  end;}
-end;
-
-procedure TfrmDuplicatas.dsPadraoStateChange(Sender: TObject);
+procedure TfrmDuplicatas.btnCadastraSacadoClienteClick(Sender: TObject);
 begin
   inherited;
-  miImportarCliente.Enabled  := not EditModes;
-  miImportarCR.Enabled       := not EditModes;
-  miConfigurar.Enabled       := not EditModes;
-  miFormSistema.Enabled      := not EditModes;
-  miFormularioBranco.Enabled := not EditModes;
-  actPrintPerson.Enabled     := not EditModes;
+  CadastraCliente;
 end;
 
 procedure TfrmDuplicatas.miImportarClienteClick(Sender: TObject);
+var cliente: TdmCliente;
 begin
   inherited;
-  if TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
+  if TfrmModeloConsulta.Execute('Cliente', 'CLIENTES', FN_CLIENTES, DL_CLIENTES) > 0 then
   begin
-    cdsPadrao.Insert;
-    cdsPadraoSACADO.AsString       := cdsClienteNOME.AsString;
-    cdsPadraoCPF_CNPJ.AsString     := cdsClienteCPF_CNPJ.AsString;
-    cdsPadraoENDERECO.AsString     := cdsClienteENDERECO.AsString;
-    cdsPadraoBAIRRO.AsString       := cdsClienteBAIRRO.AsString;
-    cdsPadraoCEP.AsString          := cdsClienteCEP.AsString;
-    cdsPadraoIDCIDADE.AsInteger    := cdsClienteCODCIDADE.AsInteger;
-    cdsPadraoFONEFAX.AsString      := cdsClienteTELEFONE.AsString;
-    cdsPadraoUF.AsString           := cdsClienteUF.AsString;
-    SetValoresDefault;
-    cdsPadraoVALOR.AsFloat         := 0;
-    cdsPadraoVALOREXTENSO.AsString := Extenso(cdsPadraoVALOR.AsFloat);
-    cdsPadraoIMPRESSA.AsString     := 'N';
+    cliente := TdmCliente.Create(nil);
+    try
+      cdsPadrao.Insert;
+      cdsPadraoSACADO.AsString       := cliente.cdsPadraoNOME.AsString;
+      cdsPadraoCPF_CNPJ.AsString     := cliente.cdsPadraoCPF_CNPJ.AsString;
+      cdsPadraoENDERECO.AsString     := cliente.cdsPadraoENDERECO.AsString;
+      cdsPadraoBAIRRO.AsString       := cliente.cdsPadraoBAIRRO.AsString;
+      cdsPadraoCEP.AsString          := cliente.cdsPadraoCEP.AsString;
+      cdsPadraoIDCIDADE.AsInteger    := cliente.cdsPadraoCODCIDADE.AsInteger;
+      cdsPadraoFONEFAX.AsString      := cliente.cdsPadraoTELEFONE.AsString;
+      cdsPadraoUF.AsString           := cliente.cdsPadraoUF.AsString;
+
+      SetValoresDefault;
+
+      cdsPadraoVALOR.AsFloat         := 0;
+      cdsPadraoVALOREXTENSO.AsString := Extenso(cdsPadraoVALOR.AsFloat);
+      cdsPadraoIMPRESSA.AsString     := 'N';
+    finally
+      cliente.Free;
+    end;
 
     if MsgSN('Confirma importação dos dados deste cliente?')then
       btnSalvar.Click
@@ -547,58 +363,62 @@ begin
 end;
 
 procedure TfrmDuplicatas.miImportarCRClick(Sender: TObject);
-
-  function TotalVenda(IdVenda: Integer): Currency;
-  begin
-    with TSQLDataSet.Create(nil)do
-    try
-      SQLConnection := sqldPadrao.SQLConnection;
-      CommandText := 'select TOTAL from VENDA where CODIGO = '+QuotedStr(IntToStr(IdVenda));
-      Open;
-      Result := FieldByName('TOTAL').AsFloat;
-    finally
-      Free;
-    end;
-  end;
-
+//
+//  function TotalVenda(IdVenda: Integer): Currency;
+//  begin
+//    with TSQLDataSet.Create(nil) do
+//    try
+//      SQLConnection := GetConnection;
+//      CommandText := 'select TOTAL from VENDA where CODIGO = '+QuotedStr(IntToStr(IdVenda));
+//      Open;
+//      Result := FieldByName('TOTAL').AsFloat;
+//    finally
+//      Free;
+//    end;
+//  end;
+//
+//var cliente: TdmCliente;
 begin
   inherited;
-  if TfrmModeloConsulta.Execute('Contas a receber', cdsCR, FN_CR, DL_CR) then
-  begin
-    cdsCliente.Open;
-    if cdsCliente.Locate('CODCLIENTE', cdsCRCLIENTE.AsInteger, []) then
-    begin
-      cdsPadrao.Insert;
-      cdsPadraoSACADO.AsString          := cdsClienteNOME.AsString;
-      cdsPadraoCPF_CNPJ.AsString        := cdsClienteCPF_CNPJ.AsString;
-      cdsPadraoENDERECO.AsString        := cdsClienteENDERECO.AsString;
-      cdsPadraoBAIRRO.AsString          := cdsClienteBAIRRO.AsString;
-      cdsPadraoCEP.AsString             := cdsClienteCEP.AsString;
-      cdsPadraoIDCIDADE.AsInteger       := cdsClienteCODCIDADE.AsInteger;
-      cdsPadraoFONEFAX.AsString         := cdsClienteTELEFONE.AsString;
-      cdsPadraoUF.AsString              := cdsClienteUF.AsString;
-      cdsPadraoDATAEMISSAO.AsDateTime   := Date;
-      cdsPadraoNROFATURA.AsString       := IntToStr(cdsCRVENDA.AsInteger);
-      cdsPadraoVALOR_FATURA.AsFloat     := TotalVenda(cdsCRVENDA.AsInteger);
-      cdsPadraoVALOR.AsFloat            := cdsCRTOTAL.AsFloat;
-      cdsPadraoVALOREXTENSO.AsString    := Extenso(cdsPadraoVALOR.AsFloat);
-      cdsPadraoDATAVENC.AsDateTime      := cdsCRVENCIMENTO.AsDateTime;
-      cdsPadraoDESCONTO.AsFloat         := 0;
-      cdsPadraoPRACAPAGAMENTO.AsString  := Empresa.Nome;
-      cdsPadraoDATADESCTO.AsDateTime    := cdsCRVENCIMENTO.AsDateTime;
-      cdsPadraoDATAIMPRESSAO.AsDateTime := Date;
-      cdsPadraoIMPRESSA.AsString        := 'N';
-
-      if MsgSN('Confirma importação dos dados desta conta?')then
-        btnSalvar.Click
-      else
-      begin
-        cdsPadrao.CancelUpdates;
-        MsgCuidado('','Duplicata cancelada.');
-      end;
-    end;
-  end;
-  cdsCliente.Close;
+//  if TfrmModeloConsulta.Execute('Contas a receber', cdsCR, FN_CR, DL_CR) then
+//  begin
+//    cliente := TdmCliente.Create(nil);
+//
+//    cliente.cdsPadrao.Open;
+//
+//    if cdsCliente.Locate('CODCLIENTE', cdsCRCLIENTE.AsInteger, []) then
+//    begin
+//      cdsPadrao.Insert;
+//      cdsPadraoSACADO.AsString          := cdsClienteNOME.AsString;
+//      cdsPadraoCPF_CNPJ.AsString        := cdsClienteCPF_CNPJ.AsString;
+//      cdsPadraoENDERECO.AsString        := cdsClienteENDERECO.AsString;
+//      cdsPadraoBAIRRO.AsString          := cdsClienteBAIRRO.AsString;
+//      cdsPadraoCEP.AsString             := cdsClienteCEP.AsString;
+//      cdsPadraoIDCIDADE.AsInteger       := cdsClienteCODCIDADE.AsInteger;
+//      cdsPadraoFONEFAX.AsString         := cdsClienteTELEFONE.AsString;
+//      cdsPadraoUF.AsString              := cdsClienteUF.AsString;
+//      cdsPadraoDATAEMISSAO.AsDateTime   := Date;
+//      cdsPadraoNROFATURA.AsString       := IntToStr(cdsCRVENDA.AsInteger);
+//      cdsPadraoVALOR_FATURA.AsFloat     := TotalVenda(cdsCRVENDA.AsInteger);
+//      cdsPadraoVALOR.AsFloat            := cdsCRTOTAL.AsFloat;
+//      cdsPadraoVALOREXTENSO.AsString    := Extenso(cdsPadraoVALOR.AsFloat);
+//      cdsPadraoDATAVENC.AsDateTime      := cdsCRVENCIMENTO.AsDateTime;
+//      cdsPadraoDESCONTO.AsFloat         := 0;
+//      cdsPadraoPRACAPAGAMENTO.AsString  := Empresa.Nome;
+//      cdsPadraoDATADESCTO.AsDateTime    := cdsCRVENCIMENTO.AsDateTime;
+//      cdsPadraoDATAIMPRESSAO.AsDateTime := Date;
+//      cdsPadraoIMPRESSA.AsString        := 'N';
+//
+//      if MsgSN('Confirma importação dos dados desta conta?')then
+//        btnSalvar.Click
+//      else
+//      begin
+//        cdsPadrao.CancelUpdates;
+//        MsgCuidado('','Duplicata cancelada.');
+//      end;
+//    end;
+//  end;
+//  cdsCliente.Close;
 end;
 
 initialization

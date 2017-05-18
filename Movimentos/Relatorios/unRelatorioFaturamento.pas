@@ -91,8 +91,8 @@ begin
   inherited;
   cdsForn.Close;
   cdsForn.CommandText := SQLPadrao;
-  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-    cdsForn.Close;
+//  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
+//    cdsForn.Close;
 end;
 
 procedure TfrmRelatorioFaturamento.FormCreate(Sender: TObject);

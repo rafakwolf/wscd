@@ -83,10 +83,10 @@ procedure TfrmPerfilPermissao.FormCreate(Sender: TObject);
 begin
   inherited;
   actPrint.Visible := False;
-  miRelatorios.Visible := False;
+  //miRelatorios.Visible := False;
 
-  ReordenaBotoes([btnPrimeiro, btnAnterior, btnProximo, btnUltimo, btnNovo,
-    btnAlterar, btnExcluir, btnSalvar, btnCancelar, btnConsultar, btnSair]);
+//  ReordenaBotoes([btnPrimeiro, btnAnterior, btnProximo, btnUltimo, btnNovo,
+//    btnAlterar, btnExcluir, btnSalvar, btnCancelar, btnConsultar, btnSair]);
 
   FieldNames := FN_PERFIL;
   DisplayLabels := DL_PERFIL;

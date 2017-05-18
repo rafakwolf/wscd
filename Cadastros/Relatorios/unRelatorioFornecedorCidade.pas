@@ -58,7 +58,7 @@ begin
                        'from VIEWRELFORN '+
                        'where CIDADE = :PCIDADE '+
                        'order by FANTAZIA';
-        Params.ParamByName('PCIDADE').AsString := GetDmPesquisar.cdsPesqCidadeDESCRICAO.asstring;
+        //Params.ParamByName('PCIDADE').AsString := GetDmPesquisar.cdsPesqCidadeDESCRICAO.asstring;
         Open;
       end;
       TipoRelatorio := 1;
@@ -74,17 +74,17 @@ procedure TfrmRelatorioFornecedorCidade.dbeCidadeClickButton(
   Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqCidade.Close;
-  GetDmPesquisar.cdsPesqCidade.CommandText := SQLPadrao;
-  if not TfrmModeloConsulta.Execute('Cidade', GetDmPesquisar.cdsPesqCidade, FN_CIDADES,
-    DL_CIDADES) then
-    GetDmPesquisar.cdsPesqCidade.Close;
+//  GetDmPesquisar.cdsPesqCidade.Close;
+//  GetDmPesquisar.cdsPesqCidade.CommandText := SQLPadrao;
+//  if not TfrmModeloConsulta.Execute('Cidade', GetDmPesquisar.cdsPesqCidade, FN_CIDADES,
+//    DL_CIDADES) then
+//    GetDmPesquisar.cdsPesqCidade.Close;
 end;
 
 procedure TfrmRelatorioFornecedorCidade.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqCidade.Close;
+  //GetDmPesquisar.cdsPesqCidade.Close;
   inherited;
 end;
 
@@ -104,8 +104,8 @@ end;
 procedure TfrmRelatorioFornecedorCidade.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCidade;
-  SQLPadrao := GetDmPesquisar.sqldPesqCidade.CommandText;
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCidade;
+//  SQLPadrao := GetDmPesquisar.sqldPesqCidade.CommandText;
 end;
 
 initialization

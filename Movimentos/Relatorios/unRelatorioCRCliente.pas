@@ -41,28 +41,28 @@ begin
   end
   else
   begin
-    with TfrmPrevContasReceber.Create(Self) do
-    try
-      with cdsPadrao do
-      begin
-        Close;
-        Params.ParamByName('PCLIENTE').AsString := GetDmPesquisar.cdsPesqCliente.FieldByName('NOME').AsString;
-        Open;
-      end;
-      Titulo := 'Contas a Receber do Cliente: ' + GetDmPesquisar.cdsPesqCliente.FieldByName('NOME').AsString;
-      PrintIfNotEmptyRL(rrPadrao, p);
-    finally
-      cdsPadrao.CLose;
-      Free;
-    end;
+//    with TfrmPrevContasReceber.Create(Self) do
+//    try
+//      with cdsPadrao do
+//      begin
+//        Close;
+//        Params.ParamByName('PCLIENTE').AsString := GetDmPesquisar.cdsPesqCliente.FieldByName('NOME').AsString;
+//        Open;
+//      end;
+//      Titulo := 'Contas a Receber do Cliente: ' + GetDmPesquisar.cdsPesqCliente.FieldByName('NOME').AsString;
+//      PrintIfNotEmptyRL(rrPadrao, p);
+//    finally
+//      cdsPadrao.CLose;
+//      Free;
+//    end;
   end;
 end;
 
 procedure TfrmRelatorioCRCliente.FormCreate(Sender: TObject);
 begin
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCliente;
-  GetDmPesquisar.cdsPesqCliente.Close;
-  SQLPadrao := GetDmPesquisar.sqldPesqCliente.CommandText;
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCliente;
+//  GetDmPesquisar.cdsPesqCliente.Close;
+//  SQLPadrao := GetDmPesquisar.sqldPesqCliente.CommandText;
   inherited;
 end;
 
@@ -81,11 +81,11 @@ end;
 procedure TfrmRelatorioCRCliente.dbeClienteClickButton(Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqCliente.Close;
-  GetDmPesquisar.cdsPesqCliente.CommandText := SQLPadrao;
-  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente,
-    FN_CLIENTES, DL_CLIENTES) then
-    GetDmPesquisar.cdsPesqCliente.Close;
+//  GetDmPesquisar.cdsPesqCliente.Close;
+//  GetDmPesquisar.cdsPesqCliente.CommandText := SQLPadrao;
+//  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente,
+//    FN_CLIENTES, DL_CLIENTES) then
+//    GetDmPesquisar.cdsPesqCliente.Close;
 end;
 
 initialization

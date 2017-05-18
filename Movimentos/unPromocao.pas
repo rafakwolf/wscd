@@ -42,11 +42,7 @@ type
     cdsProdutoIDPRODUTO: TIntegerField;
     sqldPadraoDESCONTO: TFMTBCDField;
     cdsPadraoDESCONTO: TFMTBCDField;
-    N5: TMenuItem;
     sqldSpDesmarcaPromocao: TSQLDataSet;
-    N6: TMenuItem;
-    miInserirProdutos: TMenuItem;
-    miProdutosGrupo: TMenuItem;
     sqldGrupo: TSQLDataSet;
     dspGrupo: TDataSetProvider;
     cdsGrupo: TClientDataSet;
@@ -56,8 +52,6 @@ type
     sqldGrupoDESCRICAO: TStringField;
     sqldProdutoCODGRUPO: TIntegerField;
     cdsProdutoCODGRUPO: TIntegerField;
-    miExcluirtodas: TMenuItem;
-    miProdutosFornecedor: TMenuItem;
     sqldForn: TSQLDataSet;
     dspForn: TDataSetProvider;
     cdsForn: TClientDataSet;
@@ -105,19 +99,19 @@ begin
   cdsProduto.CommandText := SQLProduto;
   cdsProduto.Open;
 
-  if ModoInsertEdit(cdsPadrao) then
-    if TfrmModeloConsulta.Execute('Produto', cdsProduto, FN_PRODUTOS, DL_PRODUTOS) then
-    begin
-      if not SQLFind('PROMOCAO', 'PRODUTO', IntToStr(cdsProdutoIDPRODUTO.AsInteger), sqldPadrao.SQLConnection) then
-      begin
-        cdsPadraoPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
-        cdsPadraoVENDA.AsFloat     := cdsProdutoVENDA.AsFloat;
-        cdsPadraoINICIO.AsDateTime := Date;
-        cdsPadraoFIM.AsDateTime    := Date;
-      end
-      else
-        MsgCuidado('Este produto já está em promoção.');
-    end;
+//  if ModoInsertEdit(cdsPadrao) then
+//    if TfrmModeloConsulta.Execute('Produto', cdsProduto, FN_PRODUTOS, DL_PRODUTOS) then
+//    begin
+//      if not SQLFind('PROMOCAO', 'PRODUTO', IntToStr(cdsProdutoIDPRODUTO.AsInteger), sqldPadrao.SQLConnection) then
+//      begin
+//        cdsPadraoPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
+//        cdsPadraoVENDA.AsFloat     := cdsProdutoVENDA.AsFloat;
+//        cdsPadraoINICIO.AsDateTime := Date;
+//        cdsPadraoFIM.AsDateTime    := Date;
+//      end
+//      else
+//        MsgCuidado('Este produto já está em promoção.');
+//    end;
 end;
 
 procedure TfrmPromocao.FormCreate(Sender: TObject);
@@ -205,7 +199,7 @@ begin
     if MsgSN('Deseja eliminar automáticamente os produtos que ultrapassaram a data final da promoção?') then
     begin
       sqldSpDesmarcaPromocao.ExecSQL;
-      actLimparFiltro.Execute;
+      //actLimparFiltro.Execute;
     end;
   inherited;
 end;
@@ -219,52 +213,52 @@ begin
   cdsGrupo.CommandText := SQLGrupo;
   cdsGrupo.Open;
 
-  if TfrmModeloConsulta.Execute('Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
-  begin
-    if not cdsProduto.Active then
-      cdsProduto.Open;
-
-    cdsProduto.Filtered := False;
-    cdsProduto.Filter := 'CODGRUPO = '+QuotedStr(IntToStr(cdsGrupoCODGRUPO.AsInteger));
-    cdsProduto.Filtered := True;
-
-    if not cdsProduto.IsEmpty then
-    begin
-
-      if not ObterValor(Desconto, '0 %', 'Desconto') then
-      begin
-        MsgErro('O valor de desconto deve ser informado.');
-        Exit;
-      end;
-
-      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoção') then
-      begin
-        MsgErro('Os dias de promoção devem ser informados.');
-        Exit;
-      end;
-
-      cdsProduto.First;
-      while not cdsProduto.Eof do
-      begin
-        if not SQLFind('PROMOCAO', 'PRODUTO', IntToStr(cdsProdutoIDPRODUTO.AsInteger), sqldPadrao.SQLConnection) then
-        begin
-          cdsPadrao.Insert;
-          cdsPadraoPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
-          cdsPadraoVENDA.AsFloat     := cdsProdutoVENDA.AsFloat;
-          cdsPadraoDESCONTO.AsFloat  := Desconto;
-          cdsPadraoINICIO.AsDateTime := Date;
-          cdsPadraoFIM.AsDateTime    := IncDay(Date, Trunc(DiasPromocao));
-          cdsPadrao.ApplyUpdates(0);
-        end;
-        cdsProduto.Next;
-      end;
-      MsgAviso('Inserção efetuda com sucesso!');
-    end
-    else
-      MsgErro(UM_PESQUISAVAZIO);
-
-    cdsProduto.Close;
-  end;
+//  if TfrmModeloConsulta.Execute('Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
+//  begin
+//    if not cdsProduto.Active then
+//      cdsProduto.Open;
+//
+//    cdsProduto.Filtered := False;
+//    cdsProduto.Filter := 'CODGRUPO = '+QuotedStr(IntToStr(cdsGrupoCODGRUPO.AsInteger));
+//    cdsProduto.Filtered := True;
+//
+//    if not cdsProduto.IsEmpty then
+//    begin
+//
+//      if not ObterValor(Desconto, '0 %', 'Desconto') then
+//      begin
+//        MsgErro('O valor de desconto deve ser informado.');
+//        Exit;
+//      end;
+//
+//      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoção') then
+//      begin
+//        MsgErro('Os dias de promoção devem ser informados.');
+//        Exit;
+//      end;
+//
+//      cdsProduto.First;
+//      while not cdsProduto.Eof do
+//      begin
+//        if not SQLFind('PROMOCAO', 'PRODUTO', IntToStr(cdsProdutoIDPRODUTO.AsInteger), sqldPadrao.SQLConnection) then
+//        begin
+//          cdsPadrao.Insert;
+//          cdsPadraoPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
+//          cdsPadraoVENDA.AsFloat     := cdsProdutoVENDA.AsFloat;
+//          cdsPadraoDESCONTO.AsFloat  := Desconto;
+//          cdsPadraoINICIO.AsDateTime := Date;
+//          cdsPadraoFIM.AsDateTime    := IncDay(Date, Trunc(DiasPromocao));
+//          cdsPadrao.ApplyUpdates(0);
+//        end;
+//        cdsProduto.Next;
+//      end;
+//      MsgAviso('Inserção efetuda com sucesso!');
+//    end
+//    else
+//      MsgErro(UM_PESQUISAVAZIO);
+//
+//    cdsProduto.Close;
+//  end;
 end;
 
 procedure TfrmPromocao.miExcluirtodasClick(Sender: TObject);
@@ -293,52 +287,52 @@ begin
   cdsForn.CommandText := SQLForn;
   cdsForn.Open;
 
-  if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-  begin
-    if not cdsProduto.Active then
-      cdsProduto.Open;
-
-    cdsProduto.Filtered := False;
-    cdsProduto.Filter := 'CODFORNECEDOR = '+QuotedStr(IntToStr(cdsFornCODFORNECEDOR.AsInteger));
-    cdsProduto.Filtered := True;
-
-    if not cdsProduto.IsEmpty then
-    begin
-
-      if not ObterValor(Desconto, '0 %', 'Desconto') then
-      begin
-        MsgErro('O valor de desconto deve ser informado.');
-        Exit;
-      end;
-
-      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoção') then
-      begin
-        MsgErro('Os dias de promoção devem ser informados.');
-        Exit;
-      end;
-
-      cdsProduto.First;
-      while not cdsProduto.Eof do
-      begin
-        if not SQLFind('PROMOCAO', 'PRODUTO', IntToStr(cdsProdutoIDPRODUTO.AsInteger), sqldPadrao.SQLConnection) then
-        begin
-          cdsPadrao.Insert;
-          cdsPadraoPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
-          cdsPadraoVENDA.AsFloat     := cdsProdutoVENDA.AsFloat;
-          cdsPadraoDESCONTO.AsFloat  := Desconto;
-          cdsPadraoINICIO.AsDateTime := Date;
-          cdsPadraoFIM.AsDateTime    := IncDay(Date, Trunc(DiasPromocao));
-          cdsPadrao.ApplyUpdates(0);
-        end;
-        cdsProduto.Next;
-      end;
-      MsgAviso('Inserção efetuda com sucesso!');
-    end
-    else
-      MsgErro(UM_PESQUISAVAZIO);
-
-    cdsProduto.Close;
-  end;
+//  if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
+//  begin
+//    if not cdsProduto.Active then
+//      cdsProduto.Open;
+//
+//    cdsProduto.Filtered := False;
+//    cdsProduto.Filter := 'CODFORNECEDOR = '+QuotedStr(IntToStr(cdsFornCODFORNECEDOR.AsInteger));
+//    cdsProduto.Filtered := True;
+//
+//    if not cdsProduto.IsEmpty then
+//    begin
+//
+//      if not ObterValor(Desconto, '0 %', 'Desconto') then
+//      begin
+//        MsgErro('O valor de desconto deve ser informado.');
+//        Exit;
+//      end;
+//
+//      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoção') then
+//      begin
+//        MsgErro('Os dias de promoção devem ser informados.');
+//        Exit;
+//      end;
+//
+//      cdsProduto.First;
+//      while not cdsProduto.Eof do
+//      begin
+//        if not SQLFind('PROMOCAO', 'PRODUTO', IntToStr(cdsProdutoIDPRODUTO.AsInteger), sqldPadrao.SQLConnection) then
+//        begin
+//          cdsPadrao.Insert;
+//          cdsPadraoPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
+//          cdsPadraoVENDA.AsFloat     := cdsProdutoVENDA.AsFloat;
+//          cdsPadraoDESCONTO.AsFloat  := Desconto;
+//          cdsPadraoINICIO.AsDateTime := Date;
+//          cdsPadraoFIM.AsDateTime    := IncDay(Date, Trunc(DiasPromocao));
+//          cdsPadrao.ApplyUpdates(0);
+//        end;
+//        cdsProduto.Next;
+//      end;
+//      MsgAviso('Inserção efetuda com sucesso!');
+//    end
+//    else
+//      MsgErro(UM_PESQUISAVAZIO);
+//
+//    cdsProduto.Close;
+//  end;
 end;
 
 initialization

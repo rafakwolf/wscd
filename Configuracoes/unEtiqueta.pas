@@ -193,7 +193,7 @@ begin
   FieldNames := FN_ETQ;
   DisplayLabels := DL_ETQ;
   aCaption := 'Etiquetas';
-  miRelatorios.Visible := False;
+  //miRelatorios.Visible := False;
 end;
 
 initialization

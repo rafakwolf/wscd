@@ -99,8 +99,8 @@ begin
   inherited;
   cdsCliente.Close;
   cdsCliente.CommandText := SQLPadrao;
-  if not TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
-    cdsCliente.Close;  
+//  if not TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
+//    cdsCliente.Close;
 end;
 
 procedure TfrmRelatorioCRAtraso.FormCreate(Sender: TObject);

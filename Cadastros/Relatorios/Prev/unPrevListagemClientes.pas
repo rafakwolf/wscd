@@ -43,6 +43,7 @@ type
     cdsPadraoTIPO: TStringField;
     procedure rrPadraoBeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure rbDetalheBeforePrint(Sender: TObject; var PrintIt: Boolean);
+    procedure FormCreate(Sender: TObject);
   private
     FTipoRelatorio: Integer;
     procedure SetTipoRelatorio(const Value: Integer);
@@ -82,6 +83,26 @@ begin
       lbTitulo.Caption := 'Clientes entre ' + DataIni + ' e ' + DataFim;
     end;
   end;
+end;
+
+procedure TfrmPrevListagemClientes.FormCreate(Sender: TObject);
+begin
+  inherited;
+  sqldPadrao.SQLConnection := GetConnection;
+  sqldPadrao.Close;
+  sqldPadrao.CommandText := 'select'+
+                             ' CODIGO,'+
+                             ' NOME,'+
+                             ' ENDERECO,'+
+                             ' CPF_CNPJ,'+
+                             ' RG_IE,'+
+                             ' DATANASCIMENTO,'+
+                             ' CODCIDADE,'+
+                             ' CIDADE,'+
+                             ' TELEFONE,'+
+                             ' TIPO '+
+                             'from VIEWRELCLIENTES '+
+                             'order by NOME, DATANASCIMENTO';
 end;
 
 procedure TfrmPrevListagemClientes.rbDetalheBeforePrint(Sender: TObject;

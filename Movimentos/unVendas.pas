@@ -603,35 +603,35 @@ end;
 
 procedure TfrmVendas.dbProdutoClickButton(Sender: TObject);
 begin
-  if(cdsVendas.State in dsEditModes)then
-  begin
-    if TfrmModeloConsulta.Execute('Busca Produto', cdsProdutos, FN_PRODUTOS,DL_PRODUTOS) then
-    begin
-      if cdsProdutos.Locate('CODBARRA', cdsProdutosCODBARRA.AsString,[]) then
-      begin
-        if (not Configuracao.EstoqueVenda) then
-        begin
-          cdsProdutos.Open;
-          if (cdsProdutosESTOQUE.AsFloat > cdsProdutosESTOQUEMINIMO.AsFloat) then
-            InsereProduto
-          else
-          begin
-            MsgErro('Produto com estoque mínimo, não é possível inseri-lo.');
-            Exit;
-          end;
-        end
-        else
-          InsereProduto;
-      end;
-    end;
-  end;
+//  if(cdsVendas.State in dsEditModes)then
+//  begin
+//    if TfrmModeloConsulta.Execute('Busca Produto', cdsProdutos, FN_PRODUTOS,DL_PRODUTOS) then
+//    begin
+//      if cdsProdutos.Locate('CODBARRA', cdsProdutosCODBARRA.AsString,[]) then
+//      begin
+//        if (not Configuracao.EstoqueVenda) then
+//        begin
+//          cdsProdutos.Open;
+//          if (cdsProdutosESTOQUE.AsFloat > cdsProdutosESTOQUEMINIMO.AsFloat) then
+//            InsereProduto
+//          else
+//          begin
+//            MsgErro('Produto com estoque mínimo, não é possível inseri-lo.');
+//            Exit;
+//          end;
+//        end
+//        else
+//          InsereProduto;
+//      end;
+//    end;
+//  end;
 end;
 
 procedure TfrmVendas.dbCodClienteClickButton(Sender: TObject);
 begin
-  if (cdsVendas.State in dsEditModes) then
-    if TfrmModeloConsulta.Execute('Busca Cliente', cdsClientes, FN_CLIENTES, DL_CLIENTES) then
-      cdsVendasCODCLIENTE.AsInteger := cdsClientesCODCLIENTE.AsInteger;
+//  if (cdsVendas.State in dsEditModes) then
+//    if TfrmModeloConsulta.Execute('Busca Cliente', cdsClientes, FN_CLIENTES, DL_CLIENTES) then
+//      cdsVendasCODCLIENTE.AsInteger := cdsClientesCODCLIENTE.AsInteger;
 end;
 
 procedure TfrmVendas.btnInsereProdutoClick(Sender: TObject);
@@ -855,9 +855,9 @@ end;
 
 procedure TfrmVendas.dbeIdVendedorClickButton(Sender: TObject);
 begin
-  if ModoInsertEdit(cdsVendas) then
-    if TfrmModeloConsulta.Execute('Vendedor', cdsVendedor, FN_VENDEDOR, DL_VENDEDOR) then
-      cdsVendasIDVENDEDOR.AsInteger := cdsVendedorIDVENDEDOR.AsInteger;
+//  if ModoInsertEdit(cdsVendas) then
+//    if TfrmModeloConsulta.Execute('Vendedor', cdsVendedor, FN_VENDEDOR, DL_VENDEDOR) then
+//      cdsVendasIDVENDEDOR.AsInteger := cdsVendedorIDVENDEDOR.AsInteger;
 end;
 
 procedure TfrmVendas.cdsVendasIDVENDEDORValidate(Sender: TField);

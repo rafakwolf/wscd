@@ -6,7 +6,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
   ClientWidth = 401
   OldCreateOrder = True
   ExplicitWidth = 407
-  ExplicitHeight = 389
+  ExplicitHeight = 369
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TStatusBar
@@ -28,6 +28,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     TabOrder = 2
     object tsCrediario: TTabSheet
       Caption = 'Credi'#225'rio'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbeJuro: TDBEdit
         Left = 8
         Top = 32
@@ -69,6 +73,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     object tsCliente: TTabSheet
       Caption = 'Cliente'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbeLimiteCliente: TDBEdit
         Left = 8
         Top = 32
@@ -91,6 +99,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     object tsOrcamento: TTabSheet
       Caption = 'Or'#231'amento'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lbMsgOrcamRodape: TLabel
         Left = 8
         Top = 64
@@ -138,6 +150,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     object tsVenda: TTabSheet
       Caption = 'Venda'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lbMsgRodapeVenda: TLabel
         Left = 8
         Top = 64
@@ -194,6 +210,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     object tsFTP: TTabSheet
       Caption = 'FTP (Atualiza'#231#227'o)'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbeHost: TDBEdit
         Left = 16
         Top = 24
@@ -262,10 +282,6 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     DataSet = cdsPadrao
     Left = 359
     Top = 276
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 160
-    Top = 220
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from CONFIGURACAOGLOBAL'

@@ -58,11 +58,11 @@ begin
                                'inner join CLIENTES cli on (v.CODCLIENTE = cli.CODCLIENTE) '+
                                'where v.CODCLIENTE = :COD '+
                                'order by v.DATA';
-      cdsPadrao.Params.ParamByName('COD').AsInteger :=
-        GetDmPesquisar.cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger;
-      cdsPadrao.Open;
-      lbTitulo.Caption := 'Vendas do cliente: '+GetDmPesquisar.cdsPesqCliente.FieldByName('NOME').AsString;
-      PrintIfNotEmptyRL(rrPadrao, p);
+//      cdsPadrao.Params.ParamByName('COD').AsInteger :=
+//        GetDmPesquisar.cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger;
+//      cdsPadrao.Open;
+//      lbTitulo.Caption := 'Vendas do cliente: '+GetDmPesquisar.cdsPesqCliente.FieldByName('NOME').AsString;
+//      PrintIfNotEmptyRL(rrPadrao, p);
     finally
       cdsPadrao.Close;
       Free;
@@ -73,17 +73,17 @@ end;
 procedure TfrmRelatorioVendaCliente.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqCliente.Close;
+  //GetDmPesquisar.cdsPesqCliente.Close;
   inherited;
 end;
 
 procedure TfrmRelatorioVendaCliente.dbeClienteClickButton(Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqCliente.Close;
-  GetDmPesquisar.cdsPesqCliente.CommandText := SQLpadrao;
-  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
-    GetDmPesquisar.cdsPesqCliente.Close;
+//  GetDmPesquisar.cdsPesqCliente.Close;
+//  GetDmPesquisar.cdsPesqCliente.CommandText := SQLpadrao;
+//  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
+//    GetDmPesquisar.cdsPesqCliente.Close;
 end;
 
 procedure TfrmRelatorioVendaCliente.btnVisualizarClick(Sender: TObject);
@@ -101,8 +101,8 @@ end;
 procedure TfrmRelatorioVendaCliente.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCliente;
-  SQLpadrao        := GetDmPesquisar.sqldPesqCliente.CommandText;
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCliente;
+//  SQLpadrao        := GetDmPesquisar.sqldPesqCliente.CommandText;
 end;
 
 initialization

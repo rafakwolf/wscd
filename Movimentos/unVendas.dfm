@@ -430,10 +430,6 @@ inherited frmVendas: TfrmVendas
     Left = 503
     Top = 292
   end
-  inherited mmPadrao: TMainMenu
-    Left = 472
-    Top = 292
-  end
   object mnVenda: TMainMenu
     Left = 456
     Top = 327

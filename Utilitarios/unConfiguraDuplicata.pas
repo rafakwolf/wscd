@@ -27,7 +27,6 @@ type
     cdsPadraoESTILOFONTE: TStringField;
     dbeFontSize: TDBEdit;
     dbgrdCampos: TDBGrid;
-    miVisualizar: TMenuItem;
     sqldPadraoIDCONFIGDUPLICATA: TIntegerField;
     sqldPadraoNOMECAMPO: TStringField;
     cdsPadraoIDCONFIGDUPLICATA: TIntegerField;
@@ -59,7 +58,7 @@ var
 
 implementation
 
-uses Funcoes, unPrevDuplicataSemForm;//, uConfiguraRelatorio;
+uses Funcoes, unPrevDuplicataSemForm, uConfiguraRelatorio;
 
 {$R *.dfm}
 
@@ -70,11 +69,7 @@ begin
   actPrint.Visible := False;
   actDelete.Visible := False;
   actSearch.Visible := False;
-  actPrimeiro.Visible := False;
-  actAnterior.Visible := False;
-  actProximo.Visible := False;
-  actUltimo.Visible := False;
-  miRelatorios.Visible := False;
+
   GetFontes;
   GetEstiloFonte;
   
@@ -112,7 +107,7 @@ begin
   with TfrmPrevDuplicataSemForm.Create(Self) do
   try
     Config := True;
-    //PrintIfNotEmptyRL(rrDuplicata);
+    PrintIfNotEmptyRL(rrDuplicata);
   finally
     Free;
   end;

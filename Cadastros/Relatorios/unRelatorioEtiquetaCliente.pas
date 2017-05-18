@@ -37,95 +37,96 @@ uses
 procedure TfrmRelatorioEtiquetaCliente.btnVisualizarClick(Sender: TObject);
 begin
   inherited;
-  with TfrmImprimeEtiq.Create(Self) do
-  try
-    if rgpFiltro.ItemIndex = 0 then
-      SQL := 'select '+
-             ' TITULO, '+
-             ' TEXTO '+
-             'from VIEWETIQUETACLIENTE '+
-             'where IDCLIENTE = '+
-        QuotedStr(IntToStr(GetDmPesquisar.cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger))+
-        'order by TITULO'
-    else
-    if rgpFiltro.ItemIndex = 1 then
-      SQL := 'select '+
-             ' TITULO, '+
-             ' TEXTO '+
-             'from VIEWETIQUETACLIENTE '+
-             'where IDCIDADE = '+
-        QuotedStr(IntToStr(GetDmPesquisar.cdsPesqCidadeCODCIDADE.AsInteger))+
-        'order by IDCIDADE'
-    else if rgpFiltro.ItemIndex = 2 then
-      SQL := 'select '+
-             ' TITULO, '+
-             ' TEXTO '+
-             'from VIEWETIQUETACLIENTE '+
-             'order by TITULO';
-
-    if rgpFiltro.ItemIndex = 0 then
-    begin
-      if dbeCliente.Text = '' then
-      begin
-        MsgCuidado(UM_FILTROINVALIDO);
-        Exit;
-      end;
-    end
-    else if rgpFiltro.ItemIndex = 1 then
-    begin
-      if dbeCidade.Text = '' then
-      begin
-        MsgCuidado(UM_FILTROINVALIDO);
-        Exit;
-      end;
-    end;
-
-    TipoEtq := teCliente;
-    ShowModal;
-  finally
-    Free;
-  end;
+//
+//  with TfrmImprimeEtiq.Create(Self) do
+//  try
+//    if rgpFiltro.ItemIndex = 0 then
+//      SQL := 'select '+
+//             ' TITULO, '+
+//             ' TEXTO '+
+//             'from VIEWETIQUETACLIENTE '+
+//             'where IDCLIENTE = '+
+//        QuotedStr(IntToStr(GetDmPesquisar.cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger))+
+//        'order by TITULO'
+//    else
+//    if rgpFiltro.ItemIndex = 1 then
+//      SQL := 'select '+
+//             ' TITULO, '+
+//             ' TEXTO '+
+//             'from VIEWETIQUETACLIENTE '+
+//             'where IDCIDADE = '+
+//        QuotedStr(IntToStr(GetDmPesquisar.cdsPesqCidadeCODCIDADE.AsInteger))+
+//        'order by IDCIDADE'
+//    else if rgpFiltro.ItemIndex = 2 then
+//      SQL := 'select '+
+//             ' TITULO, '+
+//             ' TEXTO '+
+//             'from VIEWETIQUETACLIENTE '+
+//             'order by TITULO';
+//
+//    if rgpFiltro.ItemIndex = 0 then
+//    begin
+//      if dbeCliente.Text = '' then
+//      begin
+//        MsgCuidado(UM_FILTROINVALIDO);
+//        Exit;
+//      end;
+//    end
+//    else if rgpFiltro.ItemIndex = 1 then
+//    begin
+//      if dbeCidade.Text = '' then
+//      begin
+//        MsgCuidado(UM_FILTROINVALIDO);
+//        Exit;
+//      end;
+//    end;
+//
+//    TipoEtq := teCliente;
+//    ShowModal;
+//  finally
+//    Free;
+//  end;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.dbeClienteClickButton(
   Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqCliente.Close;
-  GetDmPesquisar.cdsPesqCliente.CommandText := SQLCliente;
-  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
-    GetDmPesquisar.cdsPesqCliente.Close;
+//  GetDmPesquisar.cdsPesqCliente.Close;
+//  GetDmPesquisar.cdsPesqCliente.CommandText := SQLCliente;
+//  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
+//    GetDmPesquisar.cdsPesqCliente.Close;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqCidade.Close;
-  GetDmPesquisar.cdsPesqCliente.Close;
+//  GetDmPesquisar.cdsPesqCidade.Close;
+//  GetDmPesquisar.cdsPesqCliente.Close;
   inherited;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.FormCreate(Sender: TObject);
 begin
   inherited;
-  ReordenaBotoes([btnVisualizar, btnSair]);
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCliente;
-  dsCidade.DataSet := GetDmPesquisar.cdsPesqCidade;
-  dbeCidade.Top := dbeCliente.Top;
-  rgpFiltroClick(Self);
-
-  SQLCidade := GetDmpesquisar.sqldPesqCidade.CommandText;
-  SQLCliente := GetDmpesquisar.sqldPesqCliente.CommandText;
+//  ReordenaBotoes([btnVisualizar, btnSair]);
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCliente;
+//  dsCidade.DataSet := GetDmPesquisar.cdsPesqCidade;
+//  dbeCidade.Top := dbeCliente.Top;
+//  rgpFiltroClick(Self);
+//
+//  SQLCidade := GetDmpesquisar.sqldPesqCidade.CommandText;
+//  SQLCliente := GetDmpesquisar.sqldPesqCliente.CommandText;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.dbeCidadeClickButton(
   Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqCidade.Close;
-  GetDmPesquisar.cdsPesqCidade.CommandText := SQLCidade;
-  if not TfrmModeloConsulta.Execute('Cidade', GetDmPesquisar.cdsPesqCidade, FN_CIDADES, DL_CIDADES) then
-    GetDmPesquisar.cdsPesqCidade.Close;
+//  GetDmPesquisar.cdsPesqCidade.Close;
+//  GetDmPesquisar.cdsPesqCidade.CommandText := SQLCidade;
+//  if not TfrmModeloConsulta.Execute('Cidade', GetDmPesquisar.cdsPesqCidade, FN_CIDADES, DL_CIDADES) then
+//    GetDmPesquisar.cdsPesqCidade.Close;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.rgpFiltroClick(Sender: TObject);

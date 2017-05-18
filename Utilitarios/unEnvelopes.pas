@@ -100,9 +100,9 @@ end;
 procedure TfrmEnvelopes.dbeCidadeClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsInsert, dsEdit] then
-    if TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
-      cdsPadraoIDCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
+//  if cdsPadrao.State in [dsInsert, dsEdit] then
+//    if TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
+//      cdsPadraoIDCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
 end;
 
 procedure TfrmEnvelopes.FormCreate(Sender: TObject);

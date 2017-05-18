@@ -35,42 +35,42 @@ begin
 //  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
 //    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, edDataIni)then
 //  begin
-    with TfrmPrevContasPagar.Create(Self) do
-    try
-      with cdsPadrao do
-      begin
-        Close;
-        CommandText := 'select * from VIEWRELCP '+
-                       'where DATA between :PDATAINI and :PDATAFIM '+
-                       'order by FORNECEDOR, DATA';
-
-        Params.ParamByName('PDATAINI').AsDate :=
-          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
-        Params.ParamByName('PDATAFIM').AsDate :=
-          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
-        Open;
-      end;
-      Titulo := 'Contas a pagar entre ' + edDataIni.Text + ' e ' +
-        edDataFim.Text;
-      PrintIfNotEmptyRL(rrPadrao, p);
-    finally
-      cdsPadrao.Close;
-      Free;
-    end;
+//    with TfrmPrevContasPagar.Create(Self) do
+//    try
+//      with cdsPadrao do
+//      begin
+//        Close;
+//        CommandText := 'select * from VIEWRELCP '+
+//                       'where DATA between :PDATAINI and :PDATAFIM '+
+//                       'order by FORNECEDOR, DATA';
+//
+//        Params.ParamByName('PDATAINI').AsDate :=
+//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
+//        Params.ParamByName('PDATAFIM').AsDate :=
+//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
+//        Open;
+//      end;
+//      Titulo := 'Contas a pagar entre ' + edDataIni.Text + ' e ' +
+//        edDataFim.Text;
+//      PrintIfNotEmptyRL(rrPadrao, p);
+//    finally
+//      cdsPadrao.Close;
+//      Free;
+//    end;
  // end;
 end;
 
 procedure TfrmRelatorioCPData.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := getdmpesquisar.cdsPesqData;
-  GetDmPesquisar.cdsPesqData.Open;
+//  dsPadrao.DataSet := getdmpesquisar.cdsPesqData;
+//  GetDmPesquisar.cdsPesqData.Open;
 end;
 
 procedure TfrmRelatorioCPData.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqData.Close;
+  //GetDmPesquisar.cdsPesqData.Close;
   inherited;
 end;
 

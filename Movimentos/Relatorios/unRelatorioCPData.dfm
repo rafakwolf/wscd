@@ -37,7 +37,6 @@ inherited frmRelatorioCPData: TfrmRelatorioCPData
     end
   end
   inherited dsPadrao: TDataSource
-    DataSet = DmPesquisar.cdsPesqData
     Left = 232
   end
 end

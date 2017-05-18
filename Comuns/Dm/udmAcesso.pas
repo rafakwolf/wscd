@@ -3,7 +3,8 @@ unit udmAcesso;
 interface
 
 uses
-  System.SysUtils, System.Classes, udmGeralBase, Data.SqlExpr, Datasnap.DBClient;
+  System.SysUtils, System.Classes, udmGeralBase, Data.SqlExpr, Datasnap.DBClient,
+  Data.DB, Datasnap.Win.TConnect;
 
 type
   TdmAcesso = class(TdmGeralBase)

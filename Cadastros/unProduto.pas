@@ -52,15 +52,6 @@ type
     dbeFornecedor: TDBEdit;
     dbeGrupo: TDBEdit;
     dbeUnidade: TDBEdit;
-    N5: TMenuItem;
-    miRelPorGrupo: TMenuItem;
-    miRelValidade: TMenuItem;
-    N6: TMenuItem;
-    miComEstoqueMinimo: TMenuItem;
-    miValorEstoque: TMenuItem;
-    miNovosAlterados: TMenuItem;
-    N7: TMenuItem;
-    miEtiquetaProduto: TMenuItem;
     cdsPadraoIDPRODUTO: TIntegerField;
     cdsPadraoCODBARRA: TStringField;
     cdsPadraoREFERENCIA: TStringField;
@@ -80,10 +71,6 @@ type
     cdsPadraoDATARECEBIDA: TDateField;
     cdsPadraoEXCLUIR: TStringField;
     actEstoqueMinimo: TAction;
-    N9: TMenuItem;
-    miEstoqueMinimo: TMenuItem;
-    N10: TMenuItem;
-    miAjustaCodBarra: TMenuItem;
     sqldPadraoIDPRODUTO: TIntegerField;
     sqldPadraoCODBARRA: TStringField;
     sqldPadraoREFERENCIA: TStringField;
@@ -129,7 +116,6 @@ type
     sqldPadraoOBS: TMemoField;
     cdsPadraoOBS: TMemoField;
     btnObs: TBitBtn;
-    miRelVencidos: TMenuItem;
     imgCodbarras: TImage;
     pnlCodBarra: TPanel;
     dbtxtCodBarra: TDBText;
@@ -196,41 +182,41 @@ uses unModeloConsulta, Funcoes, VarGlobal, unEtiquetaProduto,
 procedure TfrmProduto.dbeUnidadeClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsInsert, dsEdit] then
-    if TfrmModeloConsulta.Execute('Unidades', cdsUnidade, FN_UNIDADES, DL_UNIDADES) then
-    begin
-      cdsPadraoCODUNIDADE.AsInteger := cdsUnidadeCODUNIDADE.AsInteger;
-    end;
+//  if cdsPadrao.State in [dsInsert, dsEdit] then
+//    if TfrmModeloConsulta.Execute('Unidades', cdsUnidade, FN_UNIDADES, DL_UNIDADES) then
+//    begin
+//      cdsPadraoCODUNIDADE.AsInteger := cdsUnidadeCODUNIDADE.AsInteger;
+//    end;
 end;
 
 procedure TfrmProduto.dbeFornecedorClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsInsert, dsEdit] then
-    if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-    begin
-      cdsPadraoCODFORNECEDOR.AsInteger := cdsFornCODFORNECEDOR.AsInteger;
-    end;
+//  if cdsPadrao.State in [dsInsert, dsEdit] then
+//    if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
+//    begin
+//      cdsPadraoCODFORNECEDOR.AsInteger := cdsFornCODFORNECEDOR.AsInteger;
+//    end;
 end;
 
 procedure TfrmProduto.dbeGrupoClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsInsert, dsEdit] then
-    if TfrmModeloConsulta.Execute('Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
-    begin
-      cdsPadraoCODGRUPO.AsInteger := cdsGrupoCODGRUPO.AsInteger;
-    end;
+//  if cdsPadrao.State in [dsInsert, dsEdit] then
+//    if TfrmModeloConsulta.Execute('Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
+//    begin
+//      cdsPadraoCODGRUPO.AsInteger := cdsGrupoCODGRUPO.AsInteger;
+//    end;
 end;
 
 procedure TfrmProduto.dbeTributacaoClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsInsert, dsEdit] then
-    if TfrmModeloConsulta.Execute('Tributação', cdsAliquota, FN_ALIQUOTAS, DL_ALIQUOTAS) then
-    begin
-      cdsPadraoIDALIQUOTA.AsInteger := cdsAliquotaCODALIQUOTA.AsInteger;
-    end;
+//  if cdsPadrao.State in [dsInsert, dsEdit] then
+//    if TfrmModeloConsulta.Execute('Tributação', cdsAliquota, FN_ALIQUOTAS, DL_ALIQUOTAS) then
+//    begin
+//      cdsPadraoIDALIQUOTA.AsInteger := cdsAliquotaCODALIQUOTA.AsInteger;
+//    end;
 end;
 
 procedure TfrmProduto.cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -587,7 +573,7 @@ end;
 procedure TfrmProduto.dsPadraoStateChange(Sender: TObject);
 begin
   inherited;
-  miAjustaCodBarra.Enabled := not EditModes;
+  //miAjustaCodBarra.Enabled := not EditModes;
 end;
 
 procedure TfrmProduto.dspPadraoGetTableName(Sender: TObject; DataSet: TDataSet;

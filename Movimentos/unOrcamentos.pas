@@ -601,37 +601,37 @@ end;
 
 procedure TfrmOrcamentos.dbCodClienteClickButton(Sender: TObject);
 begin
-  if cdsOrcam.State in [dsEdit, dsInsert] then
-  begin
-    if TfrmModeloConsulta.Execute('Busca Clientes', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
-      cdsOrcamCODCLIENTE.AsInteger := cdsClienteCODCLIENTE.AsInteger;
-  end;
+//  if cdsOrcam.State in [dsEdit, dsInsert] then
+//  begin
+//    if TfrmModeloConsulta.Execute('Busca Clientes', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
+//      cdsOrcamCODCLIENTE.AsInteger := cdsClienteCODCLIENTE.AsInteger;
+//  end;
 end;
 
 procedure TfrmOrcamentos.dbProdutoClickButton(Sender: TObject);
 begin
-  if cdsOrcam.State in dsEditModes then
-  begin
-    if TfrmModeloConsulta.Execute('Produto', cdsProdutos, FN_PRODUTOS, DL_PRODUTOS) then
-    begin
-      if cdsProdutos.Locate('IDPRODUTO', cdsProdutosIDPRODUTO.AsInteger, []) then
-      begin
-        if not Configuracao.EstoqueOrc then
-        begin
-          cdsProdutos.Open;
-          if (cdsProdutosESTOQUE.AsFloat > cdsProdutosESTOQUEMINIMO.AsFloat) then
-            InsereProduto
-          else
-          begin
-            MsgErro('Produto com estoque mínimo, não é possível inseri-lo.');
-            Abort;
-          end;
-        end
-        else
-          InsereProduto;
-      end;
-    end;
-  end;
+//  if cdsOrcam.State in dsEditModes then
+//  begin
+//    if TfrmModeloConsulta.Execute('Produto', cdsProdutos, FN_PRODUTOS, DL_PRODUTOS) then
+//    begin
+//      if cdsProdutos.Locate('IDPRODUTO', cdsProdutosIDPRODUTO.AsInteger, []) then
+//      begin
+//        if not Configuracao.EstoqueOrc then
+//        begin
+//          cdsProdutos.Open;
+//          if (cdsProdutosESTOQUE.AsFloat > cdsProdutosESTOQUEMINIMO.AsFloat) then
+//            InsereProduto
+//          else
+//          begin
+//            MsgErro('Produto com estoque mínimo, não é possível inseri-lo.');
+//            Abort;
+//          end;
+//        end
+//        else
+//          InsereProduto;
+//      end;
+//    end;
+//  end;
 end;
 
 procedure TfrmOrcamentos.btnInsereProdutoClick(Sender: TObject);
@@ -903,9 +903,9 @@ end;
 
 procedure TfrmOrcamentos.dbeIdVendedorClickButton(Sender: TObject);
 begin
-  if ModoInsertEdit(cdsOrcam) then
-    if TfrmModeloConsulta.Execute('Vendedor', cdsVendedor, FN_VENDEDOR, DL_VENDEDOR) then
-      cdsOrcamIDVENDEDOR.AsInteger := cdsVendedorIDVENDEDOR.AsInteger;
+//  if ModoInsertEdit(cdsOrcam) then
+//    if TfrmModeloConsulta.Execute('Vendedor', cdsVendedor, FN_VENDEDOR, DL_VENDEDOR) then
+//      cdsOrcamIDVENDEDOR.AsInteger := cdsVendedorIDVENDEDOR.AsInteger;
 end;
 
 procedure TfrmOrcamentos.cdsOrcamIDVENDEDORValidate(Sender: TField);

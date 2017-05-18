@@ -13,9 +13,6 @@ type
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    N5: TMenuItem;
-    miRelFornData: TMenuItem;
-    miRelPorCidade: TMenuItem;
     sqldCidade: TSQLDataSet;
     dspCidade: TDataSetProvider;
     cdsCidade: TClientDataSet;
@@ -77,9 +74,6 @@ type
     sqldPadraoDATACAD: TDateField;
     cdsPadraoDATACAD: TDateField;
     btnContas: TBitBtn;
-    N6: TMenuItem;
-    N7: TMenuItem;
-    miAjustarCNPJ: TMenuItem;
     bvlLinha: TBevel;
     sqldPadraoTIPO: TStringField;
     cdsPadraoTIPO: TStringField;
@@ -147,9 +141,9 @@ end;
 procedure TfrmFornecedor.dbeCidadeClickButton(Sender: TObject);
 begin
   inherited;
-  if (cdsPadrao.State in [dsInsert, dsEdit]) then
-    if TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
-      cdsPadraoCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
+//  if (cdsPadrao.State in [dsInsert, dsEdit]) then
+//    if TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
+//      cdsPadraoCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
 end;
 
 procedure TfrmFornecedor.miRelPorCidadeClick(Sender: TObject);

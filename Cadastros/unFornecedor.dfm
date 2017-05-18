@@ -6,7 +6,7 @@ inherited frmFornecedor: TfrmFornecedor
   ClientWidth = 705
   OldCreateOrder = True
   ExplicitWidth = 711
-  ExplicitHeight = 413
+  ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
   object bvlLinha: TBevel [0]
@@ -206,38 +206,6 @@ inherited frmFornecedor: TfrmFornecedor
     DataSet = cdsPadrao
     Left = 604
     Top = 6
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 440
-    Top = 4
-    inherited miOpcoes: TMenuItem
-      object N7: TMenuItem
-        Caption = '-'
-      end
-      object miAjustarCNPJ: TMenuItem
-        Caption = 'Ajustar CNPJs'
-        OnClick = miAjustarCNPJClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Listagem de fornecedores'
-      end
-      object N6: TMenuItem [1]
-        Caption = '-'
-      end
-      object miRelFornData: TMenuItem [2]
-        Caption = 'Relat'#243'rio por data de cadastro'
-        OnClick = miRelFornDataClick
-      end
-      object miRelPorCidade: TMenuItem [3]
-        Caption = 'Relat'#243'rio por cidade'
-        OnClick = miRelPorCidadeClick
-      end
-      object N5: TMenuItem [4]
-        Caption = '-'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

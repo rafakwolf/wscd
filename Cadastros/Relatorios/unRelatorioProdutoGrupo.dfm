@@ -29,7 +29,6 @@ inherited frmRelatorioProdutoGrupo: TfrmRelatorioProdutoGrupo
     end
   end
   inherited dsPadrao: TDataSource
-    DataSet = DmPesquisar.cdsPesqGrupo
     Left = 136
     Top = 8
   end

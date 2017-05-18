@@ -110,10 +110,10 @@ end;
 procedure TfrmRelatorioAgenda.dbeNomeClickButton(Sender: TObject);
 begin
   inherited;
-  cdsAgenda.Close;
-  cdsAgenda.CommandText := SQLPadrao;
-  if not TfrmModeloConsulta.Execute('Agenda', cdsAgenda, FN_AGENDA, DL_AGENDA) then
-    cdsAgenda.Close;
+//  cdsAgenda.Close;
+//  cdsAgenda.CommandText := SQLPadrao;
+//  if not TfrmModeloConsulta.Execute('Agenda', cdsAgenda, FN_AGENDA, DL_AGENDA) then
+//    cdsAgenda.Close;
 end;
 
 procedure TfrmRelatorioAgenda.FormClose(Sender: TObject;

@@ -27,19 +27,8 @@ type
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    N5: TMenuItem;
-    N6: TMenuItem;
-    miTodasContas: TMenuItem;
-    miContasporCliente: TMenuItem;
-    miContasIntervaloDatas: TMenuItem;
-    N7: TMenuItem;
-    miContasVencidas: TMenuItem;
-    miContasVencidasCliente: TMenuItem;
     sqlLimite: TSQLDataSet;
     actContasReceber: TAction;
-    N9: TMenuItem;
-    miConsulta: TMenuItem;
-    miContasReceber: TMenuItem;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoDATA: TDateField;
     cdsPadraoVENCIMENTO: TDateField;
@@ -55,9 +44,6 @@ type
     cdsPadraoATRASO: TIntegerField;
     dbeVenda: TDBEdit;
     lbStatus: TLabel;
-    miContasClienteCorrente: TMenuItem;
-    N10: TMenuItem;
-    miParcelamento: TMenuItem;
     dbeValorAtual: TDBEdit;
     cdsPadraoNOME: TStringField;
     sqldPadraoCODIGO: TIntegerField;
@@ -93,8 +79,6 @@ type
     sqldPadraoCONTA: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
     cdsPadraoCONTA: TStringField;
-    N11: TMenuItem;
-    miProximosVenc: TMenuItem;
     sqldPadraoVALORJURO: TSingleField;
     sqldPadraoTOTAL: TSingleField;
     sqldPadraoTOTALRECDO: TSingleField;
@@ -344,7 +328,7 @@ end;
 procedure TfrmCR.dsPadraoStateChange(Sender: TObject);
 begin
   inherited;
-  miParcelamento.Enabled := not EditModes;
+  //miParcelamento.Enabled := not EditModes;
 end;
 
 procedure TfrmCR.btnReceberClick(Sender: TObject);
@@ -383,7 +367,7 @@ begin
     sqldDeleta.Close;
     sqldDeleta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
     sqldDeleta.ExecSQL;
-    actLimparFiltro.Execute;
+    //actLimparFiltro.Execute;
     MsgAviso('Registro excluído!');
   end;
 end;

@@ -4,7 +4,7 @@ inherited frmPerda: TfrmPerda
   ClientWidth = 473
   OldCreateOrder = True
   ExplicitWidth = 479
-  ExplicitHeight = 445
+  ExplicitHeight = 425
   PixelsPerInch = 96
   TextHeight = 13
   object lbQtde: TLabel [0]
@@ -131,18 +131,6 @@ inherited frmPerda: TfrmPerda
     DataSet = cdsPadrao
     Left = 367
     Top = 148
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 304
-    Top = 100
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Listagem de perdas'
-      end
-      object N5: TMenuItem [1]
-        Caption = '-'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

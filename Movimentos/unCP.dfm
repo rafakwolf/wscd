@@ -5,7 +5,7 @@ inherited frmCP: TfrmCP
   ClientWidth = 521
   OldCreateOrder = True
   ExplicitWidth = 527
-  ExplicitHeight = 429
+  ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
   object lbStatus: TLabel [0]
@@ -244,64 +244,6 @@ inherited frmCP: TfrmCP
     DataSet = cdsPadrao
     Left = 206
     Top = 308
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 463
-    Top = 68
-    inherited miOpcoes: TMenuItem
-      object N5: TMenuItem
-        Caption = '-'
-      end
-      object miConsulta: TMenuItem
-        Caption = 'Consultas'
-        object miContasFornecedor: TMenuItem
-          Action = actContas
-        end
-        object miContasFornecCorrente: TMenuItem
-          Caption = 'Contas deste fornecedor'
-          ShortCut = 118
-          OnClick = miContasFornecCorrenteClick
-        end
-      end
-      object N10: TMenuItem
-        Caption = '-'
-      end
-      object miParcelamento: TMenuItem
-        Caption = 'Parcelamento'
-        OnClick = miParcelamentoClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Todas as contas'
-        Hint = 'Todas as contas'
-      end
-      object N7: TMenuItem [1]
-        Caption = '-'
-      end
-      object miContasPorForn: TMenuItem [2]
-        Caption = 'Contas por fornecedor'
-        OnClick = miContasPorFornClick
-      end
-      object miContasIntervaloData: TMenuItem [3]
-        Caption = 'Contas por data de emiss'#227'o'
-        OnClick = miContasIntervaloDataClick
-      end
-      object N9: TMenuItem [4]
-        Caption = '-'
-      end
-      object miContasVencidas: TMenuItem [5]
-        Caption = 'Contas vencidas'
-        OnClick = miContasVencidasClick
-      end
-      object miContasVencPorForn: TMenuItem [6]
-        Caption = 'Contas vencidas por fornecedor'
-        OnClick = miContasVencPorFornClick
-      end
-      object N6: TMenuItem [7]
-        Caption = '-'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     GetMetadata = False

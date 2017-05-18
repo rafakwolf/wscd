@@ -392,10 +392,10 @@ begin
 
     if BancoExiste(StrToInt(varBanco)) then
     begin
-      GetDmPesquisar.cdsPesqBanco.Open;
-      GetDmPesquisar.cdsPesqBanco.Filtered := False;
-      GetDmPesquisar.cdsPesqBanco.Filter   := 'IDBANCO = '+QuotedStr(varBanco);
-      GetDmPesquisar.cdsPesqBanco.Filtered := True;
+//      GetDmPesquisar.cdsPesqBanco.Open;
+//      GetDmPesquisar.cdsPesqBanco.Filtered := False;
+//      GetDmPesquisar.cdsPesqBanco.Filter   := 'IDBANCO = '+QuotedStr(varBanco);
+//      GetDmPesquisar.cdsPesqBanco.Filtered := True;
     end
     else
     begin

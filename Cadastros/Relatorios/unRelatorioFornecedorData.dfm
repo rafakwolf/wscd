@@ -22,14 +22,11 @@ inherited frmRelatorioFornecedorData: TfrmRelatorioFornecedorData
     TabOrder = 1
   end
   inherited pnButtons: TPanel
-    ExplicitTop = 137
-    ExplicitWidth = 313
     inherited btnVisualizar: TBitBtn
       OnClick = btnVisualizarClick
     end
   end
   inherited dsPadrao: TDataSource
-    DataSet = DmPesquisar.cdsPesqData
     Left = 240
     Top = 24
   end

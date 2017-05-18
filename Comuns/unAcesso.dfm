@@ -342,7 +342,7 @@ object frmAcesso: TfrmAcesso
     Left = 207
     Top = 32
     Width = 164
-    Height = 24
+    Height = 21
     Hint = 'Usu'#225'rio'
     Ctl3D = True
     EditLabel.Width = 39
@@ -355,20 +355,14 @@ object frmAcesso: TfrmAcesso
     EditLabel.Font.Style = []
     EditLabel.ParentFont = False
     EditLabel.Transparent = True
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = []
     LabelPosition = lpLeft
     MaxLength = 10
     ParentCtl3D = False
-    ParentFont = False
     TabOrder = 0
   end
   object btnCancelar: TBitBtn
     Left = 296
-    Top = 89
+    Top = 111
     Width = 75
     Height = 25
     Hint = 'Cancelar'
@@ -406,9 +400,9 @@ object frmAcesso: TfrmAcesso
     OnClick = btnCancelarClick
   end
   object btnOK: TBitBtn
-    Left = 217
-    Top = 89
-    Width = 75
+    Left = 207
+    Top = 111
+    Width = 85
     Height = 25
     Hint = 'Efetuar login'
     Caption = 'Login'
@@ -461,11 +455,16 @@ object frmAcesso: TfrmAcesso
     TabOrder = 2
     OnClick = btnOkClick
   end
-  object edtSenha: TEdit
+  object edtSenha: TLabeledEdit
     Left = 207
     Top = 62
     Width = 164
     Height = 21
+    EditLabel.Width = 30
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Senha'
+    LabelPosition = lpLeft
+    PasswordChar = '*'
     TabOrder = 3
   end
 end

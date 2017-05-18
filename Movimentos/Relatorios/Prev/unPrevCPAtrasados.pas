@@ -39,10 +39,10 @@ uses unModeloConsulta, ConstPadrao, unPrevContasPagar, Funcoes, uConfiguraRelato
 procedure TfrmRelatorioCPAtrasados.dbeFornecedorClickButton(Sender: TObject);
 begin
   inherited;
-  cdsForn.Close;
-  cdsForn.CommandText := sqlpadrao;
-  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-    cdsForn.Close;
+//  cdsForn.Close;
+//  cdsForn.CommandText := sqlpadrao;
+//  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
+//    cdsForn.Close;
 end;
 
 procedure TfrmRelatorioCPAtrasados.FormClose(Sender: TObject;

@@ -177,8 +177,8 @@ end;
 
 procedure TfrmLancCaixa.dbeCaixaClickButton(Sender: TObject);
 begin
-  if TfrmModeloConsulta.Execute('Caixas', cdsCaixas, FN_CAIXAS, FN_CAIXAS) then
-    cdsPadraoCODCAIXAS.AsInteger := cdsCaixasCODIGO.AsInteger;
+//  if TfrmModeloConsulta.Execute('Caixas', cdsCaixas, FN_CAIXAS, FN_CAIXAS) then
+//    cdsPadraoCODCAIXAS.AsInteger := cdsCaixasCODIGO.AsInteger;
 end;
 
 procedure TfrmLancCaixa.dbeValorKeyPress(Sender: TObject; var Key: Char);

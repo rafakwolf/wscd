@@ -5,9 +5,8 @@ inherited frmConfigNota: TfrmConfigNota
   ClientHeight = 510
   ClientWidth = 1000
   OldCreateOrder = True
-  ExplicitLeft = -255
   ExplicitWidth = 1006
-  ExplicitHeight = 559
+  ExplicitHeight = 539
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TStatusBar
@@ -4620,19 +4619,12 @@ inherited frmConfigNota: TfrmConfigNota
   inherited actlNavigateActions: TActionList
     Left = 800
     Top = 108
-    inherited actOrdenar: TAction
-      Caption = 'Atualizar campos...'
-    end
   end
   inherited dsPadrao: TDataSource
     AutoEdit = True
     DataSet = cdsPadrao
     Left = 770
     Top = 12
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 704
-    Top = 108
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from CONFIGNOTA'#13#10'order by LINHA, COLUNA'

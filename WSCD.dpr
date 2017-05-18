@@ -181,7 +181,9 @@ uses
   uConfiguraRelatorio in 'Util\uConfiguraRelatorio.pas',
   Extensos in 'Util\Extensos.pas',
   uCheque in 'Util\uCheque.pas',
-  uClassesMenu in 'Util\uClassesMenu.pas';
+  uClassesMenu in 'Util\uClassesMenu.pas',
+  udmCliente in 'Cadastros\Datamodule\udmCliente.pas' {dmCliente: TDataModule},
+  udmDuplicatas in 'Utilitarios\Datamodule\udmDuplicatas.pas' {dmDuplicatas: TDataModule};
 
 {$R *.res}
 
@@ -190,7 +192,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmPrincipal, DmPrincipal);
   Application.CreateForm(TDmPesquisar, DmPesquisar);
-  Application.CreateForm(TdmBase, dmBase);
+  Application.CreateForm(TdmDuplicatas, dmDuplicatas);
   frmAcesso := TfrmAcesso.Create(Application);
   if frmAcesso.ShowModal = mrOk then
   begin

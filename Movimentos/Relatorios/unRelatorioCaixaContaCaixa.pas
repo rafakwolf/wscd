@@ -59,9 +59,9 @@ begin
                              'AND DATA BETWEEN :DATAINI AND :DATAFIM '+
                              'ORDER BY DATA, TIPO';
 
-    cdspadrao.Params.ParamByName('CODCAIXA').AsInteger := cdsCaixaCODIGO.AsInteger;
-    cdsPadrao.Params.ParamByName('DATAINI').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime;
-    cdsPadrao.Params.ParamByName('DATAFIM').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime;
+//    cdspadrao.Params.ParamByName('CODCAIXA').AsInteger := cdsCaixaCODIGO.AsInteger;
+//    cdsPadrao.Params.ParamByName('DATAINI').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime;
+//    cdsPadrao.Params.ParamByName('DATAFIM').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime;
 
     cdsPadrao.Open;
     TituloRel := 'Lançamentos do caixa: ' + dbeCaixa.Text;
@@ -78,10 +78,10 @@ begin
   cdsCaixa.Close;
   cdsCaixa.CommandText := SQLPadrao;
 
-  if TfrmModeloConsulta.Execute('Busca Caixa', cdsCaixa, FN_CAIXAS, DL_CAIXAS) then
-    cdsCaixa.Open
-  else
-    cdsCaixa.Close;
+//  if TfrmModeloConsulta.Execute('Busca Caixa', cdsCaixa, FN_CAIXAS, DL_CAIXAS) then
+//    cdsCaixa.Open
+//  else
+//    cdsCaixa.Close;
 end;
 
 procedure TfrmRelatorioCaixaContaCaixa.btnImprimirClick(Sender: TObject);
@@ -101,16 +101,16 @@ begin
   inherited;
   SQLPadrao := sqldCaixa.CommandText;
 
-  if not dmPesquisar.cdsPesqData.Active then
-    DmPesquisar.cdsPesqData.Open;
+//  if not dmPesquisar.cdsPesqData.Active then
+//    DmPesquisar.cdsPesqData.Open;
 end;
 
 procedure TfrmRelatorioCaixaContaCaixa.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
-  if dmPesquisar.cdsPesqData.Active then
-    DmPesquisar.cdsPesqData.Close;
+//  if dmPesquisar.cdsPesqData.Active then
+//    DmPesquisar.cdsPesqData.Close;
 end;
 
 initialization

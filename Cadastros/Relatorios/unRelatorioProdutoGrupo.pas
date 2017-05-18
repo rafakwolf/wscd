@@ -47,12 +47,12 @@ begin
       with cdsPadrao do
       begin
         Close;
-        Params.ParamByName('CODIGO').AsInteger :=
-          GetDmPesquisar.cdsPesqGrupoCODGRUPO.AsInteger;
+        //Params.ParamByName('CODIGO').AsInteger :=
+       //   GetDmPesquisar.cdsPesqGrupoCODGRUPO.AsInteger;
         Open;
       end;
       TipoRelatorio := 0;
-      Grupo := GetDmPesquisar.cdsPesqGrupoDESCRICAO.AsString;
+      //Grupo := GetDmPesquisar.cdsPesqGrupoDESCRICAO.AsString;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
       cdsPadrao.Close;
@@ -64,18 +64,18 @@ end;
 procedure TfrmRelatorioProdutoGrupo.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqGrupo.Close;
+ // GetDmPesquisar.cdsPesqGrupo.Close;
   inherited;
 end;
 
 procedure TfrmRelatorioProdutoGrupo.dbeGrupoClickButton(Sender: TObject);
 begin
   inherited;
-  GetDmPesquisar.cdsPesqGrupo.Close;
-  GetDmPesquisar.cdsPesqGrupo.CommandText := SQLPadrao;
-
-  if not TfrmModeloConsulta.Execute('Grupo', GetDmPesquisar.cdsPesqGrupo, FN_GRUPOS, DL_GRUPOS) then
-    GetDmPesquisar.cdsPesqGrupo.Close;
+//  GetDmPesquisar.cdsPesqGrupo.Close;
+//  GetDmPesquisar.cdsPesqGrupo.CommandText := SQLPadrao;
+//
+//  if not TfrmModeloConsulta.Execute('Grupo', GetDmPesquisar.cdsPesqGrupo, FN_GRUPOS, DL_GRUPOS) then
+//    GetDmPesquisar.cdsPesqGrupo.Close;
 end;
 
 procedure TfrmRelatorioProdutoGrupo.btnVisualizarClick(Sender: TObject);
@@ -93,8 +93,8 @@ end;
 procedure TfrmRelatorioProdutoGrupo.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqGrupo;
-  SQLPadrao := GetDmPesquisar.sqldPesqGrupo.CommandText;
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqGrupo;
+//  SQLPadrao := GetDmPesquisar.sqldPesqGrupo.CommandText;
 end;
 
 initialization

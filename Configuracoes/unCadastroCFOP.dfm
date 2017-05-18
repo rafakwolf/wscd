@@ -4,7 +4,7 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
   ClientWidth = 553
   OldCreateOrder = True
   ExplicitWidth = 559
-  ExplicitHeight = 357
+  ExplicitHeight = 337
   PixelsPerInch = 96
   TextHeight = 13
   object lblDescricao: TLabel [0]
@@ -62,26 +62,16 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 415
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 288
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Listagem de CFOPs'
-      end
-      object N5: TMenuItem [1]
-        Caption = '-'
-      end
-    end
+    Left = 455
+    Top = 20
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  NUMERO, '#13#10'  OPERACAO,'#13#10'  CFNOTA '#13#10'from CFOP'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 320
-    Top = 44
+    Left = 352
+    Top = 36
     object sqldPadraoNUMERO: TStringField
       FieldName = 'NUMERO'
       Required = True
@@ -99,8 +89,8 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
-    Left = 352
-    Top = 44
+    Left = 400
+    Top = 84
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -108,8 +98,8 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     Params = <>
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
-    Left = 384
-    Top = 44
+    Left = 464
+    Top = 116
     object cdsPadraoNUMERO: TStringField
       FieldName = 'NUMERO'
       Required = True

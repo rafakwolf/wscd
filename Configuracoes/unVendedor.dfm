@@ -2,11 +2,11 @@ inherited frmVendedor: TfrmVendedor
   Left = 229
   Top = 165
   Caption = 'frmVendedor'
-  ClientHeight = 164
-  ClientWidth = 409
+  ClientHeight = 229
+  ClientWidth = 522
   OldCreateOrder = True
-  ExplicitWidth = 415
-  ExplicitHeight = 213
+  ExplicitWidth = 528
+  ExplicitHeight = 258
   PixelsPerInch = 96
   TextHeight = 13
   object dbcbAtivo: TDBCheckBox [0]
@@ -40,31 +40,30 @@ inherited frmVendedor: TfrmVendedor
     TabOrder = 3
   end
   inherited sbStatus: TStatusBar
-    Top = 145
-    Width = 409
+    Top = 210
+    Width = 522
     ExplicitTop = 145
     ExplicitWidth = 409
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 409
+    Width = 522
     ExplicitWidth = 409
   end
   inherited actlNavigateActions: TActionList
-    Left = 184
+    Left = 176
+    Top = 124
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 367
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 216
+    Left = 439
+    Top = 60
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  IDVENDEDOR, '#13#10'  VENDEDOR, '#13#10'  ATIVO '#13#10'from VENDEDOR'
     MaxBlobSize = -1
     Params = <>
-    Left = 248
-    Top = 44
+    Left = 280
+    Top = 140
     object sqldPadraoIDVENDEDOR: TIntegerField
       FieldName = 'IDVENDEDOR'
       Required = True
@@ -82,8 +81,8 @@ inherited frmVendedor: TfrmVendedor
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poUseQuoteChar]
-    Left = 280
-    Top = 44
+    Left = 368
+    Top = 140
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -91,8 +90,8 @@ inherited frmVendedor: TfrmVendedor
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
-    Left = 312
-    Top = 44
+    Left = 440
+    Top = 132
     object cdsPadraoIDVENDEDOR: TIntegerField
       FieldName = 'IDVENDEDOR'
       Required = True

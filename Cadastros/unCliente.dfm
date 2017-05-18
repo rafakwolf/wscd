@@ -2,10 +2,9 @@ inherited frmCliente: TfrmCliente
   Left = 231
   Top = 131
   Caption = 'frmCliente'
-  ClientHeight = 452
+  ClientHeight = 472
   ClientWidth = 785
   OldCreateOrder = True
-  ExplicitTop = -62
   ExplicitWidth = 791
   ExplicitHeight = 501
   PixelsPerInch = 96
@@ -17,7 +16,7 @@ inherited frmCliente: TfrmCliente
     Height = 25
     Hint = 'Exibir/Ocultar foto do cliente'
     Caption = '&Foto'
-    TabOrder = 30
+    TabOrder = 28
     OnClick = btnFotoClick
   end
   object dbeFax: TDBEdit [1]
@@ -27,7 +26,7 @@ inherited frmCliente: TfrmCliente
     Height = 21
     DataField = 'FAX'
     DataSource = dsPadrao
-    TabOrder = 8
+    TabOrder = 7
   end
   object btnContas: TBitBtn [2]
     Left = 571
@@ -35,95 +34,83 @@ inherited frmCliente: TfrmCliente
     Width = 100
     Height = 25
     Caption = '&Contas'
-    TabOrder = 28
+    TabOrder = 26
     OnClick = btnContasClick
   end
-  object dbeEstadoCivil: TDBEdit [3]
-    Left = 488
-    Top = 252
-    Width = 67
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'ESTADO_CIVIL'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 17
-  end
-  object dbeTelefoneComercial: TDBEdit [4]
+  object dbeTelefoneComercial: TDBEdit [3]
     Left = 639
     Top = 300
     Width = 138
     Height = 21
     DataField = 'FONE_COM'
     DataSource = dsPadrao
-    TabOrder = 22
+    TabOrder = 20
   end
-  object dbeRefComercial: TDBEdit [5]
+  object dbeRefComercial: TDBEdit [4]
     Left = 528
     Top = 348
     Width = 249
     Height = 21
     DataField = 'REFER_COM'
     DataSource = dsPadrao
-    TabOrder = 25
+    TabOrder = 23
   end
-  object dbeRefPessoal: TDBEdit [6]
+  object dbeRefPessoal: TDBEdit [5]
     Left = 280
     Top = 348
     Width = 241
     Height = 21
     DataField = 'REFER_PES'
     DataSource = dsPadrao
-    TabOrder = 24
+    TabOrder = 22
   end
-  object dbeLocalTrabalho: TDBEdit [7]
+  object dbeLocalTrabalho: TDBEdit [6]
     Left = 8
     Top = 348
     Width = 265
     Height = 21
     DataField = 'LOCAL_TRAB'
     DataSource = dsPadrao
-    TabOrder = 23
+    TabOrder = 21
   end
-  object dbeSalario: TDBEdit [8]
+  object dbeSalario: TDBEdit [7]
     Left = 8
     Top = 396
     Width = 129
     Height = 21
     DataField = 'SALARIO'
     DataSource = dsPadrao
-    TabOrder = 26
+    TabOrder = 24
     OnKeyPress = dbeSalarioKeyPress
   end
-  object dbeInicioTrabalho: TDBEdit [9]
+  object dbeInicioTrabalho: TDBEdit [8]
     Left = 520
     Top = 300
     Width = 113
     Height = 21
     DataField = 'DATA_INICIO'
     DataSource = dsPadrao
-    TabOrder = 21
+    TabOrder = 19
   end
-  object dbeCargo: TDBEdit [10]
+  object dbeCargo: TDBEdit [9]
     Left = 264
     Top = 300
     Width = 249
     Height = 21
     DataField = 'CARGO'
     DataSource = dsPadrao
-    TabOrder = 20
+    TabOrder = 18
   end
-  object dbeTrabalho: TDBEdit [11]
+  object dbeTrabalho: TDBEdit [10]
     Left = 8
     Top = 300
     Width = 249
     Height = 21
     DataField = 'TRABALHO'
     DataSource = dsPadrao
-    TabOrder = 19
+    TabOrder = 17
   end
-  object dbeEmail: TDBEdit [12]
+  object dbeEmail: TDBEdit [11]
     Left = 232
     Top = 156
     Width = 289
@@ -131,81 +118,81 @@ inherited frmCliente: TfrmCliente
     CharCase = ecLowerCase
     DataField = 'E_MAIL'
     DataSource = dsPadrao
-    TabOrder = 9
+    TabOrder = 8
   end
-  object dbeNaturalidade: TDBEdit [13]
+  object dbeNaturalidade: TDBEdit [12]
     Left = 616
     Top = 204
     Width = 161
     Height = 21
     DataField = 'NATURALIDADE'
     DataSource = dsPadrao
-    TabOrder = 14
+    TabOrder = 13
   end
-  object dbeDataCadastro: TDBEdit [14]
+  object dbeDataCadastro: TDBEdit [13]
     Left = 656
     Top = 156
     Width = 121
     Height = 21
     DataField = 'CADASTRO'
     DataSource = dsPadrao
-    TabOrder = 11
+    TabOrder = 10
   end
-  object dbeMae: TDBEdit [15]
+  object dbeMae: TDBEdit [14]
     Left = 312
     Top = 204
     Width = 297
     Height = 21
     DataField = 'MAE'
     DataSource = dsPadrao
-    TabOrder = 13
+    TabOrder = 12
   end
-  object dbePai: TDBEdit [16]
+  object dbePai: TDBEdit [15]
     Left = 8
     Top = 204
     Width = 297
     Height = 21
     DataField = 'PAI'
     DataSource = dsPadrao
-    TabOrder = 12
+    TabOrder = 11
   end
-  object dbeConjuge: TDBEdit [17]
+  object dbeConjuge: TDBEdit [16]
     Left = 584
     Top = 252
     Width = 193
     Height = 21
     DataField = 'CONJUGUE'
     DataSource = dsPadrao
-    TabOrder = 18
+    TabOrder = 16
   end
-  object dbeEnderecoAnterior: TDBEdit [18]
+  object dbeEnderecoAnterior: TDBEdit [17]
     Left = 247
     Top = 252
     Width = 234
     Height = 21
     DataField = 'END_ANTERIOR'
     DataSource = dsPadrao
-    TabOrder = 16
+    TabOrder = 15
   end
-  object dbeTempoMoradia: TDBEdit [19]
+  object dbeTempoMoradia: TDBEdit [18]
     Left = 8
     Top = 252
     Width = 233
     Height = 21
     DataField = 'TEMPO_MORADIA'
     DataSource = dsPadrao
-    TabOrder = 15
+    TabOrder = 14
   end
-  object btnObservacao: TBitBtn [20]
+  object btnObservacao: TBitBtn [19]
     Left = 677
     Top = 392
     Width = 100
     Height = 25
     Caption = '&Observa'#231#227'o'
-    TabOrder = 29
+    TabOrder = 27
     OnClick = btnObservacaoClick
   end
-  object dbeLimite: TDBEdit [21]
+  object dbeLimite: TDBEdit [20]
     Left = 144
     Top = 396
     Width = 121
@@ -218,19 +205,19 @@ inherited frmCliente: TfrmCliente
     Font.Name = 'Verdana'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 27
+    TabOrder = 25
     OnKeyPress = dbeLimiteKeyPress
   end
-  object dbeDataNasc: TDBEdit [22]
+  object dbeDataNasc: TDBEdit [21]
     Left = 528
     Top = 156
     Width = 121
     Height = 21
     DataField = 'DATA_NASC'
     DataSource = dsPadrao
-    TabOrder = 10
+    TabOrder = 9
   end
-  object dbeCpf: TDBEdit [23]
+  object dbeCpf: TDBEdit [22]
     Left = 504
     Top = 64
     Width = 137
@@ -239,7 +226,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeRg: TDBEdit [24]
+  object dbeRg: TDBEdit [23]
     Left = 648
     Top = 64
     Width = 129
@@ -248,16 +235,16 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeTelefone: TDBEdit [25]
+  object dbeTelefone: TDBEdit [24]
     Left = 8
     Top = 156
     Width = 105
     Height = 21
     DataField = 'TELEFONE'
     DataSource = dsPadrao
-    TabOrder = 7
+    TabOrder = 6
   end
-  object dbeCep: TDBEdit [26]
+  object dbeCep: TDBEdit [25]
     Left = 416
     Top = 108
     Width = 97
@@ -266,7 +253,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbeBairro: TDBEdit [27]
+  object dbeBairro: TDBEdit [26]
     Left = 232
     Top = 108
     Width = 177
@@ -275,19 +262,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbeCidade: TDBEdit [28]
-    Left = 520
-    Top = 108
-    Width = 179
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'DESCRICAO'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 6
-  end
-  object dbeEndereco: TDBEdit [29]
+  object dbeEndereco: TDBEdit [27]
     Left = 8
     Top = 108
     Width = 217
@@ -296,7 +271,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeNome: TDBEdit [30]
+  object dbeNome: TDBEdit [28]
     Left = 136
     Top = 64
     Width = 361
@@ -305,13 +280,13 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object pnFoto: TPanel [31]
-    Left = 266
-    Top = 184
+  object pnFoto: TPanel [29]
+    Left = 66
+    Top = 135
     Width = 247
     Height = 204
     ParentBackground = False
-    TabOrder = 31
+    TabOrder = 29
     Visible = False
     object btnBuscar: TSpeedButton
       Left = 4
@@ -432,28 +407,80 @@ inherited frmCliente: TfrmCliente
       Caption = 'Foto'
       TabOrder = 0
       object imgFoto: TDBImage
-        Left = 16
+        Left = 12
         Top = 16
-        Width = 209
-        Height = 141
+        Width = 221
+        Height = 155
+        DataField = 'FOTO'
+        DataSource = dsPadrao
         TabOrder = 0
       end
     end
   end
   inherited sbStatus: TStatusBar
-    Top = 433
+    Top = 453
     Width = 785
-    ExplicitTop = 433
+    ExplicitTop = 453
     ExplicitWidth = 785
   end
   inherited pnBotoesPadrao: TPanel
     Width = 785
-    TabOrder = 33
+    TabOrder = 31
     ExplicitWidth = 785
   end
+  object dbeCidade: TcxDBButtonEdit [32]
+    Left = 528
+    Top = 108
+    DataBinding.DataField = 'DESCRICAO'
+    DataBinding.DataSource = dsPadrao
+    Properties.Buttons = <
+      item
+        Default = True
+        Kind = bkEllipsis
+      end>
+    Properties.OnButtonClick = dbeCidadePropertiesButtonClick
+    TabOrder = 32
+    Width = 249
+  end
+  object lblNome: TcxLabel [33]
+    Left = 136
+    Top = 41
+    Caption = 'Nome'
+  end
+  object lblDocumento: TcxLabel [34]
+    Left = 503
+    Top = 41
+    Caption = 'Cpf/Cnpj'
+  end
+  object cmdTipoCliente: TcxDBComboBox [35]
+    Left = 9
+    Top = 64
+    DataBinding.DataField = 'TIPO'
+    DataBinding.DataSource = dsPadrao
+    TabOrder = 35
+    Width = 121
+  end
+  object lblTipo: TcxLabel [36]
+    Left = 8
+    Top = 41
+    Caption = 'Tipo'
+  end
+  object cmdEstadoCivil: TcxDBComboBox [37]
+    Left = 487
+    Top = 252
+    DataBinding.DataField = 'ESTADO_CIVIL'
+    DataBinding.DataSource = dsPadrao
+    Properties.Items.Strings = (
+      'Solteiro(a)'
+      'Casado(a)'
+      'Amaziado(a)'
+      'Vi'#250'vo(a)')
+    TabOrder = 37
+    Width = 91
+  end
   inherited actlNavigateActions: TActionList
-    Left = 336
-    Top = 20
+    Left = 344
+    Top = 36
     inherited actPrint: TAction
       Hint = 'Listagem de clientes'
       ShortCut = 0
@@ -461,395 +488,8 @@ inherited frmCliente: TfrmCliente
     end
   end
   inherited dsPadrao: TDataSource
-    DataSet = cdsPadrao
-    Left = 577
-    Top = 4
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 200
-    Top = 28
-    inherited miOpcoes: TMenuItem
-      object N9: TMenuItem [5]
-        Caption = '-'
-      end
-      object miFiltros: TMenuItem [6]
-        Caption = 'Outros filtros'
-        object miFiltroCidade: TMenuItem
-          Caption = 'Clientes por cidade'
-          OnClick = miFiltroCidadeClick
-        end
-      end
-      object N10: TMenuItem
-        Caption = '-'
-      end
-      object miAjustaCPF_CNPJ: TMenuItem
-        Caption = 'Ajustar CPF/CNPJs'
-        OnClick = miAjustaCPF_CNPJClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Listagem de clientes'
-      end
-      object miFicha: TMenuItem [1]
-        Caption = 'Ficha deste cliente'
-        OnClick = miFichaClick
-      end
-      object N6: TMenuItem [2]
-        Caption = '-'
-      end
-      object miRelClientesDataNasc: TMenuItem [3]
-        Caption = 'Por data de nascimento'
-        OnClick = miRelClientesDataNascClick
-      end
-      object miRelClientesCidade: TMenuItem [4]
-        Caption = 'Por cidade'
-        OnClick = miRelClientesCidadeClick
-      end
-      object miRelAniversariantes: TMenuItem [5]
-        Caption = 'Clientes aniversariantes'
-        OnClick = miRelAniversariantesClick
-      end
-      object N5: TMenuItem [6]
-        Caption = '-'
-      end
-      object miEtiquetaCliente: TMenuItem [7]
-        Caption = 'Etiquetas'
-        OnClick = miEtiquetaClienteClick
-      end
-      object N7: TMenuItem [8]
-        Caption = '-'
-      end
-    end
-  end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  cli.CODCLIENTE,'#13#10'  cli.TIPO,'#13#10'  cli.NOME,'#13#10'  cli.ENDER' +
-      'ECO,'#13#10'  cli.CEP,'#13#10'  cli.BAIRRO,'#13#10'  cli.TELEFONE,'#13#10'  cli.FAX,'#13#10'  ' +
-      'cli.CODCIDADE,'#13#10'  cid.DESCRICAO,'#13#10'  cli.UF,'#13#10'  cli.TEMPO_MORADIA' +
-      ','#13#10'  cli.END_ANTERIOR,'#13#10'  cli.E_MAIL,'#13#10'  cli.TRABALHO,'#13#10'  cli.CA' +
-      'RGO,'#13#10'  cli.DATA_INICIO,'#13#10'  cli.SALARIO,'#13#10'  cli.ESTADO_CIVIL,'#13#10' ' +
-      ' cli.CONJUGUE,'#13#10'  cli.LOCAL_TRAB,'#13#10'  cli.DATA_NASC,'#13#10'  cli.PAI,'#13 +
-      #10'  cli.MAE,'#13#10'  cli.CPF_CNPJ,'#13#10'  cli.RG_IE,'#13#10'  cli.REFER_PES,'#13#10'  ' +
-      'cli.REFER_COM,'#13#10'  cli.FONE_COM,'#13#10'  cli.CADASTRO,'#13#10'  cli.OBS,'#13#10'  ' +
-      'cli.NATURALIDADE,'#13#10'  cli.LIMITE,'#13#10'  cli.FOTO'#13#10'from CLIENTES cli'#13 +
-      #10'left join CIDADES cid on (cli.CODCIDADE = cid.CODCIDADE)'#13#10'order' +
-      ' by cli.NOME'
-    MaxBlobSize = -1
-    Params = <>
-    Left = 484
-    Top = 4
-    object sqldPadraoCODCLIENTE: TIntegerField
-      FieldName = 'CODCLIENTE'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object sqldPadraoTIPO: TStringField
-      FieldName = 'TIPO'
-      FixedChar = True
-      Size = 1
-    end
-    object sqldPadraoNOME: TStringField
-      FieldName = 'NOME'
-      Size = 80
-    end
-    object sqldPadraoENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Size = 80
-    end
-    object sqldPadraoCEP: TStringField
-      FieldName = 'CEP'
-      Size = 10
-    end
-    object sqldPadraoBAIRRO: TStringField
-      FieldName = 'BAIRRO'
-      Size = 80
-    end
-    object sqldPadraoTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-    end
-    object sqldPadraoFAX: TStringField
-      FieldName = 'FAX'
-    end
-    object sqldPadraoCODCIDADE: TIntegerField
-      FieldName = 'CODCIDADE'
-    end
-    object sqldPadraoDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      ProviderFlags = []
-      Size = 80
-    end
-    object sqldPadraoUF: TStringField
-      FieldName = 'UF'
-      FixedChar = True
-      Size = 2
-    end
-    object sqldPadraoTEMPO_MORADIA: TStringField
-      FieldName = 'TEMPO_MORADIA'
-      Size = 80
-    end
-    object sqldPadraoEND_ANTERIOR: TStringField
-      FieldName = 'END_ANTERIOR'
-      Size = 80
-    end
-    object sqldPadraoE_MAIL: TStringField
-      FieldName = 'E_MAIL'
-      Size = 80
-    end
-    object sqldPadraoTRABALHO: TStringField
-      FieldName = 'TRABALHO'
-      Size = 80
-    end
-    object sqldPadraoCARGO: TStringField
-      FieldName = 'CARGO'
-      Size = 80
-    end
-    object sqldPadraoDATA_INICIO: TDateField
-      FieldName = 'DATA_INICIO'
-    end
-    object sqldPadraoSALARIO: TFMTBCDField
-      FieldName = 'SALARIO'
-      Precision = 15
-    end
-    object sqldPadraoESTADO_CIVIL: TStringField
-      FieldName = 'ESTADO_CIVIL'
-      FixedChar = True
-      Size = 1
-    end
-    object sqldPadraoCONJUGUE: TStringField
-      FieldName = 'CONJUGUE'
-      Size = 80
-    end
-    object sqldPadraoLOCAL_TRAB: TStringField
-      FieldName = 'LOCAL_TRAB'
-      Size = 80
-    end
-    object sqldPadraoDATA_NASC: TDateField
-      FieldName = 'DATA_NASC'
-    end
-    object sqldPadraoPAI: TStringField
-      FieldName = 'PAI'
-      Size = 80
-    end
-    object sqldPadraoMAE: TStringField
-      FieldName = 'MAE'
-      Size = 80
-    end
-    object sqldPadraoCPF_CNPJ: TStringField
-      FieldName = 'CPF_CNPJ'
-    end
-    object sqldPadraoRG_IE: TStringField
-      FieldName = 'RG_IE'
-    end
-    object sqldPadraoREFER_PES: TStringField
-      FieldName = 'REFER_PES'
-      Size = 250
-    end
-    object sqldPadraoREFER_COM: TStringField
-      FieldName = 'REFER_COM'
-      Size = 250
-    end
-    object sqldPadraoFONE_COM: TStringField
-      FieldName = 'FONE_COM'
-    end
-    object sqldPadraoCADASTRO: TDateField
-      FieldName = 'CADASTRO'
-    end
-    object sqldPadraoOBS: TMemoField
-      FieldName = 'OBS'
-      BlobType = ftMemo
-      Size = 1
-    end
-    object sqldPadraoNATURALIDADE: TStringField
-      FieldName = 'NATURALIDADE'
-      Size = 80
-    end
-    object sqldPadraoLIMITE: TFMTBCDField
-      FieldName = 'LIMITE'
-      Precision = 15
-    end
-    object sqldPadraoFOTO: TBlobField
-      FieldName = 'FOTO'
-      Size = 1
-    end
-  end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
-    UpdateMode = upWhereKeyOnly
-    Left = 516
-    Top = 4
-  end
-  object cdsPadrao: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 547
-    Top = 4
-    object cdsPadraoCODCLIENTE: TIntegerField
-      FieldName = 'CODCLIENTE'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object cdsPadraoTIPO: TStringField
-      FieldName = 'TIPO'
-      Required = True
-      OnGetText = cdsPadraoTIPOGetText
-      OnSetText = cdsPadraoTIPOSetText
-      Size = 8
-    end
-    object cdsPadraoNOME: TStringField
-      DisplayWidth = 80
-      FieldName = 'NOME'
-      Required = True
-      Size = 80
-    end
-    object cdsPadraoENDERECO: TStringField
-      DisplayWidth = 80
-      FieldName = 'ENDERECO'
-      Size = 80
-    end
-    object cdsPadraoCEP: TStringField
-      FieldName = 'CEP'
-      EditMask = '99999\-999;1;_'
-      Size = 10
-    end
-    object cdsPadraoBAIRRO: TStringField
-      FieldName = 'BAIRRO'
-      Size = 30
-    end
-    object cdsPadraoTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 15
-    end
-    object cdsPadraoCODCIDADE: TIntegerField
-      DisplayLabel = 'Cidade'
-      FieldName = 'CODCIDADE'
-      Required = True
-      OnValidate = cdsPadraoCODCIDADEValidate
-    end
-    object cdsPadraoDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      ProviderFlags = []
-      Size = 80
-    end
-    object cdsPadraoUF: TStringField
-      FieldName = 'UF'
-      FixedChar = True
-      Size = 2
-    end
-    object cdsPadraoTEMPO_MORADIA: TStringField
-      FieldName = 'TEMPO_MORADIA'
-      Size = 30
-    end
-    object cdsPadraoEND_ANTERIOR: TStringField
-      FieldName = 'END_ANTERIOR'
-      Size = 50
-    end
-    object cdsPadraoE_MAIL: TStringField
-      FieldName = 'E_MAIL'
-      Size = 60
-    end
-    object cdsPadraoDATA_INICIO: TDateField
-      FieldName = 'DATA_INICIO'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoTRABALHO: TStringField
-      FieldName = 'TRABALHO'
-      Size = 50
-    end
-    object cdsPadraoCARGO: TStringField
-      FieldName = 'CARGO'
-      Size = 50
-    end
-    object cdsPadraoSALARIO: TFMTBCDField
-      FieldName = 'SALARIO'
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-    end
-    object cdsPadraoESTADO_CIVIL: TStringField
-      FieldName = 'ESTADO_CIVIL'
-      Size = 30
-    end
-    object cdsPadraoCONJUGUE: TStringField
-      FieldName = 'CONJUGUE'
-      Size = 50
-    end
-    object cdsPadraoLOCAL_TRAB: TStringField
-      FieldName = 'LOCAL_TRAB'
-      Size = 60
-    end
-    object cdsPadraoDATA_NASC: TDateField
-      DisplayLabel = 'Data de nascimento'
-      FieldName = 'DATA_NASC'
-      Required = True
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoPAI: TStringField
-      FieldName = 'PAI'
-      Size = 60
-    end
-    object cdsPadraoCADASTRO: TDateField
-      FieldName = 'CADASTRO'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoMAE: TStringField
-      FieldName = 'MAE'
-      Size = 60
-    end
-    object cdsPadraoCPF_CNPJ: TStringField
-      DisplayLabel = 'CPF/CNPJ'
-      FieldName = 'CPF_CNPJ'
-      Required = True
-      OnSetText = cdsPadraoCPF_CNPJSetText
-      Size = 18
-    end
-    object cdsPadraoRG_IE: TStringField
-      DisplayLabel = 'RG/IE'
-      FieldName = 'RG_IE'
-      Required = True
-      Size = 11
-    end
-    object cdsPadraoREFER_PES: TStringField
-      FieldName = 'REFER_PES'
-      Size = 100
-    end
-    object cdsPadraoREFER_COM: TStringField
-      FieldName = 'REFER_COM'
-      Size = 100
-    end
-    object cdsPadraoFONE_COM: TStringField
-      FieldName = 'FONE_COM'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 15
-    end
-    object cdsPadraoOBS: TMemoField
-      FieldName = 'OBS'
-      BlobType = ftMemo
-      Size = 1
-    end
-    object cdsPadraoNATURALIDADE: TStringField
-      FieldName = 'NATURALIDADE'
-      Size = 50
-    end
-    object cdsPadraoFAX: TStringField
-      FieldName = 'FAX'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 15
-    end
-    object cdsPadraoLIMITE: TFMTBCDField
-      FieldName = 'LIMITE'
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-    end
-    object cdsPadraoFOTO: TBlobField
-      FieldName = 'FOTO'
-      Size = 1
-    end
+    Left = 561
+    Top = 65532
   end
   object sqldCidade: TSQLDataSet
     CommandText = 'select * from CIDADES'

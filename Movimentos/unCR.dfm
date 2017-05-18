@@ -6,7 +6,7 @@ inherited frmCR: TfrmCR
   ClientWidth = 522
   OldCreateOrder = True
   ExplicitWidth = 528
-  ExplicitHeight = 429
+  ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
   object lbStatus: TLabel [0]
@@ -246,74 +246,6 @@ inherited frmCR: TfrmCR
     DataSet = cdsPadrao
     Left = 205
     Top = 315
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 472
-    Top = 4
-    inherited miOpcoes: TMenuItem
-      object N9: TMenuItem
-        Caption = '-'
-      end
-      object miConsulta: TMenuItem
-        Caption = 'Consultas'
-        object miContasReceber: TMenuItem
-          Action = actContasReceber
-        end
-        object miContasClienteCorrente: TMenuItem
-          Caption = 'Contas deste cliente'
-          ShortCut = 118
-          OnClick = miContasClienteCorrenteClick
-        end
-      end
-      object N10: TMenuItem
-        Caption = '-'
-      end
-      object miParcelamento: TMenuItem
-        Caption = 'Parcelamento'
-        OnClick = miParcelamentoClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Relat'#243'rio para cliente'
-      end
-      object N6: TMenuItem [1]
-        Caption = '-'
-      end
-      object miTodasContas: TMenuItem [2]
-        Caption = 'Todas as contas'
-        OnClick = miTodasContasClick
-      end
-      object miContasporCliente: TMenuItem [3]
-        Caption = 'Contas por cliente'
-        OnClick = miContasporClienteClick
-      end
-      object miContasIntervaloDatas: TMenuItem [4]
-        Caption = 'Contas por data de emiss'#227'o'
-        OnClick = miContasIntervaloDatasClick
-      end
-      object N7: TMenuItem [5]
-        Caption = '-'
-      end
-      object miContasVencidas: TMenuItem [6]
-        Caption = 'Contas vencidas'
-        OnClick = miContasVencidasClick
-      end
-      object miContasVencidasCliente: TMenuItem [7]
-        Caption = 'Contas vencidas por cliente'
-        OnClick = miContasVencidasClienteClick
-      end
-      object N5: TMenuItem [8]
-        Caption = '-'
-      end
-      object miProximosVenc: TMenuItem [9]
-        Caption = 'Pr'#243'ximos vencimentos'
-        OnClick = miProximosVencClick
-      end
-      object N11: TMenuItem [10]
-        Caption = '-'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

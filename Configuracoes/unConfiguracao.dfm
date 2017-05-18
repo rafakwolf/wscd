@@ -6,7 +6,7 @@ inherited frmConfiguracao: TfrmConfiguracao
   ClientWidth = 409
   OldCreateOrder = True
   ExplicitWidth = 415
-  ExplicitHeight = 429
+  ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TStatusBar
@@ -29,6 +29,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     TabOrder = 1
     object Tabgeral: TTabSheet
       Caption = '    &Geral    '
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object chAtalhos: TDBCheckBox
         Left = 23
         Top = 26
@@ -158,6 +162,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabImg: TTabSheet
       Caption = 'Papel &Parede'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object bvImagem: TBevel
         Left = 5
         Top = 7
@@ -207,6 +215,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabOrcam: TTabSheet
       Caption = '&Or'#231'amentos'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cbVerificaEstoqueOrcam: TDBCheckBox
         Left = 23
         Top = 26
@@ -247,6 +259,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabCompras: TTabSheet
       Caption = ' &Compras '
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cbCompraNaoConc: TDBCheckBox
         Left = 23
         Top = 26
@@ -275,6 +291,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabProdutos: TTabSheet
       Caption = ' &Produtos '
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grpValorProdutoPadrao: TGroupBox
         Left = 8
         Top = 6
@@ -374,6 +394,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabCaixa: TTabSheet
       Caption = '    &Caixa    '
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grpCaixaPadrao: TGroupBox
         Left = 8
         Top = 5
@@ -461,6 +485,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabVenda: TTabSheet
       Caption = '&Vendas'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object chVendaEstoque: TDBCheckBox
         Left = 23
         Top = 24
@@ -501,6 +529,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabClientes: TTabSheet
       Caption = '&Clientes'
       ImageIndex = 8
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object chBloqCli: TDBCheckBox
         Left = 23
         Top = 24
@@ -529,6 +561,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object TabExportacao: TTabSheet
       Caption = '&Exporta'#231#227'o de dados'
       ImageIndex = 9
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object btnLocalizar: TBitBtn
         Left = 339
         Top = 38
@@ -629,6 +665,10 @@ inherited frmConfiguracao: TfrmConfiguracao
     object tsRelatorio: TTabSheet
       Caption = 'Relat'#243'rios'
       ImageIndex = 12
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbckbRelZebrado: TDBCheckBox
         Left = 24
         Top = 24
@@ -651,10 +691,6 @@ inherited frmConfiguracao: TfrmConfiguracao
     DataSet = cdsPadrao
     Left = 111
     Top = 318
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 192
-    Top = 310
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

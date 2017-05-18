@@ -90,8 +90,8 @@ begin
   cdsPadrao.Open;
   cdsPadrao.Edit;
 
-  SQLCli  := GetDmPesquisar.sqldPesqCliente.CommandText;
-  SQLForn := GetDmPesquisar.sqldPesqForn.CommandText;
+//  SQLCli  := GetDmPesquisar.sqldPesqCliente.CommandText;
+//  SQLForn := GetDmPesquisar.sqldPesqForn.CommandText;
 end;
 
 procedure TfrmParcelaCPCR.GeraParcelas;
@@ -255,36 +255,36 @@ end;
 procedure TfrmParcelaCPCR.dbeNomeClickButton(Sender: TObject);
 begin
   inherited;
-  with GetDmPesquisar do
-  try
-    if FTipoChamada = 0 then
-    begin
-      GetDmPesquisar.cdsPesqCliente.Close;
-      GetDmPesquisar.cdsPesqCliente.CommandText := SQLCli;
-      GetDmPesquisar.cdsPesqCliente.Open;
-
-      if TfrmModeloConsulta.Execute('Cliente', cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
-      begin
-        cdsPadraoCODIGO.AsInteger := cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger;
-        cdsPadraoNOME.AsString    := cdsPesqCliente.FieldByName('NOME').AsString;
-      end;
-    end
-    else if FTipoChamada = 1 then
-    begin
-      GetDmPesquisar.cdsPesqForn.Close;
-      GetDmPesquisar.cdsPesqForn.CommandText := SQLForn;
-      GetDmPesquisar.cdsPesqForn.Open;
-            
-      if TfrmModeloConsulta.Execute('Fornecedor', cdsPesqForn, FN_FORN, DL_FORN) then
-      begin
-        cdsPadraoCODIGO.AsInteger := cdsPesqForn.FieldByName('CODFORNECEDOR').AsInteger;
-        cdsPadraoNOME.AsString    := cdsPesqForn.FieldByName('FANTAZIA').AsString;
-      end;
-    end;  
-  finally
-    cdsPesqCliente.Close;
-    cdsPesqForn.Close;
-  end;
+//  with GetDmPesquisar do
+//  try
+//    if FTipoChamada = 0 then
+//    begin
+//      GetDmPesquisar.cdsPesqCliente.Close;
+//      GetDmPesquisar.cdsPesqCliente.CommandText := SQLCli;
+//      GetDmPesquisar.cdsPesqCliente.Open;
+//
+//      if TfrmModeloConsulta.Execute('Cliente', cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
+//      begin
+//        cdsPadraoCODIGO.AsInteger := cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger;
+//        cdsPadraoNOME.AsString    := cdsPesqCliente.FieldByName('NOME').AsString;
+//      end;
+//    end
+//    else if FTipoChamada = 1 then
+//    begin
+//      GetDmPesquisar.cdsPesqForn.Close;
+//      GetDmPesquisar.cdsPesqForn.CommandText := SQLForn;
+//      GetDmPesquisar.cdsPesqForn.Open;
+//
+//      if TfrmModeloConsulta.Execute('Fornecedor', cdsPesqForn, FN_FORN, DL_FORN) then
+//      begin
+//        cdsPadraoCODIGO.AsInteger := cdsPesqForn.FieldByName('CODFORNECEDOR').AsInteger;
+//        cdsPadraoNOME.AsString    := cdsPesqForn.FieldByName('FANTAZIA').AsString;
+//      end;
+//    end;
+//  finally
+//    cdsPesqCliente.Close;
+//    cdsPesqForn.Close;
+//  end;
 end;
 
 procedure TfrmParcelaCPCR.FormShow(Sender: TObject);

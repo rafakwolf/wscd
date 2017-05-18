@@ -7,7 +7,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
   Font.Name = 'Tahoma'
   OldCreateOrder = True
   ExplicitWidth = 490
-  ExplicitHeight = 501
+  ExplicitHeight = 481
   PixelsPerInch = 96
   TextHeight = 14
   object dbePerfil: TDBEdit [0]
@@ -95,10 +95,6 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     DataSet = cdsPadrao
     Left = 247
     Top = 220
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 112
-    Top = 172
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from PERFIL'
@@ -218,7 +214,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     Left = 120
     Top = 220
     Bitmap = {
-      494C010102000400180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020004001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000E9EDFC00BEBF
       EE00000000000000000000000000000000000000000000000000000000000000

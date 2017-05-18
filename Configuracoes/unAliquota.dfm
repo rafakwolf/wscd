@@ -4,7 +4,7 @@ inherited frmAliquota: TfrmAliquota
   ClientWidth = 393
   OldCreateOrder = True
   ExplicitWidth = 399
-  ExplicitHeight = 221
+  ExplicitHeight = 201
   PixelsPerInch = 96
   TextHeight = 13
   object dbeAliquota: TDBEdit [0]
@@ -37,16 +37,12 @@ inherited frmAliquota: TfrmAliquota
     ExplicitWidth = 393
   end
   inherited actlNavigateActions: TActionList
-    Left = 112
-    Top = 108
+    Left = 40
+    Top = 100
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 271
-    Top = 108
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 144
+    Left = 327
     Top = 108
   end
   object sqldPadrao: TSQLDataSet
@@ -54,8 +50,8 @@ inherited frmAliquota: TfrmAliquota
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 176
-    Top = 108
+    Left = 136
+    Top = 100
   end
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
@@ -67,8 +63,8 @@ inherited frmAliquota: TfrmAliquota
     Params = <>
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
-    Left = 240
-    Top = 108
+    Left = 264
+    Top = 116
     object cdsPadraoCODALIQUOTA: TIntegerField
       FieldName = 'CODALIQUOTA'
       Required = True

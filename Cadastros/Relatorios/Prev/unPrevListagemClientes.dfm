@@ -4,7 +4,7 @@ inherited frmPrevListagemClientes: TfrmPrevListagemClientes
   ClientWidth = 804
   OldCreateOrder = True
   ExplicitWidth = 820
-  ExplicitHeight = 499
+  ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 13
   inherited rrPadrao: TRLReport
@@ -26,12 +26,12 @@ inherited frmPrevListagemClientes: TfrmPrevListagemClientes
       end
     end
     inherited rbRodape: TRLBand
-      Top = 172
-      ExplicitTop = 172
+      Top = 175
+      ExplicitTop = 175
     end
     object rbColuna: TRLBand
       Left = 38
-      Top = 136
+      Top = 139
       Width = 718
       Height = 19
       BandType = btColumnHeader
@@ -108,7 +108,7 @@ inherited frmPrevListagemClientes: TfrmPrevListagemClientes
     end
     object rbDetalhe: TRLBand
       Left = 38
-      Top = 155
+      Top = 158
       Width = 718
       Height = 17
       Borders.Sides = sdCustom

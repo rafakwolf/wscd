@@ -43,8 +43,8 @@ begin
   inherited;
   cdsCidade.Close;
   cdsCidade.CommandText := SQLPadrao;
-  if not TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
-    cdsCidade.Close;
+//  if not TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
+//    cdsCidade.Close;
 end;
 
 procedure TfrmRelatorioClienteCidade.Imprimir(p: Boolean);

@@ -2,7 +2,7 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
   Caption = 'frmEtiquetaProduto'
   ClientHeight = 402
   OldCreateOrder = True
-  ExplicitHeight = 451
+  ExplicitHeight = 431
   PixelsPerInch = 96
   TextHeight = 13
   object dbgrdEtq: TDBGrid [0]
@@ -86,46 +86,6 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     DataSet = cdsPadrao
     Left = 399
     Top = 256
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 656
-    Top = 164
-    inherited miOpcoes: TMenuItem
-      object N5: TMenuItem [5]
-        Caption = '-'
-      end
-      object miBuscaProduto: TMenuItem [6]
-        Caption = 'Inserir produto'
-        OnClick = miBuscaProdutoClick
-      end
-      object miInserirTodosProdutos: TMenuItem [7]
-        Caption = 'Inserir todos os produtos'
-        OnClick = miInserirTodosProdutosClick
-      end
-      object N7: TMenuItem [8]
-        Caption = '-'
-      end
-      object miExcluirTudo: TMenuItem [9]
-        Caption = 'Excluir tudo'
-        OnClick = miExcluirTudoClick
-      end
-      object N6: TMenuItem
-        Caption = '-'
-      end
-      object miAjustaCodigoBarra: TMenuItem
-        Caption = 'Ajustar c'#243'digos de barras'
-        OnClick = miAjustaCodigoBarraClick
-      end
-      object miConfigurar: TMenuItem
-        Caption = 'Configurar'
-        OnClick = miConfigurarClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Gerar etiquetas'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

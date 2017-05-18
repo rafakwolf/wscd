@@ -93,10 +93,10 @@ procedure TfrmRelatorioCompraFornecedor.dbeFornClickButton(
   Sender: TObject);
 begin
   inherited;
-  cdsSelecao.Close;
-  cdsSelecao.CommandText := SQLpadrao;
-  if not TfrmModeloConsulta.Execute('Fornecedor', cdsSelecao, FN_FORN, DL_FORN) then
-    cdsSelecao.Close;
+//  cdsSelecao.Close;
+//  cdsSelecao.CommandText := SQLpadrao;
+//  if not TfrmModeloConsulta.Execute('Fornecedor', cdsSelecao, FN_FORN, DL_FORN) then
+//    cdsSelecao.Close;
 end;
 
 procedure TfrmRelatorioCompraFornecedor.FormCreate(Sender: TObject);

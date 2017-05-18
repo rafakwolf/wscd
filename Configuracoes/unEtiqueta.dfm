@@ -6,7 +6,7 @@ inherited frmEtiqueta: TfrmEtiqueta
   ClientWidth = 538
   OldCreateOrder = True
   ExplicitWidth = 544
-  ExplicitHeight = 533
+  ExplicitHeight = 513
   PixelsPerInch = 96
   TextHeight = 13
   object LabelEtiqueta: TLabel [0]
@@ -139,8 +139,8 @@ inherited frmEtiqueta: TfrmEtiqueta
     object iEtiqueta: TImage
       Left = 2
       Top = 15
-      Width = 534
-      Height = 172
+      Width = 384
+      Height = 159
       Align = alClient
       AutoSize = True
       Center = True
@@ -5873,6 +5873,8 @@ inherited frmEtiqueta: TfrmEtiqueta
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFF}
       Transparent = True
+      ExplicitWidth = 534
+      ExplicitHeight = 172
     end
   end
   object dbEtiqueta: TDBEdit [15]
@@ -6263,10 +6265,6 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSet = cdsPadrao
     Left = 103
     Top = 184
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 432
-    Top = 4
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from ETIQUETA'

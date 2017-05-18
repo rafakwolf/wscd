@@ -101,9 +101,9 @@ begin
   actPost.Visible  := False;
   actCancelUpdates.Visible := False;
 
-  miRelatorios.Visible := False;
-  ReordenaBotoes([btnPrimeiro, btnAnterior, btnProximo, btnUltimo, btnNovo,
-    btnAlterar, btnExcluir, btnConsultar, btnGrade, btnSair]);
+//  miRelatorios.Visible := False;
+//  ReordenaBotoes([btnPrimeiro, btnAnterior, btnProximo, btnUltimo, btnNovo,
+//    btnAlterar, btnExcluir, btnConsultar, btnGrade, btnSair]);
 
   SetDialogForm(Self);
 end;

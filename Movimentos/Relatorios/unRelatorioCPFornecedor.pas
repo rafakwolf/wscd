@@ -83,8 +83,8 @@ begin
   inherited;
   cdsSelecao.Close;
   cdsSelecao.CommandText := SQLpadrao;
-  if not TfrmModeloConsulta.Execute('Fornecedor', cdsSelecao, FN_FORN, DL_FORN) then
-    cdsSelecao.Close;
+//  if not TfrmModeloConsulta.Execute('Fornecedor', cdsSelecao, FN_FORN, DL_FORN) then
+//    cdsSelecao.Close;
 end;
 
 procedure TfrmRelatorioCPFornecedor.btnVisualizarClick(Sender: TObject);

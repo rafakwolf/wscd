@@ -52,10 +52,10 @@ begin
                                'from ORCAMENTO orc '+
                                'left join CLIENTES cli on (orc.Codcliente = cli.Codcliente) '+
                                'where orc.DATA between :DATAINI and :DATAFIM';
-      cdsPadrao.Params.ParamByName('DATAINI').AsDate :=
-        Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
-      cdsPadrao.Params.ParamByName('DATAFIM').AsDate :=
-        Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
+//      cdsPadrao.Params.ParamByName('DATAINI').AsDate :=
+//        Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
+//      cdsPadrao.Params.ParamByName('DATAFIM').AsDate :=
+//        Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
       cdsPadrao.Open;
       lbTitulo.Caption := Global.TituloOrcamento;
       PrintIfNotEmptyRL(rrPadrao, p);
@@ -69,14 +69,14 @@ end;
 procedure TfrmRelatorioOrcamentoData.FormCreate(Sender: TObject);
 begin
   inherited;
-  dsPadrao.DataSet := GetDmPesquisar.cdsPesqData;
-  GetDmPesquisar.cdsPesqData.Open;
+//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqData;
+//  GetDmPesquisar.cdsPesqData.Open;
 end;
 
 procedure TfrmRelatorioOrcamentoData.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  GetDmPesquisar.cdsPesqData.Close;
+  //GetDmPesquisar.cdsPesqData.Close;
   inherited;
 end;
 

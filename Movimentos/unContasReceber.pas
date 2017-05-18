@@ -353,21 +353,21 @@ begin
     cdsCliente.CommandText := SQLPadraoCli;
     cdsCliente.Open;
 
-    if TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
-    begin
-      IdCliente := cdsClienteCODCLIENTE.AsInteger;
-      if (IdCliente > 0) then
-      begin
-        cdsPadrao.Close;
-        cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
-        cdsPadrao.Open;
-      end;
-      if cdsPadrao.IsEmpty then
-      begin
-        MsgErro(UM_PESQUISAVAZIO, 'Contas a Receber');
-        PostMessage(Handle, WM_CLOSE, 0, 0);
-      end;
-    end;
+//    if TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
+//    begin
+//      IdCliente := cdsClienteCODCLIENTE.AsInteger;
+//      if (IdCliente > 0) then
+//      begin
+//        cdsPadrao.Close;
+//        cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
+//        cdsPadrao.Open;
+//      end;
+//      if cdsPadrao.IsEmpty then
+//      begin
+//        MsgErro(UM_PESQUISAVAZIO, 'Contas a Receber');
+//        PostMessage(Handle, WM_CLOSE, 0, 0);
+//      end;
+//    end;
   end
   else if TipoChamada = 1 then
   begin

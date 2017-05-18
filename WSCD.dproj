@@ -46,8 +46,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <SanitizedProjectName>WSCD</SanitizedProjectName>
-        <DCC_UnitSearchPath>D:\ProjetosDelphi\Util\Helper;D:\ProjetosDelphi\Util\Externo\OTL;D:\ProjetosDelphi\Util\Externo\OTL\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <DCC_Define>DELPHI;VCL;$(DCC_Define)</DCC_Define>
@@ -623,6 +623,16 @@
         <DCCReference Include="Util\Extensos.pas"/>
         <DCCReference Include="Util\uCheque.pas"/>
         <DCCReference Include="Util\uClassesMenu.pas"/>
+        <DCCReference Include="Cadastros\Datamodule\udmCliente.pas">
+            <Form>dmCliente</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Utilitarios\Datamodule\udmDuplicatas.pas">
+            <Form>dmDuplicatas</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <None Include="ModelSupport_WSCD\default.txaPackage"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

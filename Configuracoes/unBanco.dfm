@@ -4,7 +4,7 @@ inherited frmBanco: TfrmBanco
   ClientWidth = 433
   OldCreateOrder = True
   ExplicitWidth = 439
-  ExplicitHeight = 205
+  ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
   object dbeCodCompensacao: TDBEdit [0]
@@ -40,24 +40,19 @@ inherited frmBanco: TfrmBanco
   end
   inherited actlNavigateActions: TActionList
     Left = 32
-    Top = 108
+    Top = 76
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 199
-    Top = 108
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 64
-    Top = 108
+    Left = 311
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from BANCO'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 104
-    Top = 108
+    Left = 112
+    Top = 84
     object sqldPadraoIDBANCO: TIntegerField
       FieldName = 'IDBANCO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -72,15 +67,15 @@ inherited frmBanco: TfrmBanco
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 136
-    Top = 108
+    Left = 184
+    Top = 84
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    Left = 168
-    Top = 108
+    Left = 256
+    Top = 84
     object cdsPadraoIDBANCO: TIntegerField
       FieldName = 'IDBANCO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]

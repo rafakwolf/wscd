@@ -4,7 +4,7 @@ inherited frmEnvelopes: TfrmEnvelopes
   ClientWidth = 649
   OldCreateOrder = True
   ExplicitWidth = 655
-  ExplicitHeight = 295
+  ExplicitHeight = 275
   PixelsPerInch = 96
   TextHeight = 13
   object lbNome: TLabel [0]
@@ -125,10 +125,6 @@ inherited frmEnvelopes: TfrmEnvelopes
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
     Left = 575
-    Top = 4
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 448
     Top = 4
   end
   object sqldPadrao: TSQLDataSet

@@ -3,7 +3,7 @@ unit udmGeralBase;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.SqlExpr;
+  System.SysUtils, System.Classes, Data.SqlExpr, Data.DB, Datasnap.DBClient;
 
 type
   TdmGeralBase = class(TDataModule)

@@ -10,9 +10,6 @@ uses
   Provider, ImgList,  ImgUtils,
   unAguarde, FMTBcd, System.Actions;
 
-const
-  WM_TRAYICON = WM_USER + 1;
-
 type
   TfrmPrincipal = class(TForm)
     mnPrincipal: TMainMenu;
@@ -301,12 +298,11 @@ type
 
     AuxWidth, AuxHeight: Integer;
     SistemaOk: Boolean;
-   // FIconData: TNotifyIconDataEx;
-    FBitmap: TBitmap;
 
     copiando: Boolean;
     Atualizando: Boolean;
     pb: TProgressBar;
+    fbitmap: TBitmap;
 
     procedure CarregaPapelParede;
     procedure CarregaToolBar;
@@ -335,9 +331,8 @@ type
       Connection: TSQLConnection): Boolean;
     function ValidaHD(HD, HDGravar: string; Connection: TSQLConnection): Boolean;
 
-    procedure WMTrayIcon(var Msg: TMessage); Message WM_TRAYICON;
-    procedure DestroyIcone;
-    procedure CriaIcone;
+//    procedure DestroyIcone;
+//    procedure CriaIcone;
 
     procedure SetThisAsMainForm;
     procedure TerminateCopia(Sender: TObject);
@@ -701,7 +696,7 @@ begin
   AuxWidth := 0;
   AuxHeight := 0;
 
-  CriaIcone;
+  //CriaIcone;
   CarregaPapelParede;
   SetZOrder(false);
 end;
@@ -716,9 +711,9 @@ procedure TfrmPrincipal.SetEnableMenu(adm: Boolean);
   procedure SetVisibleAction(MenuItem: TMenuItem);
   var x: Integer;
   begin
+    // se não encontrar a permissão
     if (not Lista_permissoes.Locate('MENUITEM', trim(MenuItem.Name),[])) and (not MenuItem.IsLine) then
     begin
-
       if (assigned(MenuItem.Action)) and (MenuItem.Action is TCustomAction) then
         TCustomAction(MenuItem.Action).Enabled := False
       else
@@ -732,12 +727,15 @@ procedure TfrmPrincipal.SetEnableMenu(adm: Boolean);
 var
   x: Integer;
 begin
-  GetListaPermissoes;
-
-  for x := 0 to self.ComponentCount - 1 do
+  if not adm then
   begin
-    if Components[x] is TMenuItem then
-      SetVisibleAction(TMenuItem(Components[x]));
+      GetListaPermissoes;
+
+      for x := 0 to self.ComponentCount - 1 do
+      begin
+        if Components[x] is TMenuItem then
+          SetVisibleAction(TMenuItem(Components[x]));
+      end;
   end;
 
   // modo administrador
@@ -747,6 +745,7 @@ begin
   miExecutarScripts.Visible := adm;
 
   // modo usuario normal
+  {
   miCofiguracao.Visible := not adm;
   miUtilitario.Visible := not adm;
   miBackupRestore.Visible := not adm;
@@ -779,7 +778,7 @@ begin
   btnAtualizar.Visible := not adm;
   bvlSeparaCaixa.Visible := not adm;
 
-  btnLogOff.Visible := not adm;
+  btnLogOff.Visible := not adm;    }
 
   if adm then
     btnSair.Left := btnAgenda.Left
@@ -1315,7 +1314,7 @@ begin
   if Assigned(Sistema) then
    FreeAndNil( Sistema );
 
-  DestroyIcone;
+  //DestroyIcone;
   FBitmap.Free;
 end;
 
@@ -1404,41 +1403,6 @@ begin
     Windows.InvalidateRect(Application.MainForm.Handle, nil, True);
   finally
     LockWindowUpdate(0);
-  end;
-end;
-
-procedure TfrmPrincipal.CriaIcone;
-begin
-//  with FIconData do
-//  begin
-//    cbSize := SizeOf(TNotifyIconData);
-//    Wnd := Self.Handle;
-//    uID := 0;
-//    uCallbackMessage := WM_TRAYICON;
-//    uFlags := NIF_ICON or NIF_TIP or NIF_MESSAGE;
-//    hIcon := Application.Icon.Handle;
-//    szTip := 'WSCD';
-//  end;
-//  Shell_NotifyIcon(NIM_ADD, @FIconData);
-end;
-
-procedure TfrmPrincipal.DestroyIcone;
-begin
-//  FIconData.cbSize := SizeOf(TNotifyIconData);
-//  FIconData.Wnd := Self.Handle;
-//  FIconData.uID := 0;
-//  FIconData.uFlags := 0;
-//  Shell_NotifyIcon(NIM_DELETE, @FIconData);
-end;
-
-procedure TfrmPrincipal.WMTrayIcon(var Msg: TMessage);
-var
-  Pt: TPoint;
-begin
-  if (Msg.LParam = WM_RBUTTONDOWN) then
-  begin
-    GetCursorPos(Pt);
-    pmIconTray.Popup(Pt.X, Pt.Y);
   end;
 end;
 

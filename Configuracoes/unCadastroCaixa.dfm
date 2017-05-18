@@ -2,10 +2,10 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   Left = 213
   Caption = 'frmCadastroCaixa'
   ClientHeight = 164
-  ClientWidth = 393
+  ClientWidth = 535
   OldCreateOrder = True
-  ExplicitWidth = 399
-  ExplicitHeight = 213
+  ExplicitWidth = 541
+  ExplicitHeight = 193
   PixelsPerInch = 96
   TextHeight = 13
   object dbeNomeCaixa: TDBEdit [0]
@@ -40,26 +40,22 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   end
   inherited sbStatus: TStatusBar
     Top = 145
-    Width = 393
+    Width = 535
     ExplicitTop = 145
     ExplicitWidth = 393
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 393
+    Width = 535
     TabOrder = 3
     ExplicitWidth = 393
   end
   inherited actlNavigateActions: TActionList
-    Left = 200
+    Left = 208
     Top = 36
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 359
-    Top = 36
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 232
+    Left = 471
     Top = 36
   end
   object sqldPadrao: TSQLDataSet
@@ -67,8 +63,8 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 264
-    Top = 36
+    Left = 280
+    Top = 20
     object sqldPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -88,8 +84,8 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 296
-    Top = 36
+    Left = 344
+    Top = 44
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -97,8 +93,8 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
-    Left = 328
-    Top = 36
+    Left = 408
+    Top = 92
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]

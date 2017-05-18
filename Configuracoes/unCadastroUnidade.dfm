@@ -4,7 +4,7 @@ inherited frmCadastroUnidade: TfrmCadastroUnidade
   ClientWidth = 393
   OldCreateOrder = True
   ExplicitWidth = 399
-  ExplicitHeight = 205
+  ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
   object dbeNomeUnidade: TDBEdit [0]
@@ -37,21 +37,18 @@ inherited frmCadastroUnidade: TfrmCadastroUnidade
     ExplicitWidth = 393
   end
   inherited actlNavigateActions: TActionList
-    Left = 192
+    Left = 24
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
     Left = 351
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 224
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  CODUNIDADE, '#13#10'  DESCRICAO '#13#10'from UNIDADES'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 256
+    Left = 120
     Top = 44
     object sqldPadraoCODUNIDADE: TIntegerField
       FieldName = 'CODUNIDADE'
@@ -66,16 +63,16 @@ inherited frmCadastroUnidade: TfrmCadastroUnidade
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 288
-    Top = 44
+    Left = 232
+    Top = 36
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
-    Left = 320
-    Top = 44
+    Left = 256
+    Top = 92
     object cdsPadraoCODUNIDADE: TIntegerField
       FieldName = 'CODUNIDADE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]

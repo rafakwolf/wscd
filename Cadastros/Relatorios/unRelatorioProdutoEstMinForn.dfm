@@ -16,8 +16,6 @@ inherited frmRelatorioProdutoEstMinForn: TfrmRelatorioProdutoEstMinForn
     TabOrder = 1
   end
   inherited pnButtons: TPanel
-    ExplicitTop = 97
-    ExplicitWidth = 401
     inherited btnVisualizar: TBitBtn
       OnClick = btnVisualizarClick
     end

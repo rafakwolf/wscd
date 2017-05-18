@@ -110,9 +110,9 @@ end;
 
 procedure TfrmPrevNotaProm.dbeClienteClickButton(Sender: TObject);
 begin
-  cdsPadrao.Close;
-  if not TfrmModeloConsulta.Execute('Cliente', cdsPadrao, FN_CLIENTES, DL_CLIENTES) then
-    cdsPadrao.Close;
+//  cdsPadrao.Close;
+//  if not TfrmModeloConsulta.Execute('Cliente', cdsPadrao, FN_CLIENTES, DL_CLIENTES) then
+//    cdsPadrao.Close;
 end;
 
 procedure TfrmPrevNotaProm.btnImprimirClick(Sender: TObject);

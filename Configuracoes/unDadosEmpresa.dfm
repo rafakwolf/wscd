@@ -6,7 +6,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
   ClientWidth = 682
   OldCreateOrder = True
   ExplicitWidth = 688
-  ExplicitHeight = 413
+  ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
   object lbFantazia: TLabel [0]
@@ -438,10 +438,6 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSet = cdsPadrao
     Left = 615
     Top = 268
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 608
-    Top = 4
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

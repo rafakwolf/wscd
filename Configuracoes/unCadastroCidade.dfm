@@ -6,7 +6,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
   ClientWidth = 393
   OldCreateOrder = True
   ExplicitWidth = 399
-  ExplicitHeight = 205
+  ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
   object dbeNomeCidade: TDBEdit [0]
@@ -39,21 +39,18 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     ExplicitWidth = 393
   end
   inherited actlNavigateActions: TActionList
-    Left = 184
+    Left = 40
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
     Left = 343
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 216
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  CODCIDADE, '#13#10'  DESCRICAO '#13#10'from CIDADES'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 248
+    Left = 128
     Top = 44
     object sqldPadraoCODCIDADE: TIntegerField
       FieldName = 'CODCIDADE'
@@ -69,7 +66,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 280
+    Left = 216
     Top = 44
   end
   object cdsPadrao: TClientDataSet
@@ -77,8 +74,8 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     Params = <>
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
-    Left = 312
-    Top = 44
+    Left = 288
+    Top = 36
     object cdsPadraoCODCIDADE: TIntegerField
       FieldName = 'CODCIDADE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]

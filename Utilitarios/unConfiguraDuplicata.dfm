@@ -6,7 +6,7 @@ inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
   ClientWidth = 465
   OldCreateOrder = True
   ExplicitWidth = 471
-  ExplicitHeight = 456
+  ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
   object dbeFontSize: TDBEdit [0]
@@ -95,37 +95,6 @@ inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
     DataSet = cdsPadrao
     Left = 311
     Top = 104
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 176
-    Top = 172
-    inherited miOpcoes: TMenuItem
-      inherited miPesquisar: TMenuItem
-        Visible = False
-      end
-      inherited N4: TMenuItem
-        Visible = False
-      end
-      inherited miOrdenar: TMenuItem
-        Visible = False
-      end
-      inherited miExportar: TMenuItem
-        Visible = False
-      end
-      inherited miContar: TMenuItem
-        Visible = False
-      end
-      inherited N8: TMenuItem
-        Visible = False
-      end
-      inherited miLimpaFiltro: TMenuItem
-        Visible = False
-      end
-      object miVisualizar: TMenuItem
-        Caption = 'Visualizar'
-        OnClick = miVisualizarClick
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

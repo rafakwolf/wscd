@@ -21,7 +21,6 @@ type
     sqldPadraoOPERACAO: TStringField;
     cdsPadraoNUMERO: TStringField;
     cdsPadraoOPERACAO: TStringField;
-    N5: TMenuItem;
     sqldPadraoCFNOTA: TStringField;
     cdsPadraoCFNOTA: TStringField;
     procedure FormCreate(Sender: TObject);

@@ -17,17 +17,9 @@ type
     dbeCodBarra: TDBEdit;
     dbeProduto: TDBEdit;
     dbePreco: TDBEdit;
-    miBuscaProduto: TMenuItem;
     sqldProduto: TSQLDataSet;
     dspProduto: TDataSetProvider;
     cdsProduto: TClientDataSet;
-    N5: TMenuItem;
-    miInserirTodosProdutos: TMenuItem;
-    N6: TMenuItem;
-    miAjustaCodigoBarra: TMenuItem;
-    N7: TMenuItem;
-    miExcluirTudo: TMenuItem;
-    miConfigurar: TMenuItem;
     sqldProdutoCODBARRA: TStringField;
     sqldProdutoABREVIACAO: TStringField;
     sqldProdutoVENDA: TFMTBCDField;
@@ -101,16 +93,16 @@ end;
 procedure TfrmEtiquetaProduto.miBuscaProdutoClick(Sender: TObject);
 begin
   inherited;
-  if TfrmModeloConsulta.Execute('Produto', cdsProduto, FN_PRODUTOS, DL_PRODUTOS) then
-  begin
-    cdsPadrao.Insert;
-    cdsPadraoCODBARRA.AsString  := cdsProdutoCODBARRA.AsString;
-    cdsPadraoDESCRICAO.AsString := cdsProdutoABREVIACAO.AsString;
-    cdsPadraoPRECO.AsFloat      := cdsProdutoVENDA.AsFloat;
-    cdsPadrao.ApplyUpdates(0);
-    MsgAviso('Produto inserido com sucesso!');
-  end;
-  cdsProduto.Close;
+//  if TfrmModeloConsulta.Execute('Produto', cdsProduto, FN_PRODUTOS, DL_PRODUTOS) then
+//  begin
+//    cdsPadrao.Insert;
+//    cdsPadraoCODBARRA.AsString  := cdsProdutoCODBARRA.AsString;
+//    cdsPadraoDESCRICAO.AsString := cdsProdutoABREVIACAO.AsString;
+//    cdsPadraoPRECO.AsFloat      := cdsProdutoVENDA.AsFloat;
+//    cdsPadrao.ApplyUpdates(0);
+//    MsgAviso('Produto inserido com sucesso!');
+//  end;
+//  cdsProduto.Close;
 end;
 
 procedure TfrmEtiquetaProduto.FormClose(Sender: TObject;
@@ -296,8 +288,8 @@ end;
 procedure TfrmEtiquetaProduto.dsPadraoStateChange(Sender: TObject);
 begin
   inherited;
-  miAjustaCodigoBarra.Enabled := not EditModes;
-  miBuscaProduto.Enabled      := not EditModes;
+//  miAjustaCodigoBarra.Enabled := not EditModes;
+//  miBuscaProduto.Enabled      := not EditModes;
 end;
 
 procedure TfrmEtiquetaProduto.miExcluirTudoClick(Sender: TObject);

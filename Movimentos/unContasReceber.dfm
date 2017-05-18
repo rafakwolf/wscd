@@ -8,7 +8,6 @@ inherited frmContasReceber: TfrmContasReceber
   ClientWidth = 762
   Menu = mnuCP
   OnShow = FormShow
-  ExplicitLeft = -17
   ExplicitWidth = 768
   ExplicitHeight = 487
   PixelsPerInch = 96

@@ -37,7 +37,6 @@ type
     dbProduto: TDBEdit;
     dbdData: TDBEdit;
     dbmOBS: TDBMemo;
-    N5: TMenuItem;
     lbPrecoCusto: TLabel;
     sqldProdutoIDPRODUTO: TIntegerField;
     sqldProdutoCODBARRA: TStringField;
@@ -80,12 +79,12 @@ uses Funcoes, ConstPadrao,  unModeloConsulta, unPrevPerda,
 procedure TfrmPerda.dbProdutoClickButton(Sender: TObject);
 begin
   inherited;
-  if ModoInsertEdit(cdsPadrao) then
-    if TfrmModeloConsulta.Execute('Produto', cdsProduto, FN_PRODUTOS, DL_PRODUTOS) then
-    begin
-      cdsPadraoCODPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
-      cdsPadraoPRECO.AsFloat        := cdsProdutoCUSTO.AsFloat;
-    end;
+//  if ModoInsertEdit(cdsPadrao) then
+//    if TfrmModeloConsulta.Execute('Produto', cdsProduto, FN_PRODUTOS, DL_PRODUTOS) then
+//    begin
+//      cdsPadraoCODPRODUTO.AsInteger := cdsProdutoIDPRODUTO.AsInteger;
+//      cdsPadraoPRECO.AsFloat        := cdsProdutoCUSTO.AsFloat;
+//    end;
 end;
 
 procedure TfrmPerda.cdsPadraoCODPRODUTOValidate(Sender: TField);

@@ -219,12 +219,12 @@ begin
   actPrint.Visible := False;
   actDelete.Visible := False;
   actSearch.Visible := False;
-  actPrimeiro.Visible := False;
-  actAnterior.Visible := False;
-  actProximo.Visible := False;
-  actUltimo.Visible := False;
-  miRelatorios.Visible := False;
-  miOpcoes.Visible := False;
+//  actPrimeiro.Visible := False;
+//  actAnterior.Visible := False;
+//  actProximo.Visible := False;
+//  actUltimo.Visible := False;
+//  miRelatorios.Visible := False;
+//  miOpcoes.Visible := False;
 
   ReordenaBotoes([btnAlterar, btnSalvar, btnCancelar, btnSair]);
 
@@ -443,23 +443,23 @@ end;
 procedure TfrmConfiguracao.dbeAliqPadraoClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsEdit] then
-    if TfrmModeloConsulta.Execute('Aliquotas', GetDmPesquisar.cdsPesqAliquota, FN_ALIQUOTAS, DL_ALIQUOTAS) then
-    begin
-      cdsPadraoALIQUOTAPADRAO.AsInteger := GetDmPesquisar.cdsPesqAliquota.FieldByName('CODALIQUOTA').AsInteger;
-      cdsPadraoALIQUOTA.AsString := GetDmPesquisar.cdsPesqAliquota.FieldByName('DESCRICAO').AsString;
-    end;
+//  if cdsPadrao.State in [dsEdit] then
+//    if TfrmModeloConsulta.Execute('Aliquotas', GetDmPesquisar.cdsPesqAliquota, FN_ALIQUOTAS, DL_ALIQUOTAS) then
+//    begin
+//      cdsPadraoALIQUOTAPADRAO.AsInteger := GetDmPesquisar.cdsPesqAliquota.FieldByName('CODALIQUOTA').AsInteger;
+//      cdsPadraoALIQUOTA.AsString := GetDmPesquisar.cdsPesqAliquota.FieldByName('DESCRICAO').AsString;
+//    end;
 end;
 
 procedure TfrmConfiguracao.dbeCaixaPadraoClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsEdit] then
-    if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
-    begin
-      cdsPadraoCAIXAPADRAO.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;
-      cdsPadraoCAIXA.AsString := GetDmPesquisar.cdsPesqCaixas.FieldByName('NOME').AsString;
-    end;
+//  if cdsPadrao.State in [dsEdit] then
+//    if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
+//    begin
+//      cdsPadraoCAIXAPADRAO.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;
+//      cdsPadraoCAIXA.AsString := GetDmPesquisar.cdsPesqCaixas.FieldByName('NOME').AsString;
+//    end;
 end;
 
 procedure TfrmConfiguracao.btnAlterarSenhaCaixaClick(Sender: TObject);
@@ -567,12 +567,12 @@ end;
 procedure TfrmConfiguracao.dbeContaChequeClickButton(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in [dsEdit] then
-    if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
-    begin
-      cdsPadraoCONTACHEQUE.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;
-      cdsPadraoNCONTACHEQUE.AsString := GetDmPesquisar.cdsPesqCaixas.FieldByName('NOME').AsString;
-    end;
+//  if cdsPadrao.State in [dsEdit] then
+//    if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
+//    begin
+//      cdsPadraoCONTACHEQUE.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;
+//      cdsPadraoNCONTACHEQUE.AsString := GetDmPesquisar.cdsPesqCaixas.FieldByName('NOME').AsString;
+//    end;
 end;
 
 initialization

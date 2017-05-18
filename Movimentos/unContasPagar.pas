@@ -337,21 +337,21 @@ begin
     cdsForn.CommandText := SQLPadraoForn;
     cdsForn.Open;
 
-    if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-    begin
-      IdForn := cdsFornCODFORNECEDOR.AsInteger;
-      if (IdForn > 0) then
-      begin
-        cdsPadrao.Close;
-        cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
-        cdsPadrao.Open;
-      end;
-      if cdsPadrao.IsEmpty then
-      begin
-        MsgErro(UM_PESQUISAVAZIO, 'Contas a Pagar');
-        PostMessage(Handle, WM_CLOSE, 0, 0);
-      end;
-    end;
+//    if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
+//    begin
+//      IdForn := cdsFornCODFORNECEDOR.AsInteger;
+//      if (IdForn > 0) then
+//      begin
+//        cdsPadrao.Close;
+//        cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
+//        cdsPadrao.Open;
+//      end;
+//      if cdsPadrao.IsEmpty then
+//      begin
+//        MsgErro(UM_PESQUISAVAZIO, 'Contas a Pagar');
+//        PostMessage(Handle, WM_CLOSE, 0, 0);
+//      end;
+//    end;
   end
   else if TipoChamada = 1 then
   begin

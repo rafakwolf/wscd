@@ -6,7 +6,7 @@ inherited frmProduto: TfrmProduto
   ClientWidth = 513
   OldCreateOrder = True
   ExplicitWidth = 519
-  ExplicitHeight = 469
+  ExplicitHeight = 449
   PixelsPerInch = 96
   TextHeight = 13
   object bvlLinha1: TBevel [0]
@@ -298,13 +298,14 @@ inherited frmProduto: TfrmProduto
     object dbtxtCodBarra: TDBText
       Left = 2
       Top = 30
-      Width = 84
+      Width = 121
       Height = 13
       Align = alBottom
       Alignment = taCenter
       AutoSize = True
       DataField = 'CODBARRA'
       DataSource = dsPadrao
+      ExplicitWidth = 84
     end
   end
   object btnObs: TBitBtn [24]
@@ -345,67 +346,6 @@ inherited frmProduto: TfrmProduto
     DataSet = cdsPadrao
     Left = 391
     Top = 124
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 420
-    Top = 4
-    inherited miOpcoes: TMenuItem
-      object N9: TMenuItem [5]
-        Caption = '-'
-      end
-      object miEstoqueMinimo: TMenuItem [6]
-        Action = actEstoqueMinimo
-      end
-      object N10: TMenuItem
-        Caption = '-'
-      end
-      object miAjustaCodBarra: TMenuItem
-        Caption = 'Ajustar c'#243'digos de barras'
-        OnClick = miAjustaCodBarraClick
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
-        Caption = 'Listagem de pre'#231'os'
-        Hint = 'Listagem de pre'#231'os'
-      end
-      object miRelPorGrupo: TMenuItem [1]
-        Caption = 'Por grupo'
-        OnClick = miRelPorGrupoClick
-      end
-      object miRelValidade: TMenuItem [2]
-        Caption = 'Por validade'
-        OnClick = miRelValidadeClick
-      end
-      object miRelVencidos: TMenuItem [3]
-        Caption = 'Produtos vencidos'
-        OnClick = miRelVencidosClick
-      end
-      object N5: TMenuItem [4]
-        Caption = '-'
-      end
-      object miComEstoqueMinimo: TMenuItem [5]
-        Caption = 'Com estoque m'#237'nimo'
-        OnClick = miComEstoqueMinimoClick
-      end
-      object miValorEstoque: TMenuItem [6]
-        Caption = 'Valor do estoque'
-      end
-      object miNovosAlterados: TMenuItem [7]
-        Caption = 'Novos e alterados'
-        OnClick = miNovosAlteradosClick
-      end
-      object N6: TMenuItem [8]
-        Caption = '-'
-      end
-      object miEtiquetaProduto: TMenuItem [9]
-        Caption = 'Etiquetas de produtos'
-        OnClick = miEtiquetaProdutoClick
-      end
-      object N7: TMenuItem [10]
-        Caption = '-'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

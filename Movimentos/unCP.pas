@@ -29,16 +29,6 @@ type
     dbdData: TDBEdit;
     dbdVencimento: TDBEdit;
     actContas: TAction;
-    N5: TMenuItem;
-    miConsulta: TMenuItem;
-    miContasFornecedor: TMenuItem;
-    N6: TMenuItem;
-    N7: TMenuItem;
-    miContasPorForn: TMenuItem;
-    miContasIntervaloData: TMenuItem;
-    N9: TMenuItem;
-    miContasVencidas: TMenuItem;
-    miContasVencPorForn: TMenuItem;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoDATA: TDateField;
     cdsPadraoVENCIMENTO: TDateField;
@@ -54,9 +44,6 @@ type
     cdsPadraoATRASO: TIntegerField;
     dbeCompra: TDBEdit;
     lbStatus: TLabel;
-    miContasFornecCorrente: TMenuItem;
-    N10: TMenuItem;
-    miParcelamento: TMenuItem;
     dbeValorAtual: TDBEdit;
     cdsPadraoFANTAZIA: TStringField;
     sqldPadraoCODIGO: TIntegerField;
@@ -298,7 +285,7 @@ end;
 procedure TfrmCP.dsPadraoStateChange(Sender: TObject);
 begin
   inherited;
-  miParcelamento.Enabled := not EditModes;
+  //miParcelamento.Enabled := not EditModes;
 end;
 
 procedure TfrmCP.AntesSalvar;
@@ -363,7 +350,7 @@ begin
     sqldDeleta.Close;
     sqldDeleta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
     sqldDeleta.ExecSQL;
-    actLimparFiltro.Execute;
+
     MsgAviso('Registro excluído!');
   end;
 end;

@@ -49,8 +49,8 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
   inherited pnButtons: TPanel
     Top = 126
     Width = 401
-    ExplicitTop = 130
-    ExplicitWidth = 409
+    ExplicitTop = 126
+    ExplicitWidth = 401
     inherited btnImprimir: TBitBtn
       Visible = False
     end

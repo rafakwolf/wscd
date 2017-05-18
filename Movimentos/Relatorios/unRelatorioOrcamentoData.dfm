@@ -28,8 +28,8 @@ inherited frmRelatorioOrcamentoData: TfrmRelatorioOrcamentoData
   inherited pnButtons: TPanel
     Top = 133
     Width = 281
-    ExplicitTop = 137
-    ExplicitWidth = 289
+    ExplicitTop = 133
+    ExplicitWidth = 281
     inherited btnImprimir: TBitBtn
       Left = 2
       ExplicitLeft = 2
@@ -46,6 +46,5 @@ inherited frmRelatorioOrcamentoData: TfrmRelatorioOrcamentoData
   end
   inherited dsPadrao: TDataSource
     Left = 224
-    Top = 16
   end
 end
