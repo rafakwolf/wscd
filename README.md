@@ -1,5 +1,5 @@
-# wscd
-Simples ERP em Delphi
+# Wscd
+Simple Delphi ERP
 
 # For compiling needs
 Fortes Report (https://github.com/fortesinformatica/fortesreport-ce)<br />
