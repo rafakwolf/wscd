@@ -488,8 +488,8 @@ inherited frmCR: TfrmCR
         Name = 'CLIENTE'
         ParamType = ptInput
       end>
-    Left = 224
-    Top = 60
+    Left = 296
+    Top = 12
     object sqlLimiteTOTAL_CONTAS: TFloatField
       FieldName = 'TOTAL_CONTAS'
     end
@@ -505,7 +505,7 @@ inherited frmCR: TfrmCR
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    Left = 240
-    Top = 312
+    Left = 248
+    Top = 320
   end
 end

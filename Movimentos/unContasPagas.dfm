@@ -4,13 +4,13 @@ inherited frmContasPagas: TfrmContasPagas
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'frmContasPagas'
-  ClientHeight = 430
+  ClientHeight = 410
   ClientWidth = 930
   Menu = mmContasPagas
   OnResize = FormResize
   OnShow = FormShow
   ExplicitWidth = 936
-  ExplicitHeight = 479
+  ExplicitHeight = 459
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
@@ -299,9 +299,9 @@ inherited frmContasPagas: TfrmContasPagas
   end
   object Grade: TDBGrid
     Left = 0
-    Top = 96
+    Top = 104
     Width = 930
-    Height = 315
+    Height = 287
     Hint = 'Dois cliques para marcar '#13#10'ou desmarcar este '#237'tem...'
     Align = alBottom
     Ctl3D = True
@@ -568,7 +568,7 @@ inherited frmContasPagas: TfrmContasPagas
   end
   object Stb: TStatusBar
     Left = 0
-    Top = 411
+    Top = 391
     Width = 930
     Height = 19
     Font.Charset = ANSI_CHARSET

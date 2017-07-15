@@ -595,7 +595,7 @@ resourcestring
 implementation
 
 uses SqlTimSt, FmtBCD, DBXMetaDataNames, DBXDataExpressMetaDataProvider,
-  Registry, IniFiles, SyncObjs, Windows, Provider;
+  Registry, IniFiles, SyncObjs, Windows, Provider, System.Variants;
 
 const
   SDatabase = 'Database';
@@ -1910,7 +1910,7 @@ begin
   if ((ADataType in [ftString, ftWideString, ftMemo]) and (ASize > 0) and (Length(AValue) > ASize)) then
     AValue := Copy(AValue, 1, ASize);
   if (ADataType = ftMemo) and (AValue <> '') then
-    Result.AsBlob := TEncoding.Default.GetBytes(AValue)
+    Result.AsBlob := TEncoding.Default.GetBytes( VarToStr( AValue ))
   else
     Result.Value := AValue;
 end;

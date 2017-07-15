@@ -228,8 +228,8 @@ inherited frmCP: TfrmCP
     ExplicitWidth = 521
   end
   inherited actlNavigateActions: TActionList
-    Left = 375
-    Top = 68
+    Left = 343
+    Top = 4
     inherited actPrint: TAction
       ShortCut = 0
       OnExecute = actPrintExecute

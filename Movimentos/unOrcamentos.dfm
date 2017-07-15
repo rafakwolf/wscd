@@ -4,8 +4,8 @@ object frmOrcamentos: TfrmOrcamentos
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Or'#231'amentos'
-  ClientHeight = 570
-  ClientWidth = 785
+  ClientHeight = 526
+  ClientWidth = 789
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -111,9 +111,9 @@ object frmOrcamentos: TfrmOrcamentos
   end
   object grdItens: TDBGrid
     Left = 0
-    Top = 239
-    Width = 785
-    Height = 275
+    Top = 256
+    Width = 789
+    Height = 214
     Hint = '<F2> para buscar produto'
     Align = alBottom
     Ctl3D = True
@@ -332,11 +332,12 @@ object frmOrcamentos: TfrmOrcamentos
   object pnBotoes: TPanel
     Left = 0
     Top = 0
-    Width = 785
+    Width = 789
     Height = 34
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 19
+    ExplicitWidth = 785
     object btnFechar: TSpeedButton
       Left = 321
       Top = 1
@@ -2052,11 +2053,13 @@ object frmOrcamentos: TfrmOrcamentos
   end
   object pnlTotal: TPanel
     Left = 0
-    Top = 514
-    Width = 785
+    Top = 470
+    Width = 789
     Height = 37
     Align = alBottom
     TabOrder = 18
+    ExplicitTop = 494
+    ExplicitWidth = 785
     object lbItens: TLabel
       Left = 526
       Top = 12
@@ -2102,8 +2105,8 @@ object frmOrcamentos: TfrmOrcamentos
   end
   object stbOrcamento: TStatusBar
     Left = 0
-    Top = 551
-    Width = 785
+    Top = 507
+    Width = 789
     Height = 19
     Panels = <
       item
@@ -2114,6 +2117,8 @@ object frmOrcamentos: TfrmOrcamentos
         Text = 'Para ajuda pressione F1'
         Width = 50
       end>
+    ExplicitTop = 531
+    ExplicitWidth = 785
   end
   object dbeIdVendedor: TDBEdit
     Left = 240

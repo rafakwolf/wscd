@@ -6,7 +6,7 @@ inherited frmRecibo: TfrmRecibo
   ClientWidth = 617
   OldCreateOrder = True
   ExplicitWidth = 623
-  ExplicitHeight = 367
+  ExplicitHeight = 347
   PixelsPerInch = 96
   TextHeight = 13
   object lbRecebedor: TLabel [0]
@@ -111,14 +111,14 @@ inherited frmRecibo: TfrmRecibo
     Left = 431
     Top = 124
   end
-  inherited mmPadrao: TMainMenu
+  object mmPadrao: TMainMenu
     Left = 304
     Top = 124
-    inherited miRelatorios: TMenuItem
-      inherited mImprimir: TMenuItem
+    object miRelatorios: TMenuItem
+      object mImprimir: TMenuItem
         Caption = 'Imprimir recibo'
       end
-      object N5: TMenuItem [1]
+      object N5: TMenuItem
         Caption = '-'
       end
     end

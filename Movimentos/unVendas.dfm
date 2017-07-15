@@ -2,11 +2,11 @@ inherited frmVendas: TfrmVendas
   Left = 200
   Top = 114
   Caption = 'Vendas'
-  ClientHeight = 570
+  ClientHeight = 518
   ClientWidth = 890
   Menu = mnVenda
   ExplicitWidth = 896
-  ExplicitHeight = 619
+  ExplicitHeight = 567
   PixelsPerInch = 96
   TextHeight = 13
   object LabelObs: TLabel [0]
@@ -62,9 +62,9 @@ inherited frmVendas: TfrmVendas
   end
   object grdItens: TDBGrid [5]
     Left = 0
-    Top = 231
+    Top = 242
     Width = 890
-    Height = 285
+    Height = 222
     Align = alBottom
     Ctl3D = True
     DataSource = dsItens
@@ -304,11 +304,12 @@ inherited frmVendas: TfrmVendas
   end
   object pnlTotal: TPanel [18]
     Left = 0
-    Top = 516
+    Top = 464
     Width = 890
     Height = 35
     Align = alBottom
     TabOrder = 19
+    ExplicitTop = 496
     object lbTotalDesc: TLabel
       Left = 503
       Top = 11
@@ -411,9 +412,9 @@ inherited frmVendas: TfrmVendas
     TabOrder = 16
   end
   inherited sbStatus: TStatusBar
-    Top = 551
+    Top = 499
     Width = 890
-    ExplicitTop = 551
+    ExplicitTop = 531
     ExplicitWidth = 890
   end
   inherited pnBotoesPadrao: TPanel

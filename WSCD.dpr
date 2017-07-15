@@ -1,4 +1,4 @@
-program WSCD;
+program wscd;
 
 uses
   Vcl.Forms,

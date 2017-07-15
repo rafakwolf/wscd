@@ -4005,8 +4005,8 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object mnPrincipal: TMainMenu
-    Left = 120
-    Top = 96
+    Left = 144
+    Top = 88
     object miCofiguracao: TMenuItem
       Caption = 'Configura'#231#245'es'
       Hint = 'Configura'#231#245'es'
@@ -4301,8 +4301,8 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object pstpImpressora: TPrinterSetupDialog
-    Left = 88
-    Top = 184
+    Left = 104
+    Top = 232
   end
   object ListaAcoes: TActionList
     Left = 64
@@ -4601,7 +4601,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object pmIconTray: TPopupMenu
-    Left = 120
+    Left = 200
     Top = 136
     object pmiAtualizacao: TMenuItem
       Bitmap.Data = {
@@ -4721,7 +4721,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object appevPrincipal: TApplicationEvents
     OnException = appevPrincipalException
-    Left = 64
-    Top = 136
+    Left = 56
+    Top = 168
   end
 end

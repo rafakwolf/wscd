@@ -4,13 +4,13 @@ inherited frmContasRecebidas: TfrmContasRecebidas
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'frmContasRecebidas'
-  ClientHeight = 430
+  ClientHeight = 410
   ClientWidth = 930
   Menu = mmContasRecebidas
   OnResize = FormResize
   OnShow = FormShow
   ExplicitWidth = 936
-  ExplicitHeight = 479
+  ExplicitHeight = 459
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
@@ -301,7 +301,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
     Left = 0
     Top = 96
     Width = 930
-    Height = 315
+    Height = 295
     Hint = 'Dois cliques para marcar '#13#10'ou desmarcar este '#237'tem...'
     Align = alBottom
     Ctl3D = True
@@ -567,7 +567,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
   end
   object Stb: TStatusBar
     Left = 0
-    Top = 411
+    Top = 391
     Width = 930
     Height = 19
     Font.Charset = ANSI_CHARSET

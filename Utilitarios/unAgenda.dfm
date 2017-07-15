@@ -4,7 +4,7 @@ inherited frmAgenda: TfrmAgenda
   ClientWidth = 401
   OldCreateOrder = True
   ExplicitWidth = 407
-  ExplicitHeight = 337
+  ExplicitHeight = 317
   PixelsPerInch = 96
   TextHeight = 13
   object dbeNome: TDBEdit [0]
@@ -94,16 +94,16 @@ inherited frmAgenda: TfrmAgenda
     Left = 351
     Top = 148
   end
-  inherited mmPadrao: TMainMenu
+  object mmPadrao: TMainMenu
     Left = 312
     Top = 84
-    inherited miRelatorios: TMenuItem
+    object miRelatorios: TMenuItem
       ImageIndex = 10
       ShortCut = 16464
-      inherited mImprimir: TMenuItem
+      object mImprimir: TMenuItem
         Caption = 'Listagem de telefones'
       end
-      object N5: TMenuItem [1]
+      object N5: TMenuItem
         Caption = '-'
       end
     end

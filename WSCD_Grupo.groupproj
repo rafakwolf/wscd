@@ -3,7 +3,7 @@
         <ProjectGuid>{8F7C90AE-087E-4D20-9B1F-D001E79AB71D}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="WSCD.dproj">
+        <Projects Include="wscd.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -14,23 +14,23 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="WSCD">
-        <MSBuild Projects="WSCD.dproj"/>
+    <Target Name="wscd">
+        <MSBuild Projects="wscd.dproj"/>
     </Target>
-    <Target Name="WSCD:Clean">
-        <MSBuild Projects="WSCD.dproj" Targets="Clean"/>
+    <Target Name="wscd:Clean">
+        <MSBuild Projects="wscd.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="WSCD:Make">
-        <MSBuild Projects="WSCD.dproj" Targets="Make"/>
+    <Target Name="wscd:Make">
+        <MSBuild Projects="wscd.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="WSCD"/>
+        <CallTarget Targets="wscd"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="WSCD:Clean"/>
+        <CallTarget Targets="wscd:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="WSCD:Make"/>
+        <CallTarget Targets="wscd:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

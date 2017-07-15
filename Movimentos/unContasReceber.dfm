@@ -4,17 +4,17 @@ inherited frmContasReceber: TfrmContasReceber
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'frmContasReceber'
-  ClientHeight = 438
+  ClientHeight = 418
   ClientWidth = 762
   Menu = mnuCP
   OnShow = FormShow
   ExplicitWidth = 768
-  ExplicitHeight = 487
+  ExplicitHeight = 467
   PixelsPerInch = 96
   TextHeight = 13
   object Stb: TStatusBar
     Left = 0
-    Top = 419
+    Top = 399
     Width = 762
     Height = 19
     Hint = 'Valores gerais'
@@ -59,9 +59,9 @@ inherited frmContasReceber: TfrmContasReceber
   end
   object Grade: TDBGrid
     Left = 0
-    Top = 92
+    Top = 104
     Width = 762
-    Height = 327
+    Height = 295
     Hint = 'Dois cliques para marcar '#13#10'ou desmarcar este '#237'tem...'
     Align = alBottom
     Ctl3D = True
