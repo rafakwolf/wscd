@@ -4,13 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils;
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils,
+  uniButton, uniBitBtn, uniGUIBaseClasses, uniGUIClasses, uniPanel, uniEdit;
 
 type
   TfrmRelatorioCaixaMensal = class(TfrmDialogoRelatorioPadrao)
     rgOrd: TRadioGroup;
-    edtMes: TEdit;
-    edtAno: TEdit;
+    edtMes: TUniEdit;
+    edtAno: TUniEdit;
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

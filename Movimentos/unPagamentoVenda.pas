@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, StdCtrls, DB, SqlExpr, DBClient,
-  Provider, Grids, DBGrids, FMTBcd, VarGlobal;
+  Provider, Grids, DBGrids, FMTBcd, VarGlobal, uniGUIBaseClasses, uniGUIClasses,
+  uniButton, uniBitBtn, uniSpeedButton, uniLabel, uniGuiForm, uniBasicGrid,
+  uniDBGrid;
 
 type
-  TfrmPagamentoVenda = class(TForm)
-    btnOk: TSpeedButton;
+  TfrmPagamentoVenda = class(TUniForm)
     sqldVenda: TSQLDataSet;
     sqldVendaDATARECTO: TDateField;
     sqldVendaFORMARECTO: TStringField;
@@ -18,12 +19,13 @@ type
     dsVenda: TDataSource;
     cdsVendaDATARECTO: TDateField;
     cdsVendaFORMARECTO: TStringField;
-    dbgdRectoVenda: TDBGrid;
-    lbStatus: TLabel;
     sqldVendaVALORRECDO: TFMTBCDField;
     sqldVendaVALORRESTO: TFMTBCDField;
     cdsVendaVALORRECDO: TFMTBCDField;
     cdsVendaVALORRESTO: TFMTBCDField;
+    btnOk: TUniSpeedButton;
+    lbStatus: TUniLabel;
+    dbgdRectoVenda: TUniDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

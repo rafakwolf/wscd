@@ -6,22 +6,15 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,
-   DBCtrls, Mask, FMTBcd, System.Actions;
+   DBCtrls, Mask, FMTBcd, System.Actions, uniMainMenu, uniLabel, uniButton,
+  uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses,
+  uniStatusBar, uniEdit, uniDBEdit, uniMemo, uniDBMemo;
 
 type
   TfrmRecibo = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    lbRecebedor: TLabel;
-    lbRefente: TLabel;
-    lbValor: TLabel;
-    lbValorExtenso: TLabel;
-    dbRecebedor: TDBEdit;
-    dbReferente: TDBMemo;
-    dbValor: TDBEdit;
-    dbValorExtenso: TDBMemo;
-    dbData: TDBEdit;
     sqldPadraoIDRECIBO: TIntegerField;
     sqldPadraoDATA: TDateField;
     sqldPadraoRECEBEDOR: TStringField;
@@ -35,7 +28,19 @@ type
     tmrImpressao: TTimer;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
-    N5: TMenuItem;
+    mmPadrao: TUniMainMenu;
+    miRelatorios: TUniMenuItem;
+    mImprimir: TUniMenuItem;
+    N5: TUniMenuItem;
+    lbRecebedor: TUniLabel;
+    lbRefente: TUniLabel;
+    lbValor: TUniLabel;
+    lbValorExtenso: TUniLabel;
+    dbData: TUniDBEdit;
+    dbRecebedor: TUniDBEdit;
+    dbValor: TUniDBEdit;
+    dbReferente: TUniDBMemo;
+    dbValorExtenso: TUniDBMemo;
     procedure actPrintExecute(Sender: TObject);
     procedure cdsPadraoVALORChange(Sender: TField);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);

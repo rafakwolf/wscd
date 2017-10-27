@@ -1,16 +1,12 @@
 object frmPrevPromissoria: TfrmPrevPromissoria
   Left = 2
   Top = 1
-  Caption = 'frmPrevPromissoria'
   ClientHeight = 530
   ClientWidth = 813
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
+  Caption = 'frmPrevPromissoria'
   OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
   PixelsPerInch = 96
   TextHeight = 13
   object rptPromissoria: TRLReport

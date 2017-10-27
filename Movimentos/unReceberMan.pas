@@ -6,14 +6,11 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Mask, DBCtrls, Buttons, DB, varglobal,
    DBClient, Provider, SqlExpr, unContasReceber, Grids,
-  DBGrids, FMTBcd, unSimplePadrao;
+  DBGrids, FMTBcd, unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniLabel,
+  uniButton, uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid;
 
 type
   TfrmReceberMan = class(TfrmSimplePadrao)
-    dbValor: TLabeledEdit;
-    btnOk: TBitBtn;
-    btnCancel: TBitBtn;
-    BevelLinha: TBevel;
     dsContasReceber: TDataSource;
     rgReceb: TRadioGroup;
     sqldContaReceber: TSQLDataSet;
@@ -57,19 +54,6 @@ type
     cdsContaReceberDESCTO: TFMTBCDField;
     cdsContaReceberOBS: TMemoField;
     cdsContaReceberATRASO: TIntegerField;
-    dbgrdContas: TDBGrid;
-    lblBandaMagnetica: TLabel;
-    bvlLinha2: TBevel;
-    edtAgencia: TLabeledEdit;
-    dbeBanco: TDBEdit;
-    edtConta: TLabeledEdit;
-    edtNumeroCheque: TLabeledEdit;
-    edtValor: TLabeledEdit;
-    medtBandaMagnetica: TMaskEdit;
-    lblEmissao: TLabel;
-    lblVenc: TLabel;
-    medtVencimento: TMaskEdit;
-    medtEmissao: TMaskEdit;
     sqldContaReceberIDCONTA: TIntegerField;
     sqldContaReceberNOME: TStringField;
     cdsContaReceberIDCONTA: TIntegerField;
@@ -88,6 +72,23 @@ type
     cdsContaReceberVALORJURO: TSingleField;
     cdsContaReceberTOTAL: TSingleField;
     cdsContaReceberTOTALRECDO: TSingleField;
+    lblBandaMagnetica: TUniLabel;
+    lblEmissao: TUniLabel;
+    lblVenc: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancel: TUniBitBtn;
+    dbValor: TUniEdit;
+    edtAgencia: TUniEdit;
+    edtConta: TUniEdit;
+    edtNumeroCheque: TUniEdit;
+    edtValor: TUniEdit;
+    dbeBanco: TUniDBEdit;
+    BevelLinha: TUniPanel;
+    bvlLinha2: TUniPanel;
+    medtBandaMagnetica: TUniEdit;
+    medtVencimento: TUniEdit;
+    medtEmissao: TUniEdit;
+    dbgrdContas: TUniDBGrid;
     procedure btnOkClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

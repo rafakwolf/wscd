@@ -1,48 +1,50 @@
 inherited frmRelatorioFaturamento: TfrmRelatorioFaturamento
-  Caption = 'frmRelatorioFaturamento'
   ClientHeight = 127
   ClientWidth = 417
+  Caption = 'frmRelatorioFaturamento'
   OldCreateOrder = True
   ExplicitWidth = 433
   ExplicitHeight = 166
   PixelsPerInch = 96
   TextHeight = 13
-  object chkLucro: TCheckBox [0]
+  inherited pnButtons: TUniContainerPanel
+    Top = 93
+    Width = 417
+    ExplicitTop = 97
+    ExplicitWidth = 425
+  end
+  object chkLucro: TUniCheckBox [1]
     Left = 16
     Top = 67
     Width = 193
     Height = 17
+    Hint = ''
+    ShowHint = True
     Caption = 'Mostrar porcentagem de lucro'
     TabOrder = 3
   end
-  object chkCusto: TCheckBox [1]
+  object chkCusto: TUniCheckBox [2]
     Left = 16
     Top = 48
     Width = 154
     Height = 17
+    Hint = ''
+    ShowHint = True
     Caption = 'Mostrar pre'#231'o de custo'
     TabOrder = 2
   end
-  object dbeForn: TDBEdit [2]
+  object dbeForn: TUniDBEdit [3]
     Left = 16
     Top = 24
     Width = 371
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
-  end
-  inherited pnButtons: TPanel
-    Top = 93
-    Width = 417
-    ExplicitTop = 97
-    ExplicitWidth = 425
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsForn

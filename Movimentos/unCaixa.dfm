@@ -1,12 +1,9 @@
 inherited frmCaixa: TfrmCaixa
   Left = 215
   Top = 125
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'frmCaixa'
-  ClientHeight = 390
+  ClientHeight = 410
   ClientWidth = 958
-  Font.Height = -12
+  Caption = 'frmCaixa'
   Icon.Data = {
     000001000C00101000000100080068050000C60000001818000001000800C806
     00002E0600002020000001000800A8080000F60C00003030000001000800A80E
@@ -5353,133 +5350,49 @@ inherited frmCaixa: TfrmCaixa
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
     FFFFFFFFFFFF}
-  Menu = mnCaixa
-  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
+  BorderStyle = bsSingle
+  BorderIcons = [biSystemMenu, biMinimize]
+  Font.Height = -12
   ExplicitWidth = 964
   ExplicitHeight = 439
   PixelsPerInch = 96
   TextHeight = 14
-  object dbgdCaixa: TDBGrid
+  object stbCaixa: TUniStatusBar
     Left = 0
-    Top = 34
+    Top = 388
     Width = 958
-    Height = 334
-    Align = alClient
-    BorderStyle = bsNone
-    Ctl3D = True
-    DataSource = dsCaixa
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Arial'
-    Font.Style = []
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentCtl3D = False
-    ParentFont = False
-    PopupMenu = PopupConsulta
-    ReadOnly = True
-    TabOrder = 1
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clBlack
-    TitleFont.Height = -12
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = dbgdCaixaDrawColumnCell
-    OnDblClick = btnAlterarClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'TIPO'
-        Title.Caption = 'Tipo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 57
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATA'
-        Title.Caption = 'Data'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 78
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DOCUMENTO'
-        Title.Caption = 'Documento'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 120
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'NOME'
-        Title.Caption = 'Conta'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 169
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 389
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALOR'
-        Title.Caption = 'Valor'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Tahoma'
-        Title.Font.Style = [fsBold]
-        Width = 100
-        Visible = True
-      end>
+    Height = 22
+    Hint = ''
+    ShowHint = True
+    Panels = <>
+    SizeGrip = True
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    ParentColor = False
+    Color = clBtnFace
+    ExplicitTop = 366
   end
-  object pnBotoes: TPanel
+  object pnBotoes: TUniContainerPanel
     Left = 0
     Top = 0
     Width = 958
     Height = 34
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alTop
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
-    object btnNovo: TSpeedButton
+    TabStop = False
+    object btnNovo: TUniSpeedButton
       Left = 1
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Novo registro'
-      Flat = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = []
+      ShowHint = True
+      ParentShowHint = False
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000820B0000820B00000000000000000000FF00FFFF00FF
@@ -5537,23 +5450,24 @@ inherited frmCaixa: TfrmCaixa
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = ''
       ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 0
       OnClick = btnNovoClick
     end
-    object btnLocate: TSpeedButton
+    object btnLocate: TUniSpeedButton
       Left = 97
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Localizar na coluna selecionada'
-      Flat = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = []
+      ShowHint = True
+      ParentShowHint = False
       Glyph.Data = {
         760E0000424D760E000000000000360000002800000032000000180000000100
         180000000000400E000000000000000000000000000000000000FF00FFFF00FF
@@ -5671,19 +5585,23 @@ inherited frmCaixa: TfrmCaixa
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF55555555555555
         5555555555555555555555555555555555555555FF00FFFF00FFFF00FFFF00FF
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000}
-      NumGlyphs = 2
+      Caption = ''
       ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 1
       OnClick = btnLocateClick
     end
-    object btnAlterar: TSpeedButton
+    object btnAlterar: TUniSpeedButton
       Left = 33
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Alterar registro'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000820B0000820B00000000000000000000FF00FFFF00FF
@@ -5741,20 +5659,20 @@ inherited frmCaixa: TfrmCaixa
         FF00FFFF00FF7823DF00009AFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 2
       OnClick = btnAlterarClick
     end
-    object btnExcluir: TSpeedButton
+    object btnExcluir: TUniSpeedButton
       Left = 65
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Excluir registro'
-      Flat = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = []
+      ShowHint = True
+      ParentShowHint = False
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000D30E0000D30E00000000000000000000FF00FFFF00FF
@@ -5812,18 +5730,23 @@ inherited frmCaixa: TfrmCaixa
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = ''
       ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 3
       OnClick = btnExcluirClick
     end
-    object btnFiltrar: TSpeedButton
+    object btnFiltrar: TUniSpeedButton
       Left = 129
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Filtrar'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000030F0000030F00000000000000000000FF00FFFF00FF
@@ -5881,15 +5804,19 @@ inherited frmCaixa: TfrmCaixa
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 4
       OnClick = btnFiltrarClick
     end
-    object btnFechar: TSpeedButton
+    object btnFechar: TUniSpeedButton
       Left = 161
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Fechar'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000D30F0000D30F00000000000000000000FF00FFFF00FF
@@ -5947,32 +5874,34 @@ inherited frmCaixa: TfrmCaixa
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 5
       OnClick = btnFecharClick
     end
   end
-  object stbCaixa: TStatusBar
+  object dbgdCaixa: TUniDBGrid
     Left = 0
-    Top = 368
+    Top = 34
     Width = 958
-    Height = 22
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBtnText
+    Height = 354
+    Hint = ''
+    ShowHint = True
+    DataSource = dsCaixa
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    Align = alClient
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Font.Charset = ANSI_CHARSET
     Font.Height = -12
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    Panels = <
-      item
-        Alignment = taCenter
-        Width = 300
-      end
-      item
-        Alignment = taCenter
-        Width = 200
-      end
-      item
-        Width = 50
-      end>
-    UseSystemFont = False
+    Font.Name = 'Verdana'
+    ParentFont = False
+    TabOrder = 1
+    ParentColor = False
+    Color = clWindow
+    OnDblClick = btnAlterarClick
   end
   object dsCaixa: TDataSource
     AutoEdit = False
@@ -5999,141 +5928,6 @@ inherited frmCaixa: TfrmCaixa
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
-    end
-  end
-  object mnCaixa: TMainMenu
-    Left = 280
-    Top = 105
-    object miRegistro: TMenuItem
-      Caption = 'Registros'
-      object miNovo: TMenuItem
-        Caption = 'Novo'
-        OnClick = btnNovoClick
-      end
-      object miAlterar: TMenuItem
-        Caption = 'Alterar'
-        ShortCut = 116
-        OnClick = btnAlterarClick
-      end
-      object miExcluir: TMenuItem
-        Caption = 'Excluir'
-        OnClick = btnExcluirClick
-      end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object miSair: TMenuItem
-        Caption = 'Fechar'
-        ShortCut = 27
-        OnClick = btnFecharClick
-      end
-    end
-    object miFerramenta: TMenuItem
-      Caption = 'Ferramentas'
-      object miCadContaCaixa: TMenuItem
-        Caption = 'Cadastrar contas caixa'
-        OnClick = miCadContaCaixaClick
-      end
-      object N6: TMenuItem
-        Caption = '-'
-      end
-      object miExcluirPeriodo: TMenuItem
-        Caption = 'Excluir por per'#237'odo'
-        OnClick = miExcluirPeriodoClick
-      end
-      object miExcluirVarios: TMenuItem
-        Caption = 'Excluir v'#225'rios lan'#231'amentos'
-        OnClick = miExcluirVariosClick
-      end
-      object N7: TMenuItem
-        Caption = '-'
-      end
-      object miContarReg: TMenuItem
-        Caption = 'Contas registros'
-        OnClick = miContarRegClick
-      end
-      object miExportaDados: TMenuItem
-        Caption = 'Exportar dados'
-        OnClick = miExportaDadosClick
-      end
-    end
-    object miPesquisar: TMenuItem
-      Caption = 'Pesquisar'
-      object miFiltraData: TMenuItem
-        Caption = 'Filtrar por data'
-        OnClick = miFiltraDataClick
-      end
-      object miFiltraCredito: TMenuItem
-        Caption = 'Mostrar cr'#233'ditos'
-        OnClick = miFiltraCreditoClick
-      end
-      object miFiltraDebito: TMenuItem
-        Caption = 'Mostrar d'#233'bitos'
-        OnClick = miFiltraDebitoClick
-      end
-      object miFiltraPorContaCaixa: TMenuItem
-        Caption = 'Filtrar por conta caixa'
-        OnClick = miFiltraPorContaCaixaClick
-      end
-      object miFiltraColuna: TMenuItem
-        Caption = 'Localizar na coluna selecionada'
-        OnClick = btnLocateClick
-      end
-      object N3: TMenuItem
-        Caption = '-'
-      end
-      object miLimpaFiltro: TMenuItem
-        Caption = 'Limpar filtros'
-        OnClick = miLimpaFiltroClick
-      end
-    end
-    object miRelatorio: TMenuItem
-      Caption = 'Relat'#243'rios'
-      object miRelTodos: TMenuItem
-        Caption = 'Livro caixa'
-        OnClick = miRelTodosClick
-      end
-      object N4: TMenuItem
-        Caption = '-'
-      end
-      object miRelMesAno: TMenuItem
-        Caption = 'Por m'#234's e ano'
-        OnClick = miRelMesAnoClick
-      end
-      object miRelContaCaixa: TMenuItem
-        Caption = 'Por conta caixa'
-        OnClick = miRelContaCaixaClick
-      end
-      object N8: TMenuItem
-        Caption = '-'
-      end
-      object miRelFluxoCaixa: TMenuItem
-        Caption = 'Fluxo de caixa'
-        OnClick = miRelFluxoCaixaClick
-      end
-      object miMovimentoHoje: TMenuItem
-        Caption = 'Movimenta'#231#227'o do dia'
-        OnClick = miMovimentoHojeClick
-      end
-      object N5: TMenuItem
-        Caption = '-'
-      end
-      object miRelPersonalCaixa: TMenuItem
-        Caption = 'Assistente de relat'#243'rio'
-        OnClick = miRelPersonalCaixaClick
-      end
-    end
-  end
-  object PopupConsulta: TPopupMenu
-    Left = 176
-    Top = 113
-    object miDeleteItem: TMenuItem
-      Caption = 'Excluir...'
-      OnClick = btnExcluirClick
-    end
-    object miLocalizaColuna: TMenuItem
-      Caption = 'Localizar...'
-      OnClick = btnLocateClick
     end
   end
   object dsCaixas: TDataSource
@@ -6282,6 +6076,141 @@ inherited frmCaixa: TfrmCaixa
       Required = True
       FixedChar = True
       Size = 1
+    end
+  end
+  object mnCaixa: TUniMainMenu
+    Left = 280
+    Top = 105
+    object miRegistro: TUniMenuItem
+      Caption = 'Registros'
+      object miNovo: TUniMenuItem
+        Caption = 'Novo'
+        OnClick = btnNovoClick
+      end
+      object miAlterar: TUniMenuItem
+        Caption = 'Alterar'
+        ShortCut = 116
+        OnClick = btnAlterarClick
+      end
+      object miExcluir: TUniMenuItem
+        Caption = 'Excluir'
+        OnClick = btnExcluirClick
+      end
+      object N1: TUniMenuItem
+        Caption = '-'
+      end
+      object miSair: TUniMenuItem
+        Caption = 'Fechar'
+        ShortCut = 27
+        OnClick = btnFecharClick
+      end
+    end
+    object miFerramenta: TUniMenuItem
+      Caption = 'Ferramentas'
+      object miCadContaCaixa: TUniMenuItem
+        Caption = 'Cadastrar contas caixa'
+        OnClick = miCadContaCaixaClick
+      end
+      object N6: TUniMenuItem
+        Caption = '-'
+      end
+      object miExcluirPeriodo: TUniMenuItem
+        Caption = 'Excluir por per'#237'odo'
+        OnClick = miExcluirPeriodoClick
+      end
+      object miExcluirVarios: TUniMenuItem
+        Caption = 'Excluir v'#225'rios lan'#231'amentos'
+        OnClick = miExcluirVariosClick
+      end
+      object N7: TUniMenuItem
+        Caption = '-'
+      end
+      object miContarReg: TUniMenuItem
+        Caption = 'Contas registros'
+        OnClick = miContarRegClick
+      end
+      object miExportaDados: TUniMenuItem
+        Caption = 'Exportar dados'
+        OnClick = miExportaDadosClick
+      end
+    end
+    object miPesquisar: TUniMenuItem
+      Caption = 'Pesquisar'
+      object miFiltraData: TUniMenuItem
+        Caption = 'Filtrar por data'
+        OnClick = miFiltraDataClick
+      end
+      object miFiltraCredito: TUniMenuItem
+        Caption = 'Mostrar cr'#233'ditos'
+        OnClick = miFiltraCreditoClick
+      end
+      object miFiltraDebito: TUniMenuItem
+        Caption = 'Mostrar d'#233'bitos'
+        OnClick = miFiltraDebitoClick
+      end
+      object miFiltraPorContaCaixa: TUniMenuItem
+        Caption = 'Filtrar por conta caixa'
+        OnClick = miFiltraPorContaCaixaClick
+      end
+      object miFiltraColuna: TUniMenuItem
+        Caption = 'Localizar na coluna selecionada'
+        OnClick = btnLocateClick
+      end
+      object N3: TUniMenuItem
+        Caption = '-'
+      end
+      object miLimpaFiltro: TUniMenuItem
+        Caption = 'Limpar filtros'
+        OnClick = miLimpaFiltroClick
+      end
+    end
+    object miRelatorio: TUniMenuItem
+      Caption = 'Relat'#243'rios'
+      object miRelTodos: TUniMenuItem
+        Caption = 'Livro caixa'
+        OnClick = miRelTodosClick
+      end
+      object N4: TUniMenuItem
+        Caption = '-'
+      end
+      object miRelMesAno: TUniMenuItem
+        Caption = 'Por m'#234's e ano'
+        OnClick = miRelMesAnoClick
+      end
+      object miRelContaCaixa: TUniMenuItem
+        Caption = 'Por conta caixa'
+        OnClick = miRelContaCaixaClick
+      end
+      object N8: TUniMenuItem
+        Caption = '-'
+      end
+      object miRelFluxoCaixa: TUniMenuItem
+        Caption = 'Fluxo de caixa'
+        OnClick = miRelFluxoCaixaClick
+      end
+      object miMovimentoHoje: TUniMenuItem
+        Caption = 'Movimenta'#231#227'o do dia'
+        OnClick = miMovimentoHojeClick
+      end
+      object N5: TUniMenuItem
+        Caption = '-'
+      end
+      object miRelPersonalCaixa: TUniMenuItem
+        Caption = 'Assistente de relat'#243'rio'
+        OnClick = miRelPersonalCaixaClick
+      end
+    end
+  end
+  object PopupConsulta: TUniPopupMenu
+    Left = 176
+    Top = 113
+    object miDeleteItem: TUniMenuItem
+      Caption = 'Excluir...'
+      OnClick = btnExcluirClick
+    end
+    object miLocalizaColuna: TUniMenuItem
+      Caption = 'Localizar...'
+      OnClick = btnLocateClick
     end
   end
 end

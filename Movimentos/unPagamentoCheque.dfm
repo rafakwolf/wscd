@@ -1,53 +1,60 @@
 object frmPagamentoCheque: TfrmPagamentoCheque
   Left = 243
   Top = 179
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Cheque'
   ClientHeight = 169
   ClientWidth = 473
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Cheque'
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbEmissao: TLabel
+  object lbEmissao: TUniLabel
     Left = 8
     Top = 88
     Width = 47
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Emiss'#227'o'
+    TabOrder = 11
   end
-  object lbVenc: TLabel
+  object lbVenc: TUniLabel
     Left = 96
     Top = 88
     Width = 56
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Bom para'
+    TabOrder = 12
   end
-  object lbBandaMagnetica: TLabel
+  object lbBandaMagnetica: TUniLabel
     Left = 8
     Top = 8
     Width = 99
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Banda magn'#233'tica'
+    TabOrder = 13
   end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 280
     Top = 136
     Width = 89
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -99,16 +106,17 @@ object frmPagamentoCheque: TfrmPagamentoCheque
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080}
-    NumGlyphs = 2
+    Caption = '&OK'
     TabOrder = 9
     OnClick = btnOkClick
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 376
     Top = 136
     Width = 89
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -151,102 +159,107 @@ object frmPagamentoCheque: TfrmPagamentoCheque
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 10
   end
-  object edtAgencia: TLabeledEdit
+  object edtAgencia: TUniEdit
     Left = 8
     Top = 64
     Width = 105
     Height = 21
-    EditLabel.Width = 45
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Ag'#234'ncia'
+    Hint = ''
+    ShowHint = True
+    Text = ''
     TabOrder = 2
   end
-  object dbeBanco: TDBEdit
+  object edtConta: TUniEdit
+    Left = 120
+    Top = 64
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 3
+  end
+  object edtNumeroCheque: TUniEdit
+    Left = 232
+    Top = 64
+    Width = 113
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 4
+  end
+  object edtValor: TUniEdit
+    Left = 352
+    Top = 64
+    Width = 113
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 5
+    OnEnter = edtValorEnter
+  end
+  object edtNome: TUniEdit
+    Left = 184
+    Top = 104
+    Width = 281
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 8
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeBanco: TUniDBEdit
     Left = 248
     Top = 24
     Width = 195
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'BANCO'
     DataSource = dsSelecao
-    ReadOnly = True
     TabOrder = 1
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object edtConta: TLabeledEdit
-    Left = 120
-    Top = 64
-    Width = 105
-    Height = 21
-    EditLabel.Width = 34
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Conta'
-    TabOrder = 3
-  end
-  object edtNumeroCheque: TLabeledEdit
-    Left = 232
-    Top = 64
-    Width = 113
-    Height = 21
-    EditLabel.Width = 108
-    EditLabel.Height = 13
-    EditLabel.Caption = 'N'#250'mero do cheque'
-    TabOrder = 4
-  end
-  object edtValor: TLabeledEdit
-    Left = 352
-    Top = 64
-    Width = 113
-    Height = 21
-    EditLabel.Width = 64
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Total/Resto'
-    TabOrder = 5
-    OnEnter = edtValorEnter
-  end
-  object medtEmissao: TMaskEdit
+  object medtEmissao: TUniEdit
     Left = 8
     Top = 104
     Width = 81
     Height = 21
-    EditMask = '!99/99/9999;1;_'
+    Hint = ''
+    ShowHint = True
     MaxLength = 10
-    TabOrder = 6
     Text = '  /  /    '
+    TabOrder = 6
   end
-  object medtVencimento: TMaskEdit
+  object medtVencimento: TUniEdit
     Left = 96
     Top = 104
     Width = 81
     Height = 21
-    EditMask = '!99/99/9999;1;_'
+    Hint = ''
+    ShowHint = True
     MaxLength = 10
-    TabOrder = 7
     Text = '  /  /    '
+    TabOrder = 7
   end
-  object edtNome: TLabeledEdit
-    Left = 184
-    Top = 104
-    Width = 281
-    Height = 21
-    Color = clBtnFace
-    EditLabel.Width = 33
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Nome'
-    ReadOnly = True
-    TabOrder = 8
-  end
-  object medBandaMagnetica: TMaskEdit
+  object medBandaMagnetica: TUniEdit
     Left = 8
     Top = 24
     Width = 233
     Height = 21
-    TabOrder = 0
+    Hint = ''
+    ShowHint = True
     Text = ''
+    TabOrder = 0
     OnExit = medBandaMagneticaExit
   end
   object dsSelecao: TDataSource

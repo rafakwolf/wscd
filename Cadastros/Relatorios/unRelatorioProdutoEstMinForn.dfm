@@ -3,22 +3,18 @@ inherited frmRelatorioProdutoEstMinForn: TfrmRelatorioProdutoEstMinForn
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeForn: TDBEdit [0]
+  object dbeForn: TUniDBEdit [1]
     Left = 16
     Top = 40
     Width = 347
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
-  end
-  inherited pnButtons: TPanel
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     Left = 16

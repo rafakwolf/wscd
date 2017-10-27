@@ -6,19 +6,20 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, Provider, SqlExpr, DBClient, Mask, DBCtrls,
-   FMTBcd, System.Actions;
+   FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
+  uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar;
 
 type
   TfrmBanco = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeBanco: TDBEdit;
     sqldPadraoIDBANCO: TIntegerField;
     sqldPadraoBANCO: TStringField;
     cdsPadraoIDBANCO: TIntegerField;
     cdsPadraoBANCO: TStringField;
-    dbeCodCompensacao: TDBEdit;
+    dbeCodCompensacao: TUniDBEdit;
+    dbeBanco: TUniDBEdit;
     procedure FormCreate(Sender: TObject);
   private
   public

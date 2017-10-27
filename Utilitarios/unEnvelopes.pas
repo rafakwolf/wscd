@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,  Mask,
-  DBCtrls, FMTBcd, System.Actions, VarGlobal;
+  DBCtrls, FMTBcd, System.Actions, VarGlobal, uniLabel, uniButton, uniBitBtn,
+  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  uniEdit, uniDBEdit;
 
 type
   TfrmEnvelopes = class(TfrmPadrao)
@@ -27,17 +29,6 @@ type
     cdsPadraoBAIRRO: TStringField;
     cdsPadraoCEP: TStringField;
     cdsPadraoMENSAGEM: TStringField;
-    lbNome: TLabel;
-    lbEndereco: TLabel;
-    lbBairro: TLabel;
-    lbCep: TLabel;
-    lbMsg: TLabel;
-    dbNome: TDBEdit;
-    dbEndereco: TDBEdit;
-    dbBairro: TDBEdit;
-    dbCep: TDBEdit;
-    dbMsg: TDBEdit;
-    dbeCidade: TDBEdit;
     sqldCidade: TSQLDataSet;
     sqldCidadeCODCIDADE: TIntegerField;
     sqldCidadeDESCRICAO: TStringField;
@@ -47,6 +38,17 @@ type
     cdsCidadeDESCRICAO: TStringField;
     sqldPadraoNOMECIDADE: TStringField;
     cdsPadraoNOMECIDADE: TStringField;
+    lbNome: TUniLabel;
+    lbEndereco: TUniLabel;
+    lbBairro: TUniLabel;
+    lbCep: TUniLabel;
+    lbMsg: TUniLabel;
+    dbNome: TUniDBEdit;
+    dbeCidade: TUniDBEdit;
+    dbCep: TUniDBEdit;
+    dbMsg: TUniDBEdit;
+    dbEndereco: TUniDBEdit;
+    dbBairro: TUniDBEdit;
     procedure actPrintExecute(Sender: TObject);
     procedure dbeCidadeClickButton(Sender: TObject);
     procedure FormCreate(Sender: TObject);

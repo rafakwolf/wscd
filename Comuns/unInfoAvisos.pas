@@ -6,12 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, Grids, DBGrids, StdCtrls, ExtCtrls, Buttons,
   DB, DBClient, Datasnap.Provider,
-  Data.SqlExpr, ComCtrls, DateUtils, ImgList, FMTBcd, System.ImageList;
+  Data.SqlExpr, ComCtrls, DateUtils, ImgList, FMTBcd, System.ImageList,
+  uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniImage,
+  uniPanel, uniBasicGrid, uniDBGrid, uniPageControl;
 
 type
   TfrmInfoAvisos = class(TfrmSimplePadrao)
-    imgInfo: TImage;
-    lbInfo: TLabel;
     sqldCR: TSQLDataSet;
     dspCR: TDataSetProvider;
     cdsCR: TClientDataSet;
@@ -26,17 +26,12 @@ type
     cdsCRATRASO: TIntegerField;
     sqldCRCODIGO: TIntegerField;
     cdsCRCODIGO: TIntegerField;
-    pgcInfoAviso: TPageControl;
-    tsContasReceber: TTabSheet;
-    dbgrdContas: TDBGrid;
-    btnReceber: TBitBtn;
+    pgcInfoAviso: TUniPageControl;
+    tsContasReceber: TUniTabSheet;
     rgpExibicao: TRadioGroup;
-    tsContasPagar: TTabSheet;
-    tsClientesAniver: TTabSheet;
+    tsContasPagar: TUniTabSheet;
+    tsClientesAniver: TUniTabSheet;
     dtpData: TDateTimePicker;
-    lblData: TLabel;
-    btnAnterior: TBitBtn;
-    btnProximo: TBitBtn;
     sqldCP: TSQLDataSet;
     sqldCPCODIGO: TIntegerField;
     sqldCPVENCIMENTO: TDateField;
@@ -51,22 +46,16 @@ type
     cdsCPVALOR: TFMTBCDField;
     cdsCPATRASO: TIntegerField;
     dsCP: TDataSource;
-    dbgrdContasPagar: TDBGrid;
     rgExibicaoCP: TRadioGroup;
-    btnPagar: TBitBtn;
-    lblTotalCR: TLabel;
-    lblTotalCP: TLabel;
     sqldCRRECEBER: TStringField;
     sqldCPPAGAR: TStringField;
     cdsCPPAGAR: TStringField;
     cdsCRRECEBER: TStringField;
     ilImages: TImageList;
-    dbgrdClientes: TDBGrid;
     sqldClientes: TSQLDataSet;
     dspClientes: TDataSetProvider;
     cdsClientes: TClientDataSet;
     dsClientes: TDataSource;
-    btnEtiqCliente: TBitBtn;
     sqldClientesNOME: TStringField;
     sqldClientesDATANASC: TDateField;
     sqldClientesCIDADE: TStringField;
@@ -79,14 +68,27 @@ type
     cdsClientesFONE: TStringField;
     cdsClientesIDADE: TIntegerField;
     cdsClientesMARCADO: TStringField;
-    btnImpRelatorio: TBitBtn;
-    btnEnvelopes: TBitBtn;
-    lblClientes: TLabel;
-    bvlLinha: TBevel;
     sqldCRTOTAL: TSingleField;
     cdsCRTOTAL: TSingleField;
     sqldCPTOTAL: TSingleField;
     cdsCPTOTAL: TSingleField;
+    lbInfo: TUniLabel;
+    lblData: TUniLabel;
+    lblTotalCR: TUniLabel;
+    lblTotalCP: TUniLabel;
+    lblClientes: TUniLabel;
+    btnReceber: TUniBitBtn;
+    btnPagar: TUniBitBtn;
+    btnEtiqCliente: TUniBitBtn;
+    btnImpRelatorio: TUniBitBtn;
+    btnEnvelopes: TUniBitBtn;
+    btnAnterior: TUniBitBtn;
+    btnProximo: TUniBitBtn;
+    imgInfo: TUniImage;
+    bvlLinha: TUniPanel;
+    dbgrdContas: TUniDBGrid;
+    dbgrdContasPagar: TUniDBGrid;
+    dbgrdClientes: TUniDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure rgpExibicaoClick(Sender: TObject);
     procedure btnReceberClick(Sender: TObject);

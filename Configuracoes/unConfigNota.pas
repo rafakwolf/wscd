@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
   SqlExpr, DBClient, Datasnap.Provider,
-  Grids, DBGrids, ConstPadrao, FMTBcd, System.Actions;
+  Grids, DBGrids, ConstPadrao, FMTBcd, System.Actions, uniGUIBaseClasses,
+  uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniStatusBar,
+  uniLabel, uniImage, uniBasicGrid, uniDBGrid, uniMainMenu;
 
 type
   TfrmConfigNota = class(TfrmPadrao)
@@ -29,19 +31,19 @@ type
     cdsPadraoLINHA: TIntegerField;
     cdsPadraoCOLUNA: TIntegerField;
     cdsPadraoIMPRIMIR: TStringField;
-    dbgrdCampos: TDBGrid;
-    pmMenuGrid: TPopupMenu;
-    miAlterarP: TMenuItem;
-    miExcluirP: TMenuItem;
-    N5: TMenuItem;
-    miSearchP: TMenuItem;
     sbxNota: TScrollBox;
-    pnlFundoScroll: TPanel;
-    imgFitaEsquerda: TImage;
-    pnlFundoNota: TPanel;
-    imgFitaDireita: TImage;
-    lbLinhaMeioNota: TLabel;
-    btnGrade: TSpeedButton;
+    btnGrade: TUniSpeedButton;
+    pnlFundoScroll: TUniContainerPanel;
+    pnlFundoNota: TUniContainerPanel;
+    lbLinhaMeioNota: TUniLabel;
+    imgFitaEsquerda: TUniImage;
+    imgFitaDireita: TUniImage;
+    dbgrdCampos: TUniDBGrid;
+    pmMenuGrid: TUniPopupMenu;
+    miAlterarP: TUniMenuItem;
+    miExcluirP: TUniMenuItem;
+    N5: TUniMenuItem;
+    miSearchP: TUniMenuItem;
     procedure FormCreate(Sender: TObject);
 
     procedure ControlMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -60,7 +62,6 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnGradeClick(Sender: TObject);
-    procedure dsPadraoStateChange(Sender: TObject);
   private
     ExibirGrade: Boolean;
     ControleChecado: TLabel;
@@ -437,11 +438,6 @@ begin
   inherited;
   ExibirGrade := (not ExibirGrade);
   CriaGrades(ExibirGrade);
-end;
-
-procedure TfrmConfigNota.dsPadraoStateChange(Sender: TObject);
-begin
-  //inherited;
 end;
 
 initialization

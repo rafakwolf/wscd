@@ -6,75 +6,13 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ExtCtrls, Buttons, SqlExpr, Types, ActnList, DB,
   ConstPadrao, ShellAPI, ToolWin, AppEvnts,  udatabaseutils, crypto,
-  StdCtrls, DBCtrls, DBClient, IniFiles,
-  Provider, ImgList,  ImgUtils,
-  unAguarde, FMTBcd, System.Actions;
+  StdCtrls, DBCtrls, DBClient, IniFiles, UniGuiForm, UniGUIDialogs,
+  Provider, ImgList,  ImgUtils, unAguarde, FMTBcd, System.Actions, uniMainMenu,
+  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+  uniStatusBar, uniPanel, uniToolBar;
 
 type
-  TfrmPrincipal = class(TForm)
-    mnPrincipal: TMainMenu;
-    miCofiguracao: TMenuItem;
-    miCidade: TMenuItem;
-    miUnidade: TMenuItem;
-    miGrupo: TMenuItem;
-    miAliquotaIcms: TMenuItem;
-    miDadosEmpresa: TMenuItem;
-    miUsuario: TMenuItem;
-    miCadastro: TMenuItem;
-    miCliente: TMenuItem;
-    N2: TMenuItem;
-    miProduto: TMenuItem;
-    N3: TMenuItem;
-    miFornecedor: TMenuItem;
-    miMovimento: TMenuItem;
-    miContasPagar: TMenuItem;
-    miContasReceber: TMenuItem;
-    N5: TMenuItem;
-    miOrcamento: TMenuItem;
-    miCaixa: TMenuItem;
-    N8: TMenuItem;
-    miProdutoMovimento: TMenuItem;
-    miDesmarcaProduto: TMenuItem;
-    miListaPreco: TMenuItem;
-    miExcluirProduto: TMenuItem;
-    miSair: TMenuItem;
-    miOutroUsuario: TMenuItem;
-    N13: TMenuItem;
-    N15: TMenuItem;
-    miCompra: TMenuItem;
-    N1: TMenuItem;
-    miCfop: TMenuItem;
-    N21: TMenuItem;
-    miImpressora: TMenuItem;
-    pstpImpressora: TPrinterSetupDialog;
-    miFechar: TMenuItem;
-    miUtilitario: TMenuItem;
-    miAgenda: TMenuItem;
-    N6: TMenuItem;
-    miCalendario: TMenuItem;
-    miCalculadora: TMenuItem;
-    miAjuda: TMenuItem;
-    miSobreSistema: TMenuItem;
-    miConfiguracaoGlobal: TMenuItem;
-    miEditorTexto: TMenuItem;
-    miConfiguracaoLocal: TMenuItem;
-    N7: TMenuItem;
-    miNomesCaixas: TMenuItem;
-    miVenda: TMenuItem;
-    N10: TMenuItem;
-    miDicaDia: TMenuItem;
-    miPerda: TMenuItem;
-    N4: TMenuItem;
-    miDuplicata: TMenuItem;
-    miNotaPromissoria: TMenuItem;
-    miRecibo: TMenuItem;
-    N9: TMenuItem;
-    miEtiquetaProduto: TMenuItem;
-    N11: TMenuItem;
-    miBackupRestore: TMenuItem;
-    miBackup: TMenuItem;
-    miPerfis: TMenuItem;
-    miTrocarSenha: TMenuItem;
+  TfrmPrincipal = class(TUniForm)
     ListaAcoes: TActionList;
     actCidade: TAction;
     actUnidade: TAction;
@@ -115,87 +53,141 @@ type
     actSobreSistema: TAction;
     actDicaDia: TAction;
     actRelatorioAgenda: TAction;
-    miRelatorioAgenda: TMenuItem;
     actEnvelope: TAction;
-    miEnvelope: TMenuItem;
     actBackup: TAction;
     actRestore: TAction;
-    miRestore: TMenuItem;
     actEtiqueta: TAction;
-    miEtiqueta: TMenuItem;
     actPesqFone: TAction;
-    N16: TMenuItem;
-    miPesqFone: TMenuItem;
     actBanco: TAction;
-    miBanco: TMenuItem;
     actCheque: TAction;
-    miCheque: TMenuItem;
-    sbPrincipal: TStatusBar;
     actRenovaChave: TAction;
-    miRenovaChave: TMenuItem;
     actAtualizacao: TAction;
-    miAtualizacao: TMenuItem;
-    pnAtalho: TPanel;
-    btnAgenda: TSpeedButton;
-    btnCliente: TSpeedButton;
-    btnFornecedor: TSpeedButton;
-    btnProduto: TSpeedButton;
-    btnListaPreco: TSpeedButton;
-    btnNotaCompra: TSpeedButton;
-    btnNotaVenda: TSpeedButton;
-    btnCheque: TSpeedButton;
-    btnContaPagar: TSpeedButton;
-    btnContaReceber: TSpeedButton;
-    btnLivroCaixa: TSpeedButton;
-    btnLogOff: TSpeedButton;
-    btnSair: TSpeedButton;
-    btnOrcamento: TSpeedButton;
-    bvlSeparaCaixa: TBevel;
-    bvlSeparaListaPreco: TBevel;
-    bvlSeparaAgenda: TBevel;
     actPostIt: TAction;
-    N12: TMenuItem;
-    miPostit: TMenuItem;
     actAjuda: TAction;
-    miChamaAjuda: TMenuItem;
     actConfigServidor: TAction;
-    miConfigServidor: TMenuItem;
     actInfoSistema: TAction;
-    miInfo_sobreosistema: TMenuItem;
     actVendedor: TAction;
-    miVendedor: TMenuItem;
     actConfigNota: TAction;
-    N17: TMenuItem;
-    miConfigNota: TMenuItem;
-    N18: TMenuItem;
-    btnAtualizar: TSpeedButton;
-    bvlSeparaBackup: TBevel;
-    btnBackup: TSpeedButton;
-    pmIconTray: TPopupMenu;
-    pmiMinimizar: TMenuItem;
-    pmiMaximizar: TMenuItem;
-    N19: TMenuItem;
-    pmiFechar: TMenuItem;
-    N20: TMenuItem;
-    pmiAtualizacao: TMenuItem;
-    clbrPrincipal: TCoolBar;
-    btnPromocao: TSpeedButton;
     actPromocao: TAction;
-    N22: TMenuItem;
-    miPromocoes: TMenuItem;
     actInfoAvisos: TAction;
-    miInfoAvisos: TMenuItem;
-    miVisualizarDados: TMenuItem;
-    miRepararIndices: TMenuItem;
-    miLogs: TMenuItem;
-    miExecutarScripts: TMenuItem;
-    miCriarLog: TMenuItem;
-    miAuditoria: TMenuItem;
-    miLogOperacao: TMenuItem;
-    miConsultaErro: TMenuItem;
-    miAuditoriaUser: TMenuItem;
     actAuditoriaUser: TAction;
-    appevPrincipal: TApplicationEvents;
+    mnPrincipal: TUniMainMenu;
+    miCofiguracao: TUniMenuItem;
+    miCidade: TUniMenuItem;
+    miUnidade: TUniMenuItem;
+    miGrupo: TUniMenuItem;
+    miAliquotaIcms: TUniMenuItem;
+    miNomesCaixas: TUniMenuItem;
+    miCfop: TUniMenuItem;
+    miBanco: TUniMenuItem;
+    miVendedor: TUniMenuItem;
+    miEtiqueta: TUniMenuItem;
+    N17: TUniMenuItem;
+    miConfigNota: TUniMenuItem;
+    N7: TUniMenuItem;
+    miConfiguracaoGlobal: TUniMenuItem;
+    miConfiguracaoLocal: TUniMenuItem;
+    miImpressora: TUniMenuItem;
+    miConfigServidor: TUniMenuItem;
+    N1: TUniMenuItem;
+    miDadosEmpresa: TUniMenuItem;
+    N21: TUniMenuItem;
+    miUsuario: TUniMenuItem;
+    miPerfis: TUniMenuItem;
+    miTrocarSenha: TUniMenuItem;
+    miRenovaChave: TUniMenuItem;
+    miUtilitario: TUniMenuItem;
+    miAgenda: TUniMenuItem;
+    miRelatorioAgenda: TUniMenuItem;
+    N16: TUniMenuItem;
+    miPesqFone: TUniMenuItem;
+    N6: TUniMenuItem;
+    miCalendario: TUniMenuItem;
+    miCalculadora: TUniMenuItem;
+    miEditorTexto: TUniMenuItem;
+    miEnvelope: TUniMenuItem;
+    N4: TUniMenuItem;
+    miDuplicata: TUniMenuItem;
+    miNotaPromissoria: TUniMenuItem;
+    miRecibo: TUniMenuItem;
+    N11: TUniMenuItem;
+    miBackupRestore: TUniMenuItem;
+    miBackup: TUniMenuItem;
+    miRestore: TUniMenuItem;
+    N12: TUniMenuItem;
+    miPostit: TUniMenuItem;
+    miAuditoriaUser: TUniMenuItem;
+    miCadastro: TUniMenuItem;
+    miCliente: TUniMenuItem;
+    N2: TUniMenuItem;
+    miProduto: TUniMenuItem;
+    N3: TUniMenuItem;
+    miFornecedor: TUniMenuItem;
+    miMovimento: TUniMenuItem;
+    miContasPagar: TUniMenuItem;
+    miContasReceber: TUniMenuItem;
+    N5: TUniMenuItem;
+    miOrcamento: TUniMenuItem;
+    miVenda: TUniMenuItem;
+    miCompra: TUniMenuItem;
+    N18: TUniMenuItem;
+    miPerda: TUniMenuItem;
+    miCheque: TUniMenuItem;
+    N22: TUniMenuItem;
+    miPromocoes: TUniMenuItem;
+    N15: TUniMenuItem;
+    miCaixa: TUniMenuItem;
+    N8: TUniMenuItem;
+    miProdutoMovimento: TUniMenuItem;
+    miDesmarcaProduto: TUniMenuItem;
+    miExcluirProduto: TUniMenuItem;
+    miListaPreco: TUniMenuItem;
+    N9: TUniMenuItem;
+    miEtiquetaProduto: TUniMenuItem;
+    miAjuda: TUniMenuItem;
+    miDicaDia: TUniMenuItem;
+    miAtualizacao: TUniMenuItem;
+    N10: TUniMenuItem;
+    miInfo_sobreosistema: TUniMenuItem;
+    miInfoAvisos: TUniMenuItem;
+    miChamaAjuda: TUniMenuItem;
+    miSobreSistema: TUniMenuItem;
+    miSair: TUniMenuItem;
+    miOutroUsuario: TUniMenuItem;
+    N13: TUniMenuItem;
+    miFechar: TUniMenuItem;
+    miVisualizarDados: TUniMenuItem;
+    miRepararIndices: TUniMenuItem;
+    miExecutarScripts: TUniMenuItem;
+    miLogs: TUniMenuItem;
+    miCriarLog: TUniMenuItem;
+    miAuditoria: TUniMenuItem;
+    miLogOperacao: TUniMenuItem;
+    miConsultaErro: TUniMenuItem;
+    sbPrincipal: TUniStatusBar;
+    clbrPrincipal: TUniToolBar;
+    pnAtalho: TUniContainerPanel;
+    btnAgenda: TUniSpeedButton;
+    btnCliente: TUniSpeedButton;
+    btnFornecedor: TUniSpeedButton;
+    btnProduto: TUniSpeedButton;
+    btnListaPreco: TUniSpeedButton;
+    btnNotaCompra: TUniSpeedButton;
+    btnNotaVenda: TUniSpeedButton;
+    btnCheque: TUniSpeedButton;
+    btnContaPagar: TUniSpeedButton;
+    btnContaReceber: TUniSpeedButton;
+    btnLivroCaixa: TUniSpeedButton;
+    btnLogOff: TUniSpeedButton;
+    btnSair: TUniSpeedButton;
+    btnOrcamento: TUniSpeedButton;
+    btnAtualizar: TUniSpeedButton;
+    btnBackup: TUniSpeedButton;
+    btnPromocao: TUniSpeedButton;
+    bvlSeparaCaixa: TUniPanel;
+    bvlSeparaListaPreco: TUniPanel;
+    bvlSeparaAgenda: TUniPanel;
+    bvlSeparaBackup: TUniPanel;
     procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
     procedure actUnidadeExecute(Sender: TObject);
@@ -204,7 +196,6 @@ type
     procedure actCfopExecute(Sender: TObject);
     procedure actConfiguracaoGlobalExecute(Sender: TObject);
     procedure actConfiguracaoLocalExecute(Sender: TObject);
-    procedure actImpressoraExecute(Sender: TObject);
     procedure actDadosEmpresaExecute(Sender: TObject);
     procedure actUsuarioExecute(Sender: TObject);
     procedure actAgendaExecute(Sender: TObject);
@@ -238,12 +229,10 @@ type
     procedure actEnvelopeExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure actRestoreExecute(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure actEtiquetaExecute(Sender: TObject);
     procedure actPesqFoneExecute(Sender: TObject);
     procedure actBancoExecute(Sender: TObject);
     procedure actChequeExecute(Sender: TObject);
-    procedure FormResize(Sender: TObject);
     procedure actRenovaChaveExecute(Sender: TObject);
     procedure tbCalculadoraClick(Sender: TObject);
     procedure tbCalendarioClick(Sender: TObject);
@@ -279,7 +268,6 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure actPromocaoExecute(Sender: TObject);
     procedure btnPromocaoClick(Sender: TObject);
-    procedure appevPrincipalException(Sender: TObject; E: Exception);
     procedure sbPrincipalMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure FormPaint(Sender: TObject);
@@ -313,11 +301,8 @@ type
     procedure SetConfigGlobal;
     procedure SetConfiguracao;
     procedure SetEmpresa;
-    procedure SetStatusBar;
-    procedure AjustaStatusBar;
     procedure CriaHintBalao;
     procedure SetSistema;
-    procedure AjustaMainForm;
     procedure InfoAvisos;
     procedure GetListaPermissoes;
 
@@ -331,10 +316,6 @@ type
       Connection: TSQLConnection): Boolean;
     function ValidaHD(HD, HDGravar: string; Connection: TSQLConnection): Boolean;
 
-//    procedure DestroyIcone;
-//    procedure CriaIcone;
-
-    procedure SetThisAsMainForm;
     procedure TerminateCopia(Sender: TObject);
     procedure ZipProgress(const Status: string; const PerCent: Integer);
 
@@ -346,16 +327,23 @@ type
   Public
   end;
 
+ function MainForm: TfrmPrincipal;
+
 var
   frmPrincipal: TfrmPrincipal;
 
 implementation
 
 uses
-  unAcesso, Funcoes, uUtilFncs, VarGlobal,
+  unAcesso, Funcoes, uUtilFncs, VarGlobal,  uniGUIVars, MainModule, uniGUIApplication,
   unSetupConnection, unExecutaScript, uClasses, udmAcesso, System.StrUtils;
 
 {$R *.dfm}
+
+function MainForm: TfrmPrincipal;
+begin
+   Result := TfrmPrincipal(UniMainModule.GetFormInstance(TfrmPrincipal));
+end;
 
 procedure TfrmPrincipal.VerificaSerial;
 var
@@ -368,7 +356,7 @@ begin
 //  case RetornoValidacao of
 //    tvSerialErrado, tvChaveErrada:
 //      begin
-//        if Application.MessageBox('A chave de liberação informada está incorreta ' +
+//        if UniGUIDialogs.MessageDlg('A chave de liberação informada está incorreta ' +
 //          'ou ainda não foi informada, os dados da empresa também podem ter sido alterados.' + #13 +
 //          'Deseja efetuar a correção agora?', 'Dados incorretos',
 //          MB_YESNO or MB_ICONWARNING) = ID_YES then
@@ -378,7 +366,7 @@ begin
 //      end;
 //    tvExpirouPrazo:
 //      begin
-//        if Application.MessageBox('A chave de liberação está expirada.' + #13 +
+//        if UniGUIDialogs.MessageDlg('A chave de liberação está expirada.' + #13 +
 //          'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato ' +
 //          'com o suporte para obter uma nova chave de liberação.' + #13 +
 //          'Deseja informar uma nova chave de liberação agora?', 'Chave expirada',
@@ -389,7 +377,7 @@ begin
 //      end;
 //    tvBloqueioSistema:
 //      begin
-//        if Application.MessageBox('CHAVE DE LIBERAÇÃO EXPIRADA.' + #13 +
+//        if UniGUIDialogs.MessageDlg('CHAVE DE LIBERAÇÃO EXPIRADA.' + #13 +
 //          'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias. ' +
 //          'Por favor entre em contato com o suporte para obter uma nova chave de liberação.' + #13 +
 //          'Deseja informar uma nova chave de liberação?',
@@ -400,7 +388,7 @@ begin
 //      end;
 //    tvPrazoMtoLongo:
 //      begin
-//        if Application.MessageBox('A chave de liberação informada está fora de um período válido. ' +
+//        if UniGUIDialogs.MessageDlg('A chave de liberação informada está fora de um período válido. ' +
 //          'Verifique a data do seu computador e se a chave foi digitada corretamente.' + #13 +
 //          'Deseja informar uma nova chave de liberação?',
 //          'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
@@ -410,9 +398,9 @@ begin
 //      end;
 //    tvPrimeiroAcesso:
 //      begin
-//        Application.MessageBox('Primeiro acesso, informe os dados de registro do sistema.',
+//        UniGUIDialogs.MessageDlg('Primeiro acesso, informe os dados de registro do sistema.',
 //          'Registro do sistema', MB_OK + MB_ICONINFORMATION);
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
+//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', UniApplication);
 //      end;
 //  end;
 //
@@ -423,11 +411,11 @@ begin
 //      if (RetornoValidacao = tvExpirouPrazo) then
 //        ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Self)
 //      else
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
+//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', UniApplication);
 //    end
 //    else if (RetornoValidacao <> tvExpirouPrazo) then
 //    begin
-//      if Application.MessageBox(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. ' +
+//      if UniGUIDialogs.MessageDlg(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. ' +
 //        'Para obter uma nova chave, entre em contato com o suporte.' + #13 +
 //        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
 //      begin
@@ -435,77 +423,69 @@ begin
 //        Application.Terminate;
 //      end
 //      else
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do serial', Self);
+//        ChamaForm('TfrmRegistro', 'Registro - Validação do serial', UniApplication);
 //    end;
 //  end;
 end;
 
 procedure TfrmPrincipal.actGrupoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroGrupo', 'Cadastro de grupos', Self);
+  ChamaForm('TfrmCadastroGrupo', 'Cadastro de grupos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actCidadeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroCidade', 'Cadastro de cidades', Self);
+  ChamaForm('TfrmCadastroCidade', 'Cadastro de cidades', UniApplication);
 end;
 
 procedure TfrmPrincipal.actUnidadeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', Self);
+  ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', UniApplication);
 end;
 
 procedure TfrmPrincipal.actAliquotaIcmsExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmAliquota', 'Cadastro de aliquotas', Self);
+  ChamaForm('TfrmAliquota', 'Cadastro de aliquotas', UniApplication);
 end;
 
 procedure TfrmPrincipal.actContaCaixaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroCaixa', 'Contas caixa', Self);
+  ChamaForm('TfrmCadastroCaixa', 'Contas caixa', UniApplication);
 end;
 
 procedure TfrmPrincipal.actCfopExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroCfop', 'Cadastro de CFOP', Self);
+  ChamaForm('TfrmCadastroCfop', 'Cadastro de CFOP', UniApplication);
 end;
 
 procedure TfrmPrincipal.actConfiguracaoGlobalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigGlobal', 'Configurações globais', Self);
+  ChamaForm('TfrmConfigGlobal', 'Configurações globais', UniApplication);
 end;
 
 procedure TfrmPrincipal.actConfiguracaoLocalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfiguracao', 'Configurações locais', Self);
-end;
-
-procedure TfrmPrincipal.actImpressoraExecute(Sender: TObject);
-begin
-  if PrinterExists then
-    pstpImpressora.Execute
-  else
-    MsgCuidado(MSG_IMPRESSORA, 'Impressora não Instalada');
+  ChamaForm('TfrmConfiguracao', 'Configurações locais', UniApplication);
 end;
 
 procedure TfrmPrincipal.actDadosEmpresaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDadosEmpresa', 'Dados da empresa', Self);
+  ChamaForm('TfrmDadosEmpresa', 'Dados da empresa', UniApplication);
 end;
 
 procedure TfrmPrincipal.actUsuarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmUsuarioItemMenu', 'Usuários', Self);
+  ChamaForm('TfrmUsuarioItemMenu', 'Usuários', UniApplication);
 end;
 
 procedure TfrmPrincipal.actAgendaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmAgenda', 'Agenda de telefones', Self);
+  ChamaForm('TfrmAgenda', 'Agenda de telefones', UniApplication);
 end;
 
 procedure TfrmPrincipal.actCalendarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCalendario', 'Calendário', Self);
+  ChamaForm('TfrmCalendario', 'Calendário', UniApplication);
 end;
 
 procedure TfrmPrincipal.actCalculadoraExecute(Sender: TObject);
@@ -520,82 +500,82 @@ end;
 
 procedure TfrmPrincipal.actDuplicataExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDuplicatas', 'Cadastro e impressão de duplicatas', Self);
+  ChamaForm('TfrmDuplicatas', 'Cadastro e impressão de duplicatas', UniApplication);
 end;
 
 procedure TfrmPrincipal.actBackupExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmBackup', 'Fazer uma cópia dos dados', self);
+  ChamaForm('TfrmBackup', 'Fazer uma cópia dos dados', UniApplication);
 end;
 
 procedure TfrmPrincipal.actClienteExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCliente', 'Cadastro de clientes', Self);
+  ChamaForm('TfrmCliente', 'Cadastro de clientes', UniApplication);
 end;
 
 procedure TfrmPrincipal.actProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmProduto', 'Cadastro de produtos', Self);
+  ChamaForm('TfrmProduto', 'Cadastro de produtos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actFornecedorExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmFornecedor', 'Cadastro de fornecedores', Self);
+  ChamaForm('TfrmFornecedor', 'Cadastro de fornecedores', UniApplication);
 end;
 
 procedure TfrmPrincipal.actContasPagarExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCP', 'Contas a pagar', Self);
+  ChamaForm('TfrmCP', 'Contas a pagar', UniApplication);
 end;
 
 procedure TfrmPrincipal.actContasReceberExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCR', 'Contas a receber', Self);
+  ChamaForm('TfrmCR', 'Contas a receber', UniApplication);
 end;
 
 procedure TfrmPrincipal.actOrcamentoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmOrcamentos', 'Orçamentos', Self);
+  ChamaForm('TfrmOrcamentos', 'Orçamentos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actVendaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmVendas', 'Vendas', Self);
+  ChamaForm('TfrmVendas', 'Vendas', UniApplication);
 end;
 
 procedure TfrmPrincipal.actCompraExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmNotasFiscais', 'Compras', Self);
+  ChamaForm('TfrmNotasFiscais', 'Compras', UniApplication);
 end;
 
 procedure TfrmPrincipal.actPerdaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPerda', 'Perdas de produtos', Self);
+  ChamaForm('TfrmPerda', 'Perdas de produtos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actCaixaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCaixa', 'Livro caixa', Self);
+  ChamaForm('TfrmCaixa', 'Livro caixa', UniApplication);
 end;
 
 procedure TfrmPrincipal.actDesmarcaProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDesmarcar', 'Produtos novos e alterados', Self);
+  ChamaForm('TfrmDesmarcar', 'Produtos novos e alterados', UniApplication);
 end;
 
 procedure TfrmPrincipal.actExcluirProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmExclusaoProduto', 'Exclusão de produtos', Self);
+  ChamaForm('TfrmExclusaoProduto', 'Exclusão de produtos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actListaPrecoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmListagemPrecos', 'Lista de preços', Self);
+  ChamaForm('TfrmListagemPrecos', 'Lista de preços', UniApplication);
 end;
 
 procedure TfrmPrincipal.actEtiquetaProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEtiquetaProduto', 'Etiquetas de produtos', Self);
+  ChamaForm('TfrmEtiquetaProduto', 'Etiquetas de produtos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actOutroUsuarioExecute(Sender: TObject);
@@ -605,7 +585,6 @@ begin
   else
   begin
     SetEnableMenu(IdUsuario = 0);
-    SetStatusBar;
   end;
 end;
 
@@ -616,56 +595,56 @@ end;
 
 procedure TfrmPrincipal.actSobreSistemaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmSobre', 'Sobre o sistema', Self);
+  ChamaForm('TfrmSobre', 'Sobre o sistema', UniApplication);
 end;
 
 procedure TfrmPrincipal.actDicaDiaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDicas', 'Dica do dia', Self);
+  ChamaForm('TfrmDicas', 'Dica do dia', UniApplication);
 end;
 
 procedure TfrmPrincipal.actPerfisExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissões de usuários', Self);
+  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissões de usuários', UniApplication);
 end;
 
 procedure TfrmPrincipal.actTrocaSenhaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmTrocaSenha', 'Trocar senha', Self);
+  ChamaForm('TfrmTrocaSenha', 'Trocar senha', UniApplication);
 end;
 
 procedure TfrmPrincipal.actReciboExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRecibo', 'Recibos', Self);
+  ChamaForm('TfrmRecibo', 'Recibos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actRelatorioAgendaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioAgenda', 'Listagem de telefones', Self);
+  ChamaForm('TfrmRelatorioAgenda', 'Listagem de telefones', UniApplication);
 end;
 
 procedure TfrmPrincipal.actEnvelopeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEnvelopes', 'Envelopes', Self);
+  ChamaForm('TfrmEnvelopes', 'Envelopes', UniApplication);
 end;
 
 procedure TfrmPrincipal.CarregaPapelParede;
 begin
-  FBitmap := TBitmap.Create;
-  if FileExists(Configuracao.PapelParede) and (IdUsuario <> 99999) then
-  begin
-    if (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPEG') or
-      (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPG') then
-      FBitmap := LoadJpegIntoBitmap(Configuracao.PapelParede)
-    else
-      FBitmap.LoadFromFile(Configuracao.PapelParede);
-  end
-  else
-  begin
-    Self.Color := clBackground;
-  end;
-
-  Windows.InvalidateRect(Handle, nil, True);
+//  FBitmap := TBitmap.Create;
+//  if FileExists(Configuracao.PapelParede) and (IdUsuario <> 99999) then
+//  begin
+//    if (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPEG') or
+//      (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPG') then
+//      FBitmap := LoadJpegIntoBitmap(Configuracao.PapelParede)
+//    else
+//      FBitmap.LoadFromFile(Configuracao.PapelParede);
+//  end
+//  else
+//  begin
+//    Self.Color := clBackground;
+//  end;
+//
+//  Windows.InvalidateRect(Handle, nil, True);
 end;
 
 procedure TfrmPrincipal.ConfiguracaoAlterado(var Msg: TMessage);
@@ -678,16 +657,6 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  setThisAsMainForm;
-
-  self.Top := 0;
-  self.Left := 0;
-  self.Width := Screen.Width;
-  self.Height := screen.Height;
-
-  Application.HintHidePause := 5000;
-  Application.HintPause := 10;
-
   self.Caption := Application.Title;
 
   Atualizando := False;
@@ -696,14 +665,13 @@ begin
   AuxWidth := 0;
   AuxHeight := 0;
 
-  //CriaIcone;
   CarregaPapelParede;
   SetZOrder(false);
 end;
 
 procedure TfrmPrincipal.actRestoreExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRestore', 'Voltar uma cópia dos dados', self);
+  ChamaForm('TfrmRestore', 'Voltar uma cópia dos dados', UniApplication);
 end;
 
 procedure TfrmPrincipal.SetEnableMenu(adm: Boolean);
@@ -818,91 +786,29 @@ begin
   self.Caption := Application.Title + ' - ' + Sistema.VersaoApp + ' - ' + Empresa.Nome;
 end;
 
-procedure TfrmPrincipal.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-begin
-  if copiando then
-  begin
-    if MsgSN('Existe uma copia automática em andamento, deseja finalizar mesmo assim?') then
-    begin
-      CanClose := True;
-    end
-    else
-    begin
-      CanClose := False;
-      Exit;
-    end;
-  end;
-
-  if Configuracao.Backup then
-  begin
-    case Application.MessageBox('Deseja efetuar uma cópia de segurança agora?', 'Finalizando o sistema',
-      MB_YESNOCANCEL or MB_ICONQUESTION) of
-      ID_YES:
-        begin
-          CanClose := False;
-          ChamaForm('TfrmBackup', 'Cópia de segurança', Self);
-        end;
-      ID_NO:
-        begin
-          Application.Terminate;
-        end;
-      ID_CANCEL:
-        begin
-          CanClose := False;
-          Exit;
-        end;
-    end;
-  end;
-end;
-
 procedure TfrmPrincipal.actEtiquetaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEtiqueta', 'Configuração de etiquetas', Self);
+  ChamaForm('TfrmEtiqueta', 'Configuração de etiquetas', UniApplication);
 end;
 
 procedure TfrmPrincipal.actPesqFoneExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPesqFone', 'Pesquisa de telefones', Self);
+  ChamaForm('TfrmPesqFone', 'Pesquisa de telefones', UniApplication);
 end;
 
 procedure TfrmPrincipal.actBancoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmBanco', 'Bancos', Self);
+  ChamaForm('TfrmBanco', 'Bancos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actChequeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCheque', 'Controle de cheques', Self);
-end;
-
-procedure TfrmPrincipal.AjustaStatusBar;
-var
-  propSize: Integer;
-begin
-  propSize := (Application.MainForm.ClientWidth div 3);
-
-  sbPrincipal.Font.Name := 'Arial';
-  sbPrincipal.Font.Size := 9;
-  sbPrincipal.Font.Style := [];
-  sbPrincipal.Height := 22;
-  sbPrincipal.Panels[0].Width := propSize;
-  sbPrincipal.Panels[1].Width := propSize;
-  sbPrincipal.Panels[2].Width := propSize;
-  sbPrincipal.Panels[0].Alignment := taCenter;
-  sbPrincipal.Panels[1].Alignment := taCenter;
-  sbPrincipal.Panels[2].Alignment := taCenter;
-
-  sbPrincipal.Repaint;
-end;
-
-procedure TfrmPrincipal.FormResize(Sender: TObject);
-begin
-  AjustaStatusBar;
+  ChamaForm('TfrmCheque', 'Controle de cheques', UniApplication);
 end;
 
 procedure TfrmPrincipal.actRenovaChaveExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Self);
+  ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', UniApplication);
 end;
 
 procedure TfrmPrincipal.tbCalculadoraClick(Sender: TObject);
@@ -1026,34 +932,6 @@ begin
     Sistema := TSistema.Create;
 end;
 
-procedure TfrmPrincipal.SetStatusBar;
-var
-  ServerName, ServerSeted: string;
-begin
-  with TIniFile.Create(ExtractFilePath(ParamStr(0))+'cfg.ini')do try
-  ServerSeted := Trim(AnsiUpperCase(ReadString('Conexao', 'Servidor','localhost')));
-  if ((ServerSeted = '127.0.0.1') or (ServerSeted = GetComputerName)) then
-    ServerName := 'SERVIDOR LOCAL'
-  else
-    ServerName := AnsiUpperCase(Trim(ReadString('Conexao', 'Servidor','localhost')));
-  finally
-    free;
-  end;
-
-  sbPrincipal.Panels[0].Text := 'Usuário: ' + AnsiUpperCase(Usuario);
-  sbPrincipal.Panels[1].Text := 'Dados: ' + ServerName;
-  sbPrincipal.Panels[2].Text := 'Computador: ' + GetComputerName;
-
-  sbPrincipal.Update;
-end;
-
-procedure TfrmPrincipal.SetThisAsMainForm;
-var  PonteiroMainForm: Pointer;
-begin
-  PonteiroMainForm := @Application.MainForm;
-  Pointer(PonteiroMainForm^) := self;
-end;
-
 procedure TfrmPrincipal.ConfigGlobalAlterado(var Msg: TMessage);
 begin
   SetConfigGlobal;
@@ -1083,54 +961,54 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  TfrmAguarde.Execute('Iniciando...');
-  try
-    SetSistema;
-    //SistemaOk := VerificaVersao;
-    SetEmpresa;
-    SetConfiguracao;
-    SetConfigGlobal;
-    CarregaToolBar;
-    AjustaStatusBar;
-    SetEnableMenu(IdUsuario = 0);
-    SetStatusBar;
-    CriaHintBalao;
-
-    if (IdUsuario <> 99999) then
-    begin
-      VerificaData;
-      //VerificaSerial;
-      //VerificaHD;
-    end;
-
-    if (IdUsuario <> 99999) then
-      InfoAvisos;
-
-    if Configuracao.ExibirDica then
-      actDicaDia.Execute;
-
-    { apos as atualizações vai mostrar "o que há de novo" no sistema }
-//    if ReadIniFile('NEW', 'Mostrou') = 'N' then
+//  TfrmAguarde.Execute('Iniciando...');
+//  try
+//    SetSistema;
+//    //SistemaOk := VerificaVersao;
+//    SetEmpresa;
+//    SetConfiguracao;
+//    SetConfigGlobal;
+//    CarregaToolBar;
+//    AjustaStatusBar;
+//    SetEnableMenu(IdUsuario = 0);
+//    SetStatusBar;
+//    CriaHintBalao;
+//
+//    if (IdUsuario <> 99999) then
 //    begin
-//      WriteIniFile('NEW', 'Mostrou', 'S');
-//      ChamaHelp(Self, 6,'');
+//      VerificaData;
+//      //VerificaSerial;
+//      //VerificaHD;
 //    end;
-
-//    if SistemaOk and ComputerIsServer then
+//
+//    if (IdUsuario <> 99999) then
+//      InfoAvisos;
+//
+//    if Configuracao.ExibirDica then
+//      actDicaDia.Execute;
+//
+//    { apos as atualizações vai mostrar "o que há de novo" no sistema }
+////    if ReadIniFile('NEW', 'Mostrou') = 'N' then
+////    begin
+////      WriteIniFile('NEW', 'Mostrou', 'S');
+////      ChamaHelp(Self, 6,'');
+////    end;
+//
+////    if SistemaOk and ComputerIsServer then
+////    begin
+////      copiando := False;
+////      CopiaAutomatica;
+////    end;
+//
+//    frmAguarde.Fecha;
+//    //ForceForegroundWindow(handle);
+//  except
+//    on e: exception do
 //    begin
-//      copiando := False;
-//      CopiaAutomatica;
+//      frmAguarde.Fecha;
+//      ShowMEssage(e.Message);
 //    end;
-
-    frmAguarde.Fecha;
-    //ForceForegroundWindow(handle);
-  except
-    on e: exception do
-    begin
-      frmAguarde.Fecha;
-      ShowMEssage(e.Message);
-    end;
-  end;
+//  end;
 end;
 
 procedure TfrmPrincipal.GetListaPermissoes;
@@ -1155,22 +1033,22 @@ end;
 
 procedure TfrmPrincipal.actNotaPromissoriaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromissoria', 'Promissória avulsa', Self);
+  ChamaForm('TfrmPromissoria', 'Promissória avulsa', UniApplication);
 end;
 
 procedure TfrmPrincipal.actInfoSistemaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmInformacaoSistema', 'Informações sobre o sistema', Self);
+  ChamaForm('TfrmInformacaoSistema', 'Informações sobre o sistema', UniApplication);
 end;
 
 procedure TfrmPrincipal.actVendedorExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmVendedor', 'Vendedores', Self);
+  ChamaForm('TfrmVendedor', 'Vendedores', UniApplication);
 end;
 
 procedure TfrmPrincipal.actConfigNotaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigNota', 'Configurãção da nota', Self);
+  ChamaForm('TfrmConfigNota', 'Configurãção da nota', UniApplication);
 end;
 
 procedure TfrmPrincipal.actAtualizacaoExecute(Sender: TObject);
@@ -1315,12 +1193,13 @@ begin
    FreeAndNil( Sistema );
 
   //DestroyIcone;
-  FBitmap.Free;
+  if (fbitmap <> nil) then
+    FBitmap.Free;
 end;
 
 procedure TfrmPrincipal.actPromocaoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromocao', 'Promoções', Self);
+  ChamaForm('TfrmPromocao', 'Promoções', UniApplication);
 end;
 
 procedure TfrmPrincipal.btnPromocaoClick(Sender: TObject);
@@ -1329,54 +1208,9 @@ begin
     miPromocoes.Click;
 end;
 
-procedure TfrmPrincipal.appevPrincipalException(Sender: TObject;
-  E: Exception);
-const
-  CRLF = #13#10;
-var
-  msg: string;
-begin
-//  if Configuracao.GravarErro then
-//  begin
-//    try
-//      with TSQLDataSet.Create(nil) do
-//      try
-//        SQLConnection := GetConnection;
-//        CommandText := 'insert into LOGERRO ' +
-//          'values(:ID, :DATAHORA, :FORM, :CONTROLE, :MSG)';
-//        Params.ParamByName('ID').AsInteger :=
-//          GetProximoID('LOGERRO', 'IDLOGERRO', GetConnection);
-//        Params.ParamByName('DATAHORA').AsDate :=
-//          StrToDateTime(FormatDateTime('dd/mm/yyyy hh:mm:ss', Now));
-//        Params.ParamByName('FORM').AsString := Screen.ActiveForm.Name;
-//        Params.ParamByName('CONTROLE').AsString := Screen.ActiveControl.Name;
-//        Params.ParamByName('MSG').AsString := e.Message;
-//        ExecSQL;
-//      finally
-//        Free;
-//      end;
-//    except
-//    end;
-//  end;
-
-  msg := 'Erro do sistema. Contate o suporte.' + CRLF + CRLF;
-  msg := msg + 'MENSAGEM: ' + CRLF;
-  msg := msg + E.Message + CRLF + CRLF;
-  msg := msg + 'CONTROLES: ' + CRLF;
-  msg := msg + 'Form: ' + Screen.ActiveForm.Name + CRLF;
-  msg := msg + 'Controle: ' + Screen.ActiveControl.Name + CRLF + CRLF;
-
-//  if Configuracao.GravarErro then
-//    msg := msg + 'Erro gravado pelo sistema.'
-//  else
-//    msg := msg + 'Erro NÃO gravado pelo sistema.';
-
-  MsgErro(msg, 'Erro');
-end;
-
 procedure TfrmPrincipal.VerificacaoAutomatica;
 begin
-  ChamaForm('TfrmForceAtualizacao', 'Atualização', Self);
+  ChamaForm('TfrmForceAtualizacao', 'Atualização', UniApplication);
 end;
 
 procedure TfrmPrincipal.CopiaAutomatica;
@@ -1389,22 +1223,8 @@ begin
   pb.Parent := Self;
 
   copiando := True;
-  //Copia := TCopiaDiaria.Start(True);
-  //Copia.OnTProgress := ZipProgress;
-  //Copia.OnTerminate := TerminateCopia;
 end;
 
-procedure TfrmPrincipal.AjustaMainForm;
-begin
-  try
-    LockWindowUpdate(Application.MainForm.Handle);
-    Application.MainForm.Height := Screen.Height;
-    Application.MainForm.Width := Screen.Width;
-    Windows.InvalidateRect(Application.MainForm.Handle, nil, True);
-  finally
-    LockWindowUpdate(0);
-  end;
-end;
 
 procedure TfrmPrincipal.sbPrincipalMouseMove(Sender: TObject;
   Shift: TShiftState; X, Y: Integer);
@@ -1462,12 +1282,12 @@ end;
 procedure TfrmPrincipal.InfoAvisos;
 begin
   if Configuracao.InfoAvisos then
-    ChamaForm('TfrmInfoAvisos', 'Informaçãoes e avisos', Self);
+    ChamaForm('TfrmInfoAvisos', 'Informaçãoes e avisos', UniApplication);
 end;
 
 procedure TfrmPrincipal.actInfoAvisosExecute(Sender: TObject);
 begin
-  ChamaForm('TfrminfoAvisos', 'Informações e avisos', Self);
+  ChamaForm('TfrminfoAvisos', 'Informações e avisos', UniApplication);
 end;
 
 function TfrmPrincipal.ValidaDataAcesso(DataEncriptada: string;
@@ -1492,64 +1312,72 @@ var
   Dias: Integer;
   DataUltimoAcesso: TDateTime;
 begin
-  Result := False;
-  if (DataEncriptada = '') then
-  begin
-    if Application.MessageBox(PChar('Primeiro acesso ao sistema.' + #13#10 +
-      'O sistema utiliza a data de acesso para validar sua chave de liberação.' + #13#10 +
-      'A data atual do seu computador é ' + FormatDateTime('dd/mm/yyyy', DataAtual) + ', continua?'),
-      'Data do primeiro acesso', MB_YESNO or MB_ICONQUESTION) = ID_YES then
-      RegistraData(DataAtual, Connection)
-    else
-    begin
-      Application.MessageBox('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
-        'O sistema será finalizado.', 'Data inválida', MB_OK or MB_ICONINFORMATION);
-      Application.Terminate;
-      Abort;
-    end;
-  end
-  else
-  begin
-    DataUltimoAcesso := StrToDate( EnDeCrypt(DataEncriptada) );
-
-    Dias := Trunc(DataAtual - DataUltimoAcesso);
-
-    if (Dias > 3) then
-    begin
-      if Application.MessageBox(PChar('A última abertura do sistema foi registrada com a data ' +
-        FormatDateTime('dd/mm/yyyy', DataUltimoAcesso) + '.' + #13#10 +
-        'O registro de uma data incorreta pode invalidar a chave de liberação deste sistema' + #13#10 +
-        'e não será possível desfazer esta operação sem uma nova chave.' + #13#10 +
-        'Tem certeza que deseja registrar a data atual ' + FormatDateTime('dd/mm/yyyy', DataAtual) +
-        ' como sendo a nova data de acesso?'), 'Violação de data',
-        MB_YESNO or MB_ICONQUESTION) = ID_YES then
-      begin
-        RegistraData(DataAtual, Connection);
-      end
-      else
-      begin
-        Application.MessageBox('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
-          'O sistema será finalizado.', 'Data inválida', MB_OK or MB_ICONINFORMATION);
-        Application.Terminate;
-        Abort;
-      end;
-    end
-    else
-      if (Dias < 0) then
-      begin
-        Application.MessageBox(PChar('A data do último acesso ao sistema foi ' +
-          FormatDateTime('dd/mm/yyyy', DataUltimoAcesso) + '.' + #13 +
-          'Não é possível abrir o sistema com a data atual sendo inferior à do último acesso.' + #13 +
-          'Por favor, corrija a data do computador e tente novamente.' + #13#13 +
-          'O sistema será finalizado.'), 'Data inválida', MB_OK or MB_ICONINFORMATION);
-        Application.Terminate;
-        Abort;
-      end
-      else
-      begin
-        RegistraData(DataAtual, Connection);
-      end;
-  end;
+//  Result := False;
+//
+//  if (DataEncriptada = '') then
+//  begin
+//    if UniGUIDialogs.MessageDlg('Primeiro acesso ao sistema.' + #13#10 +
+//      'O sistema utiliza a data de acesso para validar sua chave de liberação.' + #13#10 +
+//      'A data atual do seu computador é ' +
+//      FormatDateTime('dd/mm/yyyy', DataAtual) + ', continua?',
+//      TMsgDlgType.mtConfirmation,[TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+//
+//      procedure (sender: TComponent; res: Integer)
+//      begin
+//        if (res = ID_YES) then
+//           RegistraData(DataAtual, Connection)
+//      end) then
+//
+//    else
+//    begin
+//      UniGUIDialogs.MessageDlg('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
+//        'O sistema será finalizado.', 'Data inválida', MB_OK or MB_ICONINFORMATION);
+//      Application.Terminate;
+//      Abort;
+//    end;
+//  end
+//  else
+//  begin
+//    DataUltimoAcesso := StrToDate( EnDeCrypt(DataEncriptada) );
+//
+//    Dias := Trunc(DataAtual - DataUltimoAcesso);
+//
+//    if (Dias > 3) then
+//    begin
+//      if UniGUIDialogs.MessageDlg(PChar('A última abertura do sistema foi registrada com a data ' +
+//        FormatDateTime('dd/mm/yyyy', DataUltimoAcesso) + '.' + #13#10 +
+//        'O registro de uma data incorreta pode invalidar a chave de liberação deste sistema' + #13#10 +
+//        'e não será possível desfazer esta operação sem uma nova chave.' + #13#10 +
+//        'Tem certeza que deseja registrar a data atual ' + FormatDateTime('dd/mm/yyyy', DataAtual) +
+//        ' como sendo a nova data de acesso?'), 'Violação de data',
+//        MB_YESNO or MB_ICONQUESTION) = ID_YES then
+//      begin
+//        RegistraData(DataAtual, Connection);
+//      end
+//      else
+//      begin
+//        UniGUIDialogs.MessageDlg('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
+//          'O sistema será finalizado.', 'Data inválida', MB_OK or MB_ICONINFORMATION);
+//        Application.Terminate;
+//        Abort;
+//      end;
+//    end
+//    else
+//      if (Dias < 0) then
+//      begin
+//        UniGUIDialogs.MessageDlg(PChar('A data do último acesso ao sistema foi ' +
+//          FormatDateTime('dd/mm/yyyy', DataUltimoAcesso) + '.' + #13 +
+//          'Não é possível abrir o sistema com a data atual sendo inferior à do último acesso.' + #13 +
+//          'Por favor, corrija a data do computador e tente novamente.' + #13#13 +
+//          'O sistema será finalizado.'), 'Data inválida', MB_OK or MB_ICONINFORMATION);
+//        Application.Terminate;
+//        Abort;
+//      end
+//      else
+//      begin
+//        RegistraData(DataAtual, Connection);
+//      end;
+//  end;
 end;
 
 function TfrmPrincipal.ValidaHD(HD, HDGravar: string;
@@ -1586,12 +1414,12 @@ end;
 
 procedure TfrmPrincipal.miRepararIndicesClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRepararIndice', 'Reparar índices', Self);
+  ChamaForm('TfrmRepararIndice', 'Reparar índices', UniApplication);
 end;
 
 procedure TfrmPrincipal.miVisualizarDadosClick(Sender: TObject);
 begin
-  ChamaForm('TfrmVisualizarDados', 'Visualizar Dados', Self);
+  ChamaForm('TfrmVisualizarDados', 'Visualizar Dados', UniApplication);
 end;
 
 procedure TfrmPrincipal.miExecutarScriptsClick(Sender: TObject);
@@ -1603,22 +1431,22 @@ end;
 
 procedure TfrmPrincipal.miCriarLogClick(Sender: TObject);
 begin
-  ChamaForm('TfrmCriaTabelaLog', 'Criar tabelas de log de registro', Self);
+  ChamaForm('TfrmCriaTabelaLog', 'Criar tabelas de log de registro', UniApplication);
 end;
 
 procedure TfrmPrincipal.miAuditoriaClick(Sender: TObject);
 begin
-  ChamaForm('TfrmAuditoriaRegistro', 'Auditoria de registros', Self);
+  ChamaForm('TfrmAuditoriaRegistro', 'Auditoria de registros', UniApplication);
 end;
 
 procedure TfrmPrincipal.miConsultaErroClick(Sender: TObject);
 begin
-  ChamaForm('TfrmConsultaLogErro', 'Log de erros', Self);
+  ChamaForm('TfrmConsultaLogErro', 'Log de erros', UniApplication);
 end;
 
 procedure TfrmPrincipal.actAuditoriaUserExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmAuditoriaRegistro', 'Auditoria de registros', Self);
+  ChamaForm('TfrmAuditoriaRegistro', 'Auditoria de registros', UniApplication);
 end;
 
 function TfrmPrincipal.ComputerIsServer: Boolean;
@@ -1691,8 +1519,11 @@ end;
 procedure TfrmPrincipal.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if (ssCtrl in Shift) and (ssAlt in Shift) and (Key = VK_F10) then
-    ExportaMenu(ExtractFilePath(ParamStr(0))+'menu.sql');
+//  if (ssCtrl in Shift) and (ssAlt in Shift) and (Key = VK_F10) then
+//    ExportaMenu(ExtractFilePath(ParamStr(0))+'menu.sql');
 end;
+
+initialization
+  RegisterAppFormClass(TfrmPrincipal);
 
 end.

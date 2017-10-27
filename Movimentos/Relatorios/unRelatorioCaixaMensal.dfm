@@ -1,7 +1,7 @@
 inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
-  Caption = 'frmRelatorioCaixaMensal'
   ClientHeight = 168
   ClientWidth = 369
+  Caption = 'frmRelatorioCaixaMensal'
   OldCreateOrder = True
   ExplicitWidth = 385
   ExplicitHeight = 207
@@ -20,31 +20,37 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
       'Data')
     TabOrder = 0
   end
-  object edtMes: TEdit [1]
-    Left = 32
-    Top = 80
-    Width = 41
-    Height = 21
-    TabOrder = 1
-    OnExit = edtMesExit
-  end
-  object edtAno: TEdit [2]
-    Left = 80
-    Top = 80
-    Width = 65
-    Height = 21
-    TabOrder = 2
-    OnExit = edtAnoExit
-  end
-  inherited pnButtons: TPanel
+  inherited pnButtons: TUniContainerPanel
     Top = 134
     Width = 369
     TabOrder = 3
     ExplicitTop = 134
     ExplicitWidth = 369
-    inherited btnVisualizar: TBitBtn
+    inherited btnVisualizar: TUniBitBtn
       OnClick = btnVisualizarClick
     end
+  end
+  object edtMes: TUniEdit [2]
+    Left = 32
+    Top = 80
+    Width = 41
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 1
+    OnExit = edtMesExit
+  end
+  object edtAno: TUniEdit [3]
+    Left = 80
+    Top = 80
+    Width = 65
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 2
+    OnExit = edtAnoExit
   end
   inherited dsPadrao: TDataSource
     Left = 216

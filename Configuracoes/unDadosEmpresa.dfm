@@ -1,188 +1,188 @@
 inherited frmDadosEmpresa: TfrmDadosEmpresa
   Left = 176
   Top = 143
-  Caption = 'frmDadosEmpresa'
   ClientHeight = 364
   ClientWidth = 682
+  Caption = 'frmDadosEmpresa'
   OldCreateOrder = True
   ExplicitWidth = 688
   ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
-  object lbFantazia: TLabel [0]
+  inherited sbStatus: TUniStatusBar
+    Top = 345
+    Width = 682
+    ExplicitTop = 345
+    ExplicitWidth = 682
+  end
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 682
+    TabOrder = 15
+    ExplicitWidth = 682
+  end
+  object lbFantazia: TUniLabel [2]
     Left = 43
     Top = 78
     Width = 46
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Fantasia'
-    FocusControl = dbeFantazia
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 19
   end
-  object lbRazaoSocial: TLabel [1]
+  object lbRazaoSocial: TUniLabel [3]
     Left = 17
     Top = 54
     Width = 73
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Raz'#227'o Social'
-    FocusControl = dbeRazaoSocial
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 20
   end
-  object lbCnpj: TLabel [2]
+  object lbCnpj: TUniLabel [4]
     Left = 38
     Top = 102
     Width = 52
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Cnpj/Cpf'
-    FocusControl = dbeCnpj
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 21
   end
-  object lbInscEstadual: TLabel [3]
+  object lbInscEstadual: TUniLabel [5]
     Left = 37
     Top = 126
     Width = 53
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Insc. Est.'
-    FocusControl = dbeInscEstadual
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 22
   end
-  object lbEndereco: TLabel [4]
+  object lbEndereco: TUniLabel [6]
     Left = 37
     Top = 150
     Width = 53
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Endere'#231'o'
-    FocusControl = dbeEndereco
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 23
   end
-  object lbBairro: TLabel [5]
+  object lbBairro: TUniLabel [7]
     Left = 55
     Top = 198
     Width = 35
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Bairro'
-    FocusControl = dbeBairro
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 24
   end
-  object lbTelefone: TLabel [6]
+  object lbTelefone: TUniLabel [8]
     Left = 41
     Top = 222
     Width = 48
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Telefone'
-    FocusControl = dbeTelefone
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 25
   end
-  object lbResponsavel: TLabel [7]
+  object lbResponsavel: TUniLabel [9]
     Left = 18
     Top = 270
     Width = 72
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Respons'#225'vel'
-    FocusControl = dbeResponsavel
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 26
   end
-  object LabelFax: TLabel [8]
+  object LabelFax: TUniLabel [10]
     Left = 301
     Top = 222
     Width = 19
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Fax'
-    FocusControl = dbeFax
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 27
   end
-  object lbUF: TLabel [9]
+  object lbUF: TUniLabel [11]
     Left = 438
     Top = 174
     Width = 14
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'UF'
-    FocusControl = dbeUF
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 28
   end
-  object lbCep: TLabel [10]
+  object lbCep: TUniLabel [12]
     Left = 386
     Top = 150
     Width = 23
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Cep'
-    FocusControl = dbeCep
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 29
   end
-  object lbInscMunicipal: TLabel [11]
+  object lbInscMunicipal: TUniLabel [13]
     Left = 273
     Top = 126
     Width = 68
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Insc. Munic.'
-    FocusControl = dbeInscMunicipal
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 30
   end
-  object btnGravaSerial: TBitBtn [12]
+  object btnGravaSerial: TUniBitBtn [14]
     Left = 248
     Top = 290
     Width = 113
     Height = 22
-    Caption = 'Gravar serial'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -234,201 +234,224 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080}
-    NumGlyphs = 2
+    Caption = 'Gravar serial'
     TabOrder = 18
     OnClick = btnGravaSerialClick
   end
-  object dbeCidade: TDBEdit [13]
+  object dbeCidade: TUniDBEdit [15]
     Left = 93
     Top = 170
     Width = 318
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 7
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeInscMunicipal: TDBEdit [14]
+  object dbeInscMunicipal: TUniDBEdit [16]
     Left = 345
     Top = 122
     Width = 157
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'IM'
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbeFax: TDBEdit [15]
+  object dbeFax: TUniDBEdit [17]
     Left = 325
     Top = 218
     Width = 177
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'FAX'
     DataSource = dsPadrao
     TabOrder = 11
   end
-  object dbeRazaoSocial: TDBEdit [16]
+  object dbeRazaoSocial: TUniDBEdit [18]
     Left = 93
     Top = 50
     Width = 409
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'RAZASOCIAL'
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeResponsavel: TDBEdit [17]
+  object dbeResponsavel: TUniDBEdit [19]
     Left = 93
     Top = 266
     Width = 409
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'RESPONSAVEL'
     DataSource = dsPadrao
     TabOrder = 13
   end
-  object dbeTelefone: TDBEdit [18]
+  object dbeTelefone: TUniDBEdit [20]
     Left = 93
     Top = 218
     Width = 196
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'TELEFONE'
     DataSource = dsPadrao
     TabOrder = 10
   end
-  object dbeEndereco: TDBEdit [19]
+  object dbeEndereco: TUniDBEdit [21]
     Left = 93
     Top = 146
     Width = 284
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'ENDERECO'
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbeBairro: TDBEdit [20]
+  object dbeBairro: TUniDBEdit [22]
     Left = 93
     Top = 194
     Width = 409
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'BAIRRO'
     DataSource = dsPadrao
     TabOrder = 9
   end
-  object dbeCep: TDBEdit [21]
+  object dbeCep: TUniDBEdit [23]
     Left = 413
     Top = 146
     Width = 89
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'CEP'
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbeInscEstadual: TDBEdit [22]
+  object dbeInscEstadual: TUniDBEdit [24]
     Left = 93
     Top = 122
     Width = 172
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'IE'
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeFantazia: TDBEdit [23]
+  object dbeFantazia: TUniDBEdit [25]
     Left = 93
     Top = 74
     Width = 409
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeSerial: TDBEdit [24]
+  object dbeSerial: TUniDBEdit [26]
     Left = 93
     Top = 290
     Width = 148
     Height = 22
-    Color = clSilver
+    Hint = ''
+    ShowHint = True
     DataField = 'SERIAL'
     DataSource = dsSistema
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 17
+    Color = clSilver
   end
-  object dbeCnpj: TDBEdit [25]
+  object dbeCnpj: TUniDBEdit [27]
     Left = 93
     Top = 98
     Width = 172
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'CNPJ'
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeUF: TDBEdit [26]
+  object dbeUF: TUniDBEdit [28]
     Left = 456
     Top = 170
     Width = 46
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'UF'
     DataSource = dsPadrao
     TabOrder = 8
   end
-  object gbLogoMarca: TGroupBox [27]
-    Left = 520
-    Top = 48
-    Width = 146
-    Height = 169
-    Caption = ' Logo '
-    TabOrder = 14
-    object btnBuscaImg: TBitBtn
-      Left = 8
-      Top = 136
-      Width = 65
-      Height = 25
-      Caption = '&Buscar'
-      TabOrder = 1
-      OnClick = btnBuscaImgClick
-    end
-    object btnApagaImg: TBitBtn
-      Left = 75
-      Top = 136
-      Width = 62
-      Height = 25
-      Caption = '&Limpar'
-      TabOrder = 2
-      OnClick = btnApagaImgClick
-    end
-    object dbiLogoMarca: TDBImage
-      Left = 8
-      Top = 16
-      Width = 129
-      Height = 113
-      DataField = 'LOGOEMPRESA'
-      DataSource = dsPadrao
-      TabOrder = 0
-    end
-  end
-  object dbeEmail: TDBEdit [28]
+  object dbeEmail: TUniDBEdit [29]
     Left = 93
     Top = 242
     Width = 409
     Height = 21
-    CharCase = ecLowerCase
+    Hint = ''
+    ShowHint = True
     DataField = 'EMAIL'
     DataSource = dsPadrao
+    CharCase = ecLowerCase
     TabOrder = 12
   end
-  inherited sbStatus: TStatusBar
-    Top = 345
-    Width = 682
-    ExplicitTop = 345
-    ExplicitWidth = 682
-  end
-  inherited pnBotoesPadrao: TPanel
-    Width = 682
-    TabOrder = 15
-    ExplicitWidth = 682
+  object gbLogoMarca: TUniGroupBox [30]
+    Left = 520
+    Top = 48
+    Width = 146
+    Height = 169
+    Hint = ''
+    ShowHint = True
+    Caption = ' Logo '
+    TabOrder = 14
+    TabStop = False
+    object btnBuscaImg: TUniBitBtn
+      Left = 8
+      Top = 136
+      Width = 65
+      Height = 25
+      Hint = ''
+      ShowHint = True
+      Caption = '&Buscar'
+      TabOrder = 0
+      OnClick = btnBuscaImgClick
+    end
+    object btnApagaImg: TUniBitBtn
+      Left = 75
+      Top = 136
+      Width = 62
+      Height = 25
+      Hint = ''
+      ShowHint = True
+      Caption = '&Limpar'
+      TabOrder = 1
+      OnClick = btnApagaImgClick
+    end
+    object dbiLogoMarca: TUniDBImage
+      Left = 8
+      Top = 16
+      Width = 129
+      Height = 113
+      Hint = ''
+      ShowHint = True
+      DataField = 'LOGOEMPRESA'
+      DataSource = dsPadrao
+    end
   end
   inherited actlNavigateActions: TActionList
     Left = 488

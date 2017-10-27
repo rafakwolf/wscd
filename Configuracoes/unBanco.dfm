@@ -1,42 +1,44 @@
 inherited frmBanco: TfrmBanco
-  Caption = 'frmBanco'
   ClientHeight = 156
   ClientWidth = 433
+  Caption = 'frmBanco'
   OldCreateOrder = True
   ExplicitWidth = 439
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCodCompensacao: TDBEdit [0]
-    Left = 96
-    Top = 54
-    Width = 105
-    Height = 21
-    Hint = 'C'#243'digo de compensa'#231#227'o'
-    DataField = 'IDBANCO'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  object dbeBanco: TDBEdit [1]
-    Left = 96
-    Top = 80
-    Width = 321
-    Height = 21
-    Hint = 'Nome do banco'
-    DataField = 'BANCO'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 137
     Width = 433
     ExplicitTop = 137
     ExplicitWidth = 433
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 433
     TabOrder = 2
     ExplicitWidth = 433
+  end
+  object dbeCodCompensacao: TUniDBEdit [2]
+    Left = 96
+    Top = 54
+    Width = 105
+    Height = 21
+    Hint = 'C'#243'digo de compensa'#231#227'o'
+    ShowHint = True
+    DataField = 'IDBANCO'
+    DataSource = dsPadrao
+    TabOrder = 0
+  end
+  object dbeBanco: TUniDBEdit [3]
+    Left = 96
+    Top = 80
+    Width = 321
+    Height = 21
+    Hint = 'Nome do banco'
+    ShowHint = True
+    DataField = 'BANCO'
+    DataSource = dsPadrao
+    TabOrder = 1
   end
   inherited actlNavigateActions: TActionList
     Left = 32

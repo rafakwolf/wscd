@@ -1,19 +1,15 @@
 object frmPrevDuplicata: TfrmPrevDuplicata
   Left = 231
   Top = 118
-  Caption = 'frmPrevDuplicata'
   ClientHeight = 530
   ClientWidth = 782
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'frmPrevDuplicata'
   OldCreateOrder = False
-  Position = poScreenCenter
   ShowHint = True
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
   PixelsPerInch = 96
   TextHeight = 13
   object rptDuplicata: TRLReport
@@ -30668,6 +30664,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         Width = 382
         Height = 93
         AutoSize = False
+        Behavior = [beSiteExpander]
         Layout = tlCenter
       end
       object rlmTermo: TRLMemo
@@ -30676,6 +30673,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         Width = 587
         Height = 31
         AutoSize = False
+        Behavior = [beSiteExpander]
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -30693,6 +30691,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'VALOR'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtNroDuplicata: TRLDBText
         Left = 308
@@ -30703,6 +30702,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'NRODUPLICATA'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtVencimento: TRLDBText
         Left = 394
@@ -30713,6 +30713,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'DATAVENC'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtNroFatura: TRLDBText
         Left = 132
@@ -30723,6 +30724,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'NROFATURA'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtDesconto: TRLDBText
         Left = 213
@@ -30732,6 +30734,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'DESCONTO'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtSacado: TRLDBText
         Left = 240
@@ -30741,6 +30744,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'SACADO'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtEndereco: TRLDBText
         Left = 203
@@ -30750,6 +30754,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'ENDERECO'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtCidade: TRLDBText
         Left = 199
@@ -30759,6 +30764,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'NOMECIDADE'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtPracaPag: TRLDBText
         Left = 218
@@ -30774,6 +30780,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        Text = ''
       end
       object rldbtCpfCnpj: TRLDBText
         Left = 200
@@ -30783,6 +30790,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'CPF_CNPJ'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtEstado: TRLDBText
         Left = 547
@@ -30792,6 +30800,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'UF'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtRgIe: TRLDBText
         Left = 580
@@ -30801,6 +30810,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'IE'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbtCep: TRLDBText
         Left = 635
@@ -30810,6 +30820,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'CEP'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rldbmValorExt: TRLDBMemo
         Left = 205
@@ -30817,6 +30828,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         Width = 510
         Height = 43
         AutoSize = False
+        Behavior = [beSiteExpander]
         DataField = 'VALOREXTENSO'
         DataSource = dsDuplicata
       end
@@ -30829,6 +30841,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'VALOR_FATURA'
         DataSource = dsDuplicata
+        Text = ''
       end
       object rlbdtDataDescto: TRLDBText
         Left = 396
@@ -30838,6 +30851,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
         AutoSize = False
         DataField = 'DATADESCTO'
         DataSource = dsDuplicata
+        Text = ''
       end
     end
   end
@@ -30851,7 +30865,6 @@ object frmPrevDuplicata: TfrmPrevDuplicata
       'D.DATAIMPRESSAO,'#13#10'  D.IMPRESSA,'#13#10'  D.VALOREXTENSO'#13#10'FROM DUPLICAT' +
       'A D'#13#10'LEFT JOIN CIDADES C ON (D.IDCIDADE = C.CODCIDADE)'#13#10'WHERE D.' +
       'IDDUPLICATA = :CODDUPLICATA'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <
       item

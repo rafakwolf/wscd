@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-   FMTBcd, System.Actions, VarGlobal;
+   FMTBcd, System.Actions, VarGlobal, uniMainMenu, uniBitBtn, uniButton,
+  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  uniEdit, uniDBEdit, uniGroupBox;
 
 type
   TfrmAgenda = class(TfrmPadrao)
@@ -25,16 +27,19 @@ type
     cdsPadraoTELEFONE3: TStringField;
     cdsPadraoFAX: TStringField;
     cdsPadraoOBS: TMemoField;
-    dbeNome: TDBEdit;
-    dbeFax: TDBEdit;
-    grpTelefone: TGroupBox;
-    btnObs: TBitBtn;
     sqldPadraoIDAGENDA: TIntegerField;
     cdsPadraoIDAGENDA: TIntegerField;
-    N5: TMenuItem;
-    dbeFone1: TDBEdit;
-    dbeFone2: TDBEdit;
-    dbeFone3: TDBEdit;
+    mmPadrao: TUniMainMenu;
+    miRelatorios: TUniMenuItem;
+    mImprimir: TUniMenuItem;
+    N5: TUniMenuItem;
+    btnObs: TUniBitBtn;
+    dbeNome: TUniDBEdit;
+    dbeFax: TUniDBEdit;
+    grpTelefone: TUniGroupBox;
+    dbeFone1: TUniDBEdit;
+    dbeFone2: TUniDBEdit;
+    dbeFone3: TUniDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure btnObsClick(Sender: TObject);

@@ -1,8 +1,9 @@
-program wscd;
+program ERP;
 
 uses
-  Vcl.Forms,
-  Vcl.Controls,
+  Forms,
+  ServerModule in 'ServerModule.pas' {UniServerModule: TUniGUIServerModule},
+  MainModule in 'MainModule.pas' {UniMainModule: TUniGUIMainModule},
   uClasses in 'Util\uClasses.pas',
   uNotifyEventDispatcher in 'Util\uNotifyEventDispatcher.pas',
   unDmPrincipal in 'Principal\unDmPrincipal.pas' {DmPrincipal: TDataModule},
@@ -20,7 +21,6 @@ uses
   unSimplePadrao in 'Padrao\unSimplePadrao.pas' {frmSimplePadrao},
   unAgenda in 'Utilitarios\unAgenda.pas' {frmAgenda},
   unBackup in 'Utilitarios\unBackup.pas' {frmBackup},
-  unCalendario in 'Utilitarios\unCalendario.pas' {frmCalendario},
   unConfiguraDuplicata in 'Utilitarios\unConfiguraDuplicata.pas' {frmConfiguraDuplicata},
   unDuplicatas in 'Utilitarios\unDuplicatas.pas' {frmDuplicatas},
   unEnvelopes in 'Utilitarios\unEnvelopes.pas' {frmEnvelopes},
@@ -188,19 +188,8 @@ uses
 {$R *.res}
 
 begin
+  ReportMemoryLeaksOnShutdown := True;
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TDmPrincipal, DmPrincipal);
-  Application.CreateForm(TDmPesquisar, DmPesquisar);
-  Application.CreateForm(TdmDuplicatas, dmDuplicatas);
-  frmAcesso := TfrmAcesso.Create(Application);
-  if frmAcesso.ShowModal = mrOk then
-  begin
-
-    Application.CreateForm(TfrmPrincipal, frmPrincipal);
-    Application.Run;
-  end
-  else
-    Application.Terminate;
-
+  TUniServerModule.Create(Application);
+  Application.Run;
 end.

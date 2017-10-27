@@ -7,7 +7,9 @@ uses
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
    Grids, DBGrids, ImgList, unPrincipal, FMTBcd, System.Actions,
-  System.ImageList;
+  System.ImageList, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
+  uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar, uniGroupBox,
+  uniBasicGrid, uniDBGrid, uniMainMenu;
 
 type
   TfrmPerfilPermissao = class(TfrmPadrao)
@@ -21,14 +23,7 @@ type
     dsLigaPerfis: TDataSource;
     cdsPadraosqldPerfisConf: TDataSetField;
     dsPerfisConf: TDataSource;
-    dbePerfil: TDBEdit;
     Imagens: TImageList;
-    pmLiberaBloqueia: TPopupMenu;
-    miLiberar: TMenuItem;
-    miBloquear: TMenuItem;
-    miCarregarAcoes: TMenuItem;
-    grpItemMenu: TGroupBox;
-    dbgPerm: TDBGrid;
     sqldPadraoIDPERFIL: TIntegerField;
     sqldPerfisConfIDPERFIL: TIntegerField;
     sqldPerfisConfACAO_NOME: TStringField;
@@ -39,16 +34,21 @@ type
     cdsPerfisConfACAO_NOME: TStringField;
     cdsPerfisConfACAO_CAPTION: TStringField;
     cdsPerfisConfLIBERADO: TStringField;
-    N5: TMenuItem;
-    edtBuscaItemMenu: TEdit;
     sqldPerfisConfIDITEMPERFIL: TIntegerField;
     cdsPerfisConfIDITEMPERFIL: TIntegerField;
+    dbePerfil: TUniDBEdit;
+    grpItemMenu: TUniGroupBox;
+    edtBuscaItemMenu: TUniEdit;
+    dbgPerm: TUniDBGrid;
+    pmLiberaBloqueia: TUniPopupMenu;
+    miLiberar: TUniMenuItem;
+    miBloquear: TUniMenuItem;
+    N5: TUniMenuItem;
+    miCarregarAcoes: TUniMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure miLiberarClick(Sender: TObject);
     procedure miBloquearClick(Sender: TObject);
     procedure miCarregarAcoesClick(Sender: TObject);
-    procedure dbgPermDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbgPermCellClick(Column: TColumn);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure edtBuscaItemMenuExit(Sender: TObject);
@@ -167,26 +167,6 @@ begin
   end;
 end;
 
-procedure TfrmPerfilPermissao.dbgPermDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  inherited;
-//  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect,
-//    DataCol, Column, State);
-
-  if (Column.Field = cdsPerfisConfLIBERADO) then
-  begin
-    dbgPerm.Canvas.FillRect(Rect);
-    Imagens.Draw(dbgPerm.Canvas, Rect.Left + 25, Rect.Top + 1, -1);
-
-    if (cdsPerfisConfLIBERADO.AsString = 'N') then
-      Imagens.Draw(dbgPerm.Canvas, Rect.Left + 25, Rect.Top + 1, 0)
-    else
-      Imagens.Draw(dbgPerm.Canvas, Rect.Left + 25, Rect.Top + 1, 1);
-  end;
-end;
-
 procedure TfrmPerfilPermissao.dbgPermCellClick(Column: TColumn);
 begin
   inherited;
@@ -207,7 +187,6 @@ end;
 procedure TfrmPerfilPermissao.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  //Incrementa('PERFIL', cdsPadraoIDPERFIL, GetConnection);
   SetFocusIfCan(dbePerfil);
 end;
 

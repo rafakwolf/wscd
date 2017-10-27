@@ -6,10 +6,11 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ExtCtrls, StdCtrls, Menus, Buttons, DBClient, DB, ActnList, DBXCommon,
   ComCtrls, Variants, SQLExpr, Funcoes, ConstPadrao, Provider, DBGrids,
-  System.Actions, udmGeralBase;
+  System.Actions, udmGeralBase, UniGuiForm, uniGUIBaseClasses, uniGUIClasses,
+  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, UniGUIDialogs;
 
 type
-  TfrmPadrao = class(TForm)
+  TfrmPadrao = class(TUniForm)
     actlNavigateActions: TActionList;
     actInsert: TAction;
     actPrint: TAction;
@@ -20,17 +21,16 @@ type
     dsPadrao: TDataSource;
     actCancelUpdates: TAction;
     actClose: TAction;
-    sbStatus: TStatusBar;
-    pnBotoesPadrao: TPanel;
-    btnNovo: TSpeedButton;
-    btnAlterar: TSpeedButton;
-    btnExcluir: TSpeedButton;
-    btnSalvar: TSpeedButton;
-    btnCancelar: TSpeedButton;
-    btnConsultar: TSpeedButton;
-    btnSair: TSpeedButton;
-    btnPrint: TSpeedButton;
-    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    sbStatus: TUniStatusBar;
+    pnBotoesPadrao: TUniContainerPanel;
+    btnNovo: TUniSpeedButton;
+    btnAlterar: TUniSpeedButton;
+    btnExcluir: TUniSpeedButton;
+    btnSalvar: TUniSpeedButton;
+    btnCancelar: TUniSpeedButton;
+    btnConsultar: TUniSpeedButton;
+    btnSair: TUniSpeedButton;
+    btnPrint: TUniSpeedButton;
     procedure actCloseExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -42,18 +42,12 @@ type
     procedure actCancelUpdatesExecute(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
     procedure actSearchExecute(Sender: TObject);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure FormResize(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     Closing: Boolean;
     ComponentFocusWhenPost: TWinControl;
     FTransacao: TDBXTransaction;
-
-    procedure AjustaStatusBar;
-    procedure WMMove(var Msg: TWMMove); message WM_MOVE;
   protected
     EditModes: Boolean;
     aCaption, TableName, FieldNames, DisplayLabels: string;
@@ -82,33 +76,6 @@ implementation
 uses unModeloConsulta, unGeraRelatorio, unOrdenarDados, VarGlobal;
 
 {$R *.DFM}
-
-procedure TfrmPadrao.FormCloseQuery(Sender: TObject;
-  var CanClose: Boolean);
-begin
-  try
-    Closing := True;
-    CanClose := True;
-
-    SelectNext(ActiveControl, True, False);
-
-    if Assigned(dsPadrao.DataSet) and  (dsPadrao.DataSet is TClientDataSet) then
-    begin
-      if ((TClientDataSet(dsPadrao.DataSet).ChangeCount <> 0) or (TClientDataSet(dsPadrao.DataSet).Modified)) then
-        case
-          Application.MessageBox(PChar('Existem alterações pendentes no processo "'
-          +  Caption + '".' + #13#10 + 'Deseja gravar as alterações?'),
-            'Confirmação', MB_YESNOCANCEL or MB_ICONQUESTION) of
-
-          Id_Yes: actPost.Execute;
-          Id_No: actCancelUpdates.Execute;
-          Id_Cancel: CanClose := False;
-        end;
-    end;
-  finally
-    Closing := False;
-  end;
-end;
 
 procedure TfrmPadrao.MyHandleReconcileError(DataSet: TCustomClientDataSet;
   E: EReconcileError; UpdateKind: TUpdateKind; var Action: TReconcileAction);
@@ -143,8 +110,7 @@ begin
     raise EDatabaseError.Create(S);
   end;
 
-  Application.MessageBox(PChar(S), 'Exclusão não permitida', MB_OK or
-    MB_ICONWARNING);
+  UniGUIDialogs.MessageDlg(S, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK]);
   Action := raCancel;
 end;
 
@@ -172,6 +138,15 @@ begin
       if TClientDataSet(Components[x]).Tag <> TAG_IGNORE_FECHPARAMS then
         TClientDataSet(Components[x]).PacketRecords := 1;
     end;
+
+
+    if Components[x] is TCustomSQLDataSet then
+    begin
+      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
+        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
+    end;
+
+
   end;
 
   ReordenaBotoes([btnNovo, btnAlterar, btnExcluir, btnSalvar,
@@ -181,11 +156,26 @@ begin
   dsPadrao.DataSet.Open;
 
   CentralizaForm(Self);
-  AjustaStatusBar;
 end;
 
 procedure TfrmPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+
+//  if Assigned(dsPadrao.DataSet) and  (dsPadrao.DataSet is TClientDataSet) then
+//  begin
+//    if ((TClientDataSet(dsPadrao.DataSet).ChangeCount <> 0) or (TClientDataSet(dsPadrao.DataSet).Modified)) then
+//      case
+//        UniGUIDialogs.MessageDlg(PChar('Existem alterações pendentes no processo "'
+//        +  Caption + '".' + #13#10 + 'Deseja gravar as alterações?'),
+//          'Confirmação', MB_YESNOCANCEL or MB_ICONQUESTION) of
+//
+//        Id_Yes: actPost.Execute;
+//        Id_No: actCancelUpdates.Execute;
+//        Id_Cancel: Abort;
+//      end;
+//  end;
+
+
   if Assigned(dsPadrao.DataSet) then
     dsPadrao.DataSet.Close;
   Action := caFree;
@@ -219,23 +209,23 @@ procedure TfrmPadrao.actDeleteExecute(Sender: TObject);
 begin
   if not dsPadrao.DataSet.IsEmpty then
   begin
-    if Application.MessageBox('Tem certeza que deseja excluir este registro?',
-      'Exclusão de registro', MB_ICONQUESTION or MB_YESNO or MB_DEFBUTTON2) =  IDYES then
-    begin
-      FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-      try
-        dsPadrao.DataSet.Delete;
-
-        if (dsPadrao.DataSet is TClientDataSet) then
-          TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0);
-
-        dsPadrao.OnStateChange(dsPadrao);
-        GetConnection.CommitFreeAndNil(FTransacao);
-      except
-        on e: Exception do
-          GetConnection.RollbackFreeAndNil(FTransacao);
-      end;
-    end;
+//    if UniGUIDialogs.MessageDlg('Tem certeza que deseja excluir este registro?',
+//      'Exclusão de registro', MB_ICONQUESTION or MB_YESNO or MB_DEFBUTTON2) =  IDYES then
+//    begin
+//      FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
+//      try
+//        dsPadrao.DataSet.Delete;
+//
+//        if (dsPadrao.DataSet is TClientDataSet) then
+//          TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0);
+//
+//        dsPadrao.OnStateChange(dsPadrao);
+//        GetConnection.CommitFreeAndNil(FTransacao);
+//      except
+//        on e: Exception do
+//          GetConnection.RollbackFreeAndNil(FTransacao);
+//      end;
+//    end;
   end;
 end;
 
@@ -252,17 +242,17 @@ begin
   actPrint.Enabled := not EditModes;
   actClose.Enabled := not EditModes;
 
-  if (dsPadrao.DataSet.State in [dsInsert]) then
-    sbStatus.Panels[0].Text := ' Inserindo registro...'
-  else
-  if (dsPadrao.DataSet.State in [dsEdit]) then
-    sbStatus.Panels[0].Text := ' Alterando registro...'
-  else
-  if (dsPadrao.DataSet.State in [dsBrowse]) then
-    sbStatus.Panels[0].Text := ' Visualizando registro...'
-  else
-  if (dsPadrao.DataSet.IsEmpty) then
-    sbStatus.Panels[0].Text := ' Nenhum item cadastrado...';
+//  if (dsPadrao.DataSet.State in [dsInsert]) then
+//    sbStatus.Panels[0].Text := ' Inserindo registro...'
+//  else
+//  if (dsPadrao.DataSet.State in [dsEdit]) then
+//    sbStatus.Panels[0].Text := ' Alterando registro...'
+//  else
+//  if (dsPadrao.DataSet.State in [dsBrowse]) then
+//    sbStatus.Panels[0].Text := ' Visualizando registro...'
+//  else
+//  if (dsPadrao.DataSet.IsEmpty) then
+//    sbStatus.Panels[0].Text := ' Nenhum item cadastrado...';
 end;
 
 procedure TfrmPadrao.actCancelUpdatesExecute(Sender: TObject);
@@ -319,7 +309,7 @@ var
   I: Integer;
 begin
   ComponentFocusWhenPost := ActiveControl;
-  SelectNext(ActiveControl, True, False);
+  //SelectNext(ActiveControl, True, False);
 
   for I := 0 to dsPadrao.DataSet.FieldCount-1 do
   begin
@@ -344,35 +334,12 @@ end;
 function TfrmPadrao.Pesquisa(pCaption: string;
   pFieldNames, pDisplayLabels, pTableName: string): Boolean;
 begin
-   Result := TfrmModeloConsulta.Execute(pCaption, pTableName, pFieldNames,
-      pDisplayLabels) > 0;
-end;
 
-procedure TfrmPadrao.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    if (ActiveControl is TCustomMemo) or ((ActiveControl is TCustomCombo) and (TCustomCombo(ActiveControl).DroppedDown)) then
-    begin
-      Key := #0;
-      Exit;
-    end
-    else
-    if not (ActiveControl is TDBGrid) then
-    begin
-      Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
-    end
-    else
-    if (ActiveControl is TDBGrid) then
-    begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount - 1) then
-          SelectedIndex := SelectedIndex + 1
-        else
-          SelectedIndex := 0;
-    end;
-  end;
+  if (pTableName = '') then
+     pTableName := aCaption;
+
+   Result := TfrmModeloConsulta.Execute(pCaption, pTableName, pFieldNames,
+      pDisplayLabels, UniApplication) > 0;
 end;
 
 procedure TfrmPadrao.FormKeyDown(Sender: TObject; var Key: Word;
@@ -382,21 +349,6 @@ begin
     Close;
   if Key = VK_F1 then
     ChamaHelp(Self, 3,'');
-end;
-
-procedure TfrmPadrao.AjustaStatusBar;
-var
-  Size: Integer;
-begin
-  Size := (ClientWidth div 2);
-  sbStatus.Panels[0].Width := Size;
-  sbStatus.Panels[1].Width := Size;
-  sbStatus.Update;
-end;
-
-procedure TfrmPadrao.FormResize(Sender: TObject);
-begin
-  AjustaStatusBar;
 end;
 
 procedure TfrmPadrao.AfterShow(var Msg: TMessage);
@@ -419,22 +371,5 @@ begin
   end;
 end;
 
-procedure TfrmPadrao.FormShow(Sender: TObject);
-begin
-  PostMessage(Handle, WM_AFTER_SHOW, 0, 0);
-  PostMessageAllForms(WM_NOTIFY_OPEN_FORM, Application.MainForm);
-end;
-
-procedure TfrmPadrao.WMMove(var Msg: TWMMove);
-begin
-  if Left < 0 then
-    Left := 0;
-  if Top < 0 then
-    Top := 0;
-  if Screen.Width - (Left + Width) < 0 then
-    Left := Screen.Width - Width;
-  if Screen.Height - (Top + Height) < 0 then
-    Top := Screen.Height - Height;
-end;
 
 end.

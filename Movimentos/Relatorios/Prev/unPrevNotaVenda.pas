@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DBClient,
+  Dialogs, RLReport, DBClient, uniGuiForm,
   Datasnap.Provider, DB, Data.SqlExpr, FMTBcd;
 
 type
-  TfrmPrevNotaVenda = class(TForm)
+  TfrmPrevNotaVenda = class(TUniForm)
     rlrNotaVenda: TRLReport;
     rlbCabecalho: TRLBand;
     rlblEmpresa: TRLLabel;

@@ -4,14 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons;
+  Dialogs, StdCtrls, Buttons, uniGUIForm, uniGUIBaseClasses, uniGUIClasses,
+  uniButton, uniBitBtn, uniMemo;
 
 type
-  TfrmCommandoSQL = class(TForm)
-    btnOK: TBitBtn;
-    btnCancelar: TBitBtn;
-    btnLimpar: TBitBtn;
-    mmoSQL: TMemo;
+  TfrmCommandoSQL = class(TUniForm)
+    btnOK: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    btnLimpar: TUniBitBtn;
+    mmoSQL: TUniMemo;
     procedure FormCreate(Sender: TObject);
     procedure btnLimparClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

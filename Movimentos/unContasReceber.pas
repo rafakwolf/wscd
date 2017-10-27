@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls, Mask, Buttons, DBClient, DB,
   DBCtrls, SqlExpr, Menus, ComCtrls, Provider, ConstPadrao,
-  FMTBcd, unSimplePadrao;
+  FMTBcd, unSimplePadrao, uniMainMenu, uniGUIBaseClasses, uniGUIClasses,
+  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, uniEdit,
+  uniDBEdit, uniGroupBox, uniBasicGrid, uniDBGrid;
 
 const
   SQLPadraoTela: string = 'select'+
@@ -97,38 +99,14 @@ const
 
 type
   TfrmContasReceber = class(TfrmSimplePadrao)
-    Stb: TStatusBar;
-    mnuCP: TMainMenu;
-    miOpcoes: TMenuItem;
-    miReceber: TMenuItem;
-    miExcluir: TMenuItem;
-    miRecebidas: TMenuItem;
-    N5: TMenuItem;
-    miFechar: TMenuItem;
-    miRelatorios: TMenuItem;
-    grpCliente: TGroupBox;
-    Grade: TDBGrid;
-    pnBotoes: TPanel;
-    btnExcluir: TSpeedButton;
-    btnRecebidas: TSpeedButton;
-    btnReceber: TSpeedButton;
     dsPadrao: TDataSource;
     sqldCliente: TSQLDataSet;
     dspCliente: TDataSetProvider;
     cdsCliente: TClientDataSet;
-    dbeCliente: TDBEdit;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    N3: TMenuItem;
-    miRecibo: TMenuItem;
-    miBuscarCliente: TMenuItem;
     sqldDeleta: TSQLDataSet;
-    btnFechar: TSpeedButton;
-    N1: TMenuItem;
-    miContasVencidas: TMenuItem;
-    miTodasContas: TMenuItem;
-    miVencendoHoje: TMenuItem;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoDATA: TDateField;
     cdsPadraoVENCIMENTO: TDateField;
@@ -189,6 +167,30 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALRECDO: TSingleField;
+    mnuCP: TUniMainMenu;
+    miOpcoes: TUniMenuItem;
+    miReceber: TUniMenuItem;
+    miExcluir: TUniMenuItem;
+    N1: TUniMenuItem;
+    miVencendoHoje: TUniMenuItem;
+    miRecebidas: TUniMenuItem;
+    miContasVencidas: TUniMenuItem;
+    miTodasContas: TUniMenuItem;
+    N3: TUniMenuItem;
+    miBuscarCliente: TUniMenuItem;
+    N5: TUniMenuItem;
+    miFechar: TUniMenuItem;
+    miRelatorios: TUniMenuItem;
+    miRecibo: TUniMenuItem;
+    Stb: TUniStatusBar;
+    pnBotoes: TUniContainerPanel;
+    btnExcluir: TUniSpeedButton;
+    btnRecebidas: TUniSpeedButton;
+    btnReceber: TUniSpeedButton;
+    btnFechar: TUniSpeedButton;
+    grpCliente: TUniGroupBox;
+    dbeCliente: TUniDBEdit;
+    Grade: TUniDBGrid;
     procedure btnExcluirClick(Sender: TObject);
     procedure btnReceberClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -204,8 +206,6 @@ type
     procedure miTodasContasClick(Sender: TObject);
     procedure dsPadraoStateChange(Sender: TObject);
     procedure GradeTitleClick(Column: TColumn);
-    procedure GradeDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure GradeDblClick(Sender: TObject);
     procedure miVencendoHojeClick(Sender: TObject);
   private
@@ -483,37 +483,6 @@ end;
 procedure TfrmContasReceber.GradeTitleClick(Column: TColumn);
 begin
   //OrdenaColunasGrid(Grade, Column, cdsPadrao);
-end;
-
-procedure TfrmContasReceber.GradeDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  if (cdsPadraoVENCIMENTO.AsDateTime < Date) then
-    Grade.Canvas.Font.Color := clRed
-  else if (cdsPadraoVENCIMENTO.AsDateTime = Date) then
-    Grade.Canvas.Font.Color := clBlue
-  else
-    Grade.Canvas.Font.Color := clBlack;
-
-  if cdsPadraoRECEBER.AsString = 'S' then
-    Grade.Canvas.Brush.Color := $0080FFFF;
-
-  if (Column.FieldName = 'ATRASO') or
-     (Column.FieldName = 'TOTAL') then
-    Grade.Canvas.Brush.Color := $0080FFFF;
-
-  if (gdSelected in State) then
-  begin
-    Grade.Canvas.Font.Color := clWhite;
-    if ((cdsPadraoRECEBER.AsString = 'S') or
-        (Column.FieldName = 'ATRASO') or
-        (Column.FieldName = 'TOTAL')) then
-      Grade.Canvas.Brush.Color := clMenuHighlight;
-  end;
-
-  Grade.Canvas.FillRect(Rect);
-  Grade.DefaultDrawDataCell(Rect, Column.Field, State);
 end;
 
 procedure TfrmContasReceber.GradeDblClick(Sender: TObject);

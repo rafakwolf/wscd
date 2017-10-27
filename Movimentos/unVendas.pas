@@ -5,40 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, Buttons, Mask, DBCtrls, ComCtrls,
-  Menus, ExtCtrls, Db, DBClient,
-   ConstPadrao, Datasnap.Provider,
-  Data.SqlExpr, FMTBcd, unPadrao, System.Actions, Vcl.ActnList;
+  Menus, ExtCtrls, Db, DBClient, ConstPadrao, Datasnap.Provider,
+  Data.SqlExpr, FMTBcd, unPadrao, System.Actions, Vcl.ActnList, uniMainMenu,
+  uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
+  uniGUIBaseClasses, uniStatusBar, uniLabel, uniEdit, uniDBEdit, uniMemo,
+  uniDBMemo, uniBasicGrid, uniDBGrid;
 
 type
   TfrmVendas = class(TfrmPadrao)
-    mnVenda: TMainMenu;
-    miRegistros: TMenuItem;
-    miIncluir: TMenuItem;
-    miAlterar: TMenuItem;
-    miCancelar: TMenuItem;
-    miFerramentas: TMenuItem;
-    miLocalizar: TMenuItem;
-    miOutrosFiltros: TMenuItem;
-    miFiltrarData: TMenuItem;
-    miFiltrarCli: TMenuItem;
-    miMostrarTodos: TMenuItem;
-    N5: TMenuItem;
-    miRelatorio: TMenuItem;
-    miRelVendaAtual: TMenuItem;
-    LabelObs: TLabel;
-    lbNumero: TLabel;
-    dbeNumero: TDBEdit;
-    grdItens: TDBGrid;
-    dbConcluida: TDBEdit;
-    LabelConcluida: TLabel;
-    N6: TMenuItem;
-    miRelVendaMes: TMenuItem;
-    miRelVendaAno: TMenuItem;
-    miRelVendaPeriodo: TMenuItem;
-    N7: TMenuItem;
-    miRelVendaCliente: TMenuItem;
-    miRelComissaoVendedor: TMenuItem;
-    miVendasNaoConc: TMenuItem;
     sqldClientes: TSQLDataSet;
     dspClientes: TDataSetProvider;
     cdsClientes: TClientDataSet;
@@ -48,16 +22,7 @@ type
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
-    dbProduto: TDBEdit;
     dsSelecao: TDataSource;
-    dbQtde: TDBEdit;
-    dbCusto: TDBEdit;
-    dbVenda: TDBEdit;
-    dbDescto: TDBEdit;
-    dbValorDescto: TDBEdit;
-    dbTotalProduto: TDBEdit;
-    btnInsereProduto: TBitBtn;
-    dbCodCliente: TDBEdit;
     sqlVendas: TSQLQuery;
     sqlItens: TSQLQuery;
     dsLigaVenda: TDataSource;
@@ -77,19 +42,6 @@ type
     cdsItensCODIGO: TIntegerField;
     cdsItensCODPRODUTO: TIntegerField;
     cdsItensPRODUTO: TStringField;
-    dbdDataVenda: TDBEdit;
-    N10: TMenuItem;
-    miVendaBobina: TMenuItem;
-    dbmObs: TDBMemo;
-    pnlTotal: TPanel;
-    lbTotalDesc: TLabel;
-    dbeTotalDesc: TDBEdit;
-    lbTotal: TLabel;
-    dbeTotal: TDBEdit;
-    dbeIdVendedor: TDBEdit;
-    dbeVendedor: TDBEdit;
-    dbeCliente: TDBEdit;
-    bvlLinha: TBevel;
     cdsVendasIDVENDEDOR: TIntegerField;
     cdsVendasVENDEDOR: TStringField;
     sqldVendedor: TSQLDataSet;
@@ -102,11 +54,6 @@ type
     cdsVendedorVENDEDOR: TStringField;
     cdsVendedorATIVO: TStringField;
     spDeleta: TSQLDataSet;
-    dbeCancelada: TDBEdit;
-    N11: TMenuItem;
-    miCadastroCliente: TMenuItem;
-    dbeComissao: TDBEdit;
-    N12: TMenuItem;
     sqldClientesCODCLIENTE: TIntegerField;
     sqldClientesNOME: TStringField;
     sqldClientesTELEFONE: TStringField;
@@ -179,8 +126,6 @@ type
     spBaixa: TSQLDataSet;
     sqlVendasCANCELADO: TStringField;
     cdsVendasCANCELADO: TStringField;
-    miCadastravendedor: TMenuItem;
-    miCadastraproduto: TMenuItem;
     sqldSelecaoPRODUTO: TIntegerField;
     sqldSelecaoNOMEPRODUTO: TStringField;
     sqldSelecaoQTDE: TSingleField;
@@ -199,6 +144,63 @@ type
     cdsSelecaoVALORDESCTO: TSingleField;
     cdsSelecaoTOTAL: TSingleField;
     cdsSelecaoCOMISSAO: TSingleField;
+    mnVenda: TUniMainMenu;
+    miRegistros: TUniMenuItem;
+    miIncluir: TUniMenuItem;
+    miAlterar: TUniMenuItem;
+    miCancelar: TUniMenuItem;
+    miFerramentas: TUniMenuItem;
+    miLocalizar: TUniMenuItem;
+    miOutrosFiltros: TUniMenuItem;
+    miFiltrarData: TUniMenuItem;
+    miFiltrarCli: TUniMenuItem;
+    miVendasNaoConc: TUniMenuItem;
+    miMostrarTodos: TUniMenuItem;
+    N5: TUniMenuItem;
+    N11: TUniMenuItem;
+    miCadastroCliente: TUniMenuItem;
+    miCadastravendedor: TUniMenuItem;
+    miCadastraproduto: TUniMenuItem;
+    miRelatorio: TUniMenuItem;
+    miRelVendaAtual: TUniMenuItem;
+    N10: TUniMenuItem;
+    miVendaBobina: TUniMenuItem;
+    N6: TUniMenuItem;
+    miRelVendaMes: TUniMenuItem;
+    miRelVendaAno: TUniMenuItem;
+    miRelVendaPeriodo: TUniMenuItem;
+    N7: TUniMenuItem;
+    miRelVendaCliente: TUniMenuItem;
+    N12: TUniMenuItem;
+    miRelComissaoVendedor: TUniMenuItem;
+    pnlTotal: TUniContainerPanel;
+    LabelObs: TUniLabel;
+    lbNumero: TUniLabel;
+    LabelConcluida: TUniLabel;
+    lbTotalDesc: TUniLabel;
+    lbTotal: TUniLabel;
+    btnInsereProduto: TUniBitBtn;
+    dbConcluida: TUniDBEdit;
+    dbProduto: TUniDBEdit;
+    dbeNumero: TUniDBEdit;
+    dbQtde: TUniDBEdit;
+    dbCusto: TUniDBEdit;
+    dbVenda: TUniDBEdit;
+    dbDescto: TUniDBEdit;
+    dbValorDescto: TUniDBEdit;
+    dbTotalProduto: TUniDBEdit;
+    dbCodCliente: TUniDBEdit;
+    dbdDataVenda: TUniDBEdit;
+    dbeIdVendedor: TUniDBEdit;
+    dbeVendedor: TUniDBEdit;
+    dbeCliente: TUniDBEdit;
+    dbeCancelada: TUniDBEdit;
+    dbeComissao: TUniDBEdit;
+    dbeTotalDesc: TUniDBEdit;
+    dbeTotal: TUniDBEdit;
+    bvlLinha: TUniPanel;
+    dbmObs: TUniDBMemo;
+    grdItens: TUniDBGrid;
     procedure btnNovoClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnPrimeiroClick(Sender: TObject);

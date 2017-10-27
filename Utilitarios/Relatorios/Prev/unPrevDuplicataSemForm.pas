@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Funcoes, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd;
+  Dialogs, Funcoes, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd, uniguiform;
 
 type
-  TfrmPrevDuplicataSemForm = class(TForm)
+  TfrmPrevDuplicataSemForm = class(TUniForm)
     rrDuplicata: TRLReport;
     rbDetalhe: TRLBand;
     lbSacado: TRLLabel;

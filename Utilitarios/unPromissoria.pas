@@ -4,24 +4,25 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, StdCtrls, Buttons, ExtCtrls;
+  Dialogs, unSimplePadrao, StdCtrls, Buttons, ExtCtrls, uniGUIBaseClasses,
+  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniPanel;
 
 type
   TfrmPromissoria = class(TfrmSimplePadrao)
-    edtNumero: TLabeledEdit;
-    edtEmissao: TLabeledEdit;
-    edtVencimento: TLabeledEdit;
-    edtValor: TLabeledEdit;
-    edtCredor: TLabeledEdit;
-    edtCpfCnpj: TLabeledEdit;
-    edtPracaPag: TLabeledEdit;
-    edtEmitente: TLabeledEdit;
-    edtCpfCnpjEmitente: TLabeledEdit;
-    edtEndereco: TLabeledEdit;
-    btnCliente: TBitBtn;
-    btnImprimir: TBitBtn;
-    btnCancelar: TBitBtn;
-    bvlLinha: TBevel;
+    btnCliente: TUniBitBtn;
+    btnImprimir: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    edtNumero: TUniEdit;
+    edtEmissao: TUniEdit;
+    edtVencimento: TUniEdit;
+    edtValor: TUniEdit;
+    edtCredor: TUniEdit;
+    edtCpfCnpj: TUniEdit;
+    edtPracaPag: TUniEdit;
+    edtEmitente: TUniEdit;
+    edtCpfCnpjEmitente: TUniEdit;
+    edtEndereco: TUniEdit;
+    bvlLinha: TUniPanel;
     procedure btnCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);

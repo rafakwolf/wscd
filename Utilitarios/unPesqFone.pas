@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, DB, DBClient, Provider, SqlExpr, Grids,
-  DBGrids, ExtCtrls, Buttons,  Menus, FMTBcd;
+  DBGrids, ExtCtrls, Buttons,  Menus, FMTBcd, uniMainMenu, uniGUIBaseClasses,
+  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmPesqFone = class(TfrmSimplePadrao)
@@ -13,26 +14,27 @@ type
     dspFone: TDataSetProvider;
     cdsFone: TClientDataSet;
     dsFone: TDataSource;
-    btnPesquisar: TBitBtn;
-    dbgrdFones: TDBGrid;
     rgpPesquisa: TRadioGroup;
-    edtNome: TLabeledEdit;
-    edtFone: TEdit;
-    mmPesqFone: TMainMenu;
-    miCadastrar: TMenuItem;
-    btnImprimir: TBitBtn;
     sqldFoneNOME: TStringField;
     sqldFoneTELEFONE: TStringField;
     sqldFoneFAX: TStringField;
     cdsFoneNOME: TStringField;
     cdsFoneTELEFONE: TStringField;
     cdsFoneFAX: TStringField;
-    miOpcoes: TMenuItem;
-    miOrdenar: TMenuItem;
-    N1: TMenuItem;
-    miPrint: TMenuItem;
-    N2: TMenuItem;
-    miSair: TMenuItem;
+    mmPesqFone: TUniMainMenu;
+    miRegistros: TUniMenuItem;
+    miCadastrar: TUniMenuItem;
+    N2: TUniMenuItem;
+    miSair: TUniMenuItem;
+    miOpcoes: TUniMenuItem;
+    miOrdenar: TUniMenuItem;
+    N1: TUniMenuItem;
+    miPrint: TUniMenuItem;
+    btnPesquisar: TUniBitBtn;
+    btnImprimir: TUniBitBtn;
+    edtNome: TUniEdit;
+    edtFone: TUniEdit;
+    dbgrdFones: TUniDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnPesquisarClick(Sender: TObject);

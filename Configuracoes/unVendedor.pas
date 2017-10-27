@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
   DBClient,  Datasnap.Provider,
-  Data.SqlExpr, StdCtrls, DBCtrls, Mask,  FMTBcd, System.Actions;
+  Data.SqlExpr, StdCtrls, DBCtrls, Mask,  FMTBcd, System.Actions, uniGUIClasses,
+  uniEdit, uniDBEdit, uniButton, uniBitBtn, uniSpeedButton, uniPanel,
+  uniGUIBaseClasses, uniStatusBar, uniCheckBox, uniDBCheckBox;
 
 type
   TfrmVendedor = class(TfrmPadrao)
@@ -19,9 +21,9 @@ type
     cdsPadraoIDVENDEDOR: TIntegerField;
     cdsPadraoVENDEDOR: TStringField;
     cdsPadraoATIVO: TStringField;
-    dbeVendedor: TDBEdit;
-    dbeIdVendedor: TDBEdit;
-    dbcbAtivo: TDBCheckBox;
+    dbeIdVendedor: TUniDBEdit;
+    dbeVendedor: TUniDBEdit;
+    dbcbAtivo: TUniDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure cdsPadraoAfterScroll(DataSet: TDataSet);

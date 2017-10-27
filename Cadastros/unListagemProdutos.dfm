@@ -1,38 +1,50 @@
 object frmListagemProdutos: TfrmListagemProdutos
   Left = 230
   Top = 139
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Listagem de produtos'
   ClientHeight = 369
   ClientWidth = 449
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Listagem de produtos'
+  BorderStyle = bsSingle
   OldCreateOrder = False
-  Position = poScreenCenter
   ShowHint = True
   OnClose = FormClose
   OnKeyDown = FormKeyDown
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
   PixelsPerInch = 96
   TextHeight = 13
-  object lbBuscaProduto: TLabel
+  object edtBuscaProduto: TButtonedEdit
+    Left = 8
+    Top = 21
+    Width = 433
+    Height = 21
+    RightButton.HotImageIndex = 1
+    RightButton.ImageIndex = 1
+    RightButton.PressedImageIndex = 1
+    TabOrder = 2
+    OnChange = edtBuscaProdutoChange
+    OnRightButtonClick = edtBuscaProdutoRightButtonClick
+  end
+  object lbBuscaProduto: TUniLabel
     Left = 8
     Top = 5
     Width = 39
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Buscar'
+    TabOrder = 3
   end
-  object btnOK: TBitBtn
+  object btnOK: TUniBitBtn
     Left = 360
     Top = 336
     Width = 81
     Height = 25
-    Caption = 'OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -84,73 +96,37 @@ object frmListagemProdutos: TfrmListagemProdutos
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'OK'
     TabOrder = 1
     OnClick = btnOKClick
   end
-  object Grade: TDBGrid
+  object Grade: TUniDBGrid
     Left = 8
     Top = 48
     Width = 433
     Height = 281
-    Ctl3D = True
+    Hint = ''
+    ShowHint = True
     DataSource = dsProdutos
-    DrawingStyle = gdsGradient
-    GradientEndColor = clScrollBar
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
     Font.Name = 'Verdana'
-    Font.Style = []
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentCtl3D = False
     ParentFont = False
-    PopupMenu = PopupCons
     TabOrder = 0
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clBlack
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
+    ParentColor = False
+    Color = clWindow
     OnDblClick = GradeDblClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODBARRA'
-        Title.Caption = 'C'#243'digo de barras'
-        Width = 109
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Width = 285
-        Visible = True
-      end>
-  end
-  object edtBuscaProduto: TButtonedEdit
-    Left = 8
-    Top = 21
-    Width = 433
-    Height = 21
-    RightButton.HotImageIndex = 1
-    RightButton.ImageIndex = 1
-    RightButton.PressedImageIndex = 1
-    TabOrder = 2
-    OnChange = edtBuscaProdutoChange
-    OnRightButtonClick = edtBuscaProdutoRightButtonClick
   end
   object dsProdutos: TDataSource
     AutoEdit = False
-    DataSet = frmProduto.cdsPadrao
     Left = 176
     Top = 88
   end
-  object PopupCons: TPopupMenu
+  object PopupCons: TUniPopupMenu
     Left = 264
     Top = 104
-    object miFiltrar: TMenuItem
+    object miFiltrar: TUniMenuItem
       Caption = 'Localizar na coluna...'
       OnClick = miFiltrarClick
     end

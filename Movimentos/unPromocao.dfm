@@ -1,147 +1,67 @@
 inherited frmPromocao: TfrmPromocao
   Left = 217
   Top = 118
-  Caption = 'frmPromocao'
   ClientHeight = 514
   ClientWidth = 790
+  Caption = 'frmPromocao'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 796
   ExplicitHeight = 543
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 495
     Width = 790
     ExplicitTop = 495
     ExplicitWidth = 790
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 790
     ExplicitWidth = 790
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
   end
-  object dbgrdPromocao: TDBGrid [2]
+  object dbgrdPromocao: TUniDBGrid [2]
     Left = 0
     Top = 40
     Width = 790
     Height = 455
-    Align = alBottom
+    Hint = ''
+    ShowHint = True
     DataSource = dsPadrao
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Arial'
-    Font.Style = []
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    Font.Name = 'Verdana'
     ParentFont = False
     TabOrder = 2
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnEditButtonClick = dbgrdPromocaoEditButtonClick
-    Columns = <
-      item
-        ButtonStyle = cbsEllipsis
-        Expanded = False
-        FieldName = 'PRODUTO'
-        Title.Caption = 'Produto'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'ABREVIACAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 354
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VENDA'
-        Title.Caption = 'Pre'#231'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 95
-        Visible = True
-      end
-      item
-        Color = 8454143
-        Expanded = False
-        FieldName = 'DESCONTO'
-        Title.Caption = 'Desconto (%)'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 83
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'PRECO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        Title.Caption = 'Promo'#231#227'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 95
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'INICIO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'In'#237'cio'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 80
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FIM'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Fim'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 80
-        Visible = True
-      end>
+    ParentColor = False
+    Color = clWindow
   end
   inherited actlNavigateActions: TActionList
     Left = 104

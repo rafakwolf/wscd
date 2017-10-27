@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport;
+  Dialogs, RLReport, uniGUIForm;
 
 type
-  TfrmPrevPromissoria = class(TForm)
+  TfrmPrevPromissoria = class(TUniForm)
     rptPromissoria: TRLReport;
     rlbndProm: TRLBand;
     albAvalista: TRLAngleLabel;

@@ -1,67 +1,59 @@
 object frmImportaOrcam: TfrmImportaOrcam
   Left = 139
   Top = 163
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'frmImportaOrcam'
   ClientHeight = 353
   ClientWidth = 705
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'frmImportaOrcam'
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  BorderIcons = [biSystemMenu, biMinimize]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCampo: TLabel
+  object Progresso: TProgressBar
+    Left = 8
+    Top = 320
+    Width = 497
+    Height = 25
+    Hint = 'Importando...'
+    Smooth = True
+    TabOrder = 6
+    Visible = False
+  end
+  object lbCampo: TUniLabel
     Left = 8
     Top = 5
     Width = 41
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Campo'
+    TabOrder = 8
   end
-  object lbDados: TLabel
+  object lbDados: TUniLabel
     Left = 168
     Top = 5
     Width = 108
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Dados da pesquisa'
+    TabOrder = 9
   end
-  object edtPesquisa: TEdit
-    Left = 168
-    Top = 20
-    Width = 313
-    Height = 21
-    Hint = 'Dados da pesquisa'
-    TabOrder = 0
-  end
-  object cmbCampo: TComboBox
-    Left = 8
-    Top = 20
-    Width = 153
-    Height = 21
-    Hint = 'Campo '#224' pesquisar'
-    Style = csDropDownList
-    TabOrder = 1
-    Items.Strings = (
-      'Por c'#243'digo'
-      'Por c'#243'digo cliente'
-      'Por data')
-  end
-  object btnBuscar: TBitBtn
+  object btnBuscar: TUniBitBtn
     Left = 488
     Top = 16
     Width = 25
     Height = 25
     Hint = 'Pesquisar'
-    Default = True
+    ShowHint = True
     Glyph.Data = {
       1A030000424D1A030000000000001A0200002800000010000000100000000100
       08000000000000010000120B0000120B0000790000007900000000000000FFFF
@@ -88,16 +80,18 @@ object frmImportaOrcam: TfrmImportaOrcam
       50595F182B1D1927210804040404634750595C61131E25150808040404046348
       4D4B3A3B4A67030604040404040463464543413F3F3E4C680404040404040465
       514442403D3C690404040404040404046363636363630404040404040404}
+    Caption = ''
     TabOrder = 2
+    Default = True
     OnClick = btnBuscarClick
   end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 512
     Top = 320
     Width = 89
     Height = 25
     Hint = 'Importar or'#231'amento selecionado'
-    Caption = '&Importar'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -149,17 +143,17 @@ object frmImportaOrcam: TfrmImportaOrcam
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Importar'
     TabOrder = 3
     OnClick = btnOkClick
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 608
     Top = 320
     Width = 89
     Height = 25
     Hint = 'Fechar'
-    Caption = '&Cancelar'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -211,93 +205,76 @@ object frmImportaOrcam: TfrmImportaOrcam
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Cancelar'
     TabOrder = 4
     OnClick = btnCancelarClick
   end
-  object Grade: TDBGrid
+  object grpStatus: TUniGroupBox
+    Left = 520
+    Top = 8
+    Width = 177
+    Height = 33
+    Hint = ''
+    ShowHint = True
+    Caption = ' Status '
+    TabOrder = 7
+    TabStop = False
+    object lbStatus: TUniLabel
+      Left = 5
+      Top = 14
+      Width = 55
+      Height = 13
+      Hint = ''
+      ShowHint = True
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'lbStatus'
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'Verdana'
+      ParentColor = False
+      Color = clBtnFace
+      TabOrder = 0
+    end
+  end
+  object cmbCampo: TUniComboBox
+    Left = 8
+    Top = 20
+    Width = 153
+    Height = 21
+    Hint = 'Campo '#224' pesquisar'
+    ShowHint = True
+    Style = csDropDownList
+    Text = ''
+    Items.Strings = (
+      'Por c'#243'digo'
+      'Por c'#243'digo cliente'
+      'Por data')
+    TabOrder = 1
+  end
+  object edtPesquisa: TUniEdit
+    Left = 168
+    Top = 20
+    Width = 313
+    Height = 21
+    Hint = 'Dados da pesquisa'
+    ShowHint = True
+    Text = ''
+    TabOrder = 0
+  end
+  object Grade: TUniDBGrid
     Left = 8
     Top = 48
     Width = 689
     Height = 265
     Hint = 'Or'#231'amentos'
+    ShowHint = True
     DataSource = dsOrcam
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
     TabOrder = 5
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODIGO'
-        Title.Caption = 'C'#243'digo'
-        Width = 82
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CODCLIENTE'
-        Title.Caption = 'Cliente'
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'NOMECLIENTE'
-        Title.Caption = 'Nome'
-        Width = 310
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATA'
-        Title.Caption = 'Data'
-        Width = 96
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTAL'
-        Title.Caption = 'Total'
-        Width = 92
-        Visible = True
-      end>
-  end
-  object Progresso: TProgressBar
-    Left = 8
-    Top = 320
-    Width = 497
-    Height = 25
-    Hint = 'Importando...'
-    Smooth = True
-    TabOrder = 6
-    Visible = False
-  end
-  object grpStatus: TGroupBox
-    Left = 520
-    Top = 8
-    Width = 177
-    Height = 33
-    Caption = ' Status '
-    TabOrder = 7
-    object lbStatus: TLabel
-      Left = 5
-      Top = 14
-      Width = 166
-      Height = 13
-      Alignment = taCenter
-      AutoSize = False
-      Caption = 'lbStatus'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
+    ParentColor = False
+    Color = clWindow
   end
   object sqldVenda: TSQLDataSet
     CommandText = 

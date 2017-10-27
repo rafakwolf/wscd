@@ -1,102 +1,146 @@
 inherited frmRecibo: TfrmRecibo
   Left = 213
   Top = 135
-  Caption = 'frmRecibo'
-  ClientHeight = 318
+  ClientHeight = 298
   ClientWidth = 617
+  Caption = 'frmRecibo'
   OldCreateOrder = True
+  Menu = mmPadrao
+  Font.Name = 'Verdana'
   ExplicitWidth = 623
   ExplicitHeight = 347
   PixelsPerInch = 96
   TextHeight = 13
-  object lbRecebedor: TLabel [0]
+  inherited sbStatus: TUniStatusBar
+    Top = 279
+    Width = 617
+    ExplicitTop = 299
+    ExplicitWidth = 617
+  end
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 617
+    TabOrder = 5
+    ExplicitWidth = 617
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object lbRecebedor: TUniLabel [2]
     Left = 31
     Top = 84
     Width = 61
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Recebedor'
-    FocusControl = dbRecebedor
+    TabOrder = 7
   end
-  object lbRefente: TLabel [1]
+  object lbRefente: TUniLabel [3]
     Left = 36
     Top = 153
     Width = 56
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Referente'
-    FocusControl = dbReferente
+    TabOrder = 8
   end
-  object lbValor: TLabel [2]
+  object lbValor: TUniLabel [4]
     Left = 62
     Top = 176
     Width = 29
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Valor'
-    FocusControl = dbValor
+    TabOrder = 9
   end
-  object lbValorExtenso: TLabel [3]
+  object lbValorExtenso: TUniLabel [5]
     Left = 13
     Top = 245
     Width = 78
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Valor extenso'
-    FocusControl = dbValorExtenso
+    TabOrder = 10
   end
-  object dbData: TDBEdit [4]
+  object dbData: TUniDBEdit [6]
     Left = 96
     Top = 56
     Width = 186
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATA'
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbRecebedor: TDBEdit [5]
+  object dbRecebedor: TUniDBEdit [7]
     Left = 96
     Top = 80
     Width = 500
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'RECEBEDOR'
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbReferente: TDBMemo [6]
-    Left = 96
-    Top = 104
-    Width = 500
-    Height = 65
-    DataField = 'REFERENTE'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object dbValor: TDBEdit [7]
+  object dbValor: TUniDBEdit [8]
     Left = 96
     Top = 172
     Width = 134
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'VALOR'
     DataSource = dsPadrao
     TabOrder = 3
     OnKeyPress = dbValorKeyPress
   end
-  object dbValorExtenso: TDBMemo [8]
+  object dbReferente: TUniDBMemo [9]
+    Left = 96
+    Top = 104
+    Width = 500
+    Height = 65
+    Hint = ''
+    ShowHint = True
+    DataField = 'REFERENTE'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbValorExtenso: TUniDBMemo [10]
     Left = 96
     Top = 196
     Width = 500
     Height = 65
+    Hint = ''
+    ShowHint = True
     DataField = 'VALOREXTENSO'
     DataSource = dsPadrao
     TabOrder = 4
-  end
-  inherited sbStatus: TStatusBar
-    Top = 299
-    Width = 617
-    ExplicitTop = 299
-    ExplicitWidth = 617
-  end
-  inherited pnBotoesPadrao: TPanel
-    Width = 617
-    TabOrder = 5
-    ExplicitWidth = 617
   end
   inherited actlNavigateActions: TActionList
     Left = 272
@@ -110,18 +154,6 @@ inherited frmRecibo: TfrmRecibo
     DataSet = cdsPadrao
     Left = 431
     Top = 124
-  end
-  object mmPadrao: TMainMenu
-    Left = 304
-    Top = 124
-    object miRelatorios: TMenuItem
-      object mImprimir: TMenuItem
-        Caption = 'Imprimir recibo'
-      end
-      object N5: TMenuItem
-        Caption = '-'
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 
@@ -204,5 +236,18 @@ inherited frmRecibo: TfrmRecibo
     OnTimer = tmrImpressaoTimer
     Left = 472
     Top = 124
+  end
+  object mmPadrao: TUniMainMenu
+    Left = 304
+    Top = 124
+    object miRelatorios: TUniMenuItem
+      Caption = ''
+      object mImprimir: TUniMenuItem
+        Caption = 'Imprimir recibo'
+      end
+      object N5: TUniMenuItem
+        Caption = '-'
+      end
+    end
   end
 end

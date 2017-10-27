@@ -1,34 +1,39 @@
 object frmLancCaixa: TfrmLancCaixa
   Left = 232
   Top = 164
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Lan'#231'amentos do caixa'
   ClientHeight = 281
   ClientWidth = 513
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Lan'#231'amentos do caixa'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOk: TBitBtn
+  object pgcCaixa: TUniPageControl
+    Left = 8
+    Top = 8
+    Width = 497
+    Height = 233
+    Hint = ''
+    ShowHint = True
+    TabOrder = 0
+  end
+  object btnOk: TUniBitBtn
     Left = 416
     Top = 248
     Width = 89
     Height = 25
     Hint = 'Gravar lan'#231'amento'
-    Caption = '&OK'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -80,17 +85,17 @@ object frmLancCaixa: TfrmLancCaixa
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&OK'
     TabOrder = 1
     OnClick = btnOkClick
   end
-  object btnCancel: TBitBtn
+  object btnCancel: TUniBitBtn
     Left = 320
     Top = 248
     Width = 89
     Height = 25
     Hint = 'Cancelar lan'#231'amento'
-    Caption = '&Cancelar'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -142,118 +147,20 @@ object frmLancCaixa: TfrmLancCaixa
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Cancelar'
     TabOrder = 3
     OnClick = btnCancelClick
   end
-  object btnNovo: TBitBtn
+  object btnNovo: TUniBitBtn
     Left = 8
     Top = 248
     Width = 89
     Height = 25
     Hint = 'Novo lan'#231'amento'
+    ShowHint = True
     Caption = '+ &Novo'
-    NumGlyphs = 2
     TabOrder = 2
     OnClick = btnNovoClick
-  end
-  object pgcCaixa: TPageControl
-    Left = 8
-    Top = 8
-    Width = 497
-    Height = 233
-    ActivePage = tsCadastro
-    TabOrder = 0
-    object tsCadastro: TTabSheet
-      Caption = 'Cadastro'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      object lbDesc: TLabel
-        Left = 20
-        Top = 20
-        Width = 56
-        Height = 13
-        Caption = 'Descri'#231#227'o'
-      end
-      object lbDoc: TLabel
-        Left = 11
-        Top = 98
-        Width = 65
-        Height = 13
-        Caption = 'Documento'
-      end
-      object rdgConta: TDBRadioGroup
-        Left = 78
-        Top = 148
-        Width = 195
-        Height = 37
-        Caption = ' Conta '
-        Columns = 2
-        DataField = 'TIPO'
-        DataSource = dsPadrao
-        Items.Strings = (
-          'Entrada'
-          'Sa'#237'da')
-        TabOrder = 5
-        TabStop = True
-        Values.Strings = (
-          'C'
-          'D')
-        OnEnter = rdgContaEnter
-      end
-      object dbDesc: TDBEdit
-        Left = 78
-        Top = 16
-        Width = 387
-        Height = 21
-        DataField = 'DESCRICAO'
-        DataSource = dsPadrao
-        TabOrder = 0
-      end
-      object dbDoc: TDBEdit
-        Left = 78
-        Top = 94
-        Width = 121
-        Height = 21
-        DataField = 'DOCUMENTO'
-        DataSource = dsPadrao
-        TabOrder = 3
-        OnExit = dbDocExit
-      end
-      object dbeCaixa: TDBEdit
-        Left = 78
-        Top = 42
-        Width = 275
-        Height = 21
-        Hint = 'Pesquisar < F2 >'
-        Color = clBtnFace
-        DataField = 'NOME'
-        DataSource = dsPadrao
-        ReadOnly = True
-        TabOrder = 1
-      end
-      object dbeData: TDBEdit
-        Left = 78
-        Top = 68
-        Width = 235
-        Height = 21
-        DataField = 'DATA'
-        DataSource = dsPadrao
-        TabOrder = 2
-      end
-      object dbeValor: TDBEdit
-        Left = 78
-        Top = 121
-        Width = 121
-        Height = 21
-        DataField = 'VALOR'
-        DataSource = dsPadrao
-        TabOrder = 4
-        OnKeyPress = dbeValorKeyPress
-      end
-    end
   end
   object sqldCaixas: TSQLDataSet
     CommandText = 'select * from CAIXAS'

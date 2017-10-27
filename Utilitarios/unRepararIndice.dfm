@@ -1,27 +1,14 @@
 inherited frmRepararIndice: TfrmRepararIndice
   Left = 266
   Top = 199
-  Caption = 'frmRepararIndice'
   ClientHeight = 77
   ClientWidth = 537
+  Caption = 'frmRepararIndice'
   OldCreateOrder = True
   ExplicitWidth = 553
   ExplicitHeight = 116
   PixelsPerInch = 96
   TextHeight = 13
-  object lbStatus: TLabel
-    Left = 8
-    Top = 5
-    Width = 123
-    Height = 16
-    Caption = 'Clique em <Reparar>'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Arial'
-    Font.Style = []
-    ParentFont = False
-  end
   object pbProcesso: TProgressBar
     Left = 8
     Top = 24
@@ -29,12 +16,26 @@ inherited frmRepararIndice: TfrmRepararIndice
     Height = 17
     TabOrder = 0
   end
-  object btnReparar: TBitBtn
+  object lbStatus: TUniLabel
+    Left = 8
+    Top = 5
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Clique em <Reparar>'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 3
+  end
+  object btnReparar: TUniBitBtn
     Left = 352
     Top = 48
     Width = 89
     Height = 25
-    Caption = '&Reparar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -86,16 +87,17 @@ inherited frmRepararIndice: TfrmRepararIndice
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Reparar'
     TabOrder = 1
     OnClick = btnRepararClick
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 448
     Top = 48
     Width = 89
     Height = 25
-    Caption = '&Fechar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -147,7 +149,7 @@ inherited frmRepararIndice: TfrmRepararIndice
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Fechar'
     TabOrder = 2
     OnClick = btnCancelarClick
   end

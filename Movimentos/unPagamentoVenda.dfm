@@ -1,35 +1,26 @@
 object frmPagamentoVenda: TfrmPagamentoVenda
   Left = 242
   Top = 151
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Recebimentos desta venda'
   ClientHeight = 161
   ClientWidth = 481
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
+  Caption = 'Recebimentos desta venda'
+  BorderStyle = bsSingle
   OldCreateOrder = False
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOk: TSpeedButton
+  object btnOk: TUniSpeedButton
     Left = 392
     Top = 128
     Width = 81
     Height = 25
     Hint = 'Efetivar escolha'
-    Caption = '&Ok'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -81,67 +72,42 @@ object frmPagamentoVenda: TfrmPagamentoVenda
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Ok'
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentColor = False
+    Color = clWindow
+    TabOrder = 1
     OnClick = btnOkClick
   end
-  object lbStatus: TLabel
+  object lbStatus: TUniLabel
     Left = 8
     Top = 136
-    Width = 47
+    Width = 46
     Height = 13
+    Hint = ''
     Caption = 'lbStatus'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 2
   end
-  object dbgdRectoVenda: TDBGrid
+  object dbgdRectoVenda: TUniDBGrid
     Left = 0
     Top = 0
     Width = 481
     Height = 120
-    Align = alTop
+    Hint = ''
     DataSource = dsVenda
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
     ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    Align = alTop
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'DATARECTO'
-        Title.Caption = 'Data recto'
-        Width = 93
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FORMARECTO'
-        Title.Caption = 'Forma recto'
-        Width = 136
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALORRECDO'
-        Title.Caption = 'Valor recdo'
-        Width = 109
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALORRESTO'
-        Title.Caption = 'Valor resto'
-        Width = 101
-        Visible = True
-      end>
+    ParentColor = False
+    Color = clWindow
   end
   object sqldVenda: TSQLDataSet
     CommandText = 

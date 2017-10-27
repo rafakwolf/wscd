@@ -1,22 +1,22 @@
 inherited frmInformacaoSistema: TfrmInformacaoSistema
   Left = 221
   Top = 163
-  Caption = 'frmInformacaoSistema'
   ClientHeight = 317
   ClientWidth = 644
-  Font.Name = 'Tahoma'
-  OldCreateOrder = True
+  Caption = 'frmInformacaoSistema'
   OnShow = FormShow
+  OldCreateOrder = True
   ExplicitWidth = 660
   ExplicitHeight = 356
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 568
     Top = 288
     Width = 65
     Height = 25
-    Caption = 'OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -68,23 +68,22 @@ inherited frmInformacaoSistema: TfrmInformacaoSistema
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'OK'
     TabOrder = 0
     OnClick = btnOkClick
   end
-  object mmoInfo: TMemo
+  object mmoInfo: TUniMemo
     Left = 8
     Top = 8
     Width = 625
     Height = 273
-    Color = clBtnFace
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Courier New'
-    Font.Style = [fsBold]
+    Hint = ''
+    ShowHint = True
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     ReadOnly = True
+    Color = clBtnFace
     TabOrder = 1
     OnKeyDown = mmoInfoKeyDown
   end

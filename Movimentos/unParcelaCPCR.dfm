@@ -1,42 +1,52 @@
 inherited frmParcelaCPCR: TfrmParcelaCPCR
   Left = 221
   Top = 127
-  Caption = 'frmParcelaCPCR'
   ClientHeight = 437
   ClientWidth = 465
-  OldCreateOrder = True
+  Caption = 'frmParcelaCPCR'
   OnShow = FormShow
+  OldCreateOrder = True
   ExplicitWidth = 481
   ExplicitHeight = 476
   PixelsPerInch = 96
   TextHeight = 13
-  object lbParcelas: TLabel
+  object lbParcelas: TUniLabel
     Left = 232
     Top = 48
     Width = 48
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Parcelas'
+    TabOrder = 11
   end
-  object lbPrazoInicio: TLabel
+  object lbPrazoInicio: TUniLabel
     Left = 312
     Top = 48
     Width = 70
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Prazo Inicial'
+    TabOrder = 12
   end
-  object lbIntervalo: TLabel
+  object lbIntervalo: TUniLabel
     Left = 392
     Top = 48
     Width = 52
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Intervalo'
+    TabOrder = 13
   end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 280
     Top = 408
     Width = 89
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -88,16 +98,17 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080}
-    NumGlyphs = 2
+    Caption = '&OK'
     TabOrder = 9
     OnClick = btnOkClick
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 376
     Top = 408
     Width = 89
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -140,119 +151,18 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 10
     OnClick = btnCancelarClick
   end
-  object dbeCodigo: TDBEdit
-    Left = 8
-    Top = 24
-    Width = 81
-    Height = 21
-    Color = clBtnFace
-    DataField = 'CODIGO'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 0
-  end
-  object dbeNome: TDBEdit
-    Left = 96
-    Top = 24
-    Width = 347
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOME'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 1
-    OnEnter = dbeNomeEnter
-  end
-  object seParcelas: TSpinEdit
-    Left = 232
-    Top = 64
-    Width = 73
-    Height = 22
-    MaxValue = 0
-    MinValue = 0
-    TabOrder = 4
-    Value = 1
-    OnExit = seParcelasExit
-  end
-  object sePrazoInicio: TSpinEdit
-    Left = 312
-    Top = 64
-    Width = 73
-    Height = 22
-    MaxValue = 0
-    MinValue = 0
-    TabOrder = 5
-    Value = 1
-    OnExit = seParcelasExit
-  end
-  object seIntervalo: TSpinEdit
-    Left = 392
-    Top = 64
-    Width = 73
-    Height = 22
-    MaxValue = 0
-    MinValue = 0
-    TabOrder = 6
-    Value = 1
-    OnExit = seParcelasExit
-  end
-  object dbgrdParcelas: TDBGrid
-    Left = 8
-    Top = 96
-    Width = 457
-    Height = 305
-    DataSource = dsParcela
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    TabOrder = 7
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'NUMERO'
-        Width = 67
-        Visible = True
-      end
-      item
-        Color = clInactiveCaptionText
-        Expanded = False
-        FieldName = 'VENC'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        Width = 97
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DIA'
-        Width = 146
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALOR'
-        Width = 104
-        Visible = True
-      end>
-  end
-  object btnCalcular: TBitBtn
+  object btnCalcular: TUniBitBtn
     Left = 8
     Top = 408
     Width = 89
     Height = 25
-    Caption = '&Calcular'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       9E030000424D9E030000000000009E0200002800000010000000100000000100
       08000000000000010000120B0000120B00009A0000009A00000000000000FFFF
@@ -284,26 +194,105 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
       560A850D2829292552726F484643423D570A0586848182837C7B7978775E5B5A
       3A05050505050505050505050505050505050505050505050505050505050505
       0505}
+    Caption = '&Calcular'
     TabOrder = 8
     OnClick = btnCalcularClick
   end
-  object dbdtpData: TDBEdit
+  object dbeCodigo: TUniDBEdit
+    Left = 8
+    Top = 24
+    Width = 81
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CODIGO'
+    DataSource = dsPadrao
+    TabOrder = 0
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeNome: TUniDBEdit
+    Left = 96
+    Top = 24
+    Width = 347
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    TabOrder = 1
+    Color = clBtnFace
+    ReadOnly = True
+    OnEnter = dbeNomeEnter
+  end
+  object dbdtpData: TUniDBEdit
     Left = 8
     Top = 64
     Width = 113
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATA'
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeValor: TDBEdit
+  object dbeValor: TUniDBEdit
     Left = 128
     Top = 64
     Width = 97
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'VALOR'
     DataSource = dsPadrao
     TabOrder = 3
+  end
+  object seParcelas: TUniSpinEdit
+    Left = 232
+    Top = 64
+    Width = 73
+    Height = 22
+    Hint = ''
+    ShowHint = True
+    Value = 1
+    TabOrder = 4
+    OnExit = seParcelasExit
+  end
+  object sePrazoInicio: TUniSpinEdit
+    Left = 312
+    Top = 64
+    Width = 73
+    Height = 22
+    Hint = ''
+    ShowHint = True
+    Value = 1
+    TabOrder = 5
+    OnExit = seParcelasExit
+  end
+  object seIntervalo: TUniSpinEdit
+    Left = 392
+    Top = 64
+    Width = 73
+    Height = 22
+    Hint = ''
+    ShowHint = True
+    Value = 1
+    TabOrder = 6
+    OnExit = seParcelasExit
+  end
+  object dbgrdParcelas: TUniDBGrid
+    Left = 8
+    Top = 96
+    Width = 457
+    Height = 305
+    Hint = ''
+    ShowHint = True
+    DataSource = dsParcela
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 7
+    ParentColor = False
+    Color = clWindow
   end
   object sqldParcela: TSQLDataSet
     CommandText = 

@@ -1,47 +1,31 @@
 inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
   Left = 219
   Top = 116
-  Caption = 'frmRelatorioBobinaOrcam'
   ClientHeight = 445
   ClientWidth = 361
+  Caption = 'frmRelatorioBobinaOrcam'
   OldCreateOrder = True
   ExplicitWidth = 377
   ExplicitHeight = 484
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCopias: TLabel
+  object lbCopias: TUniLabel
     Left = 304
     Top = 8
     Width = 39
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Copias'
+    TabOrder = 5
   end
-  object edtImpressora: TLabeledEdit
-    Left = 8
-    Top = 24
-    Width = 289
-    Height = 21
-    EditLabel.Width = 66
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Impressora'
-    TabOrder = 0
-  end
-  object seCopias: TSpinEdit
-    Left = 304
-    Top = 24
-    Width = 57
-    Height = 22
-    MaxValue = 1000
-    MinValue = 1
-    TabOrder = 1
-    Value = 1
-  end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 280
     Top = 416
     Width = 81
     Height = 25
-    Caption = 'Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -93,16 +77,17 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Cancelar'
     TabOrder = 2
     OnClick = btnCancelarClick
   end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 184
     Top = 416
     Width = 89
     Height = 25
-    Caption = 'Imprimir'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -154,23 +139,44 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       FF00FFFF00FFFF00FFBD8281BD8281BD8281FF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9A9A9A9A9
       A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Imprimir'
     TabOrder = 3
     OnClick = btnOkClick
   end
-  object mmoOrcam: TMemo
+  object edtImpressora: TUniEdit
+    Left = 8
+    Top = 24
+    Width = 289
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 0
+  end
+  object seCopias: TUniSpinEdit
+    Left = 304
+    Top = 24
+    Width = 57
+    Height = 22
+    Hint = ''
+    ShowHint = True
+    Value = 1
+    MaxValue = 1000
+    MinValue = 1
+    TabOrder = 1
+  end
+  object mmoOrcam: TUniMemo
     Left = 8
     Top = 56
     Width = 353
     Height = 353
-    Color = clBtnFace
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Courier New'
-    Font.Style = []
-    ParentFont = False
+    Hint = ''
+    ShowHint = True
     ScrollBars = ssVertical
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    Color = clBtnFace
     TabOrder = 4
   end
   object sqlOrcam: TSQLDataSet

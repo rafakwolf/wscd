@@ -1,33 +1,59 @@
 inherited frmConfigNota: TfrmConfigNota
   Left = 215
   Top = 110
-  Caption = 'frmConfigNota'
   ClientHeight = 510
   ClientWidth = 1000
+  Caption = 'frmConfigNota'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 1006
   ExplicitHeight = 539
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 491
     Width = 1000
     ExplicitTop = 491
     ExplicitWidth = 1000
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 1000
     ExplicitWidth = 1000
-    inherited btnSair: TSpeedButton
-      Left = 386
-      ExplicitLeft = 386
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
     end
-    object btnGrade: TSpeedButton
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Left = 192
+      Hint = ''
+      Action = nil
+      Font.Name = 'Verdana'
+      ExplicitLeft = 192
+    end
+    object btnGrade: TUniSpeedButton
       Left = 354
       Top = 1
       Width = 32
       Height = 32
-      Flat = True
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000230B0000230B00000000000000000000FF00FFFF00FF
@@ -85,72 +111,14 @@ inherited frmConfigNota: TfrmConfigNota
         C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4FF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 8
       OnClick = btnGradeClick
     end
   end
-  object dbgrdCampos: TDBGrid [2]
-    Left = 0
-    Top = 40
-    Width = 293
-    Height = 449
-    DataSource = dsPadrao
-    Enabled = False
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    PopupMenu = pmMenuGrid
-    TabOrder = 2
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDblClick = actEditExecute
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CAMPO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ReadOnly = True
-        Title.Caption = 'Campo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Verdana'
-        Title.Font.Style = [fsBold]
-        Width = 150
-        Visible = True
-      end
-      item
-        Color = 15790320
-        Expanded = False
-        FieldName = 'LINHA'
-        Title.Caption = 'Linha'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Verdana'
-        Title.Font.Style = [fsBold]
-        Width = 44
-        Visible = True
-      end
-      item
-        Color = 15790320
-        Expanded = False
-        FieldName = 'COLUNA'
-        Title.Caption = 'Coluna'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -11
-        Title.Font.Name = 'Verdana'
-        Title.Font.Style = [fsBold]
-        Width = 48
-        Visible = True
-      end>
-  end
-  object sbxNota: TScrollBox [3]
+  object sbxNota: TScrollBox [2]
     Left = 294
     Top = 40
     Width = 707
@@ -162,20 +130,51 @@ inherited frmConfigNota: TfrmConfigNota
     ParentColor = False
     ParentCtl3D = False
     TabOrder = 3
-    object pnlFundoScroll: TPanel
+    object pnlFundoScroll: TUniContainerPanel
       Left = 0
       Top = 0
       Width = 690
       Height = 924
-      BevelOuter = bvNone
+      Hint = ''
+      ShowHint = True
+      ParentColor = False
       Color = clWhite
       TabOrder = 0
-      object imgFitaEsquerda: TImage
+      TabStop = False
+      object pnlFundoNota: TUniContainerPanel
+        Left = 25
+        Top = 0
+        Width = 640
+        Height = 924
+        Hint = ''
+        ShowHint = True
+        ParentColor = False
+        TabOrder = 0
+        TabStop = False
+        object lbLinhaMeioNota: TUniLabel
+          Left = 2
+          Top = 441
+          Width = 410
+          Height = 13
+          Hint = ''
+          ShowHint = True
+          Alignment = taCenter
+          Caption = 
+            '----------------------------------------------------------------' +
+            '------------------'
+          ParentFont = False
+          Font.Charset = ANSI_CHARSET
+          Font.Name = 'Verdana'
+          TabOrder = 1
+        end
+      end
+      object imgFitaEsquerda: TUniImage
         Left = 0
         Top = 0
         Width = 25
         Height = 924
-        Align = alLeft
+        Hint = ''
+        ShowHint = True
         AutoSize = True
         Picture.Data = {
           07544269746D617086120100424D861201000000000036000000280000001900
@@ -2375,13 +2374,16 @@ inherited frmConfigNota: TfrmConfigNota
           FFFFFFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFF80808000}
+        Align = alLeft
+        Anchors = [akLeft, akTop, akBottom]
       end
-      object imgFitaDireita: TImage
+      object imgFitaDireita: TUniImage
         Left = 665
         Top = 0
         Width = 25
         Height = 924
-        Align = alRight
+        Hint = ''
+        ShowHint = True
         AutoSize = True
         Picture.Data = {
           07544269746D617086120100424D861201000000000036000000280000001900
@@ -4581,40 +4583,26 @@ inherited frmConfigNota: TfrmConfigNota
           FFFFFFFFFF00808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
           FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
-      end
-      object pnlFundoNota: TPanel
-        Left = 25
-        Top = 0
-        Width = 640
-        Height = 924
-        BevelOuter = bvNone
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Courier New'
-        Font.Style = []
-        ParentColor = True
-        ParentFont = False
-        TabOrder = 0
-        object lbLinhaMeioNota: TLabel
-          Left = 2
-          Top = 441
-          Width = 656
-          Height = 16
-          Alignment = taCenter
-          Caption = 
-            '----------------------------------------------------------------' +
-            '------------------'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clGray
-          Font.Height = -13
-          Font.Name = 'Courier New'
-          Font.Style = []
-          ParentFont = False
-          Layout = tlCenter
-        end
+        Align = alRight
+        Anchors = [akTop, akRight, akBottom]
       end
     end
+  end
+  object dbgrdCampos: TUniDBGrid [3]
+    Left = 0
+    Top = 40
+    Width = 293
+    Height = 449
+    Hint = ''
+    Enabled = False
+    ShowHint = True
+    DataSource = dsPadrao
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 2
+    ParentColor = False
+    Color = clWindow
+    OnDblClick = actEditExecute
   end
   inherited actlNavigateActions: TActionList
     Left = 800
@@ -4711,21 +4699,21 @@ inherited frmConfigNota: TfrmConfigNota
       Size = 1
     end
   end
-  object pmMenuGrid: TPopupMenu
+  object pmMenuGrid: TUniPopupMenu
     Left = 864
     Top = 52
-    object miAlterarP: TMenuItem
+    object miAlterarP: TUniMenuItem
       Action = actEdit
       Caption = 'Alterar...'
     end
-    object miExcluirP: TMenuItem
+    object miExcluirP: TUniMenuItem
       Action = actDelete
       Caption = 'Excluir...'
     end
-    object N5: TMenuItem
+    object N5: TUniMenuItem
       Caption = '-'
     end
-    object miSearchP: TMenuItem
+    object miSearchP: TUniMenuItem
       Action = actSearch
       Caption = 'Pesquisar...'
     end

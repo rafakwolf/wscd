@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
   DBClient, Provider, SqlExpr, StdCtrls, DBCtrls, VarGlobal,
-    Mask, FMTBcd, System.Actions;
+    Mask, FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn,
+  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  uniEdit, uniDBEdit, uniMemo, uniDBMemo;
 
 type
   TfrmPerda = class(TfrmPadrao)
@@ -28,16 +30,7 @@ type
     sqldProduto: TSQLDataSet;
     dspProduto: TDataSetProvider;
     cdsProduto: TClientDataSet;
-    lbQtde: TLabel;
-    lbPreco: TLabel;
-    lbObs: TLabel;
-    dbQtde: TDBEdit;
-    dbPreco: TDBEdit;
     dbrgrpMOTIVO: TDBRadioGroup;
-    dbProduto: TDBEdit;
-    dbdData: TDBEdit;
-    dbmOBS: TDBMemo;
-    lbPrecoCusto: TLabel;
     sqldProdutoIDPRODUTO: TIntegerField;
     sqldProdutoCODBARRA: TStringField;
     sqldProdutoDESCRICAO: TStringField;
@@ -54,6 +47,15 @@ type
     sqldPadraoPRECO: TFMTBCDField;
     cdsPadraoQTDE: TIntegerField;
     cdsPadraoPRECO: TFMTBCDField;
+    lbQtde: TUniLabel;
+    lbPreco: TUniLabel;
+    lbObs: TUniLabel;
+    lbPrecoCusto: TUniLabel;
+    dbdData: TUniDBEdit;
+    dbQtde: TUniDBEdit;
+    dbProduto: TUniDBEdit;
+    dbPreco: TUniDBEdit;
+    dbmOBS: TUniDBMemo;
     procedure dbProdutoClickButton(Sender: TObject);
     procedure cdsPadraoCODPRODUTOValidate(Sender: TField);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

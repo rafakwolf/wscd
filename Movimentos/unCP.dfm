@@ -1,231 +1,268 @@
 inherited frmCP: TfrmCP
   Left = 218
-  Caption = 'frmCP'
   ClientHeight = 380
   ClientWidth = 521
+  Caption = 'frmCP'
   OldCreateOrder = True
   ExplicitWidth = 527
   ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
-  object lbStatus: TLabel [0]
-    Left = 8
-    Top = 336
-    Width = 53
-    Height = 13
-    Caption = 'lbStatus'
-    Color = clBtnFace
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-  end
-  object btnPagar: TBitBtn [1]
-    Left = 424
-    Top = 328
-    Width = 89
-    Height = 25
-    Caption = 'Pagar'
-    TabOrder = 14
-    OnClick = btnPagarClick
-  end
-  object dbdVencimento: TDBEdit [2]
-    Left = 168
-    Top = 160
-    Width = 153
-    Height = 21
-    DataField = 'VENCIMENTO'
-    DataSource = dsPadrao
-    TabOrder = 4
-  end
-  object btnContas: TBitBtn [3]
-    Left = 320
-    Top = 328
-    Width = 97
-    Height = 25
-    Caption = 'Contas [F7]'
-    TabOrder = 15
-    OnClick = miContasFornecCorrenteClick
-  end
-  object dbdData: TDBEdit [4]
-    Left = 8
-    Top = 160
-    Width = 153
-    Height = 21
-    DataField = 'DATA'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  object dbeOrigem: TDBEdit [5]
-    Left = 360
-    Top = 208
-    Width = 65
-    Height = 21
-    Color = clBtnFace
-    DataField = 'ORIGEM'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 9
-  end
-  object dbeJuros: TDBEdit [6]
-    Left = 264
-    Top = 208
-    Width = 89
-    Height = 21
-    DataField = 'JURO'
-    DataSource = dsPadrao
-    TabOrder = 8
-  end
-  object grpPagamento: TGroupBox [7]
-    Left = 8
-    Top = 240
-    Width = 505
-    Height = 81
-    Caption = ' Informa'#231#245'es de pagamento '
-    TabOrder = 11
-    object dbeDataPagto: TDBEdit
-      Left = 8
-      Top = 40
-      Width = 89
-      Height = 21
-      Color = clBtnFace
-      DataField = 'DATAPAGTO'
-      DataSource = dsPadrao
-      ReadOnly = True
-      TabOrder = 0
-    end
-    object dbeDesconto: TDBEdit
-      Left = 104
-      Top = 40
-      Width = 89
-      Height = 21
-      Color = clBtnFace
-      DataField = 'DESCTO'
-      DataSource = dsPadrao
-      ReadOnly = True
-      TabOrder = 1
-    end
-    object dbeCapitalPago: TDBEdit
-      Left = 200
-      Top = 40
-      Width = 89
-      Height = 21
-      Color = clBtnFace
-      DataField = 'CAPITALPAGO'
-      DataSource = dsPadrao
-      ReadOnly = True
-      TabOrder = 2
-    end
-    object dbeJuroPago: TDBEdit
-      Left = 296
-      Top = 40
-      Width = 89
-      Height = 21
-      Color = clBtnFace
-      DataField = 'JUROPAGO'
-      DataSource = dsPadrao
-      ReadOnly = True
-      TabOrder = 3
-    end
-    object dbeTotalPago: TDBEdit
-      Left = 392
-      Top = 40
-      Width = 105
-      Height = 21
-      Color = clBtnFace
-      DataField = 'TOTALPAGO'
-      DataSource = dsPadrao
-      ReadOnly = True
-      TabOrder = 4
-    end
-  end
-  object dbeDocumento: TDBEdit [8]
-    Left = 328
-    Top = 160
-    Width = 185
-    Height = 21
-    DataField = 'DOCUMENTO'
-    DataSource = dsPadrao
-    TabOrder = 5
-  end
-  object dbeValor: TDBEdit [9]
-    Left = 8
-    Top = 208
-    Width = 121
-    Height = 21
-    DataField = 'VALOR'
-    DataSource = dsPadrao
-    TabOrder = 6
-  end
-  object dbeDescricao: TDBEdit [10]
-    Left = 8
-    Top = 112
-    Width = 505
-    Height = 21
-    DataField = 'DESCRICAO'
-    DataSource = dsPadrao
-    TabOrder = 2
-    OnEnter = dbeDescricaoEnter
-  end
-  object dbeFornecedor: TDBEdit [11]
-    Left = 8
-    Top = 64
-    Width = 267
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'FANTAZIA'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 0
-  end
-  object dbeCompra: TDBEdit [12]
-    Left = 432
-    Top = 208
-    Width = 81
-    Height = 21
-    Color = clBtnFace
-    DataField = 'COMPRA'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 10
-  end
-  object dbeValorAtual: TDBEdit [13]
-    Left = 136
-    Top = 208
-    Width = 121
-    Height = 21
-    Color = clBtnFace
-    DataField = 'TOTAL'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 7
-  end
-  object dbeConta: TDBEdit [14]
-    Left = 304
-    Top = 64
-    Width = 187
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOME'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 1
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 361
     Width = 521
     ExplicitTop = 361
     ExplicitWidth = 521
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 521
     TabOrder = 12
     ExplicitWidth = 521
+  end
+  object lbStatus: TUniLabel [2]
+    Left = 8
+    Top = 336
+    Width = 46
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'lbStatus'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentColor = False
+    Color = clBtnFace
+    TabOrder = 16
+  end
+  object btnPagar: TUniBitBtn [3]
+    Left = 424
+    Top = 328
+    Width = 89
+    Height = 25
+    Hint = ''
+    ShowHint = True
+    Caption = 'Pagar'
+    TabOrder = 14
+    OnClick = btnPagarClick
+  end
+  object btnContas: TUniBitBtn [4]
+    Left = 320
+    Top = 328
+    Width = 97
+    Height = 25
+    Hint = ''
+    ShowHint = True
+    Caption = 'Contas [F7]'
+    TabOrder = 15
+    OnClick = miContasFornecCorrenteClick
+  end
+  object dbdVencimento: TUniDBEdit [5]
+    Left = 168
+    Top = 160
+    Width = 153
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VENCIMENTO'
+    DataSource = dsPadrao
+    TabOrder = 4
+  end
+  object dbdData: TUniDBEdit [6]
+    Left = 8
+    Top = 160
+    Width = 153
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATA'
+    DataSource = dsPadrao
+    TabOrder = 3
+  end
+  object dbeOrigem: TUniDBEdit [7]
+    Left = 360
+    Top = 208
+    Width = 65
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'ORIGEM'
+    DataSource = dsPadrao
+    TabOrder = 9
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeJuros: TUniDBEdit [8]
+    Left = 264
+    Top = 208
+    Width = 89
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'JURO'
+    DataSource = dsPadrao
+    TabOrder = 8
+  end
+  object dbeDocumento: TUniDBEdit [9]
+    Left = 328
+    Top = 160
+    Width = 185
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DOCUMENTO'
+    DataSource = dsPadrao
+    TabOrder = 5
+  end
+  object dbeValor: TUniDBEdit [10]
+    Left = 8
+    Top = 208
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VALOR'
+    DataSource = dsPadrao
+    TabOrder = 6
+  end
+  object dbeDescricao: TUniDBEdit [11]
+    Left = 8
+    Top = 112
+    Width = 505
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DESCRICAO'
+    DataSource = dsPadrao
+    TabOrder = 2
+    OnEnter = dbeDescricaoEnter
+  end
+  object dbeFornecedor: TUniDBEdit [12]
+    Left = 8
+    Top = 64
+    Width = 267
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'FANTAZIA'
+    DataSource = dsPadrao
+    TabOrder = 0
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeCompra: TUniDBEdit [13]
+    Left = 432
+    Top = 208
+    Width = 81
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'COMPRA'
+    DataSource = dsPadrao
+    TabOrder = 10
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeValorAtual: TUniDBEdit [14]
+    Left = 136
+    Top = 208
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TOTAL'
+    DataSource = dsPadrao
+    TabOrder = 7
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeConta: TUniDBEdit [15]
+    Left = 304
+    Top = 64
+    Width = 187
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    TabOrder = 1
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object grpPagamento: TUniGroupBox [16]
+    Left = 8
+    Top = 240
+    Width = 505
+    Height = 81
+    Hint = ''
+    ShowHint = True
+    Caption = ' Informa'#231#245'es de pagamento '
+    TabOrder = 11
+    TabStop = False
+    object dbeDataPagto: TUniDBEdit
+      Left = 8
+      Top = 40
+      Width = 89
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      DataField = 'DATAPAGTO'
+      DataSource = dsPadrao
+      TabOrder = 0
+      Color = clBtnFace
+      ReadOnly = True
+    end
+    object dbeDesconto: TUniDBEdit
+      Left = 104
+      Top = 40
+      Width = 89
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      DataField = 'DESCTO'
+      DataSource = dsPadrao
+      TabOrder = 1
+      Color = clBtnFace
+      ReadOnly = True
+    end
+    object dbeCapitalPago: TUniDBEdit
+      Left = 200
+      Top = 40
+      Width = 89
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      DataField = 'CAPITALPAGO'
+      DataSource = dsPadrao
+      TabOrder = 2
+      Color = clBtnFace
+      ReadOnly = True
+    end
+    object dbeJuroPago: TUniDBEdit
+      Left = 296
+      Top = 40
+      Width = 89
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      DataField = 'JUROPAGO'
+      DataSource = dsPadrao
+      TabOrder = 3
+      Color = clBtnFace
+      ReadOnly = True
+    end
+    object dbeTotalPago: TUniDBEdit
+      Left = 392
+      Top = 40
+      Width = 105
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      DataField = 'TOTALPAGO'
+      DataSource = dsPadrao
+      TabOrder = 4
+      Color = clBtnFace
+      ReadOnly = True
+    end
   end
   inherited actlNavigateActions: TActionList
     Left = 343

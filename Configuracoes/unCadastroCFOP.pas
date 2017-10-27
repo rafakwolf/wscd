@@ -6,23 +6,25 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-   FMTBcd, System.Actions;
+  FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn, uniSpeedButton,
+  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
+  uniMemo, uniDBMemo;
 
 type
   TfrmCadastroCFOP = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodCfop: TDBEdit;
-    dbeNomeCfop: TDBEdit;
-    dbmCfNota: TDBMemo;
-    lblDescricao: TLabel;
     sqldPadraoNUMERO: TStringField;
     sqldPadraoOPERACAO: TStringField;
     cdsPadraoNUMERO: TStringField;
     cdsPadraoOPERACAO: TStringField;
     sqldPadraoCFNOTA: TStringField;
     cdsPadraoCFNOTA: TStringField;
+    lblDescricao: TUniLabel;
+    dbeNomeCfop: TUniDBEdit;
+    dbeCodCfop: TUniDBEdit;
+    dbmCfNota: TUniDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure actPrintExecute(Sender: TObject);

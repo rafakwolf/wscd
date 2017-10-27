@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd;
+  Dialogs, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd, UniGuiForm;
 
 type
-  TfrmModeloEnvelope = class(TForm)
+  TfrmModeloEnvelope = class(TUniForm)
     rrEnvelope: TRLReport;
     rbFundo: TRLBand;
     lbEmpresa: TRLLabel;

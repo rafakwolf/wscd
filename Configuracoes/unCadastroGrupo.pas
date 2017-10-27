@@ -6,19 +6,20 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-   FMTBcd, System.Actions;
+   FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
+  uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar;
 
 type
   TfrmCadastroGrupo = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodGrupo: TDBEdit;
-    dbeNomeGrupo: TDBEdit;
     sqldPadraoCODGRUPO: TIntegerField;
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoCODGRUPO: TIntegerField;
     cdsPadraoDESCRICAO: TStringField;
+    dbeNomeGrupo: TUniDBEdit;
+    dbeCodGrupo: TUniDBEdit;
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
   private

@@ -5,20 +5,16 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Buttons, Grids, DBGrids, DB,
-  DBClient, Provider, SqlExpr, FMTBcd, unSimplePadrao;
+  DBClient, Provider, SqlExpr, FMTBcd, unSimplePadrao, uniGUIBaseClasses,
+  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniEdit, uniMultiItem,
+  uniComboBox, uniBasicGrid, uniDBGrid;
 
 type
   TfrmListagemPrecos = class(TfrmSimplePadrao)
-    edtPesquisa: TLabeledEdit;
-    Grade: TDBGrid;
-    btnFechar: TBitBtn;
     dsProdutos: TDataSource;
     sqldProduto: TSQLDataSet;
     dspProduto: TDataSetProvider;
     cdsProduto: TClientDataSet;
-    cbbCampo: TComboBox;
-    lbCampo: TLabel;
-    btnPesquisar: TBitBtn;
     cdsProdutoCODIGO: TIntegerField;
     cdsProdutoCODIGOBARRA: TStringField;
     cdsProdutoREFERENCIA: TStringField;
@@ -35,6 +31,12 @@ type
     sqldProdutoPRECO: TFMTBCDField;
     sqldProdutoFORNECEDOR: TStringField;
     sqldProdutoGRUPO: TStringField;
+    lbCampo: TUniLabel;
+    btnFechar: TUniBitBtn;
+    btnPesquisar: TUniBitBtn;
+    edtPesquisa: TUniEdit;
+    cbbCampo: TUniComboBox;
+    Grade: TUniDBGrid;
     procedure btnFecharClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

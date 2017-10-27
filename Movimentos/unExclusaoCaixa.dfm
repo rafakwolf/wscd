@@ -1,111 +1,37 @@
 inherited frmExclusaoCaixa: TfrmExclusaoCaixa
   Left = 216
   Top = 135
-  BorderStyle = bsSingle
-  Caption = 'frmExclusaoCaixa'
   ClientHeight = 443
   ClientWidth = 769
+  Caption = 'frmExclusaoCaixa'
+  BorderStyle = bsSingle
   Font.Height = -12
   ExplicitWidth = 775
   ExplicitHeight = 472
   PixelsPerInch = 96
   TextHeight = 14
-  object bvlLinha: TBevel
-    Left = 8
-    Top = 384
-    Width = 753
-    Height = 2
-  end
-  object stbCaixa: TStatusBar
+  object stbCaixa: TUniStatusBar
     Left = 0
     Top = 424
     Width = 769
     Height = 19
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBtnText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
+    Hint = ''
+    ShowHint = True
     Panels = <>
-    SimplePanel = True
+    SizeGrip = True
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    ParentColor = False
+    Color = clBtnFace
     SimpleText = ' Para ajuda pressione F1'
-    UseSystemFont = False
   end
-  object dbgrdCaixa: TDBGrid
-    Left = 8
-    Top = 57
-    Width = 753
-    Height = 320
-    Hint = 
-      'Duplo clique para marcar/desmarcar '#13#10'o lan'#231'amento que deseja exc' +
-      'luir...'
-    DataSource = dsPadrao
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ReadOnly = True
-    TabOrder = 1
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -12
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = dbgrdCaixaDrawColumnCell
-    OnDblClick = dbgrdCaixaDblClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'DATA'
-        Title.Caption = 'Data'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 93
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 345
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DOCUMENTO'
-        Title.Caption = 'Documento'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 131
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TIPO'
-        Title.Caption = 'Tipo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 135
-        Visible = True
-      end>
-  end
-  object btnExcluir: TBitBtn
+  object btnExcluir: TUniBitBtn
     Left = 592
     Top = 392
     Width = 81
     Height = 25
-    Caption = 'Excluir'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       96030000424D9603000000000000960200002800000010000000100000000100
       08000000000000010000120B0000120B0000980000009800000000000000FFFF
@@ -136,15 +62,17 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
       404D57666F6856412A0234080406162B424D596A6F6E736C28021F030606192E
       434F5A6B6E6E6E762802330F0506182F44515B6E727571552802022727151C30
       4553616760543C27020202020227272727272727272702020202}
+    Caption = 'Excluir'
     TabOrder = 2
     OnClick = btnExcluirClick
   end
-  object btnSair: TBitBtn
+  object btnSair: TUniBitBtn
     Left = 680
     Top = 392
     Width = 81
     Height = 25
-    Caption = 'Sair'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -196,51 +124,80 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Sair'
     TabOrder = 3
     OnClick = btnSairClick
   end
-  object grpBusca: TGroupBox
+  object grpBusca: TUniGroupBox
     Left = 8
     Top = 2
     Width = 753
     Height = 49
+    Hint = ''
+    ShowHint = True
     Caption = ' Pesquisa '
     TabOrder = 0
-    object edDescricao: TEdit
+    TabStop = False
+    object edDescricao: TUniEdit
       Left = 184
       Top = 17
       Width = 558
-      Height = 22
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clGray
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
+      Hint = ''
+      ShowHint = True
       Text = 'Descri'#231#227'o...'
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      TabOrder = 2
       OnChange = edDescricaoChange
-      OnEnter = edDescricaoEnter
       OnExit = edDescricaoExit
+      OnEnter = edDescricaoEnter
     end
-    object edtDocumento: TEdit
+    object edtDocumento: TUniEdit
       Left = 8
       Top = 17
       Width = 169
-      Height = 22
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clGray
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
+      Hint = ''
+      ShowHint = True
       Text = 'Documento...'
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      TabOrder = 0
       OnChange = edtDocumentoChange
-      OnEnter = edtDocumentoEnter
       OnExit = edtDocumentoExit
+      OnEnter = edtDocumentoEnter
     end
+  end
+  object bvlLinha: TUniPanel
+    Left = 8
+    Top = 384
+    Width = 753
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 5
+    Caption = 'bvlLinha'
+  end
+  object dbgrdCaixa: TUniDBGrid
+    Left = 8
+    Top = 57
+    Width = 753
+    Height = 320
+    Hint = 
+      'Duplo clique para marcar/desmarcar '#13#10'o lan'#231'amento que deseja exc' +
+      'luir...'
+    ShowHint = True
+    DataSource = dsPadrao
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 1
+    ParentColor = False
+    Color = clWindow
+    OnDblClick = dbgrdCaixaDblClick
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from CAIXA'#13#10'order by DATA'

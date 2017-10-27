@@ -5,23 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, Mask, Grids, DBGrids, Spin, DBCtrls, 
-  DBClient, Datasnap.Provider, DB,
-  SqlExpr, DateUtils, ExtCtrls, FMTBcd;
+  DBClient, Datasnap.Provider, DB, uniGuiForm,
+  SqlExpr, DateUtils, ExtCtrls, FMTBcd, uniGUIBaseClasses, uniGUIClasses,
+  uniLabel, uniButton, uniBitBtn, uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid,
+  uniDBGrid;
 
 type
-  TfrmParcelaVenda = class(TForm)
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
-    dbeCodCliente: TDBEdit;
-    dbeNomeCliente: TDBEdit;
-    dbeDataVenda: TDBEdit;
-    seParcelas: TSpinEdit;
-    lbParcelas: TLabel;
-    sePrazoInicio: TSpinEdit;
-    lbPrazoInicio: TLabel;
-    seIntervalo: TSpinEdit;
-    lbIntervalo: TLabel;
-    dbgrdParcelas: TDBGrid;
+  TfrmParcelaVenda = class(TUniForm)
     sqldParcela: TSQLDataSet;
     dspParcela: TDataSetProvider;
     cdsParcela: TClientDataSet;
@@ -34,7 +24,6 @@ type
     cdsParcelaDIA: TStringField;
     cdsParcelaVALOR: TFloatField;
     dsParcela: TDataSource;
-    btnCalcular: TBitBtn;
     sqldVenda: TSQLDataSet;
     sqldVendaCODCLIENTE: TIntegerField;
     sqldVendaCLIENTE: TStringField;
@@ -42,8 +31,21 @@ type
     dsVenda: TDataSource;
     sqldReceber: TSQLDataSet;
     sqldVendaCODIGO: TIntegerField;
-    edtRestoVenda: TLabeledEdit;
     sqldVendaTOTAL: TFMTBCDField;
+    lbParcelas: TUniLabel;
+    lbPrazoInicio: TUniLabel;
+    lbIntervalo: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    btnCalcular: TUniBitBtn;
+    edtRestoVenda: TUniEdit;
+    dbeCodCliente: TUniDBEdit;
+    dbeNomeCliente: TUniDBEdit;
+    dbeDataVenda: TUniDBEdit;
+    seParcelas: TUniSpinEdit;
+    sePrazoInicio: TUniSpinEdit;
+    seIntervalo: TUniSpinEdit;
+    dbgrdParcelas: TUniDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

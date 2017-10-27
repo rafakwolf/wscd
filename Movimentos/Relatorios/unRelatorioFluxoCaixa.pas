@@ -6,14 +6,13 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask,
-  System.StrUtils;
+  System.StrUtils, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
+  uniGUIBaseClasses, uniPanel;
 
 type
   TfrmRelatorioFluxoCaixa = class(TfrmDialogoRelatorioPadrao)
     rgRelatorio: TRadioGroup;
     rgOrdem: TRadioGroup;
-    dbDataF: TDBEdit;
-    dbDataI: TDBEdit;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
@@ -21,6 +20,8 @@ type
     sqldSelecaoDATAFIM: TSQLTimeStampField;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
+    dbDataI: TUniDBEdit;
+    dbDataF: TUniDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);

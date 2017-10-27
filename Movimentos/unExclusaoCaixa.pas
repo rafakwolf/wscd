@@ -5,22 +5,16 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ComCtrls, DB, DBClient,
-  Provider, SqlExpr, Grids, DBGrids, ExtCtrls, FMTBcd, unSimplePadrao;
+  Provider, SqlExpr, Grids, DBGrids, ExtCtrls, FMTBcd, unSimplePadrao,
+  uniGUIBaseClasses, uniGUIClasses, uniStatusBar, uniButton, uniBitBtn,
+  uniGroupBox, uniPanel, uniEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmExclusaoCaixa = class(TfrmSimplePadrao)
-    stbCaixa: TStatusBar;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
     dsPadrao: TDataSource;
-    dbgrdCaixa: TDBGrid;
-    btnExcluir: TBitBtn;
-    btnSair: TBitBtn;
-    grpBusca: TGroupBox;
-    edDescricao: TEdit;
-    edtDocumento: TEdit;
-    bvlLinha: TBevel;
     sqldPadraoCODCAIXA: TIntegerField;
     sqldPadraoCODCAIXAS: TIntegerField;
     sqldPadraoDATA: TDateField;
@@ -37,11 +31,17 @@ type
     cdsPadraoTIPO: TStringField;
     cdsPadraoVALOR: TFMTBCDField;
     cdsPadraoEXCLUIR: TStringField;
+    stbCaixa: TUniStatusBar;
+    btnExcluir: TUniBitBtn;
+    btnSair: TUniBitBtn;
+    grpBusca: TUniGroupBox;
+    bvlLinha: TUniPanel;
+    edDescricao: TUniEdit;
+    edtDocumento: TUniEdit;
+    dbgrdCaixa: TUniDBGrid;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnSairClick(Sender: TObject);
-    procedure dbgrdCaixaDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure btnExcluirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -79,22 +79,6 @@ end;
 procedure TfrmExclusaoCaixa.btnSairClick(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TfrmExclusaoCaixa.dbgrdCaixaDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  if cdsPadraoEXCLUIR.AsString = 'S' then
-    dbgrdCaixa.Canvas.Brush.Color := $0080FFFF
-  else
-    dbgrdCaixa.Canvas.Brush.Color := clWindow;
-
-  if (gdSelected in State) then
-    dbgrdCaixa.Canvas.Brush.Color := clMenuHighlight;
-
-  dbgrdCaixa.Canvas.FillRect(Rect);
-  dbgrdCaixa.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TfrmExclusaoCaixa.btnExcluirClick(Sender: TObject);

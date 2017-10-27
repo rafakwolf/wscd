@@ -6,10 +6,10 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, SqlExpr, DBCtrls, udmGeralBase,
-  Mask, DBClient, Provider, StrUtils,  ExtDlgs, FMTBcd, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
-  cxDropDownEdit, cxDBEdit, cxLabel, cxTextEdit, cxMaskEdit, cxButtonEdit,
-  System.Actions, cxGraphics;
+  Mask, DBClient, Provider, StrUtils,  ExtDlgs, FMTBcd,
+  System.Actions, uniGUIBaseClasses, uniGUIClasses, uniButton,
+  uniBitBtn, uniSpeedButton, uniPanel, uniStatusBar, uniEdit, uniDBEdit,
+  uniImage, uniDBImage, uniGroupBox;
 
 type
   TfrmCliente = class(TfrmPadrao)
@@ -20,47 +20,41 @@ type
     cdsCidade: TClientDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
-    dbeNome: TDBEdit;
-    dbeEndereco: TDBEdit;
-    dbeBairro: TDBEdit;
-    dbeCep: TDBEdit;
-    dbeTelefone: TDBEdit;
-    dbeRg: TDBEdit;
-    dbeCpf: TDBEdit;
-    dbeDataNasc: TDBEdit;
-    dbeLimite: TDBEdit;
-    btnObservacao: TBitBtn;
-    dbeTempoMoradia: TDBEdit;
-    dbeEnderecoAnterior: TDBEdit;
-    dbeConjuge: TDBEdit;
-    dbePai: TDBEdit;
-    dbeMae: TDBEdit;
-    dbeDataCadastro: TDBEdit;
-    dbeNaturalidade: TDBEdit;
-    dbeEmail: TDBEdit;
-    dbeTrabalho: TDBEdit;
-    dbeCargo: TDBEdit;
-    dbeInicioTrabalho: TDBEdit;
-    dbeSalario: TDBEdit;
-    dbeLocalTrabalho: TDBEdit;
-    dbeRefPessoal: TDBEdit;
-    dbeRefComercial: TDBEdit;
-    dbeTelefoneComercial: TDBEdit;
-    btnContas: TBitBtn;
-    dbeFax: TDBEdit;
-    btnFoto: TBitBtn;
-    pnFoto: TPanel;
-    grpFoto: TGroupBox;
-    btnBuscar: TSpeedButton;
-    btnLimpar: TSpeedButton;
-    btnWebCam: TSpeedButton;
-    imgFoto: TDBImage;
-    dbeCidade: TcxDBButtonEdit;
-    lblNome: TcxLabel;
-    lblDocumento: TcxLabel;
-    cmdTipoCliente: TcxDBComboBox;
-    lblTipo: TcxLabel;
-    cmdEstadoCivil: TcxDBComboBox;
+    pnFoto: TUniContainerPanel;
+    grpFoto: TUniGroupBox;
+    btnBuscar: TUniSpeedButton;
+    btnLimpar: TUniSpeedButton;
+    btnWebCam: TUniSpeedButton;
+    btnFoto: TUniBitBtn;
+    btnContas: TUniBitBtn;
+    btnObservacao: TUniBitBtn;
+    dbeFax: TUniDBEdit;
+    dbeTelefoneComercial: TUniDBEdit;
+    dbeRefComercial: TUniDBEdit;
+    dbeRefPessoal: TUniDBEdit;
+    dbeLocalTrabalho: TUniDBEdit;
+    dbeSalario: TUniDBEdit;
+    dbeInicioTrabalho: TUniDBEdit;
+    dbeCargo: TUniDBEdit;
+    dbeTrabalho: TUniDBEdit;
+    dbeEmail: TUniDBEdit;
+    dbeNaturalidade: TUniDBEdit;
+    dbeDataCadastro: TUniDBEdit;
+    dbeMae: TUniDBEdit;
+    dbePai: TUniDBEdit;
+    dbeConjuge: TUniDBEdit;
+    dbeEnderecoAnterior: TUniDBEdit;
+    dbeTempoMoradia: TUniDBEdit;
+    dbeLimite: TUniDBEdit;
+    dbeDataNasc: TUniDBEdit;
+    dbeCpf: TUniDBEdit;
+    dbeRg: TUniDBEdit;
+    dbeTelefone: TUniDBEdit;
+    dbeCep: TUniDBEdit;
+    dbeBairro: TUniDBEdit;
+    dbeEndereco: TUniDBEdit;
+    dbeNome: TUniDBEdit;
+    imgFoto: TUniDBImage;
     procedure miRelClientesCidadeClick(Sender: TObject);
     procedure miRelClientesDataNascClick(Sender: TObject);
     procedure miRelAniversariantesClick(Sender: TObject);

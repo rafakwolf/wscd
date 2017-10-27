@@ -1,77 +1,88 @@
 inherited frmEtiquetaProduto: TfrmEtiquetaProduto
-  Caption = 'frmEtiquetaProduto'
   ClientHeight = 402
+  Caption = 'frmEtiquetaProduto'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitHeight = 431
   PixelsPerInch = 96
   TextHeight = 13
-  object dbgrdEtq: TDBGrid [0]
-    Left = 0
-    Top = 123
-    Width = 755
-    Height = 260
-    Align = alBottom
-    DataSource = dsPadrao
-    TabOrder = 2
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = dbgrdEtqDrawColumnCell
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODBARRA'
-        Title.Caption = 'C'#243'digo de Barra'
-        Width = 121
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Width = 480
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'PRECO'
-        Title.Caption = 'Pre'#231'o'
-        Width = 101
-        Visible = True
-      end>
+  inherited sbStatus: TUniStatusBar
+    Top = 383
+    ExplicitTop = 383
   end
-  object dbeCodBarra: TDBEdit [1]
+  inherited pnBotoesPadrao: TUniContainerPanel
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object dbeCodBarra: TUniDBEdit [2]
     Left = 112
     Top = 48
     Width = 161
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'CODBARRA'
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeProduto: TDBEdit [2]
+  object dbeProduto: TUniDBEdit [3]
     Left = 112
     Top = 72
     Width = 497
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbePreco: TDBEdit [3]
+  object dbePreco: TUniDBEdit [4]
     Left = 112
     Top = 96
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'PRECO'
     DataSource = dsPadrao
     TabOrder = 5
   end
-  inherited sbStatus: TStatusBar
-    Top = 383
-    ExplicitTop = 383
+  object dbgrdEtq: TUniDBGrid [5]
+    Left = 0
+    Top = 123
+    Width = 755
+    Height = 260
+    Hint = ''
+    ShowHint = True
+    DataSource = dsPadrao
+    LoadMask.Message = 'Loading data...'
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    TabOrder = 2
+    ParentColor = False
+    Color = clWindow
   end
   inherited actlNavigateActions: TActionList
     Left = 520
@@ -123,7 +134,6 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
     Left = 368
     Top = 256
     object cdsPadraoIDETIQUETAPROD: TIntegerField

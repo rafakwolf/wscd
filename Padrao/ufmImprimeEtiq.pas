@@ -6,13 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DBClient, Provider, DB, RLTypes,
   SqlExpr, StdCtrls, Buttons, ExtCtrls, Spin, RLReport, Funcoes,
-  VarGlobal, FMTBcd, IniFiles;
+  VarGlobal, FMTBcd, IniFiles, uniLabel, uniGUIBaseClasses, uniGUIClasses,
+  uniPanel, uniMultiItem, uniComboBox, uniButton, uniBitBtn, uniSpinEdit;
 
 type
   TTipoEtiqueta = (teProduto, teCliente);
   TfrmImprimeEtiq = class(TfrmDialogoRelatorioPadrao)
-    lbModeloEtq: TLabel;
-    cbListaEtiq: TComboBox;
     sqldEtiqueta: TSQLDataSet;
     dspEtiqueta: TDataSetProvider;
     cdsEtiqueta: TClientDataSet;
@@ -44,11 +43,13 @@ type
     cdsEtiquetaDISTANCIAHORIZONTAL: TFloatField;
     cdsEtiquetaDISTACOLVERTICAL: TFloatField;
     cdsEtiquetaDISTCOLHORIZ: TFloatField;
-    lbLinhaIni: TLabel;
-    lbColIni: TLabel;
-    seColunaIni: TSpinEdit;
-    seLinhaIni: TSpinEdit;
     rgTraversal: TRadioGroup;
+    lbModeloEtq: TUniLabel;
+    lbLinhaIni: TUniLabel;
+    lbColIni: TUniLabel;
+    cbListaEtiq: TUniComboBox;
+    seColunaIni: TUniSpinEdit;
+    seLinhaIni: TUniSpinEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

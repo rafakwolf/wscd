@@ -1,81 +1,69 @@
 object frmPrincipal: TfrmPrincipal
   Left = 91
   Top = 50
-  Caption = 'frmPrincipal'
   ClientHeight = 426
   ClientWidth = 1000
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
-  Menu = mnPrincipal
+  Caption = 'frmPrincipal'
+  OnShow = FormShow
   OldCreateOrder = False
-  Position = poDesigned
   ShowHint = True
-  WindowState = wsMaximized
-  OnCloseQuery = FormCloseQuery
+  OnKeyDown = FormKeyDown
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  OnKeyDown = FormKeyDown
-  OnPaint = FormPaint
-  OnResize = FormResize
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object sbPrincipal: TStatusBar
+  object sbPrincipal: TUniStatusBar
     Left = 0
     Top = 404
     Width = 1000
     Height = 22
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBtnText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    Panels = <
-      item
-        Width = 275
-      end
-      item
-        Width = 275
-      end
-      item
-        Width = 275
-      end>
+    Hint = ''
+    ShowHint = True
+    Panels = <>
     SizeGrip = False
-    UseSystemFont = False
-    OnMouseMove = sbPrincipalMouseMove
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    ParentColor = False
+    Color = clBtnFace
   end
-  object clbrPrincipal: TCoolBar
+  object clbrPrincipal: TUniToolBar
     Left = 0
     Top = 0
     Width = 1000
     Height = 62
-    Bands = <
-      item
-        Control = pnAtalho
-        ImageIndex = -1
-        MinHeight = 56
-        Width = 994
-      end>
-    object pnAtalho: TPanel
-      Left = 11
+    Hint = ''
+    ShowHint = True
+    Anchors = [akLeft, akTop, akRight]
+    Align = alTop
+    TabOrder = 1
+    ParentColor = False
+    Color = clBtnFace
+    ExplicitTop = 62
+    object pnAtalho: TUniContainerPanel
+      Left = 0
       Top = 0
-      Width = 985
-      Height = 56
+      Width = 1000
+      Height = 62
+      Hint = ''
+      ShowHint = True
+      ParentColor = False
       Align = alClient
-      BevelOuter = bvNone
+      Anchors = [akLeft, akTop, akRight, akBottom]
       TabOrder = 0
-      object btnAgenda: TSpeedButton
+      TabStop = False
+      ExplicitLeft = 11
+      ExplicitWidth = 985
+      ExplicitHeight = 56
+      object btnAgenda: TUniSpeedButton
         Left = 1
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Agenda de telefones'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           8A1C0000424D8A1C000000000000360000002800000031000000310000000100
           180000000000541C0000120B0000120B00000000000000000000FE40FEFE40FE
@@ -306,16 +294,19 @@ object frmPrincipal: TfrmPrincipal
           40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FE
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FE00}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 0
         OnClick = btnAgendaClick
       end
-      object btnCliente: TSpeedButton
+      object btnCliente: TUniSpeedButton
         Left = 68
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Cadastro de clientes'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           1E1D0000424D1E1D000000000000360000002800000031000000320000000100
           180000000000E81C0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -551,16 +542,19 @@ object frmPrincipal: TfrmPrincipal
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
           FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
           FF00}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 1
         OnClick = btnClienteClick
       end
-      object btnFornecedor: TSpeedButton
+      object btnFornecedor: TUniSpeedButton
         Left = 121
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Cadastro de fornecedores'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           C2160000424DC216000000000000360000002800000031000000270000000100
           1800000000008C160000120B0000120B00000000000000000000FE40FEFE40FE
@@ -745,16 +739,19 @@ object frmPrincipal: TfrmPrincipal
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE
           40FEFE40FE00}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 2
         OnClick = btnFornecedorClick
       end
-      object btnProduto: TSpeedButton
+      object btnProduto: TUniSpeedButton
         Left = 174
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Estoque'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           561C0000424D561C00000000000036000000280000002F000000320000000100
           180000000000201C0000120B0000120B00000000000000000000FE40FEFE40FE
@@ -983,16 +980,19 @@ object frmPrincipal: TfrmPrincipal
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE
           40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FE000000}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 3
         OnClick = btnProdutoClick
       end
-      object btnListaPreco: TSpeedButton
+      object btnListaPreco: TUniSpeedButton
         Left = 227
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Lista de pre'#231'os'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           2E170000424D2E17000000000000360000002800000027000000310000000100
           180000000000F816000000000000000000000000000000000000FF00FFFF00FF
@@ -1180,16 +1180,19 @@ object frmPrincipal: TfrmPrincipal
           FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
           FF00FFFF00FFFF00FFFF00FFFF00FF000000}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 4
         OnClick = btnListaPrecoClick
       end
-      object btnNotaCompra: TSpeedButton
+      object btnNotaCompra: TUniSpeedButton
         Left = 400
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Compras'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           561C0000424D561C00000000000036000000280000002F000000320000000100
           180000000000201C000000000000000000000000000000000000FF00FFFF00FF
@@ -1418,16 +1421,19 @@ object frmPrincipal: TfrmPrincipal
           FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
           FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 5
         OnClick = btnNotaCompraClick
       end
-      object btnNotaVenda: TSpeedButton
+      object btnNotaVenda: TUniSpeedButton
         Left = 453
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Vendas'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           561C0000424D561C000000000000360000002800000030000000320000000100
           180000000000201C0000120B0000120B00000000000000000000FE40FEFE40FE
@@ -1656,16 +1662,19 @@ object frmPrincipal: TfrmPrincipal
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE
           40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FE}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 6
         OnClick = btnNotaVendaClick
       end
-      object btnCheque: TSpeedButton
+      object btnCheque: TUniSpeedButton
         Left = 506
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Cheques'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           1E1C0000424D1E1C0000000000003600000028000000320000002F0000000100
           180000000000E81B0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -1893,16 +1902,19 @@ object frmPrincipal: TfrmPrincipal
           FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
           0000}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 7
         OnClick = btnChequeClick
       end
-      object btnContaPagar: TSpeedButton
+      object btnContaPagar: TUniSpeedButton
         Left = 559
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Contas a pagar'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           621B0000424D621B0000000000003600000028000000310000002F0000000100
           1800000000002C1B0000120B0000120B00000000000000000000FE40FEFE40FE
@@ -2124,16 +2136,19 @@ object frmPrincipal: TfrmPrincipal
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE
           40FEFE40FE00}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 8
         OnClick = btnContaPagarClick
       end
-      object btnContaReceber: TSpeedButton
+      object btnContaReceber: TUniSpeedButton
         Left = 612
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Contas a receber'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           621B0000424D621B0000000000003600000028000000310000002F0000000100
           1800000000002C1B0000120B0000120B00000000000000000000FE40FEFE40FE
@@ -2355,16 +2370,19 @@ object frmPrincipal: TfrmPrincipal
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE
           40FEFE40FE00}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 9
         OnClick = btnContaReceberClick
       end
-      object btnLivroCaixa: TSpeedButton
+      object btnLivroCaixa: TUniSpeedButton
         Left = 665
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Livro caixa'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           F6180000424DF61800000000000036000000280000002F0000002C0000000100
           180000000000C0180000120B0000120B00000000000000000000FE40FEFE40FE
@@ -2566,16 +2584,19 @@ object frmPrincipal: TfrmPrincipal
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE
           40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FE000000}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 10
         OnClick = btnLivroCaixaClick
       end
-      object btnLogOff: TSpeedButton
+      object btnLogOff: TUniSpeedButton
         Left = 851
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Trocar de usu'#225'rio'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           1E1D0000424D1E1D000000000000360000002800000031000000320000000100
           180000000000E81C0000120B0000120B00000000000000000000FE40FEFE40FE
@@ -2811,16 +2832,19 @@ object frmPrincipal: TfrmPrincipal
           40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FE
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFF}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 11
         OnClick = btnLogOffClick
       end
-      object btnSair: TSpeedButton
+      object btnSair: TUniSpeedButton
         Left = 904
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Sair do sistema <Alt + S>'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           561C0000424D561C00000000000036000000280000002F000000320000000100
           180000000000201C0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -3049,16 +3073,19 @@ object frmPrincipal: TfrmPrincipal
           FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
           FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 12
         OnClick = btnSairClick
       end
-      object btnOrcamento: TSpeedButton
+      object btnOrcamento: TUniSpeedButton
         Left = 347
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Or'#231'amentos'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           561C0000424D561C00000000000036000000280000002F000000320000000100
           180000000000201C0000120B0000120B00000000000000000000FE40FEFE40FE
@@ -3287,34 +3314,19 @@ object frmPrincipal: TfrmPrincipal
           FE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40
           FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE
           40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FEFE40FE000000}
-        Transparent = False
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 13
         OnClick = btnOrcamentoClick
       end
-      object bvlSeparaCaixa: TBevel
-        Left = 844
-        Top = 3
-        Width = 2
-        Height = 49
-      end
-      object bvlSeparaListaPreco: TBevel
-        Left = 339
-        Top = 3
-        Width = 2
-        Height = 49
-      end
-      object bvlSeparaAgenda: TBevel
-        Left = 60
-        Top = 3
-        Width = 2
-        Height = 49
-      end
-      object btnAtualizar: TSpeedButton
+      object btnAtualizar: TUniSpeedButton
         Left = 785
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Verificar atualiza'#231#227'o'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           8A1C0000424D8A1C000000000000360000002800000031000000310000000100
           180000000000541C0000C40E0000C40E00000000000000000000FF0FEFFF0FEF
@@ -3545,21 +3557,19 @@ object frmPrincipal: TfrmPrincipal
           0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEF
           FF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0FEFFF0F
           EFFF0FEFFF0FEFFF0FEFFF0FEFFF}
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 14
         OnClick = btnAtualizarClick
       end
-      object bvlSeparaBackup: TBevel
-        Left = 724
-        Top = 3
-        Width = 2
-        Height = 49
-      end
-      object btnBackup: TSpeedButton
+      object btnBackup: TUniSpeedButton
         Left = 732
         Top = 1
         Width = 53
         Height = 53
         Hint = 'C'#243'pia se seguran'#231'a'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           8A1C0000424D8A1C000000000000360000002800000031000000310000000100
           180000000000541C000000000000000000000000000000000000FF00FFFF00FF
@@ -3790,15 +3800,19 @@ object frmPrincipal: TfrmPrincipal
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
           FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
           FFFF00FFFF00FFFF00FFFF00FF00}
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 15
         OnClick = btnBackupClick
       end
-      object btnPromocao: TSpeedButton
+      object btnPromocao: TUniSpeedButton
         Left = 280
         Top = 1
         Width = 53
         Height = 53
         Hint = 'Cadastro de promo'#231#245'es'
-        Flat = True
+        ShowHint = True
         Glyph.Data = {
           F6180000424DF61800000000000036000000280000002C000000300000000100
           180000000000C0180000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -4000,309 +4014,53 @@ object frmPrincipal: TfrmPrincipal
           FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
           FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+        Caption = ''
+        ParentColor = False
+        Color = clWindow
+        TabOrder = 16
         OnClick = btnPromocaoClick
       end
-    end
-  end
-  object mnPrincipal: TMainMenu
-    Left = 144
-    Top = 88
-    object miCofiguracao: TMenuItem
-      Caption = 'Configura'#231#245'es'
-      Hint = 'Configura'#231#245'es'
-      object miCidade: TMenuItem
-        Action = actCidade
+      object bvlSeparaCaixa: TUniPanel
+        Left = 844
+        Top = 3
+        Width = 2
+        Height = 49
+        Hint = ''
+        ShowHint = True
+        TabOrder = 18
+        Caption = 'bvlSeparaCaixa'
       end
-      object miUnidade: TMenuItem
-        Action = actUnidade
+      object bvlSeparaListaPreco: TUniPanel
+        Left = 339
+        Top = 3
+        Width = 2
+        Height = 49
+        Hint = ''
+        ShowHint = True
+        TabOrder = 19
+        Caption = 'bvlSeparaListaPreco'
       end
-      object miGrupo: TMenuItem
-        Action = actGrupo
+      object bvlSeparaAgenda: TUniPanel
+        Left = 60
+        Top = 3
+        Width = 2
+        Height = 49
+        Hint = ''
+        ShowHint = True
+        TabOrder = 20
+        Caption = 'bvlSeparaAgenda'
       end
-      object miAliquotaIcms: TMenuItem
-        Action = actAliquotaIcms
-      end
-      object miNomesCaixas: TMenuItem
-        Action = actContaCaixa
-      end
-      object miCfop: TMenuItem
-        Action = actCfop
-      end
-      object miBanco: TMenuItem
-        Action = actBanco
-      end
-      object miVendedor: TMenuItem
-        Action = actVendedor
-      end
-      object miEtiqueta: TMenuItem
-        Action = actEtiqueta
-      end
-      object N17: TMenuItem
-        Caption = '-'
-      end
-      object miConfigNota: TMenuItem
-        Action = actConfigNota
-      end
-      object N7: TMenuItem
-        Caption = '-'
-      end
-      object miConfiguracaoGlobal: TMenuItem
-        Action = actConfiguracaoGlobal
-      end
-      object miConfiguracaoLocal: TMenuItem
-        Action = actConfiguracaoLocal
-      end
-      object miImpressora: TMenuItem
-        Action = actImpressora
-      end
-      object miConfigServidor: TMenuItem
-        Action = actConfigServidor
-      end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object miDadosEmpresa: TMenuItem
-        Action = actDadosEmpresa
-      end
-      object N21: TMenuItem
-        Caption = '-'
-      end
-      object miUsuario: TMenuItem
-        Action = actUsuario
-      end
-      object miPerfis: TMenuItem
-        Action = actPerfis
-      end
-      object miTrocarSenha: TMenuItem
-        Action = actTrocaSenha
-      end
-      object miRenovaChave: TMenuItem
-        Action = actRenovaChave
+      object bvlSeparaBackup: TUniPanel
+        Left = 724
+        Top = 3
+        Width = 2
+        Height = 49
+        Hint = ''
+        ShowHint = True
+        TabOrder = 21
+        Caption = 'bvlSeparaBackup'
       end
     end
-    object miUtilitario: TMenuItem
-      Caption = 'Utilit'#225'rios'
-      object miAgenda: TMenuItem
-        Action = actAgenda
-      end
-      object miRelatorioAgenda: TMenuItem
-        Action = actRelatorioAgenda
-      end
-      object N16: TMenuItem
-        Caption = '-'
-      end
-      object miPesqFone: TMenuItem
-        Action = actPesqFone
-      end
-      object N6: TMenuItem
-        Caption = '-'
-      end
-      object miCalendario: TMenuItem
-        Action = actCalendario
-      end
-      object miCalculadora: TMenuItem
-        Action = actCalculadora
-      end
-      object miEditorTexto: TMenuItem
-        Action = actEditorTexto
-      end
-      object miEnvelope: TMenuItem
-        Action = actEnvelope
-      end
-      object N4: TMenuItem
-        Caption = '-'
-      end
-      object miDuplicata: TMenuItem
-        Action = actDuplicata
-      end
-      object miNotaPromissoria: TMenuItem
-        Action = actNotaPromissoria
-        Caption = 'Promiss'#243'ria avulsa'
-      end
-      object miRecibo: TMenuItem
-        Action = actRecibo
-      end
-      object N11: TMenuItem
-        Caption = '-'
-      end
-      object miBackupRestore: TMenuItem
-        Caption = 'C'#243'pia de seguran'#231'a'
-        object miBackup: TMenuItem
-          Action = actBackup
-        end
-        object miRestore: TMenuItem
-          Action = actRestore
-        end
-      end
-      object N12: TMenuItem
-        Caption = '-'
-      end
-      object miPostit: TMenuItem
-        Action = actPostIt
-      end
-      object miAuditoriaUser: TMenuItem
-        Action = actAuditoriaUser
-      end
-    end
-    object miCadastro: TMenuItem
-      Caption = 'Cadastros'
-      object miCliente: TMenuItem
-        Action = actCliente
-      end
-      object N2: TMenuItem
-        Caption = '-'
-      end
-      object miProduto: TMenuItem
-        Action = actProduto
-      end
-      object N3: TMenuItem
-        Caption = '-'
-      end
-      object miFornecedor: TMenuItem
-        Action = actFornecedor
-      end
-    end
-    object miMovimento: TMenuItem
-      Caption = 'Movimentos'
-      object miContasPagar: TMenuItem
-        Action = actContasPagar
-      end
-      object miContasReceber: TMenuItem
-        Action = actContasReceber
-      end
-      object N5: TMenuItem
-        Caption = '-'
-      end
-      object miOrcamento: TMenuItem
-        Action = actOrcamento
-      end
-      object miVenda: TMenuItem
-        Action = actVenda
-      end
-      object miCompra: TMenuItem
-        Action = actCompra
-      end
-      object N18: TMenuItem
-        Caption = '-'
-      end
-      object miPerda: TMenuItem
-        Action = actPerda
-      end
-      object miCheque: TMenuItem
-        Action = actCheque
-      end
-      object N22: TMenuItem
-        Caption = '-'
-      end
-      object miPromocoes: TMenuItem
-        Action = actPromocao
-      end
-      object N15: TMenuItem
-        Caption = '-'
-      end
-      object miCaixa: TMenuItem
-        Action = actCaixa
-      end
-      object N8: TMenuItem
-        Caption = '-'
-      end
-      object miProdutoMovimento: TMenuItem
-        Caption = 'Movimentos de produtos'
-        object miDesmarcaProduto: TMenuItem
-          Action = actDesmarcaProduto
-        end
-        object miExcluirProduto: TMenuItem
-          Action = actExcluirProduto
-        end
-        object miListaPreco: TMenuItem
-          Action = actListaPreco
-        end
-        object N9: TMenuItem
-          Caption = '-'
-        end
-        object miEtiquetaProduto: TMenuItem
-          Action = actEtiquetaProduto
-        end
-      end
-    end
-    object miAjuda: TMenuItem
-      Caption = 'Ajuda'
-      object miDicaDia: TMenuItem
-        Action = actDicaDia
-      end
-      object miAtualizacao: TMenuItem
-        Action = actAtualizacao
-      end
-      object N10: TMenuItem
-        Caption = '-'
-      end
-      object miInfo_sobreosistema: TMenuItem
-        Action = actInfoSistema
-      end
-      object miInfoAvisos: TMenuItem
-        Action = actInfoAvisos
-      end
-      object miChamaAjuda: TMenuItem
-        Action = actAjuda
-      end
-      object miSobreSistema: TMenuItem
-        Action = actSobreSistema
-      end
-    end
-    object miSair: TMenuItem
-      Caption = 'Sair'
-      object miOutroUsuario: TMenuItem
-        Action = actOutroUsuario
-      end
-      object N13: TMenuItem
-        Caption = '-'
-      end
-      object miFechar: TMenuItem
-        Action = actFechar
-      end
-    end
-    object miVisualizarDados: TMenuItem
-      Tag = 1
-      Caption = 'Visualizar dados'
-      OnClick = miVisualizarDadosClick
-    end
-    object miRepararIndices: TMenuItem
-      Tag = 1
-      Caption = 'Reparar '#237'ndices'
-      OnClick = miRepararIndicesClick
-    end
-    object miExecutarScripts: TMenuItem
-      Tag = 1
-      Caption = 'Executar scripts SQL'
-      OnClick = miExecutarScriptsClick
-    end
-    object miLogs: TMenuItem
-      Tag = 1
-      Caption = 'Logs'
-      object miCriarLog: TMenuItem
-        Tag = 1
-        Caption = 'Criar tabelas de log'
-        OnClick = miCriarLogClick
-      end
-      object miAuditoria: TMenuItem
-        Tag = 1
-        Caption = 'Auditoria de registros'
-        OnClick = miAuditoriaClick
-      end
-      object miLogOperacao: TMenuItem
-        Tag = 1
-        Caption = 'Log de opera'#231#227'o'
-      end
-      object miConsultaErro: TMenuItem
-        Tag = 1
-        Caption = 'Log de erros'
-        OnClick = miConsultaErroClick
-      end
-    end
-  end
-  object pstpImpressora: TPrinterSetupDialog
-    Left = 104
-    Top = 232
   end
   object ListaAcoes: TActionList
     Left = 64
@@ -4350,7 +4108,6 @@ object frmPrincipal: TfrmPrincipal
     object actImpressora: TAction
       Category = 'Configuracao'
       Caption = 'Impressora'
-      OnExecute = actImpressoraExecute
     end
     object actDadosEmpresa: TAction
       Category = 'Configuracao'
@@ -4600,128 +4357,300 @@ object frmPrincipal: TfrmPrincipal
       OnExecute = actAuditoriaUserExecute
     end
   end
-  object pmIconTray: TPopupMenu
-    Left = 200
-    Top = 136
-    object pmiAtualizacao: TMenuItem
-      Bitmap.Data = {
-        DE020000424DDE02000000000000DE0100002800000010000000100000000100
-        08000000000000010000120B0000120B00006A0000006A00000000000000FFFF
-        FF00FF00FF00EDF6FF00EAF3FC0066AAF70066A9F4006CB1FF007FBCFF008AC1
-        FF008BC2FF008FC4FF0088B8EE009FCEFF00A3CFFF00ADD5FF00B7DAFF00EAF4
-        FF00328EFF003590FF003791FF003D95FF004097FF00469AFF004598FB004596
-        F600499DFF004A9DFF004592EE004592ED0050A0FF0056A4FF005AA6FF005CA7
-        FF0060AAFF0065ACFF0067ADFF0069AFFF0066A3E90072B4FF0074B5FF007FBB
-        FF0081BCFF000F75FF001070F2001378FF001479FF001579FF00197DFF001B7E
-        FF001E80FF001F81FF002484FF002686FF002988FF002B89FF002880EE000167
-        FF000268FF000369FF00056BFF00066CFF000669F600065AD100086EFF00096F
-        FF000A70FF000C72FF000D73FF000064FF000063FB000062F8000060F600005F
-        F300005EF000005DEE00005CEB00005BE900005AE6000059E3000058E1000057
-        DE000056DC000055D9000054D7000053D4000052D1000051CF000050CC00004F
-        CA00004EC700004DC500004CC200004BC0000044AF000041A5000040A300003A
-        950000399200003587000033820000317E0000307B00002F790000296A000166
-        FF00020202020202020202020202020202020202616263656767676767676768
-        0202025D5053565A5D5D5D5D5D5D5B5F680202513A474A4C505454545454525B
-        6702024B3D393E05010101263F58545D6602024A2B400A1119381D040C57545D
-        6702024A352F011A46494B1C0155545D6702024A173301131A01472C0651525C
-        6602024A2136030E070101184A4D4E596402024A25122201010101010F494A54
-        6102024A2815341B1001010D2E69454F6002024A2A1E3735080116433D3B3A4B
-        5E02024A0929231F1713352D413D3D455D02024A24090B2A272014324441423A
-        580202023C3031302F443C69484A495102020202020202020202020202020202
-        0202}
-      Caption = 'Verificar atualiza'#231#227'o'
-      OnClick = pmiAtualizacaoClick
+  object mnPrincipal: TUniMainMenu
+    Left = 144
+    Top = 88
+    object miCofiguracao: TUniMenuItem
+      Caption = 'Configura'#231#245'es'
+      Hint = 'Configura'#231#245'es'
+      object miCidade: TUniMenuItem
+        Action = actCidade
+      end
+      object miUnidade: TUniMenuItem
+        Action = actUnidade
+      end
+      object miGrupo: TUniMenuItem
+        Action = actGrupo
+      end
+      object miAliquotaIcms: TUniMenuItem
+        Action = actAliquotaIcms
+      end
+      object miNomesCaixas: TUniMenuItem
+        Action = actContaCaixa
+      end
+      object miCfop: TUniMenuItem
+        Action = actCfop
+      end
+      object miBanco: TUniMenuItem
+        Action = actBanco
+      end
+      object miVendedor: TUniMenuItem
+        Action = actVendedor
+      end
+      object miEtiqueta: TUniMenuItem
+        Action = actEtiqueta
+      end
+      object N17: TUniMenuItem
+        Caption = '-'
+      end
+      object miConfigNota: TUniMenuItem
+        Action = actConfigNota
+      end
+      object N7: TUniMenuItem
+        Caption = '-'
+      end
+      object miConfiguracaoGlobal: TUniMenuItem
+        Action = actConfiguracaoGlobal
+      end
+      object miConfiguracaoLocal: TUniMenuItem
+        Action = actConfiguracaoLocal
+      end
+      object miImpressora: TUniMenuItem
+        Action = actImpressora
+      end
+      object miConfigServidor: TUniMenuItem
+        Action = actConfigServidor
+      end
+      object N1: TUniMenuItem
+        Caption = '-'
+      end
+      object miDadosEmpresa: TUniMenuItem
+        Action = actDadosEmpresa
+      end
+      object N21: TUniMenuItem
+        Caption = '-'
+      end
+      object miUsuario: TUniMenuItem
+        Action = actUsuario
+      end
+      object miPerfis: TUniMenuItem
+        Action = actPerfis
+      end
+      object miTrocarSenha: TUniMenuItem
+        Action = actTrocaSenha
+      end
+      object miRenovaChave: TUniMenuItem
+        Action = actRenovaChave
+      end
     end
-    object N20: TMenuItem
-      Caption = '-'
+    object miUtilitario: TUniMenuItem
+      Caption = 'Utilit'#225'rios'
+      object miAgenda: TUniMenuItem
+        Action = actAgenda
+      end
+      object miRelatorioAgenda: TUniMenuItem
+        Action = actRelatorioAgenda
+      end
+      object N16: TUniMenuItem
+        Caption = '-'
+      end
+      object miPesqFone: TUniMenuItem
+        Action = actPesqFone
+      end
+      object N6: TUniMenuItem
+        Caption = '-'
+      end
+      object miCalendario: TUniMenuItem
+        Action = actCalendario
+      end
+      object miCalculadora: TUniMenuItem
+        Action = actCalculadora
+      end
+      object miEditorTexto: TUniMenuItem
+        Action = actEditorTexto
+      end
+      object miEnvelope: TUniMenuItem
+        Action = actEnvelope
+      end
+      object N4: TUniMenuItem
+        Caption = '-'
+      end
+      object miDuplicata: TUniMenuItem
+        Action = actDuplicata
+      end
+      object miNotaPromissoria: TUniMenuItem
+        Action = actNotaPromissoria
+        Caption = 'Promiss'#243'ria avulsa'
+      end
+      object miRecibo: TUniMenuItem
+        Action = actRecibo
+      end
+      object N11: TUniMenuItem
+        Caption = '-'
+      end
+      object miBackupRestore: TUniMenuItem
+        Caption = 'C'#243'pia de seguran'#231'a'
+        object miBackup: TUniMenuItem
+          Action = actBackup
+        end
+        object miRestore: TUniMenuItem
+          Action = actRestore
+        end
+      end
+      object N12: TUniMenuItem
+        Caption = '-'
+      end
+      object miPostit: TUniMenuItem
+        Action = actPostIt
+      end
+      object miAuditoriaUser: TUniMenuItem
+        Action = actAuditoriaUser
+      end
     end
-    object pmiMinimizar: TMenuItem
-      Bitmap.Data = {
-        36020000424D3602000000000000360100002800000010000000100000000100
-        08000000000000010000120B0000120B0000400000004000000000000000FFFF
-        FF00FF00FF00BB420000CFCCCA00AF6E4000AF6F4000FFF8F300CFC6BF00C49E
-        7B00CFC2B600E7A46300C49D7800C5A07B00C49E7A00C49F7B00C5A38000CFBD
-        AB00CFC2B500CFCAC500CFCBC700CFCCC900FFD5A900CFB69A00FFE1C200CFB7
-        9E00CFBAA400CFBBA500CFBBA600CFBFAD00FFEEDC00CFC1B200CFC2B400FFF3
-        E600CFC5BA00CFC6BC00FFD8A900FEE6CA00CFBCA500CFBDA700CFBFAC00CFC6
-        BB00CFC9C200CFCAC400FFE2BB00CFBDA500CFBDA600CFC4B500CFC4B600CFC7
-        BD00CFC9C100CFBFA700CFC1AD00CFC7BC00FFEED300CFC1AB00CFC4B200CFCC
-        C700CFC5B200FEFCF800FFFBF000CFCECB00CFCFCE00CFCFCF00020202020202
-        02020202020202020202020303030303030302020202020202020203013C362C
-        24030202020202020202020301071E1816030202020202020202020301013B21
-        2503020202020202020202030B0B0B0B0B030606060606060602020203030303
-        03352F34272D263A0602020202063F1432221F111A19172E0602020202063F3E
-        152A2920281B19330602020202063F3F3F042B23121D1C370602020202063F3F
-        3F3F3D2B31301D380602020202063F3F3F3F3F3D13080A350602020202063F3F
-        3F3F3F3F3F3F393F0602020202061009090909090F0E0C0D0602020202020506
-        0606060606060606020202020202020202020202020202020202}
-      Caption = 'Minimizar'
-      OnClick = pmiMinimizarClick
+    object miCadastro: TUniMenuItem
+      Caption = 'Cadastros'
+      object miCliente: TUniMenuItem
+        Action = actCliente
+      end
+      object N2: TUniMenuItem
+        Caption = '-'
+      end
+      object miProduto: TUniMenuItem
+        Action = actProduto
+      end
+      object N3: TUniMenuItem
+        Caption = '-'
+      end
+      object miFornecedor: TUniMenuItem
+        Action = actFornecedor
+      end
     end
-    object pmiMaximizar: TMenuItem
-      Bitmap.Data = {
-        52020000424D5202000000000000520100002800000010000000100000000100
-        08000000000000010000120B0000120B0000470000004700000000000000FFFF
-        FF00FF00FF00BCB8B600BB410000BB4200009C5E3200FFF6EF00E6995200E69C
-        5900E69D5900E9A36200BCAD9F00FFF4EA00FFF8F200E69C5600E99F5800FECA
-        9500FFCE9C00FFD4A900FEEBD800FFEDDC00FEF0E200FFF2E500FFF3E700BCB6
-        B000FFFBF700FECE9C00B1916F00FED3A500FED5AA00FEDAB400FFDCB600FEDD
-        B800FEDDBA00FFE3C500FEE2C400FFE5C900FFE6CA00FEE5CA00FFEBD500FEF3
-        E700BCB4AB00FFDAAD00BCA99300FFEAD100BBB0A300FFFAF400FFD8A700FFD9
-        A900FFDAAB00FFE1B800FFE7C700BCAA9300FEEED900FFFBF600FFDCAC00FFE1
-        B500FFE7C400BCAF9C00FFEFD700BCB4A700FFEAC200FFFAEF00BCBAB500FFFA
-        EA00FFFEFB00FFFFFA00BBBBB800FFFFFE00BCBCBC0002020202020202020202
-        02020202020202060606060606060202020202020202020646403D3B35060202
-        020202020202020646032A0C2C0602020202020202020206464644192E060202
-        02020202020202061C05050505050505050505050502020206050143413C3433
-        2B31303E0502020202050107162D241F1D1B113205020202020501420E172823
-        201312380502020202050101452F181425211E39050202020205010101453729
-        3626223A05020202020501010101011A0D15273C050202020205010101010101
-        01013F010502020202050B09090909090A0F0810050202020202040505050505
-        05050505020202020202020202020202020202020202}
-      Caption = 'Maximizar'
-      OnClick = pmiMaximizarClick
+    object miMovimento: TUniMenuItem
+      Caption = 'Movimentos'
+      object miContasPagar: TUniMenuItem
+        Action = actContasPagar
+      end
+      object miContasReceber: TUniMenuItem
+        Action = actContasReceber
+      end
+      object N5: TUniMenuItem
+        Caption = '-'
+      end
+      object miOrcamento: TUniMenuItem
+        Action = actOrcamento
+      end
+      object miVenda: TUniMenuItem
+        Action = actVenda
+      end
+      object miCompra: TUniMenuItem
+        Action = actCompra
+      end
+      object N18: TUniMenuItem
+        Caption = '-'
+      end
+      object miPerda: TUniMenuItem
+        Action = actPerda
+      end
+      object miCheque: TUniMenuItem
+        Action = actCheque
+      end
+      object N22: TUniMenuItem
+        Caption = '-'
+      end
+      object miPromocoes: TUniMenuItem
+        Action = actPromocao
+      end
+      object N15: TUniMenuItem
+        Caption = '-'
+      end
+      object miCaixa: TUniMenuItem
+        Action = actCaixa
+      end
+      object N8: TUniMenuItem
+        Caption = '-'
+      end
+      object miProdutoMovimento: TUniMenuItem
+        Caption = 'Movimentos de produtos'
+        object miDesmarcaProduto: TUniMenuItem
+          Action = actDesmarcaProduto
+        end
+        object miExcluirProduto: TUniMenuItem
+          Action = actExcluirProduto
+        end
+        object miListaPreco: TUniMenuItem
+          Action = actListaPreco
+        end
+        object N9: TUniMenuItem
+          Caption = '-'
+        end
+        object miEtiquetaProduto: TUniMenuItem
+          Action = actEtiquetaProduto
+        end
+      end
     end
-    object N19: TMenuItem
-      Caption = '-'
+    object miAjuda: TUniMenuItem
+      Caption = 'Ajuda'
+      object miDicaDia: TUniMenuItem
+        Action = actDicaDia
+      end
+      object miAtualizacao: TUniMenuItem
+        Action = actAtualizacao
+      end
+      object N10: TUniMenuItem
+        Caption = '-'
+      end
+      object miInfo_sobreosistema: TUniMenuItem
+        Action = actInfoSistema
+      end
+      object miInfoAvisos: TUniMenuItem
+        Action = actInfoAvisos
+      end
+      object miChamaAjuda: TUniMenuItem
+        Action = actAjuda
+      end
+      object miSobreSistema: TUniMenuItem
+        Action = actSobreSistema
+      end
     end
-    object pmiFechar: TMenuItem
-      Bitmap.Data = {
-        66030000424D6603000000000000360000002800000010000000110000000100
-        1800000000003003000000000000000000000000000000000000FF00FFFF00FF
-        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-        FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000000000000000FF
-        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-        000000000000296394296394000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00
-        FFFF00FFFF00FFFF00FFFF00FF004A6329639429639429639429639400000000
-        4A63004A63004A63004A63FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF004A63
-        29639C29639429639429639400000000CEFF00CEFF00CEFF000000FF00FFFF00
-        FFFF00FFFF00FFFF00FFFF00FF004A63216B9C296B9C296B9C296B9C00000000
-        CEFF00CEFF00CEFF000000FF00FFFF0000FF00FFFF00FFFF00FFFF00FF004A63
-        2173A52173A52173A5216B9C00000008CEFF00CEFF00CEFF000000FF0000FF00
-        00FF00FFFF00FFFF00FFFF00FF004A63187BAD187BADFFFFFF1873A500000031
-        D6FF21D6FF18CEFFFF0000FF0000FF0000FF00FFFF00FFFF00FFFF00FF004A63
-        1084B5107BB5107BAD107BAD0000005ADEFF4ADEFFFF0000FF0000FF0000FF00
-        00FF0000FF0000FF00FFFF00FF004A63088CBD0884B50884B51084B500000084
-        E7F7FF0000FF0000FF0000FF0000FF0000FF0000FF0000FF00FFFF00FF004A63
-        008CBD008CBD088CBD088CBD000000B5EFF7A5E7F7FF0000FF0000FF0000FF00
-        00FF0000FF0000FF00FFFF00FF004A630094C60094C60094C60094C6000000DE
-        F7F7CEEFF7BDEFF7FF0000FF0000FF0000FF00FFFF00FFFF00FFFF00FF004A63
-        0094CE0094CE0094C60094C6000000F7F7F7EFF7F7E7F7F7000000FF0000FF00
-        00FF00FFFF00FFFF00FFFF00FF004A630094CE0094CE0094CE0094CE000000F7
-        F7F7F7F7F7F7F7F7000000FF00FFFF0000FF00FFFF00FFFF00FFFF00FFFF00FF
-        004A63004A630094CE0094CE000000004A63004A63004A63004A63FF00FFFF00
-        FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF004A63004A63004A63FF
-        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-        FFFF00FFFF00FFFF00FF}
-      Caption = 'Fechar'
-      OnClick = pmiFecharClick
+    object miSair: TUniMenuItem
+      Caption = 'Sair'
+      object miOutroUsuario: TUniMenuItem
+        Action = actOutroUsuario
+      end
+      object N13: TUniMenuItem
+        Caption = '-'
+      end
+      object miFechar: TUniMenuItem
+        Action = actFechar
+      end
     end
-  end
-  object appevPrincipal: TApplicationEvents
-    OnException = appevPrincipalException
-    Left = 56
-    Top = 168
+    object miVisualizarDados: TUniMenuItem
+      Tag = 1
+      Caption = 'Visualizar dados'
+      OnClick = miVisualizarDadosClick
+    end
+    object miRepararIndices: TUniMenuItem
+      Tag = 1
+      Caption = 'Reparar '#237'ndices'
+      OnClick = miRepararIndicesClick
+    end
+    object miExecutarScripts: TUniMenuItem
+      Tag = 1
+      Caption = 'Executar scripts SQL'
+      OnClick = miExecutarScriptsClick
+    end
+    object miLogs: TUniMenuItem
+      Tag = 1
+      Caption = 'Logs'
+      object miCriarLog: TUniMenuItem
+        Tag = 1
+        Caption = 'Criar tabelas de log'
+        OnClick = miCriarLogClick
+      end
+      object miAuditoria: TUniMenuItem
+        Tag = 1
+        Caption = 'Auditoria de registros'
+        OnClick = miAuditoriaClick
+      end
+      object miLogOperacao: TUniMenuItem
+        Tag = 1
+        Caption = 'Log de opera'#231#227'o'
+      end
+      object miConsultaErro: TUniMenuItem
+        Tag = 1
+        Caption = 'Log de erros'
+        OnClick = miConsultaErroClick
+      end
+    end
   end
 end

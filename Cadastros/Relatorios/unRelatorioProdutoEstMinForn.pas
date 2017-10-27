@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls;
+  DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
+  uniGUIBaseClasses, uniPanel;
 
 type
   TfrmRelatorioProdutoEstMinForn = class(TfrmDialogoRelatorioPadrao)
-    dbeForn: TDBEdit;
+    dbeForn: TUniDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbeFornClickButton(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

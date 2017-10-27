@@ -1,76 +1,48 @@
 inherited frmConsultaLogErro: TfrmConsultaLogErro
   Left = 178
   Top = 155
-  Caption = 'frmConsultaLogErro'
   ClientHeight = 373
   ClientWidth = 673
-  Font.Height = -12
-  Font.Name = 'Tahoma'
+  Caption = 'frmConsultaLogErro'
   OldCreateOrder = True
+  Font.Height = -12
   ExplicitWidth = 689
   ExplicitHeight = 412
   PixelsPerInch = 96
   TextHeight = 14
-  object lbPeriodo: TLabel
+  object lbPeriodo: TUniLabel
     Left = 10
     Top = 15
-    Width = 51
+    Width = 45
     Height = 14
+    Hint = ''
+    ShowHint = True
     Caption = 'Per'#237'odo:'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -12
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Height = -12
+    TabOrder = 7
   end
-  object lbPeriodo2: TLabel
+  object lbPeriodo2: TUniLabel
     Left = 141
     Top = 15
-    Width = 7
+    Width = 6
     Height = 14
+    Hint = ''
+    ShowHint = True
     Caption = 'a'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -12
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Height = -12
+    TabOrder = 8
   end
-  object bvlLinha: TBevel
-    Left = 8
-    Top = 334
-    Width = 665
-    Height = 2
-  end
-  object medtDataI: TMaskEdit
-    Left = 64
-    Top = 12
-    Width = 73
-    Height = 21
-    AutoSize = False
-    EditMask = '99/99/9999;1;_'
-    MaxLength = 10
-    TabOrder = 0
-    Text = '  /  /    '
-  end
-  object medtDataF: TMaskEdit
-    Left = 152
-    Top = 12
-    Width = 73
-    Height = 21
-    AutoSize = False
-    EditMask = '99/99/9999;1;_'
-    MaxLength = 10
-    TabOrder = 1
-    Text = '  /  /    '
-  end
-  object btnPesquisar: TBitBtn
+  object btnPesquisar: TUniBitBtn
     Left = 232
     Top = 8
     Width = 97
     Height = 25
-    Caption = 'Pesquisar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       1A030000424D1A030000000000001A0200002800000010000000100000000100
       08000000000000010000120B0000120B0000790000007900000000000000FFFF
@@ -97,60 +69,17 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
       50595F182B1D1927210804040404634750595C61131E25150808040404046348
       4D4B3A3B4A67030604040404040463464543413F3F3E4C680404040404040465
       514442403D3C690404040404040404046363636363630404040404040404}
+    Caption = 'Pesquisar'
     TabOrder = 2
     OnClick = btnPesquisarClick
   end
-  object dbgrdLog: TDBGrid
-    Left = 8
-    Top = 40
-    Width = 665
-    Height = 289
-    DataSource = dsLogErro
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ReadOnly = True
-    TabOrder = 3
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -12
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    OnDrawColumnCell = dbgrdLogDrawColumnCell
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'DATAHORA'
-        Title.Caption = 'Data-Hora'
-        Width = 126
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FORM'
-        Title.Caption = 'Form'
-        Width = 110
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CONTROLE'
-        Title.Caption = 'Controle'
-        Width = 96
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'MSG'
-        Title.Caption = 'Mensagem'
-        Width = 293
-        Visible = True
-      end>
-  end
-  object btnRelatorio: TBitBtn
+  object btnRelatorio: TUniBitBtn
     Left = 472
     Top = 344
     Width = 121
     Height = 25
-    Caption = 'Gerar relat'#243'rio'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36030000424D3603000000000000360200002800000010000000100000000100
       08000000000000010000120B0000120B0000800000008000000000000000FFFF
@@ -178,15 +107,17 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
       7F2524211E0C3E03615F02087F797A7D7F355234493342030202027F7476777B
       7F28100F2522460302027F7272737F757F112B29534C4A030202027F727F017F
       040A4F542A354D03020202097F08080808080808080808080202}
+    Caption = 'Gerar relat'#243'rio'
     TabOrder = 4
     OnClick = btnRelatorioClick
   end
-  object btnFechar: TBitBtn
+  object btnFechar: TUniBitBtn
     Left = 600
     Top = 344
     Width = 73
     Height = 25
-    Caption = 'Fechar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -238,16 +169,17 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Fechar'
     TabOrder = 5
     OnClick = btnFecharClick
   end
-  object btnLimpar: TBitBtn
+  object btnLimpar: TUniBitBtn
     Left = 592
     Top = 8
     Width = 81
     Height = 25
-    Caption = 'Limpar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       92030000424D9203000000000000920200002800000010000000100000000100
       08000000000000010000120B0000120B0000970000009700000000000000FFFF
@@ -278,8 +210,56 @@ inherited frmConsultaLogErro: TfrmConsultaLogErro
       8C8E281443940285360131234E48637A8B4F131792020285203A013456476269
       58011A8392020202852137015C3D393E012C8092020202020285851F2E5B3024
       849292020202020202020285858585918F0202020202}
+    Caption = 'Limpar'
     TabOrder = 6
     OnClick = btnLimparClick
+  end
+  object bvlLinha: TUniPanel
+    Left = 8
+    Top = 334
+    Width = 665
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 9
+    Caption = 'bvlLinha'
+  end
+  object medtDataI: TUniEdit
+    Left = 64
+    Top = 12
+    Width = 73
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    MaxLength = 10
+    Text = '  /  /    '
+    TabOrder = 0
+  end
+  object medtDataF: TUniEdit
+    Left = 152
+    Top = 12
+    Width = 73
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    MaxLength = 10
+    Text = '  /  /    '
+    TabOrder = 1
+  end
+  object dbgrdLog: TUniDBGrid
+    Left = 8
+    Top = 40
+    Width = 665
+    Height = 289
+    Hint = ''
+    ShowHint = True
+    DataSource = dsLogErro
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 3
+    ParentColor = False
+    Color = clWindow
   end
   object dsLogErro: TDataSource
     DataSet = cdsLogErro

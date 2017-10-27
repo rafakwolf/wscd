@@ -1,53 +1,27 @@
 object frmSenhaCaixa: TfrmSenhaCaixa
   Left = 214
   Top = 137
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Trocar senha'
   ClientHeight = 129
   ClientWidth = 225
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Trocar senha'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = False
-  Position = poScreenCenter
   OnClose = FormClose
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
   PixelsPerInch = 96
   TextHeight = 13
-  object edAtual: TLabeledEdit
-    Left = 16
-    Top = 24
-    Width = 145
-    Height = 21
-    EditLabel.Width = 69
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Senha Atual'
-    PasswordChar = '*'
-    TabOrder = 0
-  end
-  object edNova: TLabeledEdit
-    Left = 16
-    Top = 64
-    Width = 145
-    Height = 21
-    EditLabel.Width = 69
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Nova Senha'
-    PasswordChar = '*'
-    TabOrder = 1
-  end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 48
     Top = 96
     Width = 81
     Height = 25
-    Caption = '&Ok'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -99,17 +73,17 @@ object frmSenhaCaixa: TfrmSenhaCaixa
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080}
+    Caption = '&Ok'
     ModalResult = 1
-    NumGlyphs = 2
     TabOrder = 2
     OnClick = btnOkClick
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 136
     Top = 96
     Width = 81
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -152,9 +126,29 @@ object frmSenhaCaixa: TfrmSenhaCaixa
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 3
+  end
+  object edAtual: TUniEdit
+    Left = 16
+    Top = 24
+    Width = 145
+    Height = 21
+    Hint = ''
+    PasswordChar = '*'
+    Text = ''
+    TabOrder = 0
+  end
+  object edNova: TUniEdit
+    Left = 16
+    Top = 64
+    Width = 145
+    Height = 21
+    Hint = ''
+    PasswordChar = '*'
+    Text = ''
+    TabOrder = 1
   end
   object sqldConfig: TSQLDataSet
     CommandText = 

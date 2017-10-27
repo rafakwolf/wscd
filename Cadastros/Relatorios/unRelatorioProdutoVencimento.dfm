@@ -1,23 +1,13 @@
 inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
-  Caption = 'frmRelatorioProdutoVencimento'
   ClientHeight = 298
   ClientWidth = 433
+  Caption = 'frmRelatorioProdutoVencimento'
   OldCreateOrder = True
   ExplicitWidth = 449
   ExplicitHeight = 337
   PixelsPerInch = 96
   TextHeight = 13
-  object dbdDataVenc: TDBEdit [0]
-    Left = 84
-    Top = 104
-    Width = 341
-    Height = 21
-    Hint = 'Produtos vencidos '#13#10'apartir desta data...'
-    DataField = 'DATA'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object rgTipo: TRadioGroup [1]
+  object rgTipo: TRadioGroup [0]
     Left = 16
     Top = 16
     Width = 409
@@ -32,50 +22,61 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     TabOrder = 1
     OnClick = rgTipoClick
   end
-  object dbeUnidade: TDBEdit [2]
+  inherited pnButtons: TUniContainerPanel
+    Top = 264
+    Width = 433
+    ExplicitTop = 264
+    ExplicitWidth = 433
+  end
+  object dbdDataVenc: TUniDBEdit [2]
+    Left = 84
+    Top = 104
+    Width = 341
+    Height = 21
+    Hint = 'Produtos vencidos '#13#10'apartir desta data...'
+    ShowHint = True
+    DataField = 'DATA'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbeUnidade: TUniDBEdit [3]
     Left = 84
     Top = 131
     Width = 319
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsUnidade
-    ReadOnly = True
     TabOrder = 3
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeForn: TDBEdit [3]
+  object dbeForn: TUniDBEdit [4]
     Left = 84
     Top = 160
     Width = 319
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsForn
-    ReadOnly = True
     TabOrder = 4
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeGrupo: TDBEdit [4]
+  object dbeGrupo: TUniDBEdit [5]
     Left = 84
     Top = 189
     Width = 319
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsGrupo
-    ReadOnly = True
     TabOrder = 5
-  end
-  inherited pnButtons: TPanel
-    Top = 264
-    Width = 433
-    ExplicitTop = 264
-    ExplicitWidth = 433
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsSelecao

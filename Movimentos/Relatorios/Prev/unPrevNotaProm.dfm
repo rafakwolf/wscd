@@ -1,52 +1,41 @@
 object frmPrevNotaProm: TfrmPrevNotaProm
   Left = 224
   Top = 159
-  BorderStyle = bsSingle
-  Caption = 'frmPrevNotaProm'
   ClientHeight = 131
   ClientWidth = 465
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'frmPrevNotaProm'
+  BorderStyle = bsSingle
   OldCreateOrder = False
-  Position = poScreenCenter
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCliente: TDBEdit
-    Left = 16
-    Top = 40
-    Width = 411
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOME'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 0
-  end
-  object pnlBotoes: TPanel
+  object pnlBotoes: TUniContainerPanel
     Left = 0
     Top = 97
     Width = 465
     Height = 34
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alBottom
-    BevelInner = bvLowered
+    Anchors = [akLeft, akRight, akBottom]
     TabOrder = 1
-    object btnImp: TBitBtn
+    TabStop = False
+    ExplicitTop = 63
+    object btnImp: TUniBitBtn
       Left = 97
       Top = 2
       Width = 90
       Height = 30
       Hint = 'Visualizar'
-      Caption = '&Visualizar'
+      ShowHint = True
       Glyph.Data = {
         1A0D0000424D1A0D00000000000036000000280000002C000000190000000100
         180000000000E40C0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -153,17 +142,17 @@ object frmPrevNotaProm: TfrmPrevNotaProm
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      NumGlyphs = 2
+      Caption = '&Visualizar'
       TabOrder = 0
       OnClick = btnImpClick
     end
-    object btnCancel: TBitBtn
+    object btnCancel: TUniBitBtn
       Left = 188
       Top = 2
       Width = 90
       Height = 30
       Hint = 'Sair'
-      Caption = '&Sair'
+      ShowHint = True
       Glyph.Data = {
         760B0000424D760B000000000000360000002800000028000000180000000100
         180000000000400B0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -257,17 +246,17 @@ object frmPrevNotaProm: TfrmPrevNotaProm
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF949494767676FF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      NumGlyphs = 2
+      Caption = '&Sair'
       TabOrder = 1
       OnClick = btnCancelClick
     end
-    object btnImprimir: TBitBtn
+    object btnImprimir: TUniBitBtn
       Left = 3
       Top = 2
       Width = 90
       Height = 30
       Hint = 'Imprimir'
-      Caption = '&Imprimir'
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -415,10 +404,23 @@ object frmPrevNotaProm: TfrmPrevNotaProm
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
+      Caption = '&Imprimir'
       TabOrder = 2
       OnClick = btnImprimirClick
     end
+  end
+  object dbeCliente: TUniDBEdit
+    Left = 16
+    Top = 40
+    Width = 411
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    TabOrder = 0
+    Color = clBtnFace
+    ReadOnly = True
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

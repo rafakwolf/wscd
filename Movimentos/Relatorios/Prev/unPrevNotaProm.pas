@@ -4,19 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr, DBCtrls,
-  DBClient, Provider, ConstPadrao, Mask,  FMTBcd;
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr, DBCtrls, uniGuiForm,
+  DBClient, Provider, ConstPadrao, Mask,  FMTBcd, uniGUIBaseClasses,
+  uniGUIClasses, uniPanel, uniButton, uniBitBtn, uniEdit, uniDBEdit;
 
 type
-  TfrmPrevNotaProm = class(TForm)
+  TfrmPrevNotaProm = class(TUniForm)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCliente: TDBEdit;
-    pnlBotoes: TPanel;
-    btnImp: TBitBtn;
-    btnCancel: TBitBtn;
-    btnImprimir: TBitBtn;
     dsPadrao: TDataSource;
     sqldPadraoCODCLIENTE: TIntegerField;
     sqldPadraoNOME: TStringField;
@@ -34,6 +30,11 @@ type
     cdsPadraoDATA_NASC: TDateField;
     cdsPadraoLIMITE: TFMTBCDField;
     cdsPadraoDESCRICAO: TStringField;
+    pnlBotoes: TUniContainerPanel;
+    btnImp: TUniBitBtn;
+    btnCancel: TUniBitBtn;
+    btnImprimir: TUniBitBtn;
+    dbeCliente: TUniDBEdit;
     procedure btnCancelClick(Sender: TObject);
     procedure btnImpClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

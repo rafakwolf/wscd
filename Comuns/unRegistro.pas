@@ -5,15 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, DB, DBClient, Provider, SqlExpr, Mask,
-  DBCtrls,  FMTBcd;
+  DBCtrls,  FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
+  uniImage, uniEdit, uniDBEdit, uniGroupBox, uniPanel, uniGuiForm;
 
 type
-  TfrmRegistro = class(TForm)
-    imgCadeado: TImage;
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
+  TfrmRegistro = class(TUniForm)
     sqldSetSerial: TSQLDataSet;
-    bvlLinha: TBevel;
     sqldEmpresa: TSQLDataSet;
     dspEmpresa: TDataSetProvider;
     cdsEmpresa: TClientDataSet;
@@ -24,11 +21,15 @@ type
     cdsEmpresaRAZASOCIAL: TStringField;
     cdsEmpresaCNPJ: TStringField;
     cdsEmpresaCEP: TStringField;
-    dbeNomeEmpresa: TDBEdit;
-    dbeCnpj: TDBEdit;
-    dbeCep: TDBEdit;
-    grpSerial: TGroupBox;
-    medtSerial: TMaskEdit;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    imgCadeado: TUniImage;
+    dbeNomeEmpresa: TUniDBEdit;
+    dbeCnpj: TUniDBEdit;
+    dbeCep: TUniDBEdit;
+    grpSerial: TUniGroupBox;
+    bvlLinha: TUniPanel;
+    medtSerial: TUniEdit;
     procedure FormShow(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
@@ -105,7 +106,7 @@ begin
 //  case RetornoValidacao of
 //    tvSerialErrado, tvChaveErrada:
 //    begin
-//      if Application.MessageBox('A chave de liberação informada está incorreta '+
+//      if UniGUIDialogs.MessageDlg('A chave de liberação informada está incorreta '+
 //        'ou os dados informados estão incorretos. '+#13+
 //        'Deseja efetuar a correção agora?', 'Dados incorretos',
 //        MB_YESNO or MB_ICONWARNING) = ID_YES then
@@ -115,7 +116,7 @@ begin
 //    end;
 //    tvExpirouPrazo:
 //    begin
-//      if Application.MessageBox('A chave de liberação do sistema está expirada.'+#13+
+//      if UniGUIDialogs.MessageDlg('A chave de liberação do sistema está expirada.'+#13+
 //        'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato '+
 //        'com o suporte para obter uma nova chave de liberação.'+#13+
 //        'Deseja informar uma nova chave de liberação?', 'Chave expirada',
@@ -126,7 +127,7 @@ begin
 //    end;
 //    tvBloqueioSistema:
 //    begin
-//      if Application.MessageBox('CHAVE DE LIBERAÇÃO EXPIRADA.'+#13+
+//      if UniGUIDialogs.MessageDlg('CHAVE DE LIBERAÇÃO EXPIRADA.'+#13+
 //        'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias. '+
 //        'Por favor entre em contato com o suporte para obter uma nova chave de liberação.'+#13+
 //        'Deseja informar uma nova chave de liberação?',
@@ -137,7 +138,7 @@ begin
 //    end;
 //    tvPrazoMtoLongo:
 //    begin
-//      if Application.MessageBox('A chave de liberação informada está fora de um período válido. '+
+//      if UniGUIDialogs.MessageDlg('A chave de liberação informada está fora de um período válido. '+
 //        'Verifique a data do seu computador e se a chave foi digitada corretamente.'+#13+
 //        'Deseja informar uma nova chave de liberação?',
 //        'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
@@ -158,7 +159,7 @@ begin
 //    end
 //    else if (RetornoValidacao <> tvExpirouPrazo) then
 //    begin
-//      if Application.MessageBox(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. '+
+//      if UniGUIDialogs.MessageDlg(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. '+
 //        'Para obter uma nova chave, entre em contato com o suporte. '+#13+
 //        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
 //      begin

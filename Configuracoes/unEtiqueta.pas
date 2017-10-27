@@ -6,34 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Spin, Mask,
-  DBCtrls, FMTBcd, System.Actions;
+  DBCtrls, FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn,
+  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  uniImage, uniEdit, uniDBEdit, uniGroupBox;
 
 type
   TfrmEtiqueta = class(TfrmPadrao)
-    LabelEtiqueta: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
-    LabelMedida: TLabel;
-    Label1: TLabel;
-    gbImgMedidas: TGroupBox;
-    iEtiqueta: TImage;
-    dbEtiqueta: TDBEdit;
-    dbAlturaFolha: TDBEdit;
-    dbLarguraFolha: TDBEdit;
-    dbMargemSuperior: TDBEdit;
-    dbMargemEsquerda: TDBEdit;
-    dbEtqColuna: TDBEdit;
-    dbAlturaEtq: TDBEdit;
-    dbLarguraEtq: TDBEdit;
-    dbDistVert: TDBEdit;
-    dbDistHoriz: TDBEdit;
     SpinButton1: TSpinButton;
     SpinButton2: TSpinButton;
     SpinButton3: TSpinButton;
@@ -43,7 +21,6 @@ type
     SpinButton8: TSpinButton;
     SpinButton9: TSpinButton;
     SpinButton10: TSpinButton;
-    dbNumeroLinhas: TDBEdit;
     SpinButton11: TSpinButton;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
@@ -76,6 +53,31 @@ type
     cdsPadraoDISTANCIAHORIZONTAL: TFloatField;
     cdsPadraoDISTACOLVERTICAL: TFloatField;
     cdsPadraoDISTCOLHORIZ: TFloatField;
+    LabelEtiqueta: TUniLabel;
+    Label2: TUniLabel;
+    Label3: TUniLabel;
+    Label4: TUniLabel;
+    Label5: TUniLabel;
+    Label7: TUniLabel;
+    Label8: TUniLabel;
+    Label9: TUniLabel;
+    Label10: TUniLabel;
+    Label11: TUniLabel;
+    LabelMedida: TUniLabel;
+    Label1: TUniLabel;
+    dbEtiqueta: TUniDBEdit;
+    dbAlturaFolha: TUniDBEdit;
+    dbLarguraFolha: TUniDBEdit;
+    dbMargemSuperior: TUniDBEdit;
+    dbMargemEsquerda: TUniDBEdit;
+    dbEtqColuna: TUniDBEdit;
+    dbAlturaEtq: TUniDBEdit;
+    dbLarguraEtq: TUniDBEdit;
+    dbDistVert: TUniDBEdit;
+    dbDistHoriz: TUniDBEdit;
+    dbNumeroLinhas: TUniDBEdit;
+    gbImgMedidas: TUniGroupBox;
+    iEtiqueta: TUniImage;
     procedure SpinButton1DownClick(Sender: TObject);
     procedure SpinButton1UpClick(Sender: TObject);
     procedure cdsPadraoALTURAETIQUETAChange(Sender: TField);

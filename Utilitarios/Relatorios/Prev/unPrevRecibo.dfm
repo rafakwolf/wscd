@@ -1,17 +1,12 @@
 object frmPrevRecibo: TfrmPrevRecibo
   Left = 281
   Top = 160
-  Caption = 'frmPrevRecibo'
   ClientHeight = 444
   ClientWidth = 808
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
+  Caption = 'frmPrevRecibo'
   OldCreateOrder = False
-  Scaled = False
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
   PixelsPerInch = 96
   TextHeight = 13
   object rrRecibo: TRLReport

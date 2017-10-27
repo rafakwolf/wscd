@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, VarGlobal,
-    Mask, FMTBcd, System.Actions;
+    Mask, FMTBcd, System.Actions, uniBitBtn, uniButton, uniSpeedButton,
+  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit;
 
 type
   TfrmFornecedor = class(TfrmPadrao)
@@ -18,22 +19,6 @@ type
     cdsCidade: TClientDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
-    dbeNomeFantazia: TDBEdit;
-    dbeNomeRzSocial: TDBEdit;
-    dbeEndereco: TDBEdit;
-    dbeEstado: TDBEdit;
-    dbeBairro: TDBEdit;
-    dbeCep: TDBEdit;
-    dbeCnpj: TDBEdit;
-    dbeInscEstadual: TDBEdit;
-    dbeTelefone: TDBEdit;
-    dbeFax: TDBEdit;
-    dbeNomeVendedor: TDBEdit;
-    dbeEmailVendedor: TDBEdit;
-    dbeTelefoneVendedor: TDBEdit;
-    dbeCidade: TDBEdit;
-    dbdDataCadastro: TDBEdit;
-    btnObservacoes: TBitBtn;
     sqldPadraoCODFORNECEDOR: TIntegerField;
     sqldPadraoFANTAZIA: TStringField;
     sqldPadraoRAZAOSOCIAL: TStringField;
@@ -70,13 +55,29 @@ type
     cdsPadraoVENDEDOR: TStringField;
     cdsPadraoTELEFONEVENDEDOR: TStringField;
     cdsPadraoEMAILVENDEDOR: TStringField;
-    dbeEmail: TDBEdit;
     sqldPadraoDATACAD: TDateField;
     cdsPadraoDATACAD: TDateField;
-    btnContas: TBitBtn;
-    bvlLinha: TBevel;
     sqldPadraoTIPO: TStringField;
     cdsPadraoTIPO: TStringField;
+    btnObservacoes: TUniBitBtn;
+    btnContas: TUniBitBtn;
+    dbdDataCadastro: TUniDBEdit;
+    dbeCidade: TUniDBEdit;
+    dbeTelefoneVendedor: TUniDBEdit;
+    dbeEmailVendedor: TUniDBEdit;
+    dbeNomeVendedor: TUniDBEdit;
+    dbeFax: TUniDBEdit;
+    dbeTelefone: TUniDBEdit;
+    dbeInscEstadual: TUniDBEdit;
+    dbeCnpj: TUniDBEdit;
+    dbeCep: TUniDBEdit;
+    dbeBairro: TUniDBEdit;
+    dbeEstado: TUniDBEdit;
+    dbeEndereco: TUniDBEdit;
+    dbeNomeRzSocial: TUniDBEdit;
+    dbeNomeFantazia: TUniDBEdit;
+    dbeEmail: TUniDBEdit;
+    bvlLinha: TUniPanel;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure miRelFornDataClick(Sender: TObject);

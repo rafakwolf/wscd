@@ -1,299 +1,75 @@
 inherited frmCliente: TfrmCliente
   Left = 231
   Top = 131
-  Caption = 'frmCliente'
   ClientHeight = 472
   ClientWidth = 785
+  Caption = 'frmCliente'
   OldCreateOrder = True
   ExplicitWidth = 791
   ExplicitHeight = 501
   PixelsPerInch = 96
   TextHeight = 13
-  object btnFoto: TBitBtn [0]
-    Left = 464
-    Top = 392
-    Width = 100
-    Height = 25
-    Hint = 'Exibir/Ocultar foto do cliente'
-    Caption = '&Foto'
-    TabOrder = 28
-    OnClick = btnFotoClick
+  inherited sbStatus: TUniStatusBar
+    Top = 453
+    Width = 785
+    ExplicitTop = 453
+    ExplicitWidth = 785
   end
-  object dbeFax: TDBEdit [1]
-    Left = 120
-    Top = 156
-    Width = 105
-    Height = 21
-    DataField = 'FAX'
-    DataSource = dsPadrao
-    TabOrder = 7
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 785
+    TabOrder = 31
+    ExplicitWidth = 785
+    inherited btnPrint: TUniSpeedButton
+      Left = 192
+      Top = 0
+      Hint = ''
+      Action = nil
+      Glyph.Data = {00000000}
+      ExplicitLeft = 192
+      ExplicitTop = 0
+    end
   end
-  object btnContas: TBitBtn [2]
-    Left = 571
-    Top = 392
-    Width = 100
-    Height = 25
-    Caption = '&Contas'
-    TabOrder = 26
-    OnClick = btnContasClick
-  end
-  object dbeTelefoneComercial: TDBEdit [3]
-    Left = 639
-    Top = 300
-    Width = 138
-    Height = 21
-    DataField = 'FONE_COM'
-    DataSource = dsPadrao
-    TabOrder = 20
-  end
-  object dbeRefComercial: TDBEdit [4]
-    Left = 528
-    Top = 348
-    Width = 249
-    Height = 21
-    DataField = 'REFER_COM'
-    DataSource = dsPadrao
-    TabOrder = 23
-  end
-  object dbeRefPessoal: TDBEdit [5]
-    Left = 280
-    Top = 348
-    Width = 241
-    Height = 21
-    DataField = 'REFER_PES'
-    DataSource = dsPadrao
-    TabOrder = 22
-  end
-  object dbeLocalTrabalho: TDBEdit [6]
-    Left = 8
-    Top = 348
-    Width = 265
-    Height = 21
-    DataField = 'LOCAL_TRAB'
-    DataSource = dsPadrao
-    TabOrder = 21
-  end
-  object dbeSalario: TDBEdit [7]
-    Left = 8
-    Top = 396
-    Width = 129
-    Height = 21
-    DataField = 'SALARIO'
-    DataSource = dsPadrao
-    TabOrder = 24
-    OnKeyPress = dbeSalarioKeyPress
-  end
-  object dbeInicioTrabalho: TDBEdit [8]
-    Left = 520
-    Top = 300
-    Width = 113
-    Height = 21
-    DataField = 'DATA_INICIO'
-    DataSource = dsPadrao
-    TabOrder = 19
-  end
-  object dbeCargo: TDBEdit [9]
-    Left = 264
-    Top = 300
-    Width = 249
-    Height = 21
-    DataField = 'CARGO'
-    DataSource = dsPadrao
-    TabOrder = 18
-  end
-  object dbeTrabalho: TDBEdit [10]
-    Left = 8
-    Top = 300
-    Width = 249
-    Height = 21
-    DataField = 'TRABALHO'
-    DataSource = dsPadrao
-    TabOrder = 17
-  end
-  object dbeEmail: TDBEdit [11]
-    Left = 232
-    Top = 156
-    Width = 289
-    Height = 21
-    CharCase = ecLowerCase
-    DataField = 'E_MAIL'
-    DataSource = dsPadrao
-    TabOrder = 8
-  end
-  object dbeNaturalidade: TDBEdit [12]
-    Left = 616
-    Top = 204
-    Width = 161
-    Height = 21
-    DataField = 'NATURALIDADE'
-    DataSource = dsPadrao
-    TabOrder = 13
-  end
-  object dbeDataCadastro: TDBEdit [13]
-    Left = 656
-    Top = 156
-    Width = 121
-    Height = 21
-    DataField = 'CADASTRO'
-    DataSource = dsPadrao
-    TabOrder = 10
-  end
-  object dbeMae: TDBEdit [14]
-    Left = 312
-    Top = 204
-    Width = 297
-    Height = 21
-    DataField = 'MAE'
-    DataSource = dsPadrao
-    TabOrder = 12
-  end
-  object dbePai: TDBEdit [15]
-    Left = 8
-    Top = 204
-    Width = 297
-    Height = 21
-    DataField = 'PAI'
-    DataSource = dsPadrao
-    TabOrder = 11
-  end
-  object dbeConjuge: TDBEdit [16]
-    Left = 584
-    Top = 252
-    Width = 193
-    Height = 21
-    DataField = 'CONJUGUE'
-    DataSource = dsPadrao
-    TabOrder = 16
-  end
-  object dbeEnderecoAnterior: TDBEdit [17]
-    Left = 247
-    Top = 252
-    Width = 234
-    Height = 21
-    DataField = 'END_ANTERIOR'
-    DataSource = dsPadrao
-    TabOrder = 15
-  end
-  object dbeTempoMoradia: TDBEdit [18]
-    Left = 8
-    Top = 252
-    Width = 233
-    Height = 21
-    DataField = 'TEMPO_MORADIA'
-    DataSource = dsPadrao
-    TabOrder = 14
-  end
-  object btnObservacao: TBitBtn [19]
-    Left = 677
-    Top = 392
-    Width = 100
-    Height = 25
-    Caption = '&Observa'#231#227'o'
-    TabOrder = 27
-    OnClick = btnObservacaoClick
-  end
-  object dbeLimite: TDBEdit [20]
-    Left = 144
-    Top = 396
-    Width = 121
-    Height = 21
-    DataField = 'LIMITE'
-    DataSource = dsPadrao
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 25
-    OnKeyPress = dbeLimiteKeyPress
-  end
-  object dbeDataNasc: TDBEdit [21]
-    Left = 528
-    Top = 156
-    Width = 121
-    Height = 21
-    DataField = 'DATA_NASC'
-    DataSource = dsPadrao
-    TabOrder = 9
-  end
-  object dbeCpf: TDBEdit [22]
-    Left = 504
-    Top = 64
-    Width = 137
-    Height = 21
-    DataField = 'CPF_CNPJ'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbeRg: TDBEdit [23]
-    Left = 648
-    Top = 64
-    Width = 129
-    Height = 21
-    DataField = 'RG_IE'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object dbeTelefone: TDBEdit [24]
-    Left = 8
-    Top = 156
-    Width = 105
-    Height = 21
-    DataField = 'TELEFONE'
-    DataSource = dsPadrao
-    TabOrder = 6
-  end
-  object dbeCep: TDBEdit [25]
-    Left = 416
-    Top = 108
-    Width = 97
-    Height = 21
-    DataField = 'CEP'
-    DataSource = dsPadrao
-    TabOrder = 5
-  end
-  object dbeBairro: TDBEdit [26]
-    Left = 232
-    Top = 108
-    Width = 177
-    Height = 21
-    DataField = 'BAIRRO'
-    DataSource = dsPadrao
-    TabOrder = 4
-  end
-  object dbeEndereco: TDBEdit [27]
-    Left = 8
-    Top = 108
-    Width = 217
-    Height = 21
-    DataField = 'ENDERECO'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  object dbeNome: TDBEdit [28]
-    Left = 136
-    Top = 64
-    Width = 361
-    Height = 21
-    DataField = 'NOME'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  object pnFoto: TPanel [29]
+  object pnFoto: TUniContainerPanel [2]
     Left = 66
     Top = 135
     Width = 247
     Height = 204
-    ParentBackground = False
-    TabOrder = 29
+    Hint = ''
     Visible = False
-    object btnBuscar: TSpeedButton
+    ShowHint = True
+    ParentColor = False
+    TabOrder = 29
+    TabStop = False
+    object grpFoto: TUniGroupBox
+      Left = 0
+      Top = 0
+      Width = 247
+      Height = 174
+      Hint = ''
+      ShowHint = True
+      Caption = 'Foto'
+      Align = alTop
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 0
+      object imgFoto: TUniDBImage
+        Left = 12
+        Top = 16
+        Width = 221
+        Height = 155
+        Hint = ''
+        ShowHint = True
+        DataField = 'FOTO'
+        DataSource = dsPadrao
+        Center = False
+      end
+    end
+    object btnBuscar: TUniSpeedButton
       Left = 4
       Top = 178
       Width = 75
       Height = 22
-      Caption = 'Buscar'
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
         18000000000000030000120B0000120B00000000000000000000FF00FF0274AC
@@ -321,14 +97,19 @@ inherited frmCliente: TfrmCliente
         FF00FFFF00FFFF00FFFF00FFFF00FF046B0B046B0B046B0B046B0BFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF046B0B046B0B04
         6B0B046B0BFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = 'Buscar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 1
       OnClick = btnBuscarClick
     end
-    object btnLimpar: TSpeedButton
+    object btnLimpar: TUniSpeedButton
       Left = 83
       Top = 178
       Width = 74
       Height = 22
-      Caption = 'Limpar'
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
         18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -356,14 +137,19 @@ inherited frmCliente: TfrmCliente
         FF00FF0001890F1DBF3E5BF36B87FE728CFF5E7BFE395BFB1231EB010FB50001
         84FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000189030AA306
         11B2050FB10107A0000188FF00FFFF00FFFF00FFFF00FFFF00FF}
+      Caption = 'Limpar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 2
       OnClick = btnLimparClick
     end
-    object btnWebCam: TSpeedButton
+    object btnWebCam: TUniSpeedButton
       Left = 161
       Top = 178
       Width = 82
       Height = 22
-      Caption = 'Web-cam'
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         D6030000424DD603000000000000D60200002800000010000000100000000100
         08000000000000010000120B0000120B0000A8000000A800000000000000FFFF
@@ -396,87 +182,337 @@ inherited frmCliente: TfrmCliente
         2612673D647F546B7A235648279F1A1618175850474A4B0686A52A663B3C9E34
         205215496C5D700909A5040404A5A7A296A2A00E21516E5F77A6040404040404
         04A6A705A41C1995240404040404040404040404040404040404}
+      Caption = 'Web-cam'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 3
       OnClick = btnWebCamClick
     end
-    object grpFoto: TGroupBox
-      Left = 1
-      Top = 1
-      Width = 245
-      Height = 174
-      Align = alTop
-      Caption = 'Foto'
-      TabOrder = 0
-      object imgFoto: TDBImage
-        Left = 12
-        Top = 16
-        Width = 221
-        Height = 155
-        DataField = 'FOTO'
-        DataSource = dsPadrao
-        TabOrder = 0
-      end
-    end
   end
-  inherited sbStatus: TStatusBar
-    Top = 453
-    Width = 785
-    ExplicitTop = 453
-    ExplicitWidth = 785
+  object btnFoto: TUniBitBtn [3]
+    Left = 464
+    Top = 392
+    Width = 100
+    Height = 25
+    Hint = 'Exibir/Ocultar foto do cliente'
+    ShowHint = True
+    Caption = '&Foto'
+    TabOrder = 28
+    OnClick = btnFotoClick
   end
-  inherited pnBotoesPadrao: TPanel
-    Width = 785
-    TabOrder = 31
-    ExplicitWidth = 785
+  object btnContas: TUniBitBtn [4]
+    Left = 571
+    Top = 392
+    Width = 100
+    Height = 25
+    Hint = ''
+    ShowHint = True
+    Caption = '&Contas'
+    TabOrder = 26
+    OnClick = btnContasClick
   end
-  object dbeCidade: TcxDBButtonEdit [32]
+  object btnObservacao: TUniBitBtn [5]
+    Left = 677
+    Top = 392
+    Width = 100
+    Height = 25
+    Hint = ''
+    ShowHint = True
+    Caption = '&Observa'#231#227'o'
+    TabOrder = 27
+    OnClick = btnObservacaoClick
+  end
+  object dbeFax: TUniDBEdit [6]
+    Left = 120
+    Top = 156
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'FAX'
+    DataSource = dsPadrao
+    TabOrder = 7
+  end
+  object dbeTelefoneComercial: TUniDBEdit [7]
+    Left = 639
+    Top = 300
+    Width = 138
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'FONE_COM'
+    DataSource = dsPadrao
+    TabOrder = 20
+  end
+  object dbeRefComercial: TUniDBEdit [8]
     Left = 528
-    Top = 108
-    DataBinding.DataField = 'DESCRICAO'
-    DataBinding.DataSource = dsPadrao
-    Properties.Buttons = <
-      item
-        Default = True
-        Kind = bkEllipsis
-      end>
-    Properties.OnButtonClick = dbeCidadePropertiesButtonClick
-    TabOrder = 32
+    Top = 348
     Width = 249
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'REFER_COM'
+    DataSource = dsPadrao
+    TabOrder = 23
   end
-  object lblNome: TcxLabel [33]
-    Left = 136
-    Top = 41
-    Caption = 'Nome'
+  object dbeRefPessoal: TUniDBEdit [9]
+    Left = 280
+    Top = 348
+    Width = 241
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'REFER_PES'
+    DataSource = dsPadrao
+    TabOrder = 22
   end
-  object lblDocumento: TcxLabel [34]
-    Left = 503
-    Top = 41
-    Caption = 'Cpf/Cnpj'
-  end
-  object cmdTipoCliente: TcxDBComboBox [35]
-    Left = 9
-    Top = 64
-    DataBinding.DataField = 'TIPO'
-    DataBinding.DataSource = dsPadrao
-    TabOrder = 35
-    Width = 121
-  end
-  object lblTipo: TcxLabel [36]
+  object dbeLocalTrabalho: TUniDBEdit [10]
     Left = 8
-    Top = 41
-    Caption = 'Tipo'
+    Top = 348
+    Width = 265
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'LOCAL_TRAB'
+    DataSource = dsPadrao
+    TabOrder = 21
   end
-  object cmdEstadoCivil: TcxDBComboBox [37]
-    Left = 487
+  object dbeSalario: TUniDBEdit [11]
+    Left = 8
+    Top = 396
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'SALARIO'
+    DataSource = dsPadrao
+    TabOrder = 24
+    OnKeyPress = dbeSalarioKeyPress
+  end
+  object dbeInicioTrabalho: TUniDBEdit [12]
+    Left = 520
+    Top = 300
+    Width = 113
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATA_INICIO'
+    DataSource = dsPadrao
+    TabOrder = 19
+  end
+  object dbeCargo: TUniDBEdit [13]
+    Left = 264
+    Top = 300
+    Width = 249
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CARGO'
+    DataSource = dsPadrao
+    TabOrder = 18
+  end
+  object dbeTrabalho: TUniDBEdit [14]
+    Left = 8
+    Top = 300
+    Width = 249
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TRABALHO'
+    DataSource = dsPadrao
+    TabOrder = 17
+  end
+  object dbeEmail: TUniDBEdit [15]
+    Left = 232
+    Top = 156
+    Width = 289
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'E_MAIL'
+    DataSource = dsPadrao
+    CharCase = ecLowerCase
+    TabOrder = 8
+  end
+  object dbeNaturalidade: TUniDBEdit [16]
+    Left = 616
+    Top = 204
+    Width = 161
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'NATURALIDADE'
+    DataSource = dsPadrao
+    TabOrder = 13
+  end
+  object dbeDataCadastro: TUniDBEdit [17]
+    Left = 656
+    Top = 156
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CADASTRO'
+    DataSource = dsPadrao
+    TabOrder = 10
+  end
+  object dbeMae: TUniDBEdit [18]
+    Left = 312
+    Top = 204
+    Width = 297
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'MAE'
+    DataSource = dsPadrao
+    TabOrder = 12
+  end
+  object dbePai: TUniDBEdit [19]
+    Left = 8
+    Top = 204
+    Width = 297
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'PAI'
+    DataSource = dsPadrao
+    TabOrder = 11
+  end
+  object dbeConjuge: TUniDBEdit [20]
+    Left = 584
     Top = 252
-    DataBinding.DataField = 'ESTADO_CIVIL'
-    DataBinding.DataSource = dsPadrao
-    Properties.Items.Strings = (
-      'Solteiro(a)'
-      'Casado(a)'
-      'Amaziado(a)'
-      'Vi'#250'vo(a)')
-    TabOrder = 37
-    Width = 91
+    Width = 193
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CONJUGUE'
+    DataSource = dsPadrao
+    TabOrder = 16
+  end
+  object dbeEnderecoAnterior: TUniDBEdit [21]
+    Left = 247
+    Top = 252
+    Width = 234
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'END_ANTERIOR'
+    DataSource = dsPadrao
+    TabOrder = 15
+  end
+  object dbeTempoMoradia: TUniDBEdit [22]
+    Left = 8
+    Top = 252
+    Width = 233
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TEMPO_MORADIA'
+    DataSource = dsPadrao
+    TabOrder = 14
+  end
+  object dbeLimite: TUniDBEdit [23]
+    Left = 144
+    Top = 396
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'LIMITE'
+    DataSource = dsPadrao
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 25
+    OnKeyPress = dbeLimiteKeyPress
+  end
+  object dbeDataNasc: TUniDBEdit [24]
+    Left = 528
+    Top = 156
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATA_NASC'
+    DataSource = dsPadrao
+    TabOrder = 9
+  end
+  object dbeCpf: TUniDBEdit [25]
+    Left = 504
+    Top = 64
+    Width = 137
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CPF_CNPJ'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbeRg: TUniDBEdit [26]
+    Left = 648
+    Top = 64
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'RG_IE'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbeTelefone: TUniDBEdit [27]
+    Left = 8
+    Top = 156
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TELEFONE'
+    DataSource = dsPadrao
+    TabOrder = 6
+  end
+  object dbeCep: TUniDBEdit [28]
+    Left = 416
+    Top = 108
+    Width = 97
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CEP'
+    DataSource = dsPadrao
+    TabOrder = 5
+  end
+  object dbeBairro: TUniDBEdit [29]
+    Left = 232
+    Top = 108
+    Width = 177
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'BAIRRO'
+    DataSource = dsPadrao
+    TabOrder = 4
+  end
+  object dbeEndereco: TUniDBEdit [30]
+    Left = 8
+    Top = 108
+    Width = 217
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'ENDERECO'
+    DataSource = dsPadrao
+    TabOrder = 3
+  end
+  object dbeNome: TUniDBEdit [31]
+    Left = 136
+    Top = 64
+    Width = 361
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    TabOrder = 0
   end
   inherited actlNavigateActions: TActionList
     Left = 344

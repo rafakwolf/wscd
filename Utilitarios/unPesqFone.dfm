@@ -1,25 +1,37 @@
 inherited frmPesqFone: TfrmPesqFone
   Left = 126
   Top = 57
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'frmPesqFone'
   ClientHeight = 473
   ClientWidth = 713
-  Menu = mmPesqFone
-  OldCreateOrder = True
+  Caption = 'frmPesqFone'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = True
+  BorderIcons = [biSystemMenu, biMinimize]
   ExplicitWidth = 719
-  ExplicitHeight = 522
+  ExplicitHeight = 502
   PixelsPerInch = 96
   TextHeight = 13
-  object btnPesquisar: TBitBtn
+  object rgpPesquisa: TRadioGroup
+    Left = 8
+    Top = 8
+    Width = 113
+    Height = 49
+    Caption = ' Pesquisar por '
+    ItemIndex = 0
+    Items.Strings = (
+      'Nome'
+      'Telefone')
+    TabOrder = 0
+    OnClick = rgpPesquisaClick
+  end
+  object btnPesquisar: TUniBitBtn
     Left = 616
     Top = 24
     Width = 89
     Height = 25
     Hint = 'Pesquisar'
-    Caption = 'Pesquisar'
+    ShowHint = True
     Glyph.Data = {
       1A030000424D1A030000000000001A0200002800000010000000100000000100
       08000000000000010000120B0000120B0000790000007900000000000000FFFF
@@ -46,114 +58,17 @@ inherited frmPesqFone: TfrmPesqFone
       50595F182B1D1927210804040404634750595C61131E25150808040404046348
       4D4B3A3B4A67030604040404040463464543413F3F3E4C680404040404040465
       514442403D3C690404040404040404046363636363630404040404040404}
+    Caption = 'Pesquisar'
     TabOrder = 3
     OnClick = btnPesquisarClick
   end
-  object dbgrdFones: TDBGrid
-    Left = 8
-    Top = 64
-    Width = 697
-    Height = 369
-    DataSource = dsFone
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ReadOnly = True
-    TabOrder = 4
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = dbgrdFonesDrawColumnCell
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'NOME'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Nome'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 389
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TELEFONE'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Telefone'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 130
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FAX'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Fax'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 130
-        Visible = True
-      end>
-  end
-  object rgpPesquisa: TRadioGroup
-    Left = 8
-    Top = 8
-    Width = 113
-    Height = 49
-    Caption = ' Pesquisar por '
-    ItemIndex = 0
-    Items.Strings = (
-      'Nome'
-      'Telefone')
-    TabOrder = 0
-    OnClick = rgpPesquisaClick
-  end
-  object edtNome: TLabeledEdit
-    Left = 128
-    Top = 28
-    Width = 337
-    Height = 21
-    EditLabel.Width = 33
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Nome'
-    TabOrder = 1
-  end
-  object edtFone: TEdit
-    Left = 472
-    Top = 28
-    Width = 137
-    Height = 21
-    TabOrder = 2
-  end
-  object btnImprimir: TBitBtn
+  object btnImprimir: TUniBitBtn
     Left = 616
     Top = 440
     Width = 89
     Height = 25
     Hint = 'Relat'#243'rio dos dados filtrados...'
-    Caption = 'Imprimir'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -205,9 +120,44 @@ inherited frmPesqFone: TfrmPesqFone
       FF00FFFF00FFFF00FFBD8281BD8281BD8281FF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9A9A9A9A9
       A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Imprimir'
     TabOrder = 5
     OnClick = btnImprimirClick
+  end
+  object edtNome: TUniEdit
+    Left = 128
+    Top = 28
+    Width = 337
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 1
+  end
+  object edtFone: TUniEdit
+    Left = 472
+    Top = 28
+    Width = 137
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 2
+  end
+  object dbgrdFones: TUniDBGrid
+    Left = 8
+    Top = 64
+    Width = 697
+    Height = 369
+    Hint = ''
+    ShowHint = True
+    DataSource = dsFone
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 4
+    ParentColor = False
+    Color = clWindow
   end
   object sqldFone: TSQLDataSet
     CommandText = 'select * from VIEWPESQUISAFONE'
@@ -258,33 +208,33 @@ inherited frmPesqFone: TfrmPesqFone
     Left = 272
     Top = 184
   end
-  object mmPesqFone: TMainMenu
+  object mmPesqFone: TUniMainMenu
     Left = 168
     Top = 144
-    object miRegistros: TMenuItem
+    object miRegistros: TUniMenuItem
       Caption = 'Registros'
-      object miCadastrar: TMenuItem
+      object miCadastrar: TUniMenuItem
         Caption = 'Cadastrar'
         OnClick = miCadastrarClick
       end
-      object N2: TMenuItem
+      object N2: TUniMenuItem
         Caption = '-'
       end
-      object miSair: TMenuItem
+      object miSair: TUniMenuItem
         Caption = 'Sair'
         OnClick = miSairClick
       end
     end
-    object miOpcoes: TMenuItem
+    object miOpcoes: TUniMenuItem
       Caption = 'Op'#231#245'es'
-      object miOrdenar: TMenuItem
+      object miOrdenar: TUniMenuItem
         Caption = 'Ordenar'
         OnClick = miOrdenarClick
       end
-      object N1: TMenuItem
+      object N1: TUniMenuItem
         Caption = '-'
       end
-      object miPrint: TMenuItem
+      object miPrint: TUniMenuItem
         Caption = 'Imprimir'
         OnClick = btnImprimirClick
       end

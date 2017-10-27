@@ -1,35 +1,52 @@
 inherited frmBaixaCheque: TfrmBaixaCheque
   Left = 221
   Top = 163
-  Caption = 'Baixar cheque'
   ClientHeight = 130
   ClientWidth = 379
-  OldCreateOrder = True
+  Caption = 'Baixar cheque'
   OnShow = FormShow
+  OldCreateOrder = True
   ExplicitWidth = 395
   ExplicitHeight = 169
   PixelsPerInch = 96
   TextHeight = 13
-  object lbContaCaixa: TLabel
+  object dblcbContaCaixa: TDBLookupComboBox
+    Left = 8
+    Top = 64
+    Width = 257
+    Height = 21
+    KeyField = 'CODIGO'
+    ListField = 'NOME'
+    ListSource = dsCaixa
+    TabOrder = 1
+  end
+  object lbContaCaixa: TUniLabel
     Left = 8
     Top = 48
     Width = 68
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Conta caixa'
+    TabOrder = 5
   end
-  object lbDataBaixa: TLabel
+  object lbDataBaixa: TUniLabel
     Left = 272
     Top = 48
     Width = 80
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Data da baixa'
+    TabOrder = 6
   end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 200
     Top = 96
     Width = 81
     Height = 25
-    Caption = 'Ok'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -81,16 +98,17 @@ inherited frmBaixaCheque: TfrmBaixaCheque
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = 'Ok'
     ModalResult = 1
-    NumGlyphs = 2
     TabOrder = 3
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 288
     Top = 96
     Width = 81
     Height = 25
-    Caption = 'Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -142,36 +160,30 @@ inherited frmBaixaCheque: TfrmBaixaCheque
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = 'Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 4
   end
-  object cedHistorico: TEdit
-    Left = 8
-    Top = 24
-    Width = 361
-    Height = 21
-    TabOrder = 0
-  end
-  object dblcbContaCaixa: TDBLookupComboBox
-    Left = 8
-    Top = 64
-    Width = 257
-    Height = 21
-    KeyField = 'CODIGO'
-    ListField = 'NOME'
-    ListSource = dsCaixa
-    TabOrder = 1
-  end
-  object medtDataBaixa: TMaskEdit
+  object medtDataBaixa: TUniEdit
     Left = 272
     Top = 64
     Width = 97
     Height = 21
-    EditMask = '!99/99/9999;1;_'
+    Hint = ''
+    ShowHint = True
     MaxLength = 10
-    TabOrder = 2
     Text = '  /  /    '
+    TabOrder = 2
+  end
+  object cedHistorico: TUniEdit
+    Left = 8
+    Top = 24
+    Width = 361
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 0
   end
   object sqldCaixa: TSQLDataSet
     CommandText = 'select * from VIEWCAIXASATIVOS'

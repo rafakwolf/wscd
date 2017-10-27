@@ -5,7 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask;
+  DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask,
+  uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses,
+  uniPanel;
 
 const
   cs_nf_data: string = 'select '+
@@ -34,8 +36,6 @@ const
 
 type
   TfrmRelatorioCompraData = class(TfrmDialogoRelatorioPadrao)
-    edDataIni: TDBEdit;
-    edDataFim: TDBEdit;
     sqldSelecao: TSQLDataSet;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
@@ -43,6 +43,8 @@ type
     cdsSelecao: TClientDataSet;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
+    edDataIni: TUniDBEdit;
+    edDataFim: TUniDBEdit;
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

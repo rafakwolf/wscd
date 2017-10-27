@@ -1,22 +1,13 @@
 inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
-  Caption = 'frmRelatorioFluxoCaixa'
   ClientHeight = 208
   ClientWidth = 385
+  Caption = 'frmRelatorioFluxoCaixa'
   OldCreateOrder = True
   ExplicitWidth = 401
   ExplicitHeight = 247
   PixelsPerInch = 96
   TextHeight = 13
-  object dbDataI: TDBEdit [0]
-    Left = 80
-    Top = 112
-    Width = 137
-    Height = 21
-    DataField = 'DATAINI'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object rgOrdem: TRadioGroup [1]
+  object rgOrdem: TRadioGroup [0]
     Left = 8
     Top = 56
     Width = 377
@@ -29,7 +20,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
       'Data')
     TabOrder = 1
   end
-  object rgRelatorio: TRadioGroup [2]
+  object rgRelatorio: TRadioGroup [1]
     Left = 8
     Top = 8
     Width = 377
@@ -43,24 +34,34 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
       'Todos')
     TabOrder = 0
   end
-  object dbDataF: TDBEdit [3]
-    Left = 80
-    Top = 136
-    Width = 137
-    Height = 21
-    DataField = 'DATAFIM'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  inherited pnButtons: TPanel
+  inherited pnButtons: TUniContainerPanel
     Top = 174
     Width = 385
     TabOrder = 4
     ExplicitTop = 178
     ExplicitWidth = 393
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+  end
+  object dbDataI: TUniDBEdit [3]
+    Left = 80
+    Top = 112
+    Width = 137
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAINI'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbDataF: TUniDBEdit [4]
+    Left = 80
+    Top = 136
+    Width = 137
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAFIM'
+    DataSource = dsPadrao
+    TabOrder = 3
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsSelecao

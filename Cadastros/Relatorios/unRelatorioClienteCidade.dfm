@@ -1,32 +1,30 @@
 inherited frmRelatorioClienteCidade: TfrmRelatorioClienteCidade
-  Caption = 'frmRelatorioClienteCidade'
   ClientHeight = 144
   ClientWidth = 377
+  Caption = 'frmRelatorioClienteCidade'
   OldCreateOrder = True
   ExplicitWidth = 393
   ExplicitHeight = 183
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCidade: TDBEdit [0]
+  inherited pnButtons: TUniContainerPanel
+    Top = 110
+    Width = 377
+    ExplicitTop = 110
+    ExplicitWidth = 377
+  end
+  object dbeCidade: TUniDBEdit [1]
     Left = 16
     Top = 48
     Width = 339
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
-  end
-  inherited pnButtons: TPanel
-    Top = 110
-    Width = 377
-    ExplicitTop = 110
-    ExplicitWidth = 377
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsCidade

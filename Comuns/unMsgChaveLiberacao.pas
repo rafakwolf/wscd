@@ -4,14 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons;
+  Dialogs, StdCtrls, ExtCtrls, Buttons, uniGUIBaseClasses, uniGUIClasses,
+  uniLabel, uniButton, uniBitBtn, uniCheckBox, uniImage, uniGuiForm;
 
 type
-  TfrmMsgChaveLiberacao = class(TForm)
-    lblInfo: TLabel;
-    imgWarning: TImage;
-    btnOk: TBitBtn;
-    chkExibir: TCheckBox;
+  TfrmMsgChaveLiberacao = class(TUniForm)
+    lblInfo: TUniLabel;
+    btnOk: TUniBitBtn;
+    chkExibir: TUniCheckBox;
+    imgWarning: TUniImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

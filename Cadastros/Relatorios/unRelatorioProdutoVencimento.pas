@@ -6,12 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DBClient, Provider,
   DB, SqlExpr, StdCtrls, Buttons, ExtCtrls, SQLTimST, ComCtrls,
-   Mask, DBCtrls,  FMTBcd;
+   Mask, DBCtrls,  FMTBcd, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
+  uniBitBtn, uniGUIBaseClasses, uniPanel;
 
 type
   TfrmRelatorioProdutoVencimento = class(TfrmDialogoRelatorioPadrao)
     rgTipo: TRadioGroup;
-    dbdDataVenc: TDBEdit;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
@@ -30,9 +30,6 @@ type
     cdsGrupo: TClientDataSet;
     cdsGrupoCODGRUPO: TIntegerField;
     cdsGrupoDESCRICAO: TStringField;
-    dbeUnidade: TDBEdit;
-    dbeForn: TDBEdit;
-    dbeGrupo: TDBEdit;
     sqldFornCODFORNECEDOR: TIntegerField;
     sqldFornFANTAZIA: TStringField;
     sqldFornCNPJ: TStringField;
@@ -44,6 +41,10 @@ type
     dsUnidade: TDataSource;
     dsGrupo: TDataSource;
     dsForn: TDataSource;
+    dbdDataVenc: TUniDBEdit;
+    dbeUnidade: TUniDBEdit;
+    dbeForn: TUniDBEdit;
+    dbeGrupo: TUniDBEdit;
     procedure rgTipoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

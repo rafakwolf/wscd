@@ -1,40 +1,13 @@
 inherited frmRelatorioAgenda: TfrmRelatorioAgenda
-  Caption = 'frmRelatorioAgenda'
   ClientHeight = 184
   ClientWidth = 385
+  Caption = 'frmRelatorioAgenda'
   OldCreateOrder = True
   ExplicitWidth = 401
   ExplicitHeight = 223
   PixelsPerInch = 96
   TextHeight = 13
-  object lbTelefone: TLabel [0]
-    Left = 8
-    Top = 100
-    Width = 48
-    Height = 13
-    Caption = 'Telefone'
-  end
-  object edFone: TMaskEdit [1]
-    Left = 8
-    Top = 116
-    Width = 147
-    Height = 21
-    TabOrder = 2
-    Text = ''
-  end
-  object dbeNome: TDBEdit [2]
-    Left = 8
-    Top = 68
-    Width = 355
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOME'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 1
-  end
-  object rgTipoRelatorio: TRadioGroup [3]
+  object rgTipoRelatorio: TRadioGroup [0]
     Left = 8
     Top = 8
     Width = 377
@@ -50,15 +23,45 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     TabOrder = 0
     OnClick = rgTipoRelatorioClick
   end
-  inherited pnButtons: TPanel
+  inherited pnButtons: TUniContainerPanel
     Top = 150
     Width = 385
     TabOrder = 3
     ExplicitTop = 150
     ExplicitWidth = 385
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+  end
+  object lbTelefone: TUniLabel [2]
+    Left = 8
+    Top = 100
+    Width = 48
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Telefone'
+    TabOrder = 4
+  end
+  object dbeNome: TUniDBEdit [3]
+    Left = 8
+    Top = 68
+    Width = 355
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    TabOrder = 1
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object edFone: TUniEdit [4]
+    Left = 8
+    Top = 116
+    Width = 147
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 2
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsAgenda

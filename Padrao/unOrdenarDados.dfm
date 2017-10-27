@@ -1,20 +1,34 @@
 inherited frmOrdenarDados: TfrmOrdenarDados
   Left = 221
   Top = 159
-  Caption = 'Ordenar os dados'
   ClientHeight = 413
   ClientWidth = 225
+  Caption = 'Ordenar os dados'
   OldCreateOrder = True
   ExplicitWidth = 241
   ExplicitHeight = 452
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOK: TBitBtn
+  object clbCampos: TCheckListBox
+    Left = 8
+    Top = 27
+    Width = 217
+    Height = 350
+    DragMode = dmAutomatic
+    Flat = False
+    ItemHeight = 15
+    Style = lbOwnerDrawVariable
+    TabOrder = 2
+    OnDragDrop = OrdenaListaDragDrop
+    OnDragOver = OrdenaListaDragOver
+  end
+  object btnOK: TUniBitBtn
     Left = 56
     Top = 384
     Width = 81
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -66,16 +80,17 @@ inherited frmOrdenarDados: TfrmOrdenarDados
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&OK'
     ModalResult = 1
-    NumGlyphs = 2
     TabOrder = 0
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 144
     Top = 384
     Width = 81
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -127,28 +142,17 @@ inherited frmOrdenarDados: TfrmOrdenarDados
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 1
   end
-  object clbCampos: TCheckListBox
-    Left = 8
-    Top = 27
-    Width = 217
-    Height = 350
-    DragMode = dmAutomatic
-    Flat = False
-    ItemHeight = 15
-    Style = lbOwnerDrawVariable
-    TabOrder = 2
-    OnDragDrop = OrdenaListaDragDrop
-    OnDragOver = OrdenaListaDragOver
-  end
-  object ckbCamposOrdenar: TCheckBox
+  object ckbCamposOrdenar: TUniCheckBox
     Left = 11
     Top = 8
     Width = 70
     Height = 17
+    Hint = ''
+    ShowHint = True
     Caption = 'Ordenar'
     TabOrder = 3
     OnClick = ckbCamposOrdenarClick

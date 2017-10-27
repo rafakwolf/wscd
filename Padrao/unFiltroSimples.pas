@@ -4,25 +4,27 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons, DB,
-  SqlExpr, Provider, DBClient, Grids, DBGrids, FMTBcd;
+  Dialogs, StdCtrls, ExtCtrls, Buttons, DB, UniGuiForm,
+  SqlExpr, Provider, DBClient, Grids, DBGrids, FMTBcd, uniGUIBaseClasses,
+  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniImage, uniBasicGrid,
+  uniDBGrid;
 
 type
-  TfrmFiltroSimples = class(TForm)
-    btnOk: TBitBtn;
+  TfrmFiltroSimples = class(TUniForm)
     sqldFiltro: TSQLDataSet;
     dspFiltro: TDataSetProvider;
     cdsFiltro: TClientDataSet;
     dsFiltro: TDataSource;
-    ledtBusca: TLabeledEdit;
-    btnCancelar: TBitBtn;
     shpBorda: TShape;
-    imgFiltro: TImage;
-    dbgrdFiltro: TDBGrid;
     sqldFiltroCODIGO: TIntegerField;
     sqldFiltroNOME: TStringField;
     cdsFiltroCODIGO: TIntegerField;
     cdsFiltroNOME: TStringField;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    ledtBusca: TUniEdit;
+    imgFiltro: TUniImage;
+    dbgrdFiltro: TUniDBGrid;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);

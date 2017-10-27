@@ -4,14 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, unSimplePadrao;
+  Dialogs, Buttons, StdCtrls, unSimplePadrao, uniGUIBaseClasses, uniGUIClasses,
+  uniButton, uniBitBtn, uniSpeedButton, uniCheckBox;
 
 type
   TfrmDesmarcar = class(TfrmSimplePadrao)
-    Desmarcar: TSpeedButton;
-    Cancel: TSpeedButton;
-    Alterados: TCheckBox;
-    Novos: TCheckBox;
+    Desmarcar: TUniSpeedButton;
+    Cancel: TUniSpeedButton;
+    Alterados: TUniCheckBox;
+    Novos: TUniCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure CancelClick(Sender: TObject);
     procedure DesmarcarClick(Sender: TObject);

@@ -6,22 +6,24 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, Mask, DBCtrls,  DBClient, Provider,
-  SqlExpr, FMTBcd, System.Actions;
+  SqlExpr, FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
+  uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  uniCheckBox, uniDBCheckBox;
 
 type
   TfrmCadastroCaixa = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodCaixa: TDBEdit;
-    dbeNomeCaixa: TDBEdit;
-    dbchkInativo: TDBCheckBox;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoNOME: TStringField;
     sqldPadraoINATIVO: TStringField;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoNOME: TStringField;
     cdsPadraoINATIVO: TStringField;
+    dbeNomeCaixa: TUniDBEdit;
+    dbeCodCaixa: TUniDBEdit;
+    dbchkInativo: TUniDBCheckBox;
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterScroll(DataSet: TDataSet);

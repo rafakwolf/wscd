@@ -5,10 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, DBClient, Provider, SqlExpr, DBCtrls, StdCtrls,
-  Buttons, Funcoes, FMTBcd;
+  Buttons, Funcoes, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel,
+  uniButton, uniBitBtn, UniGuiForm;
 
 type
-  TfrmSelecionaCaixa = class(TForm)
+  TfrmSelecionaCaixa = class(TUniForm)
     sqldCaixa: TSQLDataSet;
     dspCaixa: TDataSetProvider;
     cdsCaixa: TClientDataSet;
@@ -18,9 +19,9 @@ type
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
     dblcbCaixa: TDBLookupComboBox;
-    lbCaixa: TLabel;
-    btnOk: TBitBtn;
-    btnCancel: TBitBtn;
+    lbCaixa: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancel: TUniBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private

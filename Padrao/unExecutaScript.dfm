@@ -1,39 +1,38 @@
 object frmExecutaScript: TfrmExecutaScript
   Left = 253
   Top = 184
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Executar scripts'
   ClientHeight = 297
   ClientWidth = 553
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
+  Caption = 'Executar scripts'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = False
   OnClose = FormClose
-  OnCloseQuery = FormCloseQuery
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object edtScript: TEdit
-    Left = 56
-    Top = 83
-    Width = 393
-    Height = 21
-    ReadOnly = True
-    TabOrder = 0
-    OnChange = edtScriptChange
+  object rgTipo: TRadioGroup
+    Left = 8
+    Top = 8
+    Width = 185
+    Height = 57
+    Caption = 'Op'#231#245'es'
+    ItemIndex = 0
+    Items.Strings = (
+      'Apenas um script'
+      'Scripts de uma pasta')
+    TabOrder = 2
+    OnClick = rgTipoClick
   end
-  object btnBuscaScript: TBitBtn
+  object btnBuscaScript: TUniBitBtn
     Left = 456
     Top = 81
     Width = 89
     Height = 25
-    Caption = 'Script'
+    Hint = ''
     Glyph.Data = {
       36050000424D3605000000000000360400002800000010000000100000000100
       0800000000000001000000000000000000000001000000010000000000000101
@@ -77,28 +76,16 @@ object frmExecutaScript: TfrmExecutaScript
       F0DFDFDF0BF8FD0B70707070EEEEEEEE707070700BFA0B707070707070707070
       7070700BFFFF0B7070707070707070707070700BFF0B70707070707070707070
       700B0B0B0B707070707070707070700B0B0B0B70707070707070}
+    Caption = 'Script'
     TabOrder = 1
     OnClick = btnBuscaScriptClick
   end
-  object rgTipo: TRadioGroup
-    Left = 8
-    Top = 8
-    Width = 185
-    Height = 57
-    Caption = 'Op'#231#245'es'
-    ItemIndex = 0
-    Items.Strings = (
-      'Apenas um script'
-      'Scripts de uma pasta')
-    TabOrder = 2
-    OnClick = rgTipoClick
-  end
-  object btnExecutar: TBitBtn
+  object btnExecutar: TUniBitBtn
     Left = 360
     Top = 32
     Width = 89
     Height = 25
-    Caption = '&Executar'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -150,16 +137,16 @@ object frmExecutaScript: TfrmExecutaScript
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Executar'
     TabOrder = 3
     OnClick = btnExecutarClick
   end
-  object btnFechar: TBitBtn
+  object btnFechar: TUniBitBtn
     Left = 456
     Top = 32
     Width = 89
     Height = 25
-    Caption = '&Fechar'
+    Hint = ''
     Glyph.Data = {
       66030000424D6603000000000000360000002800000010000000110000000100
       1800000000003003000000000000000000000000000000000000FF00FFFF00FF
@@ -189,25 +176,39 @@ object frmExecutaScript: TfrmExecutaScript
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FF}
+    Caption = '&Fechar'
     TabOrder = 4
     OnClick = btnFecharClick
   end
-  object mmoLog: TMemo
-    Left = 8
-    Top = 120
-    Width = 537
-    Height = 169
-    ReadOnly = True
-    ScrollBars = ssVertical
-    TabOrder = 5
-  end
-  object chkSalvaLog: TCheckBox
+  object chkSalvaLog: TUniCheckBox
     Left = 200
     Top = 13
     Width = 146
     Height = 17
+    Hint = ''
     Caption = 'Salvar Log ap'#243's execu'#231#227'o'
     TabOrder = 6
+  end
+  object edtScript: TUniEdit
+    Left = 56
+    Top = 83
+    Width = 393
+    Height = 21
+    Hint = ''
+    Text = ''
+    TabOrder = 0
+    ReadOnly = True
+    OnChange = edtScriptChange
+  end
+  object mmoLog: TUniMemo
+    Left = 8
+    Top = 120
+    Width = 537
+    Height = 169
+    Hint = ''
+    ScrollBars = ssVertical
+    ReadOnly = True
+    TabOrder = 5
   end
   object odScript: TOpenDialog
     DefaultExt = '*.sql'

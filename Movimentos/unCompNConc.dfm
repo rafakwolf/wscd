@@ -1,32 +1,30 @@
 object frmCompNaoConc: TfrmCompNaoConc
   Left = 138
   Top = 147
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Compras n'#227'o conclu'#237'das'
   ClientHeight = 289
   ClientWidth = 706
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Compras n'#227'o conclu'#237'das'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  OnShow = FormShow
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnConsultar: TBitBtn
+  object btnConsultar: TUniBitBtn
     Left = 512
     Top = 256
     Width = 89
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -78,16 +76,17 @@ object frmCompNaoConc: TfrmCompNaoConc
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080}
-    NumGlyphs = 2
+    Caption = '&OK'
     TabOrder = 0
     OnClick = btnConsultarClick
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 608
     Top = 256
     Width = 89
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -130,74 +129,24 @@ object frmCompNaoConc: TfrmCompNaoConc
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
-    NumGlyphs = 2
+    Caption = '&Cancelar'
     TabOrder = 1
     OnClick = btnCancelarClick
   end
-  object Grade: TDBGrid
+  object Grade: TUniDBGrid
     Left = 8
     Top = 8
     Width = 689
     Height = 241
+    Hint = ''
+    ShowHint = True
     DataSource = dsComp
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
     TabOrder = 2
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = GradeDrawColumnCell
+    ParentColor = False
+    Color = clWindow
     OnDblClick = btnConsultarClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'NUMERO'
-        Title.Caption = 'N'#250'mero'
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATANOTA'
-        Title.Caption = 'Data nota'
-        Width = 85
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATAENTRADA'
-        Title.Caption = 'Data chegada'
-        Width = 85
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'RAZAOSOCIAL'
-        Title.Caption = 'Fornecedor'
-        Width = 265
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTAL'
-        Title.Caption = 'Total'
-        Width = 80
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = 'CONCLUIDA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        Title.Alignment = taCenter
-        Title.Caption = 'Conclu'#237'da'
-        Visible = True
-      end>
   end
   object dsComp: TDataSource
     DataSet = cdsComp

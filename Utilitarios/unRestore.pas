@@ -4,17 +4,18 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ComCtrls, ExtCtrls;
+  Dialogs, StdCtrls, Buttons, ComCtrls, ExtCtrls, uniGUIBaseClasses,
+  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniGUIForm, uniMemo;
 
 type
-  TfrmRestore = class(TForm)
-    btnRestaurar: TBitBtn;
-    Memo: TMemo;
-    BtnCancela: TBitBtn;
-    edFileName: TLabeledEdit;
-    btnBuscaFileName: TBitBtn;
+  TfrmRestore = class(TUniForm)
     odBackup: TOpenDialog;
     pbProgresso: TProgressBar;
+    btnRestaurar: TUniBitBtn;
+    BtnCancela: TUniBitBtn;
+    btnBuscaFileName: TUniBitBtn;
+    edFileName: TUniEdit;
+    Memo: TUniMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BtnCancelaClick(Sender: TObject);
     procedure btnRestaurarClick(Sender: TObject);
@@ -152,7 +153,6 @@ procedure TfrmRestore.DesligaBotoes;
 begin
   btnRestaurar.Enabled := False;
   BtnCancela.Enabled := False;
-  Screen.Cursor := crHourGlass;
   Memo.Lines.Clear;
   Application.ProcessMessages;
 end;
@@ -161,7 +161,6 @@ procedure TfrmRestore.LigaBotoes;
 begin
   btnRestaurar.Enabled := True;
   BtnCancela.Enabled := True;
-  Screen.Cursor := crDefault;
   Application.ProcessMessages;
 end;
 

@@ -4,15 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, System.Rtti;
+  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, System.Rtti, UniGuiForm,
+  uniGUIBaseClasses, uniGUIClasses, uniPanel, uniButton, uniBitBtn;
 
 type
-  TfrmDialogoRelatorioPadrao = class(TForm)
-    pnButtons: TPanel;
-    btnImprimir: TBitBtn;
-    btnVisualizar: TBitBtn;
-    btnSair: TBitBtn;
+  TfrmDialogoRelatorioPadrao = class(TUniForm)
     dsPadrao: TDataSource;
+    pnButtons: TUniContainerPanel;
+    btnImprimir: TUniBitBtn;
+    btnVisualizar: TUniBitBtn;
+    btnSair: TUniBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnImprimirClick(Sender: TObject);

@@ -1,34 +1,32 @@
 inherited frmRelatorioCPAtrasados: TfrmRelatorioCPAtrasados
   Left = 219
   Top = 164
-  Caption = 'frmRelatorioCPAtrasados'
   ClientHeight = 144
   ClientWidth = 361
+  Caption = 'frmRelatorioCPAtrasados'
   OldCreateOrder = True
   ExplicitWidth = 377
   ExplicitHeight = 183
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeFornecedor: TDBEdit [0]
+  inherited pnButtons: TUniContainerPanel
+    Top = 110
+    Width = 361
+    ExplicitTop = 110
+    ExplicitWidth = 361
+  end
+  object dbeFornecedor: TUniDBEdit [1]
     Left = 16
     Top = 48
     Width = 321
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
-  end
-  inherited pnButtons: TPanel
-    Top = 110
-    Width = 361
-    ExplicitTop = 110
-    ExplicitWidth = 361
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsForn

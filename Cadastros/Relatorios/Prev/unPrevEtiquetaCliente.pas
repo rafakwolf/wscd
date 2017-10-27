@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, DBClient, Provider, SqlExpr, RLReport, FMTBcd;
+  Dialogs, DB, DBClient, Provider, SqlExpr, RLReport, FMTBcd, UniGuiForm;
 
 type
-  TfrmPrevEtiquetaCliente = class(TForm)
+  TfrmPrevEtiquetaCliente = class(TUniForm)
     rpEtiqueta: TRLReport;
     Detail: TRLDetailGrid;
     dbDescricao: TRLDBMemo;

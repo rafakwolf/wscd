@@ -1,52 +1,54 @@
 inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   Left = 240
   Top = 195
-  Caption = 'frmRelatorioCaixaContaCaixa'
   ClientHeight = 168
   ClientWidth = 345
+  Caption = 'frmRelatorioCaixaContaCaixa'
   OldCreateOrder = True
   ExplicitWidth = 361
   ExplicitHeight = 207
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeCaixa: TDBEdit [0]
+  inherited pnButtons: TUniContainerPanel
+    Top = 134
+    Width = 345
+    ExplicitTop = 134
+    ExplicitWidth = 345
+  end
+  object dbeCaixa: TUniDBEdit [1]
     Left = 24
     Top = 40
     Width = 283
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dtpDataIni: TDBEdit [1]
+  object dtpDataIni: TUniDBEdit [2]
     Left = 24
     Top = 88
     Width = 145
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATAINI'
     DataSource = dsData
     TabOrder = 2
   end
-  object dtpDataFim: TDBEdit [2]
+  object dtpDataFim: TUniDBEdit [3]
     Left = 184
     Top = 88
     Width = 145
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATAFIM'
     DataSource = dsData
     TabOrder = 3
-  end
-  inherited pnButtons: TPanel
-    Top = 134
-    Width = 345
-    ExplicitTop = 134
-    ExplicitWidth = 345
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsCaixa

@@ -3,18 +3,20 @@ unit unBackup;
 interface
 
 uses SysUtils, Messages, Classes, Graphics, Controls, Forms, FileCtrl,
-     Dialogs, StdCtrls, Buttons, ExtCtrls, ComCtrls, unSimplePadrao;
+     Dialogs, StdCtrls, Buttons, ExtCtrls, ComCtrls, unSimplePadrao,
+  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniCheckBox,
+  uniMemo;
 
 type
   TfrmBackup = class(TfrmSimplePadrao)
-    Memo: TMemo;
-    cbDiretorioPadrao: TCheckBox;
-    BtnOk: TBitBtn;
-    BtnCancela: TBitBtn;
-    edDestino: TLabeledEdit;
-    btnBuscaDestinoCopia: TBitBtn;
     pbProgresso: TProgressBar;
-    btnChamaRestore: TBitBtn;
+    BtnOk: TUniBitBtn;
+    BtnCancela: TUniBitBtn;
+    btnBuscaDestinoCopia: TUniBitBtn;
+    btnChamaRestore: TUniBitBtn;
+    edDestino: TUniEdit;
+    cbDiretorioPadrao: TUniCheckBox;
+    Memo: TUniMemo;
     procedure BtnOkClick(Sender: TObject);
     procedure BtnCancelaClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -211,7 +213,6 @@ procedure TfrmBackup.DesligaBotoes;
 begin
   BtnOk.Enabled := False;
   BtnCancela.Enabled := False;
-  Screen.Cursor := crHourGlass;
   Memo.Lines.Clear;
 end;
 
@@ -219,7 +220,6 @@ procedure TfrmBackup.LigaBotoes;
 begin
   BtnOk.Enabled := True;
   BtnCancela.Enabled := True;
-  Screen.Cursor := crDefault;
 end;
 
 procedure TfrmBackup.FormCreate(Sender: TObject);

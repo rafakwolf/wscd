@@ -6,17 +6,15 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, Grids, DBGrids, DBClient, Provider, SqlExpr,
-  Mask, DBCtrls,  FMTBcd, System.Actions, VarGlobal;
+  Mask, DBCtrls,  FMTBcd, System.Actions, VarGlobal, uniGUIClasses, uniEdit,
+  uniDBEdit, uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses,
+  uniStatusBar, uniBasicGrid, uniDBGrid;
 
 type
   TfrmEtiquetaProduto = class(TfrmPadrao)
-    dbgrdEtq: TDBGrid;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeCodBarra: TDBEdit;
-    dbeProduto: TDBEdit;
-    dbePreco: TDBEdit;
     sqldProduto: TSQLDataSet;
     dspProduto: TDataSetProvider;
     cdsProduto: TClientDataSet;
@@ -34,13 +32,14 @@ type
     cdsPadraoCODBARRA: TStringField;
     cdsPadraoDESCRICAO: TStringField;
     cdsPadraoPRECO: TFMTBCDField;
+    dbeCodBarra: TUniDBEdit;
+    dbeProduto: TUniDBEdit;
+    dbePreco: TUniDBEdit;
+    dbgrdEtq: TUniDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure miBuscaProdutoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure dbgrdEtqDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure miInserirTodosProdutosClick(Sender: TObject);
     procedure cdsPadraoCODBARRASetText(Sender: TField; const Text: String);
     procedure miAjustaCodigoBarraClick(Sender: TObject);
@@ -111,27 +110,6 @@ begin
   inherited;
   if cdsProduto.Active then
     cdsProduto.Close;
-end;
-
-procedure TfrmEtiquetaProduto.dbgrdEtqDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  inherited;
-  if State = [] then
-  begin
-    if cdsPadrao.RecNo mod 2 = 1 then
-      dbgrdEtq.Canvas.Brush.Color := $00F0F0F0
-    else
-      dbgrdEtq.Canvas.Brush.Color := clWhite;
-  end;
-  dbgrdEtq.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-end;
-
-procedure TfrmEtiquetaProduto.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  //Incrementa('ETIQUETAPROD', cdsPadraoIDETIQUETAPROD, GetConnection);
 end;
 
 procedure TfrmEtiquetaProduto.miInserirTodosProdutosClick(Sender: TObject);

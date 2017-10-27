@@ -1,53 +1,84 @@
 inherited frmCadastroCaixa: TfrmCadastroCaixa
   Left = 213
-  Caption = 'frmCadastroCaixa'
   ClientHeight = 164
   ClientWidth = 535
+  Caption = 'frmCadastroCaixa'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 541
   ExplicitHeight = 193
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeNomeCaixa: TDBEdit [0]
+  inherited sbStatus: TUniStatusBar
+    Top = 145
+    Width = 535
+    ExplicitTop = 145
+    ExplicitWidth = 535
+  end
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 535
+    TabOrder = 3
+    ExplicitWidth = 535
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object dbeNomeCaixa: TUniDBEdit [2]
     Left = 64
     Top = 83
     Width = 305
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeCodCaixa: TDBEdit [1]
+  object dbeCodCaixa: TUniDBEdit [3]
     Left = 64
     Top = 57
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'CODIGO'
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbchkInativo: TDBCheckBox [2]
+  object dbchkInativo: TUniDBCheckBox [4]
     Left = 64
     Top = 109
     Width = 63
     Height = 17
-    Caption = 'Inativo'
+    Hint = ''
+    ShowHint = True
     DataField = 'INATIVO'
     DataSource = dsPadrao
-    TabOrder = 2
     ValueChecked = 'S'
     ValueUnchecked = 'N'
-  end
-  inherited sbStatus: TStatusBar
-    Top = 145
-    Width = 535
-    ExplicitTop = 145
-    ExplicitWidth = 393
-  end
-  inherited pnBotoesPadrao: TPanel
-    Width = 535
-    TabOrder = 3
-    ExplicitWidth = 393
+    Caption = 'Inativo'
+    TabOrder = 2
   end
   inherited actlNavigateActions: TActionList
     Left = 208

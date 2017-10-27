@@ -1,91 +1,76 @@
 inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
   Left = 307
   Top = 123
-  Caption = 'frmConfiguraDuplicata'
   ClientHeight = 407
   ClientWidth = 465
+  Caption = 'frmConfiguraDuplicata'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 471
   ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeFontSize: TDBEdit [0]
-    Left = 392
-    Top = 356
-    Width = 57
-    Height = 21
-    DataField = 'FONTE'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object dbgrdCampos: TDBGrid [1]
-    Left = 8
-    Top = 40
-    Width = 449
-    Height = 289
-    DataSource = dsPadrao
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 3
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnKeyDown = dbgrdCamposKeyDown
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CAMPO'
-        Title.Caption = 'Campo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Verdana'
-        Title.Font.Style = [fsBold]
-        Width = 273
-        Visible = True
-      end
-      item
-        Color = 15790320
-        Expanded = False
-        FieldName = 'VERTICAL'
-        Title.Caption = 'Coluna'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Verdana'
-        Title.Font.Style = [fsBold]
-        Width = 69
-        Visible = True
-      end
-      item
-        Color = 15790320
-        Expanded = False
-        FieldName = 'HORIZONTAL'
-        Title.Caption = 'Linha'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Verdana'
-        Title.Font.Style = [fsBold]
-        Width = 63
-        Visible = True
-      end>
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 388
     Width = 465
     ExplicitTop = 388
     ExplicitWidth = 465
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 465
     ExplicitWidth = 465
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object dbeFontSize: TUniDBEdit [2]
+    Left = 392
+    Top = 356
+    Width = 57
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'FONTE'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbgrdCampos: TUniDBGrid [3]
+    Left = 8
+    Top = 40
+    Width = 449
+    Height = 289
+    Hint = ''
+    ShowHint = True
+    DataSource = dsPadrao
+    LoadMask.Message = 'Loading data...'
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentFont = False
+    TabOrder = 3
+    ParentColor = False
+    Color = clWindow
+    OnKeyDown = dbgrdCamposKeyDown
   end
   inherited actlNavigateActions: TActionList
     Left = 72

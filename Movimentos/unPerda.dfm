@@ -1,43 +1,14 @@
 inherited frmPerda: TfrmPerda
-  Caption = 'frmPerda'
   ClientHeight = 396
   ClientWidth = 473
+  Caption = 'frmPerda'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 479
   ExplicitHeight = 425
   PixelsPerInch = 96
   TextHeight = 13
-  object lbQtde: TLabel [0]
-    Left = 36
-    Top = 84
-    Width = 27
-    Height = 13
-    Caption = 'Qtde'
-    FocusControl = dbQtde
-  end
-  object lbPreco: TLabel [1]
-    Left = 31
-    Top = 108
-    Width = 32
-    Height = 13
-    Caption = 'Pre'#231'o'
-    FocusControl = dbPreco
-  end
-  object lbObs: TLabel [2]
-    Left = 37
-    Top = 267
-    Width = 26
-    Height = 13
-    Caption = 'Obs.'
-  end
-  object lbPrecoCusto: TLabel [3]
-    Left = 183
-    Top = 108
-    Width = 43
-    Height = 13
-    Caption = '(Custo)'
-  end
-  object dbrgrpMOTIVO: TDBRadioGroup [4]
+  object dbrgrpMOTIVO: TDBRadioGroup [0]
     Left = 66
     Top = 152
     Width = 153
@@ -60,65 +31,138 @@ inherited frmPerda: TfrmPerda
       'P'
       'O')
   end
-  object dbdData: TDBEdit [5]
-    Left = 66
-    Top = 128
-    Width = 153
-    Height = 21
-    DataField = 'DATA'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  object dbQtde: TDBEdit [6]
-    Left = 66
-    Top = 80
-    Width = 73
-    Height = 21
-    DataField = 'QTDE'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbProduto: TDBEdit [7]
-    Left = 66
-    Top = 56
-    Width = 361
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'DESCRICAO'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 0
-  end
-  object dbmOBS: TDBMemo [8]
-    Left = 66
-    Top = 264
-    Width = 383
-    Height = 89
-    DataField = 'OBS'
-    DataSource = dsPadrao
-    ScrollBars = ssVertical
-    TabOrder = 5
-  end
-  object dbPreco: TDBEdit [9]
-    Left = 66
-    Top = 104
-    Width = 113
-    Height = 21
-    DataField = 'PRECO'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 377
     Width = 473
     ExplicitTop = 377
     ExplicitWidth = 473
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 473
     TabOrder = 6
     ExplicitWidth = 473
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object lbQtde: TUniLabel [3]
+    Left = 36
+    Top = 84
+    Width = 27
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Qtde'
+    TabOrder = 8
+  end
+  object lbPreco: TUniLabel [4]
+    Left = 31
+    Top = 108
+    Width = 32
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Pre'#231'o'
+    TabOrder = 9
+  end
+  object lbObs: TUniLabel [5]
+    Left = 37
+    Top = 267
+    Width = 26
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Obs.'
+    TabOrder = 10
+  end
+  object lbPrecoCusto: TUniLabel [6]
+    Left = 183
+    Top = 108
+    Width = 43
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = '(Custo)'
+    TabOrder = 11
+  end
+  object dbdData: TUniDBEdit [7]
+    Left = 66
+    Top = 128
+    Width = 153
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATA'
+    DataSource = dsPadrao
+    TabOrder = 3
+  end
+  object dbQtde: TUniDBEdit [8]
+    Left = 66
+    Top = 80
+    Width = 73
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'QTDE'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbProduto: TUniDBEdit [9]
+    Left = 66
+    Top = 56
+    Width = 361
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'DESCRICAO'
+    DataSource = dsPadrao
+    TabOrder = 0
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbPreco: TUniDBEdit [10]
+    Left = 66
+    Top = 104
+    Width = 113
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'PRECO'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbmOBS: TUniDBMemo [11]
+    Left = 66
+    Top = 264
+    Width = 383
+    Height = 89
+    Hint = ''
+    ShowHint = True
+    DataField = 'OBS'
+    DataSource = dsPadrao
+    ScrollBars = ssVertical
+    TabOrder = 5
   end
   inherited actlNavigateActions: TActionList
     Left = 272

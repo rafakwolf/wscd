@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, DB, DBClient,
   Datasnap.Provider, Data.SqlExpr, Grids, DBGrids, StdCtrls,
-  Buttons, FMTBcd;
+  Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
+  uniBasicGrid, uniDBGrid;
 
 type
   TfrmVendaNaoConc = class(TfrmSimplePadrao)
@@ -26,9 +27,9 @@ type
     cdsVendaNOME: TStringField;
     cdsVendaTOTAL: TFMTBCDField;
     cdsVendaCONCLUIDA: TStringField;
-    dbgrdVendaNaoConc: TDBGrid;
-    btnOK: TBitBtn;
-    btnCancelar: TBitBtn;
+    btnOK: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    dbgrdVendaNaoConc: TUniDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dbgrdVendaNaoConcDrawColumnCell(Sender: TObject;

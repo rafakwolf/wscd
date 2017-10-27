@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DBClient, Provider,
+  Dialogs, RLReport, DBClient, Provider, uniGUIForm,
   DB, SqlExpr, FMTBcd;
 
 type
-  TfrmPrevDuplicata = class(TForm)
+  TfrmPrevDuplicata = class(TUniForm)
     sqldDuplicata: TSQLDataSet;
     dspDuplicata: TDataSetProvider;
     cdsDuplicata: TClientDataSet;

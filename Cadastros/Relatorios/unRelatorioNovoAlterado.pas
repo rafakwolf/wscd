@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB;
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, uniButton,
+  uniBitBtn, uniGUIBaseClasses, uniGUIClasses, uniPanel;
 
 const
   cs_prod_novos_alter: string = 'select '+

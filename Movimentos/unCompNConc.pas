@@ -5,13 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB, DBClient,
-  Provider, SqlExpr, FMTBcd;
+  Provider, SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton,
+  uniBitBtn, uniGUIForm, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmCompNaoConc = class(TForm)
-    btnConsultar: TBitBtn;
-    btnCancelar: TBitBtn;
-    Grade: TDBGrid;
+  TfrmCompNaoConc = class(TUniForm)
     dsComp: TDataSource;
     sqlComp: TSQLDataSet;
     dspComp: TDataSetProvider;
@@ -30,6 +28,9 @@ type
     cdsCompRAZAOSOCIAL: TStringField;
     cdsCompTOTAL: TFMTBCDField;
     cdsCompCONCLUIDA: TStringField;
+    btnConsultar: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    Grade: TUniDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure GradeDblClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);

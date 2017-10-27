@@ -1,40 +1,44 @@
 inherited frmCadastroUnidade: TfrmCadastroUnidade
-  Caption = 'frmCadastroUnidade'
   ClientHeight = 156
   ClientWidth = 393
+  Caption = 'frmCadastroUnidade'
   OldCreateOrder = True
   ExplicitWidth = 399
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeNomeUnidade: TDBEdit [0]
-    Left = 70
-    Top = 82
-    Width = 297
-    Height = 21
-    DataField = 'DESCRICAO'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbeCodUnidade: TDBEdit [1]
-    Left = 70
-    Top = 56
-    Width = 105
-    Height = 21
-    DataField = 'CODUNIDADE'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 137
     Width = 393
     ExplicitTop = 137
     ExplicitWidth = 393
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 393
     TabOrder = 2
     ExplicitWidth = 393
+  end
+  object dbeNomeUnidade: TUniDBEdit [2]
+    Left = 70
+    Top = 82
+    Width = 297
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DESCRICAO'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbeCodUnidade: TUniDBEdit [3]
+    Left = 70
+    Top = 56
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CODUNIDADE'
+    DataSource = dsPadrao
+    TabOrder = 0
   end
   inherited actlNavigateActions: TActionList
     Left = 24

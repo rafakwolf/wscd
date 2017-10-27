@@ -1,276 +1,361 @@
 inherited frmConfigGlobal: TfrmConfigGlobal
   Left = 232
   Top = 148
-  Caption = 'frmConfigGlobal'
   ClientHeight = 340
   ClientWidth = 401
+  Caption = 'frmConfigGlobal'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 407
   ExplicitHeight = 369
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 321
     Width = 401
     ExplicitTop = 321
     ExplicitWidth = 401
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 401
     ExplicitWidth = 401
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
   end
-  object pgcConfigGlobal: TPageControl [2]
+  object pgcConfigGlobal: TUniPageControl [2]
     Left = 8
     Top = 40
     Width = 385
     Height = 273
-    ActivePage = tsFTP
+    Hint = ''
+    ShowHint = True
+    ActivePage = tsVenda
     TabOrder = 2
-    object tsCrediario: TTabSheet
+    object tsCrediario: TUniTabSheet
+      Hint = ''
+      ShowHint = True
       Caption = 'Credi'#225'rio'
       ExplicitLeft = 0
       ExplicitTop = 0
       ExplicitWidth = 0
       ExplicitHeight = 0
-      object dbeJuro: TDBEdit
+      object dbeJuro: TUniDBEdit
         Left = 8
         Top = 32
         Width = 83
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'TAXAJURO'
         DataSource = dsPadrao
         TabOrder = 0
         OnKeyPress = dbeJuroKeyPress
       end
-      object dbeIntervalo: TDBEdit
+      object dbeIntervalo: TUniDBEdit
         Left = 272
         Top = 32
         Width = 97
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'INTERVALO'
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbePrazoInicial: TDBEdit
+      object dbePrazoInicial: TUniDBEdit
         Left = 184
         Top = 32
         Width = 83
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'PRAZOINICIAL'
         DataSource = dsPadrao
         TabOrder = 2
       end
-      object dbeParcelas: TDBEdit
+      object dbeParcelas: TUniDBEdit
         Left = 96
         Top = 32
         Width = 83
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'PARCELAS'
         DataSource = dsPadrao
         TabOrder = 3
       end
     end
-    object tsCliente: TTabSheet
-      Caption = 'Cliente'
+    object tsCliente: TUniTabSheet
+      Hint = ''
+      ShowHint = True
       ImageIndex = 1
+      Caption = 'Cliente'
       ExplicitLeft = 0
       ExplicitTop = 0
       ExplicitWidth = 0
       ExplicitHeight = 0
-      object dbeLimiteCliente: TDBEdit
+      object dbeLimiteCliente: TUniDBEdit
         Left = 8
         Top = 32
         Width = 105
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'LIMITECLIENTE'
         DataSource = dsPadrao
         TabOrder = 0
       end
-      object dbeIdadeCliente: TDBEdit
+      object dbeIdadeCliente: TUniDBEdit
         Left = 120
         Top = 32
         Width = 89
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'IDADECADASTROCLIENTE'
         DataSource = dsPadrao
         TabOrder = 1
       end
     end
-    object tsOrcamento: TTabSheet
-      Caption = 'Or'#231'amento'
+    object tsOrcamento: TUniTabSheet
+      Hint = ''
+      ShowHint = True
       ImageIndex = 2
+      Caption = 'Or'#231'amento'
       ExplicitLeft = 0
       ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      object lbMsgOrcamRodape: TLabel
+      ExplicitWidth = 256
+      ExplicitHeight = 128
+      object lbMsgOrcamRodape: TUniLabel
         Left = 8
         Top = 64
-        Width = 190
+        Width = 158
         Height = 13
+        Hint = ''
+        ShowHint = True
         Caption = 'Rodap'#233' do or'#231'amento em bobina'
+        TabOrder = 4
       end
-      object dbeTituloOrcam: TDBEdit
+      object dbeTituloOrcam: TUniDBEdit
         Left = 8
         Top = 32
         Width = 249
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'TITULOORCAM'
         DataSource = dsPadrao
         TabOrder = 0
       end
-      object dbeColunaBobina: TDBEdit
+      object dbeColunaBobina: TUniDBEdit
         Left = 263
         Top = 32
         Width = 106
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'COLUNAORCAMBOBINA'
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbmmMsgRodape: TDBMemo
-        Left = 8
-        Top = 80
-        Width = 361
-        Height = 73
-        DataField = 'MSGRODAPEORCAM'
-        DataSource = dsPadrao
-        TabOrder = 2
-      end
-      object dbeLinhaPularOrcam: TDBEdit
+      object dbeLinhaPularOrcam: TUniDBEdit
         Left = 8
         Top = 176
         Width = 105
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'LINHAPULARBOBINAORCAM'
         DataSource = dsPadrao
         TabOrder = 3
       end
-    end
-    object tsVenda: TTabSheet
-      Caption = 'Venda'
-      ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      object lbMsgRodapeVenda: TLabel
-        Left = 8
-        Top = 64
-        Width = 164
-        Height = 13
-        Caption = 'Rodap'#233' da venda em bobina'
-      end
-      object dbeTituloVenda: TDBEdit
-        Left = 8
-        Top = 32
-        Width = 249
-        Height = 21
-        DataField = 'TITULOVENDA'
-        DataSource = dsPadrao
-        TabOrder = 0
-      end
-      object dbeColunaBobinaVenda: TDBEdit
-        Left = 263
-        Top = 32
-        Width = 106
-        Height = 21
-        DataField = 'COLUNAVENDABOBINA'
-        DataSource = dsPadrao
-        TabOrder = 1
-      end
-      object dbmmMsgRodapeVenda: TDBMemo
+      object dbmmMsgRodape: TUniDBMemo
         Left = 8
         Top = 80
         Width = 361
         Height = 73
-        DataField = 'MSGRODAPEVENDA'
+        Hint = ''
+        ShowHint = True
+        DataField = 'MSGRODAPEORCAM'
         DataSource = dsPadrao
         TabOrder = 2
       end
-      object dbeLinhaPularVenda: TDBEdit
+    end
+    object tsVenda: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 3
+      Caption = 'Venda'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
+      object lbMsgRodapeVenda: TUniLabel
+        Left = 8
+        Top = 64
+        Width = 137
+        Height = 13
+        Hint = ''
+        ShowHint = True
+        Caption = 'Rodap'#233' da venda em bobina'
+        TabOrder = 5
+      end
+      object dbeTituloVenda: TUniDBEdit
+        Left = 8
+        Top = 32
+        Width = 249
+        Height = 21
+        Hint = ''
+        ShowHint = True
+        DataField = 'TITULOVENDA'
+        DataSource = dsPadrao
+        TabOrder = 0
+      end
+      object dbeColunaBobinaVenda: TUniDBEdit
+        Left = 263
+        Top = 32
+        Width = 106
+        Height = 21
+        Hint = ''
+        ShowHint = True
+        DataField = 'COLUNAVENDABOBINA'
+        DataSource = dsPadrao
+        TabOrder = 1
+      end
+      object dbeLinhaPularVenda: TUniDBEdit
         Left = 8
         Top = 176
         Width = 105
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'LINHAPULARBOBINAVENDA'
         DataSource = dsPadrao
         TabOrder = 3
       end
-      object dbePortaImpVenda: TDBEdit
+      object dbePortaImpVenda: TUniDBEdit
         Left = 119
         Top = 176
         Width = 104
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'PORTAIMPVENDA'
         DataSource = dsPadrao
         TabOrder = 4
       end
+      object dbmmMsgRodapeVenda: TUniDBMemo
+        Left = 8
+        Top = 80
+        Width = 361
+        Height = 73
+        Hint = ''
+        ShowHint = True
+        DataField = 'MSGRODAPEVENDA'
+        DataSource = dsPadrao
+        TabOrder = 2
+      end
     end
-    object tsFTP: TTabSheet
-      Caption = 'FTP (Atualiza'#231#227'o)'
+    object tsFTP: TUniTabSheet
+      Hint = ''
+      ShowHint = True
       ImageIndex = 4
+      Caption = 'FTP (Atualiza'#231#227'o)'
       ExplicitLeft = 0
       ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      object dbeHost: TDBEdit
+      ExplicitWidth = 256
+      ExplicitHeight = 128
+      object dbeHost: TUniDBEdit
         Left = 16
         Top = 24
         Width = 337
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'FTP_HOST'
         DataSource = dsPadrao
         TabOrder = 0
       end
-      object dbeUserName: TDBEdit
+      object dbeUserName: TUniDBEdit
         Left = 16
         Top = 64
         Width = 169
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'FTP_USER_NAME'
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbePassWord: TDBEdit
+      object dbePassWord: TUniDBEdit
         Left = 192
         Top = 64
         Width = 161
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'FTP_PASSWORD'
         DataSource = dsPadrao
         PasswordChar = '*'
         TabOrder = 2
       end
-      object dbeDiretorio: TDBEdit
+      object dbeDiretorio: TUniDBEdit
         Left = 16
         Top = 104
         Width = 265
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'FTP_DIR'
         DataSource = dsPadrao
         TabOrder = 3
       end
-      object dbeTimeOut: TDBEdit
+      object dbeTimeOut: TUniDBEdit
         Left = 288
         Top = 104
         Width = 65
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'FTP_TIMEOUT'
         DataSource = dsPadrao
         TabOrder = 4
       end
-      object dbckbPassive: TDBCheckBox
+      object dbckbPassive: TUniDBCheckBox
         Left = 16
         Top = 136
         Width = 65
         Height = 17
-        Caption = 'Passive'
+        Hint = ''
+        ShowHint = True
         DataField = 'FTP_PASSIVE'
         DataSource = dsPadrao
-        TabOrder = 5
         ValueChecked = 'S'
         ValueUnchecked = 'N'
+        Caption = 'Passive'
+        TabOrder = 5
       end
     end
   end

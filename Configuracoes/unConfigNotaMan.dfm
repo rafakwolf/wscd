@@ -1,23 +1,31 @@
 inherited frmConfigNotaMan: TfrmConfigNotaMan
   Left = 221
   Top = 163
-  Caption = 'Campos da nota fiscal'
   ClientHeight = 249
   ClientWidth = 513
+  Caption = 'Campos da nota fiscal'
   OldCreateOrder = True
   ExplicitWidth = 529
   ExplicitHeight = 288
   PixelsPerInch = 96
   TextHeight = 13
-  object pgcCadastro: TPageControl
+  object pgcCadastro: TUniPageControl
     Left = 8
     Top = 8
     Width = 497
     Height = 201
+    Hint = ''
+    ShowHint = True
     ActivePage = tsCadastro
     TabOrder = 0
-    object tsCadastro: TTabSheet
+    object tsCadastro: TUniTabSheet
+      Hint = ''
+      ShowHint = True
       Caption = 'Cadastro'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 256
+      ExplicitHeight = 128
       object dbtxtRef: TDBText
         Left = 264
         Top = 66
@@ -26,63 +34,74 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
         DataField = 'REFERENCIA'
         DataSource = dsPadrao
       end
-      object dbeCampoDescricao: TDBEdit
+      object dbeCampoDescricao: TUniDBEdit
         Left = 72
         Top = 16
         Width = 400
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'CAMPO'
         DataSource = dsPadrao
         TabOrder = 0
         OnKeyPress = dbeCampoDescricaoKeyPress
       end
-      object dbeLayOut: TDBEdit
+      object dbeLayOut: TUniDBEdit
         Left = 72
         Top = 120
         Width = 400
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'LAYOUT'
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbeLinha: TDBEdit
+      object dbeLinha: TUniDBEdit
         Left = 72
         Top = 68
         Width = 65
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'LINHA'
         DataSource = dsPadrao
         TabOrder = 2
       end
-      object dbeColuna: TDBEdit
+      object dbeColuna: TUniDBEdit
         Left = 72
         Top = 94
         Width = 65
         Height = 21
+        Hint = ''
+        ShowHint = True
         DataField = 'COLUNA'
         DataSource = dsPadrao
         TabOrder = 4
       end
-      object dbckbImprimir: TDBCheckBox
+      object dbckbImprimir: TUniDBCheckBox
         Left = 72
         Top = 146
         Width = 73
         Height = 17
-        Caption = 'Imprimir'
+        Hint = ''
+        ShowHint = True
         DataField = 'IMPRIMIR'
         DataSource = dsPadrao
-        TabOrder = 3
         ValueChecked = 'S'
         ValueUnchecked = 'N'
+        Caption = 'Imprimir'
+        TabOrder = 3
       end
     end
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 336
     Top = 216
     Width = 81
     Height = 25
-    Caption = 'Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -134,16 +153,17 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Cancelar'
     TabOrder = 1
     OnClick = btnCancelarClick
   end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 424
     Top = 216
     Width = 81
     Height = 25
-    Caption = 'Ok'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -195,15 +215,17 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Ok'
     TabOrder = 2
     OnClick = btnOkClick
   end
-  object btnNovo: TBitBtn
+  object btnNovo: TUniBitBtn
     Left = 8
     Top = 216
     Width = 73
     Height = 25
+    Hint = ''
+    ShowHint = True
     Caption = '+ Novo'
     TabOrder = 3
     OnClick = btnNovoClick

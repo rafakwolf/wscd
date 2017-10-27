@@ -5,14 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Buttons, DBClient, Provider, DB,
-  SqlExpr, FMTBcd;
+  SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
+  uniEdit, uniGuiForm;
 
 type
-  TfrmSenhaCaixa = class(TForm)
-    edAtual: TLabeledEdit;
-    edNova: TLabeledEdit;
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
+  TfrmSenhaCaixa = class(TUniForm)
     sqldConfig: TSQLDataSet;
     dspConfig: TDataSetProvider;
     cdsConfig: TClientDataSet;
@@ -20,6 +17,10 @@ type
     sqldConfigSENHACAIXA: TStringField;
     cdsConfigSENHAESTOQUE: TStringField;
     cdsConfigSENHACAIXA: TStringField;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    edAtual: TUniEdit;
+    edNova: TUniEdit;
     procedure FormShow(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

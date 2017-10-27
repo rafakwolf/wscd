@@ -1,34 +1,32 @@
 inherited frmRelatorioCompraFornecedor: TfrmRelatorioCompraFornecedor
   Left = 232
   Top = 203
-  Caption = 'frmRelatorioCompraFornecedor'
   ClientHeight = 103
   ClientWidth = 369
+  Caption = 'frmRelatorioCompraFornecedor'
   OldCreateOrder = True
   ExplicitWidth = 385
   ExplicitHeight = 142
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeForn: TDBEdit [0]
+  inherited pnButtons: TUniContainerPanel
+    Top = 69
+    Width = 369
+    ExplicitTop = 69
+    ExplicitWidth = 369
+  end
+  object dbeForn: TUniDBEdit [1]
     Left = 16
     Top = 32
     Width = 323
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
-  end
-  inherited pnButtons: TPanel
-    Top = 69
-    Width = 369
-    ExplicitTop = 69
-    ExplicitWidth = 369
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsSelecao

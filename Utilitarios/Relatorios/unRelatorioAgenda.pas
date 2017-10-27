@@ -6,14 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, DBClient, Provider, SqlExpr, DBCtrls,  Mask, uConfiguraRelatorio,
-  FMTBcd;
+  FMTBcd, uniLabel, uniGUIBaseClasses, uniGUIClasses, uniPanel, uniEdit,
+  uniDBEdit, uniButton, uniBitBtn;
 
 type
   TfrmRelatorioAgenda = class(TfrmDialogoRelatorioPadrao)
-    lbTelefone: TLabel;
-    edFone: TMaskEdit;
     rgTipoRelatorio: TRadioGroup;
-    dbeNome: TDBEdit;
     sqldAgenda: TSQLDataSet;
     dspAgenda: TDataSetProvider;
     cdsAgenda: TClientDataSet;
@@ -27,6 +25,9 @@ type
     sqldAgendaTELEFONE2: TStringField;
     sqldAgendaTELEFONE3: TStringField;
     sqldAgendaFAX: TStringField;
+    lbTelefone: TUniLabel;
+    dbeNome: TUniDBEdit;
+    edFone: TUniEdit;
     procedure FormShow(Sender: TObject);
     procedure dbeNomeClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

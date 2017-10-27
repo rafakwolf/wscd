@@ -6,19 +6,20 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, DBClient, Provider, SqlExpr, Mask, DBCtrls, 
-  ComCtrls,  FMTBcd;
+  ComCtrls,  FMTBcd, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
+  uniGUIBaseClasses, uniPanel;
 
 type
   TfrmRelatorioCaixaContaCaixa = class(TfrmDialogoRelatorioPadrao)
-    dbeCaixa: TDBEdit;
     sqldCaixa: TSQLDataSet;
     dspCaixa: TDataSetProvider;
     cdsCaixa: TClientDataSet;
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
-    dtpDataIni: TDBEdit;
-    dtpDataFim: TDBEdit;
     dsData: TDataSource;
+    dbeCaixa: TUniDBEdit;
+    dtpDataIni: TUniDBEdit;
+    dtpDataFim: TUniDBEdit;
     procedure dbeCaixaClickButton(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

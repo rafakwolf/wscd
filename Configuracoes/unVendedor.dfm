@@ -1,53 +1,84 @@
 inherited frmVendedor: TfrmVendedor
   Left = 229
   Top = 165
-  Caption = 'frmVendedor'
   ClientHeight = 229
   ClientWidth = 522
+  Caption = 'frmVendedor'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 528
   ExplicitHeight = 258
   PixelsPerInch = 96
   TextHeight = 13
-  object dbcbAtivo: TDBCheckBox [0]
-    Left = 80
-    Top = 108
-    Width = 57
-    Height = 17
-    Caption = 'Ativo'
-    DataField = 'ATIVO'
-    DataSource = dsPadrao
-    TabOrder = 4
-    ValueChecked = 'S'
-    ValueUnchecked = 'N'
-  end
-  object dbeIdVendedor: TDBEdit [1]
-    Left = 80
-    Top = 56
-    Width = 97
-    Height = 21
-    DataField = 'IDVENDEDOR'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object dbeVendedor: TDBEdit [2]
-    Left = 80
-    Top = 82
-    Width = 305
-    Height = 21
-    DataField = 'VENDEDOR'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 210
     Width = 522
     ExplicitTop = 145
     ExplicitWidth = 409
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 522
     ExplicitWidth = 409
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object dbeIdVendedor: TUniDBEdit [2]
+    Left = 80
+    Top = 56
+    Width = 97
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'IDVENDEDOR'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbeVendedor: TUniDBEdit [3]
+    Left = 80
+    Top = 82
+    Width = 305
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VENDEDOR'
+    DataSource = dsPadrao
+    TabOrder = 3
+  end
+  object dbcbAtivo: TUniDBCheckBox [4]
+    Left = 80
+    Top = 108
+    Width = 57
+    Height = 17
+    Hint = ''
+    ShowHint = True
+    DataField = 'ATIVO'
+    DataSource = dsPadrao
+    ValueChecked = 'S'
+    ValueUnchecked = 'N'
+    Caption = 'Ativo'
+    TabOrder = 4
   end
   inherited actlNavigateActions: TActionList
     Left = 176

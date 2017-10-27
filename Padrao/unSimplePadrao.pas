@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBGrids;
+  Dialogs, StdCtrls, DBGrids, UniGuiForm;
 
 type
-  TfrmSimplePadrao = class(TForm)
+  TfrmSimplePadrao = class(TUniForm)
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

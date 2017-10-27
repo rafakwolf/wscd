@@ -1,51 +1,96 @@
 inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   Left = 235
   Top = 150
-  Caption = 'frmUsuarioItemMenu'
   ClientHeight = 512
   ClientWidth = 475
-  Font.Name = 'Tahoma'
+  Caption = 'frmUsuarioItemMenu'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 481
   ExplicitHeight = 541
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeSenha: TDBEdit [0]
+  inherited sbStatus: TUniStatusBar
+    Top = 493
+    Width = 475
+    ExplicitTop = 493
+    ExplicitWidth = 475
+  end
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 475
+    ExplicitWidth = 475
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object dbeSenha: TUniDBEdit [2]
     Left = 64
     Top = 96
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'SENHA'
     DataSource = dsPadrao
     PasswordChar = '*'
     TabOrder = 4
   end
-  object dbeLogin: TDBEdit [1]
+  object dbeLogin: TUniDBEdit [3]
     Left = 64
     Top = 71
     Width = 209
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'LOGIN'
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeNomeUsuario: TDBEdit [2]
+  object dbeNomeUsuario: TUniDBEdit [4]
     Left = 64
     Top = 46
     Width = 361
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object grpItemPermissao: TGroupBox [3]
+  object grpItemPermissao: TUniGroupBox [5]
     Left = 0
     Top = 122
     Width = 475
     Height = 371
-    Align = alBottom
+    Hint = ''
+    ShowHint = True
     Caption = 'Menu Principal'
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
     TabOrder = 5
+    TabStop = False
+    ExplicitTop = -249
     object tvAcesso: TTreeView
       Left = 2
       Top = 15
@@ -65,16 +110,6 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
       OnGetSelectedIndex = tvAcessoGetSelectedIndex
       OnMouseDown = tvAcessoMouseDown
     end
-  end
-  inherited sbStatus: TStatusBar
-    Top = 493
-    Width = 475
-    ExplicitTop = 493
-    ExplicitWidth = 475
-  end
-  inherited pnBotoesPadrao: TPanel
-    Width = 475
-    ExplicitWidth = 475
   end
   inherited actlNavigateActions: TActionList
     Left = 140
@@ -113,7 +148,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Left = 237
     Top = 364
     Bitmap = {
-      494C010102000500140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -252,21 +287,6 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
       C003C00300000000FFFFFFFF0000000000000000000000000000000000000000
       000000000000}
   end
-  object pmStatusMenu: TPopupMenu
-    Images = ilStatusMenu
-    Left = 205
-    Top = 364
-    object mniLiberado: TMenuItem
-      Caption = 'Liberado'
-      ImageIndex = 1
-      OnClick = mniLiberadoClick
-    end
-    object mniBloqueado: TMenuItem
-      Caption = 'Bloqueado'
-      ImageIndex = 0
-      OnClick = mniBloqueadoClick
-    end
-  end
   object sqldLimpaAcessoUsuario: TSQLDataSet
     SchemaName = 'USUARIOS'
     CommandText = 'delete from USUARIOSMENU'#13#10'where IDUSUARIOS = :IDUSUARIOS'
@@ -383,6 +403,20 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     object cdsAcessoIDMENU: TIntegerField
       FieldName = 'IDMENU'
       Required = True
+    end
+  end
+  object pmStatusMenu: TUniPopupMenu
+    Left = 205
+    Top = 364
+    object mniLiberado: TUniMenuItem
+      Caption = 'Liberado'
+      ImageIndex = 1
+      OnClick = mniLiberadoClick
+    end
+    object mniBloqueado: TUniMenuItem
+      Caption = 'Bloqueado'
+      ImageIndex = 0
+      OnClick = mniBloqueadoClick
     end
   end
 end

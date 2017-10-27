@@ -5,13 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, ComCtrls, DB, Data.SqlExpr,
-  Datasnap.Provider, DBClient, StdCtrls, Mask,
-  DBCtrls,  Buttons, FMTBcd;
+  Datasnap.Provider, DBClient, StdCtrls, Mask, UniPageControl,
+  DBCtrls,  Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton,
+  uniBitBtn, uniEdit, uniDBEdit, uniCheckBox, uniDBCheckBox, uniPanel;
 
 type
   TfrmConfigNotaMan = class(TfrmSimplePadrao)
-    pgcCadastro: TPageControl;
-    tsCadastro: TTabSheet;
+    pgcCadastro: TUniPageControl;
+    tsCadastro: TUniTabSheet;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -32,15 +33,15 @@ type
     cdsPadraoLINHA: TIntegerField;
     cdsPadraoCOLUNA: TIntegerField;
     cdsPadraoIMPRIMIR: TStringField;
-    dbeCampoDescricao: TDBEdit;
-    dbeLayOut: TDBEdit;
-    dbeLinha: TDBEdit;
-    dbeColuna: TDBEdit;
-    btnCancelar: TBitBtn;
-    btnOk: TBitBtn;
-    dbckbImprimir: TDBCheckBox;
-    btnNovo: TBitBtn;
     dbtxtRef: TDBText;
+    btnCancelar: TUniBitBtn;
+    btnOk: TUniBitBtn;
+    btnNovo: TUniBitBtn;
+    dbeCampoDescricao: TUniDBEdit;
+    dbeLayOut: TUniDBEdit;
+    dbeLinha: TUniDBEdit;
+    dbeColuna: TUniDBEdit;
+    dbckbImprimir: TUniDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);

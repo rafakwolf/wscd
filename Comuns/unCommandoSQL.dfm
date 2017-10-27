@@ -1,29 +1,25 @@
 object frmCommandoSQL: TfrmCommandoSQL
   Left = 213
   Top = 148
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Executar comando SQL'
   ClientHeight = 312
   ClientWidth = 489
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Executar comando SQL'
+  BorderStyle = bsSingle
   OldCreateOrder = False
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOK: TBitBtn
+  object btnOK: TUniBitBtn
     Left = 224
     Top = 280
     Width = 81
     Height = 25
-    Caption = 'Executar'
+    Hint = ''
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -51,15 +47,16 @@ object frmCommandoSQL: TfrmCommandoSQL
       22A94037B55539B55637B55433B2502AAF4921AA401AA63913A43112A13212A4
       310C9A23FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = 'Executar'
     ModalResult = 1
     TabOrder = 0
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 400
     Top = 280
     Width = 81
     Height = 25
-    Caption = 'Cancelar'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -111,16 +108,16 @@ object frmCommandoSQL: TfrmCommandoSQL
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = 'Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 1
   end
-  object btnLimpar: TBitBtn
+  object btnLimpar: TUniBitBtn
     Left = 312
     Top = 280
     Width = 81
     Height = 25
-    Caption = 'Limpar'
+    Hint = ''
     Glyph.Data = {
       26040000424D2604000000000000360000002800000012000000120000000100
       180000000000F0030000120B0000120B00000000000000000000008080008080
@@ -156,14 +153,16 @@ object frmCommandoSQL: TfrmCommandoSQL
       8000808000808000808000808000808000000080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       80800080800080800000}
+    Caption = 'Limpar'
     TabOrder = 2
     OnClick = btnLimparClick
   end
-  object mmoSQL: TMemo
+  object mmoSQL: TUniMemo
     Left = 8
     Top = 8
     Width = 473
     Height = 266
+    Hint = ''
     Lines.Strings = (
       'mmoSQL')
     TabOrder = 3

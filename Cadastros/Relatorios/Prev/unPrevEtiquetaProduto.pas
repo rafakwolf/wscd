@@ -5,10 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB,DBClient, Provider, SqlExpr, RLReport,
-  RLBarcode, FMTBcd;
+  RLBarcode, FMTBcd, UniGuiForm;
   
 type
-  TfrmPrevEtiquetaProduto = class(TForm)
+  TfrmPrevEtiquetaProduto = class(TUniForm)
     dspEtq: TDataSetProvider;
     cdsEtq: TClientDataSet;
     dsEtq: TDataSource;

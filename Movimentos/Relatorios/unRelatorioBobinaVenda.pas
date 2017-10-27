@@ -6,16 +6,11 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, Spin, ExtCtrls, DB,
   DBClient, Datasnap.Provider,
-  Data.SqlExpr, FMTBcd;
+  Data.SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton,
+  uniBitBtn, uniEdit, uniSpinEdit, uniMemo;
 
 type
   TfrmRelatorioBobinaVenda = class(TfrmSimplePadrao)
-    edtImpressora: TLabeledEdit;
-    seCopias: TSpinEdit;
-    lbCopias: TLabel;
-    btnCancelar: TBitBtn;
-    btnOk: TBitBtn;
-    mmoVenda: TMemo;
     sqlVendas: TSQLQuery;
     sqlItens: TSQLQuery;
     dtVendas: TDataSetProvider;
@@ -66,6 +61,12 @@ type
     cdsItensDESCTO: TFMTBCDField;
     cdsItensVALORDESCTO: TFMTBCDField;
     cdsItensTOTAL: TFMTBCDField;
+    lbCopias: TUniLabel;
+    btnCancelar: TUniBitBtn;
+    btnOk: TUniBitBtn;
+    edtImpressora: TUniEdit;
+    seCopias: TUniSpinEdit;
+    mmoVenda: TUniMemo;
     procedure btnCancelarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);

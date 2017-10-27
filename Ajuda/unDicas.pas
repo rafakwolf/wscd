@@ -5,15 +5,16 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons,
-  Math, ConstPadrao, unSimplePadrao;
+  Math, ConstPadrao, unSimplePadrao, uniGUIBaseClasses, uniGUIClasses,
+  uniButton, uniBitBtn, uniCheckBox, uniMemo;
 
 type
   TfrmDicas = class(TfrmSimplePadrao)
-    btnFecha: TBitBtn;
-    btnNext: TBitBtn;
-    btnPrior: TBitBtn;
-    mDica: TMemo;
-    cbExibir: TCheckBox;
+    btnFecha: TUniBitBtn;
+    btnNext: TUniBitBtn;
+    btnPrior: TUniBitBtn;
+    cbExibir: TUniCheckBox;
+    mDica: TUniMemo;
     procedure btnFechaClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

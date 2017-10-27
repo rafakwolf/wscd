@@ -6,27 +6,16 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, Mask, DBCtrls, DB, SqlExpr, varglobal,
   DBClient, ComCtrls, Menus, Grids, DBGrids,
-  Datasnap.Provider, unContasReceber, FMTBcd, unSimplePadrao;
+  Datasnap.Provider, unContasReceber, FMTBcd, unSimplePadrao, uniMainMenu,
+  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+  uniStatusBar, uniPanel, uniLabel, uniEdit, uniDBEdit, uniGroupBox,
+  uniBasicGrid, uniDBGrid;
 
 type
   TfrmContasRecebidas = class(TfrmSimplePadrao)
     cdsPadrao: TClientDataSet;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
-    pnBotoes: TPanel;
-    btnAtualizar: TSpeedButton;
-    btnEstornar: TSpeedButton;
-    btnFechar: TSpeedButton;
-    grpCliente: TGroupBox;
-    dbeCliente: TDBEdit;
-    Grade: TDBGrid;
-    mmContasRecebidas: TMainMenu;
-    miOpcoes: TMenuItem;
-    miEstornar: TMenuItem;
-    miAtualizar: TMenuItem;
-    N1: TMenuItem;
-    miFechar: TMenuItem;
-    Stb: TStatusBar;
     dsPadrao: TDataSource;
     sqldConta: TSQLDataSet;
     dspConta: TDataSetProvider;
@@ -36,8 +25,6 @@ type
     sqldContaORIGEM: TIntegerField;
     cdsContaCODIGO: TIntegerField;
     sqldDeletaConta: TSQLDataSet;
-    grpFiltro: TGroupBox;
-    lbFiltroUsado: TLabel;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoDATA: TDateField;
     sqldPadraoVENCIMENTO: TDateField;
@@ -82,14 +69,28 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALRECDO: TSingleField;
+    mmContasRecebidas: TUniMainMenu;
+    miOpcoes: TUniMenuItem;
+    miEstornar: TUniMenuItem;
+    miAtualizar: TUniMenuItem;
+    N1: TUniMenuItem;
+    miFechar: TUniMenuItem;
+    Stb: TUniStatusBar;
+    pnBotoes: TUniContainerPanel;
+    btnAtualizar: TUniSpeedButton;
+    btnEstornar: TUniSpeedButton;
+    btnFechar: TUniSpeedButton;
+    grpCliente: TUniGroupBox;
+    dbeCliente: TUniDBEdit;
+    grpFiltro: TUniGroupBox;
+    lbFiltroUsado: TUniLabel;
+    Grade: TUniDBGrid;
     procedure btnFecharClick(Sender: TObject);
     procedure btnAtualizarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnEstornarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure GradeDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure GradeDblClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GradeTitleClick(Column: TColumn);
@@ -283,30 +284,6 @@ begin
   finally
     Free;
   end;
-end;
-
-procedure TfrmContasRecebidas.GradeDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  if cdsPadraoRECEBER.AsString = 'S' then
-    Grade.Canvas.Brush.Color := $0080FFFF;
-
-  if (Column.FieldName = 'ATRASO') or
-     (Column.FieldName = 'TOTAL') then
-    Grade.Canvas.Brush.Color := $0080FFFF;
-
-  if (gdSelected in State) then
-  begin
-    Grade.Canvas.Font.Color := clWhite;
-    if ((cdsPadraoRECEBER.AsString = 'S') or
-        (Column.FieldName = 'ATRASO') or
-        (Column.FieldName = 'TOTAL')) then
-      Grade.Canvas.Brush.Color := clMenuHighlight;
-  end;
-
-  Grade.Canvas.FillRect(Rect);
-  Grade.DefaultDrawDataCell(Rect, Column.Field, State);
 end;
 
 procedure TfrmContasRecebidas.GradeDblClick(Sender: TObject);

@@ -7,11 +7,11 @@ uses
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
   Grids, DBGrids, DBClient,
   Datasnap.Provider,  Data.SqlExpr, ConstPadrao, DateUtils, FMTBcd,
-  System.Actions;
+  System.Actions, uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
+  uniGUIBaseClasses, uniStatusBar, uniBasicGrid, uniDBGrid;
 
 type
   TfrmPromocao = class(TfrmPadrao)
-    dbgrdPromocao: TDBGrid;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -65,6 +65,7 @@ type
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
+    dbgrdPromocao: TUniDBGrid;
     procedure dbgrdPromocaoEditButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);

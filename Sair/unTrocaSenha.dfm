@@ -1,53 +1,30 @@
 object frmTrocaSenha: TfrmTrocaSenha
   Left = 221
   Top = 135
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'frmTrocaSenha'
   ClientHeight = 193
   ClientWidth = 233
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'frmTrocaSenha'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Height = -12
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
-  object lbSenhaAtu: TLabel
-    Left = 29
-    Top = 59
-    Width = 64
-    Height = 14
-    Caption = 'Senha atual'
-  end
-  object lbNovaSenha: TLabel
-    Left = 30
-    Top = 92
-    Width = 63
-    Height = 14
-    Caption = 'Nova senha'
-  end
-  object lbConfirma: TLabel
-    Left = 27
-    Top = 124
-    Width = 66
-    Height = 14
-    Caption = 'Confirma'#231#227'o'
-  end
-  object btGrava: TSpeedButton
+  object btGrava: TUniSpeedButton
     Left = 56
     Top = 160
     Width = 81
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -99,15 +76,19 @@ object frmTrocaSenha: TfrmTrocaSenha
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&OK'
+    ParentColor = False
+    Color = clWindow
+    TabOrder = 4
     OnClick = btGravaClick
   end
-  object btCancel: TSpeedButton
+  object btCancel: TUniSpeedButton
     Left = 144
     Top = 160
     Width = 81
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -150,32 +131,32 @@ object frmTrocaSenha: TfrmTrocaSenha
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
-    NumGlyphs = 2
+    Caption = '&Cancelar'
+    ParentColor = False
+    Color = clWindow
+    TabOrder = 5
     OnClick = btCancelClick
   end
-  object PanelTitulo: TPanel
+  object PanelTitulo: TUniContainerPanel
     Left = 0
     Top = 0
     Width = 233
     Height = 41
-    Align = alTop
-    Alignment = taLeftJustify
-    BevelOuter = bvNone
-    Caption = '         Trocar Senha'
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Color = clWhite
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentBackground = False
-    ParentFont = False
+    Align = alTop
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 3
-    object ImageSenha: TImage
+    TabStop = False
+    object ImageSenha: TUniImage
       Left = 10
       Top = 4
       Width = 28
       Height = 32
+      Hint = ''
+      ShowHint = True
       AutoSize = True
       Picture.Data = {
         07544269746D6170B60A0000424DB60A00000000000036000000280000001C00
@@ -268,31 +249,67 @@ object frmTrocaSenha: TfrmTrocaSenha
       Transparent = True
     end
   end
-  object edAtual: TEdit
+  object lbSenhaAtu: TUniLabel
+    Left = 29
+    Top = 59
+    Width = 64
+    Height = 14
+    Hint = ''
+    ShowHint = True
+    Caption = 'Senha atual'
+    TabOrder = 6
+  end
+  object lbNovaSenha: TUniLabel
+    Left = 30
+    Top = 92
+    Width = 63
+    Height = 14
+    Hint = ''
+    ShowHint = True
+    Caption = 'Nova senha'
+    TabOrder = 7
+  end
+  object lbConfirma: TUniLabel
+    Left = 27
+    Top = 124
+    Width = 66
+    Height = 14
+    Hint = ''
+    ShowHint = True
+    Caption = 'Confirma'#231#227'o'
+    TabOrder = 8
+  end
+  object edAtual: TUniEdit
     Left = 96
     Top = 56
     Width = 121
-    Height = 22
-    MaxLength = 10
+    Hint = ''
+    ShowHint = True
     PasswordChar = '*'
+    MaxLength = 10
+    Text = ''
     TabOrder = 0
   end
-  object edNova: TEdit
+  object edNova: TUniEdit
     Left = 96
     Top = 88
     Width = 121
-    Height = 22
-    MaxLength = 10
+    Hint = ''
+    ShowHint = True
     PasswordChar = '*'
+    MaxLength = 10
+    Text = ''
     TabOrder = 1
   end
-  object edConfirma: TEdit
+  object edConfirma: TUniEdit
     Left = 96
     Top = 120
     Width = 121
-    Height = 22
-    MaxLength = 10
+    Hint = ''
+    ShowHint = True
     PasswordChar = '*'
+    MaxLength = 10
+    Text = ''
     TabOrder = 2
   end
   object sqldUsuarios: TSQLDataSet

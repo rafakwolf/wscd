@@ -8,15 +8,14 @@ uses
   Data.SqlExpr,ImgList, Menus,  uClassesMenu,
   DBClient,Datasnap.Provider, Mask, DBCtrls,
    DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
-  System.Actions, System.ImageList;
+  System.Actions, System.ImageList, uniGUIClasses, uniEdit, uniDBEdit,
+  uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses,
+  uniStatusBar, uniGroupBox, uniMainMenu;
 
 type
   TfrmUsuarioItemMenu = class(TfrmPadrao)
     sqldMenu: TSQLDataSet;
     ilStatusMenu: TImageList;
-    pmStatusMenu: TPopupMenu;
-    mniLiberado: TMenuItem;
-    mniBloqueado: TMenuItem;
     sqldLimpaAcessoUsuario: TSQLDataSet;
     sqldInsereAcesso: TSQLDataSet;
     dsAcesso: TDataSource;
@@ -24,9 +23,6 @@ type
     sqldMenuMENUPAI: TIntegerField;
     sqldMenuORDEM: TIntegerField;
     sqldMenuMENUITEM: TStringField;
-    dbeNomeUsuario: TDBEdit;
-    dbeLogin: TDBEdit;
-    dbeSenha: TDBEdit;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -38,8 +34,14 @@ type
     dspAcesso: TDataSetProvider;
     cdsAcesso: TClientDataSet;
     cdsAcessoIDMENU: TIntegerField;
-    grpItemPermissao: TGroupBox;
+    dbeSenha: TUniDBEdit;
+    dbeLogin: TUniDBEdit;
+    dbeNomeUsuario: TUniDBEdit;
+    grpItemPermissao: TUniGroupBox;
     tvAcesso: TTreeView;
+    pmStatusMenu: TUniPopupMenu;
+    mniLiberado: TUniMenuItem;
+    mniBloqueado: TUniMenuItem;
     procedure cdsPadraoSENHASetText(Sender: TField; const Text: string);
     procedure mniBloqueadoClick(Sender: TObject);
     procedure mniLiberadoClick(Sender: TObject);

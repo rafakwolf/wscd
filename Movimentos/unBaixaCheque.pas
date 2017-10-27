@@ -6,15 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, 
   DB, DBClient, Datasnap.Provider,
-  Data.SqlExpr, Mask, FMTBcd;
+  Data.SqlExpr, Mask, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel,
+  uniButton, uniBitBtn, uniEdit;
 
 type
   TfrmBaixaCheque = class(TfrmSimplePadrao)
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
-    cedHistorico: TEdit;
     dblcbContaCaixa: TDBLookupComboBox;
-    lbContaCaixa: TLabel;
     sqldCaixa: TSQLDataSet;
     dspCaixa: TDataSetProvider;
     cdsCaixa: TClientDataSet;
@@ -23,8 +20,12 @@ type
     sqldCaixaNOME: TStringField;
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
-    medtDataBaixa: TMaskEdit;
-    lbDataBaixa: TLabel;
+    lbContaCaixa: TUniLabel;
+    lbDataBaixa: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    medtDataBaixa: TUniEdit;
+    cedHistorico: TUniEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);

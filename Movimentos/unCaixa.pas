@@ -5,7 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, DB, Grids, DBGrids, Buttons, DBClient, Provider, SqlExpr,
-  Menus, ComCtrls, ConstPadrao, DBXCommon, FMTBcd, unSimplePadrao;
+  Menus, ComCtrls, ConstPadrao, DBXCommon, FMTBcd, unSimplePadrao, uniMainMenu,
+  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+  uniStatusBar, uniPanel, uniBasicGrid, uniDBGrid;
 
 const
   SQLPadrao90Dias: string = 'select '+
@@ -41,49 +43,7 @@ type
   TfrmCaixa = class(TfrmSimplePadrao)
     dsCaixa: TDataSource;
     sqldCredDeb: TSQLDataSet;
-    mnCaixa: TMainMenu;
-    miRegistro: TMenuItem;
-    miNovo: TMenuItem;
-    miAlterar: TMenuItem;
-    miFerramenta: TMenuItem;
-    miExcluirPeriodo: TMenuItem;
-    miPesquisar: TMenuItem;
-    miFiltraData: TMenuItem;
-    miFiltraCredito: TMenuItem;
-    N1: TMenuItem;
-    miSair: TMenuItem;
-    N3: TMenuItem;
-    miFiltraDebito: TMenuItem;
-    miLimpaFiltro: TMenuItem;
-    dbgdCaixa: TDBGrid;
-    miFiltraPorContaCaixa: TMenuItem;
-    miCadContaCaixa: TMenuItem;
-    miContarReg: TMenuItem;
-    miExcluir: TMenuItem;
-    miRelatorio: TMenuItem;
-    miRelTodos: TMenuItem;
-    miRelMesAno: TMenuItem;
-    miRelContaCaixa: TMenuItem;
-    N4: TMenuItem;
-    N5: TMenuItem;
-    miRelFluxoCaixa: TMenuItem;
-    PopupConsulta: TPopupMenu;
-    miLocalizaColuna: TMenuItem;
-    N6: TMenuItem;
-    miExportaDados: TMenuItem;
-    miFiltraColuna: TMenuItem;
     dsCaixas: TDataSource;
-    N7: TMenuItem;
-    pnBotoes: TPanel;
-    btnNovo: TSpeedButton;
-    btnLocate: TSpeedButton;
-    btnAlterar: TSpeedButton;
-    btnExcluir: TSpeedButton;
-    btnFiltrar: TSpeedButton;
-    btnFechar: TSpeedButton;
-    N8: TMenuItem;
-    miRelPersonalCaixa: TMenuItem;
-    miExcluirVarios: TMenuItem;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -109,16 +69,56 @@ type
     cdsPadraoDOCUMENTO: TStringField;
     cdsPadraoTIPO: TStringField;
     cdsPadraoEXCLUIR: TStringField;
-    miDeleteItem: TMenuItem;
-    stbCaixa: TStatusBar;
-    miMovimentoHoje: TMenuItem;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
     sqldCredDebCRED_DEB: TFMTBCDField;
+    mnCaixa: TUniMainMenu;
+    miRegistro: TUniMenuItem;
+    miNovo: TUniMenuItem;
+    miAlterar: TUniMenuItem;
+    miExcluir: TUniMenuItem;
+    N1: TUniMenuItem;
+    miSair: TUniMenuItem;
+    miFerramenta: TUniMenuItem;
+    miCadContaCaixa: TUniMenuItem;
+    N6: TUniMenuItem;
+    miExcluirPeriodo: TUniMenuItem;
+    miExcluirVarios: TUniMenuItem;
+    N7: TUniMenuItem;
+    miContarReg: TUniMenuItem;
+    miExportaDados: TUniMenuItem;
+    miPesquisar: TUniMenuItem;
+    miFiltraData: TUniMenuItem;
+    miFiltraCredito: TUniMenuItem;
+    miFiltraDebito: TUniMenuItem;
+    miFiltraPorContaCaixa: TUniMenuItem;
+    miFiltraColuna: TUniMenuItem;
+    N3: TUniMenuItem;
+    miLimpaFiltro: TUniMenuItem;
+    miRelatorio: TUniMenuItem;
+    miRelTodos: TUniMenuItem;
+    N4: TUniMenuItem;
+    miRelMesAno: TUniMenuItem;
+    miRelContaCaixa: TUniMenuItem;
+    N8: TUniMenuItem;
+    miRelFluxoCaixa: TUniMenuItem;
+    miMovimentoHoje: TUniMenuItem;
+    N5: TUniMenuItem;
+    miRelPersonalCaixa: TUniMenuItem;
+    stbCaixa: TUniStatusBar;
+    pnBotoes: TUniContainerPanel;
+    btnNovo: TUniSpeedButton;
+    btnLocate: TUniSpeedButton;
+    btnAlterar: TUniSpeedButton;
+    btnExcluir: TUniSpeedButton;
+    btnFiltrar: TUniSpeedButton;
+    btnFechar: TUniSpeedButton;
+    dbgdCaixa: TUniDBGrid;
+    PopupConsulta: TUniPopupMenu;
+    miDeleteItem: TUniMenuItem;
+    miLocalizaColuna: TUniMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnExcluirClick(Sender: TObject);
-    procedure dbgdCaixaDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure miExcluirPeriodoClick(Sender: TObject);
     procedure miFiltraDataClick(Sender: TObject);
@@ -222,19 +222,6 @@ begin
       Free;
     end;
   end;
-end;
-
-procedure TfrmCaixa.dbgdCaixaDrawColumnCell(Sender: TObject; const Rect: TRect;
-  DataCol: Integer; Column: TColumn; State: TGridDrawState);
-begin
-  if (cdsPadraoDATA.AsDateTime < Date) then
-    dbgdCaixa.Canvas.Font.Color := clGrayText;
-
-  if (gdSelected in State) then
-    dbgdCaixa.Canvas.Font.Color := clWhite;
-
-  dbgdCaixa.Canvas.FillRect(Rect);
-  dbgdCaixa.DefaultDrawDataCell(Rect, Column.Field, State);
 end;
 
 procedure TfrmCaixa.FormClose(Sender: TObject; var Action: TCloseAction);

@@ -1,25 +1,23 @@
 inherited frmDicas: TfrmDicas
   Left = 256
   Top = 207
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Dica do dia'
   ClientHeight = 234
   ClientWidth = 490
-  Position = poScreenCenter
+  Caption = 'Dica do dia'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  BorderIcons = [biSystemMenu]
   ExplicitWidth = 496
   ExplicitHeight = 263
   PixelsPerInch = 96
   TextHeight = 13
-  object btnFecha: TBitBtn
+  object btnFecha: TUniBitBtn
     Left = 400
     Top = 72
     Width = 81
     Height = 25
     Hint = 'Fechar dicas'
-    Caption = '&Fechar'
-    Default = True
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -71,17 +69,18 @@ inherited frmDicas: TfrmDicas
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Fechar'
     TabOrder = 0
+    Default = True
     OnClick = btnFechaClick
   end
-  object btnNext: TBitBtn
+  object btnNext: TUniBitBtn
     Left = 400
     Top = 8
     Width = 81
     Height = 25
     Hint = 'Pr'#243'xima dica'
-    Caption = 'Pr'#243'ximo'
+    ShowHint = True
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -109,17 +108,17 @@ inherited frmDicas: TfrmDicas
       EE5D00FF700AFF720CFF700AFF6C06FF6601EE5D00DE5700D15200CC5000CF51
       00B84800FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Layout = blGlyphRight
+    Caption = 'Pr'#243'ximo'
     TabOrder = 1
     OnClick = btnNextClick
   end
-  object btnPrior: TBitBtn
+  object btnPrior: TUniBitBtn
     Left = 400
     Top = 40
     Width = 81
     Height = 25
     Hint = 'Dica anterior'
-    Caption = 'Anterior'
+    ShowHint = True
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -147,25 +146,28 @@ inherited frmDicas: TfrmDicas
       EE5D00FF700AFF720CFF700AFF6C06FF6601EE5D00DE5700D15200CC5000CF51
       00B84800FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = 'Anterior'
     TabOrder = 2
     OnClick = btnPriorClick
   end
-  object mDica: TMemo
-    Left = 8
-    Top = 8
-    Width = 385
-    Height = 193
-    Color = clBtnFace
-    Ctl3D = False
-    ParentCtl3D = False
-    TabOrder = 3
-  end
-  object cbExibir: TCheckBox
+  object cbExibir: TUniCheckBox
     Left = 8
     Top = 208
     Width = 185
     Height = 17
+    Hint = ''
+    ShowHint = True
     Caption = 'Exibir dica sempre ao iniciar'
     TabOrder = 4
+  end
+  object mDica: TUniMemo
+    Left = 8
+    Top = 8
+    Width = 385
+    Height = 193
+    Hint = ''
+    ShowHint = True
+    Color = clBtnFace
+    TabOrder = 3
   end
 end

@@ -6,24 +6,25 @@ uses
 
   Variants,
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB,
-  SqlExpr, FMTBcd;
+  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, uniGUIForm,
+  SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
+  uniSpeedButton, uniPanel, uniLabel, uniImage, uniEdit;
 
 type
-  TfrmTrocaSenha = class(TForm)
-    PanelTitulo: TPanel;
-    ImageSenha: TImage;
-    lbSenhaAtu: TLabel;
-    edAtual: TEdit;
-    lbNovaSenha: TLabel;
-    edNova: TEdit;
-    lbConfirma: TLabel;
-    edConfirma: TEdit;
-    btGrava: TSpeedButton;
-    btCancel: TSpeedButton;
+  TfrmTrocaSenha = class(TUniForm)
     sqldUsuarios: TSQLDataSet;
     sqldSenhaAtual: TSQLDataSet;
     sqldSenhaAtualUSERS: TIntegerField;
+    btGrava: TUniSpeedButton;
+    btCancel: TUniSpeedButton;
+    PanelTitulo: TUniContainerPanel;
+    lbSenhaAtu: TUniLabel;
+    lbNovaSenha: TUniLabel;
+    lbConfirma: TUniLabel;
+    ImageSenha: TUniImage;
+    edAtual: TUniEdit;
+    edNova: TUniEdit;
+    edConfirma: TUniEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btCancelClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

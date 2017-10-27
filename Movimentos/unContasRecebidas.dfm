@@ -1,33 +1,51 @@
 inherited frmContasRecebidas: TfrmContasRecebidas
   Left = 217
   Top = 135
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'frmContasRecebidas'
   ClientHeight = 410
   ClientWidth = 930
-  Menu = mmContasRecebidas
-  OnResize = FormResize
+  Caption = 'frmContasRecebidas'
   OnShow = FormShow
+  OnResize = FormResize
+  BorderStyle = bsSingle
+  BorderIcons = [biSystemMenu, biMinimize]
   ExplicitWidth = 936
-  ExplicitHeight = 459
+  ExplicitHeight = 439
   PixelsPerInch = 96
   TextHeight = 13
-  object pnBotoes: TPanel
+  object Stb: TUniStatusBar
+    Left = 0
+    Top = 391
+    Width = 930
+    Height = 19
+    Hint = ''
+    ShowHint = True
+    Panels = <>
+    SizeGrip = True
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    ParentColor = False
+    Color = clBtnFace
+    ExplicitTop = 372
+  end
+  object pnBotoes: TUniContainerPanel
     Left = 0
     Top = 0
     Width = 930
     Height = 36
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alTop
-    BevelOuter = bvNone
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 3
-    object btnAtualizar: TSpeedButton
+    TabStop = False
+    object btnAtualizar: TUniSpeedButton
       Left = 98
       Top = 1
       Width = 95
       Height = 32
-      Caption = 'Atualizar'
-      Flat = True
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000330B0000330B00000000000000000000FF00FFFF00FF
@@ -85,16 +103,19 @@ inherited frmContasRecebidas: TfrmContasRecebidas
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      Transparent = False
+      Caption = 'Atualizar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 0
       OnClick = btnAtualizarClick
     end
-    object btnEstornar: TSpeedButton
+    object btnEstornar: TUniSpeedButton
       Left = 3
       Top = 1
       Width = 95
       Height = 32
-      Caption = 'Estornar'
-      Flat = True
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000330B0000330B00000000000000000000FF00FFFF00FF
@@ -152,16 +173,19 @@ inherited frmContasRecebidas: TfrmContasRecebidas
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      Transparent = False
+      Caption = 'Estornar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 1
       OnClick = btnEstornarClick
     end
-    object btnFechar: TSpeedButton
+    object btnFechar: TUniSpeedButton
       Left = 193
       Top = 1
       Width = 95
       Height = 32
-      Caption = 'Fechar'
-      Flat = True
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         B60D0000424DB60D000000000000360000002800000030000000180000000100
         180000000000800D0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -273,335 +297,80 @@ inherited frmContasRecebidas: TfrmContasRecebidas
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF949494767676FF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Fechar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 2
       OnClick = btnFecharClick
     end
   end
-  object grpCliente: TGroupBox
+  object grpCliente: TUniGroupBox
     Left = 8
     Top = 42
     Width = 433
     Height = 48
+    Hint = ''
+    ShowHint = True
     Caption = ' Cliente '
     TabOrder = 1
-    object dbeCliente: TDBEdit
+    TabStop = False
+    object dbeCliente: TUniDBEdit
       Left = 8
       Top = 16
       Width = 417
       Height = 21
-      Color = clBtnFace
+      Hint = ''
+      ShowHint = True
       DataField = 'NOMECLIENTE'
       DataSource = dsPadrao
+      TabOrder = 0
+      Color = clBtnFace
       ReadOnly = True
+    end
+  end
+  object grpFiltro: TUniGroupBox
+    Left = 448
+    Top = 42
+    Width = 473
+    Height = 48
+    Hint = ''
+    ShowHint = True
+    Caption = ' Filtro '
+    TabOrder = 2
+    TabStop = False
+    object lbFiltroUsado: TUniLabel
+      Left = 8
+      Top = 21
+      Width = 55
+      Height = 13
+      Hint = ''
+      ShowHint = True
+      AutoSize = False
+      Caption = 'lbFiltroUsado'
+      ParentColor = False
+      Color = clBtnFace
       TabOrder = 0
     end
   end
-  object Grade: TDBGrid
+  object Grade: TUniDBGrid
     Left = 0
     Top = 96
     Width = 930
     Height = 295
     Hint = 'Dois cliques para marcar '#13#10'ou desmarcar este '#237'tem...'
-    Align = alBottom
-    Ctl3D = True
+    ShowHint = True
     DataSource = dsPadrao
+    Options = [dgEditing, dgTitles, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
     Font.Name = 'Verdana'
-    Font.Style = []
-    Options = [dgEditing, dgTitles, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentCtl3D = False
     ParentFont = False
     TabOrder = 0
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clBlack
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = GradeDrawColumnCell
+    ParentColor = False
+    Color = clWindow
     OnDblClick = GradeDblClick
-    OnTitleClick = GradeTitleClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODIGO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'C'#243'digo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 43
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DOCUMENTO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Docto'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Emiss'#227'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VENCIMENTO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Vencimento'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 70
-        Visible = True
-      end
-      item
-        Color = 8454143
-        Expanded = False
-        FieldName = 'ATRASO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Atraso'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 40
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALOR'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Valor'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 80
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'JURO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Juro'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 45
-        Visible = True
-      end
-      item
-        Color = 8454143
-        Expanded = False
-        FieldName = 'TOTAL'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Total'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 80
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATARECTO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Data Recdo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCTO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Descto'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 50
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CAPITALRECDO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Capital Recdo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 82
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'JURORECDO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Juro Recdo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 68
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTALRECDO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Total Recdo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 70
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'ORIGEM'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Origem'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clBlack
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 45
-        Visible = True
-      end>
-  end
-  object Stb: TStatusBar
-    Left = 0
-    Top = 391
-    Width = 930
-    Height = 19
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBtnText
-    Font.Height = -12
-    Font.Name = 'Verdana'
-    Font.Style = []
-    Panels = <
-      item
-        Alignment = taCenter
-        Width = 470
-      end
-      item
-        Alignment = taCenter
-        Text = 'Para ajuda pressione F1'
-        Width = 470
-      end>
-    UseSystemFont = False
-  end
-  object grpFiltro: TGroupBox
-    Left = 448
-    Top = 42
-    Width = 473
-    Height = 48
-    Caption = ' Filtro '
-    TabOrder = 2
-    object lbFiltroUsado: TLabel
-      Left = 8
-      Top = 21
-      Width = 457
-      Height = 13
-      AutoSize = False
-      Caption = 'lbFiltroUsado'
-    end
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -814,28 +583,6 @@ inherited frmContasRecebidas: TfrmContasRecebidas
     Left = 336
     Top = 144
   end
-  object mmContasRecebidas: TMainMenu
-    Left = 112
-    Top = 144
-    object miOpcoes: TMenuItem
-      Caption = 'Op'#231#245'es'
-      object miEstornar: TMenuItem
-        Caption = 'Estornar'
-        OnClick = btnEstornarClick
-      end
-      object miAtualizar: TMenuItem
-        Caption = 'Atualizar'
-        OnClick = btnAtualizarClick
-      end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object miFechar: TMenuItem
-        Caption = 'Fechar'
-        OnClick = btnFecharClick
-      end
-    end
-  end
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
     Left = 512
@@ -887,5 +634,27 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       end>
     Left = 112
     Top = 224
+  end
+  object mmContasRecebidas: TUniMainMenu
+    Left = 112
+    Top = 144
+    object miOpcoes: TUniMenuItem
+      Caption = 'Op'#231#245'es'
+      object miEstornar: TUniMenuItem
+        Caption = 'Estornar'
+        OnClick = btnEstornarClick
+      end
+      object miAtualizar: TUniMenuItem
+        Caption = 'Atualizar'
+        OnClick = btnAtualizarClick
+      end
+      object N1: TUniMenuItem
+        Caption = '-'
+      end
+      object miFechar: TUniMenuItem
+        Caption = 'Fechar'
+        OnClick = btnFecharClick
+      end
+    end
   end
 end

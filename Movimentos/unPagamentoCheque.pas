@@ -4,37 +4,38 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Mask, DBCtrls,  ExtCtrls, DBGrids,
-  DB, SqlExpr, FMTBcd, VarGlobal, uDatabaseutils;
+  Dialogs, StdCtrls, Buttons, Mask, DBCtrls,  ExtCtrls, DBGrids,  uniGUIForm,
+  DB, SqlExpr, FMTBcd, VarGlobal, uDatabaseutils, uniGUIBaseClasses,
+  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniEdit, uniDBEdit;
 
 type
   TTipoCheque = (tcAVista, tcPreDatado);
   TTipoChamada = (tcmCompra, tcmVenda);
-  TfrmPagamentoCheque = class(TForm)
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
-    edtAgencia: TLabeledEdit;
-    dbeBanco: TDBEdit;
-    edtConta: TLabeledEdit;
-    edtNumeroCheque: TLabeledEdit;
-    edtValor: TLabeledEdit;
-    medtEmissao: TMaskEdit;
-    medtVencimento: TMaskEdit;
-    lbEmissao: TLabel;
-    lbVenc: TLabel;
+  TfrmPagamentoCheque = class(TUniForm)
     dsSelecao: TDataSource;
     sqldCheque: TSQLDataSet;
-    edtNome: TLabeledEdit;
     sqldVenda: TSQLDataSet;
     sqldVendaNOME: TStringField;
     sqldCompra: TSQLDataSet;
-    medBandaMagnetica: TMaskEdit;
-    lbBandaMagnetica: TLabel;
     sqldCompraCODFORNECEDOR: TIntegerField;
     sqldCompraRAZAOSOCIAL: TStringField;
     sqldVendaCODCLIENTE: TIntegerField;
     sqldCompraTOTAL: TFMTBCDField;
     sqldVendaTOTAL: TFMTBCDField;
+    lbEmissao: TUniLabel;
+    lbVenc: TUniLabel;
+    lbBandaMagnetica: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    edtAgencia: TUniEdit;
+    edtConta: TUniEdit;
+    edtNumeroCheque: TUniEdit;
+    edtValor: TUniEdit;
+    edtNome: TUniEdit;
+    dbeBanco: TUniDBEdit;
+    medtEmissao: TUniEdit;
+    medtVencimento: TUniEdit;
+    medBandaMagnetica: TUniEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure dbeBancoClickButton(Sender: TObject);

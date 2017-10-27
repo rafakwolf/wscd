@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport;
+  Dialogs, RLReport, uniGUIForm;
 
 type
-  TfrmPrevRecibo = class(TForm)
+  TfrmPrevRecibo = class(TUniForm)
     rrRecibo: TRLReport;
     rbDetalhe: TRLBand;
     lbEmpresa: TRLLabel;

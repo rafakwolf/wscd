@@ -1,14 +1,14 @@
 inherited frmRelatorioNovoAlterado: TfrmRelatorioNovoAlterado
-  Width = 313
-  Height = 149
   Caption = 'frmRelatorioNovoAlterado'
   OldCreateOrder = True
+  ExplicitWidth = 470
+  ExplicitHeight = 282
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TPanel
-    Top = 81
-    Width = 305
-    inherited btnVisualizar: TBitBtn
+  inherited pnButtons: TUniContainerPanel
+    ExplicitTop = 81
+    ExplicitWidth = 305
+    inherited btnVisualizar: TUniBitBtn
       OnClick = btnVisualizarClick
     end
   end
@@ -26,6 +26,5 @@ inherited frmRelatorioNovoAlterado: TfrmRelatorioNovoAlterado
   end
   inherited dsPadrao: TDataSource
     Left = 264
-    Top = 16
   end
 end

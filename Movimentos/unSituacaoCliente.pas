@@ -4,25 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, Buttons, SqlExpr, ExtCtrls,  FMTBcd;
+  Dialogs, StdCtrls, DB, Buttons, SqlExpr, ExtCtrls,  FMTBcd, uniGUIBaseClasses,
+  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniImage, uniGroupBox, uniGuiForm,
+  uniMemo;
 
 type
-  TfrmSituacaoCliente = class(TForm)
-    grpContas: TGroupBox;
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
+  TfrmSituacaoCliente = class(TUniForm)
     spSituacaoCliente: TSQLDataSet;
-    cedDiasAtraso: TLabeledEdit;
-    imgWarn: TImage;
-    cedCliente: TEdit;
-    cedDataCadastro: TEdit;
-    cedLimite: TEdit;
-    grpDadosCliente: TGroupBox;
-    cedTotalContas: TEdit;
-    cedTotalVencidas: TEdit;
-    cedPrimeiroVenc: TEdit;
-    btnContasCliente: TBitBtn;
-    mmoMsg: TMemo;
     spSituacaoClienteCLIENTE: TStringField;
     spSituacaoClienteLIMITECLIENTE: TFMTBCDField;
     spSituacaoClienteDATACADASTRO: TDateField;
@@ -30,6 +18,20 @@ type
     spSituacaoClienteTOTALCONTASVENCIDAS: TFMTBCDField;
     spSituacaoClientePRIMEIROVENCIMENTO: TDateField;
     spSituacaoClienteDIASATRASO: TIntegerField;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    btnContasCliente: TUniBitBtn;
+    imgWarn: TUniImage;
+    grpContas: TUniGroupBox;
+    cedDiasAtraso: TUniEdit;
+    grpDadosCliente: TUniGroupBox;
+    cedTotalContas: TUniEdit;
+    cedTotalVencidas: TUniEdit;
+    cedPrimeiroVenc: TUniEdit;
+    cedLimite: TUniEdit;
+    cedDataCadastro: TUniEdit;
+    cedCliente: TUniEdit;
+    mmoMsg: TUniMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

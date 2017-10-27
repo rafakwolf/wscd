@@ -5,22 +5,16 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, DB, Buttons, StdCtrls, VarGlobal,
-  SqlExpr, Provider, DBClient, ComCtrls, FMTBcd, unSimplePadrao;
+  SqlExpr, Provider, DBClient, ComCtrls, FMTBcd, unSimplePadrao,
+  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+  uniStatusBar, uniGroupBox, uniPanel, uniEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmExclusaoProduto = class(TfrmSimplePadrao)
-    Grade: TDBGrid;
     dsPadrao: TDataSource;
-    btnFechar: TSpeedButton;
-    btnExcluir: TSpeedButton;
     sqlPadrao: TSQLQuery;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    bvlLinha: TBevel;
-    stbStatus: TStatusBar;
-    grpPesquisa: TGroupBox;
-    edCodigo: TEdit;
-    edDescricao: TEdit;
     sqlPadraoCODBARRA: TStringField;
     sqlPadraoDESCRICAO: TStringField;
     sqlPadraoESTOQUE: TIntegerField;
@@ -29,12 +23,18 @@ type
     cdsPadraoDESCRICAO: TStringField;
     cdsPadraoESTOQUE: TIntegerField;
     cdsPadraoEXCLUIR: TStringField;
+    btnFechar: TUniSpeedButton;
+    btnExcluir: TUniSpeedButton;
+    stbStatus: TUniStatusBar;
+    grpPesquisa: TUniGroupBox;
+    bvlLinha: TUniPanel;
+    edCodigo: TUniEdit;
+    edDescricao: TUniEdit;
+    Grade: TUniDBGrid;
     procedure edDescricaoChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
-    procedure GradeDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edCodigoChange(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
@@ -116,21 +116,6 @@ begin
     cdsPadrao.Close;
     cdsPadrao.Open;
   end;
-end;
-
-procedure TfrmExclusaoProduto.GradeDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  if cdsPadraoEXCLUIR.AsString = 'S' then
-    Grade.Canvas.Brush.Color := $0080FFFF
-  else
-    Grade.Canvas.Brush.Color := clWindow;
-
-  if (gdSelected in State) then
-    Grade.Canvas.Brush.Color := clMenuHighlight;  
-
-  Grade.DefaultDrawColumnCell(Rect, DataCol, Column, State);
 end;
 
 procedure TfrmExclusaoProduto.FormClose(Sender: TObject;

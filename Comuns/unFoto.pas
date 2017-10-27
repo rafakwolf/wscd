@@ -5,13 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons,
-  ExtCtrls;
+  ExtCtrls, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniGroupBox;
 
 type
   TfrmFoto = class(TfrmSimplePadrao)
-    grpFoto: TGroupBox;
-    btnOK: TBitBtn;
-    btnCancel: TBitBtn;
+    btnOK: TUniBitBtn;
+    btnCancel: TUniBitBtn;
+    grpFoto: TUniGroupBox;
     procedure FormShow(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private

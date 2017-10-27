@@ -4,17 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, StdCtrls, Buttons, DB, ComCtrls,
-  DBClient, Provider, SqlExpr, FMTBcd;
+  Dialogs, Grids, DBGrids, StdCtrls, Buttons, DB, ComCtrls, uniGuiForm,
+  DBClient, Provider, SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses,
+  uniLabel, uniButton, uniBitBtn, uniGroupBox, uniMultiItem, uniComboBox,
+  uniEdit, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmImportaOrcam = class(TForm)
-    edtPesquisa: TEdit;
-    cmbCampo: TComboBox;
-    btnBuscar: TBitBtn;
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
-    Grade: TDBGrid;
+  TfrmImportaOrcam = class(TUniForm)
     Progresso: TProgressBar;
     sqldVenda: TSQLDataSet;
     sqldItemVenda: TSQLDataSet;
@@ -65,10 +61,16 @@ type
     cdsDetOrcamTOTAL: TFMTBCDField;
     sqlOrcamIDVENDEDOR: TIntegerField;
     cdsOrcamIDVENDEDOR: TIntegerField;
-    lbCampo: TLabel;
-    lbDados: TLabel;
-    grpStatus: TGroupBox;
-    lbStatus: TLabel;
+    lbCampo: TUniLabel;
+    lbDados: TUniLabel;
+    btnBuscar: TUniBitBtn;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    grpStatus: TUniGroupBox;
+    lbStatus: TUniLabel;
+    cmbCampo: TUniComboBox;
+    edtPesquisa: TUniEdit;
+    Grade: TUniDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);

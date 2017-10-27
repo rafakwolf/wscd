@@ -5,16 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, DBClient, Provider, SqlExpr, Grids, DBGrids,
-  StdCtrls, Buttons, FMTBcd;
+  StdCtrls, Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton,
+  uniBitBtn, uniGuiForm, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmProEstoqueMinimo = class(TForm)
+  TfrmProEstoqueMinimo = class(TUniForm)
     dspProdEM: TDataSetProvider;
     cdsProdEM: TClientDataSet;
     dsProdEM: TDataSource;
-    GradeProd: TDBGrid;
-    btnFechar: TBitBtn;
-    btnZerarNegativo: TBitBtn;
     sqlProdEM: TSQLDataSet;
     sqlProdEMCOD_BARRA: TStringField;
     sqlProdEMPRO_DESCRICAO: TStringField;
@@ -26,6 +24,9 @@ type
     cdsProdEMPRO_ESTOQUE: TIntegerField;
     cdsProdEMQTDE_MINIMA: TIntegerField;
     cdsProdEMFORNECEDOR: TStringField;
+    btnFechar: TUniBitBtn;
+    btnZerarNegativo: TUniBitBtn;
+    GradeProd: TUniDBGrid;
     procedure FormShow(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnZerarNegativoClick(Sender: TObject);

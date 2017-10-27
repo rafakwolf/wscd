@@ -4,18 +4,19 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList,
-  ExtCtrls;
+  Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList, UniGuiForm,
+  ExtCtrls, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton, uniBitBtn,
+  uniBasicGrid, uniDBGrid, uniMainMenu;
 
 type
-  TfrmListagemProdutos = class(TForm)
+  TfrmListagemProdutos = class(TUniForm)
     dsProdutos: TDataSource;
-    btnOK: TBitBtn;
-    Grade: TDBGrid;
-    PopupCons: TPopupMenu;
-    miFiltrar: TMenuItem;
     edtBuscaProduto: TButtonedEdit;
-    lbBuscaProduto: TLabel;
+    lbBuscaProduto: TUniLabel;
+    btnOK: TUniBitBtn;
+    Grade: TUniDBGrid;
+    PopupCons: TUniPopupMenu;
+    miFiltrar: TUniMenuItem;
     procedure GradeDblClick(Sender: TObject);
     procedure btnOKClick(Sender: TObject);
     procedure miFiltrarClick(Sender: TObject);

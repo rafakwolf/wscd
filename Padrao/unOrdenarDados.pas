@@ -5,17 +5,18 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, CheckLst, DBClient,
-  Datasnap.Provider, DB, SqlExpr,  FMTBcd, System.Math;
+  Datasnap.Provider, DB, SqlExpr,  FMTBcd, System.Math, uniGUIBaseClasses,
+  uniGUIClasses, uniButton, uniBitBtn, uniCheckBox;
 
 type
   TfrmOrdenarDados = class(TfrmSimplePadrao)
-    btnOK: TBitBtn;
-    btnCancelar: TBitBtn;
     clbCampos: TCheckListBox;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    ckbCamposOrdenar: TCheckBox;
+    btnOK: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    ckbCamposOrdenar: TUniCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ckbCamposOrdenarClick(Sender: TObject);

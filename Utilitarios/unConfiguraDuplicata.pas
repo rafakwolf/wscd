@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Grids, DBGrids,
-  Mask, DBCtrls,  FMTBcd, System.Actions;
+  Mask, DBCtrls,  FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit,
+  uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses,
+  uniStatusBar, uniBasicGrid, uniDBGrid;
 
 type
   TfrmConfiguraDuplicata = class(TfrmPadrao)
@@ -25,12 +27,12 @@ type
     cdsPadraoFONTE: TIntegerField;
     cdsPadraoTIPOFONTE: TStringField;
     cdsPadraoESTILOFONTE: TStringField;
-    dbeFontSize: TDBEdit;
-    dbgrdCampos: TDBGrid;
     sqldPadraoIDCONFIGDUPLICATA: TIntegerField;
     sqldPadraoNOMECAMPO: TStringField;
     cdsPadraoIDCONFIGDUPLICATA: TIntegerField;
     cdsPadraoNOMECAMPO: TStringField;
+    dbeFontSize: TUniDBEdit;
+    dbgrdCampos: TUniDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure miVisualizarClick(Sender: TObject);
     procedure cdsPadraoBeforeInsert(DataSet: TDataSet);

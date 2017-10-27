@@ -5,33 +5,33 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, Grids, Calendar, Spin, ComCtrls, Mask, Buttons,
-  unSimplePadrao;
+  unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
+  uniSpeedButton, uniPanel, uniLabel, uniEdit, uniSpinEdit, uniCalendar;
 
 type
   TfrmCalendario = class(TfrmSimplePadrao)
-    PanelDias: TPanel;
-    VCalend: TCalendar;
-    PanelMes: TPanel;
-    GetAno: TSpinEdit;
-    AlternaMes: TUpDown;
-    PanelExtra: TPanel;
-    LbTitulo: TLabel;
-    LbDias: TLabel;
-    EdDias: TEdit;
-    Dt_i: TMaskEdit;
-    Dt_f: TMaskEdit;
-    LbPeriodo: TLabel;
-    LbTDias: TLabel;
-    LbTMeses: TLabel;
-    LbTAnos: TLabel;
-    EdR_Dias: TEdit;
-    EdR_Meses: TEdit;
-    EdR_Anos: TEdit;
-    PnBotoes: TPanel;
-    Futura: TSpeedButton;
-    Calculo: TSpeedButton;
-    BtnOk: TBitBtn;
-    btnHoje: TSpeedButton;
+    PanelDias: TUniContainerPanel;
+    PanelMes: TUniContainerPanel;
+    PanelExtra: TUniContainerPanel;
+    PnBotoes: TUniContainerPanel;
+    Futura: TUniSpeedButton;
+    Calculo: TUniSpeedButton;
+    btnHoje: TUniSpeedButton;
+    LbTitulo: TUniLabel;
+    LbDias: TUniLabel;
+    LbPeriodo: TUniLabel;
+    LbTDias: TUniLabel;
+    LbTMeses: TUniLabel;
+    LbTAnos: TUniLabel;
+    BtnOk: TUniBitBtn;
+    Dt_i: TUniEdit;
+    Dt_f: TUniEdit;
+    GetAno: TUniSpinEdit;
+    EdDias: TUniEdit;
+    EdR_Dias: TUniEdit;
+    EdR_Meses: TUniEdit;
+    EdR_Anos: TUniEdit;
+    VCalend: TUniCalendar;
     procedure FormShow(Sender: TObject);
     procedure GetAnoChange(Sender: TObject);
     procedure AlternaMesClick(Sender: TObject; Button: TUDBtnType);
@@ -173,9 +173,7 @@ begin
   UltDia := StrToInt(UltimoDiadoMes(StrZero(Mes,02)+IntToStr(Ano)));
   if Dia > UltDia then
     Dia := UltDia;
-  VCalend.Day   := Dia;
-  VCalend.Month := Mes;
-  VCalend.Year  := Ano;
+
   GetAno.Value  := Ano;
   PanelMes.Caption := PegaMes(Mes);
 end;

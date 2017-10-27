@@ -5,20 +5,21 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ImgList, ComCtrls, ExtCtrls, Buttons, DB, SqlExpr,
-  System.ImageList;
+  System.ImageList, UniGuiForm, uniGUIBaseClasses, uniGUIClasses, uniStatusBar,
+  uniLabel, uniButton, uniBitBtn, uniCheckBox, uniPanel;
 
 type
-  TfrmSetupConnection = class(TForm)
+  TfrmSetupConnection = class(TUniForm)
     cbbComp: TComboBoxEx;
     ilImagens: TImageList;
-    LabelServidores: TLabel;
-    bbConfirma: TBitBtn;
-    bbCancela: TBitBtn;
-    bbCarregarServidores: TBitBtn;
-    cbServidorLocal: TCheckBox;
     ConexaoRede: TSQLConnection;
-    BevelLinha: TBevel;
-    stbStatus: TStatusBar;
+    stbStatus: TUniStatusBar;
+    LabelServidores: TUniLabel;
+    bbConfirma: TUniBitBtn;
+    bbCancela: TUniBitBtn;
+    bbCarregarServidores: TUniBitBtn;
+    cbServidorLocal: TUniCheckBox;
+    BevelLinha: TUniPanel;
     procedure bbCarregarServidoresClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure bbConfirmaClick(Sender: TObject);

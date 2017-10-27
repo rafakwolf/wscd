@@ -1,197 +1,236 @@
 inherited frmFornecedor: TfrmFornecedor
   Left = 139
   Top = 147
-  Caption = 'frmFornecedor'
   ClientHeight = 364
   ClientWidth = 705
+  Caption = 'frmFornecedor'
   OldCreateOrder = True
   ExplicitWidth = 711
   ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
-  object bvlLinha: TBevel [0]
-    Left = 8
-    Top = 232
-    Width = 689
-    Height = 2
-  end
-  object btnObservacoes: TBitBtn [1]
-    Left = 592
-    Top = 304
-    Width = 105
-    Height = 25
-    Caption = 'Observa'#231#245'es'
-    TabOrder = 16
-    OnClick = btnObservacoesClick
-  end
-  object dbdDataCadastro: TDBEdit [2]
-    Left = 280
-    Top = 196
-    Width = 129
-    Height = 21
-    DataField = 'DATACAD'
-    DataSource = dsPadrao
-    TabOrder = 11
-  end
-  object dbeCidade: TDBEdit [3]
-    Left = 320
-    Top = 152
-    Width = 299
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOMECIDADE'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 7
-  end
-  object dbeTelefoneVendedor: TDBEdit [4]
-    Left = 544
-    Top = 264
-    Width = 153
-    Height = 21
-    DataField = 'TELEFONEVENDEDOR'
-    DataSource = dsPadrao
-    TabOrder = 14
-  end
-  object dbeEmailVendedor: TDBEdit [5]
-    Left = 8
-    Top = 308
-    Width = 361
-    Height = 21
-    CharCase = ecLowerCase
-    DataField = 'EMAILVENDEDOR'
-    DataSource = dsPadrao
-    TabOrder = 15
-  end
-  object dbeNomeVendedor: TDBEdit [6]
-    Left = 8
-    Top = 264
-    Width = 529
-    Height = 21
-    DataField = 'VENDEDOR'
-    DataSource = dsPadrao
-    TabOrder = 13
-  end
-  object dbeFax: TDBEdit [7]
-    Left = 144
-    Top = 196
-    Width = 129
-    Height = 21
-    DataField = 'FAX'
-    DataSource = dsPadrao
-    TabOrder = 10
-  end
-  object dbeTelefone: TDBEdit [8]
-    Left = 8
-    Top = 196
-    Width = 129
-    Height = 21
-    DataField = 'TELEFONE'
-    DataSource = dsPadrao
-    TabOrder = 9
-  end
-  object dbeInscEstadual: TDBEdit [9]
-    Left = 176
-    Top = 108
-    Width = 129
-    Height = 21
-    DataField = 'IE'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  object dbeCnpj: TDBEdit [10]
-    Left = 8
-    Top = 108
-    Width = 161
-    Height = 21
-    DataField = 'CNPJ'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object dbeCep: TDBEdit [11]
-    Left = 216
-    Top = 152
-    Width = 97
-    Height = 21
-    DataField = 'CEP'
-    DataSource = dsPadrao
-    TabOrder = 6
-  end
-  object dbeBairro: TDBEdit [12]
-    Left = 8
-    Top = 152
-    Width = 201
-    Height = 21
-    DataField = 'BAIRRO'
-    DataSource = dsPadrao
-    TabOrder = 5
-  end
-  object dbeEstado: TDBEdit [13]
-    Left = 648
-    Top = 152
-    Width = 49
-    Height = 21
-    DataField = 'UF'
-    DataSource = dsPadrao
-    TabOrder = 8
-  end
-  object dbeEndereco: TDBEdit [14]
-    Left = 312
-    Top = 108
-    Width = 385
-    Height = 21
-    DataField = 'ENDERECO'
-    DataSource = dsPadrao
-    TabOrder = 4
-  end
-  object dbeNomeRzSocial: TDBEdit [15]
-    Left = 8
-    Top = 64
-    Width = 305
-    Height = 21
-    DataField = 'RAZAOSOCIAL'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  object dbeNomeFantazia: TDBEdit [16]
-    Left = 320
-    Top = 64
-    Width = 377
-    Height = 21
-    DataField = 'FANTAZIA'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbeEmail: TDBEdit [17]
-    Left = 416
-    Top = 196
-    Width = 281
-    Height = 21
-    CharCase = ecLowerCase
-    DataField = 'EMAIL'
-    DataSource = dsPadrao
-    TabOrder = 12
-  end
-  object btnContas: TBitBtn [18]
-    Left = 504
-    Top = 304
-    Width = 81
-    Height = 25
-    Caption = '&Contas'
-    TabOrder = 19
-    OnClick = btnContasClick
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 345
     Width = 705
     ExplicitTop = 345
     ExplicitWidth = 705
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 705
     TabOrder = 17
     ExplicitWidth = 705
+  end
+  object btnObservacoes: TUniBitBtn [2]
+    Left = 592
+    Top = 304
+    Width = 105
+    Height = 25
+    Hint = ''
+    ShowHint = True
+    Caption = 'Observa'#231#245'es'
+    TabOrder = 16
+    OnClick = btnObservacoesClick
+  end
+  object btnContas: TUniBitBtn [3]
+    Left = 504
+    Top = 304
+    Width = 81
+    Height = 25
+    Hint = ''
+    ShowHint = True
+    Caption = '&Contas'
+    TabOrder = 19
+    OnClick = btnContasClick
+  end
+  object dbdDataCadastro: TUniDBEdit [4]
+    Left = 280
+    Top = 196
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATACAD'
+    DataSource = dsPadrao
+    TabOrder = 11
+  end
+  object dbeCidade: TUniDBEdit [5]
+    Left = 320
+    Top = 152
+    Width = 299
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOMECIDADE'
+    DataSource = dsPadrao
+    TabOrder = 7
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeTelefoneVendedor: TUniDBEdit [6]
+    Left = 544
+    Top = 264
+    Width = 153
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TELEFONEVENDEDOR'
+    DataSource = dsPadrao
+    TabOrder = 14
+  end
+  object dbeEmailVendedor: TUniDBEdit [7]
+    Left = 8
+    Top = 308
+    Width = 361
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'EMAILVENDEDOR'
+    DataSource = dsPadrao
+    CharCase = ecLowerCase
+    TabOrder = 15
+  end
+  object dbeNomeVendedor: TUniDBEdit [8]
+    Left = 8
+    Top = 264
+    Width = 529
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VENDEDOR'
+    DataSource = dsPadrao
+    TabOrder = 13
+  end
+  object dbeFax: TUniDBEdit [9]
+    Left = 144
+    Top = 196
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'FAX'
+    DataSource = dsPadrao
+    TabOrder = 10
+  end
+  object dbeTelefone: TUniDBEdit [10]
+    Left = 8
+    Top = 196
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TELEFONE'
+    DataSource = dsPadrao
+    TabOrder = 9
+  end
+  object dbeInscEstadual: TUniDBEdit [11]
+    Left = 176
+    Top = 108
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'IE'
+    DataSource = dsPadrao
+    TabOrder = 3
+  end
+  object dbeCnpj: TUniDBEdit [12]
+    Left = 8
+    Top = 108
+    Width = 161
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CNPJ'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbeCep: TUniDBEdit [13]
+    Left = 216
+    Top = 152
+    Width = 97
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CEP'
+    DataSource = dsPadrao
+    TabOrder = 6
+  end
+  object dbeBairro: TUniDBEdit [14]
+    Left = 8
+    Top = 152
+    Width = 201
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'BAIRRO'
+    DataSource = dsPadrao
+    TabOrder = 5
+  end
+  object dbeEstado: TUniDBEdit [15]
+    Left = 648
+    Top = 152
+    Width = 49
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'UF'
+    DataSource = dsPadrao
+    TabOrder = 8
+  end
+  object dbeEndereco: TUniDBEdit [16]
+    Left = 312
+    Top = 108
+    Width = 385
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'ENDERECO'
+    DataSource = dsPadrao
+    TabOrder = 4
+  end
+  object dbeNomeRzSocial: TUniDBEdit [17]
+    Left = 8
+    Top = 64
+    Width = 305
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'RAZAOSOCIAL'
+    DataSource = dsPadrao
+    TabOrder = 0
+  end
+  object dbeNomeFantazia: TUniDBEdit [18]
+    Left = 320
+    Top = 64
+    Width = 377
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'FANTAZIA'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbeEmail: TUniDBEdit [19]
+    Left = 416
+    Top = 196
+    Width = 281
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'EMAIL'
+    DataSource = dsPadrao
+    CharCase = ecLowerCase
+    TabOrder = 12
+  end
+  object bvlLinha: TUniPanel [20]
+    Left = 8
+    Top = 232
+    Width = 689
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 20
+    Caption = 'bvlLinha'
   end
   inherited actlNavigateActions: TActionList
     Left = 408

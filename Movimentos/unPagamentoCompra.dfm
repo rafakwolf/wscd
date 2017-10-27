@@ -1,44 +1,42 @@
 object frmPagamentoCompra: TfrmPagamentoCompra
   Left = 275
   Top = 180
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Pagamentos desta compra'
   ClientHeight = 161
   ClientWidth = 481
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Pagamentos desta compra'
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbStatus: TLabel
+  object lbStatus: TUniLabel
     Left = 8
     Top = 136
-    Width = 47
+    Width = 46
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'lbStatus'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 2
   end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 400
     Top = 128
     Width = 73
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -90,54 +88,26 @@ object frmPagamentoCompra: TfrmPagamentoCompra
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&OK'
     TabOrder = 0
     OnClick = btnOkClick
   end
-  object dbgrdPagamento: TDBGrid
+  object dbgrdPagamento: TUniDBGrid
     Left = 0
     Top = 0
     Width = 481
     Height = 120
-    Align = alTop
+    Hint = ''
+    ShowHint = True
     DataSource = dsCompra
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
     ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    Align = alTop
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'DATAPAGTO'
-        Title.Caption = 'Data Pagto'
-        Width = 103
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FORMAPAGTO'
-        Title.Caption = 'Forma Pagto'
-        Width = 128
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALORPAGO'
-        Title.Caption = 'Valor Pago'
-        Width = 103
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALORRESTO'
-        Title.Caption = 'Valor Restante'
-        Width = 103
-        Visible = True
-      end>
+    ParentColor = False
+    Color = clWindow
   end
   object sqldCompra: TSQLDataSet
     CommandText = 

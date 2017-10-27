@@ -3,30 +3,31 @@ inherited frmRelatorioCRData: TfrmRelatorioCRData
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
-  object edDataIni: TDBEdit [0]
+  inherited pnButtons: TUniContainerPanel
+    ExplicitTop = 130
+    ExplicitWidth = 298
+  end
+  object edDataIni: TUniDBEdit [1]
     Left = 24
     Top = 32
     Width = 153
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATAINI'
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object edDataFim: TDBEdit [1]
+  object edDataFim: TUniDBEdit [2]
     Left = 24
     Top = 72
     Width = 153
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATAFIM'
     DataSource = dsPadrao
     TabOrder = 2
-  end
-  inherited pnButtons: TPanel
-    ExplicitTop = 130
-    ExplicitWidth = 298
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
   end
   inherited dsPadrao: TDataSource
     Left = 232

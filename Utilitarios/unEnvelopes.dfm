@@ -1,119 +1,140 @@
 inherited frmEnvelopes: TfrmEnvelopes
-  Caption = 'frmEnvelopes'
   ClientHeight = 246
   ClientWidth = 649
+  Caption = 'frmEnvelopes'
   OldCreateOrder = True
   ExplicitWidth = 655
   ExplicitHeight = 275
   PixelsPerInch = 96
   TextHeight = 13
-  object lbNome: TLabel [0]
-    Left = 49
-    Top = 62
-    Width = 33
-    Height = 13
-    Caption = 'Nome'
-    FocusControl = dbNome
-  end
-  object lbEndereco: TLabel [1]
-    Left = 29
-    Top = 86
-    Width = 53
-    Height = 13
-    Caption = 'Endere'#231'o'
-    FocusControl = dbEndereco
-  end
-  object lbBairro: TLabel [2]
-    Left = 47
-    Top = 134
-    Width = 35
-    Height = 13
-    Caption = 'Bairro'
-    FocusControl = dbBairro
-  end
-  object lbCep: TLabel [3]
-    Left = 59
-    Top = 158
-    Width = 23
-    Height = 13
-    Caption = 'Cep'
-    FocusControl = dbCep
-  end
-  object lbMsg: TLabel [4]
-    Left = 21
-    Top = 182
-    Width = 61
-    Height = 13
-    Caption = 'Mensagem'
-    FocusControl = dbMsg
-  end
-  object dbNome: TDBEdit [5]
-    Left = 88
-    Top = 54
-    Width = 531
-    Height = 21
-    DataField = 'NOME'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  object dbeCidade: TDBEdit [6]
-    Left = 88
-    Top = 102
-    Width = 329
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOMECIDADE'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 2
-  end
-  object dbCep: TDBEdit [7]
-    Left = 88
-    Top = 150
-    Width = 153
-    Height = 21
-    DataField = 'CEP'
-    DataSource = dsPadrao
-    TabOrder = 4
-  end
-  object dbMsg: TDBEdit [8]
-    Left = 88
-    Top = 174
-    Width = 529
-    Height = 21
-    DataField = 'MENSAGEM'
-    DataSource = dsPadrao
-    TabOrder = 5
-  end
-  object dbEndereco: TDBEdit [9]
-    Left = 88
-    Top = 78
-    Width = 531
-    Height = 21
-    DataField = 'ENDERECO'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbBairro: TDBEdit [10]
-    Left = 88
-    Top = 126
-    Width = 321
-    Height = 21
-    DataField = 'BAIRRO'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 227
     Width = 649
     ExplicitTop = 227
     ExplicitWidth = 649
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 649
     TabOrder = 6
     ExplicitWidth = 649
+  end
+  object lbNome: TUniLabel [2]
+    Left = 49
+    Top = 62
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Nome'
+    TabOrder = 8
+  end
+  object lbEndereco: TUniLabel [3]
+    Left = 29
+    Top = 86
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Endere'#231'o'
+    TabOrder = 9
+  end
+  object lbBairro: TUniLabel [4]
+    Left = 47
+    Top = 134
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Bairro'
+    TabOrder = 10
+  end
+  object lbCep: TUniLabel [5]
+    Left = 59
+    Top = 158
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Cep'
+    TabOrder = 11
+  end
+  object lbMsg: TUniLabel [6]
+    Left = 21
+    Top = 182
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Mensagem'
+    TabOrder = 12
+  end
+  object dbNome: TUniDBEdit [7]
+    Left = 88
+    Top = 54
+    Width = 531
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    TabOrder = 0
+  end
+  object dbeCidade: TUniDBEdit [8]
+    Left = 88
+    Top = 102
+    Width = 329
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOMECIDADE'
+    DataSource = dsPadrao
+    TabOrder = 2
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbCep: TUniDBEdit [9]
+    Left = 88
+    Top = 150
+    Width = 153
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CEP'
+    DataSource = dsPadrao
+    TabOrder = 4
+  end
+  object dbMsg: TUniDBEdit [10]
+    Left = 88
+    Top = 174
+    Width = 529
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'MENSAGEM'
+    DataSource = dsPadrao
+    TabOrder = 5
+  end
+  object dbEndereco: TUniDBEdit [11]
+    Left = 88
+    Top = 78
+    Width = 531
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'ENDERECO'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbBairro: TUniDBEdit [12]
+    Left = 88
+    Top = 126
+    Width = 321
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'BAIRRO'
+    DataSource = dsPadrao
+    TabOrder = 3
   end
   inherited actlNavigateActions: TActionList
     Left = 416

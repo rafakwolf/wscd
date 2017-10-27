@@ -7,18 +7,15 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls, Mask, DB,
    SqlExpr, unContasPagar, Grids,
   DBGrids, DBClient,Datasnap.Provider, FMTBcd,
-  unSimplePadrao;
+  unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton,
+  uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid;
 
 type
   TTipoPagamento = (tpDinheiro, tpCheque);
   
   TfrmPagarMan = class(TfrmSimplePadrao)
-    edtTotal: TLabeledEdit;
-    btnOk: TBitBtn;
-    btnCancel: TBitBtn;
     rgTipoPagamento: TRadioGroup;
     dsContasPagar: TDataSource;
-    bvlLinha: TBevel;
     sqldContasPagar: TSQLDataSet;
     dspContasPagar: TDataSetProvider;
     cdsContasPagar: TClientDataSet;
@@ -60,19 +57,6 @@ type
     cdsContasPagarDESCTO: TFMTBCDField;
     cdsContasPagarOBS: TMemoField;
     cdsContasPagarATRASO: TIntegerField;
-    dbgrdContasCP: TDBGrid;
-    lblVenc: TLabel;
-    lblBandaMagnetica: TLabel;
-    edtAgencia: TLabeledEdit;
-    dbeBanco: TDBEdit;
-    edtConta: TLabeledEdit;
-    edtNumeroCheque: TLabeledEdit;
-    edtValor: TLabeledEdit;
-    medtEmissao: TMaskEdit;
-    medtVencimento: TMaskEdit;
-    medtBandaMagnetica: TMaskEdit;
-    bvlLinha2: TBevel;
-    lblEmissao: TLabel;
     sqldContasPagarIDCONTA: TIntegerField;
     sqldContasPagarCONTA: TStringField;
     cdsContasPagarIDCONTA: TIntegerField;
@@ -91,6 +75,23 @@ type
     cdsContasPagarVALORJURO: TSingleField;
     cdsContasPagarTOTAL: TSingleField;
     cdsContasPagarTOTALPAGO: TSingleField;
+    lblVenc: TUniLabel;
+    lblBandaMagnetica: TUniLabel;
+    lblEmissao: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancel: TUniBitBtn;
+    edtTotal: TUniEdit;
+    edtAgencia: TUniEdit;
+    edtConta: TUniEdit;
+    edtNumeroCheque: TUniEdit;
+    edtValor: TUniEdit;
+    dbeBanco: TUniDBEdit;
+    bvlLinha: TUniPanel;
+    bvlLinha2: TUniPanel;
+    medtEmissao: TUniEdit;
+    medtVencimento: TUniEdit;
+    medtBandaMagnetica: TUniEdit;
+    dbgrdContasCP: TUniDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

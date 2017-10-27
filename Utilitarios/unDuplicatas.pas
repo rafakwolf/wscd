@@ -6,37 +6,13 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,
-  Mask, DBCtrls, DateUtils, RLReport, FMTBcd, System.Actions;
+  Mask, DBCtrls, DateUtils, RLReport, FMTBcd, System.Actions, uniLabel,
+  uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
+  uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit;
 
 type
   TfrmDuplicatas = class(TfrmPadrao)
     cdsPadrao: TClientDataSet;
-    lbSacado: TLabel;
-    dbeDataVenc: TDBEdit;
-    dbeDataPag: TDBEdit;
-    dbeDataEmissao: TDBEdit;
-    lbPracaPag: TLabel;
-    dbeCidade: TDBEdit;
-    dbeValor: TDBEdit;
-    dbeDesconto: TDBEdit;
-    dbeValorFatura: TDBEdit;
-    dbeNroDuplicata: TDBEdit;
-    dbeNroFatura: TDBEdit;
-    lbFatura: TLabel;
-    lbDuplicata: TLabel;
-    dbeValorExtenso: TDBEdit;
-    dbeSacado: TDBEdit;
-    dbeCpfCnpj: TDBEdit;
-    dbeRgIe: TDBEdit;
-    dbeFoneFax: TDBEdit;
-    dbeCep: TDBEdit;
-    dbeEndereco: TDBEdit;
-    dbeBairro: TDBEdit;
-    dbeEstado: TDBEdit;
-    dbePracaPagamento: TDBEdit;
-    lbDatas: TLabel;
-    dbeDataImpressao: TDBEdit;
-    dbeImpressa: TDBEdit;
     cdsPadraoIDDUPLICATA: TIntegerField;
     cdsPadraoNRODUPLICATA: TStringField;
     cdsPadraoSACADO: TStringField;
@@ -60,6 +36,32 @@ type
     cdsPadraoVALOREXTENSO: TStringField;
     cdsPadraoDATAIMPRESSAO: TDateField;
     cdsPadraoIMPRESSA: TStringField;
+    lbSacado: TUniLabel;
+    lbPracaPag: TUniLabel;
+    lbFatura: TUniLabel;
+    lbDuplicata: TUniLabel;
+    lbDatas: TUniLabel;
+    dbeDataEmissao: TUniDBEdit;
+    dbeCidade: TUniDBEdit;
+    dbeDataPag: TUniDBEdit;
+    dbeDataVenc: TUniDBEdit;
+    dbeValor: TUniDBEdit;
+    dbeDesconto: TUniDBEdit;
+    dbeValorFatura: TUniDBEdit;
+    dbeNroDuplicata: TUniDBEdit;
+    dbeNroFatura: TUniDBEdit;
+    dbeValorExtenso: TUniDBEdit;
+    dbeSacado: TUniDBEdit;
+    dbeCpfCnpj: TUniDBEdit;
+    dbeRgIe: TUniDBEdit;
+    dbeFoneFax: TUniDBEdit;
+    dbeCep: TUniDBEdit;
+    dbeEndereco: TUniDBEdit;
+    dbeBairro: TUniDBEdit;
+    dbeEstado: TUniDBEdit;
+    dbePracaPagamento: TUniDBEdit;
+    dbeDataImpressao: TUniDBEdit;
+    dbeImpressa: TUniDBEdit;
     procedure actPrintExecute(Sender: TObject);
     procedure miConfigurarClick(Sender: TObject);
     procedure dbeValorExit(Sender: TObject);
@@ -265,7 +267,7 @@ begin
   inherited;
   if cdsPadrao.State in [dsEdit, dsInsert] then
       cdsPadraoIDCIDADE.AsInteger :=
-        TfrmModeloConsulta.Execute('Cidade', 'CIDADES', FN_CIDADES, DL_CIDADES);
+        TfrmModeloConsulta.Execute('Cidade', 'CIDADES', FN_CIDADES, DL_CIDADES, UniApplication);
 end;
 
 procedure TfrmDuplicatas.miFormSistemaClick(Sender: TObject);
@@ -312,7 +314,7 @@ procedure TfrmDuplicatas.miImportarClienteClick(Sender: TObject);
 var cliente: TdmCliente;
 begin
   inherited;
-  if TfrmModeloConsulta.Execute('Cliente', 'CLIENTES', FN_CLIENTES, DL_CLIENTES) > 0 then
+  if TfrmModeloConsulta.Execute('Cliente', 'CLIENTES', FN_CLIENTES, DL_CLIENTES, UniApplication) > 0 then
   begin
     cliente := TdmCliente.Create(nil);
     try

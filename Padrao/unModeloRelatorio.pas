@@ -4,10 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DB, DBClient, Provider, SqlExpr, RLParser, FMTBcd, RLConsts;
+  Dialogs, RLReport, DB, DBClient, Provider, SqlExpr, RLParser, FMTBcd,
+  RLConsts, UniGuiForm;
 
 type
-  TfrmModeloRelatorio = class(TForm)
+  TfrmModeloRelatorio = class(TUniForm)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;

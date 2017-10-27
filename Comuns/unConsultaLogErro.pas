@@ -6,22 +6,13 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, Mask, Grids, DBGrids, DateUtils,
   ExtCtrls, DB, ShellAPI, Provider, DBClient,
-  Data.SqlExpr, FMTBcd;
+  Data.SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton,
+  uniBitBtn, uniPanel, uniEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmConsultaLogErro = class(TfrmSimplePadrao)
-    lbPeriodo: TLabel;
-    lbPeriodo2: TLabel;
-    medtDataI: TMaskEdit;
-    medtDataF: TMaskEdit;
-    btnPesquisar: TBitBtn;
-    bvlLinha: TBevel;
-    dbgrdLog: TDBGrid;
     dsLogErro: TDataSource;
-    btnRelatorio: TBitBtn;
-    btnFechar: TBitBtn;
     sdlgLogErro: TSaveDialog;
-    btnLimpar: TBitBtn;
     sqldLogErro: TSQLDataSet;
     sqldLogErroIDLOGERRO: TIntegerField;
     sqldLogErroDATAHORA: TSQLTimeStampField;
@@ -35,6 +26,16 @@ type
     cdsLogErroCONTROLE: TStringField;
     cdsLogErroMSG: TStringField;
     dspLogErro: TDataSetProvider;
+    lbPeriodo: TUniLabel;
+    lbPeriodo2: TUniLabel;
+    btnPesquisar: TUniBitBtn;
+    btnRelatorio: TUniBitBtn;
+    btnFechar: TUniBitBtn;
+    btnLimpar: TUniBitBtn;
+    bvlLinha: TUniPanel;
+    medtDataI: TUniEdit;
+    medtDataF: TUniEdit;
+    dbgrdLog: TUniDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnPesquisarClick(Sender: TObject);

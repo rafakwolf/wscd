@@ -1,31 +1,24 @@
 inherited frmFoto: TfrmFoto
   Left = 214
   Top = 161
-  BorderStyle = bsToolWindow
-  Caption = 'Web-cam'
   ClientHeight = 241
   ClientWidth = 297
+  Caption = 'Web-cam'
+  OnShow = FormShow
+  BorderStyle = bsToolWindow
   OldCreateOrder = True
   OnDestroy = FormDestroy
-  OnShow = FormShow
   ExplicitWidth = 303
   ExplicitHeight = 270
   PixelsPerInch = 96
   TextHeight = 13
-  object grpFoto: TGroupBox
-    Left = 8
-    Top = 8
-    Width = 281
-    Height = 193
-    Caption = ' Imagem '
-    TabOrder = 0
-  end
-  object btnOK: TBitBtn
+  object btnOK: TUniBitBtn
     Left = 120
     Top = 208
     Width = 81
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -77,16 +70,17 @@ inherited frmFoto: TfrmFoto
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&OK'
     ModalResult = 1
-    NumGlyphs = 2
     TabOrder = 1
   end
-  object btnCancel: TBitBtn
+  object btnCancel: TUniBitBtn
     Left = 208
     Top = 208
     Width = 81
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -138,8 +132,19 @@ inherited frmFoto: TfrmFoto
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 2
+  end
+  object grpFoto: TUniGroupBox
+    Left = 8
+    Top = 8
+    Width = 281
+    Height = 193
+    Hint = ''
+    ShowHint = True
+    Caption = ' Imagem '
+    TabOrder = 0
+    TabStop = False
   end
 end

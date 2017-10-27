@@ -1,67 +1,68 @@
 inherited frmPagarMan: TfrmPagarMan
   Left = 219
   Top = 139
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'Pagamento'
   ClientHeight = 417
   ClientWidth = 481
-  OnKeyPress = FormKeyPress
+  Caption = 'Pagamento'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  OnKeyPress = FormKeyPress
+  BorderIcons = [biSystemMenu, biMinimize]
   ExplicitWidth = 487
   ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
-  object bvlLinha: TBevel
+  object rgTipoPagamento: TRadioGroup
     Left = 8
-    Top = 200
+    Top = 208
     Width = 465
-    Height = 2
+    Height = 33
+    Caption = 'Pagamento'
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      'Dinheiro'
+      'Cheque')
+    TabOrder = 1
+    OnClick = rgTipoPagamentoClick
   end
-  object lblVenc: TLabel
+  object lblVenc: TUniLabel
     Left = 120
     Top = 372
     Width = 56
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Bom para'
+    TabOrder = 13
   end
-  object lblBandaMagnetica: TLabel
+  object lblBandaMagnetica: TUniLabel
     Left = 8
     Top = 292
     Width = 99
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Banda magn'#233'tica'
+    TabOrder = 14
   end
-  object bvlLinha2: TBevel
-    Left = 8
-    Top = 288
-    Width = 466
-    Height = 2
-  end
-  object lblEmissao: TLabel
+  object lblEmissao: TUniLabel
     Left = 8
     Top = 372
     Width = 47
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Emiss'#227'o'
+    TabOrder = 15
   end
-  object edtTotal: TLabeledEdit
-    Left = 8
-    Top = 260
-    Width = 129
-    Height = 21
-    EditLabel.Width = 77
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Valor a pagar'
-    TabOrder = 2
-  end
-  object btnOk: TBitBtn
+  object btnOk: TUniBitBtn
     Left = 304
     Top = 384
     Width = 81
     Height = 25
     Hint = 'Efetuar recebimento'
-    Caption = '&Ok'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -113,17 +114,17 @@ inherited frmPagarMan: TfrmPagarMan
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Ok'
     TabOrder = 11
     OnClick = btnOkClick
   end
-  object btnCancel: TBitBtn
+  object btnCancel: TUniBitBtn
     Left = 392
     Top = 384
     Width = 81
     Height = 25
     Hint = 'Cancelar recebimento'
-    Caption = '&Cancelar'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -175,162 +176,143 @@ inherited frmPagarMan: TfrmPagarMan
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Cancelar'
     TabOrder = 12
     OnClick = btnCancelClick
   end
-  object rgTipoPagamento: TRadioGroup
+  object edtTotal: TUniEdit
     Left = 8
-    Top = 208
-    Width = 465
-    Height = 33
-    Caption = 'Pagamento'
-    Columns = 2
-    ItemIndex = 0
-    Items.Strings = (
-      'Dinheiro'
-      'Cheque')
-    TabOrder = 1
-    OnClick = rgTipoPagamentoClick
+    Top = 260
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 2
   end
-  object dbgrdContasCP: TDBGrid
-    Left = 8
-    Top = 8
-    Width = 465
-    Height = 185
-    Color = clBtnFace
-    DataSource = dsContasPagar
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Arial'
-    Font.Style = []
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentFont = False
-    TabOrder = 0
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -12
-    TitleFont.Name = 'Arial'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'VALOR'
-        Title.Caption = 'Valor'
-        Width = 100
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'JURO'
-        Title.Caption = 'Juro (%)'
-        Width = 60
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'ATRASO'
-        Title.Caption = 'Atraso (dias)'
-        Width = 80
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALORJURO'
-        Title.Caption = 'Valor juros'
-        Width = 80
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTAL'
-        Title.Caption = 'Valor atual'
-        Width = 100
-        Visible = True
-      end>
-  end
-  object edtAgencia: TLabeledEdit
+  object edtAgencia: TUniEdit
     Left = 8
     Top = 348
     Width = 105
     Height = 21
-    EditLabel.Width = 45
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Ag'#234'ncia'
+    Hint = ''
+    ShowHint = True
+    Text = ''
     TabOrder = 5
   end
-  object dbeBanco: TDBEdit
+  object edtConta: TUniEdit
+    Left = 120
+    Top = 348
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 6
+  end
+  object edtNumeroCheque: TUniEdit
+    Left = 232
+    Top = 348
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 7
+  end
+  object edtValor: TUniEdit
+    Left = 344
+    Top = 348
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 8
+    OnEnter = edtValorEnter
+  end
+  object dbeBanco: TUniDBEdit
     Left = 248
     Top = 308
     Width = 203
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'BANCO'
     DataSource = dsSelecao
-    ReadOnly = True
     TabOrder = 4
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object edtConta: TLabeledEdit
-    Left = 120
-    Top = 348
-    Width = 105
-    Height = 21
-    EditLabel.Width = 34
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Conta'
-    TabOrder = 6
+  object bvlLinha: TUniPanel
+    Left = 8
+    Top = 200
+    Width = 465
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 16
+    Caption = 'bvlLinha'
   end
-  object edtNumeroCheque: TLabeledEdit
-    Left = 232
-    Top = 348
-    Width = 105
-    Height = 21
-    EditLabel.Width = 45
-    EditLabel.Height = 13
-    EditLabel.Caption = 'N'#250'mero'
-    TabOrder = 7
+  object bvlLinha2: TUniPanel
+    Left = 8
+    Top = 288
+    Width = 466
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 17
+    Caption = 'bvlLinha2'
   end
-  object edtValor: TLabeledEdit
-    Left = 344
-    Top = 348
-    Width = 129
-    Height = 21
-    EditLabel.Width = 92
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Valor do cheque'
-    TabOrder = 8
-    OnEnter = edtValorEnter
-  end
-  object medtEmissao: TMaskEdit
+  object medtEmissao: TUniEdit
     Left = 8
     Top = 388
     Width = 105
     Height = 21
-    EditMask = '!99/99/9999;1;_'
+    Hint = ''
+    ShowHint = True
     MaxLength = 10
-    TabOrder = 9
     Text = '  /  /    '
+    TabOrder = 9
   end
-  object medtVencimento: TMaskEdit
+  object medtVencimento: TUniEdit
     Left = 120
     Top = 388
     Width = 105
     Height = 21
-    EditMask = '!99/99/9999;1;_'
+    Hint = ''
+    ShowHint = True
     MaxLength = 10
-    TabOrder = 10
     Text = '  /  /    '
+    TabOrder = 10
   end
-  object medtBandaMagnetica: TMaskEdit
+  object medtBandaMagnetica: TUniEdit
     Left = 8
     Top = 308
     Width = 233
     Height = 21
-    TabOrder = 3
+    Hint = ''
+    ShowHint = True
     Text = ''
+    TabOrder = 3
     OnExit = medtBandaMagneticaExit
+  end
+  object dbgrdContasCP: TUniDBGrid
+    Left = 8
+    Top = 8
+    Width = 465
+    Height = 185
+    Hint = ''
+    ShowHint = True
+    DataSource = dsContasPagar
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentFont = False
+    TabOrder = 0
+    ParentColor = False
+    Color = clBtnFace
   end
   object dsContasPagar: TDataSource
     AutoEdit = False

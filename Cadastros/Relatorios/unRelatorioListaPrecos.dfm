@@ -1,18 +1,13 @@
 object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
   Left = 2
   Top = 1
-  Caption = 'frmRelatorioListaPrecos'
   ClientHeight = 530
   ClientWidth = 782
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
+  Caption = 'frmRelatorioListaPrecos'
   OldCreateOrder = False
-  Scaled = False
   OnClose = FormClose
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
   PixelsPerInch = 96
   TextHeight = 13
   object rpLista: TRLReport
@@ -81,6 +76,7 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
         Font.Name = 'Courier New'
         Font.Style = []
         ParentFont = False
+        Text = ''
         Transparent = False
       end
       object dbtPreco: TRLDBText
@@ -97,6 +93,7 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
         Font.Name = 'Courier New'
         Font.Style = []
         ParentFont = False
+        Text = ''
         Transparent = False
       end
     end
@@ -116,6 +113,7 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
         Top = 3
         Width = 39
         Height = 16
+        Text = ''
       end
       object dbpage: TRLSystemInfo
         Left = 320
@@ -123,12 +121,12 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
         Width = 87
         Height = 16
         Info = itPageNumber
+        Text = ''
       end
     end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  DESCRICAO, '#13#10'  VENDA '#13#10'from PRODUTOS'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao

@@ -1,7 +1,7 @@
 inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
-  Caption = 'frmRelatorioEtiquetaCliente'
   ClientHeight = 160
   ClientWidth = 401
+  Caption = 'frmRelatorioEtiquetaCliente'
   OldCreateOrder = True
   ExplicitWidth = 417
   ExplicitHeight = 199
@@ -22,41 +22,37 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
     TabOrder = 3
     OnClick = rgpFiltroClick
   end
-  object dbeCidade: TDBEdit [1]
+  inherited pnButtons: TUniContainerPanel
+    Top = 126
+    Width = 401
+    ExplicitTop = 126
+    ExplicitWidth = 401
+  end
+  object dbeCidade: TUniDBEdit [2]
     Left = 16
     Top = 96
     Width = 355
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsCidade
-    ReadOnly = True
     TabOrder = 2
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeCliente: TDBEdit [2]
+  object dbeCliente: TUniDBEdit [3]
     Left = 16
     Top = 80
     Width = 355
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
-  end
-  inherited pnButtons: TPanel
-    Top = 126
-    Width = 401
-    ExplicitTop = 126
-    ExplicitWidth = 401
-    inherited btnImprimir: TBitBtn
-      Visible = False
-    end
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     Left = 352

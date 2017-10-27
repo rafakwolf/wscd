@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DB, DBClient, Provider, SqlExpr, FMTBcd;
+  Dialogs, RLReport, DB, DBClient, Provider, SqlExpr, FMTBcd, UniGuiForm;
 
 type
-  TfrmRelatorioListaPrecos = class(TForm)
+  TfrmRelatorioListaPrecos = class(TUniForm)
     rpLista: TRLReport;
     bandCabecalho: TRLBand;
     bandDetalhe: TRLDetailGrid;

@@ -1,132 +1,28 @@
 object frmProEstoqueMinimo: TfrmProEstoqueMinimo
   Left = 37
   Top = 108
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'frmProEstoqueMinimo'
   ClientHeight = 417
   ClientWidth = 769
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'frmProEstoqueMinimo'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = False
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  OnShow = FormShow
+  BorderIcons = [biSystemMenu, biMinimize]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object GradeProd: TDBGrid
-    Left = 8
-    Top = 8
-    Width = 753
-    Height = 369
-    DataSource = dsProdEM
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    TabOrder = 0
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = GradeProdDrawColumnCell
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'COD_BARRA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'C'#243'digo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 99
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'PRO_DESCRICAO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Produto'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 291
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'PRO_ESTOQUE'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Estoque'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 51
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'QTDE_MINIMA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Qtde M'#237'nima'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 73
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FORNECEDOR'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Fornecedor'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 193
-        Visible = True
-      end>
-  end
-  object btnFechar: TBitBtn
+  object btnFechar: TUniBitBtn
     Left = 672
     Top = 384
     Width = 89
     Height = 25
-    Caption = '&Fechar'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -178,16 +74,16 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Fechar'
     TabOrder = 2
     OnClick = btnFecharClick
   end
-  object btnZerarNegativo: TBitBtn
+  object btnZerarNegativo: TUniBitBtn
     Left = 488
     Top = 384
     Width = 177
     Height = 25
-    Caption = 'Zerar estoque negativo'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -239,9 +135,22 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Zerar estoque negativo'
     TabOrder = 1
     OnClick = btnZerarNegativoClick
+  end
+  object GradeProd: TUniDBGrid
+    Left = 8
+    Top = 8
+    Width = 753
+    Height = 369
+    Hint = ''
+    DataSource = dsProdEM
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 0
+    ParentColor = False
+    Color = clWindow
   end
   object dspProdEM: TDataSetProvider
     DataSet = sqlProdEM

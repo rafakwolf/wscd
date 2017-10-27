@@ -1,246 +1,149 @@
 inherited frmVendas: TfrmVendas
   Left = 200
   Top = 114
-  Caption = 'Vendas'
   ClientHeight = 518
   ClientWidth = 890
-  Menu = mnVenda
+  Caption = 'Vendas'
+  Font.Name = 'Verdana'
+  ExplicitLeft = -81
   ExplicitWidth = 896
-  ExplicitHeight = 567
+  ExplicitHeight = 547
   PixelsPerInch = 96
   TextHeight = 13
-  object LabelObs: TLabel [0]
+  inherited sbStatus: TUniStatusBar
+    Top = 499
+    Width = 890
+    ExplicitTop = 499
+    ExplicitWidth = 890
+  end
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 890
+    TabOrder = 20
+    ExplicitWidth = 890
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object pnlTotal: TUniContainerPanel [2]
+    Left = 0
+    Top = 464
+    Width = 890
+    Height = 35
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    TabOrder = 19
+    TabStop = False
+    object lbTotalDesc: TUniLabel
+      Left = 503
+      Top = 11
+      Width = 82
+      Height = 13
+      Hint = ''
+      ShowHint = True
+      Caption = 'Total desconto'
+      TabOrder = 3
+    end
+    object lbTotal: TUniLabel
+      Left = 724
+      Top = 11
+      Width = 27
+      Height = 13
+      Hint = ''
+      ShowHint = True
+      Caption = 'Total'
+      TabOrder = 4
+    end
+    object dbeTotalDesc: TUniDBEdit
+      Left = 592
+      Top = 7
+      Width = 121
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      DataField = 'TOTALDESCTO'
+      DataSource = dsVendas
+      TabOrder = 0
+    end
+    object dbeTotal: TUniDBEdit
+      Left = 756
+      Top = 7
+      Width = 127
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      DataField = 'TOTAL'
+      DataSource = dsVendas
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'Verdana'
+      TabOrder = 1
+      Color = clInfoBk
+    end
+  end
+  object LabelObs: TUniLabel [3]
     Left = 16
     Top = 120
     Width = 68
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Observa'#231#227'o'
+    TabOrder = 22
   end
-  object lbNumero: TLabel [1]
+  object lbNumero: TUniLabel [4]
     Left = 16
     Top = 40
     Width = 71
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'N'#186' da venda'
-    FocusControl = dbeNumero
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 23
   end
-  object LabelConcluida: TLabel [2]
+  object LabelConcluida: TUniLabel [5]
     Left = 744
     Top = 40
     Width = 56
     Height = 13
-    Caption = 'Conclu'#237'da'
-  end
-  object bvlLinha: TBevel [3]
-    Left = 1
-    Top = 183
-    Width = 888
-    Height = 2
-  end
-  object dbConcluida: TDBEdit [4]
-    Left = 744
-    Top = 56
-    Width = 57
-    Height = 21
-    Color = clBtnFace
-    DataField = 'CONCLUIDA'
-    DataSource = dsVendas
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 4
-  end
-  object grdItens: TDBGrid [5]
-    Left = 0
-    Top = 242
-    Width = 890
-    Height = 222
-    Align = alBottom
-    Ctl3D = True
-    DataSource = dsItens
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentCtl3D = False
-    ParentFont = False
-    ParentShowHint = False
+    Hint = ''
     ShowHint = True
-    TabOrder = 18
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clBlack
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDblClick = grdItensDblClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'PRODUTO'
-        Title.Caption = 'Produto'
-        Width = 313
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'QTD'
-        Title.Caption = 'Qtde'
-        Width = 49
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CUSTO'
-        Title.Caption = 'Custo'
-        Width = 80
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VENDA'
-        Title.Caption = 'Venda'
-        Width = 76
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCTO'
-        Title.Caption = 'Descto %'
-        Width = 72
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALORDESCTO'
-        Title.Caption = 'Valor Descto'
-        Width = 83
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTAL'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        Title.Caption = 'Total'
-        Width = 86
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'COMISSAO'
-        Title.Caption = 'Comiss'#227'o'
-        Width = 82
-        Visible = True
-      end>
+    Caption = 'Conclu'#237'da'
+    TabOrder = 24
   end
-  object dbProduto: TDBEdit [6]
-    Left = 1
-    Top = 208
-    Width = 303
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOMEPRODUTO'
-    DataSource = dsSelecao
-    ReadOnly = True
-    TabOrder = 9
-  end
-  object dbeNumero: TDBEdit [7]
-    Left = 16
-    Top = 56
-    Width = 89
-    Height = 21
-    BiDiMode = bdRightToLeft
-    Color = clBtnFace
-    Ctl3D = True
-    DataField = 'CODIGO'
-    DataSource = dsVendas
-    ParentBiDiMode = False
-    ParentCtl3D = False
-    ReadOnly = True
-    TabOrder = 0
-  end
-  object dbQtde: TDBEdit [8]
-    Left = 327
-    Top = 208
-    Width = 48
-    Height = 21
-    DataField = 'QTDE'
-    DataSource = dsSelecao
-    TabOrder = 10
-  end
-  object dbCusto: TDBEdit [9]
-    Left = 377
-    Top = 208
-    Width = 79
-    Height = 21
-    DataField = 'CUSTO'
-    DataSource = dsSelecao
-    TabOrder = 11
-    OnKeyPress = dbCustoKeyPress
-  end
-  object dbVenda: TDBEdit [10]
-    Left = 458
-    Top = 208
-    Width = 75
-    Height = 21
-    DataField = 'VENDA'
-    DataSource = dsSelecao
-    TabOrder = 12
-    OnExit = dbVendaExit
-    OnKeyPress = dbVendaKeyPress
-  end
-  object dbDescto: TDBEdit [11]
-    Left = 535
-    Top = 208
-    Width = 72
-    Height = 21
-    DataField = 'DESCTO'
-    DataSource = dsSelecao
-    TabOrder = 13
-    OnExit = dbDesctoExit
-    OnKeyPress = dbDesctoKeyPress
-  end
-  object dbValorDescto: TDBEdit [12]
-    Left = 608
-    Top = 208
-    Width = 82
-    Height = 21
-    DataField = 'VALORDESCTO'
-    DataSource = dsSelecao
-    TabOrder = 14
-    OnKeyPress = dbValorDesctoKeyPress
-  end
-  object dbTotalProduto: TDBEdit [13]
-    Left = 692
-    Top = 208
-    Width = 84
-    Height = 21
-    DataField = 'TOTAL'
-    DataSource = dsSelecao
-    TabOrder = 15
-    OnKeyPress = dbTotalProdutoKeyPress
-  end
-  object btnInsereProduto: TBitBtn [14]
+  object btnInsereProduto: TUniBitBtn [6]
     Left = 864
     Top = 208
     Width = 25
     Height = 21
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -268,159 +171,257 @@ inherited frmVendas: TfrmVendas
       22A94037B55539B55637B55433B2502AAF4921AA401AA63913A43112A13212A4
       310C9A23FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = ''
     TabOrder = 17
     OnClick = btnInsereProdutoClick
   end
-  object dbCodCliente: TDBEdit [15]
+  object dbConcluida: TUniDBEdit [7]
+    Left = 744
+    Top = 56
+    Width = 57
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CONCLUIDA'
+    DataSource = dsVendas
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 4
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbProduto: TUniDBEdit [8]
+    Left = 1
+    Top = 208
+    Width = 303
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOMEPRODUTO'
+    DataSource = dsSelecao
+    TabOrder = 9
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeNumero: TUniDBEdit [9]
+    Left = 16
+    Top = 56
+    Width = 89
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CODIGO'
+    DataSource = dsVendas
+    TabOrder = 0
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbQtde: TUniDBEdit [10]
+    Left = 327
+    Top = 208
+    Width = 48
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'QTDE'
+    DataSource = dsSelecao
+    TabOrder = 10
+  end
+  object dbCusto: TUniDBEdit [11]
+    Left = 377
+    Top = 208
+    Width = 79
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CUSTO'
+    DataSource = dsSelecao
+    TabOrder = 11
+    OnKeyPress = dbCustoKeyPress
+  end
+  object dbVenda: TUniDBEdit [12]
+    Left = 458
+    Top = 208
+    Width = 75
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VENDA'
+    DataSource = dsSelecao
+    TabOrder = 12
+    OnExit = dbVendaExit
+    OnKeyPress = dbVendaKeyPress
+  end
+  object dbDescto: TUniDBEdit [13]
+    Left = 535
+    Top = 208
+    Width = 72
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DESCTO'
+    DataSource = dsSelecao
+    TabOrder = 13
+    OnExit = dbDesctoExit
+    OnKeyPress = dbDesctoKeyPress
+  end
+  object dbValorDescto: TUniDBEdit [14]
+    Left = 608
+    Top = 208
+    Width = 82
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VALORDESCTO'
+    DataSource = dsSelecao
+    TabOrder = 14
+    OnKeyPress = dbValorDesctoKeyPress
+  end
+  object dbTotalProduto: TUniDBEdit [15]
+    Left = 692
+    Top = 208
+    Width = 84
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TOTAL'
+    DataSource = dsSelecao
+    TabOrder = 15
+    OnKeyPress = dbTotalProdutoKeyPress
+  end
+  object dbCodCliente: TUniDBEdit [16]
     Left = 16
     Top = 96
     Width = 91
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'CODCLIENTE'
     DataSource = dsVendas
-    ReadOnly = True
     TabOrder = 6
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbdDataVenda: TDBEdit [16]
+  object dbdDataVenda: TUniDBEdit [17]
     Left = 112
     Top = 56
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATA'
     DataSource = dsVendas
     TabOrder = 1
   end
-  object dbmObs: TDBMemo [17]
-    Left = 16
-    Top = 136
-    Width = 857
-    Height = 41
-    DataField = 'OBS'
-    DataSource = dsVendas
-    ScrollBars = ssVertical
-    TabOrder = 8
-  end
-  object pnlTotal: TPanel [18]
-    Left = 0
-    Top = 464
-    Width = 890
-    Height = 35
-    Align = alBottom
-    TabOrder = 19
-    ExplicitTop = 496
-    object lbTotalDesc: TLabel
-      Left = 503
-      Top = 11
-      Width = 82
-      Height = 13
-      Caption = 'Total desconto'
-    end
-    object lbTotal: TLabel
-      Left = 724
-      Top = 11
-      Width = 27
-      Height = 13
-      Caption = 'Total'
-      FocusControl = dbeTotal
-    end
-    object dbeTotalDesc: TDBEdit
-      Left = 592
-      Top = 7
-      Width = 121
-      Height = 21
-      DataField = 'TOTALDESCTO'
-      DataSource = dsVendas
-      TabOrder = 0
-    end
-    object dbeTotal: TDBEdit
-      Left = 756
-      Top = 7
-      Width = 127
-      Height = 21
-      Color = clInfoBk
-      DataField = 'TOTAL'
-      DataSource = dsVendas
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 1
-    end
-  end
-  object dbeIdVendedor: TDBEdit [19]
+  object dbeIdVendedor: TUniDBEdit [18]
     Left = 240
     Top = 56
     Width = 91
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'IDVENDEDOR'
     DataSource = dsVendas
-    ReadOnly = True
     TabOrder = 2
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeVendedor: TDBEdit [20]
+  object dbeVendedor: TUniDBEdit [19]
     Left = 360
     Top = 56
     Width = 377
     Height = 21
-    Color = clBtnFace
+    Hint = ''
+    ShowHint = True
     DataField = 'VENDEDOR'
     DataSource = dsVendas
-    ReadOnly = True
     TabOrder = 3
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeCliente: TDBEdit [21]
+  object dbeCliente: TUniDBEdit [20]
     Left = 136
     Top = 96
     Width = 737
     Height = 21
-    Color = clBtnFace
+    Hint = ''
+    ShowHint = True
     DataField = 'CLIENTE'
     DataSource = dsVendas
-    ReadOnly = True
     TabOrder = 7
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeCancelada: TDBEdit [22]
+  object dbeCancelada: TUniDBEdit [21]
     Left = 808
     Top = 56
     Width = 65
     Height = 21
-    Color = clBtnFace
+    Hint = ''
+    ShowHint = True
     DataField = 'CANCELADO'
     DataSource = dsVendas
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
     ParentFont = False
-    ReadOnly = True
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 5
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeComissao: TDBEdit [23]
+  object dbeComissao: TUniDBEdit [22]
     Left = 778
     Top = 208
     Width = 85
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'COMISSAO'
     DataSource = dsSelecao
     TabOrder = 16
   end
-  inherited sbStatus: TStatusBar
-    Top = 499
-    Width = 890
-    ExplicitTop = 531
-    ExplicitWidth = 890
+  object bvlLinha: TUniPanel [23]
+    Left = 1
+    Top = 183
+    Width = 888
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 25
+    Caption = 'bvlLinha'
   end
-  inherited pnBotoesPadrao: TPanel
+  object dbmObs: TUniDBMemo [24]
+    Left = 16
+    Top = 136
+    Width = 857
+    Height = 41
+    Hint = ''
+    ShowHint = True
+    DataField = 'OBS'
+    DataSource = dsVendas
+    ScrollBars = ssVertical
+    TabOrder = 8
+  end
+  object grdItens: TUniDBGrid [25]
+    Left = 0
+    Top = 242
     Width = 890
-    TabOrder = 20
-    ExplicitWidth = 890
+    Height = 222
+    Hint = ''
+    ShowHint = True
+    ParentShowHint = False
+    DataSource = dsItens
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentFont = False
+    TabOrder = 18
+    ParentColor = False
+    Color = clWindow
+    OnDblClick = grdItensDblClick
   end
   inherited actlNavigateActions: TActionList
     Left = 440
@@ -430,110 +431,6 @@ inherited frmVendas: TfrmVendas
     DataSet = cdsVendas
     Left = 503
     Top = 292
-  end
-  object mnVenda: TMainMenu
-    Left = 456
-    Top = 327
-    object miRegistros: TMenuItem
-      Caption = 'Registros'
-      object miIncluir: TMenuItem
-        Caption = 'Novo'
-        OnClick = btnNovoClick
-      end
-      object miAlterar: TMenuItem
-        Caption = 'Alterar'
-        ShortCut = 116
-      end
-      object miCancelar: TMenuItem
-        Caption = 'Cancelar'
-        OnClick = btnCancelClick
-      end
-    end
-    object miFerramentas: TMenuItem
-      Caption = 'Ferramentas'
-      object miLocalizar: TMenuItem
-        Caption = 'Pesquisar'
-        ShortCut = 119
-        OnClick = btnConsultarClick
-      end
-      object miOutrosFiltros: TMenuItem
-        Caption = 'Outros filtros'
-        object miFiltrarData: TMenuItem
-          Caption = 'Filtrar por data'
-          OnClick = miFiltrarDataClick
-        end
-        object miFiltrarCli: TMenuItem
-          Caption = 'Filtrar por cliente'
-          OnClick = miFiltrarCliClick
-        end
-        object miVendasNaoConc: TMenuItem
-          Caption = 'Vendas n'#227'o conclu'#237'das'
-          OnClick = miVendasNaoConcClick
-        end
-      end
-      object miMostrarTodos: TMenuItem
-        Caption = 'Limpar filtros'
-        OnClick = miMostrarTodosClick
-      end
-      object N5: TMenuItem
-        Caption = '-'
-      end
-      object N11: TMenuItem
-        Caption = '-'
-      end
-      object miCadastroCliente: TMenuItem
-        Caption = 'Cadastrar cliente'
-        OnClick = miCadastroClienteClick
-      end
-      object miCadastravendedor: TMenuItem
-        Caption = 'Cadastra vendedor'
-        OnClick = miCadastravendedorClick
-      end
-      object miCadastraproduto: TMenuItem
-        Caption = 'Cadastra produto'
-        OnClick = miCadastraprodutoClick
-      end
-    end
-    object miRelatorio: TMenuItem
-      Caption = 'Relat'#243'rios'
-      object miRelVendaAtual: TMenuItem
-        Caption = 'Venda atual'
-        OnClick = miRelVendaAtualClick
-      end
-      object N10: TMenuItem
-        Caption = '-'
-      end
-      object miVendaBobina: TMenuItem
-        Caption = 'Venda em bobina'
-        OnClick = miVendaBobinaClick
-      end
-      object N6: TMenuItem
-        Caption = '-'
-      end
-      object miRelVendaMes: TMenuItem
-        Caption = 'Vendas por m'#234's'
-      end
-      object miRelVendaAno: TMenuItem
-        Caption = 'Vendas por ano'
-      end
-      object miRelVendaPeriodo: TMenuItem
-        Caption = 'Vendas por per'#237'odo'
-      end
-      object N7: TMenuItem
-        Caption = '-'
-      end
-      object miRelVendaCliente: TMenuItem
-        Caption = 'Vendas por cliente'
-        OnClick = miRelVendaClienteClick
-      end
-      object N12: TMenuItem
-        Caption = '-'
-      end
-      object miRelComissaoVendedor: TMenuItem
-        Caption = 'Comiss'#227'o do vendedor'
-        OnClick = miRelComissaoVendedorClick
-      end
-    end
   end
   object sqldClientes: TSQLDataSet
     CommandText = 
@@ -1203,5 +1100,109 @@ inherited frmVendas: TfrmVendas
     SQLConnection = DmPrincipal.Conexao
     Left = 168
     Top = 408
+  end
+  object mnVenda: TUniMainMenu
+    Left = 456
+    Top = 351
+    object miRegistros: TUniMenuItem
+      Caption = 'Registros'
+      object miIncluir: TUniMenuItem
+        Caption = 'Novo'
+        OnClick = btnNovoClick
+      end
+      object miAlterar: TUniMenuItem
+        Caption = 'Alterar'
+        ShortCut = 116
+      end
+      object miCancelar: TUniMenuItem
+        Caption = 'Cancelar'
+        OnClick = btnCancelClick
+      end
+    end
+    object miFerramentas: TUniMenuItem
+      Caption = 'Ferramentas'
+      object miLocalizar: TUniMenuItem
+        Caption = 'Pesquisar'
+        ShortCut = 119
+        OnClick = btnConsultarClick
+      end
+      object miOutrosFiltros: TUniMenuItem
+        Caption = 'Outros filtros'
+        object miFiltrarData: TUniMenuItem
+          Caption = 'Filtrar por data'
+          OnClick = miFiltrarDataClick
+        end
+        object miFiltrarCli: TUniMenuItem
+          Caption = 'Filtrar por cliente'
+          OnClick = miFiltrarCliClick
+        end
+        object miVendasNaoConc: TUniMenuItem
+          Caption = 'Vendas n'#227'o conclu'#237'das'
+          OnClick = miVendasNaoConcClick
+        end
+      end
+      object miMostrarTodos: TUniMenuItem
+        Caption = 'Limpar filtros'
+        OnClick = miMostrarTodosClick
+      end
+      object N5: TUniMenuItem
+        Caption = '-'
+      end
+      object N11: TUniMenuItem
+        Caption = '-'
+      end
+      object miCadastroCliente: TUniMenuItem
+        Caption = 'Cadastrar cliente'
+        OnClick = miCadastroClienteClick
+      end
+      object miCadastravendedor: TUniMenuItem
+        Caption = 'Cadastra vendedor'
+        OnClick = miCadastravendedorClick
+      end
+      object miCadastraproduto: TUniMenuItem
+        Caption = 'Cadastra produto'
+        OnClick = miCadastraprodutoClick
+      end
+    end
+    object miRelatorio: TUniMenuItem
+      Caption = 'Relat'#243'rios'
+      object miRelVendaAtual: TUniMenuItem
+        Caption = 'Venda atual'
+        OnClick = miRelVendaAtualClick
+      end
+      object N10: TUniMenuItem
+        Caption = '-'
+      end
+      object miVendaBobina: TUniMenuItem
+        Caption = 'Venda em bobina'
+        OnClick = miVendaBobinaClick
+      end
+      object N6: TUniMenuItem
+        Caption = '-'
+      end
+      object miRelVendaMes: TUniMenuItem
+        Caption = 'Vendas por m'#234's'
+      end
+      object miRelVendaAno: TUniMenuItem
+        Caption = 'Vendas por ano'
+      end
+      object miRelVendaPeriodo: TUniMenuItem
+        Caption = 'Vendas por per'#237'odo'
+      end
+      object N7: TUniMenuItem
+        Caption = '-'
+      end
+      object miRelVendaCliente: TUniMenuItem
+        Caption = 'Vendas por cliente'
+        OnClick = miRelVendaClienteClick
+      end
+      object N12: TUniMenuItem
+        Caption = '-'
+      end
+      object miRelComissaoVendedor: TUniMenuItem
+        Caption = 'Comiss'#227'o do vendedor'
+        OnClick = miRelComissaoVendedorClick
+      end
+    end
   end
 end

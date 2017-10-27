@@ -1,32 +1,30 @@
 inherited frmRelatorioProdutoGrupo: TfrmRelatorioProdutoGrupo
-  Caption = 'frmRelatorioProdutoGrupo'
   ClientHeight = 128
   ClientWidth = 353
+  Caption = 'frmRelatorioProdutoGrupo'
   OldCreateOrder = True
   ExplicitWidth = 369
   ExplicitHeight = 167
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeGrupo: TDBEdit [0]
+  inherited pnButtons: TUniContainerPanel
+    Top = 94
+    Width = 353
+    ExplicitTop = 94
+    ExplicitWidth = 353
+  end
+  object dbeGrupo: TUniDBEdit [1]
     Left = 16
     Top = 40
     Width = 307
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
-  end
-  inherited pnButtons: TPanel
-    Top = 94
-    Width = 353
-    ExplicitTop = 94
-    ExplicitWidth = 353
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited dsPadrao: TDataSource
     Left = 136

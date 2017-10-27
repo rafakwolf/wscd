@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls,
   ComCtrls, DBClient, Provider, SqlExpr, StdCtrls, Mask, DBCtrls,
-    ConstPadrao, Funcoes, FMTBcd, System.Actions, VarGlobal;
+    ConstPadrao, Funcoes, FMTBcd, System.Actions, VarGlobal, uniGUIClasses,
+  uniEdit, uniDBEdit, uniButton, uniBitBtn, uniSpeedButton, uniPanel,
+  uniGUIBaseClasses, uniStatusBar;
 
 type
   TfrmAliquota = class(TfrmPadrao)
@@ -15,8 +17,8 @@ type
     cdsPadrao: TClientDataSet;
     cdsPadraoCODALIQUOTA: TIntegerField;
     cdsPadraoDESCRICAO: TStringField;
-    dbeAliquota: TDBEdit;
-    dbeCodAliquota: TDBEdit;
+    dbeAliquota: TUniDBEdit;
+    dbeCodAliquota: TUniDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
   private

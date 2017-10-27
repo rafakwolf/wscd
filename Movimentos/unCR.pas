@@ -6,24 +6,12 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, DateUtils,
   ExtCtrls, ComCtrls,  Mask, DBCtrls, 
-  SqlExpr, Provider, DBClient, ConstPadrao, FMTBcd, System.Actions;
+  SqlExpr, Provider, DBClient, ConstPadrao, FMTBcd, System.Actions, uniLabel,
+  uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
+  uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit, uniGroupBox;
 
 type
   TfrmCR = class(TfrmPadrao)
-    dbeCliente: TDBEdit;
-    dbeDescricao: TDBEdit;
-    dbeValor: TDBEdit;
-    dbeDocumento: TDBEdit;
-    grpRecebimento: TGroupBox;
-    dbeDataRecdo: TDBEdit;
-    dbeDesconto: TDBEdit;
-    dbeCapitalRecdo: TDBEdit;
-    dbeJuroRecdo: TDBEdit;
-    dbeTotalRecdo: TDBEdit;
-    dbeJuros: TDBEdit;
-    dbeOrigem: TDBEdit;
-    dbdData: TDBEdit;
-    dbdVencimento: TDBEdit;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -42,9 +30,6 @@ type
     cdsPadraoVENDA: TIntegerField;
     cdsPadraoOBS: TMemoField;
     cdsPadraoATRASO: TIntegerField;
-    dbeVenda: TDBEdit;
-    lbStatus: TLabel;
-    dbeValorAtual: TDBEdit;
     cdsPadraoNOME: TStringField;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoDATA: TDateField;
@@ -71,10 +56,7 @@ type
     cdsPadraoJURORECDO: TFMTBCDField;
     cdsPadraoDESCTO: TFMTBCDField;
     sqlLimiteTOTAL_CONTAS: TFloatField;
-    btnContas: TBitBtn;
-    btnReceber: TBitBtn;
     sqldDeleta: TSQLDataSet;
-    dbeConta: TDBEdit;
     sqldPadraoIDCONTA: TIntegerField;
     sqldPadraoCONTA: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
@@ -85,6 +67,26 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALRECDO: TSingleField;
+    lbStatus: TUniLabel;
+    btnReceber: TUniBitBtn;
+    btnContas: TUniBitBtn;
+    dbeValorAtual: TUniDBEdit;
+    dbeCliente: TUniDBEdit;
+    dbeDescricao: TUniDBEdit;
+    dbeValor: TUniDBEdit;
+    dbeDocumento: TUniDBEdit;
+    dbeJuros: TUniDBEdit;
+    dbeOrigem: TUniDBEdit;
+    dbdData: TUniDBEdit;
+    dbdVencimento: TUniDBEdit;
+    dbeVenda: TUniDBEdit;
+    dbeConta: TUniDBEdit;
+    grpRecebimento: TUniGroupBox;
+    dbeDataRecdo: TUniDBEdit;
+    dbeDesconto: TUniDBEdit;
+    dbeCapitalRecdo: TUniDBEdit;
+    dbeJuroRecdo: TUniDBEdit;
+    dbeTotalRecdo: TUniDBEdit;
     procedure dbeClienteClickButton(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);

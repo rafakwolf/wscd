@@ -1,97 +1,73 @@
 inherited frmRenovaChave: TfrmRenovaChave
   Left = 232
   Top = 159
-  BorderStyle = bsSingle
-  Caption = 'frmRenovaChave'
   ClientHeight = 201
   ClientWidth = 289
-  OldCreateOrder = True
-  OnCloseQuery = FormCloseQuery
+  Caption = 'frmRenovaChave'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = True
   ExplicitWidth = 295
   ExplicitHeight = 230
   PixelsPerInch = 96
   TextHeight = 13
-  object lbTitulo: TLabel
-    Left = 16
-    Top = 17
-    Width = 168
-    Height = 16
-    Caption = 'Chave atual v'#225'lida at'#233':'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object meDataAtual: TMaskEdit
-    Left = 189
-    Top = 15
-    Width = 84
-    Height = 22
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 2
-    Text = '99/99/9999'
-  end
-  object grpRenovacao: TGroupBox
+  object grpRenovacao: TUniGroupBox
     Left = 16
     Top = 42
     Width = 257
     Height = 113
+    Hint = ''
+    ShowHint = True
+    Caption = ''
     TabOrder = 0
-    object mmoInfo: TMemo
+    object edChave: TUniEdit
+      Left = 64
+      Top = 80
+      Width = 129
+      Hint = ''
+      ShowHint = True
+      Text = ''
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'Verdana'
+      TabOrder = 0
+    end
+    object mmoInfo: TUniMemo
       Left = 5
       Top = 8
       Width = 246
       Height = 47
-      Alignment = taCenter
-      BorderStyle = bsNone
-      Color = clBtnFace
-      Ctl3D = False
+      Hint = ''
+      ShowHint = True
       Lines.Strings = (
         'Informe no campo abaixo a nova Chave '
         'de Libera'#231#227'o, para renovar liera'#231#227'o de '
         'uso do sistema. ')
-      ParentCtl3D = False
       ReadOnly = True
+      Color = clBtnFace
       TabOrder = 1
     end
-    object edChave: TLabeledEdit
-      Left = 64
-      Top = 80
-      Width = 129
-      Height = 22
-      EditLabel.Width = 126
-      EditLabel.Height = 14
-      EditLabel.Caption = 'Chave de libera'#231#227'o'
-      EditLabel.Font.Charset = ANSI_CHARSET
-      EditLabel.Font.Color = clWindowText
-      EditLabel.Font.Height = -12
-      EditLabel.Font.Name = 'Verdana'
-      EditLabel.Font.Style = [fsBold]
-      EditLabel.ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Verdana'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 0
-    end
   end
-  object btnRenovar: TBitBtn
+  object lbTitulo: TUniLabel
+    Left = 16
+    Top = 17
+    Width = 134
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Chave atual v'#225'lida at'#233':'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 3
+  end
+  object btnRenovar: TUniBitBtn
     Left = 174
     Top = 164
     Width = 99
     Height = 25
-    Caption = '&Confirmar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       DE010000424DDE01000000000000760000002800000024000000120000000100
       0400000000006801000000000000000000001000000000000000000000000000
@@ -109,9 +85,22 @@ inherited frmRenovaChave: TfrmRenovaChave
       3338F38F000033333333333333A223333333333333338F830000333333333333
       333A333333333333333338330000333333333333333333333333333333333333
       0000}
-    NumGlyphs = 2
+    Caption = '&Confirmar'
     TabOrder = 1
     OnClick = btnRenovarClick
+  end
+  object meDataAtual: TUniEdit
+    Left = 189
+    Top = 15
+    Width = 84
+    Hint = ''
+    ShowHint = True
+    Text = '99/99/9999'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 2
+    ReadOnly = True
   end
   object tmrInfo: TTimer
     Enabled = False

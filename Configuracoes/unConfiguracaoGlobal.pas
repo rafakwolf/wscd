@@ -6,42 +6,21 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-   FMTBcd, System.Actions;
+   FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn, uniSpeedButton,
+  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
+  uniCheckBox, uniDBCheckBox, uniMemo, uniDBMemo, uniPageControl;
 
 type
   TfrmConfigGlobal = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    pgcConfigGlobal: TPageControl;
-    tsCrediario: TTabSheet;
-    dbeJuro: TDBEdit;
-    dbeIntervalo: TDBEdit;
-    dbePrazoInicial: TDBEdit;
-    dbeParcelas: TDBEdit;
-    tsCliente: TTabSheet;
-    dbeLimiteCliente: TDBEdit;
-    tsOrcamento: TTabSheet;
-    dbeTituloOrcam: TDBEdit;
-    dbeColunaBobina: TDBEdit;
-    dbmmMsgRodape: TDBMemo;
-    lbMsgOrcamRodape: TLabel;
-    tsVenda: TTabSheet;
-    dbeTituloVenda: TDBEdit;
-    dbeColunaBobinaVenda: TDBEdit;
-    dbmmMsgRodapeVenda: TDBMemo;
-    lbMsgRodapeVenda: TLabel;
-    dbeLinhaPularOrcam: TDBEdit;
-    dbeLinhaPularVenda: TDBEdit;
-    dbePortaImpVenda: TDBEdit;
-    tsFTP: TTabSheet;
-    dbeHost: TDBEdit;
-    dbeUserName: TDBEdit;
-    dbePassWord: TDBEdit;
-    dbeDiretorio: TDBEdit;
-    dbeTimeOut: TDBEdit;
-    dbckbPassive: TDBCheckBox;
-    dbeIdadeCliente: TDBEdit;
+    pgcConfigGlobal: TUniPageControl;
+    tsCrediario: TUniTabSheet;
+    tsCliente: TUniTabSheet;
+    tsOrcamento: TUniTabSheet;
+    tsVenda: TUniTabSheet;
+    tsFTP: TUniTabSheet;
     sqldPadraoTAXAJURO: TFMTBCDField;
     sqldPadraoINTERVALO: TIntegerField;
     sqldPadraoPRAZOINICIAL: TIntegerField;
@@ -86,6 +65,29 @@ type
     cdsPadraoFTP_DIR: TStringField;
     cdsPadraoIDADECADASTROCLIENTE: TIntegerField;
     cdsPadraoIDCONFIGGLOBAL: TIntegerField;
+    lbMsgOrcamRodape: TUniLabel;
+    lbMsgRodapeVenda: TUniLabel;
+    dbeJuro: TUniDBEdit;
+    dbeIntervalo: TUniDBEdit;
+    dbePrazoInicial: TUniDBEdit;
+    dbeParcelas: TUniDBEdit;
+    dbeLimiteCliente: TUniDBEdit;
+    dbeIdadeCliente: TUniDBEdit;
+    dbeTituloOrcam: TUniDBEdit;
+    dbeColunaBobina: TUniDBEdit;
+    dbeLinhaPularOrcam: TUniDBEdit;
+    dbeTituloVenda: TUniDBEdit;
+    dbeColunaBobinaVenda: TUniDBEdit;
+    dbeLinhaPularVenda: TUniDBEdit;
+    dbePortaImpVenda: TUniDBEdit;
+    dbeHost: TUniDBEdit;
+    dbeUserName: TUniDBEdit;
+    dbePassWord: TUniDBEdit;
+    dbeDiretorio: TUniDBEdit;
+    dbeTimeOut: TUniDBEdit;
+    dbckbPassive: TUniDBCheckBox;
+    dbmmMsgRodape: TUniDBMemo;
+    dbmmMsgRodapeVenda: TUniDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterApplyUpdates(Sender: TObject;
       var OwnerData: OleVariant);

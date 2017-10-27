@@ -1,18 +1,12 @@
 object frmPrevDuplicataSemForm: TfrmPrevDuplicataSemForm
   Left = 2
   Top = 1
-  Caption = 'frmPrevDuplicataSemForm'
   ClientHeight = 530
   ClientWidth = 782
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
+  Caption = 'frmPrevDuplicataSemForm'
   OldCreateOrder = False
-  Position = poScreenCenter
-  Scaled = False
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
   PixelsPerInch = 96
   TextHeight = 13
   object rrDuplicata: TRLReport
@@ -157,7 +151,6 @@ object frmPrevDuplicataSemForm: TfrmPrevDuplicataSemForm
     CommandText = 
       'select '#13#10'  CAMPO,'#13#10'  NOMECAMPO, '#13#10'  VERTICAL, '#13#10'  HORIZONTAL, '#13#10 +
       '  FONTE, '#13#10'  TIPOFONTE, '#13#10'  ESTILOFONTE'#13#10'from CONFIGDUPLICATA'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao

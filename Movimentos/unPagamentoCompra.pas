@@ -4,26 +4,27 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, Buttons, VarGlobal,
-  DB, SqlExpr, DBGrids, DBClient, Provider, FMTBcd;
+  Dialogs, StdCtrls, Grids, Buttons, VarGlobal, uniGUIForm,
+  DB, SqlExpr, DBGrids, DBClient, Provider, FMTBcd, uniGUIBaseClasses,
+  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmPagamentoCompra = class(TForm)
-    btnOk: TBitBtn;
+  TfrmPagamentoCompra = class(TUniForm)
     sqldCompra: TSQLDataSet;
     dsCompra: TDataSource;
-    dbgrdPagamento: TDBGrid;
     dspCompra: TDataSetProvider;
     cdsCompra: TClientDataSet;
     sqldCompraDATAPAGTO: TDateField;
     sqldCompraFORMAPAGTO: TStringField;
     cdsCompraDATAPAGTO: TDateField;
     cdsCompraFORMAPAGTO: TStringField;
-    lbStatus: TLabel;
     sqldCompraVALORPAGO: TFMTBCDField;
     sqldCompraVALORRESTO: TFMTBCDField;
     cdsCompraVALORPAGO: TFMTBCDField;
     cdsCompraVALORRESTO: TFMTBCDField;
+    lbStatus: TUniLabel;
+    btnOk: TUniBitBtn;
+    dbgrdPagamento: TUniDBGrid;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);

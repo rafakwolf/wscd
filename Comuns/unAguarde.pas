@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls;
+  Dialogs, ExtCtrls, uniGUIForm, uniGUIBaseClasses, uniGUIClasses, uniPanel;
 
 type
-  TfrmAguarde = class(TForm)
-    pnlAguarde: TPanel;
+  TfrmAguarde = class(TUniForm)
+    pnlAguarde: TUniContainerPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
   public

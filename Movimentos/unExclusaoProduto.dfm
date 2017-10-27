@@ -1,25 +1,24 @@
 inherited frmExclusaoProduto: TfrmExclusaoProduto
   Left = 200
   Top = 131
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'Exclus'#227'o de produtos'
   ClientHeight = 396
   ClientWidth = 641
-  Font.Charset = DEFAULT_CHARSET
-  Font.Name = 'Tahoma'
+  Caption = 'Exclus'#227'o de produtos'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  BorderIcons = [biSystemMenu, biMinimize]
+  Font.Charset = DEFAULT_CHARSET
   ExplicitWidth = 647
   ExplicitHeight = 425
   PixelsPerInch = 96
   TextHeight = 13
-  object btnFechar: TSpeedButton
+  object btnFechar: TUniSpeedButton
     Left = 536
     Top = 344
     Width = 97
     Height = 25
     Hint = 'Fechar'
-    Caption = 'Sair'
+    ShowHint = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -62,16 +61,19 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
-    NumGlyphs = 2
+    Caption = 'Sair'
+    ParentColor = False
+    Color = clWindow
+    TabOrder = 2
     OnClick = btnFecharClick
   end
-  object btnExcluir: TSpeedButton
+  object btnExcluir: TUniSpeedButton
     Left = 432
     Top = 344
     Width = 97
     Height = 25
     Hint = 'Excluir produtos selecionados'
-    Caption = 'Excluir'
+    ShowHint = True
     Glyph.Data = {
       96030000424D9603000000000000960200002800000010000000100000000100
       08000000000000010000120B0000120B0000980000009800000000000000FFFF
@@ -102,15 +104,77 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       404D57666F6856412A0234080406162B424D596A6F6E736C28021F030606192E
       434F5A6B6E6E6E762802330F0506182F44515B6E727571552802022727151C30
       4553616760543C27020202020227272727272727272702020202}
+    Caption = 'Excluir'
+    ParentColor = False
+    Color = clWindow
+    TabOrder = 3
     OnClick = btnExcluirClick
   end
-  object bvlLinha: TBevel
+  object stbStatus: TUniStatusBar
+    Left = 0
+    Top = 377
+    Width = 641
+    Height = 19
+    Hint = ''
+    ShowHint = True
+    Panels = <>
+    SizeGrip = True
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    ParentColor = False
+    Color = clBtnFace
+    SimpleText = ' Para ajuda pressione F1'
+  end
+  object grpPesquisa: TUniGroupBox
+    Left = 8
+    Top = 8
+    Width = 625
+    Height = 49
+    Hint = ''
+    ShowHint = True
+    Caption = ' Pesquisa '
+    TabOrder = 0
+    TabStop = False
+    object edCodigo: TUniEdit
+      Left = 8
+      Top = 16
+      Width = 161
+      Hint = ''
+      ShowHint = True
+      Text = 'C'#243'digo...'
+      ParentFont = False
+      Font.Name = 'Verdana'
+      TabOrder = 0
+      OnChange = edCodigoChange
+      OnExit = edCodigoExit
+      OnEnter = edCodigoEnter
+    end
+    object edDescricao: TUniEdit
+      Left = 176
+      Top = 16
+      Width = 441
+      Hint = ''
+      ShowHint = True
+      Text = 'Descri'#231#227'o...'
+      ParentFont = False
+      Font.Name = 'Verdana'
+      TabOrder = 1
+      OnChange = edDescricaoChange
+      OnExit = edDescricaoExit
+      OnEnter = edDescricaoEnter
+    end
+  end
+  object bvlLinha: TUniPanel
     Left = 8
     Top = 336
     Width = 625
     Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 5
+    Caption = 'bvlLinha'
   end
-  object Grade: TDBGrid
+  object Grade: TUniDBGrid
     Left = 8
     Top = 64
     Width = 625
@@ -118,91 +182,15 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
     Hint = 
       'Dois cliques para marcar/desmarcar'#13#10'o produto que deseja excluir' +
       '...'
-    Ctl3D = True
+    ShowHint = True
     DataSource = dsPadrao
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentCtl3D = False
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
     ReadOnly = True
+    LoadMask.Message = 'Loading data...'
     TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    OnDrawColumnCell = GradeDrawColumnCell
+    ParentColor = False
+    Color = clWindow
     OnDblClick = GradeDblClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODBARRA'
-        Title.Caption = 'C'#243'digo de barra'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
-        Width = 395
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'ESTOQUE'
-        Title.Caption = 'Estoque'
-        Width = 76
-        Visible = True
-      end>
-  end
-  object stbStatus: TStatusBar
-    Left = 0
-    Top = 377
-    Width = 641
-    Height = 19
-    Panels = <>
-    SimplePanel = True
-    SimpleText = ' Para ajuda pressione F1'
-  end
-  object grpPesquisa: TGroupBox
-    Left = 8
-    Top = 8
-    Width = 625
-    Height = 49
-    Caption = ' Pesquisa '
-    TabOrder = 0
-    object edCodigo: TEdit
-      Left = 8
-      Top = 16
-      Width = 161
-      Height = 22
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clGray
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      Text = 'C'#243'digo...'
-      OnChange = edCodigoChange
-      OnEnter = edCodigoEnter
-      OnExit = edCodigoExit
-    end
-    object edDescricao: TEdit
-      Left = 176
-      Top = 16
-      Width = 441
-      Height = 22
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clGray
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-      Text = 'Descri'#231#227'o...'
-      OnChange = edDescricaoChange
-      OnEnter = edDescricaoEnter
-      OnExit = edDescricaoExit
-    end
   end
   object dsPadrao: TDataSource
     AutoEdit = False

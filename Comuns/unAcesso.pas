@@ -4,30 +4,29 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr,  Vcl.Imaging.pngimage;
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr,  Vcl.Imaging.pngimage,
+  uniGUIForm, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniEdit,
+  uniImage;
 
 type
-  TfrmAcesso = class(TForm)
-    edtUsuario: TLabeledEdit;
-    btnCancelar: TBitBtn;
-    btnOK: TBitBtn;
-    imgAcesso: TImage;
-    edtSenha: TLabeledEdit;
+  TfrmAcesso = class(TUniLoginForm)
+    btnCancelar: TUniBitBtn;
+    btnOK: TUniBitBtn;
+    edtUsuario: TUniEdit;
+    edtSenha: TUniEdit;
+    imgAcesso: TUniImage;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormActivate(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure btnCancelarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     Ok: Boolean;
     Tentativa: Integer;
     class var LogIn: Boolean;
   protected
-    procedure WMNChitTest(var Msg: TMessage); message WM_NCHITTEST;
   public
     function ValidaLogin: Boolean;
     function UsuarioExiste: Boolean;
@@ -40,7 +39,7 @@ var
 implementation
 
 uses unDmPrincipal, Funcoes, unSetupConnection, VarGlobal,
-  udmAcesso, Datasnap.DBClient, uUtilFncs, IniFiles;
+  udmAcesso, Datasnap.DBClient, uUtilFncs, IniFiles, UniGUIVars;
 
 {$R *.dfm}
 
@@ -146,47 +145,47 @@ end;
 
 procedure TfrmAcesso.btnOkClick(Sender: TObject);
 begin
-  if Trim(edtUsuario.Text).IsEmpty then
-  begin
-    MsgErro('','Informe o usuário.');
-    ModalResult := mrNone;
-    edtUsuario.SetFocus;
-    Exit;
-  end;
-
-  if Trim(edtSenha.Text).IsEmpty then
-  begin
-    MsgErro('','Informe a senha.');
-    ModalResult := mrNone;
-    edtSenha.SetFocus;
-    Exit;
-  end;
-
-  if UsuarioExiste then
-  begin
-    if ValidaLogin then
-    begin
-      with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
-      try
-        WriteString('Login', 'NomeUsuario', edtUsuario.Text);
-      finally
-        free;
-      end;
-
-      ModalResult := mrOk;
-      Ok := True;
-    end
-    else
-    begin
-      ModalResult := mrNone;
-      MsgErro('','Usuário ou Senha está incorreto.');
-      if ActiveControl is TLabeledEdit then
-        TLabeledEdit(ActiveControl).SelectAll;
-      Abort;
-    end;
-  end
-  else
-    raise Exception.Create('Nenhum usuário cadastrado.');
+//  if Trim(edtUsuario.Text).IsEmpty then
+//  begin
+//    MsgErro('','Informe o usuário.');
+//    ModalResult := mrNone;
+//    edtUsuario.SetFocus;
+//    Exit;
+//  end;
+//
+//  if Trim(edtSenha.Text).IsEmpty then
+//  begin
+//    MsgErro('','Informe a senha.');
+//    ModalResult := mrNone;
+//    edtSenha.SetFocus;
+//    Exit;
+//  end;
+//
+//  if UsuarioExiste then
+//  begin
+//    if ValidaLogin then
+//    begin
+//      with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
+//      try
+//        WriteString('Login', 'NomeUsuario', edtUsuario.Text);
+//      finally
+//        free;
+//      end;
+//
+//      ModalResult := mrOk;
+//      Ok := True;
+//    end
+//    else
+//    begin
+//      ModalResult := mrNone;
+//      MsgErro('','Usuário ou Senha está incorreto.');
+//      if ActiveControl is TLabeledEdit then
+//        TLabeledEdit(ActiveControl).SelectAll;
+//      Abort;
+//    end;
+//  end
+//  else
+//    raise Exception.Create('Nenhum usuário cadastrado.');
 
   ModalResult := mrOk;
 end;
@@ -197,26 +196,9 @@ begin
   Ok := False;
 end;
 
-procedure TfrmAcesso.FormCloseQuery(Sender: TObject;
-  var CanClose: Boolean);
-begin
-  if LogIn then
-    if (not ok) and (Application.MessageBox('Tem certeza que deseja fechar o sistema?',
-      'Finalizando o sistema', MB_ICONQUESTION or MB_YESNO or MB_DEFBUTTON2) <> ID_YES) then
-      CanClose := False;
-end;
-
 procedure TfrmAcesso.btnCancelarClick(Sender: TObject);
 begin
   ModalResult := mrCancel;
-end;
-
-procedure TfrmAcesso.FormShow(Sender: TObject);
-begin
-  edtUsuario.Visible := False;
-  edtSenha.Visible := False;
-  btnOK.Visible := False;
-  btnCancelar.Visible := False;
 end;
 
 function TfrmAcesso.UsuarioExiste: Boolean;
@@ -229,21 +211,8 @@ begin
   end;
 end;
 
-procedure TfrmAcesso.WMNChitTest(var Msg: TMessage);
-begin
-  if GetAsyncKeyState(VK_LBUTTON) < 0 then
-    Msg.Result := HTCAPTION
-  else
-    Msg.Result := HTCLIENT;
-end;
-
 initialization
-  RegisterClass(TfrmAcesso);
-finalization
-  UnRegisterClass(TfrmAcesso);
+  RegisterAppFormClass(TfrmAcesso);
 
 end.
-
-
-
 

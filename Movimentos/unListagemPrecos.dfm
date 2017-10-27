@@ -1,190 +1,35 @@
 inherited frmListagemPrecos: TfrmListagemPrecos
   Left = 62
   Top = 137
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'Listagem de pre'#231'os'
   ClientHeight = 433
   ClientWidth = 753
-  Font.Charset = DEFAULT_CHARSET
-  Font.Name = 'Tahoma'
-  OnKeyPress = FormKeyPress
+  Caption = 'Listagem de pre'#231'os'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  OnKeyPress = FormKeyPress
+  BorderIcons = [biSystemMenu, biMinimize]
+  Font.Charset = DEFAULT_CHARSET
   ExplicitWidth = 759
   ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCampo: TLabel
+  object lbCampo: TUniLabel
     Left = 8
     Top = 8
-    Width = 33
+    Width = 41
     Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'Campo'
+    TabOrder = 5
   end
-  object edtPesquisa: TLabeledEdit
-    Left = 169
-    Top = 24
-    Width = 473
-    Height = 21
-    Hint = 'Valor a ser pesquisado'
-    EditLabel.Width = 84
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Valor da pesquisa'
-    TabOrder = 1
-    OnKeyPress = edtPesquisaKeyPress
-  end
-  object Grade: TDBGrid
-    Left = 8
-    Top = 52
-    Width = 737
-    Height = 341
-    DataSource = dsProdutos
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ReadOnly = True
-    TabOrder = 3
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    OnDrawColumnCell = GradeDrawColumnCell
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODIGO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'C'#243'digo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CODIGOBARRA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Cod. Barras'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'REFERENCIA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Refer'#234'ncia'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCRICAO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Descri'#231#227'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'ESTOQUE'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Estoque'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'PRECO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Pre'#231'o'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'FORNECEDOR'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Fornecedor'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'GRUPO'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = []
-        Title.Caption = 'Grupo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end>
-  end
-  object btnFechar: TBitBtn
+  object btnFechar: TUniBitBtn
     Left = 656
     Top = 400
     Width = 89
     Height = 25
     Hint = 'Sair'
-    Caption = '&Fechar'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -236,25 +81,17 @@ inherited frmListagemPrecos: TfrmListagemPrecos
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = '&Fechar'
     TabOrder = 4
     OnClick = btnFecharClick
   end
-  object cbbCampo: TComboBox
-    Left = 8
-    Top = 24
-    Width = 153
-    Height = 21
-    Style = csDropDownList
-    TabOrder = 0
-    OnClick = cbbCampoClick
-  end
-  object btnPesquisar: TBitBtn
+  object btnPesquisar: TUniBitBtn
     Left = 648
     Top = 21
     Width = 97
     Height = 25
-    Caption = '&Pesquisar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       1A030000424D1A030000000000001A0200002800000010000000100000000100
       08000000000000010000120B0000120B0000790000007900000000000000FFFF
@@ -281,8 +118,47 @@ inherited frmListagemPrecos: TfrmListagemPrecos
       50595F182B1D1927210804040404634750595C61131E25150808040404046348
       4D4B3A3B4A67030604040404040463464543413F3F3E4C680404040404040465
       514442403D3C690404040404040404046363636363630404040404040404}
+    Caption = '&Pesquisar'
     TabOrder = 2
     OnClick = btnPesquisarClick
+  end
+  object edtPesquisa: TUniEdit
+    Left = 169
+    Top = 24
+    Width = 473
+    Height = 21
+    Hint = 'Valor a ser pesquisado'
+    ShowHint = True
+    Text = ''
+    TabOrder = 1
+    OnKeyPress = edtPesquisaKeyPress
+  end
+  object cbbCampo: TUniComboBox
+    Left = 8
+    Top = 24
+    Width = 153
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Style = csDropDownList
+    Text = ''
+    TabOrder = 0
+    OnClick = cbbCampoClick
+  end
+  object Grade: TUniDBGrid
+    Left = 8
+    Top = 52
+    Width = 737
+    Height = 341
+    Hint = ''
+    ShowHint = True
+    DataSource = dsProdutos
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    TabOrder = 3
+    ParentColor = False
+    Color = clWindow
   end
   object dsProdutos: TDataSource
     AutoEdit = False

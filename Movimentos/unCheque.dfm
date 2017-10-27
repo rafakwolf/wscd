@@ -1,33 +1,326 @@
 inherited frmCheque: TfrmCheque
   Left = 217
   Top = 139
-  Caption = 'frmCheque'
   ClientHeight = 501
   ClientWidth = 537
+  Caption = 'frmCheque'
   OldCreateOrder = True
   ExplicitTop = -94
   ExplicitWidth = 543
   ExplicitHeight = 550
   PixelsPerInch = 96
   TextHeight = 13
-  object lbBaixado: TLabel [0]
+  inherited sbStatus: TUniStatusBar
+    Top = 479
+    Width = 537
+    Height = 22
+    ExplicitTop = 479
+    ExplicitWidth = 537
+    ExplicitHeight = 22
+  end
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 537
+    TabOrder = 15
+    ExplicitWidth = 537
+  end
+  object lbBaixado: TUniLabel [2]
     Left = 147
     Top = 443
-    Width = 65
-    Height = 14
+    Width = 56
+    Height = 13
+    Hint = ''
+    ShowHint = True
     Caption = 'lbBaixado'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 16
   end
-  object imgCheque: TImage [1]
+  object lbBanco: TUniLabel [3]
+    Left = 67
+    Top = 60
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '000'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 17
+  end
+  object lbConta: TUniLabel [4]
+    Left = 206
+    Top = 60
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Conta'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 18
+  end
+  object lbAgencia: TUniLabel [5]
+    Left = 105
+    Top = 60
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Agencia'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 19
+  end
+  object lbNroCheque: TUniLabel [6]
+    Left = 311
+    Top = 60
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'NroCheque'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 20
+  end
+  object lbValor: TUniLabel [7]
+    Left = 416
+    Top = 60
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Valor'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 21
+  end
+  object lbComp: TUniLabel [8]
+    Left = 27
+    Top = 60
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '0000'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 22
+  end
+  object lbValorExtenso: TUniLabel [9]
+    Left = 24
+    Top = 76
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = '                     Valor Extenso'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 23
+  end
+  object lbNominal: TUniLabel [10]
+    Left = 33
+    Top = 108
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Nominal'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 24
+  end
+  object lbCidade: TUniLabel [11]
+    Left = 240
+    Top = 124
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Cidade'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 25
+  end
+  object lbDia: TUniLabel [12]
+    Left = 355
+    Top = 124
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Dia'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 26
+  end
+  object lbMes: TUniLabel [13]
+    Left = 392
+    Top = 124
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Mes'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 27
+  end
+  object lbAno: TUniLabel [14]
+    Left = 472
+    Top = 124
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Ano'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 28
+  end
+  object lbCpfCnpj: TUniLabel [15]
+    Left = 315
+    Top = 172
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Cpf-Cnpj'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 29
+  end
+  object lbBomPara: TUniLabel [16]
+    Left = 424
+    Top = 213
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Bom para'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 30
+  end
+  object lbBandaMagnetica: TUniLabel [17]
+    Left = 24
+    Top = 214
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Banda Magnetica'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 31
+  end
+  object btnBaixar: TUniBitBtn [18]
+    Left = 440
+    Top = 436
+    Width = 81
+    Height = 25
+    ShowHint = True
+    Action = actBaixar
+    Glyph.Data = {
+      36060000424D3606000000000000360000002800000020000000100000000100
+      18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
+      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+      FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+      000D6C000D68000C5D000A53000A4F000A4F000A4F000A4F000A4F000A4F000A
+      4F000840FF00FFFF00FFFF00FFFF00FF9898989797979494949191918F8F8F8F
+      8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8B8B8BFF00FFFF00FFFF00FF001397
+      0017BB0016B40015AA0013A00013990013970013970013990013990013970013
+      9E000F7B000840FF00FFFF00FFA3A3A3ACACACAAAAAAA8A8A8A6A6A6A4A4A4A3
+      A3A3A3A3A3A4A4A4A4A4A4A3A3A3A5A5A59C9C9C8B8B8BFF00FFFF00FF0017B8
+      001CE3001AD40019CC0018C50017BB0016B10016AF0016AF0016AF0016AF0016
+      B600139E000A4FFF00FFFF00FFACACACB6B6B6B2B2B2B0B0B0AFAFAFACACACAA
+      AAAAA9A9A9A9A9A9A9A9A9A9A9A9ABABABA5A5A58F8F8FFF00FFFF00FF0018C7
+      001EF0001CE1001AD10018C70018C00016B60016AF0015AA0015A70014A50016
+      AF001399000A51FF00FFFF00FFAFAFAFB9B9B9B5B5B5B2B2B2AFAFAFADADADAB
+      ABABA9A9A9A8A8A8A7A7A7A7A7A7A9A9A9A4A4A4909090FF00FFFF00FF0018CA
+      0224FF001FF6001CE3001AD40018CAFFFFFFFFFFFF0016B10015AA0015A70016
+      AF001399000A4FFF00FFFF00FFB0B0B0BEBEBEBABABAB6B6B6B2B2B2B0B0B0FF
+      FFFFFFFFFFAAAAAAA8A8A8A7A7A7A9A9A9A4A4A48F8F8FFF00FFFF00FF0018CA
+      163BFF0629FF001FF6001CE3FEFEFEFFFFFFFFFFFFFFFFFF0016B40015AC0016
+      AF001399000A4FFF00FFFF00FFB0B0B0C8C8C8C1C1C1BABABAB6B6B6FFFFFFFF
+      FFFFFFFFFFFFFFFFAAAAAAA9A9A9A9A9A9A4A4A48F8F8FFF00FFFF00FF0018CA
+      3559FF0F35FF0121FFFEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0017B80016
+      B600139C000A51FF00FFFF00FFB0B0B0D4D4D4C5C5C5BDBDBDFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFACACACABABABA4A4A4909090FF00FFFF00FF0018CA
+      4E6EFF193FFFFFFFFFFFFFFFFFFFFF001CE6001CDEFFFFFFFFFFFFFFFFFF0018
+      C00014A3000B59FF00FFFF00FFB0B0B0DCDCDCCACACAFFFFFFFFFFFFFFFFFFB6
+      B6B6B5B5B5FFFFFFFFFFFFFFFFFFADADADA6A6A6929292FF00FFFF00FF0018CA
+      5A79FF2146FFFFFFFFFFFFFF001EF0001DEE001DEB001CE1FFFFFFFFFFFF0019
+      CC0016B1000D6AFF00FFFF00FFB0B0B0DFDFDFCDCDCDFFFFFFFFFFFFB9B9B9B8
+      B8B8B8B8B8B5B5B5FFFFFFFFFFFFB0B0B0AAAAAA979797FF00FFFF00FF0018CA
+      6783FF2D51FF1338FF0D31FF0325FF001FFF001FF8001DEE001CE6001CDE001B
+      D90017BD000F79FF00FFFF00FFB0B0B0E3E3E3D1D1D1C7C7C7C4C4C4BFBFBFBC
+      BCBCBBBBBBB8B8B8B6B6B6B5B5B5B3B3B3ADADAD9B9B9BFF00FFFF00FF0018CA
+      7690FF4163FF1B40FF163BFF0C30FF0528FF0427FF001FFF001EF0001CE9001C
+      E60018C7001187FF00FFFF00FFB0B0B0E7E7E7D7D7D7CACACAC8C8C8C4C4C4C0
+      C0C0BFBFBFBCBCBCB9B9B9B7B7B7B6B6B6AFAFAF9F9F9FFF00FFFF00FF0018CA
+      7F98FF728CFF5676FF4668FF3559FF2449FF163BFF0528FF001FF8001EF0001E
+      F0001BD9001399FF00FFFF00FFB0B0B0E9E9E9E6E6E6DEDEDED9D9D9D4D4D4CE
+      CECEC8C8C8C0C0C0BBBBBBB9B9B9B9B9B9B3B3B3A4A4A4FF00FFFF00FF0018CA
+      5877FF7F98FF839CFF7690FF6582FF4A6BFF284CFF0E33FF0121FF001FF8001F
+      FB001CE30014A5FF00FFFF00FFB0B0B0DFDFDFE9E9E9EBEBEBE7E7E7E2E2E2DA
+      DADACFCFCFC5C5C5BDBDBDBBBBBBBBBBBBB6B6B6A7A7A7FF00FFFF00FFFF00FF
+      001DEE0A2EFF0C30FF0A2EFF0629FF0121FF001DEE001CDE001AD10019CC0019
+      CF0017B8FF00FFFF00FFFF00FFFF00FFB8B8B8C3C3C3C4C4C4C3C3C3C1C1C1BD
+      BDBDB8B8B8B5B5B5B2B2B2B0B0B0B1B1B1ACACACFF00FFFF00FFFF00FFFF00FF
+      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+      FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    TabOrder = 13
+  end
+  object imgCheque: TUniImage [19]
     Left = 16
     Top = 48
     Width = 505
     Height = 190
+    Hint = ''
+    ShowHint = True
     AutoSize = True
     Picture.Data = {
       07544269746D61705E650400424D5E650400000000003600000028000000F901
@@ -9035,451 +9328,170 @@ inherited frmCheque: TfrmCheque
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000000000000}
   end
-  object lbBanco: TLabel [2]
-    Left = 67
-    Top = 60
-    Width = 26
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = '000'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbConta: TLabel [3]
-    Left = 206
-    Top = 60
-    Width = 93
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Conta'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbAgencia: TLabel [4]
-    Left = 105
-    Top = 60
-    Width = 89
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Agencia'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbNroCheque: TLabel [5]
-    Left = 311
-    Top = 60
-    Width = 75
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'NroCheque'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbValor: TLabel [6]
-    Left = 416
-    Top = 60
-    Width = 89
-    Height = 13
-    AutoSize = False
-    Caption = 'Valor'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbComp: TLabel [7]
-    Left = 27
-    Top = 60
-    Width = 28
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = '0000'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbValorExtenso: TLabel [8]
-    Left = 24
-    Top = 76
-    Width = 484
-    Height = 31
-    AutoSize = False
-    Caption = '                     Valor Extenso'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-    WordWrap = True
-  end
-  object lbNominal: TLabel [9]
-    Left = 33
-    Top = 108
-    Width = 472
-    Height = 13
-    AutoSize = False
-    Caption = 'Nominal'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbCidade: TLabel [10]
-    Left = 240
-    Top = 124
-    Width = 108
-    Height = 13
-    AutoSize = False
-    Caption = 'Cidade'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbDia: TLabel [11]
-    Left = 355
-    Top = 124
-    Width = 23
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Dia'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbMes: TLabel [12]
-    Left = 392
-    Top = 124
-    Width = 65
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Mes'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbAno: TLabel [13]
-    Left = 472
-    Top = 124
-    Width = 32
-    Height = 13
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Ano'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbCpfCnpj: TLabel [14]
-    Left = 315
-    Top = 172
-    Width = 188
-    Height = 13
-    AutoSize = False
-    Caption = 'Cpf-Cnpj'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbBomPara: TLabel [15]
-    Left = 424
-    Top = 213
-    Width = 81
-    Height = 13
-    AutoSize = False
-    Caption = 'Bom para'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Transparent = True
-  end
-  object lbBandaMagnetica: TLabel [16]
-    Left = 24
-    Top = 214
-    Width = 329
-    Height = 16
-    AutoSize = False
-    Caption = 'Banda Magnetica'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clGray
-    Font.Height = -13
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Transparent = True
-  end
-  object bvlLinha: TBevel [17]
-    Left = 8
-    Top = 248
-    Width = 521
-    Height = 2
-  end
-  object btnBaixar: TBitBtn [18]
-    Left = 440
-    Top = 436
-    Width = 81
-    Height = 25
-    Action = actBaixar
-    Caption = 'Baixar'
-    Glyph.Data = {
-      36060000424D3606000000000000360000002800000020000000100000000100
-      18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
-      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-      FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-      000D6C000D68000C5D000A53000A4F000A4F000A4F000A4F000A4F000A4F000A
-      4F000840FF00FFFF00FFFF00FFFF00FF9898989797979494949191918F8F8F8F
-      8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8F8B8B8BFF00FFFF00FFFF00FF001397
-      0017BB0016B40015AA0013A00013990013970013970013990013990013970013
-      9E000F7B000840FF00FFFF00FFA3A3A3ACACACAAAAAAA8A8A8A6A6A6A4A4A4A3
-      A3A3A3A3A3A4A4A4A4A4A4A3A3A3A5A5A59C9C9C8B8B8BFF00FFFF00FF0017B8
-      001CE3001AD40019CC0018C50017BB0016B10016AF0016AF0016AF0016AF0016
-      B600139E000A4FFF00FFFF00FFACACACB6B6B6B2B2B2B0B0B0AFAFAFACACACAA
-      AAAAA9A9A9A9A9A9A9A9A9A9A9A9ABABABA5A5A58F8F8FFF00FFFF00FF0018C7
-      001EF0001CE1001AD10018C70018C00016B60016AF0015AA0015A70014A50016
-      AF001399000A51FF00FFFF00FFAFAFAFB9B9B9B5B5B5B2B2B2AFAFAFADADADAB
-      ABABA9A9A9A8A8A8A7A7A7A7A7A7A9A9A9A4A4A4909090FF00FFFF00FF0018CA
-      0224FF001FF6001CE3001AD40018CAFFFFFFFFFFFF0016B10015AA0015A70016
-      AF001399000A4FFF00FFFF00FFB0B0B0BEBEBEBABABAB6B6B6B2B2B2B0B0B0FF
-      FFFFFFFFFFAAAAAAA8A8A8A7A7A7A9A9A9A4A4A48F8F8FFF00FFFF00FF0018CA
-      163BFF0629FF001FF6001CE3FEFEFEFFFFFFFFFFFFFFFFFF0016B40015AC0016
-      AF001399000A4FFF00FFFF00FFB0B0B0C8C8C8C1C1C1BABABAB6B6B6FFFFFFFF
-      FFFFFFFFFFFFFFFFAAAAAAA9A9A9A9A9A9A4A4A48F8F8FFF00FFFF00FF0018CA
-      3559FF0F35FF0121FFFEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0017B80016
-      B600139C000A51FF00FFFF00FFB0B0B0D4D4D4C5C5C5BDBDBDFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFACACACABABABA4A4A4909090FF00FFFF00FF0018CA
-      4E6EFF193FFFFFFFFFFFFFFFFFFFFF001CE6001CDEFFFFFFFFFFFFFFFFFF0018
-      C00014A3000B59FF00FFFF00FFB0B0B0DCDCDCCACACAFFFFFFFFFFFFFFFFFFB6
-      B6B6B5B5B5FFFFFFFFFFFFFFFFFFADADADA6A6A6929292FF00FFFF00FF0018CA
-      5A79FF2146FFFFFFFFFFFFFF001EF0001DEE001DEB001CE1FFFFFFFFFFFF0019
-      CC0016B1000D6AFF00FFFF00FFB0B0B0DFDFDFCDCDCDFFFFFFFFFFFFB9B9B9B8
-      B8B8B8B8B8B5B5B5FFFFFFFFFFFFB0B0B0AAAAAA979797FF00FFFF00FF0018CA
-      6783FF2D51FF1338FF0D31FF0325FF001FFF001FF8001DEE001CE6001CDE001B
-      D90017BD000F79FF00FFFF00FFB0B0B0E3E3E3D1D1D1C7C7C7C4C4C4BFBFBFBC
-      BCBCBBBBBBB8B8B8B6B6B6B5B5B5B3B3B3ADADAD9B9B9BFF00FFFF00FF0018CA
-      7690FF4163FF1B40FF163BFF0C30FF0528FF0427FF001FFF001EF0001CE9001C
-      E60018C7001187FF00FFFF00FFB0B0B0E7E7E7D7D7D7CACACAC8C8C8C4C4C4C0
-      C0C0BFBFBFBCBCBCB9B9B9B7B7B7B6B6B6AFAFAF9F9F9FFF00FFFF00FF0018CA
-      7F98FF728CFF5676FF4668FF3559FF2449FF163BFF0528FF001FF8001EF0001E
-      F0001BD9001399FF00FFFF00FFB0B0B0E9E9E9E6E6E6DEDEDED9D9D9D4D4D4CE
-      CECEC8C8C8C0C0C0BBBBBBB9B9B9B9B9B9B3B3B3A4A4A4FF00FFFF00FF0018CA
-      5877FF7F98FF839CFF7690FF6582FF4A6BFF284CFF0E33FF0121FF001FF8001F
-      FB001CE30014A5FF00FFFF00FFB0B0B0DFDFDFE9E9E9EBEBEBE7E7E7E2E2E2DA
-      DADACFCFCFC5C5C5BDBDBDBBBBBBBBBBBBB6B6B6A7A7A7FF00FFFF00FFFF00FF
-      001DEE0A2EFF0C30FF0A2EFF0629FF0121FF001DEE001CDE001AD10019CC0019
-      CF0017B8FF00FFFF00FFFF00FFFF00FFB8B8B8C3C3C3C4C4C4C3C3C3C1C1C1BD
-      BDBDB8B8B8B5B5B5B2B2B2B0B0B0B1B1B1ACACACFF00FFFF00FFFF00FFFF00FF
-      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-      FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
-    TabOrder = 13
-  end
-  object dbeDataBaixado: TDBEdit [19]
+  object dbeDataBaixado: TUniDBEdit [20]
     Left = 16
     Top = 440
     Width = 121
     Height = 21
-    Color = clBtnFace
+    Hint = ''
+    ShowHint = True
     DataField = 'DATABAIXADO'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 12
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeForn: TDBEdit [20]
+  object dbeForn: TUniDBEdit [21]
     Left = 272
     Top = 399
     Width = 227
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'FORN'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 11
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeBandMagnetica: TDBEdit [21]
+  object dbeBandMagnetica: TUniDBEdit [22]
     Left = 120
     Top = 276
     Width = 225
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'BANDAMAGNETICA'
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeCliente: TDBEdit [22]
+  object dbeCliente: TUniDBEdit [23]
     Left = 16
     Top = 399
     Width = 227
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'CLIENTE'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 10
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeVenda: TDBEdit [23]
+  object dbeVenda: TUniDBEdit [24]
     Left = 336
     Top = 358
     Width = 89
     Height = 21
-    Color = clBtnFace
+    Hint = ''
+    ShowHint = True
     DataField = 'VENDA'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 8
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeValor: TDBEdit [24]
+  object dbeValor: TUniDBEdit [25]
     Left = 400
     Top = 317
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'VALOR'
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbdBomPara: TDBEdit [25]
+  object dbdBomPara: TUniDBEdit [26]
     Left = 176
     Top = 358
     Width = 153
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'BOMPARA'
     DataSource = dsPadrao
     TabOrder = 7
   end
-  object dbeBanco: TDBEdit [26]
+  object dbeBanco: TUniDBEdit [27]
     Left = 352
     Top = 277
     Width = 147
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'BANCO'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 1
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeAgencia: TDBEdit [27]
+  object dbeAgencia: TUniDBEdit [28]
     Left = 16
     Top = 317
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'AGENCIA'
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeConta: TDBEdit [28]
+  object dbeConta: TUniDBEdit [29]
     Left = 144
     Top = 317
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'CONTA'
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeNumero: TDBEdit [29]
+  object dbeNumero: TUniDBEdit [30]
     Left = 272
     Top = 317
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'NUMERO'
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbdDataEmissao: TDBEdit [30]
+  object dbdDataEmissao: TUniDBEdit [31]
     Left = 16
     Top = 358
     Width = 153
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATAEMISSAO'
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbeCompra: TDBEdit [31]
+  object dbeCompra: TUniDBEdit [32]
     Left = 432
     Top = 358
     Width = 89
     Height = 21
-    Color = clBtnFace
+    Hint = ''
+    ShowHint = True
     DataField = 'COMPRA'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 9
+    Color = clBtnFace
+    ReadOnly = True
   end
-  inherited sbStatus: TStatusBar
-    Top = 479
-    Width = 537
-    Height = 22
-    ExplicitTop = 479
-    ExplicitWidth = 537
-    ExplicitHeight = 22
-  end
-  inherited pnBotoesPadrao: TPanel
-    Width = 537
-    TabOrder = 15
-    ExplicitWidth = 537
+  object bvlLinha: TUniPanel [33]
+    Left = 8
+    Top = 248
+    Width = 521
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 33
+    Caption = 'bvlLinha'
   end
   inherited actlNavigateActions: TActionList
     Left = 240
@@ -9488,9 +9500,6 @@ inherited frmCheque: TfrmCheque
       Hint = 'Cheques emitidos'
       ShortCut = 0
       OnExecute = actPrintExecute
-    end
-    inherited actPrintPerson: TAction
-      Caption = 'Cheques baixados'
     end
     object actBaixar: TAction
       Category = 'Navigate'
@@ -9509,55 +9518,6 @@ inherited frmCheque: TfrmCheque
     DataSet = cdsPadrao
     Left = 463
     Top = 388
-  end
-  inherited mmPadrao: TMainMenu
-    Left = 344
-    Top = 220
-    inherited miOpcoes: TMenuItem
-      object N6: TMenuItem
-        Caption = '-'
-      end
-      object miRepasse: TMenuItem
-        Action = actBaixar
-      end
-      object Estornarbaixa1: TMenuItem
-        Action = actEstornarBaixa
-      end
-    end
-    inherited miRelatorios: TMenuItem
-      object miChequeEmitido: TMenuItem [0]
-        Caption = 'Cheques emitidos'
-        OnClick = miChequeEmitidoClick
-      end
-      inherited mImprimir: TMenuItem
-        Caption = 'Cheques recebidos'
-      end
-      object N7: TMenuItem [2]
-        Caption = '-'
-      end
-      object miChequeEmitidoAVista: TMenuItem [3]
-        Caption = 'Cheques emitidos a vista'
-        OnClick = miChequeEmitidoAVistaClick
-      end
-      object miChequeEmitidoAPrazo: TMenuItem [4]
-        Caption = 'Cheques emitidos pr'#233'-datados'
-        OnClick = miChequeEmitidoAPrazoClick
-      end
-      object N5: TMenuItem [5]
-        Caption = '-'
-      end
-      object miChequePendente: TMenuItem
-        Caption = 'Cheques pendentes'
-        OnClick = miChequePendenteClick
-      end
-      object N9: TMenuItem
-        Caption = '-'
-      end
-      object miAssistente: TMenuItem
-        Caption = 'Assistente de relat'#243'rio'
-        OnClick = miAssistenteClick
-      end
-    end
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 

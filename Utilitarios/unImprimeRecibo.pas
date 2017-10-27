@@ -4,20 +4,22 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, Spin;
+  Dialogs, StdCtrls, Buttons, ExtCtrls, Spin, uniGUIBaseClasses, uniGUIClasses,
+  uniLabel, uniButton, uniBitBtn, uniEdit, uniImage, uniGUIForm, uniGroupBox,
+  uniSpinEdit;
 
 type
-  TfrmImprimeRecibo = class(TForm)
-    btnImprimir: TBitBtn;
-    btnVisualizar: TBitBtn;
-    btnSair: TBitBtn;
-    imgImpressora: TImage;
-    gbRecibo: TGroupBox;
-    edPorta: TLabeledEdit;
-    lbColunas: TLabel;
-    edColunas: TSpinEdit;
+  TfrmImprimeRecibo = class(TUniForm)
+    btnImprimir: TUniBitBtn;
+    btnVisualizar: TUniBitBtn;
+    btnSair: TUniBitBtn;
+    imgImpressora: TUniImage;
+    gbRecibo: TUniGroupBox;
     rbA4: TRadioButton;
     rbBobina: TRadioButton;
+    lbColunas: TUniLabel;
+    edPorta: TUniEdit;
+    edColunas: TUniSpinEdit;
     procedure btnSairClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);

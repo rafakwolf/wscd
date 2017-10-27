@@ -1,107 +1,24 @@
 inherited frmVendaNaoConc: TfrmVendaNaoConc
   Left = 0
   Top = 175
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'frmVendaNaoConc'
   ClientHeight = 361
   ClientWidth = 792
-  OldCreateOrder = True
+  Caption = 'frmVendaNaoConc'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  OldCreateOrder = True
+  BorderIcons = [biSystemMenu]
   ExplicitWidth = 798
   ExplicitHeight = 390
   PixelsPerInch = 96
   TextHeight = 13
-  object dbgrdVendaNaoConc: TDBGrid
-    Left = 8
-    Top = 8
-    Width = 809
-    Height = 313
-    DataSource = dsVenda
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Arial'
-    Font.Style = []
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 0
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDrawColumnCell = dbgrdVendaNaoConcDrawColumnCell
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CODIGO'
-        Title.Caption = 'C'#243'digo'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DATA'
-        Title.Caption = 'Data'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'NOME'
-        Title.Caption = 'Cliente'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Width = 437
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTAL'
-        Title.Caption = 'Total'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CONCLUIDA'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        Title.Caption = 'Conclu'#237'da'
-        Title.Font.Charset = ANSI_CHARSET
-        Title.Font.Color = clWindowText
-        Title.Font.Height = -12
-        Title.Font.Name = 'Arial'
-        Title.Font.Style = []
-        Visible = True
-      end>
-  end
-  object btnOK: TBitBtn
+  object btnOK: TUniBitBtn
     Left = 632
     Top = 328
     Width = 89
     Height = 25
-    Caption = '&OK'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -153,16 +70,17 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&OK'
     ModalResult = 1
-    NumGlyphs = 2
     TabOrder = 1
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 728
     Top = 328
     Width = 89
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -214,9 +132,27 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 2
+  end
+  object dbgrdVendaNaoConc: TUniDBGrid
+    Left = 8
+    Top = 8
+    Width = 809
+    Height = 313
+    Hint = ''
+    ShowHint = True
+    DataSource = dsVenda
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+    ReadOnly = True
+    LoadMask.Message = 'Loading data...'
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentFont = False
+    TabOrder = 0
+    ParentColor = False
+    Color = clWindow
   end
   object sqldVenda: TSQLDataSet
     CommandText = 

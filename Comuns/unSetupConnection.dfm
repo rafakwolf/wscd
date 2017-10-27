@@ -2,47 +2,20 @@ object frmSetupConnection: TfrmSetupConnection
   Left = 235
   Top = 151
   HelpContext = 2
-  BorderStyle = bsSingle
-  Caption = 'Configura'#231#227'o de conex'#227'o'
   ClientHeight = 140
   ClientWidth = 321
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  KeyPreview = True
-  OldCreateOrder = False
-  Position = poDesktopCenter
-  OnClose = FormClose
-  OnCreate = FormCreate
-  OnKeyDown = FormKeyDown
+  Caption = 'Configura'#231#227'o de conex'#227'o'
   OnShow = FormShow
+  BorderStyle = bsSingle
+  Position = poDesktopCenter
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnKeyDown = FormKeyDown
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object LabelServidores: TLabel
-    Left = 8
-    Top = 6
-    Width = 110
-    Height = 13
-    Caption = 'Computadores da rede'
-    Color = clBtnFace
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentColor = False
-    ParentFont = False
-    Transparent = False
-  end
-  object BevelLinha: TBevel
-    Left = 8
-    Top = 75
-    Width = 305
-    Height = 2
-  end
   object cbbComp: TComboBoxEx
     Left = 8
     Top = 22
@@ -55,12 +28,38 @@ object frmSetupConnection: TfrmSetupConnection
     TabOrder = 1
     Images = ilImagens
   end
-  object bbConfirma: TBitBtn
+  object stbStatus: TUniStatusBar
+    Left = 0
+    Top = 121
+    Width = 321
+    Height = 19
+    Hint = ''
+    Panels = <>
+    SizeGrip = False
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    ParentColor = False
+    Color = clBtnFace
+  end
+  object LabelServidores: TUniLabel
+    Left = 8
+    Top = 6
+    Width = 110
+    Height = 13
+    Hint = ''
+    Caption = 'Computadores da rede'
+    ParentFont = False
+    ParentColor = False
+    Color = clBtnFace
+    Transparent = False
+    TabOrder = 6
+  end
+  object bbConfirma: TUniBitBtn
     Left = 160
     Top = 88
     Width = 73
     Height = 25
-    Caption = '&OK'
+    Hint = ''
     Enabled = False
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
@@ -113,17 +112,17 @@ object frmSetupConnection: TfrmSetupConnection
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&OK'
     ModalResult = 1
-    NumGlyphs = 2
     TabOrder = 3
     OnClick = bbConfirmaClick
   end
-  object bbCancela: TBitBtn
+  object bbCancela: TUniBitBtn
     Left = 240
     Top = 88
     Width = 73
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -175,16 +174,16 @@ object frmSetupConnection: TfrmSetupConnection
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 2
   end
-  object bbCarregarServidores: TBitBtn
+  object bbCarregarServidores: TUniBitBtn
     Left = 8
     Top = 88
     Width = 105
     Height = 25
-    Caption = 'Carregar rede'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -236,38 +235,33 @@ object frmSetupConnection: TfrmSetupConnection
       FF00FFFF00FFFF00FF004B82004B82004B82004B82004B82FF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF75757575757575
       7575757575757575FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Carregar rede'
     TabOrder = 0
     OnClick = bbCarregarServidoresClick
   end
-  object cbServidorLocal: TCheckBox
+  object cbServidorLocal: TUniCheckBox
     Left = 8
     Top = 48
     Width = 89
     Height = 17
+    Hint = ''
     Caption = 'Servidor local'
     TabOrder = 4
     OnClick = cbServidorLocalClick
   end
-  object stbStatus: TStatusBar
-    Left = 0
-    Top = 121
-    Width = 321
-    Height = 19
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBtnText
-    Font.Height = -12
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    Panels = <>
-    SimplePanel = True
-    SizeGrip = False
-    UseSystemFont = False
+  object BevelLinha: TUniPanel
+    Left = 8
+    Top = 75
+    Width = 305
+    Height = 2
+    Hint = ''
+    TabOrder = 7
+    Caption = 'BevelLinha'
   end
   object ilImagens: TImageList
     Left = 232
     Bitmap = {
-      494C010102000400200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000400300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

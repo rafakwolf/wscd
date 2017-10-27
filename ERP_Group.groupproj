@@ -1,9 +1,9 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{8F7C90AE-087E-4D20-9B1F-D001E79AB71D}</ProjectGuid>
+        <ProjectGuid>{3FD1AB08-7475-4A77-97D1-4974A2052597}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="wscd.dproj">
+        <Projects Include="ERP.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -14,23 +14,23 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="wscd">
-        <MSBuild Projects="wscd.dproj"/>
+    <Target Name="ERP">
+        <MSBuild Projects="ERP.dproj"/>
     </Target>
-    <Target Name="wscd:Clean">
-        <MSBuild Projects="wscd.dproj" Targets="Clean"/>
+    <Target Name="ERP:Clean">
+        <MSBuild Projects="ERP.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="wscd:Make">
-        <MSBuild Projects="wscd.dproj" Targets="Make"/>
+    <Target Name="ERP:Make">
+        <MSBuild Projects="ERP.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="wscd"/>
+        <CallTarget Targets="ERP"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="wscd:Clean"/>
+        <CallTarget Targets="ERP:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="wscd:Make"/>
+        <CallTarget Targets="ERP:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

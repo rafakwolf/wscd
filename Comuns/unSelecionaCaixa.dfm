@@ -1,29 +1,18 @@
 object frmSelecionaCaixa: TfrmSelecionaCaixa
   Left = 234
   Top = 167
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'Selecione a conta caixa'
   ClientHeight = 89
   ClientWidth = 273
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
+  Caption = 'Selecione a conta caixa'
+  BorderStyle = bsSingle
   OldCreateOrder = False
   OnClose = FormClose
+  BorderIcons = [biSystemMenu]
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCaixa: TLabel
-    Left = 9
-    Top = 8
-    Width = 57
-    Height = 13
-    Caption = 'Conta caixa'
-  end
   object dblcbCaixa: TDBLookupComboBox
     Left = 8
     Top = 24
@@ -34,13 +23,21 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
     ListSource = dsCaixa
     TabOrder = 0
   end
-  object btnOk: TBitBtn
+  object lbCaixa: TUniLabel
+    Left = 9
+    Top = 8
+    Width = 57
+    Height = 13
+    Hint = ''
+    Caption = 'Conta caixa'
+    TabOrder = 3
+  end
+  object btnOk: TUniBitBtn
     Left = 112
     Top = 56
     Width = 73
     Height = 25
-    Caption = '&OK'
-    Default = True
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -92,16 +89,17 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&OK'
     ModalResult = 1
-    NumGlyphs = 2
     TabOrder = 1
+    Default = True
   end
-  object btnCancel: TBitBtn
+  object btnCancel: TUniBitBtn
     Left = 192
     Top = 56
     Width = 73
     Height = 25
-    Caption = '&Cancelar'
+    Hint = ''
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -153,8 +151,8 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = '&Cancelar'
     ModalResult = 2
-    NumGlyphs = 2
     TabOrder = 2
   end
   object sqldCaixa: TSQLDataSet

@@ -1,32 +1,37 @@
 object frmRestore: TfrmRestore
   Left = 222
   Top = 180
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
-  Caption = 'frmRestore'
   ClientHeight = 290
   ClientWidth = 433
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'frmRestore'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
+  BorderIcons = [biSystemMenu]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Height = -12
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
-  object btnRestaurar: TBitBtn
+  object pbProgresso: TProgressBar
+    Left = 0
+    Top = 273
+    Width = 433
+    Height = 17
+    Align = alBottom
+    TabOrder = 5
+  end
+  object btnRestaurar: TUniBitBtn
     Left = 224
     Top = 232
     Width = 97
     Height = 33
     Hint = 'Restaurar a c'#243'pia selecionada'
-    Caption = '&Restaurar'
+    ShowHint = True
     Glyph.Data = {
       760E0000424D760E000000000000360000002800000032000000180000000100
       180000000000400E0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -144,33 +149,18 @@ object frmRestore: TfrmRestore
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFBFBFBFB1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1999999
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000}
-    NumGlyphs = 2
+    Caption = '&Restaurar'
     TabOrder = 0
     OnClick = btnRestaurarClick
   end
-  object Memo: TMemo
-    Left = 8
-    Top = 53
-    Width = 417
-    Height = 172
-    Ctl3D = True
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -12
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentCtl3D = False
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 1
-  end
-  object BtnCancela: TBitBtn
+  object BtnCancela: TUniBitBtn
     Left = 328
     Top = 232
     Width = 97
     Height = 33
     Hint = 'Cancela opera'#231#227'o'
-    Caption = '&Fechar'
+    ShowHint = True
+    ParentShowHint = False
     Glyph.Data = {
       760B0000424D760B000000000000360000002800000028000000180000000100
       180000000000400B0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -264,29 +254,17 @@ object frmRestore: TfrmRestore
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF949494767676FF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
-    ParentShowHint = False
-    ShowHint = True
+    Caption = '&Fechar'
     TabOrder = 2
     OnClick = BtnCancelaClick
   end
-  object edFileName: TLabeledEdit
-    Left = 8
-    Top = 24
-    Width = 390
-    Height = 22
-    EditLabel.Width = 171
-    EditLabel.Height = 14
-    EditLabel.Caption = 'Arquivo da c'#243'pia de seguran'#231'a:'
-    ReadOnly = True
-    TabOrder = 3
-  end
-  object btnBuscaFileName: TBitBtn
+  object btnBuscaFileName: TUniBitBtn
     Left = 400
     Top = 22
     Width = 25
     Height = 25
     Hint = 'Buscar uma c'#243'pia dos dados para restaurar'
+    ShowHint = True
     Glyph.Data = {
       36050000424D3605000000000000360400002800000010000000100000000100
       0800000000000001000000000000000000000001000000010000000000000101
@@ -330,16 +308,32 @@ object frmRestore: TfrmRestore
       F0DFDFDF0BF8FD0B70707070EEEEEEEE707070700BFA0B707070707070707070
       7070700BFFFF0B7070707070707070707070700BFF0B70707070707070707070
       700B0B0B0B707070707070707070700B0B0B0B70707070707070}
+    Caption = ''
     TabOrder = 4
     OnClick = btnBuscaFileNameClick
   end
-  object pbProgresso: TProgressBar
-    Left = 0
-    Top = 273
-    Width = 433
-    Height = 17
-    Align = alBottom
-    TabOrder = 5
+  object edFileName: TUniEdit
+    Left = 8
+    Top = 24
+    Width = 390
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 3
+    ReadOnly = True
+  end
+  object Memo: TUniMemo
+    Left = 8
+    Top = 53
+    Width = 417
+    Height = 172
+    Hint = ''
+    ShowHint = True
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Height = -12
+    ReadOnly = True
+    TabOrder = 1
   end
   object odBackup: TOpenDialog
     DefaultExt = '*.cab'

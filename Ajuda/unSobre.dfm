@@ -1,85 +1,82 @@
 object frmSobre: TfrmSobre
   Left = 222
   Top = 143
-  Caption = 'Sobre'
   ClientHeight = 185
   ClientWidth = 413
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'Sobre'
+  OnShow = FormShow
   OldCreateOrder = False
-  Position = poScreenCenter
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  OnShow = FormShow
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lblVersao: TLabel
-    Left = 8
-    Top = 43
-    Width = 52
-    Height = 13
-    Caption = 'lblVersao'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Transparent = True
-  end
-  object lblEmpresa: TLabel
-    Left = 8
-    Top = 8
-    Width = 62
-    Height = 13
-    Caption = 'lblEmpresa'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Transparent = True
-  end
-  object lblCNPJ: TLabel
-    Left = 8
-    Top = 24
-    Width = 40
-    Height = 13
-    Caption = 'lblCNPJ'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Transparent = True
-  end
-  object btnOK: TButton
+  object btnOK: TUniButton
     Left = 312
     Top = 19
     Width = 57
     Height = 25
     Hint = 'Fechar'
+    ShowHint = True
     Caption = '&OK'
     TabOrder = 0
     OnClick = btnOKClick
   end
-  object mmoOS: TMemo
+  object lblVersao: TUniLabel
+    Left = 8
+    Top = 43
+    Width = 52
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'lblVersao'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 2
+  end
+  object lblEmpresa: TUniLabel
+    Left = 8
+    Top = 8
+    Width = 63
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'lblEmpresa'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 3
+  end
+  object lblCNPJ: TUniLabel
+    Left = 8
+    Top = 24
+    Width = 42
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'lblCNPJ'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 4
+  end
+  object mmoOS: TUniMemo
     Left = 0
     Top = 85
     Width = 413
     Height = 100
+    Hint = ''
+    ShowHint = True
     Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
     ReadOnly = True
     TabOrder = 1
-    ExplicitTop = 208
+    ExplicitTop = -15
   end
 end

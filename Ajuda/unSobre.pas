@@ -4,15 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, jpeg;
+  Dialogs, ExtCtrls, StdCtrls, jpeg, uniGUIBaseClasses, uniGUIClasses, uniButton,
+  uniLabel, UniGuiForm, uniMemo;
 
 type
-  TfrmSobre = class(TForm)
-    btnOK: TButton;
-    lblVersao: TLabel;
-    lblEmpresa: TLabel;
-    lblCNPJ: TLabel;
-    mmoOS: TMemo;
+  TfrmSobre = class(TUniForm)
+    btnOK: TUniButton;
+    lblVersao: TUniLabel;
+    lblEmpresa: TUniLabel;
+    lblCNPJ: TUniLabel;
+    mmoOS: TUniMemo;
     procedure btnOKClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

@@ -1,41 +1,42 @@
 object frmDialogoRelatorioPadrao: TfrmDialogoRelatorioPadrao
   Left = 210
   Top = 134
-  Caption = 'frmDialogoRelatorioPadrao'
   ClientHeight = 243
   ClientWidth = 454
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
+  Caption = 'frmDialogoRelatorioPadrao'
+  OnShow = FormShow
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object pnButtons: TPanel
+  object pnButtons: TUniContainerPanel
     Left = 0
     Top = 209
     Width = 454
     Height = 34
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alBottom
-    BevelOuter = bvNone
-    Ctl3D = True
-    ParentCtl3D = False
+    Anchors = [akLeft, akRight, akBottom]
     TabOrder = 0
-    object btnImprimir: TBitBtn
+    TabStop = False
+    ExplicitTop = 175
+    object btnImprimir: TUniBitBtn
       Left = 5
       Top = 2
       Width = 90
       Height = 30
-      Caption = '&Imprimir'
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         760E0000424D760E000000000000360000002800000032000000180000000100
         180000000000400E000000000000000000000000000000000000008080008080
@@ -153,16 +154,17 @@ object frmDialogoRelatorioPadrao: TfrmDialogoRelatorioPadrao
         8000808000808000808000808000808000808000808000808000808000808000
         8080008080008080008080008080008080008080008080008080008080008080
         0080800080800080800080800080800080800080800080800000}
-      NumGlyphs = 2
-      TabOrder = 1
+      Caption = '&Imprimir'
+      TabOrder = 3
       OnClick = btnImprimirClick
     end
-    object btnVisualizar: TBitBtn
+    object btnVisualizar: TUniBitBtn
       Left = 97
       Top = 2
       Width = 90
       Height = 30
-      Caption = '&Visualizar'
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         1A0D0000424D1A0D00000000000036000000280000002C000000190000000100
         180000000000E40C0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -269,15 +271,16 @@ object frmDialogoRelatorioPadrao: TfrmDialogoRelatorioPadrao
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      NumGlyphs = 2
+      Caption = '&Visualizar'
       TabOrder = 0
     end
-    object btnSair: TBitBtn
+    object btnSair: TUniBitBtn
       Left = 189
       Top = 2
       Width = 90
       Height = 30
-      Caption = '&Sair'
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         760B0000424D760B000000000000360000002800000028000000180000000100
         180000000000400B0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -371,7 +374,7 @@ object frmDialogoRelatorioPadrao: TfrmDialogoRelatorioPadrao
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF949494767676FF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      NumGlyphs = 2
+      Caption = '&Sair'
       TabOrder = 2
       OnClick = btnSairClick
     end

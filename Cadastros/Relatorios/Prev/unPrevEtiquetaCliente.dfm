@@ -1,16 +1,12 @@
 object frmPrevEtiquetaCliente: TfrmPrevEtiquetaCliente
   Left = 0
   Top = 12
-  Caption = 'frmPrevEtiquetaCliente'
   ClientHeight = 523
   ClientWidth = 784
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
+  Caption = 'frmPrevEtiquetaCliente'
   OldCreateOrder = False
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -43,6 +39,7 @@ object frmPrevEtiquetaCliente: TfrmPrevEtiquetaCliente
         Width = 230
         Height = 16
         Align = faLeftTop
+        Behavior = [beSiteExpander]
         DataField = 'TITULO'
         DataSource = dsEtq
         Font.Charset = ANSI_CHARSET
@@ -59,6 +56,7 @@ object frmPrevEtiquetaCliente: TfrmPrevEtiquetaCliente
         Width = 230
         Height = 72
         AutoSize = False
+        Behavior = [beSiteExpander]
         DataField = 'TEXTO'
         DataSource = dsEtq
         Font.Charset = ANSI_CHARSET
@@ -73,7 +71,6 @@ object frmPrevEtiquetaCliente: TfrmPrevEtiquetaCliente
   end
   object sqldEtq: TSQLDataSet
     CommandText = 'select'#13#10'  TITULO,'#13#10'  TEXTO'#13#10'from VIEWETIQUETACLIENTE'
-    DbxCommandType = 'Dbx.SQL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao

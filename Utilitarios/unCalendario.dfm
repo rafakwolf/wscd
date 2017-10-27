@@ -1,266 +1,166 @@
 inherited frmCalendario: TfrmCalendario
   Left = 325
   Top = 189
-  BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
+  ClientHeight = 438
+  ClientWidth = 490
   Caption = 'Calend'#225'rio'
-  ClientHeight = 325
-  ClientWidth = 375
-  Font.Name = 'MS Sans Serif'
+  OnShow = FormShow
+  BorderStyle = bsSingle
   OldCreateOrder = True
   OnKeyPress = FormKeyPress
-  OnShow = FormShow
-  ExplicitWidth = 381
-  ExplicitHeight = 354
+  BorderIcons = [biSystemMenu]
+  Font.Name = 'MS Sans Serif'
+  ExplicitWidth = 496
+  ExplicitHeight = 467
   PixelsPerInch = 96
   TextHeight = 13
-  object PanelDias: TPanel
+  object PanelDias: TUniContainerPanel
     Left = 0
     Top = 54
-    Width = 375
-    Height = 120
+    Width = 490
+    Height = 219
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alTop
-    BevelOuter = bvLowered
-    ParentColor = True
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
-    ExplicitWidth = 212
-    object VCalend: TCalendar
-      Left = 1
-      Top = 1
-      Width = 373
-      Height = 118
-      Align = alClient
-      BorderStyle = bsNone
-      Ctl3D = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      GridLineWidth = 0
-      ParentFont = False
-      StartOfWeek = 0
-      TabOrder = 0
-      UseCurrentDate = False
-      OnClick = VCalendClick
-      OnKeyPress = FormKeyPress
-      ExplicitWidth = 210
-    end
-    object AlternaMes: TUpDown
-      Left = 181
-      Top = 98
-      Width = 28
-      Height = 18
-      Hint = 'Incrementa / Decrementa m'#234's'
-      Min = -1000
-      Max = 1000
-      Orientation = udHorizontal
-      ParentShowHint = False
-      Position = 1
+    TabStop = False
+    object VCalend: TUniCalendar
+      Left = 0
+      Top = 0
+      Width = 490
+      Height = 219
+      Hint = ''
       ShowHint = True
-      TabOrder = 1
-      OnClick = AlternaMesClick
+      Date = 43035.000000000000000000
+      FirstDayOfWeek = dowMonday
+      TabStop = False
+      TabOrder = 0
+      Align = alClient
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      OnClick = VCalendClick
+      ExplicitHeight = 161
     end
   end
-  object PanelMes: TPanel
+  object PanelMes: TUniContainerPanel
     Left = 0
     Top = 28
-    Width = 375
+    Width = 490
     Height = 26
-    Align = alTop
-    BevelOuter = bvLowered
-    Caption = 'Janeiro'
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Color = 14548735
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
+    Align = alTop
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
+    TabStop = False
     OnClick = VCalendClick
-    ExplicitWidth = 212
-    object GetAno: TSpinEdit
+    ExplicitWidth = 375
+    object GetAno: TUniSpinEdit
       Left = 157
       Top = 2
       Width = 53
       Height = 22
       Hint = 'Define ano'
-      Color = 14548735
-      Ctl3D = False
+      ShowHint = True
+      ParentShowHint = False
+      Value = 1
       MaxValue = 9000
       MinValue = 1
-      ParentCtl3D = False
-      ParentShowHint = False
-      ShowHint = True
       TabOrder = 0
-      Value = 1
+      Color = 14548735
       OnChange = GetAnoChange
-      OnClick = VCalendClick
       OnKeyPress = FormKeyPress
     end
   end
-  object PanelExtra: TPanel
+  object PanelExtra: TUniContainerPanel
     Left = 0
-    Top = 208
-    Width = 375
+    Top = 321
+    Width = 490
     Height = 117
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
     TabOrder = 2
-    ExplicitTop = 176
-    ExplicitWidth = 212
-    object LbTitulo: TLabel
+    TabStop = False
+    ExplicitTop = 208
+    ExplicitWidth = 375
+    object LbTitulo: TUniLabel
       Left = 4
       Top = 4
-      Width = 205
+      Width = 48
       Height = 13
+      Hint = ''
+      ShowHint = True
       Alignment = taCenter
       AutoSize = False
       Caption = 'Titulo'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
       ParentFont = False
-      Transparent = True
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      TabOrder = 8
     end
-    object LbDias: TLabel
+    object LbDias: TUniLabel
       Left = 4
       Top = 27
-      Width = 44
+      Width = 45
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Qtd. Dias'
-      Transparent = True
+      TabOrder = 9
     end
-    object LbPeriodo: TLabel
+    object LbPeriodo: TUniLabel
       Left = 4
       Top = 28
-      Width = 38
+      Width = 36
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Per'#237'odo'
-      Transparent = True
+      TabOrder = 10
     end
-    object LbTDias: TLabel
+    object LbTDias: TUniLabel
       Left = 4
       Top = 51
-      Width = 21
+      Width = 20
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Dias'
-      Transparent = True
+      TabOrder = 11
     end
-    object LbTMeses: TLabel
+    object LbTMeses: TUniLabel
       Left = 4
       Top = 73
-      Width = 31
-      Height = 13
-      Caption = 'Meses'
-      Transparent = True
-    end
-    object LbTAnos: TLabel
-      Left = 4
-      Top = 95
       Width = 30
       Height = 13
+      Hint = ''
+      ShowHint = True
+      Caption = 'Meses'
+      TabOrder = 12
+    end
+    object LbTAnos: TUniLabel
+      Left = 4
+      Top = 95
+      Width = 32
+      Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Ano(s)'
-      Transparent = True
+      TabOrder = 13
     end
-    object EdDias: TEdit
-      Left = 54
-      Top = 24
-      Width = 43
-      Height = 21
-      MaxLength = 5
-      TabOrder = 0
-      OnExit = EdDiasExit
-    end
-    object Dt_i: TMaskEdit
-      Left = 54
-      Top = 24
-      Width = 57
-      Height = 21
-      EditMask = '!99/99/00;1;_'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      MaxLength = 8
-      ParentFont = False
-      TabOrder = 1
-      Text = '  /  /  '
-    end
-    object Dt_f: TMaskEdit
-      Left = 118
-      Top = 24
-      Width = 57
-      Height = 21
-      EditMask = '!99/99/00;1;_'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      MaxLength = 8
-      ParentFont = False
-      TabOrder = 2
-      Text = '  /  /  '
-      OnExit = Dt_fExit
-    end
-    object EdR_Dias: TEdit
-      Left = 54
-      Top = 47
-      Width = 58
-      Height = 21
-      TabStop = False
-      Color = clBtnFace
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 3
-    end
-    object EdR_Meses: TEdit
-      Left = 54
-      Top = 69
-      Width = 58
-      Height = 21
-      TabStop = False
-      Color = clBtnFace
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 4
-    end
-    object EdR_Anos: TEdit
-      Left = 54
-      Top = 91
-      Width = 58
-      Height = 21
-      TabStop = False
-      Color = clBtnFace
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 5
-    end
-    object BtnOk: TBitBtn
+    object BtnOk: TUniBitBtn
       Left = 133
       Top = 88
       Width = 75
       Height = 25
-      Caption = '&Ok'
+      Hint = ''
+      ShowHint = True
       Glyph.Data = {
         36060000424D3606000000000000360000002800000020000000100000000100
         18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -312,33 +212,121 @@ inherited frmCalendario: TfrmCalendario
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      NumGlyphs = 2
+      Caption = '&Ok'
       TabOrder = 6
       OnClick = VCalendClick
     end
+    object Dt_i: TUniEdit
+      Left = 54
+      Top = 24
+      Width = 57
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      MaxLength = 8
+      Text = '  /  /  '
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      TabOrder = 1
+    end
+    object Dt_f: TUniEdit
+      Left = 118
+      Top = 24
+      Width = 57
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      MaxLength = 8
+      Text = '  /  /  '
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      TabOrder = 2
+      OnExit = Dt_fExit
+    end
+    object EdDias: TUniEdit
+      Left = 54
+      Top = 24
+      Width = 43
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      MaxLength = 5
+      Text = ''
+      TabOrder = 0
+      OnExit = EdDiasExit
+    end
+    object EdR_Dias: TUniEdit
+      Left = 54
+      Top = 47
+      Width = 58
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      Text = ''
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      TabOrder = 3
+      TabStop = False
+      Color = clBtnFace
+      ReadOnly = True
+    end
+    object EdR_Meses: TUniEdit
+      Left = 54
+      Top = 69
+      Width = 58
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      Text = ''
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      TabOrder = 4
+      TabStop = False
+      Color = clBtnFace
+      ReadOnly = True
+    end
+    object EdR_Anos: TUniEdit
+      Left = 54
+      Top = 91
+      Width = 58
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      Text = ''
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      TabOrder = 5
+      TabStop = False
+      Color = clBtnFace
+      ReadOnly = True
+    end
   end
-  object PnBotoes: TPanel
+  object PnBotoes: TUniContainerPanel
     Left = 0
     Top = 0
-    Width = 375
+    Width = 490
     Height = 28
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alTop
-    BevelOuter = bvNone
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 3
-    ExplicitWidth = 212
-    object Futura: TSpeedButton
+    TabStop = False
+    ExplicitWidth = 375
+    object Futura: TUniSpeedButton
       Left = 3
       Top = 2
       Width = 65
       Height = 22
       Hint = 'Data futura'
-      Caption = '&Futura'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
+      ShowHint = True
+      ParentShowHint = False
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000130B0000130B00001000000000000000000000000000
@@ -352,25 +340,23 @@ inherited frmCalendario: TfrmCalendario
         3300333777333333337733333333333333003333333333333377333333333333
         333333333333333333FF33333333333330003333333333333777333333333333
         3000333333333333377733333333333333333333333333333333}
-      NumGlyphs = 2
+      Caption = '&Futura'
       ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 0
       OnClick = FuturaClick
     end
-    object Calculo: TSpeedButton
+    object Calculo: TUniSpeedButton
       Left = 73
       Top = 2
       Width = 65
       Height = 22
       Hint = 'C'#225'lculo entre datas'
-      Caption = '&C'#225'lculo'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
+      ShowHint = True
+      ParentShowHint = False
       Glyph.Data = {
         76010000424D7601000000000000760000002800000020000000100000000100
         04000000000000010000120B0000120B00001000000000000000000000000000
@@ -384,19 +370,26 @@ inherited frmCalendario: TfrmCalendario
         33333333337733333F3333333003333303333333377333337F33333300333333
         03333333773333337F33333003333330033333377FFFFFF77F33330000000000
         0333337777777777733333333333333333333333333333333333}
-      NumGlyphs = 2
+      Caption = '&C'#225'lculo'
       ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'MS Sans Serif'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 1
       OnClick = CalculoClick
     end
-    object btnHoje: TSpeedButton
+    object btnHoje: TUniSpeedButton
       Left = 143
       Top = 2
       Width = 65
       Height = 22
+      Hint = ''
+      ShowHint = True
       Caption = '&Hoje'
-      Flat = True
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 2
       OnClick = btnHojeClick
     end
   end

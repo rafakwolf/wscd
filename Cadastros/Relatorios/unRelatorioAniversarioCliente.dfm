@@ -1,20 +1,17 @@
 inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
-  Caption = 'frmRelatorioAniversarioCliente'
   ClientHeight = 207
   ClientWidth = 521
+  Caption = 'frmRelatorioAniversarioCliente'
   OldCreateOrder = True
   ExplicitWidth = 537
   ExplicitHeight = 246
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TPanel
+  inherited pnButtons: TUniContainerPanel
     Top = 173
     Width = 521
     ExplicitTop = 173
     ExplicitWidth = 521
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
   end
   object rgTipo: TRadioGroup [1]
     Left = 8
@@ -41,43 +38,67 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     TabOrder = 2
     OnClick = rgDatasClick
   end
-  object pnDiaMesAno: TPanel [3]
+  object pnDiaMesAno: TUniContainerPanel [3]
     Left = 8
     Top = 72
     Width = 249
     Height = 97
+    Hint = ''
     Enabled = False
+    ShowHint = True
+    ParentColor = False
     TabOrder = 3
-    object LabelMes: TLabel
+    TabStop = False
+    object LabelMes: TUniLabel
       Left = 8
       Top = 5
-      Width = 22
-      Height = 13
-      Caption = 'M'#234's'
-    end
-    object LabelDo: TLabel
-      Left = 8
-      Top = 47
-      Width = 37
-      Height = 13
-      Caption = 'Do dia'
-    end
-    object LabelAte: TLabel
-      Left = 88
-      Top = 47
       Width = 19
       Height = 13
-      Caption = 'At'#233
+      Hint = ''
+      ShowHint = True
+      Caption = 'M'#234's'
+      TabOrder = 5
     end
-    object cmbMes: TComboBox
+    object LabelDo: TUniLabel
+      Left = 8
+      Top = 47
+      Width = 30
+      Height = 13
+      Hint = ''
+      ShowHint = True
+      Caption = 'Do dia'
+      TabOrder = 6
+    end
+    object LabelAte: TUniLabel
+      Left = 88
+      Top = 47
+      Width = 17
+      Height = 13
+      Hint = ''
+      ShowHint = True
+      Caption = 'At'#233
+      TabOrder = 7
+    end
+    object edAno: TUniEdit
+      Left = 167
+      Top = 63
+      Width = 74
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      Text = '2007'
+      TabOrder = 3
+      OnKeyPress = edAnoKeyPress
+    end
+    object cmbMes: TUniComboBox
       Left = 8
       Top = 20
       Width = 233
       Height = 21
+      Hint = ''
+      ShowHint = True
       Style = csDropDownList
-      ItemIndex = 0
-      TabOrder = 0
-      Text = 'Janeiro'
+      Text = ''
       Items.Strings = (
         'Janeiro'
         'Fevereiro'
@@ -91,61 +112,62 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
         'Outubro'
         'Novembro'
         'Dezembro')
+      TabOrder = 0
     end
-    object edDo: TSpinEdit
+    object edDo: TUniSpinEdit
       Left = 8
       Top = 62
       Width = 65
-      Height = 22
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      Value = 1
       MaxValue = 31
       MinValue = 1
       TabOrder = 1
-      Value = 1
     end
-    object edAte: TSpinEdit
+    object edAte: TUniSpinEdit
       Left = 88
       Top = 62
       Width = 65
-      Height = 22
+      Height = 21
+      Hint = ''
+      ShowHint = True
+      Value = 31
       MaxValue = 31
       MinValue = 1
       TabOrder = 2
-      Value = 31
-    end
-    object edAno: TLabeledEdit
-      Left = 167
-      Top = 63
-      Width = 74
-      Height = 21
-      EditLabel.Width = 22
-      EditLabel.Height = 13
-      EditLabel.Caption = 'Ano'
-      TabOrder = 3
-      Text = '2007'
-      OnKeyPress = edAnoKeyPress
     end
   end
-  object pnDatas: TPanel [4]
+  object pnDatas: TUniContainerPanel [4]
     Left = 264
     Top = 72
     Width = 257
     Height = 97
+    Hint = ''
     Enabled = False
+    ShowHint = True
+    ParentColor = False
     TabOrder = 4
-    object dbeDataIni: TDBEdit
+    TabStop = False
+    object dbeDataIni: TUniDBEdit
       Left = 8
       Top = 20
       Width = 241
       Height = 21
+      Hint = ''
+      ShowHint = True
       DataField = 'DATAINI'
       DataSource = dsPadrao
       TabOrder = 0
     end
-    object dbeDataFim: TDBEdit
+    object dbeDataFim: TUniDBEdit
       Left = 8
       Top = 63
       Width = 241
       Height = 21
+      Hint = ''
+      ShowHint = True
       DataField = 'DATAFIM'
       DataSource = dsPadrao
       TabOrder = 1

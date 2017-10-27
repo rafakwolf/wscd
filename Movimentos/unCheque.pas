@@ -6,30 +6,16 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
   DBClient, Provider, SqlExpr, Mask, DBCtrls, 
-   DateUtils, FMTBcd, System.Actions;
+   DateUtils, FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn,
+  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  uniImage, uniEdit, uniDBEdit;
 
 type
   TfrmCheque = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    dbeBanco: TDBEdit;
-    dbeAgencia: TDBEdit;
-    dbeConta: TDBEdit;
-    dbeNumero: TDBEdit;
     actBaixar: TAction;
-    N6: TMenuItem;
-    miRepasse: TMenuItem;
-    dbdDataEmissao: TDBEdit;
-    dbdBomPara: TDBEdit;
-    dbeValor: TDBEdit;
-    dbeVenda: TDBEdit;
-    dbeCliente: TDBEdit;
-    dbeCompra: TDBEdit;
-    miChequeEmitido: TMenuItem;
-    miChequeEmitidoAVista: TMenuItem;
-    miChequeEmitidoAPrazo: TMenuItem;
-    dbeBandMagnetica: TDBEdit;
     sqldPadraoIDCHEQUE: TIntegerField;
     sqldPadraoIDBANCO: TIntegerField;
     sqldPadraoBANCO: TStringField;
@@ -62,38 +48,43 @@ type
     cdsPadraoCOMPRA: TIntegerField;
     cdsPadraoREPASSADO: TStringField;
     cdsPadraoBANDAMAGNETICA: TStringField;
-    dbeForn: TDBEdit;
     sqldPadraoDATABAIXADO: TDateField;
     cdsPadraoDATABAIXADO: TDateField;
-    dbeDataBaixado: TDBEdit;
     actEstornarBaixa: TAction;
-    Estornarbaixa1: TMenuItem;
-    btnBaixar: TBitBtn;
-    N7: TMenuItem;
-    N5: TMenuItem;
-    lbBaixado: TLabel;
-    miChequePendente: TMenuItem;
-    imgCheque: TImage;
-    lbBanco: TLabel;
-    lbConta: TLabel;
-    lbAgencia: TLabel;
-    lbNroCheque: TLabel;
-    lbValor: TLabel;
-    lbComp: TLabel;
-    lbValorExtenso: TLabel;
-    lbNominal: TLabel;
-    lbCidade: TLabel;
-    lbDia: TLabel;
-    lbMes: TLabel;
-    lbAno: TLabel;
-    lbCpfCnpj: TLabel;
-    lbBomPara: TLabel;
-    lbBandaMagnetica: TLabel;
-    bvlLinha: TBevel;
-    N9: TMenuItem;
-    miAssistente: TMenuItem;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
+    lbBaixado: TUniLabel;
+    lbBanco: TUniLabel;
+    lbConta: TUniLabel;
+    lbAgencia: TUniLabel;
+    lbNroCheque: TUniLabel;
+    lbValor: TUniLabel;
+    lbComp: TUniLabel;
+    lbValorExtenso: TUniLabel;
+    lbNominal: TUniLabel;
+    lbCidade: TUniLabel;
+    lbDia: TUniLabel;
+    lbMes: TUniLabel;
+    lbAno: TUniLabel;
+    lbCpfCnpj: TUniLabel;
+    lbBomPara: TUniLabel;
+    lbBandaMagnetica: TUniLabel;
+    btnBaixar: TUniBitBtn;
+    imgCheque: TUniImage;
+    dbeDataBaixado: TUniDBEdit;
+    dbeForn: TUniDBEdit;
+    dbeBandMagnetica: TUniDBEdit;
+    dbeCliente: TUniDBEdit;
+    dbeVenda: TUniDBEdit;
+    dbeValor: TUniDBEdit;
+    dbdBomPara: TUniDBEdit;
+    dbeBanco: TUniDBEdit;
+    dbeAgencia: TUniDBEdit;
+    dbeConta: TUniDBEdit;
+    dbeNumero: TUniDBEdit;
+    dbdDataEmissao: TUniDBEdit;
+    dbeCompra: TUniDBEdit;
+    bvlLinha: TUniPanel;
     procedure dbeBancoClickButton(Sender: TObject);
     procedure actBaixarExecute(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);

@@ -1,26 +1,21 @@
 inherited frmDesmarcar: TfrmDesmarcar
   Left = 222
   Top = 143
-  BorderStyle = bsSingle
-  Caption = 'frmDesmarcar'
   ClientHeight = 105
   ClientWidth = 297
-  Position = poScreenCenter
+  Caption = 'frmDesmarcar'
+  BorderStyle = bsSingle
   ExplicitWidth = 303
   ExplicitHeight = 134
   PixelsPerInch = 96
   TextHeight = 13
-  object Desmarcar: TSpeedButton
+  object Desmarcar: TUniSpeedButton
     Left = 104
     Top = 72
     Width = 89
     Height = 25
-    Caption = '&OK'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -72,21 +67,22 @@ inherited frmDesmarcar: TfrmDesmarcar
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080}
-    NumGlyphs = 2
+    Caption = '&OK'
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentColor = False
+    Color = clWindow
+    TabOrder = 2
     OnClick = DesmarcarClick
   end
-  object Cancel: TSpeedButton
+  object Cancel: TUniSpeedButton
     Left = 200
     Top = 72
     Width = 89
     Height = 25
-    Caption = '&Cancelar'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
+    Hint = ''
+    ShowHint = True
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -129,36 +125,39 @@ inherited frmDesmarcar: TfrmDesmarcar
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
       00808000808000808000}
-    NumGlyphs = 2
+    Caption = '&Cancelar'
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentColor = False
+    Color = clWindow
+    TabOrder = 3
     OnClick = CancelClick
   end
-  object Alterados: TCheckBox
+  object Alterados: TUniCheckBox
     Left = 15
     Top = 13
     Width = 130
     Height = 17
+    Hint = ''
+    ShowHint = True
     Caption = 'Produtos alterados'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 0
   end
-  object Novos: TCheckBox
+  object Novos: TUniCheckBox
     Left = 15
     Top = 32
     Width = 110
     Height = 17
+    Hint = ''
+    ShowHint = True
     Caption = 'Produtos novos'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 1
   end
 end

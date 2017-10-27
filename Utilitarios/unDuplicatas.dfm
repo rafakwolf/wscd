@@ -1,305 +1,346 @@
 inherited frmDuplicatas: TfrmDuplicatas
   Left = 221
   Top = 117
-  Caption = 'frmDuplicatas'
   ClientHeight = 526
   ClientWidth = 545
+  Caption = 'frmDuplicatas'
   OldCreateOrder = True
   ExplicitWidth = 551
   ExplicitHeight = 555
   PixelsPerInch = 96
   TextHeight = 13
-  object lbSacado: TLabel [0]
-    Left = 8
-    Top = 256
-    Width = 350
-    Height = 16
-    AutoSize = False
-    Caption = 
-      'Sacado----------------------------------------------------------' +
-      '--------------------------------------------------------------'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lbPracaPag: TLabel [1]
-    Left = 8
-    Top = 440
-    Width = 529
-    Height = 16
-    AutoSize = False
-    Caption = 
-      'Pra'#231'a de pagamento----------------------------------------------' +
-      '-----------------------------------------------------'
-    Color = clBtnFace
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -13
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentColor = False
-    ParentFont = False
-    Transparent = False
-  end
-  object lbFatura: TLabel [2]
-    Left = 8
-    Top = 48
-    Width = 265
-    Height = 16
-    AutoSize = False
-    Caption = 'Fatura-------------------------------------------------------'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lbDuplicata: TLabel [3]
-    Left = 8
-    Top = 112
-    Width = 529
-    Height = 16
-    AutoSize = False
-    Caption = 
-      'Duplicata-------------------------------------------------------' +
-      '--------------------------------------------------------------'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lbDatas: TLabel [4]
-    Left = 273
-    Top = 48
-    Width = 265
-    Height = 16
-    AutoSize = False
-    Caption = 'Datas---------------------------------------------------------'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Arial'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object dbeDataEmissao: TDBEdit [5]
-    Left = 280
-    Top = 84
-    Width = 121
-    Height = 21
-    DataField = 'DATAEMISSAO'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object dbeCidade: TDBEdit [6]
-    Left = 144
-    Top = 412
-    Width = 315
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'NOMECIDADE'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 18
-  end
-  object dbeDataPag: TDBEdit [7]
-    Left = 400
-    Top = 148
-    Width = 129
-    Height = 21
-    DataField = 'DATADESCTO'
-    DataSource = dsPadrao
-    TabOrder = 7
-  end
-  object dbeDataVenc: TDBEdit [8]
-    Left = 408
-    Top = 84
-    Width = 121
-    Height = 21
-    DataField = 'DATAVENC'
-    DataSource = dsPadrao
-    TabOrder = 3
-  end
-  object dbeValor: TDBEdit [9]
-    Left = 144
-    Top = 148
-    Width = 121
-    Height = 21
-    Color = clInactiveCaption
-    DataField = 'VALOR'
-    DataSource = dsPadrao
-    TabOrder = 5
-    OnExit = dbeValorExit
-  end
-  object dbeDesconto: TDBEdit [10]
-    Left = 272
-    Top = 148
-    Width = 121
-    Height = 21
-    DataField = 'DESCONTO'
-    DataSource = dsPadrao
-    TabOrder = 6
-    OnExit = dbeDescontoExit
-  end
-  object dbeValorFatura: TDBEdit [11]
-    Left = 144
-    Top = 84
-    Width = 121
-    Height = 21
-    DataField = 'VALOR_FATURA'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbeNroDuplicata: TDBEdit [12]
-    Left = 16
-    Top = 148
-    Width = 121
-    Height = 21
-    Color = 8454143
-    DataField = 'NRODUPLICATA'
-    DataSource = dsPadrao
-    TabOrder = 4
-  end
-  object dbeNroFatura: TDBEdit [13]
-    Left = 16
-    Top = 84
-    Width = 121
-    Height = 21
-    DataField = 'NROFATURA'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  object dbeValorExtenso: TDBEdit [14]
-    Left = 16
-    Top = 188
-    Width = 513
-    Height = 21
-    Color = clBtnFace
-    DataField = 'VALOREXTENSO'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 8
-  end
-  object dbeSacado: TDBEdit [15]
-    Left = 16
-    Top = 292
-    Width = 513
-    Height = 21
-    DataField = 'SACADO'
-    DataSource = dsPadrao
-    TabOrder = 11
-  end
-  object dbeCpfCnpj: TDBEdit [16]
-    Left = 16
-    Top = 332
-    Width = 161
-    Height = 21
-    DataField = 'CPF_CNPJ'
-    DataSource = dsPadrao
-    TabOrder = 12
-  end
-  object dbeRgIe: TDBEdit [17]
-    Left = 184
-    Top = 332
-    Width = 161
-    Height = 21
-    DataField = 'IE'
-    DataSource = dsPadrao
-    TabOrder = 13
-  end
-  object dbeFoneFax: TDBEdit [18]
-    Left = 352
-    Top = 332
-    Width = 177
-    Height = 21
-    DataField = 'FONEFAX'
-    DataSource = dsPadrao
-    TabOrder = 14
-  end
-  object dbeCep: TDBEdit [19]
-    Left = 16
-    Top = 372
-    Width = 121
-    Height = 21
-    DataField = 'CEP'
-    DataSource = dsPadrao
-    TabOrder = 15
-  end
-  object dbeEndereco: TDBEdit [20]
-    Left = 144
-    Top = 372
-    Width = 385
-    Height = 21
-    DataField = 'ENDERECO'
-    DataSource = dsPadrao
-    TabOrder = 16
-  end
-  object dbeBairro: TDBEdit [21]
-    Left = 16
-    Top = 412
-    Width = 121
-    Height = 21
-    DataField = 'BAIRRO'
-    DataSource = dsPadrao
-    TabOrder = 17
-  end
-  object dbeEstado: TDBEdit [22]
-    Left = 465
-    Top = 412
-    Width = 64
-    Height = 21
-    DataField = 'UF'
-    DataSource = dsPadrao
-    TabOrder = 19
-  end
-  object dbePracaPagamento: TDBEdit [23]
-    Left = 16
-    Top = 476
-    Width = 513
-    Height = 21
-    DataField = 'PRACAPAGAMENTO'
-    DataSource = dsPadrao
-    TabOrder = 20
-  end
-  object dbeDataImpressao: TDBEdit [24]
-    Left = 16
-    Top = 228
-    Width = 113
-    Height = 21
-    Color = clBtnFace
-    DataField = 'DATAIMPRESSAO'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 9
-  end
-  object dbeImpressa: TDBEdit [25]
-    Left = 136
-    Top = 228
-    Width = 57
-    Height = 21
-    Color = clBtnFace
-    DataField = 'IMPRESSA'
-    DataSource = dsPadrao
-    ReadOnly = True
-    TabOrder = 10
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 507
     Width = 545
     ExplicitTop = 507
     ExplicitWidth = 545
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 545
     TabOrder = 21
     ExplicitWidth = 545
+  end
+  object lbSacado: TUniLabel [2]
+    Left = 8
+    Top = 256
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 
+      'Sacado----------------------------------------------------------' +
+      '--------------------------------------------------------------'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 23
+  end
+  object lbPracaPag: TUniLabel [3]
+    Left = 8
+    Top = 440
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 
+      'Pra'#231'a de pagamento----------------------------------------------' +
+      '-----------------------------------------------------'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentColor = False
+    Color = clBtnFace
+    Transparent = False
+    TabOrder = 24
+  end
+  object lbFatura: TUniLabel [4]
+    Left = 8
+    Top = 48
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Fatura-------------------------------------------------------'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 25
+  end
+  object lbDuplicata: TUniLabel [5]
+    Left = 8
+    Top = 112
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 
+      'Duplicata-------------------------------------------------------' +
+      '--------------------------------------------------------------'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 26
+  end
+  object lbDatas: TUniLabel [6]
+    Left = 273
+    Top = 48
+    Width = 55
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    AutoSize = False
+    Caption = 'Datas---------------------------------------------------------'
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 27
+  end
+  object dbeDataEmissao: TUniDBEdit [7]
+    Left = 280
+    Top = 84
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAEMISSAO'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object dbeCidade: TUniDBEdit [8]
+    Left = 144
+    Top = 412
+    Width = 315
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'NOMECIDADE'
+    DataSource = dsPadrao
+    TabOrder = 18
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeDataPag: TUniDBEdit [9]
+    Left = 400
+    Top = 148
+    Width = 129
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATADESCTO'
+    DataSource = dsPadrao
+    TabOrder = 7
+  end
+  object dbeDataVenc: TUniDBEdit [10]
+    Left = 408
+    Top = 84
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAVENC'
+    DataSource = dsPadrao
+    TabOrder = 3
+  end
+  object dbeValor: TUniDBEdit [11]
+    Left = 144
+    Top = 148
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VALOR'
+    DataSource = dsPadrao
+    TabOrder = 5
+    Color = clInactiveCaption
+    OnExit = dbeValorExit
+  end
+  object dbeDesconto: TUniDBEdit [12]
+    Left = 272
+    Top = 148
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DESCONTO'
+    DataSource = dsPadrao
+    TabOrder = 6
+    OnExit = dbeDescontoExit
+  end
+  object dbeValorFatura: TUniDBEdit [13]
+    Left = 144
+    Top = 84
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VALOR_FATURA'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbeNroDuplicata: TUniDBEdit [14]
+    Left = 16
+    Top = 148
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'NRODUPLICATA'
+    DataSource = dsPadrao
+    TabOrder = 4
+    Color = 8454143
+  end
+  object dbeNroFatura: TUniDBEdit [15]
+    Left = 16
+    Top = 84
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'NROFATURA'
+    DataSource = dsPadrao
+    TabOrder = 0
+  end
+  object dbeValorExtenso: TUniDBEdit [16]
+    Left = 16
+    Top = 188
+    Width = 513
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VALOREXTENSO'
+    DataSource = dsPadrao
+    TabOrder = 8
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeSacado: TUniDBEdit [17]
+    Left = 16
+    Top = 292
+    Width = 513
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'SACADO'
+    DataSource = dsPadrao
+    TabOrder = 11
+  end
+  object dbeCpfCnpj: TUniDBEdit [18]
+    Left = 16
+    Top = 332
+    Width = 161
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CPF_CNPJ'
+    DataSource = dsPadrao
+    TabOrder = 12
+  end
+  object dbeRgIe: TUniDBEdit [19]
+    Left = 184
+    Top = 332
+    Width = 161
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'IE'
+    DataSource = dsPadrao
+    TabOrder = 13
+  end
+  object dbeFoneFax: TUniDBEdit [20]
+    Left = 352
+    Top = 332
+    Width = 177
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'FONEFAX'
+    DataSource = dsPadrao
+    TabOrder = 14
+  end
+  object dbeCep: TUniDBEdit [21]
+    Left = 16
+    Top = 372
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CEP'
+    DataSource = dsPadrao
+    TabOrder = 15
+  end
+  object dbeEndereco: TUniDBEdit [22]
+    Left = 144
+    Top = 372
+    Width = 385
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'ENDERECO'
+    DataSource = dsPadrao
+    TabOrder = 16
+  end
+  object dbeBairro: TUniDBEdit [23]
+    Left = 16
+    Top = 412
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'BAIRRO'
+    DataSource = dsPadrao
+    TabOrder = 17
+  end
+  object dbeEstado: TUniDBEdit [24]
+    Left = 465
+    Top = 412
+    Width = 64
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'UF'
+    DataSource = dsPadrao
+    TabOrder = 19
+  end
+  object dbePracaPagamento: TUniDBEdit [25]
+    Left = 16
+    Top = 476
+    Width = 513
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'PRACAPAGAMENTO'
+    DataSource = dsPadrao
+    TabOrder = 20
+  end
+  object dbeDataImpressao: TUniDBEdit [26]
+    Left = 16
+    Top = 228
+    Width = 113
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAIMPRESSAO'
+    DataSource = dsPadrao
+    TabOrder = 9
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeImpressa: TUniDBEdit [27]
+    Left = 136
+    Top = 228
+    Width = 57
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'IMPRESSA'
+    DataSource = dsPadrao
+    TabOrder = 10
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited actlNavigateActions: TActionList
     Left = 480

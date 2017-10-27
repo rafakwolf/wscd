@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, ConstPadrao,
-   Mask, DBCtrls,  FMTBcd, System.Actions;
+   Mask, DBCtrls,  FMTBcd, System.Actions, uniButton, uniBitBtn, uniSpeedButton,
+  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniImage, uniEdit,
+  uniDBEdit, uniCheckBox, uniDBCheckBox;
 
 type
   TfrmProduto = class(TfrmPadrao)
@@ -35,23 +37,6 @@ type
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
-    dbeCodigoInterno: TDBEdit;
-    dbeCodigoBarra: TDBEdit;
-    dbeNomeProduto: TDBEdit;
-    dbePeso: TDBEdit;
-    dbdValidade: TDBEdit;
-    dbePrecoPromocao: TDBEdit;
-    dbePrecoCusto: TDBEdit;
-    dbeLucro: TDBEdit;
-    dbePrecoVenda: TDBEdit;
-    dbeEstoque: TDBEdit;
-    dbeEstoqueMinimo: TDBEdit;
-    dbeTributacao: TDBEdit;
-    dbeValorEstoque: TDBEdit;
-    dbeQtdeRecebida: TDBEdit;
-    dbeFornecedor: TDBEdit;
-    dbeGrupo: TDBEdit;
-    dbeUnidade: TDBEdit;
     cdsPadraoIDPRODUTO: TIntegerField;
     cdsPadraoCODBARRA: TStringField;
     cdsPadraoREFERENCIA: TStringField;
@@ -107,20 +92,37 @@ type
     sqldPadraoPROMOCAO: TStringField;
     cdsPadraoPRECO_PROMOCAO: TFMTBCDField;
     cdsPadraoPROMOCAO: TStringField;
-    dbckbPromocao: TDBCheckBox;
-    bvlLinha1: TBevel;
-    bvlLinha2: TBevel;
-    dbeReferencia: TDBEdit;
-    bvlLinha3: TBevel;
-    dbeDataReceb: TDBEdit;
     sqldPadraoOBS: TMemoField;
     cdsPadraoOBS: TMemoField;
-    btnObs: TBitBtn;
-    imgCodbarras: TImage;
-    pnlCodBarra: TPanel;
-    dbtxtCodBarra: TDBText;
     sqldPadraoVALOR_ESTOQUE: TSingleField;
     cdsPadraoVALOR_ESTOQUE: TSingleField;
+    pnlCodBarra: TUniContainerPanel;
+    dbtxtCodBarra: TDBText;
+    btnObs: TUniBitBtn;
+    imgCodbarras: TUniImage;
+    dbeUnidade: TUniDBEdit;
+    dbeGrupo: TUniDBEdit;
+    dbeFornecedor: TUniDBEdit;
+    dbeQtdeRecebida: TUniDBEdit;
+    dbeValorEstoque: TUniDBEdit;
+    dbeTributacao: TUniDBEdit;
+    dbeEstoqueMinimo: TUniDBEdit;
+    dbeEstoque: TUniDBEdit;
+    dbePrecoVenda: TUniDBEdit;
+    dbeLucro: TUniDBEdit;
+    dbePrecoCusto: TUniDBEdit;
+    dbePrecoPromocao: TUniDBEdit;
+    dbdValidade: TUniDBEdit;
+    dbePeso: TUniDBEdit;
+    dbeNomeProduto: TUniDBEdit;
+    dbeCodigoBarra: TUniDBEdit;
+    dbeCodigoInterno: TUniDBEdit;
+    dbeReferencia: TUniDBEdit;
+    dbeDataReceb: TUniDBEdit;
+    bvlLinha1: TUniPanel;
+    bvlLinha2: TUniPanel;
+    bvlLinha3: TUniPanel;
+    dbckbPromocao: TUniDBCheckBox;
     procedure dbeUnidadeClickButton(Sender: TObject);
     procedure dbeFornecedorClickButton(Sender: TObject);
     procedure dbeGrupoClickButton(Sender: TObject);

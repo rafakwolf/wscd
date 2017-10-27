@@ -1,40 +1,41 @@
 inherited frmRelatorioCompraData: TfrmRelatorioCompraData
   Left = 213
   Top = 173
-  Caption = 'frmRelatorioCompraData'
   ClientHeight = 151
   ClientWidth = 281
+  Caption = 'frmRelatorioCompraData'
   OldCreateOrder = True
   ExplicitWidth = 297
   ExplicitHeight = 190
   PixelsPerInch = 96
   TextHeight = 13
-  object edDataIni: TDBEdit [0]
-    Left = 24
-    Top = 32
-    Width = 169
-    Height = 21
-    DataField = 'DATAINI'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object edDataFim: TDBEdit [1]
-    Left = 24
-    Top = 72
-    Width = 169
-    Height = 21
-    DataField = 'DATAFIM'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  inherited pnButtons: TPanel
+  inherited pnButtons: TUniContainerPanel
     Top = 117
     Width = 281
     ExplicitTop = 121
     ExplicitWidth = 289
-    inherited btnVisualizar: TBitBtn
-      OnClick = btnVisualizarClick
-    end
+  end
+  object edDataIni: TUniDBEdit [1]
+    Left = 24
+    Top = 32
+    Width = 169
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAINI'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object edDataFim: TUniDBEdit [2]
+    Left = 24
+    Top = 72
+    Width = 169
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAFIM'
+    DataSource = dsPadrao
+    TabOrder = 2
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsSelecao

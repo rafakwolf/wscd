@@ -5,13 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Buttons, StdCtrls, Mask, DBCtrls, DB, ComCtrls,
-    DBClient, Provider, SqlExpr, FMTBcd, VarGlobal;
+  DBClient, Provider, SqlExpr, FMTBcd, VarGlobal, uniGUIBaseClasses,
+  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniEdit, uniDBEdit, uniGUIForm,
+  uniPageControl;
 
 type
-  TfrmLancCaixa = class(TForm)
-    btnOk: TBitBtn;
-    btnCancel: TBitBtn;
-    btnNovo: TBitBtn;
+  TfrmLancCaixa = class(TUniForm)
     sqldCaixas: TSQLDataSet;
     dspCaixas: TDataSetProvider;
     cdsCaixas: TClientDataSet;
@@ -37,22 +36,25 @@ type
     cdsPadraoDOCUMENTO: TStringField;
     cdsPadraoTIPO: TStringField;
     cdsPadraoEXCLUIR: TStringField;
-    pgcCaixa: TPageControl;
-    tsCadastro: TTabSheet;
-    lbDesc: TLabel;
-    lbDoc: TLabel;
+    pgcCaixa: TUniPageControl;
+    tsCadastro: TUniTabSheet;
     rdgConta: TDBRadioGroup;
-    dbDesc: TDBEdit;
-    dbDoc: TDBEdit;
-    dbeCaixa: TDBEdit;
-    dbeData: TDBEdit;
-    dbeValor: TDBEdit;
     sqldCaixasCODIGO: TIntegerField;
     sqldCaixasNOME: TStringField;
     sqldCaixasINATIVO: TStringField;
     cdsCaixasINATIVO: TStringField;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
+    lbDesc: TUniLabel;
+    lbDoc: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancel: TUniBitBtn;
+    btnNovo: TUniBitBtn;
+    dbDesc: TUniDBEdit;
+    dbDoc: TUniDBEdit;
+    dbeCaixa: TUniDBEdit;
+    dbeData: TUniDBEdit;
+    dbeValor: TUniDBEdit;
     procedure btnOkClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

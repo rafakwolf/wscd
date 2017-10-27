@@ -4,12 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, StdCtrls, Buttons;
+  Dialogs, unSimplePadrao, StdCtrls, Buttons, uniGUIBaseClasses, uniGUIClasses,
+  uniButton, uniBitBtn, uniMemo;
 
 type
   TfrmInformacaoSistema = class(TfrmSimplePadrao)
-    btnOk: TBitBtn;
-    mmoInfo: TMemo;
+    btnOk: TUniBitBtn;
+    mmoInfo: TUniMemo;
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);

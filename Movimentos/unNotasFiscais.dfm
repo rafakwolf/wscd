@@ -1,513 +1,225 @@
 object frmNotasFiscais: TfrmNotasFiscais
   Left = 299
   Top = 104
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'Compras '
-  ClientHeight = 560
+  ClientHeight = 580
   ClientWidth = 810
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  KeyPreview = True
-  Menu = mnNotasFiscais
+  Caption = 'Compras '
+  OnShow = FormShow
+  OnResize = FormResize
+  BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
-  OnResize = FormResize
-  OnShow = FormShow
+  BorderIcons = [biSystemMenu, biMinimize]
+  KeyPreview = True
+  MonitoredKeys.Keys = <>
+  Font.Charset = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object LabelNumero: TLabel
-    Left = 16
-    Top = 40
-    Width = 61
-    Height = 13
-    Caption = 'N'#186' da nota'
-    FocusControl = dbeNumero
-  end
-  object lbBaixado: TLabel
-    Left = 736
-    Top = 40
-    Width = 56
-    Height = 13
-    Caption = 'Conclu'#237'da'
-  end
-  object BevelSepara: TBevel
-    Left = 1
-    Top = 191
-    Width = 808
-    Height = 2
-  end
-  object lbObs: TLabel
-    Left = 16
-    Top = 120
-    Width = 68
-    Height = 13
-    Caption = 'Observa'#231#227'o'
-  end
-  object dbeNumero: TDBEdit
-    Left = 16
-    Top = 56
-    Width = 105
-    Height = 21
-    DataField = 'NUMERO'
-    DataSource = dsNotasFiscais
-    TabOrder = 0
-  end
-  object Grade: TDBGrid
+  object stbCompra: TUniStatusBar
     Left = 0
-    Top = 239
+    Top = 561
     Width = 810
-    Height = 249
+    Height = 19
+    Hint = ''
+    ShowHint = True
+    Panels = <>
+    SizeGrip = True
     Align = alBottom
-    Ctl3D = True
-    DataSource = dsDetNFiscais
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
-    ParentCtl3D = False
-    TabOrder = 19
-    TitleFont.Charset = ANSI_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Verdana'
-    TitleFont.Style = []
-    OnDblClick = GradeDblClick
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'NOMEPRODUTO'
-        Title.Caption = 'Descri'#231#227'o'
-        Width = 253
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'NOMEALIQUOTA'
-        Title.Caption = 'Tributa'#231#227'o'
-        Width = 73
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'QTDE'
-        Title.Caption = 'Qtde'
-        Width = 45
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TOTAL'
-        Title.Caption = 'Total'
-        Width = 75
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CUSTO'
-        Title.Caption = 'Custo'
-        Width = 62
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'LUCRO'
-        Title.Caption = 'Lucro'
-        Width = 47
-        Visible = True
-      end
-      item
-        Color = clBtnFace
-        Expanded = False
-        FieldName = 'VENDA'
-        Title.Caption = 'Venda'
-        Width = 73
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'IPI'
-        Width = 47
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'DESCONTO'
-        Title.Caption = 'Desconto'
-        Width = 84
-        Visible = True
-      end>
-  end
-  object btnInserir: TBitBtn
-    Left = 784
-    Top = 216
-    Width = 24
-    Height = 21
-    Hint = 'Inserir produto na nota'
-    Glyph.Data = {
-      36030000424D3603000000000000360000002800000010000000100000000100
-      18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
-      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-      FFFF00FFFF00FFFF00FFFF00FFFF00FF046209035F09035606014F04014C0401
-      4C04014C04014C04014C04014C04014C04013D03FF00FFFF00FFFF00FF078216
-      0C9C23099A1D07961505920F03900B038F0A038F0A03900A03900A038F0A0396
-      0B027407013D03FF00FFFF00FF0D982513B53A0FAF2D0CAC2309AB1C06A71504
-      A50E03A50C03A50C03A50C03A40C03AC0D03960A014C04FF00FFFF00FF10A02D
-      1CB44916AD3911A92F0DA7260AA41E07A016059F10039E0C039D0B039C0B03A4
-      0C03900A014D04FF00FFFF00FF11A12F28B85B1FB24CFEFEFE12AA350EA72A0B
-      A522FEFEFE05A013039F0D039D0B03A50C03900A014C04FF00FFFF00FF11A12F
-      3EC2702DBA5FFEFEFEFEFEFE13AB360FA92DFEFEFEFEFEFE06A016049E0F03A4
-      0C03900A014C04FF00FFFF00FF11A12F5CCC8838BD6724B757FEFEFEFEFEFE14
-      AC3A11AB31FEFEFEFEFEFE08A11905A71203910B014D04FF00FFFF00FF11A12F
-      70D49742C2702AB85B21B553FEFEFEFEFEFE15AD3E11AB35FEFEFEFEFEFE09A9
-      1C059311025405FF00FFFF00FF11A12F7DD79F4AC5762FBB5FFEFEFEFEFEFE1C
-      B24E1AB14AFEFEFEFEFEFE0FA92D0DAC2709991B035F09FF00FFFF00FF11A12F
-      86DAA654C97FFEFEFEFEFEFE28B85923B555FEFEFEFEFEFE18B04515AD3B12AF
-      350D9E25056B0CFF00FFFF00FF11A12F93DEB166CF8CFEFEFE3FC16D34BD642C
-      BA5DFEFEFE23B5551DB25019B04817B14210A12F06760FFF00FFFF00FF11A130
-      99E1B590DDAD78D59A6CD0915DCB864CC6783FC16D2CBA5D20B5531DB2511CB5
-      4F15A93D088414FF00FFFF00FF11A12F79D79F99E1B69DE2B893DEB183DAA56D
-      D3954FC97E35BF6824B75920B5551FB85818AD43098E16FF00FFFF00FFFF00FF
-      22A94037B55539B55637B55433B2502AAF4921AA401AA63913A43112A13212A4
-      310C9A23FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    TabOrder = 18
-    OnClick = btnInserirClick
-  end
-  object dbFornecedor: TDBEdit
-    Left = 136
-    Top = 96
-    Width = 657
-    Height = 21
+    Anchors = [akLeft, akRight, akBottom]
+    ParentColor = False
     Color = clBtnFace
-    DataField = 'FORNECEDOR'
-    DataSource = dsNotasFiscais
-    ReadOnly = True
-    TabOrder = 7
   end
-  object PanelTotais: TPanel
+  object PanelTotais: TUniContainerPanel
     Left = 0
-    Top = 488
+    Top = 508
     Width = 810
     Height = 53
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
     TabOrder = 20
-    object LabelFrete: TLabel
+    TabStop = False
+    ExplicitTop = 455
+    object LabelFrete: TUniLabel
       Left = 7
       Top = 6
       Width = 60
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Valor frete'
-      FocusControl = edtFrete
+      TabOrder = 8
     end
-    object LabelIcms: TLabel
+    object LabelIcms: TUniLabel
       Left = 117
       Top = 6
       Width = 62
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Total ICMS'
-      FocusControl = edtIcms
+      TabOrder = 9
     end
-    object LabelIpi: TLabel
+    object LabelIpi: TUniLabel
       Left = 228
       Top = 6
       Width = 48
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Total IPI'
-      FocusControl = edtIPITotal
+      TabOrder = 10
     end
-    object LabelDesp: TLabel
+    object LabelDesp: TUniLabel
       Left = 339
       Top = 6
       Width = 95
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Outras despesas'
-      FocusControl = edtDespesas
+      TabOrder = 11
     end
-    object LabelTotDesc: TLabel
+    object LabelTotDesc: TUniLabel
       Left = 457
       Top = 6
       Width = 82
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Total desconto'
-      FocusControl = edtTotalDesconto
+      TabOrder = 12
     end
-    object LabelTotParc: TLabel
+    object LabelTotParc: TUniLabel
       Left = 567
       Top = 6
       Width = 81
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Total produtos'
-      FocusControl = edtTotalParcial
+      TabOrder = 13
     end
-    object LabelTotTotal: TLabel
+    object LabelTotTotal: TUniLabel
       Left = 678
       Top = 6
       Width = 60
       Height = 13
+      Hint = ''
+      ShowHint = True
       Caption = 'Total geral'
-      FocusControl = edtTotalTotal
+      TabOrder = 14
     end
-    object edtFrete: TDBEdit
+    object edtFrete: TUniDBEdit
       Left = 7
       Top = 22
       Width = 100
       Height = 21
+      Hint = ''
+      ShowHint = True
       DataField = 'FRETE'
       DataSource = dsNotasFiscais
       TabOrder = 0
     end
-    object edtIcms: TDBEdit
+    object edtIcms: TUniDBEdit
       Left = 117
       Top = 22
       Width = 100
       Height = 21
+      Hint = ''
+      ShowHint = True
       DataField = 'ICMS'
       DataSource = dsNotasFiscais
       TabOrder = 1
     end
-    object edtIPITotal: TDBEdit
+    object edtIPITotal: TUniDBEdit
       Left = 228
       Top = 22
       Width = 100
       Height = 21
+      Hint = ''
+      Enabled = False
+      ShowHint = True
       DataField = 'IPI'
       DataSource = dsNotasFiscais
-      Enabled = False
       TabOrder = 2
     end
-    object edtDespesas: TDBEdit
+    object edtDespesas: TUniDBEdit
       Left = 339
       Top = 22
       Width = 108
       Height = 21
+      Hint = ''
+      ShowHint = True
       DataField = 'DESPESAS'
       DataSource = dsNotasFiscais
       TabOrder = 3
     end
-    object edtTotalDesconto: TDBEdit
+    object edtTotalDesconto: TUniDBEdit
       Left = 457
       Top = 22
       Width = 100
       Height = 21
+      Hint = ''
+      ShowHint = True
       DataField = 'DESCONTO'
       DataSource = dsNotasFiscais
       TabOrder = 4
     end
-    object edtTotalParcial: TDBEdit
+    object edtTotalParcial: TUniDBEdit
       Left = 567
       Top = 22
       Width = 100
       Height = 21
+      Hint = ''
+      Enabled = False
+      ShowHint = True
       DataField = 'TOTALPRODUTO'
       DataSource = dsNotasFiscais
-      Enabled = False
       TabOrder = 5
     end
-    object edtTotalTotal: TDBEdit
+    object edtTotalTotal: TUniDBEdit
       Left = 678
       Top = 22
       Width = 124
       Height = 21
-      Color = clInfoBk
+      Hint = ''
+      ShowHint = True
       DataField = 'TOTAL'
       DataSource = dsNotasFiscais
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = [fsBold]
       ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'Verdana'
       TabOrder = 6
+      Color = clInfoBk
     end
   end
-  object dbEstornada: TDBEdit
-    Left = 736
-    Top = 56
-    Width = 57
-    Height = 21
-    Color = clBtnFace
-    DataField = 'CONCLUIDA'
-    DataSource = dsNotasFiscais
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 5
-  end
-  object dbCodFornecedor: TDBEdit
-    Left = 16
-    Top = 96
-    Width = 91
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'CODFORNECEDOR'
-    DataSource = dsNotasFiscais
-    ReadOnly = True
-    TabOrder = 6
-  end
-  object dbProduto: TDBEdit
-    Left = 2
-    Top = 216
-    Width = 243
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'PRODUTO'
-    DataSource = dsSelecao
-    ReadOnly = True
-    TabOrder = 9
-  end
-  object dbTributacao: TDBEdit
-    Left = 267
-    Top = 216
-    Width = 73
-    Height = 21
-    DataField = 'TRIBUTACAO'
-    DataSource = dsSelecao
-    TabOrder = 10
-  end
-  object dbQtde: TDBEdit
-    Left = 342
-    Top = 216
-    Width = 44
-    Height = 21
-    DataField = 'QTDE'
-    DataSource = dsSelecao
-    TabOrder = 11
-  end
-  object dbTotal: TDBEdit
-    Left = 388
-    Top = 216
-    Width = 74
-    Height = 21
-    DataField = 'TOTAL'
-    DataSource = dsSelecao
-    TabOrder = 12
-    OnExit = dbTotalExit
-  end
-  object dbCusto: TDBEdit
-    Left = 463
-    Top = 216
-    Width = 61
-    Height = 21
-    DataField = 'CUSTO'
-    DataSource = dsSelecao
-    TabOrder = 13
-  end
-  object dbLucro: TDBEdit
-    Left = 526
-    Top = 216
-    Width = 48
-    Height = 21
-    DataField = 'LUCRO'
-    DataSource = dsSelecao
-    TabOrder = 14
-    OnExit = dbLucroExit
-  end
-  object dbVenda: TDBEdit
-    Left = 575
-    Top = 216
-    Width = 72
-    Height = 21
-    DataField = 'VENDA'
-    DataSource = dsSelecao
-    TabOrder = 15
-    OnExit = dbVendaExit
-  end
-  object dbIPI: TDBEdit
-    Left = 649
-    Top = 216
-    Width = 46
-    Height = 21
-    DataField = 'IPI'
-    DataSource = dsSelecao
-    TabOrder = 16
-  end
-  object dbDescto: TDBEdit
-    Left = 697
-    Top = 216
-    Width = 85
-    Height = 21
-    DataField = 'DESCTO'
-    DataSource = dsSelecao
-    TabOrder = 17
-  end
-  object dbdDataNota: TDBEdit
-    Left = 128
-    Top = 56
-    Width = 113
-    Height = 21
-    DataField = 'DATANOTA'
-    DataSource = dsNotasFiscais
-    TabOrder = 1
-  end
-  object dbdDataEntrada: TDBEdit
-    Left = 248
-    Top = 56
-    Width = 113
-    Height = 21
-    DataField = 'DATAENTRADA'
-    DataSource = dsNotasFiscais
-    TabOrder = 2
-  end
-  object dbeCfop: TDBEdit
-    Left = 367
-    Top = 56
-    Width = 100
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
-    DataField = 'CFOP'
-    DataSource = dsNotasFiscais
-    ReadOnly = True
-    TabOrder = 3
-  end
-  object dbeOperacao: TDBEdit
-    Left = 495
-    Top = 56
-    Width = 234
-    Height = 21
-    Color = clBtnFace
-    DataField = 'OPERACAO'
-    DataSource = dsNotasFiscais
-    ReadOnly = True
-    TabOrder = 4
-  end
-  object dbmmObservacao: TDBMemo
-    Left = 16
-    Top = 136
-    Width = 777
-    Height = 49
-    DataField = 'OBS'
-    DataSource = dsNotasFiscais
-    ScrollBars = ssVertical
-    TabOrder = 8
-  end
-  object pnlBotoes: TPanel
+  object pnlBotoes: TUniContainerPanel
     Left = 0
     Top = 0
     Width = 810
     Height = 34
+    Hint = ''
+    ShowHint = True
+    ParentColor = False
     Align = alTop
-    BevelOuter = bvNone
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 21
-    object btnFechar: TSpeedButton
+    TabStop = False
+    object btnFechar: TUniSpeedButton
       Left = 320
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Fechar (Esc)'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         B60D0000424DB60D000000000000360000002800000030000000180000000100
         180000000000800D0000D70F0000D70F00000000000000000000FF00FFFF00FF
@@ -619,17 +331,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 0
       OnClick = btnFecharClick
     end
-    object btnConsultar: TSpeedButton
+    object btnConsultar: TUniSpeedButton
       Left = 288
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Pesquisar (F8)'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -777,17 +491,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 1
       OnClick = btnConsultarClick
     end
-    object btnCancelar: TSpeedButton
+    object btnCancelar: TUniSpeedButton
       Left = 256
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Cancelar'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -935,17 +651,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 2
       OnClick = btnCancelarClick
     end
-    object btnSalvar: TSpeedButton
+    object btnSalvar: TUniSpeedButton
       Left = 224
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Salvar'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1093,17 +811,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 3
       OnClick = btnSalvarClick
     end
-    object btnExcluir: TSpeedButton
+    object btnExcluir: TUniSpeedButton
       Left = 192
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Excluir'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1251,17 +971,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 4
       OnClick = btnExcluirClick
     end
-    object btnEditar: TSpeedButton
+    object btnEditar: TUniSpeedButton
       Left = 160
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Editar (F5)'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1409,17 +1131,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 5
       OnClick = btnEditarClick
     end
-    object btnNovo: TSpeedButton
+    object btnNovo: TUniSpeedButton
       Left = 128
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Novo'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1567,17 +1291,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 6
       OnClick = btnNovoClick
     end
-    object btnUltimo: TSpeedButton
+    object btnUltimo: TUniSpeedButton
       Left = 96
       Top = 1
       Width = 32
       Height = 32
       Hint = #218'ltimo'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1725,17 +1451,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 7
       OnClick = btnUltimoClick
     end
-    object btnProximo: TSpeedButton
+    object btnProximo: TUniSpeedButton
       Left = 64
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Proximo'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1883,17 +1611,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 8
       OnClick = btnProximoClick
     end
-    object btnAnterior: TSpeedButton
+    object btnAnterior: TUniSpeedButton
       Left = 32
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Anterior'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -2041,17 +1771,19 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 9
       OnClick = btnAnteriorClick
     end
-    object btnPrimeiro: TSpeedButton
+    object btnPrimeiro: TUniSpeedButton
       Left = 0
       Top = 1
       Width = 32
       Height = 32
       Hint = 'Primeiro'
-      Flat = True
+      ShowHint = True
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -2199,25 +1931,323 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      NumGlyphs = 2
-      Transparent = False
+      Caption = ''
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 10
       OnClick = btnPrimeiroClick
     end
   end
-  object stbCompra: TStatusBar
+  object LabelNumero: TUniLabel
+    Left = 16
+    Top = 40
+    Width = 61
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'N'#186' da nota'
+    TabOrder = 23
+  end
+  object lbBaixado: TUniLabel
+    Left = 736
+    Top = 40
+    Width = 56
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Conclu'#237'da'
+    TabOrder = 24
+  end
+  object lbObs: TUniLabel
+    Left = 16
+    Top = 120
+    Width = 68
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Observa'#231#227'o'
+    TabOrder = 25
+  end
+  object btnInserir: TUniBitBtn
+    Left = 784
+    Top = 216
+    Width = 24
+    Height = 21
+    Hint = 'Inserir produto na nota'
+    ShowHint = True
+    Glyph.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
+      FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+      FFFF00FFFF00FFFF00FFFF00FFFF00FF046209035F09035606014F04014C0401
+      4C04014C04014C04014C04014C04014C04013D03FF00FFFF00FFFF00FF078216
+      0C9C23099A1D07961505920F03900B038F0A038F0A03900A03900A038F0A0396
+      0B027407013D03FF00FFFF00FF0D982513B53A0FAF2D0CAC2309AB1C06A71504
+      A50E03A50C03A50C03A50C03A40C03AC0D03960A014C04FF00FFFF00FF10A02D
+      1CB44916AD3911A92F0DA7260AA41E07A016059F10039E0C039D0B039C0B03A4
+      0C03900A014D04FF00FFFF00FF11A12F28B85B1FB24CFEFEFE12AA350EA72A0B
+      A522FEFEFE05A013039F0D039D0B03A50C03900A014C04FF00FFFF00FF11A12F
+      3EC2702DBA5FFEFEFEFEFEFE13AB360FA92DFEFEFEFEFEFE06A016049E0F03A4
+      0C03900A014C04FF00FFFF00FF11A12F5CCC8838BD6724B757FEFEFEFEFEFE14
+      AC3A11AB31FEFEFEFEFEFE08A11905A71203910B014D04FF00FFFF00FF11A12F
+      70D49742C2702AB85B21B553FEFEFEFEFEFE15AD3E11AB35FEFEFEFEFEFE09A9
+      1C059311025405FF00FFFF00FF11A12F7DD79F4AC5762FBB5FFEFEFEFEFEFE1C
+      B24E1AB14AFEFEFEFEFEFE0FA92D0DAC2709991B035F09FF00FFFF00FF11A12F
+      86DAA654C97FFEFEFEFEFEFE28B85923B555FEFEFEFEFEFE18B04515AD3B12AF
+      350D9E25056B0CFF00FFFF00FF11A12F93DEB166CF8CFEFEFE3FC16D34BD642C
+      BA5DFEFEFE23B5551DB25019B04817B14210A12F06760FFF00FFFF00FF11A130
+      99E1B590DDAD78D59A6CD0915DCB864CC6783FC16D2CBA5D20B5531DB2511CB5
+      4F15A93D088414FF00FFFF00FF11A12F79D79F99E1B69DE2B893DEB183DAA56D
+      D3954FC97E35BF6824B75920B5551FB85818AD43098E16FF00FFFF00FFFF00FF
+      22A94037B55539B55637B55433B2502AAF4921AA401AA63913A43112A13212A4
+      310C9A23FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    Caption = ''
+    TabOrder = 18
+    OnClick = btnInserirClick
+  end
+  object dbeNumero: TUniDBEdit
+    Left = 16
+    Top = 56
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'NUMERO'
+    DataSource = dsNotasFiscais
+    TabOrder = 0
+  end
+  object dbFornecedor: TUniDBEdit
+    Left = 136
+    Top = 96
+    Width = 657
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'FORNECEDOR'
+    DataSource = dsNotasFiscais
+    TabOrder = 7
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbEstornada: TUniDBEdit
+    Left = 736
+    Top = 56
+    Width = 57
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CONCLUIDA'
+    DataSource = dsNotasFiscais
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    TabOrder = 5
+    Color = clBtnFace
+  end
+  object dbCodFornecedor: TUniDBEdit
+    Left = 16
+    Top = 96
+    Width = 91
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'CODFORNECEDOR'
+    DataSource = dsNotasFiscais
+    TabOrder = 6
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbProduto: TUniDBEdit
+    Left = 2
+    Top = 216
+    Width = 243
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'PRODUTO'
+    DataSource = dsSelecao
+    TabOrder = 9
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbTributacao: TUniDBEdit
+    Left = 267
+    Top = 216
+    Width = 73
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TRIBUTACAO'
+    DataSource = dsSelecao
+    TabOrder = 10
+  end
+  object dbQtde: TUniDBEdit
+    Left = 342
+    Top = 216
+    Width = 44
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'QTDE'
+    DataSource = dsSelecao
+    TabOrder = 11
+  end
+  object dbTotal: TUniDBEdit
+    Left = 388
+    Top = 216
+    Width = 74
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'TOTAL'
+    DataSource = dsSelecao
+    TabOrder = 12
+    OnExit = dbTotalExit
+  end
+  object dbCusto: TUniDBEdit
+    Left = 463
+    Top = 216
+    Width = 61
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CUSTO'
+    DataSource = dsSelecao
+    TabOrder = 13
+  end
+  object dbLucro: TUniDBEdit
+    Left = 526
+    Top = 216
+    Width = 48
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'LUCRO'
+    DataSource = dsSelecao
+    TabOrder = 14
+    OnExit = dbLucroExit
+  end
+  object dbVenda: TUniDBEdit
+    Left = 575
+    Top = 216
+    Width = 72
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'VENDA'
+    DataSource = dsSelecao
+    TabOrder = 15
+    OnExit = dbVendaExit
+  end
+  object dbIPI: TUniDBEdit
+    Left = 649
+    Top = 216
+    Width = 46
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'IPI'
+    DataSource = dsSelecao
+    TabOrder = 16
+  end
+  object dbDescto: TUniDBEdit
+    Left = 697
+    Top = 216
+    Width = 85
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DESCTO'
+    DataSource = dsSelecao
+    TabOrder = 17
+  end
+  object dbdDataNota: TUniDBEdit
+    Left = 128
+    Top = 56
+    Width = 113
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATANOTA'
+    DataSource = dsNotasFiscais
+    TabOrder = 1
+  end
+  object dbdDataEntrada: TUniDBEdit
+    Left = 248
+    Top = 56
+    Width = 113
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DATAENTRADA'
+    DataSource = dsNotasFiscais
+    TabOrder = 2
+  end
+  object dbeCfop: TUniDBEdit
+    Left = 367
+    Top = 56
+    Width = 100
+    Height = 21
+    Hint = 'Pesquisar < F2 >'
+    ShowHint = True
+    DataField = 'CFOP'
+    DataSource = dsNotasFiscais
+    TabOrder = 3
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object dbeOperacao: TUniDBEdit
+    Left = 495
+    Top = 56
+    Width = 234
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'OPERACAO'
+    DataSource = dsNotasFiscais
+    TabOrder = 4
+    Color = clBtnFace
+    ReadOnly = True
+  end
+  object BevelSepara: TUniPanel
+    Left = 1
+    Top = 191
+    Width = 808
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 26
+    Caption = 'BevelSepara'
+  end
+  object dbmmObservacao: TUniDBMemo
+    Left = 16
+    Top = 136
+    Width = 777
+    Height = 49
+    Hint = ''
+    ShowHint = True
+    DataField = 'OBS'
+    DataSource = dsNotasFiscais
+    ScrollBars = ssVertical
+    TabOrder = 8
+  end
+  object Grade: TUniDBGrid
     Left = 0
-    Top = 541
+    Top = 259
     Width = 810
-    Height = 19
-    Panels = <
-      item
-        Width = 50
-      end
-      item
-        Alignment = taCenter
-        Text = 'Para ajuda pressione F1'
-        Width = 50
-      end>
+    Height = 249
+    Hint = ''
+    ShowHint = True
+    DataSource = dsDetNFiscais
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
+    LoadMask.Message = 'Loading data...'
+    Align = alBottom
+    Anchors = [akLeft, akRight, akBottom]
+    TabOrder = 19
+    ParentColor = False
+    Color = clWindow
+    OnDblClick = GradeDblClick
   end
   object dsDetNFiscais: TDataSource
     AutoEdit = False
@@ -2231,163 +2261,6 @@ object frmNotasFiscais: TfrmNotasFiscais
     OnStateChange = dsNotasFiscaisStateChange
     Left = 160
     Top = 289
-  end
-  object mnNotasFiscais: TMainMenu
-    Left = 64
-    Top = 376
-    object miRegistros: TMenuItem
-      Caption = 'Registros'
-      object miPrimeiro: TMenuItem
-        Caption = 'Primeiro'
-        OnClick = btnPrimeiroClick
-      end
-      object miAnterior: TMenuItem
-        Caption = 'Anterior'
-        OnClick = btnAnteriorClick
-      end
-      object miProximo: TMenuItem
-        Caption = 'Pr'#243'ximo'
-        OnClick = btnProximoClick
-      end
-      object miUltimo: TMenuItem
-        Caption = #218'ltimo'
-        OnClick = btnUltimoClick
-      end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object miNovo: TMenuItem
-        Caption = 'Novo'
-        OnClick = btnNovoClick
-      end
-      object miExcluir: TMenuItem
-        Caption = 'Excluir'
-        OnClick = btnExcluirClick
-      end
-      object miAlterar: TMenuItem
-        Caption = 'Alterar'
-        ShortCut = 116
-        OnClick = btnEditarClick
-      end
-      object N2: TMenuItem
-        Caption = '-'
-      end
-      object miSalvar: TMenuItem
-        Caption = 'Salvar'
-        OnClick = btnSalvarClick
-      end
-      object miCancelar: TMenuItem
-        Caption = 'Cancelar'
-        OnClick = btnCancelarClick
-      end
-      object N3: TMenuItem
-        Caption = '-'
-      end
-      object miFechar: TMenuItem
-        Caption = 'Fechar'
-        ShortCut = 27
-        OnClick = btnFecharClick
-      end
-    end
-    object miFerramentas: TMenuItem
-      Caption = 'Ferramentas'
-      object miLocalizar: TMenuItem
-        Caption = 'Pesquisar'
-        ShortCut = 119
-        OnClick = btnConsultarClick
-      end
-      object miOutrosFiltros: TMenuItem
-        Caption = 'Outros filtros'
-        object miFiltroData: TMenuItem
-          Caption = 'Filtrar por data'
-          OnClick = miFiltroDataClick
-        end
-        object miFiltrarForn: TMenuItem
-          Caption = 'Filtrar por fornecedor'
-          OnClick = miFiltrarFornClick
-        end
-        object N6: TMenuItem
-          Caption = '-'
-        end
-        object miCompraNaoConc: TMenuItem
-          Caption = 'Compras n'#227'o conclu'#237'das'
-          OnClick = miCompraNaoConcClick
-        end
-      end
-      object miMostrarTodos: TMenuItem
-        Caption = 'Limpar filtro'
-        OnClick = miMostrarTodosClick
-      end
-      object N5: TMenuItem
-        Caption = '-'
-      end
-      object miContar: TMenuItem
-        Caption = 'Contar registros'
-        OnClick = miContarClick
-      end
-      object N9: TMenuItem
-        Caption = '-'
-      end
-      object miCadastraForn: TMenuItem
-        Caption = 'Cadastrar fornecedor'
-        OnClick = miCadastraFornClick
-      end
-      object miCadastrarCFOP: TMenuItem
-        Caption = 'Cadastrar CFOP'
-        OnClick = miCadastrarCFOPClick
-      end
-      object miCadastrodeproduto: TMenuItem
-        Caption = 'Cadastro de produto'
-        OnClick = miCadastrodeprodutoClick
-      end
-    end
-    object miOpcoes: TMenuItem
-      Caption = 'Op'#231#245'es'
-      object miConcluir: TMenuItem
-        Caption = 'Concluir'
-        OnClick = miConcluirClick
-      end
-      object miEstornar: TMenuItem
-        Caption = 'Estornar'
-        OnClick = miEstornarClick
-      end
-      object N8: TMenuItem
-        Caption = '-'
-      end
-      object miPagamentoCompra: TMenuItem
-        Caption = 'Ver pagamentos'
-        OnClick = miPagamentoCompraClick
-      end
-    end
-    object miRelatorios: TMenuItem
-      Caption = 'Relat'#243'rios'
-      object miCompraAtual: TMenuItem
-        Caption = 'Compra atual'
-        OnClick = miCompraAtualClick
-      end
-      object N7: TMenuItem
-        Caption = '-'
-      end
-      object miRelDatas: TMenuItem
-        Caption = 'Por intervalo de datas'
-        OnClick = miRelDatasClick
-      end
-      object miRelForn: TMenuItem
-        Caption = 'Por fornecedor'
-        OnClick = miRelFornClick
-      end
-      object N4: TMenuItem
-        Caption = '-'
-      end
-      object miListaFaturamForn: TMenuItem
-        Caption = 'Listagem de faturamento por fornecedor'
-        OnClick = miListaFaturamFornClick
-      end
-      object miListaFaturaCorrente: TMenuItem
-        Caption = 'Listagem de faturamento desta compra'
-        OnClick = miListaFaturaCorrenteClick
-      end
-    end
   end
   object sqldSelecao: TSQLDataSet
     CommandText = 
@@ -3043,5 +2916,162 @@ object frmNotasFiscais: TfrmNotasFiscais
       end>
     Left = 160
     Top = 376
+  end
+  object mnNotasFiscais: TUniMainMenu
+    Left = 64
+    Top = 376
+    object miRegistros: TUniMenuItem
+      Caption = 'Registros'
+      object miPrimeiro: TUniMenuItem
+        Caption = 'Primeiro'
+        OnClick = btnPrimeiroClick
+      end
+      object miAnterior: TUniMenuItem
+        Caption = 'Anterior'
+        OnClick = btnAnteriorClick
+      end
+      object miProximo: TUniMenuItem
+        Caption = 'Pr'#243'ximo'
+        OnClick = btnProximoClick
+      end
+      object miUltimo: TUniMenuItem
+        Caption = #218'ltimo'
+        OnClick = btnUltimoClick
+      end
+      object N1: TUniMenuItem
+        Caption = '-'
+      end
+      object miNovo: TUniMenuItem
+        Caption = 'Novo'
+        OnClick = btnNovoClick
+      end
+      object miExcluir: TUniMenuItem
+        Caption = 'Excluir'
+        OnClick = btnExcluirClick
+      end
+      object miAlterar: TUniMenuItem
+        Caption = 'Alterar'
+        ShortCut = 116
+        OnClick = btnEditarClick
+      end
+      object N2: TUniMenuItem
+        Caption = '-'
+      end
+      object miSalvar: TUniMenuItem
+        Caption = 'Salvar'
+        OnClick = btnSalvarClick
+      end
+      object miCancelar: TUniMenuItem
+        Caption = 'Cancelar'
+        OnClick = btnCancelarClick
+      end
+      object N3: TUniMenuItem
+        Caption = '-'
+      end
+      object miFechar: TUniMenuItem
+        Caption = 'Fechar'
+        ShortCut = 27
+        OnClick = btnFecharClick
+      end
+    end
+    object miFerramentas: TUniMenuItem
+      Caption = 'Ferramentas'
+      object miLocalizar: TUniMenuItem
+        Caption = 'Pesquisar'
+        ShortCut = 119
+        OnClick = btnConsultarClick
+      end
+      object miOutrosFiltros: TUniMenuItem
+        Caption = 'Outros filtros'
+        object miFiltroData: TUniMenuItem
+          Caption = 'Filtrar por data'
+          OnClick = miFiltroDataClick
+        end
+        object miFiltrarForn: TUniMenuItem
+          Caption = 'Filtrar por fornecedor'
+          OnClick = miFiltrarFornClick
+        end
+        object N6: TUniMenuItem
+          Caption = '-'
+        end
+        object miCompraNaoConc: TUniMenuItem
+          Caption = 'Compras n'#227'o conclu'#237'das'
+          OnClick = miCompraNaoConcClick
+        end
+      end
+      object miMostrarTodos: TUniMenuItem
+        Caption = 'Limpar filtro'
+        OnClick = miMostrarTodosClick
+      end
+      object N5: TUniMenuItem
+        Caption = '-'
+      end
+      object miContar: TUniMenuItem
+        Caption = 'Contar registros'
+        OnClick = miContarClick
+      end
+      object N9: TUniMenuItem
+        Caption = '-'
+      end
+      object miCadastraForn: TUniMenuItem
+        Caption = 'Cadastrar fornecedor'
+        OnClick = miCadastraFornClick
+      end
+      object miCadastrarCFOP: TUniMenuItem
+        Caption = 'Cadastrar CFOP'
+        OnClick = miCadastrarCFOPClick
+      end
+      object miCadastrodeproduto: TUniMenuItem
+        Caption = 'Cadastro de produto'
+        OnClick = miCadastrodeprodutoClick
+      end
+    end
+    object miOpcoes: TUniMenuItem
+      Caption = 'Op'#231#245'es'
+      object miConcluir: TUniMenuItem
+        Caption = 'Concluir'
+        OnClick = miConcluirClick
+      end
+      object miEstornar: TUniMenuItem
+        Caption = 'Estornar'
+        OnClick = miEstornarClick
+      end
+      object N8: TUniMenuItem
+        Caption = '-'
+      end
+      object miPagamentoCompra: TUniMenuItem
+        Caption = 'Ver pagamentos'
+        OnClick = miPagamentoCompraClick
+      end
+    end
+    object miRelatorios: TUniMenuItem
+      Caption = 'Relat'#243'rios'
+      object miCompraAtual: TUniMenuItem
+        Caption = 'Compra atual'
+        OnClick = miCompraAtualClick
+      end
+      object N7: TUniMenuItem
+        Caption = '-'
+      end
+      object miRelDatas: TUniMenuItem
+        Caption = 'Por intervalo de datas'
+        OnClick = miRelDatasClick
+      end
+      object miRelForn: TUniMenuItem
+        Caption = 'Por fornecedor'
+        OnClick = miRelFornClick
+      end
+      object N4: TUniMenuItem
+        Caption = '-'
+      end
+      object miListaFaturamForn: TUniMenuItem
+        Caption = 'Listagem de faturamento por fornecedor'
+        OnClick = miListaFaturamFornClick
+      end
+      object miListaFaturaCorrente: TUniMenuItem
+        Caption = 'Listagem de faturamento desta compra'
+        OnClick = miListaFaturaCorrenteClick
+      end
+    end
   end
 end

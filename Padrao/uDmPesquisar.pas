@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils, Classes, Provider, DB, SqlExpr, DBClient,
-  FMTBcd;
+  FMTBcd, uniGUIApplication;
 
 type
   TDmPesquisar = class(TDataModule)
@@ -27,22 +27,22 @@ uses unModeloConsulta, ConstPadrao, Variants;
 
 function TDmPesquisar.GetBanco: Variant;
 begin
-  Result := TfrmModeloConsulta.Execute('Banco','BANCO',FN_BANCO,DL_BANCO);
+  Result := TfrmModeloConsulta.Execute('Banco','BANCO',FN_BANCO,DL_BANCO, UniApplication);
 end;
 
 function TDmPesquisar.GetCliente: Variant;
 begin
-  Result := TfrmModeloConsulta.Execute('Cliente','CLIENTES',FN_CLIENTES,DL_CLIENTES);
+  Result := TfrmModeloConsulta.Execute('Cliente','CLIENTES',FN_CLIENTES,DL_CLIENTES, UniApplication);
 end;
 
 function TDmPesquisar.GetContaCaixa: Variant;
 begin
-  Result := TfrmModeloConsulta.Execute('Conta Caixa','CAIXAS',FN_CAIXAS,DL_CAIXAS);
+  Result := TfrmModeloConsulta.Execute('Conta Caixa','CAIXAS',FN_CAIXAS,DL_CAIXAS, UniApplication);
 end;
 
 function TDmPesquisar.GetFornecedor: Variant;
 begin
-  Result := TfrmModeloConsulta.Execute('Fornecedor','FORNECEDORES',FN_FORN,DL_FORN);
+  Result := TfrmModeloConsulta.Execute('Fornecedor','FORNECEDORES',FN_FORN,DL_FORN, UniApplication);
 end;
 
 end.

@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtCtrls, DB, DBClient,
-  Provider, SqlExpr, unTrocaSenhaCaixa, FMTBcd;
+  Provider, SqlExpr, unTrocaSenhaCaixa, FMTBcd, uniGUIClasses, uniEdit,
+  uniGUIBaseClasses, uniButton, uniBitBtn;
 
 type
   TfrmSenhaEstoque = class(TfrmSenhaCaixa)

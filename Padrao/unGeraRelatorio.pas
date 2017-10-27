@@ -5,37 +5,39 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   ClassesGerador, Dialogs, DB, StdCtrls, SQLExpr, ExtCtrls, ComCtrls, XMLIntf,
-  XMLDoc, CheckLst, Buttons, DBClient, Provider,
-  FMTBcd, msxmldom, xmldom;
+  XMLDoc, CheckLst, Buttons, DBClient, Provider,  UniGUIDialogs,
+  FMTBcd, msxmldom, xmldom, UniGuiForm, uniGUIBaseClasses, uniGUIClasses,
+  uniLabel, uniButton, uniBitBtn, uniEdit, uniCheckBox, uniImage, uniPanel,
+  uniMultiItem, uniComboBox;
 
 type
-  TfrmGeraRelatorio = class(TForm)
+  TfrmGeraRelatorio = class(TUniForm)
     SaveDialog: TSaveDialog;
     XMLDoc: TXMLDocument;
-    imgSalvar: TImage;
-    lblTextoSalvar: TLabel;
-    imgImpressora: TImage;
-    lblTextoTop: TLabel;
-    lbModelo: TLabel;
     ListColPrint: TCheckListBox;
     ListColGroup: TCheckListBox;
-    btnSaveModelo: TBitBtn;
-    comboLoadModelos: TComboBox;
-    btnExcluirModelo: TBitBtn;
-    btnImprimir: TBitBtn;
     sqldRelatorio: TSQLDataSet;
     dspRelatorio: TDataSetProvider;
     cdsRelatorio: TClientDataSet;
     dsRelatorio: TDataSource;
-    edtNomeModelo: TLabeledEdit;
-    btnClose: TBitBtn;
-    edtTituloRelatorio: TLabeledEdit;
-    bvlSeperador: TBevel;
-    bvlSeparadorVert: TBevel;
     ListOrder: TCheckListBox;
-    ckbImprimir: TCheckBox;
-    ckbTotalizar: TCheckBox;
-    ckbOrdenar: TCheckBox;
+    lblTextoSalvar: TUniLabel;
+    lblTextoTop: TUniLabel;
+    lbModelo: TUniLabel;
+    btnSaveModelo: TUniBitBtn;
+    btnExcluirModelo: TUniBitBtn;
+    btnImprimir: TUniBitBtn;
+    btnClose: TUniBitBtn;
+    edtNomeModelo: TUniEdit;
+    edtTituloRelatorio: TUniEdit;
+    ckbImprimir: TUniCheckBox;
+    ckbTotalizar: TUniCheckBox;
+    ckbOrdenar: TUniCheckBox;
+    imgSalvar: TUniImage;
+    imgImpressora: TUniImage;
+    bvlSeperador: TUniPanel;
+    bvlSeparadorVert: TUniPanel;
+    comboLoadModelos: TUniComboBox;
     procedure FormCreate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnExcluirModeloClick(Sender: TObject);
@@ -217,13 +219,14 @@ var
 
 begin
 
-  if FileExists( Modelo.setNomeModelo( edtNomeModelo.text ) ) then
-  begin
-    if not MessageDlg('Já existe um modelo com esse nome. Deseja substituí-lo?', mtConfirmation , [mbYes, mbNo],0) = mrYes then
-      exit
-    else
-      DeleteFile( Modelo.setNomeModelo( edtNomeModelo.text ) );
-  end;
+//  if FileExists( Modelo.setNomeModelo( edtNomeModelo.text ) ) then
+//  begin
+//    if not MessageDlg('Já existe um modelo com esse nome. Deseja substituí-lo?',
+//    mtConfirmation , [mbYes, mbNo],0) = mrYes then
+//      exit
+//    else
+//      DeleteFile( Modelo.setNomeModelo( edtNomeModelo.text ) );
+//  end;
 
   XMLDoc.FileName := '';
   XMLDoc.Active := True;
@@ -256,7 +259,7 @@ begin
   comboLoadModelos.Items.Clear;
   GetArquivosDiretorio( Modelo.pasta, Modelo.setAllNomeModelo, false);
   for i:=0 to length( Modelo.arquivos ) -1 do
-    comboLoadModelos.AddItem( Modelo.getNomeModeloAlias( Modelo.arquivos[i] ), nil );
+    comboLoadModelos.Items.AddObject( Modelo.getNomeModeloAlias( Modelo.arquivos[i] ), nil );
 end;
 
 function TfrmGeraRelatorio.GetArquivosDiretorio(FDiretorio, Filtro: TFileName; ExibePasta:Boolean): TStringList;
@@ -440,24 +443,24 @@ end;
 
 procedure TfrmGeraRelatorio.btnExcluirModeloClick(Sender: TObject);
 begin
-  if FileExists(Modelo.setNomeModelo(Trim(ComboLoadModelos.Text))) then
-  begin
-    if not Application.MessageBox('Deseja realmente excluir este modelo?', 'Confirmação',
-    MB_YESNO or MB_ICONQUESTION or MB_DEFBUTTON2) = ID_YES then
-      Exit
-    else
-    begin
-      DeleteFile(Modelo.setNomeModelo(Trim(ComboLoadModelos.Text)));
-      { Linpa todos os checks de fields e agrupamentos }
-      unCheckList( listColPrint );
-      unCheckList( listColGroup );
-      { Limpa os itens do combo para carregar apenas os existentes }
-      comboLoadModelos.Items.Clear;
-      { Carrega todos os XMLS exixtentes }
-      btnExcluirModelo.Enabled := False;
-      loadXML;
-    end;
-  end;
+//  if FileExists(Modelo.setNomeModelo(Trim(ComboLoadModelos.Text))) then
+//  begin
+//    if not UniGUIDialogs.MessageDlg('Deseja realmente excluir este modelo?', 'Confirmação',
+//    MB_YESNO or MB_ICONQUESTION or MB_DEFBUTTON2) = ID_YES then
+//      Exit
+//    else
+//    begin
+//      DeleteFile(Modelo.setNomeModelo(Trim(ComboLoadModelos.Text)));
+//      { Linpa todos os checks de fields e agrupamentos }
+//      unCheckList( listColPrint );
+//      unCheckList( listColGroup );
+//      { Limpa os itens do combo para carregar apenas os existentes }
+//      comboLoadModelos.Items.Clear;
+//      { Carrega todos os XMLS exixtentes }
+//      btnExcluirModelo.Enabled := False;
+//      loadXML;
+//    end;
+//  end;
 end;
 
 class function TfrmGeraRelatorio.Execute(aCaption, TableName: String;

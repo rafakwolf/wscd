@@ -5,20 +5,21 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, ComCtrls, Buttons, DB,
-  SqlExpr, FMTBcd;
+  SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton,
+  uniBitBtn;
 
 type
   TfrmRepararIndice = class(TfrmSimplePadrao)
     pbProcesso: TProgressBar;
-    lbStatus: TLabel;
-    btnReparar: TBitBtn;
-    btnCancelar: TBitBtn;
     sqldPK: TSQLDataSet;
     sqldPKPK: TStringField;
     sqldPKTABELA: TStringField;
     sqldFK: TSQLDataSet;
     sqldFKFK: TStringField;
     sqldFKTABELA: TStringField;
+    lbStatus: TUniLabel;
+    btnReparar: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnRepararClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

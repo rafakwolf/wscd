@@ -1,91 +1,108 @@
 inherited frmPerfilPermissao: TfrmPerfilPermissao
   Left = 220
-  Caption = 'frmPerfilPermissao'
   ClientHeight = 452
   ClientWidth = 484
-  Font.Height = -12
-  Font.Name = 'Tahoma'
+  Caption = 'frmPerfilPermissao'
   OldCreateOrder = True
+  Font.Height = -12
+  Font.Name = 'Verdana'
   ExplicitWidth = 490
   ExplicitHeight = 481
   PixelsPerInch = 96
   TextHeight = 14
-  object dbePerfil: TDBEdit [0]
-    Left = 37
-    Top = 51
-    Width = 420
-    Height = 22
-    DataField = 'PERFIL'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  object grpItemMenu: TGroupBox [1]
-    Left = 8
-    Top = 88
-    Width = 449
-    Height = 337
-    Caption = 'Itens do menu'
-    TabOrder = 3
-    object dbgPerm: TDBGrid
-      Left = 8
-      Top = 39
-      Width = 433
-      Height = 289
-      DataSource = dsPerfisConf
-      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-      PopupMenu = pmLiberaBloqueia
-      TabOrder = 0
-      TitleFont.Charset = ANSI_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -12
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      OnCellClick = dbgPermCellClick
-      OnDrawColumnCell = dbgPermDrawColumnCell
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'ACAO_CAPTION'
-          Title.Caption = 'A'#231#227'o'
-          Width = 328
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'LIBERADO'
-          Title.Alignment = taCenter
-          Title.Caption = 'Permiss'#227'o'
-          Width = 61
-          Visible = True
-        end>
-    end
-    object edtBuscaItemMenu: TEdit
-      Left = 208
-      Top = 13
-      Width = 233
-      Height = 22
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clGray
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-      Text = 'Busca item do menu...'
-      OnChange = edtBuscaItemMenuChange
-      OnEnter = edtBuscaItemMenuEnter
-      OnExit = edtBuscaItemMenuExit
-    end
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 433
     Width = 484
     ExplicitTop = 433
     ExplicitWidth = 484
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 484
     ExplicitWidth = 484
+    inherited btnNovo: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Height = -12
+      Font.Name = 'Verdana'
+    end
+  end
+  object dbePerfil: TUniDBEdit [2]
+    Left = 37
+    Top = 51
+    Width = 420
+    Height = 22
+    Hint = ''
+    ShowHint = True
+    DataField = 'PERFIL'
+    DataSource = dsPadrao
+    TabOrder = 2
+  end
+  object grpItemMenu: TUniGroupBox [3]
+    Left = 8
+    Top = 88
+    Width = 449
+    Height = 337
+    Hint = ''
+    ShowHint = True
+    Caption = 'Itens do menu'
+    TabOrder = 3
+    TabStop = False
+    object edtBuscaItemMenu: TUniEdit
+      Left = 208
+      Top = 13
+      Width = 233
+      Hint = ''
+      ShowHint = True
+      Text = 'Busca item do menu...'
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      TabOrder = 1
+      OnChange = edtBuscaItemMenuChange
+      OnExit = edtBuscaItemMenuExit
+      OnEnter = edtBuscaItemMenuEnter
+    end
+    object dbgPerm: TUniDBGrid
+      Left = 8
+      Top = 39
+      Width = 433
+      Height = 289
+      Hint = ''
+      ShowHint = True
+      DataSource = dsPerfisConf
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+      LoadMask.Message = 'Loading data...'
+      TabOrder = 0
+      ParentColor = False
+      Color = clWindow
+    end
   end
   inherited actlNavigateActions: TActionList
     Left = 80
@@ -214,7 +231,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     Left = 120
     Top = 220
     Bitmap = {
-      494C0101020004001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020004002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000E9EDFC00BEBF
       EE00000000000000000000000000000000000000000000000000000000000000
@@ -353,21 +370,21 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       87E1FFFF00000000CFF3FFFF0000000000000000000000000000000000000000
       000000000000}
   end
-  object pmLiberaBloqueia: TPopupMenu
+  object pmLiberaBloqueia: TUniPopupMenu
     Left = 144
     Top = 172
-    object miLiberar: TMenuItem
+    object miLiberar: TUniMenuItem
       Caption = 'Liberar todos'
       OnClick = miLiberarClick
     end
-    object miBloquear: TMenuItem
+    object miBloquear: TUniMenuItem
       Caption = 'Bloquear todos'
       OnClick = miBloquearClick
     end
-    object N5: TMenuItem
+    object N5: TUniMenuItem
       Caption = '-'
     end
-    object miCarregarAcoes: TMenuItem
+    object miCarregarAcoes: TUniMenuItem
       Caption = 'Carregar a'#231#245'es'
       OnClick = miCarregarAcoesClick
     end

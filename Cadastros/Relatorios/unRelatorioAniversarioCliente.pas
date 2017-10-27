@@ -6,23 +6,14 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, DBClient, Provider, SqlExpr, ComCtrls,  Spin,
-  FMTBcd, DBCtrls, Vcl.Mask;
+  FMTBcd, DBCtrls, Vcl.Mask, uniGUIBaseClasses, uniGUIClasses, uniPanel,
+  uniLabel, uniEdit, uniButton, uniBitBtn, uniDBEdit, uniMultiItem, uniComboBox,
+  uniSpinEdit;
 
 type
   TfrmRelatorioAniversarioCliente = class(TfrmDialogoRelatorioPadrao)
     rgTipo: TRadioGroup;
     rgDatas: TRadioGroup;
-    pnDiaMesAno: TPanel;
-    LabelMes: TLabel;
-    LabelDo: TLabel;
-    LabelAte: TLabel;
-    cmbMes: TComboBox;
-    edDo: TSpinEdit;
-    edAte: TSpinEdit;
-    edAno: TLabeledEdit;
-    pnDatas: TPanel;
-    dbeDataIni: TDBEdit;
-    dbeDataFim: TDBEdit;
     sqldSelecao: TSQLDataSet;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
@@ -30,6 +21,17 @@ type
     cdsSelecao: TClientDataSet;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
+    pnDiaMesAno: TUniContainerPanel;
+    pnDatas: TUniContainerPanel;
+    LabelMes: TUniLabel;
+    LabelDo: TUniLabel;
+    LabelAte: TUniLabel;
+    edAno: TUniEdit;
+    dbeDataIni: TUniDBEdit;
+    dbeDataFim: TUniDBEdit;
+    cmbMes: TUniComboBox;
+    edDo: TUniSpinEdit;
+    edAte: TUniSpinEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edAnoKeyPress(Sender: TObject; var Key: Char);
@@ -55,8 +57,8 @@ procedure TfrmRelatorioAniversarioCliente.FormCreate(Sender: TObject);
 begin
   inherited;
   cdsSelecao.Open;
-  pnDiaMesAno.BevelOuter := bvNone;
-  pnDatas.BevelOuter := bvNone;
+  //pnDiaMesAno.BevelOuter := bvNone;
+  //pnDatas.BevelOuter := bvNone;
   rgDatasClick(Self);  
 end;
 

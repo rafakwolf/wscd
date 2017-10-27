@@ -5,11 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
-  DBClient, DB, Mask, DBCtrls;
+  DBClient, DB, Mask, DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
+  uniBitBtn, uniGUIBaseClasses, uniPanel;
 
 type
   TfrmRelatorioCRCliente = class(TfrmDialogoRelatorioPadrao)
-    dbeCliente: TDBEdit;
+    dbeCliente: TUniDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);

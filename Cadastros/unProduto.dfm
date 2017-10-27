@@ -1,116 +1,170 @@
 inherited frmProduto: TfrmProduto
   Left = 218
   Top = 129
-  Caption = 'frmProduto'
   ClientHeight = 420
   ClientWidth = 513
+  Caption = 'frmProduto'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 519
   ExplicitHeight = 449
   PixelsPerInch = 96
   TextHeight = 13
-  object bvlLinha1: TBevel [0]
-    Left = 8
-    Top = 280
-    Width = 497
-    Height = 2
+  inherited sbStatus: TUniStatusBar
+    Top = 401
+    Width = 513
+    ExplicitTop = 401
+    ExplicitWidth = 513
   end
-  object bvlLinha2: TBevel [1]
-    Left = 8
-    Top = 336
-    Width = 497
-    Height = 2
+  inherited pnBotoesPadrao: TUniContainerPanel
+    Width = 513
+    TabOrder = 21
+    ExplicitWidth = 513
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
   end
-  object bvlLinha3: TBevel [2]
-    Left = 8
-    Top = 224
-    Width = 497
-    Height = 2
-  end
-  object dbckbPromocao: TDBCheckBox [3]
-    Left = 421
-    Top = 310
-    Width = 76
-    Height = 17
-    Caption = 'Promo'#231#227'o'
-    Color = clBtnFace
-    DataField = 'PROMOCAO'
-    DataSource = dsPadrao
+  object pnlCodBarra: TUniContainerPanel [2]
+    Left = 240
+    Top = 348
+    Width = 125
+    Height = 45
+    Hint = ''
+    ShowHint = True
     ParentColor = False
-    ReadOnly = True
-    TabOrder = 17
-    ValueChecked = 'S'
-    ValueUnchecked = 'N'
+    TabOrder = 23
+    TabStop = False
+    object dbtxtCodBarra: TDBText
+      Left = 0
+      Top = 32
+      Width = 84
+      Height = 13
+      Align = alBottom
+      Alignment = taCenter
+      AutoSize = True
+      DataField = 'CODBARRA'
+      DataSource = dsPadrao
+      Transparent = True
+    end
+    object imgCodbarras: TUniImage
+      Left = 3
+      Top = 3
+      Width = 119
+      Height = 26
+      Hint = ''
+      ShowHint = True
+      Center = True
+    end
   end
-  object dbeUnidade: TDBEdit [4]
+  object btnObs: TUniBitBtn [3]
+    Left = 398
+    Top = 360
+    Width = 99
+    Height = 25
+    Hint = ''
+    ShowHint = True
+    Caption = 'Observa'#231#227'o'
+    TabOrder = 20
+    OnClick = btnObsClick
+  end
+  object dbeUnidade: TUniDBEdit [4]
     Left = 368
     Top = 64
     Width = 107
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'UNIDADE'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 3
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeGrupo: TDBEdit [5]
+  object dbeGrupo: TUniDBEdit [5]
     Left = 16
     Top = 196
     Width = 227
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'GRUPO'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 6
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeFornecedor: TDBEdit [6]
+  object dbeFornecedor: TUniDBEdit [6]
     Left = 16
     Top = 152
     Width = 459
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'FORNECEDOR'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 5
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeQtdeRecebida: TDBEdit [7]
+  object dbeQtdeRecebida: TUniDBEdit [7]
     Left = 200
     Top = 252
     Width = 81
     Height = 21
-    Color = clInactiveCaptionText
+    Hint = ''
+    ShowHint = True
     DataField = 'QTDERECEBIDA'
     DataSource = dsPadrao
     TabOrder = 10
+    Color = clInactiveCaptionText
   end
-  object dbeValorEstoque: TDBEdit [8]
+  object dbeValorEstoque: TUniDBEdit [8]
     Left = 400
     Top = 252
     Width = 97
     Height = 21
-    Color = clInactiveCaptionText
+    Hint = ''
+    ShowHint = True
     DataField = 'VALOR_ESTOQUE'
     DataSource = dsPadrao
     TabOrder = 12
+    Color = clInactiveCaptionText
   end
-  object dbeTributacao: TDBEdit [9]
+  object dbeTributacao: TUniDBEdit [9]
     Left = 272
     Top = 196
     Width = 203
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    Color = clBtnFace
+    ShowHint = True
     DataField = 'ALIQUOTA'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 7
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeEstoqueMinimo: TDBEdit [10]
+  object dbeEstoqueMinimo: TUniDBEdit [10]
     Left = 96
     Top = 252
     Width = 97
@@ -118,14 +172,15 @@ inherited frmProduto: TfrmProduto
     Hint = 
       'Para alterar o estoque, tecle F10'#13#10'e digite a senha de administr' +
       'ador...'
-    Color = clInactiveCaptionText
+    ShowHint = True
     DataField = 'ESTOQUEMINIMO'
     DataSource = dsPadrao
     TabOrder = 9
+    Color = clInactiveCaptionText
     OnKeyDown = dbeEstoqueKeyDown
     OnKeyPress = dbeEstoqueMinimoKeyPress
   end
-  object dbeEstoque: TDBEdit [11]
+  object dbeEstoque: TUniDBEdit [11]
     Left = 16
     Top = 252
     Width = 73
@@ -133,200 +188,209 @@ inherited frmProduto: TfrmProduto
     Hint = 
       'Para alterar o estoque, tecle F10'#13#10'e digite a senha de administr' +
       'ador...'
-    Color = clInactiveCaptionText
+    ShowHint = True
     DataField = 'ESTOQUE'
     DataSource = dsPadrao
     TabOrder = 8
+    Color = clInactiveCaptionText
     OnKeyDown = dbeEstoqueKeyDown
     OnKeyPress = dbeEstoqueKeyPress
   end
-  object dbePrecoVenda: TDBEdit [12]
+  object dbePrecoVenda: TUniDBEdit [12]
     Left = 208
     Top = 308
     Width = 105
     Height = 21
-    Color = 8454143
+    Hint = ''
+    ShowHint = True
     DataField = 'VENDA'
     DataSource = dsPadrao
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 15
+    Color = 8454143
     OnExit = dbePrecoVendaExit
     OnKeyPress = dbePrecoVendaKeyPress
   end
-  object dbeLucro: TDBEdit [13]
+  object dbeLucro: TUniDBEdit [13]
     Left = 120
     Top = 308
     Width = 81
     Height = 21
-    Color = 8454143
+    Hint = ''
+    ShowHint = True
     DataField = 'LUCRO'
     DataSource = dsPadrao
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 14
+    Color = 8454143
     OnExit = dbeLucroExit
     OnKeyPress = dbeLucroKeyPress
   end
-  object dbePrecoCusto: TDBEdit [14]
+  object dbePrecoCusto: TUniDBEdit [14]
     Left = 16
     Top = 308
     Width = 97
     Height = 21
-    Color = 8454143
+    Hint = ''
+    ShowHint = True
     DataField = 'CUSTO'
     DataSource = dsPadrao
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 13
+    Color = 8454143
     OnKeyPress = dbePrecoCustoKeyPress
   end
-  object dbePrecoPromocao: TDBEdit [15]
+  object dbePrecoPromocao: TUniDBEdit [15]
     Left = 320
     Top = 308
     Width = 89
     Height = 21
-    Color = 8454143
+    Hint = ''
+    ShowHint = True
     DataField = 'PRECO_PROMOCAO'
     DataSource = dsPadrao
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
     ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
     TabOrder = 16
+    Color = 8454143
     OnKeyPress = dbePrecoPromocaoKeyPress
   end
-  object dbdValidade: TDBEdit [16]
+  object dbdValidade: TUniDBEdit [16]
     Left = 120
     Top = 364
     Width = 97
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'DATAVALIDADE'
     DataSource = dsPadrao
     TabOrder = 19
   end
-  object dbePeso: TDBEdit [17]
+  object dbePeso: TUniDBEdit [17]
     Left = 16
     Top = 364
     Width = 97
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'PESO'
     DataSource = dsPadrao
     TabOrder = 18
     OnKeyPress = dbePesoKeyPress
   end
-  object dbeNomeProduto: TDBEdit [18]
+  object dbeNomeProduto: TUniDBEdit [18]
     Left = 16
     Top = 108
     Width = 459
     Height = 21
     Hint = 'Para efetuar uma busca r'#225'pida'#13#10'tecle F2...'
+    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
     TabOrder = 4
     OnChange = dbeNomeProdutoChange
   end
-  object dbeCodigoBarra: TDBEdit [19]
+  object dbeCodigoBarra: TUniDBEdit [19]
     Left = 88
     Top = 64
     Width = 145
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'CODBARRA'
     DataSource = dsPadrao
     TabOrder = 1
     OnKeyPress = dbeCodigoBarraKeyPress
   end
-  object dbeCodigoInterno: TDBEdit [20]
+  object dbeCodigoInterno: TUniDBEdit [20]
     Left = 16
     Top = 64
     Width = 65
     Height = 21
-    Color = clBtnFace
+    Hint = ''
+    ShowHint = True
     DataField = 'IDPRODUTO'
     DataSource = dsPadrao
-    ReadOnly = True
     TabOrder = 0
+    Color = clBtnFace
+    ReadOnly = True
   end
-  object dbeReferencia: TDBEdit [21]
+  object dbeReferencia: TUniDBEdit [21]
     Left = 240
     Top = 64
     Width = 121
     Height = 21
+    Hint = ''
+    ShowHint = True
     DataField = 'REFERENCIA'
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeDataReceb: TDBEdit [22]
+  object dbeDataReceb: TUniDBEdit [22]
     Left = 288
     Top = 252
     Width = 105
     Height = 21
-    Color = clInactiveCaptionText
+    Hint = ''
+    ShowHint = True
     DataField = 'DATARECEBIDA'
     DataSource = dsPadrao
     TabOrder = 11
+    Color = clInactiveCaptionText
   end
-  object pnlCodBarra: TPanel [23]
-    Left = 240
-    Top = 348
-    Width = 125
-    Height = 45
-    BevelInner = bvRaised
-    BevelOuter = bvLowered
-    TabOrder = 23
-    object imgCodbarras: TImage
-      Left = 3
-      Top = 3
-      Width = 119
-      Height = 26
-      Center = True
-    end
-    object dbtxtCodBarra: TDBText
-      Left = 2
-      Top = 30
-      Width = 121
-      Height = 13
-      Align = alBottom
-      Alignment = taCenter
-      AutoSize = True
-      DataField = 'CODBARRA'
-      DataSource = dsPadrao
-      ExplicitWidth = 84
-    end
+  object bvlLinha1: TUniPanel [23]
+    Left = 8
+    Top = 280
+    Width = 497
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 24
+    Caption = 'bvlLinha1'
   end
-  object btnObs: TBitBtn [24]
-    Left = 398
-    Top = 360
-    Width = 99
-    Height = 25
-    Caption = 'Observa'#231#227'o'
-    TabOrder = 20
-    OnClick = btnObsClick
+  object bvlLinha2: TUniPanel [24]
+    Left = 8
+    Top = 336
+    Width = 497
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 25
+    Caption = 'bvlLinha2'
   end
-  inherited sbStatus: TStatusBar
-    Top = 401
-    Width = 513
-    ExplicitTop = 401
-    ExplicitWidth = 513
+  object bvlLinha3: TUniPanel [25]
+    Left = 8
+    Top = 224
+    Width = 497
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 26
+    Caption = 'bvlLinha3'
   end
-  inherited pnBotoesPadrao: TPanel
-    Width = 513
-    TabOrder = 21
-    ExplicitWidth = 513
+  object dbckbPromocao: TUniDBCheckBox [26]
+    Left = 421
+    Top = 310
+    Width = 76
+    Height = 17
+    Hint = ''
+    ShowHint = True
+    DataField = 'PROMOCAO'
+    DataSource = dsPadrao
+    ValueChecked = 'S'
+    ValueUnchecked = 'N'
+    Caption = 'Promo'#231#227'o'
+    TabOrder = 17
+    ParentColor = False
+    Color = clBtnFace
+    ReadOnly = True
   end
   inherited actlNavigateActions: TActionList
     Left = 388

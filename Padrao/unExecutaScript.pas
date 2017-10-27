@@ -4,7 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons,  FileCtrl, uutilfncs;
+  Dialogs, StdCtrls, ExtCtrls, Buttons,  FileCtrl, uutilfncs, UniGuiForm,
+  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniCheckBox, uniEdit,
+  uniMemo;
 
 type
   TConnectErrorCallbackFunc      = function (AErrorMessage : PChar) : Integer;  stdcall;
@@ -20,15 +22,15 @@ type
   TConnectDBProc = function (AConnectParams : PChar;
                              AConnectErrorCallbacFunc : TConnectErrorCallbackFunc) : Integer; stdcall;
 
-  TfrmExecutaScript = class(TForm)
-    edtScript: TEdit;
-    btnBuscaScript: TBitBtn;
+  TfrmExecutaScript = class(TUniForm)
     rgTipo: TRadioGroup;
-    btnExecutar: TBitBtn;
-    btnFechar: TBitBtn;
     odScript: TOpenDialog;
-    mmoLog: TMemo;
-    chkSalvaLog: TCheckBox;
+    btnBuscaScript: TUniBitBtn;
+    btnExecutar: TUniBitBtn;
+    btnFechar: TUniBitBtn;
+    chkSalvaLog: TUniCheckBox;
+    edtScript: TUniEdit;
+    mmoLog: TUniMemo;
     procedure rgTipoClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnBuscaScriptClick(Sender: TObject);

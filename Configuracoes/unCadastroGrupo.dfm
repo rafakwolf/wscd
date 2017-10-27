@@ -1,40 +1,44 @@
 inherited frmCadastroGrupo: TfrmCadastroGrupo
-  Caption = 'frmCadastroGrupo'
   ClientHeight = 156
   ClientWidth = 606
+  Caption = 'frmCadastroGrupo'
   OldCreateOrder = True
   ExplicitWidth = 612
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
-  object dbeNomeGrupo: TDBEdit [0]
-    Left = 62
-    Top = 82
-    Width = 305
-    Height = 21
-    DataField = 'DESCRICAO'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbeCodGrupo: TDBEdit [1]
-    Left = 62
-    Top = 56
-    Width = 105
-    Height = 21
-    DataField = 'CODGRUPO'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 137
     Width = 606
     ExplicitTop = 137
     ExplicitWidth = 393
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 606
     TabOrder = 2
     ExplicitWidth = 393
+  end
+  object dbeNomeGrupo: TUniDBEdit [2]
+    Left = 62
+    Top = 82
+    Width = 305
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'DESCRICAO'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbeCodGrupo: TUniDBEdit [3]
+    Left = 62
+    Top = 56
+    Width = 105
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CODGRUPO'
+    DataSource = dsPadrao
+    TabOrder = 0
   end
   inherited actlNavigateActions: TActionList
     Left = 432

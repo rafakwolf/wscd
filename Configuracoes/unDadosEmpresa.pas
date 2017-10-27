@@ -7,41 +7,15 @@ uses
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, ExtDlgs,
    Mask, DBCtrls,
-  Datasnap.Provider, Data.SqlExpr, FMTBcd, System.Actions;
+  Datasnap.Provider, Data.SqlExpr, FMTBcd, System.Actions, uniLabel, uniButton,
+  uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses,
+  uniStatusBar, uniEdit, uniDBEdit, uniGroupBox, uniImage, uniDBImage;
 
 type
   TfrmDadosEmpresa = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    lbFantazia: TLabel;
-    lbRazaoSocial: TLabel;
-    lbCnpj: TLabel;
-    lbInscEstadual: TLabel;
-    lbEndereco: TLabel;
-    lbBairro: TLabel;
-    lbTelefone: TLabel;
-    lbResponsavel: TLabel;
-    LabelFax: TLabel;
-    lbUF: TLabel;
-    lbCep: TLabel;
-    lbInscMunicipal: TLabel;
-    dbeResponsavel: TDBEdit;
-    dbeFax: TDBEdit;
-    dbeTelefone: TDBEdit;
-    dbeBairro: TDBEdit;
-    dbeUF: TDBEdit;
-    dbeCep: TDBEdit;
-    dbeEndereco: TDBEdit;
-    dbeInscEstadual: TDBEdit;
-    dbeInscMunicipal: TDBEdit;
-    dbeCnpj: TDBEdit;
-    dbeRazaoSocial: TDBEdit;
-    dbeFantazia: TDBEdit;
-    gbLogoMarca: TGroupBox;
-    btnBuscaImg: TBitBtn;
-    btnApagaImg: TBitBtn;
-    dbiLogoMarca: TDBImage;
     opdLogo: TOpenPictureDialog;
     sqldPadraoFANTAZIA: TStringField;
     sqldPadraoRAZASOCIAL: TStringField;
@@ -71,7 +45,6 @@ type
     cdsPadraoUF: TStringField;
     cdsPadraoRESPONSAVEL: TStringField;
     cdsPadraoLOGOEMPRESA: TBlobField;
-    dbeCidade: TDBEdit;
     sqldCidade: TSQLDataSet;
     dspCidade: TDataSetProvider;
     cdsCidade: TClientDataSet;
@@ -79,10 +52,8 @@ type
     cdsCidadeDESCRICAO: TStringField;
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoDESCRICAO: TStringField;
-    dbeEmail: TDBEdit;
     sqldPadraoEMAIL: TStringField;
     cdsPadraoEMAIL: TStringField;
-    dbeSerial: TDBEdit;
     sqldSistema: TSQLDataSet;
     dspSistema: TDataSetProvider;
     cdsSistema: TClientDataSet;
@@ -99,7 +70,38 @@ type
     cdsSistemaSERIAL: TStringField;
     cdsSistemaHD: TStringField;
     dsSistema: TDataSource;
-    btnGravaSerial: TBitBtn;
+    lbFantazia: TUniLabel;
+    lbRazaoSocial: TUniLabel;
+    lbCnpj: TUniLabel;
+    lbInscEstadual: TUniLabel;
+    lbEndereco: TUniLabel;
+    lbBairro: TUniLabel;
+    lbTelefone: TUniLabel;
+    lbResponsavel: TUniLabel;
+    LabelFax: TUniLabel;
+    lbUF: TUniLabel;
+    lbCep: TUniLabel;
+    lbInscMunicipal: TUniLabel;
+    btnGravaSerial: TUniBitBtn;
+    dbeCidade: TUniDBEdit;
+    dbeInscMunicipal: TUniDBEdit;
+    dbeFax: TUniDBEdit;
+    dbeRazaoSocial: TUniDBEdit;
+    dbeResponsavel: TUniDBEdit;
+    dbeTelefone: TUniDBEdit;
+    dbeEndereco: TUniDBEdit;
+    dbeBairro: TUniDBEdit;
+    dbeCep: TUniDBEdit;
+    dbeInscEstadual: TUniDBEdit;
+    dbeFantazia: TUniDBEdit;
+    dbeSerial: TUniDBEdit;
+    dbeCnpj: TUniDBEdit;
+    dbeUF: TUniDBEdit;
+    dbeEmail: TUniDBEdit;
+    gbLogoMarca: TUniGroupBox;
+    btnBuscaImg: TUniBitBtn;
+    btnApagaImg: TUniBitBtn;
+    dbiLogoMarca: TUniDBImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -165,7 +167,7 @@ begin
 //  case RetornoValidacao of
 //    tvSerialErrado, tvChaveErrada:
 //    begin
-//      if Application.MessageBox('A chave de liberação informada está incorreta '+
+//      if UniGUIDialogs.MessageDlg('A chave de liberação informada está incorreta '+
 //        'ou os dados informados estão incorretos. '+#13+
 //        'Deseja efetuar a correção agora?', 'Dados incorretos',
 //        MB_YESNO or MB_ICONWARNING) = ID_YES then
@@ -175,7 +177,7 @@ begin
 //    end;
 //    tvExpirouPrazo:
 //    begin
-//      if Application.MessageBox('A chave de liberação do sistema está expirada.'+#13+
+//      if UniGUIDialogs.MessageDlg('A chave de liberação do sistema está expirada.'+#13+
 //        'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato '+
 //        'com o suporte para obter uma nova chave de liberação.'+#13+
 //        'Deseja informar uma nova chave de liberação?', 'Chave Expirada',
@@ -186,7 +188,7 @@ begin
 //    end;
 //    tvBloqueioSistema:
 //    begin
-//      if Application.MessageBox('CHAVE DE LIBERAÇÃO EXPIRADA.'+#13+
+//      if UniGUIDialogs.MessageDlg('CHAVE DE LIBERAÇÃO EXPIRADA.'+#13+
 //        'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias.'+
 //        'Por favor entre em contato com o suporte para obter uma nova chave de liberação.'+#13+
 //        'Deseja informar uma nova chave de liberação?',
@@ -197,7 +199,7 @@ begin
 //    end;
 //    tvPrazoMtoLongo:
 //    begin
-//      if Application.MessageBox('A Chave de Liberação informada está fora de um período válido. '+
+//      if UniGUIDialogs.MessageDlg('A Chave de Liberação informada está fora de um período válido. '+
 //        'Verifique a data do seu computador e se a chave foi digitada corretamente.' + #13 +
 //        'Deseja informar uma nova chave de liberação?',
 //        'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
@@ -216,7 +218,7 @@ begin
 //    end
 //    else if(RetornoValidacao <> tvExpirouPrazo)then
 //    begin
-//      if Application.MessageBox(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. '+
+//      if UniGUIDialogs.MessageDlg(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. '+
 //        'Para obter uma nova chave de liberação entre em contato com o suporte.' + #13 +
 //        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
 //      begin

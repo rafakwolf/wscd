@@ -1,56 +1,90 @@
 inherited frmCadastroCFOP: TfrmCadastroCFOP
-  Caption = 'frmCadastroCFOP'
   ClientHeight = 308
   ClientWidth = 553
+  Caption = 'frmCadastroCFOP'
   OldCreateOrder = True
+  Font.Name = 'Verdana'
   ExplicitWidth = 559
   ExplicitHeight = 337
   PixelsPerInch = 96
   TextHeight = 13
-  object lblDescricao: TLabel [0]
-    Left = 20
-    Top = 110
-    Width = 56
-    Height = 13
-    Caption = 'Descri'#231#227'o'
-  end
-  object dbeNomeCfop: TDBEdit [1]
-    Left = 79
-    Top = 82
-    Width = 449
-    Height = 21
-    DataField = 'OPERACAO'
-    DataSource = dsPadrao
-    TabOrder = 1
-  end
-  object dbeCodCfop: TDBEdit [2]
-    Left = 79
-    Top = 56
-    Width = 121
-    Height = 21
-    DataField = 'NUMERO'
-    DataSource = dsPadrao
-    TabOrder = 0
-  end
-  object dbmCfNota: TDBMemo [3]
-    Left = 79
-    Top = 108
-    Width = 449
-    Height = 161
-    DataField = 'CFNOTA'
-    DataSource = dsPadrao
-    TabOrder = 2
-  end
-  inherited sbStatus: TStatusBar
+  inherited sbStatus: TUniStatusBar
     Top = 289
     Width = 553
     ExplicitTop = 289
     ExplicitWidth = 553
   end
-  inherited pnBotoesPadrao: TPanel
+  inherited pnBotoesPadrao: TUniContainerPanel
     Width = 553
     TabOrder = 3
     ExplicitWidth = 553
+    inherited btnNovo: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnAlterar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnExcluir: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSalvar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnCancelar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnSair: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+    inherited btnPrint: TUniSpeedButton
+      Font.Name = 'Verdana'
+    end
+  end
+  object lblDescricao: TUniLabel [2]
+    Left = 20
+    Top = 110
+    Width = 56
+    Height = 13
+    Hint = ''
+    ShowHint = True
+    Caption = 'Descri'#231#227'o'
+    TabOrder = 5
+  end
+  object dbeNomeCfop: TUniDBEdit [3]
+    Left = 79
+    Top = 82
+    Width = 449
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'OPERACAO'
+    DataSource = dsPadrao
+    TabOrder = 1
+  end
+  object dbeCodCfop: TUniDBEdit [4]
+    Left = 79
+    Top = 56
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'NUMERO'
+    DataSource = dsPadrao
+    TabOrder = 0
+  end
+  object dbmCfNota: TUniDBMemo [5]
+    Left = 79
+    Top = 108
+    Width = 449
+    Height = 161
+    Hint = ''
+    ShowHint = True
+    DataField = 'CFNOTA'
+    DataSource = dsPadrao
+    TabOrder = 2
   end
   inherited actlNavigateActions: TActionList
     Left = 256

@@ -1,17 +1,12 @@
 object frmPrevEtiquetaProduto: TfrmPrevEtiquetaProduto
   Left = 2
   Top = 1
-  Caption = 'frmPrevEtiquetaProduto'
   ClientHeight = 530
   ClientWidth = 782
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
+  Caption = 'frmPrevEtiquetaProduto'
   OldCreateOrder = False
-  Scaled = False
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13

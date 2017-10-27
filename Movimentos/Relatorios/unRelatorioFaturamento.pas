@@ -5,13 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls,  FMTBcd;
+  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls,  FMTBcd, uniGUIClasses,
+  uniCheckBox, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel, uniEdit,
+  uniDBEdit;
 
 type
   TfrmRelatorioFaturamento = class(TfrmDialogoRelatorioPadrao)
-    dbeForn: TDBEdit;
-    chkCusto: TCheckBox;
-    chkLucro: TCheckBox;
     sqldForn: TSQLDataSet;
     sqldFornCODFORNECEDOR: TIntegerField;
     sqldFornFANTAZIA: TStringField;
@@ -23,6 +22,9 @@ type
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
+    chkLucro: TUniCheckBox;
+    chkCusto: TUniCheckBox;
+    dbeForn: TUniDBEdit;
     procedure dbeFornClickButton(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

@@ -2,50 +2,33 @@ inherited frmBackup: TfrmBackup
   Left = 248
   Top = 151
   HelpContext = 114
-  Caption = 'frmBackup'
   ClientHeight = 286
   ClientWidth = 425
+  Caption = 'frmBackup'
+  OnShow = FormShow
+  OldCreateOrder = True
   Font.Color = clBlack
   Font.Height = -12
-  OldCreateOrder = True
-  OnShow = FormShow
   ExplicitWidth = 441
   ExplicitHeight = 325
   PixelsPerInch = 96
   TextHeight = 14
-  object Memo: TMemo
-    Left = 8
-    Top = 53
-    Width = 417
-    Height = 148
-    Ctl3D = True
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -12
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentCtl3D = False
-    ParentFont = False
-    ReadOnly = True
-    TabOrder = 0
-  end
-  object cbDiretorioPadrao: TCheckBox
-    Left = 8
-    Top = 208
-    Width = 197
+  object pbProgresso: TProgressBar
+    Left = 0
+    Top = 269
+    Width = 425
     Height = 17
-    Hint = 'Fazer a c'#243'pia em um diretorio designado pelo sistema'
-    Caption = 'Usar diret'#243'rio padr'#227'o do sistema'
-    TabOrder = 1
-    OnClick = cbDiretorioPadraoClick
+    Align = alBottom
+    TabOrder = 6
   end
-  object BtnOk: TBitBtn
+  object BtnOk: TUniBitBtn
     Left = 224
     Top = 232
     Width = 97
     Height = 33
     Hint = 'Processar c'#243'pia'
-    Caption = '&Copiar'
+    ShowHint = True
+    ParentShowHint = False
     Glyph.Data = {
       760E0000424D760E000000000000360000002800000032000000180000000100
       180000000000400E0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -163,19 +146,18 @@ inherited frmBackup: TfrmBackup
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBFBFBFB1B1B1B1B1B1
       999999FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000}
-    NumGlyphs = 2
-    ParentShowHint = False
-    ShowHint = True
+    Caption = '&Copiar'
     TabOrder = 2
     OnClick = BtnOkClick
   end
-  object BtnCancela: TBitBtn
+  object BtnCancela: TUniBitBtn
     Left = 328
     Top = 232
     Width = 97
     Height = 33
     Hint = 'Cancela opera'#231#227'o'
-    Caption = '&Fechar'
+    ShowHint = True
+    ParentShowHint = False
     Glyph.Data = {
       760B0000424D760B000000000000360000002800000028000000180000000100
       180000000000400B0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -269,29 +251,17 @@ inherited frmBackup: TfrmBackup
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF949494767676FF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
-    ParentShowHint = False
-    ShowHint = True
+    Caption = '&Fechar'
     TabOrder = 3
     OnClick = BtnCancelaClick
   end
-  object edDestino: TLabeledEdit
-    Left = 8
-    Top = 24
-    Width = 390
-    Height = 22
-    EditLabel.Width = 200
-    EditLabel.Height = 14
-    EditLabel.Caption = 'Destino da c'#243'pia de seguran'#231'a:'
-    ReadOnly = True
-    TabOrder = 4
-  end
-  object btnBuscaDestinoCopia: TBitBtn
+  object btnBuscaDestinoCopia: TUniBitBtn
     Left = 400
     Top = 22
     Width = 25
     Height = 25
     Hint = 'Buscar um diret'#243'rio para gravar a c'#243'pia dos dados'
+    ShowHint = True
     Glyph.Data = {
       36050000424D3605000000000000360400002800000010000000100000000100
       0800000000000001000000000000000000000001000000010000000000000101
@@ -335,24 +305,17 @@ inherited frmBackup: TfrmBackup
       F0DFDFDF0BF8FD0B70707070EEEEEEEE707070700BFA0B707070707070707070
       7070700BFFFF0B7070707070707070707070700BFF0B70707070707070707070
       700B0B0B0B707070707070707070700B0B0B0B70707070707070}
+    Caption = ''
     TabOrder = 5
     OnClick = btnBuscaDestinoCopiaClick
   end
-  object pbProgresso: TProgressBar
-    Left = 0
-    Top = 269
-    Width = 425
-    Height = 17
-    Align = alBottom
-    TabOrder = 6
-  end
-  object btnChamaRestore: TBitBtn
+  object btnChamaRestore: TUniBitBtn
     Left = 96
     Top = 232
     Width = 121
     Height = 33
     Hint = 'Chamar a tela de restaura'#231#227'o de c'#243'pias'
-    Caption = 'Restaura'#231#227'o'
+    ShowHint = True
     Glyph.Data = {
       760E0000424D760E000000000000360000002800000032000000180000000100
       180000000000400E0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -470,8 +433,44 @@ inherited frmBackup: TfrmBackup
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFBFBFBFB1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1999999
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0000}
-    NumGlyphs = 2
+    Caption = 'Restaura'#231#227'o'
     TabOrder = 7
     OnClick = btnChamaRestoreClick
+  end
+  object edDestino: TUniEdit
+    Left = 8
+    Top = 24
+    Width = 390
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 4
+    ReadOnly = True
+  end
+  object cbDiretorioPadrao: TUniCheckBox
+    Left = 8
+    Top = 208
+    Width = 197
+    Height = 17
+    Hint = 'Fazer a c'#243'pia em um diretorio designado pelo sistema'
+    ShowHint = True
+    Caption = 'Usar diret'#243'rio padr'#227'o do sistema'
+    TabOrder = 1
+    OnClick = cbDiretorioPadraoClick
+  end
+  object Memo: TUniMemo
+    Left = 8
+    Top = 53
+    Width = 417
+    Height = 148
+    Hint = ''
+    ShowHint = True
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -12
+    Font.Name = 'Verdana'
+    ReadOnly = True
+    TabOrder = 0
   end
 end

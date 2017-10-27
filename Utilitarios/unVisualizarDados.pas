@@ -5,13 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, ExtCtrls, DBClient,
-  Datasnap.Provider, DB, Data.SqlExpr,
-  Buttons, FMTBcd;
+  Datasnap.Provider, DB, Data.SqlExpr,  uniGUIForm,
+  Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
+  uniSpeedButton, uniPanel, uniLabel, uniCheckBox, uniMultiItem, uniComboBox,
+  uniBasicGrid, uniDBGrid;
 
 type
-  TfrmVisualizarDados = class(TForm)
-    dbgrdDados: TDBGrid;
-    pnlTop: TPanel;
+  TfrmVisualizarDados = class(TUniForm)
     sqldTabelas: TSQLDataSet;
     dspTabelas: TDataSetProvider;
     cdsTabelas: TClientDataSet;
@@ -22,9 +22,6 @@ type
     dspDados: TDataSetProvider;
     cdsDados: TClientDataSet;
     dsDados: TDataSource;
-    btnExecuteSQL: TBitBtn;
-    cbbTabela: TComboBox;
-    lblTabela: TLabel;
     sqldUpdate: TSQLDataSet;
     sqldFilter: TSQLDataSet;
     sqldFilterCAMPO: TStringField;
@@ -36,17 +33,22 @@ type
     cdsFilterCAMPO: TStringField;
     cdsFilterTIPO: TStringField;
     cdsFilterVALOR: TStringField;
-    ckFilter: TCheckBox;
-    dbgrdFilter: TDBGrid;
-    pnlBotoesPadrao: TPanel;
-    btnNovo: TSpeedButton;
-    btnAlterar: TSpeedButton;
-    btnExcluir: TSpeedButton;
-    btnSalvar: TSpeedButton;
-    btnCancelar: TSpeedButton;
-    btnConsultar: TSpeedButton;
-    btnSair: TSpeedButton;
-    btnPrint: TSpeedButton;
+    pnlTop: TUniContainerPanel;
+    pnlBotoesPadrao: TUniContainerPanel;
+    btnNovo: TUniSpeedButton;
+    btnAlterar: TUniSpeedButton;
+    btnExcluir: TUniSpeedButton;
+    btnSalvar: TUniSpeedButton;
+    btnCancelar: TUniSpeedButton;
+    btnConsultar: TUniSpeedButton;
+    btnSair: TUniSpeedButton;
+    btnPrint: TUniSpeedButton;
+    lblTabela: TUniLabel;
+    btnExecuteSQL: TUniBitBtn;
+    ckFilter: TUniCheckBox;
+    cbbTabela: TUniComboBox;
+    dbgrdDados: TUniDBGrid;
+    dbgrdFilter: TUniDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure btnExecuteSQLClick(Sender: TObject);
@@ -235,36 +237,36 @@ end;
 
 procedure TfrmVisualizarDados.btnExcluirClick(Sender: TObject);
 begin
-  if cdsDados.IsEmpty then
-    Exit;
-
-  try
-    if Application.MessageBox('Deseja realmente excluir este registro?', 'Confirme',
-      MB_YESNO or MB_ICONINFORMATION) = ID_YES then
-    begin
-      with TSQLQuery.Create(nil) do
-      begin
-        try
-          SQLConnection := sqldDados.SQLConnection;
-          SQL.Clear;
-          SQL.Add('delete from '+Trim(cbbTabela.Text));
-          SQL.Add('where '+cdsDados.Fields[0].FieldName+' = :id');
-
-          ParamByName('id').Value := cdsDados.Fields[0].Value;
-          ExecSQL;
-
-          RefreshTable;
-        finally
-          Free;
-        end;
-      end;
-    end;
-  except
-    on e: Exception do
-      raise Exception.Create('Houve um erro ao tentar excluir este registro.'+#13+e.Message);
-  end;
-
-  HabilitaBotoes(False);
+//  if cdsDados.IsEmpty then
+//    Exit;
+//
+//  try
+//    if UniGUIDialogs.MessageDlg('Deseja realmente excluir este registro?', 'Confirme',
+//      MB_YESNO or MB_ICONINFORMATION) = ID_YES then
+//    begin
+//      with TSQLQuery.Create(nil) do
+//      begin
+//        try
+//          SQLConnection := sqldDados.SQLConnection;
+//          SQL.Clear;
+//          SQL.Add('delete from '+Trim(cbbTabela.Text));
+//          SQL.Add('where '+cdsDados.Fields[0].FieldName+' = :id');
+//
+//          ParamByName('id').Value := cdsDados.Fields[0].Value;
+//          ExecSQL;
+//
+//          RefreshTable;
+//        finally
+//          Free;
+//        end;
+//      end;
+//    end;
+//  except
+//    on e: Exception do
+//      raise Exception.Create('Houve um erro ao tentar excluir este registro.'+#13+e.Message);
+//  end;
+//
+//  HabilitaBotoes(False);
 end;
 
 procedure TfrmVisualizarDados.RefreshTable;

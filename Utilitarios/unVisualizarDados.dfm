@@ -1,59 +1,44 @@
 object frmVisualizarDados: TfrmVisualizarDados
   Left = 225
   Top = 133
-  Caption = 'frmVisualizarDados'
   ClientHeight = 452
   ClientWidth = 865
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  OldCreateOrder = False
-  WindowState = wsMaximized
-  OnClose = FormClose
-  OnCreate = FormCreate
+  Caption = 'frmVisualizarDados'
   OnShow = FormShow
+  WindowState = wsMaximized
+  OldCreateOrder = False
+  OnClose = FormClose
+  MonitoredKeys.Keys = <>
+  Font.Name = 'MS Sans Serif'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object dbgrdDados: TDBGrid
-    Left = 0
-    Top = 58
-    Width = 547
-    Height = 340
-    Align = alClient
-    DataSource = dsDados
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    OnTitleClick = dbgrdDadosTitleClick
-  end
-  object pnlTop: TPanel
+  object pnlTop: TUniContainerPanel
     Left = 0
     Top = 0
     Width = 865
     Height = 58
+    Hint = ''
+    ParentColor = False
     Align = alTop
-    BevelInner = bvRaised
-    BevelOuter = bvLowered
+    Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
-    object lblTabela: TLabel
+    TabStop = False
+    object lblTabela: TUniLabel
       Left = 12
       Top = 7
       Width = 38
       Height = 13
+      Hint = ''
       Caption = 'Tabelas'
+      TabOrder = 4
     end
-    object btnExecuteSQL: TBitBtn
+    object btnExecuteSQL: TUniBitBtn
       Left = 204
       Top = 19
       Width = 105
       Height = 25
-      Caption = 'Executar SQL'
+      Hint = ''
       Glyph.Data = {
         8E020000424D8E020000000000008E0100002800000010000000100000000100
         08000000000000010000120B0000120B0000560000005600000000000000FFFF
@@ -76,90 +61,50 @@ object frmVisualizarDados: TfrmVisualizarDados
         02020202503039454740424A0E0E0E0404020202503136342223324952530202
         02020202502F2E2B29272726355302020202020202513A2D2A28252455020202
         020202020202505050505050020202020202}
+      Caption = 'Executar SQL'
       TabOrder = 0
       OnClick = btnExecuteSQLClick
     end
-    object cbbTabela: TComboBox
-      Left = 12
-      Top = 23
-      Width = 181
-      Height = 21
-      Style = csDropDownList
-      TabOrder = 1
-      OnChange = cbbTabelaChange
-    end
-    object ckFilter: TCheckBox
+    object ckFilter: TUniCheckBox
       Left = 321
       Top = 24
       Width = 121
       Height = 17
+      Hint = ''
+      Visible = False
       Caption = 'Filtras nos resultados'
       TabOrder = 2
-      Visible = False
       OnClick = ckFilterClick
     end
+    object cbbTabela: TUniComboBox
+      Left = 12
+      Top = 23
+      Width = 181
+      Height = 21
+      Hint = ''
+      Style = csDropDownList
+      Text = ''
+      TabOrder = 1
+      OnChange = cbbTabelaChange
+    end
   end
-  object dbgrdFilter: TDBGrid
-    Left = 547
-    Top = 58
-    Width = 318
-    Height = 340
-    Align = alRight
-    Color = 8454143
-    DataSource = dsFilter
-    TabOrder = 2
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    Visible = False
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'CAMPO'
-        ReadOnly = True
-        Title.Caption = 'Campo'
-        Width = 104
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'TIPO'
-        PickList.Strings = (
-          'Igual'
-          'Diferente'
-          'Contendo'
-          'Maior que'
-          'Menor que'
-          'Come'#231'ando com'
-          'Terminando com')
-        Title.Caption = 'Tipo'
-        Width = 103
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'VALOR'
-        Title.Caption = 'Valor'
-        Width = 100
-        Visible = True
-      end>
-  end
-  object pnlBotoesPadrao: TPanel
+  object pnlBotoesPadrao: TUniContainerPanel
     Left = 0
     Top = 398
     Width = 865
     Height = 54
+    Hint = ''
+    ParentColor = False
     Align = alBottom
-    BevelInner = bvLowered
+    Anchors = [akLeft, akRight, akBottom]
     TabOrder = 3
-    object btnNovo: TSpeedButton
+    TabStop = False
+    object btnNovo: TUniSpeedButton
       Left = 2
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Novo'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -307,17 +252,18 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Novo'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 0
       OnClick = btnNovoClick
     end
-    object btnAlterar: TSpeedButton
+    object btnAlterar: TUniSpeedButton
       Left = 52
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Alterar'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -465,17 +411,18 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Alterar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 1
       OnClick = btnAlterarClick
     end
-    object btnExcluir: TSpeedButton
+    object btnExcluir: TUniSpeedButton
       Left = 102
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Excluir'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -623,17 +570,18 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Excluir'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 2
       OnClick = btnExcluirClick
     end
-    object btnSalvar: TSpeedButton
+    object btnSalvar: TUniSpeedButton
       Left = 152
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Salvar'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -781,17 +729,18 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Salvar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 3
       OnClick = btnSalvarClick
     end
-    object btnCancelar: TSpeedButton
+    object btnCancelar: TUniSpeedButton
       Left = 202
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Cancelar'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -939,17 +888,18 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Cancelar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 4
       OnClick = btnCancelarClick
     end
-    object btnConsultar: TSpeedButton
+    object btnConsultar: TUniSpeedButton
       Left = 252
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Procurar'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1097,17 +1047,18 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Procurar'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 5
       OnClick = btnConsultarClick
     end
-    object btnSair: TSpeedButton
+    object btnSair: TUniSpeedButton
       Left = 352
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Sair'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1255,17 +1206,18 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Sair'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 6
       OnClick = btnSairClick
     end
-    object btnPrint: TSpeedButton
+    object btnPrint: TUniSpeedButton
       Left = 302
       Top = 2
       Width = 50
       Height = 50
-      Caption = 'Imprimir'
+      Hint = ''
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -1413,11 +1365,41 @@ object frmVisualizarDados: TfrmVisualizarDados
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Layout = blGlyphTop
-      NumGlyphs = 2
-      Transparent = False
+      Caption = 'Imprimir'
+      ParentColor = False
+      Color = clWindow
+      TabOrder = 7
       OnClick = btnPrintClick
     end
+  end
+  object dbgrdDados: TUniDBGrid
+    Left = 0
+    Top = 58
+    Width = 547
+    Height = 340
+    Hint = ''
+    DataSource = dsDados
+    LoadMask.Message = 'Loading data...'
+    Align = alClient
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    TabOrder = 0
+    ParentColor = False
+    Color = clWindow
+  end
+  object dbgrdFilter: TUniDBGrid
+    Left = 547
+    Top = 58
+    Width = 318
+    Height = 340
+    Hint = ''
+    Visible = False
+    DataSource = dsFilter
+    LoadMask.Message = 'Loading data...'
+    Align = alRight
+    Anchors = [akTop, akRight, akBottom]
+    TabOrder = 2
+    ParentColor = False
+    Color = 8454143
   end
   object sqldTabelas: TSQLDataSet
     CommandText = 

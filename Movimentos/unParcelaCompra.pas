@@ -7,23 +7,11 @@ uses
   Dialogs, unSimplePadrao, DB, DBClient,  dateutils,
   Datasnap.Provider, SqlExpr,  Grids, DBGrids, Spin, StdCtrls,
   Mask, DBCtrls,  Buttons,  funcoes, VarGlobal,
-  ExtCtrls, FMTBcd, uDatabaseutils;
+  ExtCtrls, FMTBcd, uDatabaseutils, uniGUIBaseClasses, uniGUIClasses, uniLabel,
+  uniButton, uniBitBtn, uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmParcelaCompra = class(TfrmSimplePadrao)
-    lbParcelas: TLabel;
-    lbPrazoInicio: TLabel;
-    lbIntervalo: TLabel;
-    btnOk: TBitBtn;
-    btnCancelar: TBitBtn;
-    dbeCodForn: TDBEdit;
-    dbeNomeForn: TDBEdit;
-    dbeDataCompra: TDBEdit;
-    seParcelas: TSpinEdit;
-    sePrazoInicio: TSpinEdit;
-    seIntervalo: TSpinEdit;
-    dbgrdParcelas: TDBGrid;
-    btnCalcular: TBitBtn;
     sqldParcela: TSQLDataSet;
     sqldParcelaNUMERO: TIntegerField;
     sqldParcelaVENC: TDateField;
@@ -43,8 +31,21 @@ type
     sqldCompraCODFORNECEDOR: TIntegerField;
     sqldCompraFORNECEDOR: TStringField;
     sqldCompraDATAENTRADA: TDateField;
-    edtRestoCompra: TLabeledEdit;
     sqldCompraTOTAL: TFMTBCDField;
+    lbParcelas: TUniLabel;
+    lbPrazoInicio: TUniLabel;
+    lbIntervalo: TUniLabel;
+    btnOk: TUniBitBtn;
+    btnCancelar: TUniBitBtn;
+    btnCalcular: TUniBitBtn;
+    edtRestoCompra: TUniEdit;
+    dbeCodForn: TUniDBEdit;
+    dbeNomeForn: TUniDBEdit;
+    dbeDataCompra: TUniDBEdit;
+    seParcelas: TUniSpinEdit;
+    sePrazoInicio: TUniSpinEdit;
+    seIntervalo: TUniSpinEdit;
+    dbgrdParcelas: TUniDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure btnCalcularClick(Sender: TObject);

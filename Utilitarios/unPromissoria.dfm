@@ -1,128 +1,22 @@
 inherited frmPromissoria: TfrmPromissoria
   Left = 221
   Top = 140
-  Caption = 'frmPromissoria'
   ClientHeight = 269
   ClientWidth = 513
-  OldCreateOrder = True
+  Caption = 'frmPromissoria'
   OnShow = FormShow
+  OldCreateOrder = True
   ExplicitWidth = 529
   ExplicitHeight = 308
   PixelsPerInch = 96
   TextHeight = 13
-  object bvlLinha: TBevel
-    Left = 8
-    Top = 135
-    Width = 505
-    Height = 2
-  end
-  object edtNumero: TLabeledEdit
-    Left = 8
-    Top = 24
-    Width = 121
-    Height = 21
-    EditLabel.Width = 45
-    EditLabel.Height = 13
-    EditLabel.Caption = 'N'#250'mero'
-    TabOrder = 0
-  end
-  object edtEmissao: TLabeledEdit
-    Left = 136
-    Top = 24
-    Width = 121
-    Height = 21
-    EditLabel.Width = 47
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Emiss'#227'o'
-    TabOrder = 1
-  end
-  object edtVencimento: TLabeledEdit
-    Left = 264
-    Top = 24
-    Width = 121
-    Height = 21
-    EditLabel.Width = 66
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Vencimento'
-    TabOrder = 2
-  end
-  object edtValor: TLabeledEdit
-    Left = 392
-    Top = 24
-    Width = 121
-    Height = 21
-    EditLabel.Width = 29
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Valor'
-    TabOrder = 3
-  end
-  object edtCredor: TLabeledEdit
-    Left = 8
-    Top = 64
-    Width = 353
-    Height = 21
-    EditLabel.Width = 40
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Credor'
-    TabOrder = 4
-  end
-  object edtCpfCnpj: TLabeledEdit
-    Left = 368
-    Top = 64
-    Width = 145
-    Height = 21
-    EditLabel.Width = 52
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Cpf/Cnpj'
-    TabOrder = 5
-  end
-  object edtPracaPag: TLabeledEdit
-    Left = 8
-    Top = 104
-    Width = 505
-    Height = 21
-    EditLabel.Width = 118
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Praca de pagamento'
-    TabOrder = 6
-  end
-  object edtEmitente: TLabeledEdit
-    Left = 8
-    Top = 160
-    Width = 353
-    Height = 21
-    EditLabel.Width = 50
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Emitente'
-    TabOrder = 7
-  end
-  object edtCpfCnpjEmitente: TLabeledEdit
-    Left = 368
-    Top = 160
-    Width = 145
-    Height = 21
-    EditLabel.Width = 106
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Cpf/Cnpj Emitente'
-    TabOrder = 8
-  end
-  object edtEndereco: TLabeledEdit
-    Left = 8
-    Top = 200
-    Width = 505
-    Height = 21
-    EditLabel.Width = 53
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Endere'#231'o'
-    TabOrder = 9
-  end
-  object btnCliente: TBitBtn
+  object btnCliente: TUniBitBtn
     Left = 7
     Top = 240
     Width = 89
     Height = 25
     Hint = 'Buscar um cliente'
-    Caption = 'Cliente'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -174,17 +68,17 @@ inherited frmPromissoria: TfrmPromissoria
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Cliente'
     TabOrder = 10
     OnClick = btnClienteClick
   end
-  object btnImprimir: TBitBtn
+  object btnImprimir: TUniBitBtn
     Left = 336
     Top = 240
     Width = 89
     Height = 25
     Hint = 'Imprimir/visualizar'
-    Caption = 'Imprimir'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -236,17 +130,17 @@ inherited frmPromissoria: TfrmPromissoria
       FF00FFFF00FFFF00FFBD8281BD8281BD8281FF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9A9A9A9A9
       A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Imprimir'
     TabOrder = 11
     OnClick = btnImprimirClick
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TUniBitBtn
     Left = 432
     Top = 240
     Width = 81
     Height = 25
     Hint = 'Cancelar/fechar'
-    Caption = 'Cancelar'
+    ShowHint = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -298,8 +192,118 @@ inherited frmPromissoria: TfrmPromissoria
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    NumGlyphs = 2
+    Caption = 'Cancelar'
     TabOrder = 12
     OnClick = btnCancelarClick
+  end
+  object edtNumero: TUniEdit
+    Left = 8
+    Top = 24
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 0
+  end
+  object edtEmissao: TUniEdit
+    Left = 136
+    Top = 24
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 1
+  end
+  object edtVencimento: TUniEdit
+    Left = 264
+    Top = 24
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 2
+  end
+  object edtValor: TUniEdit
+    Left = 392
+    Top = 24
+    Width = 121
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 3
+  end
+  object edtCredor: TUniEdit
+    Left = 8
+    Top = 64
+    Width = 353
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 4
+  end
+  object edtCpfCnpj: TUniEdit
+    Left = 368
+    Top = 64
+    Width = 145
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 5
+  end
+  object edtPracaPag: TUniEdit
+    Left = 8
+    Top = 104
+    Width = 505
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 6
+  end
+  object edtEmitente: TUniEdit
+    Left = 8
+    Top = 160
+    Width = 353
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 7
+  end
+  object edtCpfCnpjEmitente: TUniEdit
+    Left = 368
+    Top = 160
+    Width = 145
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 8
+  end
+  object edtEndereco: TUniEdit
+    Left = 8
+    Top = 200
+    Width = 505
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 9
+  end
+  object bvlLinha: TUniPanel
+    Left = 8
+    Top = 135
+    Width = 505
+    Height = 2
+    Hint = ''
+    ShowHint = True
+    TabOrder = 13
+    Caption = 'bvlLinha'
   end
 end

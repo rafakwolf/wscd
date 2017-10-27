@@ -5,11 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls,  DB, DBClient, Provider, SqlExpr, FMTBcd;
+  DBCtrls,  DB, DBClient, Provider, SqlExpr, FMTBcd, uniGUIClasses, uniEdit,
+  uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel;
 
 type
   TfrmRelatorioCPAtrasados = class(TfrmDialogoRelatorioPadrao)
-    dbeFornecedor: TDBEdit;
     sqldForn: TSQLDataSet;
     dspForn: TDataSetProvider;
     cdsForn: TClientDataSet;
@@ -17,6 +17,7 @@ type
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
+    dbeFornecedor: TUniDBEdit;
     procedure dbeFornecedorClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);

@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, Provider, DB, DBClient, SqlExpr,
-  StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd;
+  StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses,
+  uniLabel, uniButton, uniBitBtn, uniEdit, uniSpinEdit, uniMemo;
 
 type
   TfrmRelatorioBobinaOrcam = class(TfrmSimplePadrao)
@@ -15,12 +16,6 @@ type
     cdsDetOrcam: TClientDataSet;
     cdsOrcam: TClientDataSet;
     dtOrcam: TDataSetProvider;
-    edtImpressora: TLabeledEdit;
-    seCopias: TSpinEdit;
-    lbCopias: TLabel;
-    btnCancelar: TBitBtn;
-    btnOk: TBitBtn;
-    mmoOrcam: TMemo;
     sqlOrcamCODIGO: TIntegerField;
     sqlOrcamCODCLIENTE: TIntegerField;
     sqlOrcamNOMECLIENTE: TStringField;
@@ -58,6 +53,12 @@ type
     cdsDetOrcamDESCTO: TFMTBCDField;
     cdsDetOrcamVALORDESCTO: TFMTBCDField;
     cdsDetOrcamTOTAL: TFMTBCDField;
+    lbCopias: TUniLabel;
+    btnCancelar: TUniBitBtn;
+    btnOk: TUniBitBtn;
+    edtImpressora: TUniEdit;
+    seCopias: TUniSpinEdit;
+    mmoOrcam: TUniMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
