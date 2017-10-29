@@ -7,22 +7,6 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
   ExplicitHeight = 223
   PixelsPerInch = 96
   TextHeight = 13
-  object rgTipoRelatorio: TRadioGroup [0]
-    Left = 8
-    Top = 8
-    Width = 377
-    Height = 33
-    Hint = 'Escolha uma op'#231#227'o'
-    Caption = ' Buscar por '
-    Columns = 3
-    ItemIndex = 2
-    Items.Strings = (
-      'Nome'
-      'Telefone'
-      'Todos')
-    TabOrder = 0
-    OnClick = rgTipoRelatorioClick
-  end
   inherited pnButtons: TUniContainerPanel
     Top = 150
     Width = 385
@@ -30,17 +14,17 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     ExplicitTop = 150
     ExplicitWidth = 385
   end
-  object lbTelefone: TUniLabel [2]
+  object lbTelefone: TUniLabel [1]
     Left = 8
     Top = 100
-    Width = 48
+    Width = 42
     Height = 13
     Hint = ''
     ShowHint = True
     Caption = 'Telefone'
     TabOrder = 4
   end
-  object dbeNome: TUniDBEdit [3]
+  object dbeNome: TUniDBEdit [2]
     Left = 8
     Top = 68
     Width = 355
@@ -53,7 +37,7 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     Color = clBtnFace
     ReadOnly = True
   end
-  object edFone: TUniEdit [4]
+  object edFone: TUniEdit [3]
     Left = 8
     Top = 116
     Width = 147
@@ -62,6 +46,24 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     ShowHint = True
     Text = ''
     TabOrder = 2
+  end
+  object rgTipoRelatorio: TUniRadioGroup [4]
+    Left = 8
+    Top = 8
+    Width = 377
+    Height = 33
+    Hint = 'Escolha uma op'#231#227'o'
+    ShowHint = True
+    Items.Strings = (
+      'Nome'
+      'Telefone'
+      'Todos')
+    ItemIndex = 2
+    Caption = ' Buscar por '
+    TabOrder = 0
+    TabStop = False
+    Columns = 3
+    OnClick = rgTipoRelatorioClick
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsAgenda

@@ -90,24 +90,20 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 5
     TabStop = False
-    ExplicitTop = -249
-    object tvAcesso: TTreeView
+    object tvAcesso: TUniTreeView
       Left = 2
       Top = 15
       Width = 471
       Height = 354
-      Align = alClient
+      Hint = ''
+      ShowHint = True
+      Items.FontData = {0100000000}
       AutoExpand = True
-      Images = ilStatusMenu
-      Indent = 19
-      PopupMenu = pmStatusMenu
-      ReadOnly = True
-      ShowButtons = False
+      Align = alClient
+      Anchors = [akLeft, akTop, akRight, akBottom]
       TabOrder = 0
-      ToolTips = False
-      OnCollapsing = tvAcessoCollapsing
+      Color = clWindow
       OnDblClick = tvAcessoDblClick
-      OnGetSelectedIndex = tvAcessoGetSelectedIndex
       OnMouseDown = tvAcessoMouseDown
     end
   end
@@ -148,7 +144,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Left = 237
     Top = 364
     Bitmap = {
-      494C010102000500200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

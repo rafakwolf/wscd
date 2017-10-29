@@ -1,8 +1,13 @@
 inherited frmRelatorioProdutoEstMinForn: TfrmRelatorioProdutoEstMinForn
+  ClientHeight = 170
   Caption = 'frmRelatorioProdutoEstMinForn'
   OldCreateOrder = True
+  ExplicitHeight = 209
   PixelsPerInch = 96
   TextHeight = 13
+  inherited pnButtons: TUniContainerPanel
+    Top = 136
+  end
   object dbeForn: TUniDBEdit [1]
     Left = 16
     Top = 40
@@ -17,7 +22,7 @@ inherited frmRelatorioProdutoEstMinForn: TfrmRelatorioProdutoEstMinForn
     ReadOnly = True
   end
   inherited dsPadrao: TDataSource
-    Left = 16
-    Top = 64
+    Left = 136
+    Top = 80
   end
 end

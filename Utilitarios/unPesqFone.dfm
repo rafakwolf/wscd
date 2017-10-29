@@ -12,19 +12,6 @@ inherited frmPesqFone: TfrmPesqFone
   ExplicitHeight = 502
   PixelsPerInch = 96
   TextHeight = 13
-  object rgpPesquisa: TRadioGroup
-    Left = 8
-    Top = 8
-    Width = 113
-    Height = 49
-    Caption = ' Pesquisar por '
-    ItemIndex = 0
-    Items.Strings = (
-      'Nome'
-      'Telefone')
-    TabOrder = 0
-    OnClick = rgpPesquisaClick
-  end
   object btnPesquisar: TUniBitBtn
     Left = 616
     Top = 24
@@ -159,6 +146,22 @@ inherited frmPesqFone: TfrmPesqFone
     ParentColor = False
     Color = clWindow
   end
+  object rgpPesquisa: TUniRadioGroup
+    Left = 8
+    Top = 8
+    Width = 113
+    Height = 49
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Nome'
+      'Telefone')
+    ItemIndex = 0
+    Caption = ' Pesquisar por '
+    TabOrder = 0
+    TabStop = False
+    OnClick = rgpPesquisaClick
+  end
   object sqldFone: TSQLDataSet
     CommandText = 'select * from VIEWPESQUISAFONE'
     MaxBlobSize = -1
@@ -229,7 +232,6 @@ inherited frmPesqFone: TfrmPesqFone
       Caption = 'Op'#231#245'es'
       object miOrdenar: TUniMenuItem
         Caption = 'Ordenar'
-        OnClick = miOrdenarClick
       end
       object N1: TUniMenuItem
         Caption = '-'

@@ -217,7 +217,6 @@ type
     procedure miImportarOrcamentoClick(Sender: TObject);
     procedure miFiltrarDataClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure miFiltrarCliClick(Sender: TObject);
     procedure miRelVendaClienteClick(Sender: TObject);
     procedure grdItensDblClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
@@ -274,10 +273,10 @@ var
 implementation
 
 uses Funcoes, unModeloConsulta, VarGlobal, unPagamentoVenda,
-     unImportaOrcam, unFiltroSimples,  unPagamentoCheque,
+     unImportaOrcam, unPagamentoCheque,
      unParcelaVenda, unRelatorioBobinaVenda, unPrevNotaVenda,
      unPrevNotaVendaMatric, unAguarde, unDmPrincipal, udatabaseutils,
-  System.Math;
+     System.Math;
 
 {$R *.dfm}
 
@@ -492,29 +491,6 @@ procedure TfrmVendas.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   UpdatesPending(cdsVendas, Self);
-end;
-
-procedure TfrmVendas.miFiltrarCliClick(Sender: TObject);
-var
-  IdRetorno: Integer;
-  Order, SQL: string;
-begin
-  SQL := '';
-  SQL := AnsiUpperCase(SQLPadraoTela);
-  Order := Copy(SQL, Pos('ORDER', SQL), Length(SQL));
-  Delete(SQL, Pos('ORDER', SQL), Length(SQL));
-
-  if TfrmFiltroSimples.Execute(IdRetorno, 'CLIENTES', 'NOME', 'CODCLIENTE') then
-  begin
-    cdsVendas.DisableControls;
-    cdsVendas.Close;
-    cdsVendas.CommandText := '';
-    cdsVendas.CommandText := SQL + ' where ven.CODCLIENTE = ' +
-      QuotedStr(IntToStr(IdRetorno))+' order by ven.CODCLIENTE';
-
-    cdsVendas.Open;
-    cdsVendas.EnableControls;
-  end;
 end;
 
 procedure TfrmVendas.miRelVendaClienteClick(Sender: TObject);

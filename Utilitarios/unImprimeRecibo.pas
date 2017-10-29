@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtCtrls, Spin, uniGUIBaseClasses, uniGUIClasses,
   uniLabel, uniButton, uniBitBtn, uniEdit, uniImage, uniGUIForm, uniGroupBox,
-  uniSpinEdit;
+  uniSpinEdit, uniRadioButton;
 
 type
   TfrmImprimeRecibo = class(TUniForm)
@@ -15,11 +15,11 @@ type
     btnSair: TUniBitBtn;
     imgImpressora: TUniImage;
     gbRecibo: TUniGroupBox;
-    rbA4: TRadioButton;
-    rbBobina: TRadioButton;
     lbColunas: TUniLabel;
     edPorta: TUniEdit;
     edColunas: TUniSpinEdit;
+    rbA4: TUniRadioButton;
+    rbBobina: TUniRadioButton;
     procedure btnSairClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);

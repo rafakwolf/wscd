@@ -96,10 +96,7 @@ type
     cdsPadraoOBS: TMemoField;
     sqldPadraoVALOR_ESTOQUE: TSingleField;
     cdsPadraoVALOR_ESTOQUE: TSingleField;
-    pnlCodBarra: TUniContainerPanel;
-    dbtxtCodBarra: TDBText;
     btnObs: TUniBitBtn;
-    imgCodbarras: TUniImage;
     dbeUnidade: TUniDBEdit;
     dbeGrupo: TUniDBEdit;
     dbeFornecedor: TUniDBEdit;
@@ -161,7 +158,6 @@ type
     procedure dsPadraoStateChange(Sender: TObject);
     procedure btnObsClick(Sender: TObject);
     procedure miRelVencidosClick(Sender: TObject);
-    procedure cdsPadraoAfterScroll(DataSet: TDataSet);
     procedure dspPadraoGetTableName(Sender: TObject; DataSet: TDataSet;
       var TableName: WideString);
   private
@@ -618,13 +614,6 @@ begin
     cdsPadrao.Close;
     Free;
   end;
-end;
-
-procedure TfrmProduto.cdsPadraoAfterScroll(DataSet: TDataSet);
-begin
-  inherited;
-  //CriaCodigo(cdsPadraoCODBARRA.AsString, imgCodbarras.Canvas);
-  imgCodbarras.Repaint;
 end;
 
 initialization

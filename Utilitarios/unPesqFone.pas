@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, DB, DBClient, Provider, SqlExpr, Grids,
   DBGrids, ExtCtrls, Buttons,  Menus, FMTBcd, uniMainMenu, uniGUIBaseClasses,
-  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniBasicGrid, uniDBGrid;
+  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniBasicGrid, uniDBGrid,
+  uniRadioGroup;
 
 type
   TfrmPesqFone = class(TfrmSimplePadrao)
@@ -14,7 +15,6 @@ type
     dspFone: TDataSetProvider;
     cdsFone: TClientDataSet;
     dsFone: TDataSource;
-    rgpPesquisa: TRadioGroup;
     sqldFoneNOME: TStringField;
     sqldFoneTELEFONE: TStringField;
     sqldFoneFAX: TStringField;
@@ -35,15 +35,13 @@ type
     edtNome: TUniEdit;
     edtFone: TUniEdit;
     dbgrdFones: TUniDBGrid;
+    rgpPesquisa: TUniRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnPesquisarClick(Sender: TObject);
-    procedure dbgrdFonesDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure rgpPesquisaClick(Sender: TObject);
     procedure miCadastrarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
-    procedure miOrdenarClick(Sender: TObject);
     procedure miSairClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -56,8 +54,7 @@ var
 
 implementation
 
-uses Funcoes, unAgenda, unPrevRelAgenda, uConfiguraRelatorio,
-  unOrdenarDados;
+uses Funcoes, unAgenda, unPrevRelAgenda, uConfiguraRelatorio;
 
 {$R *.dfm}
 
@@ -100,14 +97,6 @@ begin
   cdsFone.Open;
 end;
 
-procedure TfrmPesqFone.dbgrdFonesDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  inherited;
-  //GridZebrado(cdsFone.RecNo, dbgrdFones, Rect, DataCol, Column, State);
-end;
-
 procedure TfrmPesqFone.rgpPesquisaClick(Sender: TObject);
 begin
   inherited;
@@ -146,21 +135,6 @@ begin
     PrintIfNotEmptyRL(rrPadrao);
   finally
     Free;
-  end;
-end;
-
-procedure TfrmPesqFone.miOrdenarClick(Sender: TObject);
-var
-  SQLRetorno: string;
-begin
-  inherited;
-  if TfrmOrdenarDados.Execute(FSQL, SQLRetorno) then
-  begin
-    cdsFone.Close;
-    FSQL := '';
-    FSQL := SQLRetorno;
-    cdsFone.CommandText := FSQL;
-    cdsFone.Open;
   end;
 end;
 

@@ -127,18 +127,15 @@ type
     procedure miLimpaFiltroClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure miCadContaCaixaClick(Sender: TObject);
-    procedure miFiltraPorContaCaixaClick(Sender: TObject);
     procedure miContarRegClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure miRelFluxoCaixaClick(Sender: TObject);
-    procedure miExportaDadosClick(Sender: TObject);
     procedure miRelTodosClick(Sender: TObject);
     procedure miRelMesAnoClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure btnFiltrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure miRelPersonalCaixaClick(Sender: TObject);
     procedure miRelContaCaixaClick(Sender: TObject);
     procedure miExcluirVariosClick(Sender: TObject);
     procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;
@@ -168,8 +165,8 @@ var
 
 implementation
 
-uses  unLancCaixa, Funcoes, unFiltroSimples, unModeloConsulta,
-     VarGlobal, unGeraRelatorio, unPrevCaixaTodos,  uConfiguraRelatorio,
+uses  unLancCaixa, Funcoes, unModeloConsulta,
+     VarGlobal, unPrevCaixaTodos,  uConfiguraRelatorio,
      unAguarde;
 
 {$R *.dfm}
@@ -393,34 +390,8 @@ begin
   ChamaForm('TfrmCadastroCaixa', 'Contas caixa', Self);
 end;
 
-procedure TfrmCaixa.miFiltraPorContaCaixaClick(Sender: TObject);
-var
-  IdRetorno: Integer;
-  Order, SQL: string;
-begin
-
-  SQL := SQLPadraoTela;
-  Order := Copy(SQL, Pos('ORDER', SQL), Length(SQL));
-  Delete(SQL, Pos('ORDER', SQL), Length(SQL));
-
-  if TfrmFiltroSimples.Execute(IdRetorno, 'VIEWCAIXASATIVOS', 'NOME', 'CODIGO') then
-  begin
-    cdsPadrao.DisableControls;
-    cdsPadrao.Close;
-
-    cdsPadrao.Filtered := False;
-    cdsPadrao.Filter   := 'CODCAIXAS = '+QuotedStr(IntToStr(IdRetorno));
-    cdsPadrao.Filtered := True;
-
-    cdsPadrao.Open;
-    cdsPadrao.Last;
-    cdsPadrao.EnableControls;
-  end;
-end;
-
 procedure TfrmCaixa.miContarRegClick(Sender: TObject);
 begin
-  ////Ed_Quantificar(cdsPadrao, frmCaixa);
   miLimpaFiltro.Click;
 end;
 
@@ -435,13 +406,6 @@ end;
 procedure TfrmCaixa.miRelFluxoCaixaClick(Sender: TObject);
 begin
   ChamaForm('TfrmRelatorioFluxoCaixa', 'Relatório de caixa', Self);
-end;
-
-procedure TfrmCaixa.miExportaDadosClick(Sender: TObject);
-begin
-//  if TfrmExportaPadrao.MontaDados('CAIXA', 'Caixa', 'Caixa', 'Caixa')then
-//  begin
-//  end;
 end;
 
 procedure TfrmCaixa.miRelTodosClick(Sender: TObject);
@@ -615,11 +579,6 @@ begin
   finally
     FreeAndNil(frmAguarde);
   end;
-end;
-
-procedure TfrmCaixa.miRelPersonalCaixaClick(Sender: TObject);
-begin
-  TfrmGeraRelatorio.Execute('Caixa', 'CAIXA', GetConnection);
 end;
 
 procedure TfrmCaixa.miRelContaCaixaClick(Sender: TObject);

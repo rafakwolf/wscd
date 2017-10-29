@@ -12,20 +12,6 @@ inherited frmPagarMan: TfrmPagarMan
   ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
-  object rgTipoPagamento: TRadioGroup
-    Left = 8
-    Top = 208
-    Width = 465
-    Height = 33
-    Caption = 'Pagamento'
-    Columns = 2
-    ItemIndex = 0
-    Items.Strings = (
-      'Dinheiro'
-      'Cheque')
-    TabOrder = 1
-    OnClick = rgTipoPagamentoClick
-  end
   object lblVenc: TUniLabel
     Left = 120
     Top = 372
@@ -313,6 +299,23 @@ inherited frmPagarMan: TfrmPagarMan
     TabOrder = 0
     ParentColor = False
     Color = clBtnFace
+  end
+  object rgTipoPagamento: TUniRadioGroup
+    Left = 8
+    Top = 208
+    Width = 465
+    Height = 33
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Dinheiro'
+      'Cheque')
+    ItemIndex = 0
+    Caption = 'Pagamento'
+    TabOrder = 1
+    TabStop = False
+    Columns = 2
+    OnClick = rgTipoPagamentoClick
   end
   object dsContasPagar: TDataSource
     AutoEdit = False

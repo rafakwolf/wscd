@@ -33,7 +33,6 @@ object frmOrcamentos: TfrmOrcamentos
     Anchors = [akLeft, akRight, akBottom]
     ParentColor = False
     Color = clBtnFace
-    ExplicitTop = 508
   end
   object pnBotoes: TUniContainerPanel
     Left = 0
@@ -1784,7 +1783,6 @@ object frmOrcamentos: TfrmOrcamentos
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 18
     TabStop = False
-    ExplicitTop = 453
     object lbItens: TUniLabel
       Left = 526
       Top = 12
@@ -2806,7 +2804,6 @@ object frmOrcamentos: TfrmOrcamentos
         end
         object miFiltrarCliente: TUniMenuItem
           Caption = 'Filtrar por cliente'
-          OnClick = miFiltrarClienteClick
         end
       end
       object miLimpaFiltro: TUniMenuItem

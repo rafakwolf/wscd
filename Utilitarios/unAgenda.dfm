@@ -1,17 +1,17 @@
 inherited frmAgenda: TfrmAgenda
-  ClientHeight = 298
+  ClientHeight = 278
   ClientWidth = 475
   Caption = 'frmAgenda'
   OldCreateOrder = True
   Menu = mmPadrao
   ExplicitWidth = 481
-  ExplicitHeight = 347
+  ExplicitHeight = 327
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
-    Top = 279
+    Top = 259
     Width = 475
-    ExplicitTop = 279
+    ExplicitTop = 259
     ExplicitWidth = 475
   end
   inherited pnBotoesPadrao: TUniContainerPanel
@@ -188,8 +188,8 @@ inherited frmAgenda: TfrmAgenda
     end
   end
   object mmPadrao: TUniMainMenu
-    Left = 360
-    Top = 108
+    Left = 400
+    Top = 92
     object miRelatorios: TUniMenuItem
       Caption = ''
       ImageIndex = 10

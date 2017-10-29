@@ -1,5 +1,6 @@
 object UniServerModule: TUniServerModule
   OldCreateOrder = False
+  OnCreate = UniGUIServerModuleCreate
   TempFolder = 'temp\'
   Title = 'ERP'
   SuppressErrors = []

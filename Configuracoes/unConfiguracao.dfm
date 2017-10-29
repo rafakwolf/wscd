@@ -1,61 +1,757 @@
 inherited frmConfiguracao: TfrmConfiguracao
   Left = 221
   Top = 141
-  ClientHeight = 440
-  ClientWidth = 628
+  ClientHeight = 380
+  ClientWidth = 754
   Caption = 'frmConfiguracao'
   OldCreateOrder = True
-  Font.Name = 'Verdana'
-  ExplicitWidth = 634
-  ExplicitHeight = 469
+  ExplicitWidth = 760
+  ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
-    Top = 421
-    Width = 628
+    Top = 361
+    Width = 754
     ExplicitTop = 361
-    ExplicitWidth = 409
+    ExplicitWidth = 754
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 628
-    ExplicitWidth = 409
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
+    Width = 754
+    ExplicitWidth = 754
   end
   object PgConfig: TUniPageControl [2]
     Left = 8
     Top = 36
-    Width = 394
+    Width = 729
     Height = 317
     Hint = ''
     ShowHint = True
+    ActivePage = TabImg
     TabOrder = 1
+    object Tabgeral: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      Caption = '    &Geral    '
+      object chAtalhos: TUniDBCheckBox
+        Left = 23
+        Top = 26
+        Width = 259
+        Height = 17
+        Hint = 'Ativar barra de atalhos na tela principal'
+        ShowHint = True
+        DataField = 'BARRAFERRAMENTA'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Mostrar barra de atalhos na tela principal'
+        TabOrder = 0
+      end
+      object chHint: TUniDBCheckBox
+        Left = 23
+        Top = 44
+        Width = 166
+        Height = 17
+        Hint = 'Mensagem de informa'#231#227'o na forma de bal'#227'o'
+        ShowHint = True
+        DataField = 'HINTBALAO'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Mostrar hints estilo bal'#227'o'
+        TabOrder = 1
+      end
+      object chErro: TUniDBCheckBox
+        Left = 23
+        Top = 63
+        Width = 162
+        Height = 17
+        Hint = 'Grava todos os erros que o sistema gerar'
+        ShowHint = True
+        DataField = 'GRAVAERRO'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Gravar erros do sistema'
+        TabOrder = 2
+      end
+      object chBackup: TUniDBCheckBox
+        Left = 23
+        Top = 81
+        Width = 224
+        Height = 17
+        Hint = 'Sugere copia de seguran'#231'a ao finalizar o sistema'
+        ShowHint = True
+        DataField = 'BACKUP'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Sugerir c'#243'pia de seguran'#231'a ao sair'
+        TabOrder = 3
+      end
+      object chResolucao: TUniDBCheckBox
+        Left = 23
+        Top = 100
+        Width = 186
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'RESOLUCAO'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Verificar resolu'#231#227'o ao iniciar'
+        TabOrder = 4
+      end
+      object chLog: TUniDBCheckBox
+        Left = 23
+        Top = 118
+        Width = 258
+        Height = 17
+        Hint = 'Grava as transa'#231#245'es do banco de dados'
+        ShowHint = True
+        DataField = 'LOG'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Gerar log de registro do banco de dados'
+        TabOrder = 5
+      end
+      object chImpressora: TUniDBCheckBox
+        Left = 23
+        Top = 137
+        Width = 137
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'IMPRESSORA'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Verificar impressora'
+        TabOrder = 6
+      end
+      object chDica: TUniDBCheckBox
+        Left = 23
+        Top = 155
+        Width = 188
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'EXIBEDICADIA'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Mostrar dica do dia ao iniciar'
+        TabOrder = 7
+      end
+      object dbckbVerificaUpd: TUniDBCheckBox
+        Left = 23
+        Top = 174
+        Width = 249
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'VERIFICA_UPD'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Verificar atualiza'#231#245'es autom'#225'ticamente'
+        TabOrder = 8
+      end
+      object dbchkInfoAvisos: TUniDBCheckBox
+        Left = 23
+        Top = 192
+        Width = 241
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'INFOAVISOS'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Exibir informa'#231#245'es a avisos ao iniciar'
+        TabOrder = 9
+      end
+    end
+    object TabImg: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 1
+      Caption = 'Papel &Parede'
+      object imgPapelParede: TUniImage
+        Left = 8
+        Top = 10
+        Width = 367
+        Height = 184
+        Hint = 'Imagem do papel de parede'
+        ShowHint = True
+      end
+      object btnBuscar: TUniBitBtn
+        Left = 12
+        Top = 212
+        Width = 80
+        Height = 25
+        Hint = 'Procurar'
+        ShowHint = True
+        Caption = '&Procurar'
+        TabOrder = 0
+        OnClick = btnBuscarClick
+      end
+      object btnExImg: TUniBitBtn
+        Left = 100
+        Top = 212
+        Width = 80
+        Height = 25
+        Hint = ''
+        ShowHint = True
+        Caption = '&Limpar'
+        TabOrder = 1
+        OnClick = btnExImgClick
+      end
+      object rgOrientationImg: TUniRadioGroup
+        Left = 194
+        Top = 198
+        Width = 184
+        Height = 49
+        Hint = ''
+        ShowHint = True
+        Items.Strings = (
+          'Lado a lado'
+          'Estender')
+        ItemIndex = 1
+        Caption = ' Orienta'#231#227'o '
+        TabOrder = 2
+        TabStop = False
+        OnClick = rgOrientationImgClick
+      end
+    end
+    object TabOrcam: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 2
+      Caption = '&Or'#231'amentos'
+      object cbVerificaEstoqueOrcam: TUniDBCheckBox
+        Left = 23
+        Top = 26
+        Width = 244
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'PRODSEMESTOQORCAM'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Permitir produtos com estoque m'#237'nimo'
+        TabOrder = 0
+      end
+      object cbEditOrcamConc: TUniDBCheckBox
+        Left = 23
+        Top = 44
+        Width = 242
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'EDITORCAMCONC'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Permitir editar or'#231'amentos conclu'#237'dos'
+        TabOrder = 1
+      end
+      object cbOrcamNaoConc: TUniDBCheckBox
+        Left = 23
+        Top = 62
+        Width = 230
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'ORCAMNAOCONC'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Verificar or'#231'amentos n'#227'o conclu'#237'dos'
+        TabOrder = 2
+      end
+    end
+    object TabCompras: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 3
+      Caption = ' &Compras '
+      object cbCompraNaoConc: TUniDBCheckBox
+        Left = 23
+        Top = 26
+        Width = 213
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'COMPRANAOCONC'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Verificar compras n'#227'o conclu'#237'das'
+        TabOrder = 0
+      end
+      object cbEditCompraConc: TUniDBCheckBox
+        Left = 23
+        Top = 44
+        Width = 219
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'EDITCOMPRACONC'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Permitir editar compras conclu'#237'das'
+        TabOrder = 1
+      end
+    end
+    object TabProdutos: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 4
+      Caption = ' &Produtos '
+      object dbeSenhaProduto: TUniDBEdit
+        Left = 8
+        Top = 187
+        Width = 121
+        Height = 21
+        Hint = ''
+        ShowHint = True
+        DataField = 'SENHAESTOQUE'
+        DataSource = dsPadrao
+        PasswordChar = '*'
+        TabOrder = 4
+      end
+      object dbcbEstoqueSenhaProd: TUniDBCheckBox
+        Left = 8
+        Top = 148
+        Width = 243
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'USARSENHAESTOQUE'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Pedir senha para altera'#231#227'o de estoque'
+        TabOrder = 3
+      end
+      object dbcbBordaEtqProd: TUniDBCheckBox
+        Left = 8
+        Top = 127
+        Width = 224
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'BORDAETQPROD'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Exibir borda na etiqueta de produto '
+        TabOrder = 2
+      end
+      object dbcbLetraNumCodBarra: TUniDBCheckBox
+        Left = 8
+        Top = 107
+        Width = 220
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'LETRACODIGOBARRA'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Permitir letras no c'#243'digo de barras'
+        TabOrder = 1
+      end
+      object grpValorProdutoPadrao: TUniGroupBox
+        Left = 8
+        Top = 6
+        Width = 369
+        Height = 97
+        Hint = ''
+        ShowHint = True
+        Caption = ' Valores Padr'#227'o '
+        TabOrder = 0
+        TabStop = False
+        object dbeAliqPadrao: TUniDBEdit
+          Left = 204
+          Top = 15
+          Width = 130
+          Height = 21
+          Hint = 'Pesquisar < F2 >'
+          ShowHint = True
+          DataField = 'ALIQUOTA'
+          DataSource = dsPadrao
+          ParentFont = False
+          TabOrder = 0
+          Color = clBtnFace
+          ReadOnly = True
+        end
+        object dbeEstoquePadrao: TUniDBEdit
+          Left = 204
+          Top = 40
+          Width = 130
+          Height = 21
+          Hint = ''
+          ShowHint = True
+          DataField = 'ESTOQUEPADRAO'
+          DataSource = dsPadrao
+          ParentFont = False
+          TabOrder = 1
+          OnKeyPress = dbeEstoquePadraoKeyPress
+        end
+        object dbeDescontoPadrao: TUniDBEdit
+          Left = 204
+          Top = 66
+          Width = 130
+          Height = 21
+          Hint = ''
+          ShowHint = True
+          DataField = 'DESCPADRAOPROD'
+          DataSource = dsPadrao
+          ParentFont = False
+          TabOrder = 2
+          OnKeyPress = dbeDescontoPadraoKeyPress
+        end
+      end
+      object btnAlterarSenhaProduto: TUniBitBtn
+        Left = 8
+        Top = 213
+        Width = 121
+        Height = 25
+        Hint = ''
+        ShowHint = True
+        Caption = '&Alterar Senha'
+        TabOrder = 5
+        OnClick = btnAlterarSenhaProdutoClick
+      end
+    end
+    object TabCaixa: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 5
+      Caption = '    &Caixa    '
+      object dbeSenhaCaixa: TUniDBEdit
+        Left = 8
+        Top = 135
+        Width = 129
+        Height = 21
+        Hint = ''
+        ShowHint = True
+        DataField = 'SENHACAIXA'
+        DataSource = dsPadrao
+        PasswordChar = '*'
+        TabOrder = 1
+      end
+      object dbcbMostrarSaldo: TUniDBCheckBox
+        Left = 8
+        Top = 192
+        Width = 152
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'MOSTRARSALDOCAIXA'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Mostrar saldo do caixa'
+        TabOrder = 3
+      end
+      object dbcbLanc90Dias: TUniDBCheckBox
+        Left = 8
+        Top = 212
+        Width = 257
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'CAIXA90DIAS'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Mostrar lan'#231'amentos dos '#250'ltimos 90 dias'
+        TabOrder = 2
+      end
+      object grpCaixaPadrao: TUniGroupBox
+        Left = 8
+        Top = 5
+        Width = 365
+        Height = 52
+        Hint = ''
+        ShowHint = True
+        Caption = ' Conta caixa padr'#227'o '
+        TabOrder = 0
+        TabStop = False
+        object dbeCaixaPadrao: TUniDBEdit
+          Left = 90
+          Top = 20
+          Width = 239
+          Height = 21
+          Hint = 'Pesquisar < F2 >'
+          ShowHint = True
+          DataField = 'CAIXA'
+          DataSource = dsPadrao
+          ParentFont = False
+          TabOrder = 0
+          Color = clBtnFace
+          ReadOnly = True
+        end
+      end
+      object grpContaCheque: TUniGroupBox
+        Left = 8
+        Top = 64
+        Width = 365
+        Height = 49
+        Hint = ''
+        ShowHint = True
+        Caption = 'Conta padr'#227'o para cheques'
+        TabOrder = 5
+        TabStop = False
+        object dbeContaCheque: TUniDBEdit
+          Left = 90
+          Top = 18
+          Width = 239
+          Height = 21
+          Hint = 'Pesquisar < F2 >'
+          ShowHint = True
+          DataField = 'NCONTACHEQUE'
+          DataSource = dsPadrao
+          ParentFont = False
+          TabOrder = 0
+          Color = clBtnFace
+          ReadOnly = True
+        end
+      end
+      object btnAlterarSenhaCaixa: TUniBitBtn
+        Left = 8
+        Top = 160
+        Width = 129
+        Height = 25
+        Hint = ''
+        ShowHint = True
+        Caption = 'Alterar senha'
+        TabOrder = 4
+        OnClick = btnAlterarSenhaCaixaClick
+      end
+    end
+    object TabVenda: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 6
+      Caption = '&Vendas'
+      object chVendaEstoque: TUniDBCheckBox
+        Left = 23
+        Top = 24
+        Width = 244
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'PRODSEMESTOQVENDA'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Permitir produtos com estoque m'#237'nimo'
+        TabOrder = 0
+      end
+      object chVendaConc: TUniDBCheckBox
+        Left = 23
+        Top = 42
+        Width = 202
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'VENDANAOCONC'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Verificar vendas n'#227'o conclu'#237'das'
+        TabOrder = 1
+      end
+      object chEditvenda: TUniDBCheckBox
+        Left = 23
+        Top = 60
+        Width = 211
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'EDITVENDACONC'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Permitir editar vendas conclu'#237'das'
+        TabOrder = 2
+      end
+    end
+    object TabClientes: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 8
+      Caption = '&Clientes'
+      object chBloqCli: TUniDBCheckBox
+        Left = 23
+        Top = 24
+        Width = 190
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'AVISACLIENTEATRASO'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Avisar quando exceder limite '
+        TabOrder = 0
+      end
+      object dbcbBordaEtq: TUniDBCheckBox
+        Left = 23
+        Top = 44
+        Width = 172
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'BORDAETQCLIENTE'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Exibir borda nas etiquetas'
+        TabOrder = 1
+      end
+    end
+    object TabExportacao: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 9
+      Caption = '&Exporta'#231#227'o de dados'
+      object dbeDirExportacao: TUniDBEdit
+        Left = 16
+        Top = 40
+        Width = 321
+        Height = 21
+        Hint = ''
+        ShowHint = True
+        DataField = 'DIREXPORTPADRAO'
+        DataSource = dsPadrao
+        TabOrder = 1
+      end
+      object btnLocalizar: TUniBitBtn
+        Left = 339
+        Top = 38
+        Width = 25
+        Height = 25
+        Hint = ''
+        ShowHint = True
+        Caption = '...'
+        ParentFont = False
+        Font.Charset = ANSI_CHARSET
+        TabOrder = 0
+        OnClick = btnLocalizarClick
+      end
+    end
+    object tsEmail: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 10
+      Caption = 'E-mail'
+      object grpEmail: TUniGroupBox
+        Left = 16
+        Top = 8
+        Width = 353
+        Height = 193
+        Hint = ''
+        ShowHint = True
+        Caption = ' Configura'#231#245'es '
+        TabOrder = 0
+        TabStop = False
+        object btnTeste: TUniBitBtn
+          Left = 261
+          Top = 152
+          Width = 75
+          Height = 25
+          Hint = ''
+          ShowHint = True
+          Caption = 'Testar'
+          TabOrder = 5
+          OnClick = btnTesteClick
+        end
+        object edServidor: TUniEdit
+          Left = 16
+          Top = 32
+          Width = 249
+          Height = 21
+          Hint = ''
+          ShowHint = True
+          Text = ''
+          TabOrder = 0
+        end
+        object edPorta: TUniEdit
+          Left = 272
+          Top = 32
+          Width = 65
+          Height = 21
+          Hint = ''
+          ShowHint = True
+          Text = '25'
+          TabOrder = 1
+        end
+        object edUsuario: TUniEdit
+          Left = 16
+          Top = 112
+          Width = 193
+          Height = 21
+          Hint = ''
+          ShowHint = True
+          Text = ''
+          TabOrder = 3
+        end
+        object edSenha: TUniEdit
+          Left = 216
+          Top = 112
+          Width = 121
+          Height = 21
+          Hint = ''
+          ShowHint = True
+          PasswordChar = '*'
+          Text = ''
+          TabOrder = 4
+        end
+        object chkAutenticacao: TUniCheckBox
+          Left = 16
+          Top = 72
+          Width = 217
+          Height = 17
+          Hint = ''
+          ShowHint = True
+          Caption = 'Meu servidor requer autentica'#231#227'o'
+          TabOrder = 2
+          OnClick = chkAutenticacaoClick
+        end
+      end
+    end
+    object tsRelatorio: TUniTabSheet
+      Hint = ''
+      ShowHint = True
+      ImageIndex = 12
+      Caption = 'Relat'#243'rios'
+      object dbckbRelZebrado: TUniDBCheckBox
+        Left = 24
+        Top = 24
+        Width = 129
+        Height = 17
+        Hint = ''
+        ShowHint = True
+        DataField = 'RELZEBRADO'
+        DataSource = dsPadrao
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        Caption = 'Visualizar zebrado'
+        TabOrder = 0
+      end
+    end
   end
   inherited actlNavigateActions: TActionList
-    Left = 318
-    Top = 302
+    Left = 286
+    Top = 318
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
@@ -477,12 +1173,12 @@ inherited frmConfiguracao: TfrmConfiguracao
       'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bi' +
       'tmaps (*.bmp)|*.bmp'
     Left = 254
-    Top = 286
+    Top = 318
   end
   object IdSMTP: TIdSMTP
     SASLMechanisms = <>
-    Left = 141
-    Top = 262
+    Left = 149
+    Top = 318
   end
   object IdMsg: TIdMessage
     AttachmentEncoding = 'MIME'
@@ -495,7 +1191,7 @@ inherited frmConfiguracao: TfrmConfiguracao
     Recipients = <>
     ReplyTo = <>
     ConvertPreamble = True
-    Left = 204
-    Top = 262
+    Left = 180
+    Top = 318
   end
 end

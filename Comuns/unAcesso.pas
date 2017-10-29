@@ -38,7 +38,7 @@ var
 
 implementation
 
-uses unDmPrincipal, Funcoes, unSetupConnection, VarGlobal,
+uses unDmPrincipal, Funcoes, VarGlobal,
   udmAcesso, Datasnap.DBClient, uUtilFncs, IniFiles, UniGUIVars;
 
 {$R *.dfm}
@@ -86,12 +86,6 @@ end;
 procedure TfrmAcesso.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if Key = VK_F6 then
-  begin
-    frmSetupConnection := TfrmSetupConnection.Create(Application);
-    frmSetupConnection.ShowModal;
-  end;
-
   if Key = VK_F1 then
     ChamaHelp(Self, 0,'');
 

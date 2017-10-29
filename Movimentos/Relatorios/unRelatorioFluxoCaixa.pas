@@ -7,12 +7,10 @@ uses
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask,
   System.StrUtils, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel;
+  uniGUIBaseClasses, uniPanel, uniRadioGroup;
 
 type
   TfrmRelatorioFluxoCaixa = class(TfrmDialogoRelatorioPadrao)
-    rgRelatorio: TRadioGroup;
-    rgOrdem: TRadioGroup;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
@@ -22,6 +20,8 @@ type
     cdsSelecaoDATAFIM: TSQLTimeStampField;
     dbDataI: TUniDBEdit;
     dbDataF: TUniDBEdit;
+    rgOrdem: TUniRadioGroup;
+    rgRelatorio: TUniRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);

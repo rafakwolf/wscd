@@ -7,11 +7,11 @@ uses
   Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, 
   DB, DBClient, Datasnap.Provider,
   Data.SqlExpr, Mask, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, uniEdit;
+  uniButton, uniBitBtn, uniEdit, uniMultiItem, uniComboBox, uniDBComboBox,
+  uniDBLookupComboBox;
 
 type
   TfrmBaixaCheque = class(TfrmSimplePadrao)
-    dblcbContaCaixa: TDBLookupComboBox;
     sqldCaixa: TSQLDataSet;
     dspCaixa: TDataSetProvider;
     cdsCaixa: TClientDataSet;
@@ -26,6 +26,7 @@ type
     btnCancelar: TUniBitBtn;
     medtDataBaixa: TUniEdit;
     cedHistorico: TUniEdit;
+    dblcbContaCaixa: TUniDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);

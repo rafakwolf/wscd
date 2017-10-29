@@ -19,29 +19,23 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     Width = 535
     TabOrder = 3
     ExplicitWidth = 535
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
     inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
+      Left = 253
+      Width = 65
+      ExplicitLeft = 253
+      ExplicitWidth = 65
     end
     inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
+      Left = 378
+      Width = 53
+      ExplicitLeft = 378
+      ExplicitWidth = 53
     end
     inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
+      Left = 319
+      Width = 59
+      ExplicitLeft = 319
+      ExplicitWidth = 59
     end
   end
   object dbeNomeCaixa: TUniDBEdit [2]

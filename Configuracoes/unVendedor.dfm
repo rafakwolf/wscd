@@ -1,24 +1,24 @@
 inherited frmVendedor: TfrmVendedor
   Left = 229
   Top = 165
-  ClientHeight = 229
+  ClientHeight = 200
   ClientWidth = 522
   Caption = 'frmVendedor'
   OldCreateOrder = True
   Font.Name = 'Verdana'
   ExplicitWidth = 528
-  ExplicitHeight = 258
+  ExplicitHeight = 229
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
-    Top = 210
+    Top = 181
     Width = 522
-    ExplicitTop = 145
-    ExplicitWidth = 409
+    ExplicitTop = 210
+    ExplicitWidth = 522
   end
   inherited pnBotoesPadrao: TUniContainerPanel
     Width = 522
-    ExplicitWidth = 409
+    ExplicitWidth = 522
     inherited btnNovo: TUniSpeedButton
       Font.Name = 'Verdana'
     end
@@ -81,7 +81,7 @@ inherited frmVendedor: TfrmVendedor
     TabOrder = 4
   end
   inherited actlNavigateActions: TActionList
-    Left = 176
+    Left = 184
     Top = 124
   end
   inherited dsPadrao: TDataSource
@@ -93,8 +93,8 @@ inherited frmVendedor: TfrmVendedor
     CommandText = 'select '#13#10'  IDVENDEDOR, '#13#10'  VENDEDOR, '#13#10'  ATIVO '#13#10'from VENDEDOR'
     MaxBlobSize = -1
     Params = <>
-    Left = 280
-    Top = 140
+    Left = 288
+    Top = 124
     object sqldPadraoIDVENDEDOR: TIntegerField
       FieldName = 'IDVENDEDOR'
       Required = True
@@ -112,8 +112,8 @@ inherited frmVendedor: TfrmVendedor
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poUseQuoteChar]
-    Left = 368
-    Top = 140
+    Left = 376
+    Top = 124
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -121,8 +121,8 @@ inherited frmVendedor: TfrmVendedor
     ProviderName = 'dspPadrao'
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
-    Left = 440
-    Top = 132
+    Left = 448
+    Top = 124
     object cdsPadraoIDVENDEDOR: TIntegerField
       FieldName = 'IDVENDEDOR'
       Required = True

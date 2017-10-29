@@ -6,14 +6,14 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
   DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel;
+  uniGUIBaseClasses, uniPanel, uniRadioGroup;
 
 type
   TfrmRelatorioEtiquetaCliente = class(TfrmDialogoRelatorioPadrao)
-    rgpFiltro: TRadioGroup;
     dsCidade: TDataSource;
     dbeCidade: TUniDBEdit;
     dbeCliente: TUniDBEdit;
+    rgpFiltro: TUniRadioGroup;
     procedure btnVisualizarClick(Sender: TObject);
     procedure dbeClienteClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

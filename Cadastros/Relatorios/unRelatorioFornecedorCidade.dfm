@@ -1,15 +1,17 @@
 inherited frmRelatorioFornecedorCidade: TfrmRelatorioFornecedorCidade
+  ClientHeight = 178
   Caption = 'frmRelatorioFornecedorCidade'
   OldCreateOrder = True
+  ExplicitHeight = 217
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnButtons: TUniContainerPanel
-    ExplicitTop = 97
-    ExplicitWidth = 385
+    Top = 144
+    ExplicitTop = 144
   end
   object dbeCidade: TUniDBEdit [1]
-    Left = 16
-    Top = 40
+    Left = 48
+    Top = 56
     Width = 331
     Height = 21
     Hint = 'Pesquisar < F2 >'
@@ -22,5 +24,6 @@ inherited frmRelatorioFornecedorCidade: TfrmRelatorioFornecedorCidade
   end
   inherited dsPadrao: TDataSource
     Left = 88
+    Top = 8
   end
 end

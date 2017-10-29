@@ -21,12 +21,9 @@ inherited frmCliente: TfrmCliente
     ExplicitWidth = 785
     inherited btnPrint: TUniSpeedButton
       Left = 192
-      Top = 0
       Hint = ''
       Action = nil
-      Glyph.Data = {00000000}
       ExplicitLeft = 192
-      ExplicitTop = 0
     end
   end
   object pnFoto: TUniContainerPanel [2]

@@ -5,12 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  Data.SqlExpr,ImgList, Menus,  uClassesMenu,
+  Data.SqlExpr,ImgList, Menus, uClassesMenu,
   DBClient,Datasnap.Provider, Mask, DBCtrls,
-   DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
+  DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
   System.Actions, System.ImageList, uniGUIClasses, uniEdit, uniDBEdit,
   uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses,
-  uniStatusBar, uniGroupBox, uniMainMenu;
+  uniStatusBar, uniGroupBox, uniMainMenu, uniTreeView, uniGUIAbstractClasses;
 
 type
   TfrmUsuarioItemMenu = class(TfrmPadrao)
@@ -38,18 +38,18 @@ type
     dbeLogin: TUniDBEdit;
     dbeNomeUsuario: TUniDBEdit;
     grpItemPermissao: TUniGroupBox;
-    tvAcesso: TTreeView;
     pmStatusMenu: TUniPopupMenu;
     mniLiberado: TUniMenuItem;
     mniBloqueado: TUniMenuItem;
+    tvAcesso: TUniTreeView;
     procedure cdsPadraoSENHASetText(Sender: TField; const Text: string);
     procedure mniBloqueadoClick(Sender: TObject);
     procedure mniLiberadoClick(Sender: TObject);
     procedure tvAcessoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure tvAcessoCollapsing(Sender: TObject; Node: TTreeNode;
+    procedure tvAcessoCollapsing(Sender: TObject; Node: TUniTreeNode;
       var AllowCollapse: Boolean);
-    procedure tvAcessoGetSelectedIndex(Sender: TObject; Node: TTreeNode);
+    procedure tvAcessoGetSelectedIndex(Sender: TObject; Node: TUniTreeNode);
     procedure tvAcessoDblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -60,10 +60,10 @@ type
   private
     ItemsMenu: TPLItemsMenu;
 
-    function GetNodeById(pId: Integer): TTreeNode;
-    function GetAcesso(TreeNode: TTreeNode): Boolean;
+    function GetNodeById(pId: Integer): TUniTreeNode;
+    function GetAcesso(TreeNode: TUniTreeNode): Boolean;
     
-    procedure SetAcesso(TreeNode: TTreeNode; Liberado: Boolean;
+    procedure SetAcesso(TreeNode: TUniTreeNode; Liberado: Boolean;
       SetAcessoSubItems: Boolean; Manual: Boolean; RepaintTreeView: Boolean);
     procedure MarcaTreeViewAcessoUsuario;
     procedure DesmarcaTreeView;
@@ -90,9 +90,9 @@ uses unPrincipal, System.Math;
 
 procedure TfrmUsuarioItemMenu.FormCreate(Sender: TObject);
 
-  function AddTreeNode(PLMenuIndex: Integer): TTreeNode;
+  function AddTreeNode(PLMenuIndex: Integer): TUniTreeNode;
   var
-    ParentNode : TTreeNode;
+    ParentNode : TUniTreeNode;
     PLItemMenu : TPLItemMenu;
   begin;
     PLItemMenu := ItemsMenu[PLMenuIndex];
@@ -104,7 +104,7 @@ procedure TfrmUsuarioItemMenu.FormCreate(Sender: TObject);
     end
     else
     begin
-      Result := tvAcesso.Items.AddObject(nil, PLItemMenu.Caption, PLItemMenu);
+      Result := tvAcesso.Items.AddChildObject(nil, PLItemMenu.Caption, PLItemMenu);
     end;  
   end;
 
@@ -118,7 +118,6 @@ begin
   FieldNames       := FN_USUARIOS;
   DisplayLabels    := DL_USUARIOS;
   aCaption         := 'Usuários';
-  //ComandoSQLPadrao := sqldPadrao.CommandText;
 
   with sqldMenu do
   begin
@@ -165,7 +164,7 @@ begin
   end;
 end;
 
-function TfrmUsuarioItemMenu.GetNodeById(pId: Integer): TTreeNode;
+function TfrmUsuarioItemMenu.GetNodeById(pId: Integer): TUniTreeNode;
 var
   x: Integer;
 begin
@@ -200,14 +199,14 @@ begin
 end;
 
 procedure TfrmUsuarioItemMenu.tvAcessoGetSelectedIndex(Sender: TObject;
-  Node: TTreeNode);
+  Node: TUniTreeNode);
 begin
   inherited;
   Node.SelectedIndex := Node.ImageIndex;
 end;
 
 procedure TfrmUsuarioItemMenu.tvAcessoCollapsing(Sender: TObject;
-  Node: TTreeNode; var AllowCollapse: Boolean);
+  Node: TUniTreeNode; var AllowCollapse: Boolean);
 begin
   inherited;
   AllowCollapse := False;
@@ -215,26 +214,26 @@ end;
 
 procedure TfrmUsuarioItemMenu.tvAcessoMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-var
-  Pt: TPoint;
+//var
+//  Pt: TPoint;
 begin
   inherited;
-  if Button = mbRight then
-  begin
-    if EditModes then
-    begin
-      if assigned(tvAcesso.GetNodeAt(X,Y)) then
-      begin
-        tvAcesso.Selected := tvAcesso.GetNodeAt(X,Y);
-        Pt := tvAcesso.ClientToScreen(Point(X,Y));
-        pmStatusMenu.Popup(Pt.X, Pt.Y);
-      end;
-    end
-    else
-    begin
-      MensagemAntesEditar;
-    end;  
-  end;
+//  if Button = mbRight then
+//  begin
+//    if EditModes then
+//    begin
+//      if assigned(tvAcesso.GetNodeAt(X,Y)) then
+//      begin
+//        tvAcesso.Selected := tvAcesso.GetNodeAt(X,Y);
+//        Pt := tvAcesso.ClientToScreen(Point(X,Y));
+//        pmStatusMenu.Popup(Pt.X, Pt.Y);
+//      end;
+//    end
+//    else
+//    begin
+//      MensagemAntesEditar;
+//    end;
+//  end;
 end;
 
 procedure TfrmUsuarioItemMenu.mniLiberadoClick(Sender: TObject);
@@ -243,11 +242,11 @@ begin
   SetAcesso(tvAcesso.Selected, True, True, True, True);
 end;
 
-procedure TfrmUsuarioItemMenu.SetAcesso(TreeNode: TTreeNode; Liberado: Boolean;
+procedure TfrmUsuarioItemMenu.SetAcesso(TreeNode: TUniTreeNode; Liberado: Boolean;
   SetAcessoSubItems: Boolean; Manual: Boolean; RepaintTreeView: Boolean);
 var
   x, Marcados : Integer;
-  ParentNode  : TTreeNode;
+  ParentNode  : TUniTreeNode;
 begin
   if assigned(TreeNode) then
   begin
@@ -302,7 +301,7 @@ begin
     tvAcesso.Invalidate;
 end;
 
-function TfrmUsuarioItemMenu.GetAcesso(TreeNode: TTreeNode): Boolean;
+function TfrmUsuarioItemMenu.GetAcesso(TreeNode: TUniTreeNode): Boolean;
 begin
   Result := TreeNode.ImageIndex = IILIBERADO;
 end;

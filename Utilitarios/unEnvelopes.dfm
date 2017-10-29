@@ -21,7 +21,7 @@ inherited frmEnvelopes: TfrmEnvelopes
   object lbNome: TUniLabel [2]
     Left = 49
     Top = 62
-    Width = 55
+    Width = 27
     Height = 13
     Hint = ''
     ShowHint = True
@@ -31,7 +31,7 @@ inherited frmEnvelopes: TfrmEnvelopes
   object lbEndereco: TUniLabel [3]
     Left = 29
     Top = 86
-    Width = 55
+    Width = 45
     Height = 13
     Hint = ''
     ShowHint = True
@@ -41,7 +41,7 @@ inherited frmEnvelopes: TfrmEnvelopes
   object lbBairro: TUniLabel [4]
     Left = 47
     Top = 134
-    Width = 55
+    Width = 28
     Height = 13
     Hint = ''
     ShowHint = True
@@ -51,7 +51,7 @@ inherited frmEnvelopes: TfrmEnvelopes
   object lbCep: TUniLabel [5]
     Left = 59
     Top = 158
-    Width = 55
+    Width = 19
     Height = 13
     Hint = ''
     ShowHint = True
@@ -61,7 +61,7 @@ inherited frmEnvelopes: TfrmEnvelopes
   object lbMsg: TUniLabel [6]
     Left = 21
     Top = 182
-    Width = 55
+    Width = 51
     Height = 13
     Hint = ''
     ShowHint = True

@@ -1731,30 +1731,10 @@ object frmImprimeRecibo: TfrmImprimeRecibo
     Caption = ' Recibo: '
     TabOrder = 3
     TabStop = False
-    object rbA4: TRadioButton
-      Left = 16
-      Top = 24
-      Width = 81
-      Height = 17
-      Caption = 'Papel A4'
-      Checked = True
-      TabOrder = 3
-      TabStop = True
-      OnClick = rbA4Click
-    end
-    object rbBobina: TRadioButton
-      Left = 16
-      Top = 48
-      Width = 81
-      Height = 17
-      Caption = 'Bobina'
-      TabOrder = 4
-      OnClick = rbBobinaClick
-    end
     object lbColunas: TUniLabel
       Left = 10
       Top = 80
-      Width = 38
+      Width = 46
       Height = 13
       Hint = ''
       Caption = 'Colunas'
@@ -1778,6 +1758,28 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       Height = 21
       Hint = ''
       TabOrder = 2
+    end
+    object rbA4: TUniRadioButton
+      Left = 16
+      Top = 24
+      Width = 81
+      Height = 17
+      Hint = ''
+      Checked = True
+      Caption = 'Papel A4'
+      TabOrder = 3
+      OnClick = rbA4Click
+    end
+    object rbBobina: TUniRadioButton
+      Left = 16
+      Top = 48
+      Width = 81
+      Height = 17
+      Hint = ''
+      Caption = 'Bobina'
+      TabOrder = 4
+      TabStop = False
+      OnClick = rbBobinaClick
     end
   end
 end

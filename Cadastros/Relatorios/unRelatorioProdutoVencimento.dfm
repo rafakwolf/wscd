@@ -7,31 +7,16 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
   ExplicitHeight = 337
   PixelsPerInch = 96
   TextHeight = 13
-  object rgTipo: TRadioGroup [0]
-    Left = 16
-    Top = 16
-    Width = 409
-    Height = 81
-    Caption = ' Tipo de Relat'#243'rio '
-    ItemIndex = 1
-    Items.Strings = (
-      'Todos'
-      'Por Unidade de Venda'
-      'Por Fornecedor'
-      'Por Grupo')
-    TabOrder = 1
-    OnClick = rgTipoClick
-  end
   inherited pnButtons: TUniContainerPanel
     Top = 264
     Width = 433
     ExplicitTop = 264
     ExplicitWidth = 433
   end
-  object dbdDataVenc: TUniDBEdit [2]
+  object dbdDataVenc: TUniDBEdit [1]
     Left = 84
     Top = 104
-    Width = 341
+    Width = 319
     Height = 21
     Hint = 'Produtos vencidos '#13#10'apartir desta data...'
     ShowHint = True
@@ -39,7 +24,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeUnidade: TUniDBEdit [3]
+  object dbeUnidade: TUniDBEdit [2]
     Left = 84
     Top = 131
     Width = 319
@@ -52,7 +37,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeForn: TUniDBEdit [4]
+  object dbeForn: TUniDBEdit [3]
     Left = 84
     Top = 160
     Width = 319
@@ -65,7 +50,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeGrupo: TUniDBEdit [5]
+  object dbeGrupo: TUniDBEdit [4]
     Left = 84
     Top = 189
     Width = 319
@@ -77,6 +62,24 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     TabOrder = 5
     Color = clBtnFace
     ReadOnly = True
+  end
+  object rgTipo: TUniRadioGroup [5]
+    Left = 16
+    Top = 16
+    Width = 409
+    Height = 81
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Todos'
+      'Por Unidade de Venda'
+      'Por Fornecedor'
+      'Por Grupo')
+    ItemIndex = 1
+    Caption = ' Tipo de Relat'#243'rio '
+    TabOrder = 1
+    TabStop = False
+    OnClick = rgTipoClick
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsSelecao

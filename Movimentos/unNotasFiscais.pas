@@ -256,8 +256,6 @@ type
     procedure miConcluirClick(Sender: TObject);
     procedure miMostrarTodosClick(Sender: TObject);
     procedure miFiltroDataClick(Sender: TObject);
-    procedure miFiltrarFornClick(Sender: TObject);
-    procedure miContarClick(Sender: TObject);
     procedure miEstornarClick(Sender: TObject);
     procedure miRelDatasClick(Sender: TObject);
     procedure miRelFornClick(Sender: TObject);
@@ -310,9 +308,9 @@ var
 implementation
 
 uses  Funcoes, unModeloConsulta, VarGlobal, unPrevCompras,
-     uConfiguraRelatorio, unFiltroSimples,  unPagamentoCheque,
+     uConfiguraRelatorio,  unPagamentoCheque,
      unParcelaCompra, unPagamentoCompra, unPrevListaFaturamento, unAguarde,
-  System.Math;
+     System.Math;
 
 {$R *.dfm}
 
@@ -632,35 +630,6 @@ begin
     else
       MsgErro(UM_DATAINVALIDA);
   end;
-end;
-
-procedure TfrmNotasFiscais.miFiltrarFornClick(Sender: TObject);
-var
-  IdRetorno: Integer;
-  Order, SQL: string;
-begin
-  SQL := '';
-  SQL := AnsiUpperCase(SQLPadrao);
-  Order := Copy(SQL, Pos('ORDER', SQL), Length(SQL));
-  Delete(SQL, Pos('ORDER', SQL), Length(SQL));
-
-  if TfrmFiltroSimples.Execute(IdRetorno, 'FORNECEDORES', 'FANTAZIA', 'CODFORNECEDOR') then
-  begin
-    cdsNFiscais.DisableControls;
-    cdsNFiscais.Close;
-    cdsNFiscais.CommandText := '';
-    cdsNFiscais.CommandText := SQL + ' where nf.CODFORNECEDOR = ' +
-      QuotedStr(IntToStr(IdRetorno))+' '+Order;
-
-    cdsNFiscais.Open;
-    cdsNFiscais.Last;
-    cdsNFiscais.EnableControls;
-  end;
-end;
-
-procedure TfrmNotasFiscais.miContarClick(Sender: TObject);
-begin
-  //Ed_Quantificar(cdsNFiscais, frmNotasFiscais);
 end;
 
 procedure TfrmNotasFiscais.miEstornarClick(Sender: TObject);

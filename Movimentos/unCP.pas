@@ -6,8 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  ConstPadrao, FMTBcd,
-  System.Actions, VarGlobal, uniLabel, uniButton, uniBitBtn, uniSpeedButton,
+  ConstPadrao, FMTBcd, System.Actions, VarGlobal, uniLabel, uniButton, uniBitBtn, uniSpeedButton,
   uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
   System.Generics.Collections, uniGroupBox;
 

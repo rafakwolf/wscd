@@ -172,15 +172,6 @@
         <DCCReference Include="Padrao\unDialogoRelatorioPadrao.pas">
             <Form>frmDialogoRelatorioPadrao</Form>
         </DCCReference>
-        <DCCReference Include="Padrao\unExecutaScript.pas">
-            <Form>frmExecutaScript</Form>
-        </DCCReference>
-        <DCCReference Include="Padrao\unFiltroSimples.pas">
-            <Form>frmFiltroSimples</Form>
-        </DCCReference>
-        <DCCReference Include="Padrao\unGeraRelatorio.pas">
-            <Form>frmGeraRelatorio</Form>
-        </DCCReference>
         <DCCReference Include="Padrao\unModeloConsulta.pas">
             <Form>frmModeloConsulta</Form>
         </DCCReference>
@@ -190,9 +181,6 @@
         <DCCReference Include="Padrao\unModeloRelatorio.pas">
             <Form>frmModeloRelatorio</Form>
         </DCCReference>
-        <DCCReference Include="Padrao\unOrdenarDados.pas">
-            <Form>frmOrdenarDados</Form>
-        </DCCReference>
         <DCCReference Include="Padrao\unPadrao.pas">
             <Form>frmPadrao</Form>
         </DCCReference>
@@ -201,9 +189,6 @@
         </DCCReference>
         <DCCReference Include="Utilitarios\unAgenda.pas">
             <Form>frmAgenda</Form>
-        </DCCReference>
-        <DCCReference Include="Utilitarios\unBackup.pas">
-            <Form>frmBackup</Form>
         </DCCReference>
         <DCCReference Include="Utilitarios\unConfiguraDuplicata.pas">
             <Form>frmConfiguraDuplicata</Form>
@@ -225,15 +210,6 @@
         </DCCReference>
         <DCCReference Include="Utilitarios\unRecibo.pas">
             <Form>frmRecibo</Form>
-        </DCCReference>
-        <DCCReference Include="Utilitarios\unRepararIndice.pas">
-            <Form>frmRepararIndice</Form>
-        </DCCReference>
-        <DCCReference Include="Utilitarios\unRestore.pas">
-            <Form>frmRestore</Form>
-        </DCCReference>
-        <DCCReference Include="Utilitarios\unVisualizarDados.pas">
-            <Form>frmVisualizarDados</Form>
         </DCCReference>
         <DCCReference Include="Utilitarios\Relatorios\Prev\unPrevDuplicata.pas">
             <Form>frmPrevDuplicata</Form>
@@ -520,35 +496,11 @@
         <DCCReference Include="Comuns\unAguarde.pas">
             <Form>frmAguarde</Form>
         </DCCReference>
-        <DCCReference Include="Comuns\unCommandoSQL.pas">
-            <Form>frmCommandoSQL</Form>
-        </DCCReference>
-        <DCCReference Include="Comuns\unConsultaLogErro.pas">
-            <Form>frmConsultaLogErro</Form>
-        </DCCReference>
         <DCCReference Include="Comuns\unFoto.pas">
             <Form>frmFoto</Form>
         </DCCReference>
-        <DCCReference Include="Comuns\unInfoAvisos.pas">
-            <Form>frmInfoAvisos</Form>
-        </DCCReference>
-        <DCCReference Include="Comuns\unInformacaoSistema.pas">
-            <Form>frmInformacaoSistema</Form>
-        </DCCReference>
-        <DCCReference Include="Comuns\unMsgChaveLiberacao.pas">
-            <Form>frmMsgChaveLiberacao</Form>
-        </DCCReference>
-        <DCCReference Include="Comuns\unRegistro.pas">
-            <Form>frmRegistro</Form>
-        </DCCReference>
-        <DCCReference Include="Comuns\unRenovaChave.pas">
-            <Form>frmRenovaChave</Form>
-        </DCCReference>
         <DCCReference Include="Comuns\unSelecionaCaixa.pas">
             <Form>frmSelecionaCaixa</Form>
-        </DCCReference>
-        <DCCReference Include="Comuns\unSetupConnection.pas">
-            <Form>frmSetupConnection</Form>
         </DCCReference>
         <DCCReference Include="Cadastros\unCliente.pas">
             <Form>frmCliente</Form>
@@ -624,9 +576,6 @@
         </DCCReference>
         <DCCReference Include="Cadastros\Relatorios\unRelatorioProdutoVencimento.pas">
             <Form>frmRelatorioProdutoVencimento</Form>
-        </DCCReference>
-        <DCCReference Include="Ajuda\unDicas.pas">
-            <Form>frmDicas</Form>
         </DCCReference>
         <DCCReference Include="Ajuda\unSobre.pas">
             <Form>frmSobre</Form>

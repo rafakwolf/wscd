@@ -46,7 +46,6 @@ object frmNotasFiscais: TfrmNotasFiscais
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 20
     TabStop = False
-    ExplicitTop = 455
     object LabelFrete: TUniLabel
       Left = 7
       Top = 6
@@ -2989,7 +2988,6 @@ object frmNotasFiscais: TfrmNotasFiscais
         end
         object miFiltrarForn: TUniMenuItem
           Caption = 'Filtrar por fornecedor'
-          OnClick = miFiltrarFornClick
         end
         object N6: TUniMenuItem
           Caption = '-'
@@ -3008,7 +3006,6 @@ object frmNotasFiscais: TfrmNotasFiscais
       end
       object miContar: TUniMenuItem
         Caption = 'Contar registros'
-        OnClick = miContarClick
       end
       object N9: TUniMenuItem
         Caption = '-'

@@ -37,8 +37,8 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     end
   end
   object dbeCodBarra: TUniDBEdit [2]
-    Left = 112
-    Top = 48
+    Left = 8
+    Top = 40
     Width = 161
     Height = 21
     Hint = ''
@@ -48,8 +48,8 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     TabOrder = 3
   end
   object dbeProduto: TUniDBEdit [3]
-    Left = 112
-    Top = 72
+    Left = 8
+    Top = 64
     Width = 497
     Height = 21
     Hint = ''
@@ -59,8 +59,8 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     TabOrder = 4
   end
   object dbePreco: TUniDBEdit [4]
-    Left = 112
-    Top = 96
+    Left = 8
+    Top = 88
     Width = 121
     Height = 21
     Hint = ''

@@ -7,19 +7,6 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
   ExplicitHeight = 207
   PixelsPerInch = 96
   TextHeight = 13
-  object rgOrd: TRadioGroup [0]
-    Left = 8
-    Top = 8
-    Width = 361
-    Height = 33
-    Caption = ' Ordenar por '
-    Columns = 2
-    ItemIndex = 0
-    Items.Strings = (
-      'Lan'#231'amento'
-      'Data')
-    TabOrder = 0
-  end
   inherited pnButtons: TUniContainerPanel
     Top = 134
     Width = 369
@@ -30,7 +17,7 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
       OnClick = btnVisualizarClick
     end
   end
-  object edtMes: TUniEdit [2]
+  object edtMes: TUniEdit [1]
     Left = 32
     Top = 80
     Width = 41
@@ -41,7 +28,7 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
     TabOrder = 1
     OnExit = edtMesExit
   end
-  object edtAno: TUniEdit [3]
+  object edtAno: TUniEdit [2]
     Left = 80
     Top = 80
     Width = 65
@@ -51,6 +38,22 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
     Text = ''
     TabOrder = 2
     OnExit = edtAnoExit
+  end
+  object rgOrd: TUniRadioGroup [3]
+    Left = 8
+    Top = 8
+    Width = 361
+    Height = 33
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Lan'#231'amento'
+      'Data')
+    ItemIndex = 0
+    Caption = ' Ordenar por '
+    TabOrder = 0
+    TabStop = False
+    Columns = 2
   end
   inherited dsPadrao: TDataSource
     Left = 216

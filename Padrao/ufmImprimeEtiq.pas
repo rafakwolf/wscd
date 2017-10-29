@@ -7,7 +7,8 @@ uses
   Dialogs, unDialogoRelatorioPadrao, DBClient, Provider, DB, RLTypes,
   SqlExpr, StdCtrls, Buttons, ExtCtrls, Spin, RLReport, Funcoes,
   VarGlobal, FMTBcd, IniFiles, uniLabel, uniGUIBaseClasses, uniGUIClasses,
-  uniPanel, uniMultiItem, uniComboBox, uniButton, uniBitBtn, uniSpinEdit;
+  uniPanel, uniMultiItem, uniComboBox, uniButton, uniBitBtn, uniSpinEdit,
+  uniRadioGroup;
 
 type
   TTipoEtiqueta = (teProduto, teCliente);
@@ -43,13 +44,13 @@ type
     cdsEtiquetaDISTANCIAHORIZONTAL: TFloatField;
     cdsEtiquetaDISTACOLVERTICAL: TFloatField;
     cdsEtiquetaDISTCOLHORIZ: TFloatField;
-    rgTraversal: TRadioGroup;
     lbModeloEtq: TUniLabel;
     lbLinhaIni: TUniLabel;
     lbColIni: TUniLabel;
     cbListaEtiq: TUniComboBox;
     seColunaIni: TUniSpinEdit;
     seLinhaIni: TUniSpinEdit;
+    rgTraversal: TUniRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

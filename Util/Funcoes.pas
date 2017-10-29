@@ -212,8 +212,8 @@ begin
 end;
 
 procedure PostMessageAllForms(msg: Cardinal; form: TUniForm = nil);
-var
-  I: Integer;
+//var
+//  I: Integer;
 begin
   // if form = nil then
   // form := Application.MainForm;

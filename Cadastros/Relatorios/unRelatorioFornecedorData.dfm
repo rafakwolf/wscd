@@ -1,8 +1,16 @@
 inherited frmRelatorioFornecedorData: TfrmRelatorioFornecedorData
+  ClientHeight = 172
+  ClientWidth = 374
   Caption = 'frmRelatorioFornecedorData'
   OldCreateOrder = True
+  ExplicitWidth = 390
+  ExplicitHeight = 211
   PixelsPerInch = 96
   TextHeight = 13
+  inherited pnButtons: TUniContainerPanel
+    Top = 138
+    Width = 374
+  end
   object edDataFim: TUniDBEdit [1]
     Left = 24
     Top = 72

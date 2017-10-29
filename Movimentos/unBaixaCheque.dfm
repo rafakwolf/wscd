@@ -10,16 +10,6 @@ inherited frmBaixaCheque: TfrmBaixaCheque
   ExplicitHeight = 169
   PixelsPerInch = 96
   TextHeight = 13
-  object dblcbContaCaixa: TDBLookupComboBox
-    Left = 8
-    Top = 64
-    Width = 257
-    Height = 21
-    KeyField = 'CODIGO'
-    ListField = 'NOME'
-    ListSource = dsCaixa
-    TabOrder = 1
-  end
   object lbContaCaixa: TUniLabel
     Left = 8
     Top = 48
@@ -184,6 +174,20 @@ inherited frmBaixaCheque: TfrmBaixaCheque
     ShowHint = True
     Text = ''
     TabOrder = 0
+  end
+  object dblcbContaCaixa: TUniDBLookupComboBox
+    Left = 8
+    Top = 64
+    Width = 257
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    ListField = 'NOME'
+    ListSource = dsCaixa
+    KeyField = 'CODIGO'
+    ListFieldIndex = 0
+    TabOrder = 1
+    Color = clWindow
   end
   object sqldCaixa: TSQLDataSet
     CommandText = 'select * from VIEWCAIXASATIVOS'

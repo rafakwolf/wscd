@@ -11,8 +11,6 @@ uses
 
 type
   TfrmConfigNotaMan = class(TfrmSimplePadrao)
-    pgcCadastro: TUniPageControl;
-    tsCadastro: TUniTabSheet;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -33,14 +31,13 @@ type
     cdsPadraoLINHA: TIntegerField;
     cdsPadraoCOLUNA: TIntegerField;
     cdsPadraoIMPRIMIR: TStringField;
-    dbtxtRef: TDBText;
     btnCancelar: TUniBitBtn;
     btnOk: TUniBitBtn;
     btnNovo: TUniBitBtn;
     dbeCampoDescricao: TUniDBEdit;
-    dbeLayOut: TUniDBEdit;
     dbeLinha: TUniDBEdit;
     dbeColuna: TUniDBEdit;
+    dbeLayOut: TUniDBEdit;
     dbckbImprimir: TUniDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;

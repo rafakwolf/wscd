@@ -8,6 +8,7 @@ uses
 
 type
   TUniServerModule = class(TUniGUIServerModule)
+    procedure UniGUIServerModuleCreate(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -33,6 +34,13 @@ end;
 procedure TUniServerModule.FirstInit;
 begin
   InitServerModule(Self);
+end;
+
+procedure TUniServerModule.UniGUIServerModuleCreate(Sender: TObject);
+begin
+  PFmtSettings.CurrencyString := 'R$';
+  PFmtSettings.DateSeparator := '/';
+  PFmtSettings.ShortDateFormat := 'dd/mm/yyyy';
 end;
 
 initialization

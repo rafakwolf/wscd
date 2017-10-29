@@ -13,16 +13,6 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object dblcbCaixa: TDBLookupComboBox
-    Left = 8
-    Top = 24
-    Width = 257
-    Height = 21
-    KeyField = 'CODIGO'
-    ListField = 'NOME'
-    ListSource = dsCaixa
-    TabOrder = 0
-  end
   object lbCaixa: TUniLabel
     Left = 9
     Top = 8
@@ -154,6 +144,19 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
     Caption = '&Cancelar'
     ModalResult = 2
     TabOrder = 2
+  end
+  object dblcbCaixa: TUniDBLookupComboBox
+    Left = 8
+    Top = 24
+    Width = 257
+    Height = 21
+    Hint = ''
+    ListField = 'NOME'
+    ListSource = dsCaixa
+    KeyField = 'CODIGO'
+    ListFieldIndex = 0
+    TabOrder = 0
+    Color = clWindow
   end
   object sqldCaixa: TSQLDataSet
     CommandText = 

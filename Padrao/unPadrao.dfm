@@ -51,9 +51,11 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actInsert
-      Caption = 'Novo'
+      Caption = #61525
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 0
@@ -65,93 +67,107 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actEdit
-      Caption = 'Alterar'
+      Caption = #61504
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 1
     end
     object btnExcluir: TUniSpeedButton
       Left = 98
-      Top = 0
+      Top = 1
       Width = 41
       Height = 32
       ShowHint = True
       Action = actDelete
-      Caption = 'Excluir'
+      Caption = #61944
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 2
     end
     object btnSalvar: TUniSpeedButton
       Left = 139
-      Top = 0
+      Top = 1
       Width = 54
       Height = 32
       ShowHint = True
       Action = actPost
-      Caption = 'Salvar'
+      Caption = #61770
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 3
     end
     object btnCancelar: TUniSpeedButton
       Left = 193
-      Top = 0
+      Top = 1
       Width = 60
       Height = 32
       ShowHint = True
       Action = actCancelUpdates
-      Caption = 'Cancelar'
+      Caption = #61714
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 4
     end
     object btnConsultar: TUniSpeedButton
-      Left = 251
-      Top = 0
+      Left = 254
+      Top = 1
       Width = 72
       Height = 32
       ShowHint = True
       Action = actSearch
-      Caption = 'Pesquisar'
+      Caption = #61442
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 5
     end
     object btnSair: TUniSpeedButton
       Left = 401
-      Top = 0
+      Top = 1
       Width = 56
       Height = 32
       ShowHint = True
       Action = actClose
-      Caption = 'Sair'
+      Caption = #61453
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 6
     end
     object btnPrint: TUniSpeedButton
       Left = 329
-      Top = 0
+      Top = 1
       Width = 66
       Height = 32
       ShowHint = True
       Action = actPrint
-      Caption = 'Imprimir'
+      Caption = #61487
       ParentFont = False
       Font.Charset = ANSI_CHARSET
+      Font.Height = -24
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 7

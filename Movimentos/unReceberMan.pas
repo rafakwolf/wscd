@@ -7,12 +7,12 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Mask, DBCtrls, Buttons, DB, varglobal,
    DBClient, Provider, SqlExpr, unContasReceber, Grids,
   DBGrids, FMTBcd, unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid;
+  uniButton, uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
+  uniRadioGroup;
 
 type
   TfrmReceberMan = class(TfrmSimplePadrao)
     dsContasReceber: TDataSource;
-    rgReceb: TRadioGroup;
     sqldContaReceber: TSQLDataSet;
     dspContaReceber: TDataSetProvider;
     cdsContaReceber: TClientDataSet;
@@ -89,6 +89,7 @@ type
     medtVencimento: TUniEdit;
     medtEmissao: TUniEdit;
     dbgrdContas: TUniDBGrid;
+    rgReceb: TUniRadioGroup;
     procedure btnOkClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

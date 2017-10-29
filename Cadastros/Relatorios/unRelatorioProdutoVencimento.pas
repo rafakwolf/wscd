@@ -7,11 +7,10 @@ uses
   Dialogs, unDialogoRelatorioPadrao, DBClient, Provider,
   DB, SqlExpr, StdCtrls, Buttons, ExtCtrls, SQLTimST, ComCtrls,
    Mask, DBCtrls,  FMTBcd, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniPanel;
+  uniBitBtn, uniGUIBaseClasses, uniPanel, uniRadioGroup;
 
 type
   TfrmRelatorioProdutoVencimento = class(TfrmDialogoRelatorioPadrao)
-    rgTipo: TRadioGroup;
     sqldSelecao: TSQLDataSet;
     dspSelecao: TDataSetProvider;
     cdsSelecao: TClientDataSet;
@@ -45,6 +44,7 @@ type
     dbeUnidade: TUniDBEdit;
     dbeForn: TUniDBEdit;
     dbeGrupo: TUniDBEdit;
+    rgTipo: TUniRadioGroup;
     procedure rgTipoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

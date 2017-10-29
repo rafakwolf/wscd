@@ -5,10 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  DBClient, Provider, SqlExpr, Mask, DBCtrls, 
-   DateUtils, FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn,
-  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
-  uniImage, uniEdit, uniDBEdit;
+  DBClient, Provider, SqlExpr, Mask, DBCtrls, DateUtils, FMTBcd, System.Actions,
+   uniLabel, uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
+   uniGUIBaseClasses, uniStatusBar, uniImage, uniEdit, uniDBEdit;
 
 type
   TfrmCheque = class(TfrmPadrao)
@@ -54,23 +53,7 @@ type
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
     lbBaixado: TUniLabel;
-    lbBanco: TUniLabel;
-    lbConta: TUniLabel;
-    lbAgencia: TUniLabel;
-    lbNroCheque: TUniLabel;
-    lbValor: TUniLabel;
-    lbComp: TUniLabel;
-    lbValorExtenso: TUniLabel;
-    lbNominal: TUniLabel;
-    lbCidade: TUniLabel;
-    lbDia: TUniLabel;
-    lbMes: TUniLabel;
-    lbAno: TUniLabel;
-    lbCpfCnpj: TUniLabel;
-    lbBomPara: TUniLabel;
-    lbBandaMagnetica: TUniLabel;
     btnBaixar: TUniBitBtn;
-    imgCheque: TUniImage;
     dbeDataBaixado: TUniDBEdit;
     dbeForn: TUniDBEdit;
     dbeBandMagnetica: TUniDBEdit;
@@ -84,7 +67,6 @@ type
     dbeNumero: TUniDBEdit;
     dbdDataEmissao: TUniDBEdit;
     dbeCompra: TUniDBEdit;
-    bvlLinha: TUniPanel;
     procedure dbeBancoClickButton(Sender: TObject);
     procedure actBaixarExecute(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -126,8 +108,7 @@ implementation
 
 uses
    Funcoes,  ConstPadrao, unModeloConsulta, unPrevCheque,
-   uConfiguraRelatorio, Extensos, VarGlobal, unBaixaCheque,
-   unGeraRelatorio;
+   uConfiguraRelatorio, Extensos, VarGlobal, unBaixaCheque;
 
 {$R *.dfm}
 
@@ -477,45 +458,7 @@ begin
 end;
 
 procedure TfrmCheque.AtualizaDadosCheque;
-var
-  varAgencia, varConta, varNroCheque, varBanco, varComp: string;
 begin
-  //RetornoBandaMagnetica(varComp, varBanco, varAgencia, varConta, varNroCheque,
-  //  cdsPadraoBANDAMAGNETICA.AsString);
-
-  lbComp.Caption         := varComp;
-  lbBanco.Caption        := varBanco;
-  lbAgencia.Caption      := varAgencia;
-  lbConta.Caption        := varConta;
-  lbNroCheque.Caption    := varNroCheque;
-  lbValor.Caption        := FormatFloat('#,##0.00', cdsPadraoVALOR.AsFloat);
-
-  lbValorExtenso.Caption :=
-    ReplicateStr(' ', 22)+FirstUpper(Extenso(cdsPadraoVALOR.AsFloat));
-
-  { se não tem cliente então mostra os dados do fornecedor, pois mesmo um cheque emitido
-    pode ter sido emitido para um cliente e vice versa }
-  if cdsPadraoIDCLIENTE.IsNull then
-  begin
-    lbNominal.Caption := cdsPadraoFORN.AsString;
-    //lbCpfCnpj.Caption := SelectSingleField('select CNPJ from FORNECEDORES '+
-    //  'where CODFORNECEDOR = '+QuotedStr(IntToStr(cdsPadraoIDFORN.AsInteger)),
-    //  GetConnection);
-  end
-  else
-  begin
-    lbNominal.Caption := Empresa.Nome;
-    //lbCpfCnpj.Caption := SelectSingleField('select CPF_CNPJ from CLIENTES '+
-    //  'where CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoIDCLIENTE.AsInteger)),
-    //  GetConnection);
-  end;
-
-  lbCidade.Caption         := Empresa.Cidade;
-  lbDia.Caption            := IntToStr(DayOf(cdsPadraoDATAEMISSAO.AsDateTime));
-  lbMes.Caption            := NomeMes(cdsPadraoDATAEMISSAO.AsDateTime);
-  lbAno.Caption            := IntToStr(YearOf(cdsPadraoDATAEMISSAO.AsDateTime));
-  lbBomPara.Caption        := FormatDateTime('dd/mm/yyyy', cdsPadraoBOMPARA.AsDateTime);
-  lbBandaMagnetica.Caption := cdsPadraoBANDAMAGNETICA.AsString;
 end;
 
 procedure TfrmCheque.dsPadraoStateChange(Sender: TObject);

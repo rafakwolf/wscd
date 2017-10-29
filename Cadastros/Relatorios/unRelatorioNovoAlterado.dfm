@@ -1,28 +1,30 @@
 inherited frmRelatorioNovoAlterado: TfrmRelatorioNovoAlterado
+  ClientHeight = 141
   Caption = 'frmRelatorioNovoAlterado'
   OldCreateOrder = True
-  ExplicitWidth = 470
-  ExplicitHeight = 282
+  ExplicitHeight = 180
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnButtons: TUniContainerPanel
-    ExplicitTop = 81
-    ExplicitWidth = 305
+    Top = 107
     inherited btnVisualizar: TUniBitBtn
       OnClick = btnVisualizarClick
     end
   end
-  object rgpOpcoes: TRadioGroup [1]
+  object rgpOpcoes: TUniRadioGroup [1]
     Left = 8
     Top = 8
     Width = 289
     Height = 65
-    Caption = ' Op'#231#245'es '
-    ItemIndex = 0
+    Hint = ''
+    ShowHint = True
     Items.Strings = (
       'Produtos Novos'
       'Produtos Alterados')
+    ItemIndex = 0
+    Caption = ' Op'#231#245'es '
     TabOrder = 1
+    TabStop = False
   end
   inherited dsPadrao: TDataSource
     Left = 264

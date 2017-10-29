@@ -7,33 +7,6 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
   ExplicitHeight = 247
   PixelsPerInch = 96
   TextHeight = 13
-  object rgOrdem: TRadioGroup [0]
-    Left = 8
-    Top = 56
-    Width = 377
-    Height = 41
-    Caption = ' Ordem '
-    Columns = 2
-    ItemIndex = 0
-    Items.Strings = (
-      'Lan'#231'amento'
-      'Data')
-    TabOrder = 1
-  end
-  object rgRelatorio: TRadioGroup [1]
-    Left = 8
-    Top = 8
-    Width = 377
-    Height = 41
-    Caption = ' Sele'#231#227'o '
-    Columns = 3
-    ItemIndex = 2
-    Items.Strings = (
-      'Entradas'
-      'Sa'#237'das'
-      'Todos')
-    TabOrder = 0
-  end
   inherited pnButtons: TUniContainerPanel
     Top = 174
     Width = 385
@@ -41,7 +14,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     ExplicitTop = 178
     ExplicitWidth = 393
   end
-  object dbDataI: TUniDBEdit [3]
+  object dbDataI: TUniDBEdit [1]
     Left = 80
     Top = 112
     Width = 137
@@ -52,7 +25,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbDataF: TUniDBEdit [4]
+  object dbDataF: TUniDBEdit [2]
     Left = 80
     Top = 136
     Width = 137
@@ -62,6 +35,39 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     DataField = 'DATAFIM'
     DataSource = dsPadrao
     TabOrder = 3
+  end
+  object rgOrdem: TUniRadioGroup [3]
+    Left = 8
+    Top = 56
+    Width = 377
+    Height = 41
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Lan'#231'amento'
+      'Data')
+    ItemIndex = 0
+    Caption = ' Ordem '
+    TabOrder = 1
+    TabStop = False
+    Columns = 2
+  end
+  object rgRelatorio: TUniRadioGroup [4]
+    Left = 8
+    Top = 8
+    Width = 377
+    Height = 41
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Entradas'
+      'Sa'#237'das'
+      'Todos')
+    ItemIndex = 2
+    Caption = ' Sele'#231#227'o '
+    TabOrder = 0
+    TabStop = False
+    Columns = 3
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsSelecao

@@ -12,16 +12,6 @@ uses
 
 type
   TfrmEtiqueta = class(TfrmPadrao)
-    SpinButton1: TSpinButton;
-    SpinButton2: TSpinButton;
-    SpinButton3: TSpinButton;
-    SpinButton4: TSpinButton;
-    SpinButton6: TSpinButton;
-    SpinButton7: TSpinButton;
-    SpinButton8: TSpinButton;
-    SpinButton9: TSpinButton;
-    SpinButton10: TSpinButton;
-    SpinButton11: TSpinButton;
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;

@@ -8,13 +8,13 @@ uses
    SqlExpr, unContasPagar, Grids,
   DBGrids, DBClient,Datasnap.Provider, FMTBcd,
   unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton,
-  uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid;
+  uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
+  uniRadioGroup;
 
 type
   TTipoPagamento = (tpDinheiro, tpCheque);
   
   TfrmPagarMan = class(TfrmSimplePadrao)
-    rgTipoPagamento: TRadioGroup;
     dsContasPagar: TDataSource;
     sqldContasPagar: TSQLDataSet;
     dspContasPagar: TDataSetProvider;
@@ -92,6 +92,7 @@ type
     medtVencimento: TUniEdit;
     medtBandaMagnetica: TUniEdit;
     dbgrdContasCP: TUniDBGrid;
+    rgTipoPagamento: TUniRadioGroup;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

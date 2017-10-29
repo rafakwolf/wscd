@@ -4324,7 +4324,6 @@ object frmPrincipal: TfrmPrincipal
     object actConfigServidor: TAction
       Category = 'Configuracao'
       Caption = 'Configura'#231#227'o do banco de dados'
-      OnExecute = actConfigServidorExecute
     end
     object actInfoSistema: TAction
       Category = 'Ajuda'
@@ -4627,7 +4626,6 @@ object frmPrincipal: TfrmPrincipal
     object miExecutarScripts: TUniMenuItem
       Tag = 1
       Caption = 'Executar scripts SQL'
-      OnClick = miExecutarScriptsClick
     end
     object miLogs: TUniMenuItem
       Tag = 1

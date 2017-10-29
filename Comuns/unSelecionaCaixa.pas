@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, DBClient, Provider, SqlExpr, DBCtrls, StdCtrls,
   Buttons, Funcoes, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, UniGuiForm;
+  uniButton, uniBitBtn, UniGuiForm, uniMultiItem, uniComboBox, uniDBComboBox,
+  uniDBLookupComboBox;
 
 type
   TfrmSelecionaCaixa = class(TUniForm)
@@ -18,10 +19,10 @@ type
     sqldCaixaNOME: TStringField;
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
-    dblcbCaixa: TDBLookupComboBox;
     lbCaixa: TUniLabel;
     btnOk: TUniBitBtn;
     btnCancel: TUniBitBtn;
+    dblcbCaixa: TUniDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private

@@ -60,7 +60,7 @@ inherited frmVendas: TfrmVendas
     object lbTotalDesc: TUniLabel
       Left = 503
       Top = 11
-      Width = 82
+      Width = 71
       Height = 13
       Hint = ''
       ShowHint = True
@@ -70,7 +70,7 @@ inherited frmVendas: TfrmVendas
     object lbTotal: TUniLabel
       Left = 724
       Top = 11
-      Width = 27
+      Width = 24
       Height = 13
       Hint = ''
       ShowHint = True
@@ -1134,7 +1134,6 @@ inherited frmVendas: TfrmVendas
         end
         object miFiltrarCli: TUniMenuItem
           Caption = 'Filtrar por cliente'
-          OnClick = miFiltrarCliClick
         end
         object miVendasNaoConc: TUniMenuItem
           Caption = 'Vendas n'#227'o conclu'#237'das'

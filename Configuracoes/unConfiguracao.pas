@@ -6,21 +6,36 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-   ExtDlgs, FileCtrl, IdMessage, IdBaseComponent, IdComponent,
+  ExtDlgs, FileCtrl, IdMessage, IdBaseComponent, IdComponent,
   IdTCPConnection, IdTCPClient, IdMessageClient, IdSMTP,
-  IdExplicitTLSClientServerBase, IdSMTPBase, FMTBcd, System.Actions, uniBitBtn,
-  uniButton, uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses,
-  uniStatusBar, uniEdit, uniCheckBox, uniImage, uniDBEdit, uniGroupBox,
-  uniDBCheckBox, uniPageControl;
+  IdExplicitTLSClientServerBase, IdSMTPBase, FMTBcd, System.Actions,
+  uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn, uniSpeedButton,
+  uniPanel, uniGUIBaseClasses, uniStatusBar, uniPageControl, uniCheckBox,
+  uniDBCheckBox, uniImage, uniGroupBox, uniRadioGroup;
 
 type
   TfrmConfiguracao = class(TfrmPadrao)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
+    PgConfig: TUniPageControl;
+    Tabgeral: TUniTabSheet;
+    TabImg: TUniTabSheet;
+    TabOrcam: TUniTabSheet;
+    TabCompras: TUniTabSheet;
+    TabProdutos: TUniTabSheet;
+    TabCaixa: TUniTabSheet;
+    TabVenda: TUniTabSheet;
+    TabClientes: TUniTabSheet;
+    TabExportacao: TUniTabSheet;
+    dbeDirExportacao: TUniDBEdit;
+    dbeSenhaCaixa: TUniDBEdit;
+    dbeSenhaProduto: TUniDBEdit;
     opImagem: TOpenPictureDialog;
+    tsEmail: TUniTabSheet;
     IdSMTP: TIdSMTP;
     IdMsg: TIdMessage;
+    tsRelatorio: TUniTabSheet;
     sqldPadraoIDCONFIGURACAO: TIntegerField;
     sqldPadraoNOMECOMPUTADOR: TStringField;
     sqldPadraoBARRAFERRAMENTA: TStringField;
@@ -99,8 +114,6 @@ type
     cdsPadraoNCONTACHEQUE: TStringField;
     sqldPadraoINFOAVISOS: TStringField;
     cdsPadraoINFOAVISOS: TStringField;
-    PgConfig: TUniPageControl;
-    Tabgeral: TUniTabSheet;
     chAtalhos: TUniDBCheckBox;
     chHint: TUniDBCheckBox;
     chErro: TUniDBCheckBox;
@@ -111,58 +124,44 @@ type
     chDica: TUniDBCheckBox;
     dbckbVerificaUpd: TUniDBCheckBox;
     dbchkInfoAvisos: TUniDBCheckBox;
-    TabImg: TUniTabSheet;
-    rgOrientationImg: TRadioGroup;
-    btnBuscar: TUniBitBtn;
-    btnExImg: TUniBitBtn;
-    imgPapelParede: TUniImage;
-    bvImagem: TUniPanel;
-    TabOrcam: TUniTabSheet;
     cbVerificaEstoqueOrcam: TUniDBCheckBox;
     cbEditOrcamConc: TUniDBCheckBox;
     cbOrcamNaoConc: TUniDBCheckBox;
-    TabCompras: TUniTabSheet;
     cbCompraNaoConc: TUniDBCheckBox;
     cbEditCompraConc: TUniDBCheckBox;
-    TabProdutos: TUniTabSheet;
-    btnAlterarSenhaProduto: TUniBitBtn;
-    dbeSenhaProduto: TUniDBEdit;
+    dbcbEstoqueSenhaProd: TUniDBCheckBox;
+    dbcbBordaEtqProd: TUniDBCheckBox;
+    dbcbLetraNumCodBarra: TUniDBCheckBox;
+    dbcbMostrarSaldo: TUniDBCheckBox;
+    dbcbLanc90Dias: TUniDBCheckBox;
+    chVendaEstoque: TUniDBCheckBox;
+    chVendaConc: TUniDBCheckBox;
+    chEditvenda: TUniDBCheckBox;
+    chBloqCli: TUniDBCheckBox;
+    dbcbBordaEtq: TUniDBCheckBox;
+    dbckbRelZebrado: TUniDBCheckBox;
+    imgPapelParede: TUniImage;
     grpValorProdutoPadrao: TUniGroupBox;
     dbeAliqPadrao: TUniDBEdit;
     dbeEstoquePadrao: TUniDBEdit;
     dbeDescontoPadrao: TUniDBEdit;
-    dbcbEstoqueSenhaProd: TUniDBCheckBox;
-    dbcbBordaEtqProd: TUniDBCheckBox;
-    dbcbLetraNumCodBarra: TUniDBCheckBox;
-    TabCaixa: TUniTabSheet;
-    btnAlterarSenhaCaixa: TUniBitBtn;
-    dbeSenhaCaixa: TUniDBEdit;
     grpCaixaPadrao: TUniGroupBox;
     dbeCaixaPadrao: TUniDBEdit;
     grpContaCheque: TUniGroupBox;
     dbeContaCheque: TUniDBEdit;
-    dbcbMostrarSaldo: TUniDBCheckBox;
-    dbcbLanc90Dias: TUniDBCheckBox;
-    TabVenda: TUniTabSheet;
-    chVendaEstoque: TUniDBCheckBox;
-    chVendaConc: TUniDBCheckBox;
-    chEditvenda: TUniDBCheckBox;
-    TabClientes: TUniTabSheet;
-    chBloqCli: TUniDBCheckBox;
-    dbcbBordaEtq: TUniDBCheckBox;
-    TabExportacao: TUniTabSheet;
-    btnLocalizar: TUniBitBtn;
-    dbeDirExportacao: TUniDBEdit;
-    tsEmail: TUniTabSheet;
     grpEmail: TUniGroupBox;
+    btnBuscar: TUniBitBtn;
+    btnExImg: TUniBitBtn;
+    btnAlterarSenhaProduto: TUniBitBtn;
+    btnAlterarSenhaCaixa: TUniBitBtn;
+    btnLocalizar: TUniBitBtn;
     btnTeste: TUniBitBtn;
     edServidor: TUniEdit;
     edPorta: TUniEdit;
     edUsuario: TUniEdit;
     edSenha: TUniEdit;
     chkAutenticacao: TUniCheckBox;
-    tsRelatorio: TUniTabSheet;
-    dbckbRelZebrado: TUniDBCheckBox;
+    rgOrientationImg: TUniRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure btnExImgClick(Sender: TObject);
@@ -202,7 +201,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao, VarGlobal, unModeloConsulta, unTrocaSenhaCaixa,
-     unTrocaSenhaEstoque, uutilfncs, crypto;
+     unTrocaSenhaEstoque, uUtilFncs, crypto;
 
 {$R *.dfm}
 
@@ -222,12 +221,6 @@ begin
   actPrint.Visible := False;
   actDelete.Visible := False;
   actSearch.Visible := False;
-//  actPrimeiro.Visible := False;
-//  actAnterior.Visible := False;
-//  actProximo.Visible := False;
-//  actUltimo.Visible := False;
-//  miRelatorios.Visible := False;
-//  miOpcoes.Visible := False;
 
   ReordenaBotoes([btnAlterar, btnSalvar, btnCancelar, btnSair]);
 
@@ -298,7 +291,6 @@ begin
   frmSenhaEstoque := TfrmSenhaEstoque.Create(Self);
   if frmSenhaEstoque.ShowModal = mrOk then
   begin
-    //Salvar(cdsPadrao);
     cdsPadrao.ApplyUpdates(0);
     ReabreDataSet(cdsPadrao);
   end;
@@ -321,11 +313,6 @@ begin
   btnAlterarSenhaProduto.Enabled := EditModes;
   btnAlterarSenhaCaixa.Enabled   := EditModes;
 
-//  if EditModes then
-//    EnableControlSubControls(grpEmail, True, -1)
-//  else
-//    EnableControlSubControls(grpEmail, False, -1);
-
   chkAutenticacaoClick(Self);
 end;
 
@@ -338,7 +325,7 @@ begin
   begin
     if PassWord(s, '*') then
     begin
-      if s = EnDecrypt(Configuracao.SenhaCaixa) then
+      if s = crypto.EnDeCrypt(Configuracao.SenhaCaixa) then
       begin
         inherited;
         PostMessageAllForms(WM_CONFIG_ALTERADO);
@@ -373,34 +360,34 @@ begin
   GravaDadosEmail;
 //  if ObterTexto(Email, 'Digite um e-mail') then
 //  begin
-    IdMsg.From.Address := edUsuario.Text; // e-mail do remetente
-    IdMsg.Recipients.EMailAddresses := Email; // e-mail do destinatário
-    IdMsg.Subject := 'Teste de envio'; // assunto
-    IdMsg.Body.Add('Testando e-mail CPR'); // corpo da mensagem
-
-    IdSMTP.Host := edServidor.Text; // host SMTP
-    IdSMTP.Port := StrToInt(edPorta.Text); // porta
-    IdSMTP.Username := edUsuario.Text; // login do usuário
-    IdSMTP.Password := edSenha.Text; // senha do usuário
-
-    IdSMTP.Connect; // estabelece a conexão
-
-    if chkAutenticacao.Checked then
-    begin
-      IdSMTP.AuthType := satDefault;
-      IdSMTP.Authenticate; // faz a autenticação
-    end
-    else
-      IdSMTP.AuthType := satNone;
-
-    try
-      IdSMTP.Send(IdMsg); // envia a mensagem
-    except
-      on e: Exception do
-        MsgErro('ERRO: ' + e.Message); // mensagem de erro
-    end;
-    MsgAviso('Teste de Envio OK!');
-  //end;
+//    IdMsg.From.Address := edUsuario.Text; // e-mail do remetente
+//    IdMsg.Recipients.EMailAddresses := Email; // e-mail do destinatário
+//    IdMsg.Subject := 'Teste de envio'; // assunto
+//    IdMsg.Body.Add('Testando e-mail CPR'); // corpo da mensagem
+//
+//    IdSMTP.Host := edServidor.Text; // host SMTP
+//    IdSMTP.Port := StrToInt(edPorta.Text); // porta
+//    IdSMTP.Username := edUsuario.Text; // login do usuário
+//    IdSMTP.Password := edSenha.Text; // senha do usuário
+//
+//    IdSMTP.Connect; // estabelece a conexão
+//
+//    if chkAutenticacao.Checked then
+//    begin
+//      IdSMTP.AuthType := satDefault;
+//      IdSMTP.Authenticate; // faz a autenticação
+//    end
+//    else
+//      IdSMTP.AuthType := satNone;
+//
+//    try
+//      IdSMTP.Send(IdMsg); // envia a mensagem
+//    except
+//      on e: Exception do
+//        MsgErro('ERRO: ' + e.Message); // mensagem de erro
+//    end;
+//    MsgAviso('Teste de Envio OK!');
+//  end;
 end;
 
 procedure TfrmConfiguracao.GravaDadosEmail;
@@ -471,7 +458,6 @@ begin
   frmSenhaCaixa := TfrmSenhaCaixa.Create(Self);
   if frmSenhaCaixa.ShowModal = mrOk then
   begin
-    //Salvar(cdsPadrao);
     cdsPadrao.ApplyUpdates(0);
     ReabreDataSet(cdsPadrao);
   end;
@@ -543,34 +529,34 @@ procedure TfrmConfiguracao.cdsPadraoSENHACAIXAGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
   inherited;
-  Text := EnDecrypt(Sender.AsString);
+  Text := crypto.EnDeCrypt(Sender.AsString);
 end;
 
 procedure TfrmConfiguracao.cdsPadraoSENHACAIXASetText(Sender: TField;
   const Text: String);
 begin
   inherited;
-  Sender.AsString := EnDecrypt(Text);
+  Sender.AsString := crypto.EnDeCrypt(Text);
 end;
 
 procedure TfrmConfiguracao.cdsPadraoSENHAESTOQUEGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
   inherited;
-  Text := EnDecrypt(Sender.AsString);
+  Text := crypto.EnDeCrypt(Sender.AsString);
 end;
 
 procedure TfrmConfiguracao.cdsPadraoSENHAESTOQUESetText(Sender: TField;
   const Text: String);
 begin
   inherited;
-  Sender.AsString := EnDecrypt(Text);
+  Sender.AsString := crypto.EnDeCrypt(Text);
 end;
 
 procedure TfrmConfiguracao.dbeContaChequeClickButton(Sender: TObject);
 begin
   inherited;
-//  if cdsPadrao.State in [dsEdit] then
+//  if ModoEdicao(cdsPadrao) then
 //    if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
 //    begin
 //      cdsPadraoCONTACHEQUE.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;

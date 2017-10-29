@@ -8,29 +8,6 @@ inherited frmPerda: TfrmPerda
   ExplicitHeight = 425
   PixelsPerInch = 96
   TextHeight = 13
-  object dbrgrpMOTIVO: TDBRadioGroup [0]
-    Left = 66
-    Top = 152
-    Width = 153
-    Height = 105
-    Caption = 'Motivo'
-    DataField = 'MOTIVO'
-    DataSource = dsPadrao
-    Items.Strings = (
-      '&Danificado'
-      '&Vencido'
-      '&Furto'
-      '&Perda de peso'
-      '&Outro')
-    TabOrder = 4
-    TabStop = True
-    Values.Strings = (
-      'D'
-      'V'
-      'F'
-      'P'
-      'O')
-  end
   inherited sbStatus: TUniStatusBar
     Top = 377
     Width = 473
@@ -66,7 +43,7 @@ inherited frmPerda: TfrmPerda
       Font.Name = 'Verdana'
     end
   end
-  object lbQtde: TUniLabel [3]
+  object lbQtde: TUniLabel [2]
     Left = 36
     Top = 84
     Width = 27
@@ -76,7 +53,7 @@ inherited frmPerda: TfrmPerda
     Caption = 'Qtde'
     TabOrder = 8
   end
-  object lbPreco: TUniLabel [4]
+  object lbPreco: TUniLabel [3]
     Left = 31
     Top = 108
     Width = 32
@@ -86,7 +63,7 @@ inherited frmPerda: TfrmPerda
     Caption = 'Pre'#231'o'
     TabOrder = 9
   end
-  object lbObs: TUniLabel [5]
+  object lbObs: TUniLabel [4]
     Left = 37
     Top = 267
     Width = 26
@@ -96,7 +73,7 @@ inherited frmPerda: TfrmPerda
     Caption = 'Obs.'
     TabOrder = 10
   end
-  object lbPrecoCusto: TUniLabel [6]
+  object lbPrecoCusto: TUniLabel [5]
     Left = 183
     Top = 108
     Width = 43
@@ -106,7 +83,7 @@ inherited frmPerda: TfrmPerda
     Caption = '(Custo)'
     TabOrder = 11
   end
-  object dbdData: TUniDBEdit [7]
+  object dbdData: TUniDBEdit [6]
     Left = 66
     Top = 128
     Width = 153
@@ -117,7 +94,7 @@ inherited frmPerda: TfrmPerda
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbQtde: TUniDBEdit [8]
+  object dbQtde: TUniDBEdit [7]
     Left = 66
     Top = 80
     Width = 73
@@ -128,7 +105,7 @@ inherited frmPerda: TfrmPerda
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbProduto: TUniDBEdit [9]
+  object dbProduto: TUniDBEdit [8]
     Left = 66
     Top = 56
     Width = 361
@@ -141,7 +118,7 @@ inherited frmPerda: TfrmPerda
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbPreco: TUniDBEdit [10]
+  object dbPreco: TUniDBEdit [9]
     Left = 66
     Top = 104
     Width = 113
@@ -152,7 +129,7 @@ inherited frmPerda: TfrmPerda
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbmOBS: TUniDBMemo [11]
+  object dbmOBS: TUniDBMemo [10]
     Left = 66
     Top = 264
     Width = 383
@@ -163,6 +140,30 @@ inherited frmPerda: TfrmPerda
     DataSource = dsPadrao
     ScrollBars = ssVertical
     TabOrder = 5
+  end
+  object dbrgrpMOTIVO: TUniDBRadioGroup [11]
+    Left = 66
+    Top = 152
+    Width = 153
+    Height = 105
+    Hint = ''
+    ShowHint = True
+    DataField = 'MOTIVO'
+    DataSource = dsPadrao
+    Caption = 'Motivo'
+    TabOrder = 4
+    Items.Strings = (
+      '&Danificado'
+      '&Vencido'
+      '&Furto'
+      '&Perda de peso'
+      '&Outro')
+    Values.Strings = (
+      'D'
+      'V'
+      'F'
+      'P'
+      'O')
   end
   inherited actlNavigateActions: TActionList
     Left = 272

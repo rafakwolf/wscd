@@ -16,18 +16,6 @@ object frmListagemProdutos: TfrmListagemProdutos
   Font.Name = 'Verdana'
   PixelsPerInch = 96
   TextHeight = 13
-  object edtBuscaProduto: TButtonedEdit
-    Left = 8
-    Top = 21
-    Width = 433
-    Height = 21
-    RightButton.HotImageIndex = 1
-    RightButton.ImageIndex = 1
-    RightButton.PressedImageIndex = 1
-    TabOrder = 2
-    OnChange = edtBuscaProdutoChange
-    OnRightButtonClick = edtBuscaProdutoRightButtonClick
-  end
   object lbBuscaProduto: TUniLabel
     Left = 8
     Top = 5
@@ -116,7 +104,17 @@ object frmListagemProdutos: TfrmListagemProdutos
     TabOrder = 0
     ParentColor = False
     Color = clWindow
-    OnDblClick = GradeDblClick
+  end
+  object edtBuscaProduto: TUniEdit
+    Left = 8
+    Top = 21
+    Width = 433
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    Text = ''
+    TabOrder = 2
+    OnChange = edtBuscaProdutoChange
   end
   object dsProdutos: TDataSource
     AutoEdit = False
@@ -128,7 +126,6 @@ object frmListagemProdutos: TfrmListagemProdutos
     Top = 104
     object miFiltrar: TUniMenuItem
       Caption = 'Localizar na coluna...'
-      OnClick = miFiltrarClick
     end
   end
 end

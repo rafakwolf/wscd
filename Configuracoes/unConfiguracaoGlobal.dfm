@@ -2,22 +2,22 @@ inherited frmConfigGlobal: TfrmConfigGlobal
   Left = 232
   Top = 148
   ClientHeight = 340
-  ClientWidth = 401
+  ClientWidth = 470
   Caption = 'frmConfigGlobal'
   OldCreateOrder = True
   Font.Name = 'Verdana'
-  ExplicitWidth = 407
+  ExplicitWidth = 476
   ExplicitHeight = 369
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 321
-    Width = 401
+    Width = 470
     ExplicitTop = 321
     ExplicitWidth = 401
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 401
+    Width = 470
     ExplicitWidth = 401
     inherited btnNovo: TUniSpeedButton
       Font.Name = 'Verdana'
@@ -51,16 +51,12 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     Height = 273
     Hint = ''
     ShowHint = True
-    ActivePage = tsVenda
+    ActivePage = tsFTP
     TabOrder = 2
     object tsCrediario: TUniTabSheet
       Hint = ''
       ShowHint = True
       Caption = 'Credi'#225'rio'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbeJuro: TUniDBEdit
         Left = 8
         Top = 32
@@ -112,10 +108,6 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       ShowHint = True
       ImageIndex = 1
       Caption = 'Cliente'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbeLimiteCliente: TUniDBEdit
         Left = 8
         Top = 32
@@ -144,14 +136,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       ShowHint = True
       ImageIndex = 2
       Caption = 'Or'#231'amento'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object lbMsgOrcamRodape: TUniLabel
         Left = 8
         Top = 64
-        Width = 158
+        Width = 190
         Height = 13
         Hint = ''
         ShowHint = True
@@ -208,14 +196,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       ShowHint = True
       ImageIndex = 3
       Caption = 'Venda'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object lbMsgRodapeVenda: TUniLabel
         Left = 8
         Top = 64
-        Width = 137
+        Width = 164
         Height = 13
         Hint = ''
         ShowHint = True
@@ -283,10 +267,6 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       ShowHint = True
       ImageIndex = 4
       Caption = 'FTP (Atualiza'#231#227'o)'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
       object dbeHost: TUniDBEdit
         Left = 16
         Top = 24

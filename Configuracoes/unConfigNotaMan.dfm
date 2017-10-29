@@ -1,103 +1,17 @@
 inherited frmConfigNotaMan: TfrmConfigNotaMan
   Left = 221
   Top = 163
-  ClientHeight = 249
+  ClientHeight = 196
   ClientWidth = 513
   Caption = 'Campos da nota fiscal'
   OldCreateOrder = True
   ExplicitWidth = 529
-  ExplicitHeight = 288
+  ExplicitHeight = 235
   PixelsPerInch = 96
   TextHeight = 13
-  object pgcCadastro: TUniPageControl
-    Left = 8
-    Top = 8
-    Width = 497
-    Height = 201
-    Hint = ''
-    ShowHint = True
-    ActivePage = tsCadastro
-    TabOrder = 0
-    object tsCadastro: TUniTabSheet
-      Hint = ''
-      ShowHint = True
-      Caption = 'Cadastro'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 256
-      ExplicitHeight = 128
-      object dbtxtRef: TDBText
-        Left = 264
-        Top = 66
-        Width = 209
-        Height = 17
-        DataField = 'REFERENCIA'
-        DataSource = dsPadrao
-      end
-      object dbeCampoDescricao: TUniDBEdit
-        Left = 72
-        Top = 16
-        Width = 400
-        Height = 21
-        Hint = ''
-        ShowHint = True
-        DataField = 'CAMPO'
-        DataSource = dsPadrao
-        TabOrder = 0
-        OnKeyPress = dbeCampoDescricaoKeyPress
-      end
-      object dbeLayOut: TUniDBEdit
-        Left = 72
-        Top = 120
-        Width = 400
-        Height = 21
-        Hint = ''
-        ShowHint = True
-        DataField = 'LAYOUT'
-        DataSource = dsPadrao
-        TabOrder = 1
-      end
-      object dbeLinha: TUniDBEdit
-        Left = 72
-        Top = 68
-        Width = 65
-        Height = 21
-        Hint = ''
-        ShowHint = True
-        DataField = 'LINHA'
-        DataSource = dsPadrao
-        TabOrder = 2
-      end
-      object dbeColuna: TUniDBEdit
-        Left = 72
-        Top = 94
-        Width = 65
-        Height = 21
-        Hint = ''
-        ShowHint = True
-        DataField = 'COLUNA'
-        DataSource = dsPadrao
-        TabOrder = 4
-      end
-      object dbckbImprimir: TUniDBCheckBox
-        Left = 72
-        Top = 146
-        Width = 73
-        Height = 17
-        Hint = ''
-        ShowHint = True
-        DataField = 'IMPRIMIR'
-        DataSource = dsPadrao
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-        Caption = 'Imprimir'
-        TabOrder = 3
-      end
-    end
-  end
   object btnCancelar: TUniBitBtn
     Left = 336
-    Top = 216
+    Top = 160
     Width = 81
     Height = 25
     Hint = ''
@@ -154,12 +68,12 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     Caption = 'Cancelar'
-    TabOrder = 1
+    TabOrder = 0
     OnClick = btnCancelarClick
   end
   object btnOk: TUniBitBtn
     Left = 424
-    Top = 216
+    Top = 160
     Width = 81
     Height = 25
     Hint = ''
@@ -216,19 +130,78 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     Caption = 'Ok'
-    TabOrder = 2
+    TabOrder = 1
     OnClick = btnOkClick
   end
   object btnNovo: TUniBitBtn
     Left = 8
-    Top = 216
+    Top = 160
     Width = 73
     Height = 25
     Hint = ''
     ShowHint = True
     Caption = '+ Novo'
-    TabOrder = 3
+    TabOrder = 2
     OnClick = btnNovoClick
+  end
+  object dbeCampoDescricao: TUniDBEdit
+    Left = 48
+    Top = 24
+    Width = 400
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'CAMPO'
+    DataSource = dsPadrao
+    TabOrder = 3
+    OnKeyPress = dbeCampoDescricaoKeyPress
+  end
+  object dbeLinha: TUniDBEdit
+    Left = 48
+    Top = 51
+    Width = 65
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'LINHA'
+    DataSource = dsPadrao
+    TabOrder = 4
+  end
+  object dbeColuna: TUniDBEdit
+    Left = 48
+    Top = 77
+    Width = 65
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'COLUNA'
+    DataSource = dsPadrao
+    TabOrder = 5
+  end
+  object dbeLayOut: TUniDBEdit
+    Left = 48
+    Top = 103
+    Width = 400
+    Height = 21
+    Hint = ''
+    ShowHint = True
+    DataField = 'LAYOUT'
+    DataSource = dsPadrao
+    TabOrder = 6
+  end
+  object dbckbImprimir: TUniDBCheckBox
+    Left = 48
+    Top = 129
+    Width = 73
+    Height = 17
+    Hint = ''
+    ShowHint = True
+    DataField = 'IMPRIMIR'
+    DataSource = dsPadrao
+    ValueChecked = 'S'
+    ValueUnchecked = 'N'
+    Caption = 'Imprimir'
+    TabOrder = 7
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from CONFIGNOTA'#13#10'where CODIGO = :PCODIGO'
@@ -240,8 +213,8 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
         ParamType = ptInput
       end>
     SQLConnection = DmPrincipal.Conexao
-    Left = 108
-    Top = 194
+    Left = 180
+    Top = 58
     object sqldPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -277,8 +250,8 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
   end
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
-    Left = 180
-    Top = 194
+    Left = 252
+    Top = 58
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -292,8 +265,8 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     BeforeInsert = cdsPadraoBeforeInsert
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
-    Left = 236
-    Top = 194
+    Left = 308
+    Top = 58
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -333,7 +306,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
     OnStateChange = dsPadraoStateChange
-    Left = 292
-    Top = 194
+    Left = 364
+    Top = 58
   end
 end

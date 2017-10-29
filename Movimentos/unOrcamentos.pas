@@ -250,7 +250,6 @@ type
     procedure dsOrcamStateChange(Sender: TObject);
     procedure cdsDetOrcamBeforeDelete(DataSet: TDataSet);
     procedure cdsDetOrcamBeforePost(DataSet: TDataSet);
-    procedure miFiltrarClienteClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure Oramentoembobina1Click(Sender: TObject);
     procedure cdsOrcamSTATUSGetText(Sender: TField; var Text: String;
@@ -275,9 +274,9 @@ var
 
 implementation
 
-uses  unCliente, Funcoes, unModeloConsulta, VarGlobal, unPrevOrcammento,
-     uConfiguraRelatorio, unFiltroSimples, unRelatorioBobinaOrcam,
-  unAguarde, uDatabaseutils;
+uses unCliente, Funcoes, unModeloConsulta, VarGlobal, unPrevOrcammento,
+     uConfiguraRelatorio, unRelatorioBobinaOrcam,
+     unAguarde, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -799,29 +798,6 @@ begin
      cdsOrcamTOTAL.AsFloat := (cdsOrcamTOTAL.AsFloat + cdsDetOrcamTOTAL.AsFloat);
      cdsOrcamITENS.AsFloat := (cdsOrcamITENS.AsFloat + 1);
    end;
-end;
-
-procedure TfrmOrcamentos.miFiltrarClienteClick(Sender: TObject);
-var
-  IdRetorno: Integer;
-  Order, SQL: string;
-begin
-
-  SQL := AnsiUpperCase(SQLPadrao);
-  Order := Copy(SQL, Pos('ORDER', SQL), Length(SQL));
-  Delete(SQL, Pos('ORDER', SQL), Length(SQL));
-
-  if TfrmFiltroSimples.Execute(IdRetorno, 'CLIENTES', 'NOME', 'CODCLIENTE') then
-  begin
-    cdsOrcam.DisableControls;
-    cdsOrcam.Close;
-    cdsOrcam.CommandText := '';
-    cdsOrcam.CommandText := SQL + ' where orc.CODCLIENTE = ' +
-      QuotedStr(IntToStr(IdRetorno))+' '+Order;
-    cdsOrcam.Open;
-    cdsOrcam.Last;
-    cdsOrcam.EnableControls;
-  end;
 end;
 
 procedure TfrmOrcamentos.FormKeyPress(Sender: TObject; var Key: Char);

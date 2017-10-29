@@ -12,7 +12,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
   inherited sbStatus: TUniStatusBar
     Top = 182
     Width = 472
-    ExplicitTop = 215
+    ExplicitTop = 182
     ExplicitWidth = 472
   end
   inherited pnBotoesPadrao: TUniContainerPanel
@@ -25,7 +25,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     end
   end
   object dbeNomeCidade: TUniDBEdit [2]
-    Left = 61
+    Left = 21
     Top = 82
     Width = 313
     Height = 21
@@ -36,7 +36,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     TabOrder = 1
   end
   object dbeCodCidade: TUniDBEdit [3]
-    Left = 61
+    Left = 21
     Top = 56
     Width = 97
     Height = 21

@@ -11,26 +11,6 @@ inherited frmReceberMan: TfrmReceberMan
   ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
-  object rgReceb: TRadioGroup
-    Left = 8
-    Top = 208
-    Width = 465
-    Height = 33
-    Caption = ' Recebimento '
-    Columns = 2
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ItemIndex = 0
-    Items.Strings = (
-      'Dinheiro'
-      'Cheque')
-    ParentFont = False
-    TabOrder = 1
-    OnClick = rgRecebClick
-  end
   object lblBandaMagnetica: TUniLabel
     Left = 8
     Top = 292
@@ -318,6 +298,26 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 0
     ParentColor = False
     Color = clBtnFace
+  end
+  object rgReceb: TUniRadioGroup
+    Left = 8
+    Top = 208
+    Width = 465
+    Height = 33
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Dinheiro'
+      'Cheque')
+    ItemIndex = 0
+    Caption = ' Recebimento '
+    TabOrder = 1
+    TabStop = False
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    Columns = 2
+    OnClick = rgRecebClick
   end
   object dsContasReceber: TDataSource
     AutoEdit = False

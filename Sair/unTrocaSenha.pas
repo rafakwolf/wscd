@@ -4,8 +4,7 @@ interface
 
 uses
 
-  Variants,
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
+  Variants, Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtCtrls, DB, uniGUIForm,
   SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
   uniSpeedButton, uniPanel, uniLabel, uniImage, uniEdit;
@@ -17,11 +16,9 @@ type
     sqldSenhaAtualUSERS: TIntegerField;
     btGrava: TUniSpeedButton;
     btCancel: TUniSpeedButton;
-    PanelTitulo: TUniContainerPanel;
     lbSenhaAtu: TUniLabel;
     lbNovaSenha: TUniLabel;
     lbConfirma: TUniLabel;
-    ImageSenha: TUniImage;
     edAtual: TUniEdit;
     edNova: TUniEdit;
     edConfirma: TUniEdit;
@@ -104,7 +101,7 @@ begin
     with sqldUsuarios do
     begin
       Close;
-      Params.ParamByName('SENHA').AsString :=  edNova.Text; //Encript(edNova.Text);
+      Params.ParamByName('SENHA').AsString :=  edNova.Text;
       Params.ParamByName('LOGIN').AsString := Usuario;
       ExecSQL;
       MsgAviso('','Senha alterada com sucesso.');
@@ -112,7 +109,6 @@ begin
     end;
   except
     raise Exception.Create('Erro ao alterar senha.');
-    Abort;
   end;
 end;
 

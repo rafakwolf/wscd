@@ -9,18 +9,6 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
   ExplicitHeight = 289
   PixelsPerInch = 96
   TextHeight = 13
-  object rgTraversal: TRadioGroup [0]
-    Left = 190
-    Top = 48
-    Width = 214
-    Height = 55
-    Caption = 'Imprimir etiquetas na ordem'
-    ItemIndex = 0
-    Items.Strings = (
-      'Horizontal'
-      'Vertical')
-    TabOrder = 3
-  end
   inherited pnButtons: TUniContainerPanel
     Top = 216
     Width = 523
@@ -28,7 +16,7 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     ExplicitTop = 216
     ExplicitWidth = 523
   end
-  object lbModeloEtq: TUniLabel [2]
+  object lbModeloEtq: TUniLabel [1]
     Left = 16
     Top = 24
     Width = 113
@@ -39,7 +27,7 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     Caption = 'Modelo de Etiqueta:'
     TabOrder = 5
   end
-  object lbLinhaIni: TUniLabel [3]
+  object lbLinhaIni: TUniLabel [2]
     Left = 39
     Top = 53
     Width = 90
@@ -50,7 +38,7 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     Caption = 'Iniciar na linha:'
     TabOrder = 6
   end
-  object lbColIni: TUniLabel [4]
+  object lbColIni: TUniLabel [3]
     Left = 29
     Top = 79
     Width = 100
@@ -61,7 +49,7 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     Caption = 'Iniciar na coluna:'
     TabOrder = 7
   end
-  object cbListaEtiq: TUniComboBox [5]
+  object cbListaEtiq: TUniComboBox [4]
     Left = 132
     Top = 20
     Width = 272
@@ -72,7 +60,7 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     Text = ''
     TabOrder = 0
   end
-  object seColunaIni: TUniSpinEdit [6]
+  object seColunaIni: TUniSpinEdit [5]
     Left = 132
     Top = 74
     Width = 45
@@ -83,7 +71,7 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     TabOrder = 1
     OnExit = seColunaIniExit
   end
-  object seLinhaIni: TUniSpinEdit [7]
+  object seLinhaIni: TUniSpinEdit [6]
     Left = 132
     Top = 48
     Width = 45
@@ -93,6 +81,21 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
     Value = 1
     TabOrder = 2
     OnExit = seLinhaIniExit
+  end
+  object rgTraversal: TUniRadioGroup [7]
+    Left = 190
+    Top = 48
+    Width = 214
+    Height = 55
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Horizontal'
+      'Vertical')
+    ItemIndex = 0
+    Caption = 'Imprimir etiquetas na ordem'
+    TabOrder = 3
+    TabStop = False
   end
   inherited dsPadrao: TDataSource
     Left = 376

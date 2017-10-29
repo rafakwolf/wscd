@@ -253,7 +253,6 @@ type
     procedure actPostItExecute(Sender: TObject);
     procedure actAjudaExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure actConfigServidorExecute(Sender: TObject);
     procedure actNotaPromissoriaExecute(Sender: TObject);
     procedure actInfoSistemaExecute(Sender: TObject);
     procedure actVendedorExecute(Sender: TObject);
@@ -274,7 +273,6 @@ type
     procedure actInfoAvisosExecute(Sender: TObject);
     procedure miRepararIndicesClick(Sender: TObject);
     procedure miVisualizarDadosClick(Sender: TObject);
-    procedure miExecutarScriptsClick(Sender: TObject);
     procedure miCriarLogClick(Sender: TObject);
     procedure miAuditoriaClick(Sender: TObject);
     procedure miConsultaErroClick(Sender: TObject);
@@ -336,7 +334,7 @@ implementation
 
 uses
   unAcesso, Funcoes, uUtilFncs, VarGlobal,  uniGUIVars, MainModule, uniGUIApplication,
-  unSetupConnection, unExecutaScript, uClasses, udmAcesso, System.StrUtils;
+  uClasses, udmAcesso, System.StrUtils;
 
 {$R *.dfm}
 
@@ -346,86 +344,7 @@ begin
 end;
 
 procedure TfrmPrincipal.VerificaSerial;
-var
-  //RetornoValidacao: TTipoValidacao;
-  SimNao: Boolean;
 begin
-  SimNao := False;
- // RetornoValidacao := ValidaSerial(Sistema.Serial, Empresa.Nome + Empresa.Cnpj +
- //   Empresa.Cep);
-//  case RetornoValidacao of
-//    tvSerialErrado, tvChaveErrada:
-//      begin
-//        if UniGUIDialogs.MessageDlg('A chave de liberação informada está incorreta ' +
-//          'ou ainda não foi informada, os dados da empresa também podem ter sido alterados.' + #13 +
-//          'Deseja efetuar a correção agora?', 'Dados incorretos',
-//          MB_YESNO or MB_ICONWARNING) = ID_YES then
-//          SimNao := True
-//        else
-//          SimNao := False;
-//      end;
-//    tvExpirouPrazo:
-//      begin
-//        if UniGUIDialogs.MessageDlg('A chave de liberação está expirada.' + #13 +
-//          'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato ' +
-//          'com o suporte para obter uma nova chave de liberação.' + #13 +
-//          'Deseja informar uma nova chave de liberação agora?', 'Chave expirada',
-//          MB_YESNO or MB_ICONWARNING) = ID_YES then
-//          SimNao := True
-//        else
-//          SimNao := False;
-//      end;
-//    tvBloqueioSistema:
-//      begin
-//        if UniGUIDialogs.MessageDlg('CHAVE DE LIBERAÇÃO EXPIRADA.' + #13 +
-//          'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias. ' +
-//          'Por favor entre em contato com o suporte para obter uma nova chave de liberação.' + #13 +
-//          'Deseja informar uma nova chave de liberação?',
-//          'Sistema bloqueado', MB_YESNO or MB_ICONERROR) = ID_YES then
-//          SimNao := True
-//        else
-//          SimNao := False;
-//      end;
-//    tvPrazoMtoLongo:
-//      begin
-//        if UniGUIDialogs.MessageDlg('A chave de liberação informada está fora de um período válido. ' +
-//          'Verifique a data do seu computador e se a chave foi digitada corretamente.' + #13 +
-//          'Deseja informar uma nova chave de liberação?',
-//          'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
-//          SimNao := True
-//        else
-//          SimNao := False;
-//      end;
-//    tvPrimeiroAcesso:
-//      begin
-//        UniGUIDialogs.MessageDlg('Primeiro acesso, informe os dados de registro do sistema.',
-//          'Registro do sistema', MB_OK + MB_ICONINFORMATION);
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', UniApplication);
-//      end;
-//  end;
-//
-//  if (RetornoValidacao <> tvValidacaoOk) then
-//  begin
-//    if (RetornoValidacao <> tvValidacaoOk) and (SimNao) then
-//    begin
-//      if (RetornoValidacao = tvExpirouPrazo) then
-//        ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Self)
-//      else
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', UniApplication);
-//    end
-//    else if (RetornoValidacao <> tvExpirouPrazo) then
-//    begin
-//      if UniGUIDialogs.MessageDlg(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. ' +
-//        'Para obter uma nova chave, entre em contato com o suporte.' + #13 +
-//        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
-//      begin
-//        SistemaOk := False;
-//        Application.Terminate;
-//      end
-//      else
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do serial', UniApplication);
-//    end;
-//  end;
 end;
 
 procedure TfrmPrincipal.actGrupoExecute(Sender: TObject);
@@ -1022,15 +941,6 @@ begin
   end;
 end;
 
-procedure TfrmPrincipal.actConfigServidorExecute(Sender: TObject);
-begin
-  frmSetupConnection := TfrmSetupConnection.Create(Self);
-  if frmSetupConnection.ShowModal = mrOk then
-  begin
-    MsgAviso('','Esta alteração só terá efeito da próxima vez que o sistema for iniciado.');
-  end;
-end;
-
 procedure TfrmPrincipal.actNotaPromissoriaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmPromissoria', 'Promissória avulsa', UniApplication);
@@ -1420,13 +1330,6 @@ end;
 procedure TfrmPrincipal.miVisualizarDadosClick(Sender: TObject);
 begin
   ChamaForm('TfrmVisualizarDados', 'Visualizar Dados', UniApplication);
-end;
-
-procedure TfrmPrincipal.miExecutarScriptsClick(Sender: TObject);
-begin
-  frmExecutaScript := TfrmExecutaScript.Create(Self);
-  frmExecutaScript.ShowModal;
-  FreeAndNil(frmExecutaScript);
 end;
 
 procedure TfrmPrincipal.miCriarLogClick(Sender: TObject);

@@ -1,20 +1,20 @@
 inherited frmRecibo: TfrmRecibo
   Left = 213
   Top = 135
-  ClientHeight = 298
+  ClientHeight = 278
   ClientWidth = 617
   Caption = 'frmRecibo'
   OldCreateOrder = True
   Menu = mmPadrao
   Font.Name = 'Verdana'
   ExplicitWidth = 623
-  ExplicitHeight = 347
+  ExplicitHeight = 327
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
-    Top = 279
+    Top = 259
     Width = 617
-    ExplicitTop = 299
+    ExplicitTop = 259
     ExplicitWidth = 617
   end
   inherited pnBotoesPadrao: TUniContainerPanel
@@ -77,8 +77,8 @@ inherited frmRecibo: TfrmRecibo
     TabOrder = 9
   end
   object lbValorExtenso: TUniLabel [5]
-    Left = 13
-    Top = 245
+    Left = 12
+    Top = 221
     Width = 78
     Height = 13
     Hint = ''
@@ -118,7 +118,6 @@ inherited frmRecibo: TfrmRecibo
     DataField = 'VALOR'
     DataSource = dsPadrao
     TabOrder = 3
-    OnKeyPress = dbValorKeyPress
   end
   object dbReferente: TUniDBMemo [9]
     Left = 96
@@ -143,8 +142,8 @@ inherited frmRecibo: TfrmRecibo
     TabOrder = 4
   end
   inherited actlNavigateActions: TActionList
-    Left = 272
-    Top = 125
+    Left = 224
+    Top = 117
     inherited actPrint: TAction
       ShortCut = 0
       OnExecute = actPrintExecute
@@ -162,7 +161,7 @@ inherited frmRecibo: TfrmRecibo
     MaxBlobSize = -1
     Params = <>
     Left = 336
-    Top = 124
+    Top = 68
     object sqldPadraoIDRECIBO: TIntegerField
       FieldName = 'IDRECIBO'
       Required = True
@@ -192,15 +191,14 @@ inherited frmRecibo: TfrmRecibo
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
-    Left = 368
-    Top = 124
+    Left = 424
+    Top = 68
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 400
+    Left = 352
     Top = 124
     object cdsPadraoIDRECIBO: TIntegerField
       FieldName = 'IDRECIBO'
@@ -231,15 +229,9 @@ inherited frmRecibo: TfrmRecibo
       Size = 1
     end
   end
-  object tmrImpressao: TTimer
-    Enabled = False
-    OnTimer = tmrImpressaoTimer
-    Left = 472
-    Top = 124
-  end
   object mmPadrao: TUniMainMenu
-    Left = 304
-    Top = 124
+    Left = 272
+    Top = 84
     object miRelatorios: TUniMenuItem
       Caption = ''
       object mImprimir: TUniMenuItem

@@ -8,12 +8,10 @@ uses
   DB, DBClient, Provider, SqlExpr, ComCtrls,  Spin,
   FMTBcd, DBCtrls, Vcl.Mask, uniGUIBaseClasses, uniGUIClasses, uniPanel,
   uniLabel, uniEdit, uniButton, uniBitBtn, uniDBEdit, uniMultiItem, uniComboBox,
-  uniSpinEdit;
+  uniSpinEdit, uniRadioGroup;
 
 type
   TfrmRelatorioAniversarioCliente = class(TfrmDialogoRelatorioPadrao)
-    rgTipo: TRadioGroup;
-    rgDatas: TRadioGroup;
     sqldSelecao: TSQLDataSet;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
@@ -32,6 +30,8 @@ type
     cmbMes: TUniComboBox;
     edDo: TUniSpinEdit;
     edAte: TUniSpinEdit;
+    rgTipo: TUniRadioGroup;
+    rgDatas: TUniRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edAnoKeyPress(Sender: TObject; var Key: Char);

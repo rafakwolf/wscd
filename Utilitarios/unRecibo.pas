@@ -25,7 +25,6 @@ type
     cdsPadraoRECEBEDOR: TStringField;
     cdsPadraoREFERENTE: TMemoField;
     cdsPadraoVALOREXTENSO: TMemoField;
-    tmrImpressao: TTimer;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
     mmPadrao: TUniMainMenu;
@@ -43,11 +42,7 @@ type
     dbValorExtenso: TUniDBMemo;
     procedure actPrintExecute(Sender: TObject);
     procedure cdsPadraoVALORChange(Sender: TField);
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
-    procedure dbValorKeyPress(Sender: TObject; var Key: Char);
-    procedure tmrImpressaoTimer(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
   public
   end;
@@ -100,44 +95,12 @@ begin
   cdsPadraoVALOREXTENSO.AsString := Extenso(Sender.AsFloat);
 end;
 
-procedure TfrmRecibo.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  //Incrementa('RECIBO', cdsPadraoIDRECIBO, GetConnection);
-end;
-
 procedure TfrmRecibo.FormCreate(Sender: TObject);
 begin
   inherited;
   FieldNames := FN_RECIBO;
   DisplayLabels := DL_RECIBO;
   aCaption := 'Recibos';
-end;
-
-procedure TfrmRecibo.dbValorKeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  //ControlarTeclas(Key);
-end;
-
-procedure TfrmRecibo.tmrImpressaoTimer(Sender: TObject);
-begin
-  inherited;
-  tmrImpressao.Enabled := False;
-  if imprime then
-  begin
-    if MsgSN('Deseja imprimir este recibo?') then
-    begin
-      actPost.Execute;
-      actPrint.Execute;
-    end;
-  end;  
-end;
-
-procedure TfrmRecibo.FormShow(Sender: TObject);
-begin
-  inherited;
-  tmrImpressao.Enabled := True;
 end;
 
 initialization

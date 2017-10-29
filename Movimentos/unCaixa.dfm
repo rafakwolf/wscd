@@ -5371,7 +5371,6 @@ inherited frmCaixa: TfrmCaixa
     Anchors = [akLeft, akRight, akBottom]
     ParentColor = False
     Color = clBtnFace
-    ExplicitTop = 366
   end
   object pnBotoes: TUniContainerPanel
     Left = 0
@@ -6131,7 +6130,6 @@ inherited frmCaixa: TfrmCaixa
       end
       object miExportaDados: TUniMenuItem
         Caption = 'Exportar dados'
-        OnClick = miExportaDadosClick
       end
     end
     object miPesquisar: TUniMenuItem
@@ -6150,7 +6148,6 @@ inherited frmCaixa: TfrmCaixa
       end
       object miFiltraPorContaCaixa: TUniMenuItem
         Caption = 'Filtrar por conta caixa'
-        OnClick = miFiltraPorContaCaixaClick
       end
       object miFiltraColuna: TUniMenuItem
         Caption = 'Localizar na coluna selecionada'
@@ -6197,7 +6194,6 @@ inherited frmCaixa: TfrmCaixa
       end
       object miRelPersonalCaixa: TUniMenuItem
         Caption = 'Assistente de relat'#243'rio'
-        OnClick = miRelPersonalCaixaClick
       end
     end
   end

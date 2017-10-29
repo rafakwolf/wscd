@@ -56,8 +56,6 @@ begin
       F.Position := 0;
       F.Read(FirstBytes, SizeOf(FirstBytes));
 
-      // CopyConstToClipboard(FirstBytes); // Uncomment this to copy those first bytes to cliboard
-
       Result := TBitmap.Create;
       Result.Assign(Jpg);
 

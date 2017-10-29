@@ -73,7 +73,7 @@ var
 
 implementation
 
-uses unModeloConsulta, unGeraRelatorio, unOrdenarDados, VarGlobal;
+uses unModeloConsulta, VarGlobal;
 
 {$R *.DFM}
 

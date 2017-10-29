@@ -8,7 +8,7 @@ uses
   DBClient, Provider, SqlExpr, StdCtrls, DBCtrls, VarGlobal,
     Mask, FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn,
   uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
-  uniEdit, uniDBEdit, uniMemo, uniDBMemo;
+  uniEdit, uniDBEdit, uniMemo, uniDBMemo, uniRadioGroup, uniDBRadioGroup;
 
 type
   TfrmPerda = class(TfrmPadrao)
@@ -30,7 +30,6 @@ type
     sqldProduto: TSQLDataSet;
     dspProduto: TDataSetProvider;
     cdsProduto: TClientDataSet;
-    dbrgrpMOTIVO: TDBRadioGroup;
     sqldProdutoIDPRODUTO: TIntegerField;
     sqldProdutoCODBARRA: TStringField;
     sqldProdutoDESCRICAO: TStringField;
@@ -56,6 +55,7 @@ type
     dbProduto: TUniDBEdit;
     dbPreco: TUniDBEdit;
     dbmOBS: TUniDBMemo;
+    dbrgrpMOTIVO: TUniDBRadioGroup;
     procedure dbProdutoClickButton(Sender: TObject);
     procedure cdsPadraoCODPRODUTOValidate(Sender: TField);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -63,7 +63,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure actPrintExecute(Sender: TObject);
-    procedure actPrintPersonExecute(Sender: TObject);
   private
   public
   end;
@@ -74,7 +73,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao,  unModeloConsulta, unPrevPerda,
-     uConfiguraRelatorio, unGeraRelatorio, uDatabaseutils;
+     uConfiguraRelatorio,  uDatabaseutils;
 
 {$R *.dfm}
 
@@ -138,11 +137,6 @@ begin
   finally
     Free;
   end;
-end;
-
-procedure TfrmPerda.actPrintPersonExecute(Sender: TObject);
-begin
-  TfrmGeraRelatorio.Execute('Perdas', 'VIEWPERDAS', GetConnection);
 end;
 
 initialization

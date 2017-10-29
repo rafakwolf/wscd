@@ -13,32 +13,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     ExplicitTop = 173
     ExplicitWidth = 521
   end
-  object rgTipo: TRadioGroup [1]
-    Left = 8
-    Top = 8
-    Width = 249
-    Height = 57
-    Caption = ' Tipo '
-    ItemIndex = 0
-    Items.Strings = (
-      'Envelopes'
-      'Elenco')
-    TabOrder = 1
-  end
-  object rgDatas: TRadioGroup [2]
-    Left = 264
-    Top = 8
-    Width = 257
-    Height = 57
-    Caption = ' Filtro '
-    ItemIndex = 0
-    Items.Strings = (
-      'Por Dia M'#234's e Ano'
-      'Por Data')
-    TabOrder = 2
-    OnClick = rgDatasClick
-  end
-  object pnDiaMesAno: TUniContainerPanel [3]
+  object pnDiaMesAno: TUniContainerPanel [1]
     Left = 8
     Top = 72
     Width = 249
@@ -139,7 +114,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       TabOrder = 2
     end
   end
-  object pnDatas: TUniContainerPanel [4]
+  object pnDatas: TUniContainerPanel [2]
     Left = 264
     Top = 72
     Width = 257
@@ -172,6 +147,37 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       DataSource = dsPadrao
       TabOrder = 1
     end
+  end
+  object rgTipo: TUniRadioGroup [3]
+    Left = 8
+    Top = 8
+    Width = 249
+    Height = 57
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Envelopes'
+      'Elenco')
+    ItemIndex = 0
+    Caption = ' Tipo '
+    TabOrder = 1
+    TabStop = False
+  end
+  object rgDatas: TUniRadioGroup [4]
+    Left = 264
+    Top = 8
+    Width = 257
+    Height = 57
+    Hint = ''
+    ShowHint = True
+    Items.Strings = (
+      'Por Dia M'#234's e Ano'
+      'Por Data')
+    ItemIndex = 0
+    Caption = ' Filtro '
+    TabOrder = 2
+    TabStop = False
+    OnClick = rgDatasClick
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsSelecao
