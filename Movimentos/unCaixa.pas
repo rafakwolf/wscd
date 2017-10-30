@@ -166,8 +166,7 @@ var
 implementation
 
 uses  unLancCaixa, Funcoes, unModeloConsulta,
-     VarGlobal, unPrevCaixaTodos,  uConfiguraRelatorio,
-     unAguarde;
+     VarGlobal, unPrevCaixaTodos,  uConfiguraRelatorio;
 
 {$R *.dfm}
 
@@ -204,7 +203,7 @@ begin
     with TSQLDataSet.Create(Self) do
     try
       Close;
-      //SQLConnection := GetConnection;
+      SQLConnection := GetConnection;
       CommandType := ctStoredProc;
       CommandText := 'STPDELCAIXA';
       Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODCAIXA.AsInteger;
@@ -556,7 +555,6 @@ end;
 procedure TfrmCaixa.FormCreate(Sender: TObject);
 begin
   try
-    TfrmAguarde.Execute('Preparando dados...');
     inherited;
     ReordenaBotoes([btnNovo, btnAlterar, btnExcluir, btnLocate, btnFiltrar, btnFechar]);
     SetCaixaDefault;
@@ -577,7 +575,6 @@ begin
     SQLPadraoTela := sqldPadrao.CommandText;
     CentralizaForm(Self);
   finally
-    FreeAndNil(frmAguarde);
   end;
 end;
 

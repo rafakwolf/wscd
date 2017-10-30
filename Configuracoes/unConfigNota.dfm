@@ -2,53 +2,45 @@ inherited frmConfigNota: TfrmConfigNota
   Left = 215
   Top = 110
   ClientHeight = 426
-  ClientWidth = 403
+  ClientWidth = 483
   Caption = 'frmConfigNota'
   OldCreateOrder = True
   Font.Name = 'Verdana'
-  ExplicitWidth = 409
+  ExplicitWidth = 489
   ExplicitHeight = 455
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 407
-    Width = 403
+    Width = 483
     ExplicitTop = 407
     ExplicitWidth = 403
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 403
+    Width = 483
     ExplicitWidth = 403
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
     inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
+      Left = 194
+      ExplicitLeft = 194
     end
     inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
+      Left = 322
+      Width = 63
+      ExplicitLeft = 322
+      ExplicitWidth = 63
     end
     inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
+      Left = 421
+      ExplicitLeft = 421
     end
     inherited btnPrint: TUniSpeedButton
-      Left = 192
+      Left = 255
       Hint = ''
       Action = nil
-      Font.Name = 'Verdana'
-      ExplicitLeft = 192
+      ExplicitLeft = 255
     end
     object btnGrade: TUniSpeedButton
-      Left = 354
+      Left = 388
       Top = 1
       Width = 32
       Height = 32
@@ -112,6 +104,9 @@ inherited frmConfigNota: TfrmConfigNota
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       Caption = ''
+      ParentFont = False
+      Font.Charset = ANSI_CHARSET
+      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 8

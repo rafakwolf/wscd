@@ -1,20 +1,20 @@
 inherited frmCadastroUnidade: TfrmCadastroUnidade
   ClientHeight = 156
-  ClientWidth = 393
+  ClientWidth = 480
   Caption = 'frmCadastroUnidade'
   OldCreateOrder = True
-  ExplicitWidth = 399
+  ExplicitWidth = 486
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 137
-    Width = 393
+    Width = 480
     ExplicitTop = 137
     ExplicitWidth = 393
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 393
+    Width = 480
     TabOrder = 2
     ExplicitWidth = 393
   end
@@ -41,18 +41,20 @@ inherited frmCadastroUnidade: TfrmCadastroUnidade
     TabOrder = 0
   end
   inherited actlNavigateActions: TActionList
-    Left = 24
+    Left = 48
+    Top = 68
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 351
+    Left = 423
+    Top = 52
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  CODUNIDADE, '#13#10'  DESCRICAO '#13#10'from UNIDADES'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 120
+    Left = 176
     Top = 44
     object sqldPadraoCODUNIDADE: TIntegerField
       FieldName = 'CODUNIDADE'
@@ -67,16 +69,15 @@ inherited frmCadastroUnidade: TfrmCadastroUnidade
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 232
-    Top = 36
+    Left = 264
+    Top = 44
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 256
-    Top = 92
+    Left = 344
+    Top = 44
     object cdsPadraoCODUNIDADE: TIntegerField
       FieldName = 'CODUNIDADE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]

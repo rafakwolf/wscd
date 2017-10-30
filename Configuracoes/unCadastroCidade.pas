@@ -31,7 +31,7 @@ var
 implementation
 
 uses
-  ConstPadrao, Funcoes, VarGlobal;
+  ConstPadrao;
 
 {$R *.dfm}
 

@@ -38,11 +38,6 @@ type
     cdsCidadeDESCRICAO: TStringField;
     sqldPadraoNOMECIDADE: TStringField;
     cdsPadraoNOMECIDADE: TStringField;
-    lbNome: TUniLabel;
-    lbEndereco: TUniLabel;
-    lbBairro: TUniLabel;
-    lbCep: TUniLabel;
-    lbMsg: TUniLabel;
     dbNome: TUniDBEdit;
     dbeCidade: TUniDBEdit;
     dbCep: TUniDBEdit;

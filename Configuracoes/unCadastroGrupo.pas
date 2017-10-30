@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-   FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
+  FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
   uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar;
 
 type
@@ -20,7 +20,6 @@ type
     cdsPadraoDESCRICAO: TStringField;
     dbeNomeGrupo: TUniDBEdit;
     dbeCodGrupo: TUniDBEdit;
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -32,16 +31,9 @@ var
 implementation
 
 uses
-  Funcoes, ConstPadrao, VarGlobal;
+  ConstPadrao;
 
 {$R *.dfm}
-
-procedure TfrmCadastroGrupo.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  //Incrementa('GRUPOS', cdsPadraoCODGRUPO, GetConnection);
-  SetFocusIfCan(dbeNomeGrupo);
-end;
 
 procedure TfrmCadastroGrupo.FormCreate(Sender: TObject);
 begin

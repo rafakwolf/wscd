@@ -7,7 +7,7 @@ uses
   Dialogs, Menus, ComCtrls, ExtCtrls, Buttons, SqlExpr, Types, ActnList, DB,
   ConstPadrao, ShellAPI, ToolWin, AppEvnts,  udatabaseutils, crypto,
   StdCtrls, DBCtrls, DBClient, IniFiles, UniGuiForm, UniGUIDialogs,
-  Provider, ImgList,  ImgUtils, unAguarde, FMTBcd, System.Actions, uniMainMenu,
+  Provider, ImgList,  ImgUtils, FMTBcd, System.Actions, uniMainMenu,
   uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
   uniStatusBar, uniPanel, uniToolBar;
 
@@ -110,13 +110,6 @@ type
     miDuplicata: TUniMenuItem;
     miNotaPromissoria: TUniMenuItem;
     miRecibo: TUniMenuItem;
-    N11: TUniMenuItem;
-    miBackupRestore: TUniMenuItem;
-    miBackup: TUniMenuItem;
-    miRestore: TUniMenuItem;
-    N12: TUniMenuItem;
-    miPostit: TUniMenuItem;
-    miAuditoriaUser: TUniMenuItem;
     miCadastro: TUniMenuItem;
     miCliente: TUniMenuItem;
     N2: TUniMenuItem;
@@ -148,23 +141,11 @@ type
     miDicaDia: TUniMenuItem;
     miAtualizacao: TUniMenuItem;
     N10: TUniMenuItem;
-    miInfo_sobreosistema: TUniMenuItem;
-    miInfoAvisos: TUniMenuItem;
     miChamaAjuda: TUniMenuItem;
     miSobreSistema: TUniMenuItem;
     miSair: TUniMenuItem;
     miOutroUsuario: TUniMenuItem;
-    N13: TUniMenuItem;
-    miFechar: TUniMenuItem;
     miVisualizarDados: TUniMenuItem;
-    miRepararIndices: TUniMenuItem;
-    miExecutarScripts: TUniMenuItem;
-    miLogs: TUniMenuItem;
-    miCriarLog: TUniMenuItem;
-    miAuditoria: TUniMenuItem;
-    miLogOperacao: TUniMenuItem;
-    miConsultaErro: TUniMenuItem;
-    sbPrincipal: TUniStatusBar;
     clbrPrincipal: TUniToolBar;
     pnAtalho: TUniContainerPanel;
     btnAgenda: TUniSpeedButton;
@@ -179,12 +160,8 @@ type
     btnContaReceber: TUniSpeedButton;
     btnLivroCaixa: TUniSpeedButton;
     btnLogOff: TUniSpeedButton;
-    btnSair: TUniSpeedButton;
     btnOrcamento: TUniSpeedButton;
-    btnAtualizar: TUniSpeedButton;
-    btnBackup: TUniSpeedButton;
     btnPromocao: TUniSpeedButton;
-    bvlSeparaCaixa: TUniPanel;
     bvlSeparaListaPreco: TUniPanel;
     bvlSeparaAgenda: TUniPanel;
     bvlSeparaBackup: TUniPanel;
@@ -200,8 +177,6 @@ type
     procedure actUsuarioExecute(Sender: TObject);
     procedure actAgendaExecute(Sender: TObject);
     procedure actCalendarioExecute(Sender: TObject);
-    procedure actCalculadoraExecute(Sender: TObject);
-    procedure actEditorTextoExecute(Sender: TObject);
     procedure actDuplicataExecute(Sender: TObject);
     procedure actBackupExecute(Sender: TObject);
     procedure actClienteExecute(Sender: TObject);
@@ -227,8 +202,6 @@ type
     procedure actReciboExecute(Sender: TObject);
     procedure actRelatorioAgendaExecute(Sender: TObject);
     procedure actEnvelopeExecute(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure actRestoreExecute(Sender: TObject);
     procedure actEtiquetaExecute(Sender: TObject);
     procedure actPesqFoneExecute(Sender: TObject);
     procedure actBancoExecute(Sender: TObject);
@@ -236,7 +209,6 @@ type
     procedure actRenovaChaveExecute(Sender: TObject);
     procedure tbCalculadoraClick(Sender: TObject);
     procedure tbCalendarioClick(Sender: TObject);
-    procedure btnSairClick(Sender: TObject);
     procedure btnLogOffClick(Sender: TObject);
     procedure btnLivroCaixaClick(Sender: TObject);
     procedure btnContaReceberClick(Sender: TObject);
@@ -257,67 +229,31 @@ type
     procedure actInfoSistemaExecute(Sender: TObject);
     procedure actVendedorExecute(Sender: TObject);
     procedure actConfigNotaExecute(Sender: TObject);
-    procedure actAtualizacaoExecute(Sender: TObject);
-    procedure btnBackupClick(Sender: TObject);
     procedure btnAtualizarClick(Sender: TObject);
-    procedure pmiMinimizarClick(Sender: TObject);
-    procedure pmiMaximizarClick(Sender: TObject);
-    procedure pmiFecharClick(Sender: TObject);
     procedure pmiAtualizacaoClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure actPromocaoExecute(Sender: TObject);
     procedure btnPromocaoClick(Sender: TObject);
-    procedure sbPrincipalMouseMove(Sender: TObject; Shift: TShiftState; X,
-      Y: Integer);
-    procedure FormPaint(Sender: TObject);
-    procedure actInfoAvisosExecute(Sender: TObject);
-    procedure miRepararIndicesClick(Sender: TObject);
     procedure miVisualizarDadosClick(Sender: TObject);
-    procedure miCriarLogClick(Sender: TObject);
     procedure miAuditoriaClick(Sender: TObject);
     procedure miConsultaErroClick(Sender: TObject);
     procedure actAuditoriaUserExecute(Sender: TObject);
-    procedure FormKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
   Private
     Lista_permissoes: TClientDataSet;
 
-    AuxWidth, AuxHeight: Integer;
-    SistemaOk: Boolean;
-
-    copiando: Boolean;
-    Atualizando: Boolean;
-    pb: TProgressBar;
-    fbitmap: TBitmap;
-
-    procedure CarregaPapelParede;
-    procedure CarregaToolBar;
-    procedure VerificaSerial;
     procedure VerificaData;
-    procedure VerificaHD;
     procedure SetEnableMenu(adm: Boolean);
     procedure SetConfigGlobal;
     procedure SetConfiguracao;
     procedure SetEmpresa;
-    procedure CriaHintBalao;
     procedure SetSistema;
-    procedure InfoAvisos;
     procedure GetListaPermissoes;
 
-    function VerificaVersao: Boolean;
-    procedure VerificacaoAutomatica;
-    function ComputerIsServer: Boolean;
-
-    procedure CopiaAutomatica;
 
     function ValidaDataAcesso(DataEncriptada: string; DataAtual: TDateTime;
       Connection: TSQLConnection): Boolean;
     function ValidaHD(HD, HDGravar: string; Connection: TSQLConnection): Boolean;
 
-    procedure TerminateCopia(Sender: TObject);
-    procedure ZipProgress(const Status: string; const PerCent: Integer);
-
-    procedure ExportaMenu(filename: string);
   Protected
     procedure ConfiguracaoAlterado(var Msg: TMessage); Message WM_CONFIG_ALTERADO;
     procedure ConfigGlobalAlterado(var Msg: TMessage); Message WM_CONFIG_GLOBAL_ALTERADO;
@@ -325,26 +261,19 @@ type
   Public
   end;
 
- function MainForm: TfrmPrincipal;
-
-var
-  frmPrincipal: TfrmPrincipal;
+function MainForm: TfrmPrincipal;
 
 implementation
 
 uses
   unAcesso, Funcoes, uUtilFncs, VarGlobal,  uniGUIVars, MainModule, uniGUIApplication,
-  uClasses, udmAcesso, System.StrUtils;
+  uClasses, udmAcesso;
 
 {$R *.dfm}
 
 function MainForm: TfrmPrincipal;
 begin
    Result := TfrmPrincipal(UniMainModule.GetFormInstance(TfrmPrincipal));
-end;
-
-procedure TfrmPrincipal.VerificaSerial;
-begin
 end;
 
 procedure TfrmPrincipal.actGrupoExecute(Sender: TObject);
@@ -405,16 +334,6 @@ end;
 procedure TfrmPrincipal.actCalendarioExecute(Sender: TObject);
 begin
   ChamaForm('TfrmCalendario', 'Calendário', UniApplication);
-end;
-
-procedure TfrmPrincipal.actCalculadoraExecute(Sender: TObject);
-begin
-  ShellExecute(0,PChar('open'),PChar('calc'),PChar(''),PChar(''),SW_SHOW);
-end;
-
-procedure TfrmPrincipal.actEditorTextoExecute(Sender: TObject);
-begin
-  ShellExecute(0,PChar('open'),PChar('notepad'),PChar(''),PChar(''),SW_SHOW);
 end;
 
 procedure TfrmPrincipal.actDuplicataExecute(Sender: TObject);
@@ -499,12 +418,12 @@ end;
 
 procedure TfrmPrincipal.actOutroUsuarioExecute(Sender: TObject);
 begin
-  if not TfrmAcesso.Execute(True) then
-    MsgAviso('','Troca de usuário cancelada.')
-  else
-  begin
-    SetEnableMenu(IdUsuario = 0);
-  end;
+//  if not TfrmAcesso.Execute(True) then
+//    MsgAviso('','Troca de usuário cancelada.')
+//  else
+//  begin
+//    SetEnableMenu(IdUsuario = 0);
+//  end;
 end;
 
 procedure TfrmPrincipal.actFecharExecute(Sender: TObject);
@@ -547,50 +466,9 @@ begin
   ChamaForm('TfrmEnvelopes', 'Envelopes', UniApplication);
 end;
 
-procedure TfrmPrincipal.CarregaPapelParede;
-begin
-//  FBitmap := TBitmap.Create;
-//  if FileExists(Configuracao.PapelParede) and (IdUsuario <> 99999) then
-//  begin
-//    if (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPEG') or
-//      (AnsiUpperCase(ExtractFileExt(Configuracao.PapelParede)) = '.JPG') then
-//      FBitmap := LoadJpegIntoBitmap(Configuracao.PapelParede)
-//    else
-//      FBitmap.LoadFromFile(Configuracao.PapelParede);
-//  end
-//  else
-//  begin
-//    Self.Color := clBackground;
-//  end;
-//
-//  Windows.InvalidateRect(Handle, nil, True);
-end;
-
 procedure TfrmPrincipal.ConfiguracaoAlterado(var Msg: TMessage);
 begin
   SetConfiguracao;
-  CarregaPapelParede;
-  CarregaToolBar;
-  CriaHintBalao;
-end;
-
-procedure TfrmPrincipal.FormCreate(Sender: TObject);
-begin
-  self.Caption := Application.Title;
-
-  Atualizando := False;
-  SistemaOk := False;
-
-  AuxWidth := 0;
-  AuxHeight := 0;
-
-  CarregaPapelParede;
-  SetZOrder(false);
-end;
-
-procedure TfrmPrincipal.actRestoreExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmRestore', 'Voltar uma cópia dos dados', UniApplication);
 end;
 
 procedure TfrmPrincipal.SetEnableMenu(adm: Boolean);
@@ -625,52 +503,8 @@ begin
       end;
   end;
 
-  // modo administrador
   miVisualizarDados.Visible := adm;
-  miRepararIndices.Visible := adm;
-  miLogs.Visible := adm;
-  miExecutarScripts.Visible := adm;
 
-  // modo usuario normal
-  {
-  miCofiguracao.Visible := not adm;
-  miUtilitario.Visible := not adm;
-  miBackupRestore.Visible := not adm;
-  miCadastro.Visible := not adm;
-  miMovimento.Visible := not adm;
-  miProdutoMovimento.Visible := not adm;
-  miAjuda.Visible := not adm;
-  miSair.Visible := not adm;
-
-  btnAgenda.Visible := not adm;
-  bvlSeparaAgenda.Visible := not adm;
-
-  btnCliente.Visible := not adm;
-  btnFornecedor.Visible := not adm;
-  btnProduto.Visible := not adm;
-  btnListaPreco.Visible := not adm;
-  btnPromocao.Visible := not adm;
-  bvlSeparaListaPreco.Visible := not adm;
-
-  btnOrcamento.Visible := not adm;
-  btnNotaCompra.Visible := not adm;
-  btnNotaVenda.Visible := not adm;
-  btnCheque.Visible := not adm;
-  btnContaPagar.Visible := not adm;
-  btnContaReceber.Visible := not adm;
-  btnLivroCaixa.Visible := not adm;
-  bvlSeparaBackup.Visible := not adm;
-
-  btnBackup.Visible := not adm;
-  btnAtualizar.Visible := not adm;
-  bvlSeparaCaixa.Visible := not adm;
-
-  btnLogOff.Visible := not adm;    }
-
-  if adm then
-    btnSair.Left := btnAgenda.Left
-  else
-    btnSair.Left := 904;
 
   if assigned(Lista_permissoes) then
     FreeAndNil(Lista_permissoes);
@@ -740,12 +574,6 @@ procedure TfrmPrincipal.tbCalendarioClick(Sender: TObject);
 begin
   if miCalendario.Enabled then
     miCalendario.Click;
-end;
-
-procedure TfrmPrincipal.btnSairClick(Sender: TObject);
-begin
-  if miFechar.Enabled then
-    miFechar.Click;
 end;
 
 procedure TfrmPrincipal.btnLogOffClick(Sender: TObject);
@@ -822,8 +650,8 @@ end;
 
 procedure TfrmPrincipal.btnAgendaClick(Sender: TObject);
 begin
-  if miAgenda.Enabled then
-    miAgenda.Click;
+  if actAgenda.Enabled then
+     actAgenda.Execute;
 end;
 
 procedure TfrmPrincipal.actPostItExecute(Sender: TObject);
@@ -833,14 +661,6 @@ end;
 
 procedure TfrmPrincipal.VerificaData;
 begin
-  //Sistema.Atualizar;
-//  if not ValidaDataAcesso(Sistema.DataAcesso, Date, GetConnection) then
-//  begin
-//    MsgAviso('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
-//      'O sistema será finalizado.', 'Data inválida');
-//    SistemaOk := False;
-//    Application.Terminate;
-//  end;
 end;
 
 procedure TfrmPrincipal.SetSistema;
@@ -856,78 +676,17 @@ begin
   SetConfigGlobal;
 end;
 
-procedure TfrmPrincipal.CarregaToolBar;
-begin
-  try
-    DoubleBuffered := True;
-    pnAtalho.Visible := true
-  finally
-    DoubleBuffered := False;
-  end;
-end;
-
 procedure TfrmPrincipal.actAjudaExecute(Sender: TObject);
 begin
   ChamaHelp(Self, 0,'');
 end;
 
-procedure TfrmPrincipal.CriaHintBalao;
-begin
-  Application.HintColor := clInfoBk;
-  Application.HintPause := 10;
-  Application.HintHidePause := 100000;
-end;
-
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-//  TfrmAguarde.Execute('Iniciando...');
-//  try
-//    SetSistema;
-//    //SistemaOk := VerificaVersao;
-//    SetEmpresa;
-//    SetConfiguracao;
-//    SetConfigGlobal;
-//    CarregaToolBar;
-//    AjustaStatusBar;
-//    SetEnableMenu(IdUsuario = 0);
-//    SetStatusBar;
-//    CriaHintBalao;
-//
-//    if (IdUsuario <> 99999) then
-//    begin
-//      VerificaData;
-//      //VerificaSerial;
-//      //VerificaHD;
-//    end;
-//
-//    if (IdUsuario <> 99999) then
-//      InfoAvisos;
-//
-//    if Configuracao.ExibirDica then
-//      actDicaDia.Execute;
-//
-//    { apos as atualizações vai mostrar "o que há de novo" no sistema }
-////    if ReadIniFile('NEW', 'Mostrou') = 'N' then
-////    begin
-////      WriteIniFile('NEW', 'Mostrou', 'S');
-////      ChamaHelp(Self, 6,'');
-////    end;
-//
-////    if SistemaOk and ComputerIsServer then
-////    begin
-////      copiando := False;
-////      CopiaAutomatica;
-////    end;
-//
-//    frmAguarde.Fecha;
-//    //ForceForegroundWindow(handle);
-//  except
-//    on e: exception do
-//    begin
-//      frmAguarde.Fecha;
-//      ShowMEssage(e.Message);
-//    end;
-//  end;
+    SetSistema;
+    SetEmpresa;
+    SetConfiguracao;
+    SetConfigGlobal;
 end;
 
 procedure TfrmPrincipal.GetListaPermissoes;
@@ -961,125 +720,10 @@ begin
   ChamaForm('TfrmConfigNota', 'Configurãção da nota', UniApplication);
 end;
 
-procedure TfrmPrincipal.actAtualizacaoExecute(Sender: TObject);
-begin
-//  if not SistemaOK then
-//    Exit;
-//
-//  if not NetIsPresent then
-//  begin
-//    MsgCuidado('Verifique sua conexão com a internet.');
-//    Exit;
-//  end;
-//
-//  if Atualizando then
-//  begin
-//    MsgAviso('Atualização já está em andamento.');
-//    Exit;
-//  end;
-//
-//  if FileExists(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe') then
-//  begin
-//    if FormatDateTime('dd/mm/yyyy', FileDateToDateTime(FileAge(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe')))
-//      = FormatDateTime('dd/mm/yyyy', Date) then
-//    begin
-//      if MsgSN('Já existe uma atualização baixada hoje! Deseja executá-la?') then
-//      begin
-//        WinExec(PansiChar(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe'), SW_SHOWNORMAL);
-//        Application.Terminate;
-//        Abort;
-//      end
-//      else
-//        DeleteFile(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe');
-//    end;
-//  end;
-//
-//  VerificacaoAutomatica;
-end;
-
-function TfrmPrincipal.VerificaVersao: Boolean;
-begin
-  Result := False;  {
-  if StrToInt(GetVersaoAppNoBuild) > StrToInt(Sistema.VersaoDB) then
-  begin
-    MsgAviso('Nova versão do sistema encontrada.' + #13#10 +
-      'A atualização automáticamente iniciará agora.', 'Nova versão');
-    if ComputerIsServer then
-    begin
-      GetDataModule.Conexao.Connected := False;
-      frmLogAtualizacao := TfrmLogAtualizacao.Create(Self);
-      if frmLogAtualizacao.ShowModal <> mrOk then
-      begin
-        MsgErro('Houveram problemas durante a atualização, entre em contado com suporte.');
-        Result := False;
-        Application.Terminate;
-      end
-      else
-      begin
-        MsgAviso('Atualização efetuada com sucesso. Versão ' + Sistema.VersaoApp + '.');
-        Result := True;
-        if not GetDataModule.Conexao.Connected then
-          GetDataModule.Conexao.Connected := True;
-      end;
-    end
-    else
-    begin
-      WinExec(PansiChar(ExtractFilePath(ParamStr(0)) + 'Update.exe rede'), SW_SHOW);
-      Application.Terminate;
-    end;
-  end
-  else if StrToInt(GetVersaoAppNoBuild) < StrToInt(Sistema.VersaoDB) then
-  begin
-    MsgCuidado('A versão da base de dados é mais recente que a versão do executável.' + #13 +
-      'Entre em contato com suporte. ' +
-      'O sistema será finalizado.');
-    Result := False;
-    Application.Terminate;
-  end;   }
-end;
-
-procedure TfrmPrincipal.VerificaHD;
-var
-  Server: string;
-begin       {
-  Server := AnsiUpperCase(ReadIniFile('Conexao', 'Servidor'));
-  Sistema.Atualizar;
-  if ((Server = '127.0.0.1') or (Server = GetComputerName)) then
-  begin
-    if not ValidaHD(Sistema.HD, SerialHD(Copy(Application.ExeName, 1, 1)), GetConnection) then
-    begin
-      SistemaOk := False;
-      Application.Terminate;
-    end;
-  end;   }
-end;
-
-procedure TfrmPrincipal.btnBackupClick(Sender: TObject);
-begin
-  if miBackup.Enabled then
-    miBackup.Click;
-end;
-
 procedure TfrmPrincipal.btnAtualizarClick(Sender: TObject);
 begin
   if miAtualizacao.Enabled then
     actAtualizacao.Execute;
-end;
-
-procedure TfrmPrincipal.pmiMinimizarClick(Sender: TObject);
-begin
-  Application.Minimize;
-end;
-
-procedure TfrmPrincipal.pmiMaximizarClick(Sender: TObject);
-begin
-  Application.Restore;
-end;
-
-procedure TfrmPrincipal.pmiFecharClick(Sender: TObject);
-begin
-  if miFechar.Enabled then
-    actFechar.Execute;
 end;
 
 procedure TfrmPrincipal.pmiAtualizacaoClick(Sender: TObject);
@@ -1102,9 +746,6 @@ begin
   if Assigned(Sistema) then
    FreeAndNil( Sistema );
 
-  //DestroyIcone;
-  if (fbitmap <> nil) then
-    FBitmap.Free;
 end;
 
 procedure TfrmPrincipal.actPromocaoExecute(Sender: TObject);
@@ -1118,87 +759,6 @@ begin
     miPromocoes.Click;
 end;
 
-procedure TfrmPrincipal.VerificacaoAutomatica;
-begin
-  ChamaForm('TfrmForceAtualizacao', 'Atualização', UniApplication);
-end;
-
-procedure TfrmPrincipal.CopiaAutomatica;
-begin
-  pb := TProgressBar.Create(Self);
-  pb.Height := 15;
-  pb.Width := Trunc(sbPrincipal.Width div 3);
-  pb.Top := sbPrincipal.Top - pb.Height;
-  pb.Left := sbPrincipal.Left + Trunc(sbPrincipal.Width div 3) * 2;
-  pb.Parent := Self;
-
-  copiando := True;
-end;
-
-
-procedure TfrmPrincipal.sbPrincipalMouseMove(Sender: TObject;
-  Shift: TShiftState; X, Y: Integer);
-var
-  BarWidth: Integer;
-begin
-  try
-    sbPrincipal.ShowHint := False;
-    BarWidth := sbPrincipal.Width div 3;
-    if X < BarWidth then
-      sbPrincipal.Hint := 'Usuário logado'
-    else
-    if (X > BarWidth) and (X < (sbPrincipal.Width - BarWidth)) then
-      sbPrincipal.Hint := 'Servidor de dados'
-    else
-    if X > (BarWidth * 2) then
-      sbPrincipal.Hint := 'Nome do computador';
-  finally
-    sbPrincipal.ShowHint := True;
-  end;
-end;
-
-procedure TfrmPrincipal.FormPaint(Sender: TObject);
-var
-  i, j: Integer;
-  linhas, colunas: Integer;
-  rect: TRect;
-begin
-  if Configuracao.OrientPapelParede = '0' then
-  begin
-    linhas := height div FBitmap.height;
-
-    if height mod FBitmap.height <> 0 then
-      inc(linhas);
-
-    colunas := width div FBitmap.width;
-
-    if width mod FBitmap.width <> 0 then
-      inc(colunas);
-
-    for i := 0 to linhas - 1 do
-      for j := 0 to colunas - 1 do
-        canvas.draw(j * FBitmap.width, i * FBitmap.height, FBitmap);
-  end
-  else
-  begin
-    rect.Left := 0;
-    rect.Top := 0;
-    rect.Right := Application.MainForm.ClientWidth;
-    rect.Bottom := Application.MainForm.ClientHeight;
-    Canvas.StretchDraw(rect, FBitmap);
-  end;
-end;
-
-procedure TfrmPrincipal.InfoAvisos;
-begin
-  if Configuracao.InfoAvisos then
-    ChamaForm('TfrmInfoAvisos', 'Informaçãoes e avisos', UniApplication);
-end;
-
-procedure TfrmPrincipal.actInfoAvisosExecute(Sender: TObject);
-begin
-  ChamaForm('TfrminfoAvisos', 'Informações e avisos', UniApplication);
-end;
 
 function TfrmPrincipal.ValidaDataAcesso(DataEncriptada: string;
   DataAtual: TDateTime; Connection: TSQLConnection): Boolean;
@@ -1307,34 +867,10 @@ begin
   end;
 end;
 
-procedure TfrmPrincipal.TerminateCopia(Sender: TObject);
-begin
-  if Assigned(pb) then pb.Free;
-  copiando := False;
-
-  //if Configuracao.VerificaUPD and NetIsPresent then
-  //  VerificacaoAutomatica;
-end;
-
-procedure TfrmPrincipal.ZipProgress(const Status: string; const PerCent: Integer);
-begin
-  pb.Hint := Status;
-  pb.Position := PerCent;
-end;
-
-procedure TfrmPrincipal.miRepararIndicesClick(Sender: TObject);
-begin
-  ChamaForm('TfrmRepararIndice', 'Reparar índices', UniApplication);
-end;
 
 procedure TfrmPrincipal.miVisualizarDadosClick(Sender: TObject);
 begin
   ChamaForm('TfrmVisualizarDados', 'Visualizar Dados', UniApplication);
-end;
-
-procedure TfrmPrincipal.miCriarLogClick(Sender: TObject);
-begin
-  ChamaForm('TfrmCriaTabelaLog', 'Criar tabelas de log de registro', UniApplication);
 end;
 
 procedure TfrmPrincipal.miAuditoriaClick(Sender: TObject);
@@ -1352,81 +888,7 @@ begin
   ChamaForm('TfrmAuditoriaRegistro', 'Auditoria de registros', UniApplication);
 end;
 
-function TfrmPrincipal.ComputerIsServer: Boolean;
-begin
-  with TIniFile.Create(ExtractFilePath(ParamStr(0))+'cfg.ini') do try
-  Result :=
-    ((ReadString('Conexao', 'Servidor','localhost') = '127.0.0.1') or
-    (ReadString('Conexao', 'Servidor','localhost') = GetComputerName));
-  finally
-    free;
-  end;
-end;
-
-procedure TfrmPrincipal.ExportaMenu(filename: string);
-
-  procedure AddLinha(pId: Integer; pName: String; pParent: Integer;
-    pOrdem: Integer; MenuItem: TMenuItem; sl: TStringList);
-  begin
-    sl.AddObject('insert into MENU ' +
-      'select cast(' + IntToStr(pId) + ' as INTEGER), '+
-      'cast(' + #39 + pName    + #39 + ' as VARCHAR(80)), ' +
-      'cast(' + IntToStr(pOrdem) + ' as INTEGER), ' +
-      'cast(' + IfThen(pParent > 0, IntToStr(pParent), 'NULL') + ' as INTEGER), ' +
-      'cast(1 as INTEGER)'+
-      ' from RDB$DATABASE;', MenuItem);
-  end;
-
-  procedure AddItem(MenuItem: TMenuItem; sl: TStringList; Root: Boolean);
-  var IdPai, x: Integer;
-  begin
-    if not MenuItem.IsLine then
-    begin
-      if not Root then
-      begin
-        for x := 0 to sl.Count - 1 do
-        begin
-          if sl.Objects[x] = MenuItem.Parent then
-          begin
-            IdPai := x + 1;
-            Break;
-          end;
-        end;
-      end
-      else
-        IdPai := 1;
-      AddLinha(sl.Count + 1, MenuItem.Name, IdPai, MenuItem.MenuIndex + 1,
-        MenuItem, sl);
-      for x := 0 to MenuItem.Count - 1 do
-        AddItem(MenuItem.Items[x], sl, False);
-    end;
-  end;
-
-var
-  x  : Integer;
-  sl : TStringList;
-begin
-  inherited;
-  sl := TStringList.Create;
-  AddLinha(1, 'CPR', -1, 1, nil, sl);
-
-  for x := 0 to mnPrincipal.Items.Count - 1 do
-  begin
-    if mnPrincipal.Items[x].Tag  = 0 then
-      AddItem(mnPrincipal.Items[x], sl, True);
-  end;
-
-  sl.savetofile(filename);
-end;
-
-procedure TfrmPrincipal.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-//  if (ssCtrl in Shift) and (ssAlt in Shift) and (Key = VK_F10) then
-//    ExportaMenu(ExtractFilePath(ParamStr(0))+'menu.sql');
-end;
-
 initialization
-  RegisterAppFormClass(TfrmPrincipal);
+  RegisterMainFormClass(TfrmPrincipal);
 
 end.

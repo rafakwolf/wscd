@@ -96,7 +96,6 @@ type
     cdsPadraoOBS: TMemoField;
     sqldPadraoVALOR_ESTOQUE: TSingleField;
     cdsPadraoVALOR_ESTOQUE: TSingleField;
-    btnObs: TUniBitBtn;
     dbeUnidade: TUniDBEdit;
     dbeGrupo: TUniDBEdit;
     dbeFornecedor: TUniDBEdit;
@@ -120,6 +119,7 @@ type
     bvlLinha2: TUniPanel;
     bvlLinha3: TUniPanel;
     dbckbPromocao: TUniDBCheckBox;
+    dbeObs: TUniDBEdit;
     procedure dbeUnidadeClickButton(Sender: TObject);
     procedure dbeFornecedorClickButton(Sender: TObject);
     procedure dbeGrupoClickButton(Sender: TObject);
@@ -155,8 +155,6 @@ type
     procedure dbeCodigoBarraKeyPress(Sender: TObject; var Key: Char);
     procedure cdsPadraoCODBARRASetText(Sender: TField; const Text: String);
     procedure miAjustaCodBarraClick(Sender: TObject);
-    procedure dsPadraoStateChange(Sender: TObject);
-    procedure btnObsClick(Sender: TObject);
     procedure miRelVencidosClick(Sender: TObject);
     procedure dspPadraoGetTableName(Sender: TObject; DataSet: TDataSet;
       var TableName: WideString);
@@ -173,7 +171,7 @@ implementation
 
 uses unModeloConsulta, Funcoes, VarGlobal, unEtiquetaProduto,
       unRelatorioListaPrecos, Extensos, uConfiguraRelatorio,
-     unPrevProdutosVencimento, unAguarde, System.Math, uDatabaseutils;
+     unPrevProdutosVencimento, System.Math, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -539,7 +537,7 @@ begin
   Erro := False;
   try
     try
-      TfrmAguarde.Execute('Ajustando, aguarde...');
+
       AjustaRequires(False); // dexa todos os fields como não requeridos para evitar erros...
       cdsPadrao.First;
       cdsPadrao.DisableControls;
@@ -560,7 +558,7 @@ begin
     end;
   finally
     BringWindowToTop(Handle);
-    FreeAndNil(frmAguarde);
+
     if not Erro then
       MsgAviso('Ajuste de códigos de barras concluído!');
     AjustaRequires(True); // volta os campos requeridos...
@@ -568,23 +566,11 @@ begin
   end;
 end;
 
-procedure TfrmProduto.dsPadraoStateChange(Sender: TObject);
-begin
-  inherited;
-  //miAjustaCodBarra.Enabled := not EditModes;
-end;
-
 procedure TfrmProduto.dspPadraoGetTableName(Sender: TObject; DataSet: TDataSet;
   var TableName: WideString);
 begin
   inherited;
   TableName := 'PRODUTOS';
-end;
-
-procedure TfrmProduto.btnObsClick(Sender: TObject);
-begin
-  inherited;
-  FormMemo(dsPadrao, 'OBS');
 end;
 
 procedure TfrmProduto.miRelVencidosClick(Sender: TObject);

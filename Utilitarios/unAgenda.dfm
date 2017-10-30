@@ -1,36 +1,24 @@
 inherited frmAgenda: TfrmAgenda
-  ClientHeight = 278
-  ClientWidth = 475
+  ClientHeight = 389
+  ClientWidth = 545
   Caption = 'frmAgenda'
   OldCreateOrder = True
-  Menu = mmPadrao
-  ExplicitWidth = 481
-  ExplicitHeight = 327
+  ExplicitWidth = 551
+  ExplicitHeight = 418
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
-    Top = 259
-    Width = 475
-    ExplicitTop = 259
-    ExplicitWidth = 475
+    Top = 370
+    Width = 545
+    ExplicitTop = 370
+    ExplicitWidth = 545
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 475
-    TabOrder = 4
-    ExplicitWidth = 475
-  end
-  object btnObs: TUniBitBtn [2]
-    Left = 56
-    Top = 232
-    Width = 97
-    Height = 25
-    Hint = ''
-    ShowHint = True
-    Caption = '&Observa'#231#227'o'
+    Width = 545
     TabOrder = 3
-    OnClick = btnObsClick
+    ExplicitWidth = 545
   end
-  object dbeNome: TUniDBEdit [3]
+  object dbeNome: TUniDBEdit [2]
     Left = 56
     Top = 56
     Width = 329
@@ -41,7 +29,7 @@ inherited frmAgenda: TfrmAgenda
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeFax: TUniDBEdit [4]
+  object dbeFax: TUniDBEdit [3]
     Left = 56
     Top = 200
     Width = 161
@@ -52,7 +40,7 @@ inherited frmAgenda: TfrmAgenda
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object grpTelefone: TUniGroupBox [5]
+  object grpTelefone: TUniGroupBox [4]
     Left = 56
     Top = 88
     Width = 201
@@ -96,18 +84,28 @@ inherited frmAgenda: TfrmAgenda
       TabOrder = 2
     end
   end
+  object dbmObs: TUniDBMemo [5]
+    Left = 56
+    Top = 227
+    Width = 345
+    Height = 89
+    Hint = ''
+    ShowHint = True
+    DataField = 'OBS'
+    DataSource = dsPadrao
+    TabOrder = 5
+  end
   inherited actlNavigateActions: TActionList
-    Left = 320
-    Top = 108
+    Left = 328
+    Top = 100
     inherited actPrint: TAction
       Hint = 'Listagem de telefones'
       ShortCut = 0
-      OnExecute = actPrintExecute
     end
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 399
+    Left = 487
     Top = 172
   end
   object sqldPadrao: TSQLDataSet
@@ -116,8 +114,8 @@ inherited frmAgenda: TfrmAgenda
       'ELEFONE3, '#13#10'  FAX, '#13#10'  OBS '#13#10'from AGENDA'
     MaxBlobSize = -1
     Params = <>
-    Left = 304
-    Top = 172
+    Left = 296
+    Top = 164
     object sqldPadraoIDAGENDA: TIntegerField
       FieldName = 'IDAGENDA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -149,16 +147,15 @@ inherited frmAgenda: TfrmAgenda
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     UpdateMode = upWhereKeyOnly
-    Left = 336
+    Left = 360
     Top = 172
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 368
-    Top = 172
+    Left = 432
+    Top = 164
     object cdsPadraoIDAGENDA: TIntegerField
       FieldName = 'IDAGENDA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -185,21 +182,6 @@ inherited frmAgenda: TfrmAgenda
       FieldName = 'OBS'
       BlobType = ftMemo
       Size = 1
-    end
-  end
-  object mmPadrao: TUniMainMenu
-    Left = 400
-    Top = 92
-    object miRelatorios: TUniMenuItem
-      Caption = ''
-      ImageIndex = 10
-      ShortCut = 16464
-      object mImprimir: TUniMenuItem
-        Caption = 'Listagem de telefones'
-      end
-      object N5: TUniMenuItem
-        Caption = '-'
-      end
     end
   end
 end

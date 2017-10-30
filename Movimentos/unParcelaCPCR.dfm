@@ -13,7 +13,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   object lbParcelas: TUniLabel
     Left = 232
     Top = 48
-    Width = 48
+    Width = 40
     Height = 13
     Hint = ''
     ShowHint = True
@@ -23,7 +23,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   object lbPrazoInicio: TUniLabel
     Left = 312
     Top = 48
-    Width = 70
+    Width = 57
     Height = 13
     Hint = ''
     ShowHint = True
@@ -33,7 +33,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   object lbIntervalo: TUniLabel
     Left = 392
     Top = 48
-    Width = 52
+    Width = 44
     Height = 13
     Hint = ''
     ShowHint = True

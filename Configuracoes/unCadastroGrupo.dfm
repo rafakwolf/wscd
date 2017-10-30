@@ -1,22 +1,22 @@
 inherited frmCadastroGrupo: TfrmCadastroGrupo
   ClientHeight = 156
-  ClientWidth = 606
+  ClientWidth = 529
   Caption = 'frmCadastroGrupo'
   OldCreateOrder = True
-  ExplicitWidth = 612
+  ExplicitWidth = 535
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 137
-    Width = 606
+    Width = 529
     ExplicitTop = 137
-    ExplicitWidth = 393
+    ExplicitWidth = 606
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 606
+    Width = 529
     TabOrder = 2
-    ExplicitWidth = 393
+    ExplicitWidth = 606
   end
   object dbeNomeGrupo: TUniDBEdit [2]
     Left = 62
@@ -41,20 +41,20 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
     TabOrder = 0
   end
   inherited actlNavigateActions: TActionList
-    Left = 432
-    Top = 92
+    Left = 392
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 535
+    Left = 407
+    Top = 100
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  CODGRUPO, '#13#10'  DESCRICAO '#13#10'from GRUPOS'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 272
-    Top = 28
+    Left = 176
+    Top = 84
     object sqldPadraoCODGRUPO: TIntegerField
       FieldName = 'CODGRUPO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -69,16 +69,15 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 344
-    Top = 28
+    Left = 248
+    Top = 84
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 432
-    Top = 36
+    Left = 304
+    Top = 44
     object cdsPadraoCODGRUPO: TIntegerField
       FieldName = 'CODGRUPO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]

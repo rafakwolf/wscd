@@ -7,7 +7,8 @@ uses
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, VarGlobal,
     Mask, FMTBcd, System.Actions, uniBitBtn, uniButton, uniSpeedButton,
-  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit;
+  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
+  uniMemo, uniDBMemo;
 
 type
   TfrmFornecedor = class(TfrmPadrao)
@@ -59,7 +60,6 @@ type
     cdsPadraoDATACAD: TDateField;
     sqldPadraoTIPO: TStringField;
     cdsPadraoTIPO: TStringField;
-    btnObservacoes: TUniBitBtn;
     btnContas: TUniBitBtn;
     dbdDataCadastro: TUniDBEdit;
     dbeCidade: TUniDBEdit;
@@ -78,12 +78,12 @@ type
     dbeNomeFantazia: TUniDBEdit;
     dbeEmail: TUniDBEdit;
     bvlLinha: TUniPanel;
+    dbmObs: TUniDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure miRelFornDataClick(Sender: TObject);
     procedure dbeCidadeClickButton(Sender: TObject);
     procedure miRelPorCidadeClick(Sender: TObject);
-    procedure btnObservacoesClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cdsPadraoCIDADEValidate(Sender: TField);
     procedure btnContasClick(Sender: TObject);
@@ -105,7 +105,7 @@ var
 implementation
 
 uses Funcoes, unModeloConsulta, ConstPadrao, unPrevRelFornData,
-     uConfiguraRelatorio, unContasPagar, Extensos, unAguarde, uDatabaseutils;
+     uConfiguraRelatorio, unContasPagar, Extensos, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -151,12 +151,6 @@ procedure TfrmFornecedor.miRelPorCidadeClick(Sender: TObject);
 begin
   inherited;
   ChamaForm('TfrmRelatorioFornecedorCidade', 'Fornecedores por cidade', Self);
-end;
-
-procedure TfrmFornecedor.btnObservacoesClick(Sender: TObject);
-begin
-  inherited;
-  FormMemo(dsPadrao, 'OBS');
 end;
 
 procedure TfrmFornecedor.FormClose(Sender: TObject;
@@ -249,7 +243,7 @@ begin
   try
     try
       Erro := False;
-      TfrmAguarde.Execute('Ajustando, aguarde...');
+
       AjustaRequires(False);
       cdsPadrao.First;
       cdsPadrao.DisableControls;
@@ -271,7 +265,7 @@ begin
       raise Exception.Create('Erro ao ajustar CNPJs.');
     end;
   finally
-    frmAguarde.Fecha;
+
     if not Erro then
       MsgAviso('Ajuste de CNPJs concluído!');
     AjustaRequires(True);

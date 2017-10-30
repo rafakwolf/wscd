@@ -275,7 +275,7 @@ implementation
 uses Funcoes, unModeloConsulta, VarGlobal, unPagamentoVenda,
      unImportaOrcam, unPagamentoCheque,
      unParcelaVenda, unRelatorioBobinaVenda, unPrevNotaVenda,
-     unPrevNotaVendaMatric, unAguarde, unDmPrincipal, udatabaseutils,
+     unPrevNotaVendaMatric, unDmPrincipal, udatabaseutils,
      System.Math;
 
 {$R *.dfm}
@@ -337,7 +337,7 @@ var
   NumRegs: Integer;
 begin
   try
-    TfrmAguarde.Execute('Preparando dados...');
+
     cdsSelecao.Open;
     cdsProdutos.Open;
     cdsClientes.Open;
@@ -351,7 +351,7 @@ begin
 
         if (NumRegs > 0) then
         begin
-          frmAguarde.Fecha;
+
           if MsgSn('Existe(m) ' + IntToStr(NumRegs) +
             ' Vendas(s) não concluída(s). Por favor verifique, pois estas podem' +
             ' causar inconsistências no banco de dados, e no controle de estoque.'+#13#10+
@@ -365,8 +365,6 @@ begin
     end;
     SQLPadraoTela := sqlVendas.SQL.GetText;
   finally
-    if frmAguarde.Visible then
-      frmAguarde.Fecha;
   end;
 end;
 

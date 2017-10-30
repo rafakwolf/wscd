@@ -1,48 +1,37 @@
 inherited frmFornecedor: TfrmFornecedor
   Left = 139
   Top = 147
-  ClientHeight = 364
+  ClientHeight = 428
   ClientWidth = 705
   Caption = 'frmFornecedor'
   OldCreateOrder = True
   ExplicitWidth = 711
-  ExplicitHeight = 393
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
-    Top = 345
+    Top = 409
     Width = 705
     ExplicitTop = 345
     ExplicitWidth = 705
   end
   inherited pnBotoesPadrao: TUniContainerPanel
     Width = 705
-    TabOrder = 17
+    TabOrder = 16
     ExplicitWidth = 705
   end
-  object btnObservacoes: TUniBitBtn [2]
-    Left = 592
-    Top = 304
-    Width = 105
-    Height = 25
-    Hint = ''
-    ShowHint = True
-    Caption = 'Observa'#231#245'es'
-    TabOrder = 16
-    OnClick = btnObservacoesClick
-  end
-  object btnContas: TUniBitBtn [3]
-    Left = 504
-    Top = 304
+  object btnContas: TUniBitBtn [2]
+    Left = 576
+    Top = 360
     Width = 81
     Height = 25
     Hint = ''
     ShowHint = True
     Caption = '&Contas'
-    TabOrder = 19
+    TabOrder = 18
     OnClick = btnContasClick
   end
-  object dbdDataCadastro: TUniDBEdit [4]
+  object dbdDataCadastro: TUniDBEdit [3]
     Left = 280
     Top = 196
     Width = 129
@@ -53,7 +42,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 11
   end
-  object dbeCidade: TUniDBEdit [5]
+  object dbeCidade: TUniDBEdit [4]
     Left = 320
     Top = 152
     Width = 299
@@ -66,7 +55,7 @@ inherited frmFornecedor: TfrmFornecedor
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeTelefoneVendedor: TUniDBEdit [6]
+  object dbeTelefoneVendedor: TUniDBEdit [5]
     Left = 544
     Top = 264
     Width = 153
@@ -77,7 +66,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 14
   end
-  object dbeEmailVendedor: TUniDBEdit [7]
+  object dbeEmailVendedor: TUniDBEdit [6]
     Left = 8
     Top = 308
     Width = 361
@@ -89,7 +78,7 @@ inherited frmFornecedor: TfrmFornecedor
     CharCase = ecLowerCase
     TabOrder = 15
   end
-  object dbeNomeVendedor: TUniDBEdit [8]
+  object dbeNomeVendedor: TUniDBEdit [7]
     Left = 8
     Top = 264
     Width = 529
@@ -100,7 +89,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 13
   end
-  object dbeFax: TUniDBEdit [9]
+  object dbeFax: TUniDBEdit [8]
     Left = 144
     Top = 196
     Width = 129
@@ -111,7 +100,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 10
   end
-  object dbeTelefone: TUniDBEdit [10]
+  object dbeTelefone: TUniDBEdit [9]
     Left = 8
     Top = 196
     Width = 129
@@ -122,7 +111,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 9
   end
-  object dbeInscEstadual: TUniDBEdit [11]
+  object dbeInscEstadual: TUniDBEdit [10]
     Left = 176
     Top = 108
     Width = 129
@@ -133,7 +122,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeCnpj: TUniDBEdit [12]
+  object dbeCnpj: TUniDBEdit [11]
     Left = 8
     Top = 108
     Width = 161
@@ -144,7 +133,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeCep: TUniDBEdit [13]
+  object dbeCep: TUniDBEdit [12]
     Left = 216
     Top = 152
     Width = 97
@@ -155,7 +144,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbeBairro: TUniDBEdit [14]
+  object dbeBairro: TUniDBEdit [13]
     Left = 8
     Top = 152
     Width = 201
@@ -166,7 +155,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbeEstado: TUniDBEdit [15]
+  object dbeEstado: TUniDBEdit [14]
     Left = 648
     Top = 152
     Width = 49
@@ -177,7 +166,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 8
   end
-  object dbeEndereco: TUniDBEdit [16]
+  object dbeEndereco: TUniDBEdit [15]
     Left = 312
     Top = 108
     Width = 385
@@ -188,7 +177,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbeNomeRzSocial: TUniDBEdit [17]
+  object dbeNomeRzSocial: TUniDBEdit [16]
     Left = 8
     Top = 64
     Width = 305
@@ -199,7 +188,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeNomeFantazia: TUniDBEdit [18]
+  object dbeNomeFantazia: TUniDBEdit [17]
     Left = 320
     Top = 64
     Width = 377
@@ -210,7 +199,7 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeEmail: TUniDBEdit [19]
+  object dbeEmail: TUniDBEdit [18]
     Left = 416
     Top = 196
     Width = 281
@@ -222,19 +211,30 @@ inherited frmFornecedor: TfrmFornecedor
     CharCase = ecLowerCase
     TabOrder = 12
   end
-  object bvlLinha: TUniPanel [20]
+  object bvlLinha: TUniPanel [19]
     Left = 8
     Top = 232
     Width = 689
     Height = 2
     Hint = ''
     ShowHint = True
-    TabOrder = 20
+    TabOrder = 19
     Caption = 'bvlLinha'
   end
+  object dbmObs: TUniDBMemo [20]
+    Left = 8
+    Top = 338
+    Width = 449
+    Height = 47
+    Hint = ''
+    ShowHint = True
+    DataField = 'OBS'
+    DataSource = dsPadrao
+    TabOrder = 20
+  end
   inherited actlNavigateActions: TActionList
-    Left = 408
-    Top = 4
+    Left = 560
+    Top = 212
     inherited actPrint: TAction
       Hint = 'Listagem de fornecedores'
       ShortCut = 0

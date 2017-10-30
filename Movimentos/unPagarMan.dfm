@@ -15,7 +15,7 @@ inherited frmPagarMan: TfrmPagarMan
   object lblVenc: TUniLabel
     Left = 120
     Top = 372
-    Width = 56
+    Width = 45
     Height = 13
     Hint = ''
     ShowHint = True
@@ -25,7 +25,7 @@ inherited frmPagarMan: TfrmPagarMan
   object lblBandaMagnetica: TUniLabel
     Left = 8
     Top = 292
-    Width = 99
+    Width = 82
     Height = 13
     Hint = ''
     ShowHint = True
@@ -35,7 +35,7 @@ inherited frmPagarMan: TfrmPagarMan
   object lblEmissao: TUniLabel
     Left = 8
     Top = 372
-    Width = 47
+    Width = 38
     Height = 13
     Hint = ''
     ShowHint = True

@@ -4,12 +4,10 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
   ClientWidth = 484
   Caption = 'frmPerfilPermissao'
   OldCreateOrder = True
-  Font.Height = -12
-  Font.Name = 'Verdana'
   ExplicitWidth = 490
   ExplicitHeight = 481
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 433
     Width = 484
@@ -19,43 +17,11 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
   inherited pnBotoesPadrao: TUniContainerPanel
     Width = 484
     ExplicitWidth = 484
-    inherited btnNovo: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Height = -12
-      Font.Name = 'Verdana'
-    end
   end
   object dbePerfil: TUniDBEdit [2]
-    Left = 37
+    Left = 48
     Top = 51
-    Width = 420
+    Width = 409
     Height = 22
     Hint = ''
     ShowHint = True
@@ -66,7 +32,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
   object grpItemMenu: TUniGroupBox [3]
     Left = 8
     Top = 88
-    Width = 449
+    Width = 468
     Height = 337
     Hint = ''
     ShowHint = True
@@ -76,48 +42,72 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     object edtBuscaItemMenu: TUniEdit
       Left = 208
       Top = 13
-      Width = 233
+      Width = 257
       Hint = ''
       ShowHint = True
       Text = 'Busca item do menu...'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -12
-      Font.Name = 'Verdana'
       TabOrder = 1
+      ClearButton = True
       OnChange = edtBuscaItemMenuChange
       OnExit = edtBuscaItemMenuExit
       OnEnter = edtBuscaItemMenuEnter
     end
     object dbgPerm: TUniDBGrid
-      Left = 8
-      Top = 39
-      Width = 433
+      Left = 2
+      Top = 46
+      Width = 464
       Height = 289
       Hint = ''
       ShowHint = True
       DataSource = dsPerfisConf
-      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
+      Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit, dgAutoRefreshRow]
       LoadMask.Message = 'Loading data...'
+      Align = alBottom
+      Anchors = [akLeft, akRight, akBottom]
       TabOrder = 0
       ParentColor = False
       Color = clWindow
+      OnCellContextClick = dbgPermCellContextClick
+      Columns = <
+        item
+          FieldName = 'ACAO_NOME'
+          Title.Caption = 'ACAO_NOME'
+          Width = 180
+          Font.Charset = ANSI_CHARSET
+        end
+        item
+          FieldName = 'ACAO_CAPTION'
+          Title.Caption = 'ACAO_CAPTION'
+          Width = 150
+          Font.Charset = ANSI_CHARSET
+        end
+        item
+          FieldName = 'LIBERADO'
+          Title.Caption = 'LIBERADO'
+          Width = 80
+          Font.Charset = ANSI_CHARSET
+          Alignment = taLeftJustify
+          CheckBoxField.BooleanFieldOnly = False
+          CheckBoxField.FieldValues = 'S;N'
+        end>
     end
   end
   inherited actlNavigateActions: TActionList
-    Left = 80
-    Top = 172
+    Left = 72
+    Top = 148
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 247
-    Top = 220
+    Left = 343
+    Top = 212
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from PERFIL'
     MaxBlobSize = -1
     Params = <>
-    Left = 152
+    Left = 72
     Top = 220
     object sqldPadraoIDPERFIL: TIntegerField
       FieldName = 'IDPERFIL'
@@ -130,16 +120,15 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
   end
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
-    Left = 184
+    Left = 168
     Top = 220
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 216
-    Top = 220
+    Left = 264
+    Top = 212
     object cdsPadraoIDPERFIL: TIntegerField
       FieldName = 'IDPERFIL'
       Required = True
@@ -165,8 +154,8 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
         ParamType = ptInput
         Size = 4
       end>
-    Left = 152
-    Top = 253
+    Left = 56
+    Top = 293
     object sqldPerfisConfIDITEMPERFIL: TIntegerField
       FieldName = 'IDITEMPERFIL'
       Required = True
@@ -193,8 +182,8 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     Aggregates = <>
     DataSetField = cdsPadraosqldPerfisConf
     Params = <>
-    Left = 216
-    Top = 253
+    Left = 240
+    Top = 293
     object cdsPerfisConfIDITEMPERFIL: TIntegerField
       FieldName = 'IDITEMPERFIL'
       Required = True
@@ -219,19 +208,19 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
   end
   object dsLigaPerfis: TDataSource
     DataSet = sqldPadrao
-    Left = 184
-    Top = 253
+    Left = 144
+    Top = 293
   end
   object dsPerfisConf: TDataSource
     DataSet = cdsPerfisConf
-    Left = 247
-    Top = 253
+    Left = 327
+    Top = 269
   end
   object Imagens: TImageList
-    Left = 120
-    Top = 220
+    Left = 280
+    Top = 148
     Bitmap = {
-      494C0101020004002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000E9EDFC00BEBF
       EE00000000000000000000000000000000000000000000000000000000000000
@@ -371,8 +360,8 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       000000000000}
   end
   object pmLiberaBloqueia: TUniPopupMenu
-    Left = 144
-    Top = 172
+    Left = 168
+    Top = 140
     object miLiberar: TUniMenuItem
       Caption = 'Liberar todos'
       OnClick = miLiberarClick

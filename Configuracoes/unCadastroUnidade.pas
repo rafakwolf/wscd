@@ -21,7 +21,6 @@ type
     cdsPadraoDESCRICAO: TStringField;
     dbeNomeUnidade: TUniDBEdit;
     dbeCodUnidade: TUniDBEdit;
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -33,16 +32,9 @@ var
 implementation
 
 uses
-  Funcoes, ConstPadrao, VarGlobal;
+  ConstPadrao;
 
 {$R *.dfm}
-
-procedure TfrmCadastroUnidade.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  //Incrementa('UNIDADES', cdsPadraoCODUNIDADE, GetConnection);
-  SetFocusIfCan(dbeNomeUnidade);
-end;
 
 procedure TfrmCadastroUnidade.FormCreate(Sender: TObject);
 begin

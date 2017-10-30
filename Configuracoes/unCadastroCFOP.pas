@@ -21,12 +21,10 @@ type
     cdsPadraoOPERACAO: TStringField;
     sqldPadraoCFNOTA: TStringField;
     cdsPadraoCFNOTA: TStringField;
-    lblDescricao: TUniLabel;
     dbeNomeCfop: TUniDBEdit;
     dbeCodCfop: TUniDBEdit;
     dbmCfNota: TUniDBMemo;
     procedure FormCreate(Sender: TObject);
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure actPrintExecute(Sender: TObject);
   private
   public
@@ -48,12 +46,6 @@ begin
   FieldNames := FN_CFOP;
   DisplayLabels := DL_CFOP;
   aCaption := 'Cfop';
-end;
-
-procedure TfrmCadastroCFOP.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  SetFocusIfCan(dbeCodCfop);
 end;
 
 procedure TfrmCadastroCFOP.actPrintExecute(Sender: TObject);

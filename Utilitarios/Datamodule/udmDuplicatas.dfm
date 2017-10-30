@@ -1,7 +1,8 @@
 inherited dmDuplicatas: TdmDuplicatas
+  OldCreateOrder = True
   Height = 294
   Width = 445
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLDataSet [0]
     CommandText = 
       'select'#13#10'  d.IDDUPLICATA,'#13#10'  d.NRODUPLICATA,'#13#10'  d.SACADO,'#13#10'  d.CP' +
       'F_CNPJ,'#13#10'  d.ENDERECO,'#13#10'  d.BAIRRO,'#13#10'  d.CEP,'#13#10'  d.IDCIDADE,'#13#10'  ' +
@@ -14,8 +15,8 @@ inherited dmDuplicatas: TdmDuplicatas
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 160
-    Top = 37
+    Left = 56
+    Top = 101
     object sqldPadraoIDDUPLICATA: TIntegerField
       FieldName = 'IDDUPLICATA'
       Required = True
@@ -102,13 +103,13 @@ inherited dmDuplicatas: TdmDuplicatas
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TDataSetProvider [1]
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
-    Left = 256
-    Top = 45
+    Left = 152
+    Top = 109
   end
-  object sqldDeleta: TSQLDataSet
+  object sqldDeleta: TSQLDataSet [2]
     CommandText = 'STPDELDUPLICATA'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'
@@ -119,7 +120,11 @@ inherited dmDuplicatas: TdmDuplicatas
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    Left = 104
-    Top = 140
+    Left = 56
+    Top = 20
+  end
+  inherited LocalConnection1: TLocalConnection
+    Left = 296
+    Top = 48
   end
 end

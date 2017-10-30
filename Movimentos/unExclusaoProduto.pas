@@ -54,7 +54,7 @@ var
 
 implementation
 
-uses Funcoes,  unAguarde, uDatabaseutils;
+uses Funcoes, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -147,13 +147,11 @@ end;
 procedure TfrmExclusaoProduto.FormCreate(Sender: TObject);
 begin
   try
-    TfrmAguarde.Execute('Ajustando dados...');
     inherited;
     CentralizaForm(Self);
     UpdateSingleField('UPDATE PRODUTOS SET EXCLUIR = '+QuotedStr('N'));
     cdsPadrao.Open;
   finally
-    FreeAndNil(frmAguarde);
   end;
 end;
 

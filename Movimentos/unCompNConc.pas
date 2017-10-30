@@ -38,8 +38,6 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormShow(Sender: TObject);
-    procedure GradeDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure FormCreate(Sender: TObject);
     procedure cdsCompCONCLUIDAGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
@@ -93,14 +91,6 @@ begin
     PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
-end;
-
-procedure TfrmCompNaoConc.GradeDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-//  GridZebrado(TDBGrid(Sender).DataSource.DataSet.RecNo, TDBGrid(Sender), Rect, DataCol,
-//    Column, State);
 end;
 
 procedure TfrmCompNaoConc.FormCreate(Sender: TObject);

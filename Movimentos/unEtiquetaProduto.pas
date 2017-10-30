@@ -43,7 +43,6 @@ type
     procedure miInserirTodosProdutosClick(Sender: TObject);
     procedure cdsPadraoCODBARRASetText(Sender: TField; const Text: String);
     procedure miAjustaCodigoBarraClick(Sender: TObject);
-    procedure dsPadraoStateChange(Sender: TObject);
     procedure miExcluirTudoClick(Sender: TObject);
     procedure miConfigurarClick(Sender: TObject);
   private
@@ -58,7 +57,7 @@ var
 implementation
 
 uses ConstPadrao, Funcoes, unModeloConsulta, ufmImprimeEtiq, 
-  unAguarde, Extensos;
+  Extensos;
 
 {$R *.dfm}
 
@@ -145,7 +144,7 @@ begin
         cdsProduto.Open;
         cdsProduto.First;
         cdsPadrao.DisableControls;
-        TfrmAguarde.Execute('Inserindo, aguarde...');
+
         while not cdsProduto.Eof do
         begin
           if not Existe(cdsProdutoCODBARRA.AsString) then
@@ -171,7 +170,7 @@ begin
       raise Exception.Create('Erro inserindo produtos em etiquetas.');
     end;
   finally
-    FreeAndNil(frmAguarde);
+
     if (not Erro) and OK then
       MsgAviso('Produtos inseridos com sucesso!');
     cdsProduto.Close;
@@ -214,7 +213,7 @@ begin
   Erro := False;
   try
     try
-      TfrmAguarde.Execute('Ajustando, aguarde...');
+
       AjustaRequires(False);
       cdsPadrao.First;
       cdsPadrao.DisableControls;
@@ -235,7 +234,7 @@ begin
     end;
   finally
     BringWindowToTop(Handle);
-    FreeAndNil(frmAguarde);
+
     if not Erro then
       MsgAviso('Ajuste de códigos de barras concluído!');
     AjustaRequires(True);
@@ -261,13 +260,6 @@ begin
     MsgAviso('Etiqueta com este código de barras já está cadastrada.');
     Abort;
   end;
-end;
-
-procedure TfrmEtiquetaProduto.dsPadraoStateChange(Sender: TObject);
-begin
-  inherited;
-//  miAjustaCodigoBarra.Enabled := not EditModes;
-//  miBuscaProduto.Enabled      := not EditModes;
 end;
 
 procedure TfrmEtiquetaProduto.miExcluirTudoClick(Sender: TObject);

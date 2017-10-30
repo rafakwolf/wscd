@@ -5,7 +5,6 @@ inherited frmProduto: TfrmProduto
   ClientWidth = 513
   Caption = 'frmProduto'
   OldCreateOrder = True
-  Font.Name = 'Verdana'
   ExplicitWidth = 519
   ExplicitHeight = 449
   PixelsPerInch = 96
@@ -18,45 +17,10 @@ inherited frmProduto: TfrmProduto
   end
   inherited pnBotoesPadrao: TUniContainerPanel
     Width = 513
-    TabOrder = 21
-    ExplicitWidth = 513
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-  end
-  object btnObs: TUniBitBtn [2]
-    Left = 398
-    Top = 360
-    Width = 99
-    Height = 25
-    Hint = ''
-    ShowHint = True
-    Caption = 'Observa'#231#227'o'
     TabOrder = 20
-    OnClick = btnObsClick
+    ExplicitWidth = 513
   end
-  object dbeUnidade: TUniDBEdit [3]
+  object dbeUnidade: TUniDBEdit [2]
     Left = 368
     Top = 64
     Width = 107
@@ -69,7 +33,7 @@ inherited frmProduto: TfrmProduto
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeGrupo: TUniDBEdit [4]
+  object dbeGrupo: TUniDBEdit [3]
     Left = 16
     Top = 196
     Width = 227
@@ -82,7 +46,7 @@ inherited frmProduto: TfrmProduto
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeFornecedor: TUniDBEdit [5]
+  object dbeFornecedor: TUniDBEdit [4]
     Left = 16
     Top = 152
     Width = 459
@@ -95,7 +59,7 @@ inherited frmProduto: TfrmProduto
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeQtdeRecebida: TUniDBEdit [6]
+  object dbeQtdeRecebida: TUniDBEdit [5]
     Left = 200
     Top = 252
     Width = 81
@@ -105,9 +69,8 @@ inherited frmProduto: TfrmProduto
     DataField = 'QTDERECEBIDA'
     DataSource = dsPadrao
     TabOrder = 10
-    Color = clInactiveCaptionText
   end
-  object dbeValorEstoque: TUniDBEdit [7]
+  object dbeValorEstoque: TUniDBEdit [6]
     Left = 400
     Top = 252
     Width = 97
@@ -117,9 +80,8 @@ inherited frmProduto: TfrmProduto
     DataField = 'VALOR_ESTOQUE'
     DataSource = dsPadrao
     TabOrder = 12
-    Color = clInactiveCaptionText
   end
-  object dbeTributacao: TUniDBEdit [8]
+  object dbeTributacao: TUniDBEdit [7]
     Left = 272
     Top = 196
     Width = 203
@@ -132,7 +94,7 @@ inherited frmProduto: TfrmProduto
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeEstoqueMinimo: TUniDBEdit [9]
+  object dbeEstoqueMinimo: TUniDBEdit [8]
     Left = 96
     Top = 252
     Width = 97
@@ -144,11 +106,10 @@ inherited frmProduto: TfrmProduto
     DataField = 'ESTOQUEMINIMO'
     DataSource = dsPadrao
     TabOrder = 9
-    Color = clInactiveCaptionText
     OnKeyDown = dbeEstoqueKeyDown
     OnKeyPress = dbeEstoqueMinimoKeyPress
   end
-  object dbeEstoque: TUniDBEdit [10]
+  object dbeEstoque: TUniDBEdit [9]
     Left = 16
     Top = 252
     Width = 73
@@ -160,11 +121,10 @@ inherited frmProduto: TfrmProduto
     DataField = 'ESTOQUE'
     DataSource = dsPadrao
     TabOrder = 8
-    Color = clInactiveCaptionText
     OnKeyDown = dbeEstoqueKeyDown
     OnKeyPress = dbeEstoqueKeyPress
   end
-  object dbePrecoVenda: TUniDBEdit [11]
+  object dbePrecoVenda: TUniDBEdit [10]
     Left = 208
     Top = 308
     Width = 105
@@ -181,7 +141,7 @@ inherited frmProduto: TfrmProduto
     OnExit = dbePrecoVendaExit
     OnKeyPress = dbePrecoVendaKeyPress
   end
-  object dbeLucro: TUniDBEdit [12]
+  object dbeLucro: TUniDBEdit [11]
     Left = 120
     Top = 308
     Width = 81
@@ -198,7 +158,7 @@ inherited frmProduto: TfrmProduto
     OnExit = dbeLucroExit
     OnKeyPress = dbeLucroKeyPress
   end
-  object dbePrecoCusto: TUniDBEdit [13]
+  object dbePrecoCusto: TUniDBEdit [12]
     Left = 16
     Top = 308
     Width = 97
@@ -214,7 +174,7 @@ inherited frmProduto: TfrmProduto
     Color = 8454143
     OnKeyPress = dbePrecoCustoKeyPress
   end
-  object dbePrecoPromocao: TUniDBEdit [14]
+  object dbePrecoPromocao: TUniDBEdit [13]
     Left = 320
     Top = 308
     Width = 89
@@ -230,7 +190,7 @@ inherited frmProduto: TfrmProduto
     Color = 8454143
     OnKeyPress = dbePrecoPromocaoKeyPress
   end
-  object dbdValidade: TUniDBEdit [15]
+  object dbdValidade: TUniDBEdit [14]
     Left = 120
     Top = 364
     Width = 97
@@ -241,7 +201,7 @@ inherited frmProduto: TfrmProduto
     DataSource = dsPadrao
     TabOrder = 19
   end
-  object dbePeso: TUniDBEdit [16]
+  object dbePeso: TUniDBEdit [15]
     Left = 16
     Top = 364
     Width = 97
@@ -253,7 +213,7 @@ inherited frmProduto: TfrmProduto
     TabOrder = 18
     OnKeyPress = dbePesoKeyPress
   end
-  object dbeNomeProduto: TUniDBEdit [17]
+  object dbeNomeProduto: TUniDBEdit [16]
     Left = 16
     Top = 108
     Width = 459
@@ -265,7 +225,7 @@ inherited frmProduto: TfrmProduto
     TabOrder = 4
     OnChange = dbeNomeProdutoChange
   end
-  object dbeCodigoBarra: TUniDBEdit [18]
+  object dbeCodigoBarra: TUniDBEdit [17]
     Left = 88
     Top = 64
     Width = 145
@@ -277,7 +237,7 @@ inherited frmProduto: TfrmProduto
     TabOrder = 1
     OnKeyPress = dbeCodigoBarraKeyPress
   end
-  object dbeCodigoInterno: TUniDBEdit [19]
+  object dbeCodigoInterno: TUniDBEdit [18]
     Left = 16
     Top = 64
     Width = 65
@@ -290,7 +250,7 @@ inherited frmProduto: TfrmProduto
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeReferencia: TUniDBEdit [20]
+  object dbeReferencia: TUniDBEdit [19]
     Left = 240
     Top = 64
     Width = 121
@@ -301,7 +261,7 @@ inherited frmProduto: TfrmProduto
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeDataReceb: TUniDBEdit [21]
+  object dbeDataReceb: TUniDBEdit [20]
     Left = 288
     Top = 252
     Width = 105
@@ -311,39 +271,38 @@ inherited frmProduto: TfrmProduto
     DataField = 'DATARECEBIDA'
     DataSource = dsPadrao
     TabOrder = 11
-    Color = clInactiveCaptionText
   end
-  object bvlLinha1: TUniPanel [22]
+  object bvlLinha1: TUniPanel [21]
     Left = 8
     Top = 280
     Width = 497
     Height = 2
     Hint = ''
     ShowHint = True
-    TabOrder = 23
+    TabOrder = 22
     Caption = 'bvlLinha1'
   end
-  object bvlLinha2: TUniPanel [23]
+  object bvlLinha2: TUniPanel [22]
     Left = 8
     Top = 336
     Width = 497
     Height = 2
     Hint = ''
     ShowHint = True
-    TabOrder = 24
+    TabOrder = 23
     Caption = 'bvlLinha2'
   end
-  object bvlLinha3: TUniPanel [24]
+  object bvlLinha3: TUniPanel [23]
     Left = 8
     Top = 224
     Width = 497
     Height = 2
     Hint = ''
     ShowHint = True
-    TabOrder = 25
+    TabOrder = 24
     Caption = 'bvlLinha3'
   end
-  object dbckbPromocao: TUniDBCheckBox [25]
+  object dbckbPromocao: TUniDBCheckBox [24]
     Left = 421
     Top = 310
     Width = 76
@@ -360,9 +319,20 @@ inherited frmProduto: TfrmProduto
     Color = clBtnFace
     ReadOnly = True
   end
+  object dbeObs: TUniDBEdit [25]
+    Left = 223
+    Top = 363
+    Width = 282
+    Height = 22
+    Hint = ''
+    ShowHint = True
+    DataField = 'OBS'
+    DataSource = dsPadrao
+    TabOrder = 25
+  end
   inherited actlNavigateActions: TActionList
-    Left = 388
-    Top = 4
+    Left = 412
+    Top = 188
     inherited actPrint: TAction
       Hint = 'Listagem de produtos'
       ShortCut = 0

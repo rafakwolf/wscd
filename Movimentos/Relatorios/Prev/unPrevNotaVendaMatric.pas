@@ -85,7 +85,7 @@ var
 
 implementation
 
-uses Funcoes, unAguarde;
+uses Funcoes;
 
 {$R *.dfm}
 

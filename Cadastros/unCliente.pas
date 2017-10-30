@@ -95,7 +95,7 @@ implementation
 
 uses Funcoes, ConstPadrao, unModeloConsulta, uConfiguraRelatorio,
      unPrevListagemClientes, VarGlobal,  unContasReceber,
-     Extensos, unAguarde, unFoto, udatabaseutils, udmCliente;
+     Extensos, unFoto, udatabaseutils, udmCliente;
 
 {$R *.dfm}
 

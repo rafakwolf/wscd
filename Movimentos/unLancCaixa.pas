@@ -36,25 +36,15 @@ type
     cdsPadraoDOCUMENTO: TStringField;
     cdsPadraoTIPO: TStringField;
     cdsPadraoEXCLUIR: TStringField;
-    pgcCaixa: TUniPageControl;
-    tsCadastro: TUniTabSheet;
-    rdgConta: TDBRadioGroup;
     sqldCaixasCODIGO: TIntegerField;
     sqldCaixasNOME: TStringField;
     sqldCaixasINATIVO: TStringField;
     cdsCaixasINATIVO: TStringField;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
-    lbDesc: TUniLabel;
-    lbDoc: TUniLabel;
     btnOk: TUniBitBtn;
     btnCancel: TUniBitBtn;
     btnNovo: TUniBitBtn;
-    dbDesc: TUniDBEdit;
-    dbDoc: TUniDBEdit;
-    dbeCaixa: TUniDBEdit;
-    dbeData: TUniDBEdit;
-    dbeValor: TUniDBEdit;
     procedure btnOkClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -134,41 +124,41 @@ end;
 
 function TfrmLancCaixa.CamposNulos: Boolean;
 begin
-  Result := False;
-  if (rdgConta.ItemIndex = -1) or
-     (ClearMask(dbeData.Text) = '') or
-     (dbDesc.Text = '') or
-     (dbDoc.Text = '') or
-     (dbeValor.Text = '') then
-  begin
-    Result := True;
-  end;
+//  Result := False;
+//  if (rdgConta.ItemIndex = -1) or
+//     (ClearMask(dbeData.Text) = '') or
+//     (dbDesc.Text = '') or
+//     (dbDoc.Text = '') or
+//     (dbeValor.Text = '') then
+//  begin
+//    Result := True;
+//  end;
 end;
 
 procedure TfrmLancCaixa.btnNovoClick(Sender: TObject);
 begin
-  case rdgConta.ItemIndex of
-    0:
-    begin
-      if cdsPadrao.State in [dsBrowse] then
-      begin
-        cdsPadrao.Insert;
-        cdsPadraoTIPO.AsString := 'C';
-        cdsPadraoEXCLUIR.AsString := 'N';
-        SetFocusIfCan(dbDesc);
-      end;
-    end;
-    1:
-    begin
-      if cdsPadrao.State in [dsBrowse] then
-      begin
-        cdsPadrao.Insert;
-        cdsPadraoTIPO.AsString := 'D';
-        cdsPadraoEXCLUIR.AsString := 'N';
-        SetFocusIfCan(dbDesc);
-      end;
-    end;
-  end;
+//  case rdgConta.ItemIndex of
+//    0:
+//    begin
+//      if cdsPadrao.State in [dsBrowse] then
+//      begin
+//        cdsPadrao.Insert;
+//        cdsPadraoTIPO.AsString := 'C';
+//        cdsPadraoEXCLUIR.AsString := 'N';
+//        SetFocusIfCan(dbDesc);
+//      end;
+//    end;
+//    1:
+//    begin
+//      if cdsPadrao.State in [dsBrowse] then
+//      begin
+//        cdsPadrao.Insert;
+//        cdsPadraoTIPO.AsString := 'D';
+//        cdsPadraoEXCLUIR.AsString := 'N';
+//        SetFocusIfCan(dbDesc);
+//      end;
+//    end;
+//  end;
 end;
 
 procedure TfrmLancCaixa.FormCreate(Sender: TObject);
@@ -251,7 +241,7 @@ end;
 
 procedure TfrmLancCaixa.FormShow(Sender: TObject);
 begin
-  SetFocusIfCan(dbDesc);
+  //SetFocusIfCan(dbDesc);
 end;
 
 procedure TfrmLancCaixa.rdgContaEnter(Sender: TObject);

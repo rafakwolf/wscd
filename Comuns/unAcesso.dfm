@@ -9,7 +9,6 @@ object frmAcesso: TfrmAcesso
   OldCreateOrder = False
   ShowHint = True
   OnClose = FormClose
-  OnActivate = FormActivate
   OnKeyDown = FormKeyDown
   BorderIcons = [biSystemMenu]
   KeyPreview = True

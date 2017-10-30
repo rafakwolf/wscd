@@ -18,42 +18,8 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     Width = 553
     TabOrder = 3
     ExplicitWidth = 553
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
   end
-  object lblDescricao: TUniLabel [2]
-    Left = 20
-    Top = 110
-    Width = 56
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    Caption = 'Descri'#231#227'o'
-    TabOrder = 5
-  end
-  object dbeNomeCfop: TUniDBEdit [3]
+  object dbeNomeCfop: TUniDBEdit [2]
     Left = 79
     Top = 82
     Width = 449
@@ -62,20 +28,26 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     ShowHint = True
     DataField = 'OPERACAO'
     DataSource = dsPadrao
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
     TabOrder = 1
+    FieldLabel = 'Nome'
   end
-  object dbeCodCfop: TUniDBEdit [4]
+  object dbeCodCfop: TUniDBEdit [3]
     Left = 79
     Top = 56
-    Width = 121
+    Width = 218
     Height = 21
     Hint = ''
     ShowHint = True
     DataField = 'NUMERO'
     DataSource = dsPadrao
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
     TabOrder = 0
+    FieldLabel = 'Cfop'
   end
-  object dbmCfNota: TUniDBMemo [5]
+  object dbmCfNota: TUniDBMemo [4]
     Left = 79
     Top = 108
     Width = 449
@@ -84,10 +56,14 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     ShowHint = True
     DataField = 'CFNOTA'
     DataSource = dsPadrao
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
     TabOrder = 2
+    FieldLabel = 'Descri'#231#227'o'
   end
   inherited actlNavigateActions: TActionList
-    Left = 256
+    Left = 128
+    Top = 180
     inherited actPrint: TAction
       Hint = 'Listagem'
       ShortCut = 0
@@ -96,16 +72,16 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 455
-    Top = 20
+    Left = 447
+    Top = 188
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select '#13#10'  NUMERO, '#13#10'  OPERACAO,'#13#10'  CFNOTA '#13#10'from CFOP'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 352
-    Top = 36
+    Left = 240
+    Top = 172
     object sqldPadraoNUMERO: TStringField
       FieldName = 'NUMERO'
       Required = True
@@ -123,17 +99,16 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
-    Left = 400
-    Top = 84
+    Left = 312
+    Top = 180
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     PacketRecords = 10
     Params = <>
     ProviderName = 'dspPadrao'
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 464
-    Top = 116
+    Left = 376
+    Top = 180
     object cdsPadraoNUMERO: TStringField
       FieldName = 'NUMERO'
       Required = True

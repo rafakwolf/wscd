@@ -19,11 +19,23 @@ inherited frmCliente: TfrmCliente
     Width = 785
     TabOrder = 31
     ExplicitWidth = 785
+    inherited btnAlterar: TUniSpeedButton
+      Left = 49
+      ExplicitLeft = 49
+    end
+    inherited btnConsultar: TUniSpeedButton
+      Left = 262
+      ExplicitLeft = 262
+    end
+    inherited btnSair: TUniSpeedButton
+      Left = 337
+      ExplicitLeft = 337
+    end
     inherited btnPrint: TUniSpeedButton
-      Left = 192
+      Left = 195
       Hint = ''
       Action = nil
-      ExplicitLeft = 192
+      ExplicitLeft = 195
     end
   end
   object pnFoto: TUniContainerPanel [2]
@@ -512,8 +524,8 @@ inherited frmCliente: TfrmCliente
     TabOrder = 0
   end
   inherited actlNavigateActions: TActionList
-    Left = 344
-    Top = 36
+    Left = 600
+    Top = 12
     inherited actPrint: TAction
       Hint = 'Listagem de clientes'
       ShortCut = 0
@@ -521,15 +533,15 @@ inherited frmCliente: TfrmCliente
     end
   end
   inherited dsPadrao: TDataSource
-    Left = 561
-    Top = 65532
+    Left = 721
+    Top = 36
   end
   object sqldCidade: TSQLDataSet
     CommandText = 'select * from CIDADES'
     MaxBlobSize = -1
     Params = <>
-    Left = 624
-    Top = 4
+    Left = 544
+    Top = 100
     object sqldCidadeCODCIDADE: TIntegerField
       FieldName = 'CODCIDADE'
       Required = True
@@ -541,15 +553,15 @@ inherited frmCliente: TfrmCliente
   end
   object dspCidade: TDataSetProvider
     DataSet = sqldCidade
-    Left = 656
-    Top = 4
+    Left = 624
+    Top = 100
   end
   object cdsCidade: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCidade'
-    Left = 696
-    Top = 4
+    Left = 712
+    Top = 108
     object cdsCidadeCODCIDADE: TIntegerField
       FieldName = 'CODCIDADE'
       Required = True

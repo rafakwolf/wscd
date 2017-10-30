@@ -1,20 +1,20 @@
 inherited frmBanco: TfrmBanco
   ClientHeight = 156
-  ClientWidth = 433
+  ClientWidth = 472
   Caption = 'frmBanco'
   OldCreateOrder = True
-  ExplicitWidth = 439
+  ExplicitWidth = 478
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 137
-    Width = 433
+    Width = 472
     ExplicitTop = 137
     ExplicitWidth = 433
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 433
+    Width = 472
     TabOrder = 2
     ExplicitWidth = 433
   end

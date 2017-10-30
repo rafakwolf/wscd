@@ -5,7 +5,6 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   ClientWidth = 475
   Caption = 'frmUsuarioItemMenu'
   OldCreateOrder = True
-  Font.Name = 'Verdana'
   ExplicitWidth = 481
   ExplicitHeight = 541
   PixelsPerInch = 96
@@ -19,30 +18,6 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   inherited pnBotoesPadrao: TUniContainerPanel
     Width = 475
     ExplicitWidth = 475
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
   end
   object dbeSenha: TUniDBEdit [2]
     Left = 64

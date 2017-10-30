@@ -20,56 +20,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     TabOrder = 21
     ExplicitWidth = 545
   end
-  object lbSacado: TUniLabel [2]
-    Left = 8
-    Top = 256
-    Width = 55
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    AutoSize = False
-    Caption = 
-      'Sacado----------------------------------------------------------' +
-      '--------------------------------------------------------------'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    TabOrder = 23
-  end
-  object lbPracaPag: TUniLabel [3]
-    Left = 8
-    Top = 440
-    Width = 55
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    AutoSize = False
-    Caption = 
-      'Pra'#231'a de pagamento----------------------------------------------' +
-      '-----------------------------------------------------'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    ParentColor = False
-    Color = clBtnFace
-    Transparent = False
-    TabOrder = 24
-  end
-  object lbFatura: TUniLabel [4]
-    Left = 8
-    Top = 48
-    Width = 55
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    AutoSize = False
-    Caption = 'Fatura-------------------------------------------------------'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    TabOrder = 25
-  end
-  object lbDuplicata: TUniLabel [5]
+  object lbDuplicata: TUniLabel [2]
     Left = 8
     Top = 112
     Width = 55
@@ -83,23 +34,9 @@ inherited frmDuplicatas: TfrmDuplicatas
     ParentFont = False
     Font.Charset = ANSI_CHARSET
     Font.Name = 'Verdana'
-    TabOrder = 26
+    TabOrder = 23
   end
-  object lbDatas: TUniLabel [6]
-    Left = 273
-    Top = 48
-    Width = 55
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    AutoSize = False
-    Caption = 'Datas---------------------------------------------------------'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    TabOrder = 27
-  end
-  object dbeDataEmissao: TUniDBEdit [7]
+  object dbeDataEmissao: TUniDBEdit [3]
     Left = 280
     Top = 84
     Width = 121
@@ -110,7 +47,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeCidade: TUniDBEdit [8]
+  object dbeCidade: TUniDBEdit [4]
     Left = 144
     Top = 412
     Width = 315
@@ -123,7 +60,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeDataPag: TUniDBEdit [9]
+  object dbeDataPag: TUniDBEdit [5]
     Left = 400
     Top = 148
     Width = 129
@@ -134,7 +71,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 7
   end
-  object dbeDataVenc: TUniDBEdit [10]
+  object dbeDataVenc: TUniDBEdit [6]
     Left = 408
     Top = 84
     Width = 121
@@ -145,7 +82,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeValor: TUniDBEdit [11]
+  object dbeValor: TUniDBEdit [7]
     Left = 144
     Top = 148
     Width = 121
@@ -158,7 +95,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     Color = clInactiveCaption
     OnExit = dbeValorExit
   end
-  object dbeDesconto: TUniDBEdit [12]
+  object dbeDesconto: TUniDBEdit [8]
     Left = 272
     Top = 148
     Width = 121
@@ -170,7 +107,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     TabOrder = 6
     OnExit = dbeDescontoExit
   end
-  object dbeValorFatura: TUniDBEdit [13]
+  object dbeValorFatura: TUniDBEdit [9]
     Left = 144
     Top = 84
     Width = 121
@@ -181,7 +118,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeNroDuplicata: TUniDBEdit [14]
+  object dbeNroDuplicata: TUniDBEdit [10]
     Left = 16
     Top = 148
     Width = 121
@@ -193,7 +130,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     TabOrder = 4
     Color = 8454143
   end
-  object dbeNroFatura: TUniDBEdit [15]
+  object dbeNroFatura: TUniDBEdit [11]
     Left = 16
     Top = 84
     Width = 121
@@ -204,7 +141,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeValorExtenso: TUniDBEdit [16]
+  object dbeValorExtenso: TUniDBEdit [12]
     Left = 16
     Top = 188
     Width = 513
@@ -217,7 +154,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeSacado: TUniDBEdit [17]
+  object dbeSacado: TUniDBEdit [13]
     Left = 16
     Top = 292
     Width = 513
@@ -228,7 +165,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 11
   end
-  object dbeCpfCnpj: TUniDBEdit [18]
+  object dbeCpfCnpj: TUniDBEdit [14]
     Left = 16
     Top = 332
     Width = 161
@@ -239,7 +176,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 12
   end
-  object dbeRgIe: TUniDBEdit [19]
+  object dbeRgIe: TUniDBEdit [15]
     Left = 184
     Top = 332
     Width = 161
@@ -250,7 +187,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 13
   end
-  object dbeFoneFax: TUniDBEdit [20]
+  object dbeFoneFax: TUniDBEdit [16]
     Left = 352
     Top = 332
     Width = 177
@@ -261,7 +198,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 14
   end
-  object dbeCep: TUniDBEdit [21]
+  object dbeCep: TUniDBEdit [17]
     Left = 16
     Top = 372
     Width = 121
@@ -272,7 +209,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 15
   end
-  object dbeEndereco: TUniDBEdit [22]
+  object dbeEndereco: TUniDBEdit [18]
     Left = 144
     Top = 372
     Width = 385
@@ -283,7 +220,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 16
   end
-  object dbeBairro: TUniDBEdit [23]
+  object dbeBairro: TUniDBEdit [19]
     Left = 16
     Top = 412
     Width = 121
@@ -294,7 +231,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 17
   end
-  object dbeEstado: TUniDBEdit [24]
+  object dbeEstado: TUniDBEdit [20]
     Left = 465
     Top = 412
     Width = 64
@@ -305,7 +242,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 19
   end
-  object dbePracaPagamento: TUniDBEdit [25]
+  object dbePracaPagamento: TUniDBEdit [21]
     Left = 16
     Top = 476
     Width = 513
@@ -316,7 +253,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     DataSource = dsPadrao
     TabOrder = 20
   end
-  object dbeDataImpressao: TUniDBEdit [26]
+  object dbeDataImpressao: TUniDBEdit [22]
     Left = 16
     Top = 228
     Width = 113
@@ -329,7 +266,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeImpressa: TUniDBEdit [27]
+  object dbeImpressa: TUniDBEdit [23]
     Left = 136
     Top = 228
     Width = 57
@@ -343,8 +280,8 @@ inherited frmDuplicatas: TfrmDuplicatas
     ReadOnly = True
   end
   inherited actlNavigateActions: TActionList
-    Left = 480
-    Top = 4
+    Left = 440
+    Top = 228
     inherited actPrint: TAction
       Hint = 'Imprimir em formul'#225'rio pr'#233'-impresso'
       ShortCut = 0
@@ -353,17 +290,18 @@ inherited frmDuplicatas: TfrmDuplicatas
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 391
-    Top = 5
+    Left = 359
+    Top = 229
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
+    RemoteServer = dmDuplicatas.LocalConnection1
     AfterInsert = cdsPadraoAfterInsert
     OnNewRecord = cdsPadraoNewRecord
-    Left = 320
-    Top = 5
+    Left = 272
+    Top = 229
     object cdsPadraoIDDUPLICATA: TIntegerField
       FieldName = 'IDDUPLICATA'
       Required = True

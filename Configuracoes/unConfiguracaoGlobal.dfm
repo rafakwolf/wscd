@@ -5,7 +5,6 @@ inherited frmConfigGlobal: TfrmConfigGlobal
   ClientWidth = 470
   Caption = 'frmConfigGlobal'
   OldCreateOrder = True
-  Font.Name = 'Verdana'
   ExplicitWidth = 476
   ExplicitHeight = 369
   PixelsPerInch = 96
@@ -14,44 +13,20 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     Top = 321
     Width = 470
     ExplicitTop = 321
-    ExplicitWidth = 401
+    ExplicitWidth = 470
   end
   inherited pnBotoesPadrao: TUniContainerPanel
     Width = 470
-    ExplicitWidth = 401
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
+    ExplicitWidth = 470
   end
   object pgcConfigGlobal: TUniPageControl [2]
     Left = 8
-    Top = 40
+    Top = 39
     Width = 385
     Height = 273
     Hint = ''
     ShowHint = True
-    ActivePage = tsFTP
+    ActivePage = tsCrediario
     TabOrder = 2
     object tsCrediario: TUniTabSheet
       Hint = ''
@@ -345,16 +320,16 @@ inherited frmConfigGlobal: TfrmConfigGlobal
   end
   inherited dsPadrao: TDataSource
     DataSet = cdsPadrao
-    Left = 359
-    Top = 276
+    Left = 399
+    Top = 228
   end
   object sqldPadrao: TSQLDataSet
     CommandText = 'select * from CONFIGURACAOGLOBAL'
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 184
-    Top = 276
+    Left = 168
+    Top = 244
     object sqldPadraoTAXAJURO: TFMTBCDField
       FieldName = 'TAXAJURO'
       Precision = 15
@@ -438,8 +413,8 @@ inherited frmConfigGlobal: TfrmConfigGlobal
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
-    Left = 264
-    Top = 276
+    Left = 248
+    Top = 244
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>

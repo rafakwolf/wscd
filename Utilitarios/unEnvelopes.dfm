@@ -18,57 +18,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     TabOrder = 6
     ExplicitWidth = 649
   end
-  object lbNome: TUniLabel [2]
-    Left = 49
-    Top = 62
-    Width = 27
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    Caption = 'Nome'
-    TabOrder = 8
-  end
-  object lbEndereco: TUniLabel [3]
-    Left = 29
-    Top = 86
-    Width = 45
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    Caption = 'Endere'#231'o'
-    TabOrder = 9
-  end
-  object lbBairro: TUniLabel [4]
-    Left = 47
-    Top = 134
-    Width = 28
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    Caption = 'Bairro'
-    TabOrder = 10
-  end
-  object lbCep: TUniLabel [5]
-    Left = 59
-    Top = 158
-    Width = 19
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    Caption = 'Cep'
-    TabOrder = 11
-  end
-  object lbMsg: TUniLabel [6]
-    Left = 21
-    Top = 182
-    Width = 51
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    Caption = 'Mensagem'
-    TabOrder = 12
-  end
-  object dbNome: TUniDBEdit [7]
+  object dbNome: TUniDBEdit [2]
     Left = 88
     Top = 54
     Width = 531
@@ -79,7 +29,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeCidade: TUniDBEdit [8]
+  object dbeCidade: TUniDBEdit [3]
     Left = 88
     Top = 102
     Width = 329
@@ -92,7 +42,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbCep: TUniDBEdit [9]
+  object dbCep: TUniDBEdit [4]
     Left = 88
     Top = 150
     Width = 153
@@ -103,7 +53,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbMsg: TUniDBEdit [10]
+  object dbMsg: TUniDBEdit [5]
     Left = 88
     Top = 174
     Width = 529
@@ -114,7 +64,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbEndereco: TUniDBEdit [11]
+  object dbEndereco: TUniDBEdit [6]
     Left = 88
     Top = 78
     Width = 531
@@ -125,7 +75,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbBairro: TUniDBEdit [12]
+  object dbBairro: TUniDBEdit [7]
     Left = 88
     Top = 126
     Width = 321

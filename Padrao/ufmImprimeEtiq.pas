@@ -77,7 +77,7 @@ var
 
 implementation
 
-uses unPrevEtiquetaProduto, unPrevEtiquetaCliente, unAguarde;
+uses unPrevEtiquetaProduto, unPrevEtiquetaCliente;
 
 {$R *.dfm}
 
@@ -140,8 +140,6 @@ var
   Linhas, Skip: Integer;
 begin
   try
-    TfrmAguarde.Execute('Gerando etiquetas...');
-
     if (cbListaEtiq.ItemIndex = -1) then
     begin
       MsgAviso('','Escolha um modelo de Etiqueta');
@@ -297,7 +295,6 @@ begin
         Free;
       end;
   finally
-    frmAguarde.Fecha;
   end;
 end;
 

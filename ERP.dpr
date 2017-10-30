@@ -117,7 +117,6 @@ uses
   unTrocaSenhaEstoque in 'Configuracoes\unTrocaSenhaEstoque.pas' {frmSenhaEstoque},
   unVendedor in 'Configuracoes\unVendedor.pas' {frmVendedor},
   unAcesso in 'Comuns\unAcesso.pas' {frmAcesso},
-  unAguarde in 'Comuns\unAguarde.pas' {frmAguarde},
   unFoto in 'Comuns\unFoto.pas' {frmFoto},
   unSelecionaCaixa in 'Comuns\unSelecionaCaixa.pas' {frmSelecionaCaixa},
   unCliente in 'Cadastros\unCliente.pas' {frmCliente},

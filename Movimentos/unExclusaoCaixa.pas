@@ -63,7 +63,7 @@ var
 
 implementation
 
-uses Funcoes,  ConstPadrao, unAguarde, VarGlobal, uDatabaseUtils;
+uses Funcoes,  ConstPadrao, VarGlobal, uDatabaseUtils;
 
 {$R *.dfm}
 
@@ -127,13 +127,12 @@ end;
 procedure TfrmExclusaoCaixa.FormCreate(Sender: TObject);
 begin
   try
-    TfrmAguarde.Execute('Ajustando dados...');
     inherited;
     CentralizaForm(Self);
     UpdateSingleField('update CAIXA set EXCLUIR = '+QuotedStr('N'));
     cdsPadrao.Open;
   finally
-    FreeAndNil(frmAguarde);
+
   end;
 end;
 

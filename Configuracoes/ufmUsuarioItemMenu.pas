@@ -84,7 +84,7 @@ const
 
 implementation
 
-uses unPrincipal, System.Math;
+uses System.Math, uniGUIMainModule, MainModule;
 
 {$R *.dfm}
 
@@ -125,7 +125,7 @@ begin
     
     while not Eof do
     begin
-      CompMenu := frmPrincipal.FindComponent(sqldMenuMENUITEM.AsString);
+      CompMenu := UniMainModule.MainForm.FindComponent(sqldMenuMENUITEM.AsString);
       IsRoot   := sqldMenuMENUITEM.AsString = 'CPR';
       
       if (assigned(CompMenu) and (CompMenu is TMenuItem)) or (IsRoot) then

@@ -1,9 +1,9 @@
 inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
   Left = 235
   Top = 185
-  Caption = 'frmPrevNotaVendaMatric'
   ClientHeight = 227
   ClientWidth = 310
+  Caption = 'frmPrevNotaVendaMatric'
   OldCreateOrder = True
   ExplicitWidth = 326
   ExplicitHeight = 266

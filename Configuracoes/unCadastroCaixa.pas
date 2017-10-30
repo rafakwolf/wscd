@@ -45,7 +45,6 @@ uses
 procedure TfrmCadastroCaixa.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  //Incrementa('CAIXAS', cdsPadraoCODIGO, GetConnection);
   cdsPadraoINATIVO.AsString := 'N';
   SetFocusIfCan(dbeNomeCaixa);
 end;

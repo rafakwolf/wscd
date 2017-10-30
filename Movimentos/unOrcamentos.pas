@@ -225,7 +225,6 @@ type
     procedure btnUltimoClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure miContarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnGravarClick(Sender: TObject);
     procedure miFiltrarDataClick(Sender: TObject);
@@ -254,7 +253,6 @@ type
     procedure Oramentoembobina1Click(Sender: TObject);
     procedure cdsOrcamSTATUSGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
-    procedure FormResize(Sender: TObject);
     procedure miReabrirClick(Sender: TObject);
     procedure dbeIdVendedorClickButton(Sender: TObject);
     procedure cdsOrcamIDVENDEDORValidate(Sender: TField);
@@ -276,7 +274,7 @@ implementation
 
 uses unCliente, Funcoes, unModeloConsulta, VarGlobal, unPrevOrcammento,
      uConfiguraRelatorio, unRelatorioBobinaOrcam,
-     unAguarde, uDatabaseutils;
+     uDatabaseutils;
 
 {$R *.dfm}
 
@@ -374,7 +372,6 @@ var
   NroOrcamentoAberto: Integer;
 begin
   try
-    TfrmAguarde.Execute('Preparando dados...');
     cdsProdutos.Open;
     cdsCliente.Open;
     cdsSelecao.Open;
@@ -387,7 +384,7 @@ begin
 
       if (NroOrcamentoAberto > 0) then
       begin
-        frmAguarde.Fecha;
+
         if MsgSN('Existe(m) ' + IntToStr(NroOrcamentoAberto) +
           ' Orçamentos(s), não concluído(s). '+
           'Por favor verifique, pois estes podem impedir ' +
@@ -401,14 +398,7 @@ begin
     end;
     SQLPadrao := sqlOrcam.CommandText;
   finally
-    if frmAguarde.Visible then
-      frmAguarde.Fecha;
   end;
-end;
-
-procedure TfrmOrcamentos.miContarClick(Sender: TObject);
-begin
-  //Ed_Quantificar(cdsOrcam, Self);
 end;
 
 procedure TfrmOrcamentos.FormClose(Sender: TObject;
@@ -845,18 +835,7 @@ begin
 end;
 
 procedure TfrmOrcamentos.AjustaStatusBar;
-var
-  Size: Integer;
 begin
-  Size := (ClientWidth div 2);
-  stbOrcamento.Panels[0].Width := Size;
-  stbOrcamento.Panels[1].Width := Size;
-  stbOrcamento.Update;
-end;
-
-procedure TfrmOrcamentos.FormResize(Sender: TObject);
-begin
-  AjustaStatusBar;
 end;
 
 procedure TfrmOrcamentos.miReabrirClick(Sender: TObject);

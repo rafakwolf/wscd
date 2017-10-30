@@ -92,7 +92,6 @@ type
     procedure cdsPadraoAfterScroll(DataSet: TDataSet);
     procedure miChequePendenteClick(Sender: TObject);
     procedure dsPadraoStateChange(Sender: TObject);
-    procedure miAssistenteClick(Sender: TObject);
   private
     procedure AtualizaDadosCheque;
     procedure BaixarCheque;
@@ -143,9 +142,7 @@ end;
 procedure TfrmCheque.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  //Incrementa('CHEQUE', cdsPadraoIDCHEQUE, GetConnection);
   cdsPadraoDATAEMISSAO.AsDateTime := Date;
-//  SetFocusIfCan(dbcbbTipoCheque);
 end;
 
 procedure TfrmCheque.FormCreate(Sender: TObject);
@@ -176,7 +173,7 @@ begin
     cdsPadrao.Filtered := False;
     cdsPadrao.Filter := 'REPASSADO = '+QuotedStr('N');
     cdsPadrao.Filtered := True;
-    //lbTitulo.Caption := 'Cheques recebidos';
+    lbTitulo.Caption := 'Cheques recebidos';
     TextoSoma('Total de cheques recebidos');
     PrintIfNotEmptyRL(rrPadrao);
   finally
@@ -192,7 +189,7 @@ begin
     cdsPadrao.Filtered := False;
     cdsPadrao.Filter := '(DATAEMISSAO = BOMPARA) and (REPASSADO = '+QuotedStr('S')+')';
     cdsPadrao.Filtered := True;
-    //lbTitulo.Caption := 'Cheques emitidos a vista';
+    lbTitulo.Caption := 'Cheques emitidos a vista';
     TextoSoma('Total de emitidos a vista');
     PrintIfNotEmptyRL(rrPadrao);
   finally
@@ -208,7 +205,7 @@ begin
     cdsPadrao.Filtered := False;
     cdsPadrao.Filter := '(DATAEMISSAO < BOMPARA) and (REPASSADO = '+QuotedStr('S')+')';
     cdsPadrao.Filtered := True;
-    //lbTitulo.Caption := 'Cheques pré-datados';
+    lbTitulo.Caption := 'Cheques pré-datados';
     TextoSoma('Total de emitidos a prazo');
     PrintIfNotEmptyRL(rrPadrao);
   finally
@@ -224,7 +221,7 @@ begin
     cdsPadrao.Filtered := False;
     cdsPadrao.Filter := 'REPASSADO = '+QuotedStr('S');
     cdsPadrao.Filtered := True;
-    //lbTitulo.Caption := 'Cheques emitidos';
+    lbTitulo.Caption := 'Cheques emitidos';
     TextoSoma('Total de cheques emitidos');
     PrintIfNotEmptyRL(rrPadrao);
   finally
@@ -557,12 +554,6 @@ begin
 //  if not ValidaDataIniFim(cdsPadraoDATAEMISSAO.AsDateTime, cdsPadraoBOMPARA.AsDateTime,
 //    dbdDataEmissao, False, True, 'A "Data de emissão" não pode ser maior que a data de "Bom para".', True) then
 //    Abort;
-end;
-
-procedure TfrmCheque.miAssistenteClick(Sender: TObject);
-begin
-  inherited;
-  //TfrmGeraRelatorio.Execute('Cheques', 'CHEQUE', GetConnection);
 end;
 
 initialization

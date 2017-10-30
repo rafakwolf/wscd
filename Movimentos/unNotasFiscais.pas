@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Buttons, DB, StdCtrls, DBCtrls, Mask, Grids, DBGrids,
   SqlExpr, Menus, ComCtrls, DBClient, Provider,  ConstPadrao,
-   FMTBcd, uDatabaseutils, uniMainMenu, uniGUIBaseClasses, uniGUIClasses,
+  FMTBcd, uDatabaseutils, uniMainMenu, uniGUIBaseClasses, uniGUIClasses,
   uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, uniLabel,
   uniEdit, uniDBEdit, uniGUIForm, uniMemo, uniDBMemo, uniBasicGrid, uniDBGrid;
 
@@ -309,7 +309,7 @@ implementation
 
 uses  Funcoes, unModeloConsulta, VarGlobal, unPrevCompras,
      uConfiguraRelatorio,  unPagamentoCheque,
-     unParcelaCompra, unPagamentoCompra, unPrevListaFaturamento, unAguarde,
+     unParcelaCompra, unPagamentoCompra, unPrevListaFaturamento,
      System.Math;
 
 {$R *.dfm}
@@ -379,7 +379,7 @@ end;
 procedure TfrmNotasFiscais.FormShow(Sender: TObject);
 begin
   try
-    TfrmAguarde.Execute('Preparando dados...');
+
     cdsProdutos.Open;
     cdsNFiscais.Open;
     SQLPadrao := sqlNFiscais.SQL.Text;
@@ -393,7 +393,7 @@ begin
         Open;
         if (FieldByName('CONT').AsInteger > 0) then
         begin
-          frmAguarde.Fecha;
+
           if MsgSN('Existe(m) ' + IntToStr(FieldByName('CONT').AsInteger)+
             ' compra(s) não concluída(s). ' +
             'Por favor verifique, pois éstas podem causar ' +
@@ -406,8 +406,7 @@ begin
       end;
     end;
   finally
-    if frmAguarde.Visible then
-      frmAguarde.Fecha;
+
   end;
 end;
 
@@ -446,7 +445,7 @@ begin
   if (not Duplicidade) and (not CamposNulos) then
   begin
    // Salvar(cdsNFiscais);
-   cdsNFiscais.ApplyUpdates(0);
+    cdsNFiscais.ApplyUpdates(0);
     miConcluir.Click;
   end;
 end;

@@ -1,7 +1,7 @@
 object frmLancCaixa: TfrmLancCaixa
   Left = 232
   Top = 164
-  ClientHeight = 281
+  ClientHeight = 325
   ClientWidth = 513
   Caption = 'Lan'#231'amentos do caixa'
   OnShow = FormShow
@@ -18,15 +18,6 @@ object frmLancCaixa: TfrmLancCaixa
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object pgcCaixa: TUniPageControl
-    Left = 8
-    Top = 8
-    Width = 497
-    Height = 233
-    Hint = ''
-    ShowHint = True
-    TabOrder = 0
-  end
   object btnOk: TUniBitBtn
     Left = 416
     Top = 248
@@ -86,7 +77,9 @@ object frmLancCaixa: TfrmLancCaixa
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     Caption = '&OK'
-    TabOrder = 1
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    TabOrder = 0
     OnClick = btnOkClick
   end
   object btnCancel: TUniBitBtn
@@ -148,7 +141,9 @@ object frmLancCaixa: TfrmLancCaixa
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     Caption = '&Cancelar'
-    TabOrder = 3
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    TabOrder = 2
     OnClick = btnCancelClick
   end
   object btnNovo: TUniBitBtn
@@ -159,15 +154,17 @@ object frmLancCaixa: TfrmLancCaixa
     Hint = 'Novo lan'#231'amento'
     ShowHint = True
     Caption = '+ &Novo'
-    TabOrder = 2
+    ParentFont = False
+    Font.Charset = ANSI_CHARSET
+    TabOrder = 1
     OnClick = btnNovoClick
   end
   object sqldCaixas: TSQLDataSet
     CommandText = 'select * from CAIXAS'
     MaxBlobSize = -1
     Params = <>
-    Left = 264
-    Top = 128
+    Left = 272
+    Top = 64
     object sqldCaixasCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -184,15 +181,15 @@ object frmLancCaixa: TfrmLancCaixa
   end
   object dspCaixas: TDataSetProvider
     DataSet = sqldCaixas
-    Left = 344
-    Top = 120
+    Left = 352
+    Top = 56
   end
   object cdsCaixas: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCaixas'
-    Left = 408
-    Top = 104
+    Left = 416
+    Top = 40
     object cdsCaixasCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True
@@ -220,8 +217,8 @@ object frmLancCaixa: TfrmLancCaixa
         Name = 'CODCAIXA'
         ParamType = ptInput
       end>
-    Left = 288
-    Top = 192
+    Left = 264
+    Top = 144
     object sqldPadraoCODCAIXA: TIntegerField
       FieldName = 'CODCAIXA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -265,8 +262,8 @@ object frmLancCaixa: TfrmLancCaixa
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     UpdateMode = upWhereKeyOnly
-    Left = 360
-    Top = 192
+    Left = 336
+    Top = 144
   end
   object cdsPadrao: TClientDataSet
     Aggregates = <>
@@ -280,8 +277,8 @@ object frmLancCaixa: TfrmLancCaixa
     BeforeInsert = cdsPadraoBeforeInsert
     AfterInsert = cdsPadraoAfterInsert
     AfterApplyUpdates = cdsPadraoAfterApplyUpdates
-    Left = 416
-    Top = 176
+    Left = 392
+    Top = 128
     object cdsPadraoCODCAIXA: TIntegerField
       FieldName = 'CODCAIXA'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -330,7 +327,7 @@ object frmLancCaixa: TfrmLancCaixa
   object dsPadrao: TDataSource
     DataSet = cdsPadrao
     OnStateChange = dsPadraoStateChange
-    Left = 464
-    Top = 192
+    Left = 440
+    Top = 144
   end
 end

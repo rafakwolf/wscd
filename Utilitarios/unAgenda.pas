@@ -6,9 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-   FMTBcd, System.Actions, VarGlobal, uniMainMenu, uniBitBtn, uniButton,
+  FMTBcd, System.Actions, uniMainMenu, uniBitBtn, uniButton,
   uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
-  uniEdit, uniDBEdit, uniGroupBox;
+  uniEdit, uniDBEdit, uniGroupBox, uniMemo, uniDBMemo, UniGUIVars;
 
 type
   TfrmAgenda = class(TfrmPadrao)
@@ -29,21 +29,14 @@ type
     cdsPadraoOBS: TMemoField;
     sqldPadraoIDAGENDA: TIntegerField;
     cdsPadraoIDAGENDA: TIntegerField;
-    mmPadrao: TUniMainMenu;
-    miRelatorios: TUniMenuItem;
-    mImprimir: TUniMenuItem;
-    N5: TUniMenuItem;
-    btnObs: TUniBitBtn;
     dbeNome: TUniDBEdit;
     dbeFax: TUniDBEdit;
     grpTelefone: TUniGroupBox;
     dbeFone1: TUniDBEdit;
     dbeFone2: TUniDBEdit;
     dbeFone3: TUniDBEdit;
+    dbmObs: TUniDBMemo;
     procedure FormCreate(Sender: TObject);
-    procedure actPrintExecute(Sender: TObject);
-    procedure btnObsClick(Sender: TObject);
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
   private
   public
   end;
@@ -54,7 +47,7 @@ var
 implementation
 
 uses
-  Funcoes, ConstPadrao;
+  ConstPadrao;
 
 {$R *.dfm}
 
@@ -66,27 +59,9 @@ begin
   DisplayLabels := DL_AGENDA;
 end;
 
-procedure TfrmAgenda.actPrintExecute(Sender: TObject);
-begin
-  inherited;
-  ChamaForm('TfrmRelatorioAgenda', 'Listagem dos telefones', Self);
-end;
-
-procedure TfrmAgenda.btnObsClick(Sender: TObject);
-begin
-  inherited;
-  FormMemo(dsPadrao, 'OBS');
-end;
-
-procedure TfrmAgenda.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  //Incrementa('AGENDA', cdsPadraoIDAGENDA, GetConnection);
-  SetFocusIfCan(dbeNome);
-end;
-
 initialization
   RegisterClass(TfrmAgenda);
 finalization
   UnRegisterClass(TfrmAgenda);
+
 end.

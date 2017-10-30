@@ -43,8 +43,6 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
-    procedure GradeDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure btnPesquisarClick(Sender: TObject);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure cbbCampoClick(Sender: TObject);
@@ -95,13 +93,6 @@ procedure TfrmListagemPrecos.FormCreate(Sender: TObject);
 begin
   inherited;
   CentralizaForm(Self);
-end;
-
-procedure TfrmListagemPrecos.GradeDrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn;
-  State: TGridDrawState);
-begin
-  //GridZebrado(cdsProduto.RecNo, Grade, Rect, DataCol, Column, State);
 end;
 
 procedure TfrmListagemPrecos.CarregaCampos;

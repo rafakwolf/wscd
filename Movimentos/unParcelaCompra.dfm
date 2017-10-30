@@ -12,7 +12,7 @@ inherited frmParcelaCompra: TfrmParcelaCompra
   object lbParcelas: TUniLabel
     Left = 208
     Top = 48
-    Width = 48
+    Width = 40
     Height = 13
     Hint = ''
     ShowHint = True
@@ -22,7 +22,7 @@ inherited frmParcelaCompra: TfrmParcelaCompra
   object lbPrazoInicio: TUniLabel
     Left = 288
     Top = 48
-    Width = 70
+    Width = 57
     Height = 13
     Hint = ''
     ShowHint = True
@@ -32,7 +32,7 @@ inherited frmParcelaCompra: TfrmParcelaCompra
   object lbIntervalo: TUniLabel
     Left = 368
     Top = 48
-    Width = 52
+    Width = 44
     Height = 13
     Hint = ''
     ShowHint = True

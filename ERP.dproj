@@ -493,9 +493,6 @@
         <DCCReference Include="Comuns\unAcesso.pas">
             <Form>frmAcesso</Form>
         </DCCReference>
-        <DCCReference Include="Comuns\unAguarde.pas">
-            <Form>frmAguarde</Form>
-        </DCCReference>
         <DCCReference Include="Comuns\unFoto.pas">
             <Form>frmFoto</Form>
         </DCCReference>

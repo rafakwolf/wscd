@@ -18,7 +18,6 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormActivate(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -30,18 +29,22 @@ type
   public
     function ValidaLogin: Boolean;
     function UsuarioExiste: Boolean;
-    class function Execute(LogOff: Boolean): Boolean;
   end;
 
-var
-  frmAcesso: TfrmAcesso;
+
+function frmAcesso: TfrmAcesso;
 
 implementation
 
 uses unDmPrincipal, Funcoes, VarGlobal,
-  udmAcesso, Datasnap.DBClient, uUtilFncs, IniFiles, UniGUIVars;
+  udmAcesso, Datasnap.DBClient, uUtilFncs, IniFiles, UniGUIVars, MainModule;
 
 {$R *.dfm}
+
+function frmAcesso: TfrmAcesso;
+begin
+  Result := TfrmAcesso(UniMainModule.GetFormInstance(TfrmAcesso));
+end;
 
 function TfrmAcesso.ValidaLogin: Boolean;
 var cdsResultado: TClientDataSet;
@@ -99,42 +102,6 @@ end;
 procedure TfrmAcesso.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
-end;
-
-procedure TfrmAcesso.FormActivate(Sender: TObject);
-begin
-  edtUsuario.Visible := True;
-  edtSenha.Visible := True;
-  btnOK.Visible := True;
-  btnCancelar.Visible := True;
-
-  with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
-  try
-    if not ReadString('Login', 'NomeUsuario','').IsEmpty then
-    begin
-      edtUsuario.Text := Readstring('Login', 'NomeUsuario','');
-      edtSenha.SetFocus;
-    end
-    else
-      edtUsuario.SetFocus;
-  finally
-    Free;
-  end;
-
-  Repaint;
-  ForceForegroundWindow(Handle);
-end;
-
-class function TfrmAcesso.Execute(LogOff: Boolean): Boolean;
-begin
-  LogIn := (not LogOff);
-  frmAcesso := TfrmAcesso.Create(Application);
-  try
-    Result := (frmAcesso.ShowModal = mrOK);
-  finally
-    if Assigned(frmAcesso) then
-      frmAcesso.Free;
-  end;
 end;
 
 procedure TfrmAcesso.btnOkClick(Sender: TObject);

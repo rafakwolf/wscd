@@ -15,14 +15,13 @@ object frmParcelaVenda: TfrmParcelaVenda
   KeyPreview = True
   MonitoredKeys.Keys = <>
   Font.Charset = ANSI_CHARSET
-  Font.Name = 'Verdana'
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lbParcelas: TUniLabel
     Left = 208
     Top = 48
-    Width = 48
+    Width = 40
     Height = 13
     Hint = ''
     ShowHint = True
@@ -32,7 +31,7 @@ object frmParcelaVenda: TfrmParcelaVenda
   object lbPrazoInicio: TUniLabel
     Left = 288
     Top = 48
-    Width = 70
+    Width = 57
     Height = 13
     Hint = ''
     ShowHint = True
@@ -42,7 +41,7 @@ object frmParcelaVenda: TfrmParcelaVenda
   object lbIntervalo: TUniLabel
     Left = 368
     Top = 48
-    Width = 52
+    Width = 44
     Height = 13
     Hint = ''
     ShowHint = True

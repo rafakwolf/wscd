@@ -1,7 +1,7 @@
 object frmNotasFiscais: TfrmNotasFiscais
   Left = 299
   Top = 104
-  ClientHeight = 580
+  ClientHeight = 560
   ClientWidth = 810
   Caption = 'Compras '
   OnShow = FormShow
@@ -14,6 +14,7 @@ object frmNotasFiscais: TfrmNotasFiscais
   OnKeyPress = FormKeyPress
   BorderIcons = [biSystemMenu, biMinimize]
   KeyPreview = True
+  Menu = mnNotasFiscais
   MonitoredKeys.Keys = <>
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Verdana'
@@ -22,7 +23,7 @@ object frmNotasFiscais: TfrmNotasFiscais
   TextHeight = 13
   object stbCompra: TUniStatusBar
     Left = 0
-    Top = 561
+    Top = 541
     Width = 810
     Height = 19
     Hint = ''
@@ -33,10 +34,11 @@ object frmNotasFiscais: TfrmNotasFiscais
     Anchors = [akLeft, akRight, akBottom]
     ParentColor = False
     Color = clBtnFace
+    ExplicitTop = 561
   end
   object PanelTotais: TUniContainerPanel
     Left = 0
-    Top = 508
+    Top = 488
     Width = 810
     Height = 53
     Hint = ''
@@ -46,10 +48,11 @@ object frmNotasFiscais: TfrmNotasFiscais
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 20
     TabStop = False
+    ExplicitTop = 508
     object LabelFrete: TUniLabel
       Left = 7
       Top = 6
-      Width = 60
+      Width = 51
       Height = 13
       Hint = ''
       ShowHint = True
@@ -59,7 +62,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     object LabelIcms: TUniLabel
       Left = 117
       Top = 6
-      Width = 62
+      Width = 52
       Height = 13
       Hint = ''
       ShowHint = True
@@ -69,7 +72,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     object LabelIpi: TUniLabel
       Left = 228
       Top = 6
-      Width = 48
+      Width = 41
       Height = 13
       Hint = ''
       ShowHint = True
@@ -79,7 +82,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     object LabelDesp: TUniLabel
       Left = 339
       Top = 6
-      Width = 95
+      Width = 81
       Height = 13
       Hint = ''
       ShowHint = True
@@ -89,7 +92,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     object LabelTotDesc: TUniLabel
       Left = 457
       Top = 6
-      Width = 82
+      Width = 71
       Height = 13
       Hint = ''
       ShowHint = True
@@ -99,7 +102,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     object LabelTotParc: TUniLabel
       Left = 567
       Top = 6
-      Width = 81
+      Width = 70
       Height = 13
       Hint = ''
       ShowHint = True
@@ -109,7 +112,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     object LabelTotTotal: TUniLabel
       Left = 678
       Top = 6
-      Width = 60
+      Width = 51
       Height = 13
       Hint = ''
       ShowHint = True
@@ -2233,7 +2236,7 @@ object frmNotasFiscais: TfrmNotasFiscais
   end
   object Grade: TUniDBGrid
     Left = 0
-    Top = 259
+    Top = 239
     Width = 810
     Height = 249
     Hint = ''

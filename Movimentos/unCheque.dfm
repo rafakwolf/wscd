@@ -13,7 +13,7 @@ inherited frmCheque: TfrmCheque
     Top = 254
     Width = 537
     Height = 22
-    ExplicitTop = 479
+    ExplicitTop = 254
     ExplicitWidth = 537
     ExplicitHeight = 22
   end
@@ -25,14 +25,13 @@ inherited frmCheque: TfrmCheque
   object lbBaixado: TUniLabel [2]
     Left = 147
     Top = 227
-    Width = 56
+    Width = 46
     Height = 13
     Hint = ''
     ShowHint = True
     Caption = 'lbBaixado'
     ParentFont = False
     Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
     TabOrder = 16
   end
   object btnBaixar: TUniBitBtn [3]
@@ -182,7 +181,7 @@ inherited frmCheque: TfrmCheque
   end
   object dbeBanco: TUniDBEdit [11]
     Left = 352
-    Top = 61
+    Top = 60
     Width = 147
     Height = 21
     Hint = 'Pesquisar < F2 >'

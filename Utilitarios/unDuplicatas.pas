@@ -36,11 +36,7 @@ type
     cdsPadraoVALOREXTENSO: TStringField;
     cdsPadraoDATAIMPRESSAO: TDateField;
     cdsPadraoIMPRESSA: TStringField;
-    lbSacado: TUniLabel;
-    lbPracaPag: TUniLabel;
-    lbFatura: TUniLabel;
     lbDuplicata: TUniLabel;
-    lbDatas: TUniLabel;
     dbeDataEmissao: TUniDBEdit;
     dbeCidade: TUniDBEdit;
     dbeDataPag: TUniDBEdit;
@@ -181,6 +177,8 @@ begin
   DisplayLabels := DL_DUPLICATA;
   aCaption := 'Duplicatas';
   TableName := 'DUPLICATA';
+
+  cdsPadrao.Open;
 end;
 
 procedure TfrmDuplicatas.CadastraCliente;

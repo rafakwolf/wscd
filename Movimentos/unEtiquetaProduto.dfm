@@ -10,32 +10,6 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     Top = 383
     ExplicitTop = 383
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-  end
   object dbeCodBarra: TUniDBEdit [2]
     Left = 8
     Top = 40

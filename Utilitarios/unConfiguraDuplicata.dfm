@@ -2,47 +2,23 @@ inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
   Left = 307
   Top = 123
   ClientHeight = 407
-  ClientWidth = 465
+  ClientWidth = 513
   Caption = 'frmConfiguraDuplicata'
   OldCreateOrder = True
   Font.Name = 'Verdana'
-  ExplicitWidth = 471
+  ExplicitWidth = 519
   ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 388
-    Width = 465
+    Width = 513
     ExplicitTop = 388
     ExplicitWidth = 465
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 465
+    Width = 513
     ExplicitWidth = 465
-    inherited btnNovo: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnAlterar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnExcluir: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSalvar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnCancelar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnConsultar: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnSair: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
-    inherited btnPrint: TUniSpeedButton
-      Font.Name = 'Verdana'
-    end
   end
   object dbeFontSize: TUniDBEdit [2]
     Left = 392

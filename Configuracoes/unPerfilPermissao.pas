@@ -49,19 +49,12 @@ type
     procedure miLiberarClick(Sender: TObject);
     procedure miBloquearClick(Sender: TObject);
     procedure miCarregarAcoesClick(Sender: TObject);
-    procedure dbgPermCellClick(Column: TColumn);
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure edtBuscaItemMenuExit(Sender: TObject);
     procedure edtBuscaItemMenuChange(Sender: TObject);
     procedure edtBuscaItemMenuEnter(Sender: TObject);
     procedure dsPadraoStateChange(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
-    procedure tvmMenuPrincChange(Sender: TObject; Node: TTreeNode);
-    procedure tvmMenuPrincDblClick(Sender: TObject);
-    procedure tvmMenuPrincGetSelectedIndex(Sender: TObject;
-      Node: TTreeNode);
-    procedure tvmMenuPrincCollapsing(Sender: TObject; Node: TTreeNode;
-      var AllowCollapse: Boolean);
+    procedure dbgPermCellContextClick(Column: TUniDBGridColumn; X, Y: Integer);
   private
     menu_item   : string;
     action_item : string;
@@ -75,7 +68,7 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao, VarGlobal;
+uses Funcoes, ConstPadrao, MainModule;
 
 {$R *.dfm}
 
@@ -83,17 +76,10 @@ procedure TfrmPerfilPermissao.FormCreate(Sender: TObject);
 begin
   inherited;
   actPrint.Visible := False;
-  //miRelatorios.Visible := False;
-
-//  ReordenaBotoes([btnPrimeiro, btnAnterior, btnProximo, btnUltimo, btnNovo,
-//    btnAlterar, btnExcluir, btnSalvar, btnCancelar, btnConsultar, btnSair]);
 
   FieldNames := FN_PERFIL;
   DisplayLabels := DL_PERFIL;
   aCaption := 'Perfis/Permissões';
-
-  //tvmMenuPrinc.MainMenu := frmPrincipal.mnPrincipal;
-  //tvmMenuPrinc.ViewMenu := True;
 end;
 
 procedure TfrmPerfilPermissao.miLiberarClick(Sender: TObject);
@@ -148,7 +134,7 @@ begin
     try
       cdsPadrao.DisableControls;
       DropActions(cdsPadraoIDPERFIL.AsInteger);
-      with frmPrincipal do
+      with UniMainModule.MainForm do
       begin
         for x := 0 to ComponentCount - 1 do
           if Components[x] is TAction then
@@ -167,27 +153,22 @@ begin
   end;
 end;
 
-procedure TfrmPerfilPermissao.dbgPermCellClick(Column: TColumn);
+procedure TfrmPerfilPermissao.dbgPermCellContextClick(Column: TUniDBGridColumn;
+  X, Y: Integer);
 begin
   inherited;
-  if not (cdsPadrao.State in [dsEdit, dsInsert]) then
-    Exit;
-
-  if (Column.Field.FieldName = 'LIBERADO') then
-  begin
-    cdsPerfisConf.Edit;
-    if (cdsPerfisConfLIBERADO.AsString = 'N') then
-      cdsPerfisConfLIBERADO.AsString := 'S'
-    else
-      cdsPerfisConfLIBERADO.AsString := 'N';
-    cdsPerfisConf.Post;
-  end;
-end;
-
-procedure TfrmPerfilPermissao.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  SetFocusIfCan(dbePerfil);
+//  if not (cdsPadrao.State in [dsEdit, dsInsert]) then
+//    Exit;
+//
+//  if (Column.Field.FieldName = 'LIBERADO') then
+//  begin
+//    cdsPerfisConf.Edit;
+//    if (cdsPerfisConfLIBERADO.AsString = 'N') then
+//      cdsPerfisConfLIBERADO.AsString := 'S'
+//    else
+//      cdsPerfisConfLIBERADO.AsString := 'N';
+//    cdsPerfisConf.Post;
+//  end;
 end;
 
 procedure TfrmPerfilPermissao.edtBuscaItemMenuExit(Sender: TObject);
@@ -287,56 +268,6 @@ begin
       end;
     end;
   end;
-end;
-
-procedure TfrmPerfilPermissao.tvmMenuPrincChange(Sender: TObject;
-  Node: TTreeNode);
-begin
-  inherited;
-  menu_item   := TMenuItem(Node.Data).Name;
-
-  if Assigned(TMenuItem(frmPrincipal.FindComponent(menu_item)).Action) then
-  begin
-    action_item := TMenuItem(frmPrincipal.FindComponent(menu_item)).Action.Name;
-    cdsPerfisConf.Locate('ACAO_NOME',action_item,[]);
-  end;
-end;
-
-procedure TfrmPerfilPermissao.tvmMenuPrincDblClick(Sender: TObject);
-begin
-  inherited;
-  if cdsPerfisConf.Locate('ACAO_NOME',action_item,[]) then
-  begin
-    cdsPerfisConf.Edit;
-    
-
-    if cdsPerfisConfLIBERADO.AsString = 'S' then
-      cdsPerfisConfLIBERADO.AsString := 'N'
-    else
-      cdsPerfisConfLIBERADO.AsString := 'S';
-
-    cdsPerfisConf.Post;  
-  end;
-end;
-
-procedure TfrmPerfilPermissao.tvmMenuPrincGetSelectedIndex(Sender: TObject;
-  Node: TTreeNode);
-begin
-  inherited;
-  if cdsPerfisConf.Locate('ACAO_NOME',action_item,[]) then
-  begin
-    if cdsPerfisConfLIBERADO.AsString = 'S' then
-      Node.ImageIndex := 1
-    else
-      Node.ImageIndex := 0;  
-  end;
-end;
-
-procedure TfrmPerfilPermissao.tvmMenuPrincCollapsing(Sender: TObject;
-  Node: TTreeNode; var AllowCollapse: Boolean);
-begin
-  inherited;
-  AllowCollapse := False;
 end;
 
 initialization

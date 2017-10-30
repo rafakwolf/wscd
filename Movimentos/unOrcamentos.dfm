@@ -1,11 +1,10 @@
 object frmOrcamentos: TfrmOrcamentos
   Left = 226
   Top = 124
-  ClientHeight = 546
+  ClientHeight = 526
   ClientWidth = 789
   Caption = 'Or'#231'amentos'
   OnShow = FormShow
-  OnResize = FormResize
   BorderStyle = bsSingle
   OldCreateOrder = False
   ShowHint = True
@@ -14,6 +13,7 @@ object frmOrcamentos: TfrmOrcamentos
   OnKeyPress = FormKeyPress
   BorderIcons = [biSystemMenu, biMinimize]
   KeyPreview = True
+  Menu = Menu
   MonitoredKeys.Keys = <>
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Verdana'
@@ -22,7 +22,7 @@ object frmOrcamentos: TfrmOrcamentos
   TextHeight = 13
   object stbOrcamento: TUniStatusBar
     Left = 0
-    Top = 527
+    Top = 507
     Width = 789
     Height = 19
     Hint = ''
@@ -33,6 +33,7 @@ object frmOrcamentos: TfrmOrcamentos
     Anchors = [akLeft, akRight, akBottom]
     ParentColor = False
     Color = clBtnFace
+    ExplicitTop = 527
   end
   object pnBotoes: TUniContainerPanel
     Left = 0
@@ -1773,7 +1774,7 @@ object frmOrcamentos: TfrmOrcamentos
   end
   object pnlTotal: TUniContainerPanel
     Left = 0
-    Top = 490
+    Top = 470
     Width = 789
     Height = 37
     Hint = ''
@@ -1783,6 +1784,7 @@ object frmOrcamentos: TfrmOrcamentos
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 18
     TabStop = False
+    ExplicitTop = 490
     object lbItens: TUniLabel
       Left = 526
       Top = 12
@@ -2126,7 +2128,7 @@ object frmOrcamentos: TfrmOrcamentos
   end
   object grdItens: TUniDBGrid
     Left = 0
-    Top = 276
+    Top = 256
     Width = 789
     Height = 214
     Hint = '<F2> para buscar produto'
@@ -2815,7 +2817,6 @@ object frmOrcamentos: TfrmOrcamentos
       end
       object miContar: TUniMenuItem
         Caption = 'Contar registros'
-        OnClick = miContarClick
       end
       object N7: TUniMenuItem
         Caption = '-'
