@@ -54,7 +54,7 @@ type
     procedure edtBuscaItemMenuEnter(Sender: TObject);
     procedure dsPadraoStateChange(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
-    procedure dbgPermCellContextClick(Column: TUniDBGridColumn; X, Y: Integer);
+    procedure dbgPermCellClick(Column: TUniDBGridColumn);
   private
     menu_item   : string;
     action_item : string;
@@ -153,24 +153,6 @@ begin
   end;
 end;
 
-procedure TfrmPerfilPermissao.dbgPermCellContextClick(Column: TUniDBGridColumn;
-  X, Y: Integer);
-begin
-  inherited;
-//  if not (cdsPadrao.State in [dsEdit, dsInsert]) then
-//    Exit;
-//
-//  if (Column.Field.FieldName = 'LIBERADO') then
-//  begin
-//    cdsPerfisConf.Edit;
-//    if (cdsPerfisConfLIBERADO.AsString = 'N') then
-//      cdsPerfisConfLIBERADO.AsString := 'S'
-//    else
-//      cdsPerfisConfLIBERADO.AsString := 'N';
-//    cdsPerfisConf.Post;
-//  end;
-end;
-
 procedure TfrmPerfilPermissao.edtBuscaItemMenuExit(Sender: TObject);
 begin
   inherited;
@@ -207,6 +189,23 @@ begin
     ExecSQL;
   finally
     Free;
+  end;
+end;
+
+procedure TfrmPerfilPermissao.dbgPermCellClick(Column: TUniDBGridColumn);
+begin
+  inherited;
+  if not (cdsPadrao.State in [dsEdit, dsInsert]) then
+    Exit;
+
+  if (Column.Field.FieldName = 'LIBERADO') then
+  begin
+    cdsPerfisConf.Edit;
+    if (cdsPerfisConfLIBERADO.AsString = 'N') then
+      cdsPerfisConfLIBERADO.AsString := 'S'
+    else
+      cdsPerfisConfLIBERADO.AsString := 'N';
+    cdsPerfisConf.Post;
   end;
 end;
 

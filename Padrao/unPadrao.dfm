@@ -51,11 +51,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actInsert
-      Caption = #61525
+      Caption = '<i class="fa fa-plus-square fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 0
@@ -67,11 +65,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actEdit
-      Caption = #61504
+      Caption = '<i class="fa fa-pencil fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 1
@@ -83,11 +79,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actDelete
-      Caption = #61944
+      Caption = '<i class="fa fa-trash fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 2
@@ -99,11 +93,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actPost
-      Caption = #61770
+      Caption = '<i class="fa fa-check-square fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 3
@@ -115,11 +107,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actCancelUpdates
-      Caption = #61714
+      Caption = '<i class="fa fa-mail-reply fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 4
@@ -131,11 +121,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actSearch
-      Caption = #61442
+      Caption = '<i class="fa fa-search fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 5
@@ -147,11 +135,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actClose
-      Caption = #61453
+      Caption = '<i class="fa fa-sign-out fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 6
@@ -163,11 +149,9 @@ object frmPadrao: TfrmPadrao
       Height = 32
       ShowHint = True
       Action = actPrint
-      Caption = #61487
+      Caption = '<i class="fa fa-print fa-2x"></i>'
       ParentFont = False
       Font.Charset = ANSI_CHARSET
-      Font.Height = -24
-      Font.Name = 'FontAwesome'
       ParentColor = False
       Color = clWindow
       TabOrder = 7

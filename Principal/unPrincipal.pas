@@ -87,24 +87,18 @@ type
     N7: TUniMenuItem;
     miConfiguracaoGlobal: TUniMenuItem;
     miConfiguracaoLocal: TUniMenuItem;
-    miImpressora: TUniMenuItem;
-    miConfigServidor: TUniMenuItem;
     N1: TUniMenuItem;
     miDadosEmpresa: TUniMenuItem;
     N21: TUniMenuItem;
     miUsuario: TUniMenuItem;
     miPerfis: TUniMenuItem;
     miTrocarSenha: TUniMenuItem;
-    miRenovaChave: TUniMenuItem;
     miUtilitario: TUniMenuItem;
     miAgenda: TUniMenuItem;
     miRelatorioAgenda: TUniMenuItem;
     N16: TUniMenuItem;
     miPesqFone: TUniMenuItem;
     N6: TUniMenuItem;
-    miCalendario: TUniMenuItem;
-    miCalculadora: TUniMenuItem;
-    miEditorTexto: TUniMenuItem;
     miEnvelope: TUniMenuItem;
     N4: TUniMenuItem;
     miDuplicata: TUniMenuItem;
@@ -207,8 +201,6 @@ type
     procedure actBancoExecute(Sender: TObject);
     procedure actChequeExecute(Sender: TObject);
     procedure actRenovaChaveExecute(Sender: TObject);
-    procedure tbCalculadoraClick(Sender: TObject);
-    procedure tbCalendarioClick(Sender: TObject);
     procedure btnLogOffClick(Sender: TObject);
     procedure btnLivroCaixaClick(Sender: TObject);
     procedure btnContaReceberClick(Sender: TObject);
@@ -222,7 +214,6 @@ type
     procedure btnFornecedorClick(Sender: TObject);
     procedure btnClienteClick(Sender: TObject);
     procedure btnAgendaClick(Sender: TObject);
-    procedure actPostItExecute(Sender: TObject);
     procedure actAjudaExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure actNotaPromissoriaExecute(Sender: TObject);
@@ -241,7 +232,6 @@ type
   Private
     Lista_permissoes: TClientDataSet;
 
-    procedure VerificaData;
     procedure SetEnableMenu(adm: Boolean);
     procedure SetConfigGlobal;
     procedure SetConfiguracao;
@@ -564,22 +554,10 @@ begin
   ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', UniApplication);
 end;
 
-procedure TfrmPrincipal.tbCalculadoraClick(Sender: TObject);
-begin
-  if miCalculadora.Enabled then
-    miCalculadora.Click;
-end;
-
-procedure TfrmPrincipal.tbCalendarioClick(Sender: TObject);
-begin
-  if miCalendario.Enabled then
-    miCalendario.Click;
-end;
-
 procedure TfrmPrincipal.btnLogOffClick(Sender: TObject);
 begin
-  if miOutroUsuario.Enabled then
-    miOutroUsuario.Click;
+  if actOutroUsuario.Enabled then
+    actOutroUsuario.Execute;
 end;
 
 procedure TfrmPrincipal.btnLivroCaixaClick(Sender: TObject);
@@ -620,32 +598,32 @@ end;
 
 procedure TfrmPrincipal.btnOrcamentoClick(Sender: TObject);
 begin
-  if miOrcamento.Enabled then
-    miOrcamento.Click;
+  if actOrcamento.Enabled then
+    actOrcamento.Execute;
 end;
 
 procedure TfrmPrincipal.btnListaPrecoClick(Sender: TObject);
 begin
-  if miListaPreco.Enabled then
-    miListaPreco.Click;
+  if actListaPreco.Enabled then
+    actListaPreco.Execute;
 end;
 
 procedure TfrmPrincipal.btnProdutoClick(Sender: TObject);
 begin
-  if miProduto.Enabled then
-    miProduto.Click;
+  if actProduto.Enabled then
+    actProduto.Execute;
 end;
 
 procedure TfrmPrincipal.btnFornecedorClick(Sender: TObject);
 begin
-  if miFornecedor.Enabled then
-    miFornecedor.Click;
+  if actFornecedor.Enabled then
+    actFornecedor.Execute;
 end;
 
 procedure TfrmPrincipal.btnClienteClick(Sender: TObject);
 begin
-  if miCliente.Enabled then
-    miCliente.Click;
+  if actCliente.Enabled then
+    actCliente.Execute;
 end;
 
 procedure TfrmPrincipal.btnAgendaClick(Sender: TObject);
@@ -654,14 +632,6 @@ begin
      actAgenda.Execute;
 end;
 
-procedure TfrmPrincipal.actPostItExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmSendMail','Enviar Email',Application);
-end;
-
-procedure TfrmPrincipal.VerificaData;
-begin
-end;
 
 procedure TfrmPrincipal.SetSistema;
 begin

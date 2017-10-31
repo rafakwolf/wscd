@@ -2,6 +2,10 @@ inherited dmCliente: TdmCliente
   OldCreateOrder = True
   Height = 251
   Width = 334
+  inherited LocalConnection1: TLocalConnection
+    Left = 160
+    Top = 144
+  end
   object sqldPadrao: TSQLDataSet
     CommandText = 
       'select'#13#10'  cli.CODCLIENTE,'#13#10'  cli.TIPO,'#13#10'  cli.NOME,'#13#10'  cli.ENDER' +
@@ -15,10 +19,10 @@ inherited dmCliente: TdmCliente
       'cli.NATURALIDADE,'#13#10'  cli.LIMITE,'#13#10'  cli.FOTO'#13#10'from CLIENTES cli'#13 +
       #10'left join CIDADES cid on (cli.CODCIDADE = cid.CODCIDADE)'#13#10'order' +
       ' by cli.NOME'
-    MaxBlobSize = -1
+    MaxBlobSize = 1
     Params = <>
     SQLConnection = DmPrincipal.Conexao
-    Left = 56
+    Left = 72
     Top = 36
     object sqldPadraoCODCLIENTE: TIntegerField
       FieldName = 'CODCLIENTE'
@@ -176,7 +180,7 @@ inherited dmCliente: TdmCliente
     object cdsPadraoTIPO: TStringField
       FieldName = 'TIPO'
       Required = True
-      Size = 8
+      Size = 1
     end
     object cdsPadraoNOME: TStringField
       DisplayWidth = 80
@@ -250,7 +254,7 @@ inherited dmCliente: TdmCliente
     end
     object cdsPadraoESTADO_CIVIL: TStringField
       FieldName = 'ESTADO_CIVIL'
-      Size = 30
+      Size = 1
     end
     object cdsPadraoCONJUGUE: TStringField
       FieldName = 'CONJUGUE'

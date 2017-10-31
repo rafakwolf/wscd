@@ -20,7 +20,7 @@ var
   frmSimplePadrao: TfrmSimplePadrao;
 
 implementation
-uses SQLExpr, VarGlobal;
+uses SQLExpr, VarGlobal, uniGUIClasses;
 
 {$R *.dfm}
 
@@ -39,6 +39,7 @@ begin
       if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
         TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
     end;
+
   end;
 end;
 

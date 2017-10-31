@@ -69,7 +69,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       TabOrder = 0
       ParentColor = False
       Color = clWindow
-      OnCellContextClick = dbgPermCellContextClick
+      OnCellClick = dbgPermCellClick
       Columns = <
         item
           FieldName = 'ACAO_NOME'

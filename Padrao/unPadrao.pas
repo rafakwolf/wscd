@@ -62,8 +62,6 @@ type
     procedure AntesSalvar; virtual;
     procedure DepoisSalvar; virtual;
 
-    procedure AfterShow(var Msg: TMessage); message WM_AFTER_SHOW;
-
     function GetDm: TDmGeralBase; virtual;
   public  
   end;
@@ -309,7 +307,6 @@ var
   I: Integer;
 begin
   ComponentFocusWhenPost := ActiveControl;
-  //SelectNext(ActiveControl, True, False);
 
   for I := 0 to dsPadrao.DataSet.FieldCount-1 do
   begin
@@ -350,26 +347,5 @@ begin
   if Key = VK_F1 then
     ChamaHelp(Self, 3,'');
 end;
-
-procedure TfrmPadrao.AfterShow(var Msg: TMessage);
-
-  procedure ConfigMsgEmptyTable;
-  begin
-    WriteIniFile('Cadastros', 'Msg Cadastro Vazio', '0');
-  end;
-
-begin
-  if ReadIniFile('Cadastros', 'Msg Cadastro Vazio') <> '0' then
-  begin
-    if dsPadrao.DataSet.IsEmpty then
-    begin
-      if MessageDlgCheck('Não existe nenhum registro cadastrado nesta tela.' +
-        #13 + 'Deseja cadastrar agora?', mtConfirmation, [mbYes, mbNo], -1, mrOk,
-          True, True, 'Não exibir novamente esta mensagem.', @ConfigMsgEmptyTable) = ID_YES then
-        actInsert.Execute;
-    end;
-  end;
-end;
-
 
 end.

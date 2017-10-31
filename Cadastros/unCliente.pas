@@ -8,8 +8,7 @@ uses
   ExtCtrls, ComCtrls, SqlExpr, DBCtrls, udmGeralBase,
   Mask, DBClient, Provider, StrUtils,  ExtDlgs, FMTBcd,
   System.Actions, uniGUIBaseClasses, uniGUIClasses, uniButton,
-  uniBitBtn, uniSpeedButton, uniPanel, uniStatusBar, uniEdit, uniDBEdit,
-  uniImage, uniDBImage, uniGroupBox;
+  uniBitBtn, uniSpeedButton, uniPanel, uniStatusBar, uniEdit, uniDBEdit;
 
 type
   TfrmCliente = class(TfrmPadrao)
@@ -20,14 +19,7 @@ type
     cdsCidade: TClientDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
-    pnFoto: TUniContainerPanel;
-    grpFoto: TUniGroupBox;
-    btnBuscar: TUniSpeedButton;
-    btnLimpar: TUniSpeedButton;
-    btnWebCam: TUniSpeedButton;
-    btnFoto: TUniBitBtn;
     btnContas: TUniBitBtn;
-    btnObservacao: TUniBitBtn;
     dbeFax: TUniDBEdit;
     dbeTelefoneComercial: TUniDBEdit;
     dbeRefComercial: TUniDBEdit;
@@ -54,31 +46,16 @@ type
     dbeBairro: TUniDBEdit;
     dbeEndereco: TUniDBEdit;
     dbeNome: TUniDBEdit;
-    imgFoto: TUniDBImage;
+    dbmObs: TUniDBEdit;
     procedure miRelClientesCidadeClick(Sender: TObject);
     procedure miRelClientesDataNascClick(Sender: TObject);
     procedure miRelAniversariantesClick(Sender: TObject);
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure dbeLimiteKeyPress(Sender: TObject; var Key: Char);
     procedure dbeSalarioKeyPress(Sender: TObject; var Key: Char);
-    procedure btnObservacaoClick(Sender: TObject);
-    procedure cdsPadraoCODCIDADEValidate(Sender: TField);
-    procedure cdsPadraoTIPOSetText(Sender: TField; const Text: String);
-    procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;
-      DisplayText: Boolean);
     procedure miEtiquetaClienteClick(Sender: TObject);
     procedure btnContasClick(Sender: TObject);
-    procedure btnFotoClick(Sender: TObject);
-    procedure btnLimparClick(Sender: TObject);
-    procedure btnBuscarClick(Sender: TObject);
-    procedure btnWebCamClick(Sender: TObject);
-    procedure dbeCidadePropertiesButtonClick(Sender: TObject;
-      AButtonIndex: Integer);
-    procedure cdsPadraoESTADO_CIVILGetText(Sender: TField; var Text: string;
-      DisplayText: Boolean);
-    procedure cdsPadraoESTADO_CIVILSetText(Sender: TField; const Text: string);
   private
     SQLPadraoTela: string;
     procedure Foto(Visivel: Boolean);
@@ -93,9 +70,8 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao, unModeloConsulta, uConfiguraRelatorio,
-     unPrevListagemClientes, VarGlobal,  unContasReceber,
-     Extensos, unFoto, udatabaseutils, udmCliente;
+uses Funcoes, ConstPadrao, uConfiguraRelatorio,
+     unPrevListagemClientes,  unContasReceber, udmCliente;
 
 {$R *.dfm}
 
@@ -117,31 +93,13 @@ begin
   ChamaForm('TfrmRelatorioAniversarioCliente', 'Clientes aniversariantes', Self);
 end;
 
-procedure TfrmCliente.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-//  cdsPadraoTIPO.AsString := 'F';
-//  cdsPadraoCADASTRO.AsDateTime := Date;
-//  cdsPadraoLIMITE.AsFloat := Global.LimiteCliente;
-//  cdsPadraoSALARIO.AsFloat := 0;
-end;
-
-procedure TfrmCliente.dbeCidadePropertiesButtonClick(Sender: TObject;
-  AButtonIndex: Integer);
-begin
-  inherited;
-//  if (cdsPadrao.State in [dsInsert, dsEdit]) then
-//    if TfrmModeloConsulta.Execute('Busca Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
-//      cdsPadraoCODCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
-end;
-
 procedure TfrmCliente.FormCreate(Sender: TObject);
 begin
+  dsPadrao.DataSet := TdmCliente(GetDm).cdsPadrao;
   inherited;
   FieldNames := FN_CLIENTES;
   DisplayLabels := DL_CLIENTES;
   aCaption := 'Clientes';
-  SQLPadraoTela := TdmCliente(GetDm).sqldPadrao.Commandtext;
 end;
 
 procedure TfrmCliente.actPrintExecute(Sender: TObject);
@@ -170,61 +128,6 @@ procedure TfrmCliente.dbeSalarioKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
   NumericoKeyPress(sender, key);
-end;
-
-procedure TfrmCliente.btnObservacaoClick(Sender: TObject);
-begin
-  inherited;
-  FormMemo(dsPadrao, 'OBS');
-end;
-
-procedure TfrmCliente.cdsPadraoCODCIDADEValidate(Sender: TField);
-var
-  NomeCidade: string;
-begin
-  inherited;
-//  NomeCidade := GetFieldByID(GetConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
-//    Sender.AsInteger);
-//  if NomeCidade <> '' then
-//    cdsPadraoDESCRICAO.AsString := NomeCidade;
-end;
-
-procedure TfrmCliente.cdsPadraoESTADO_CIVILGetText(Sender: TField;
-  var Text: string; DisplayText: Boolean);
-begin
-  inherited;
-//  if (cdsPadrao.State in [dsInsert, dsEdit]) and not sender.IsNull then
-//    case sender.AsString[1] of
-//      'S': Text := 'Solteiro(a)';
-//      'C': Text := 'Casado(a)';
-//      'A': Text := 'Amaziado(a)';
-//      'V': Text := 'Viúvo(a)';
-//    end;
-end;
-
-procedure TfrmCliente.cdsPadraoESTADO_CIVILSetText(Sender: TField;
-  const Text: string);
-begin
-  inherited;
-//  if (cdsPadrao.State in [dsInsert, dsEdit]) and not Text.IsEmpty then
-//    Sender.AsString := Copy(Text,1,1);
-end;
-
-procedure TfrmCliente.cdsPadraoTIPOSetText(Sender: TField;
-  const Text: String);
-begin
-  inherited;
-  Sender.AsString := Copy(Text, 1, 1);
-end;
-
-procedure TfrmCliente.cdsPadraoTIPOGetText(Sender: TField;
-  var Text: String; DisplayText: Boolean);
-begin
-  inherited;
-  if Sender.AsString = 'J' then
-    Text := 'Jurídica'
-  else
-    Text := 'Física';
 end;
 
 procedure TfrmCliente.miEtiquetaClienteClick(Sender: TObject);
@@ -265,22 +168,9 @@ begin
 //  end;
 end;
 
-procedure TfrmCliente.btnFotoClick(Sender: TObject);
-begin
-  inherited;
-  Foto(not pnFoto.Visible);
-end;
-
 procedure TfrmCliente.Foto(Visivel: Boolean);
 begin
-  pnFoto.Top     := btnFoto.Top-pnFoto.Height-1;
-  pnFoto.Left    := btnFoto.Left;
-  pnFoto.Visible := Visivel;
 
-  if Visivel then
-    SetFocusIfCan(imgFoto);
-
-  pnFoto.BringToFront;
 end;
 
 function TfrmCliente.GetDm: TdmGeralBase;
@@ -289,37 +179,6 @@ begin
     dmCliente := TdmCliente.Create(self);
 
   Result := dmCliente;
-end;
-
-procedure TfrmCliente.btnLimparClick(Sender: TObject);
-begin
-  inherited;
-  if EditModes then
-    imgFoto.Field.Clear;
-end;
-
-procedure TfrmCliente.btnBuscarClick(Sender: TObject);
-begin
-  inherited;
-  if EditModes then
-    with TOpenPictureDialog.Create(nil) do
-    try
-      if Execute then
-        imgFoto.Picture.LoadFromFile(FileName);
-    finally
-      Free;
-    end;
-end;
-
-procedure TfrmCliente.btnWebCamClick(Sender: TObject);
-var
-  Foto: string;
-begin
-//  if EditModes then
-//  begin
-//    if TfrmFoto.Load(IntToStr(cdsPadraoCODCLIENTE.AsInteger), Foto) then
-//      imgFoto.Picture.LoadFromFile(Foto);
-//  end;
 end;
 
 initialization

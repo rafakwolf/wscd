@@ -10,11 +10,9 @@ type
   TUniServerModule = class(TUniGUIServerModule)
     procedure UniGUIServerModuleCreate(Sender: TObject);
   private
-    { Private declarations }
   protected
     procedure FirstInit; override;
   public
-    { Public declarations }
   end;
 
 function UniServerModule: TUniServerModule;
@@ -41,6 +39,10 @@ begin
   PFmtSettings.CurrencyString := 'R$';
   PFmtSettings.DateSeparator := '/';
   PFmtSettings.ShortDateFormat := 'dd/mm/yyyy';
+
+  MimeTable.AddMimeType('woff', 'application/font', False);
+  MimeTable.AddMimeType('woff2', 'application/font', False);
+  MimeTable.AddMimeType('ttf', 'application/font', False);
 end;
 
 initialization

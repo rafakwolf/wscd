@@ -379,6 +379,9 @@ var
   formClass: TUniFormClass;
 begin
   formClass := TUniFormClass(GetClass(pClass));
+
+  if (formClass = nil) then raise Exception.Create('Classe '+pClass+' não encontrada.');
+
   Result := formClass.Create(pOwner);
   Result.Caption := pTitle;
   Result.Show;

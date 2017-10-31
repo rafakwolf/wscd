@@ -6,21 +6,18 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr,  Vcl.Imaging.pngimage,
   uniGUIForm, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniEdit,
-  uniImage;
+  uniImage, uniCheckBox;
 
 type
   TfrmAcesso = class(TUniLoginForm)
-    btnCancelar: TUniBitBtn;
     btnOK: TUniBitBtn;
     edtUsuario: TUniEdit;
     edtSenha: TUniEdit;
-    imgAcesso: TUniImage;
+    ckbLembrarLogin: TUniCheckBox;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure btnCancelarClick(Sender: TObject);
   private
     Ok: Boolean;
     Tentativa: Integer;
@@ -49,17 +46,6 @@ end;
 function TfrmAcesso.ValidaLogin: Boolean;
 var cdsResultado: TClientDataSet;
 begin
-  Inc(Tentativa);
-
-  if (Tentativa > 3) then
-  begin
-    Result := False;
-    MsgErro('','Esgotado o número de tentativas. ' +
-      'Por medida de segurança, o sistema será finalizado.');
-    Application.Terminate;
-    Exit;
-  end;
-
   if not (AnsiLowerCase(edtUsuario.Text) = 'adm') then
   begin
     with TdmAcesso.Create(self) do
@@ -89,12 +75,6 @@ end;
 procedure TfrmAcesso.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if Key = VK_F1 then
-    ChamaHelp(Self, 0,'');
-
-  if Key = VK_ESCAPE then
-    btnCancelar.Click;
-
   if (ActiveControl = edtSenha) and (Key = VK_RETURN) then
     btnOK.Click;
 end;
@@ -106,60 +86,43 @@ end;
 
 procedure TfrmAcesso.btnOkClick(Sender: TObject);
 begin
-//  if Trim(edtUsuario.Text).IsEmpty then
-//  begin
-//    MsgErro('','Informe o usuário.');
-//    ModalResult := mrNone;
-//    edtUsuario.SetFocus;
-//    Exit;
-//  end;
-//
-//  if Trim(edtSenha.Text).IsEmpty then
-//  begin
-//    MsgErro('','Informe a senha.');
-//    ModalResult := mrNone;
-//    edtSenha.SetFocus;
-//    Exit;
-//  end;
-//
-//  if UsuarioExiste then
-//  begin
-//    if ValidaLogin then
-//    begin
-//      with TIniFile.Create(ExtractFilePath(Application.Exename)+'cfg.ini') do
-//      try
-//        WriteString('Login', 'NomeUsuario', edtUsuario.Text);
-//      finally
-//        free;
-//      end;
-//
-//      ModalResult := mrOk;
-//      Ok := True;
-//    end
-//    else
-//    begin
-//      ModalResult := mrNone;
-//      MsgErro('','Usuário ou Senha está incorreto.');
-//      if ActiveControl is TLabeledEdit then
-//        TLabeledEdit(ActiveControl).SelectAll;
-//      Abort;
-//    end;
-//  end
-//  else
-//    raise Exception.Create('Nenhum usuário cadastrado.');
+  if Trim(edtUsuario.Text).IsEmpty then
+  begin
+    MsgErro('','Informe o usuário.');
+    ModalResult := mrNone;
+    edtUsuario.SetFocus;
+    Exit;
+  end;
+
+  if Trim(edtSenha.Text).IsEmpty then
+  begin
+    MsgErro('','Informe a senha.');
+    ModalResult := mrNone;
+    edtSenha.SetFocus;
+    Exit;
+  end;
+
+  if UsuarioExiste then
+  begin
+    if ValidaLogin then
+    begin
+        if ckbLembrarLogin.Checked then
+          UniApplication.Cookies.SetCookie('_erp_login', edtUsuario.Text);
+
+      ModalResult := mrOk;
+      Ok := True;
+    end
+    else
+    begin
+      ModalResult := mrNone;
+      MsgErro('','Usuário ou Senha está incorreto.');
+      Abort;
+    end;
+  end
+  else
+    raise Exception.Create('Nenhum usuário cadastrado.');
 
   ModalResult := mrOk;
-end;
-
-procedure TfrmAcesso.FormCreate(Sender: TObject);
-begin
-  Tentativa := 0;
-  Ok := False;
-end;
-
-procedure TfrmAcesso.btnCancelarClick(Sender: TObject);
-begin
-  ModalResult := mrCancel;
 end;
 
 function TfrmAcesso.UsuarioExiste: Boolean;

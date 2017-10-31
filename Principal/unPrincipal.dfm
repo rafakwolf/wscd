@@ -3556,7 +3556,6 @@ object frmPrincipal: TfrmPrincipal
     object actPostIt: TAction
       Category = 'Util'
       Caption = 'Post it'
-      OnExecute = actPostItExecute
     end
     object actAjuda: TAction
       Category = 'Ajuda'
@@ -3646,12 +3645,6 @@ object frmPrincipal: TfrmPrincipal
       object miConfiguracaoLocal: TUniMenuItem
         Action = actConfiguracaoLocal
       end
-      object miImpressora: TUniMenuItem
-        Action = actImpressora
-      end
-      object miConfigServidor: TUniMenuItem
-        Action = actConfigServidor
-      end
       object N1: TUniMenuItem
         Caption = '-'
       end
@@ -3670,9 +3663,6 @@ object frmPrincipal: TfrmPrincipal
       object miTrocarSenha: TUniMenuItem
         Action = actTrocaSenha
       end
-      object miRenovaChave: TUniMenuItem
-        Action = actRenovaChave
-      end
     end
     object miUtilitario: TUniMenuItem
       Caption = 'Utilit'#225'rios'
@@ -3690,15 +3680,6 @@ object frmPrincipal: TfrmPrincipal
       end
       object N6: TUniMenuItem
         Caption = '-'
-      end
-      object miCalendario: TUniMenuItem
-        Action = actCalendario
-      end
-      object miCalculadora: TUniMenuItem
-        Action = actCalculadora
-      end
-      object miEditorTexto: TUniMenuItem
-        Action = actEditorTexto
       end
       object miEnvelope: TUniMenuItem
         Action = actEnvelope

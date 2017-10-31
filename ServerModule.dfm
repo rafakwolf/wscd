@@ -5,6 +5,9 @@ object UniServerModule: TUniServerModule
   Title = 'ERP'
   SuppressErrors = []
   Bindings = <>
+  CustomFiles.Strings = (
+    './files/styles.css'
+    './files/font-awesome-4.7.0/css/font-awesome.min.css')
   SSL.SSLOptions.RootCertFile = 'root.pem'
   SSL.SSLOptions.CertFile = 'cert.pem'
   SSL.SSLOptions.KeyFile = 'key.pem'
