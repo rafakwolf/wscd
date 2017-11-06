@@ -3,7 +3,7 @@ unit MainModule;
 interface
 
 uses
-  uniGUIMainModule, SysUtils, Classes, unDmPrincipal;
+  uniGUIMainModule, SysUtils, Classes, unDmPrincipal, uniLogger;
 
 type
   TUniMainModule = class(TUniGUIMainModule)

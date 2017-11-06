@@ -20,7 +20,6 @@ type
     procedure btnOkClick(Sender: TObject);
   private
     Ok: Boolean;
-    Tentativa: Integer;
     class var LogIn: Boolean;
   protected
   public

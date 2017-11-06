@@ -22,7 +22,7 @@ implementation
 {$R *.dfm}
 
 uses
-  UniGUIVars;
+  UniGUIVars, Winapi.ShellAPI, Winapi.Windows;
 
 function UniServerModule: TUniServerModule;
 begin
@@ -43,6 +43,9 @@ begin
   MimeTable.AddMimeType('woff', 'application/font', False);
   MimeTable.AddMimeType('woff2', 'application/font', False);
   MimeTable.AddMimeType('ttf', 'application/font', False);
+
+  if DebugMode then
+    ShellExecute(0, 'open', 'http://localhost:8077', nil, nil,SW_SHOWNORMAL);
 end;
 
 initialization

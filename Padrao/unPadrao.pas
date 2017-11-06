@@ -7,7 +7,8 @@ uses
   ExtCtrls, StdCtrls, Menus, Buttons, DBClient, DB, ActnList, DBXCommon,
   ComCtrls, Variants, SQLExpr, Funcoes, ConstPadrao, Provider, DBGrids,
   System.Actions, udmGeralBase, UniGuiForm, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, UniGUIDialogs;
+  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, UniGUIDialogs,
+  uniGUIApplication;
 
 type
   TfrmPadrao = class(TUniForm)
@@ -158,22 +159,6 @@ end;
 
 procedure TfrmPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-
-//  if Assigned(dsPadrao.DataSet) and  (dsPadrao.DataSet is TClientDataSet) then
-//  begin
-//    if ((TClientDataSet(dsPadrao.DataSet).ChangeCount <> 0) or (TClientDataSet(dsPadrao.DataSet).Modified)) then
-//      case
-//        UniGUIDialogs.MessageDlg(PChar('Existem alterações pendentes no processo "'
-//        +  Caption + '".' + #13#10 + 'Deseja gravar as alterações?'),
-//          'Confirmação', MB_YESNOCANCEL or MB_ICONQUESTION) of
-//
-//        Id_Yes: actPost.Execute;
-//        Id_No: actCancelUpdates.Execute;
-//        Id_Cancel: Abort;
-//      end;
-//  end;
-
-
   if Assigned(dsPadrao.DataSet) then
     dsPadrao.DataSet.Close;
   Action := caFree;
@@ -181,21 +166,14 @@ end;
 
 procedure TfrmPadrao.NumericoKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not (Key in [#8, '0'..'9', FormatSettings.DecimalSeparator]) then begin
+  if not (Key in [#8, '0'..'9', PFmtSettings.DecimalSeparator]) then begin
     Key := #0;
   end;
 end;
 
 procedure TfrmPadrao.actInsertExecute(Sender: TObject);
 begin
-  try
-    dsPadrao.DataSet.DisableControls;
-    dsPadrao.DataSet.Close;
-    dsPadrao.DataSet.Open;
-  finally
-    dsPadrao.DataSet.EnableControls;
-  end;
-  dsPadrao.DataSet.Append;
+  dsPadrao.DataSet.Insert;
 end;
 
 procedure TfrmPadrao.actEditExecute(Sender: TObject);
@@ -207,29 +185,25 @@ procedure TfrmPadrao.actDeleteExecute(Sender: TObject);
 begin
   if not dsPadrao.DataSet.IsEmpty then
   begin
-//    if UniGUIDialogs.MessageDlg('Tem certeza que deseja excluir este registro?',
-//      'Exclusão de registro', MB_ICONQUESTION or MB_YESNO or MB_DEFBUTTON2) =  IDYES then
-//    begin
-//      FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-//      try
-//        dsPadrao.DataSet.Delete;
-//
-//        if (dsPadrao.DataSet is TClientDataSet) then
-//          TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0);
-//
-//        dsPadrao.OnStateChange(dsPadrao);
-//        GetConnection.CommitFreeAndNil(FTransacao);
-//      except
-//        on e: Exception do
-//          GetConnection.RollbackFreeAndNil(FTransacao);
-//      end;
-//    end;
+    UniGUIDialogs.MessageDlg('Tem certeza que deseja excluir este registro?',
+      TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+      procedure (sender: TComponent; AResult: Integer)
+      begin
+        if (AResult = ID_YES) then
+        begin
+          dsPadrao.DataSet.Delete;
+
+          if (dsPadrao.DataSet is TClientDataSet) then
+            TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0);
+        end;
+      end
+      );
   end;
 end;
 
 procedure TfrmPadrao.dsPadraoStateChange(Sender: TObject);
 begin
-  EditModes := dsPadrao.DataSet.State in [dsEdit, dsInsert];
+  EditModes := dsPadrao.DataSet.State in dsEditModes;
 
   actInsert.Enabled := not EditModes;
   actEdit.Enabled := not EditModes;
@@ -239,18 +213,6 @@ begin
   actSearch.Enabled := not EditModes;
   actPrint.Enabled := not EditModes;
   actClose.Enabled := not EditModes;
-
-//  if (dsPadrao.DataSet.State in [dsInsert]) then
-//    sbStatus.Panels[0].Text := ' Inserindo registro...'
-//  else
-//  if (dsPadrao.DataSet.State in [dsEdit]) then
-//    sbStatus.Panels[0].Text := ' Alterando registro...'
-//  else
-//  if (dsPadrao.DataSet.State in [dsBrowse]) then
-//    sbStatus.Panels[0].Text := ' Visualizando registro...'
-//  else
-//  if (dsPadrao.DataSet.IsEmpty) then
-//    sbStatus.Panels[0].Text := ' Nenhum item cadastrado...';
 end;
 
 procedure TfrmPadrao.actCancelUpdatesExecute(Sender: TObject);
@@ -331,7 +293,6 @@ end;
 function TfrmPadrao.Pesquisa(pCaption: string;
   pFieldNames, pDisplayLabels, pTableName: string): Boolean;
 begin
-
   if (pTableName = '') then
      pTableName := aCaption;
 

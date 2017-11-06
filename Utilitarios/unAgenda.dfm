@@ -1,20 +1,20 @@
 inherited frmAgenda: TfrmAgenda
   ClientHeight = 389
-  ClientWidth = 545
+  ClientWidth = 564
   Caption = 'frmAgenda'
   OldCreateOrder = True
-  ExplicitWidth = 551
+  ExplicitWidth = 570
   ExplicitHeight = 418
   PixelsPerInch = 96
   TextHeight = 13
   inherited sbStatus: TUniStatusBar
     Top = 370
-    Width = 545
+    Width = 564
     ExplicitTop = 370
     ExplicitWidth = 545
   end
   inherited pnBotoesPadrao: TUniContainerPanel
-    Width = 545
+    Width = 564
     TabOrder = 3
     ExplicitWidth = 545
   end
@@ -28,6 +28,10 @@ inherited frmAgenda: TfrmAgenda
     DataField = 'NOME'
     DataSource = dsPadrao
     TabOrder = 0
+    ClientEvents.ExtEvents.Strings = (
+      
+        'afterrender=function afterrender(sender, eOpts)'#13#10'{'#13#10'  sender.emp' +
+        'tyText = '#39'Nome'#39';'#13#10'}')
   end
   object dbeFax: TUniDBEdit [3]
     Left = 56
