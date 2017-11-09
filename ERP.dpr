@@ -1,13 +1,21 @@
-program ERP;
+{$define UNIGUI_VCL} // Comment out this line to turn this project into an ISAPI module
+
+{$ifndef UNIGUI_VCL}
+library
+{$else}
+program
+{$endif}
+ERP;
 
 uses
+  uniGUIISAPI,
   Forms,
   ServerModule in 'ServerModule.pas' {UniServerModule: TUniGUIServerModule},
   MainModule in 'MainModule.pas' {UniMainModule: TUniGUIMainModule},
   uClasses in 'Util\uClasses.pas',
   uNotifyEventDispatcher in 'Util\uNotifyEventDispatcher.pas',
   unDmPrincipal in 'Principal\unDmPrincipal.pas' {DmPrincipal: TDataModule},
-  unPrincipal in 'Principal\unPrincipal.pas' {frmPrincipal},
+  unPrincipal in 'Principal\unPrincipal.pas' {MainForm: TUniForm},
   ufmImprimeEtiq in 'Padrao\ufmImprimeEtiq.pas' {frmImprimeEtiq},
   unDialogoRelatorioPadrao in 'Padrao\unDialogoRelatorioPadrao.pas' {frmDialogoRelatorioPadrao},
   unModeloConsulta in 'Padrao\unModeloConsulta.pas' {frmModeloConsulta},
@@ -165,13 +173,23 @@ uses
   uCheque in 'Util\uCheque.pas',
   uClassesMenu in 'Util\uClassesMenu.pas',
   udmCliente in 'Cadastros\Datamodule\udmCliente.pas' {dmCliente: TDataModule},
-  udmDuplicatas in 'Utilitarios\Datamodule\udmDuplicatas.pas' {dmDuplicatas: TDataModule};
+  udmDuplicatas in 'Utilitarios\Datamodule\udmDuplicatas.pas' {dmDuplicatas: TDataModule},
+  uMenuActions in 'Principal\Classes\uMenuActions.pas';
 
 {$R *.res}
 
+{$ifndef UNIGUI_VCL}
+exports
+  GetExtensionVersion,
+  HttpExtensionProc,
+  TerminateExtension;
+{$endif}
+
 begin
+{$ifdef UNIGUI_VCL}
   ReportMemoryLeaksOnShutdown := True;
   Application.Initialize;
   TUniServerModule.Create(Application);
   Application.Run;
+{$endif}
 end.

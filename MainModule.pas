@@ -36,8 +36,12 @@ end;
 
 procedure TUniMainModule.UniGUIMainModuleDestroy(Sender: TObject);
 begin
-  if Assigned(DmPrincipal) then
-    DmPrincipal.Free;
+  try 
+    //if Assigned(DmPrincipal) then
+    //  DmPrincipal.Free;
+  except
+    // ignored
+  end;
 end;
 
 initialization

@@ -5,9 +5,12 @@ object UniServerModule: TUniServerModule
   Title = 'ERP'
   SuppressErrors = []
   Bindings = <>
+  MainFormDisplayMode = mfPage
   CustomFiles.Strings = (
-    './files/styles.css'
-    './files/font-awesome-4.7.0/css/font-awesome.min.css')
+    './files/styles/styles.css'
+    './files/font-awesome/css/font-awesome.min.css'
+    './files/bootstrap/css/bootstrap.min.css'
+    './files/bootstrap/js/bootstrap.min.js')
   SSL.SSLOptions.RootCertFile = 'root.pem'
   SSL.SSLOptions.CertFile = 'cert.pem'
   SSL.SSLOptions.KeyFile = 'key.pem'
@@ -16,6 +19,7 @@ object UniServerModule: TUniServerModule
   SSL.SSLOptions.Mode = sslmUnassigned
   SSL.SSLOptions.VerifyMode = []
   SSL.SSLOptions.VerifyDepth = 0
+  Options = [soShowLicenseInfo, soAutoPlatformSwitch, soWipeShadowSessions, soControlNameAsId]
   ConnectionFailureRecovery.ErrorMessage = 'Connection Error'
   ConnectionFailureRecovery.RetryMessage = 'Retrying...'
   Height = 150

@@ -109,12 +109,10 @@ $(PreBuildEvent)]]></PreBuildEvent>
         </DelphiCompile>
         <DCCReference Include="ServerModule.pas">
             <Form>UniServerModule</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TUniGUIServerModule</DesignClass>
         </DCCReference>
         <DCCReference Include="MainModule.pas">
             <Form>UniMainModule</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TUniGUIMainModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Util\uClasses.pas"/>
@@ -124,7 +122,8 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="Principal\unPrincipal.pas">
-            <Form>frmPrincipal</Form>
+            <Form>MainForm</Form>
+            <DesignClass>TUniForm</DesignClass>
         </DCCReference>
         <DCCReference Include="Padrao\ufmImprimeEtiq.pas">
             <Form>frmImprimeEtiq</Form>
@@ -578,6 +577,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>dmDuplicatas</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Principal\Classes\uMenuActions.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -599,8 +599,8 @@ $(PreBuildEvent)]]></PreBuildEvent>
                     <Source Name="MainSource">ERP.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
