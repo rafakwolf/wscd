@@ -8,11 +8,10 @@ object frmAcesso: TfrmAcesso
   BorderStyle = bsNone
   OldCreateOrder = False
   ShowHint = True
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
   KeyPreview = True
   MonitoredKeys.Keys = <>
   Movable = False
+  AlignmentControl = uniAlignmentClient
   PixelsPerInch = 96
   TextHeight = 13
   object btnOK: TUniBitBtn
@@ -22,10 +21,14 @@ object frmAcesso: TfrmAcesso
     Height = 32
     Hint = 'Efetuar login'
     ShowHint = True
-    Caption = 'Login'
+    Caption = '<i class="fa fa-check-circle" aria-hidden="true"></i> Entrar'
     ParentFont = False
     Font.Height = -16
     TabOrder = 1
+    ClientEvents.ExtEvents.Strings = (
+      
+        'added=function added(sender, container, pos, eOpts)'#13#10'{'#13#10'  debugg' +
+        'er; '#13#10'  sender.addCls('#39'btn btn-primary'#39');'#13#10'}')
     OnClick = btnOkClick
   end
   object edtUsuario: TUniEdit
@@ -61,5 +64,9 @@ object frmAcesso: TfrmAcesso
     ParentFont = False
     Font.Height = -13
     TabOrder = 3
+    ClientEvents.ExtEvents.Strings = (
+      
+        'activate=function activate(sender, eOpts)'#13#10'{'#13#10'  sender.addCls('#39'c' +
+        'heckbox'#39');'#13#10'}')
   end
 end

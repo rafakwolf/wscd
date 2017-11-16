@@ -73,8 +73,8 @@ type
     actAuditoriaUser: TAction;
     menuFrame: TUniHTMLFrame;
     UniPanel1: TUniPanel;
-    UniSpeedButton1: TUniSpeedButton;
-    UniSpeedButton2: TUniSpeedButton;
+    btnSair: TUniSpeedButton;
+    btnNotificacoes: TUniSpeedButton;
     procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
     procedure actUnidadeExecute(Sender: TObject);
@@ -133,9 +133,10 @@ type
     procedure actPromocaoExecute(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
     procedure UniFormResize(Sender: TObject);
-    procedure UniSpeedButton1Click(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
     procedure menuFrameAjaxEvent(Sender: TComponent; EventName: string;
       Params: TUniStrings);
+    procedure btnNotificacoesClick(Sender: TObject);
   Private
     Lista_permissoes: TClientDataSet;
     MenuActions: TMenuActions;
@@ -163,7 +164,7 @@ implementation
 
 uses
   unAcesso, Funcoes, uUtilFncs, VarGlobal,  uniGUIVars, MainModule, uniGUIApplication,
-  uClasses, udmAcesso;
+  uClasses, udmAcesso, uNotificacoes;
 
 {$R *.dfm}
 
@@ -459,6 +460,14 @@ begin
     actOutroUsuario.Execute;
 end;
 
+procedure TMainForm.btnNotificacoesClick(Sender: TObject);
+begin
+  frmNotificacoes := TfrmNotificacoes.Create(UniApplication);
+  frmNotificacoes.Top := btnNotificacoes.Top + btnNotificacoes.Height;
+  frmNotificacoes.Left := btnNotificacoes.Left;
+  frmNotificacoes.Show();
+end;
+
 procedure TMainForm.btnOrcamentoClick(Sender: TObject);
 begin
   if actOrcamento.Enabled then
@@ -523,7 +532,7 @@ begin
 //   UniSimplePanel1.Width := self.Width;
 end;
 
-procedure TMainForm.UniSpeedButton1Click(Sender: TObject);
+procedure TMainForm.btnSairClick(Sender: TObject);
 begin
   UniApplication.Restart;
 end;

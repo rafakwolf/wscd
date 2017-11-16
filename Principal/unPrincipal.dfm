@@ -42,23 +42,28 @@ object MainForm: TMainForm
     Color = clSilver
     LayoutConfig.Height = '8%'
     LayoutConfig.Width = '82%'
-    object UniSpeedButton1: TUniSpeedButton
-      Left = 401
+    object btnSair: TUniSpeedButton
+      Left = 394
       Top = 0
-      Width = 48
+      Width = 55
       Height = 57
       Hint = ''
       ShowHint = True
+      ClientEvents.ExtEvents.Strings = (
+        
+          'added=function added(sender, container, pos, eOpts)'#13#10'{'#13#10'  sender' +
+          '.addCls('#39'btn btn-success'#39');'#13#10'}')
       Caption = '<i class="fa fa-sign-out fa-2x"></i>'
       Align = alRight
       Anchors = [akTop, akRight, akBottom]
       ParentColor = False
       Color = clWindow
       TabOrder = 1
-      OnClick = UniSpeedButton1Click
+      OnClick = btnSairClick
+      ExplicitLeft = 395
     end
-    object UniSpeedButton2: TUniSpeedButton
-      Left = 352
+    object btnNotificacoes: TUniSpeedButton
+      Left = 345
       Top = 0
       Width = 49
       Height = 57
@@ -70,6 +75,8 @@ object MainForm: TMainForm
       ParentColor = False
       Color = clWindow
       TabOrder = 2
+      OnClick = btnNotificacoesClick
+      ExplicitLeft = 352
     end
   end
   object ListaAcoes: TActionList

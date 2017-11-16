@@ -14,9 +14,6 @@ type
     edtUsuario: TUniEdit;
     edtSenha: TUniEdit;
     ckbLembrarLogin: TUniCheckBox;
-    procedure FormKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);
   private
     Ok: Boolean;
@@ -69,18 +66,6 @@ begin
   end
   else
     Result := False;
-end;
-
-procedure TfrmAcesso.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if (ActiveControl = edtSenha) and (Key = VK_RETURN) then
-    btnOK.Click;
-end;
-
-procedure TfrmAcesso.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
 end;
 
 procedure TfrmAcesso.btnOkClick(Sender: TObject);
