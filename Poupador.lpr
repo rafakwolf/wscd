@@ -1,23 +1,11 @@
-{$define UNIGUI_VCL} // Comment out this line to turn this project into an ISAPI module
-
-{$ifndef UNIGUI_VCL}
-library
-{$else}
-program
-{$endif}
-Poupador;
-
-{$MODE Delphi}
+program Poupador;
 
 uses
-  {uniGUIISAPI,}
   Forms, Interfaces,
-  ServerModule in 'ServerModule.pas' {UniServerModule: TUniGUIServerModule},
-  MainModule in 'MainModule.pas' {UniMainModule: TUniGUIMainModule},
   uClasses in 'Util\uClasses.pas',
   uNotifyEventDispatcher in 'Util\uNotifyEventDispatcher.pas',
   unDmPrincipal in 'Principal\unDmPrincipal.pas' {DmPrincipal: TDataModule},
-  unPrincipal in 'Principal\unPrincipal.pas' {MainForm: TUniForm},
+  unPrincipal in 'Principal\unPrincipal.pas' {MainForm: TForm},
   ufmImprimeEtiq in 'Padrao\ufmImprimeEtiq.pas' {frmImprimeEtiq},
   unDialogoRelatorioPadrao in 'Padrao\unDialogoRelatorioPadrao.pas' {frmDialogoRelatorioPadrao},
   unModeloConsulta in 'Padrao\unModeloConsulta.pas' {frmModeloConsulta},
@@ -180,18 +168,7 @@ uses
 
 {$R *.res}
 
-{$ifndef UNIGUI_VCL}
-exports
-  GetExtensionVersion,
-  HttpExtensionProc,
-  TerminateExtension;
-{$endif}
-
 begin
-{$ifdef UNIGUI_VCL}
-  ReportMemoryLeaksOnShutdown := True;
   Application.Initialize;
-  TUniServerModule.Create(Application);
   Application.Run;
-{$endif}
 end.
