@@ -7,9 +7,11 @@ program
 {$endif}
 Poupador;
 
+{$MODE Delphi}
+
 uses
-  uniGUIISAPI,
-  Forms,
+  {uniGUIISAPI,}
+  Forms, Interfaces,
   ServerModule in 'ServerModule.pas' {UniServerModule: TUniGUIServerModule},
   MainModule in 'MainModule.pas' {UniMainModule: TUniGUIMainModule},
   uClasses in 'Util\uClasses.pas',

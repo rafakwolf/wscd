@@ -1,9 +1,11 @@
 unit MainModule;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  uniGUIMainModule, SysUtils, Classes, unDmPrincipal, uniLogger;
+  {uniGUIMainModule,} SysUtils, Classes, unDmPrincipal{, uniLogger};
 
 type
   TUniMainModule = class(TUniGUIMainModule)
@@ -18,10 +20,10 @@ function UniMainModule: TUniMainModule;
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
 uses
-  UniGUIVars, ServerModule, uniGUIApplication;
+  {UniGUIVars,} ServerModule{, uniGUIApplication};
 
 function UniMainModule: TUniMainModule;
 begin

@@ -1,13 +1,11 @@
 unit unDialogoRelatorioPadrao;
 
-{$MODE Delphi}
-
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB{, System.Rtti, UniGuiForm,
-  uniGUIBaseClasses, uniGUIClasses, uniPanel, uniButton, uniBitBtn};
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, System.Rtti, UniGuiForm,
+  uniGUIBaseClasses, uniGUIClasses, uniPanel, uniButton, uniBitBtn;
 
 type
   TfrmDialogoRelatorioPadrao = class(TUniForm)
@@ -31,9 +29,9 @@ var
 implementation
 
 uses
-  Funcoes, uNotifyEventDispatcher{, Vcl.DBCtrls};
+  Funcoes, uNotifyEventDispatcher, Vcl.DBCtrls;
 
-{$R *.lfm}
+{$R *.dfm}
 
 procedure TfrmDialogoRelatorioPadrao.FormCreate(Sender: TObject);
 begin

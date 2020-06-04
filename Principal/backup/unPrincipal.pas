@@ -1,17 +1,15 @@
 unit unPrincipal;
 
-{$MODE Delphi}
-
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, ComCtrls, ExtCtrls, Buttons, sqldb, Types, ActnList, DB,
-  ConstPadrao, ToolWin, {AppEvnts,}  uDatabaseUtils, crypto,
-  StdCtrls, DBCtrls, {DBClient,} IniFiles, {UniGuiForm, UniGUIDialogs,
-  Provider,} ImgList,  ImgUtils, FMTBcd, {System.Actions, uniMainMenu,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, ComCtrls, ExtCtrls, Buttons, SqlExpr, Types, ActnList, DB,
+  ConstPadrao, ShellAPI, ToolWin, AppEvnts,  udatabaseutils, crypto,
+  StdCtrls, DBCtrls, DBClient, IniFiles, UniGuiForm, UniGUIDialogs,
+  Provider, ImgList,  ImgUtils, FMTBcd, System.Actions, uniMainMenu,
   uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
-  uniStatusBar, uniPanel, uniToolBar, uniHTMLFrame, uniGUITypes,} uMenuActions;
+  uniStatusBar, uniPanel, uniToolBar, uniHTMLFrame, uniGUITypes, uMenuActions;
 
 type
   TMainForm = class(TUniForm)
@@ -165,10 +163,10 @@ function MainForm: TMainForm;
 implementation
 
 uses
-  unAcesso, Funcoes, uUtilFncs, VarGlobal,  {uniGUIVars,} MainModule, {uniGUIApplication,}
+  unAcesso, Funcoes, uUtilFncs, VarGlobal,  uniGUIVars, MainModule, uniGUIApplication,
   uClasses, udmAcesso, uNotificacoes;
 
-{$R *.lfm}
+{$R *.dfm}
 
 function MainForm: TMainForm;
 begin
@@ -207,12 +205,12 @@ end;
 
 procedure TMainForm.actConfiguracaoGlobalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigGlobal', 'Configura√ß√µes globais', UniApplication);
+  ChamaForm('TfrmConfigGlobal', 'ConfiguraÁıes globais', UniApplication);
 end;
 
 procedure TMainForm.actConfiguracaoLocalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfiguracao', 'Configura√ß√µes locais', UniApplication);
+  ChamaForm('TfrmConfiguracao', 'ConfiguraÁıes locais', UniApplication);
 end;
 
 procedure TMainForm.actDadosEmpresaExecute(Sender: TObject);
@@ -222,7 +220,7 @@ end;
 
 procedure TMainForm.actUsuarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmUsuarioItemMenu', 'Usu√°rios', UniApplication);
+  ChamaForm('TfrmUsuarioItemMenu', 'Usu·rios', UniApplication);
 end;
 
 procedure TMainForm.actAgendaExecute(Sender: TObject);
@@ -232,17 +230,17 @@ end;
 
 procedure TMainForm.actCalendarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCalendario', 'Calend√°rio', UniApplication);
+  ChamaForm('TfrmCalendario', 'Calend·rio', UniApplication);
 end;
 
 procedure TMainForm.actDuplicataExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDuplicatas', 'Cadastro e impress√£o de duplicatas', UniApplication);
+  ChamaForm('TfrmDuplicatas', 'Cadastro e impress„o de duplicatas', UniApplication);
 end;
 
 procedure TMainForm.actBackupExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmBackup', 'Fazer uma c√≥pia dos dados', UniApplication);
+  ChamaForm('TfrmBackup', 'Fazer uma cÛpia dos dados', UniApplication);
 end;
 
 procedure TMainForm.actClienteExecute(Sender: TObject);
@@ -272,7 +270,7 @@ end;
 
 procedure TMainForm.actOrcamentoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmOrcamentos', 'Or√ßamentos', UniApplication);
+  ChamaForm('TfrmOrcamentos', 'OrÁamentos', UniApplication);
 end;
 
 procedure TMainForm.actVendaExecute(Sender: TObject);
@@ -302,12 +300,12 @@ end;
 
 procedure TMainForm.actExcluirProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmExclusaoProduto', 'Exclus√£o de produtos', UniApplication);
+  ChamaForm('TfrmExclusaoProduto', 'Exclus„o de produtos', UniApplication);
 end;
 
 procedure TMainForm.actListaPrecoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmListagemPrecos', 'Lista de pre√ßos', UniApplication);
+  ChamaForm('TfrmListagemPrecos', 'Lista de preÁos', UniApplication);
 end;
 
 procedure TMainForm.actEtiquetaProdutoExecute(Sender: TObject);
@@ -318,7 +316,7 @@ end;
 procedure TMainForm.actOutroUsuarioExecute(Sender: TObject);
 begin
 //  if not TfrmAcesso.Execute(True) then
-//    MsgAviso('','Troca de usu√°rio cancelada.')
+//    MsgAviso('','Troca de usu·rio cancelada.')
 //  else
 //  begin
 //    SetEnableMenu(IdUsuario = 0);
@@ -342,7 +340,7 @@ end;
 
 procedure TMainForm.actPerfisExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPerfilPermissao', 'Perfis e permiss√µes de usu√°rios', UniApplication);
+  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissıes de usu·rios', UniApplication);
 end;
 
 procedure TMainForm.actTrocaSenhaExecute(Sender: TObject);
@@ -370,7 +368,7 @@ procedure TMainForm.SetEnableMenu(adm: Boolean);
   procedure SetVisibleAction(MenuItem: TMenuItem);
   var x: Integer;
   begin
-    // se n√£o encontrar a permiss√£o
+    // se n„o encontrar a permiss„o
     if (not Lista_permissoes.Locate('MENUITEM', trim(MenuItem.Name),[])) and (not MenuItem.IsLine) then
     begin
       if (assigned(MenuItem.Action)) and (MenuItem.Action is TCustomAction) then
@@ -433,7 +431,7 @@ end;
 
 procedure TMainForm.actEtiquetaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEtiqueta', 'Configura√ß√£o de etiquetas', UniApplication);
+  ChamaForm('TfrmEtiqueta', 'ConfiguraÁ„o de etiquetas', UniApplication);
 end;
 
 procedure TMainForm.actPesqFoneExecute(Sender: TObject);
@@ -453,7 +451,7 @@ end;
 
 procedure TMainForm.actRenovaChaveExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRenovaChave', 'Renova√ß√£o da chave de libera√ß√£o', UniApplication);
+  ChamaForm('TfrmRenovaChave', 'RenovaÁ„o da chave de liberaÁ„o', UniApplication);
 end;
 
 procedure TMainForm.btnLogOffClick(Sender: TObject);
@@ -596,12 +594,12 @@ end;
 
 procedure TMainForm.actNotaPromissoriaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromissoria', 'Promiss√≥ria avulsa', UniApplication);
+  ChamaForm('TfrmPromissoria', 'PromissÛria avulsa', UniApplication);
 end;
 
 procedure TMainForm.actInfoSistemaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmInformacaoSistema', 'Informa√ß√µes sobre o sistema', UniApplication);
+  ChamaForm('TfrmInformacaoSistema', 'InformaÁıes sobre o sistema', UniApplication);
 end;
 
 procedure TMainForm.actVendedorExecute(Sender: TObject);
@@ -611,7 +609,7 @@ end;
 
 procedure TMainForm.actConfigNotaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigNota', 'Configur√£√ß√£o da nota', UniApplication);
+  ChamaForm('TfrmConfigNota', 'Configur„Á„o da nota', UniApplication);
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -633,7 +631,7 @@ end;
 
 procedure TMainForm.actPromocaoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromocao', 'Promo√ß√µes', UniApplication);
+  ChamaForm('TfrmPromocao', 'PromoÁıes', UniApplication);
 end;
 
 function TMainForm.ValidaDataAcesso(DataEncriptada: string;
@@ -671,8 +669,8 @@ begin
   begin
     if SerialHD(Copy(Application.ExeName, 1, 1)) <> HD then
     begin
-      MsgErro('C√≥pia inv√°lida do sistema, por favor entre em contato com o suporte para adquirir uma nova c√≥pia.',
-        'C√≥pia inv√°lida');
+      MsgErro('CÛpia inv·lida do sistema, por favor entre em contato com o suporte para adquirir uma nova cÛpia.',
+        'CÛpia inv·lida');
       Result := False;
     end;
   end;

@@ -1,10 +1,8 @@
 unit uNotifyEventDispatcher;
 
-{$MODE Delphi}
-
 interface
 
-{uses System.Classes, System.SysUtils;}
+uses System.Classes, System.SysUtils;
 
 type
   TNotifyEventDispatcher = class(TComponent)

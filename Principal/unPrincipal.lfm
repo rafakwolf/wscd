@@ -1,23 +1,4 @@
 object MainForm: TMainForm
-  Left = 91
-  Top = 50
-  ClientHeight = 414
-  ClientWidth = 773
-  Caption = 'MainForm'
-  OnResize = UniFormResize
-  WindowState = wsMaximized
-  OldCreateOrder = False
-  ShowHint = True
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Movable = False
-  AlignmentControl = uniAlignmentClient
-  Font.Charset = ANSI_CHARSET
-  Layout = 'hbox'
-  OnCreate = UniFormCreate
-  OnDestroy = FormDestroy
-  PixelsPerInch = 96
-  TextHeight = 13
   object menuFrame: TUniHTMLFrame
     Left = 0
     Top = 0
@@ -52,7 +33,7 @@ object MainForm: TMainForm
       ClientEvents.ExtEvents.Strings = (
         
           'added=function added(sender, container, pos, eOpts)'#13#10'{'#13#10'  sender' +
-          '.addCls('#39'btn btn-success'#39');'#13#10'}')
+          '.addCls(''btn btn-success'');'#13#10'}')
       Caption = '<i class="fa fa-sign-out fa-2x"></i>'
       Align = alRight
       Anchors = [akTop, akRight, akBottom]
@@ -99,7 +80,7 @@ object MainForm: TMainForm
     end
     object actAliquotaIcms: TAction
       Category = 'Configuracao'
-      Caption = 'Al'#237'quotas de icms'
+      Caption = 'Alíquotas de icms'
       OnExecute = actAliquotaIcmsExecute
     end
     object actContaCaixa: TAction
@@ -109,17 +90,17 @@ object MainForm: TMainForm
     end
     object actCfop: TAction
       Category = 'Configuracao'
-      Caption = 'Opera'#231#245'es CFOP'
+      Caption = 'Operações CFOP'
       OnExecute = actCfopExecute
     end
     object actConfiguracaoGlobal: TAction
       Category = 'Configuracao'
-      Caption = 'Configura'#231#245'es globais'
+      Caption = 'Configurações globais'
       OnExecute = actConfiguracaoGlobalExecute
     end
     object actConfiguracaoLocal: TAction
       Category = 'Configuracao'
-      Caption = 'Configura'#231#245'es locais'
+      Caption = 'Configurações locais'
       OnExecute = actConfiguracaoLocalExecute
     end
     object actImpressora: TAction
@@ -133,7 +114,7 @@ object MainForm: TMainForm
     end
     object actUsuario: TAction
       Category = 'Configuracao'
-      Caption = 'Usu'#225'rios do sistema'
+      Caption = 'Usuários do sistema'
       OnExecute = actUsuarioExecute
     end
     object actPerfis: TAction
@@ -154,7 +135,7 @@ object MainForm: TMainForm
     end
     object actCalendario: TAction
       Category = 'Util'
-      Caption = 'Calend'#225'rio'
+      Caption = 'Calendário'
       ShortCut = 122
       OnExecute = actCalendarioExecute
     end
@@ -174,7 +155,7 @@ object MainForm: TMainForm
     end
     object actNotaPromissoria: TAction
       Category = 'Util'
-      Caption = 'Nota promiss'#243'ria'
+      Caption = 'Nota promissória'
       OnExecute = actNotaPromissoriaExecute
     end
     object actRecibo: TAction
@@ -184,7 +165,7 @@ object MainForm: TMainForm
     end
     object actRelatorioAgenda: TAction
       Category = 'Util'
-      Caption = 'Relat'#243'rio de agenda'
+      Caption = 'Relatório de agenda'
       OnExecute = actRelatorioAgendaExecute
     end
     object actCliente: TAction
@@ -214,7 +195,7 @@ object MainForm: TMainForm
     end
     object actOrcamento: TAction
       Category = 'Movimentos'
-      Caption = 'Or'#231'amentos'
+      Caption = 'Orçamentos'
       OnExecute = actOrcamentoExecute
     end
     object actVenda: TAction
@@ -244,12 +225,12 @@ object MainForm: TMainForm
     end
     object actListaPreco: TAction
       Category = 'Movimentos'
-      Caption = 'Lista de pre'#231'os'
+      Caption = 'Lista de preços'
       OnExecute = actListaPrecoExecute
     end
     object actExcluirProduto: TAction
       Category = 'Movimentos'
-      Caption = 'Exclus'#227'o de v'#225'rios produtos'
+      Caption = 'Exclusão de vários produtos'
       OnExecute = actExcluirProdutoExecute
     end
     object actEtiquetaProduto: TAction
@@ -260,14 +241,12 @@ object MainForm: TMainForm
     object actFechar: TAction
       Category = 'Sair'
       Caption = 'Sair do sistema'
-      SecondaryShortCuts.Strings = (
-        '')
       ShortCut = 32851
       OnExecute = actFecharExecute
     end
     object actOutroUsuario: TAction
       Category = 'Sair'
-      Caption = 'Outro usu'#225'rio'
+      Caption = 'Outro usuário'
       OnExecute = actOutroUsuarioExecute
     end
     object actSobreSistema: TAction
@@ -287,12 +266,12 @@ object MainForm: TMainForm
     end
     object actBackup: TAction
       Category = 'Util'
-      Caption = 'C'#243'pia de seguran'#231'a'
+      Caption = 'Cópia de segurança'
       OnExecute = actBackupExecute
     end
     object actRestore: TAction
       Category = 'Util'
-      Caption = 'Restaura'#231#227'o'
+      Caption = 'Restauração'
     end
     object actEtiqueta: TAction
       Category = 'Configuracao'
@@ -316,12 +295,12 @@ object MainForm: TMainForm
     end
     object actRenovaChave: TAction
       Category = 'Configuracao'
-      Caption = 'Renovar chave de libera'#231#227'o'
+      Caption = 'Renovar chave de liberação'
       OnExecute = actRenovaChaveExecute
     end
     object actAtualizacao: TAction
       Category = 'Ajuda'
-      Caption = 'Verificar atualiza'#231#227'o'
+      Caption = 'Verificar atualização'
     end
     object actPostIt: TAction
       Category = 'Util'
@@ -335,11 +314,11 @@ object MainForm: TMainForm
     end
     object actConfigServidor: TAction
       Category = 'Configuracao'
-      Caption = 'Configura'#231#227'o do banco de dados'
+      Caption = 'Configuração do banco de dados'
     end
     object actInfoSistema: TAction
       Category = 'Ajuda'
-      Caption = 'Informa'#231#245'es sobre o sistema'
+      Caption = 'Informações sobre o sistema'
       OnExecute = actInfoSistemaExecute
     end
     object actVendedor: TAction
@@ -349,17 +328,17 @@ object MainForm: TMainForm
     end
     object actConfigNota: TAction
       Category = 'Configuracao'
-      Caption = 'Configura'#231#227'o da nota'
+      Caption = 'Configuração da nota'
       OnExecute = actConfigNotaExecute
     end
     object actPromocao: TAction
       Category = 'Movimentos'
-      Caption = 'Promo'#231#245'es'
+      Caption = 'Promoções'
       OnExecute = actPromocaoExecute
     end
     object actInfoAvisos: TAction
       Category = 'Ajuda'
-      Caption = 'Informa'#231#245'es e avisos'
+      Caption = 'Informações e avisos'
     end
     object actAuditoriaUser: TAction
       Category = 'Util'

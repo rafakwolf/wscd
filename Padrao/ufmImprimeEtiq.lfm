@@ -3,7 +3,7 @@ inherited frmImprimeEtiq: TfrmImprimeEtiq
   Top = 155
   ClientHeight = 250
   ClientWidth = 523
-  Caption = 'Impress'#227'o de etiquetas'
+  Caption = 'Impressão de etiquetas'
   OldCreateOrder = True
   ExplicitWidth = 539
   ExplicitHeight = 289

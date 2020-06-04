@@ -1,21 +1,19 @@
 unit ufmImprimeEtiq;
 
-{$MODE Delphi}
-
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, {DBClient, Provider,} DB, {RLTypes,}
-  sqldb, StdCtrls, Buttons, ExtCtrls, Spin, {RLReport,} Funcoes,
-  VarGlobal, FMTBcd, IniFiles{, uniLabel, uniGUIBaseClasses, uniGUIClasses,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, DBClient, Provider, DB, RLTypes,
+  SqlExpr, StdCtrls, Buttons, ExtCtrls, Spin, RLReport, Funcoes,
+  VarGlobal, FMTBcd, IniFiles, uniLabel, uniGUIBaseClasses, uniGUIClasses,
   uniPanel, uniMultiItem, uniComboBox, uniButton, uniBitBtn, uniSpinEdit,
-  uniRadioGroup};
+  uniRadioGroup;
 
 type
   TTipoEtiqueta = (teProduto, teCliente);
   TfrmImprimeEtiq = class(TfrmDialogoRelatorioPadrao)
-    sqldEtiqueta: TSQLQuery;
+    sqldEtiqueta: TSQLDataSet;
     dspEtiqueta: TDataSetProvider;
     cdsEtiqueta: TClientDataSet;
     sqldEtiquetaIDETIQUETA: TIntegerField;
@@ -81,7 +79,7 @@ implementation
 
 uses unPrevEtiquetaProduto, unPrevEtiquetaCliente;
 
-{$R *.lfm}
+{$R *.dfm}
 
 procedure TfrmImprimeEtiq.PreencheComboModelos;
 begin
@@ -92,7 +90,7 @@ begin
     First;
     if IsEmpty then
     begin
-      MsgAviso('','NÃ£o existem etiquetas cadastradas.' + #13#10 +
+      MsgAviso('','Não existem etiquetas cadastradas.' + #13#10 +
         'Cadastre pelo menos um modelo de etiqueta e tente novamente.');
       Close;
     end;
