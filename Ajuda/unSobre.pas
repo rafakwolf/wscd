@@ -8,12 +8,12 @@ uses
   uniLabel, UniGuiForm, uniMemo;
 
 type
-  TfrmSobre = class(TUniForm)
-    btnOK: TUniButton;
-    lblVersao: TUniLabel;
-    lblEmpresa: TUniLabel;
-    lblCNPJ: TUniLabel;
-    mmoOS: TUniMemo;
+  TfrmSobre = class(TForm)
+    btnOK: TButton;
+    lblVersao: TLabel;
+    lblEmpresa: TLabel;
+    lblCNPJ: TLabel;
+    mmoOS: TMemo;
     procedure btnOKClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -57,7 +57,7 @@ end;
 procedure TfrmSobre.FormShow(Sender: TObject);
 begin
   Caption := 'Sobre o ' + Sistema.AppCaption;
-  lblVersao.Caption := 'Versão e Revisão: ' + Sistema.VersaoApp;
+  lblVersao.Caption := 'Versï¿½o e Revisï¿½o: ' + Sistema.VersaoApp;
   lblEmpresa.Caption := 'Empresa: ' + Empresa.Nome;
   lblCNPJ.Caption := 'CNPJ: ' + empresa.Cnpj;
 end;
@@ -77,9 +77,9 @@ begin
   verInfo.dwOSVersionInfoSize := SizeOf(TOSVersionInfo);
   if GetVersionEx(verInfo) then
   begin
-    mmoOS.Lines.Add('Versão : ' + IntToStr(verInfo.dwMajorVersion) + '.' +
+    mmoOS.Lines.Add('Versï¿½o : ' + IntToStr(verInfo.dwMajorVersion) + '.' +
       IntToStr(verInfo.dwMinorVersion));
-    mmoOS.Lines.Add('Compilação : ' + IntToStr(verInfo.dwBuildNumber));
+    mmoOS.Lines.Add('Compilaï¿½ï¿½o : ' + IntToStr(verInfo.dwBuildNumber));
 
     case verInfo.dwPlatformId of
       VER_PLATFORM_WIN32s: mmoOS.Lines.Add('Sistema Operacional : Windows 95');
@@ -94,7 +94,7 @@ begin
     for I := 0 to 127 do
       str := str + verInfo.szCSDVersion[I];
 
-    mmoOS.Lines.Add('Informações Adicionais : ' + str);
+    mmoOS.Lines.Add('Informaï¿½ï¿½es Adicionais : ' + str);
   end;
 end;
 

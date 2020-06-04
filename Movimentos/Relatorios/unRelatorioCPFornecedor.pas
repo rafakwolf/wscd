@@ -21,7 +21,7 @@ type
     sqldSelecaoTELEFONE: TStringField;
     cdsSelecaoCNPJ: TStringField;
     cdsSelecaoTELEFONE: TStringField;
-    dbeForn: TUniDBEdit;
+    dbeForn: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbeFornClickButton(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

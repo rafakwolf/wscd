@@ -17,7 +17,7 @@ type
     cdsCidade: TClientDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
-    dbeCidade: TUniDBEdit;
+    dbeCidade: TDBEdit;
     procedure dbeCidadeClickButton(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);

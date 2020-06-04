@@ -9,17 +9,17 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   ExplicitHeight = 541
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 493
     Width = 475
     ExplicitTop = 493
     ExplicitWidth = 475
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 475
     ExplicitWidth = 475
   end
-  object dbeSenha: TUniDBEdit [2]
+  object dbeSenha: TDBEdit [2]
     Left = 64
     Top = 96
     Width = 121
@@ -31,7 +31,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     PasswordChar = '*'
     TabOrder = 4
   end
-  object dbeLogin: TUniDBEdit [3]
+  object dbeLogin: TDBEdit [3]
     Left = 64
     Top = 71
     Width = 209
@@ -42,7 +42,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeNomeUsuario: TUniDBEdit [4]
+  object dbeNomeUsuario: TDBEdit [4]
     Left = 64
     Top = 46
     Width = 361
@@ -53,7 +53,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object grpItemPermissao: TUniGroupBox [5]
+  object grpItemPermissao: TGroupBox [5]
     Left = 0
     Top = 122
     Width = 475
@@ -65,7 +65,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 5
     TabStop = False
-    object tvAcesso: TUniTreeView
+    object tvAcesso: TTreeView
       Left = 2
       Top = 15
       Width = 471
@@ -376,15 +376,15 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
       Required = True
     end
   end
-  object pmStatusMenu: TUniPopupMenu
+  object pmStatusMenu: TPopupMenu
     Left = 205
     Top = 364
-    object mniLiberado: TUniMenuItem
+    object mniLiberado: TMenuItem
       Caption = 'Liberado'
       ImageIndex = 1
       OnClick = mniLiberadoClick
     end
-    object mniBloqueado: TUniMenuItem
+    object mniBloqueado: TMenuItem
       Caption = 'Bloqueado'
       ImageIndex = 0
       OnClick = mniBloqueadoClick

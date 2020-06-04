@@ -28,7 +28,7 @@ const
 
 type
   TfrmRelatorioNovoAlterado = class(TfrmDialogoRelatorioPadrao)
-    rgpOpcoes: TUniRadioGroup;
+    rgpOpcoes: TRadioGroup;
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
   private

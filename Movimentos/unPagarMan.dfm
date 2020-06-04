@@ -12,7 +12,7 @@ inherited frmPagarMan: TfrmPagarMan
   ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
-  object lblVenc: TUniLabel
+  object lblVenc: TLabel
     Left = 120
     Top = 372
     Width = 45
@@ -22,7 +22,7 @@ inherited frmPagarMan: TfrmPagarMan
     Caption = 'Bom para'
     TabOrder = 13
   end
-  object lblBandaMagnetica: TUniLabel
+  object lblBandaMagnetica: TLabel
     Left = 8
     Top = 292
     Width = 82
@@ -32,7 +32,7 @@ inherited frmPagarMan: TfrmPagarMan
     Caption = 'Banda magn'#233'tica'
     TabOrder = 14
   end
-  object lblEmissao: TUniLabel
+  object lblEmissao: TLabel
     Left = 8
     Top = 372
     Width = 38
@@ -42,7 +42,7 @@ inherited frmPagarMan: TfrmPagarMan
     Caption = 'Emiss'#227'o'
     TabOrder = 15
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 304
     Top = 384
     Width = 81
@@ -104,7 +104,7 @@ inherited frmPagarMan: TfrmPagarMan
     TabOrder = 11
     OnClick = btnOkClick
   end
-  object btnCancel: TUniBitBtn
+  object btnCancel: TBitBtn
     Left = 392
     Top = 384
     Width = 81
@@ -166,7 +166,7 @@ inherited frmPagarMan: TfrmPagarMan
     TabOrder = 12
     OnClick = btnCancelClick
   end
-  object edtTotal: TUniEdit
+  object edtTotal: TEdit
     Left = 8
     Top = 260
     Width = 129
@@ -176,7 +176,7 @@ inherited frmPagarMan: TfrmPagarMan
     Text = ''
     TabOrder = 2
   end
-  object edtAgencia: TUniEdit
+  object edtAgencia: TEdit
     Left = 8
     Top = 348
     Width = 105
@@ -186,7 +186,7 @@ inherited frmPagarMan: TfrmPagarMan
     Text = ''
     TabOrder = 5
   end
-  object edtConta: TUniEdit
+  object edtConta: TEdit
     Left = 120
     Top = 348
     Width = 105
@@ -196,7 +196,7 @@ inherited frmPagarMan: TfrmPagarMan
     Text = ''
     TabOrder = 6
   end
-  object edtNumeroCheque: TUniEdit
+  object edtNumeroCheque: TEdit
     Left = 232
     Top = 348
     Width = 105
@@ -206,7 +206,7 @@ inherited frmPagarMan: TfrmPagarMan
     Text = ''
     TabOrder = 7
   end
-  object edtValor: TUniEdit
+  object edtValor: TEdit
     Left = 344
     Top = 348
     Width = 129
@@ -217,7 +217,7 @@ inherited frmPagarMan: TfrmPagarMan
     TabOrder = 8
     OnEnter = edtValorEnter
   end
-  object dbeBanco: TUniDBEdit
+  object dbeBanco: TDBEdit
     Left = 248
     Top = 308
     Width = 203
@@ -230,7 +230,7 @@ inherited frmPagarMan: TfrmPagarMan
     Color = clBtnFace
     ReadOnly = True
   end
-  object bvlLinha: TUniPanel
+  object bvlLinha: TPanel
     Left = 8
     Top = 200
     Width = 465
@@ -240,7 +240,7 @@ inherited frmPagarMan: TfrmPagarMan
     TabOrder = 16
     Caption = 'bvlLinha'
   end
-  object bvlLinha2: TUniPanel
+  object bvlLinha2: TPanel
     Left = 8
     Top = 288
     Width = 466
@@ -250,7 +250,7 @@ inherited frmPagarMan: TfrmPagarMan
     TabOrder = 17
     Caption = 'bvlLinha2'
   end
-  object medtEmissao: TUniEdit
+  object medtEmissao: TEdit
     Left = 8
     Top = 388
     Width = 105
@@ -261,7 +261,7 @@ inherited frmPagarMan: TfrmPagarMan
     Text = '  /  /    '
     TabOrder = 9
   end
-  object medtVencimento: TUniEdit
+  object medtVencimento: TEdit
     Left = 120
     Top = 388
     Width = 105
@@ -272,7 +272,7 @@ inherited frmPagarMan: TfrmPagarMan
     Text = '  /  /    '
     TabOrder = 10
   end
-  object medtBandaMagnetica: TUniEdit
+  object medtBandaMagnetica: TEdit
     Left = 8
     Top = 308
     Width = 233
@@ -283,7 +283,7 @@ inherited frmPagarMan: TfrmPagarMan
     TabOrder = 3
     OnExit = medtBandaMagneticaExit
   end
-  object dbgrdContasCP: TUniDBGrid
+  object dbgrdContasCP: TDBGrid
     Left = 8
     Top = 8
     Width = 465
@@ -300,7 +300,7 @@ inherited frmPagarMan: TfrmPagarMan
     ParentColor = False
     Color = clBtnFace
   end
-  object rgTipoPagamento: TUniRadioGroup
+  object rgTipoPagamento: TRadioGroup
     Left = 8
     Top = 208
     Width = 465

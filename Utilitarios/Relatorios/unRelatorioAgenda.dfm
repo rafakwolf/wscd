@@ -7,14 +7,14 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
   ExplicitHeight = 223
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 150
     Width = 385
     TabOrder = 3
     ExplicitTop = 150
     ExplicitWidth = 385
   end
-  object lbTelefone: TUniLabel [1]
+  object lbTelefone: TLabel [1]
     Left = 8
     Top = 100
     Width = 42
@@ -24,7 +24,7 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     Caption = 'Telefone'
     TabOrder = 4
   end
-  object dbeNome: TUniDBEdit [2]
+  object dbeNome: TDBEdit [2]
     Left = 8
     Top = 68
     Width = 355
@@ -37,7 +37,7 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     Color = clBtnFace
     ReadOnly = True
   end
-  object edFone: TUniEdit [3]
+  object edFone: TEdit [3]
     Left = 8
     Top = 116
     Width = 147
@@ -47,7 +47,7 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     Text = ''
     TabOrder = 2
   end
-  object rgTipoRelatorio: TUniRadioGroup [4]
+  object rgTipoRelatorio: TRadioGroup [4]
     Left = 8
     Top = 8
     Width = 377

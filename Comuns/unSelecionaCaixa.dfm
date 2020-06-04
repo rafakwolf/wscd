@@ -13,7 +13,7 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCaixa: TUniLabel
+  object lbCaixa: TLabel
     Left = 9
     Top = 8
     Width = 57
@@ -22,7 +22,7 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
     Caption = 'Conta caixa'
     TabOrder = 3
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 112
     Top = 56
     Width = 73
@@ -84,7 +84,7 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
     TabOrder = 1
     Default = True
   end
-  object btnCancel: TUniBitBtn
+  object btnCancel: TBitBtn
     Left = 192
     Top = 56
     Width = 73
@@ -145,7 +145,7 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
     ModalResult = 2
     TabOrder = 2
   end
-  object dblcbCaixa: TUniDBLookupComboBox
+  object dblcbCaixa: TDBLookupComboBox
     Left = 8
     Top = 24
     Width = 257

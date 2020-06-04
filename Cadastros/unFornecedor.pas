@@ -60,25 +60,25 @@ type
     cdsPadraoDATACAD: TDateField;
     sqldPadraoTIPO: TStringField;
     cdsPadraoTIPO: TStringField;
-    btnContas: TUniBitBtn;
-    dbdDataCadastro: TUniDBEdit;
-    dbeCidade: TUniDBEdit;
-    dbeTelefoneVendedor: TUniDBEdit;
-    dbeEmailVendedor: TUniDBEdit;
-    dbeNomeVendedor: TUniDBEdit;
-    dbeFax: TUniDBEdit;
-    dbeTelefone: TUniDBEdit;
-    dbeInscEstadual: TUniDBEdit;
-    dbeCnpj: TUniDBEdit;
-    dbeCep: TUniDBEdit;
-    dbeBairro: TUniDBEdit;
-    dbeEstado: TUniDBEdit;
-    dbeEndereco: TUniDBEdit;
-    dbeNomeRzSocial: TUniDBEdit;
-    dbeNomeFantazia: TUniDBEdit;
-    dbeEmail: TUniDBEdit;
-    bvlLinha: TUniPanel;
-    dbmObs: TUniDBMemo;
+    btnContas: TBitBtn;
+    dbdDataCadastro: TDBEdit;
+    dbeCidade: TDBEdit;
+    dbeTelefoneVendedor: TDBEdit;
+    dbeEmailVendedor: TDBEdit;
+    dbeNomeVendedor: TDBEdit;
+    dbeFax: TDBEdit;
+    dbeTelefone: TDBEdit;
+    dbeInscEstadual: TDBEdit;
+    dbeCnpj: TDBEdit;
+    dbeCep: TDBEdit;
+    dbeBairro: TDBEdit;
+    dbeEstado: TDBEdit;
+    dbeEndereco: TDBEdit;
+    dbeNomeRzSocial: TDBEdit;
+    dbeNomeFantazia: TDBEdit;
+    dbeEmail: TDBEdit;
+    bvlLinha: TPanel;
+    dbmObs: TDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure miRelFornDataClick(Sender: TObject);
@@ -197,7 +197,7 @@ begin
 
   if (ModoInsert(cdsPadrao) and Repetido) then
   begin
-    MsgAviso('Fornecedor com este CNPJ já está cadastrado.');
+    MsgAviso('Fornecedor com este CNPJ jï¿½ estï¿½ cadastrado.');
     Abort;
   end;
 end;
@@ -217,7 +217,7 @@ begin
     Sender.AsString := FormatarDoc(Text, 1)
   else
   begin
-    MsgCuidado('CNPJ inválido.');
+    MsgCuidado('CNPJ invï¿½lido.');
     Sender.Clear;
     Sender.FocusControl;
     Exit;
@@ -267,7 +267,7 @@ begin
   finally
 
     if not Erro then
-      MsgAviso('Ajuste de CNPJs concluído!');
+      MsgAviso('Ajuste de CNPJs concluï¿½do!');
     AjustaRequires(True);
     cdsPadrao.EnableControls;
   end;
@@ -278,16 +278,16 @@ procedure TfrmFornecedor.cdsPadraoTIPOGetText(Sender: TField;
 begin
   inherited;
   if Sender.AsString = 'F' then
-    Text := 'Física'
+    Text := 'Fï¿½sica'
   else
-    Text := 'Jurídica';
+    Text := 'Jurï¿½dica';
 end;
 
 procedure TfrmFornecedor.cdsPadraoTIPOSetText(Sender: TField;
   const Text: String);
 begin
   inherited;
-  if Text = 'Física' then
+  if Text = 'Fï¿½sica' then
     Sender.AsString := 'F'
   else
     Sender.AsString := 'J';

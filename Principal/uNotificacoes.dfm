@@ -11,7 +11,7 @@ inherited frmNotificacoes: TfrmNotificacoes
   ExplicitHeight = 386
   PixelsPerInch = 96
   TextHeight = 13
-  object Desmarcar: TUniSpeedButton
+  object Desmarcar: TSpeedButton
     Left = 233
     Top = 324
     Width = 89
@@ -25,7 +25,7 @@ inherited frmNotificacoes: TfrmNotificacoes
     Color = clWindow
     TabOrder = 0
   end
-  object lbxNotificacoes: TUniListBox
+  object lbxNotificacoes: TListBox
     Left = 0
     Top = 0
     Width = 329

@@ -10,41 +10,41 @@ inherited frmPromocao: TfrmPromocao
   ExplicitHeight = 543
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 495
     Width = 790
     ExplicitTop = 495
     ExplicitWidth = 790
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 790
     ExplicitWidth = 790
-    inherited btnNovo: TUniSpeedButton
+    inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnAlterar: TUniSpeedButton
+    inherited btnAlterar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnExcluir: TUniSpeedButton
+    inherited btnExcluir: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSalvar: TUniSpeedButton
+    inherited btnSalvar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnCancelar: TUniSpeedButton
+    inherited btnCancelar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Font.Name = 'Verdana'
     end
   end
-  object dbgrdPromocao: TUniDBGrid [2]
+  object dbgrdPromocao: TDBGrid [2]
     Left = 0
     Top = 40
     Width = 790

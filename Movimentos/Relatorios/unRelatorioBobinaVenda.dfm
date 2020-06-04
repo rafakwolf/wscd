@@ -9,7 +9,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
   ExplicitHeight = 484
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCopias: TUniLabel
+  object lbCopias: TLabel
     Left = 304
     Top = 8
     Width = 39
@@ -19,7 +19,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     Caption = 'Copias'
     TabOrder = 5
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 280
     Top = 416
     Width = 81
@@ -81,7 +81,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     TabOrder = 2
     OnClick = btnCancelarClick
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 184
     Top = 416
     Width = 89
@@ -143,7 +143,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     TabOrder = 3
     OnClick = btnOkClick
   end
-  object edtImpressora: TUniEdit
+  object edtImpressora: TEdit
     Left = 8
     Top = 24
     Width = 289
@@ -153,7 +153,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     Text = ''
     TabOrder = 0
   end
-  object seCopias: TUniSpinEdit
+  object seCopias: TSpinEdit
     Left = 304
     Top = 24
     Width = 57
@@ -165,7 +165,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     MinValue = 1
     TabOrder = 1
   end
-  object mmoVenda: TUniMemo
+  object mmoVenda: TMemo
     Left = 8
     Top = 56
     Width = 353

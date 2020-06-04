@@ -21,9 +21,9 @@ type
     cdsPadraoIDVENDEDOR: TIntegerField;
     cdsPadraoVENDEDOR: TStringField;
     cdsPadraoATIVO: TStringField;
-    dbeIdVendedor: TUniDBEdit;
-    dbeVendedor: TUniDBEdit;
-    dbcbAtivo: TUniDBCheckBox;
+    dbeIdVendedor: TDBEdit;
+    dbeVendedor: TDBEdit;
+    dbcbAtivo: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure cdsPadraoAfterScroll(DataSet: TDataSet);

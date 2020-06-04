@@ -21,9 +21,9 @@ type
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoNOME: TStringField;
     cdsPadraoINATIVO: TStringField;
-    dbeNomeCaixa: TUniDBEdit;
-    dbeCodCaixa: TUniDBEdit;
-    dbchkInativo: TUniDBCheckBox;
+    dbeNomeCaixa: TDBEdit;
+    dbeCodCaixa: TDBEdit;
+    dbchkInativo: TDBCheckBox;
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterScroll(DataSet: TDataSet);
@@ -68,11 +68,11 @@ procedure TfrmCadastroCaixa.actDeleteExecute(Sender: TObject);
 begin
   if cdsPadraoINATIVO.AsString = 'S' then
   begin
-    MsgAviso('Esta conta caixa já está inativa.');
+    MsgAviso('Esta conta caixa jï¿½ estï¿½ inativa.');
     Exit;
   end;
   
-  if MsgSN('Deseja inativar ésta conta caixa?') then
+  if MsgSN('Deseja inativar ï¿½sta conta caixa?') then
   begin
     cdsPadrao.Edit;
     cdsPadraoINATIVO.AsString := 'S';

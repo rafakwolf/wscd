@@ -7,18 +7,18 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 137
     Width = 529
     ExplicitTop = 137
     ExplicitWidth = 606
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 529
     TabOrder = 2
     ExplicitWidth = 606
   end
-  object dbeNomeGrupo: TUniDBEdit [2]
+  object dbeNomeGrupo: TDBEdit [2]
     Left = 62
     Top = 82
     Width = 305
@@ -29,7 +29,7 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeCodGrupo: TUniDBEdit [3]
+  object dbeCodGrupo: TDBEdit [3]
     Left = 62
     Top = 56
     Width = 105

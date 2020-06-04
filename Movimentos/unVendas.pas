@@ -144,63 +144,63 @@ type
     cdsSelecaoVALORDESCTO: TSingleField;
     cdsSelecaoTOTAL: TSingleField;
     cdsSelecaoCOMISSAO: TSingleField;
-    mnVenda: TUniMainMenu;
-    miRegistros: TUniMenuItem;
-    miIncluir: TUniMenuItem;
-    miAlterar: TUniMenuItem;
-    miCancelar: TUniMenuItem;
-    miFerramentas: TUniMenuItem;
-    miLocalizar: TUniMenuItem;
-    miOutrosFiltros: TUniMenuItem;
-    miFiltrarData: TUniMenuItem;
-    miFiltrarCli: TUniMenuItem;
-    miVendasNaoConc: TUniMenuItem;
-    miMostrarTodos: TUniMenuItem;
-    N5: TUniMenuItem;
-    N11: TUniMenuItem;
-    miCadastroCliente: TUniMenuItem;
-    miCadastravendedor: TUniMenuItem;
-    miCadastraproduto: TUniMenuItem;
-    miRelatorio: TUniMenuItem;
-    miRelVendaAtual: TUniMenuItem;
-    N10: TUniMenuItem;
-    miVendaBobina: TUniMenuItem;
-    N6: TUniMenuItem;
-    miRelVendaMes: TUniMenuItem;
-    miRelVendaAno: TUniMenuItem;
-    miRelVendaPeriodo: TUniMenuItem;
-    N7: TUniMenuItem;
-    miRelVendaCliente: TUniMenuItem;
-    N12: TUniMenuItem;
-    miRelComissaoVendedor: TUniMenuItem;
-    pnlTotal: TUniContainerPanel;
-    LabelObs: TUniLabel;
-    lbNumero: TUniLabel;
-    LabelConcluida: TUniLabel;
-    lbTotalDesc: TUniLabel;
-    lbTotal: TUniLabel;
-    btnInsereProduto: TUniBitBtn;
-    dbConcluida: TUniDBEdit;
-    dbProduto: TUniDBEdit;
-    dbeNumero: TUniDBEdit;
-    dbQtde: TUniDBEdit;
-    dbCusto: TUniDBEdit;
-    dbVenda: TUniDBEdit;
-    dbDescto: TUniDBEdit;
-    dbValorDescto: TUniDBEdit;
-    dbTotalProduto: TUniDBEdit;
-    dbCodCliente: TUniDBEdit;
-    dbdDataVenda: TUniDBEdit;
-    dbeIdVendedor: TUniDBEdit;
-    dbeVendedor: TUniDBEdit;
-    dbeCliente: TUniDBEdit;
-    dbeCancelada: TUniDBEdit;
-    dbeComissao: TUniDBEdit;
-    dbeTotalDesc: TUniDBEdit;
-    dbeTotal: TUniDBEdit;
-    bvlLinha: TUniPanel;
-    dbmObs: TUniDBMemo;
-    grdItens: TUniDBGrid;
+    mnVenda: TMainMenu;
+    miRegistros: TMenuItem;
+    miIncluir: TMenuItem;
+    miAlterar: TMenuItem;
+    miCancelar: TMenuItem;
+    miFerramentas: TMenuItem;
+    miLocalizar: TMenuItem;
+    miOutrosFiltros: TMenuItem;
+    miFiltrarData: TMenuItem;
+    miFiltrarCli: TMenuItem;
+    miVendasNaoConc: TMenuItem;
+    miMostrarTodos: TMenuItem;
+    N5: TMenuItem;
+    N11: TMenuItem;
+    miCadastroCliente: TMenuItem;
+    miCadastravendedor: TMenuItem;
+    miCadastraproduto: TMenuItem;
+    miRelatorio: TMenuItem;
+    miRelVendaAtual: TMenuItem;
+    N10: TMenuItem;
+    miVendaBobina: TMenuItem;
+    N6: TMenuItem;
+    miRelVendaMes: TMenuItem;
+    miRelVendaAno: TMenuItem;
+    miRelVendaPeriodo: TMenuItem;
+    N7: TMenuItem;
+    miRelVendaCliente: TMenuItem;
+    N12: TMenuItem;
+    miRelComissaoVendedor: TMenuItem;
+    pnlTotal: TContainerPanel;
+    LabelObs: TLabel;
+    lbNumero: TLabel;
+    LabelConcluida: TLabel;
+    lbTotalDesc: TLabel;
+    lbTotal: TLabel;
+    btnInsereProduto: TBitBtn;
+    dbConcluida: TDBEdit;
+    dbProduto: TDBEdit;
+    dbeNumero: TDBEdit;
+    dbQtde: TDBEdit;
+    dbCusto: TDBEdit;
+    dbVenda: TDBEdit;
+    dbDescto: TDBEdit;
+    dbValorDescto: TDBEdit;
+    dbTotalProduto: TDBEdit;
+    dbCodCliente: TDBEdit;
+    dbdDataVenda: TDBEdit;
+    dbeIdVendedor: TDBEdit;
+    dbeVendedor: TDBEdit;
+    dbeCliente: TDBEdit;
+    dbeCancelada: TDBEdit;
+    dbeComissao: TDBEdit;
+    dbeTotalDesc: TDBEdit;
+    dbeTotal: TDBEdit;
+    bvlLinha: TPanel;
+    dbmObs: TDBMemo;
+    grdItens: TDBGrid;
     procedure btnNovoClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnPrimeiroClick(Sender: TObject);
@@ -353,9 +353,9 @@ begin
         begin
 
           if MsgSn('Existe(m) ' + IntToStr(NumRegs) +
-            ' Vendas(s) não concluída(s). Por favor verifique, pois estas podem' +
-            ' causar inconsistências no banco de dados, e no controle de estoque.'+#13#10+
-            'Deseja exibir somente as vendas não concluídas agora?') then
+            ' Vendas(s) nï¿½o concluï¿½da(s). Por favor verifique, pois estas podem' +
+            ' causar inconsistï¿½ncias no banco de dados, e no controle de estoque.'+#13#10+
+            'Deseja exibir somente as vendas nï¿½o concluï¿½das agora?') then
           begin
             cdsVendas.Filtered := False;
             cdsVendas.Filter := '(CONCLUIDA = '+QuotedStr('N')+') and (CANCELADO = '+QuotedStr('N')+')';
@@ -376,7 +376,7 @@ begin
   { cancelada }
   if cdsVendasCANCELADO.AsString = 'S' then
   begin
-    MsgErro('Venda já cancelada.');
+    MsgErro('Venda jï¿½ cancelada.');
     Exit;
   end;
 
@@ -419,7 +419,7 @@ begin
       MsgErro('Informe a valor do desconto.');
   end
   else
-    MsgAviso('Venda já está concluída.');
+    MsgAviso('Venda jï¿½ estï¿½ concluï¿½da.');
 end;
 
 procedure TfrmVendas.btnConsultarClick(Sender: TObject);
@@ -427,12 +427,12 @@ var
   S: String;
 begin
   S := '0';
-  if InputQuery('Localizar por número', 'Número da venda', S) and (S <> '0') then
+  if InputQuery('Localizar por nï¿½mero', 'Nï¿½mero da venda', S) and (S <> '0') then
   begin
     cdsVendas.IndexFieldNames := 'CODIGO';
 
     if not cdsVendas.Locate('CODIGO', S, []) then
-      MsgAviso(S + ' não encontrado');
+      MsgAviso(S + ' nï¿½o encontrado');
   end;
 end;
 
@@ -456,7 +456,7 @@ end;
 
 procedure TfrmVendas.miImportarOrcamentoClick(Sender: TObject);
 begin
-  ChamaForm('TfrmImportaOrcam', 'Importar orçamento', Self);
+  ChamaForm('TfrmImportaOrcam', 'Importar orï¿½amento', Self);
   miMostrarTodos.Click;
 end;
 
@@ -592,7 +592,7 @@ begin
 //            InsereProduto
 //          else
 //          begin
-//            MsgErro('Produto com estoque mínimo, não é possível inseri-lo.');
+//            MsgErro('Produto com estoque mï¿½nimo, nï¿½o ï¿½ possï¿½vel inseri-lo.');
 //            Exit;
 //          end;
 //        end
@@ -741,7 +741,7 @@ begin
     cdsVendasTOTAL.AsFloat := (cdsVendasTOTAL.AsFloat + cdsItensTOTAL.AsFloat);
     cdsVendasTOTALDESCTO.AsFloat :=
       (cdsVendasTOTALDESCTO.AsFloat + cdsItensVALORDESCTO.AsFloat);
-    { calcula valor de comissão }
+    { calcula valor de comissï¿½o }
     cdsItensVALORCOMISSAO.AsFloat :=
       RoundTo((cdsItensTOTAL.AsFloat * cdsItensCOMISSAO.AsFloat)/100, 2);
   end;
@@ -822,7 +822,7 @@ begin
     if Configuracao.EditarVenda then
       inherited
     else
-      MsgAviso('Sem permissão para editar ésta venda.');
+      MsgAviso('Sem permissï¿½o para editar ï¿½sta venda.');
   end
   else
     inherited;
@@ -854,12 +854,12 @@ end;
 
 procedure TfrmVendas.miRelComissaoVendedorClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioComissaoVenda', 'Comissão de vendedor', Self);
+  ChamaForm('TfrmRelatorioComissaoVenda', 'Comissï¿½o de vendedor', Self);
 end;
 
 procedure TfrmVendas.miRelVendaAtualClick(Sender: TObject);
 begin
-  case FormRadioButtons('Impressora Jato/Lazer, Impressora matricial', 'Impressão da venda', 0) of
+  case FormRadioButtons('Impressora Jato/Lazer, Impressora matricial', 'Impressï¿½o da venda', 0) of
   0:begin
       with TfrmPrevNotaVenda.Create(Self) do
       try
@@ -885,7 +885,7 @@ end;
 
 procedure TfrmVendas.miVendasNaoConcClick(Sender: TObject);
 begin
-  ChamaForm('TfrmVendaNaoConc', 'Vendas não concluídas', Self);
+  ChamaForm('TfrmVendaNaoConc', 'Vendas nï¿½o concluï¿½das', Self);
 end;
 
 procedure TfrmVendas.ReceberVenda;
@@ -931,7 +931,7 @@ begin
   begin
 
     FormaRecto :=
-      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Pré-datado, &4 - Crediário', 'Forma de recebimento');
+      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Prï¿½-datado, &4 - Crediï¿½rio', 'Forma de recebimento');
 
     case FormaRecto of
       0: {dinheiro}
@@ -941,13 +941,13 @@ begin
 
           if RoundTo(ValorDinheiro, 2) > RoundTo(Restante, 2) then
           begin
-            MsgErro('Valor digitado é maior que o restante a receber, digite novamente.');
+            MsgErro('Valor digitado ï¿½ maior que o restante a receber, digite novamente.');
             Exit;
           end;
 
           if ValorDinheiro = 0 then
           begin
-            MsgErro('Valor digitado é inválido, digite novamente.');
+            MsgErro('Valor digitado ï¿½ invï¿½lido, digite novamente.');
             Exit;
           end;
 
@@ -955,7 +955,7 @@ begin
             'V'+IntToStr(cdsVendasCODIGO.AsInteger), 'C', ValorDinheiro) then
             ConcluirVenda('Dinheiro', ValorDinheiro)
           else
-            MsgAviso('Venda não foi concluída.');
+            MsgAviso('Venda nï¿½o foi concluï¿½da.');
 
         end;
       end;
@@ -966,7 +966,7 @@ begin
         frmPagamentoCheque.IdVenda := cdsVendasCODIGO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmVenda;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Venda não foi concluída.');
+          MsgAviso('Venda nï¿½o foi concluï¿½da.');
       end;
       2: {cheque pre-datado}
       begin
@@ -975,19 +975,19 @@ begin
         frmPagamentoCheque.IdVenda := cdsVendasCODIGO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmVenda;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Venda não foi concluída.');
+          MsgAviso('Venda nï¿½o foi concluï¿½da.');
       end;
       3: {parcelamento}
       begin
         frmParcelaVenda := TfrmParcelaVenda.Create(Self);
         frmParcelaVenda.IdVenda := cdsVendasCODIGO.AsInteger;
         if frmParcelaVenda.ShowModal <> mrOk then
-          MsgAviso('Venda não foi concluída.');
+          MsgAviso('Venda nï¿½o foi concluï¿½da.');
       end;
     end;
   end
   else
-    MsgAviso('Venda já foi concluída.');
+    MsgAviso('Venda jï¿½ foi concluï¿½da.');
 end;
 
 procedure TfrmVendas.miEstornarClick(Sender: TObject);
@@ -997,11 +997,11 @@ begin
 
   if cdsVendasCONCLUIDA.AsString = 'N' then
   begin
-    MsgAviso('Venda não concluída.');
+    MsgAviso('Venda nï¿½o concluï¿½da.');
     Exit;
   end;
 
-  if MsgSN('Deseja realmente estornar ésta venda?') then
+  if MsgSN('Deseja realmente estornar ï¿½sta venda?') then
   begin
     spEstorna.Close;
     spEstorna.Params.ParamByName('CODIGO').AsInteger := cdsVendasCODIGO.AsInteger;

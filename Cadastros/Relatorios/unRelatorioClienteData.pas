@@ -18,8 +18,8 @@ type
     cdsSelecao: TClientDataSet;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
-    edDataIni: TUniDBEdit;
-    edDataFim: TUniDBEdit;
+    edDataIni: TDBEdit;
+    edDataFim: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);

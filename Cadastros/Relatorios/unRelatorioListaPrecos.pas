@@ -7,7 +7,7 @@ uses
   Dialogs, RLReport, DB, DBClient, Provider, SqlExpr, FMTBcd, UniGuiForm;
 
 type
-  TfrmRelatorioListaPrecos = class(TUniForm)
+  TfrmRelatorioListaPrecos = class(TForm)
     rpLista: TRLReport;
     bandCabecalho: TRLBand;
     bandDetalhe: TRLDetailGrid;

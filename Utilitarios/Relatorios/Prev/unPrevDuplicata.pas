@@ -8,7 +8,7 @@ uses
   DB, SqlExpr, FMTBcd;
 
 type
-  TfrmPrevDuplicata = class(TUniForm)
+  TfrmPrevDuplicata = class(TForm)
     sqldDuplicata: TSQLDataSet;
     dspDuplicata: TDataSetProvider;
     cdsDuplicata: TClientDataSet;
@@ -100,8 +100,8 @@ procedure TfrmPrevDuplicata.rptDuplicataBeforePrint(Sender: TObject;
 begin
   ConfigRelatorioRL(rptDuplicata, rlmDadosEmpresa, rlimgLogo);
   rlmTermo.Lines.Text :=
-    'Reconheço (emos) a exatidão desta duplicata de venda mercantil, na importância acima '+
-    'que pagaremos à ' + Empresa.Responsavel + ', ou à sua ordem na praça e vencimento indicado.';
+    'Reconheï¿½o (emos) a exatidï¿½o desta duplicata de venda mercantil, na importï¿½ncia acima '+
+    'que pagaremos ï¿½ ' + Empresa.Responsavel + ', ou ï¿½ sua ordem na praï¿½a e vencimento indicado.';
 end;
 
 end.

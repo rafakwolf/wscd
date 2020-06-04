@@ -7,18 +7,18 @@ inherited frmEnvelopes: TfrmEnvelopes
   ExplicitHeight = 275
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 227
     Width = 649
     ExplicitTop = 227
     ExplicitWidth = 649
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 649
     TabOrder = 6
     ExplicitWidth = 649
   end
-  object dbNome: TUniDBEdit [2]
+  object dbNome: TDBEdit [2]
     Left = 88
     Top = 54
     Width = 531
@@ -29,7 +29,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeCidade: TUniDBEdit [3]
+  object dbeCidade: TDBEdit [3]
     Left = 88
     Top = 102
     Width = 329
@@ -42,7 +42,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbCep: TUniDBEdit [4]
+  object dbCep: TDBEdit [4]
     Left = 88
     Top = 150
     Width = 153
@@ -53,7 +53,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbMsg: TUniDBEdit [5]
+  object dbMsg: TDBEdit [5]
     Left = 88
     Top = 174
     Width = 529
@@ -64,7 +64,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbEndereco: TUniDBEdit [6]
+  object dbEndereco: TDBEdit [6]
     Left = 88
     Top = 78
     Width = 531
@@ -75,7 +75,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbBairro: TUniDBEdit [7]
+  object dbBairro: TDBEdit [7]
     Left = 88
     Top = 126
     Width = 321

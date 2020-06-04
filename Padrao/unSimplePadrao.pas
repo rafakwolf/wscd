@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, DBGrids, UniGuiForm;
 
 type
-  TfrmSimplePadrao = class(TUniForm)
+  TfrmSimplePadrao = class(TForm)
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

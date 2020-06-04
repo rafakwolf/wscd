@@ -7,7 +7,7 @@ uses
   Dialogs, DB, DBClient, Provider, SqlExpr, RLReport, FMTBcd, UniGuiForm;
 
 type
-  TfrmPrevEtiquetaCliente = class(TUniForm)
+  TfrmPrevEtiquetaCliente = class(TForm)
     rpEtiqueta: TRLReport;
     Detail: TRLDetailGrid;
     dbDescricao: TRLDBMemo;

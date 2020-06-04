@@ -10,7 +10,7 @@ uses
   uniEdit, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmImportaOrcam = class(TUniForm)
+  TfrmImportaOrcam = class(TForm)
     Progresso: TProgressBar;
     sqldVenda: TSQLDataSet;
     sqldItemVenda: TSQLDataSet;
@@ -61,16 +61,16 @@ type
     cdsDetOrcamTOTAL: TFMTBCDField;
     sqlOrcamIDVENDEDOR: TIntegerField;
     cdsOrcamIDVENDEDOR: TIntegerField;
-    lbCampo: TUniLabel;
-    lbDados: TUniLabel;
-    btnBuscar: TUniBitBtn;
-    btnOk: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    grpStatus: TUniGroupBox;
-    lbStatus: TUniLabel;
-    cmbCampo: TUniComboBox;
-    edtPesquisa: TUniEdit;
-    Grade: TUniDBGrid;
+    lbCampo: TLabel;
+    lbDados: TLabel;
+    btnBuscar: TBitBtn;
+    btnOk: TBitBtn;
+    btnCancelar: TBitBtn;
+    grpStatus: TGroupBox;
+    lbStatus: TLabel;
+    cmbCampo: TComboBox;
+    edtPesquisa: TEdit;
+    Grade: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
@@ -153,13 +153,13 @@ begin
          Progresso.Position := CalcProg;
       end;
     except
-      raise Exception.Create('Erro impotando orçamento');
+      raise Exception.Create('Erro impotando orï¿½amento');
     end;
   finally
     Progresso.Visible := False;
   end;
   EscreveExportado;
-  MsgAviso('Orçamento importado com sucesso!');
+  MsgAviso('Orï¿½amento importado com sucesso!');
   Close;
 end;
 
@@ -186,7 +186,7 @@ begin
     begin
       if not TryStrToInt(edtPesquisa.Text, AuxInt) then
       begin
-        MsgErro('Valor para pesquisa inválido');
+        MsgErro('Valor para pesquisa invï¿½lido');
         Exit;
       end;
     end;
@@ -194,7 +194,7 @@ begin
     begin
       if not TryStrToDate(edtPesquisa.Text, AuxDate) then
       begin
-        MsgErro('Ésta não é uma data válida');
+        MsgErro('ï¿½sta nï¿½o ï¿½ uma data vï¿½lida');
         Exit;
       end;
     end;
@@ -217,12 +217,12 @@ begin
       ImportaOrcamento                                    
     else
     begin
-      MsgAviso('Orçamento não concluído, não poderá ser importado.');
+      MsgAviso('Orï¿½amento nï¿½o concluï¿½do, nï¿½o poderï¿½ ser importado.');
       Exit;
     end;
   end
   else
-    MsgAviso('Este orçamento já foi importado');
+    MsgAviso('Este orï¿½amento jï¿½ foi importado');
 end;
 
 procedure TfrmImportaOrcam.FormCreate(Sender: TObject);

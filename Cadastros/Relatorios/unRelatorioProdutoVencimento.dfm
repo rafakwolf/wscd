@@ -7,13 +7,13 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
   ExplicitHeight = 337
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 264
     Width = 433
     ExplicitTop = 264
     ExplicitWidth = 433
   end
-  object dbdDataVenc: TUniDBEdit [1]
+  object dbdDataVenc: TDBEdit [1]
     Left = 84
     Top = 104
     Width = 319
@@ -24,7 +24,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeUnidade: TUniDBEdit [2]
+  object dbeUnidade: TDBEdit [2]
     Left = 84
     Top = 131
     Width = 319
@@ -37,7 +37,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeForn: TUniDBEdit [3]
+  object dbeForn: TDBEdit [3]
     Left = 84
     Top = 160
     Width = 319
@@ -50,7 +50,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeGrupo: TUniDBEdit [4]
+  object dbeGrupo: TDBEdit [4]
     Left = 84
     Top = 189
     Width = 319
@@ -63,7 +63,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
     Color = clBtnFace
     ReadOnly = True
   end
-  object rgTipo: TUniRadioGroup [5]
+  object rgTipo: TRadioGroup [5]
     Left = 16
     Top = 16
     Width = 409

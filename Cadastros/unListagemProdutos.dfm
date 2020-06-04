@@ -16,7 +16,7 @@ object frmListagemProdutos: TfrmListagemProdutos
   Font.Name = 'Verdana'
   PixelsPerInch = 96
   TextHeight = 13
-  object lbBuscaProduto: TUniLabel
+  object lbBuscaProduto: TLabel
     Left = 8
     Top = 5
     Width = 39
@@ -26,7 +26,7 @@ object frmListagemProdutos: TfrmListagemProdutos
     Caption = 'Buscar'
     TabOrder = 3
   end
-  object btnOK: TUniBitBtn
+  object btnOK: TBitBtn
     Left = 360
     Top = 336
     Width = 81
@@ -88,7 +88,7 @@ object frmListagemProdutos: TfrmListagemProdutos
     TabOrder = 1
     OnClick = btnOKClick
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 8
     Top = 48
     Width = 433
@@ -105,7 +105,7 @@ object frmListagemProdutos: TfrmListagemProdutos
     ParentColor = False
     Color = clWindow
   end
-  object edtBuscaProduto: TUniEdit
+  object edtBuscaProduto: TEdit
     Left = 8
     Top = 21
     Width = 433
@@ -121,10 +121,10 @@ object frmListagemProdutos: TfrmListagemProdutos
     Left = 176
     Top = 88
   end
-  object PopupCons: TUniPopupMenu
+  object PopupCons: TPopupMenu
     Left = 264
     Top = 104
-    object miFiltrar: TUniMenuItem
+    object miFiltrar: TMenuItem
       Caption = 'Localizar na coluna...'
     end
   end

@@ -96,30 +96,30 @@ type
     cdsPadraoOBS: TMemoField;
     sqldPadraoVALOR_ESTOQUE: TSingleField;
     cdsPadraoVALOR_ESTOQUE: TSingleField;
-    dbeUnidade: TUniDBEdit;
-    dbeGrupo: TUniDBEdit;
-    dbeFornecedor: TUniDBEdit;
-    dbeQtdeRecebida: TUniDBEdit;
-    dbeValorEstoque: TUniDBEdit;
-    dbeTributacao: TUniDBEdit;
-    dbeEstoqueMinimo: TUniDBEdit;
-    dbeEstoque: TUniDBEdit;
-    dbePrecoVenda: TUniDBEdit;
-    dbeLucro: TUniDBEdit;
-    dbePrecoCusto: TUniDBEdit;
-    dbePrecoPromocao: TUniDBEdit;
-    dbdValidade: TUniDBEdit;
-    dbePeso: TUniDBEdit;
-    dbeNomeProduto: TUniDBEdit;
-    dbeCodigoBarra: TUniDBEdit;
-    dbeCodigoInterno: TUniDBEdit;
-    dbeReferencia: TUniDBEdit;
-    dbeDataReceb: TUniDBEdit;
-    bvlLinha1: TUniPanel;
-    bvlLinha2: TUniPanel;
-    bvlLinha3: TUniPanel;
-    dbckbPromocao: TUniDBCheckBox;
-    dbeObs: TUniDBEdit;
+    dbeUnidade: TDBEdit;
+    dbeGrupo: TDBEdit;
+    dbeFornecedor: TDBEdit;
+    dbeQtdeRecebida: TDBEdit;
+    dbeValorEstoque: TDBEdit;
+    dbeTributacao: TDBEdit;
+    dbeEstoqueMinimo: TDBEdit;
+    dbeEstoque: TDBEdit;
+    dbePrecoVenda: TDBEdit;
+    dbeLucro: TDBEdit;
+    dbePrecoCusto: TDBEdit;
+    dbePrecoPromocao: TDBEdit;
+    dbdValidade: TDBEdit;
+    dbePeso: TDBEdit;
+    dbeNomeProduto: TDBEdit;
+    dbeCodigoBarra: TDBEdit;
+    dbeCodigoInterno: TDBEdit;
+    dbeReferencia: TDBEdit;
+    dbeDataReceb: TDBEdit;
+    bvlLinha1: TPanel;
+    bvlLinha2: TPanel;
+    bvlLinha3: TPanel;
+    dbckbPromocao: TDBCheckBox;
+    dbeObs: TDBEdit;
     procedure dbeUnidadeClickButton(Sender: TObject);
     procedure dbeFornecedorClickButton(Sender: TObject);
     procedure dbeGrupoClickButton(Sender: TObject);
@@ -209,7 +209,7 @@ procedure TfrmProduto.dbeTributacaoClickButton(Sender: TObject);
 begin
   inherited;
 //  if cdsPadrao.State in [dsInsert, dsEdit] then
-//    if TfrmModeloConsulta.Execute('Tributação', cdsAliquota, FN_ALIQUOTAS, DL_ALIQUOTAS) then
+//    if TfrmModeloConsulta.Execute('Tributaï¿½ï¿½o', cdsAliquota, FN_ALIQUOTAS, DL_ALIQUOTAS) then
 //    begin
 //      cdsPadraoIDALIQUOTA.AsInteger := cdsAliquotaCODALIQUOTA.AsInteger;
 //    end;
@@ -341,7 +341,7 @@ end;
 procedure TfrmProduto.miComEstoqueMinimoClick(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmRelatorioProdutoEstMinForn', 'Produtos com estoque mínimo', Self);
+  ChamaForm('TfrmRelatorioProdutoEstMinForn', 'Produtos com estoque mï¿½nimo', Self);
 end;
 
 procedure TfrmProduto.miNovosAlteradosClick(Sender: TObject);
@@ -372,7 +372,7 @@ var
   SQLOrder: string;
 begin
   inherited;
-  Order := FormRadioButtons('Descrição do produto, Preço de venda', 'Ordenar por');
+  Order := FormRadioButtons('Descriï¿½ï¿½o do produto, Preï¿½o de venda', 'Ordenar por');
   if Order = 0 then
     SQLOrder := ' order by DESCRICAO'
   else if Order = 1 then
@@ -385,7 +385,7 @@ begin
     cdsPadrao.CommandText := '';
     cdsPadrao.CommandText := sqldPadrao.CommandText + SQLOrder;
     cdsPadrao.Open;
-    Titulo := 'Lista de preços';
+    Titulo := 'Lista de preï¿½os';
     PrintIfNotEmptyRL(rpLista);
   finally
     Free;
@@ -460,7 +460,7 @@ end;
 procedure TfrmProduto.actEstoqueMinimoExecute(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmProEstoqueMinimo', 'Estoque mínimo', Self);
+  ChamaForm('TfrmProEstoqueMinimo', 'Estoque mï¿½nimo', Self);
 end;
 
 procedure TfrmProduto.dbeNomeProdutoClickButton(Sender: TObject);
@@ -494,7 +494,7 @@ begin
 
   if (ModoInsert(cdsPadrao) and Repetido) then
   begin
-    MsgAviso('Produto com este código de barras já está cadastrado.');
+    MsgAviso('Produto com este cï¿½digo de barras jï¿½ estï¿½ cadastrado.');
     Abort;
   end;
 end;
@@ -507,14 +507,14 @@ begin
   inherited;
   if Length(Text) <> 13 then
   begin
-    if MsgSN('Deseja gerar cóigo de barras automáticamente?') then
+    if MsgSN('Deseja gerar cï¿½igo de barras automï¿½ticamente?') then
       codigo := GeraCodigoEAN13(Text);
   end;
 
   if VerificaEAN13(codigo) then
     Sender.AsString := codigo
   else
-    MsgCuidado('Este código de barras parece estar incorreto, verifique.');
+    MsgCuidado('Este cï¿½digo de barras parece estar incorreto, verifique.');
   Sender.AsString := codigo;
 end;
 
@@ -538,7 +538,7 @@ begin
   try
     try
 
-      AjustaRequires(False); // dexa todos os fields como não requeridos para evitar erros...
+      AjustaRequires(False); // dexa todos os fields como nï¿½o requeridos para evitar erros...
       cdsPadrao.First;
       cdsPadrao.DisableControls;
       while not cdsPadrao.Eof do
@@ -554,13 +554,13 @@ begin
       cdsPadrao.ApplyUpdates(0);
     except
       Erro := True;
-      raise Exception.Create('Erro ao ajustar códigos de barras.');
+      raise Exception.Create('Erro ao ajustar cï¿½digos de barras.');
     end;
   finally
     BringWindowToTop(Handle);
 
     if not Erro then
-      MsgAviso('Ajuste de códigos de barras concluído!');
+      MsgAviso('Ajuste de cï¿½digos de barras concluï¿½do!');
     AjustaRequires(True); // volta os campos requeridos...
     cdsPadrao.EnableControls;
   end;

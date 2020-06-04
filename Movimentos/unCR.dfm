@@ -9,18 +9,18 @@ inherited frmCR: TfrmCR
   ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 361
     Width = 522
     ExplicitTop = 361
     ExplicitWidth = 522
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 522
     TabOrder = 12
     ExplicitWidth = 522
   end
-  object lbStatus: TUniLabel [2]
+  object lbStatus: TLabel [2]
     Left = 8
     Top = 336
     Width = 46
@@ -33,7 +33,7 @@ inherited frmCR: TfrmCR
     Font.Name = 'Verdana'
     TabOrder = 16
   end
-  object btnReceber: TUniBitBtn [3]
+  object btnReceber: TBitBtn [3]
     Left = 424
     Top = 328
     Width = 89
@@ -44,7 +44,7 @@ inherited frmCR: TfrmCR
     TabOrder = 15
     OnClick = btnReceberClick
   end
-  object btnContas: TUniBitBtn [4]
+  object btnContas: TBitBtn [4]
     Left = 320
     Top = 328
     Width = 97
@@ -55,7 +55,7 @@ inherited frmCR: TfrmCR
     TabOrder = 14
     OnClick = miContasClienteCorrenteClick
   end
-  object dbeValorAtual: TUniDBEdit [5]
+  object dbeValorAtual: TDBEdit [5]
     Left = 136
     Top = 208
     Width = 121
@@ -68,7 +68,7 @@ inherited frmCR: TfrmCR
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeCliente: TUniDBEdit [6]
+  object dbeCliente: TDBEdit [6]
     Left = 8
     Top = 64
     Width = 267
@@ -81,7 +81,7 @@ inherited frmCR: TfrmCR
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeDescricao: TUniDBEdit [7]
+  object dbeDescricao: TDBEdit [7]
     Left = 8
     Top = 112
     Width = 505
@@ -93,7 +93,7 @@ inherited frmCR: TfrmCR
     TabOrder = 2
     OnEnter = dbeDescricaoEnter
   end
-  object dbeValor: TUniDBEdit [8]
+  object dbeValor: TDBEdit [8]
     Left = 8
     Top = 208
     Width = 121
@@ -104,7 +104,7 @@ inherited frmCR: TfrmCR
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbeDocumento: TUniDBEdit [9]
+  object dbeDocumento: TDBEdit [9]
     Left = 328
     Top = 160
     Width = 185
@@ -115,7 +115,7 @@ inherited frmCR: TfrmCR
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbeJuros: TUniDBEdit [10]
+  object dbeJuros: TDBEdit [10]
     Left = 264
     Top = 208
     Width = 73
@@ -126,7 +126,7 @@ inherited frmCR: TfrmCR
     DataSource = dsPadrao
     TabOrder = 8
   end
-  object dbeOrigem: TUniDBEdit [11]
+  object dbeOrigem: TDBEdit [11]
     Left = 344
     Top = 208
     Width = 73
@@ -139,7 +139,7 @@ inherited frmCR: TfrmCR
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbdData: TUniDBEdit [12]
+  object dbdData: TDBEdit [12]
     Left = 8
     Top = 160
     Width = 153
@@ -150,7 +150,7 @@ inherited frmCR: TfrmCR
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbdVencimento: TUniDBEdit [13]
+  object dbdVencimento: TDBEdit [13]
     Left = 168
     Top = 160
     Width = 153
@@ -161,7 +161,7 @@ inherited frmCR: TfrmCR
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbeVenda: TUniDBEdit [14]
+  object dbeVenda: TDBEdit [14]
     Left = 424
     Top = 208
     Width = 89
@@ -174,7 +174,7 @@ inherited frmCR: TfrmCR
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeConta: TUniDBEdit [15]
+  object dbeConta: TDBEdit [15]
     Left = 304
     Top = 64
     Width = 187
@@ -187,7 +187,7 @@ inherited frmCR: TfrmCR
     Color = clBtnFace
     ReadOnly = True
   end
-  object grpRecebimento: TUniGroupBox [16]
+  object grpRecebimento: TGroupBox [16]
     Left = 8
     Top = 240
     Width = 505
@@ -197,7 +197,7 @@ inherited frmCR: TfrmCR
     Caption = ' Informa'#231#245'es de recebimento '
     TabOrder = 11
     TabStop = False
-    object dbeDataRecdo: TUniDBEdit
+    object dbeDataRecdo: TDBEdit
       Left = 8
       Top = 40
       Width = 89
@@ -210,7 +210,7 @@ inherited frmCR: TfrmCR
       Color = clBtnFace
       ReadOnly = True
     end
-    object dbeDesconto: TUniDBEdit
+    object dbeDesconto: TDBEdit
       Left = 104
       Top = 40
       Width = 89
@@ -223,7 +223,7 @@ inherited frmCR: TfrmCR
       Color = clBtnFace
       ReadOnly = True
     end
-    object dbeCapitalRecdo: TUniDBEdit
+    object dbeCapitalRecdo: TDBEdit
       Left = 200
       Top = 40
       Width = 89
@@ -236,7 +236,7 @@ inherited frmCR: TfrmCR
       Color = clBtnFace
       ReadOnly = True
     end
-    object dbeJuroRecdo: TUniDBEdit
+    object dbeJuroRecdo: TDBEdit
       Left = 296
       Top = 40
       Width = 89
@@ -249,7 +249,7 @@ inherited frmCR: TfrmCR
       Color = clBtnFace
       ReadOnly = True
     end
-    object dbeTotalRecdo: TUniDBEdit
+    object dbeTotalRecdo: TDBEdit
       Left = 392
       Top = 40
       Width = 105

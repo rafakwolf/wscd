@@ -9,7 +9,7 @@ uses
   uniGUIClasses, uniPanel, uniButton, uniBitBtn, uniEdit, uniDBEdit;
 
 type
-  TfrmPrevNotaProm = class(TUniForm)
+  TfrmPrevNotaProm = class(TForm)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
@@ -30,11 +30,11 @@ type
     cdsPadraoDATA_NASC: TDateField;
     cdsPadraoLIMITE: TFMTBCDField;
     cdsPadraoDESCRICAO: TStringField;
-    pnlBotoes: TUniContainerPanel;
-    btnImp: TUniBitBtn;
-    btnCancel: TUniBitBtn;
-    btnImprimir: TUniBitBtn;
-    dbeCliente: TUniDBEdit;
+    pnlBotoes: TContainerPanel;
+    btnImp: TBitBtn;
+    btnCancel: TBitBtn;
+    btnImprimir: TBitBtn;
+    dbeCliente: TDBEdit;
     procedure btnCancelClick(Sender: TObject);
     procedure btnImpClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

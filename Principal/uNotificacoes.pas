@@ -9,8 +9,8 @@ uses
 
 type
   TfrmNotificacoes = class(TfrmSimplePadrao)
-    Desmarcar: TUniSpeedButton;
-    lbxNotificacoes: TUniListBox;
+    Desmarcar: TSpeedButton;
+    lbxNotificacoes: TListBox;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

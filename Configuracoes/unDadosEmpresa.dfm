@@ -9,18 +9,18 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
   ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 345
     Width = 682
     ExplicitTop = 345
     ExplicitWidth = 682
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 682
     TabOrder = 15
     ExplicitWidth = 682
   end
-  object lbFantazia: TUniLabel [2]
+  object lbFantazia: TLabel [2]
     Left = 43
     Top = 78
     Width = 46
@@ -33,7 +33,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 19
   end
-  object lbRazaoSocial: TUniLabel [3]
+  object lbRazaoSocial: TLabel [3]
     Left = 17
     Top = 54
     Width = 73
@@ -46,7 +46,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 20
   end
-  object lbCnpj: TUniLabel [4]
+  object lbCnpj: TLabel [4]
     Left = 38
     Top = 102
     Width = 52
@@ -59,7 +59,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 21
   end
-  object lbInscEstadual: TUniLabel [5]
+  object lbInscEstadual: TLabel [5]
     Left = 37
     Top = 126
     Width = 53
@@ -72,7 +72,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 22
   end
-  object lbEndereco: TUniLabel [6]
+  object lbEndereco: TLabel [6]
     Left = 37
     Top = 150
     Width = 53
@@ -85,7 +85,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 23
   end
-  object lbBairro: TUniLabel [7]
+  object lbBairro: TLabel [7]
     Left = 55
     Top = 198
     Width = 35
@@ -98,7 +98,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 24
   end
-  object lbTelefone: TUniLabel [8]
+  object lbTelefone: TLabel [8]
     Left = 41
     Top = 222
     Width = 48
@@ -111,7 +111,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 25
   end
-  object lbResponsavel: TUniLabel [9]
+  object lbResponsavel: TLabel [9]
     Left = 18
     Top = 270
     Width = 72
@@ -124,7 +124,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 26
   end
-  object LabelFax: TUniLabel [10]
+  object LabelFax: TLabel [10]
     Left = 301
     Top = 222
     Width = 19
@@ -137,7 +137,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 27
   end
-  object lbUF: TUniLabel [11]
+  object lbUF: TLabel [11]
     Left = 438
     Top = 174
     Width = 14
@@ -150,7 +150,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 28
   end
-  object lbCep: TUniLabel [12]
+  object lbCep: TLabel [12]
     Left = 386
     Top = 150
     Width = 23
@@ -163,7 +163,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 29
   end
-  object lbInscMunicipal: TUniLabel [13]
+  object lbInscMunicipal: TLabel [13]
     Left = 273
     Top = 126
     Width = 68
@@ -176,7 +176,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Font.Name = 'Verdana'
     TabOrder = 30
   end
-  object btnGravaSerial: TUniBitBtn [14]
+  object btnGravaSerial: TBitBtn [14]
     Left = 248
     Top = 290
     Width = 113
@@ -238,7 +238,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     TabOrder = 18
     OnClick = btnGravaSerialClick
   end
-  object dbeCidade: TUniDBEdit [15]
+  object dbeCidade: TDBEdit [15]
     Left = 93
     Top = 170
     Width = 318
@@ -251,7 +251,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeInscMunicipal: TUniDBEdit [16]
+  object dbeInscMunicipal: TDBEdit [16]
     Left = 345
     Top = 122
     Width = 157
@@ -262,7 +262,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbeFax: TUniDBEdit [17]
+  object dbeFax: TDBEdit [17]
     Left = 325
     Top = 218
     Width = 177
@@ -273,7 +273,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 11
   end
-  object dbeRazaoSocial: TUniDBEdit [18]
+  object dbeRazaoSocial: TDBEdit [18]
     Left = 93
     Top = 50
     Width = 409
@@ -284,7 +284,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeResponsavel: TUniDBEdit [19]
+  object dbeResponsavel: TDBEdit [19]
     Left = 93
     Top = 266
     Width = 409
@@ -295,7 +295,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 13
   end
-  object dbeTelefone: TUniDBEdit [20]
+  object dbeTelefone: TDBEdit [20]
     Left = 93
     Top = 218
     Width = 196
@@ -306,7 +306,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 10
   end
-  object dbeEndereco: TUniDBEdit [21]
+  object dbeEndereco: TDBEdit [21]
     Left = 93
     Top = 146
     Width = 284
@@ -317,7 +317,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbeBairro: TUniDBEdit [22]
+  object dbeBairro: TDBEdit [22]
     Left = 93
     Top = 194
     Width = 409
@@ -328,7 +328,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 9
   end
-  object dbeCep: TUniDBEdit [23]
+  object dbeCep: TDBEdit [23]
     Left = 413
     Top = 146
     Width = 89
@@ -339,7 +339,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbeInscEstadual: TUniDBEdit [24]
+  object dbeInscEstadual: TDBEdit [24]
     Left = 93
     Top = 122
     Width = 172
@@ -350,7 +350,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeFantazia: TUniDBEdit [25]
+  object dbeFantazia: TDBEdit [25]
     Left = 93
     Top = 74
     Width = 409
@@ -361,7 +361,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeSerial: TUniDBEdit [26]
+  object dbeSerial: TDBEdit [26]
     Left = 93
     Top = 290
     Width = 148
@@ -376,7 +376,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     TabOrder = 17
     Color = clSilver
   end
-  object dbeCnpj: TUniDBEdit [27]
+  object dbeCnpj: TDBEdit [27]
     Left = 93
     Top = 98
     Width = 172
@@ -387,7 +387,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeUF: TUniDBEdit [28]
+  object dbeUF: TDBEdit [28]
     Left = 456
     Top = 170
     Width = 46
@@ -398,7 +398,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     DataSource = dsPadrao
     TabOrder = 8
   end
-  object dbeEmail: TUniDBEdit [29]
+  object dbeEmail: TDBEdit [29]
     Left = 93
     Top = 242
     Width = 409
@@ -410,7 +410,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     CharCase = ecLowerCase
     TabOrder = 12
   end
-  object gbLogoMarca: TUniGroupBox [30]
+  object gbLogoMarca: TGroupBox [30]
     Left = 520
     Top = 48
     Width = 146
@@ -420,7 +420,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Caption = ' Logo '
     TabOrder = 14
     TabStop = False
-    object btnBuscaImg: TUniBitBtn
+    object btnBuscaImg: TBitBtn
       Left = 8
       Top = 136
       Width = 65
@@ -431,7 +431,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
       TabOrder = 0
       OnClick = btnBuscaImgClick
     end
-    object btnApagaImg: TUniBitBtn
+    object btnApagaImg: TBitBtn
       Left = 75
       Top = 136
       Width = 62
@@ -442,7 +442,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
       TabOrder = 1
       OnClick = btnApagaImgClick
     end
-    object dbiLogoMarca: TUniDBImage
+    object dbiLogoMarca: TDBImage
       Left = 8
       Top = 16
       Width = 129

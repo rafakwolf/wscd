@@ -11,7 +11,7 @@ uses
 type
   TTipoCheque = (tcAVista, tcPreDatado);
   TTipoChamada = (tcmCompra, tcmVenda);
-  TfrmPagamentoCheque = class(TUniForm)
+  TfrmPagamentoCheque = class(TForm)
     dsSelecao: TDataSource;
     sqldCheque: TSQLDataSet;
     sqldVenda: TSQLDataSet;
@@ -22,20 +22,20 @@ type
     sqldVendaCODCLIENTE: TIntegerField;
     sqldCompraTOTAL: TFMTBCDField;
     sqldVendaTOTAL: TFMTBCDField;
-    lbEmissao: TUniLabel;
-    lbVenc: TUniLabel;
-    lbBandaMagnetica: TUniLabel;
-    btnOk: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    edtAgencia: TUniEdit;
-    edtConta: TUniEdit;
-    edtNumeroCheque: TUniEdit;
-    edtValor: TUniEdit;
-    edtNome: TUniEdit;
-    dbeBanco: TUniDBEdit;
-    medtEmissao: TUniEdit;
-    medtVencimento: TUniEdit;
-    medBandaMagnetica: TUniEdit;
+    lbEmissao: TLabel;
+    lbVenc: TLabel;
+    lbBandaMagnetica: TLabel;
+    btnOk: TBitBtn;
+    btnCancelar: TBitBtn;
+    edtAgencia: TEdit;
+    edtConta: TEdit;
+    edtNumeroCheque: TEdit;
+    edtValor: TEdit;
+    edtNome: TEdit;
+    dbeBanco: TDBEdit;
+    medtEmissao: TEdit;
+    medtVencimento: TEdit;
+    medBandaMagnetica: TEdit;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure dbeBancoClickButton(Sender: TObject);
@@ -104,7 +104,7 @@ begin
   end
   else if FTipoCheque = tcPreDatado then
   begin
-    Caption := 'Cheque pré-datado';
+    Caption := 'Cheque prï¿½-datado';
     medtEmissao.Text := DateToStr(Date);
     medtEmissao.ReadOnly := True;
     medtVencimento.ReadOnly := False;
@@ -167,7 +167,7 @@ begin
   begin
     if RoundTo(StrToFloat(edtValor.Text), 2) > RoundTo(RestanteVenda, 2) then
     begin
-      MsgErro('O valor informado para recebimento inválido, tente novamente.');
+      MsgErro('O valor informado para recebimento invï¿½lido, tente novamente.');
       Exit;
     end;
   end
@@ -175,7 +175,7 @@ begin
   begin
     if RoundTo(StrToFloat(edtValor.Text), 2) > RoundTo(RestanteCompra, 2) then
     begin
-      MsgErro('O valor informado para pagamento inválido, tente novamente.');
+      MsgErro('O valor informado para pagamento invï¿½lido, tente novamente.');
       Exit;
     end;
   end;
@@ -350,7 +350,7 @@ begin
   begin
     if ChequeExiste(medBandaMagnetica.Text) then
     begin
-      MsgCuidado('Cheque já existente, verifique a digitação da banda magnética.');
+      MsgCuidado('Cheque jï¿½ existente, verifique a digitaï¿½ï¿½o da banda magnï¿½tica.');
       medBandaMagnetica.Clear;
       medBandaMagnetica.SetFocus;
       Exit;
@@ -372,7 +372,7 @@ begin
     end
     else
     begin
-      if MsgSN('O Banco "'+varBanco+'" não está cadastrado, deseja cadastrá-lo agora?') then
+      if MsgSN('O Banco "'+varBanco+'" nï¿½o estï¿½ cadastrado, deseja cadastrï¿½-lo agora?') then
         ChamaForm('TfrmBanco', 'Bancos', Self);
     end;
   end;

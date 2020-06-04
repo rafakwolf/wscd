@@ -13,7 +13,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
   ExplicitHeight = 462
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCampo: TUniLabel
+  object lbCampo: TLabel
     Left = 8
     Top = 8
     Width = 41
@@ -23,7 +23,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
     Caption = 'Campo'
     TabOrder = 5
   end
-  object btnFechar: TUniBitBtn
+  object btnFechar: TBitBtn
     Left = 656
     Top = 400
     Width = 89
@@ -85,7 +85,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
     TabOrder = 4
     OnClick = btnFecharClick
   end
-  object btnPesquisar: TUniBitBtn
+  object btnPesquisar: TBitBtn
     Left = 648
     Top = 21
     Width = 97
@@ -122,7 +122,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
     TabOrder = 2
     OnClick = btnPesquisarClick
   end
-  object edtPesquisa: TUniEdit
+  object edtPesquisa: TEdit
     Left = 169
     Top = 24
     Width = 473
@@ -133,7 +133,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
     TabOrder = 1
     OnKeyPress = edtPesquisaKeyPress
   end
-  object cbbCampo: TUniComboBox
+  object cbbCampo: TComboBox
     Left = 8
     Top = 24
     Width = 153
@@ -145,7 +145,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
     TabOrder = 0
     OnClick = cbbCampoClick
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 8
     Top = 52
     Width = 737

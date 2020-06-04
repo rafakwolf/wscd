@@ -9,22 +9,22 @@ inherited frmCadastroCidade: TfrmCadastroCidade
   ExplicitHeight = 230
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 182
     Width = 472
     ExplicitTop = 182
     ExplicitWidth = 472
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 472
     TabOrder = 2
     ExplicitWidth = 472
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Left = 255
       ExplicitLeft = 255
     end
   end
-  object dbeNomeCidade: TUniDBEdit [2]
+  object dbeNomeCidade: TDBEdit [2]
     Left = 21
     Top = 82
     Width = 313
@@ -35,7 +35,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeCodCidade: TUniDBEdit [3]
+  object dbeCodCidade: TDBEdit [3]
     Left = 21
     Top = 56
     Width = 97

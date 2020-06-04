@@ -38,12 +38,12 @@ type
     cdsCidadeDESCRICAO: TStringField;
     sqldPadraoNOMECIDADE: TStringField;
     cdsPadraoNOMECIDADE: TStringField;
-    dbNome: TUniDBEdit;
-    dbeCidade: TUniDBEdit;
-    dbCep: TUniDBEdit;
-    dbMsg: TUniDBEdit;
-    dbEndereco: TUniDBEdit;
-    dbBairro: TUniDBEdit;
+    dbNome: TDBEdit;
+    dbeCidade: TDBEdit;
+    dbCep: TDBEdit;
+    dbMsg: TDBEdit;
+    dbEndereco: TDBEdit;
+    dbBairro: TDBEdit;
     procedure actPrintExecute(Sender: TObject);
     procedure dbeCidadeClickButton(Sender: TObject);
     procedure FormCreate(Sender: TObject);

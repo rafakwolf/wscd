@@ -7,18 +7,18 @@ inherited frmBanco: TfrmBanco
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 137
     Width = 472
     ExplicitTop = 137
     ExplicitWidth = 433
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 472
     TabOrder = 2
     ExplicitWidth = 433
   end
-  object dbeCodCompensacao: TUniDBEdit [2]
+  object dbeCodCompensacao: TDBEdit [2]
     Left = 96
     Top = 54
     Width = 105
@@ -29,7 +29,7 @@ inherited frmBanco: TfrmBanco
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeBanco: TUniDBEdit [3]
+  object dbeBanco: TDBEdit [3]
     Left = 96
     Top = 80
     Width = 321

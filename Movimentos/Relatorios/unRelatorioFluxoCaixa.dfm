@@ -7,14 +7,14 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
   ExplicitHeight = 247
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 174
     Width = 385
     TabOrder = 4
     ExplicitTop = 178
     ExplicitWidth = 393
   end
-  object dbDataI: TUniDBEdit [1]
+  object dbDataI: TDBEdit [1]
     Left = 80
     Top = 112
     Width = 137
@@ -25,7 +25,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbDataF: TUniDBEdit [2]
+  object dbDataF: TDBEdit [2]
     Left = 80
     Top = 136
     Width = 137
@@ -36,7 +36,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object rgOrdem: TUniRadioGroup [3]
+  object rgOrdem: TRadioGroup [3]
     Left = 8
     Top = 56
     Width = 377
@@ -52,7 +52,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     TabStop = False
     Columns = 2
   end
-  object rgRelatorio: TUniRadioGroup [4]
+  object rgRelatorio: TRadioGroup [4]
     Left = 8
     Top = 8
     Width = 377

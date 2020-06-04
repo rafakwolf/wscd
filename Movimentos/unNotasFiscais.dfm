@@ -21,7 +21,7 @@ object frmNotasFiscais: TfrmNotasFiscais
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object stbCompra: TUniStatusBar
+  object stbCompra: TStatusBar
     Left = 0
     Top = 541
     Width = 810
@@ -36,7 +36,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Color = clBtnFace
     ExplicitTop = 561
   end
-  object PanelTotais: TUniContainerPanel
+  object PanelTotais: TContainerPanel
     Left = 0
     Top = 488
     Width = 810
@@ -49,7 +49,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     TabOrder = 20
     TabStop = False
     ExplicitTop = 508
-    object LabelFrete: TUniLabel
+    object LabelFrete: TLabel
       Left = 7
       Top = 6
       Width = 51
@@ -59,7 +59,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Caption = 'Valor frete'
       TabOrder = 8
     end
-    object LabelIcms: TUniLabel
+    object LabelIcms: TLabel
       Left = 117
       Top = 6
       Width = 52
@@ -69,7 +69,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Caption = 'Total ICMS'
       TabOrder = 9
     end
-    object LabelIpi: TUniLabel
+    object LabelIpi: TLabel
       Left = 228
       Top = 6
       Width = 41
@@ -79,7 +79,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Caption = 'Total IPI'
       TabOrder = 10
     end
-    object LabelDesp: TUniLabel
+    object LabelDesp: TLabel
       Left = 339
       Top = 6
       Width = 81
@@ -89,7 +89,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Caption = 'Outras despesas'
       TabOrder = 11
     end
-    object LabelTotDesc: TUniLabel
+    object LabelTotDesc: TLabel
       Left = 457
       Top = 6
       Width = 71
@@ -99,7 +99,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Caption = 'Total desconto'
       TabOrder = 12
     end
-    object LabelTotParc: TUniLabel
+    object LabelTotParc: TLabel
       Left = 567
       Top = 6
       Width = 70
@@ -109,7 +109,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Caption = 'Total produtos'
       TabOrder = 13
     end
-    object LabelTotTotal: TUniLabel
+    object LabelTotTotal: TLabel
       Left = 678
       Top = 6
       Width = 51
@@ -119,7 +119,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Caption = 'Total geral'
       TabOrder = 14
     end
-    object edtFrete: TUniDBEdit
+    object edtFrete: TDBEdit
       Left = 7
       Top = 22
       Width = 100
@@ -130,7 +130,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       DataSource = dsNotasFiscais
       TabOrder = 0
     end
-    object edtIcms: TUniDBEdit
+    object edtIcms: TDBEdit
       Left = 117
       Top = 22
       Width = 100
@@ -141,7 +141,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       DataSource = dsNotasFiscais
       TabOrder = 1
     end
-    object edtIPITotal: TUniDBEdit
+    object edtIPITotal: TDBEdit
       Left = 228
       Top = 22
       Width = 100
@@ -153,7 +153,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       DataSource = dsNotasFiscais
       TabOrder = 2
     end
-    object edtDespesas: TUniDBEdit
+    object edtDespesas: TDBEdit
       Left = 339
       Top = 22
       Width = 108
@@ -164,7 +164,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       DataSource = dsNotasFiscais
       TabOrder = 3
     end
-    object edtTotalDesconto: TUniDBEdit
+    object edtTotalDesconto: TDBEdit
       Left = 457
       Top = 22
       Width = 100
@@ -175,7 +175,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       DataSource = dsNotasFiscais
       TabOrder = 4
     end
-    object edtTotalParcial: TUniDBEdit
+    object edtTotalParcial: TDBEdit
       Left = 567
       Top = 22
       Width = 100
@@ -187,7 +187,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       DataSource = dsNotasFiscais
       TabOrder = 5
     end
-    object edtTotalTotal: TUniDBEdit
+    object edtTotalTotal: TDBEdit
       Left = 678
       Top = 22
       Width = 124
@@ -203,7 +203,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Color = clInfoBk
     end
   end
-  object pnlBotoes: TUniContainerPanel
+  object pnlBotoes: TContainerPanel
     Left = 0
     Top = 0
     Width = 810
@@ -215,7 +215,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 21
     TabStop = False
-    object btnFechar: TUniSpeedButton
+    object btnFechar: TSpeedButton
       Left = 320
       Top = 1
       Width = 32
@@ -339,7 +339,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 0
       OnClick = btnFecharClick
     end
-    object btnConsultar: TUniSpeedButton
+    object btnConsultar: TSpeedButton
       Left = 288
       Top = 1
       Width = 32
@@ -499,7 +499,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 1
       OnClick = btnConsultarClick
     end
-    object btnCancelar: TUniSpeedButton
+    object btnCancelar: TSpeedButton
       Left = 256
       Top = 1
       Width = 32
@@ -659,7 +659,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 2
       OnClick = btnCancelarClick
     end
-    object btnSalvar: TUniSpeedButton
+    object btnSalvar: TSpeedButton
       Left = 224
       Top = 1
       Width = 32
@@ -819,7 +819,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 3
       OnClick = btnSalvarClick
     end
-    object btnExcluir: TUniSpeedButton
+    object btnExcluir: TSpeedButton
       Left = 192
       Top = 1
       Width = 32
@@ -979,7 +979,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 4
       OnClick = btnExcluirClick
     end
-    object btnEditar: TUniSpeedButton
+    object btnEditar: TSpeedButton
       Left = 160
       Top = 1
       Width = 32
@@ -1139,7 +1139,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 5
       OnClick = btnEditarClick
     end
-    object btnNovo: TUniSpeedButton
+    object btnNovo: TSpeedButton
       Left = 128
       Top = 1
       Width = 32
@@ -1299,7 +1299,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 6
       OnClick = btnNovoClick
     end
-    object btnUltimo: TUniSpeedButton
+    object btnUltimo: TSpeedButton
       Left = 96
       Top = 1
       Width = 32
@@ -1459,7 +1459,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 7
       OnClick = btnUltimoClick
     end
-    object btnProximo: TUniSpeedButton
+    object btnProximo: TSpeedButton
       Left = 64
       Top = 1
       Width = 32
@@ -1619,7 +1619,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 8
       OnClick = btnProximoClick
     end
-    object btnAnterior: TUniSpeedButton
+    object btnAnterior: TSpeedButton
       Left = 32
       Top = 1
       Width = 32
@@ -1779,7 +1779,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       TabOrder = 9
       OnClick = btnAnteriorClick
     end
-    object btnPrimeiro: TUniSpeedButton
+    object btnPrimeiro: TSpeedButton
       Left = 0
       Top = 1
       Width = 32
@@ -1940,7 +1940,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       OnClick = btnPrimeiroClick
     end
   end
-  object LabelNumero: TUniLabel
+  object LabelNumero: TLabel
     Left = 16
     Top = 40
     Width = 61
@@ -1950,7 +1950,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Caption = 'N'#186' da nota'
     TabOrder = 23
   end
-  object lbBaixado: TUniLabel
+  object lbBaixado: TLabel
     Left = 736
     Top = 40
     Width = 56
@@ -1960,7 +1960,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Caption = 'Conclu'#237'da'
     TabOrder = 24
   end
-  object lbObs: TUniLabel
+  object lbObs: TLabel
     Left = 16
     Top = 120
     Width = 68
@@ -1970,7 +1970,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Caption = 'Observa'#231#227'o'
     TabOrder = 25
   end
-  object btnInserir: TUniBitBtn
+  object btnInserir: TBitBtn
     Left = 784
     Top = 216
     Width = 24
@@ -2008,7 +2008,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     TabOrder = 18
     OnClick = btnInserirClick
   end
-  object dbeNumero: TUniDBEdit
+  object dbeNumero: TDBEdit
     Left = 16
     Top = 56
     Width = 105
@@ -2019,7 +2019,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsNotasFiscais
     TabOrder = 0
   end
-  object dbFornecedor: TUniDBEdit
+  object dbFornecedor: TDBEdit
     Left = 136
     Top = 96
     Width = 657
@@ -2032,7 +2032,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbEstornada: TUniDBEdit
+  object dbEstornada: TDBEdit
     Left = 736
     Top = 56
     Width = 57
@@ -2047,7 +2047,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     TabOrder = 5
     Color = clBtnFace
   end
-  object dbCodFornecedor: TUniDBEdit
+  object dbCodFornecedor: TDBEdit
     Left = 16
     Top = 96
     Width = 91
@@ -2060,7 +2060,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbProduto: TUniDBEdit
+  object dbProduto: TDBEdit
     Left = 2
     Top = 216
     Width = 243
@@ -2073,7 +2073,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbTributacao: TUniDBEdit
+  object dbTributacao: TDBEdit
     Left = 267
     Top = 216
     Width = 73
@@ -2084,7 +2084,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsSelecao
     TabOrder = 10
   end
-  object dbQtde: TUniDBEdit
+  object dbQtde: TDBEdit
     Left = 342
     Top = 216
     Width = 44
@@ -2095,7 +2095,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsSelecao
     TabOrder = 11
   end
-  object dbTotal: TUniDBEdit
+  object dbTotal: TDBEdit
     Left = 388
     Top = 216
     Width = 74
@@ -2107,7 +2107,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     TabOrder = 12
     OnExit = dbTotalExit
   end
-  object dbCusto: TUniDBEdit
+  object dbCusto: TDBEdit
     Left = 463
     Top = 216
     Width = 61
@@ -2118,7 +2118,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsSelecao
     TabOrder = 13
   end
-  object dbLucro: TUniDBEdit
+  object dbLucro: TDBEdit
     Left = 526
     Top = 216
     Width = 48
@@ -2130,7 +2130,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     TabOrder = 14
     OnExit = dbLucroExit
   end
-  object dbVenda: TUniDBEdit
+  object dbVenda: TDBEdit
     Left = 575
     Top = 216
     Width = 72
@@ -2142,7 +2142,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     TabOrder = 15
     OnExit = dbVendaExit
   end
-  object dbIPI: TUniDBEdit
+  object dbIPI: TDBEdit
     Left = 649
     Top = 216
     Width = 46
@@ -2153,7 +2153,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsSelecao
     TabOrder = 16
   end
-  object dbDescto: TUniDBEdit
+  object dbDescto: TDBEdit
     Left = 697
     Top = 216
     Width = 85
@@ -2164,7 +2164,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsSelecao
     TabOrder = 17
   end
-  object dbdDataNota: TUniDBEdit
+  object dbdDataNota: TDBEdit
     Left = 128
     Top = 56
     Width = 113
@@ -2175,7 +2175,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsNotasFiscais
     TabOrder = 1
   end
-  object dbdDataEntrada: TUniDBEdit
+  object dbdDataEntrada: TDBEdit
     Left = 248
     Top = 56
     Width = 113
@@ -2186,7 +2186,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     DataSource = dsNotasFiscais
     TabOrder = 2
   end
-  object dbeCfop: TUniDBEdit
+  object dbeCfop: TDBEdit
     Left = 367
     Top = 56
     Width = 100
@@ -2199,7 +2199,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeOperacao: TUniDBEdit
+  object dbeOperacao: TDBEdit
     Left = 495
     Top = 56
     Width = 234
@@ -2212,7 +2212,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Color = clBtnFace
     ReadOnly = True
   end
-  object BevelSepara: TUniPanel
+  object BevelSepara: TPanel
     Left = 1
     Top = 191
     Width = 808
@@ -2222,7 +2222,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     TabOrder = 26
     Caption = 'BevelSepara'
   end
-  object dbmmObservacao: TUniDBMemo
+  object dbmmObservacao: TDBMemo
     Left = 16
     Top = 136
     Width = 777
@@ -2234,7 +2234,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     ScrollBars = ssVertical
     TabOrder = 8
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 0
     Top = 239
     Width = 810
@@ -2919,156 +2919,156 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 160
     Top = 376
   end
-  object mnNotasFiscais: TUniMainMenu
+  object mnNotasFiscais: TMainMenu
     Left = 64
     Top = 376
-    object miRegistros: TUniMenuItem
+    object miRegistros: TMenuItem
       Caption = 'Registros'
-      object miPrimeiro: TUniMenuItem
+      object miPrimeiro: TMenuItem
         Caption = 'Primeiro'
         OnClick = btnPrimeiroClick
       end
-      object miAnterior: TUniMenuItem
+      object miAnterior: TMenuItem
         Caption = 'Anterior'
         OnClick = btnAnteriorClick
       end
-      object miProximo: TUniMenuItem
+      object miProximo: TMenuItem
         Caption = 'Pr'#243'ximo'
         OnClick = btnProximoClick
       end
-      object miUltimo: TUniMenuItem
+      object miUltimo: TMenuItem
         Caption = #218'ltimo'
         OnClick = btnUltimoClick
       end
-      object N1: TUniMenuItem
+      object N1: TMenuItem
         Caption = '-'
       end
-      object miNovo: TUniMenuItem
+      object miNovo: TMenuItem
         Caption = 'Novo'
         OnClick = btnNovoClick
       end
-      object miExcluir: TUniMenuItem
+      object miExcluir: TMenuItem
         Caption = 'Excluir'
         OnClick = btnExcluirClick
       end
-      object miAlterar: TUniMenuItem
+      object miAlterar: TMenuItem
         Caption = 'Alterar'
         ShortCut = 116
         OnClick = btnEditarClick
       end
-      object N2: TUniMenuItem
+      object N2: TMenuItem
         Caption = '-'
       end
-      object miSalvar: TUniMenuItem
+      object miSalvar: TMenuItem
         Caption = 'Salvar'
         OnClick = btnSalvarClick
       end
-      object miCancelar: TUniMenuItem
+      object miCancelar: TMenuItem
         Caption = 'Cancelar'
         OnClick = btnCancelarClick
       end
-      object N3: TUniMenuItem
+      object N3: TMenuItem
         Caption = '-'
       end
-      object miFechar: TUniMenuItem
+      object miFechar: TMenuItem
         Caption = 'Fechar'
         ShortCut = 27
         OnClick = btnFecharClick
       end
     end
-    object miFerramentas: TUniMenuItem
+    object miFerramentas: TMenuItem
       Caption = 'Ferramentas'
-      object miLocalizar: TUniMenuItem
+      object miLocalizar: TMenuItem
         Caption = 'Pesquisar'
         ShortCut = 119
         OnClick = btnConsultarClick
       end
-      object miOutrosFiltros: TUniMenuItem
+      object miOutrosFiltros: TMenuItem
         Caption = 'Outros filtros'
-        object miFiltroData: TUniMenuItem
+        object miFiltroData: TMenuItem
           Caption = 'Filtrar por data'
           OnClick = miFiltroDataClick
         end
-        object miFiltrarForn: TUniMenuItem
+        object miFiltrarForn: TMenuItem
           Caption = 'Filtrar por fornecedor'
         end
-        object N6: TUniMenuItem
+        object N6: TMenuItem
           Caption = '-'
         end
-        object miCompraNaoConc: TUniMenuItem
+        object miCompraNaoConc: TMenuItem
           Caption = 'Compras n'#227'o conclu'#237'das'
           OnClick = miCompraNaoConcClick
         end
       end
-      object miMostrarTodos: TUniMenuItem
+      object miMostrarTodos: TMenuItem
         Caption = 'Limpar filtro'
         OnClick = miMostrarTodosClick
       end
-      object N5: TUniMenuItem
+      object N5: TMenuItem
         Caption = '-'
       end
-      object miContar: TUniMenuItem
+      object miContar: TMenuItem
         Caption = 'Contar registros'
       end
-      object N9: TUniMenuItem
+      object N9: TMenuItem
         Caption = '-'
       end
-      object miCadastraForn: TUniMenuItem
+      object miCadastraForn: TMenuItem
         Caption = 'Cadastrar fornecedor'
         OnClick = miCadastraFornClick
       end
-      object miCadastrarCFOP: TUniMenuItem
+      object miCadastrarCFOP: TMenuItem
         Caption = 'Cadastrar CFOP'
         OnClick = miCadastrarCFOPClick
       end
-      object miCadastrodeproduto: TUniMenuItem
+      object miCadastrodeproduto: TMenuItem
         Caption = 'Cadastro de produto'
         OnClick = miCadastrodeprodutoClick
       end
     end
-    object miOpcoes: TUniMenuItem
+    object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
-      object miConcluir: TUniMenuItem
+      object miConcluir: TMenuItem
         Caption = 'Concluir'
         OnClick = miConcluirClick
       end
-      object miEstornar: TUniMenuItem
+      object miEstornar: TMenuItem
         Caption = 'Estornar'
         OnClick = miEstornarClick
       end
-      object N8: TUniMenuItem
+      object N8: TMenuItem
         Caption = '-'
       end
-      object miPagamentoCompra: TUniMenuItem
+      object miPagamentoCompra: TMenuItem
         Caption = 'Ver pagamentos'
         OnClick = miPagamentoCompraClick
       end
     end
-    object miRelatorios: TUniMenuItem
+    object miRelatorios: TMenuItem
       Caption = 'Relat'#243'rios'
-      object miCompraAtual: TUniMenuItem
+      object miCompraAtual: TMenuItem
         Caption = 'Compra atual'
         OnClick = miCompraAtualClick
       end
-      object N7: TUniMenuItem
+      object N7: TMenuItem
         Caption = '-'
       end
-      object miRelDatas: TUniMenuItem
+      object miRelDatas: TMenuItem
         Caption = 'Por intervalo de datas'
         OnClick = miRelDatasClick
       end
-      object miRelForn: TUniMenuItem
+      object miRelForn: TMenuItem
         Caption = 'Por fornecedor'
         OnClick = miRelFornClick
       end
-      object N4: TUniMenuItem
+      object N4: TMenuItem
         Caption = '-'
       end
-      object miListaFaturamForn: TUniMenuItem
+      object miListaFaturamForn: TMenuItem
         Caption = 'Listagem de faturamento por fornecedor'
         OnClick = miListaFaturamFornClick
       end
-      object miListaFaturaCorrente: TUniMenuItem
+      object miListaFaturaCorrente: TMenuItem
         Caption = 'Listagem de faturamento desta compra'
         OnClick = miListaFaturaCorrenteClick
       end

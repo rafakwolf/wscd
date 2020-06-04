@@ -16,7 +16,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlBotoes: TUniContainerPanel
+  object pnlBotoes: TContainerPanel
     Left = 0
     Top = 97
     Width = 465
@@ -29,7 +29,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
     TabOrder = 1
     TabStop = False
     ExplicitTop = 63
-    object btnImp: TUniBitBtn
+    object btnImp: TBitBtn
       Left = 97
       Top = 2
       Width = 90
@@ -146,7 +146,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
       TabOrder = 0
       OnClick = btnImpClick
     end
-    object btnCancel: TUniBitBtn
+    object btnCancel: TBitBtn
       Left = 188
       Top = 2
       Width = 90
@@ -250,7 +250,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
       TabOrder = 1
       OnClick = btnCancelClick
     end
-    object btnImprimir: TUniBitBtn
+    object btnImprimir: TBitBtn
       Left = 3
       Top = 2
       Width = 90
@@ -409,7 +409,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
       OnClick = btnImprimirClick
     end
   end
-  object dbeCliente: TUniDBEdit
+  object dbeCliente: TDBEdit
     Left = 16
     Top = 40
     Width = 411

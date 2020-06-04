@@ -17,9 +17,9 @@ type
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
     dsData: TDataSource;
-    dbeCaixa: TUniDBEdit;
-    dtpDataIni: TUniDBEdit;
-    dtpDataFim: TUniDBEdit;
+    dbeCaixa: TDBEdit;
+    dtpDataIni: TDBEdit;
+    dtpDataFim: TDBEdit;
     procedure dbeCaixaClickButton(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
@@ -65,7 +65,7 @@ begin
 //    cdsPadrao.Params.ParamByName('DATAFIM').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime;
 
     cdsPadrao.Open;
-    TituloRel := 'Lançamentos do caixa: ' + dbeCaixa.Text;
+    TituloRel := 'Lanï¿½amentos do caixa: ' + dbeCaixa.Text;
     PrintIfNotEmptyRL(rrPadrao, p);
   finally
     cdsPadrao.Close;

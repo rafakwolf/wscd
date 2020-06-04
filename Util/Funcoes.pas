@@ -7,8 +7,8 @@ uses
   UITypes, System.SysUtils, Vcl.Buttons, Vcl.Controls, Data.DB, dbclient,
   uniGUIForm, uniBitBtn, uniSpeedButton, UniGUIDialogs;
 
-function ChamaForm(pClass, pTitle: string; pOwner: TComponent): TUniForm;
-procedure CentralizaForm(form: TUniForm);
+function ChamaForm(pClass, pTitle: string; pOwner: TComponent): TForm;
+procedure CentralizaForm(form: TForm);
 procedure ChamaHelp(pOwner: TComponent; index: Integer; title: string);
 procedure FormMemo(ds: TDataSource; fieldName: string);
 function FormRadioButtons(radios, title: string; def: Integer = 0): Integer;
@@ -38,15 +38,15 @@ function MessageDlgCheck(msg: string; AType: TMsgDlgType;
   Portugues: boolean; Checar: boolean; MsgCheck: string;
   Funcao: TProcedure): Word;
 
-procedure ReordenaBotoes(btns: array of TUniSpeedButton); overload;
-procedure ReordenaBotoes(btns: array of TUniBitBtn); overload;
-procedure SetDialogForm(form: TUniForm);
+procedure ReordenaBotoes(btns: array of TSpeedButton); overload;
+procedure ReordenaBotoes(btns: array of TBitBtn); overload;
+procedure SetDialogForm(form: TForm);
 procedure SetFocusIfCan(ctrl: TWinControl);
 
 function FieldIsNumeric(f: TField): boolean;
 function FieldIsDateTime(f: TField): boolean;
 function FieldIsString(f: TField): boolean;
-function UpdatesPending(cds: TClientDataset; form: TUniForm): boolean;
+function UpdatesPending(cds: TClientDataset; form: TForm): boolean;
 function Locate(cds: TClientDataset; field: TField; value: string): boolean;
 procedure Filtro(cds: TClientDataset; field, value: string);
 function ValidaFieldsVazios(fields: array of TField;
@@ -72,7 +72,7 @@ function NormalizeStr(s: string): string;
 procedure WriteIniFile(section, nome, value: string);
 function ReadIniFile(section, nome: string): string;
 
-procedure PostMessageAllForms(msg: Cardinal; form: TUniForm = nil);
+procedure PostMessageAllForms(msg: Cardinal; form: TForm = nil);
 
 function GeraCodigoEAN13(value: string): string;
 function VerificaEAN13(codigo: string): boolean;
@@ -84,7 +84,7 @@ implementation
 uses
   System.Variants, IniFiles, Winapi.Windows;
 
-function UpdatesPending(cds: TClientDataset; form: TUniForm): boolean;
+function UpdatesPending(cds: TClientDataset; form: TForm): boolean;
 begin
   Result := cds.ChangeCount > 0;
 end;
@@ -120,7 +120,7 @@ begin
     02:
       n := 'Fevereiro';
     03:
-      n := 'Março';
+      n := 'Marï¿½o';
     04:
       n := 'Abril';
     05:
@@ -158,7 +158,7 @@ begin
     2:
       s := 'segunda-feira';
     3:
-      s := 'terça-feira';
+      s := 'terï¿½a-feira';
     4:
       s := 'quarta-feira';
     5:
@@ -166,7 +166,7 @@ begin
     6:
       s := 'sexta-feira';
     7:
-      s := 'sábado';
+      s := 'sï¿½bado';
   end;
 end;
 
@@ -211,7 +211,7 @@ begin
   Result := s; // TODO: resolver
 end;
 
-procedure PostMessageAllForms(msg: Cardinal; form: TUniForm = nil);
+procedure PostMessageAllForms(msg: Cardinal; form: TForm = nil);
 //var
 //  I: Integer;
 begin
@@ -272,8 +272,8 @@ begin
 
   for x := 1 to Length(SQL) do
   begin
-    if ((SQL[x] <> ' ') and { espaço }
-      (SQL[x] <> ',') and { vírgula }
+    if ((SQL[x] <> ' ') and { espaï¿½o }
+      (SQL[x] <> ',') and { vï¿½rgula }
       (SQL[x] <> #13) and { quebra de linha }
       (SQL[x] <> #10)) then { quebra de linha }
       SQLResult := SQLResult + SQL[x]
@@ -343,7 +343,7 @@ begin
     ctrl.SetFocus;
 end;
 
-procedure ReordenaBotoes(btns: array of TUniBitBtn);
+procedure ReordenaBotoes(btns: array of TBitBtn);
 var
   I: Integer;
 begin
@@ -356,7 +356,7 @@ begin
   end;
 end;
 
-procedure ReordenaBotoes(btns: array of TUniSpeedButton);
+procedure ReordenaBotoes(btns: array of TSpeedButton);
 var
   I: Integer;
 begin
@@ -369,25 +369,25 @@ begin
   end;
 end;
 
-procedure SetDialogForm(form: TUniForm);
+procedure SetDialogForm(form: TForm);
 begin
   form.BorderStyle := TFormBorderStyle.bsDialog;
 end;
 
-function ChamaForm(pClass, pTitle: string; pOwner: TComponent): TUniForm;
+function ChamaForm(pClass, pTitle: string; pOwner: TComponent): TForm;
 var
-  formClass: TUniFormClass;
+  formClass: TFormClass;
 begin
-  formClass := TUniFormClass(GetClass(pClass));
+  formClass := TFormClass(GetClass(pClass));
 
-  if (formClass = nil) then raise Exception.Create('Classe '+pClass+' não encontrada.');
+  if (formClass = nil) then raise Exception.Create('Classe '+pClass+' nï¿½o encontrada.');
 
   Result := formClass.Create(pOwner);
   Result.Caption := pTitle;
   Result.Show;
 end;
 
-procedure CentralizaForm(form: TUniForm);
+procedure CentralizaForm(form: TForm);
 begin
   form.Position := TPosition.poScreenCenter;
 end;
@@ -470,19 +470,19 @@ begin
     if Portugues then
     begin
       if AType = mtConfirmation then
-        Caption := 'Confirmação'
+        Caption := 'Confirmaï¿½ï¿½o'
       else if AType = mtWarning then
         Caption := 'Aviso'
       else if AType = mtError then
         Caption := 'Erro'
       else if AType = mtInformation then
-        Caption := 'Informação';
+        Caption := 'Informaï¿½ï¿½o';
     end;
   end;
   if Portugues then
   begin
     TButton(Mensagem.FindComponent('YES')).Caption := '&Sim';
-    TButton(Mensagem.FindComponent('NO')).Caption := '&Não';
+    TButton(Mensagem.FindComponent('NO')).Caption := '&Nï¿½o';
     TButton(Mensagem.FindComponent('CANCEL')).Caption := '&Cancelar';
     TButton(Mensagem.FindComponent('ABORT')).Caption := '&Abortar';
     TButton(Mensagem.FindComponent('RETRY')).Caption := '&Repetir';
@@ -522,12 +522,12 @@ begin
   Wdigit1 := 0;
   Wdigit2 := 0;
   Want := cpf[1];
-  // variavel para testar se o cpf é repetido como 111.111.111-11
+  // variavel para testar se o cpf ï¿½ repetido como 111.111.111-11
   Delete(cpf, ansipos('.', cpf), 1); // retira as mascaras se houver
   Delete(cpf, ansipos('.', cpf), 1);
   Delete(cpf, ansipos('-', cpf), 1);
 
-  // testar se o cpf é repetido como 111.111.111-11
+  // testar se o cpf ï¿½ repetido como 111.111.111-11
   for I := 1 to Length(cpf) do
   begin
     if cpf[I] <> Want then
@@ -537,7 +537,7 @@ begin
       Break
     end;
   end;
-  // se o cpf é composto por numeros repetido retorna falso
+  // se o cpf ï¿½ composto por numeros repetido retorna falso
   if not Wvalid then
   begin
     Result := false;
@@ -551,12 +551,12 @@ begin
   end;
   Wdigit1 := ((11 - (Wdigit1 mod 11)) mod 11) mod 10;
   { formula do primeiro verificador
-    soma=1°*2+2°*3+3°*4.. até 9°*10
+    soma=1ï¿½*2+2ï¿½*3+3ï¿½*4.. atï¿½ 9ï¿½*10
     digito1 = 11 - soma mod 11
     se digito > 10 digito1 =0
   }
 
-  // verifica se o 1° digito confere
+  // verifica se o 1ï¿½ digito confere
   if IntToStr(Wdigit1) <> cpf[10] then
   begin
     Result := false;
@@ -569,19 +569,19 @@ begin
   end;
   Wdigit2 := ((11 - (Wdigit2 mod 11)) mod 11) mod 10;
   { formula do segundo verificador
-    soma=1°*2+2°*3+3°*4.. até 10°*11
+    soma=1ï¿½*2+2ï¿½*3+3ï¿½*4.. atï¿½ 10ï¿½*11
     digito1 = 11 - soma mod 11
     se digito > 10 digito1 =0
   }
 
-  // confere o 2° digito verificador
+  // confere o 2ï¿½ digito verificador
   if IntToStr(Wdigit2) <> cpf[11] then
   begin
     Result := false;
     exit;
   end;
 
-  // se chegar até aqui o cpf é valido
+  // se chegar atï¿½ aqui o cpf ï¿½ valido
   Result := True;
 end;
 

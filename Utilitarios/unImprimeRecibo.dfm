@@ -14,7 +14,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnImprimir: TUniBitBtn
+  object btnImprimir: TBitBtn
     Left = 73
     Top = 152
     Width = 88
@@ -75,7 +75,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
     TabOrder = 0
     OnClick = btnImprimirClick
   end
-  object btnVisualizar: TUniBitBtn
+  object btnVisualizar: TBitBtn
     Left = 168
     Top = 152
     Width = 89
@@ -136,7 +136,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
     TabOrder = 1
     OnClick = btnVisualizarClick
   end
-  object btnSair: TUniBitBtn
+  object btnSair: TBitBtn
     Left = 264
     Top = 152
     Width = 89
@@ -173,7 +173,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
     TabOrder = 2
     OnClick = btnSairClick
   end
-  object imgImpressora: TUniImage
+  object imgImpressora: TImage
     Left = 8
     Top = 8
     Width = 128
@@ -1722,7 +1722,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       00FF}
     Transparent = True
   end
-  object gbRecibo: TUniGroupBox
+  object gbRecibo: TGroupBox
     Left = 144
     Top = 8
     Width = 209
@@ -1731,7 +1731,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
     Caption = ' Recibo: '
     TabOrder = 3
     TabStop = False
-    object lbColunas: TUniLabel
+    object lbColunas: TLabel
       Left = 10
       Top = 80
       Width = 46
@@ -1742,7 +1742,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       Color = clBtnFace
       TabOrder = 5
     end
-    object edPorta: TUniEdit
+    object edPorta: TEdit
       Left = 105
       Top = 95
       Width = 93
@@ -1751,7 +1751,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       Text = ''
       TabOrder = 0
     end
-    object edColunas: TUniSpinEdit
+    object edColunas: TSpinEdit
       Left = 10
       Top = 95
       Width = 89
@@ -1759,7 +1759,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       Hint = ''
       TabOrder = 2
     end
-    object rbA4: TUniRadioButton
+    object rbA4: TRadioButton
       Left = 16
       Top = 24
       Width = 81
@@ -1770,7 +1770,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       TabOrder = 3
       OnClick = rbA4Click
     end
-    object rbBobina: TUniRadioButton
+    object rbBobina: TRadioButton
       Left = 16
       Top = 48
       Width = 81

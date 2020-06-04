@@ -5,10 +5,10 @@ inherited frmRelatorioProdutoEstMinForn: TfrmRelatorioProdutoEstMinForn
   ExplicitHeight = 209
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 136
   end
-  object dbeForn: TUniDBEdit [1]
+  object dbeForn: TDBEdit [1]
     Left = 16
     Top = 40
     Width = 347

@@ -9,13 +9,13 @@ inherited frmRelatorioCPData: TfrmRelatorioCPData
   ExplicitHeight = 207
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 134
     Width = 281
     ExplicitTop = 138
     ExplicitWidth = 289
   end
-  object edDataFim: TUniDBEdit [1]
+  object edDataFim: TDBEdit [1]
     Left = 24
     Top = 72
     Width = 161
@@ -26,7 +26,7 @@ inherited frmRelatorioCPData: TfrmRelatorioCPData
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object edDataIni: TUniDBEdit [2]
+  object edDataIni: TDBEdit [2]
     Left = 24
     Top = 32
     Width = 161

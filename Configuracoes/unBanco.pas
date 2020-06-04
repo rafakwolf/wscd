@@ -18,8 +18,8 @@ type
     sqldPadraoBANCO: TStringField;
     cdsPadraoIDBANCO: TIntegerField;
     cdsPadraoBANCO: TStringField;
-    dbeCodCompensacao: TUniDBEdit;
-    dbeBanco: TUniDBEdit;
+    dbeCodCompensacao: TDBEdit;
+    dbeBanco: TDBEdit;
     procedure FormCreate(Sender: TObject);
   private
   public

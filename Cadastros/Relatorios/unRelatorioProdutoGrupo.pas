@@ -10,7 +10,7 @@ uses
 
 type
   TfrmRelatorioProdutoGrupo = class(TfrmDialogoRelatorioPadrao)
-    dbeGrupo: TUniDBEdit;
+    dbeGrupo: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbeGrupoClickButton(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

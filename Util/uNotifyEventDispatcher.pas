@@ -4,28 +4,28 @@ unit uNotifyEventDispatcher;
 
 interface
 
-{uses System.Classes, System.SysUtils;}
+uses Classes, SysUtils;
 
 type
   TNotifyEventDispatcher = class(TComponent)
   protected
-    FClosure: TProc<TObject>;
+    FClosure: TProcedure;
 
     procedure OnNotifyEvent(Sender: TObject);
   public
-    class function Create(Owner: TComponent; Closure: TProc<TObject>): TNotifyEvent; overload;
+    class function Create(Owner: TComponent; Closure: TProcedure): TNotifyEvent; overload;
 
-    function Attach(Closure: TProc<TObject>): TNotifyEvent;
+    function Attach(Closure: TProcedure): TNotifyEvent;
   end;
 
 implementation
 
-class function TNotifyEventDispatcher.Create(Owner: TComponent; Closure: TProc<TObject>): TNotifyEvent;
+class function TNotifyEventDispatcher.Create(Owner: TComponent; Closure: TProcedure): TNotifyEvent;
 begin
   Result := TNotifyEventDispatcher.Create(Owner).Attach(Closure)
 end;
 
-function TNotifyEventDispatcher.Attach(Closure: TProc<TObject>): TNotifyEvent;
+function TNotifyEventDispatcher.Attach(Closure: TProcedure): TNotifyEvent;
 begin
   FClosure := Closure;
   Result := Self.OnNotifyEvent
@@ -34,7 +34,7 @@ end;
 procedure TNotifyEventDispatcher.OnNotifyEvent(Sender: TObject);
 begin
   if Assigned(FClosure) then
-    FClosure(Sender)
+    FClosure;
 end;
 
 end.

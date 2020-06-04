@@ -7,13 +7,13 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
   ExplicitHeight = 199
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 126
     Width = 401
     ExplicitTop = 126
     ExplicitWidth = 401
   end
-  object dbeCidade: TUniDBEdit [1]
+  object dbeCidade: TDBEdit [1]
     Left = 16
     Top = 96
     Width = 355
@@ -26,7 +26,7 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeCliente: TUniDBEdit [2]
+  object dbeCliente: TDBEdit [2]
     Left = 16
     Top = 55
     Width = 355
@@ -39,7 +39,7 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
     Color = clBtnFace
     ReadOnly = True
   end
-  object rgpFiltro: TUniRadioGroup [3]
+  object rgpFiltro: TRadioGroup [3]
     Left = 8
     Top = 8
     Width = 393

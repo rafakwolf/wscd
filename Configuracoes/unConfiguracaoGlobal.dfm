@@ -9,17 +9,17 @@ inherited frmConfigGlobal: TfrmConfigGlobal
   ExplicitHeight = 369
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 321
     Width = 470
     ExplicitTop = 321
     ExplicitWidth = 470
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 470
     ExplicitWidth = 470
   end
-  object pgcConfigGlobal: TUniPageControl [2]
+  object pgcConfigGlobal: TPageControl [2]
     Left = 8
     Top = 39
     Width = 385
@@ -28,11 +28,11 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     ShowHint = True
     ActivePage = tsCrediario
     TabOrder = 2
-    object tsCrediario: TUniTabSheet
+    object tsCrediario: TTabSheet
       Hint = ''
       ShowHint = True
       Caption = 'Credi'#225'rio'
-      object dbeJuro: TUniDBEdit
+      object dbeJuro: TDBEdit
         Left = 8
         Top = 32
         Width = 83
@@ -44,7 +44,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         TabOrder = 0
         OnKeyPress = dbeJuroKeyPress
       end
-      object dbeIntervalo: TUniDBEdit
+      object dbeIntervalo: TDBEdit
         Left = 272
         Top = 32
         Width = 97
@@ -55,7 +55,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbePrazoInicial: TUniDBEdit
+      object dbePrazoInicial: TDBEdit
         Left = 184
         Top = 32
         Width = 83
@@ -66,7 +66,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 2
       end
-      object dbeParcelas: TUniDBEdit
+      object dbeParcelas: TDBEdit
         Left = 96
         Top = 32
         Width = 83
@@ -78,12 +78,12 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         TabOrder = 3
       end
     end
-    object tsCliente: TUniTabSheet
+    object tsCliente: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 1
       Caption = 'Cliente'
-      object dbeLimiteCliente: TUniDBEdit
+      object dbeLimiteCliente: TDBEdit
         Left = 8
         Top = 32
         Width = 105
@@ -94,7 +94,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 0
       end
-      object dbeIdadeCliente: TUniDBEdit
+      object dbeIdadeCliente: TDBEdit
         Left = 120
         Top = 32
         Width = 89
@@ -106,12 +106,12 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         TabOrder = 1
       end
     end
-    object tsOrcamento: TUniTabSheet
+    object tsOrcamento: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 2
       Caption = 'Or'#231'amento'
-      object lbMsgOrcamRodape: TUniLabel
+      object lbMsgOrcamRodape: TLabel
         Left = 8
         Top = 64
         Width = 190
@@ -121,7 +121,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         Caption = 'Rodap'#233' do or'#231'amento em bobina'
         TabOrder = 4
       end
-      object dbeTituloOrcam: TUniDBEdit
+      object dbeTituloOrcam: TDBEdit
         Left = 8
         Top = 32
         Width = 249
@@ -132,7 +132,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 0
       end
-      object dbeColunaBobina: TUniDBEdit
+      object dbeColunaBobina: TDBEdit
         Left = 263
         Top = 32
         Width = 106
@@ -143,7 +143,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbeLinhaPularOrcam: TUniDBEdit
+      object dbeLinhaPularOrcam: TDBEdit
         Left = 8
         Top = 176
         Width = 105
@@ -154,7 +154,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 3
       end
-      object dbmmMsgRodape: TUniDBMemo
+      object dbmmMsgRodape: TDBMemo
         Left = 8
         Top = 80
         Width = 361
@@ -166,12 +166,12 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         TabOrder = 2
       end
     end
-    object tsVenda: TUniTabSheet
+    object tsVenda: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 3
       Caption = 'Venda'
-      object lbMsgRodapeVenda: TUniLabel
+      object lbMsgRodapeVenda: TLabel
         Left = 8
         Top = 64
         Width = 164
@@ -181,7 +181,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         Caption = 'Rodap'#233' da venda em bobina'
         TabOrder = 5
       end
-      object dbeTituloVenda: TUniDBEdit
+      object dbeTituloVenda: TDBEdit
         Left = 8
         Top = 32
         Width = 249
@@ -192,7 +192,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 0
       end
-      object dbeColunaBobinaVenda: TUniDBEdit
+      object dbeColunaBobinaVenda: TDBEdit
         Left = 263
         Top = 32
         Width = 106
@@ -203,7 +203,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbeLinhaPularVenda: TUniDBEdit
+      object dbeLinhaPularVenda: TDBEdit
         Left = 8
         Top = 176
         Width = 105
@@ -214,7 +214,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 3
       end
-      object dbePortaImpVenda: TUniDBEdit
+      object dbePortaImpVenda: TDBEdit
         Left = 119
         Top = 176
         Width = 104
@@ -225,7 +225,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 4
       end
-      object dbmmMsgRodapeVenda: TUniDBMemo
+      object dbmmMsgRodapeVenda: TDBMemo
         Left = 8
         Top = 80
         Width = 361
@@ -237,12 +237,12 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         TabOrder = 2
       end
     end
-    object tsFTP: TUniTabSheet
+    object tsFTP: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 4
       Caption = 'FTP (Atualiza'#231#227'o)'
-      object dbeHost: TUniDBEdit
+      object dbeHost: TDBEdit
         Left = 16
         Top = 24
         Width = 337
@@ -253,7 +253,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 0
       end
-      object dbeUserName: TUniDBEdit
+      object dbeUserName: TDBEdit
         Left = 16
         Top = 64
         Width = 169
@@ -264,7 +264,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object dbePassWord: TUniDBEdit
+      object dbePassWord: TDBEdit
         Left = 192
         Top = 64
         Width = 161
@@ -276,7 +276,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         PasswordChar = '*'
         TabOrder = 2
       end
-      object dbeDiretorio: TUniDBEdit
+      object dbeDiretorio: TDBEdit
         Left = 16
         Top = 104
         Width = 265
@@ -287,7 +287,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 3
       end
-      object dbeTimeOut: TUniDBEdit
+      object dbeTimeOut: TDBEdit
         Left = 288
         Top = 104
         Width = 65
@@ -298,7 +298,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         DataSource = dsPadrao
         TabOrder = 4
       end
-      object dbckbPassive: TUniDBCheckBox
+      object dbckbPassive: TDBCheckBox
         Left = 16
         Top = 136
         Width = 65

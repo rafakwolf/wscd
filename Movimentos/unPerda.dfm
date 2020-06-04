@@ -8,42 +8,42 @@ inherited frmPerda: TfrmPerda
   ExplicitHeight = 425
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 377
     Width = 473
     ExplicitTop = 377
     ExplicitWidth = 473
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 473
     TabOrder = 6
     ExplicitWidth = 473
-    inherited btnNovo: TUniSpeedButton
+    inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnAlterar: TUniSpeedButton
+    inherited btnAlterar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnExcluir: TUniSpeedButton
+    inherited btnExcluir: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSalvar: TUniSpeedButton
+    inherited btnSalvar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnCancelar: TUniSpeedButton
+    inherited btnCancelar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Font.Name = 'Verdana'
     end
   end
-  object lbQtde: TUniLabel [2]
+  object lbQtde: TLabel [2]
     Left = 36
     Top = 84
     Width = 27
@@ -53,7 +53,7 @@ inherited frmPerda: TfrmPerda
     Caption = 'Qtde'
     TabOrder = 8
   end
-  object lbPreco: TUniLabel [3]
+  object lbPreco: TLabel [3]
     Left = 31
     Top = 108
     Width = 32
@@ -63,7 +63,7 @@ inherited frmPerda: TfrmPerda
     Caption = 'Pre'#231'o'
     TabOrder = 9
   end
-  object lbObs: TUniLabel [4]
+  object lbObs: TLabel [4]
     Left = 37
     Top = 267
     Width = 26
@@ -73,7 +73,7 @@ inherited frmPerda: TfrmPerda
     Caption = 'Obs.'
     TabOrder = 10
   end
-  object lbPrecoCusto: TUniLabel [5]
+  object lbPrecoCusto: TLabel [5]
     Left = 183
     Top = 108
     Width = 43
@@ -83,7 +83,7 @@ inherited frmPerda: TfrmPerda
     Caption = '(Custo)'
     TabOrder = 11
   end
-  object dbdData: TUniDBEdit [6]
+  object dbdData: TDBEdit [6]
     Left = 66
     Top = 128
     Width = 153
@@ -94,7 +94,7 @@ inherited frmPerda: TfrmPerda
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbQtde: TUniDBEdit [7]
+  object dbQtde: TDBEdit [7]
     Left = 66
     Top = 80
     Width = 73
@@ -105,7 +105,7 @@ inherited frmPerda: TfrmPerda
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbProduto: TUniDBEdit [8]
+  object dbProduto: TDBEdit [8]
     Left = 66
     Top = 56
     Width = 361
@@ -118,7 +118,7 @@ inherited frmPerda: TfrmPerda
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbPreco: TUniDBEdit [9]
+  object dbPreco: TDBEdit [9]
     Left = 66
     Top = 104
     Width = 113
@@ -129,7 +129,7 @@ inherited frmPerda: TfrmPerda
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbmOBS: TUniDBMemo [10]
+  object dbmOBS: TDBMemo [10]
     Left = 66
     Top = 264
     Width = 383
@@ -141,7 +141,7 @@ inherited frmPerda: TfrmPerda
     ScrollBars = ssVertical
     TabOrder = 5
   end
-  object dbrgrpMOTIVO: TUniDBRadioGroup [11]
+  object dbrgrpMOTIVO: TDBRadioGroup [11]
     Left = 66
     Top = 152
     Width = 153

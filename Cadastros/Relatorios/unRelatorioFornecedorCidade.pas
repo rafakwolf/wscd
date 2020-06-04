@@ -10,7 +10,7 @@ uses
 
 type
   TfrmRelatorioFornecedorCidade = class(TfrmDialogoRelatorioPadrao)
-    dbeCidade: TUniDBEdit;
+    dbeCidade: TDBEdit;
     procedure dbeCidadeClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);

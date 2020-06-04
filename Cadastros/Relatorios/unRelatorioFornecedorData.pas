@@ -10,8 +10,8 @@ uses
 
 type
   TfrmRelatorioFornecedorData = class(TfrmDialogoRelatorioPadrao)
-    edDataFim: TUniDBEdit;
-    edDataIni: TUniDBEdit;
+    edDataFim: TDBEdit;
+    edDataIni: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

@@ -10,7 +10,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   ExplicitHeight = 476
   PixelsPerInch = 96
   TextHeight = 13
-  object lbParcelas: TUniLabel
+  object lbParcelas: TLabel
     Left = 232
     Top = 48
     Width = 40
@@ -20,7 +20,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Caption = 'Parcelas'
     TabOrder = 11
   end
-  object lbPrazoInicio: TUniLabel
+  object lbPrazoInicio: TLabel
     Left = 312
     Top = 48
     Width = 57
@@ -30,7 +30,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Caption = 'Prazo Inicial'
     TabOrder = 12
   end
-  object lbIntervalo: TUniLabel
+  object lbIntervalo: TLabel
     Left = 392
     Top = 48
     Width = 44
@@ -40,7 +40,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Caption = 'Intervalo'
     TabOrder = 13
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 280
     Top = 408
     Width = 89
@@ -102,7 +102,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     TabOrder = 9
     OnClick = btnOkClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 376
     Top = 408
     Width = 89
@@ -156,7 +156,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     TabOrder = 10
     OnClick = btnCancelarClick
   end
-  object btnCalcular: TUniBitBtn
+  object btnCalcular: TBitBtn
     Left = 8
     Top = 408
     Width = 89
@@ -198,7 +198,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     TabOrder = 8
     OnClick = btnCalcularClick
   end
-  object dbeCodigo: TUniDBEdit
+  object dbeCodigo: TDBEdit
     Left = 8
     Top = 24
     Width = 81
@@ -211,7 +211,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeNome: TUniDBEdit
+  object dbeNome: TDBEdit
     Left = 96
     Top = 24
     Width = 347
@@ -225,7 +225,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     ReadOnly = True
     OnEnter = dbeNomeEnter
   end
-  object dbdtpData: TUniDBEdit
+  object dbdtpData: TDBEdit
     Left = 8
     Top = 64
     Width = 113
@@ -236,7 +236,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeValor: TUniDBEdit
+  object dbeValor: TDBEdit
     Left = 128
     Top = 64
     Width = 97
@@ -247,7 +247,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object seParcelas: TUniSpinEdit
+  object seParcelas: TSpinEdit
     Left = 232
     Top = 64
     Width = 73
@@ -258,7 +258,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     TabOrder = 4
     OnExit = seParcelasExit
   end
-  object sePrazoInicio: TUniSpinEdit
+  object sePrazoInicio: TSpinEdit
     Left = 312
     Top = 64
     Width = 73
@@ -269,7 +269,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     TabOrder = 5
     OnExit = seParcelasExit
   end
-  object seIntervalo: TUniSpinEdit
+  object seIntervalo: TSpinEdit
     Left = 392
     Top = 64
     Width = 73
@@ -280,7 +280,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     TabOrder = 6
     OnExit = seParcelasExit
   end
-  object dbgrdParcelas: TUniDBGrid
+  object dbgrdParcelas: TDBGrid
     Left = 8
     Top = 96
     Width = 457

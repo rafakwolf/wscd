@@ -18,10 +18,10 @@ type
     sqldSelecaoDATAFIM: TSQLTimeStampField;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
-    dbDataI: TUniDBEdit;
-    dbDataF: TUniDBEdit;
-    rgOrdem: TUniRadioGroup;
-    rgRelatorio: TUniRadioGroup;
+    dbDataI: TDBEdit;
+    dbDataF: TDBEdit;
+    rgOrdem: TRadioGroup;
+    rgRelatorio: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);

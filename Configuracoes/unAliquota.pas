@@ -17,8 +17,8 @@ type
     cdsPadrao: TClientDataSet;
     cdsPadraoCODALIQUOTA: TIntegerField;
     cdsPadraoDESCRICAO: TStringField;
-    dbeAliquota: TUniDBEdit;
-    dbeCodAliquota: TUniDBEdit;
+    dbeAliquota: TDBEdit;
+    dbeCodAliquota: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
   private

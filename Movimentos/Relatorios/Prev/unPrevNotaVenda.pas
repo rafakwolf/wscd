@@ -8,7 +8,7 @@ uses
   Datasnap.Provider, DB, Data.SqlExpr, FMTBcd;
 
 type
-  TfrmPrevNotaVenda = class(TUniForm)
+  TfrmPrevNotaVenda = class(TForm)
     rlrNotaVenda: TRLReport;
     rlbCabecalho: TRLBand;
     rlblEmpresa: TRLLabel;

@@ -9,20 +9,20 @@ uses
 
 type
   TfrmPromissoria = class(TfrmSimplePadrao)
-    btnCliente: TUniBitBtn;
-    btnImprimir: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    edtNumero: TUniEdit;
-    edtEmissao: TUniEdit;
-    edtVencimento: TUniEdit;
-    edtValor: TUniEdit;
-    edtCredor: TUniEdit;
-    edtCpfCnpj: TUniEdit;
-    edtPracaPag: TUniEdit;
-    edtEmitente: TUniEdit;
-    edtCpfCnpjEmitente: TUniEdit;
-    edtEndereco: TUniEdit;
-    bvlLinha: TUniPanel;
+    btnCliente: TBitBtn;
+    btnImprimir: TBitBtn;
+    btnCancelar: TBitBtn;
+    edtNumero: TEdit;
+    edtEmissao: TEdit;
+    edtVencimento: TEdit;
+    edtValor: TEdit;
+    edtCredor: TEdit;
+    edtCpfCnpj: TEdit;
+    edtPracaPag: TEdit;
+    edtEmitente: TEdit;
+    edtCpfCnpjEmitente: TEdit;
+    edtEndereco: TEdit;
+    bvlLinha: TPanel;
     procedure btnCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -119,7 +119,7 @@ begin
     lbDescValor.Caption     := edtValor.Text;
     lbDescricaoData.Caption := 'Ao(s) '+FormatDateTime('dd "de" mmmm "de" yyyy',
       StrToDate(edtVencimento.Text))+
-      ' pagarei por ésta única via de NOTA PROMISSÓRIA a';
+      ' pagarei por ï¿½sta ï¿½nica via de NOTA PROMISSï¿½RIA a';
     lbCredor.Caption        := edtCredor.Text;
     lbCPF_Credor.Caption    := 'CPF/CNPJ: '+edtCpfCnpj.Text;
     rlmValorExt.Lines.Add(Extenso(StrToFloat(edtValor.Text)));

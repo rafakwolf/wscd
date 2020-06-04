@@ -7,14 +7,14 @@ inherited frmRelatorioComissaoVenda: TfrmRelatorioComissaoVenda
   ExplicitHeight = 206
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 133
     Width = 345
     TabOrder = 3
     ExplicitTop = 133
     ExplicitWidth = 345
   end
-  object dbdtpDataFim: TUniDBEdit [1]
+  object dbdtpDataFim: TDBEdit [1]
     Left = 16
     Top = 104
     Width = 137
@@ -25,7 +25,7 @@ inherited frmRelatorioComissaoVenda: TfrmRelatorioComissaoVenda
     DataSource = dsData
     TabOrder = 2
   end
-  object dbdtpDataIni: TUniDBEdit [2]
+  object dbdtpDataIni: TDBEdit [2]
     Left = 16
     Top = 64
     Width = 137
@@ -36,7 +36,7 @@ inherited frmRelatorioComissaoVenda: TfrmRelatorioComissaoVenda
     DataSource = dsData
     TabOrder = 1
   end
-  object dbeVendedor: TUniDBEdit [3]
+  object dbeVendedor: TDBEdit [3]
     Left = 16
     Top = 24
     Width = 299

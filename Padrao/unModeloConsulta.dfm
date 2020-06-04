@@ -13,7 +13,7 @@ object frmModeloConsulta: TfrmModeloConsulta
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbCampo: TUniLabel
+  object lbCampo: TLabel
     Left = 8
     Top = 8
     Width = 33
@@ -22,7 +22,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     Caption = 'Campo'
     TabOrder = 7
   end
-  object lbCondicao: TUniLabel
+  object lbCondicao: TLabel
     Left = 144
     Top = 8
     Width = 44
@@ -31,7 +31,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     Caption = 'Condi'#231#227'o'
     TabOrder = 8
   end
-  object lbDados: TUniLabel
+  object lbDados: TLabel
     Left = 280
     Top = 8
     Width = 131
@@ -40,7 +40,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     Caption = 'Digite os dados '#224' pesquisar'
     TabOrder = 9
   end
-  object lbNumRegs: TUniLabel
+  object lbNumRegs: TLabel
     Left = 8
     Top = 304
     Width = 53
@@ -51,7 +51,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     Font.Charset = ANSI_CHARSET
     TabOrder = 10
   end
-  object btnBuscar: TUniBitBtn
+  object btnBuscar: TBitBtn
     Left = 576
     Top = 8
     Width = 97
@@ -62,7 +62,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     Default = True
     OnClick = btnBuscarClick
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 488
     Top = 296
     Width = 89
@@ -74,7 +74,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     Default = True
     OnClick = btnOkClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 584
     Top = 296
     Width = 89
@@ -85,7 +85,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     TabOrder = 6
     OnClick = btnCancelarClick
   end
-  object cmbCondicao: TUniComboBox
+  object cmbCondicao: TComboBox
     Left = 144
     Top = 24
     Width = 129
@@ -100,7 +100,7 @@ object frmModeloConsulta: TfrmModeloConsulta
       'Terminando com')
     TabOrder = 1
   end
-  object cmbCampo: TUniComboBox
+  object cmbCampo: TComboBox
     Left = 8
     Top = 24
     Width = 129
@@ -116,7 +116,7 @@ object frmModeloConsulta: TfrmModeloConsulta
       'Por vendedor')
     TabOrder = 0
   end
-  object edtPesquisa: TUniEdit
+  object edtPesquisa: TEdit
     Left = 280
     Top = 24
     Width = 289
@@ -125,7 +125,7 @@ object frmModeloConsulta: TfrmModeloConsulta
     Text = ''
     TabOrder = 2
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 8
     Top = 56
     Width = 665

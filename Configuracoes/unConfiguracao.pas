@@ -18,24 +18,24 @@ type
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;
-    PgConfig: TUniPageControl;
-    Tabgeral: TUniTabSheet;
-    TabImg: TUniTabSheet;
-    TabOrcam: TUniTabSheet;
-    TabCompras: TUniTabSheet;
-    TabProdutos: TUniTabSheet;
-    TabCaixa: TUniTabSheet;
-    TabVenda: TUniTabSheet;
-    TabClientes: TUniTabSheet;
-    TabExportacao: TUniTabSheet;
-    dbeDirExportacao: TUniDBEdit;
-    dbeSenhaCaixa: TUniDBEdit;
-    dbeSenhaProduto: TUniDBEdit;
+    PgConfig: TPageControl;
+    Tabgeral: TTabSheet;
+    TabImg: TTabSheet;
+    TabOrcam: TTabSheet;
+    TabCompras: TTabSheet;
+    TabProdutos: TTabSheet;
+    TabCaixa: TTabSheet;
+    TabVenda: TTabSheet;
+    TabClientes: TTabSheet;
+    TabExportacao: TTabSheet;
+    dbeDirExportacao: TDBEdit;
+    dbeSenhaCaixa: TDBEdit;
+    dbeSenhaProduto: TDBEdit;
     opImagem: TOpenPictureDialog;
-    tsEmail: TUniTabSheet;
+    tsEmail: TTabSheet;
     IdSMTP: TIdSMTP;
     IdMsg: TIdMessage;
-    tsRelatorio: TUniTabSheet;
+    tsRelatorio: TTabSheet;
     sqldPadraoIDCONFIGURACAO: TIntegerField;
     sqldPadraoNOMECOMPUTADOR: TStringField;
     sqldPadraoBARRAFERRAMENTA: TStringField;
@@ -114,54 +114,54 @@ type
     cdsPadraoNCONTACHEQUE: TStringField;
     sqldPadraoINFOAVISOS: TStringField;
     cdsPadraoINFOAVISOS: TStringField;
-    chAtalhos: TUniDBCheckBox;
-    chHint: TUniDBCheckBox;
-    chErro: TUniDBCheckBox;
-    chBackup: TUniDBCheckBox;
-    chResolucao: TUniDBCheckBox;
-    chLog: TUniDBCheckBox;
-    chImpressora: TUniDBCheckBox;
-    chDica: TUniDBCheckBox;
-    dbckbVerificaUpd: TUniDBCheckBox;
-    dbchkInfoAvisos: TUniDBCheckBox;
-    cbVerificaEstoqueOrcam: TUniDBCheckBox;
-    cbEditOrcamConc: TUniDBCheckBox;
-    cbOrcamNaoConc: TUniDBCheckBox;
-    cbCompraNaoConc: TUniDBCheckBox;
-    cbEditCompraConc: TUniDBCheckBox;
-    dbcbEstoqueSenhaProd: TUniDBCheckBox;
-    dbcbBordaEtqProd: TUniDBCheckBox;
-    dbcbLetraNumCodBarra: TUniDBCheckBox;
-    dbcbMostrarSaldo: TUniDBCheckBox;
-    dbcbLanc90Dias: TUniDBCheckBox;
-    chVendaEstoque: TUniDBCheckBox;
-    chVendaConc: TUniDBCheckBox;
-    chEditvenda: TUniDBCheckBox;
-    chBloqCli: TUniDBCheckBox;
-    dbcbBordaEtq: TUniDBCheckBox;
-    dbckbRelZebrado: TUniDBCheckBox;
-    imgPapelParede: TUniImage;
-    grpValorProdutoPadrao: TUniGroupBox;
-    dbeAliqPadrao: TUniDBEdit;
-    dbeEstoquePadrao: TUniDBEdit;
-    dbeDescontoPadrao: TUniDBEdit;
-    grpCaixaPadrao: TUniGroupBox;
-    dbeCaixaPadrao: TUniDBEdit;
-    grpContaCheque: TUniGroupBox;
-    dbeContaCheque: TUniDBEdit;
-    grpEmail: TUniGroupBox;
-    btnBuscar: TUniBitBtn;
-    btnExImg: TUniBitBtn;
-    btnAlterarSenhaProduto: TUniBitBtn;
-    btnAlterarSenhaCaixa: TUniBitBtn;
-    btnLocalizar: TUniBitBtn;
-    btnTeste: TUniBitBtn;
-    edServidor: TUniEdit;
-    edPorta: TUniEdit;
-    edUsuario: TUniEdit;
-    edSenha: TUniEdit;
-    chkAutenticacao: TUniCheckBox;
-    rgOrientationImg: TUniRadioGroup;
+    chAtalhos: TDBCheckBox;
+    chHint: TDBCheckBox;
+    chErro: TDBCheckBox;
+    chBackup: TDBCheckBox;
+    chResolucao: TDBCheckBox;
+    chLog: TDBCheckBox;
+    chImpressora: TDBCheckBox;
+    chDica: TDBCheckBox;
+    dbckbVerificaUpd: TDBCheckBox;
+    dbchkInfoAvisos: TDBCheckBox;
+    cbVerificaEstoqueOrcam: TDBCheckBox;
+    cbEditOrcamConc: TDBCheckBox;
+    cbOrcamNaoConc: TDBCheckBox;
+    cbCompraNaoConc: TDBCheckBox;
+    cbEditCompraConc: TDBCheckBox;
+    dbcbEstoqueSenhaProd: TDBCheckBox;
+    dbcbBordaEtqProd: TDBCheckBox;
+    dbcbLetraNumCodBarra: TDBCheckBox;
+    dbcbMostrarSaldo: TDBCheckBox;
+    dbcbLanc90Dias: TDBCheckBox;
+    chVendaEstoque: TDBCheckBox;
+    chVendaConc: TDBCheckBox;
+    chEditvenda: TDBCheckBox;
+    chBloqCli: TDBCheckBox;
+    dbcbBordaEtq: TDBCheckBox;
+    dbckbRelZebrado: TDBCheckBox;
+    imgPapelParede: TImage;
+    grpValorProdutoPadrao: TGroupBox;
+    dbeAliqPadrao: TDBEdit;
+    dbeEstoquePadrao: TDBEdit;
+    dbeDescontoPadrao: TDBEdit;
+    grpCaixaPadrao: TGroupBox;
+    dbeCaixaPadrao: TDBEdit;
+    grpContaCheque: TGroupBox;
+    dbeContaCheque: TDBEdit;
+    grpEmail: TGroupBox;
+    btnBuscar: TBitBtn;
+    btnExImg: TBitBtn;
+    btnAlterarSenhaProduto: TBitBtn;
+    btnAlterarSenhaCaixa: TBitBtn;
+    btnLocalizar: TBitBtn;
+    btnTeste: TBitBtn;
+    edServidor: TEdit;
+    edPorta: TEdit;
+    edUsuario: TEdit;
+    edSenha: TEdit;
+    chkAutenticacao: TCheckBox;
+    rgOrientationImg: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure btnExImgClick(Sender: TObject);
@@ -255,7 +255,7 @@ begin
   inherited;
   if (imgPapelParede.Picture.Graphic = nil) then
   begin
-    MsgAviso('Não existe imagem para limpar');
+    MsgAviso('Nï¿½o existe imagem para limpar');
     Exit;
   end
   else
@@ -333,7 +333,7 @@ begin
       end
       else
       begin
-        MsgErro('Senha incorreta ou não informada.');
+        MsgErro('Senha incorreta ou nï¿½o informada.');
         actCancelUpdates.Execute;
       end;
     end
@@ -361,21 +361,21 @@ begin
 //  if ObterTexto(Email, 'Digite um e-mail') then
 //  begin
 //    IdMsg.From.Address := edUsuario.Text; // e-mail do remetente
-//    IdMsg.Recipients.EMailAddresses := Email; // e-mail do destinatário
+//    IdMsg.Recipients.EMailAddresses := Email; // e-mail do destinatï¿½rio
 //    IdMsg.Subject := 'Teste de envio'; // assunto
 //    IdMsg.Body.Add('Testando e-mail CPR'); // corpo da mensagem
 //
 //    IdSMTP.Host := edServidor.Text; // host SMTP
 //    IdSMTP.Port := StrToInt(edPorta.Text); // porta
-//    IdSMTP.Username := edUsuario.Text; // login do usuário
-//    IdSMTP.Password := edSenha.Text; // senha do usuário
+//    IdSMTP.Username := edUsuario.Text; // login do usuï¿½rio
+//    IdSMTP.Password := edSenha.Text; // senha do usuï¿½rio
 //
-//    IdSMTP.Connect; // estabelece a conexão
+//    IdSMTP.Connect; // estabelece a conexï¿½o
 //
 //    if chkAutenticacao.Checked then
 //    begin
 //      IdSMTP.AuthType := satDefault;
-//      IdSMTP.Authenticate; // faz a autenticação
+//      IdSMTP.Authenticate; // faz a autenticaï¿½ï¿½o
 //    end
 //    else
 //      IdSMTP.AuthType := satNone;

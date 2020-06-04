@@ -75,24 +75,24 @@ type
     cdsContasPagarVALORJURO: TSingleField;
     cdsContasPagarTOTAL: TSingleField;
     cdsContasPagarTOTALPAGO: TSingleField;
-    lblVenc: TUniLabel;
-    lblBandaMagnetica: TUniLabel;
-    lblEmissao: TUniLabel;
-    btnOk: TUniBitBtn;
-    btnCancel: TUniBitBtn;
-    edtTotal: TUniEdit;
-    edtAgencia: TUniEdit;
-    edtConta: TUniEdit;
-    edtNumeroCheque: TUniEdit;
-    edtValor: TUniEdit;
-    dbeBanco: TUniDBEdit;
-    bvlLinha: TUniPanel;
-    bvlLinha2: TUniPanel;
-    medtEmissao: TUniEdit;
-    medtVencimento: TUniEdit;
-    medtBandaMagnetica: TUniEdit;
-    dbgrdContasCP: TUniDBGrid;
-    rgTipoPagamento: TUniRadioGroup;
+    lblVenc: TLabel;
+    lblBandaMagnetica: TLabel;
+    lblEmissao: TLabel;
+    btnOk: TBitBtn;
+    btnCancel: TBitBtn;
+    edtTotal: TEdit;
+    edtAgencia: TEdit;
+    edtConta: TEdit;
+    edtNumeroCheque: TEdit;
+    edtValor: TEdit;
+    dbeBanco: TDBEdit;
+    bvlLinha: TPanel;
+    bvlLinha2: TPanel;
+    medtEmissao: TEdit;
+    medtVencimento: TEdit;
+    medtBandaMagnetica: TEdit;
+    dbgrdContasCP: TDBGrid;
+    rgTipoPagamento: TRadioGroup;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -313,8 +313,8 @@ begin
       DataBaixado := Date
     else
     begin
-      { Lança uma entrada no caixa por ser cheque pre-datado
-        só sai denovo quando o cheque for depositado. }
+      { Lanï¿½a uma entrada no caixa por ser cheque pre-datado
+        sï¿½ sai denovo quando o cheque for depositado. }
       GetDataModule.EnviaCaixa(Date, 'Cheque Nro '+edtNumeroCheque.Text,
         edtNumeroCheque.Text, 'C', StrToFloat(edtValor.Text), Configuracao.ContaCheque);
     end;
@@ -371,7 +371,7 @@ begin
   begin
     if not ValidaCMC7(medtBandaMagnetica.Text) then
     begin
-      MsgCuidado('Banda magnética inválida!');
+      MsgCuidado('Banda magnï¿½tica invï¿½lida!');
       medtBandaMagnetica.SetFocus;
       medtBandaMagnetica.SelectAll;
       Exit;
@@ -379,7 +379,7 @@ begin
 
     if ChequeExiste(medtBandaMagnetica.Text) then
     begin
-      MsgCuidado('Cheque já existente, verifique a digitação da banda magnética.');
+      MsgCuidado('Cheque jï¿½ existente, verifique a digitaï¿½ï¿½o da banda magnï¿½tica.');
       medtBandaMagnetica.Clear;
       medtBandaMagnetica.SetFocus;
       Exit;
@@ -401,7 +401,7 @@ begin
     end
     else
     begin
-      if MsgSN('O Banco "'+varBanco+'" não está cadastrado, deseja cadastrá-lo agora?') then
+      if MsgSN('O Banco "'+varBanco+'" nï¿½o estï¿½ cadastrado, deseja cadastrï¿½-lo agora?') then
         ChamaForm('TfrmBanco', 'Bancos', Self);
     end;
   end;
@@ -443,7 +443,7 @@ var
   ValorPagar, JurosPagar: Currency;
   desc: string;
 begin
-  // se o valor a pagar for maior não dexa fazer nada
+  // se o valor a pagar for maior nï¿½o dexa fazer nada
   if rgTipoPagamento.ItemIndex = 0 then
     if (StrToFloatDef(edtTotal.Text, 0) > RoundTo(cdsContasPagarTOTAL.AsFloat, 2)) then
     begin

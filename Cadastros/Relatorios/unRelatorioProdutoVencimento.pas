@@ -40,11 +40,11 @@ type
     dsUnidade: TDataSource;
     dsGrupo: TDataSource;
     dsForn: TDataSource;
-    dbdDataVenc: TUniDBEdit;
-    dbeUnidade: TUniDBEdit;
-    dbeForn: TUniDBEdit;
-    dbeGrupo: TUniDBEdit;
-    rgTipo: TUniRadioGroup;
+    dbdDataVenc: TDBEdit;
+    dbeUnidade: TDBEdit;
+    dbeForn: TDBEdit;
+    dbeGrupo: TDBEdit;
+    rgTipo: TRadioGroup;
     procedure rgTipoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

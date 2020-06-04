@@ -10,7 +10,7 @@ uses
 
 type
   TfrmRelatorioCRCliente = class(TfrmDialogoRelatorioPadrao)
-    dbeCliente: TUniDBEdit;
+    dbeCliente: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);

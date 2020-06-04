@@ -10,7 +10,7 @@ uses
   uniDBLookupComboBox;
 
 type
-  TfrmSelecionaCaixa = class(TUniForm)
+  TfrmSelecionaCaixa = class(TForm)
     sqldCaixa: TSQLDataSet;
     dspCaixa: TDataSetProvider;
     cdsCaixa: TClientDataSet;
@@ -19,10 +19,10 @@ type
     sqldCaixaNOME: TStringField;
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
-    lbCaixa: TUniLabel;
-    btnOk: TUniBitBtn;
-    btnCancel: TUniBitBtn;
-    dblcbCaixa: TUniDBLookupComboBox;
+    lbCaixa: TLabel;
+    btnOk: TBitBtn;
+    btnCancel: TBitBtn;
+    dblcbCaixa: TDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private

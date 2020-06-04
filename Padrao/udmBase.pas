@@ -3,11 +3,11 @@ unit udmBase;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, Data.SqlExpr;
+  sysutils, Classes, db, mysql57conn;
 
 type
   TdmBase = class(TDataModule)
-    Conexao: TSQLConnection;
+    Conexao: TMySql57Connection;
   private
   protected
       function ConectaBanco: Boolean; virtual;
@@ -18,8 +18,6 @@ var
   dmBase: TdmBase;
 
 implementation
-
-{%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
 

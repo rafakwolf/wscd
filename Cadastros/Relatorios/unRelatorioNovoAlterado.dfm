@@ -5,13 +5,13 @@ inherited frmRelatorioNovoAlterado: TfrmRelatorioNovoAlterado
   ExplicitHeight = 180
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 107
-    inherited btnVisualizar: TUniBitBtn
+    inherited btnVisualizar: TBitBtn
       OnClick = btnVisualizarClick
     end
   end
-  object rgpOpcoes: TUniRadioGroup [1]
+  object rgpOpcoes: TRadioGroup [1]
     Left = 8
     Top = 8
     Width = 289

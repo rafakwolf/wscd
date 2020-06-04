@@ -31,14 +31,14 @@ type
     cdsPadraoLINHA: TIntegerField;
     cdsPadraoCOLUNA: TIntegerField;
     cdsPadraoIMPRIMIR: TStringField;
-    btnCancelar: TUniBitBtn;
-    btnOk: TUniBitBtn;
-    btnNovo: TUniBitBtn;
-    dbeCampoDescricao: TUniDBEdit;
-    dbeLinha: TUniDBEdit;
-    dbeColuna: TUniDBEdit;
-    dbeLayOut: TUniDBEdit;
-    dbckbImprimir: TUniDBCheckBox;
+    btnCancelar: TBitBtn;
+    btnOk: TBitBtn;
+    btnNovo: TBitBtn;
+    dbeCampoDescricao: TDBEdit;
+    dbeLinha: TDBEdit;
+    dbeColuna: TDBEdit;
+    dbeLayOut: TDBEdit;
+    dbckbImprimir: TDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
@@ -95,9 +95,9 @@ begin
   end
   else if (Tipo = 'T') then
   begin
-    //dbcbbRef.Items.Add('Cabeçalho');
+    //dbcbbRef.Items.Add('Cabeï¿½alho');
     //dbcbbRef.Items.Add('Itens da nota');
-    //dbcbbRef.Items.Add('Rodapé');
+    //dbcbbRef.Items.Add('Rodapï¿½');
   end
   else if (Tipo = 'I') then
   begin
@@ -135,9 +135,9 @@ procedure TfrmConfigNotaMan.cdsPadraoTIPOGetText(Sender: TField;
 begin
   inherited;
   if Sender.AsString = 'C' then
-    Text := 'Cabeçalho'
+    Text := 'Cabeï¿½alho'
   else if Sender.AsString = 'R' then
-    Text := 'Rodapé'
+    Text := 'Rodapï¿½'
   else if Sender.AsString = 'T' then
     Text := 'Texto fixo'
   else
@@ -207,7 +207,7 @@ begin
   begin
     if SQLFind('CONFIGNOTA', 'CAMPO', dbeCampoDescricao.Text, GetConnection) then
     begin
-      MsgErro('Este campo já existe,  escolha outro nome.');
+      MsgErro('Este campo jï¿½ existe,  escolha outro nome.');
       Exit;
     end;
   end;
@@ -216,7 +216,7 @@ begin
   begin
     if ValidaFieldsVazios([cdsPadraoCAMPO, cdsPadraoLAYOUT, cdsPadraoREFERENCIA,
       cdsPadraoTIPO, cdsPadraoLINHA, cdsPadraoCOLUNA], ['Nome do campo', 'LayOut',
-      'Referência', 'Tipo', 'Linha', 'Coluna']) <> '' then
+      'Referï¿½ncia', 'Tipo', 'Linha', 'Coluna']) <> '' then
       Exit;
   end;
 

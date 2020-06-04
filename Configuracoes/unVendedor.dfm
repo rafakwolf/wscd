@@ -10,41 +10,41 @@ inherited frmVendedor: TfrmVendedor
   ExplicitHeight = 229
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 181
     Width = 522
     ExplicitTop = 210
     ExplicitWidth = 522
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 522
     ExplicitWidth = 522
-    inherited btnNovo: TUniSpeedButton
+    inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnAlterar: TUniSpeedButton
+    inherited btnAlterar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnExcluir: TUniSpeedButton
+    inherited btnExcluir: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSalvar: TUniSpeedButton
+    inherited btnSalvar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnCancelar: TUniSpeedButton
+    inherited btnCancelar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Font.Name = 'Verdana'
     end
   end
-  object dbeIdVendedor: TUniDBEdit [2]
+  object dbeIdVendedor: TDBEdit [2]
     Left = 80
     Top = 56
     Width = 97
@@ -55,7 +55,7 @@ inherited frmVendedor: TfrmVendedor
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeVendedor: TUniDBEdit [3]
+  object dbeVendedor: TDBEdit [3]
     Left = 80
     Top = 82
     Width = 305
@@ -66,7 +66,7 @@ inherited frmVendedor: TfrmVendedor
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbcbAtivo: TUniDBCheckBox [4]
+  object dbcbAtivo: TDBCheckBox [4]
     Left = 80
     Top = 108
     Width = 57

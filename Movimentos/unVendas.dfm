@@ -10,42 +10,42 @@ inherited frmVendas: TfrmVendas
   ExplicitHeight = 547
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 499
     Width = 890
     ExplicitTop = 499
     ExplicitWidth = 890
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 890
     TabOrder = 20
     ExplicitWidth = 890
-    inherited btnNovo: TUniSpeedButton
+    inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnAlterar: TUniSpeedButton
+    inherited btnAlterar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnExcluir: TUniSpeedButton
+    inherited btnExcluir: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSalvar: TUniSpeedButton
+    inherited btnSalvar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnCancelar: TUniSpeedButton
+    inherited btnCancelar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Font.Name = 'Verdana'
     end
   end
-  object pnlTotal: TUniContainerPanel [2]
+  object pnlTotal: TContainerPanel [2]
     Left = 0
     Top = 464
     Width = 890
@@ -57,7 +57,7 @@ inherited frmVendas: TfrmVendas
     Anchors = [akLeft, akRight, akBottom]
     TabOrder = 19
     TabStop = False
-    object lbTotalDesc: TUniLabel
+    object lbTotalDesc: TLabel
       Left = 503
       Top = 11
       Width = 71
@@ -67,7 +67,7 @@ inherited frmVendas: TfrmVendas
       Caption = 'Total desconto'
       TabOrder = 3
     end
-    object lbTotal: TUniLabel
+    object lbTotal: TLabel
       Left = 724
       Top = 11
       Width = 24
@@ -77,7 +77,7 @@ inherited frmVendas: TfrmVendas
       Caption = 'Total'
       TabOrder = 4
     end
-    object dbeTotalDesc: TUniDBEdit
+    object dbeTotalDesc: TDBEdit
       Left = 592
       Top = 7
       Width = 121
@@ -88,7 +88,7 @@ inherited frmVendas: TfrmVendas
       DataSource = dsVendas
       TabOrder = 0
     end
-    object dbeTotal: TUniDBEdit
+    object dbeTotal: TDBEdit
       Left = 756
       Top = 7
       Width = 127
@@ -104,7 +104,7 @@ inherited frmVendas: TfrmVendas
       Color = clInfoBk
     end
   end
-  object LabelObs: TUniLabel [3]
+  object LabelObs: TLabel [3]
     Left = 16
     Top = 120
     Width = 68
@@ -114,7 +114,7 @@ inherited frmVendas: TfrmVendas
     Caption = 'Observa'#231#227'o'
     TabOrder = 22
   end
-  object lbNumero: TUniLabel [4]
+  object lbNumero: TLabel [4]
     Left = 16
     Top = 40
     Width = 71
@@ -127,7 +127,7 @@ inherited frmVendas: TfrmVendas
     Font.Name = 'Verdana'
     TabOrder = 23
   end
-  object LabelConcluida: TUniLabel [5]
+  object LabelConcluida: TLabel [5]
     Left = 744
     Top = 40
     Width = 56
@@ -137,7 +137,7 @@ inherited frmVendas: TfrmVendas
     Caption = 'Conclu'#237'da'
     TabOrder = 24
   end
-  object btnInsereProduto: TUniBitBtn [6]
+  object btnInsereProduto: TBitBtn [6]
     Left = 864
     Top = 208
     Width = 25
@@ -175,7 +175,7 @@ inherited frmVendas: TfrmVendas
     TabOrder = 17
     OnClick = btnInsereProdutoClick
   end
-  object dbConcluida: TUniDBEdit [7]
+  object dbConcluida: TDBEdit [7]
     Left = 744
     Top = 56
     Width = 57
@@ -191,7 +191,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbProduto: TUniDBEdit [8]
+  object dbProduto: TDBEdit [8]
     Left = 1
     Top = 208
     Width = 303
@@ -204,7 +204,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeNumero: TUniDBEdit [9]
+  object dbeNumero: TDBEdit [9]
     Left = 16
     Top = 56
     Width = 89
@@ -217,7 +217,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbQtde: TUniDBEdit [10]
+  object dbQtde: TDBEdit [10]
     Left = 327
     Top = 208
     Width = 48
@@ -228,7 +228,7 @@ inherited frmVendas: TfrmVendas
     DataSource = dsSelecao
     TabOrder = 10
   end
-  object dbCusto: TUniDBEdit [11]
+  object dbCusto: TDBEdit [11]
     Left = 377
     Top = 208
     Width = 79
@@ -240,7 +240,7 @@ inherited frmVendas: TfrmVendas
     TabOrder = 11
     OnKeyPress = dbCustoKeyPress
   end
-  object dbVenda: TUniDBEdit [12]
+  object dbVenda: TDBEdit [12]
     Left = 458
     Top = 208
     Width = 75
@@ -253,7 +253,7 @@ inherited frmVendas: TfrmVendas
     OnExit = dbVendaExit
     OnKeyPress = dbVendaKeyPress
   end
-  object dbDescto: TUniDBEdit [13]
+  object dbDescto: TDBEdit [13]
     Left = 535
     Top = 208
     Width = 72
@@ -266,7 +266,7 @@ inherited frmVendas: TfrmVendas
     OnExit = dbDesctoExit
     OnKeyPress = dbDesctoKeyPress
   end
-  object dbValorDescto: TUniDBEdit [14]
+  object dbValorDescto: TDBEdit [14]
     Left = 608
     Top = 208
     Width = 82
@@ -278,7 +278,7 @@ inherited frmVendas: TfrmVendas
     TabOrder = 14
     OnKeyPress = dbValorDesctoKeyPress
   end
-  object dbTotalProduto: TUniDBEdit [15]
+  object dbTotalProduto: TDBEdit [15]
     Left = 692
     Top = 208
     Width = 84
@@ -290,7 +290,7 @@ inherited frmVendas: TfrmVendas
     TabOrder = 15
     OnKeyPress = dbTotalProdutoKeyPress
   end
-  object dbCodCliente: TUniDBEdit [16]
+  object dbCodCliente: TDBEdit [16]
     Left = 16
     Top = 96
     Width = 91
@@ -303,7 +303,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbdDataVenda: TUniDBEdit [17]
+  object dbdDataVenda: TDBEdit [17]
     Left = 112
     Top = 56
     Width = 121
@@ -314,7 +314,7 @@ inherited frmVendas: TfrmVendas
     DataSource = dsVendas
     TabOrder = 1
   end
-  object dbeIdVendedor: TUniDBEdit [18]
+  object dbeIdVendedor: TDBEdit [18]
     Left = 240
     Top = 56
     Width = 91
@@ -327,7 +327,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeVendedor: TUniDBEdit [19]
+  object dbeVendedor: TDBEdit [19]
     Left = 360
     Top = 56
     Width = 377
@@ -340,7 +340,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeCliente: TUniDBEdit [20]
+  object dbeCliente: TDBEdit [20]
     Left = 136
     Top = 96
     Width = 737
@@ -353,7 +353,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeCancelada: TUniDBEdit [21]
+  object dbeCancelada: TDBEdit [21]
     Left = 808
     Top = 56
     Width = 65
@@ -369,7 +369,7 @@ inherited frmVendas: TfrmVendas
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeComissao: TUniDBEdit [22]
+  object dbeComissao: TDBEdit [22]
     Left = 778
     Top = 208
     Width = 85
@@ -380,7 +380,7 @@ inherited frmVendas: TfrmVendas
     DataSource = dsSelecao
     TabOrder = 16
   end
-  object bvlLinha: TUniPanel [23]
+  object bvlLinha: TPanel [23]
     Left = 1
     Top = 183
     Width = 888
@@ -390,7 +390,7 @@ inherited frmVendas: TfrmVendas
     TabOrder = 25
     Caption = 'bvlLinha'
   end
-  object dbmObs: TUniDBMemo [24]
+  object dbmObs: TDBMemo [24]
     Left = 16
     Top = 136
     Width = 857
@@ -402,7 +402,7 @@ inherited frmVendas: TfrmVendas
     ScrollBars = ssVertical
     TabOrder = 8
   end
-  object grdItens: TUniDBGrid [25]
+  object grdItens: TDBGrid [25]
     Left = 0
     Top = 242
     Width = 890
@@ -1101,104 +1101,104 @@ inherited frmVendas: TfrmVendas
     Left = 168
     Top = 408
   end
-  object mnVenda: TUniMainMenu
+  object mnVenda: TMainMenu
     Left = 456
     Top = 351
-    object miRegistros: TUniMenuItem
+    object miRegistros: TMenuItem
       Caption = 'Registros'
-      object miIncluir: TUniMenuItem
+      object miIncluir: TMenuItem
         Caption = 'Novo'
         OnClick = btnNovoClick
       end
-      object miAlterar: TUniMenuItem
+      object miAlterar: TMenuItem
         Caption = 'Alterar'
         ShortCut = 116
       end
-      object miCancelar: TUniMenuItem
+      object miCancelar: TMenuItem
         Caption = 'Cancelar'
         OnClick = btnCancelClick
       end
     end
-    object miFerramentas: TUniMenuItem
+    object miFerramentas: TMenuItem
       Caption = 'Ferramentas'
-      object miLocalizar: TUniMenuItem
+      object miLocalizar: TMenuItem
         Caption = 'Pesquisar'
         ShortCut = 119
         OnClick = btnConsultarClick
       end
-      object miOutrosFiltros: TUniMenuItem
+      object miOutrosFiltros: TMenuItem
         Caption = 'Outros filtros'
-        object miFiltrarData: TUniMenuItem
+        object miFiltrarData: TMenuItem
           Caption = 'Filtrar por data'
           OnClick = miFiltrarDataClick
         end
-        object miFiltrarCli: TUniMenuItem
+        object miFiltrarCli: TMenuItem
           Caption = 'Filtrar por cliente'
         end
-        object miVendasNaoConc: TUniMenuItem
+        object miVendasNaoConc: TMenuItem
           Caption = 'Vendas n'#227'o conclu'#237'das'
           OnClick = miVendasNaoConcClick
         end
       end
-      object miMostrarTodos: TUniMenuItem
+      object miMostrarTodos: TMenuItem
         Caption = 'Limpar filtros'
         OnClick = miMostrarTodosClick
       end
-      object N5: TUniMenuItem
+      object N5: TMenuItem
         Caption = '-'
       end
-      object N11: TUniMenuItem
+      object N11: TMenuItem
         Caption = '-'
       end
-      object miCadastroCliente: TUniMenuItem
+      object miCadastroCliente: TMenuItem
         Caption = 'Cadastrar cliente'
         OnClick = miCadastroClienteClick
       end
-      object miCadastravendedor: TUniMenuItem
+      object miCadastravendedor: TMenuItem
         Caption = 'Cadastra vendedor'
         OnClick = miCadastravendedorClick
       end
-      object miCadastraproduto: TUniMenuItem
+      object miCadastraproduto: TMenuItem
         Caption = 'Cadastra produto'
         OnClick = miCadastraprodutoClick
       end
     end
-    object miRelatorio: TUniMenuItem
+    object miRelatorio: TMenuItem
       Caption = 'Relat'#243'rios'
-      object miRelVendaAtual: TUniMenuItem
+      object miRelVendaAtual: TMenuItem
         Caption = 'Venda atual'
         OnClick = miRelVendaAtualClick
       end
-      object N10: TUniMenuItem
+      object N10: TMenuItem
         Caption = '-'
       end
-      object miVendaBobina: TUniMenuItem
+      object miVendaBobina: TMenuItem
         Caption = 'Venda em bobina'
         OnClick = miVendaBobinaClick
       end
-      object N6: TUniMenuItem
+      object N6: TMenuItem
         Caption = '-'
       end
-      object miRelVendaMes: TUniMenuItem
+      object miRelVendaMes: TMenuItem
         Caption = 'Vendas por m'#234's'
       end
-      object miRelVendaAno: TUniMenuItem
+      object miRelVendaAno: TMenuItem
         Caption = 'Vendas por ano'
       end
-      object miRelVendaPeriodo: TUniMenuItem
+      object miRelVendaPeriodo: TMenuItem
         Caption = 'Vendas por per'#237'odo'
       end
-      object N7: TUniMenuItem
+      object N7: TMenuItem
         Caption = '-'
       end
-      object miRelVendaCliente: TUniMenuItem
+      object miRelVendaCliente: TMenuItem
         Caption = 'Vendas por cliente'
         OnClick = miRelVendaClienteClick
       end
-      object N12: TUniMenuItem
+      object N12: TMenuItem
         Caption = '-'
       end
-      object miRelComissaoVendedor: TUniMenuItem
+      object miRelComissaoVendedor: TMenuItem
         Caption = 'Comiss'#227'o do vendedor'
         OnClick = miRelComissaoVendedorClick
       end

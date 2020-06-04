@@ -10,28 +10,28 @@ uses
 
 type
   TfrmCalendario = class(TfrmSimplePadrao)
-    PanelDias: TUniContainerPanel;
-    PanelMes: TUniContainerPanel;
-    PanelExtra: TUniContainerPanel;
-    PnBotoes: TUniContainerPanel;
-    Futura: TUniSpeedButton;
-    Calculo: TUniSpeedButton;
-    btnHoje: TUniSpeedButton;
-    LbTitulo: TUniLabel;
-    LbDias: TUniLabel;
-    LbPeriodo: TUniLabel;
-    LbTDias: TUniLabel;
-    LbTMeses: TUniLabel;
-    LbTAnos: TUniLabel;
-    BtnOk: TUniBitBtn;
-    Dt_i: TUniEdit;
-    Dt_f: TUniEdit;
-    GetAno: TUniSpinEdit;
-    EdDias: TUniEdit;
-    EdR_Dias: TUniEdit;
-    EdR_Meses: TUniEdit;
-    EdR_Anos: TUniEdit;
-    VCalend: TUniCalendar;
+    PanelDias: TContainerPanel;
+    PanelMes: TContainerPanel;
+    PanelExtra: TContainerPanel;
+    PnBotoes: TContainerPanel;
+    Futura: TSpeedButton;
+    Calculo: TSpeedButton;
+    btnHoje: TSpeedButton;
+    LbTitulo: TLabel;
+    LbDias: TLabel;
+    LbPeriodo: TLabel;
+    LbTDias: TLabel;
+    LbTMeses: TLabel;
+    LbTAnos: TLabel;
+    BtnOk: TBitBtn;
+    Dt_i: TEdit;
+    Dt_f: TEdit;
+    GetAno: TSpinEdit;
+    EdDias: TEdit;
+    EdR_Dias: TEdit;
+    EdR_Meses: TEdit;
+    EdR_Anos: TEdit;
+    VCalend: TCalendar;
     procedure FormShow(Sender: TObject);
     procedure GetAnoChange(Sender: TObject);
     procedure AlternaMesClick(Sender: TObject; Button: TUDBtnType);
@@ -127,7 +127,7 @@ begin
   case Mes of
     1 : Result := 'Janeiro';
     2 : Result := 'Fevereiro';
-    3 : Result := 'Março';
+    3 : Result := 'Marï¿½o';
     4 : Result := 'Abril';
     5 : Result := 'Maio';
     6 : Result := 'Junho';
@@ -218,7 +218,7 @@ begin
   EdDias.Visible    := False;
   Height            := 320;
   PanelExtra.Visible:= True;
-  LbTitulo.Caption  := 'Cálculo entre Datas';
+  LbTitulo.Caption  := 'Cï¿½lculo entre Datas';
   Dt_I.Text         := DateToStr(VCalend.CalendarDate);
   Dt_F.Text         := Dt_I.Text;
   EdR_Dias.Text     := '';
@@ -254,14 +254,14 @@ procedure TfrmCalendario.Dt_fExit(Sender: TObject);
 begin {
   if not DataValida(Dt_I.Text) then
   begin
-    MessageDlg('Data Inicial Inválida !',mtInformation,[MbOk],0);
+    MessageDlg('Data Inicial Invï¿½lida !',mtInformation,[MbOk],0);
     Dt_I.SetFocus;
     Dt_I.SelectAll;
     Abort;
   end;
   if not DataValida(Dt_F.Text) then
   begin
-    MessageDlg('Data Final Inválida !',mtInformation,[MbOk],0);
+    MessageDlg('Data Final Invï¿½lida !',mtInformation,[MbOk],0);
     Dt_F.SetFocus;
     Dt_F.SelectAll;
     Abort;

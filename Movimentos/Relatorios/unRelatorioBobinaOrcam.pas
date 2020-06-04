@@ -53,12 +53,12 @@ type
     cdsDetOrcamDESCTO: TFMTBCDField;
     cdsDetOrcamVALORDESCTO: TFMTBCDField;
     cdsDetOrcamTOTAL: TFMTBCDField;
-    lbCopias: TUniLabel;
-    btnCancelar: TUniBitBtn;
-    btnOk: TUniBitBtn;
-    edtImpressora: TUniEdit;
-    seCopias: TUniSpinEdit;
-    mmoOrcam: TUniMemo;
+    lbCopias: TLabel;
+    btnCancelar: TBitBtn;
+    btnOk: TBitBtn;
+    edtImpressora: TEdit;
+    seCopias: TSpinEdit;
+    mmoOrcam: TMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
@@ -104,7 +104,7 @@ begin
     Add(ReplicateStr('-', Col));
 
     Add(Centraliza('***'+Global.TituloOrcamento+'***'));
-    Add(Centraliza('DOCUMENTO NÃO FISCAL'));
+    Add(Centraliza('DOCUMENTO Nï¿½O FISCAL'));
     Add(ReplicateStr('-', Col));
     Add('Data: ' + DateToStr(cdsOrcamDATA.AsDateTime));
     Add('Cliente: ' +
@@ -178,7 +178,7 @@ begin
   WriteIniFile('ORCAMENTO', 'Porta-Imp', edtImpressora.Text);
   for i := 0 to seCopias.Value - 1 do
     mmoOrcam.Lines.SaveToFile(edtImpressora.Text);
-  MsgAviso('Orçamento impresso com sucesso.');
+  MsgAviso('Orï¿½amento impresso com sucesso.');
 end;
 
 procedure TfrmRelatorioBobinaOrcam.FormCreate(Sender: TObject);

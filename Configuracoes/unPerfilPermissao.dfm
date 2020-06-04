@@ -8,17 +8,17 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
   ExplicitHeight = 481
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 433
     Width = 484
     ExplicitTop = 433
     ExplicitWidth = 484
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 484
     ExplicitWidth = 484
   end
-  object dbePerfil: TUniDBEdit [2]
+  object dbePerfil: TDBEdit [2]
     Left = 48
     Top = 51
     Width = 409
@@ -29,7 +29,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object grpItemMenu: TUniGroupBox [3]
+  object grpItemMenu: TGroupBox [3]
     Left = 8
     Top = 88
     Width = 468
@@ -39,7 +39,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     Caption = 'Itens do menu'
     TabOrder = 3
     TabStop = False
-    object edtBuscaItemMenu: TUniEdit
+    object edtBuscaItemMenu: TEdit
       Left = 208
       Top = 13
       Width = 257
@@ -54,7 +54,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       OnExit = edtBuscaItemMenuExit
       OnEnter = edtBuscaItemMenuEnter
     end
-    object dbgPerm: TUniDBGrid
+    object dbgPerm: TDBGrid
       Left = 2
       Top = 46
       Width = 464
@@ -359,21 +359,21 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       87E1FFFF00000000CFF3FFFF0000000000000000000000000000000000000000
       000000000000}
   end
-  object pmLiberaBloqueia: TUniPopupMenu
+  object pmLiberaBloqueia: TPopupMenu
     Left = 168
     Top = 140
-    object miLiberar: TUniMenuItem
+    object miLiberar: TMenuItem
       Caption = 'Liberar todos'
       OnClick = miLiberarClick
     end
-    object miBloquear: TUniMenuItem
+    object miBloquear: TMenuItem
       Caption = 'Bloquear todos'
       OnClick = miBloquearClick
     end
-    object N5: TUniMenuItem
+    object N5: TMenuItem
       Caption = '-'
     end
-    object miCarregarAcoes: TUniMenuItem
+    object miCarregarAcoes: TMenuItem
       Caption = 'Carregar a'#231#245'es'
       OnClick = miCarregarAcoesClick
     end

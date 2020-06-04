@@ -5358,7 +5358,7 @@ inherited frmCaixa: TfrmCaixa
   ExplicitHeight = 464
   PixelsPerInch = 96
   TextHeight = 14
-  object stbCaixa: TUniStatusBar
+  object stbCaixa: TStatusBar
     Left = 0
     Top = 413
     Width = 958
@@ -5373,7 +5373,7 @@ inherited frmCaixa: TfrmCaixa
     Color = clBtnFace
     ExplicitTop = 388
   end
-  object pnBotoes: TUniContainerPanel
+  object pnBotoes: TContainerPanel
     Left = 0
     Top = 0
     Width = 958
@@ -5387,7 +5387,7 @@ inherited frmCaixa: TfrmCaixa
     TabStop = False
     ExplicitLeft = -48
     ExplicitTop = 8
-    object btnNovo: TUniSpeedButton
+    object btnNovo: TSpeedButton
       Left = 1
       Top = 1
       Width = 32
@@ -5462,7 +5462,7 @@ inherited frmCaixa: TfrmCaixa
       TabOrder = 0
       OnClick = btnNovoClick
     end
-    object btnLocate: TUniSpeedButton
+    object btnLocate: TSpeedButton
       Left = 136
       Top = 1
       Width = 32
@@ -5479,7 +5479,7 @@ inherited frmCaixa: TfrmCaixa
       TabOrder = 1
       OnClick = btnLocateClick
     end
-    object btnAlterar: TUniSpeedButton
+    object btnAlterar: TSpeedButton
       Left = 52
       Top = 1
       Width = 32
@@ -5549,7 +5549,7 @@ inherited frmCaixa: TfrmCaixa
       TabOrder = 2
       OnClick = btnAlterarClick
     end
-    object btnExcluir: TUniSpeedButton
+    object btnExcluir: TSpeedButton
       Left = 98
       Top = 1
       Width = 32
@@ -5624,7 +5624,7 @@ inherited frmCaixa: TfrmCaixa
       TabOrder = 3
       OnClick = btnExcluirClick
     end
-    object btnFiltrar: TUniSpeedButton
+    object btnFiltrar: TSpeedButton
       Left = 174
       Top = 1
       Width = 32
@@ -5694,7 +5694,7 @@ inherited frmCaixa: TfrmCaixa
       TabOrder = 4
       OnClick = btnFiltrarClick
     end
-    object btnFechar: TUniSpeedButton
+    object btnFechar: TSpeedButton
       Left = 212
       Top = 1
       Width = 32
@@ -5768,7 +5768,7 @@ inherited frmCaixa: TfrmCaixa
       OnClick = btnFecharClick
     end
   end
-  object dbgdCaixa: TUniDBGrid
+  object dbgdCaixa: TDBGrid
     Left = 0
     Top = 34
     Width = 958
@@ -5965,134 +5965,134 @@ inherited frmCaixa: TfrmCaixa
       Size = 1
     end
   end
-  object mnCaixa: TUniMainMenu
+  object mnCaixa: TMainMenu
     Left = 312
     Top = 65
-    object miRegistro: TUniMenuItem
+    object miRegistro: TMenuItem
       Caption = 'Registros'
-      object miNovo: TUniMenuItem
+      object miNovo: TMenuItem
         Caption = 'Novo'
         OnClick = btnNovoClick
       end
-      object miAlterar: TUniMenuItem
+      object miAlterar: TMenuItem
         Caption = 'Alterar'
         ShortCut = 116
         OnClick = btnAlterarClick
       end
-      object miExcluir: TUniMenuItem
+      object miExcluir: TMenuItem
         Caption = 'Excluir'
         OnClick = btnExcluirClick
       end
-      object N1: TUniMenuItem
+      object N1: TMenuItem
         Caption = '-'
       end
-      object miSair: TUniMenuItem
+      object miSair: TMenuItem
         Caption = 'Fechar'
         ShortCut = 27
         OnClick = btnFecharClick
       end
     end
-    object miFerramenta: TUniMenuItem
+    object miFerramenta: TMenuItem
       Caption = 'Ferramentas'
-      object miCadContaCaixa: TUniMenuItem
+      object miCadContaCaixa: TMenuItem
         Caption = 'Cadastrar contas caixa'
         OnClick = miCadContaCaixaClick
       end
-      object N6: TUniMenuItem
+      object N6: TMenuItem
         Caption = '-'
       end
-      object miExcluirPeriodo: TUniMenuItem
+      object miExcluirPeriodo: TMenuItem
         Caption = 'Excluir por per'#237'odo'
         OnClick = miExcluirPeriodoClick
       end
-      object miExcluirVarios: TUniMenuItem
+      object miExcluirVarios: TMenuItem
         Caption = 'Excluir v'#225'rios lan'#231'amentos'
         OnClick = miExcluirVariosClick
       end
-      object N7: TUniMenuItem
+      object N7: TMenuItem
         Caption = '-'
       end
-      object miContarReg: TUniMenuItem
+      object miContarReg: TMenuItem
         Caption = 'Contas registros'
         OnClick = miContarRegClick
       end
-      object miExportaDados: TUniMenuItem
+      object miExportaDados: TMenuItem
         Caption = 'Exportar dados'
       end
     end
-    object miPesquisar: TUniMenuItem
+    object miPesquisar: TMenuItem
       Caption = 'Pesquisar'
-      object miFiltraData: TUniMenuItem
+      object miFiltraData: TMenuItem
         Caption = 'Filtrar por data'
         OnClick = miFiltraDataClick
       end
-      object miFiltraCredito: TUniMenuItem
+      object miFiltraCredito: TMenuItem
         Caption = 'Mostrar cr'#233'ditos'
         OnClick = miFiltraCreditoClick
       end
-      object miFiltraDebito: TUniMenuItem
+      object miFiltraDebito: TMenuItem
         Caption = 'Mostrar d'#233'bitos'
         OnClick = miFiltraDebitoClick
       end
-      object miFiltraPorContaCaixa: TUniMenuItem
+      object miFiltraPorContaCaixa: TMenuItem
         Caption = 'Filtrar por conta caixa'
       end
-      object miFiltraColuna: TUniMenuItem
+      object miFiltraColuna: TMenuItem
         Caption = 'Localizar na coluna selecionada'
         OnClick = btnLocateClick
       end
-      object N3: TUniMenuItem
+      object N3: TMenuItem
         Caption = '-'
       end
-      object miLimpaFiltro: TUniMenuItem
+      object miLimpaFiltro: TMenuItem
         Caption = 'Limpar filtros'
         OnClick = miLimpaFiltroClick
       end
     end
-    object miRelatorio: TUniMenuItem
+    object miRelatorio: TMenuItem
       Caption = 'Relat'#243'rios'
-      object miRelTodos: TUniMenuItem
+      object miRelTodos: TMenuItem
         Caption = 'Livro caixa'
         OnClick = miRelTodosClick
       end
-      object N4: TUniMenuItem
+      object N4: TMenuItem
         Caption = '-'
       end
-      object miRelMesAno: TUniMenuItem
+      object miRelMesAno: TMenuItem
         Caption = 'Por m'#234's e ano'
         OnClick = miRelMesAnoClick
       end
-      object miRelContaCaixa: TUniMenuItem
+      object miRelContaCaixa: TMenuItem
         Caption = 'Por conta caixa'
         OnClick = miRelContaCaixaClick
       end
-      object N8: TUniMenuItem
+      object N8: TMenuItem
         Caption = '-'
       end
-      object miRelFluxoCaixa: TUniMenuItem
+      object miRelFluxoCaixa: TMenuItem
         Caption = 'Fluxo de caixa'
         OnClick = miRelFluxoCaixaClick
       end
-      object miMovimentoHoje: TUniMenuItem
+      object miMovimentoHoje: TMenuItem
         Caption = 'Movimenta'#231#227'o do dia'
         OnClick = miMovimentoHojeClick
       end
-      object N5: TUniMenuItem
+      object N5: TMenuItem
         Caption = '-'
       end
-      object miRelPersonalCaixa: TUniMenuItem
+      object miRelPersonalCaixa: TMenuItem
         Caption = 'Assistente de relat'#243'rio'
       end
     end
   end
-  object PopupConsulta: TUniPopupMenu
+  object PopupConsulta: TPopupMenu
     Left = 192
     Top = 65
-    object miDeleteItem: TUniMenuItem
+    object miDeleteItem: TMenuItem
       Caption = 'Excluir...'
       OnClick = btnExcluirClick
     end
-    object miLocalizaColuna: TUniMenuItem
+    object miLocalizaColuna: TMenuItem
       Caption = 'Localizar...'
       OnClick = btnLocateClick
     end

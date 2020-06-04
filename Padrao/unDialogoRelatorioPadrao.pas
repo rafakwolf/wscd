@@ -10,12 +10,12 @@ uses
   uniGUIBaseClasses, uniGUIClasses, uniPanel, uniButton, uniBitBtn};
 
 type
-  TfrmDialogoRelatorioPadrao = class(TUniForm)
+  TfrmDialogoRelatorioPadrao = class(TForm)
     dsPadrao: TDataSource;
-    pnButtons: TUniContainerPanel;
-    btnImprimir: TUniBitBtn;
-    btnVisualizar: TUniBitBtn;
-    btnSair: TUniBitBtn;
+    pnButtons: TContainerPanel;
+    btnImprimir: TBitBtn;
+    btnVisualizar: TBitBtn;
+    btnSair: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

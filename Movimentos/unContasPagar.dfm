@@ -11,7 +11,7 @@ inherited frmContasPagar: TfrmContasPagar
   ExplicitHeight = 454
   PixelsPerInch = 96
   TextHeight = 13
-  object Stb: TUniStatusBar
+  object Stb: TStatusBar
     Left = 0
     Top = 406
     Width = 760
@@ -26,7 +26,7 @@ inherited frmContasPagar: TfrmContasPagar
     Color = clBtnFace
     ExplicitTop = 387
   end
-  object pnBotoes: TUniContainerPanel
+  object pnBotoes: TContainerPanel
     Left = 0
     Top = 0
     Width = 760
@@ -38,7 +38,7 @@ inherited frmContasPagar: TfrmContasPagar
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 2
     TabStop = False
-    object btnExcluir: TUniSpeedButton
+    object btnExcluir: TSpeedButton
       Left = 102
       Top = 1
       Width = 90
@@ -196,7 +196,7 @@ inherited frmContasPagar: TfrmContasPagar
       Color = clWindow
       TabOrder = 0
     end
-    object btnPagar: TUniSpeedButton
+    object btnPagar: TSpeedButton
       Left = 5
       Top = 1
       Width = 90
@@ -257,7 +257,7 @@ inherited frmContasPagar: TfrmContasPagar
       Color = clWindow
       TabOrder = 1
     end
-    object btnFechar: TUniSpeedButton
+    object btnFechar: TSpeedButton
       Left = 295
       Top = 1
       Width = 90
@@ -415,7 +415,7 @@ inherited frmContasPagar: TfrmContasPagar
       Color = clWindow
       TabOrder = 2
     end
-    object btnPagas: TUniSpeedButton
+    object btnPagas: TSpeedButton
       Left = 199
       Top = 1
       Width = 90
@@ -485,7 +485,7 @@ inherited frmContasPagar: TfrmContasPagar
       TabOrder = 3
     end
   end
-  object grpForn: TUniGroupBox
+  object grpForn: TGroupBox
     Left = 8
     Top = 40
     Width = 433
@@ -495,7 +495,7 @@ inherited frmContasPagar: TfrmContasPagar
     Caption = ' Fornecedor '
     TabOrder = 1
     TabStop = False
-    object dbeFornecedor: TUniDBEdit
+    object dbeFornecedor: TDBEdit
       Left = 8
       Top = 16
       Width = 417
@@ -509,7 +509,7 @@ inherited frmContasPagar: TfrmContasPagar
       ReadOnly = True
     end
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 0
     Top = 91
     Width = 760
@@ -846,21 +846,21 @@ inherited frmContasPagar: TfrmContasPagar
     Left = 592
     Top = 48
   end
-  object mnuCP: TUniMainMenu
+  object mnuCP: TMainMenu
     Left = 624
     Top = 48
-    object miOpcoes: TUniMenuItem
+    object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
-      object miPagar: TUniMenuItem
+      object miPagar: TMenuItem
         Action = actPagar
       end
-      object miExcluir: TUniMenuItem
+      object miExcluir: TMenuItem
         Action = actExcluir
       end
-      object N1: TUniMenuItem
+      object N1: TMenuItem
         Caption = '-'
       end
-      object miVencendohoje: TUniMenuItem
+      object miVencendohoje: TMenuItem
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
           1800000000000003000000000000000000000000000000000000FF00FFFF00FF
@@ -891,7 +891,7 @@ inherited frmContasPagar: TfrmContasPagar
         Caption = 'Vencendo hoje'
         OnClick = miVencendohojeClick
       end
-      object miPagas: TUniMenuItem
+      object miPagas: TMenuItem
         Action = actPagas
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
@@ -921,7 +921,7 @@ inherited frmContasPagar: TfrmContasPagar
           FFFF00FFFF00FF000000FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
           00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000000}
       end
-      object miContasvencidas: TUniMenuItem
+      object miContasvencidas: TMenuItem
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
           1800000000000003000000000000000000000000000000000000FF00FFFF00FF
@@ -952,7 +952,7 @@ inherited frmContasPagar: TfrmContasPagar
         Caption = 'Contas vencidas'
         OnClick = miContasvencidasClick
       end
-      object miTodasContas: TUniMenuItem
+      object miTodasContas: TMenuItem
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
           1800000000000003000000000000000000000000000000000000FF00FFFF00FF
@@ -983,22 +983,22 @@ inherited frmContasPagar: TfrmContasPagar
         Caption = 'Todas as contas'
         OnClick = miTodasContasClick
       end
-      object N2: TUniMenuItem
+      object N2: TMenuItem
         Caption = '-'
       end
-      object miBuscarForn: TUniMenuItem
+      object miBuscarForn: TMenuItem
         Action = actBuscarForn
       end
-      object N3: TUniMenuItem
+      object N3: TMenuItem
         Caption = '-'
       end
-      object miFechar: TUniMenuItem
+      object miFechar: TMenuItem
         Action = actFechar
       end
     end
-    object miRelatorios: TUniMenuItem
+    object miRelatorios: TMenuItem
       Caption = 'Relat'#243'rios'
-      object miRecibo: TUniMenuItem
+      object miRecibo: TMenuItem
         Caption = 'Recibo'
         OnClick = miReciboClick
       end

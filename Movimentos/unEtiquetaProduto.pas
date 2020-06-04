@@ -32,10 +32,10 @@ type
     cdsPadraoCODBARRA: TStringField;
     cdsPadraoDESCRICAO: TStringField;
     cdsPadraoPRECO: TFMTBCDField;
-    dbeCodBarra: TUniDBEdit;
-    dbeProduto: TUniDBEdit;
-    dbePreco: TUniDBEdit;
-    dbgrdEtq: TUniDBGrid;
+    dbeCodBarra: TDBEdit;
+    dbeProduto: TDBEdit;
+    dbePreco: TDBEdit;
+    dbgrdEtq: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure miBuscaProdutoClick(Sender: TObject);
@@ -72,8 +72,8 @@ end;
 procedure TfrmEtiquetaProduto.actPrintExecute(Sender: TObject);
 begin
   inherited;
-  { a SQL do tela de impressão de etiquetas irá receber o mesmo SQL desta tela
-    para que possa exibir só as etiquetas filtradas, caso o usuário use filtro }
+  { a SQL do tela de impressï¿½o de etiquetas irï¿½ receber o mesmo SQL desta tela
+    para que possa exibir sï¿½ as etiquetas filtradas, caso o usuï¿½rio use filtro }
   with TfrmImprimeEtiq.Create(Self) do
   try
     if cdsPadrao.CommandText = '' then
@@ -132,9 +132,9 @@ begin
   Erro := False;
   OK := False;
   
-  MsgAviso('Atenção. Serão inseridos todos os produtos cadastrados utilizando está função, porém '+
-    'os produtos que já existirem nas etiquetas seráo apenas atualizados, para evitar duplicações. '+
-    'Caso o usuário queira imprimir mais de uma etiqueta de cada produto, terá que inserí-las manualmente.');
+  MsgAviso('Atenï¿½ï¿½o. Serï¿½o inseridos todos os produtos cadastrados utilizando estï¿½ funï¿½ï¿½o, porï¿½m '+
+    'os produtos que jï¿½ existirem nas etiquetas serï¿½o apenas atualizados, para evitar duplicaï¿½ï¿½es. '+
+    'Caso o usuï¿½rio queira imprimir mais de uma etiqueta de cada produto, terï¿½ que inserï¿½-las manualmente.');
 
   try
     try
@@ -186,14 +186,14 @@ begin
   inherited;
   if Length(Text) <> 13 then
   begin
-    if MsgSN('Deseja gerar cóigo de barras automáticamente?') then
+    if MsgSN('Deseja gerar cï¿½igo de barras automï¿½ticamente?') then
       codigo := GeraCodigoEAN13(Text);
   end;
 
   if VerificaEAN13(codigo) then
     Sender.AsString := codigo
   else
-    MsgCuidado('Este código de barras parece estar incorreto, verifique.');
+    MsgCuidado('Este cï¿½digo de barras parece estar incorreto, verifique.');
   Sender.AsString := codigo;  
 end;
 
@@ -230,13 +230,13 @@ begin
       cdsPadrao.ApplyUpdates(0);
     except
       Erro := True;
-      raise Exception.Create('Erro ao ajustar códigos de barras.');
+      raise Exception.Create('Erro ao ajustar cï¿½digos de barras.');
     end;
   finally
     BringWindowToTop(Handle);
 
     if not Erro then
-      MsgAviso('Ajuste de códigos de barras concluído!');
+      MsgAviso('Ajuste de cï¿½digos de barras concluï¿½do!');
     AjustaRequires(True);
     cdsPadrao.EnableControls;
   end;
@@ -257,7 +257,7 @@ begin
 
   if (ModoInsert(cdsPadrao) and Repetido) then
   begin
-    MsgAviso('Etiqueta com este código de barras já está cadastrada.');
+    MsgAviso('Etiqueta com este cï¿½digo de barras jï¿½ estï¿½ cadastrada.');
     Abort;
   end;
 end;
@@ -272,7 +272,7 @@ begin
       SQLConnection := sqldPadrao.SQLConnection;
       CommandText := 'delete from ETIQUETAPROD';
       ExecSQL;
-      MsgAviso('Exclusão efetuada com sucesso!');
+      MsgAviso('Exclusï¿½o efetuada com sucesso!');
       cdsPadrao.Close;
       cdsPadrao.Open;
     finally
@@ -284,7 +284,7 @@ end;
 procedure TfrmEtiquetaProduto.miConfigurarClick(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmEtiqueta', 'Configuração de etiquetas', Self);
+  ChamaForm('TfrmEtiqueta', 'Configuraï¿½ï¿½o de etiquetas', Self);
 end;
 
 initialization

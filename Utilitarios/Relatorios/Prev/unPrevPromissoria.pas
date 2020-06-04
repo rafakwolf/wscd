@@ -7,7 +7,7 @@ uses
   Dialogs, RLReport, uniGUIForm;
 
 type
-  TfrmPrevPromissoria = class(TUniForm)
+  TfrmPrevPromissoria = class(TForm)
     rptPromissoria: TRLReport;
     rlbndProm: TRLBand;
     albAvalista: TRLAngleLabel;

@@ -36,28 +36,28 @@ type
     cdsPadraoVALOREXTENSO: TStringField;
     cdsPadraoDATAIMPRESSAO: TDateField;
     cdsPadraoIMPRESSA: TStringField;
-    lbDuplicata: TUniLabel;
-    dbeDataEmissao: TUniDBEdit;
-    dbeCidade: TUniDBEdit;
-    dbeDataPag: TUniDBEdit;
-    dbeDataVenc: TUniDBEdit;
-    dbeValor: TUniDBEdit;
-    dbeDesconto: TUniDBEdit;
-    dbeValorFatura: TUniDBEdit;
-    dbeNroDuplicata: TUniDBEdit;
-    dbeNroFatura: TUniDBEdit;
-    dbeValorExtenso: TUniDBEdit;
-    dbeSacado: TUniDBEdit;
-    dbeCpfCnpj: TUniDBEdit;
-    dbeRgIe: TUniDBEdit;
-    dbeFoneFax: TUniDBEdit;
-    dbeCep: TUniDBEdit;
-    dbeEndereco: TUniDBEdit;
-    dbeBairro: TUniDBEdit;
-    dbeEstado: TUniDBEdit;
-    dbePracaPagamento: TUniDBEdit;
-    dbeDataImpressao: TUniDBEdit;
-    dbeImpressa: TUniDBEdit;
+    lbDuplicata: TLabel;
+    dbeDataEmissao: TDBEdit;
+    dbeCidade: TDBEdit;
+    dbeDataPag: TDBEdit;
+    dbeDataVenc: TDBEdit;
+    dbeValor: TDBEdit;
+    dbeDesconto: TDBEdit;
+    dbeValorFatura: TDBEdit;
+    dbeNroDuplicata: TDBEdit;
+    dbeNroFatura: TDBEdit;
+    dbeValorExtenso: TDBEdit;
+    dbeSacado: TDBEdit;
+    dbeCpfCnpj: TDBEdit;
+    dbeRgIe: TDBEdit;
+    dbeFoneFax: TDBEdit;
+    dbeCep: TDBEdit;
+    dbeEndereco: TDBEdit;
+    dbeBairro: TDBEdit;
+    dbeEstado: TDBEdit;
+    dbePracaPagamento: TDBEdit;
+    dbeDataImpressao: TDBEdit;
+    dbeImpressa: TDBEdit;
     procedure actPrintExecute(Sender: TObject);
     procedure miConfigurarClick(Sender: TObject);
     procedure dbeValorExit(Sender: TObject);
@@ -143,7 +143,7 @@ end;
 procedure TfrmDuplicatas.miConfigurarClick(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmConfiguraDuplicata', 'Configuração de duplicatas', Self);
+  ChamaForm('TfrmConfiguraDuplicata', 'Configuraï¿½ï¿½o de duplicatas', Self);
 end;
 
 procedure TfrmDuplicatas.dbeValorExit(Sender: TObject);
@@ -187,12 +187,12 @@ begin
   with TDmCliente.Create(nil) do
   try
       if IsClienteRepetido(dbeCpfCnpj.Text,dbeCpfCnpj.Text) then
-        ShowMessage('Cliente já cadastrado.')
+        ShowMessage('Cliente jï¿½ cadastrado.')
       else
       begin
-        if MsgSN('Este cliente é pessoa física ou pessoa jurídica?'+#13#13+
-          'Sim - Pessoa Física;'+#13#10+
-          'Não - Pessoa Jurídica;') then
+        if MsgSN('Este cliente ï¿½ pessoa fï¿½sica ou pessoa jurï¿½dica?'+#13#13+
+          'Sim - Pessoa Fï¿½sica;'+#13#10+
+          'Nï¿½o - Pessoa Jurï¿½dica;') then
           tipo := 'F'
         else
           tipo := 'J';
@@ -297,7 +297,7 @@ begin
 
   if (ModoInsert(cdsPadrao) and Repetido) then
   begin
-    MsgAviso('','Já existe uma duplicata com este número.');
+    MsgAviso('','Jï¿½ existe uma duplicata com este nï¿½mero.');
     Abort;
   end;
 end;
@@ -335,7 +335,7 @@ begin
       cliente.Free;
     end;
 
-    if MsgSN('Confirma importação dos dados deste cliente?')then
+    if MsgSN('Confirma importaï¿½ï¿½o dos dados deste cliente?')then
       btnSalvar.Click
     else
     begin
@@ -392,7 +392,7 @@ begin
 //      cdsPadraoDATAIMPRESSAO.AsDateTime := Date;
 //      cdsPadraoIMPRESSA.AsString        := 'N';
 //
-//      if MsgSN('Confirma importação dos dados desta conta?')then
+//      if MsgSN('Confirma importaï¿½ï¿½o dos dados desta conta?')then
 //        btnSalvar.Click
 //      else
 //      begin

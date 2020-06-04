@@ -43,31 +43,31 @@ type
     cdsPadraoDISTANCIAHORIZONTAL: TFloatField;
     cdsPadraoDISTACOLVERTICAL: TFloatField;
     cdsPadraoDISTCOLHORIZ: TFloatField;
-    LabelEtiqueta: TUniLabel;
-    Label2: TUniLabel;
-    Label3: TUniLabel;
-    Label4: TUniLabel;
-    Label5: TUniLabel;
-    Label7: TUniLabel;
-    Label8: TUniLabel;
-    Label9: TUniLabel;
-    Label10: TUniLabel;
-    Label11: TUniLabel;
-    LabelMedida: TUniLabel;
-    Label1: TUniLabel;
-    dbEtiqueta: TUniDBEdit;
-    dbAlturaFolha: TUniDBEdit;
-    dbLarguraFolha: TUniDBEdit;
-    dbMargemSuperior: TUniDBEdit;
-    dbMargemEsquerda: TUniDBEdit;
-    dbEtqColuna: TUniDBEdit;
-    dbAlturaEtq: TUniDBEdit;
-    dbLarguraEtq: TUniDBEdit;
-    dbDistVert: TUniDBEdit;
-    dbDistHoriz: TUniDBEdit;
-    dbNumeroLinhas: TUniDBEdit;
-    gbImgMedidas: TUniGroupBox;
-    iEtiqueta: TUniImage;
+    LabelEtiqueta: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    LabelMedida: TLabel;
+    Label1: TLabel;
+    dbEtiqueta: TDBEdit;
+    dbAlturaFolha: TDBEdit;
+    dbLarguraFolha: TDBEdit;
+    dbMargemSuperior: TDBEdit;
+    dbMargemEsquerda: TDBEdit;
+    dbEtqColuna: TDBEdit;
+    dbAlturaEtq: TDBEdit;
+    dbLarguraEtq: TDBEdit;
+    dbDistVert: TDBEdit;
+    dbDistHoriz: TDBEdit;
+    dbNumeroLinhas: TDBEdit;
+    gbImgMedidas: TGroupBox;
+    iEtiqueta: TImage;
     procedure SpinButton1DownClick(Sender: TObject);
     procedure SpinButton1UpClick(Sender: TObject);
     procedure cdsPadraoALTURAETIQUETAChange(Sender: TField);
@@ -158,7 +158,7 @@ begin
       ((cdsPadraoDISTANCIAHORIZONTAL.AsCurrency - cdsPadraoLARGURAETIQUETA.AsCurrency) *
          (cdsPadraoNUMEROCOLUNAS.AsInteger - 1))) > cdsPadraoLARGURAFOLHA.AsCurrency) then
   begin
-    MsgCuidado('As medidas cadastradas não cabem na largura da folha. Verifque.');
+    MsgCuidado('As medidas cadastradas nï¿½o cabem na largura da folha. Verifque.');
     Abort;
   end;
 
@@ -167,7 +167,7 @@ begin
       ((cdsPadraoDISTANCIAVERTICAL.AsCurrency - cdsPadraoALTURAETIQUETA.AsCurrency) *
         (cdsPadraoNUMEROLINHAS.AsInteger - 1))) > cdsPadraoALTURAFOLHA.AsCurrency) then
   begin
-    MsgCuidado('As medidas cadastradas não cabem na altura da folha. Verifque.');
+    MsgCuidado('As medidas cadastradas nï¿½o cabem na altura da folha. Verifque.');
     Abort;
   end;
 end;

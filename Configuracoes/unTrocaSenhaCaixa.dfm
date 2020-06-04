@@ -16,7 +16,7 @@ object frmSenhaCaixa: TfrmSenhaCaixa
   Font.Name = 'Verdana'
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 48
     Top = 96
     Width = 81
@@ -78,7 +78,7 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     TabOrder = 2
     OnClick = btnOkClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 136
     Top = 96
     Width = 81
@@ -130,7 +130,7 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     ModalResult = 2
     TabOrder = 3
   end
-  object edAtual: TUniEdit
+  object edAtual: TEdit
     Left = 16
     Top = 24
     Width = 145
@@ -140,7 +140,7 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     Text = ''
     TabOrder = 0
   end
-  object edNova: TUniEdit
+  object edNova: TEdit
     Left = 16
     Top = 64
     Width = 145

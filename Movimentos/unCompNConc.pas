@@ -9,7 +9,7 @@ uses
   uniBitBtn, uniGUIForm, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmCompNaoConc = class(TUniForm)
+  TfrmCompNaoConc = class(TForm)
     dsComp: TDataSource;
     sqlComp: TSQLDataSet;
     dspComp: TDataSetProvider;
@@ -28,9 +28,9 @@ type
     cdsCompRAZAOSOCIAL: TStringField;
     cdsCompTOTAL: TFMTBCDField;
     cdsCompCONCLUIDA: TStringField;
-    btnConsultar: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    Grade: TUniDBGrid;
+    btnConsultar: TBitBtn;
+    btnCancelar: TBitBtn;
+    Grade: TDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure GradeDblClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -87,7 +87,7 @@ begin
   cdsComp.Open;
   if cdsComp.IsEmpty then
   begin
-    MsgAviso('Todas as compras concluídas.');
+    MsgAviso('Todas as compras concluï¿½das.');
     PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
@@ -104,7 +104,7 @@ begin
   if Sender.AsString = 'S' then
     Text := 'Sim'
   else
-    Text := 'Não';  
+    Text := 'Nï¿½o';  
 end;
 
 initialization

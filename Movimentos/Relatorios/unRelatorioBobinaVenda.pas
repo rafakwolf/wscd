@@ -61,12 +61,12 @@ type
     cdsItensDESCTO: TFMTBCDField;
     cdsItensVALORDESCTO: TFMTBCDField;
     cdsItensTOTAL: TFMTBCDField;
-    lbCopias: TUniLabel;
-    btnCancelar: TUniBitBtn;
-    btnOk: TUniBitBtn;
-    edtImpressora: TUniEdit;
-    seCopias: TUniSpinEdit;
-    mmoVenda: TUniMemo;
+    lbCopias: TLabel;
+    btnCancelar: TBitBtn;
+    btnOk: TBitBtn;
+    edtImpressora: TEdit;
+    seCopias: TSpinEdit;
+    mmoVenda: TMemo;
     procedure btnCancelarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnOkClick(Sender: TObject);
@@ -136,7 +136,7 @@ begin
     Add(ReplicateStr('-', Col));
 
     Add(Centraliza('***'+Global.TituloVenda+'***'));
-    Add(Centraliza('DOCUMENTO NÃO FISCAL'));
+    Add(Centraliza('DOCUMENTO Nï¿½O FISCAL'));
     Add(ReplicateStr('-', Col));
     Add('Data: ' + DateToStr(cdsVendasDATA.AsDateTime));
     Add('Cliente: ' +

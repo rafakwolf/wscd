@@ -19,34 +19,34 @@ type
     cdsCidade: TClientDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
-    btnContas: TUniBitBtn;
-    dbeFax: TUniDBEdit;
-    dbeTelefoneComercial: TUniDBEdit;
-    dbeRefComercial: TUniDBEdit;
-    dbeRefPessoal: TUniDBEdit;
-    dbeLocalTrabalho: TUniDBEdit;
-    dbeSalario: TUniDBEdit;
-    dbeInicioTrabalho: TUniDBEdit;
-    dbeCargo: TUniDBEdit;
-    dbeTrabalho: TUniDBEdit;
-    dbeEmail: TUniDBEdit;
-    dbeNaturalidade: TUniDBEdit;
-    dbeDataCadastro: TUniDBEdit;
-    dbeMae: TUniDBEdit;
-    dbePai: TUniDBEdit;
-    dbeConjuge: TUniDBEdit;
-    dbeEnderecoAnterior: TUniDBEdit;
-    dbeTempoMoradia: TUniDBEdit;
-    dbeLimite: TUniDBEdit;
-    dbeDataNasc: TUniDBEdit;
-    dbeCpf: TUniDBEdit;
-    dbeRg: TUniDBEdit;
-    dbeTelefone: TUniDBEdit;
-    dbeCep: TUniDBEdit;
-    dbeBairro: TUniDBEdit;
-    dbeEndereco: TUniDBEdit;
-    dbeNome: TUniDBEdit;
-    dbmObs: TUniDBEdit;
+    btnContas: TBitBtn;
+    dbeFax: TDBEdit;
+    dbeTelefoneComercial: TDBEdit;
+    dbeRefComercial: TDBEdit;
+    dbeRefPessoal: TDBEdit;
+    dbeLocalTrabalho: TDBEdit;
+    dbeSalario: TDBEdit;
+    dbeInicioTrabalho: TDBEdit;
+    dbeCargo: TDBEdit;
+    dbeTrabalho: TDBEdit;
+    dbeEmail: TDBEdit;
+    dbeNaturalidade: TDBEdit;
+    dbeDataCadastro: TDBEdit;
+    dbeMae: TDBEdit;
+    dbePai: TDBEdit;
+    dbeConjuge: TDBEdit;
+    dbeEnderecoAnterior: TDBEdit;
+    dbeTempoMoradia: TDBEdit;
+    dbeLimite: TDBEdit;
+    dbeDataNasc: TDBEdit;
+    dbeCpf: TDBEdit;
+    dbeRg: TDBEdit;
+    dbeTelefone: TDBEdit;
+    dbeCep: TDBEdit;
+    dbeBairro: TDBEdit;
+    dbeEndereco: TDBEdit;
+    dbeNome: TDBEdit;
+    dbmObs: TDBEdit;
     procedure miRelClientesCidadeClick(Sender: TObject);
     procedure miRelClientesDataNascClick(Sender: TObject);
     procedure miRelAniversariantesClick(Sender: TObject);
@@ -157,13 +157,13 @@ begin
 //
 //  if (ModoInsert(cdsPadrao) and Repetido) then
 //  begin
-//    MsgAviso('Cliente com este CPF/CNPJ ou RG/IE já está cadastrado.');
+//    MsgAviso('Cliente com este CPF/CNPJ ou RG/IE jï¿½ estï¿½ cadastrado.');
 //    Abort;
 //  end;
 //
 //  if Idade(cdsPadraoDATA_NASC.AsDateTime) < Global.IdadeCliente then
 //  begin
-//    MsgCuidado('Cliente com idade menor que a permitida, não poderá ser cadastrado.');
+//    MsgCuidado('Cliente com idade menor que a permitida, nï¿½o poderï¿½ ser cadastrado.');
 //    Abort;
 //  end;
 end;

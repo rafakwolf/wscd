@@ -7,13 +7,13 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
   ExplicitHeight = 246
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 173
     Width = 521
     ExplicitTop = 173
     ExplicitWidth = 521
   end
-  object pnDiaMesAno: TUniContainerPanel [1]
+  object pnDiaMesAno: TContainerPanel [1]
     Left = 8
     Top = 72
     Width = 249
@@ -24,7 +24,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     ParentColor = False
     TabOrder = 3
     TabStop = False
-    object LabelMes: TUniLabel
+    object LabelMes: TLabel
       Left = 8
       Top = 5
       Width = 19
@@ -34,7 +34,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       Caption = 'M'#234's'
       TabOrder = 5
     end
-    object LabelDo: TUniLabel
+    object LabelDo: TLabel
       Left = 8
       Top = 47
       Width = 30
@@ -44,7 +44,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       Caption = 'Do dia'
       TabOrder = 6
     end
-    object LabelAte: TUniLabel
+    object LabelAte: TLabel
       Left = 88
       Top = 47
       Width = 17
@@ -54,7 +54,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       Caption = 'At'#233
       TabOrder = 7
     end
-    object edAno: TUniEdit
+    object edAno: TEdit
       Left = 167
       Top = 63
       Width = 74
@@ -65,7 +65,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       TabOrder = 3
       OnKeyPress = edAnoKeyPress
     end
-    object cmbMes: TUniComboBox
+    object cmbMes: TComboBox
       Left = 8
       Top = 20
       Width = 233
@@ -89,7 +89,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
         'Dezembro')
       TabOrder = 0
     end
-    object edDo: TUniSpinEdit
+    object edDo: TSpinEdit
       Left = 8
       Top = 62
       Width = 65
@@ -101,7 +101,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       MinValue = 1
       TabOrder = 1
     end
-    object edAte: TUniSpinEdit
+    object edAte: TSpinEdit
       Left = 88
       Top = 62
       Width = 65
@@ -114,7 +114,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       TabOrder = 2
     end
   end
-  object pnDatas: TUniContainerPanel [2]
+  object pnDatas: TContainerPanel [2]
     Left = 264
     Top = 72
     Width = 257
@@ -125,7 +125,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     ParentColor = False
     TabOrder = 4
     TabStop = False
-    object dbeDataIni: TUniDBEdit
+    object dbeDataIni: TDBEdit
       Left = 8
       Top = 20
       Width = 241
@@ -136,7 +136,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       DataSource = dsPadrao
       TabOrder = 0
     end
-    object dbeDataFim: TUniDBEdit
+    object dbeDataFim: TDBEdit
       Left = 8
       Top = 63
       Width = 241
@@ -148,7 +148,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       TabOrder = 1
     end
   end
-  object rgTipo: TUniRadioGroup [3]
+  object rgTipo: TRadioGroup [3]
     Left = 8
     Top = 8
     Width = 249
@@ -163,7 +163,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     TabOrder = 1
     TabStop = False
   end
-  object rgDatas: TUniRadioGroup [4]
+  object rgDatas: TRadioGroup [4]
     Left = 264
     Top = 8
     Width = 257

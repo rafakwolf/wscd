@@ -10,7 +10,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
   ExplicitHeight = 472
   PixelsPerInch = 96
   TextHeight = 14
-  object stbCaixa: TUniStatusBar
+  object stbCaixa: TStatusBar
     Left = 0
     Top = 424
     Width = 769
@@ -25,7 +25,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
     Color = clBtnFace
     SimpleText = ' Para ajuda pressione F1'
   end
-  object btnExcluir: TUniBitBtn
+  object btnExcluir: TBitBtn
     Left = 592
     Top = 392
     Width = 81
@@ -66,7 +66,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
     TabOrder = 2
     OnClick = btnExcluirClick
   end
-  object btnSair: TUniBitBtn
+  object btnSair: TBitBtn
     Left = 680
     Top = 392
     Width = 81
@@ -128,7 +128,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
     TabOrder = 3
     OnClick = btnSairClick
   end
-  object grpBusca: TUniGroupBox
+  object grpBusca: TGroupBox
     Left = 8
     Top = 2
     Width = 753
@@ -138,7 +138,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
     Caption = ' Pesquisa '
     TabOrder = 0
     TabStop = False
-    object edDescricao: TUniEdit
+    object edDescricao: TEdit
       Left = 184
       Top = 17
       Width = 558
@@ -154,7 +154,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
       OnExit = edDescricaoExit
       OnEnter = edDescricaoEnter
     end
-    object edtDocumento: TUniEdit
+    object edtDocumento: TEdit
       Left = 8
       Top = 17
       Width = 169
@@ -171,7 +171,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
       OnEnter = edtDocumentoEnter
     end
   end
-  object bvlLinha: TUniPanel
+  object bvlLinha: TPanel
     Left = 8
     Top = 384
     Width = 753
@@ -181,7 +181,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
     TabOrder = 5
     Caption = 'bvlLinha'
   end
-  object dbgrdCaixa: TUniDBGrid
+  object dbgrdCaixa: TDBGrid
     Left = 8
     Top = 57
     Width = 753

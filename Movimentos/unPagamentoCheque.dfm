@@ -18,7 +18,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbEmissao: TUniLabel
+  object lbEmissao: TLabel
     Left = 8
     Top = 88
     Width = 47
@@ -28,7 +28,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Caption = 'Emiss'#227'o'
     TabOrder = 11
   end
-  object lbVenc: TUniLabel
+  object lbVenc: TLabel
     Left = 96
     Top = 88
     Width = 56
@@ -38,7 +38,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Caption = 'Bom para'
     TabOrder = 12
   end
-  object lbBandaMagnetica: TUniLabel
+  object lbBandaMagnetica: TLabel
     Left = 8
     Top = 8
     Width = 99
@@ -48,7 +48,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Caption = 'Banda magn'#233'tica'
     TabOrder = 13
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 280
     Top = 136
     Width = 89
@@ -110,7 +110,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     TabOrder = 9
     OnClick = btnOkClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 376
     Top = 136
     Width = 89
@@ -163,7 +163,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     ModalResult = 2
     TabOrder = 10
   end
-  object edtAgencia: TUniEdit
+  object edtAgencia: TEdit
     Left = 8
     Top = 64
     Width = 105
@@ -173,7 +173,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Text = ''
     TabOrder = 2
   end
-  object edtConta: TUniEdit
+  object edtConta: TEdit
     Left = 120
     Top = 64
     Width = 105
@@ -183,7 +183,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Text = ''
     TabOrder = 3
   end
-  object edtNumeroCheque: TUniEdit
+  object edtNumeroCheque: TEdit
     Left = 232
     Top = 64
     Width = 113
@@ -193,7 +193,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Text = ''
     TabOrder = 4
   end
-  object edtValor: TUniEdit
+  object edtValor: TEdit
     Left = 352
     Top = 64
     Width = 113
@@ -204,7 +204,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     TabOrder = 5
     OnEnter = edtValorEnter
   end
-  object edtNome: TUniEdit
+  object edtNome: TEdit
     Left = 184
     Top = 104
     Width = 281
@@ -216,7 +216,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeBanco: TUniDBEdit
+  object dbeBanco: TDBEdit
     Left = 248
     Top = 24
     Width = 195
@@ -229,7 +229,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Color = clBtnFace
     ReadOnly = True
   end
-  object medtEmissao: TUniEdit
+  object medtEmissao: TEdit
     Left = 8
     Top = 104
     Width = 81
@@ -240,7 +240,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Text = '  /  /    '
     TabOrder = 6
   end
-  object medtVencimento: TUniEdit
+  object medtVencimento: TEdit
     Left = 96
     Top = 104
     Width = 81
@@ -251,7 +251,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Text = '  /  /    '
     TabOrder = 7
   end
-  object medBandaMagnetica: TUniEdit
+  object medBandaMagnetica: TEdit
     Left = 8
     Top = 24
     Width = 233

@@ -67,26 +67,26 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALRECDO: TSingleField;
-    lbStatus: TUniLabel;
-    btnReceber: TUniBitBtn;
-    btnContas: TUniBitBtn;
-    dbeValorAtual: TUniDBEdit;
-    dbeCliente: TUniDBEdit;
-    dbeDescricao: TUniDBEdit;
-    dbeValor: TUniDBEdit;
-    dbeDocumento: TUniDBEdit;
-    dbeJuros: TUniDBEdit;
-    dbeOrigem: TUniDBEdit;
-    dbdData: TUniDBEdit;
-    dbdVencimento: TUniDBEdit;
-    dbeVenda: TUniDBEdit;
-    dbeConta: TUniDBEdit;
-    grpRecebimento: TUniGroupBox;
-    dbeDataRecdo: TUniDBEdit;
-    dbeDesconto: TUniDBEdit;
-    dbeCapitalRecdo: TUniDBEdit;
-    dbeJuroRecdo: TUniDBEdit;
-    dbeTotalRecdo: TUniDBEdit;
+    lbStatus: TLabel;
+    btnReceber: TBitBtn;
+    btnContas: TBitBtn;
+    dbeValorAtual: TDBEdit;
+    dbeCliente: TDBEdit;
+    dbeDescricao: TDBEdit;
+    dbeValor: TDBEdit;
+    dbeDocumento: TDBEdit;
+    dbeJuros: TDBEdit;
+    dbeOrigem: TDBEdit;
+    dbdData: TDBEdit;
+    dbdVencimento: TDBEdit;
+    dbeVenda: TDBEdit;
+    dbeConta: TDBEdit;
+    grpRecebimento: TGroupBox;
+    dbeDataRecdo: TDBEdit;
+    dbeDesconto: TDBEdit;
+    dbeCapitalRecdo: TDBEdit;
+    dbeJuroRecdo: TDBEdit;
+    dbeTotalRecdo: TDBEdit;
     procedure dbeClienteClickButton(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -220,7 +220,7 @@ end;
 procedure TfrmCR.actPrintExecute(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmPrevNotaProm', 'Relatório para cliente', Self);
+  ChamaForm('TfrmPrevNotaProm', 'Relatï¿½rio para cliente', Self);
 end;
 
 procedure TfrmCR.cdsPadraoCLIENTEValidate(Sender: TField);
@@ -304,7 +304,7 @@ begin
     cdsPadraoCLIENTE.AsInteger) then Abort;
 
 //  if not ValidaDataIniFim(cdsPadraoDATA.AsDateTime, cdsPadraoVENCIMENTO.AsDateTime,
-//    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
+//    dbdData, False, True, 'A "Data de emissï¿½o" nï¿½o pode ser maior que a data de "Data de vencimento".',
 //    True) then Abort;
 
   if cdsPadrao.State in [dsInsert] then
@@ -314,7 +314,7 @@ begin
         QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (CLIENTE = '+
         QuotedStr(IntToStr(cdsPadraoCLIENTE.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
       begin
-        MsgCuidado('Este "Documento" já está cadastrado para este "Cliente".');
+        MsgCuidado('Este "Documento" jï¿½ estï¿½ cadastrado para este "Cliente".');
         SetFocusIfCan(dbeDocumento);
         Abort;
       end;
@@ -322,7 +322,7 @@ begin
 
   if cdsPadraoIDCONTA.IsNull then
   begin
-    MsgCuidado('O campo "Conta" é de preenchimento obrigatório.');
+    MsgCuidado('O campo "Conta" ï¿½ de preenchimento obrigatï¿½rio.');
     Abort;
   end;
 end;
@@ -358,19 +358,19 @@ begin
     cdsPadrao.Edit;
     cdsPadraoRECEBER.AsString := 'N';
     cdsPadrao.ApplyUpdates(0);
-    MsgAviso('Ésta conta já foi recebida');
+    MsgAviso('ï¿½sta conta jï¿½ foi recebida');
   end;
 end;
 
 procedure TfrmCR.actDeleteExecute(Sender: TObject);
 begin
-  if MsgSN('Deseja realmente excluir este lançamento?') then
+  if MsgSN('Deseja realmente excluir este lanï¿½amento?') then
   begin
     sqldDeleta.Close;
     sqldDeleta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
     sqldDeleta.ExecSQL;
     //actLimparFiltro.Execute;
-    MsgAviso('Registro excluído!');
+    MsgAviso('Registro excluï¿½do!');
   end;
 end;
 

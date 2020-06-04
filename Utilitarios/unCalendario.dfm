@@ -14,7 +14,7 @@ inherited frmCalendario: TfrmCalendario
   ExplicitHeight = 467
   PixelsPerInch = 96
   TextHeight = 13
-  object PanelDias: TUniContainerPanel
+  object PanelDias: TContainerPanel
     Left = 0
     Top = 54
     Width = 490
@@ -26,7 +26,7 @@ inherited frmCalendario: TfrmCalendario
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
     TabStop = False
-    object VCalend: TUniCalendar
+    object VCalend: TCalendar
       Left = 0
       Top = 0
       Width = 490
@@ -43,7 +43,7 @@ inherited frmCalendario: TfrmCalendario
       ExplicitHeight = 161
     end
   end
-  object PanelMes: TUniContainerPanel
+  object PanelMes: TContainerPanel
     Left = 0
     Top = 28
     Width = 490
@@ -58,7 +58,7 @@ inherited frmCalendario: TfrmCalendario
     TabStop = False
     OnClick = VCalendClick
     ExplicitWidth = 375
-    object GetAno: TUniSpinEdit
+    object GetAno: TSpinEdit
       Left = 157
       Top = 2
       Width = 53
@@ -75,7 +75,7 @@ inherited frmCalendario: TfrmCalendario
       OnKeyPress = FormKeyPress
     end
   end
-  object PanelExtra: TUniContainerPanel
+  object PanelExtra: TContainerPanel
     Left = 0
     Top = 321
     Width = 490
@@ -89,7 +89,7 @@ inherited frmCalendario: TfrmCalendario
     TabStop = False
     ExplicitTop = 208
     ExplicitWidth = 375
-    object LbTitulo: TUniLabel
+    object LbTitulo: TLabel
       Left = 4
       Top = 4
       Width = 48
@@ -104,7 +104,7 @@ inherited frmCalendario: TfrmCalendario
       Font.Name = 'MS Sans Serif'
       TabOrder = 8
     end
-    object LbDias: TUniLabel
+    object LbDias: TLabel
       Left = 4
       Top = 27
       Width = 45
@@ -114,7 +114,7 @@ inherited frmCalendario: TfrmCalendario
       Caption = 'Qtd. Dias'
       TabOrder = 9
     end
-    object LbPeriodo: TUniLabel
+    object LbPeriodo: TLabel
       Left = 4
       Top = 28
       Width = 36
@@ -124,7 +124,7 @@ inherited frmCalendario: TfrmCalendario
       Caption = 'Per'#237'odo'
       TabOrder = 10
     end
-    object LbTDias: TUniLabel
+    object LbTDias: TLabel
       Left = 4
       Top = 51
       Width = 20
@@ -134,7 +134,7 @@ inherited frmCalendario: TfrmCalendario
       Caption = 'Dias'
       TabOrder = 11
     end
-    object LbTMeses: TUniLabel
+    object LbTMeses: TLabel
       Left = 4
       Top = 73
       Width = 30
@@ -144,7 +144,7 @@ inherited frmCalendario: TfrmCalendario
       Caption = 'Meses'
       TabOrder = 12
     end
-    object LbTAnos: TUniLabel
+    object LbTAnos: TLabel
       Left = 4
       Top = 95
       Width = 32
@@ -154,7 +154,7 @@ inherited frmCalendario: TfrmCalendario
       Caption = 'Ano(s)'
       TabOrder = 13
     end
-    object BtnOk: TUniBitBtn
+    object BtnOk: TBitBtn
       Left = 133
       Top = 88
       Width = 75
@@ -216,7 +216,7 @@ inherited frmCalendario: TfrmCalendario
       TabOrder = 6
       OnClick = VCalendClick
     end
-    object Dt_i: TUniEdit
+    object Dt_i: TEdit
       Left = 54
       Top = 24
       Width = 57
@@ -230,7 +230,7 @@ inherited frmCalendario: TfrmCalendario
       Font.Name = 'MS Sans Serif'
       TabOrder = 1
     end
-    object Dt_f: TUniEdit
+    object Dt_f: TEdit
       Left = 118
       Top = 24
       Width = 57
@@ -245,7 +245,7 @@ inherited frmCalendario: TfrmCalendario
       TabOrder = 2
       OnExit = Dt_fExit
     end
-    object EdDias: TUniEdit
+    object EdDias: TEdit
       Left = 54
       Top = 24
       Width = 43
@@ -257,7 +257,7 @@ inherited frmCalendario: TfrmCalendario
       TabOrder = 0
       OnExit = EdDiasExit
     end
-    object EdR_Dias: TUniEdit
+    object EdR_Dias: TEdit
       Left = 54
       Top = 47
       Width = 58
@@ -273,7 +273,7 @@ inherited frmCalendario: TfrmCalendario
       Color = clBtnFace
       ReadOnly = True
     end
-    object EdR_Meses: TUniEdit
+    object EdR_Meses: TEdit
       Left = 54
       Top = 69
       Width = 58
@@ -289,7 +289,7 @@ inherited frmCalendario: TfrmCalendario
       Color = clBtnFace
       ReadOnly = True
     end
-    object EdR_Anos: TUniEdit
+    object EdR_Anos: TEdit
       Left = 54
       Top = 91
       Width = 58
@@ -306,7 +306,7 @@ inherited frmCalendario: TfrmCalendario
       ReadOnly = True
     end
   end
-  object PnBotoes: TUniContainerPanel
+  object PnBotoes: TContainerPanel
     Left = 0
     Top = 0
     Width = 490
@@ -319,7 +319,7 @@ inherited frmCalendario: TfrmCalendario
     TabOrder = 3
     TabStop = False
     ExplicitWidth = 375
-    object Futura: TUniSpeedButton
+    object Futura: TSpeedButton
       Left = 3
       Top = 2
       Width = 65
@@ -349,7 +349,7 @@ inherited frmCalendario: TfrmCalendario
       TabOrder = 0
       OnClick = FuturaClick
     end
-    object Calculo: TUniSpeedButton
+    object Calculo: TSpeedButton
       Left = 73
       Top = 2
       Width = 65
@@ -379,7 +379,7 @@ inherited frmCalendario: TfrmCalendario
       TabOrder = 1
       OnClick = CalculoClick
     end
-    object btnHoje: TUniSpeedButton
+    object btnHoje: TSpeedButton
       Left = 143
       Top = 2
       Width = 65

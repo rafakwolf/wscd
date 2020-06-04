@@ -10,7 +10,7 @@ uses
   uniDBGrid;
 
 type
-  TfrmPagamentoVenda = class(TUniForm)
+  TfrmPagamentoVenda = class(TForm)
     sqldVenda: TSQLDataSet;
     sqldVendaDATARECTO: TDateField;
     sqldVendaFORMARECTO: TStringField;
@@ -23,9 +23,9 @@ type
     sqldVendaVALORRESTO: TFMTBCDField;
     cdsVendaVALORRECDO: TFMTBCDField;
     cdsVendaVALORRESTO: TFMTBCDField;
-    btnOk: TUniSpeedButton;
-    lbStatus: TUniLabel;
-    dbgdRectoVenda: TUniDBGrid;
+    btnOk: TSpeedButton;
+    lbStatus: TLabel;
+    dbgdRectoVenda: TDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -95,11 +95,11 @@ begin
     Open;
 
     if (FieldByName('RESTO').AsFloat = 0) then
-      lbStatus.Caption := 'Venda concluída'
+      lbStatus.Caption := 'Venda concluï¿½da'
     else if (FieldByName('RESTO').AsFloat > 0) then
       lbStatus.Caption := 'Restante: R$ '+FormatFloat('#,##0.00', FieldByName('RESTO').AsFloat)
     else
-      lbStatus.Caption := 'Venda não concluída';
+      lbStatus.Caption := 'Venda nï¿½o concluï¿½da';
 
   finally
     Free;

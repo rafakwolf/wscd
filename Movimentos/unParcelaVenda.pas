@@ -11,7 +11,7 @@ uses
   uniDBGrid;
 
 type
-  TfrmParcelaVenda = class(TUniForm)
+  TfrmParcelaVenda = class(TForm)
     sqldParcela: TSQLDataSet;
     dspParcela: TDataSetProvider;
     cdsParcela: TClientDataSet;
@@ -32,20 +32,20 @@ type
     sqldReceber: TSQLDataSet;
     sqldVendaCODIGO: TIntegerField;
     sqldVendaTOTAL: TFMTBCDField;
-    lbParcelas: TUniLabel;
-    lbPrazoInicio: TUniLabel;
-    lbIntervalo: TUniLabel;
-    btnOk: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    btnCalcular: TUniBitBtn;
-    edtRestoVenda: TUniEdit;
-    dbeCodCliente: TUniDBEdit;
-    dbeNomeCliente: TUniDBEdit;
-    dbeDataVenda: TUniDBEdit;
-    seParcelas: TUniSpinEdit;
-    sePrazoInicio: TUniSpinEdit;
-    seIntervalo: TUniSpinEdit;
-    dbgrdParcelas: TUniDBGrid;
+    lbParcelas: TLabel;
+    lbPrazoInicio: TLabel;
+    lbIntervalo: TLabel;
+    btnOk: TBitBtn;
+    btnCancelar: TBitBtn;
+    btnCalcular: TBitBtn;
+    edtRestoVenda: TEdit;
+    dbeCodCliente: TDBEdit;
+    dbeNomeCliente: TDBEdit;
+    dbeDataVenda: TDBEdit;
+    seParcelas: TSpinEdit;
+    sePrazoInicio: TSpinEdit;
+    seIntervalo: TSpinEdit;
+    dbgrdParcelas: TDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

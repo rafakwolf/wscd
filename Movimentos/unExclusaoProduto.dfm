@@ -12,7 +12,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
   ExplicitHeight = 425
   PixelsPerInch = 96
   TextHeight = 13
-  object btnFechar: TUniSpeedButton
+  object btnFechar: TSpeedButton
     Left = 536
     Top = 344
     Width = 97
@@ -67,7 +67,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
     TabOrder = 2
     OnClick = btnFecharClick
   end
-  object btnExcluir: TUniSpeedButton
+  object btnExcluir: TSpeedButton
     Left = 432
     Top = 344
     Width = 97
@@ -110,7 +110,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
     TabOrder = 3
     OnClick = btnExcluirClick
   end
-  object stbStatus: TUniStatusBar
+  object stbStatus: TStatusBar
     Left = 0
     Top = 377
     Width = 641
@@ -125,7 +125,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
     Color = clBtnFace
     SimpleText = ' Para ajuda pressione F1'
   end
-  object grpPesquisa: TUniGroupBox
+  object grpPesquisa: TGroupBox
     Left = 8
     Top = 8
     Width = 625
@@ -135,7 +135,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
     Caption = ' Pesquisa '
     TabOrder = 0
     TabStop = False
-    object edCodigo: TUniEdit
+    object edCodigo: TEdit
       Left = 8
       Top = 16
       Width = 161
@@ -149,7 +149,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       OnExit = edCodigoExit
       OnEnter = edCodigoEnter
     end
-    object edDescricao: TUniEdit
+    object edDescricao: TEdit
       Left = 176
       Top = 16
       Width = 441
@@ -164,7 +164,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       OnEnter = edDescricaoEnter
     end
   end
-  object bvlLinha: TUniPanel
+  object bvlLinha: TPanel
     Left = 8
     Top = 336
     Width = 625
@@ -174,7 +174,7 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
     TabOrder = 5
     Caption = 'bvlLinha'
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 8
     Top = 64
     Width = 625

@@ -9,7 +9,7 @@ uses
   uniEdit, uniGuiForm;
 
 type
-  TfrmSenhaCaixa = class(TUniForm)
+  TfrmSenhaCaixa = class(TForm)
     sqldConfig: TSQLDataSet;
     dspConfig: TDataSetProvider;
     cdsConfig: TClientDataSet;
@@ -17,10 +17,10 @@ type
     sqldConfigSENHACAIXA: TStringField;
     cdsConfigSENHAESTOQUE: TStringField;
     cdsConfigSENHACAIXA: TStringField;
-    btnOk: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    edAtual: TUniEdit;
-    edNova: TUniEdit;
+    btnOk: TBitBtn;
+    btnCancelar: TBitBtn;
+    edAtual: TEdit;
+    edNova: TEdit;
     procedure FormShow(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -63,7 +63,7 @@ begin
     end
     else
     begin
-      MsgErro('Senha atual não confere, digite novamente.');
+      MsgErro('Senha atual nï¿½o confere, digite novamente.');
       edAtual.Clear;
       edNova.Clear;
       edAtual.SelectAll;
@@ -71,7 +71,7 @@ begin
   end
   else
   begin
-    MsgCuidado('Para alterar as senhas, você deve digita-las.');
+    MsgCuidado('Para alterar as senhas, vocï¿½ deve digita-las.');
     edAtual.Clear;
     edNova.Clear;
     edAtual.SelectAll;

@@ -10,7 +10,7 @@ inherited frmPromissoria: TfrmPromissoria
   ExplicitHeight = 308
   PixelsPerInch = 96
   TextHeight = 13
-  object btnCliente: TUniBitBtn
+  object btnCliente: TBitBtn
     Left = 7
     Top = 240
     Width = 89
@@ -72,7 +72,7 @@ inherited frmPromissoria: TfrmPromissoria
     TabOrder = 10
     OnClick = btnClienteClick
   end
-  object btnImprimir: TUniBitBtn
+  object btnImprimir: TBitBtn
     Left = 336
     Top = 240
     Width = 89
@@ -134,7 +134,7 @@ inherited frmPromissoria: TfrmPromissoria
     TabOrder = 11
     OnClick = btnImprimirClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 432
     Top = 240
     Width = 81
@@ -196,7 +196,7 @@ inherited frmPromissoria: TfrmPromissoria
     TabOrder = 12
     OnClick = btnCancelarClick
   end
-  object edtNumero: TUniEdit
+  object edtNumero: TEdit
     Left = 8
     Top = 24
     Width = 121
@@ -206,7 +206,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 0
   end
-  object edtEmissao: TUniEdit
+  object edtEmissao: TEdit
     Left = 136
     Top = 24
     Width = 121
@@ -216,7 +216,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 1
   end
-  object edtVencimento: TUniEdit
+  object edtVencimento: TEdit
     Left = 264
     Top = 24
     Width = 121
@@ -226,7 +226,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 2
   end
-  object edtValor: TUniEdit
+  object edtValor: TEdit
     Left = 392
     Top = 24
     Width = 121
@@ -236,7 +236,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 3
   end
-  object edtCredor: TUniEdit
+  object edtCredor: TEdit
     Left = 8
     Top = 64
     Width = 353
@@ -246,7 +246,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 4
   end
-  object edtCpfCnpj: TUniEdit
+  object edtCpfCnpj: TEdit
     Left = 368
     Top = 64
     Width = 145
@@ -256,7 +256,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 5
   end
-  object edtPracaPag: TUniEdit
+  object edtPracaPag: TEdit
     Left = 8
     Top = 104
     Width = 505
@@ -266,7 +266,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 6
   end
-  object edtEmitente: TUniEdit
+  object edtEmitente: TEdit
     Left = 8
     Top = 160
     Width = 353
@@ -276,7 +276,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 7
   end
-  object edtCpfCnpjEmitente: TUniEdit
+  object edtCpfCnpjEmitente: TEdit
     Left = 368
     Top = 160
     Width = 145
@@ -286,7 +286,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 8
   end
-  object edtEndereco: TUniEdit
+  object edtEndereco: TEdit
     Left = 8
     Top = 200
     Width = 505
@@ -296,7 +296,7 @@ inherited frmPromissoria: TfrmPromissoria
     Text = ''
     TabOrder = 9
   end
-  object bvlLinha: TUniPanel
+  object bvlLinha: TPanel
     Left = 8
     Top = 135
     Width = 505

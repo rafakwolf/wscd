@@ -9,17 +9,17 @@ inherited frmConfiguracao: TfrmConfiguracao
   ExplicitHeight = 409
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 361
     Width = 754
     ExplicitTop = 361
     ExplicitWidth = 754
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 754
     ExplicitWidth = 754
   end
-  object PgConfig: TUniPageControl [2]
+  object PgConfig: TPageControl [2]
     Left = 8
     Top = 36
     Width = 729
@@ -28,11 +28,11 @@ inherited frmConfiguracao: TfrmConfiguracao
     ShowHint = True
     ActivePage = TabImg
     TabOrder = 1
-    object Tabgeral: TUniTabSheet
+    object Tabgeral: TTabSheet
       Hint = ''
       ShowHint = True
       Caption = '    &Geral    '
-      object chAtalhos: TUniDBCheckBox
+      object chAtalhos: TDBCheckBox
         Left = 23
         Top = 26
         Width = 259
@@ -46,7 +46,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Mostrar barra de atalhos na tela principal'
         TabOrder = 0
       end
-      object chHint: TUniDBCheckBox
+      object chHint: TDBCheckBox
         Left = 23
         Top = 44
         Width = 166
@@ -60,7 +60,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Mostrar hints estilo bal'#227'o'
         TabOrder = 1
       end
-      object chErro: TUniDBCheckBox
+      object chErro: TDBCheckBox
         Left = 23
         Top = 63
         Width = 162
@@ -74,7 +74,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Gravar erros do sistema'
         TabOrder = 2
       end
-      object chBackup: TUniDBCheckBox
+      object chBackup: TDBCheckBox
         Left = 23
         Top = 81
         Width = 224
@@ -88,7 +88,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Sugerir c'#243'pia de seguran'#231'a ao sair'
         TabOrder = 3
       end
-      object chResolucao: TUniDBCheckBox
+      object chResolucao: TDBCheckBox
         Left = 23
         Top = 100
         Width = 186
@@ -102,7 +102,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Verificar resolu'#231#227'o ao iniciar'
         TabOrder = 4
       end
-      object chLog: TUniDBCheckBox
+      object chLog: TDBCheckBox
         Left = 23
         Top = 118
         Width = 258
@@ -116,7 +116,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Gerar log de registro do banco de dados'
         TabOrder = 5
       end
-      object chImpressora: TUniDBCheckBox
+      object chImpressora: TDBCheckBox
         Left = 23
         Top = 137
         Width = 137
@@ -130,7 +130,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Verificar impressora'
         TabOrder = 6
       end
-      object chDica: TUniDBCheckBox
+      object chDica: TDBCheckBox
         Left = 23
         Top = 155
         Width = 188
@@ -144,7 +144,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Mostrar dica do dia ao iniciar'
         TabOrder = 7
       end
-      object dbckbVerificaUpd: TUniDBCheckBox
+      object dbckbVerificaUpd: TDBCheckBox
         Left = 23
         Top = 174
         Width = 249
@@ -158,7 +158,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Verificar atualiza'#231#245'es autom'#225'ticamente'
         TabOrder = 8
       end
-      object dbchkInfoAvisos: TUniDBCheckBox
+      object dbchkInfoAvisos: TDBCheckBox
         Left = 23
         Top = 192
         Width = 241
@@ -173,12 +173,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         TabOrder = 9
       end
     end
-    object TabImg: TUniTabSheet
+    object TabImg: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 1
       Caption = 'Papel &Parede'
-      object imgPapelParede: TUniImage
+      object imgPapelParede: TImage
         Left = 8
         Top = 10
         Width = 367
@@ -186,7 +186,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Hint = 'Imagem do papel de parede'
         ShowHint = True
       end
-      object btnBuscar: TUniBitBtn
+      object btnBuscar: TBitBtn
         Left = 12
         Top = 212
         Width = 80
@@ -197,7 +197,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         TabOrder = 0
         OnClick = btnBuscarClick
       end
-      object btnExImg: TUniBitBtn
+      object btnExImg: TBitBtn
         Left = 100
         Top = 212
         Width = 80
@@ -208,7 +208,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         TabOrder = 1
         OnClick = btnExImgClick
       end
-      object rgOrientationImg: TUniRadioGroup
+      object rgOrientationImg: TRadioGroup
         Left = 194
         Top = 198
         Width = 184
@@ -225,12 +225,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         OnClick = rgOrientationImgClick
       end
     end
-    object TabOrcam: TUniTabSheet
+    object TabOrcam: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 2
       Caption = '&Or'#231'amentos'
-      object cbVerificaEstoqueOrcam: TUniDBCheckBox
+      object cbVerificaEstoqueOrcam: TDBCheckBox
         Left = 23
         Top = 26
         Width = 244
@@ -244,7 +244,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Permitir produtos com estoque m'#237'nimo'
         TabOrder = 0
       end
-      object cbEditOrcamConc: TUniDBCheckBox
+      object cbEditOrcamConc: TDBCheckBox
         Left = 23
         Top = 44
         Width = 242
@@ -258,7 +258,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Permitir editar or'#231'amentos conclu'#237'dos'
         TabOrder = 1
       end
-      object cbOrcamNaoConc: TUniDBCheckBox
+      object cbOrcamNaoConc: TDBCheckBox
         Left = 23
         Top = 62
         Width = 230
@@ -273,12 +273,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         TabOrder = 2
       end
     end
-    object TabCompras: TUniTabSheet
+    object TabCompras: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 3
       Caption = ' &Compras '
-      object cbCompraNaoConc: TUniDBCheckBox
+      object cbCompraNaoConc: TDBCheckBox
         Left = 23
         Top = 26
         Width = 213
@@ -292,7 +292,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Verificar compras n'#227'o conclu'#237'das'
         TabOrder = 0
       end
-      object cbEditCompraConc: TUniDBCheckBox
+      object cbEditCompraConc: TDBCheckBox
         Left = 23
         Top = 44
         Width = 219
@@ -307,12 +307,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         TabOrder = 1
       end
     end
-    object TabProdutos: TUniTabSheet
+    object TabProdutos: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 4
       Caption = ' &Produtos '
-      object dbeSenhaProduto: TUniDBEdit
+      object dbeSenhaProduto: TDBEdit
         Left = 8
         Top = 187
         Width = 121
@@ -324,7 +324,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         PasswordChar = '*'
         TabOrder = 4
       end
-      object dbcbEstoqueSenhaProd: TUniDBCheckBox
+      object dbcbEstoqueSenhaProd: TDBCheckBox
         Left = 8
         Top = 148
         Width = 243
@@ -338,7 +338,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Pedir senha para altera'#231#227'o de estoque'
         TabOrder = 3
       end
-      object dbcbBordaEtqProd: TUniDBCheckBox
+      object dbcbBordaEtqProd: TDBCheckBox
         Left = 8
         Top = 127
         Width = 224
@@ -352,7 +352,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Exibir borda na etiqueta de produto '
         TabOrder = 2
       end
-      object dbcbLetraNumCodBarra: TUniDBCheckBox
+      object dbcbLetraNumCodBarra: TDBCheckBox
         Left = 8
         Top = 107
         Width = 220
@@ -366,7 +366,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Permitir letras no c'#243'digo de barras'
         TabOrder = 1
       end
-      object grpValorProdutoPadrao: TUniGroupBox
+      object grpValorProdutoPadrao: TGroupBox
         Left = 8
         Top = 6
         Width = 369
@@ -376,7 +376,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = ' Valores Padr'#227'o '
         TabOrder = 0
         TabStop = False
-        object dbeAliqPadrao: TUniDBEdit
+        object dbeAliqPadrao: TDBEdit
           Left = 204
           Top = 15
           Width = 130
@@ -390,7 +390,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           Color = clBtnFace
           ReadOnly = True
         end
-        object dbeEstoquePadrao: TUniDBEdit
+        object dbeEstoquePadrao: TDBEdit
           Left = 204
           Top = 40
           Width = 130
@@ -403,7 +403,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           TabOrder = 1
           OnKeyPress = dbeEstoquePadraoKeyPress
         end
-        object dbeDescontoPadrao: TUniDBEdit
+        object dbeDescontoPadrao: TDBEdit
           Left = 204
           Top = 66
           Width = 130
@@ -417,7 +417,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           OnKeyPress = dbeDescontoPadraoKeyPress
         end
       end
-      object btnAlterarSenhaProduto: TUniBitBtn
+      object btnAlterarSenhaProduto: TBitBtn
         Left = 8
         Top = 213
         Width = 121
@@ -429,12 +429,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         OnClick = btnAlterarSenhaProdutoClick
       end
     end
-    object TabCaixa: TUniTabSheet
+    object TabCaixa: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 5
       Caption = '    &Caixa    '
-      object dbeSenhaCaixa: TUniDBEdit
+      object dbeSenhaCaixa: TDBEdit
         Left = 8
         Top = 135
         Width = 129
@@ -446,7 +446,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         PasswordChar = '*'
         TabOrder = 1
       end
-      object dbcbMostrarSaldo: TUniDBCheckBox
+      object dbcbMostrarSaldo: TDBCheckBox
         Left = 8
         Top = 192
         Width = 152
@@ -460,7 +460,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Mostrar saldo do caixa'
         TabOrder = 3
       end
-      object dbcbLanc90Dias: TUniDBCheckBox
+      object dbcbLanc90Dias: TDBCheckBox
         Left = 8
         Top = 212
         Width = 257
@@ -474,7 +474,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Mostrar lan'#231'amentos dos '#250'ltimos 90 dias'
         TabOrder = 2
       end
-      object grpCaixaPadrao: TUniGroupBox
+      object grpCaixaPadrao: TGroupBox
         Left = 8
         Top = 5
         Width = 365
@@ -484,7 +484,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = ' Conta caixa padr'#227'o '
         TabOrder = 0
         TabStop = False
-        object dbeCaixaPadrao: TUniDBEdit
+        object dbeCaixaPadrao: TDBEdit
           Left = 90
           Top = 20
           Width = 239
@@ -499,7 +499,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           ReadOnly = True
         end
       end
-      object grpContaCheque: TUniGroupBox
+      object grpContaCheque: TGroupBox
         Left = 8
         Top = 64
         Width = 365
@@ -509,7 +509,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Conta padr'#227'o para cheques'
         TabOrder = 5
         TabStop = False
-        object dbeContaCheque: TUniDBEdit
+        object dbeContaCheque: TDBEdit
           Left = 90
           Top = 18
           Width = 239
@@ -524,7 +524,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           ReadOnly = True
         end
       end
-      object btnAlterarSenhaCaixa: TUniBitBtn
+      object btnAlterarSenhaCaixa: TBitBtn
         Left = 8
         Top = 160
         Width = 129
@@ -536,12 +536,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         OnClick = btnAlterarSenhaCaixaClick
       end
     end
-    object TabVenda: TUniTabSheet
+    object TabVenda: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 6
       Caption = '&Vendas'
-      object chVendaEstoque: TUniDBCheckBox
+      object chVendaEstoque: TDBCheckBox
         Left = 23
         Top = 24
         Width = 244
@@ -555,7 +555,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Permitir produtos com estoque m'#237'nimo'
         TabOrder = 0
       end
-      object chVendaConc: TUniDBCheckBox
+      object chVendaConc: TDBCheckBox
         Left = 23
         Top = 42
         Width = 202
@@ -569,7 +569,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Verificar vendas n'#227'o conclu'#237'das'
         TabOrder = 1
       end
-      object chEditvenda: TUniDBCheckBox
+      object chEditvenda: TDBCheckBox
         Left = 23
         Top = 60
         Width = 211
@@ -584,12 +584,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         TabOrder = 2
       end
     end
-    object TabClientes: TUniTabSheet
+    object TabClientes: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 8
       Caption = '&Clientes'
-      object chBloqCli: TUniDBCheckBox
+      object chBloqCli: TDBCheckBox
         Left = 23
         Top = 24
         Width = 190
@@ -603,7 +603,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = 'Avisar quando exceder limite '
         TabOrder = 0
       end
-      object dbcbBordaEtq: TUniDBCheckBox
+      object dbcbBordaEtq: TDBCheckBox
         Left = 23
         Top = 44
         Width = 172
@@ -618,12 +618,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         TabOrder = 1
       end
     end
-    object TabExportacao: TUniTabSheet
+    object TabExportacao: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 9
       Caption = '&Exporta'#231#227'o de dados'
-      object dbeDirExportacao: TUniDBEdit
+      object dbeDirExportacao: TDBEdit
         Left = 16
         Top = 40
         Width = 321
@@ -634,7 +634,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         DataSource = dsPadrao
         TabOrder = 1
       end
-      object btnLocalizar: TUniBitBtn
+      object btnLocalizar: TBitBtn
         Left = 339
         Top = 38
         Width = 25
@@ -648,12 +648,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         OnClick = btnLocalizarClick
       end
     end
-    object tsEmail: TUniTabSheet
+    object tsEmail: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 10
       Caption = 'E-mail'
-      object grpEmail: TUniGroupBox
+      object grpEmail: TGroupBox
         Left = 16
         Top = 8
         Width = 353
@@ -663,7 +663,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Caption = ' Configura'#231#245'es '
         TabOrder = 0
         TabStop = False
-        object btnTeste: TUniBitBtn
+        object btnTeste: TBitBtn
           Left = 261
           Top = 152
           Width = 75
@@ -674,7 +674,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           TabOrder = 5
           OnClick = btnTesteClick
         end
-        object edServidor: TUniEdit
+        object edServidor: TEdit
           Left = 16
           Top = 32
           Width = 249
@@ -684,7 +684,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           Text = ''
           TabOrder = 0
         end
-        object edPorta: TUniEdit
+        object edPorta: TEdit
           Left = 272
           Top = 32
           Width = 65
@@ -694,7 +694,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           Text = '25'
           TabOrder = 1
         end
-        object edUsuario: TUniEdit
+        object edUsuario: TEdit
           Left = 16
           Top = 112
           Width = 193
@@ -704,7 +704,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           Text = ''
           TabOrder = 3
         end
-        object edSenha: TUniEdit
+        object edSenha: TEdit
           Left = 216
           Top = 112
           Width = 121
@@ -715,7 +715,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           Text = ''
           TabOrder = 4
         end
-        object chkAutenticacao: TUniCheckBox
+        object chkAutenticacao: TCheckBox
           Left = 16
           Top = 72
           Width = 217
@@ -728,12 +728,12 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
       end
     end
-    object tsRelatorio: TUniTabSheet
+    object tsRelatorio: TTabSheet
       Hint = ''
       ShowHint = True
       ImageIndex = 12
       Caption = 'Relat'#243'rios'
-      object dbckbRelZebrado: TUniDBCheckBox
+      object dbckbRelZebrado: TDBCheckBox
         Left = 24
         Top = 24
         Width = 129

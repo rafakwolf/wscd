@@ -31,8 +31,8 @@ type
     sqldPadraoNOMECAMPO: TStringField;
     cdsPadraoIDCONFIGDUPLICATA: TIntegerField;
     cdsPadraoNOMECAMPO: TStringField;
-    dbeFontSize: TUniDBEdit;
-    dbgrdCampos: TUniDBGrid;
+    dbeFontSize: TDBEdit;
+    dbgrdCampos: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure miVisualizarClick(Sender: TObject);
     procedure cdsPadraoBeforeInsert(DataSet: TDataSet);
@@ -86,12 +86,12 @@ begin
 
     slEstiloFonte.Add('Normal');
     slEstiloFonte.Add('Negrito');
-    slEstiloFonte.Add('Itálico');
+    slEstiloFonte.Add('Itï¿½lico');
     slEstiloFonte.Add('Sublinhado');
-    slEstiloFonte.Add('Negrito Itálico');
+    slEstiloFonte.Add('Negrito Itï¿½lico');
     slEstiloFonte.Add('Negrito Sublinhado');
-    slEstiloFonte.Add('Itálico Sublinhado');
-    slEstiloFonte.Add('Negrito Itálico Sublinhado');
+    slEstiloFonte.Add('Itï¿½lico Sublinhado');
+    slEstiloFonte.Add('Negrito Itï¿½lico Sublinhado');
   finally
     slEstiloFonte.Free;
   end;

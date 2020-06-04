@@ -7,13 +7,13 @@ inherited frmRelatorioCRCliente: TfrmRelatorioCRCliente
   ExplicitHeight = 175
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 102
     Width = 385
     ExplicitTop = 102
     ExplicitWidth = 385
   end
-  object dbeCliente: TUniDBEdit [1]
+  object dbeCliente: TDBEdit [1]
     Left = 16
     Top = 40
     Width = 339

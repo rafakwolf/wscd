@@ -15,7 +15,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 344
     Top = 272
     Width = 89
@@ -77,7 +77,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
     ModalResult = 1
     TabOrder = 1
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 440
     Top = 272
     Width = 89
@@ -130,7 +130,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
     ModalResult = 2
     TabOrder = 2
   end
-  object btnContasCliente: TUniBitBtn
+  object btnContasCliente: TBitBtn
     Left = 8
     Top = 272
     Width = 201
@@ -192,7 +192,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
     TabOrder = 4
     OnClick = btnContasClienteClick
   end
-  object imgWarn: TUniImage
+  object imgWarn: TImage
     Left = 8
     Top = 8
     Width = 65
@@ -590,7 +590,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       0AE6}
     Transparent = True
   end
-  object grpContas: TUniGroupBox
+  object grpContas: TGroupBox
     Left = 8
     Top = 200
     Width = 521
@@ -600,7 +600,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
     Caption = ' Valores (com juro) '
     TabOrder = 0
     TabStop = False
-    object cedDiasAtraso: TUniEdit
+    object cedDiasAtraso: TEdit
       Left = 392
       Top = 32
       Width = 121
@@ -611,7 +611,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       TabOrder = 0
       ReadOnly = True
     end
-    object cedTotalContas: TUniEdit
+    object cedTotalContas: TEdit
       Left = 8
       Top = 32
       Width = 121
@@ -622,7 +622,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       TabOrder = 2
       ReadOnly = True
     end
-    object cedTotalVencidas: TUniEdit
+    object cedTotalVencidas: TEdit
       Left = 136
       Top = 32
       Width = 121
@@ -636,7 +636,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       TabOrder = 3
       ReadOnly = True
     end
-    object cedPrimeiroVenc: TUniEdit
+    object cedPrimeiroVenc: TEdit
       Left = 264
       Top = 32
       Width = 121
@@ -648,7 +648,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       ReadOnly = True
     end
   end
-  object grpDadosCliente: TUniGroupBox
+  object grpDadosCliente: TGroupBox
     Left = 8
     Top = 80
     Width = 521
@@ -658,7 +658,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
     Caption = ' Dados do cliente '
     TabOrder = 3
     TabStop = False
-    object cedLimite: TUniEdit
+    object cedLimite: TEdit
       Left = 136
       Top = 76
       Width = 121
@@ -669,7 +669,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       TabOrder = 0
       ReadOnly = True
     end
-    object cedDataCadastro: TUniEdit
+    object cedDataCadastro: TEdit
       Left = 8
       Top = 76
       Width = 121
@@ -680,7 +680,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       TabOrder = 1
       ReadOnly = True
     end
-    object cedCliente: TUniEdit
+    object cedCliente: TEdit
       Left = 8
       Top = 36
       Width = 505
@@ -692,7 +692,7 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       ReadOnly = True
     end
   end
-  object mmoMsg: TUniMemo
+  object mmoMsg: TMemo
     Left = 80
     Top = 8
     Width = 449

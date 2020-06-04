@@ -65,7 +65,7 @@ type
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
-    dbgrdPromocao: TUniDBGrid;
+    dbgrdPromocao: TDBGrid;
     procedure dbgrdPromocaoEditButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -111,7 +111,7 @@ begin
 //        cdsPadraoFIM.AsDateTime    := Date;
 //      end
 //      else
-//        MsgCuidado('Este produto já está em promoção.');
+//        MsgCuidado('Este produto jï¿½ estï¿½ em promoï¿½ï¿½o.');
 //    end;
 end;
 
@@ -120,7 +120,7 @@ begin
   inherited;
   FieldNames    := FN_PROMOCAO;
   DisplayLabels := DL_PROMOCAO;
-  aCaption      := 'Promoção';
+  aCaption      := 'Promoï¿½ï¿½o';
 
   SQLProduto    := sqldProduto.CommandText;
   SQLGrupo      := sqldGrupo.CommandText;
@@ -160,7 +160,7 @@ begin
   try
     cdsPadrao.Close;
     cdsPadrao.Open;
-    //lbTitulo.Caption := 'Listagem de promoçoes';
+    //lbTitulo.Caption := 'Listagem de promoï¿½oes';
     PrintIfNotEmptyRL(rrPadrao);
   finally
     Free;
@@ -180,7 +180,7 @@ begin
   inherited;
   if cdsPadraoDESCONTO.IsNull then
   begin
-    MsgCuidado('O Desconto do produto para promoção deve ser informado.');
+    MsgCuidado('O Desconto do produto para promoï¿½ï¿½o deve ser informado.');
     cdsPadraoDESCONTO.FocusControl;
     Abort;
   end;
@@ -197,7 +197,7 @@ procedure TfrmPromocao.AfterShow(var Msg: TMessage);
 
 begin
   if (not cdsPadrao.IsEmpty) and PromocoesVencidas then
-    if MsgSN('Deseja eliminar automáticamente os produtos que ultrapassaram a data final da promoção?') then
+    if MsgSN('Deseja eliminar automï¿½ticamente os produtos que ultrapassaram a data final da promoï¿½ï¿½o?') then
     begin
       sqldSpDesmarcaPromocao.ExecSQL;
       //actLimparFiltro.Execute;
@@ -232,9 +232,9 @@ begin
 //        Exit;
 //      end;
 //
-//      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoção') then
+//      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoï¿½ï¿½o') then
 //      begin
-//        MsgErro('Os dias de promoção devem ser informados.');
+//        MsgErro('Os dias de promoï¿½ï¿½o devem ser informados.');
 //        Exit;
 //      end;
 //
@@ -253,7 +253,7 @@ begin
 //        end;
 //        cdsProduto.Next;
 //      end;
-//      MsgAviso('Inserção efetuda com sucesso!');
+//      MsgAviso('Inserï¿½ï¿½o efetuda com sucesso!');
 //    end
 //    else
 //      MsgErro(UM_PESQUISAVAZIO);
@@ -265,7 +265,7 @@ end;
 procedure TfrmPromocao.miExcluirtodasClick(Sender: TObject);
 begin
   inherited;
-  if not MsgSN('Deseja realmente excluir todas as promoções?') then
+  if not MsgSN('Deseja realmente excluir todas as promoï¿½ï¿½es?') then
     Exit;
   with TSQLDataSet.Create(nil) do
   try
@@ -306,9 +306,9 @@ begin
 //        Exit;
 //      end;
 //
-//      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoção') then
+//      if not ObterValor(DiasPromocao, '0 dias', 'Dias de promoï¿½ï¿½o') then
 //      begin
-//        MsgErro('Os dias de promoção devem ser informados.');
+//        MsgErro('Os dias de promoï¿½ï¿½o devem ser informados.');
 //        Exit;
 //      end;
 //
@@ -327,7 +327,7 @@ begin
 //        end;
 //        cdsProduto.Next;
 //      end;
-//      MsgAviso('Inserção efetuda com sucesso!');
+//      MsgAviso('Inserï¿½ï¿½o efetuda com sucesso!');
 //    end
 //    else
 //      MsgErro(UM_PESQUISAVAZIO);

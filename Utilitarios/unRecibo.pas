@@ -27,19 +27,19 @@ type
     cdsPadraoVALOREXTENSO: TMemoField;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
-    mmPadrao: TUniMainMenu;
-    miRelatorios: TUniMenuItem;
-    mImprimir: TUniMenuItem;
-    N5: TUniMenuItem;
-    lbRecebedor: TUniLabel;
-    lbRefente: TUniLabel;
-    lbValor: TUniLabel;
-    lbValorExtenso: TUniLabel;
-    dbData: TUniDBEdit;
-    dbRecebedor: TUniDBEdit;
-    dbValor: TUniDBEdit;
-    dbReferente: TUniDBMemo;
-    dbValorExtenso: TUniDBMemo;
+    mmPadrao: TMainMenu;
+    miRelatorios: TMenuItem;
+    mImprimir: TMenuItem;
+    N5: TMenuItem;
+    lbRecebedor: TLabel;
+    lbRefente: TLabel;
+    lbValor: TLabel;
+    lbValorExtenso: TLabel;
+    dbData: TDBEdit;
+    dbRecebedor: TDBEdit;
+    dbValor: TDBEdit;
+    dbReferente: TDBMemo;
+    dbValorExtenso: TDBMemo;
     procedure actPrintExecute(Sender: TObject);
     procedure cdsPadraoVALORChange(Sender: TField);
     procedure FormCreate(Sender: TObject);
@@ -84,7 +84,7 @@ begin
   end
   else
   begin
-    MsgErro('','Não existem recibos cadastrados');
+    MsgErro('','Nï¿½o existem recibos cadastrados');
     Exit;
   end; 
 end;

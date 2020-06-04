@@ -15,7 +15,7 @@ uses
 type
   TTipoEtiqueta = (teProduto, teCliente);
   TfrmImprimeEtiq = class(TfrmDialogoRelatorioPadrao)
-    sqldEtiqueta: TSQLQuery;
+    sqldEtiqueta: TSQLDataSet;
     dspEtiqueta: TDataSetProvider;
     cdsEtiqueta: TClientDataSet;
     sqldEtiquetaIDETIQUETA: TIntegerField;
@@ -46,13 +46,13 @@ type
     cdsEtiquetaDISTANCIAHORIZONTAL: TFloatField;
     cdsEtiquetaDISTACOLVERTICAL: TFloatField;
     cdsEtiquetaDISTCOLHORIZ: TFloatField;
-    lbModeloEtq: TUniLabel;
-    lbLinhaIni: TUniLabel;
-    lbColIni: TUniLabel;
-    cbListaEtiq: TUniComboBox;
-    seColunaIni: TUniSpinEdit;
-    seLinhaIni: TUniSpinEdit;
-    rgTraversal: TUniRadioGroup;
+    lbModeloEtq: TLabel;
+    lbLinhaIni: TLabel;
+    lbColIni: TLabel;
+    cbListaEtiq: TComboBox;
+    seColunaIni: TSpinEdit;
+    seLinhaIni: TSpinEdit;
+    rgTraversal: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

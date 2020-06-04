@@ -9,36 +9,36 @@ inherited frmCliente: TfrmCliente
   ExplicitHeight = 501
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 453
     Width = 785
     ExplicitTop = 453
     ExplicitWidth = 785
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 785
     TabOrder = 28
     ExplicitWidth = 785
-    inherited btnAlterar: TUniSpeedButton
+    inherited btnAlterar: TSpeedButton
       Left = 49
       ExplicitLeft = 49
     end
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Left = 321
       ExplicitLeft = 321
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Left = 396
       ExplicitLeft = 396
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Left = 254
       Hint = ''
       Action = nil
       ExplicitLeft = 254
     end
   end
-  object btnContas: TUniBitBtn [2]
+  object btnContas: TBitBtn [2]
     Left = 677
     Top = 392
     Width = 100
@@ -49,7 +49,7 @@ inherited frmCliente: TfrmCliente
     TabOrder = 26
     OnClick = btnContasClick
   end
-  object dbeFax: TUniDBEdit [3]
+  object dbeFax: TDBEdit [3]
     Left = 120
     Top = 156
     Width = 105
@@ -60,7 +60,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 7
   end
-  object dbeTelefoneComercial: TUniDBEdit [4]
+  object dbeTelefoneComercial: TDBEdit [4]
     Left = 639
     Top = 300
     Width = 138
@@ -71,7 +71,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 20
   end
-  object dbeRefComercial: TUniDBEdit [5]
+  object dbeRefComercial: TDBEdit [5]
     Left = 528
     Top = 348
     Width = 249
@@ -82,7 +82,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 23
   end
-  object dbeRefPessoal: TUniDBEdit [6]
+  object dbeRefPessoal: TDBEdit [6]
     Left = 280
     Top = 348
     Width = 241
@@ -93,7 +93,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 22
   end
-  object dbeLocalTrabalho: TUniDBEdit [7]
+  object dbeLocalTrabalho: TDBEdit [7]
     Left = 8
     Top = 348
     Width = 265
@@ -104,7 +104,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 21
   end
-  object dbeSalario: TUniDBEdit [8]
+  object dbeSalario: TDBEdit [8]
     Left = 8
     Top = 396
     Width = 129
@@ -116,7 +116,7 @@ inherited frmCliente: TfrmCliente
     TabOrder = 24
     OnKeyPress = dbeSalarioKeyPress
   end
-  object dbeInicioTrabalho: TUniDBEdit [9]
+  object dbeInicioTrabalho: TDBEdit [9]
     Left = 520
     Top = 300
     Width = 113
@@ -127,7 +127,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 19
   end
-  object dbeCargo: TUniDBEdit [10]
+  object dbeCargo: TDBEdit [10]
     Left = 264
     Top = 300
     Width = 249
@@ -138,7 +138,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 18
   end
-  object dbeTrabalho: TUniDBEdit [11]
+  object dbeTrabalho: TDBEdit [11]
     Left = 8
     Top = 300
     Width = 249
@@ -149,7 +149,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 17
   end
-  object dbeEmail: TUniDBEdit [12]
+  object dbeEmail: TDBEdit [12]
     Left = 232
     Top = 156
     Width = 289
@@ -161,7 +161,7 @@ inherited frmCliente: TfrmCliente
     CharCase = ecLowerCase
     TabOrder = 8
   end
-  object dbeNaturalidade: TUniDBEdit [13]
+  object dbeNaturalidade: TDBEdit [13]
     Left = 616
     Top = 204
     Width = 161
@@ -172,7 +172,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 13
   end
-  object dbeDataCadastro: TUniDBEdit [14]
+  object dbeDataCadastro: TDBEdit [14]
     Left = 656
     Top = 156
     Width = 121
@@ -183,7 +183,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 10
   end
-  object dbeMae: TUniDBEdit [15]
+  object dbeMae: TDBEdit [15]
     Left = 312
     Top = 204
     Width = 297
@@ -194,7 +194,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 12
   end
-  object dbePai: TUniDBEdit [16]
+  object dbePai: TDBEdit [16]
     Left = 8
     Top = 204
     Width = 297
@@ -205,7 +205,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 11
   end
-  object dbeConjuge: TUniDBEdit [17]
+  object dbeConjuge: TDBEdit [17]
     Left = 584
     Top = 252
     Width = 193
@@ -216,7 +216,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 16
   end
-  object dbeEnderecoAnterior: TUniDBEdit [18]
+  object dbeEnderecoAnterior: TDBEdit [18]
     Left = 247
     Top = 252
     Width = 322
@@ -227,7 +227,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 15
   end
-  object dbeTempoMoradia: TUniDBEdit [19]
+  object dbeTempoMoradia: TDBEdit [19]
     Left = 8
     Top = 252
     Width = 233
@@ -238,7 +238,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 14
   end
-  object dbeLimite: TUniDBEdit [20]
+  object dbeLimite: TDBEdit [20]
     Left = 144
     Top = 396
     Width = 121
@@ -252,7 +252,7 @@ inherited frmCliente: TfrmCliente
     TabOrder = 25
     OnKeyPress = dbeLimiteKeyPress
   end
-  object dbeDataNasc: TUniDBEdit [21]
+  object dbeDataNasc: TDBEdit [21]
     Left = 528
     Top = 156
     Width = 121
@@ -263,7 +263,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 9
   end
-  object dbeCpf: TUniDBEdit [22]
+  object dbeCpf: TDBEdit [22]
     Left = 376
     Top = 64
     Width = 137
@@ -274,7 +274,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeRg: TUniDBEdit [23]
+  object dbeRg: TDBEdit [23]
     Left = 520
     Top = 64
     Width = 129
@@ -285,7 +285,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeTelefone: TUniDBEdit [24]
+  object dbeTelefone: TDBEdit [24]
     Left = 8
     Top = 156
     Width = 105
@@ -296,7 +296,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbeCep: TUniDBEdit [25]
+  object dbeCep: TDBEdit [25]
     Left = 416
     Top = 108
     Width = 97
@@ -307,7 +307,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbeBairro: TUniDBEdit [26]
+  object dbeBairro: TDBEdit [26]
     Left = 232
     Top = 108
     Width = 177
@@ -318,7 +318,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbeEndereco: TUniDBEdit [27]
+  object dbeEndereco: TDBEdit [27]
     Left = 8
     Top = 108
     Width = 217
@@ -329,7 +329,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeNome: TUniDBEdit [28]
+  object dbeNome: TDBEdit [28]
     Left = 8
     Top = 64
     Width = 361
@@ -340,7 +340,7 @@ inherited frmCliente: TfrmCliente
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbmObs: TUniDBEdit [29]
+  object dbmObs: TDBEdit [29]
     Left = 280
     Top = 396
     Width = 377

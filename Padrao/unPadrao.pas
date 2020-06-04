@@ -11,7 +11,7 @@ uses
   uniGUIApplication;
 
 type
-  TfrmPadrao = class(TUniForm)
+  TfrmPadrao = class(TForm)
     actlNavigateActions: TActionList;
     actInsert: TAction;
     actPrint: TAction;
@@ -22,16 +22,16 @@ type
     dsPadrao: TDataSource;
     actCancelUpdates: TAction;
     actClose: TAction;
-    sbStatus: TUniStatusBar;
-    pnBotoesPadrao: TUniContainerPanel;
-    btnNovo: TUniSpeedButton;
-    btnAlterar: TUniSpeedButton;
-    btnExcluir: TUniSpeedButton;
-    btnSalvar: TUniSpeedButton;
-    btnCancelar: TUniSpeedButton;
-    btnConsultar: TUniSpeedButton;
-    btnSair: TUniSpeedButton;
-    btnPrint: TUniSpeedButton;
+    sbStatus: TStatusBar;
+    pnBotoesPadrao: TContainerPanel;
+    btnNovo: TSpeedButton;
+    btnAlterar: TSpeedButton;
+    btnExcluir: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnCancelar: TSpeedButton;
+    btnConsultar: TSpeedButton;
+    btnSair: TSpeedButton;
+    btnPrint: TSpeedButton;
     procedure actCloseExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -86,13 +86,13 @@ begin
   Action := raAbort;
 
   if Pos('PRIMARY OR UNIQUE KEY', AnsiUpperCase(E.Message)) <> 0 then
-    S := 'Já existe um registro no banco de dados com este mesmo identificador.'
+    S := 'Jï¿½ existe um registro no banco de dados com este mesmo identificador.'
   else
   if Pos('VIOLATION OF FOREIGN KEY', AnsiUpperCase(E.Message)) <> 0 then
     if UpdateKind = ukDelete then
-      S := 'O registro que você está tentando excluir já está sendo utilizado em outras partes do sistema.'
+      S := 'O registro que vocï¿½ estï¿½ tentando excluir jï¿½ estï¿½ sendo utilizado em outras partes do sistema.'
     else
-      S := 'O registro que você está tentando gravar depende de uma informação que foi excluída.'
+      S := 'O registro que vocï¿½ estï¿½ tentando gravar depende de uma informaï¿½ï¿½o que foi excluï¿½da.'
         + CRLF +
         'Verifique o preenchimento dos campos com pesquisa e tente novamente.'
   else
@@ -101,9 +101,9 @@ begin
     S := S + CRLF + CRLF + 'DataSet: ' + DataSet.Owner.Name + CRLF;
 
     case UpdateKind of
-      ukModify: S := S + 'Operação: Alteração' + CRLF;
-      ukInsert: S := S + 'Operação: Inserção' + CRLF;
-      ukDelete: S := S + 'Operação: Exclusão' + CRLF;
+      ukModify: S := S + 'Operaï¿½ï¿½o: Alteraï¿½ï¿½o' + CRLF;
+      ukInsert: S := S + 'Operaï¿½ï¿½o: Inserï¿½ï¿½o' + CRLF;
+      ukDelete: S := S + 'Operaï¿½ï¿½o: Exclusï¿½o' + CRLF;
     end;
 
     raise EDatabaseError.Create(S);
@@ -274,7 +274,7 @@ begin
   begin
     if dsPadrao.DataSet.Fields[I].Required and dsPadrao.DataSet.Fields[I].IsNull then
     begin
-      MsgErro('O campo '+dsPadrao.DataSet.Fields[I].DisplayLabel+' é obrigatório.');
+      MsgErro('O campo '+dsPadrao.DataSet.Fields[I].DisplayLabel+' ï¿½ obrigatï¿½rio.');
       Abort;
     end;
   end;

@@ -12,7 +12,7 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
   ExplicitHeight = 390
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOK: TUniBitBtn
+  object btnOK: TBitBtn
     Left = 632
     Top = 328
     Width = 89
@@ -74,7 +74,7 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
     ModalResult = 1
     TabOrder = 1
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 728
     Top = 328
     Width = 89
@@ -136,7 +136,7 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
     ModalResult = 2
     TabOrder = 2
   end
-  object dbgrdVendaNaoConc: TUniDBGrid
+  object dbgrdVendaNaoConc: TDBGrid
     Left = 8
     Top = 8
     Width = 809

@@ -20,7 +20,7 @@ object frmOrcamentos: TfrmOrcamentos
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object stbOrcamento: TUniStatusBar
+  object stbOrcamento: TStatusBar
     Left = 0
     Top = 507
     Width = 789
@@ -35,7 +35,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ExplicitTop = 527
   end
-  object pnBotoes: TUniContainerPanel
+  object pnBotoes: TContainerPanel
     Left = 0
     Top = 0
     Width = 789
@@ -47,7 +47,7 @@ object frmOrcamentos: TfrmOrcamentos
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 19
     TabStop = False
-    object btnFechar: TUniSpeedButton
+    object btnFechar: TSpeedButton
       Left = 321
       Top = 1
       Width = 32
@@ -171,7 +171,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 0
       OnClick = btnFecharClick
     end
-    object btnConsultar: TUniSpeedButton
+    object btnConsultar: TSpeedButton
       Left = 289
       Top = 1
       Width = 32
@@ -331,7 +331,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 1
       OnClick = btnConsultarClick
     end
-    object btnCancel: TUniSpeedButton
+    object btnCancel: TSpeedButton
       Left = 257
       Top = 1
       Width = 32
@@ -491,7 +491,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 2
       OnClick = btnCancelClick
     end
-    object btnGravar: TUniSpeedButton
+    object btnGravar: TSpeedButton
       Left = 225
       Top = 1
       Width = 32
@@ -651,7 +651,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 3
       OnClick = btnGravarClick
     end
-    object btnExcluir: TUniSpeedButton
+    object btnExcluir: TSpeedButton
       Left = 193
       Top = 1
       Width = 32
@@ -811,7 +811,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 4
       OnClick = btnExcluirClick
     end
-    object btnEditar: TUniSpeedButton
+    object btnEditar: TSpeedButton
       Left = 161
       Top = 1
       Width = 32
@@ -971,7 +971,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 5
       OnClick = btnEditarClick
     end
-    object btnNovo: TUniSpeedButton
+    object btnNovo: TSpeedButton
       Left = 129
       Top = 1
       Width = 32
@@ -1131,7 +1131,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 6
       OnClick = btnNovoClick
     end
-    object btnUltimo: TUniSpeedButton
+    object btnUltimo: TSpeedButton
       Left = 97
       Top = 1
       Width = 32
@@ -1291,7 +1291,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 7
       OnClick = btnUltimoClick
     end
-    object btnProximo: TUniSpeedButton
+    object btnProximo: TSpeedButton
       Left = 65
       Top = 1
       Width = 32
@@ -1451,7 +1451,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 8
       OnClick = btnProximoClick
     end
-    object btnAnterior: TUniSpeedButton
+    object btnAnterior: TSpeedButton
       Left = 33
       Top = 1
       Width = 32
@@ -1611,7 +1611,7 @@ object frmOrcamentos: TfrmOrcamentos
       TabOrder = 9
       OnClick = btnAnteriorClick
     end
-    object btnPrimeiro: TUniSpeedButton
+    object btnPrimeiro: TSpeedButton
       Left = 1
       Top = 1
       Width = 32
@@ -1772,7 +1772,7 @@ object frmOrcamentos: TfrmOrcamentos
       OnClick = btnPrimeiroClick
     end
   end
-  object pnlTotal: TUniContainerPanel
+  object pnlTotal: TContainerPanel
     Left = 0
     Top = 470
     Width = 789
@@ -1785,7 +1785,7 @@ object frmOrcamentos: TfrmOrcamentos
     TabOrder = 18
     TabStop = False
     ExplicitTop = 490
-    object lbItens: TUniLabel
+    object lbItens: TLabel
       Left = 526
       Top = 12
       Width = 29
@@ -1795,7 +1795,7 @@ object frmOrcamentos: TfrmOrcamentos
       Caption = 'Itens'
       TabOrder = 3
     end
-    object lbTotal: TUniLabel
+    object lbTotal: TLabel
       Left = 622
       Top = 12
       Width = 27
@@ -1805,7 +1805,7 @@ object frmOrcamentos: TfrmOrcamentos
       Caption = 'Total'
       TabOrder = 4
     end
-    object dbeItens: TUniDBEdit
+    object dbeItens: TDBEdit
       Left = 558
       Top = 8
       Width = 57
@@ -1818,7 +1818,7 @@ object frmOrcamentos: TfrmOrcamentos
       Color = clBtnFace
       ReadOnly = True
     end
-    object dbeTotal: TUniDBEdit
+    object dbeTotal: TDBEdit
       Left = 653
       Top = 8
       Width = 127
@@ -1834,7 +1834,7 @@ object frmOrcamentos: TfrmOrcamentos
       Color = clInfoBk
     end
   end
-  object LabelObs: TUniLabel
+  object LabelObs: TLabel
     Left = 16
     Top = 120
     Width = 68
@@ -1844,7 +1844,7 @@ object frmOrcamentos: TfrmOrcamentos
     Caption = 'Observa'#231#227'o'
     TabOrder = 21
   end
-  object lbNumero: TUniLabel
+  object lbNumero: TLabel
     Left = 16
     Top = 40
     Width = 76
@@ -1857,7 +1857,7 @@ object frmOrcamentos: TfrmOrcamentos
     Font.Name = 'Verdana'
     TabOrder = 22
   end
-  object LabelStatus: TUniLabel
+  object LabelStatus: TLabel
     Left = 688
     Top = 40
     Width = 36
@@ -1867,7 +1867,7 @@ object frmOrcamentos: TfrmOrcamentos
     Caption = 'Status'
     TabOrder = 23
   end
-  object LabelConcluido: TUniLabel
+  object LabelConcluido: TLabel
     Left = 624
     Top = 40
     Width = 56
@@ -1877,7 +1877,7 @@ object frmOrcamentos: TfrmOrcamentos
     Caption = 'Conclu'#237'do'
     TabOrder = 24
   end
-  object btnInsereProduto: TUniBitBtn
+  object btnInsereProduto: TBitBtn
     Left = 760
     Top = 216
     Width = 24
@@ -1915,7 +1915,7 @@ object frmOrcamentos: TfrmOrcamentos
     TabOrder = 16
     OnClick = btnInsereProdutoClick
   end
-  object dbCliente: TUniDBEdit
+  object dbCliente: TDBEdit
     Left = 144
     Top = 96
     Width = 625
@@ -1928,7 +1928,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ReadOnly = True
   end
-  object edtNumero: TUniDBEdit
+  object edtNumero: TDBEdit
     Left = 16
     Top = 56
     Width = 89
@@ -1941,7 +1941,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbStatus: TUniDBEdit
+  object dbStatus: TDBEdit
     Left = 688
     Top = 56
     Width = 81
@@ -1957,7 +1957,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clInfoBk
     ReadOnly = True
   end
-  object dbConcluido: TUniDBEdit
+  object dbConcluido: TDBEdit
     Left = 624
     Top = 56
     Width = 58
@@ -1973,7 +1973,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbCodCliente: TUniDBEdit
+  object dbCodCliente: TDBEdit
     Left = 16
     Top = 96
     Width = 99
@@ -1986,7 +1986,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbProduto: TUniDBEdit
+  object dbProduto: TDBEdit
     Left = 2
     Top = 216
     Width = 279
@@ -1999,7 +1999,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbQtde: TUniDBEdit
+  object dbQtde: TDBEdit
     Left = 303
     Top = 216
     Width = 50
@@ -2010,7 +2010,7 @@ object frmOrcamentos: TfrmOrcamentos
     DataSource = dsSelecao
     TabOrder = 10
   end
-  object dbCusto: TUniDBEdit
+  object dbCusto: TDBEdit
     Left = 355
     Top = 216
     Width = 77
@@ -2021,7 +2021,7 @@ object frmOrcamentos: TfrmOrcamentos
     DataSource = dsSelecao
     TabOrder = 11
   end
-  object dbVenda: TUniDBEdit
+  object dbVenda: TDBEdit
     Left = 434
     Top = 216
     Width = 76
@@ -2033,7 +2033,7 @@ object frmOrcamentos: TfrmOrcamentos
     TabOrder = 12
     OnExit = dbVendaExit
   end
-  object dbDescto: TUniDBEdit
+  object dbDescto: TDBEdit
     Left = 512
     Top = 216
     Width = 73
@@ -2045,7 +2045,7 @@ object frmOrcamentos: TfrmOrcamentos
     TabOrder = 13
     OnExit = dbDesctoExit
   end
-  object dbValorDescto: TUniDBEdit
+  object dbValorDescto: TDBEdit
     Left = 587
     Top = 216
     Width = 83
@@ -2056,7 +2056,7 @@ object frmOrcamentos: TfrmOrcamentos
     DataSource = dsSelecao
     TabOrder = 14
   end
-  object dbTotalItem: TUniDBEdit
+  object dbTotalItem: TDBEdit
     Left = 672
     Top = 216
     Width = 87
@@ -2067,7 +2067,7 @@ object frmOrcamentos: TfrmOrcamentos
     DataSource = dsSelecao
     TabOrder = 15
   end
-  object dbdDataOrcam: TUniDBEdit
+  object dbdDataOrcam: TDBEdit
     Left = 111
     Top = 56
     Width = 122
@@ -2078,7 +2078,7 @@ object frmOrcamentos: TfrmOrcamentos
     DataSource = dsOrcam
     TabOrder = 1
   end
-  object dbeIdVendedor: TUniDBEdit
+  object dbeIdVendedor: TDBEdit
     Left = 240
     Top = 56
     Width = 91
@@ -2091,7 +2091,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeVendedor: TUniDBEdit
+  object dbeVendedor: TDBEdit
     Left = 360
     Top = 56
     Width = 257
@@ -2104,7 +2104,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ReadOnly = True
   end
-  object bvlLinha: TUniPanel
+  object bvlLinha: TPanel
     Left = 1
     Top = 192
     Width = 783
@@ -2114,7 +2114,7 @@ object frmOrcamentos: TfrmOrcamentos
     TabOrder = 25
     Caption = 'bvlLinha'
   end
-  object dbmObs: TUniDBMemo
+  object dbmObs: TDBMemo
     Left = 16
     Top = 136
     Width = 753
@@ -2126,7 +2126,7 @@ object frmOrcamentos: TfrmOrcamentos
     ScrollBars = ssVertical
     TabOrder = 8
   end
-  object grdItens: TUniDBGrid
+  object grdItens: TDBGrid
     Left = 0
     Top = 256
     Width = 789
@@ -2734,140 +2734,140 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 208
     Top = 288
   end
-  object Menu: TUniMainMenu
+  object Menu: TMainMenu
     Left = 131
     Top = 293
-    object miRegistro: TUniMenuItem
+    object miRegistro: TMenuItem
       Caption = 'Registros'
-      object miPrimeiro: TUniMenuItem
+      object miPrimeiro: TMenuItem
         Caption = 'Primeiro'
         OnClick = btnPrimeiroClick
       end
-      object miAnterior: TUniMenuItem
+      object miAnterior: TMenuItem
         Caption = 'Anterior'
         OnClick = btnAnteriorClick
       end
-      object miProximo: TUniMenuItem
+      object miProximo: TMenuItem
         Caption = 'Pr'#243'ximo'
         OnClick = btnProximoClick
       end
-      object miUltimo: TUniMenuItem
+      object miUltimo: TMenuItem
         Caption = #218'ltimo'
         OnClick = btnUltimoClick
       end
-      object N1: TUniMenuItem
+      object N1: TMenuItem
         Caption = '-'
       end
-      object miNovo: TUniMenuItem
+      object miNovo: TMenuItem
         Caption = 'Novo'
         OnClick = btnNovoClick
       end
-      object miDeletar: TUniMenuItem
+      object miDeletar: TMenuItem
         Caption = 'Deletar'
         OnClick = btnExcluirClick
       end
-      object miAlterar: TUniMenuItem
+      object miAlterar: TMenuItem
         Caption = 'Alterar'
         ShortCut = 116
         OnClick = btnEditarClick
       end
-      object N2: TUniMenuItem
+      object N2: TMenuItem
         Caption = '-'
       end
-      object miSalvar: TUniMenuItem
+      object miSalvar: TMenuItem
         Caption = 'Salvar'
         OnClick = btnGravarClick
       end
-      object miCancelar: TUniMenuItem
+      object miCancelar: TMenuItem
         Caption = 'Cancelar'
         OnClick = btnCancelClick
       end
-      object N3: TUniMenuItem
+      object N3: TMenuItem
         Caption = '-'
       end
-      object miFechar: TUniMenuItem
+      object miFechar: TMenuItem
         Caption = 'Fechar'
         ShortCut = 27
         OnClick = btnFecharClick
       end
     end
-    object mFerramentas: TUniMenuItem
+    object mFerramentas: TMenuItem
       Caption = 'Ferramentas'
-      object miLocalizar: TUniMenuItem
+      object miLocalizar: TMenuItem
         Caption = '&Localizar por n'#250'mero'
         ShortCut = 119
         OnClick = btnConsultarClick
       end
-      object miOutroFiltro: TUniMenuItem
+      object miOutroFiltro: TMenuItem
         Caption = 'Outro filtros'
-        object miFiltrarData: TUniMenuItem
+        object miFiltrarData: TMenuItem
           Caption = 'Filtrar por data'
           OnClick = miFiltrarDataClick
         end
-        object miFiltrarCliente: TUniMenuItem
+        object miFiltrarCliente: TMenuItem
           Caption = 'Filtrar por cliente'
         end
       end
-      object miLimpaFiltro: TUniMenuItem
+      object miLimpaFiltro: TMenuItem
         Caption = 'Limpar filtro'
         OnClick = miLimpaFiltroClick
       end
-      object N5: TUniMenuItem
+      object N5: TMenuItem
         Caption = '-'
       end
-      object miContar: TUniMenuItem
+      object miContar: TMenuItem
         Caption = 'Contar registros'
       end
-      object N7: TUniMenuItem
+      object N7: TMenuItem
         Caption = '-'
       end
-      object miCadastraCliente: TUniMenuItem
+      object miCadastraCliente: TMenuItem
         Caption = 'Cadastrar cliente'
         OnClick = miCadastraClienteClick
       end
-      object miCadastrarvendedor: TUniMenuItem
+      object miCadastrarvendedor: TMenuItem
         Caption = 'Cadastrar vendedor'
         OnClick = miCadastrarvendedorClick
       end
-      object miCadastrarproduto: TUniMenuItem
+      object miCadastrarproduto: TMenuItem
         Caption = 'Cadastrar produto'
         OnClick = miCadastrarprodutoClick
       end
     end
-    object miOpcoes: TUniMenuItem
+    object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
-      object miConcluir: TUniMenuItem
+      object miConcluir: TMenuItem
         Caption = 'Concluir or'#231'amento'
         ShortCut = 117
         OnClick = miConcluirClick
       end
-      object miReabrir: TUniMenuItem
+      object miReabrir: TMenuItem
         Caption = 'Reabrir or'#231'amento'
         ShortCut = 118
         OnClick = miReabrirClick
       end
-      object N6: TUniMenuItem
+      object N6: TMenuItem
         Caption = '-'
       end
-      object miAplicarDesc: TUniMenuItem
+      object miAplicarDesc: TMenuItem
         Caption = 'Aplicar desconto no total'
         OnClick = miAplicarDescClick
       end
     end
-    object miRelatorio: TUniMenuItem
+    object miRelatorio: TMenuItem
       Caption = '&Relat'#243'rios'
-      object miRelOramento: TUniMenuItem
+      object miRelOramento: TMenuItem
         Caption = 'Or'#231'amento atual'
         OnClick = miRelOramentoClick
       end
-      object miRelOrcam: TUniMenuItem
+      object miRelOrcam: TMenuItem
         Caption = 'Or'#231'amento por data'
         OnClick = miRelOrcamClick
       end
-      object N4: TUniMenuItem
+      object N4: TMenuItem
         Caption = '-'
       end
-      object Oramentoembobina1: TUniMenuItem
+      object Oramentoembobina1: TMenuItem
         Caption = 'Or'#231'amento em bobina'
         OnClick = Oramentoembobina1Click
       end

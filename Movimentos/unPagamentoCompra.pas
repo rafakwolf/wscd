@@ -9,7 +9,7 @@ uses
   uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmPagamentoCompra = class(TUniForm)
+  TfrmPagamentoCompra = class(TForm)
     sqldCompra: TSQLDataSet;
     dsCompra: TDataSource;
     dspCompra: TDataSetProvider;
@@ -22,9 +22,9 @@ type
     sqldCompraVALORRESTO: TFMTBCDField;
     cdsCompraVALORPAGO: TFMTBCDField;
     cdsCompraVALORRESTO: TFMTBCDField;
-    lbStatus: TUniLabel;
-    btnOk: TUniBitBtn;
-    dbgrdPagamento: TUniDBGrid;
+    lbStatus: TLabel;
+    btnOk: TBitBtn;
+    dbgrdPagamento: TDBGrid;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
@@ -93,11 +93,11 @@ begin
     Open;
 
     if (FieldByName('RESTO').AsFloat = 0) then
-      lbStatus.Caption := 'Compra concluída'
+      lbStatus.Caption := 'Compra concluï¿½da'
     else if (FieldByName('RESTO').AsFloat > 0) then
       lbStatus.Caption := 'Restante: R$ '+FormatFloat('#,##0.00', FieldByName('RESTO').AsFloat)
     else
-      lbStatus.Caption := 'Compra não concluída';
+      lbStatus.Caption := 'Compra nï¿½o concluï¿½da';
       
   finally
     Free;

@@ -29,7 +29,7 @@ type
     cdsClienteDATA_NASC: TDateField;
     cdsClienteLIMITE: TFMTBCDField;
     cdsClienteDESCRICAO: TStringField;
-    dbeCliente: TUniDBEdit;
+    dbeCliente: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

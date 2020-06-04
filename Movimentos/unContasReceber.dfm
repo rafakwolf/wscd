@@ -11,7 +11,7 @@ inherited frmContasReceber: TfrmContasReceber
   ExplicitHeight = 447
   PixelsPerInch = 96
   TextHeight = 13
-  object Stb: TUniStatusBar
+  object Stb: TStatusBar
     Left = 0
     Top = 399
     Width = 762
@@ -26,7 +26,7 @@ inherited frmContasReceber: TfrmContasReceber
     Color = clBtnFace
     ExplicitTop = 380
   end
-  object pnBotoes: TUniContainerPanel
+  object pnBotoes: TContainerPanel
     Left = 0
     Top = 0
     Width = 762
@@ -38,7 +38,7 @@ inherited frmContasReceber: TfrmContasReceber
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 2
     TabStop = False
-    object btnExcluir: TUniSpeedButton
+    object btnExcluir: TSpeedButton
       Left = 100
       Top = 1
       Width = 95
@@ -201,7 +201,7 @@ inherited frmContasReceber: TfrmContasReceber
       TabOrder = 0
       OnClick = btnExcluirClick
     end
-    object btnRecebidas: TUniSpeedButton
+    object btnRecebidas: TSpeedButton
       Left = 196
       Top = 1
       Width = 95
@@ -271,7 +271,7 @@ inherited frmContasReceber: TfrmContasReceber
       TabOrder = 1
       OnClick = btnRecebidasClick
     end
-    object btnReceber: TUniSpeedButton
+    object btnReceber: TSpeedButton
       Left = 4
       Top = 1
       Width = 95
@@ -337,7 +337,7 @@ inherited frmContasReceber: TfrmContasReceber
       TabOrder = 2
       OnClick = btnReceberClick
     end
-    object btnFechar: TUniSpeedButton
+    object btnFechar: TSpeedButton
       Left = 296
       Top = 1
       Width = 95
@@ -462,7 +462,7 @@ inherited frmContasReceber: TfrmContasReceber
       OnClick = btnFecharClick
     end
   end
-  object grpCliente: TUniGroupBox
+  object grpCliente: TGroupBox
     Left = 7
     Top = 41
     Width = 448
@@ -472,7 +472,7 @@ inherited frmContasReceber: TfrmContasReceber
     Caption = ' Cliente '
     TabOrder = 1
     TabStop = False
-    object dbeCliente: TUniDBEdit
+    object dbeCliente: TDBEdit
       Left = 8
       Top = 16
       Width = 433
@@ -486,7 +486,7 @@ inherited frmContasReceber: TfrmContasReceber
       ReadOnly = True
     end
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 0
     Top = 104
     Width = 762
@@ -826,23 +826,23 @@ inherited frmContasReceber: TfrmContasReceber
     Left = 392
     Top = 176
   end
-  object mnuCP: TUniMainMenu
+  object mnuCP: TMainMenu
     Left = 256
     Top = 192
-    object miOpcoes: TUniMenuItem
+    object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
-      object miReceber: TUniMenuItem
+      object miReceber: TMenuItem
         Caption = 'Receber'
         OnClick = btnReceberClick
       end
-      object miExcluir: TUniMenuItem
+      object miExcluir: TMenuItem
         Caption = 'Excluir'
         OnClick = btnExcluirClick
       end
-      object N1: TUniMenuItem
+      object N1: TMenuItem
         Caption = '-'
       end
-      object miVencendoHoje: TUniMenuItem
+      object miVencendoHoje: TMenuItem
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
           1800000000000003000000000000000000000000000000000000FF00FFFF00FF
@@ -873,7 +873,7 @@ inherited frmContasReceber: TfrmContasReceber
         Caption = 'Vencendo hoje'
         OnClick = miVencendoHojeClick
       end
-      object miRecebidas: TUniMenuItem
+      object miRecebidas: TMenuItem
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
           1800000000000003000000000000000000000000000000000000FF00FFFF00FF
@@ -904,7 +904,7 @@ inherited frmContasReceber: TfrmContasReceber
         Caption = 'Contas recebidas'
         OnClick = btnRecebidasClick
       end
-      object miContasVencidas: TUniMenuItem
+      object miContasVencidas: TMenuItem
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
           1800000000000003000000000000000000000000000000000000FF00FFFF00FF
@@ -935,7 +935,7 @@ inherited frmContasReceber: TfrmContasReceber
         Caption = 'Contas vencidas'
         OnClick = miContasVencidasClick
       end
-      object miTodasContas: TUniMenuItem
+      object miTodasContas: TMenuItem
         Bitmap.Data = {
           36030000424D360300000000000036000000280000000F000000100000000100
           1800000000000003000000000000000000000000000000000000FF00FFFF00FF
@@ -966,24 +966,24 @@ inherited frmContasReceber: TfrmContasReceber
         Caption = 'Todas as contas'
         OnClick = miTodasContasClick
       end
-      object N3: TUniMenuItem
+      object N3: TMenuItem
         Caption = '-'
       end
-      object miBuscarCliente: TUniMenuItem
+      object miBuscarCliente: TMenuItem
         Caption = 'Buscar por cliente'
         OnClick = miBuscarClienteClick
       end
-      object N5: TUniMenuItem
+      object N5: TMenuItem
         Caption = '-'
       end
-      object miFechar: TUniMenuItem
+      object miFechar: TMenuItem
         Caption = 'Fechar'
         ShortCut = 16467
       end
     end
-    object miRelatorios: TUniMenuItem
+    object miRelatorios: TMenuItem
       Caption = 'Relat'#243'rios'
-      object miRecibo: TUniMenuItem
+      object miRecibo: TMenuItem
         Caption = 'Recibo'
         OnClick = miReciboClick
       end

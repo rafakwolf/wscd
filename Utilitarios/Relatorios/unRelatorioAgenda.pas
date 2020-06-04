@@ -24,10 +24,10 @@ type
     sqldAgendaTELEFONE2: TStringField;
     sqldAgendaTELEFONE3: TStringField;
     sqldAgendaFAX: TStringField;
-    lbTelefone: TUniLabel;
-    dbeNome: TUniDBEdit;
-    edFone: TUniEdit;
-    rgTipoRelatorio: TUniRadioGroup;
+    lbTelefone: TLabel;
+    dbeNome: TDBEdit;
+    edFone: TEdit;
+    rgTipoRelatorio: TRadioGroup;
     procedure FormShow(Sender: TObject);
     procedure dbeNomeClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

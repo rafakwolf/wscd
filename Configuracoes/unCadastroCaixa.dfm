@@ -9,36 +9,36 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   ExplicitHeight = 193
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 145
     Width = 535
     ExplicitTop = 145
     ExplicitWidth = 535
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 535
     TabOrder = 3
     ExplicitWidth = 535
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Left = 253
       Width = 65
       ExplicitLeft = 253
       ExplicitWidth = 65
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Left = 378
       Width = 53
       ExplicitLeft = 378
       ExplicitWidth = 53
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Left = 319
       Width = 59
       ExplicitLeft = 319
       ExplicitWidth = 59
     end
   end
-  object dbeNomeCaixa: TUniDBEdit [2]
+  object dbeNomeCaixa: TDBEdit [2]
     Left = 64
     Top = 83
     Width = 305
@@ -49,7 +49,7 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbeCodCaixa: TUniDBEdit [3]
+  object dbeCodCaixa: TDBEdit [3]
     Left = 64
     Top = 57
     Width = 121
@@ -60,7 +60,7 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbchkInativo: TUniDBCheckBox [4]
+  object dbchkInativo: TDBCheckBox [4]
     Left = 64
     Top = 109
     Width = 63

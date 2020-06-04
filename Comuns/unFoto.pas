@@ -9,9 +9,9 @@ uses
 
 type
   TfrmFoto = class(TfrmSimplePadrao)
-    btnOK: TUniBitBtn;
-    btnCancel: TUniBitBtn;
-    grpFoto: TUniGroupBox;
+    btnOK: TBitBtn;
+    btnCancel: TBitBtn;
+    grpFoto: TGroupBox;
     procedure FormShow(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
@@ -56,7 +56,7 @@ begin
       //cmrWeb.Actif := True;
     except
       MsgErro('Ocorreu um erro ao tentar ativar a Web-cam.'+#13+
-        'Certifique-se de que a câmera esteja conectada e corretamente configurada.');
+        'Certifique-se de que a cï¿½mera esteja conectada e corretamente configurada.');
     end;
   finally
   end;

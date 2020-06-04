@@ -9,11 +9,11 @@ uses
   uniImage, uniCheckBox;
 
 type
-  TfrmAcesso = class(TUniLoginForm)
-    btnOK: TUniBitBtn;
-    edtUsuario: TUniEdit;
-    edtSenha: TUniEdit;
-    ckbLembrarLogin: TUniCheckBox;
+  TfrmAcesso = class(TLoginForm)
+    btnOK: TBitBtn;
+    edtUsuario: TEdit;
+    edtSenha: TEdit;
+    ckbLembrarLogin: TCheckBox;
     procedure btnOkClick(Sender: TObject);
   private
     Ok: Boolean;
@@ -72,7 +72,7 @@ procedure TfrmAcesso.btnOkClick(Sender: TObject);
 begin
   if Trim(edtUsuario.Text).IsEmpty then
   begin
-    MsgErro('','Informe o usuário.');
+    MsgErro('','Informe o usuï¿½rio.');
     ModalResult := mrNone;
     edtUsuario.SetFocus;
     Exit;
@@ -99,12 +99,12 @@ begin
     else
     begin
       ModalResult := mrNone;
-      MsgErro('','Usuário ou Senha está incorreto.');
+      MsgErro('','Usuï¿½rio ou Senha estï¿½ incorreto.');
       Abort;
     end;
   end
   else
-    raise Exception.Create('Nenhum usuário cadastrado.');
+    raise Exception.Create('Nenhum usuï¿½rio cadastrado.');
 
   ModalResult := mrOk;
 end;

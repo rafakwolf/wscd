@@ -7,7 +7,7 @@ uses
   Dialogs, RLReport, uniGUIForm;
 
 type
-  TfrmPrevRecibo = class(TUniForm)
+  TfrmPrevRecibo = class(TForm)
     rrRecibo: TRLReport;
     rbDetalhe: TRLBand;
     lbEmpresa: TRLLabel;

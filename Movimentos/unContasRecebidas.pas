@@ -69,22 +69,22 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALRECDO: TSingleField;
-    mmContasRecebidas: TUniMainMenu;
-    miOpcoes: TUniMenuItem;
-    miEstornar: TUniMenuItem;
-    miAtualizar: TUniMenuItem;
-    N1: TUniMenuItem;
-    miFechar: TUniMenuItem;
-    Stb: TUniStatusBar;
-    pnBotoes: TUniContainerPanel;
-    btnAtualizar: TUniSpeedButton;
-    btnEstornar: TUniSpeedButton;
-    btnFechar: TUniSpeedButton;
-    grpCliente: TUniGroupBox;
-    dbeCliente: TUniDBEdit;
-    grpFiltro: TUniGroupBox;
-    lbFiltroUsado: TUniLabel;
-    Grade: TUniDBGrid;
+    mmContasRecebidas: TMainMenu;
+    miOpcoes: TMenuItem;
+    miEstornar: TMenuItem;
+    miAtualizar: TMenuItem;
+    N1: TMenuItem;
+    miFechar: TMenuItem;
+    Stb: TStatusBar;
+    pnBotoes: TContainerPanel;
+    btnAtualizar: TSpeedButton;
+    btnEstornar: TSpeedButton;
+    btnFechar: TSpeedButton;
+    grpCliente: TGroupBox;
+    dbeCliente: TDBEdit;
+    grpFiltro: TGroupBox;
+    lbFiltroUsado: TLabel;
+    Grade: TDBGrid;
     procedure btnFecharClick(Sender: TObject);
     procedure btnAtualizarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -153,7 +153,7 @@ begin
        cdsPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
        cdsPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
        cdsPadrao.Open;
-       lbFiltroUsado.Caption := 'Período de '+DataI+' até '+DataF;
+       lbFiltroUsado.Caption := 'Perï¿½odo de '+DataI+' atï¿½ '+DataF;
      end;
    end;
    1: begin
@@ -203,8 +203,8 @@ begin
       Estornar;
   end
   else
-    MsgAviso('Não há conta marcada para estorno.'+#13#10+
-      'Para marcar/desmarcar dê um duplo clique sobre a conta desejada.');
+    MsgAviso('Nï¿½o hï¿½ conta marcada para estorno.'+#13#10+
+      'Para marcar/desmarcar dï¿½ um duplo clique sobre a conta desejada.');
 end;
 
 procedure TfrmContasRecebidas.Estornar;
@@ -230,7 +230,7 @@ begin
       cdsConta.Open;
       if cdsConta.Locate('ORIGEM', cdsPadraoCODIGO.AsInteger, []) then
       begin
-        MsgAviso('O recebimento desta conta gerou a conta restante de código = ' +
+        MsgAviso('O recebimento desta conta gerou a conta restante de cï¿½digo = ' +
           IntToStr(cdsContaCODIGO.AsInteger) + '.' + #13#10 +
           'Exclua a conta restante para prosseguir.');
         Abort;

@@ -18,7 +18,7 @@ object frmCompNaoConc: TfrmCompNaoConc
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnConsultar: TUniBitBtn
+  object btnConsultar: TBitBtn
     Left = 512
     Top = 256
     Width = 89
@@ -80,7 +80,7 @@ object frmCompNaoConc: TfrmCompNaoConc
     TabOrder = 0
     OnClick = btnConsultarClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 608
     Top = 256
     Width = 89
@@ -133,7 +133,7 @@ object frmCompNaoConc: TfrmCompNaoConc
     TabOrder = 1
     OnClick = btnCancelarClick
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 8
     Top = 8
     Width = 689

@@ -27,7 +27,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     TabOrder = 6
     Visible = False
   end
-  object lbCampo: TUniLabel
+  object lbCampo: TLabel
     Left = 8
     Top = 5
     Width = 41
@@ -37,7 +37,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Caption = 'Campo'
     TabOrder = 8
   end
-  object lbDados: TUniLabel
+  object lbDados: TLabel
     Left = 168
     Top = 5
     Width = 108
@@ -47,7 +47,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Caption = 'Dados da pesquisa'
     TabOrder = 9
   end
-  object btnBuscar: TUniBitBtn
+  object btnBuscar: TBitBtn
     Left = 488
     Top = 16
     Width = 25
@@ -85,7 +85,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Default = True
     OnClick = btnBuscarClick
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 512
     Top = 320
     Width = 89
@@ -147,7 +147,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     TabOrder = 3
     OnClick = btnOkClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 608
     Top = 320
     Width = 89
@@ -209,7 +209,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     TabOrder = 4
     OnClick = btnCancelarClick
   end
-  object grpStatus: TUniGroupBox
+  object grpStatus: TGroupBox
     Left = 520
     Top = 8
     Width = 177
@@ -219,7 +219,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Caption = ' Status '
     TabOrder = 7
     TabStop = False
-    object lbStatus: TUniLabel
+    object lbStatus: TLabel
       Left = 5
       Top = 14
       Width = 55
@@ -237,7 +237,7 @@ object frmImportaOrcam: TfrmImportaOrcam
       TabOrder = 0
     end
   end
-  object cmbCampo: TUniComboBox
+  object cmbCampo: TComboBox
     Left = 8
     Top = 20
     Width = 153
@@ -252,7 +252,7 @@ object frmImportaOrcam: TfrmImportaOrcam
       'Por data')
     TabOrder = 1
   end
-  object edtPesquisa: TUniEdit
+  object edtPesquisa: TEdit
     Left = 168
     Top = 20
     Width = 313
@@ -262,7 +262,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Text = ''
     TabOrder = 0
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 8
     Top = 48
     Width = 689

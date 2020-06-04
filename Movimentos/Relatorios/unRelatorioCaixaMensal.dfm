@@ -7,17 +7,17 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
   ExplicitHeight = 207
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 134
     Width = 369
     TabOrder = 3
     ExplicitTop = 134
     ExplicitWidth = 369
-    inherited btnVisualizar: TUniBitBtn
+    inherited btnVisualizar: TBitBtn
       OnClick = btnVisualizarClick
     end
   end
-  object edtMes: TUniEdit [1]
+  object edtMes: TEdit [1]
     Left = 32
     Top = 80
     Width = 41
@@ -28,7 +28,7 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
     TabOrder = 1
     OnExit = edtMesExit
   end
-  object edtAno: TUniEdit [2]
+  object edtAno: TEdit [2]
     Left = 80
     Top = 80
     Width = 65
@@ -39,7 +39,7 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
     TabOrder = 2
     OnExit = edtAnoExit
   end
-  object rgOrd: TUniRadioGroup [3]
+  object rgOrd: TRadioGroup [3]
     Left = 8
     Top = 8
     Width = 361

@@ -8,7 +8,7 @@ uses
   RLConsts, UniGuiForm;
 
 type
-  TfrmModeloRelatorio = class(TUniForm)
+  TfrmModeloRelatorio = class(TForm)
     sqldPadrao: TSQLDataSet;
     dspPadrao: TDataSetProvider;
     cdsPadrao: TClientDataSet;

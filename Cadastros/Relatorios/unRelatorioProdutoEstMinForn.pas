@@ -10,7 +10,7 @@ uses
 
 type
   TfrmRelatorioProdutoEstMinForn = class(TfrmDialogoRelatorioPadrao)
-    dbeForn: TUniDBEdit;
+    dbeForn: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbeFornClickButton(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);

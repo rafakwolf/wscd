@@ -5,11 +5,11 @@ inherited frmRelatorioFornecedorCidade: TfrmRelatorioFornecedorCidade
   ExplicitHeight = 217
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 144
     ExplicitTop = 144
   end
-  object dbeCidade: TUniDBEdit [1]
+  object dbeCidade: TDBEdit [1]
     Left = 48
     Top = 56
     Width = 331

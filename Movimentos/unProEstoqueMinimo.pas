@@ -9,7 +9,7 @@ uses
   uniBitBtn, uniGuiForm, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmProEstoqueMinimo = class(TUniForm)
+  TfrmProEstoqueMinimo = class(TForm)
     dspProdEM: TDataSetProvider;
     cdsProdEM: TClientDataSet;
     dsProdEM: TDataSource;
@@ -24,9 +24,9 @@ type
     cdsProdEMPRO_ESTOQUE: TIntegerField;
     cdsProdEMQTDE_MINIMA: TIntegerField;
     cdsProdEMFORNECEDOR: TStringField;
-    btnFechar: TUniBitBtn;
-    btnZerarNegativo: TUniBitBtn;
-    GradeProd: TUniDBGrid;
+    btnFechar: TBitBtn;
+    btnZerarNegativo: TBitBtn;
+    GradeProd: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnZerarNegativoClick(Sender: TObject);
@@ -54,7 +54,7 @@ var
   i: Integer;
   FSQL: string;
 begin
-  i := FormRadioButtons('Estoque negativo, Menor que o mínimo', 'Seleção', 1);
+  i := FormRadioButtons('Estoque negativo, Menor que o mï¿½nimo', 'Seleï¿½ï¿½o', 1);
 
   if i = -1 then
   begin
@@ -88,7 +88,7 @@ end;
 procedure TfrmProEstoqueMinimo.btnZerarNegativoClick(Sender: TObject);
 begin
   try
-    if MsgSN('Deseja realmente zerar o estoque que está negativo?') then
+    if MsgSN('Deseja realmente zerar o estoque que estï¿½ negativo?') then
     begin
       UpdateSingleField('UPDATE PRODUTOS SET ESTOQUE = 0 WHERE (ESTOQUE < 0)');
       MsgAviso('Estoque alterado com sucesso.');

@@ -7,13 +7,13 @@ inherited frmRelatorioProdutoGrupo: TfrmRelatorioProdutoGrupo
   ExplicitHeight = 167
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 94
     Width = 353
     ExplicitTop = 94
     ExplicitWidth = 353
   end
-  object dbeGrupo: TUniDBEdit [1]
+  object dbeGrupo: TDBEdit [1]
     Left = 16
     Top = 40
     Width = 307

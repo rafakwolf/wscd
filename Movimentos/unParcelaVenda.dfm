@@ -18,7 +18,7 @@ object frmParcelaVenda: TfrmParcelaVenda
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbParcelas: TUniLabel
+  object lbParcelas: TLabel
     Left = 208
     Top = 48
     Width = 40
@@ -28,7 +28,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     Caption = 'Parcelas'
     TabOrder = 11
   end
-  object lbPrazoInicio: TUniLabel
+  object lbPrazoInicio: TLabel
     Left = 288
     Top = 48
     Width = 57
@@ -38,7 +38,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     Caption = 'Prazo Inicial'
     TabOrder = 12
   end
-  object lbIntervalo: TUniLabel
+  object lbIntervalo: TLabel
     Left = 368
     Top = 48
     Width = 44
@@ -48,7 +48,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     Caption = 'Intervalo'
     TabOrder = 13
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 256
     Top = 408
     Width = 89
@@ -110,7 +110,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     TabOrder = 0
     OnClick = btnOkClick
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 352
     Top = 408
     Width = 89
@@ -163,7 +163,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     ModalResult = 2
     TabOrder = 1
   end
-  object btnCalcular: TUniBitBtn
+  object btnCalcular: TBitBtn
     Left = 8
     Top = 408
     Width = 89
@@ -205,7 +205,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     TabOrder = 9
     OnClick = btnCalcularClick
   end
-  object edtRestoVenda: TUniEdit
+  object edtRestoVenda: TEdit
     Left = 104
     Top = 64
     Width = 97
@@ -217,7 +217,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeCodCliente: TUniDBEdit
+  object dbeCodCliente: TDBEdit
     Left = 8
     Top = 24
     Width = 89
@@ -228,7 +228,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     DataSource = dsVenda
     TabOrder = 2
   end
-  object dbeNomeCliente: TUniDBEdit
+  object dbeNomeCliente: TDBEdit
     Left = 104
     Top = 24
     Width = 337
@@ -239,7 +239,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     DataSource = dsVenda
     TabOrder = 3
   end
-  object dbeDataVenda: TUniDBEdit
+  object dbeDataVenda: TDBEdit
     Left = 8
     Top = 64
     Width = 89
@@ -250,7 +250,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     DataSource = dsVenda
     TabOrder = 4
   end
-  object seParcelas: TUniSpinEdit
+  object seParcelas: TSpinEdit
     Left = 208
     Top = 64
     Width = 73
@@ -261,7 +261,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     TabOrder = 5
     OnExit = seParcelasExit
   end
-  object sePrazoInicio: TUniSpinEdit
+  object sePrazoInicio: TSpinEdit
     Left = 288
     Top = 64
     Width = 73
@@ -272,7 +272,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     TabOrder = 6
     OnExit = seParcelasExit
   end
-  object seIntervalo: TUniSpinEdit
+  object seIntervalo: TSpinEdit
     Left = 368
     Top = 64
     Width = 73
@@ -283,7 +283,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     TabOrder = 7
     OnExit = seParcelasExit
   end
-  object dbgrdParcelas: TUniDBGrid
+  object dbgrdParcelas: TDBGrid
     Left = 8
     Top = 96
     Width = 433

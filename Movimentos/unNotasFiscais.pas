@@ -11,7 +11,7 @@ uses
   uniEdit, uniDBEdit, uniGUIForm, uniMemo, uniDBMemo, uniBasicGrid, uniDBGrid;
 
 type
-  TfrmNotasFiscais = class(TUniForm)
+  TfrmNotasFiscais = class(TForm)
     dsDetNFiscais: TDataSource;
     dsNotasFiscais: TDataSource;
     sqldSelecao: TSQLDataSet;
@@ -143,100 +143,100 @@ type
     cdsProdutosPROMOCAO: TStringField;
     sqldBaixa: TSQLDataSet;
     sqldEstorna: TSQLDataSet;
-    mnNotasFiscais: TUniMainMenu;
-    miRegistros: TUniMenuItem;
-    miPrimeiro: TUniMenuItem;
-    miAnterior: TUniMenuItem;
-    miProximo: TUniMenuItem;
-    miUltimo: TUniMenuItem;
-    N1: TUniMenuItem;
-    miNovo: TUniMenuItem;
-    miExcluir: TUniMenuItem;
-    miAlterar: TUniMenuItem;
-    N2: TUniMenuItem;
-    miSalvar: TUniMenuItem;
-    miCancelar: TUniMenuItem;
-    N3: TUniMenuItem;
-    miFechar: TUniMenuItem;
-    miFerramentas: TUniMenuItem;
-    miLocalizar: TUniMenuItem;
-    miOutrosFiltros: TUniMenuItem;
-    miFiltroData: TUniMenuItem;
-    miFiltrarForn: TUniMenuItem;
-    N6: TUniMenuItem;
-    miCompraNaoConc: TUniMenuItem;
-    miMostrarTodos: TUniMenuItem;
-    N5: TUniMenuItem;
-    miContar: TUniMenuItem;
-    N9: TUniMenuItem;
-    miCadastraForn: TUniMenuItem;
-    miCadastrarCFOP: TUniMenuItem;
-    miCadastrodeproduto: TUniMenuItem;
-    miOpcoes: TUniMenuItem;
-    miConcluir: TUniMenuItem;
-    miEstornar: TUniMenuItem;
-    N8: TUniMenuItem;
-    miPagamentoCompra: TUniMenuItem;
-    miRelatorios: TUniMenuItem;
-    miCompraAtual: TUniMenuItem;
-    N7: TUniMenuItem;
-    miRelDatas: TUniMenuItem;
-    miRelForn: TUniMenuItem;
-    N4: TUniMenuItem;
-    miListaFaturamForn: TUniMenuItem;
-    miListaFaturaCorrente: TUniMenuItem;
-    stbCompra: TUniStatusBar;
-    PanelTotais: TUniContainerPanel;
-    pnlBotoes: TUniContainerPanel;
-    btnFechar: TUniSpeedButton;
-    btnConsultar: TUniSpeedButton;
-    btnCancelar: TUniSpeedButton;
-    btnSalvar: TUniSpeedButton;
-    btnExcluir: TUniSpeedButton;
-    btnEditar: TUniSpeedButton;
-    btnNovo: TUniSpeedButton;
-    btnUltimo: TUniSpeedButton;
-    btnProximo: TUniSpeedButton;
-    btnAnterior: TUniSpeedButton;
-    btnPrimeiro: TUniSpeedButton;
-    LabelNumero: TUniLabel;
-    lbBaixado: TUniLabel;
-    lbObs: TUniLabel;
-    LabelFrete: TUniLabel;
-    LabelIcms: TUniLabel;
-    LabelIpi: TUniLabel;
-    LabelDesp: TUniLabel;
-    LabelTotDesc: TUniLabel;
-    LabelTotParc: TUniLabel;
-    LabelTotTotal: TUniLabel;
-    btnInserir: TUniBitBtn;
-    dbeNumero: TUniDBEdit;
-    dbFornecedor: TUniDBEdit;
-    dbEstornada: TUniDBEdit;
-    dbCodFornecedor: TUniDBEdit;
-    dbProduto: TUniDBEdit;
-    dbTributacao: TUniDBEdit;
-    dbQtde: TUniDBEdit;
-    dbTotal: TUniDBEdit;
-    dbCusto: TUniDBEdit;
-    dbLucro: TUniDBEdit;
-    dbVenda: TUniDBEdit;
-    dbIPI: TUniDBEdit;
-    dbDescto: TUniDBEdit;
-    dbdDataNota: TUniDBEdit;
-    dbdDataEntrada: TUniDBEdit;
-    dbeCfop: TUniDBEdit;
-    dbeOperacao: TUniDBEdit;
-    edtFrete: TUniDBEdit;
-    edtIcms: TUniDBEdit;
-    edtIPITotal: TUniDBEdit;
-    edtDespesas: TUniDBEdit;
-    edtTotalDesconto: TUniDBEdit;
-    edtTotalParcial: TUniDBEdit;
-    edtTotalTotal: TUniDBEdit;
-    BevelSepara: TUniPanel;
-    dbmmObservacao: TUniDBMemo;
-    Grade: TUniDBGrid;
+    mnNotasFiscais: TMainMenu;
+    miRegistros: TMenuItem;
+    miPrimeiro: TMenuItem;
+    miAnterior: TMenuItem;
+    miProximo: TMenuItem;
+    miUltimo: TMenuItem;
+    N1: TMenuItem;
+    miNovo: TMenuItem;
+    miExcluir: TMenuItem;
+    miAlterar: TMenuItem;
+    N2: TMenuItem;
+    miSalvar: TMenuItem;
+    miCancelar: TMenuItem;
+    N3: TMenuItem;
+    miFechar: TMenuItem;
+    miFerramentas: TMenuItem;
+    miLocalizar: TMenuItem;
+    miOutrosFiltros: TMenuItem;
+    miFiltroData: TMenuItem;
+    miFiltrarForn: TMenuItem;
+    N6: TMenuItem;
+    miCompraNaoConc: TMenuItem;
+    miMostrarTodos: TMenuItem;
+    N5: TMenuItem;
+    miContar: TMenuItem;
+    N9: TMenuItem;
+    miCadastraForn: TMenuItem;
+    miCadastrarCFOP: TMenuItem;
+    miCadastrodeproduto: TMenuItem;
+    miOpcoes: TMenuItem;
+    miConcluir: TMenuItem;
+    miEstornar: TMenuItem;
+    N8: TMenuItem;
+    miPagamentoCompra: TMenuItem;
+    miRelatorios: TMenuItem;
+    miCompraAtual: TMenuItem;
+    N7: TMenuItem;
+    miRelDatas: TMenuItem;
+    miRelForn: TMenuItem;
+    N4: TMenuItem;
+    miListaFaturamForn: TMenuItem;
+    miListaFaturaCorrente: TMenuItem;
+    stbCompra: TStatusBar;
+    PanelTotais: TContainerPanel;
+    pnlBotoes: TContainerPanel;
+    btnFechar: TSpeedButton;
+    btnConsultar: TSpeedButton;
+    btnCancelar: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnExcluir: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnNovo: TSpeedButton;
+    btnUltimo: TSpeedButton;
+    btnProximo: TSpeedButton;
+    btnAnterior: TSpeedButton;
+    btnPrimeiro: TSpeedButton;
+    LabelNumero: TLabel;
+    lbBaixado: TLabel;
+    lbObs: TLabel;
+    LabelFrete: TLabel;
+    LabelIcms: TLabel;
+    LabelIpi: TLabel;
+    LabelDesp: TLabel;
+    LabelTotDesc: TLabel;
+    LabelTotParc: TLabel;
+    LabelTotTotal: TLabel;
+    btnInserir: TBitBtn;
+    dbeNumero: TDBEdit;
+    dbFornecedor: TDBEdit;
+    dbEstornada: TDBEdit;
+    dbCodFornecedor: TDBEdit;
+    dbProduto: TDBEdit;
+    dbTributacao: TDBEdit;
+    dbQtde: TDBEdit;
+    dbTotal: TDBEdit;
+    dbCusto: TDBEdit;
+    dbLucro: TDBEdit;
+    dbVenda: TDBEdit;
+    dbIPI: TDBEdit;
+    dbDescto: TDBEdit;
+    dbdDataNota: TDBEdit;
+    dbdDataEntrada: TDBEdit;
+    dbeCfop: TDBEdit;
+    dbeOperacao: TDBEdit;
+    edtFrete: TDBEdit;
+    edtIcms: TDBEdit;
+    edtIPITotal: TDBEdit;
+    edtDespesas: TDBEdit;
+    edtTotalDesconto: TDBEdit;
+    edtTotalParcial: TDBEdit;
+    edtTotalTotal: TDBEdit;
+    BevelSepara: TPanel;
+    dbmmObservacao: TDBMemo;
+    Grade: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
@@ -340,7 +340,7 @@ function TfrmNotasFiscais.CamposNulos: Boolean;
 begin
  // Result := (ValidaFieldsVazios([cdsNFiscaisNUMERO, cdsNFiscaisCODFORNECEDOR,
  //   cdsNFiscaisDATANOTA, cdsNFiscaisDATAENTRADA, cdsNFiscaisOPERACAO],
- //   ['Número', 'Fornecedor', 'Data da nota', 'Data de chegada', 'Operação CFOP']) <> '');
+ //   ['Nï¿½mero', 'Fornecedor', 'Data da nota', 'Data de chegada', 'Operaï¿½ï¿½o CFOP']) <> '');
 end;
 
 function TfrmNotasFiscais.Duplicidade: Boolean;
@@ -363,7 +363,7 @@ begin
     end;
     if Result then
     begin
-      MsgCuidado('Já existe uma nota com este número.');
+      MsgCuidado('Jï¿½ existe uma nota com este nï¿½mero.');
       SetFocusIfCan(dbeNumero);
       Exit;
     end;
@@ -395,10 +395,10 @@ begin
         begin
 
           if MsgSN('Existe(m) ' + IntToStr(FieldByName('CONT').AsInteger)+
-            ' compra(s) não concluída(s). ' +
-            'Por favor verifique, pois éstas podem causar ' +
-            'inconsistências no banco de dados e no controle do estoque.'+#13#10+
-            'Deseja exibir somente as não concluídas agora?') then
+            ' compra(s) nï¿½o concluï¿½da(s). ' +
+            'Por favor verifique, pois ï¿½stas podem causar ' +
+            'inconsistï¿½ncias no banco de dados e no controle do estoque.'+#13#10+
+            'Deseja exibir somente as nï¿½o concluï¿½das agora?') then
             miCompraNaoConc.Click;
         end;
       finally
@@ -413,7 +413,7 @@ end;
 procedure TfrmNotasFiscais.btnExcluirClick(Sender: TObject);
 begin
   if cdsNFiscais.IsEmpty then Exit;
-  if MsgSN('Deseja realmente excluir ésta compra?') then
+  if MsgSN('Deseja realmente excluir ï¿½sta compra?') then
   begin
     // deleta itens da nota
     with TSQLDataSet.Create(nil) do
@@ -425,7 +425,7 @@ begin
     finally
       Free;
     end;
-    // deleta cabeçalho da nota
+    // deleta cabeï¿½alho da nota
     with TSQLDataSet.Create(nil) do
     try
       SQLConnection := GetConnection;
@@ -482,7 +482,7 @@ procedure TfrmNotasFiscais.btnInserirClick(Sender: TObject);
 begin
   if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, sqlNFiscais.SQLConnection) then
   begin
-    MsgCuidado('Já existe uma nota com este número.');
+    MsgCuidado('Jï¿½ existe uma nota com este nï¿½mero.');
     SetFocusIfCan(dbeNumero);
     Exit;
   end;
@@ -504,7 +504,7 @@ begin
     LimpaEdits;
     SetFocusIfCan(dbProduto);
 
-//    if MsgSN('Inserir novo ítem?') then
+//    if MsgSN('Inserir novo ï¿½tem?') then
 //      dbProduto.OnClickButton(Sender);
   end;
 end;
@@ -554,7 +554,7 @@ begin
   if cdsNFiscaisCONCLUIDA.AsString = 'S' then
   begin
     if not Configuracao.EditarCompra then
-      MsgAviso('Compra concluída e sem permissão para editar.')
+      MsgAviso('Compra concluï¿½da e sem permissï¿½o para editar.')
     else
       cdsNFiscais.Edit;
   end
@@ -567,11 +567,11 @@ var
   Numero: String;
 begin
   Numero := '0';
-  if InputQuery('Localizar por número', 'Número da compra:', Numero) and (Numero <> '0') then
+  if InputQuery('Localizar por nï¿½mero', 'Nï¿½mero da compra:', Numero) and (Numero <> '0') then
   begin
     cdsNFiscais.IndexFieldNames := 'NUMERO';
     if not cdsNFiscais.Locate('NUMERO', Numero, []) then
-      MsgAviso(Numero + ' não encontrado');
+      MsgAviso(Numero + ' nï¿½o encontrado');
   end;
 end;
 
@@ -638,24 +638,24 @@ begin
 
   if cdsNFiscaisCONCLUIDA.AsString = 'N' then
   begin
-    MsgAviso('Compra não concluída.');
+    MsgAviso('Compra nï¿½o concluï¿½da.');
     Exit;
   end;
 
-  if MsgSN('Deseja realmente estornar ésta compra?'+#13#10+
-    'Ésta ação irá voltar apenas alterações da quantidade de estoque e transações financeiras,'+#13#10+
-    'o restante dos dados dos produtos não serão estornados. Continua?') then
+  if MsgSN('Deseja realmente estornar ï¿½sta compra?'+#13#10+
+    'ï¿½sta aï¿½ï¿½o irï¿½ voltar apenas alteraï¿½ï¿½es da quantidade de estoque e transaï¿½ï¿½es financeiras,'+#13#10+
+    'o restante dos dados dos produtos nï¿½o serï¿½o estornados. Continua?') then
     Estornar;
 end;
 
 procedure TfrmNotasFiscais.miRelDatasClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCompraData', 'Relatório de Compras por Data', Self);
+  ChamaForm('TfrmRelatorioCompraData', 'Relatï¿½rio de Compras por Data', Self);
 end;
 
 procedure TfrmNotasFiscais.miRelFornClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCompraFornecedor', 'Relatório de Compras', Self);
+  ChamaForm('TfrmRelatorioCompraFornecedor', 'Relatï¿½rio de Compras', Self);
 end;
 
 procedure TfrmNotasFiscais.FormCloseQuery(Sender: TObject;
@@ -666,7 +666,7 @@ end;
 
 procedure TfrmNotasFiscais.miCompraNaoConcClick(Sender: TObject);
 begin
-  ChamaForm('TfrmCompNaoConc', 'Compras não concluídas', Self);
+  ChamaForm('TfrmCompNaoConc', 'Compras nï¿½o concluï¿½das', Self);
 end;
 
 function TfrmNotasFiscais.ValoresProduto: Boolean;
@@ -738,7 +738,7 @@ begin
   begin
     cdsSelecaoVENDA.AsFloat := ((cdsSelecaoCUSTO.AsFloat * cdsSelecaoLUCRO.AsFloat / 100) + cdsSelecaoCUSTO.AsFloat);
 
-    if MsgSN('Preço de venda R$ ' + FormatFloat('#,##0.00', cdsSelecaoVENDA.AsFloat) + '. Confirma?') then
+    if MsgSN('Preï¿½o de venda R$ ' + FormatFloat('#,##0.00', cdsSelecaoVENDA.AsFloat) + '. Confirma?') then
       SetFocusIfCan(dbVenda);
   end;
 end;
@@ -808,7 +808,7 @@ begin
         Params.ParamByName('NUM').AsInteger := cdsNFiscaisNUMERO.AsInteger;
         Open;
       end;
-      Titulo := 'Relatório de Compras';
+      Titulo := 'Relatï¿½rio de Compras';
       PrintIfNotEmptyRL(rrPadrao);
     finally
       cdsPadrao.Close;
@@ -1031,7 +1031,7 @@ begin
      cdsPadrao.Open;
      //lbTitulo.Caption := 'Produtos da Nota: '+IntToStr(cdsNFiscaisNUMERO.AsInteger);
 
-     x := FormRadioButtons('Mostrar lucro e preço de custo, Ocultar lucro e preço de custo', 'Listagem de produtos');
+     x := FormRadioButtons('Mostrar lucro e preï¿½o de custo, Ocultar lucro e preï¿½o de custo', 'Listagem de produtos');
      //lbCusto.Visible        := (x = 0);
      //rldbPrecoCusto.Visible := (x = 0);
      //lbLucro.Visible        := (x = 0);
@@ -1061,7 +1061,7 @@ end;
 procedure TfrmNotasFiscais.cdsNFiscaisNUMEROChange(Sender: TField);
 begin
   if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, sqlNFiscais.SQLConnection) then
-    MsgCuidado('Já existe uma nota com este número.');
+    MsgCuidado('Jï¿½ existe uma nota com este nï¿½mero.');
 end;
 
 procedure TfrmNotasFiscais.PagarCompra;
@@ -1106,7 +1106,7 @@ begin
   begin
 
     FormaPagamento :=
-      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Pré-datado, &4 - Crediário', 'Forma de pagamento');
+      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Prï¿½-datado, &4 - Crediï¿½rio', 'Forma de pagamento');
 
     case FormaPagamento of
       0: {dinheiro}
@@ -1116,13 +1116,13 @@ begin
 
           if RoundTo(ValorDinheiro, 2) > RoundTo(Restante, 2) then
           begin
-            MsgErro('Valor digitado é maior que o resto a pagar, tente novamente.');
+            MsgErro('Valor digitado ï¿½ maior que o resto a pagar, tente novamente.');
             Exit;
           end;
 
           if ValorDinheiro = 0 then
           begin
-            MsgErro('Valor digitado é inválido, tente novamente.');
+            MsgErro('Valor digitado ï¿½ invï¿½lido, tente novamente.');
             Exit;
           end;
 
@@ -1130,7 +1130,7 @@ begin
             'C'+IntToStr(cdsNFiscaisNUMERO.AsInteger), 'D', ValorDinheiro) then
             ConcluirCompra('Dinheiro', ValorDinheiro)
           else
-            MsgAviso('Compra não foi concluída.');
+            MsgAviso('Compra nï¿½o foi concluï¿½da.');
 
         end;
       end;
@@ -1141,7 +1141,7 @@ begin
         frmPagamentoCheque.IdCompra := cdsNFiscaisNUMERO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmCompra;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Compra não foi concluída.');
+          MsgAviso('Compra nï¿½o foi concluï¿½da.');
       end;
       2: {cheque pre-datado}
       begin
@@ -1150,19 +1150,19 @@ begin
         frmPagamentoCheque.IdCompra := cdsNFiscaisNUMERO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmCompra;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Compra não foi concluída.');
+          MsgAviso('Compra nï¿½o foi concluï¿½da.');
       end;
       3: {parcelamento}
       begin
         frmParcelaCompra := TfrmParcelaCompra.Create(Self);
         frmParcelaCompra.IdCompra := cdsNFiscaisNUMERO.AsInteger;
         if frmParcelaCompra.ShowModal <> mrOk then
-          MsgAviso('Compra não foi concluída.');
+          MsgAviso('Compra nï¿½o foi concluï¿½da.');
       end;
     end;
   end
   else
-    MsgAviso('Compra já foi concluída.');
+    MsgAviso('Compra jï¿½ foi concluï¿½da.');
 end;
 
 procedure TfrmNotasFiscais.miCadastraFornClick(Sender: TObject);

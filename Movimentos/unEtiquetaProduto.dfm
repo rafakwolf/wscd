@@ -6,11 +6,11 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
   ExplicitHeight = 431
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 383
     ExplicitTop = 383
   end
-  object dbeCodBarra: TUniDBEdit [2]
+  object dbeCodBarra: TDBEdit [2]
     Left = 8
     Top = 40
     Width = 161
@@ -21,7 +21,7 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeProduto: TUniDBEdit [3]
+  object dbeProduto: TDBEdit [3]
     Left = 8
     Top = 64
     Width = 497
@@ -32,7 +32,7 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbePreco: TUniDBEdit [4]
+  object dbePreco: TDBEdit [4]
     Left = 8
     Top = 88
     Width = 121
@@ -43,7 +43,7 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbgrdEtq: TUniDBGrid [5]
+  object dbgrdEtq: TDBGrid [5]
     Left = 0
     Top = 123
     Width = 755

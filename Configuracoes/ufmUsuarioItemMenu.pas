@@ -34,22 +34,22 @@ type
     dspAcesso: TDataSetProvider;
     cdsAcesso: TClientDataSet;
     cdsAcessoIDMENU: TIntegerField;
-    dbeSenha: TUniDBEdit;
-    dbeLogin: TUniDBEdit;
-    dbeNomeUsuario: TUniDBEdit;
-    grpItemPermissao: TUniGroupBox;
-    pmStatusMenu: TUniPopupMenu;
-    mniLiberado: TUniMenuItem;
-    mniBloqueado: TUniMenuItem;
-    tvAcesso: TUniTreeView;
+    dbeSenha: TDBEdit;
+    dbeLogin: TDBEdit;
+    dbeNomeUsuario: TDBEdit;
+    grpItemPermissao: TGroupBox;
+    pmStatusMenu: TPopupMenu;
+    mniLiberado: TMenuItem;
+    mniBloqueado: TMenuItem;
+    tvAcesso: TTreeView;
     procedure cdsPadraoSENHASetText(Sender: TField; const Text: string);
     procedure mniBloqueadoClick(Sender: TObject);
     procedure mniLiberadoClick(Sender: TObject);
     procedure tvAcessoMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure tvAcessoCollapsing(Sender: TObject; Node: TUniTreeNode;
+    procedure tvAcessoCollapsing(Sender: TObject; Node: TTreeNode;
       var AllowCollapse: Boolean);
-    procedure tvAcessoGetSelectedIndex(Sender: TObject; Node: TUniTreeNode);
+    procedure tvAcessoGetSelectedIndex(Sender: TObject; Node: TTreeNode);
     procedure tvAcessoDblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -60,10 +60,10 @@ type
   private
     ItemsMenu: TPLItemsMenu;
 
-    function GetNodeById(pId: Integer): TUniTreeNode;
-    function GetAcesso(TreeNode: TUniTreeNode): Boolean;
+    function GetNodeById(pId: Integer): TTreeNode;
+    function GetAcesso(TreeNode: TTreeNode): Boolean;
     
-    procedure SetAcesso(TreeNode: TUniTreeNode; Liberado: Boolean;
+    procedure SetAcesso(TreeNode: TTreeNode; Liberado: Boolean;
       SetAcessoSubItems: Boolean; Manual: Boolean; RepaintTreeView: Boolean);
     procedure MarcaTreeViewAcessoUsuario;
     procedure DesmarcaTreeView;
@@ -90,9 +90,9 @@ uses System.Math, uniGUIMainModule, MainModule;
 
 procedure TfrmUsuarioItemMenu.FormCreate(Sender: TObject);
 
-  function AddTreeNode(PLMenuIndex: Integer): TUniTreeNode;
+  function AddTreeNode(PLMenuIndex: Integer): TTreeNode;
   var
-    ParentNode : TUniTreeNode;
+    ParentNode : TTreeNode;
     PLItemMenu : TPLItemMenu;
   begin;
     PLItemMenu := ItemsMenu[PLMenuIndex];
@@ -117,7 +117,7 @@ begin
   
   FieldNames       := FN_USUARIOS;
   DisplayLabels    := DL_USUARIOS;
-  aCaption         := 'Usuários';
+  aCaption         := 'Usuï¿½rios';
 
   with sqldMenu do
   begin
@@ -164,7 +164,7 @@ begin
   end;
 end;
 
-function TfrmUsuarioItemMenu.GetNodeById(pId: Integer): TUniTreeNode;
+function TfrmUsuarioItemMenu.GetNodeById(pId: Integer): TTreeNode;
 var
   x: Integer;
 begin
@@ -193,20 +193,20 @@ end;
 procedure TfrmUsuarioItemMenu.MensagemAntesEditar;
 begin
   if (not cdsAcesso.Active) then
-    MsgAviso('Você deve pesquisar o usuário (botão Procurar) antes de editar os acessos.')
+    MsgAviso('Vocï¿½ deve pesquisar o usuï¿½rio (botï¿½o Procurar) antes de editar os acessos.')
   else
-    MsgAviso('Você deve clicar em Alterar (ou tecla F5) para editar os acessos.');
+    MsgAviso('Vocï¿½ deve clicar em Alterar (ou tecla F5) para editar os acessos.');
 end;
 
 procedure TfrmUsuarioItemMenu.tvAcessoGetSelectedIndex(Sender: TObject;
-  Node: TUniTreeNode);
+  Node: TTreeNode);
 begin
   inherited;
   Node.SelectedIndex := Node.ImageIndex;
 end;
 
 procedure TfrmUsuarioItemMenu.tvAcessoCollapsing(Sender: TObject;
-  Node: TUniTreeNode; var AllowCollapse: Boolean);
+  Node: TTreeNode; var AllowCollapse: Boolean);
 begin
   inherited;
   AllowCollapse := False;
@@ -242,11 +242,11 @@ begin
   SetAcesso(tvAcesso.Selected, True, True, True, True);
 end;
 
-procedure TfrmUsuarioItemMenu.SetAcesso(TreeNode: TUniTreeNode; Liberado: Boolean;
+procedure TfrmUsuarioItemMenu.SetAcesso(TreeNode: TTreeNode; Liberado: Boolean;
   SetAcessoSubItems: Boolean; Manual: Boolean; RepaintTreeView: Boolean);
 var
   x, Marcados : Integer;
-  ParentNode  : TUniTreeNode;
+  ParentNode  : TTreeNode;
 begin
   if assigned(TreeNode) then
   begin
@@ -301,7 +301,7 @@ begin
     tvAcesso.Invalidate;
 end;
 
-function TfrmUsuarioItemMenu.GetAcesso(TreeNode: TUniTreeNode): Boolean;
+function TfrmUsuarioItemMenu.GetAcesso(TreeNode: TTreeNode): Boolean;
 begin
   Result := TreeNode.ImageIndex = IILIBERADO;
 end;

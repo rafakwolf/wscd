@@ -11,42 +11,42 @@ inherited frmRecibo: TfrmRecibo
   ExplicitHeight = 327
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 259
     Width = 617
     ExplicitTop = 259
     ExplicitWidth = 617
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 617
     TabOrder = 5
     ExplicitWidth = 617
-    inherited btnNovo: TUniSpeedButton
+    inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnAlterar: TUniSpeedButton
+    inherited btnAlterar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnExcluir: TUniSpeedButton
+    inherited btnExcluir: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSalvar: TUniSpeedButton
+    inherited btnSalvar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnCancelar: TUniSpeedButton
+    inherited btnCancelar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Font.Name = 'Verdana'
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Font.Name = 'Verdana'
     end
   end
-  object lbRecebedor: TUniLabel [2]
+  object lbRecebedor: TLabel [2]
     Left = 31
     Top = 84
     Width = 61
@@ -56,7 +56,7 @@ inherited frmRecibo: TfrmRecibo
     Caption = 'Recebedor'
     TabOrder = 7
   end
-  object lbRefente: TUniLabel [3]
+  object lbRefente: TLabel [3]
     Left = 36
     Top = 153
     Width = 56
@@ -66,7 +66,7 @@ inherited frmRecibo: TfrmRecibo
     Caption = 'Referente'
     TabOrder = 8
   end
-  object lbValor: TUniLabel [4]
+  object lbValor: TLabel [4]
     Left = 62
     Top = 176
     Width = 29
@@ -76,7 +76,7 @@ inherited frmRecibo: TfrmRecibo
     Caption = 'Valor'
     TabOrder = 9
   end
-  object lbValorExtenso: TUniLabel [5]
+  object lbValorExtenso: TLabel [5]
     Left = 12
     Top = 221
     Width = 78
@@ -86,7 +86,7 @@ inherited frmRecibo: TfrmRecibo
     Caption = 'Valor extenso'
     TabOrder = 10
   end
-  object dbData: TUniDBEdit [6]
+  object dbData: TDBEdit [6]
     Left = 96
     Top = 56
     Width = 186
@@ -97,7 +97,7 @@ inherited frmRecibo: TfrmRecibo
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbRecebedor: TUniDBEdit [7]
+  object dbRecebedor: TDBEdit [7]
     Left = 96
     Top = 80
     Width = 500
@@ -108,7 +108,7 @@ inherited frmRecibo: TfrmRecibo
     DataSource = dsPadrao
     TabOrder = 1
   end
-  object dbValor: TUniDBEdit [8]
+  object dbValor: TDBEdit [8]
     Left = 96
     Top = 172
     Width = 134
@@ -119,7 +119,7 @@ inherited frmRecibo: TfrmRecibo
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbReferente: TUniDBMemo [9]
+  object dbReferente: TDBMemo [9]
     Left = 96
     Top = 104
     Width = 500
@@ -130,7 +130,7 @@ inherited frmRecibo: TfrmRecibo
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbValorExtenso: TUniDBMemo [10]
+  object dbValorExtenso: TDBMemo [10]
     Left = 96
     Top = 196
     Width = 500
@@ -229,15 +229,15 @@ inherited frmRecibo: TfrmRecibo
       Size = 1
     end
   end
-  object mmPadrao: TUniMainMenu
+  object mmPadrao: TMainMenu
     Left = 272
     Top = 84
-    object miRelatorios: TUniMenuItem
+    object miRelatorios: TMenuItem
       Caption = ''
-      object mImprimir: TUniMenuItem
+      object mImprimir: TMenuItem
         Caption = 'Imprimir recibo'
       end
-      object N5: TUniMenuItem
+      object N5: TMenuItem
         Caption = '-'
       end
     end

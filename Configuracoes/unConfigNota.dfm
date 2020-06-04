@@ -10,36 +10,36 @@ inherited frmConfigNota: TfrmConfigNota
   ExplicitHeight = 455
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 407
     Width = 483
     ExplicitTop = 407
     ExplicitWidth = 403
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 483
     ExplicitWidth = 403
-    inherited btnCancelar: TUniSpeedButton
+    inherited btnCancelar: TSpeedButton
       Left = 194
       ExplicitLeft = 194
     end
-    inherited btnConsultar: TUniSpeedButton
+    inherited btnConsultar: TSpeedButton
       Left = 322
       Width = 63
       ExplicitLeft = 322
       ExplicitWidth = 63
     end
-    inherited btnSair: TUniSpeedButton
+    inherited btnSair: TSpeedButton
       Left = 421
       ExplicitLeft = 421
     end
-    inherited btnPrint: TUniSpeedButton
+    inherited btnPrint: TSpeedButton
       Left = 255
       Hint = ''
       Action = nil
       ExplicitLeft = 255
     end
-    object btnGrade: TUniSpeedButton
+    object btnGrade: TSpeedButton
       Left = 388
       Top = 1
       Width = 32
@@ -112,7 +112,7 @@ inherited frmConfigNota: TfrmConfigNota
       TabOrder = 8
     end
   end
-  object dbgrdCampos: TUniDBGrid [2]
+  object dbgrdCampos: TDBGrid [2]
     Left = 8
     Top = 41
     Width = 293
@@ -222,21 +222,21 @@ inherited frmConfigNota: TfrmConfigNota
       Size = 1
     end
   end
-  object pmMenuGrid: TUniPopupMenu
+  object pmMenuGrid: TPopupMenu
     Left = 336
     Top = 316
-    object miAlterarP: TUniMenuItem
+    object miAlterarP: TMenuItem
       Action = actEdit
       Caption = 'Alterar...'
     end
-    object miExcluirP: TUniMenuItem
+    object miExcluirP: TMenuItem
       Action = actDelete
       Caption = 'Excluir...'
     end
-    object N5: TUniMenuItem
+    object N5: TMenuItem
       Caption = '-'
     end
-    object miSearchP: TUniMenuItem
+    object miSearchP: TMenuItem
       Action = actSearch
       Caption = 'Pesquisar...'
     end

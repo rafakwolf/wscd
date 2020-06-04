@@ -14,10 +14,10 @@ uses
   uniStatusBar, uniPanel, uniToolBar, uniHTMLFrame, uniGUITypes,} uMenuActions;
 
 type
-  TMainForm = class(TUniForm)
+  TMainForm = class(TForm)
     ListaAcoes: TActionList;
     actCidade: TAction;
-    actUnidade: TAction;
+    acTdade: TAction;
     actGrupo: TAction;
     actAliquotaIcms: TAction;
     actContaCaixa: TAction;
@@ -73,13 +73,13 @@ type
     actPromocao: TAction;
     actInfoAvisos: TAction;
     actAuditoriaUser: TAction;
-    menuFrame: TUniHTMLFrame;
-    UniPanel1: TUniPanel;
-    btnSair: TUniSpeedButton;
-    btnNotificacoes: TUniSpeedButton;
+    menuFrame: THTMLFrame;
+    UniPanel1: TPanel;
+    btnSair: TSpeedButton;
+    btnNotificacoes: TSpeedButton;
     procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
-    procedure actUnidadeExecute(Sender: TObject);
+    procedure acTdadeExecute(Sender: TObject);
     procedure actAliquotaIcmsExecute(Sender: TObject);
     procedure actContaCaixaExecute(Sender: TObject);
     procedure actCfopExecute(Sender: TObject);
@@ -137,7 +137,7 @@ type
     procedure UniFormResize(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure menuFrameAjaxEvent(Sender: TComponent; EventName: string;
-      Params: TUniStrings);
+      Params: TStrings);
     procedure btnNotificacoesClick(Sender: TObject);
   Private
     Lista_permissoes: TClientDataSet;
@@ -165,7 +165,7 @@ function MainForm: TMainForm;
 implementation
 
 uses
-  unAcesso, Funcoes, uUtilFncs, VarGlobal,  {uniGUIVars,} MainModule, {uniGUIApplication,}
+  unAcesso, Funcoes, uUtilFncs, VarGlobal,  {uniGUIVars,} {MainModule,} {uniGUIApplication,}
   uClasses, udmAcesso, uNotificacoes;
 
 {$R *.lfm}
@@ -185,7 +185,7 @@ begin
   ChamaForm('TfrmCadastroCidade', 'Cadastro de cidades', UniApplication);
 end;
 
-procedure TMainForm.actUnidadeExecute(Sender: TObject);
+procedure TMainForm.acTdadeExecute(Sender: TObject);
 begin
   ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', UniApplication);
 end;
@@ -680,7 +680,7 @@ end;
 
 
 procedure TMainForm.menuFrameAjaxEvent(Sender: TComponent; EventName: string;
-  Params: TUniStrings);
+  Params: TStrings);
 begin
   MenuActions.AbrirForm(EventName);
 end;

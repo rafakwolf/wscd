@@ -14,7 +14,7 @@ object frmAcesso: TfrmAcesso
   AlignmentControl = uniAlignmentClient
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOK: TUniBitBtn
+  object btnOK: TBitBtn
     Left = 8
     Top = 117
     Width = 271
@@ -31,7 +31,7 @@ object frmAcesso: TfrmAcesso
         'er; '#13#10'  sender.addCls('#39'btn btn-primary'#39');'#13#10'}')
     OnClick = btnOkClick
   end
-  object edtUsuario: TUniEdit
+  object edtUsuario: TEdit
     Left = 8
     Top = 21
     Width = 271
@@ -42,7 +42,7 @@ object frmAcesso: TfrmAcesso
     Text = ''
     TabOrder = 0
   end
-  object edtSenha: TUniEdit
+  object edtSenha: TEdit
     Left = 8
     Top = 67
     Width = 271
@@ -53,7 +53,7 @@ object frmAcesso: TfrmAcesso
     Text = ''
     TabOrder = 2
   end
-  object ckbLembrarLogin: TUniCheckBox
+  object ckbLembrarLogin: TCheckBox
     Left = 112
     Top = 173
     Width = 73

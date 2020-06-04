@@ -7,13 +7,13 @@ inherited frmRelatorioFaturamento: TfrmRelatorioFaturamento
   ExplicitHeight = 166
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 93
     Width = 417
     ExplicitTop = 97
     ExplicitWidth = 425
   end
-  object chkLucro: TUniCheckBox [1]
+  object chkLucro: TCheckBox [1]
     Left = 16
     Top = 67
     Width = 193
@@ -23,7 +23,7 @@ inherited frmRelatorioFaturamento: TfrmRelatorioFaturamento
     Caption = 'Mostrar porcentagem de lucro'
     TabOrder = 3
   end
-  object chkCusto: TUniCheckBox [2]
+  object chkCusto: TCheckBox [2]
     Left = 16
     Top = 48
     Width = 154
@@ -33,7 +33,7 @@ inherited frmRelatorioFaturamento: TfrmRelatorioFaturamento
     Caption = 'Mostrar pre'#231'o de custo'
     TabOrder = 2
   end
-  object dbeForn: TUniDBEdit [3]
+  object dbeForn: TDBEdit [3]
     Left = 16
     Top = 24
     Width = 371

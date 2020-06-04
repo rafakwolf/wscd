@@ -27,9 +27,9 @@ type
     cdsVendaNOME: TStringField;
     cdsVendaTOTAL: TFMTBCDField;
     cdsVendaCONCLUIDA: TStringField;
-    btnOK: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    dbgrdVendaNaoConc: TUniDBGrid;
+    btnOK: TBitBtn;
+    btnCancelar: TBitBtn;
+    dbgrdVendaNaoConc: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dbgrdVendaNaoConcDrawColumnCell(Sender: TObject;
@@ -59,7 +59,7 @@ begin
   inherited;
   if cdsVenda.IsEmpty then
   begin
-    MsgAviso('Todas as vendas concluídas.');
+    MsgAviso('Todas as vendas concluï¿½das.');
     PostMessage(Handle, WM_CLOSE, 0, 0);
   end;
 end;

@@ -17,7 +17,7 @@ object frmPagamentoCompra: TfrmPagamentoCompra
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object lbStatus: TUniLabel
+  object lbStatus: TLabel
     Left = 8
     Top = 136
     Width = 46
@@ -30,7 +30,7 @@ object frmPagamentoCompra: TfrmPagamentoCompra
     Font.Name = 'Verdana'
     TabOrder = 2
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 400
     Top = 128
     Width = 73
@@ -92,7 +92,7 @@ object frmPagamentoCompra: TfrmPagamentoCompra
     TabOrder = 0
     OnClick = btnOkClick
   end
-  object dbgrdPagamento: TUniDBGrid
+  object dbgrdPagamento: TDBGrid
     Left = 0
     Top = 0
     Width = 481

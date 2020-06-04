@@ -29,13 +29,13 @@ type
     cdsPadraoOBS: TMemoField;
     sqldPadraoIDAGENDA: TIntegerField;
     cdsPadraoIDAGENDA: TIntegerField;
-    dbeNome: TUniDBEdit;
-    dbeFax: TUniDBEdit;
-    grpTelefone: TUniGroupBox;
-    dbeFone1: TUniDBEdit;
-    dbeFone2: TUniDBEdit;
-    dbeFone3: TUniDBEdit;
-    dbmObs: TUniDBMemo;
+    dbeNome: TDBEdit;
+    dbeFax: TDBEdit;
+    grpTelefone: TGroupBox;
+    dbeFone1: TDBEdit;
+    dbeFone2: TDBEdit;
+    dbeFone3: TDBEdit;
+    dbmObs: TDBMemo;
     procedure FormCreate(Sender: TObject);
   private
   public

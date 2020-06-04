@@ -12,7 +12,7 @@ inherited frmPesqFone: TfrmPesqFone
   ExplicitHeight = 502
   PixelsPerInch = 96
   TextHeight = 13
-  object btnPesquisar: TUniBitBtn
+  object btnPesquisar: TBitBtn
     Left = 616
     Top = 24
     Width = 89
@@ -49,7 +49,7 @@ inherited frmPesqFone: TfrmPesqFone
     TabOrder = 3
     OnClick = btnPesquisarClick
   end
-  object btnImprimir: TUniBitBtn
+  object btnImprimir: TBitBtn
     Left = 616
     Top = 440
     Width = 89
@@ -111,7 +111,7 @@ inherited frmPesqFone: TfrmPesqFone
     TabOrder = 5
     OnClick = btnImprimirClick
   end
-  object edtNome: TUniEdit
+  object edtNome: TEdit
     Left = 128
     Top = 28
     Width = 337
@@ -121,7 +121,7 @@ inherited frmPesqFone: TfrmPesqFone
     Text = ''
     TabOrder = 1
   end
-  object edtFone: TUniEdit
+  object edtFone: TEdit
     Left = 472
     Top = 28
     Width = 137
@@ -131,7 +131,7 @@ inherited frmPesqFone: TfrmPesqFone
     Text = ''
     TabOrder = 2
   end
-  object dbgrdFones: TUniDBGrid
+  object dbgrdFones: TDBGrid
     Left = 8
     Top = 64
     Width = 697
@@ -146,7 +146,7 @@ inherited frmPesqFone: TfrmPesqFone
     ParentColor = False
     Color = clWindow
   end
-  object rgpPesquisa: TUniRadioGroup
+  object rgpPesquisa: TRadioGroup
     Left = 8
     Top = 8
     Width = 113
@@ -211,32 +211,32 @@ inherited frmPesqFone: TfrmPesqFone
     Left = 272
     Top = 184
   end
-  object mmPesqFone: TUniMainMenu
+  object mmPesqFone: TMainMenu
     Left = 168
     Top = 144
-    object miRegistros: TUniMenuItem
+    object miRegistros: TMenuItem
       Caption = 'Registros'
-      object miCadastrar: TUniMenuItem
+      object miCadastrar: TMenuItem
         Caption = 'Cadastrar'
         OnClick = miCadastrarClick
       end
-      object N2: TUniMenuItem
+      object N2: TMenuItem
         Caption = '-'
       end
-      object miSair: TUniMenuItem
+      object miSair: TMenuItem
         Caption = 'Sair'
         OnClick = miSairClick
       end
     end
-    object miOpcoes: TUniMenuItem
+    object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
-      object miOrdenar: TUniMenuItem
+      object miOrdenar: TMenuItem
         Caption = 'Ordenar'
       end
-      object N1: TUniMenuItem
+      object N1: TMenuItem
         Caption = '-'
       end
-      object miPrint: TUniMenuItem
+      object miPrint: TMenuItem
         Caption = 'Imprimir'
         OnClick = btnImprimirClick
       end

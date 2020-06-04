@@ -17,7 +17,7 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnFechar: TUniBitBtn
+  object btnFechar: TBitBtn
     Left = 672
     Top = 384
     Width = 89
@@ -78,7 +78,7 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
     TabOrder = 2
     OnClick = btnFecharClick
   end
-  object btnZerarNegativo: TUniBitBtn
+  object btnZerarNegativo: TBitBtn
     Left = 488
     Top = 384
     Width = 177
@@ -139,7 +139,7 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
     TabOrder = 1
     OnClick = btnZerarNegativoClick
   end
-  object GradeProd: TUniDBGrid
+  object GradeProd: TDBGrid
     Left = 8
     Top = 8
     Width = 753

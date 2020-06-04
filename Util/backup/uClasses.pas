@@ -1,14 +1,16 @@
 unit uClasses;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  SysUtils, Classes, SqlExpr, DB, Forms, unDmPrincipal, uutilfncs, inifiles;
+  SysUtils, Classes, sqldb, DB, Forms, unDmPrincipal, uUtilFncs, inifiles;
 
 type
   TConfigGlobal = class
   private
-    sqldConfigGlobal: TSQLDataSet;
+    sqldConfigGlobal: TSQLQuery;
 
     function GetIntervalo: Integer;
     function GetJuro: Real;
@@ -61,7 +63,7 @@ type
 
   TConfiguracao = class
   private
-    sqldConfiguracao: TSQLDataSet;
+    sqldConfiguracao: TSQLQuery;
     function GetAliquotaPadrao: Integer;
     function GetAtalhos: Boolean;
     function GetBackup: Boolean;
@@ -143,7 +145,7 @@ type
 
   TEmpresa = class
   private
-    sqldEmpresa: TSQLDataSet;
+    sqldEmpresa: TSQLQuery;
     function GetBairro: String;
     function GetCep: String;
     function GetCidade: String;
@@ -177,7 +179,7 @@ type
 
   TSistema = class
   private
-    sqldSistema: TSQLDataSet;
+    sqldSistema: TSQLQuery;
     function GetAppCaption: String;
     function GetDataAcesso: String;
     function GetDataValidade: String;
@@ -211,11 +213,11 @@ end;
 
 constructor TConfigGlobal.Create;
 begin
-  sqldConfigGlobal := TSQLDataSet.Create(nil);
+  sqldConfigGlobal := TSQLQuery.Create(nil);
   with sqldConfigGlobal do
   begin
     SQLConnection := DmPrincipal.Conexao;
-    CommandText := 'select '+
+    SQL.Text := 'select '+
                    ' TAXAJURO,'+
                    ' INTERVALO,'+
                    ' PRAZOINICIAL,'+
@@ -361,12 +363,12 @@ end;
 
 constructor TConfiguracao.Create;
 begin
-  sqldConfiguracao := TSQLDataSet.Create(nil);
+  sqldConfiguracao := TSQLQUery.Create(nil);
   with sqldConfiguracao do
   begin
     SQLConnection := DmPrincipal.Conexao;
     Close;
-    CommandText := 'select'+
+    SQL.Text := 'select'+
                    ' BARRAFERRAMENTA,'+
                    ' HINTBALAO,'+
                    ' GRAVAERRO,'+
@@ -408,12 +410,10 @@ begin
 
     if IsEmpty then
     begin
-      with TSQLDataSet.Create(nil) do
+      with TSQLQuery.Create(nil) do
       try
         SQLConnection := DmPrincipal.Conexao;
-        CommandType := ctStoredProc;
-        DbxCommandType := 'Dbx.StoredProcedure';
-        CommandText := 'STPCONFIGPADRAO';
+        SQL.Text := 'STPCONFIGPADRAO';
         Params.ParamByName('COMPUTADOR').AsString := GetComputerName;
         Params.ParamByName('DIRETORIO').AsString  := ExtractFilePath( Application.ExeName );
         ExecSQL;
@@ -630,11 +630,11 @@ end;
 
 constructor TEmpresa.Create;
 begin
-  sqldEmpresa := TSQLDataSet.Create(nil);
+  sqldEmpresa := TSQLQuery.Create(nil);
   with sqldEmpresa do
   begin
     SQLConnection := DmPrincipal.Conexao;
-    CommandText := 'select '+
+    SQL.Text := 'select '+
                    'RAZAOSOCIAL, '+
                    'CNPJ, '+
                    'IE, '+

@@ -9,17 +9,17 @@ uses
   uniSpinEdit, uniRadioButton;
 
 type
-  TfrmImprimeRecibo = class(TUniForm)
-    btnImprimir: TUniBitBtn;
-    btnVisualizar: TUniBitBtn;
-    btnSair: TUniBitBtn;
-    imgImpressora: TUniImage;
-    gbRecibo: TUniGroupBox;
-    lbColunas: TUniLabel;
-    edPorta: TUniEdit;
-    edColunas: TUniSpinEdit;
-    rbA4: TUniRadioButton;
-    rbBobina: TUniRadioButton;
+  TfrmImprimeRecibo = class(TForm)
+    btnImprimir: TBitBtn;
+    btnVisualizar: TBitBtn;
+    btnSair: TBitBtn;
+    imgImpressora: TImage;
+    gbRecibo: TGroupBox;
+    lbColunas: TLabel;
+    edPorta: TEdit;
+    edColunas: TSpinEdit;
+    rbA4: TRadioButton;
+    rbBobina: TRadioButton;
     procedure btnSairClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
@@ -221,7 +221,7 @@ begin
     Add(Centraliza('***RECIBO***'));
     Add(ReplicateStr('-',edColunas.Value));
     Add(Ajusta(' Recebedor: ' + Recebedor));
-    Add(Ajusta(' A Importância de: ' + ValorExtenso));
+    Add(Ajusta(' A Importï¿½ncia de: ' + ValorExtenso));
     Add(Ajusta(' Referente: ' + Referente));
     Add(' Valor: ' + '' + FormatFloat('#,##0.00', Valor));
     Add(ReplicateStr(#13#10, 1));

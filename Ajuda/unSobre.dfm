@@ -16,7 +16,7 @@ object frmSobre: TfrmSobre
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOK: TUniButton
+  object btnOK: TButton
     Left = 312
     Top = 19
     Width = 57
@@ -27,7 +27,7 @@ object frmSobre: TfrmSobre
     TabOrder = 0
     OnClick = btnOKClick
   end
-  object lblVersao: TUniLabel
+  object lblVersao: TLabel
     Left = 8
     Top = 43
     Width = 52
@@ -40,7 +40,7 @@ object frmSobre: TfrmSobre
     Font.Name = 'Verdana'
     TabOrder = 2
   end
-  object lblEmpresa: TUniLabel
+  object lblEmpresa: TLabel
     Left = 8
     Top = 8
     Width = 63
@@ -53,7 +53,7 @@ object frmSobre: TfrmSobre
     Font.Name = 'Verdana'
     TabOrder = 3
   end
-  object lblCNPJ: TUniLabel
+  object lblCNPJ: TLabel
     Left = 8
     Top = 24
     Width = 42
@@ -66,7 +66,7 @@ object frmSobre: TfrmSobre
     Font.Name = 'Verdana'
     TabOrder = 4
   end
-  object mmoOS: TUniMemo
+  object mmoOS: TMemo
     Left = 0
     Top = 85
     Width = 413

@@ -18,8 +18,8 @@ type
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoCODCIDADE: TIntegerField;
     cdsPadraoDESCRICAO: TStringField;
-    dbeNomeCidade: TUniDBEdit;
-    dbeCodCidade: TUniDBEdit;
+    dbeNomeCidade: TDBEdit;
+    dbeCodCidade: TDBEdit;
     procedure FormCreate(Sender: TObject);
   private
   public

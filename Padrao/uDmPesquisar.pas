@@ -3,8 +3,8 @@ unit uDmPesquisar;
 interface
 
 uses
-  SysUtils, Classes, Provider, DB, SqlExpr, DBClient,
-  FMTBcd, uniGUIApplication;
+  SysUtils, Classes, DB, sqldb,
+  FMTBcd;
 
 type
   TDmPesquisar = class(TDataModule)

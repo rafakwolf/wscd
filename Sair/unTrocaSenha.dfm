@@ -18,7 +18,7 @@ object frmTrocaSenha: TfrmTrocaSenha
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 14
-  object btGrava: TUniSpeedButton
+  object btGrava: TSpeedButton
     Left = 56
     Top = 160
     Width = 81
@@ -31,7 +31,7 @@ object frmTrocaSenha: TfrmTrocaSenha
     TabOrder = 3
     OnClick = btGravaClick
   end
-  object btCancel: TUniSpeedButton
+  object btCancel: TSpeedButton
     Left = 144
     Top = 160
     Width = 81
@@ -44,7 +44,7 @@ object frmTrocaSenha: TfrmTrocaSenha
     TabOrder = 4
     OnClick = btCancelClick
   end
-  object lbSenhaAtu: TUniLabel
+  object lbSenhaAtu: TLabel
     Left = 13
     Top = 51
     Width = 64
@@ -54,7 +54,7 @@ object frmTrocaSenha: TfrmTrocaSenha
     Caption = 'Senha atual'
     TabOrder = 5
   end
-  object lbNovaSenha: TUniLabel
+  object lbNovaSenha: TLabel
     Left = 14
     Top = 84
     Width = 63
@@ -64,7 +64,7 @@ object frmTrocaSenha: TfrmTrocaSenha
     Caption = 'Nova senha'
     TabOrder = 6
   end
-  object lbConfirma: TUniLabel
+  object lbConfirma: TLabel
     Left = 11
     Top = 116
     Width = 66
@@ -74,7 +74,7 @@ object frmTrocaSenha: TfrmTrocaSenha
     Caption = 'Confirma'#231#227'o'
     TabOrder = 7
   end
-  object edAtual: TUniEdit
+  object edAtual: TEdit
     Left = 80
     Top = 48
     Width = 121
@@ -85,7 +85,7 @@ object frmTrocaSenha: TfrmTrocaSenha
     Text = ''
     TabOrder = 0
   end
-  object edNova: TUniEdit
+  object edNova: TEdit
     Left = 80
     Top = 80
     Width = 121
@@ -96,7 +96,7 @@ object frmTrocaSenha: TfrmTrocaSenha
     Text = ''
     TabOrder = 1
   end
-  object edConfirma: TUniEdit
+  object edConfirma: TEdit
     Left = 80
     Top = 112
     Width = 121

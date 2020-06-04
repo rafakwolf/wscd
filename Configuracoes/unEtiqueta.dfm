@@ -9,17 +9,17 @@ inherited frmEtiqueta: TfrmEtiqueta
   ExplicitHeight = 513
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 465
     Width = 538
     ExplicitTop = 465
     ExplicitWidth = 538
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 538
     ExplicitWidth = 538
   end
-  object LabelEtiqueta: TUniLabel [2]
+  object LabelEtiqueta: TLabel [2]
     Left = 16
     Top = 230
     Width = 40
@@ -29,7 +29,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Etiqueta'
     TabOrder = 14
   end
-  object Label2: TUniLabel [3]
+  object Label2: TLabel [3]
     Left = 30
     Top = 281
     Width = 73
@@ -39,7 +39,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Altura da Folha'
     TabOrder = 15
   end
-  object Label3: TUniLabel [4]
+  object Label3: TLabel [4]
     Left = 20
     Top = 316
     Width = 81
@@ -49,7 +49,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Largura da Folha'
     TabOrder = 16
   end
-  object Label4: TUniLabel [5]
+  object Label4: TLabel [5]
     Left = 17
     Top = 351
     Width = 81
@@ -59,7 +59,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Margem Superior'
     TabOrder = 17
   end
-  object Label5: TUniLabel [6]
+  object Label5: TLabel [6]
     Left = 13
     Top = 386
     Width = 86
@@ -69,7 +69,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Margem Esquerda'
     TabOrder = 18
   end
-  object Label7: TUniLabel [7]
+  object Label7: TLabel [7]
     Left = 269
     Top = 281
     Width = 100
@@ -79,7 +79,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Etiquetas por Coluna'
     TabOrder = 19
   end
-  object Label8: TUniLabel [8]
+  object Label8: TLabel [8]
     Left = 286
     Top = 316
     Width = 87
@@ -89,7 +89,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Altura da Etiqueta'
     TabOrder = 20
   end
-  object Label9: TUniLabel [9]
+  object Label9: TLabel [9]
     Left = 276
     Top = 351
     Width = 95
@@ -99,7 +99,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Largura da Etiqueta'
     TabOrder = 21
   end
-  object Label10: TUniLabel [10]
+  object Label10: TLabel [10]
     Left = 289
     Top = 386
     Width = 81
@@ -109,7 +109,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Dist'#226'ncia Vertical'
     TabOrder = 22
   end
-  object Label11: TUniLabel [11]
+  object Label11: TLabel [11]
     Left = 275
     Top = 421
     Width = 94
@@ -119,7 +119,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'Dist'#226'ncia Horizontal'
     TabOrder = 23
   end
-  object LabelMedida: TUniLabel [12]
+  object LabelMedida: TLabel [12]
     Left = 6
     Top = 447
     Width = 130
@@ -132,7 +132,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Font.Name = 'Verdana'
     TabOrder = 24
   end
-  object Label1: TUniLabel [13]
+  object Label1: TLabel [13]
     Left = 31
     Top = 421
     Width = 70
@@ -142,7 +142,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Caption = 'N'#250'mero Linhas'
     TabOrder = 25
   end
-  object dbEtiqueta: TUniDBEdit [14]
+  object dbEtiqueta: TDBEdit [14]
     Left = 16
     Top = 245
     Width = 505
@@ -153,7 +153,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbAlturaFolha: TUniDBEdit [15]
+  object dbAlturaFolha: TDBEdit [15]
     Left = 119
     Top = 277
     Width = 110
@@ -164,7 +164,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbLarguraFolha: TUniDBEdit [16]
+  object dbLarguraFolha: TDBEdit [16]
     Left = 119
     Top = 312
     Width = 110
@@ -175,7 +175,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbMargemSuperior: TUniDBEdit [17]
+  object dbMargemSuperior: TDBEdit [17]
     Left = 119
     Top = 347
     Width = 110
@@ -186,7 +186,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbMargemEsquerda: TUniDBEdit [18]
+  object dbMargemEsquerda: TDBEdit [18]
     Left = 119
     Top = 382
     Width = 110
@@ -197,7 +197,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 7
   end
-  object dbEtqColuna: TUniDBEdit [19]
+  object dbEtqColuna: TDBEdit [19]
     Left = 391
     Top = 277
     Width = 110
@@ -208,7 +208,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 8
   end
-  object dbAlturaEtq: TUniDBEdit [20]
+  object dbAlturaEtq: TDBEdit [20]
     Left = 391
     Top = 312
     Width = 110
@@ -219,7 +219,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 9
   end
-  object dbLarguraEtq: TUniDBEdit [21]
+  object dbLarguraEtq: TDBEdit [21]
     Left = 391
     Top = 347
     Width = 110
@@ -230,7 +230,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 10
   end
-  object dbDistVert: TUniDBEdit [22]
+  object dbDistVert: TDBEdit [22]
     Left = 391
     Top = 382
     Width = 110
@@ -241,7 +241,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 11
   end
-  object dbDistHoriz: TUniDBEdit [23]
+  object dbDistHoriz: TDBEdit [23]
     Left = 391
     Top = 417
     Width = 110
@@ -252,7 +252,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 12
   end
-  object dbNumeroLinhas: TUniDBEdit [24]
+  object dbNumeroLinhas: TDBEdit [24]
     Left = 119
     Top = 417
     Width = 110
@@ -263,7 +263,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     DataSource = dsPadrao
     TabOrder = 13
   end
-  object gbImgMedidas: TUniGroupBox [25]
+  object gbImgMedidas: TGroupBox [25]
     Left = 0
     Top = 35
     Width = 538
@@ -278,7 +278,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     ParentFont = False
     Font.Charset = ANSI_CHARSET
     Font.Name = 'Verdana'
-    object iEtiqueta: TUniImage
+    object iEtiqueta: TImage
       Left = 2
       Top = 15
       Width = 384

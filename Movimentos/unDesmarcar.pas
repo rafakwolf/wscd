@@ -9,10 +9,10 @@ uses
 
 type
   TfrmDesmarcar = class(TfrmSimplePadrao)
-    Desmarcar: TUniSpeedButton;
-    Cancel: TUniSpeedButton;
-    Alterados: TUniCheckBox;
-    Novos: TUniCheckBox;
+    Desmarcar: TSpeedButton;
+    Cancel: TSpeedButton;
+    Alterados: TCheckBox;
+    Novos: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure CancelClick(Sender: TObject);
     procedure DesmarcarClick(Sender: TObject);

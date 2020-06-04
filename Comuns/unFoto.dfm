@@ -12,7 +12,7 @@ inherited frmFoto: TfrmFoto
   ExplicitHeight = 270
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOK: TUniBitBtn
+  object btnOK: TBitBtn
     Left = 120
     Top = 208
     Width = 81
@@ -74,7 +74,7 @@ inherited frmFoto: TfrmFoto
     ModalResult = 1
     TabOrder = 1
   end
-  object btnCancel: TUniBitBtn
+  object btnCancel: TBitBtn
     Left = 208
     Top = 208
     Width = 81
@@ -136,7 +136,7 @@ inherited frmFoto: TfrmFoto
     ModalResult = 2
     TabOrder = 2
   end
-  object grpFoto: TUniGroupBox
+  object grpFoto: TGroupBox
     Left = 8
     Top = 8
     Width = 281

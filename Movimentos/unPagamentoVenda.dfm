@@ -15,7 +15,7 @@ object frmPagamentoVenda: TfrmPagamentoVenda
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOk: TUniSpeedButton
+  object btnOk: TSpeedButton
     Left = 392
     Top = 128
     Width = 81
@@ -81,7 +81,7 @@ object frmPagamentoVenda: TfrmPagamentoVenda
     TabOrder = 1
     OnClick = btnOkClick
   end
-  object lbStatus: TUniLabel
+  object lbStatus: TLabel
     Left = 8
     Top = 136
     Width = 46
@@ -93,7 +93,7 @@ object frmPagamentoVenda: TfrmPagamentoVenda
     Font.Name = 'Verdana'
     TabOrder = 2
   end
-  object dbgdRectoVenda: TUniDBGrid
+  object dbgdRectoVenda: TDBGrid
     Left = 0
     Top = 0
     Width = 481

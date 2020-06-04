@@ -11,7 +11,7 @@ inherited frmReceberMan: TfrmReceberMan
   ExplicitHeight = 446
   PixelsPerInch = 96
   TextHeight = 13
-  object lblBandaMagnetica: TUniLabel
+  object lblBandaMagnetica: TLabel
     Left = 8
     Top = 292
     Width = 99
@@ -21,7 +21,7 @@ inherited frmReceberMan: TfrmReceberMan
     Caption = 'Banda magn'#233'tica'
     TabOrder = 13
   end
-  object lblEmissao: TUniLabel
+  object lblEmissao: TLabel
     Left = 8
     Top = 372
     Width = 47
@@ -31,7 +31,7 @@ inherited frmReceberMan: TfrmReceberMan
     Caption = 'Emiss'#227'o'
     TabOrder = 14
   end
-  object lblVenc: TUniLabel
+  object lblVenc: TLabel
     Left = 120
     Top = 372
     Width = 56
@@ -41,7 +41,7 @@ inherited frmReceberMan: TfrmReceberMan
     Caption = 'Bom para'
     TabOrder = 15
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 304
     Top = 384
     Width = 81
@@ -103,7 +103,7 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 11
     OnClick = btnOkClick
   end
-  object btnCancel: TUniBitBtn
+  object btnCancel: TBitBtn
     Left = 392
     Top = 384
     Width = 81
@@ -165,7 +165,7 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 12
     OnClick = btnCancelClick
   end
-  object dbValor: TUniEdit
+  object dbValor: TEdit
     Left = 8
     Top = 260
     Width = 161
@@ -176,7 +176,7 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 2
     ReadOnly = True
   end
-  object edtAgencia: TUniEdit
+  object edtAgencia: TEdit
     Left = 8
     Top = 348
     Width = 105
@@ -186,7 +186,7 @@ inherited frmReceberMan: TfrmReceberMan
     Text = ''
     TabOrder = 5
   end
-  object edtConta: TUniEdit
+  object edtConta: TEdit
     Left = 120
     Top = 348
     Width = 105
@@ -196,7 +196,7 @@ inherited frmReceberMan: TfrmReceberMan
     Text = ''
     TabOrder = 6
   end
-  object edtNumeroCheque: TUniEdit
+  object edtNumeroCheque: TEdit
     Left = 232
     Top = 348
     Width = 105
@@ -206,7 +206,7 @@ inherited frmReceberMan: TfrmReceberMan
     Text = ''
     TabOrder = 7
   end
-  object edtValor: TUniEdit
+  object edtValor: TEdit
     Left = 344
     Top = 348
     Width = 129
@@ -217,7 +217,7 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 8
     OnEnter = edtValorEnter
   end
-  object dbeBanco: TUniDBEdit
+  object dbeBanco: TDBEdit
     Left = 248
     Top = 308
     Width = 203
@@ -230,7 +230,7 @@ inherited frmReceberMan: TfrmReceberMan
     Color = clBtnFace
     ReadOnly = True
   end
-  object BevelLinha: TUniPanel
+  object BevelLinha: TPanel
     Left = 6
     Top = 200
     Width = 467
@@ -240,7 +240,7 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 16
     Caption = 'BevelLinha'
   end
-  object bvlLinha2: TUniPanel
+  object bvlLinha2: TPanel
     Left = 8
     Top = 288
     Width = 465
@@ -250,7 +250,7 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 17
     Caption = 'bvlLinha2'
   end
-  object medtBandaMagnetica: TUniEdit
+  object medtBandaMagnetica: TEdit
     Left = 8
     Top = 308
     Width = 233
@@ -261,7 +261,7 @@ inherited frmReceberMan: TfrmReceberMan
     TabOrder = 3
     OnExit = medtBandaMagneticaExit
   end
-  object medtVencimento: TUniEdit
+  object medtVencimento: TEdit
     Left = 120
     Top = 388
     Width = 105
@@ -272,7 +272,7 @@ inherited frmReceberMan: TfrmReceberMan
     Text = '  /  /    '
     TabOrder = 10
   end
-  object medtEmissao: TUniEdit
+  object medtEmissao: TEdit
     Left = 8
     Top = 388
     Width = 105
@@ -283,7 +283,7 @@ inherited frmReceberMan: TfrmReceberMan
     Text = '  /  /    '
     TabOrder = 9
   end
-  object dbgrdContas: TUniDBGrid
+  object dbgrdContas: TDBGrid
     Left = 8
     Top = 8
     Width = 465
@@ -299,7 +299,7 @@ inherited frmReceberMan: TfrmReceberMan
     ParentColor = False
     Color = clBtnFace
   end
-  object rgReceb: TUniRadioGroup
+  object rgReceb: TRadioGroup
     Left = 8
     Top = 208
     Width = 465

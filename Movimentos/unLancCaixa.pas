@@ -10,7 +10,7 @@ uses
   uniPageControl;
 
 type
-  TfrmLancCaixa = class(TUniForm)
+  TfrmLancCaixa = class(TForm)
     sqldCaixas: TSQLDataSet;
     dspCaixas: TDataSetProvider;
     cdsCaixas: TClientDataSet;
@@ -42,9 +42,9 @@ type
     cdsCaixasINATIVO: TStringField;
     sqldPadraoVALOR: TFMTBCDField;
     cdsPadraoVALOR: TFMTBCDField;
-    btnOk: TUniBitBtn;
-    btnCancel: TUniBitBtn;
-    btnNovo: TUniBitBtn;
+    btnOk: TBitBtn;
+    btnCancel: TBitBtn;
+    btnNovo: TBitBtn;
     procedure btnOkClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -115,7 +115,7 @@ begin
   begin
     //if SQLFind('CAIXA', 'DOCUMENTO', dbDoc.Text, GetConnection) then
     //begin
-    //  MsgCuidado('Numero de documento já existe');
+    //  MsgCuidado('Numero de documento jï¿½ existe');
     //  SetFocusIfCan(dbDoc);
     //  Exit;
     //end;
@@ -275,7 +275,7 @@ begin
   begin
     if cdsCaixasINATIVO.AsString = 'S' then
     begin
-      MsgAviso('','Este caixa está configurado como inativo, não pode ser utilizado.');
+      MsgAviso('','Este caixa estï¿½ configurado como inativo, nï¿½o pode ser utilizado.');
       cdsPadraoCODCAIXAS.Clear;
       cdsPadraoNOME.Clear;
       Exit;

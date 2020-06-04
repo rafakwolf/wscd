@@ -43,8 +43,8 @@ type
     cdsSelecao: TClientDataSet;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
-    edDataIni: TUniDBEdit;
-    edDataFim: TUniDBEdit;
+    edDataIni: TDBEdit;
+    edDataFim: TDBEdit;
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -75,7 +75,7 @@ begin
       Params.ParamByName('DATAI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
       Params.ParamByName('DATAF').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
       Open;
-      Titulo := 'Compras do período: ' + edDataIni.Text + ' até ' + edDataFim.Text;
+      Titulo := 'Compras do perï¿½odo: ' + edDataIni.Text + ' atï¿½ ' + edDataFim.Text;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
       cdsPadrao.Close;

@@ -10,9 +10,9 @@ uses
 
 type
   TfrmRelatorioCaixaMensal = class(TfrmDialogoRelatorioPadrao)
-    edtMes: TUniEdit;
-    edtAno: TUniEdit;
-    rgOrd: TUniRadioGroup;
+    edtMes: TEdit;
+    edtAno: TEdit;
+    rgOrd: TRadioGroup;
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -49,7 +49,7 @@ begin
       Params.ParamByName('PORDEM').AsString := IfThen(rgOrd.ItemIndex = 0, 'L', 'D');
       Open;
     end;
-    TituloRel := 'Caixa do mês '+edtMes.Text+' de '+edtAno.Text;
+    TituloRel := 'Caixa do mï¿½s '+edtMes.Text+' de '+edtAno.Text;
     PrintIfNotEmptyRL(rrPadrao, p);
   finally
     Free;
@@ -86,7 +86,7 @@ begin
   begin
     if (Mes < 1) or (Mes > 12) then
     begin
-      MsgAviso('Mês deve estar entre 1 e 12.');
+      MsgAviso('Mï¿½s deve estar entre 1 e 12.');
       edtMes.Clear;
       edtMes.SetFocus;
       Exit;

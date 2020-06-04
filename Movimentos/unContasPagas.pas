@@ -69,22 +69,22 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALPAGO: TSingleField;
-    mmContasPagas: TUniMainMenu;
-    miOpcoes: TUniMenuItem;
-    miEstornar: TUniMenuItem;
-    miAtualizar: TUniMenuItem;
-    N1: TUniMenuItem;
-    miFechar: TUniMenuItem;
-    Stb: TUniStatusBar;
-    pnBotoes: TUniContainerPanel;
-    btnAtualizar: TUniSpeedButton;
-    btnEstornar: TUniSpeedButton;
-    btnFechar: TUniSpeedButton;
-    GroupCredor: TUniGroupBox;
-    dbeFornecedor: TUniDBEdit;
-    grpFiltro: TUniGroupBox;
-    lbFiltrousado: TUniLabel;
-    Grade: TUniDBGrid;
+    mmContasPagas: TMainMenu;
+    miOpcoes: TMenuItem;
+    miEstornar: TMenuItem;
+    miAtualizar: TMenuItem;
+    N1: TMenuItem;
+    miFechar: TMenuItem;
+    Stb: TStatusBar;
+    pnBotoes: TContainerPanel;
+    btnAtualizar: TSpeedButton;
+    btnEstornar: TSpeedButton;
+    btnFechar: TSpeedButton;
+    GroupCredor: TGroupBox;
+    dbeFornecedor: TDBEdit;
+    grpFiltro: TGroupBox;
+    lbFiltrousado: TLabel;
+    Grade: TDBGrid;
     procedure miFecharClick(Sender: TObject);
     procedure miAtualizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -161,7 +161,7 @@ begin
           cdsPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
           cdsPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
           cdsPadrao.Open;
-          lbFiltrousado.Caption := 'Período de '+DataI+' até '+DataF;
+          lbFiltrousado.Caption := 'Perï¿½odo de '+DataI+' atï¿½ '+DataF;
         end;
       end;
    1: begin
@@ -218,8 +218,8 @@ begin
       Estornar;
   end
   else
-    MsgAviso('Não há conta marcada para estorno.'+#13#10+
-      'Para marcar/desmarcar dê um duplo clique sobre a conta desejada.');
+    MsgAviso('Nï¿½o hï¿½ conta marcada para estorno.'+#13#10+
+      'Para marcar/desmarcar dï¿½ um duplo clique sobre a conta desejada.');
 end;
 
 procedure TfrmContasPagas.Estornar;
@@ -245,7 +245,7 @@ begin
       cdsEstorno.Open;
       if cdsEstorno.Locate('ORIGEM', cdsPadraoCODIGO.AsInteger, []) then
       begin
-        MsgAviso('O pagamento desta conta gerou a conta restante de código = ' +
+        MsgAviso('O pagamento desta conta gerou a conta restante de cï¿½digo = ' +
           IntToStr(cdsEstornoCODIGO.AsInteger) + '.' + #13#10 +
           'Exclua a conta restante para prosseguir.');
         Exit;

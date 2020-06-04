@@ -9,7 +9,7 @@ inherited frmCheque: TfrmCheque
   ExplicitHeight = 305
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 254
     Width = 537
     Height = 22
@@ -17,12 +17,12 @@ inherited frmCheque: TfrmCheque
     ExplicitWidth = 537
     ExplicitHeight = 22
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 537
     TabOrder = 15
     ExplicitWidth = 537
   end
-  object lbBaixado: TUniLabel [2]
+  object lbBaixado: TLabel [2]
     Left = 147
     Top = 227
     Width = 46
@@ -34,7 +34,7 @@ inherited frmCheque: TfrmCheque
     Font.Charset = ANSI_CHARSET
     TabOrder = 16
   end
-  object btnBaixar: TUniBitBtn [3]
+  object btnBaixar: TBitBtn [3]
     Left = 440
     Top = 220
     Width = 81
@@ -94,7 +94,7 @@ inherited frmCheque: TfrmCheque
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
     TabOrder = 13
   end
-  object dbeDataBaixado: TUniDBEdit [4]
+  object dbeDataBaixado: TDBEdit [4]
     Left = 16
     Top = 224
     Width = 121
@@ -107,7 +107,7 @@ inherited frmCheque: TfrmCheque
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeForn: TUniDBEdit [5]
+  object dbeForn: TDBEdit [5]
     Left = 272
     Top = 183
     Width = 227
@@ -120,7 +120,7 @@ inherited frmCheque: TfrmCheque
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeBandMagnetica: TUniDBEdit [6]
+  object dbeBandMagnetica: TDBEdit [6]
     Left = 120
     Top = 60
     Width = 225
@@ -131,7 +131,7 @@ inherited frmCheque: TfrmCheque
     DataSource = dsPadrao
     TabOrder = 0
   end
-  object dbeCliente: TUniDBEdit [7]
+  object dbeCliente: TDBEdit [7]
     Left = 16
     Top = 183
     Width = 227
@@ -144,7 +144,7 @@ inherited frmCheque: TfrmCheque
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeVenda: TUniDBEdit [8]
+  object dbeVenda: TDBEdit [8]
     Left = 336
     Top = 142
     Width = 89
@@ -157,7 +157,7 @@ inherited frmCheque: TfrmCheque
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeValor: TUniDBEdit [9]
+  object dbeValor: TDBEdit [9]
     Left = 400
     Top = 101
     Width = 121
@@ -168,7 +168,7 @@ inherited frmCheque: TfrmCheque
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbdBomPara: TUniDBEdit [10]
+  object dbdBomPara: TDBEdit [10]
     Left = 176
     Top = 142
     Width = 153
@@ -179,7 +179,7 @@ inherited frmCheque: TfrmCheque
     DataSource = dsPadrao
     TabOrder = 7
   end
-  object dbeBanco: TUniDBEdit [11]
+  object dbeBanco: TDBEdit [11]
     Left = 352
     Top = 60
     Width = 147
@@ -192,7 +192,7 @@ inherited frmCheque: TfrmCheque
     Color = clBtnFace
     ReadOnly = True
   end
-  object dbeAgencia: TUniDBEdit [12]
+  object dbeAgencia: TDBEdit [12]
     Left = 16
     Top = 101
     Width = 121
@@ -203,7 +203,7 @@ inherited frmCheque: TfrmCheque
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbeConta: TUniDBEdit [13]
+  object dbeConta: TDBEdit [13]
     Left = 144
     Top = 101
     Width = 121
@@ -214,7 +214,7 @@ inherited frmCheque: TfrmCheque
     DataSource = dsPadrao
     TabOrder = 3
   end
-  object dbeNumero: TUniDBEdit [14]
+  object dbeNumero: TDBEdit [14]
     Left = 272
     Top = 101
     Width = 121
@@ -225,7 +225,7 @@ inherited frmCheque: TfrmCheque
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbdDataEmissao: TUniDBEdit [15]
+  object dbdDataEmissao: TDBEdit [15]
     Left = 16
     Top = 142
     Width = 153
@@ -236,7 +236,7 @@ inherited frmCheque: TfrmCheque
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbeCompra: TUniDBEdit [16]
+  object dbeCompra: TDBEdit [16]
     Left = 432
     Top = 142
     Width = 89

@@ -36,15 +36,15 @@ type
     cdsPerfisConfLIBERADO: TStringField;
     sqldPerfisConfIDITEMPERFIL: TIntegerField;
     cdsPerfisConfIDITEMPERFIL: TIntegerField;
-    dbePerfil: TUniDBEdit;
-    grpItemMenu: TUniGroupBox;
-    edtBuscaItemMenu: TUniEdit;
-    dbgPerm: TUniDBGrid;
-    pmLiberaBloqueia: TUniPopupMenu;
-    miLiberar: TUniMenuItem;
-    miBloquear: TUniMenuItem;
-    N5: TUniMenuItem;
-    miCarregarAcoes: TUniMenuItem;
+    dbePerfil: TDBEdit;
+    grpItemMenu: TGroupBox;
+    edtBuscaItemMenu: TEdit;
+    dbgPerm: TDBGrid;
+    pmLiberaBloqueia: TPopupMenu;
+    miLiberar: TMenuItem;
+    miBloquear: TMenuItem;
+    N5: TMenuItem;
+    miCarregarAcoes: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure miLiberarClick(Sender: TObject);
     procedure miBloquearClick(Sender: TObject);
@@ -54,7 +54,7 @@ type
     procedure edtBuscaItemMenuEnter(Sender: TObject);
     procedure dsPadraoStateChange(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
-    procedure dbgPermCellClick(Column: TUniDBGridColumn);
+    procedure dbgPermCellClick(Column: TDBGridColumn);
   private
     menu_item   : string;
     action_item : string;
@@ -79,7 +79,7 @@ begin
 
   FieldNames := FN_PERFIL;
   DisplayLabels := DL_PERFIL;
-  aCaption := 'Perfis/Permissões';
+  aCaption := 'Perfis/Permissï¿½es';
 end;
 
 procedure TfrmPerfilPermissao.miLiberarClick(Sender: TObject);
@@ -127,8 +127,8 @@ var
   x: Integer;
 begin
   inherited;
-  if not MsgSN('Deseja recarregar as permissões deste perfil?' + #13#10 +
-    'As permissões configuradas serão perdidas, continua?') then
+  if not MsgSN('Deseja recarregar as permissï¿½es deste perfil?' + #13#10 +
+    'As permissï¿½es configuradas serï¿½o perdidas, continua?') then
     Exit;
   try
     try
@@ -143,13 +143,13 @@ begin
               TAction(Components[x]).Caption, 'S');
       end;
     except
-      raise Exception.Create('Erro recarregando permissões');
+      raise Exception.Create('Erro recarregando permissï¿½es');
     end;
   finally
     cdsPadrao.Close;
     cdsPadrao.Open;
     cdsPadrao.EnableControls;
-    MsgAviso('Permissões recarregadas!');
+    MsgAviso('Permissï¿½es recarregadas!');
   end;
 end;
 
@@ -192,7 +192,7 @@ begin
   end;
 end;
 
-procedure TfrmPerfilPermissao.dbgPermCellClick(Column: TUniDBGridColumn);
+procedure TfrmPerfilPermissao.dbgPermCellClick(Column: TDBGridColumn);
 begin
   inherited;
   if not (cdsPadrao.State in [dsEdit, dsInsert]) then
@@ -262,7 +262,7 @@ begin
     begin
       if Pos('exception 3', e.Message) > 0 then
       begin
-        MsgErro('Não é permitida exclusão deste perfil.');
+        MsgErro('Nï¿½o ï¿½ permitida exclusï¿½o deste perfil.');
         Abort;
       end;
     end;

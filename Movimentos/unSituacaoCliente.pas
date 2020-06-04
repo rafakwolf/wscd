@@ -9,7 +9,7 @@ uses
   uniMemo;
 
 type
-  TfrmSituacaoCliente = class(TUniForm)
+  TfrmSituacaoCliente = class(TForm)
     spSituacaoCliente: TSQLDataSet;
     spSituacaoClienteCLIENTE: TStringField;
     spSituacaoClienteLIMITECLIENTE: TFMTBCDField;
@@ -18,20 +18,20 @@ type
     spSituacaoClienteTOTALCONTASVENCIDAS: TFMTBCDField;
     spSituacaoClientePRIMEIROVENCIMENTO: TDateField;
     spSituacaoClienteDIASATRASO: TIntegerField;
-    btnOk: TUniBitBtn;
-    btnCancelar: TUniBitBtn;
-    btnContasCliente: TUniBitBtn;
-    imgWarn: TUniImage;
-    grpContas: TUniGroupBox;
-    cedDiasAtraso: TUniEdit;
-    grpDadosCliente: TUniGroupBox;
-    cedTotalContas: TUniEdit;
-    cedTotalVencidas: TUniEdit;
-    cedPrimeiroVenc: TUniEdit;
-    cedLimite: TUniEdit;
-    cedDataCadastro: TUniEdit;
-    cedCliente: TUniEdit;
-    mmoMsg: TUniMemo;
+    btnOk: TBitBtn;
+    btnCancelar: TBitBtn;
+    btnContasCliente: TBitBtn;
+    imgWarn: TImage;
+    grpContas: TGroupBox;
+    cedDiasAtraso: TEdit;
+    grpDadosCliente: TGroupBox;
+    cedTotalContas: TEdit;
+    cedTotalVencidas: TEdit;
+    cedPrimeiroVenc: TEdit;
+    cedLimite: TEdit;
+    cedDataCadastro: TEdit;
+    cedCliente: TEdit;
+    mmoMsg: TMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

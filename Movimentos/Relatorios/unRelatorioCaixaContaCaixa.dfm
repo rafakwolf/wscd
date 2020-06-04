@@ -9,13 +9,13 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   ExplicitHeight = 207
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TUniContainerPanel
+  inherited pnButtons: TContainerPanel
     Top = 134
     Width = 345
     ExplicitTop = 134
     ExplicitWidth = 345
   end
-  object dbeCaixa: TUniDBEdit [1]
+  object dbeCaixa: TDBEdit [1]
     Left = 24
     Top = 40
     Width = 283
@@ -28,7 +28,7 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
     Color = clBtnFace
     ReadOnly = True
   end
-  object dtpDataIni: TUniDBEdit [2]
+  object dtpDataIni: TDBEdit [2]
     Left = 24
     Top = 88
     Width = 145
@@ -39,7 +39,7 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
     DataSource = dsData
     TabOrder = 2
   end
-  object dtpDataFim: TUniDBEdit [3]
+  object dtpDataFim: TDBEdit [3]
     Left = 184
     Top = 88
     Width = 145

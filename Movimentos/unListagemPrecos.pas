@@ -31,12 +31,12 @@ type
     sqldProdutoPRECO: TFMTBCDField;
     sqldProdutoFORNECEDOR: TStringField;
     sqldProdutoGRUPO: TStringField;
-    lbCampo: TUniLabel;
-    btnFechar: TUniBitBtn;
-    btnPesquisar: TUniBitBtn;
-    edtPesquisa: TUniEdit;
-    cbbCampo: TUniComboBox;
-    Grade: TUniDBGrid;
+    lbCampo: TLabel;
+    btnFechar: TBitBtn;
+    btnPesquisar: TBitBtn;
+    edtPesquisa: TEdit;
+    cbbCampo: TComboBox;
+    Grade: TDBGrid;
     procedure btnFecharClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

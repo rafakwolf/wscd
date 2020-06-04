@@ -9,7 +9,7 @@ inherited frmDesmarcar: TfrmDesmarcar
   ExplicitHeight = 134
   PixelsPerInch = 96
   TextHeight = 13
-  object Desmarcar: TUniSpeedButton
+  object Desmarcar: TSpeedButton
     Left = 104
     Top = 72
     Width = 89
@@ -24,7 +24,7 @@ inherited frmDesmarcar: TfrmDesmarcar
     TabOrder = 2
     OnClick = DesmarcarClick
   end
-  object Cancel: TUniSpeedButton
+  object Cancel: TSpeedButton
     Left = 200
     Top = 72
     Width = 89
@@ -39,7 +39,7 @@ inherited frmDesmarcar: TfrmDesmarcar
     TabOrder = 3
     OnClick = CancelClick
   end
-  object Alterados: TUniCheckBox
+  object Alterados: TCheckBox
     Left = 15
     Top = 13
     Width = 130
@@ -52,7 +52,7 @@ inherited frmDesmarcar: TfrmDesmarcar
     Font.Name = 'Verdana'
     TabOrder = 0
   end
-  object Novos: TUniCheckBox
+  object Novos: TCheckBox
     Left = 15
     Top = 32
     Width = 110

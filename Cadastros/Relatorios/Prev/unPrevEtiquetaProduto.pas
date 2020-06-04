@@ -8,7 +8,7 @@ uses
   RLBarcode, FMTBcd, UniGuiForm;
   
 type
-  TfrmPrevEtiquetaProduto = class(TUniForm)
+  TfrmPrevEtiquetaProduto = class(TForm)
     dspEtq: TDataSetProvider;
     cdsEtq: TClientDataSet;
     dsEtq: TDataSource;

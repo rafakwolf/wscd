@@ -7,7 +7,7 @@ uses
   Dialogs, Funcoes, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd, uniguiform;
 
 type
-  TfrmPrevDuplicataSemForm = class(TUniForm)
+  TfrmPrevDuplicataSemForm = class(TForm)
     rrDuplicata: TRLReport;
     rbDetalhe: TRLBand;
     lbSacado: TRLLabel;
@@ -97,17 +97,17 @@ begin
             TRLLabel(Components[I]).Font.Style := [];
           if cdsPadraoESTILOFONTE.AsString = 'Negrito' then
             TRLLabel(Components[I]).Font.Style := [fsBold];
-          if cdsPadraoESTILOFONTE.AsString = 'Itálico' then
+          if cdsPadraoESTILOFONTE.AsString = 'Itï¿½lico' then
             TRLLabel(Components[I]).Font.Style := [fsItalic];
           if cdsPadraoESTILOFONTE.AsString = 'Sublinhado' then
             TRLLabel(Components[I]).Font.Style := [fsUnderline];
-          if cdsPadraoESTILOFONTE.AsString = 'Negrito Itálico' then
+          if cdsPadraoESTILOFONTE.AsString = 'Negrito Itï¿½lico' then
             TRLLabel(Components[I]).Font.Style := [fsBold, fsItalic];
           if cdsPadraoESTILOFONTE.AsString = 'Negrito Sublinhado' then
             TRLLabel(Components[I]).Font.Style := [fsBold, fsUnderline];
-          if cdsPadraoESTILOFONTE.AsString = 'Itálico Sublinhado' then
+          if cdsPadraoESTILOFONTE.AsString = 'Itï¿½lico Sublinhado' then
             TRLLabel(Components[I]).Font.Style := [fsItalic, fsUnderline];
-          if cdsPadraoESTILOFONTE.AsString = 'Negrito Itálico Sublinhado' then
+          if cdsPadraoESTILOFONTE.AsString = 'Negrito Itï¿½lico Sublinhado' then
             TRLLabel(Components[I]).Font.Style := [fsBold, fsItalic, fsUnderline];
         end;
     end;
@@ -138,17 +138,17 @@ begin
       if TRLLabel(Self.Components[I]).Font.Style = [fsBold] then
         EstiloFonte := 'Negrito';
       if TRLLabel(Self.Components[I]).Font.Style = [fsItalic] then
-        EstiloFonte := 'Itálico';
+        EstiloFonte := 'Itï¿½lico';
       if TRLLabel(Self.Components[I]).Font.Style = [fsUnderline] then
         EstiloFonte := 'Sublinhado';
       if TRLLabel(Self.Components[I]).Font.Style = [fsBold, fsItalic] then
-        EstiloFonte := 'Negrito Itálico';
+        EstiloFonte := 'Negrito Itï¿½lico';
       if TRLLabel(Self.Components[I]).Font.Style = [fsBold, fsUnderline] then
         EstiloFonte := 'Negrito Sublinhado';
       if TRLLabel(Self.Components[I]).Font.Style = [fsItalic, fsUnderline] then
-        EstiloFonte := 'Itálico Sublinhado';
+        EstiloFonte := 'Itï¿½lico Sublinhado';
       if TRLLabel(Self.Components[I]).Font.Style = [fsBold, fsItalic, fsUnderline] then
-        EstiloFonte := 'Negrito Itálico Sublinhado';
+        EstiloFonte := 'Negrito Itï¿½lico Sublinhado';
       cdsPadraoESTILOFONTE.AsString :=  EstiloFonte;
     end;
   cdsPadrao.ApplyUpdates(0);

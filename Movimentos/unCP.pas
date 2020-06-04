@@ -65,26 +65,26 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALPAGO: TSingleField;
-    lbStatus: TUniLabel;
-    btnPagar: TUniBitBtn;
-    btnContas: TUniBitBtn;
-    dbdVencimento: TUniDBEdit;
-    dbdData: TUniDBEdit;
-    dbeOrigem: TUniDBEdit;
-    dbeJuros: TUniDBEdit;
-    dbeDocumento: TUniDBEdit;
-    dbeValor: TUniDBEdit;
-    dbeDescricao: TUniDBEdit;
-    dbeFornecedor: TUniDBEdit;
-    dbeCompra: TUniDBEdit;
-    dbeValorAtual: TUniDBEdit;
-    dbeConta: TUniDBEdit;
-    grpPagamento: TUniGroupBox;
-    dbeDataPagto: TUniDBEdit;
-    dbeDesconto: TUniDBEdit;
-    dbeCapitalPago: TUniDBEdit;
-    dbeJuroPago: TUniDBEdit;
-    dbeTotalPago: TUniDBEdit;
+    lbStatus: TLabel;
+    btnPagar: TBitBtn;
+    btnContas: TBitBtn;
+    dbdVencimento: TDBEdit;
+    dbdData: TDBEdit;
+    dbeOrigem: TDBEdit;
+    dbeJuros: TDBEdit;
+    dbeDocumento: TDBEdit;
+    dbeValor: TDBEdit;
+    dbeDescricao: TDBEdit;
+    dbeFornecedor: TDBEdit;
+    dbeCompra: TDBEdit;
+    dbeValorAtual: TDBEdit;
+    dbeConta: TDBEdit;
+    grpPagamento: TGroupBox;
+    dbeDataPagto: TDBEdit;
+    dbeDesconto: TDBEdit;
+    dbeCapitalPago: TDBEdit;
+    dbeJuroPago: TDBEdit;
+    dbeTotalPago: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure dbeFornecedorClickButton(Sender: TObject);
@@ -293,7 +293,7 @@ procedure TfrmCP.AntesSalvar;
 begin
   inherited;
 //  if not ValidaDataIniFim(cdsPadraoDATA.AsDateTime, cdsPadraoVENCIMENTO.AsDateTime,
-//    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
+//    dbdData, False, True, 'A "Data de emissï¿½o" nï¿½o pode ser maior que a data de "Data de vencimento".',
 //    True) then
 //    Abort;
 
@@ -304,7 +304,7 @@ begin
         QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (FORNECEDOR = '+
         QuotedStr(IntToStr(cdsPadraoFORNECEDOR.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
       begin
-        MsgCuidado('Este "Documento" já está cadastrado para este "Fornecedor".');
+        MsgCuidado('Este "Documento" jï¿½ estï¿½ cadastrado para este "Fornecedor".');
         SetFocusIfCan(dbeDocumento);
         Abort;
       end;
@@ -312,7 +312,7 @@ begin
 
   if cdsPadraoIDCONTA.IsNull then
   begin
-    MsgCuidado('O campo "Conta" é de preenchimento obrigatório.');
+    MsgCuidado('O campo "Conta" ï¿½ de preenchimento obrigatï¿½rio.');
     Abort;
   end;
 end;
@@ -340,19 +340,19 @@ begin
     cdsPadrao.Edit;
     cdsPadraoPAGAR.AsString := 'N';
     cdsPadrao.ApplyUpdates(0);
-    MsgAviso('Ésta conta já foi paga');
+    MsgAviso('ï¿½sta conta jï¿½ foi paga');
   end;
 end;
 
 procedure TfrmCP.actDeleteExecute(Sender: TObject);
 begin
-  if MsgSN('Deseja realmente excluir este lançamento?') then
+  if MsgSN('Deseja realmente excluir este lanï¿½amento?') then
   begin
     sqldDeleta.Close;
     sqldDeleta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
     sqldDeleta.ExecSQL;
 
-    MsgAviso('Registro excluído!');
+    MsgAviso('Registro excluï¿½do!');
   end;
 end;
 

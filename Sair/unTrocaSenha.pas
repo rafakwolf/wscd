@@ -10,18 +10,18 @@ uses
   uniSpeedButton, uniPanel, uniLabel, uniImage, uniEdit;
 
 type
-  TfrmTrocaSenha = class(TUniForm)
+  TfrmTrocaSenha = class(TForm)
     sqldUsuarios: TSQLDataSet;
     sqldSenhaAtual: TSQLDataSet;
     sqldSenhaAtualUSERS: TIntegerField;
-    btGrava: TUniSpeedButton;
-    btCancel: TUniSpeedButton;
-    lbSenhaAtu: TUniLabel;
-    lbNovaSenha: TUniLabel;
-    lbConfirma: TUniLabel;
-    edAtual: TUniEdit;
-    edNova: TUniEdit;
-    edConfirma: TUniEdit;
+    btGrava: TSpeedButton;
+    btCancel: TSpeedButton;
+    lbSenhaAtu: TLabel;
+    lbNovaSenha: TLabel;
+    lbConfirma: TLabel;
+    edAtual: TEdit;
+    edNova: TEdit;
+    edConfirma: TEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btCancelClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -79,20 +79,20 @@ begin
   end;
   if (edConfirma.Text = '') then
   begin
-    MsgAviso('','Digite a senha de confirmação.');
+    MsgAviso('','Digite a senha de confirmaï¿½ï¿½o.');
     edConfirma.SetFocus;
     Exit;
   end;
   if (edConfirma.Text <> edNova.Text) then
   begin
-    MsgErro('','Senha de confirmação não confere com a nova senha.');
+    MsgErro('','Senha de confirmaï¿½ï¿½o nï¿½o confere com a nova senha.');
     edConfirma.SetFocus;
     Exit;
   end;
 
   if not VerificaSenhaAtual(edAtual.Text) then
   begin
-    MsgErro('','A sua senha atual não confere, digite novamente.');
+    MsgErro('','A sua senha atual nï¿½o confere, digite novamente.');
     edAtual.SetFocus;
     Exit;
   end;

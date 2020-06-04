@@ -21,9 +21,9 @@ type
     cdsPadraoOPERACAO: TStringField;
     sqldPadraoCFNOTA: TStringField;
     cdsPadraoCFNOTA: TStringField;
-    dbeNomeCfop: TUniDBEdit;
-    dbeCodCfop: TUniDBEdit;
-    dbmCfNota: TUniDBMemo;
+    dbeNomeCfop: TDBEdit;
+    dbeCodCfop: TDBEdit;
+    dbmCfNota: TDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
   private

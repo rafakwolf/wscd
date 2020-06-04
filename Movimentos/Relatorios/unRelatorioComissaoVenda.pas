@@ -11,9 +11,9 @@ uses
 type
   TfrmRelatorioComissaoVenda = class(TfrmDialogoRelatorioPadrao)
     dsData: TDataSource;
-    dbdtpDataFim: TUniDBEdit;
-    dbdtpDataIni: TUniDBEdit;
-    dbeVendedor: TUniDBEdit;
+    dbdtpDataFim: TDBEdit;
+    dbdtpDataIni: TDBEdit;
+    dbeVendedor: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);
@@ -78,10 +78,10 @@ begin
 //
 //      rlblDataVendedor.Caption := IntToStr(GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').AsInteger)+' - '+
 //        GetDmPesquisar.cdsPesqVendedor.FieldByName('VENDEDOR').AsString;
-//      rlblDataPeriodo.Caption  := FormatDateTime('dd/mm/yyyy', GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime)+' à '+
+//      rlblDataPeriodo.Caption  := FormatDateTime('dd/mm/yyyy', GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime)+' ï¿½ '+
 //        FormatDateTime('dd/mm/yyyy', GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
 //
-//      lbTitulo.Caption := 'Comissão de vendedor';
+//      lbTitulo.Caption := 'Comissï¿½o de vendedor';
 //      PrintIfNotEmptyRL(rrPadrao, p);
 //    finally
 //      Free;

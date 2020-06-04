@@ -18,7 +18,7 @@ object frmPadrao: TfrmPadrao
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object sbStatus: TUniStatusBar
+  object sbStatus: TStatusBar
     Left = 0
     Top = 281
     Width = 755
@@ -32,7 +32,7 @@ object frmPadrao: TfrmPadrao
     ParentColor = False
     Color = clBtnFace
   end
-  object pnBotoesPadrao: TUniContainerPanel
+  object pnBotoesPadrao: TContainerPanel
     Left = 0
     Top = 0
     Width = 755
@@ -44,7 +44,7 @@ object frmPadrao: TfrmPadrao
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
     TabStop = False
-    object btnNovo: TUniSpeedButton
+    object btnNovo: TSpeedButton
       Left = 1
       Top = 1
       Width = 48
@@ -58,7 +58,7 @@ object frmPadrao: TfrmPadrao
       Color = clWindow
       TabOrder = 0
     end
-    object btnAlterar: TUniSpeedButton
+    object btnAlterar: TSpeedButton
       Left = 48
       Top = 1
       Width = 49
@@ -72,7 +72,7 @@ object frmPadrao: TfrmPadrao
       Color = clWindow
       TabOrder = 1
     end
-    object btnExcluir: TUniSpeedButton
+    object btnExcluir: TSpeedButton
       Left = 98
       Top = 1
       Width = 41
@@ -86,7 +86,7 @@ object frmPadrao: TfrmPadrao
       Color = clWindow
       TabOrder = 2
     end
-    object btnSalvar: TUniSpeedButton
+    object btnSalvar: TSpeedButton
       Left = 139
       Top = 1
       Width = 54
@@ -100,7 +100,7 @@ object frmPadrao: TfrmPadrao
       Color = clWindow
       TabOrder = 3
     end
-    object btnCancelar: TUniSpeedButton
+    object btnCancelar: TSpeedButton
       Left = 193
       Top = 1
       Width = 60
@@ -114,7 +114,7 @@ object frmPadrao: TfrmPadrao
       Color = clWindow
       TabOrder = 4
     end
-    object btnConsultar: TUniSpeedButton
+    object btnConsultar: TSpeedButton
       Left = 254
       Top = 1
       Width = 72
@@ -128,7 +128,7 @@ object frmPadrao: TfrmPadrao
       Color = clWindow
       TabOrder = 5
     end
-    object btnSair: TUniSpeedButton
+    object btnSair: TSpeedButton
       Left = 401
       Top = 1
       Width = 56
@@ -142,7 +142,7 @@ object frmPadrao: TfrmPadrao
       Color = clWindow
       TabOrder = 6
     end
-    object btnPrint: TUniSpeedButton
+    object btnPrint: TSpeedButton
       Left = 329
       Top = 1
       Width = 66

@@ -7,18 +7,18 @@ inherited frmAgenda: TfrmAgenda
   ExplicitHeight = 418
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 370
     Width = 564
     ExplicitTop = 370
     ExplicitWidth = 545
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 564
     TabOrder = 3
     ExplicitWidth = 545
   end
-  object dbeNome: TUniDBEdit [2]
+  object dbeNome: TDBEdit [2]
     Left = 56
     Top = 56
     Width = 329
@@ -33,7 +33,7 @@ inherited frmAgenda: TfrmAgenda
         'afterrender=function afterrender(sender, eOpts)'#13#10'{'#13#10'  sender.emp' +
         'tyText = '#39'Nome'#39';'#13#10'}')
   end
-  object dbeFax: TUniDBEdit [3]
+  object dbeFax: TDBEdit [3]
     Left = 56
     Top = 200
     Width = 161
@@ -44,7 +44,7 @@ inherited frmAgenda: TfrmAgenda
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object grpTelefone: TUniGroupBox [4]
+  object grpTelefone: TGroupBox [4]
     Left = 56
     Top = 88
     Width = 201
@@ -54,7 +54,7 @@ inherited frmAgenda: TfrmAgenda
     Caption = ' Telefones '
     TabOrder = 1
     TabStop = False
-    object dbeFone1: TUniDBEdit
+    object dbeFone1: TDBEdit
       Left = 8
       Top = 18
       Width = 183
@@ -65,7 +65,7 @@ inherited frmAgenda: TfrmAgenda
       DataSource = dsPadrao
       TabOrder = 0
     end
-    object dbeFone2: TUniDBEdit
+    object dbeFone2: TDBEdit
       Left = 8
       Top = 46
       Width = 183
@@ -76,7 +76,7 @@ inherited frmAgenda: TfrmAgenda
       DataSource = dsPadrao
       TabOrder = 1
     end
-    object dbeFone3: TUniDBEdit
+    object dbeFone3: TDBEdit
       Left = 8
       Top = 75
       Width = 183
@@ -88,7 +88,7 @@ inherited frmAgenda: TfrmAgenda
       TabOrder = 2
     end
   end
-  object dbmObs: TUniDBMemo [5]
+  object dbmObs: TDBMemo [5]
     Left = 56
     Top = 227
     Width = 345

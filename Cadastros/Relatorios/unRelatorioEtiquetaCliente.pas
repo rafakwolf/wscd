@@ -11,9 +11,9 @@ uses
 type
   TfrmRelatorioEtiquetaCliente = class(TfrmDialogoRelatorioPadrao)
     dsCidade: TDataSource;
-    dbeCidade: TUniDBEdit;
-    dbeCliente: TUniDBEdit;
-    rgpFiltro: TUniRadioGroup;
+    dbeCidade: TDBEdit;
+    dbeCliente: TDBEdit;
+    rgpFiltro: TRadioGroup;
     procedure btnVisualizarClick(Sender: TObject);
     procedure dbeClienteClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

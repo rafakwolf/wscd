@@ -18,8 +18,8 @@ type
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoCODGRUPO: TIntegerField;
     cdsPadraoDESCRICAO: TStringField;
-    dbeNomeGrupo: TUniDBEdit;
-    dbeCodGrupo: TUniDBEdit;
+    dbeNomeGrupo: TDBEdit;
+    dbeCodGrupo: TDBEdit;
     procedure FormCreate(Sender: TObject);
   private
   public

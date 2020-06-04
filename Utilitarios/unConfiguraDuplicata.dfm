@@ -10,17 +10,17 @@ inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
   ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 388
     Width = 513
     ExplicitTop = 388
     ExplicitWidth = 465
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 513
     ExplicitWidth = 465
   end
-  object dbeFontSize: TUniDBEdit [2]
+  object dbeFontSize: TDBEdit [2]
     Left = 392
     Top = 356
     Width = 57
@@ -31,7 +31,7 @@ inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
     DataSource = dsPadrao
     TabOrder = 2
   end
-  object dbgrdCampos: TUniDBGrid [3]
+  object dbgrdCampos: TDBGrid [3]
     Left = 8
     Top = 40
     Width = 449

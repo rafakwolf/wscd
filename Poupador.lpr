@@ -1,5 +1,7 @@
 program Poupador;
 
+{$MODE Delphi}
+
 uses
   Forms, Interfaces,
   uClasses in 'Util\uClasses.pas',

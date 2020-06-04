@@ -22,9 +22,9 @@ type
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
-    chkLucro: TUniCheckBox;
-    chkCusto: TUniCheckBox;
-    dbeForn: TUniDBEdit;
+    chkLucro: TCheckBox;
+    chkCusto: TCheckBox;
+    dbeForn: TDBEdit;
     procedure dbeFornClickButton(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

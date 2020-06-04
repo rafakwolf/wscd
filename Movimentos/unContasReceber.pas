@@ -167,30 +167,30 @@ type
     cdsPadraoVALORJURO: TSingleField;
     cdsPadraoTOTAL: TSingleField;
     cdsPadraoTOTALRECDO: TSingleField;
-    mnuCP: TUniMainMenu;
-    miOpcoes: TUniMenuItem;
-    miReceber: TUniMenuItem;
-    miExcluir: TUniMenuItem;
-    N1: TUniMenuItem;
-    miVencendoHoje: TUniMenuItem;
-    miRecebidas: TUniMenuItem;
-    miContasVencidas: TUniMenuItem;
-    miTodasContas: TUniMenuItem;
-    N3: TUniMenuItem;
-    miBuscarCliente: TUniMenuItem;
-    N5: TUniMenuItem;
-    miFechar: TUniMenuItem;
-    miRelatorios: TUniMenuItem;
-    miRecibo: TUniMenuItem;
-    Stb: TUniStatusBar;
-    pnBotoes: TUniContainerPanel;
-    btnExcluir: TUniSpeedButton;
-    btnRecebidas: TUniSpeedButton;
-    btnReceber: TUniSpeedButton;
-    btnFechar: TUniSpeedButton;
-    grpCliente: TUniGroupBox;
-    dbeCliente: TUniDBEdit;
-    Grade: TUniDBGrid;
+    mnuCP: TMainMenu;
+    miOpcoes: TMenuItem;
+    miReceber: TMenuItem;
+    miExcluir: TMenuItem;
+    N1: TMenuItem;
+    miVencendoHoje: TMenuItem;
+    miRecebidas: TMenuItem;
+    miContasVencidas: TMenuItem;
+    miTodasContas: TMenuItem;
+    N3: TMenuItem;
+    miBuscarCliente: TMenuItem;
+    N5: TMenuItem;
+    miFechar: TMenuItem;
+    miRelatorios: TMenuItem;
+    miRecibo: TMenuItem;
+    Stb: TStatusBar;
+    pnBotoes: TContainerPanel;
+    btnExcluir: TSpeedButton;
+    btnRecebidas: TSpeedButton;
+    btnReceber: TSpeedButton;
+    btnFechar: TSpeedButton;
+    grpCliente: TGroupBox;
+    dbeCliente: TDBEdit;
+    Grade: TDBGrid;
     procedure btnExcluirClick(Sender: TObject);
     procedure btnReceberClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -245,7 +245,7 @@ begin
       ReabreDataset(cdsPadrao);
     end
     else
-      MsgAviso('Não é permitido excluir uma conta já recebida.');
+      MsgAviso('Nï¿½o ï¿½ permitido excluir uma conta jï¿½ recebida.');
   end;
 end;
 
@@ -285,8 +285,8 @@ begin
       FreeAndNil(frmReceberMan);
  // end
  // else
-  //  MsgAviso('Não há conta marcada para recebimento.'+#13#10+
-  //    'Para marcar/desmarcar dê um duplo clique sobre a conta desejada.');
+  //  MsgAviso('Nï¿½o hï¿½ conta marcada para recebimento.'+#13#10+
+  //    'Para marcar/desmarcar dï¿½ um duplo clique sobre a conta desejada.');
 end;
 
 procedure TfrmContasReceber.FormClose(Sender: TObject;

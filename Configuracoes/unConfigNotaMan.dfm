@@ -9,7 +9,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
   ExplicitHeight = 235
   PixelsPerInch = 96
   TextHeight = 13
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 336
     Top = 160
     Width = 81
@@ -71,7 +71,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     TabOrder = 0
     OnClick = btnCancelarClick
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 424
     Top = 160
     Width = 81
@@ -133,7 +133,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     TabOrder = 1
     OnClick = btnOkClick
   end
-  object btnNovo: TUniBitBtn
+  object btnNovo: TBitBtn
     Left = 8
     Top = 160
     Width = 73
@@ -144,7 +144,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     TabOrder = 2
     OnClick = btnNovoClick
   end
-  object dbeCampoDescricao: TUniDBEdit
+  object dbeCampoDescricao: TDBEdit
     Left = 48
     Top = 24
     Width = 400
@@ -156,7 +156,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     TabOrder = 3
     OnKeyPress = dbeCampoDescricaoKeyPress
   end
-  object dbeLinha: TUniDBEdit
+  object dbeLinha: TDBEdit
     Left = 48
     Top = 51
     Width = 65
@@ -167,7 +167,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     DataSource = dsPadrao
     TabOrder = 4
   end
-  object dbeColuna: TUniDBEdit
+  object dbeColuna: TDBEdit
     Left = 48
     Top = 77
     Width = 65
@@ -178,7 +178,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     DataSource = dsPadrao
     TabOrder = 5
   end
-  object dbeLayOut: TUniDBEdit
+  object dbeLayOut: TDBEdit
     Left = 48
     Top = 103
     Width = 400
@@ -189,7 +189,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     DataSource = dsPadrao
     TabOrder = 6
   end
-  object dbckbImprimir: TUniDBCheckBox
+  object dbckbImprimir: TDBCheckBox
     Left = 48
     Top = 129
     Width = 73

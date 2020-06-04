@@ -18,7 +18,7 @@ object frmLancCaixa: TfrmLancCaixa
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 416
     Top = 248
     Width = 89
@@ -82,7 +82,7 @@ object frmLancCaixa: TfrmLancCaixa
     TabOrder = 0
     OnClick = btnOkClick
   end
-  object btnCancel: TUniBitBtn
+  object btnCancel: TBitBtn
     Left = 320
     Top = 248
     Width = 89
@@ -146,7 +146,7 @@ object frmLancCaixa: TfrmLancCaixa
     TabOrder = 2
     OnClick = btnCancelClick
   end
-  object btnNovo: TUniBitBtn
+  object btnNovo: TBitBtn
     Left = 8
     Top = 248
     Width = 89

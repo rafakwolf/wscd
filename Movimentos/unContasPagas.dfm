@@ -12,7 +12,7 @@ inherited frmContasPagas: TfrmContasPagas
   ExplicitHeight = 439
   PixelsPerInch = 96
   TextHeight = 13
-  object Stb: TUniStatusBar
+  object Stb: TStatusBar
     Left = 0
     Top = 391
     Width = 930
@@ -27,7 +27,7 @@ inherited frmContasPagas: TfrmContasPagas
     Color = clBtnFace
     ExplicitTop = 372
   end
-  object pnBotoes: TUniContainerPanel
+  object pnBotoes: TContainerPanel
     Left = 0
     Top = 0
     Width = 930
@@ -39,7 +39,7 @@ inherited frmContasPagas: TfrmContasPagas
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 3
     TabStop = False
-    object btnAtualizar: TUniSpeedButton
+    object btnAtualizar: TSpeedButton
       Left = 98
       Top = 1
       Width = 95
@@ -109,7 +109,7 @@ inherited frmContasPagas: TfrmContasPagas
       TabOrder = 0
       OnClick = miAtualizarClick
     end
-    object btnEstornar: TUniSpeedButton
+    object btnEstornar: TSpeedButton
       Left = 3
       Top = 1
       Width = 95
@@ -179,7 +179,7 @@ inherited frmContasPagas: TfrmContasPagas
       TabOrder = 1
       OnClick = btnEstornarClick
     end
-    object btnFechar: TUniSpeedButton
+    object btnFechar: TSpeedButton
       Left = 193
       Top = 1
       Width = 95
@@ -304,7 +304,7 @@ inherited frmContasPagas: TfrmContasPagas
       OnClick = miFecharClick
     end
   end
-  object GroupCredor: TUniGroupBox
+  object GroupCredor: TGroupBox
     Left = 8
     Top = 42
     Width = 433
@@ -314,7 +314,7 @@ inherited frmContasPagas: TfrmContasPagas
     Caption = ' Fornecedor '
     TabOrder = 1
     TabStop = False
-    object dbeFornecedor: TUniDBEdit
+    object dbeFornecedor: TDBEdit
       Left = 8
       Top = 16
       Width = 417
@@ -328,7 +328,7 @@ inherited frmContasPagas: TfrmContasPagas
       ReadOnly = True
     end
   end
-  object grpFiltro: TUniGroupBox
+  object grpFiltro: TGroupBox
     Left = 448
     Top = 42
     Width = 473
@@ -338,7 +338,7 @@ inherited frmContasPagas: TfrmContasPagas
     Caption = ' Filtro '
     TabOrder = 2
     TabStop = False
-    object lbFiltrousado: TUniLabel
+    object lbFiltrousado: TLabel
       Left = 8
       Top = 21
       Width = 55
@@ -352,7 +352,7 @@ inherited frmContasPagas: TfrmContasPagas
       TabOrder = 0
     end
   end
-  object Grade: TUniDBGrid
+  object Grade: TDBGrid
     Left = 0
     Top = 104
     Width = 930
@@ -633,23 +633,23 @@ inherited frmContasPagas: TfrmContasPagas
     Left = 216
     Top = 224
   end
-  object mmContasPagas: TUniMainMenu
+  object mmContasPagas: TMainMenu
     Left = 168
     Top = 184
-    object miOpcoes: TUniMenuItem
+    object miOpcoes: TMenuItem
       Caption = 'Op'#231#245'es'
-      object miEstornar: TUniMenuItem
+      object miEstornar: TMenuItem
         Caption = 'Estornar'
         OnClick = btnEstornarClick
       end
-      object miAtualizar: TUniMenuItem
+      object miAtualizar: TMenuItem
         Caption = 'Atualizar'
         OnClick = miAtualizarClick
       end
-      object N1: TUniMenuItem
+      object N1: TMenuItem
         Caption = '-'
       end
-      object miFechar: TUniMenuItem
+      object miFechar: TMenuItem
         Caption = 'Fechar'
         OnClick = miFecharClick
       end

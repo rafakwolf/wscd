@@ -21,7 +21,7 @@ type
     cdsSelecaoFANTAZIA: TStringField;
     cdsSelecaoCNPJ: TStringField;
     cdsSelecaoTELEFONE: TStringField;
-    dbeForn: TUniDBEdit;
+    dbeForn: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);

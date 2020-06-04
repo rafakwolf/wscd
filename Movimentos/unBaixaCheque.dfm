@@ -10,7 +10,7 @@ inherited frmBaixaCheque: TfrmBaixaCheque
   ExplicitHeight = 169
   PixelsPerInch = 96
   TextHeight = 13
-  object lbContaCaixa: TUniLabel
+  object lbContaCaixa: TLabel
     Left = 8
     Top = 48
     Width = 68
@@ -20,7 +20,7 @@ inherited frmBaixaCheque: TfrmBaixaCheque
     Caption = 'Conta caixa'
     TabOrder = 5
   end
-  object lbDataBaixa: TUniLabel
+  object lbDataBaixa: TLabel
     Left = 272
     Top = 48
     Width = 80
@@ -30,7 +30,7 @@ inherited frmBaixaCheque: TfrmBaixaCheque
     Caption = 'Data da baixa'
     TabOrder = 6
   end
-  object btnOk: TUniBitBtn
+  object btnOk: TBitBtn
     Left = 200
     Top = 96
     Width = 81
@@ -92,7 +92,7 @@ inherited frmBaixaCheque: TfrmBaixaCheque
     ModalResult = 1
     TabOrder = 3
   end
-  object btnCancelar: TUniBitBtn
+  object btnCancelar: TBitBtn
     Left = 288
     Top = 96
     Width = 81
@@ -154,7 +154,7 @@ inherited frmBaixaCheque: TfrmBaixaCheque
     ModalResult = 2
     TabOrder = 4
   end
-  object medtDataBaixa: TUniEdit
+  object medtDataBaixa: TEdit
     Left = 272
     Top = 64
     Width = 97
@@ -165,7 +165,7 @@ inherited frmBaixaCheque: TfrmBaixaCheque
     Text = '  /  /    '
     TabOrder = 2
   end
-  object cedHistorico: TUniEdit
+  object cedHistorico: TEdit
     Left = 8
     Top = 24
     Width = 361
@@ -175,7 +175,7 @@ inherited frmBaixaCheque: TfrmBaixaCheque
     Text = ''
     TabOrder = 0
   end
-  object dblcbContaCaixa: TUniDBLookupComboBox
+  object dblcbContaCaixa: TDBLookupComboBox
     Left = 8
     Top = 64
     Width = 257

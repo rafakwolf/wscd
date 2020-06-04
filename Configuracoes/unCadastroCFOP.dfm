@@ -8,18 +8,18 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
   ExplicitHeight = 337
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sbStatus: TUniStatusBar
+  inherited sbStatus: TStatusBar
     Top = 289
     Width = 553
     ExplicitTop = 289
     ExplicitWidth = 553
   end
-  inherited pnBotoesPadrao: TUniContainerPanel
+  inherited pnBotoesPadrao: TContainerPanel
     Width = 553
     TabOrder = 3
     ExplicitWidth = 553
   end
-  object dbeNomeCfop: TUniDBEdit [2]
+  object dbeNomeCfop: TDBEdit [2]
     Left = 79
     Top = 82
     Width = 449
@@ -33,7 +33,7 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     TabOrder = 1
     FieldLabel = 'Nome'
   end
-  object dbeCodCfop: TUniDBEdit [3]
+  object dbeCodCfop: TDBEdit [3]
     Left = 79
     Top = 56
     Width = 218
@@ -47,7 +47,7 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     TabOrder = 0
     FieldLabel = 'Cfop'
   end
-  object dbmCfNota: TUniDBMemo [4]
+  object dbmCfNota: TDBMemo [4]
     Left = 79
     Top = 108
     Width = 449

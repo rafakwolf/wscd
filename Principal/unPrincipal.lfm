@@ -1,5 +1,5 @@
 object MainForm: TMainForm
-  object menuFrame: TUniHTMLFrame
+  object menuFrame: THTMLFrame
     Left = 0
     Top = 0
     Width = 205
@@ -10,7 +10,7 @@ object MainForm: TMainForm
     LayoutConfig.Width = '18%'
     OnAjaxEvent = menuFrameAjaxEvent
   end
-  object UniPanel1: TUniPanel
+  object UniPanel1: TPanel
     Left = 264
     Top = 8
     Width = 449
@@ -23,7 +23,7 @@ object MainForm: TMainForm
     Color = clSilver
     LayoutConfig.Height = '8%'
     LayoutConfig.Width = '82%'
-    object btnSair: TUniSpeedButton
+    object btnSair: TSpeedButton
       Left = 394
       Top = 0
       Width = 55
@@ -33,7 +33,7 @@ object MainForm: TMainForm
       ClientEvents.ExtEvents.Strings = (
         
           'added=function added(sender, container, pos, eOpts)'#13#10'{'#13#10'  sender' +
-          '.addCls(''btn btn-success'');'#13#10'}')
+          '.addCls(btn btn-success);'#13#10'}')
       Caption = '<i class="fa fa-sign-out fa-2x"></i>'
       Align = alRight
       Anchors = [akTop, akRight, akBottom]
@@ -43,7 +43,7 @@ object MainForm: TMainForm
       OnClick = btnSairClick
       ExplicitLeft = 395
     end
-    object btnNotificacoes: TUniSpeedButton
+    object btnNotificacoes: TSpeedButton
       Left = 345
       Top = 0
       Width = 49
@@ -68,10 +68,10 @@ object MainForm: TMainForm
       Caption = 'Cidades'
       OnExecute = actCidadeExecute
     end
-    object actUnidade: TAction
+    object acTdade: TAction
       Category = 'Configuracao'
       Caption = 'Unidades de medida'
-      OnExecute = actUnidadeExecute
+      OnExecute = acTdadeExecute
     end
     object actGrupo: TAction
       Category = 'Configuracao'

@@ -7,7 +7,7 @@ uses
   Dialogs, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd, UniGuiForm;
 
 type
-  TfrmModeloEnvelope = class(TUniForm)
+  TfrmModeloEnvelope = class(TForm)
     rrEnvelope: TRLReport;
     rbFundo: TRLBand;
     lbEmpresa: TRLLabel;

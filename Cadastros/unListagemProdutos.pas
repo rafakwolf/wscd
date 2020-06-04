@@ -9,14 +9,14 @@ uses
   uniBasicGrid, uniDBGrid, uniMainMenu, uniEdit;
 
 type
-  TfrmListagemProdutos = class(TUniForm)
+  TfrmListagemProdutos = class(TForm)
     dsProdutos: TDataSource;
-    lbBuscaProduto: TUniLabel;
-    btnOK: TUniBitBtn;
-    Grade: TUniDBGrid;
-    PopupCons: TUniPopupMenu;
-    miFiltrar: TUniMenuItem;
-    edtBuscaProduto: TUniEdit;
+    lbBuscaProduto: TLabel;
+    btnOK: TBitBtn;
+    Grade: TDBGrid;
+    PopupCons: TPopupMenu;
+    miFiltrar: TMenuItem;
+    edtBuscaProduto: TEdit;
     procedure btnOKClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
