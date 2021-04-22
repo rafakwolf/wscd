@@ -3,10 +3,10 @@ unit unTrocaSenhaEstoque;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, DBClient,
-  Provider, SqlExpr, unTrocaSenhaCaixa, FMTBcd, uniGUIClasses, uniEdit,
-  uniGUIBaseClasses, uniButton, uniBitBtn;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, memds,
+   SqlDb, unTrocaSenhaCaixa, FMTBcd,  uniEdit,
+    uniBitBtn;
 
 type
   TfrmSenhaEstoque = class(TfrmSenhaCaixa)
@@ -45,7 +45,7 @@ begin
     end
     else
     begin
-      MsgErro('Senha atual não confere, digite novamente.');
+      MsgErro('Senha atual nï¿½o confere, digite novamente.');
       edAtual.Clear;
       edNova.Clear;
       edAtual.SelectAll;
@@ -53,7 +53,7 @@ begin
   end
   else
   begin
-    MsgCuidado('Para alterar as senhas, você deve digita-las.');
+    MsgCuidado('Para alterar as senhas, vocï¿½ deve digita-las.');
     edAtual.Clear;
     edNova.Clear;
     edAtual.SelectAll;

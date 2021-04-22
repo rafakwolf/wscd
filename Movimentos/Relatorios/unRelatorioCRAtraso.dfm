@@ -78,7 +78,7 @@ inherited frmRelatorioCRAtraso: TfrmRelatorioCRAtraso
     Left = 136
     Top = 8
   end
-  object cdsCliente: TClientDataSet
+  object cdsCliente: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCliente'

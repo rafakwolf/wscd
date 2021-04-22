@@ -3,17 +3,17 @@ unit unVendaNaoConc;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, DB, DBClient,
-  Datasnap.Provider, Data.SqlExpr, Grids, DBGrids, StdCtrls,
-  Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao, DB, memds,
+   Sqldb, Grids, DBGrids, StdCtrls,
+  Buttons, FMTBcd,    
   uniBasicGrid, uniDBGrid;
 
 type
   TfrmVendaNaoConc = class(TfrmSimplePadrao)
-    sqldVenda: TSQLDataSet;
-    dspVenda: TDataSetProvider;
-    cdsVenda: TClientDataSet;
+    sqldVenda: TSQLQuery;
+    dspVenda: TComponent;
+    cdsVenda: TMemDataSet;
     dsVenda: TDataSource;
     sqldVendaCODIGO: TIntegerField;
     sqldVendaDATA: TDateField;
@@ -60,7 +60,7 @@ begin
   if cdsVenda.IsEmpty then
   begin
     MsgAviso('Todas as vendas conclu�das.');
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
   end;
 end;
 

@@ -3,12 +3,12 @@ unit unPagarMan;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls, Mask, DB,
-   SqlExpr, unContasPagar, Grids,
-  DBGrids, DBClient,Datasnap.Provider, FMTBcd,
-  unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton,
-  uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls,  DB,
+   SqlDb, unContasPagar, Grids,
+  DBGrids, memds, FMTBcd,
+  unSimplePadrao,   uniLabel, 
+   uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
   uniRadioGroup;
 
 type
@@ -16,9 +16,9 @@ type
   
   TfrmPagarMan = class(TfrmSimplePadrao)
     dsContasPagar: TDataSource;
-    sqldContasPagar: TSQLDataSet;
-    dspContasPagar: TDataSetProvider;
-    cdsContasPagar: TClientDataSet;
+    sqldContasPagar: TSQLQuery;
+    dspContasPagar: TComponent;
+    cdsContasPagar: TMemDataSet;
     sqldContasPagarCODIGO: TIntegerField;
     sqldContasPagarDATA: TDateField;
     sqldContasPagarVENCIMENTO: TDateField;
@@ -61,11 +61,11 @@ type
     sqldContasPagarCONTA: TStringField;
     cdsContasPagarIDCONTA: TIntegerField;
     cdsContasPagarCONTA: TStringField;
-    sqldSelecao: TSQLDataSet;
+    sqldSelecao: TSQLQuery;
     sqldSelecaoIDBANCO: TIntegerField;
     sqldSelecaoBANCO: TStringField;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     cdsSelecaoIDBANCO: TIntegerField;
     cdsSelecaoBANCO: TStringField;
     dsSelecao: TDataSource;
@@ -123,7 +123,7 @@ var
 implementation
 
 uses  Funcoes, VarGlobal, ConstPadrao, uDatabaseutils,
-     Extensos, uDmPesquisar, uCheque, System.Math;
+     Extensos, uDmPesquisar, uCheque, Math;
 
 {$R *.dfm}
 
@@ -207,7 +207,7 @@ begin
   if cdsContasPagar.IsEmpty then
   begin
     MsgCuidado('Nenhum registro selecionado.');
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
 
@@ -339,10 +339,10 @@ procedure TfrmPagarMan.medtBandaMagneticaExit(Sender: TObject);
 
   function BancoExiste(IdBanco: Integer): Boolean;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldContasPagar.SQLConnection;
-      CommandText := 'select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));
+      SQL.Clear; SQL.Text :='select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));
       Open;
       Result := Fields[0].AsInteger > 0;
     finally
@@ -352,10 +352,10 @@ procedure TfrmPagarMan.medtBandaMagneticaExit(Sender: TObject);
 
   function ChequeExiste(pBandaMagnetica: string): Boolean;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldContasPagar.SQLConnection;
-      CommandText := 'select count(1) as CONT from CHEQUE '+
+      SQL.Clear; SQL.Text :='select count(1) as CONT from CHEQUE '+
         'where BANDAMAGNETICA = '+QuotedStr(pBandaMagnetica);
       Open;
       Result := (FieldByName('CONT').AsInteger > 0);
@@ -421,7 +421,7 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin

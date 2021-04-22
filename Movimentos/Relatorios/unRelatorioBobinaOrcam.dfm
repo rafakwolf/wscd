@@ -293,7 +293,7 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
     Left = 151
     Top = 216
   end
-  object cdsDetOrcam: TClientDataSet
+  object cdsDetOrcam: TMemDataset
     Aggregates = <>
     DataSetField = cdsOrcamsqlDetOrcam
     Params = <>
@@ -340,7 +340,7 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       Precision = 15
     end
   end
-  object cdsOrcam: TClientDataSet
+  object cdsOrcam: TMemDataset
     Aggregates = <>
     Params = <
       item

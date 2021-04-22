@@ -205,7 +205,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     Left = 152
     Top = 26
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'

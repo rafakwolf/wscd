@@ -3,9 +3,8 @@ unit uNotificacoes;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, unSimplePadrao, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniCheckBox, uniMultiItem, uniListBox;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, StdCtrls, unSimplePadrao, LCLType;
 
 type
   TfrmNotificacoes = class(TfrmSimplePadrao)

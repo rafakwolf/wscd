@@ -211,7 +211,7 @@ inherited frmPrevPromocao: TfrmPrevPromocao
       FieldName = 'FIM'
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True

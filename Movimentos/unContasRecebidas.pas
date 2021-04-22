@@ -3,28 +3,28 @@ unit unContasRecebidas;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, Mask, DBCtrls, DB, SqlExpr, varglobal,
-  DBClient, ComCtrls, Menus, Grids, DBGrids,
-  Datasnap.Provider, unContasReceber, FMTBcd, unSimplePadrao, uniMainMenu,
-  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons,  DBCtrls, DB, SqlDb, varglobal,
+  memds, ComCtrls, Menus, Grids, DBGrids,
+   unContasReceber, FMTBcd, unSimplePadrao, uniMainMenu,
+      
   uniStatusBar, uniPanel, uniLabel, uniEdit, uniDBEdit, uniGroupBox,
   uniBasicGrid, uniDBGrid;
 
 type
   TfrmContasRecebidas = class(TfrmSimplePadrao)
-    cdsPadrao: TClientDataSet;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
+    cdsPadrao: TMemDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
     dsPadrao: TDataSource;
-    sqldConta: TSQLDataSet;
-    dspConta: TDataSetProvider;
-    cdsConta: TClientDataSet;
+    sqldConta: TSQLQuery;
+    dspConta: TComponent;
+    cdsConta: TMemDataSet;
     cdsContaORIGEM: TIntegerField;
     sqldContaCODIGO: TIntegerField;
     sqldContaORIGEM: TIntegerField;
     cdsContaCODIGO: TIntegerField;
-    sqldDeletaConta: TSQLDataSet;
+    sqldDeletaConta: TSQLQuery;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoDATA: TDateField;
     sqldPadraoVENCIMENTO: TDateField;
@@ -137,7 +137,7 @@ begin
 
   case OpcaoFiltro of
    -1: begin
-     PostMessage(Handle, WM_CLOSE, 0, 0);
+     //PostMessage(Handle, WM_CLOSE, 0, 0);
      Exit;
    end;
    0: begin
@@ -146,7 +146,7 @@ begin
         (ClearMask(DataF) <> '') then
      begin
        cdsPadrao.Close;
-       cdsPadrao.CommandText := GetSQLFromQuery(cdsPadrao) +
+       cdsPadrao.SQL.Clear; SQL.Text :=GetSQLFromQuery(cdsPadrao) +
          ' and CLIENTE = :PCLIENTE' +
          ' and DATARECTO between :DATAI and :DATAF';
        cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
@@ -166,7 +166,7 @@ begin
   if cdsPadrao.IsEmpty then
   begin
     MsgErro(UM_PESQUISAVAZIO);
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
   SomaContasRecebidas;
@@ -176,10 +176,10 @@ procedure TfrmContasRecebidas.btnEstornarClick(Sender: TObject);
 
   function ContasMarcadas: Integer;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select count(1) as CONT from CONTASRECEBER'+
+      SQL.Clear; SQL.Text :='select count(1) as CONT from CONTASRECEBER'+
         ' where RECEBER = '+QuotedStr('S')+
         ' and RECDA = '+QuotedStr('S')+
         ' and CLIENTE = '+QuotedStr(IntToStr(FCliente));
@@ -272,10 +272,10 @@ end;
 
 procedure TfrmContasRecebidas.SomaContasRecebidas;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select sum(TOTAL) as SOMA from CONTASRECEBER '+
+    SQL.Clear; SQL.Text :='select sum(TOTAL) as SOMA from CONTASRECEBER '+
       'where RECDA = '+QuotedStr('S')+' and CLIENTE = :PCLIENTE';
     Params.ParamByName('PCLIENTE').AsInteger := FCliente; 
     Open;

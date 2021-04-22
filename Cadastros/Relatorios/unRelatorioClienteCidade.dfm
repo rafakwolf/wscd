@@ -54,7 +54,7 @@ inherited frmRelatorioClienteCidade: TfrmRelatorioClienteCidade
     Left = 160
     Top = 8
   end
-  object cdsCidade: TClientDataSet
+  object cdsCidade: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCidade'

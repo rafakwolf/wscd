@@ -2,7 +2,7 @@ unit VarGlobal;
 
 interface
 
-uses Classes, Data.SqlExpr, unDmPrincipal, uClasses, uDmPesquisar;
+uses Classes, Sqldb, unDmPrincipal, uClasses, uDmPesquisar;
 
 function GetConnection: TSQLConnection;
 function GetDataModule: TDmPrincipal;

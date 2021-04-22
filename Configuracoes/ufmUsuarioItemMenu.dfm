@@ -311,7 +311,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Left = 160
     Top = 156
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -359,7 +359,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Left = 152
     Top = 216
   end
-  object cdsAcesso: TClientDataSet
+  object cdsAcesso: TMemDataset
     Tag = 1
     Aggregates = <>
     Params = <

@@ -3,18 +3,18 @@ unit unRelatorioCPFornecedor;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls,  FMTBcd, uniGUIClasses,
-  uniEdit, uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel;
+  memds,  DB, SqlDb,  DBCtrls,  FMTBcd, 
+  uniEdit, uniDBEdit,    uniPanel;
 
 type
   TfrmRelatorioCPFornecedor = class(TfrmDialogoRelatorioPadrao)
-    sqldSelecao: TSQLDataSet;
+    sqldSelecao: TSQLQuery;
     sqldSelecaoCODFORNECEDOR: TIntegerField;
     sqldSelecaoFANTAZIA: TStringField;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     cdsSelecaoCODFORNECEDOR: TIntegerField;
     cdsSelecaoFANTAZIA: TStringField;
     sqldSelecaoCNPJ: TStringField;
@@ -83,7 +83,7 @@ procedure TfrmRelatorioCPFornecedor.dbeFornClickButton(Sender: TObject);
 begin
   inherited;
   cdsSelecao.Close;
-  cdsSelecao.CommandText := SQLpadrao;
+  cdsSelecao.SQL.Clear; SQL.Text :=SQLpadrao;
 //  if not TfrmModeloConsulta.Execute('Fornecedor', cdsSelecao, FN_FORN, DL_FORN) then
 //    cdsSelecao.Close;
 end;

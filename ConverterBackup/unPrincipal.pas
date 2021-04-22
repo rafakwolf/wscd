@@ -8,9 +8,9 @@ uses
   LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ExtCtrls, Buttons, sqldb, Types, ActnList, DB,
   ConstPadrao, ToolWin, {AppEvnts,}  uDatabaseUtils, crypto,
-  StdCtrls, DBCtrls, {DBClient,} IniFiles, {UniGuiForm, UniGUIDialogs,
-  Provider,} ImgList,  ImgUtils, FMTBcd, {System.Actions, uniMainMenu,
-  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+  StdCtrls, DBCtrls, {memds,} IniFiles, { UniGUIDialogs,
+  } ImgList,  ImgUtils, FMTBcd, { uniMainMenu,
+      
   uniStatusBar, uniPanel, uniToolBar, uniHTMLFrame, uniGUITypes,} uMenuActions;
 
 type
@@ -140,7 +140,7 @@ type
       Params: TStrings);
     procedure btnNotificacoesClick(Sender: TObject);
   Private
-    Lista_permissoes: TClientDataSet;
+    Lista_permissoes: TMemDataSet;
     MenuActions: TMenuActions;
 
     procedure SetEnableMenu(adm: Boolean);
@@ -165,10 +165,10 @@ function MainForm: TMainForm;
 implementation
 
 uses
-  unAcesso, Funcoes, uUtilFncs, VarGlobal,  {uniGUIVars,} MainModule, {uniGUIApplication,}
+  unAcesso, Funcoes, uUtilFncs, VarGlobal,   MainModule, {uniGUIApplication,}
   uClasses, udmAcesso, uNotificacoes;
 
-{$R *.lfm}
+{$R *.dfm}
 
 function MainForm: TMainForm;
 begin
@@ -177,142 +177,142 @@ end;
 
 procedure TMainForm.actGrupoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroGrupo', 'Cadastro de grupos', UniApplication);
+  ChamaForm('TfrmCadastroGrupo', 'Cadastro de grupos', Application);
 end;
 
 procedure TMainForm.actCidadeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroCidade', 'Cadastro de cidades', UniApplication);
+  ChamaForm('TfrmCadastroCidade', 'Cadastro de cidades', Application);
 end;
 
 procedure TMainForm.acTdadeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', UniApplication);
+  ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', Application);
 end;
 
 procedure TMainForm.actAliquotaIcmsExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmAliquota', 'Cadastro de aliquotas', UniApplication);
+  ChamaForm('TfrmAliquota', 'Cadastro de aliquotas', Application);
 end;
 
 procedure TMainForm.actContaCaixaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroCaixa', 'Contas caixa', UniApplication);
+  ChamaForm('TfrmCadastroCaixa', 'Contas caixa', Application);
 end;
 
 procedure TMainForm.actCfopExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCadastroCfop', 'Cadastro de CFOP', UniApplication);
+  ChamaForm('TfrmCadastroCfop', 'Cadastro de CFOP', Application);
 end;
 
 procedure TMainForm.actConfiguracaoGlobalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigGlobal', 'Configurações globais', UniApplication);
+  ChamaForm('TfrmConfigGlobal', 'Configurações globais', Application);
 end;
 
 procedure TMainForm.actConfiguracaoLocalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfiguracao', 'Configurações locais', UniApplication);
+  ChamaForm('TfrmConfiguracao', 'Configurações locais', Application);
 end;
 
 procedure TMainForm.actDadosEmpresaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDadosEmpresa', 'Dados da empresa', UniApplication);
+  ChamaForm('TfrmDadosEmpresa', 'Dados da empresa', Application);
 end;
 
 procedure TMainForm.actUsuarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmUsuarioItemMenu', 'Usuários', UniApplication);
+  ChamaForm('TfrmUsuarioItemMenu', 'Usuários', Application);
 end;
 
 procedure TMainForm.actAgendaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmAgenda', 'Agenda de telefones', UniApplication);
+  ChamaForm('TfrmAgenda', 'Agenda de telefones', Application);
 end;
 
 procedure TMainForm.actCalendarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCalendario', 'Calendário', UniApplication);
+  ChamaForm('TfrmCalendario', 'Calendário', Application);
 end;
 
 procedure TMainForm.actDuplicataExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDuplicatas', 'Cadastro e impressão de duplicatas', UniApplication);
+  ChamaForm('TfrmDuplicatas', 'Cadastro e impressão de duplicatas', Application);
 end;
 
 procedure TMainForm.actBackupExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmBackup', 'Fazer uma cópia dos dados', UniApplication);
+  ChamaForm('TfrmBackup', 'Fazer uma cópia dos dados', Application);
 end;
 
 procedure TMainForm.actClienteExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCliente', 'Cadastro de clientes', UniApplication);
+  ChamaForm('TfrmCliente', 'Cadastro de clientes', Application);
 end;
 
 procedure TMainForm.actProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmProduto', 'Cadastro de produtos', UniApplication);
+  ChamaForm('TfrmProduto', 'Cadastro de produtos', Application);
 end;
 
 procedure TMainForm.actFornecedorExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmFornecedor', 'Cadastro de fornecedores', UniApplication);
+  ChamaForm('TfrmFornecedor', 'Cadastro de fornecedores', Application);
 end;
 
 procedure TMainForm.actContasPagarExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCP', 'Contas a pagar', UniApplication);
+  ChamaForm('TfrmCP', 'Contas a pagar', Application);
 end;
 
 procedure TMainForm.actContasReceberExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCR', 'Contas a receber', UniApplication);
+  ChamaForm('TfrmCR', 'Contas a receber', Application);
 end;
 
 procedure TMainForm.actOrcamentoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmOrcamentos', 'Orçamentos', UniApplication);
+  ChamaForm('TfrmOrcamentos', 'Orçamentos', Application);
 end;
 
 procedure TMainForm.actVendaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmVendas', 'Vendas', UniApplication);
+  ChamaForm('TfrmVendas', 'Vendas', Application);
 end;
 
 procedure TMainForm.actCompraExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmNotasFiscais', 'Compras', UniApplication);
+  ChamaForm('TfrmNotasFiscais', 'Compras', Application);
 end;
 
 procedure TMainForm.actPerdaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPerda', 'Perdas de produtos', UniApplication);
+  ChamaForm('TfrmPerda', 'Perdas de produtos', Application);
 end;
 
 procedure TMainForm.actCaixaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCaixa', 'Livro caixa', UniApplication);
+  ChamaForm('TfrmCaixa', 'Livro caixa', Application);
 end;
 
 procedure TMainForm.actDesmarcaProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDesmarcar', 'Produtos novos e alterados', UniApplication);
+  ChamaForm('TfrmDesmarcar', 'Produtos novos e alterados', Application);
 end;
 
 procedure TMainForm.actExcluirProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmExclusaoProduto', 'Exclusão de produtos', UniApplication);
+  ChamaForm('TfrmExclusaoProduto', 'Exclusão de produtos', Application);
 end;
 
 procedure TMainForm.actListaPrecoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmListagemPrecos', 'Lista de preços', UniApplication);
+  ChamaForm('TfrmListagemPrecos', 'Lista de preços', Application);
 end;
 
 procedure TMainForm.actEtiquetaProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEtiquetaProduto', 'Etiquetas de produtos', UniApplication);
+  ChamaForm('TfrmEtiquetaProduto', 'Etiquetas de produtos', Application);
 end;
 
 procedure TMainForm.actOutroUsuarioExecute(Sender: TObject);
@@ -332,37 +332,37 @@ end;
 
 procedure TMainForm.actSobreSistemaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmSobre', 'Sobre o sistema', UniApplication);
+  ChamaForm('TfrmSobre', 'Sobre o sistema', Application);
 end;
 
 procedure TMainForm.actDicaDiaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDicas', 'Dica do dia', UniApplication);
+  ChamaForm('TfrmDicas', 'Dica do dia', Application);
 end;
 
 procedure TMainForm.actPerfisExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissões de usuários', UniApplication);
+  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissões de usuários', Application);
 end;
 
 procedure TMainForm.actTrocaSenhaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmTrocaSenha', 'Trocar senha', UniApplication);
+  ChamaForm('TfrmTrocaSenha', 'Trocar senha', Application);
 end;
 
 procedure TMainForm.actReciboExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRecibo', 'Recibos', UniApplication);
+  ChamaForm('TfrmRecibo', 'Recibos', Application);
 end;
 
 procedure TMainForm.actRelatorioAgendaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioAgenda', 'Listagem de telefones', UniApplication);
+  ChamaForm('TfrmRelatorioAgenda', 'Listagem de telefones', Application);
 end;
 
 procedure TMainForm.actEnvelopeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEnvelopes', 'Envelopes', UniApplication);
+  ChamaForm('TfrmEnvelopes', 'Envelopes', Application);
 end;
 
 procedure TMainForm.SetEnableMenu(adm: Boolean);
@@ -433,27 +433,27 @@ end;
 
 procedure TMainForm.actEtiquetaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEtiqueta', 'Configuração de etiquetas', UniApplication);
+  ChamaForm('TfrmEtiqueta', 'Configuração de etiquetas', Application);
 end;
 
 procedure TMainForm.actPesqFoneExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPesqFone', 'Pesquisa de telefones', UniApplication);
+  ChamaForm('TfrmPesqFone', 'Pesquisa de telefones', Application);
 end;
 
 procedure TMainForm.actBancoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmBanco', 'Bancos', UniApplication);
+  ChamaForm('TfrmBanco', 'Bancos', Application);
 end;
 
 procedure TMainForm.actChequeExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCheque', 'Controle de cheques', UniApplication);
+  ChamaForm('TfrmCheque', 'Controle de cheques', Application);
 end;
 
 procedure TMainForm.actRenovaChaveExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', UniApplication);
+  ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Application);
 end;
 
 procedure TMainForm.btnLogOffClick(Sender: TObject);
@@ -464,7 +464,7 @@ end;
 
 procedure TMainForm.btnNotificacoesClick(Sender: TObject);
 begin
-  frmNotificacoes := TfrmNotificacoes.Create(UniApplication);
+  frmNotificacoes := TfrmNotificacoes.Create(Application);
   frmNotificacoes.Top := btnNotificacoes.Top + btnNotificacoes.Height;
   frmNotificacoes.Left := btnNotificacoes.Left;
   frmNotificacoes.Show();
@@ -536,7 +536,7 @@ end;
 
 procedure TMainForm.btnSairClick(Sender: TObject);
 begin
-  UniApplication.Restart;
+  Application.Restart;
 end;
 
 procedure TMainForm.actAjudaExecute(Sender: TObject);
@@ -596,22 +596,22 @@ end;
 
 procedure TMainForm.actNotaPromissoriaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromissoria', 'Promissória avulsa', UniApplication);
+  ChamaForm('TfrmPromissoria', 'Promissória avulsa', Application);
 end;
 
 procedure TMainForm.actInfoSistemaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmInformacaoSistema', 'Informações sobre o sistema', UniApplication);
+  ChamaForm('TfrmInformacaoSistema', 'Informações sobre o sistema', Application);
 end;
 
 procedure TMainForm.actVendedorExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmVendedor', 'Vendedores', UniApplication);
+  ChamaForm('TfrmVendedor', 'Vendedores', Application);
 end;
 
 procedure TMainForm.actConfigNotaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigNota', 'Configurãção da nota', UniApplication);
+  ChamaForm('TfrmConfigNota', 'Configurãção da nota', Application);
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -633,7 +633,7 @@ end;
 
 procedure TMainForm.actPromocaoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromocao', 'Promoções', UniApplication);
+  ChamaForm('TfrmPromocao', 'Promoções', Application);
 end;
 
 function TMainForm.ValidaDataAcesso(DataEncriptada: string;
@@ -641,11 +641,11 @@ function TMainForm.ValidaDataAcesso(DataEncriptada: string;
 
   procedure RegistraData(DataATual: TDateTime; Connection: TSQLConnection);
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := Connection;
       Close;
-      CommandText := 'UPDATE SISTEMA SET DATA_ACESSO = :PDATA_ACESSO';
+      SQL.Clear; SQL.Text :='UPDATE SISTEMA SET DATA_ACESSO = :PDATA_ACESSO';
       Params.ParamByName('PDATA_ACESSO').AsString := EnDeCrypt( DateToStr( DataAtual));
       ExecSQL;
       Result := True;

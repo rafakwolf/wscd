@@ -488,7 +488,7 @@ inherited frmProduto: TfrmProduto
     Left = 328
     Top = 124
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -649,7 +649,7 @@ inherited frmProduto: TfrmProduto
     Left = 168
     Top = 88
   end
-  object cdsUnidade: TClientDataSet
+  object cdsUnidade: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspUnidade'
@@ -677,7 +677,7 @@ inherited frmProduto: TfrmProduto
     Left = 168
     Top = 120
   end
-  object cdsGrupo: TClientDataSet
+  object cdsGrupo: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspGrupo'
@@ -705,7 +705,7 @@ inherited frmProduto: TfrmProduto
     Left = 168
     Top = 152
   end
-  object cdsAliquota: TClientDataSet
+  object cdsAliquota: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspAliquota'
@@ -734,7 +734,7 @@ inherited frmProduto: TfrmProduto
     Left = 168
     Top = 184
   end
-  object cdsForn: TClientDataSet
+  object cdsForn: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspForn'

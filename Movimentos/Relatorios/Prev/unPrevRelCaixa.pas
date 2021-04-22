@@ -3,9 +3,9 @@ unit unPrevRelCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, RLReport, DB, DBClient, Provider,
-  SqlExpr, VarGlobal, RLParser, FMTBcd;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, RLReport, DB, memds, 
+  SqlDb, VarGlobal, RLParser, FMTBcd;
 
 type
   TfrmPrevRelCaixa = class(TfrmModeloRelatorio)
@@ -63,7 +63,7 @@ begin
   if Text = 'C' then
     Text := 'Entrada'
   else
-    Text := 'Saída';  
+    Text := 'Saï¿½da';  
 end;
 
 procedure TfrmPrevRelCaixa.rrPadraoBeforePrint(Sender: TObject;
@@ -72,7 +72,7 @@ begin
   inherited;
   lbTitulo.Caption := Trim(TituloRel);
   rllbTotalC.Caption := 'Entradas: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'VALOR', 'TIPO', 'C'));
-  rllbTotalD.Caption := 'Saídas: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'VALOR', 'TIPO', 'D'));
+  rllbTotalD.Caption := 'Saï¿½das: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'VALOR', 'TIPO', 'D'));
 
   rllbTotalD.Visible := True;
   rllbTotalC.Visible := True;

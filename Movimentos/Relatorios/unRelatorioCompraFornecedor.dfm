@@ -61,7 +61,7 @@ inherited frmRelatorioCompraFornecedor: TfrmRelatorioCompraFornecedor
     Options = [poAllowCommandText]
     Left = 200
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'

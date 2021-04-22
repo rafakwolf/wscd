@@ -3,19 +3,19 @@ unit unReceberMan;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Mask, DBCtrls, Buttons, DB, varglobal,
-   DBClient, Provider, SqlExpr, unContasReceber, Grids,
-  DBGrids, FMTBcd, unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls,  DBCtrls, Buttons, DB, varglobal,
+   memds,  SqlDb, unContasReceber, Grids,
+  DBGrids, FMTBcd, unSimplePadrao,   uniLabel,
+    uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
   uniRadioGroup;
 
 type
   TfrmReceberMan = class(TfrmSimplePadrao)
     dsContasReceber: TDataSource;
-    sqldContaReceber: TSQLDataSet;
-    dspContaReceber: TDataSetProvider;
-    cdsContaReceber: TClientDataSet;
+    sqldContaReceber: TSQLQuery;
+    dspContaReceber: TComponent;
+    cdsContaReceber: TMemDataSet;
     sqldContaReceberCODIGO: TIntegerField;
     sqldContaReceberDATA: TDateField;
     sqldContaReceberVENCIMENTO: TDateField;
@@ -58,11 +58,11 @@ type
     sqldContaReceberNOME: TStringField;
     cdsContaReceberIDCONTA: TIntegerField;
     cdsContaReceberNOME: TStringField;
-    sqldSelecao: TSQLDataSet;
+    sqldSelecao: TSQLQuery;
     sqldSelecaoIDBANCO: TIntegerField;
     sqldSelecaoBANCO: TStringField;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     cdsSelecaoIDBANCO: TIntegerField;
     cdsSelecaoBANCO: TStringField;
     dsSelecao: TDataSource;
@@ -118,7 +118,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao, uDatabaseutils,
-     Extensos, uCheque, System.Math;
+     Extensos, uCheque, Math;
 
 {$R *.dfm}
 
@@ -364,7 +364,7 @@ begin
   if cdsContaReceber.IsEmpty then
   begin
     MsgCuidado('Nenhum registro selecionado!');
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
 
@@ -430,10 +430,10 @@ procedure TfrmReceberMan.medtBandaMagneticaExit(Sender: TObject);
 
   function BancoExiste(IdBanco: Integer): Boolean;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldContaReceber.SQLConnection;
-      CommandText := 'select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));
+      SQL.Clear; SQL.Text :='select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));
       Open;
       Result := Fields[0].AsInteger > 0;
     finally
@@ -443,10 +443,10 @@ procedure TfrmReceberMan.medtBandaMagneticaExit(Sender: TObject);
 
   function ChequeExiste(pBandaMagnetica: string): Boolean;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldContaReceber.SQLConnection;
-      CommandText := 'select count(1) as CONT from CHEQUE '+
+      SQL.Clear; SQL.Text :='select count(1) as CONT from CHEQUE '+
         'where BANDAMAGNETICA = '+QuotedStr(pBandaMagnetica);
       Open;
       Result := (FieldByName('CONT').AsInteger > 0);

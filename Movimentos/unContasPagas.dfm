@@ -482,7 +482,7 @@ inherited frmContasPagas: TfrmContasPagas
     Left = 376
     Top = 216
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <
       item
@@ -607,7 +607,7 @@ inherited frmContasPagas: TfrmContasPagas
     Left = 208
     Top = 280
   end
-  object cdsEstorno: TClientDataSet
+  object cdsEstorno: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspEstorno'

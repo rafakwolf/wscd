@@ -3,19 +3,19 @@ unit unCR;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, DateUtils,
-  ExtCtrls, ComCtrls,  Mask, DBCtrls, 
-  SqlExpr, Provider, DBClient, ConstPadrao, FMTBcd, System.Actions, uniLabel,
-  uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
-  uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit, uniGroupBox;
+  ExtCtrls, ComCtrls,   DBCtrls, 
+  SqlDb,  memds, ConstPadrao, FMTBcd,  uniLabel,
+      uniPanel,
+   uniStatusBar, uniEdit, uniDBEdit, uniGroupBox;
 
 type
   TfrmCR = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
-    sqlLimite: TSQLDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
+    sqlLimite: TSQLQuery;
     actContasReceber: TAction;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoDATA: TDateField;
@@ -56,7 +56,7 @@ type
     cdsPadraoJURORECDO: TFMTBCDField;
     cdsPadraoDESCTO: TFMTBCDField;
     sqlLimiteTOTAL_CONTAS: TFloatField;
-    sqldDeleta: TSQLDataSet;
+    sqldDeleta: TSQLQuery;
     sqldPadraoIDCONTA: TIntegerField;
     sqldPadraoCONTA: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
@@ -170,7 +170,7 @@ begin
   with TfrmPrevContasReceber.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := 'select * from VIEWRELCR order by CLIENTE, DATA';
+    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCR order by CLIENTE, DATA';
     cdsPadrao.Open;
     Titulo := 'Contas a receber';
     PrintIfNotEmptyRL(rrPadrao);
@@ -192,7 +192,7 @@ begin
   with TfrmPrevRelCRAtrasadas.Create(Self), cdsPadrao do
   try
     Close;
-    CommandText := 'select * from VIEWRELCRATRASADOS order by CLIENTE, VENCIMENTO';
+    SQL.Clear; SQL.Text :='select * from VIEWRELCRATRASADOS order by CLIENTE, VENCIMENTO';
     Open;
     Titulo := 'Contas a receber atrasadas';
     PrintIfNotEmptyRL(rrPadrao);
@@ -400,7 +400,7 @@ begin
   frel := TfrmPrevContasReceber.Create(nil);
   try
     frel.cdsPadrao.Close;
-    frel.cdsPadrao.CommandText := 'select '+
+    frel.cdsPadrao.SQL.Clear; SQL.Text :='select '+
                                   'DATA, '+
                                   'VENCIMENTO, '+
                                   'CLIENTE, '+

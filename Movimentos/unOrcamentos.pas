@@ -3,31 +3,31 @@ unit unOrcamentos;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, DBCtrls, StdCtrls, DB, Mask, Grids, DBGrids, Buttons,
-  SqlExpr, Menus, ComCtrls, DBClient,  uniGuiForm,
-  Provider, ConstPadrao, FMTBcd, uniMainMenu, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, uniLabel,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, DBCtrls, StdCtrls, DB,  Grids, DBGrids, Buttons,
+  SqlDb, Menus, ComCtrls, memds,  
+   ConstPadrao, FMTBcd, uniMainMenu,  
+     uniStatusBar, uniPanel, uniLabel,
   uniEdit, uniDBEdit, uniMemo, uniDBMemo, uniBasicGrid, uniDBGrid;
 
 type
   TfrmOrcamentos = class(TForm)
-    dtOrcam: TDataSetProvider;
-    cdsOrcam: TClientDataSet;
-    cdsDetOrcam: TClientDataSet;
+    dtOrcam: TComponent;
+    cdsOrcam: TMemDataSet;
+    cdsDetOrcam: TMemDataSet;
     dsLink: TDataSource;
-    sqlOrcam: TSQLDataSet;
-    sqlDetOrcam: TSQLDataSet;
-    sqlProdutos: TSQLDataSet;
-    dspProdutos: TDataSetProvider;
-    cdsProdutos: TClientDataSet;
-    sqldSelecao: TSQLDataSet;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    sqlOrcam: TSQLQuery;
+    sqlDetOrcam: TSQLQuery;
+    sqlProdutos: TSQLQuery;
+    dspProdutos: TComponent;
+    cdsProdutos: TMemDataSet;
+    sqldSelecao: TSQLQuery;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     dsSelecao: TDataSource;
-    sqldCliente: TSQLDataSet;
-    dspCliente: TDataSetProvider;
-    cdsCliente: TClientDataSet;
+    sqldCliente: TSQLQuery;
+    dspCliente: TComponent;
+    cdsCliente: TMemDataSet;
     cdsOrcamCODIGO: TIntegerField;
     cdsOrcamCODCLIENTE: TIntegerField;
     cdsOrcamNOMECLIENTE: TStringField;
@@ -38,9 +38,9 @@ type
     cdsOrcamsqlDetOrcam: TDataSetField;
     dsOrcam: TDataSource;
     dsDetOrcam: TDataSource;
-    sqldVendedor: TSQLDataSet;
-    dspVendedor: TDataSetProvider;
-    cdsVendedor: TClientDataSet;
+    sqldVendedor: TSQLQuery;
+    dspVendedor: TComponent;
+    cdsVendedor: TMemDataSet;
     sqldVendedorIDVENDEDOR: TIntegerField;
     sqldVendedorVENDEDOR: TStringField;
     sqldVendedorATIVO: TStringField;
@@ -49,7 +49,7 @@ type
     cdsVendedorATIVO: TStringField;
     cdsOrcamIDVENDEDOR: TIntegerField;
     cdsOrcamVENDEDOR: TStringField;
-    spDeleta: TSQLDataSet;
+    spDeleta: TSQLQuery;
     sqldClienteCODCLIENTE: TIntegerField;
     sqldClienteNOME: TStringField;
     sqldClienteTELEFONE: TStringField;
@@ -193,7 +193,7 @@ type
     lbItens: TLabel;
     lbTotal: TLabel;
     btnInsereProduto: TBitBtn;
-    dbCliente: TDBEdit;
+    memdse: TDBEdit;
     edtNumero: TDBEdit;
     dbStatus: TDBEdit;
     dbConcluido: TDBEdit;
@@ -434,7 +434,7 @@ begin
     if (ClearMask(dtI) <> '') and (ClearMask(dtF) <> '') then
     begin
       cdsOrcam.Close;
-      cdsOrcam.CommandText :=  'select * from ORCAMENTO ' +
+      cdsOrcam.SQL.Clear; SQL.Text := 'select * from ORCAMENTO ' +
         'where DATA between :DATAINI and :DATAFIM';
       cdsOrcam.Params.ParamByName('DATAINI').AsDate := StrToDate(dtI);
       cdsOrcam.Params.ParamByName('DATAFIM').AsDate := StrToDate(dtF);
@@ -480,7 +480,7 @@ begin
   try
     cdsOrcam.DisableControls;
     cdsOrcam.Close;
-    cdsOrcam.CommandText := SQLPadrao;
+    cdsOrcam.SQL.Clear; SQL.Text :=SQLPadrao;
     cdsOrcam.Filtered := False;
     cdsOrcam.Open;
   finally
@@ -804,7 +804,7 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin

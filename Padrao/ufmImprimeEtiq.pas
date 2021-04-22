@@ -6,18 +6,16 @@ interface
 
 uses
   LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, {DBClient, Provider,} DB, {RLTypes,}
-  sqldb, StdCtrls, Buttons, ExtCtrls, Spin, {RLReport,} Funcoes,
-  VarGlobal, FMTBcd, IniFiles{, uniLabel, uniGUIBaseClasses, uniGUIClasses,
-  uniPanel, uniMultiItem, uniComboBox, uniButton, uniBitBtn, uniSpinEdit,
-  uniRadioGroup};
+  Dialogs, unDialogoRelatorioPadrao, memds, DB,
+  sqldb, StdCtrls, Buttons, ExtCtrls, Spin, Funcoes,
+  VarGlobal, FMTBcd, IniFiles, RLTypes, RLReport;
 
 type
   TTipoEtiqueta = (teProduto, teCliente);
   TfrmImprimeEtiq = class(TfrmDialogoRelatorioPadrao)
-    sqldEtiqueta: TSQLDataSet;
-    dspEtiqueta: TDataSetProvider;
-    cdsEtiqueta: TClientDataSet;
+    sqldEtiqueta: TSQLQuery;
+    dspEtiqueta: TComponent;
+    cdsEtiqueta: TMemDataSet;
     sqldEtiquetaIDETIQUETA: TIntegerField;
     sqldEtiquetaETIQUETA: TStringField;
     sqldEtiquetaALTURAFOLHA: TFloatField;
@@ -166,7 +164,7 @@ begin
 
       with TfrmPrevEtiquetaProduto.Create(Self) do
       try
-        rpEtiqueta.PageSetup.PaperSize := fpCustom;
+        rpEtiqueta.PageSetup.PaperSize := TRLPaperSize.fpCustom;
         rpEtiqueta.PageSetup.PaperHeight := cdsEtiquetaALTURAFOLHA.AsCurrency;
         rpEtiqueta.PageSetup.PaperWidth := cdsEtiquetaLARGURAFOLHA.AsCurrency;
         rpEtiqueta.Margins.TopMargin := cdsEtiquetaMARGEMSUPERIOR.AsCurrency;
@@ -215,7 +213,8 @@ begin
         end;
 
         cdsEtq.Close;
-        cdsEtq.CommandText := FSQL;
+        sqldEtq.SQL.Clear;
+        sqldEtq.SQL.add(FSQL);
         cdsEtq.Open;
 
         FSkip := Skip + 1;
@@ -283,7 +282,8 @@ begin
         end;
 
         cdsEtq.Close;
-        cdsEtq.CommandText := FSQL;
+        sqldEtq.SQL.Clear;
+        sqldEtq.SQL.add(FSQL);
         cdsEtq.Open;
 
         FSkip := Skip + 1;
@@ -361,8 +361,4 @@ begin
   inherited;
 end;
 
-initialization
-  RegisterClass(TfrmImprimeEtiq);
-finalization
-  UnRegisterClass(TfrmImprimeEtiq);
 end.

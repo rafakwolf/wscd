@@ -4,7 +4,7 @@ unit uNotifyEventDispatcher;
 
 interface
 
-{uses System.Classes, System.SysUtils;}
+{uses Classes, SysUtils;}
 
 type
   TNotifyEventDispatcher = class(TComponent)

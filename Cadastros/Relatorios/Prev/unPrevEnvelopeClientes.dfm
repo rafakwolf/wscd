@@ -16,7 +16,7 @@ inherited frmPrevEnvelopeCliente: TfrmPrevEnvelopeCliente
       FieldName = 'DATA'
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     object cdsPadraoDATA: TDateField
       FieldName = 'DATA'
     end

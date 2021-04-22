@@ -3,9 +3,9 @@ unit unFoto;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons,
-  ExtCtrls, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniGroupBox;
+  ExtCtrls,     uniGroupBox;
 
 type
   TfrmFoto = class(TfrmSimplePadrao)

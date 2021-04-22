@@ -436,7 +436,7 @@ inherited frmReceberMan: TfrmReceberMan
     Left = 288
     Top = 72
   end
-  object cdsContaReceber: TClientDataSet
+  object cdsContaReceber: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspContaReceber'
@@ -562,7 +562,7 @@ inherited frmReceberMan: TfrmReceberMan
     Left = 288
     Top = 104
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'

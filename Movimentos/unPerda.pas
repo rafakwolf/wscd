@@ -3,33 +3,33 @@ unit unPerda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
-  DBClient, Provider, SqlExpr, StdCtrls, DBCtrls, VarGlobal,
-    Mask, FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn,
-  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  memds,  SqlDb, StdCtrls, DBCtrls, VarGlobal,
+     FMTBcd,  uniLabel,  
+    uniPanel,  uniStatusBar,
   uniEdit, uniDBEdit, uniMemo, uniDBMemo, uniRadioGroup, uniDBRadioGroup;
 
 type
   TfrmPerda = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
+    sqldPadrao: TSQLQuery;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoCODPRODUTO: TIntegerField;
     sqldPadraoDESCRICAO: TStringField;
     sqldPadraoDATA: TDateField;
     sqldPadraoMOTIVO: TStringField;
     sqldPadraoOBS: TMemoField;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoCODPRODUTO: TIntegerField;
     cdsPadraoDESCRICAO: TStringField;
     cdsPadraoDATA: TDateField;
     cdsPadraoMOTIVO: TStringField;
     cdsPadraoOBS: TMemoField;
-    sqldProduto: TSQLDataSet;
-    dspProduto: TDataSetProvider;
-    cdsProduto: TClientDataSet;
+    sqldProduto: TSQLQuery;
+    dspProduto: TComponent;
+    cdsProduto: TMemDataSet;
     sqldProdutoIDPRODUTO: TIntegerField;
     sqldProdutoCODBARRA: TStringField;
     sqldProdutoDESCRICAO: TStringField;

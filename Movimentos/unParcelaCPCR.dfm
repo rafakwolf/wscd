@@ -322,7 +322,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Left = 56
     Top = 328
   end
-  object cdsParcela: TClientDataSet
+  object cdsParcela: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspParcela'
@@ -496,7 +496,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Left = 56
     Top = 360
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

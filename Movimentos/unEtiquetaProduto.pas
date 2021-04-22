@@ -3,21 +3,21 @@ unit unEtiquetaProduto;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, Grids, DBGrids, DBClient, Provider, SqlExpr,
-  Mask, DBCtrls,  FMTBcd, System.Actions, VarGlobal, uniGUIClasses, uniEdit,
-  uniDBEdit, uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses,
+  ExtCtrls, ComCtrls, Grids, DBGrids, memds,  SqlDb,
+   DBCtrls,  FMTBcd,  VarGlobal,  uniEdit,
+  uniDBEdit,    uniPanel, 
   uniStatusBar, uniBasicGrid, uniDBGrid;
 
 type
   TfrmEtiquetaProduto = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
-    sqldProduto: TSQLDataSet;
-    dspProduto: TDataSetProvider;
-    cdsProduto: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
+    sqldProduto: TSQLQuery;
+    dspProduto: TComponent;
+    cdsProduto: TMemDataSet;
     sqldProdutoCODBARRA: TStringField;
     sqldProdutoABREVIACAO: TStringField;
     sqldProdutoVENDA: TFMTBCDField;
@@ -115,10 +115,10 @@ procedure TfrmEtiquetaProduto.miInserirTodosProdutosClick(Sender: TObject);
 
   function Existe(codbarra: string): Boolean;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldPadrao.SQLConnection;
-      CommandText := 'select count(1) from ETIQUETAPROD where CODBARRA = '+QuotedStr(codbarra);
+      SQL.Clear; SQL.Text :='select count(1) from ETIQUETAPROD where CODBARRA = '+QuotedStr(codbarra);
       Open;
       Result := Fields[0].AsInteger > 0;
     finally
@@ -245,10 +245,10 @@ end;
 procedure TfrmEtiquetaProduto.AntesSalvar;
 begin
   inherited;
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
-    CommandText := 'select count(1) from ETIQUETAPROD where CODBARRA = '+QuotedStr(dbeCodBarra.Text);
+    SQL.Clear; SQL.Text :='select count(1) from ETIQUETAPROD where CODBARRA = '+QuotedStr(dbeCodBarra.Text);
     Open;
     Repetido := Fields[0].AsInteger > 0;
   finally
@@ -267,10 +267,10 @@ begin
   inherited;
   if MsgSN('Deseja excluir todas as etiquetas?') then
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldPadrao.SQLConnection;
-      CommandText := 'delete from ETIQUETAPROD';
+      SQL.Clear; SQL.Text :='delete from ETIQUETAPROD';
       ExecSQL;
       MsgAviso('Exclus�o efetuada com sucesso!');
       cdsPadrao.Close;

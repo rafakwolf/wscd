@@ -3,8 +3,8 @@ unit unRelatorioListaPrecos;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DB, DBClient, Provider, SqlExpr, FMTBcd, UniGuiForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RLReport, DB, memds,  SqlDb, FMTBcd;
 
 type
   TfrmRelatorioListaPrecos = class(TForm)
@@ -15,9 +15,9 @@ type
     dbtDescricao: TRLDBText;
     dbtPreco: TRLDBText;
     bandRodape: TRLBand;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoDESCRICAO: TStringField;

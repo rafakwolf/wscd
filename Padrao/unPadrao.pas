@@ -3,12 +3,10 @@ unit unPadrao;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, StdCtrls, Menus, Buttons, DBClient, DB, ActnList, DBXCommon,
-  ComCtrls, Variants, SQLExpr, Funcoes, ConstPadrao, Provider, DBGrids,
-  System.Actions, udmGeralBase, UniGuiForm, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, UniGUIDialogs,
-  uniGUIApplication;
+   Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, StdCtrls, Menus, Buttons, memds, DB, ActnList,
+  ComCtrls, Variants, SqlDb, Funcoes, ConstPadrao,  DBGrids,
+  udmGeralBase, LCLType;
 
 type
   TfrmPadrao = class(TForm)
@@ -23,7 +21,7 @@ type
     actCancelUpdates: TAction;
     actClose: TAction;
     sbStatus: TStatusBar;
-    pnBotoesPadrao: TContainerPanel;
+    pnBotoesPadrao: TPanel;
     btnNovo: TSpeedButton;
     btnAlterar: TSpeedButton;
     btnExcluir: TSpeedButton;
@@ -48,14 +46,9 @@ type
   private
     Closing: Boolean;
     ComponentFocusWhenPost: TWinControl;
-    FTransacao: TDBXTransaction;
   protected
     EditModes: Boolean;
     aCaption, TableName, FieldNames, DisplayLabels: string;
-
-    procedure MyHandleReconcileError(DataSet: TCustomClientDataSet;
-      E: EReconcileError; UpdateKind: TUpdateKind; var Action:
-        TReconcileAction);
 
     function Pesquisa(pCaption: string;
       pFieldNames, pDisplayLabels, pTableName: string): Boolean;
@@ -74,44 +67,7 @@ implementation
 
 uses unModeloConsulta, VarGlobal;
 
-{$R *.DFM}
-
-procedure TfrmPadrao.MyHandleReconcileError(DataSet: TCustomClientDataSet;
-  E: EReconcileError; UpdateKind: TUpdateKind; var Action: TReconcileAction);
-const
-  CRLF = #13#10;
-var
-  S: string;
-begin
-  Action := raAbort;
-
-  if Pos('PRIMARY OR UNIQUE KEY', AnsiUpperCase(E.Message)) <> 0 then
-    S := 'J� existe um registro no banco de dados com este mesmo identificador.'
-  else
-  if Pos('VIOLATION OF FOREIGN KEY', AnsiUpperCase(E.Message)) <> 0 then
-    if UpdateKind = ukDelete then
-      S := 'O registro que voc� est� tentando excluir j� est� sendo utilizado em outras partes do sistema.'
-    else
-      S := 'O registro que voc� est� tentando gravar depende de uma informa��o que foi exclu�da.'
-        + CRLF +
-        'Verifique o preenchimento dos campos com pesquisa e tente novamente.'
-  else
-  begin
-    S := E.Message + CRLF;
-    S := S + CRLF + CRLF + 'DataSet: ' + DataSet.Owner.Name + CRLF;
-
-    case UpdateKind of
-      ukModify: S := S + 'Opera��o: Altera��o' + CRLF;
-      ukInsert: S := S + 'Opera��o: Inser��o' + CRLF;
-      ukDelete: S := S + 'Opera��o: Exclus�o' + CRLF;
-    end;
-
-    raise EDatabaseError.Create(S);
-  end;
-
-  UniGUIDialogs.MessageDlg(S, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK]);
-  Action := raCancel;
-end;
+{$R *.dfm}
 
 procedure TfrmPadrao.actCloseExecute(Sender: TObject);
 begin
@@ -126,23 +82,23 @@ begin
 
   for x := 0 to ComponentCount - 1 do
   begin
-    if (Components[x] is TClientDataSet) then
+    if (Components[x] is TMemDataset) then
     begin
-
-      if not Assigned(TClientDataSet(Components[x]).OnReconcileError) then
-        TClientDataSet(Components[x]).OnReconcileError :=  MyHandleReconcileError;
-
-      TClientDataSet(Components[x]).FetchOnDemand := True;
-
-      if TClientDataSet(Components[x]).Tag <> TAG_IGNORE_FECHPARAMS then
-        TClientDataSet(Components[x]).PacketRecords := 1;
+//
+//      if not Assigned(TMemDataset(Components[x]).OnReconcileError) then
+//        TMemDataset(Components[x]).OnReconcileError :=  MyHandleReconcileError;
+//
+//      TMemDataset(Components[x]).FetchOnDemand := True;
+//
+//      if TMemDataset(Components[x]).Tag <> TAG_IGNORE_FECHPARAMS then
+//        TMemDataset(Components[x]).PacketRecords := 1;
     end;
 
 
-    if Components[x] is TCustomSQLDataSet then
+    if Components[x] is TSQLQuery then
     begin
-      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
+      if (not Assigned(TSQLQuery(Components[x]).SQLConnection)) then
+        TSQLQuery(Components[x]).SQLConnection := GetConnection;
     end;
 
 
@@ -166,7 +122,7 @@ end;
 
 procedure TfrmPadrao.NumericoKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not (Key in [#8, '0'..'9', PFmtSettings.DecimalSeparator]) then begin
+  if not (Key in [#8, '0'..'9', DecimalSeparator]) then begin
     Key := #0;
   end;
 end;
@@ -185,18 +141,18 @@ procedure TfrmPadrao.actDeleteExecute(Sender: TObject);
 begin
   if not dsPadrao.DataSet.IsEmpty then
   begin
-    UniGUIDialogs.MessageDlg('Tem certeza que deseja excluir este registro?',
-      TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
-      procedure (sender: TComponent; AResult: Integer)
-      begin
-        if (AResult = ID_YES) then
-        begin
-          dsPadrao.DataSet.Delete;
-
-          if (dsPadrao.DataSet is TClientDataSet) then
-            TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0);
-        end;
-      end
+    MessageDlg('Tem certeza que deseja excluir este registro?',
+      TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],0
+      //procedure (sender: TComponent; AResult: Integer)
+      //begin
+      //  if (AResult = ID_YES) then
+      //  begin
+      //    dsPadrao.DataSet.Delete;
+      //
+      //    if (dsPadrao.DataSet is TMemDataset) then
+      //      TMemDataset(dsPadrao.DataSet).ApplyUpdates(0);
+      //  end;
+      //end
       );
   end;
 end;
@@ -218,8 +174,8 @@ end;
 procedure TfrmPadrao.actCancelUpdatesExecute(Sender: TObject);
 begin
   dsPadrao.DataSet.Cancel;
-  if (dsPadrao.DataSet is TClientDataSet) then
-    TClientDataSet(dsPadrao.DataSet).CancelUpdates;
+  if (dsPadrao.DataSet is TMemDataset) then
+    TMemDataset(dsPadrao.DataSet).Cancel;
 end;
 
 procedure TfrmPadrao.actPostExecute(Sender: TObject);
@@ -230,30 +186,31 @@ begin
 
   Novo := (dsPadrao.State = dsInsert);
 
-  FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
+  //FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
   try
     if dsPadrao.DataSet.State in [dsInsert, dsEdit] then
     begin
       dsPadrao.DataSet.Post;
-      if (dsPadrao.DataSet is TClientDataSet) then
+      if (dsPadrao.DataSet is TMemDataset) then
       begin
-        if (TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0) = 0) and Novo then
-        begin
-          dsPadrao.DataSet.DisableControls;
-          dsPadrao.DataSet.Close;
-          dsPadrao.DataSet.Open;
-
-          if not dsPadrao.DataSet.IsEmpty then
-            dsPadrao.DataSet.Last;
-
-          dsPadrao.DataSet.EnableControls;
-        end;
+        //if (TMemDataset(dsPadrao.DataSet).) and Novo then
+        //begin
+        //  dsPadrao.DataSet.DisableControls;
+        //  dsPadrao.DataSet.Close;
+        //  dsPadrao.DataSet.Open;
+        //
+        //  if not dsPadrao.DataSet.IsEmpty then
+        //    dsPadrao.DataSet.Last;
+        //
+        //  dsPadrao.DataSet.EnableControls;
+        //end;
       end;
-      GetConnection.CommitFreeAndNil(FTransacao);
+     // GetConnection.CommitFreeAndNil(FTransacao);
     end;
   except
     on e: Exception do
-     GetConnection.RollbackFreeAndNil(FTransacao);
+      raise Exception.create('');
+    // GetConnection.RollbackFreeAndNil(FTransacao);
   end;
 
   DepoisSalvar;
@@ -297,7 +254,7 @@ begin
      pTableName := aCaption;
 
    Result := TfrmModeloConsulta.Execute(pCaption, pTableName, pFieldNames,
-      pDisplayLabels, UniApplication) > 0;
+      pDisplayLabels, Application) > 0;
 end;
 
 procedure TfrmPadrao.FormKeyDown(Sender: TObject; var Key: Word;

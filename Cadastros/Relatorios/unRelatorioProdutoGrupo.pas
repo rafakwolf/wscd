@@ -3,10 +3,10 @@ unit unRelatorioProdutoGrupo;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, 
+  DBCtrls,  uniEdit, uniDBEdit,  
+   uniPanel;
 
 type
   TfrmRelatorioProdutoGrupo = class(TfrmDialogoRelatorioPadrao)
@@ -73,7 +73,7 @@ procedure TfrmRelatorioProdutoGrupo.dbeGrupoClickButton(Sender: TObject);
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqGrupo.Close;
-//  GetDmPesquisar.cdsPesqGrupo.CommandText := SQLPadrao;
+//  GetDmPesquisar.cdsPesqGrupo.SQL.Clear; SQL.Text :=SQLPadrao;
 //
 //  if not TfrmModeloConsulta.Execute('Grupo', GetDmPesquisar.cdsPesqGrupo, FN_GRUPOS, DL_GRUPOS) then
 //    GetDmPesquisar.cdsPesqGrupo.Close;

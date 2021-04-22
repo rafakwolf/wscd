@@ -3,8 +3,8 @@ unit unRelatorioProdutosEstoque;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, FMTBcd, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, FMTBcd, DB, memds,  SqlDb,
   RLReport, RLParser;
 
 type
@@ -43,7 +43,7 @@ procedure TfrmRelatorioProdutosEstoque.rrPadraoBeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  lbTitulo.Caption := 'Produtos com Estoque Mínimo';
+  lbTitulo.Caption := 'Produtos com Estoque Mï¿½nimo';
 end;
 
 end.

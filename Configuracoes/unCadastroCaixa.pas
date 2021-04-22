@@ -3,18 +3,18 @@ unit unCadastroCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, Mask, DBCtrls,  DBClient, Provider,
-  SqlExpr, FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar,
-  uniCheckBox, uniDBCheckBox;
+  ExtCtrls, ComCtrls,  DBCtrls,  memds, 
+  SqlDb, FMTBcd,   uniEdit, uniDBEdit, 
+    uniPanel,  uniStatusBar,
+   uniDBCheckBox;
 
 type
   TfrmCadastroCaixa = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoNOME: TStringField;
     sqldPadraoINATIVO: TStringField;

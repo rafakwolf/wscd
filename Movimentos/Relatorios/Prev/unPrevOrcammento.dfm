@@ -336,7 +336,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
           ParentFont = False
           Transparent = False
         end
-        object rldbCliente: TRLDBText
+        object rlmemdse: TRLDBText
           Left = 72
           Top = 24
           Width = 86
@@ -422,7 +422,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
       Size = 1
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftInteger
@@ -531,7 +531,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
       Precision = 15
     end
   end
-  object cdsDetOrcam: TClientDataSet
+  object cdsDetOrcam: TMemDataset
     Aggregates = <>
     DataSetField = cdsPadraosqldDetOrcam
     Params = <>

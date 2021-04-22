@@ -3,17 +3,17 @@ unit unCadastroGrupo;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar;
+  ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
+  FMTBcd,   uniEdit, uniDBEdit, 
+    uniPanel,  uniStatusBar;
 
 type
   TfrmCadastroGrupo = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoCODGRUPO: TIntegerField;
     sqldPadraoDESCRICAO: TStringField;
     cdsPadraoCODGRUPO: TIntegerField;

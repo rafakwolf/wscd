@@ -3,8 +3,8 @@ unit unPrevCaixaTodos;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, RLParser, FMTBcd;
 
 type
@@ -80,7 +80,7 @@ begin
   if AnsiUpperCase(Text) = 'C' then
     Text := 'Entrada'
   else
-    Text := 'Saída';
+    Text := 'Saï¿½da';
 end;
 
 procedure TfrmPrevCaixaTodos.rldbCaixaBeforePrint(Sender: TObject;
@@ -128,7 +128,7 @@ begin
   end;
 
   rllbSomaC.Caption := 'Entradas: '+FormatFloat('#,##0.00', TotalC);
-  rllbSomaD.Caption := 'Saídas: '+FormatFloat('#,##0.00', TotalD);
+  rllbSomaD.Caption := 'Saï¿½das: '+FormatFloat('#,##0.00', TotalD);
 end;
 
 procedure TfrmPrevCaixaTodos.rlbDetalheBeforePrint(Sender: TObject;

@@ -3,19 +3,19 @@ unit unRelatorioBobinaOrcam;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, Provider, DB, DBClient, SqlExpr,
-  StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses,
-  uniLabel, uniButton, uniBitBtn, uniEdit, uniSpinEdit, uniMemo;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao,  DB, memds, SqlDb,
+  StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd,  
+  uniLabel,   uniEdit, uniSpinEdit, uniMemo;
 
 type
   TfrmRelatorioBobinaOrcam = class(TfrmSimplePadrao)
-    sqlOrcam: TSQLDataSet;
-    sqlDetOrcam: TSQLDataSet;
+    sqlOrcam: TSQLQuery;
+    sqlDetOrcam: TSQLQuery;
     dsLink: TDataSource;
-    cdsDetOrcam: TClientDataSet;
-    cdsOrcam: TClientDataSet;
-    dtOrcam: TDataSetProvider;
+    cdsDetOrcam: TMemDataSet;
+    cdsOrcam: TMemDataSet;
+    dtOrcam: TComponent;
     sqlOrcamCODIGO: TIntegerField;
     sqlOrcamCODCLIENTE: TIntegerField;
     sqlOrcamNOMECLIENTE: TStringField;

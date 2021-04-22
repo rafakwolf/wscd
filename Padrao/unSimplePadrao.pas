@@ -3,8 +3,8 @@ unit unSimplePadrao;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBGrids, UniGuiForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, DBGrids, LCLType;
 
 type
   TfrmSimplePadrao = class(TForm)
@@ -20,7 +20,7 @@ var
   frmSimplePadrao: TfrmSimplePadrao;
 
 implementation
-uses SQLExpr, VarGlobal, uniGUIClasses;
+uses SqlDb, VarGlobal;
 
 {$R *.dfm}
 
@@ -34,10 +34,10 @@ var x: Integer;
 begin
   for x := 0 to ComponentCount - 1 do
   begin
-    if Components[x] is TCustomSQLDataSet then
+    if Components[x] is TSQLQuery then
     begin
-      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
+      if (not Assigned(TSQLQuery(Components[x]).SQLConnection)) then
+        TSQLQuery(Components[x]).SQLConnection := GetConnection;
     end;
 
   end;

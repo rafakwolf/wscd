@@ -3,16 +3,14 @@ unit unDuplicatas;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,
-  Mask, DBCtrls, DateUtils, RLReport, FMTBcd, System.Actions, uniLabel,
-  uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
-  uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit;
+  ExtCtrls, ComCtrls, memds,  SqlDb,
+   DBCtrls, DateUtils, RLReport, FMTBcd;
 
 type
   TfrmDuplicatas = class(TfrmPadrao)
-    cdsPadrao: TClientDataSet;
+    cdsPadrao: TMemDataSet;
     cdsPadraoIDDUPLICATA: TIntegerField;
     cdsPadraoNRODUPLICATA: TStringField;
     cdsPadraoSACADO: TStringField;
@@ -125,7 +123,7 @@ procedure TfrmDuplicatas.actPrintExecute(Sender: TObject);
         Self.cdsPadrao.Edit;
         Self.cdsPadraoIMPRESSA.AsString := 'S';
         Self.cdsPadraoDATAIMPRESSAO.AsDateTime := Date;
-        Self.cdsPadrao.ApplyUpdates(0);
+        // Self.cdsPadrao.ApplyUpdates(0);
 
         // imprime
         PrintIfNotEmptyRL(rrDuplicata);
@@ -265,7 +263,7 @@ begin
   inherited;
   if cdsPadrao.State in [dsEdit, dsInsert] then
       cdsPadraoIDCIDADE.AsInteger :=
-        TfrmModeloConsulta.Execute('Cidade', 'CIDADES', FN_CIDADES, DL_CIDADES, UniApplication);
+        TfrmModeloConsulta.Execute('Cidade', 'CIDADES', FN_CIDADES, DL_CIDADES, Application);
 end;
 
 procedure TfrmDuplicatas.miFormSistemaClick(Sender: TObject);
@@ -274,8 +272,8 @@ begin
   with TfrmPrevDuplicata.Create(Self) do
   try
     cdsDuplicata.Close;
-    cdsDuplicata.Params.ParamByName('CODDUPLICATA').AsInteger :=
-      cdsPadraoIDDUPLICATA.AsInteger;
+    //cdsDuplicata.ParamByName('CODDUPLICATA').AsInteger :=
+    //  cdsPadraoIDDUPLICATA.AsInteger;
     cdsDuplicata.Open;
     PrintIfNotEmptyRL(rptDuplicata);
   finally
@@ -312,7 +310,7 @@ procedure TfrmDuplicatas.miImportarClienteClick(Sender: TObject);
 var cliente: TdmCliente;
 begin
   inherited;
-  if TfrmModeloConsulta.Execute('Cliente', 'CLIENTES', FN_CLIENTES, DL_CLIENTES, UniApplication) > 0 then
+  if TfrmModeloConsulta.Execute('Cliente', 'CLIENTES', FN_CLIENTES, DL_CLIENTES, Application) > 0 then
   begin
     cliente := TdmCliente.Create(nil);
     try
@@ -339,7 +337,7 @@ begin
       btnSalvar.Click
     else
     begin
-      cdsPadrao.CancelUpdates;
+      // cdsPadrao.CancelUpdates;
       MsgCuidado('','Duplicata cancelada.');
     end;
   end;
@@ -349,10 +347,10 @@ procedure TfrmDuplicatas.miImportarCRClick(Sender: TObject);
 //
 //  function TotalVenda(IdVenda: Integer): Currency;
 //  begin
-//    with TSQLDataSet.Create(nil) do
+//    with TSQLQuery.Create(nil) do
 //    try
 //      SQLConnection := GetConnection;
-//      CommandText := 'select TOTAL from VENDA where CODIGO = '+QuotedStr(IntToStr(IdVenda));
+//      SQL.Clear; SQL.Text :='select TOTAL from VENDA where CODIGO = '+QuotedStr(IntToStr(IdVenda));
 //      Open;
 //      Result := FieldByName('TOTAL').AsFloat;
 //    finally

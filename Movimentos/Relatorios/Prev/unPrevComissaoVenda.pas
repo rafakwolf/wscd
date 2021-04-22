@@ -3,8 +3,8 @@ unit unPrevComissaoVenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, RLParser, FMTBcd;
 
 type
@@ -77,7 +77,7 @@ begin
   inherited;
   rlblTotalFinal.Caption :=
     'Total da venda: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'TOTAL', '', ''))+'   '+
-    'Total comissões: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'COMISSAO', '', ''));
+    'Total comissï¿½es: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'COMISSAO', '', ''));
 end;
 
 end.

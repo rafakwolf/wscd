@@ -3,24 +3,22 @@ unit unConfiguraDuplicata;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Grids, DBGrids,
-  Mask, DBCtrls,  FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit,
-  uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses,
-  uniStatusBar, uniBasicGrid, uniDBGrid;
+  ExtCtrls, ComCtrls, memds,  SqlDb, Grids, DBGrids,
+  DBCtrls, FMTBcd, LCLType;
 
 type
   TfrmConfiguraDuplicata = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
+    sqldPadrao: TSQLQuery;
     sqldPadraoCAMPO: TStringField;
     sqldPadraoVERTICAL: TIntegerField;
     sqldPadraoHORIZONTAL: TIntegerField;
     sqldPadraoFONTE: TIntegerField;
     sqldPadraoTIPOFONTE: TStringField;
     sqldPadraoESTILOFONTE: TStringField;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     cdsPadraoCAMPO: TStringField;
     cdsPadraoVERTICAL: TIntegerField;
     cdsPadraoHORIZONTAL: TIntegerField;
@@ -139,7 +137,7 @@ end;
 
 function GetNumScrollLines: Integer;
 begin
-  SystemParametersInfo(SPI_GETWHEELSCROLLLINES, 0, @Result, 0);
+  // SystemParametersInfo(SPI_GETWHEELSCROLLLINES, 0, @Result, 0);
 end;
 
 procedure TfrmConfiguraDuplicata.DBGridMouseWheel(Sender: TObject;

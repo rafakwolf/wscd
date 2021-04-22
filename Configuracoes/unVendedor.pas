@@ -3,18 +3,18 @@ unit unVendedor;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
-  DBClient,  Datasnap.Provider,
-  Data.SqlExpr, StdCtrls, DBCtrls, Mask,  FMTBcd, System.Actions, uniGUIClasses,
-  uniEdit, uniDBEdit, uniButton, uniBitBtn, uniSpeedButton, uniPanel,
-  uniGUIBaseClasses, uniStatusBar, uniCheckBox, uniDBCheckBox;
+  memds,  
+  Sqldb, StdCtrls, DBCtrls,   FMTBcd,  
+  uniEdit, uniDBEdit,    uniPanel,
+   uniStatusBar,  uniDBCheckBox;
 
 type
   TfrmVendedor = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoIDVENDEDOR: TIntegerField;
     sqldPadraoVENDEDOR: TStringField;
     sqldPadraoATIVO: TStringField;

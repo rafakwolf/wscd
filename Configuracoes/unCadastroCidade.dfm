@@ -79,7 +79,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     Left = 248
     Top = 124
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

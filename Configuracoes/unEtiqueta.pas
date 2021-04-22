@@ -3,18 +3,18 @@ unit unEtiqueta;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Spin, Mask,
-  DBCtrls, FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn,
-  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
+  ExtCtrls, ComCtrls, memds,  SqlDb, Spin, 
+  DBCtrls, FMTBcd,  uniLabel,  
+    uniPanel,  uniStatusBar,
   uniImage, uniEdit, uniDBEdit, uniGroupBox;
 
 type
   TfrmEtiqueta = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoIDETIQUETA: TIntegerField;
     sqldPadraoETIQUETA: TStringField;
     sqldPadraoALTURAFOLHA: TFloatField;

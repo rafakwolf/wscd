@@ -3,16 +3,16 @@ unit unPrevCPAtrasados;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls,  DB, DBClient, Provider, SqlExpr, FMTBcd, uniGUIClasses, uniEdit,
-  uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
+  DBCtrls,  DB, memds,  SqlDb, FMTBcd,  uniEdit,
+  uniDBEdit,    uniPanel;
 
 type
   TfrmRelatorioCPAtrasados = class(TfrmDialogoRelatorioPadrao)
-    sqldForn: TSQLDataSet;
-    dspForn: TDataSetProvider;
-    cdsForn: TClientDataSet;
+    sqldForn: TSQLQuery;
+    dspForn: TComponent;
+    cdsForn: TMemDataSet;
     cdsFornCODFORNECEDOR: TIntegerField;
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
@@ -41,7 +41,7 @@ procedure TfrmRelatorioCPAtrasados.dbeFornecedorClickButton(Sender: TObject);
 begin
   inherited;
 //  cdsForn.Close;
-//  cdsForn.CommandText := sqlpadrao;
+//  cdsForn.SQL.Clear; SQL.Text :=sqlpadrao;
 //  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
 //    cdsForn.Close;
 end;
@@ -59,7 +59,7 @@ begin
   with TfrmPrevContasPagar.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := 'select * from VIEWRELCPATRASADOS '+
+    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCPATRASADOS '+
                              'where CODFORN = :PFORN '+
                              'order by VENCIMENTO';
     cdsPadrao.Params.ParamByName('PFORN').AsInteger := cdsFornCODFORNECEDOR.AsInteger;                         

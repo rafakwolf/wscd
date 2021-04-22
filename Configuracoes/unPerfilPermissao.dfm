@@ -123,7 +123,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     Left = 168
     Top = 220
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -178,7 +178,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       Size = 1
     end
   end
-  object cdsPerfisConf: TClientDataSet
+  object cdsPerfisConf: TMemDataset
     Aggregates = <>
     DataSetField = cdsPadraosqldPerfisConf
     Params = <>

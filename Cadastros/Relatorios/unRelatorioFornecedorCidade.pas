@@ -3,10 +3,10 @@ unit unRelatorioFornecedorCidade;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, 
+  DBCtrls,  uniEdit, uniDBEdit,  
+   uniPanel;
 
 type
   TfrmRelatorioFornecedorCidade = class(TfrmDialogoRelatorioPadrao)
@@ -48,7 +48,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        CommandText := 'select'+
+        SQL.Clear; SQL.Text :='select'+
                        ' CODIGO,'+
                        ' DATA,'+
                        ' FANTAZIA,'+
@@ -76,7 +76,7 @@ procedure TfrmRelatorioFornecedorCidade.dbeCidadeClickButton(
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqCidade.Close;
-//  GetDmPesquisar.cdsPesqCidade.CommandText := SQLPadrao;
+//  GetDmPesquisar.cdsPesqCidade.SQL.Clear; SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Cidade', GetDmPesquisar.cdsPesqCidade, FN_CIDADES,
 //    DL_CIDADES) then
 //    GetDmPesquisar.cdsPesqCidade.Close;

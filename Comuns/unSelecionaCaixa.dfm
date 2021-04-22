@@ -178,7 +178,7 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
     DataSet = sqldCaixa
     Left = 120
   end
-  object cdsCaixa: TClientDataSet
+  object cdsCaixa: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCaixa'

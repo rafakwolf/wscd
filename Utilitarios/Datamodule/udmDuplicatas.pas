@@ -3,12 +3,12 @@ unit udmDuplicatas;
 interface
 
 uses
-  System.SysUtils, System.Classes, udmGeralBase, Data.DB, Datasnap.DBClient,
-  Datasnap.Win.TConnect, Data.FMTBcd, Datasnap.Provider, Data.SqlExpr;
+  SysUtils, Classes, udmGeralBase, DB, memds,
+   FMTBcd,  Sqldb;
 
 type
   TdmDuplicatas = class(TdmGeralBase)
-    sqldPadrao: TSQLDataSet;
+    sqldPadrao: TSQLQuery;
     sqldPadraoIDDUPLICATA: TIntegerField;
     sqldPadraoNRODUPLICATA: TStringField;
     sqldPadraoSACADO: TStringField;
@@ -32,8 +32,8 @@ type
     sqldPadraoVALOREXTENSO: TStringField;
     sqldPadraoDATAIMPRESSAO: TDateField;
     sqldPadraoIMPRESSA: TStringField;
-    dspPadrao: TDataSetProvider;
-    sqldDeleta: TSQLDataSet;
+    dspPadrao: TComponent;
+    sqldDeleta: TSQLQuery;
   private
   public
     procedure Delete(id: Integer);
@@ -48,7 +48,7 @@ implementation
 
 uses unDmPrincipal;
 
-{%CLASSGROUP 'Vcl.Controls.TControl'}
+{%CLASSGROUP 'Controls.TControl'}
 
 {$R *.dfm}
 
@@ -61,10 +61,10 @@ end;
 
 function TdmDuplicatas.IsDuplicataRepetida(nro: string): Boolean;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select count(1) from DUPLICATA where NRODUPLICATA = '+
+    SQL.Clear; SQL.Text :='select count(1) from DUPLICATA where NRODUPLICATA = '+
       QuotedStr(nro);
     Open;
     Result := Fields[0].AsInteger > 0;

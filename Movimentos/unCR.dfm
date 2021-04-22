@@ -395,7 +395,7 @@ inherited frmCR: TfrmCR
     Left = 142
     Top = 315
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

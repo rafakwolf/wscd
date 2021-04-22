@@ -3,18 +3,18 @@ unit unPromocao;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
-  Grids, DBGrids, DBClient,
-  Datasnap.Provider,  Data.SqlExpr, ConstPadrao, DateUtils, FMTBcd,
-  System.Actions, uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
-  uniGUIBaseClasses, uniStatusBar, uniBasicGrid, uniDBGrid;
+  Grids, DBGrids, memds,
+    Sqldb, ConstPadrao, DateUtils, FMTBcd,
+       uniPanel,
+   uniStatusBar, uniBasicGrid, uniDBGrid;
 
 type
   TfrmPromocao = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoPRODUTO: TIntegerField;
     sqldPadraoABREVIACAO: TStringField;
@@ -29,9 +29,9 @@ type
     cdsPadraoPRECO: TFMTBCDField;
     cdsPadraoINICIO: TDateField;
     cdsPadraoFIM: TDateField;
-    sqldProduto: TSQLDataSet;
-    dspProduto: TDataSetProvider;
-    cdsProduto: TClientDataSet;
+    sqldProduto: TSQLQuery;
+    dspProduto: TComponent;
+    cdsProduto: TMemDataSet;
     sqldProdutoCODBARRA: TStringField;
     sqldProdutoABREVIACAO: TStringField;
     sqldProdutoVENDA: TFMTBCDField;
@@ -42,19 +42,19 @@ type
     cdsProdutoIDPRODUTO: TIntegerField;
     sqldPadraoDESCONTO: TFMTBCDField;
     cdsPadraoDESCONTO: TFMTBCDField;
-    sqldSpDesmarcaPromocao: TSQLDataSet;
-    sqldGrupo: TSQLDataSet;
-    dspGrupo: TDataSetProvider;
-    cdsGrupo: TClientDataSet;
+    sqldSpDesmarcaPromocao: TSQLQuery;
+    sqldGrupo: TSQLQuery;
+    dspGrupo: TComponent;
+    cdsGrupo: TMemDataSet;
     cdsGrupoCODGRUPO: TIntegerField;
     cdsGrupoDESCRICAO: TStringField;
     sqldGrupoCODGRUPO: TIntegerField;
     sqldGrupoDESCRICAO: TStringField;
     sqldProdutoCODGRUPO: TIntegerField;
     cdsProdutoCODGRUPO: TIntegerField;
-    sqldForn: TSQLDataSet;
-    dspForn: TDataSetProvider;
-    cdsForn: TClientDataSet;
+    sqldForn: TSQLQuery;
+    dspForn: TComponent;
+    cdsForn: TMemDataSet;
     sqldProdutoCODFORNECEDOR: TIntegerField;
     cdsProdutoCODFORNECEDOR: TIntegerField;
     sqldFornCODFORNECEDOR: TIntegerField;
@@ -97,7 +97,7 @@ procedure TfrmPromocao.dbgrdPromocaoEditButtonClick(Sender: TObject);
 begin
   inherited;
   cdsProduto.Close;
-  cdsProduto.CommandText := SQLProduto;
+  cdsProduto.SQL.Clear; SQL.Text :=SQLProduto;
   cdsProduto.Open;
 
 //  if ModoInsertEdit(cdsPadrao) then
@@ -211,7 +211,7 @@ var
 begin
   inherited;
   cdsGrupo.Close;
-  cdsGrupo.CommandText := SQLGrupo;
+  cdsGrupo.SQL.Clear; SQL.Text :=SQLGrupo;
   cdsGrupo.Open;
 
 //  if TfrmModeloConsulta.Execute('Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
@@ -267,10 +267,10 @@ begin
   inherited;
   if not MsgSN('Deseja realmente excluir todas as promo��es?') then
     Exit;
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
-    CommandText := 'delete from PROMOCAO';
+    SQL.Clear; SQL.Text :='delete from PROMOCAO';
     ExecSQL;
   finally
     Free;
@@ -285,7 +285,7 @@ var
 begin
   inherited;
   cdsForn.Close;
-  cdsForn.CommandText := SQLForn;
+  cdsForn.SQL.Clear; SQL.Text :=SQLForn;
   cdsForn.Open;
 
 //  if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then

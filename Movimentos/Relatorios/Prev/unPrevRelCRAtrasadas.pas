@@ -3,8 +3,8 @@ unit unPrevRelCRAtrasadas;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
@@ -17,7 +17,7 @@ type
     lbTotal: TRLLabel;
     rbDetalhe: TRLBand;
     dbVencimento: TRLDBText;
-    dbCliente: TRLDBText;
+    memdse: TRLDBText;
     dbCapital: TRLDBText;
     dbAtraso: TRLDBText;
     dbTotal: TRLDBText;

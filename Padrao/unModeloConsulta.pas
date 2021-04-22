@@ -5,16 +5,14 @@ interface
 uses
   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, StdCtrls, Buttons, Grids, DBGrids,
-  Masks, StrUtils, SqlExpr, Provider, Data.FMTBcd, uniGUIForm, uniGUIBaseClasses,
-  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniMultiItem, uniComboBox,
-  uniEdit, uniBasicGrid, uniDBGrid, uniGUIApplication;
+  Masks, StrUtils, SQLDB, FmtBCD, memds, LCLType;
 
 type
   TfrmModeloConsulta = class(TForm)
     dsPadrao: TDataSource;
-    sqldPesquisa: TSQLDataSet;
-    dspPesquisa: TDataSetProvider;
-    cdsPesquisa: TClientDataSet;
+    sqldPesquisa: TSQLQuery;
+    dspPesquisa: TComponent;
+    cdsPesquisa: TMemDataSet;
     lbCampo: TLabel;
     lbCondicao: TLabel;
     lbDados: TLabel;
@@ -81,18 +79,18 @@ begin
     Caption := Titulo;
 
     cdsPesquisa.Close;
-    cdsPesquisa.CommandText := 'select * from '+Table;
-    cdsPesquisa.PacketRecords := -1;
+    sqldPesquisa.SQL.Clear;
+    sqldPesquisa.SQL.Add('select * from '+Table);
     cdsPesquisa.Open;
 
     cdsPesquisa.FieldDefs.GetItemNames(cmbCampo.Items);
 
     lbNumRegs.Caption := '';
 
-    ShowModal(procedure (Sender: TComponent; AResult: Integer)
-              begin
-                //FreeAndNil(frmModeloConsulta);
-              end);
+    //ShowModal(procedure (Sender: TComponent; AResult: Integer)
+    //          begin
+    //            //FreeAndNil(frmModeloConsulta);
+    //          end);
 
 
   finally
@@ -129,7 +127,7 @@ end;
 procedure TfrmModeloConsulta.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if Key = VK_ESCAPE then
+  if Key = vk_Escape then
     btnCancelar.Click;
 
   if Key = VK_RETURN then

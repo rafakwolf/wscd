@@ -69,7 +69,7 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
     Left = 232
     Top = 8
   end
-  object cdsCaixa: TClientDataSet
+  object cdsCaixa: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCaixa'

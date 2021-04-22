@@ -3,10 +3,10 @@ unit unRelatorioComissaoVenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  Mask, DBCtrls,  ComCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniPanel;
+   DBCtrls,  ComCtrls,  uniEdit, uniDBEdit, 
+    uniPanel;
 
 type
   TfrmRelatorioComissaoVenda = class(TfrmDialogoRelatorioPadrao)
@@ -106,7 +106,7 @@ procedure TfrmRelatorioComissaoVenda.dbeVendedorClickButton(
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqVendedor.Close;
-//  GetDmPesquisar.cdsPesqVendedor.CommandText := SQLpadrao;
+//  GetDmPesquisar.cdsPesqVendedor.SQL.Clear; SQL.Text :=SQLpadrao;
 //  if not TfrmModeloConsulta.Execute('Vendedor', GetDmPesquisar.cdsPesqVendedor, FN_VENDEDOR, DL_VENDEDOR) then
 //    GetDmPesquisar.cdsPesqVendedor.Close;
 end;

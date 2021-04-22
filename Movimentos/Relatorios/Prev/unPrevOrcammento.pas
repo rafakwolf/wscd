@@ -3,8 +3,8 @@ unit unPrevOrcammento;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
@@ -28,12 +28,12 @@ type
     lbNumero: TRLLabel;
     rldbNumero: TRLDBText;
     lbCliente: TRLLabel;
-    rldbCliente: TRLDBText;
+    rlmemdse: TRLDBText;
     lbData: TRLLabel;
     rldbDATA: TRLDBText;
     dsLink: TDataSource;
-    sqldDetOrcam: TSQLDataSet;
-    cdsDetOrcam: TClientDataSet;
+    sqldDetOrcam: TSQLQuery;
+    cdsDetOrcam: TMemDataSet;
     dsDetOrcam: TDataSource;
     lbVenda: TRLLabel;
     rldbVenda: TRLDBText;

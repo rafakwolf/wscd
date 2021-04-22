@@ -3,10 +3,10 @@ unit unRelatorioCPData;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, DBCtrls, Vcl.Mask, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniPanel;
+  ComCtrls, DBCtrls,   uniEdit, uniDBEdit, 
+    uniPanel;
 
 type
   TfrmRelatorioCPData = class(TfrmDialogoRelatorioPadrao)
@@ -41,7 +41,7 @@ begin
 //      with cdsPadrao do
 //      begin
 //        Close;
-//        CommandText := 'select * from VIEWRELCP '+
+//        SQL.Clear; SQL.Text :='select * from VIEWRELCP '+
 //                       'where DATA between :PDATAINI and :PDATAFIM '+
 //                       'order by FORNECEDOR, DATA';
 //

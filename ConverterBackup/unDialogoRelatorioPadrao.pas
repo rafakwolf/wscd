@@ -3,9 +3,9 @@ unit unDialogoRelatorioPadrao;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, System.Rtti, UniGuiForm,
-  uniGUIBaseClasses, uniGUIClasses, uniPanel, uniButton, uniBitBtn;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, Rtti, 
+    uniPanel,  uniBitBtn;
 
 type
   TfrmDialogoRelatorioPadrao = class(TForm)
@@ -29,7 +29,7 @@ var
 implementation
 
 uses
-  Funcoes, uNotifyEventDispatcher, Vcl.DBCtrls;
+  Funcoes, uNotifyEventDispatcher, DBCtrls;
 
 {$R *.dfm}
 

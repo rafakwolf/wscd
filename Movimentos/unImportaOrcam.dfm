@@ -404,7 +404,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Left = 150
     Top = 82
   end
-  object cdsOrcam: TClientDataSet
+  object cdsOrcam: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dtOrcam'
@@ -458,7 +458,7 @@ object frmImportaOrcam: TfrmImportaOrcam
       FieldName = 'sqlDetOrcam'
     end
   end
-  object cdsDetOrcam: TClientDataSet
+  object cdsDetOrcam: TMemDataset
     Aggregates = <>
     DataSetField = cdsOrcamsqlDetOrcam
     Params = <>

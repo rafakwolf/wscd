@@ -3,11 +3,11 @@ unit unContasPagar;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls, Mask, Buttons, DBCtrls, DB, DbClient,
-  Menus, SqlExpr, ComCtrls, Provider, ConstPadrao, ActnList,
-  FMTBcd, unSimplePadrao, System.Actions, varglobal, uniMainMenu,
-  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls,  Buttons, DBCtrls, DB, memds,
+  Menus, SqlDb, ComCtrls,  ConstPadrao, ActnList,
+  FMTBcd, unSimplePadrao,  varglobal, uniMainMenu,
+      
   uniStatusBar, uniPanel, uniEdit, uniDBEdit, uniGroupBox, uniBasicGrid,
   uniDBGrid;
 
@@ -101,23 +101,23 @@ const
 type
   TfrmContasPagar = class(TfrmSimplePadrao)
     alContasPagar: TActionList;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     actPagar: TAction;
     actExcluir: TAction;
     actFechar: TAction;
     dsPadrao: TDataSource;
-    sqldForn: TSQLDataSet;
-    dspForn: TDataSetProvider;
-    cdsForn: TClientDataSet;
+    sqldForn: TSQLQuery;
+    dspForn: TComponent;
+    cdsForn: TMemDataSet;
     cdsFornCODFORNECEDOR: TIntegerField;
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
     cdsFornTELEFONE: TStringField;
     actBuscarForn: TAction;
     actPagas: TAction;
-    sqldDeleta: TSQLDataSet;
+    sqldDeleta: TSQLQuery;
     sqldFornCODFORNECEDOR: TIntegerField;
     sqldFornFANTAZIA: TStringField;
     sqldFornCNPJ: TStringField;
@@ -303,7 +303,7 @@ begin
     actBuscarForn.Enabled := True;
 
     cdsForn.Close;
-    cdsForn.CommandText := SQLPadraoForn;
+    cdsForn.SQL.Clear; SQL.Text :=SQLPadraoForn;
     cdsForn.Open;
 
 //    if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
@@ -318,7 +318,7 @@ begin
 //      if cdsPadrao.IsEmpty then
 //      begin
 //        MsgErro(UM_PESQUISAVAZIO, 'Contas a Pagar');
-//        PostMessage(Handle, WM_CLOSE, 0, 0);
+//        //PostMessage(Handle, WM_CLOSE, 0, 0);
 //      end;
 //    end;
   end
@@ -334,7 +334,7 @@ begin
     if cdsPadrao.IsEmpty then
     begin
       MsgErro(UM_PESQUISAVAZIO, 'Contas a Pagar');
-      PostMessage(Handle, WM_CLOSE, 0, 0);
+      //PostMessage(Handle, WM_CLOSE, 0, 0);
     end;
   end;
 end;
@@ -363,7 +363,7 @@ end;
 procedure TfrmContasPagar.miContasvencidasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.CommandText := SQLVencidas;
+  cdsPadrao.SQL.Clear; SQL.Text :=SQLVencidas;
   cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
   cdsPadrao.Open;
 end;
@@ -371,14 +371,14 @@ end;
 procedure TfrmContasPagar.miTodasContasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.CommandText := SQLPadraoTela;
+  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
   cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
   cdsPadrao.Open;
 end;
 
 function TfrmContasPagar.ContasAVencer: Currency;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
     CommandText :=
@@ -394,7 +394,7 @@ end;
 
 function TfrmContasPagar.ContasVencendoHoje: Currency;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
     CommandText :=
@@ -410,7 +410,7 @@ end;
 
 function TfrmContasPagar.ContasVencidas: Currency;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
     CommandText :=
@@ -457,7 +457,7 @@ end;
 procedure TfrmContasPagar.miVencendohojeClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.CommandText := SQLHoje;
+  cdsPadrao.SQL.Clear; SQL.Text :=SQLHoje;
   cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
   cdsPadrao.Open;
 end;

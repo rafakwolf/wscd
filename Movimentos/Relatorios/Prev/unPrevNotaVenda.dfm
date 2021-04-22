@@ -547,7 +547,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
     Left = 56
     Top = 360
   end
-  object cdsVenda: TClientDataSet
+  object cdsVenda: TMemDataset
     Aggregates = <>
     Params = <
       item
@@ -680,7 +680,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
     Left = 56
     Top = 392
   end
-  object cdsItemVenda: TClientDataSet
+  object cdsItemVenda: TMemDataset
     Aggregates = <>
     DataSetField = cdsVendasqldItemVenda
     Params = <>

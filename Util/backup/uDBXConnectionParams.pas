@@ -2,7 +2,7 @@ unit uDBXConnectionParams;
 
 interface
 
-uses Classes, sqlexpr;
+uses Classes, SqlDb;
 
 type
   TDBXConnectionParams = class

@@ -3,30 +3,30 @@ unit unProduto;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, ConstPadrao,
-   Mask, DBCtrls,  FMTBcd, System.Actions, uniButton, uniBitBtn, uniSpeedButton,
-  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniImage, uniEdit,
-  uniDBEdit, uniCheckBox, uniDBCheckBox;
+  ExtCtrls, ComCtrls, memds,  SqlDb, ConstPadrao,
+    DBCtrls,  FMTBcd,    
+   uniPanel,  uniStatusBar, uniImage, uniEdit,
+  uniDBEdit,  uniDBCheckBox;
 
 type
   TfrmProduto = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
-    sqldUnidade: TSQLDataSet;
-    dspUnidade: TDataSetProvider;
-    cdsUnidade: TClientDataSet;
-    sqldGrupo: TSQLDataSet;
-    dspGrupo: TDataSetProvider;
-    cdsGrupo: TClientDataSet;
-    sqldAliquota: TSQLDataSet;
-    dspAliquota: TDataSetProvider;
-    cdsAliquota: TClientDataSet;
-    sqldForn: TSQLDataSet;
-    dspForn: TDataSetProvider;
-    cdsForn: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
+    sqldUnidade: TSQLQuery;
+    dspUnidade: TComponent;
+    cdsUnidade: TMemDataSet;
+    sqldGrupo: TSQLQuery;
+    dspGrupo: TComponent;
+    cdsGrupo: TMemDataSet;
+    sqldAliquota: TSQLQuery;
+    dspAliquota: TComponent;
+    cdsAliquota: TMemDataSet;
+    sqldForn: TSQLQuery;
+    dspForn: TComponent;
+    cdsForn: TMemDataSet;
     cdsUnidadeCODUNIDADE: TIntegerField;
     cdsUnidadeDESCRICAO: TStringField;
     cdsGrupoCODGRUPO: TIntegerField;
@@ -171,7 +171,7 @@ implementation
 
 uses unModeloConsulta, Funcoes, VarGlobal, unEtiquetaProduto,
       unRelatorioListaPrecos, Extensos, uConfiguraRelatorio,
-     unPrevProdutosVencimento, System.Math, uDatabaseutils;
+     unPrevProdutosVencimento, Math, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -382,8 +382,8 @@ begin
   with TfrmRelatorioListaPrecos.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := '';
-    cdsPadrao.CommandText := sqldPadrao.CommandText + SQLOrder;
+    cdsPadrao.SQL.Clear; SQL.Text :='';
+    cdsPadrao.SQL.Clear; SQL.Text :=sqldPadrao.CommandText + SQLOrder;
     cdsPadrao.Open;
     Titulo := 'Lista de pre�os';
     PrintIfNotEmptyRL(rpLista);
@@ -482,10 +482,10 @@ var
   Repetido: Boolean;
 begin
   inherited;
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
-    CommandText := 'select count(1) from PRODUTOS where CODBARRA = '+QuotedStr(dbeCodigoBarra.Text);
+    SQL.Clear; SQL.Text :='select count(1) from PRODUTOS where CODBARRA = '+QuotedStr(dbeCodigoBarra.Text);
     Open;
     Repetido := Fields[0].AsInteger > 0;
   finally
@@ -579,7 +579,7 @@ begin
   with TfrmPrevProdutosVencimento.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := 'SELECT'+
+    cdsPadrao.SQL.Clear; SQL.Text :='SELECT'+
                              ' P.CODBARRA,'+
                              ' P.ABREVIACAO AS PRODUTO,'+
                              ' P.DATAVALIDADE AS DATAVENCIMENTO,'+

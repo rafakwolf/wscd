@@ -228,7 +228,7 @@ inherited frmPrevPerda: TfrmPrevPerda
       Size = 1
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
       Required = True

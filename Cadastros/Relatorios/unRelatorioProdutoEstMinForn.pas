@@ -3,10 +3,10 @@ unit unRelatorioProdutoEstMinForn;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, 
+  DBCtrls,  uniEdit, uniDBEdit,  
+   uniPanel;
 
 type
   TfrmRelatorioProdutoEstMinForn = class(TfrmDialogoRelatorioPadrao)
@@ -72,7 +72,7 @@ procedure TfrmRelatorioProdutoEstMinForn.dbeFornClickButton(
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqForn.Close;
-//  GetDmPesquisar.cdsPesqForn.CommandText := SQLPadrao;
+//  GetDmPesquisar.cdsPesqForn.SQL.Clear; SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Fornecedor', GetDmPesquisar.cdsPesqForn, FN_FORN,
 //    DL_FORN) then
 //    GetDmPesquisar.cdsPesqForn.Close;

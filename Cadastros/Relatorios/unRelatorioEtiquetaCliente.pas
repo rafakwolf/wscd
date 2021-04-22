@@ -3,10 +3,10 @@ unit unRelatorioEtiquetaCliente;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel, uniRadioGroup;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, 
+  DBCtrls,  uniEdit, uniDBEdit,  
+   uniPanel, uniRadioGroup;
 
 type
   TfrmRelatorioEtiquetaCliente = class(TfrmDialogoRelatorioPadrao)
@@ -94,7 +94,7 @@ procedure TfrmRelatorioEtiquetaCliente.dbeClienteClickButton(
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqCliente.Close;
-//  GetDmPesquisar.cdsPesqCliente.CommandText := SQLCliente;
+//  GetDmPesquisar.cdsPesqCliente.SQL.Clear; SQL.Text :=SQLCliente;
 //  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
 //    GetDmPesquisar.cdsPesqCliente.Close;
 end;
@@ -125,7 +125,7 @@ procedure TfrmRelatorioEtiquetaCliente.dbeCidadeClickButton(
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqCidade.Close;
-//  GetDmPesquisar.cdsPesqCidade.CommandText := SQLCidade;
+//  GetDmPesquisar.cdsPesqCidade.SQL.Clear; SQL.Text :=SQLCidade;
 //  if not TfrmModeloConsulta.Execute('Cidade', GetDmPesquisar.cdsPesqCidade, FN_CIDADES, DL_CIDADES) then
 //    GetDmPesquisar.cdsPesqCidade.Close;
 end;

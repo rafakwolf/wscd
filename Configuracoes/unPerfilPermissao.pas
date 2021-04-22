@@ -3,23 +3,23 @@ unit unPerfilPermissao;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-   Grids, DBGrids, ImgList, unPrincipal, FMTBcd, System.Actions,
-  System.ImageList, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar, uniGroupBox,
+  ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
+   Grids, DBGrids, ImgList, unPrincipal, FMTBcd, 
+  ImageList,  uniEdit, uniDBEdit,  
+   uniPanel,  uniStatusBar, uniGroupBox,
   uniBasicGrid, uniDBGrid, uniMainMenu;
 
 type
   TfrmPerfilPermissao = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoPERFIL: TStringField;
     cdsPadraoPERFIL: TStringField;
-    sqldPerfisConf: TSQLDataSet;
-    cdsPerfisConf: TClientDataSet;
+    sqldPerfisConf: TSQLQuery;
+    cdsPerfisConf: TMemDataSet;
     dsLigaPerfis: TDataSource;
     cdsPadraosqldPerfisConf: TDataSetField;
     dsPerfisConf: TDataSource;
@@ -177,7 +177,7 @@ end;
 procedure TfrmPerfilPermissao.InsertAction(IdPerfil: Integer; Nome, Caption,
   Permissao: string);
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
     CommandText :=
@@ -211,10 +211,10 @@ end;
 
 procedure TfrmPerfilPermissao.DropActions(IdPerfil: Integer);
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
-    CommandText := 'delete from ITEMPERFIL where IDPERFIL = ' +
+    SQL.Clear; SQL.Text :='delete from ITEMPERFIL where IDPERFIL = ' +
       QuotedStr(IntToStr(IdPerfil));
     ExecSQL;
   finally
@@ -236,10 +236,10 @@ begin
     if MsgSN('Deseja realmente exluir este perfil?') then
     begin
       // deleta items
-      with TSQLDataSet.Create(nil) do
+      with TSQLQuery.Create(nil) do
       try
         SQLConnection := sqldPadrao.SQLConnection;
-        CommandText := 'delete from ITEMPERFIL ip where ip.IDPERFIL = ' +
+        SQL.Clear; SQL.Text :='delete from ITEMPERFIL ip where ip.IDPERFIL = ' +
           QuotedStr(IntToStr(cdsPadraoIDPERFIL.AsInteger));
         ExecSQL;
       finally
@@ -247,10 +247,10 @@ begin
       end;
 
       // deleta perfil
-      with TSQLDataSet.Create(nil) do
+      with TSQLQuery.Create(nil) do
       try
         SQLConnection := sqldPadrao.SQLConnection;
-        CommandText := 'delete from PERFIL p where p.IDPERFIL = ' +
+        SQL.Clear; SQL.Text :='delete from PERFIL p where p.IDPERFIL = ' +
           QuotedStr(IntToStr(cdsPadraoIDPERFIL.AsInteger));
         ExecSQL;
       finally

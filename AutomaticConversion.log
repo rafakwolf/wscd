@@ -2,9 +2,9 @@
  : 
  : *** Converting unit files belonging to project/package ***
 unDmPrincipal.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
-unDmPrincipal.pas Note: Replaced unit "SqlExpr" with "sqldb" in uses section.
+unDmPrincipal.pas Note: Replaced unit "SqlDb" with "sqldb" in uses section.
 ufmImprimeEtiq.pas Note: Changed encoding from ISO-8859-1 to UTF-8
-ufmImprimeEtiq.pas Note: Replaced unit "SqlExpr" with "sqldb" in uses section.
+ufmImprimeEtiq.pas Note: Replaced unit "SqlDb" with "sqldb" in uses section.
 ufmImprimeEtiq.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
 unDialogoRelatorioPadrao.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
  : 

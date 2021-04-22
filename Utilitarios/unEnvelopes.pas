@@ -3,18 +3,16 @@ unit unEnvelopes;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,  Mask,
-  DBCtrls, FMTBcd, System.Actions, VarGlobal, uniLabel, uniButton, uniBitBtn,
-  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
-  uniEdit, uniDBEdit;
+  ExtCtrls, ComCtrls, memds,  SqlDb,  
+  DBCtrls, FMTBcd,  VarGlobal;
 
 type
   TfrmEnvelopes = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoIDENVELOPE: TIntegerField;
     sqldPadraoNOME: TStringField;
     sqldPadraoENDERECO: TStringField;
@@ -29,11 +27,11 @@ type
     cdsPadraoBAIRRO: TStringField;
     cdsPadraoCEP: TStringField;
     cdsPadraoMENSAGEM: TStringField;
-    sqldCidade: TSQLDataSet;
+    sqldCidade: TSQLQuery;
     sqldCidadeCODCIDADE: TIntegerField;
     sqldCidadeDESCRICAO: TStringField;
-    dspCidade: TDataSetProvider;
-    cdsCidade: TClientDataSet;
+    dspCidade: TComponent;
+    cdsCidade: TMemDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
     sqldPadraoNOMECIDADE: TStringField;
@@ -70,10 +68,10 @@ begin
   inherited;
   with TfrmPrevEnvelPerson.Create(Self)do
   try
-    with cdsPadrao do
+    with sqldPadrao do
     begin
       Close;
-      CommandText := 'select '#13 +
+      SQL.Clear; SQL.Text :='select '#13 +
                         'e.IDENVELOPE, '#13 +
                         'e.NOME, '#13 +
                         'e.ENDERECO, '#13 +

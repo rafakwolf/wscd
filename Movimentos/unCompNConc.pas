@@ -3,17 +3,16 @@ unit unCompNConc;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB, DBClient,
-  Provider, SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton,
-  uniBitBtn, uniGUIForm, uniBasicGrid, uniDBGrid;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB, memds,
+   SqlDb, FMTBcd;
 
 type
   TfrmCompNaoConc = class(TForm)
     dsComp: TDataSource;
-    sqlComp: TSQLDataSet;
-    dspComp: TDataSetProvider;
-    cdsComp: TClientDataSet;
+    sqlComp: TSQLQuery;
+    dspComp: TComponent;
+    cdsComp: TMemDataSet;
     sqlCompNUMERO: TIntegerField;
     sqlCompDATANOTA: TDateField;
     sqlCompDATAENTRADA: TDateField;
@@ -88,7 +87,7 @@ begin
   if cdsComp.IsEmpty then
   begin
     MsgAviso('Todas as compras conclu�das.');
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
 end;

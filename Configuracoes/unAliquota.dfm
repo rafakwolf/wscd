@@ -62,7 +62,7 @@ inherited frmAliquota: TfrmAliquota
     Left = 208
     Top = 108
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

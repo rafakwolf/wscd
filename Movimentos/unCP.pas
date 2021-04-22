@@ -3,18 +3,18 @@ unit unCP;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  ConstPadrao, FMTBcd, System.Actions, VarGlobal, uniLabel, uniButton, uniBitBtn, uniSpeedButton,
-  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
-  System.Generics.Collections, uniGroupBox;
+  ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
+  ConstPadrao, FMTBcd,  VarGlobal, uniLabel,   
+   uniPanel,  uniStatusBar, uniEdit, uniDBEdit,
+  Generics.Collections, uniGroupBox;
 
 type
   TfrmCP = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     actContas: TAction;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoDATA: TDateField;
@@ -54,7 +54,7 @@ type
     cdsPadraoCAPITALPAGO: TFMTBCDField;
     cdsPadraoJUROPAGO: TFMTBCDField;
     cdsPadraoDESCTO: TFMTBCDField;
-    sqldDeleta: TSQLDataSet;
+    sqldDeleta: TSQLQuery;
     sqldPadraoIDCONTA: TIntegerField;
     sqldPadraoNOME: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
@@ -177,7 +177,7 @@ begin
   with TfrmPrevContasPagar.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := 'select * from VIEWRELCPATRASADOS order by FORNECEDOR, VENCIMENTO';
+    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCPATRASADOS order by FORNECEDOR, VENCIMENTO';
     cdsPadrao.Open;
     Titulo := 'Contas a pagar atrasadas';
     PrintIfNotEmptyRL(rrPadrao);
@@ -199,7 +199,7 @@ begin
   with TfrmPrevContasPagar.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := 'select * from VIEWRELCP order by FORNECEDOR, DATA';
+    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCP order by FORNECEDOR, DATA';
     cdsPadrao.Open;
     Titulo := 'Listagem de Contas a pagar';
     PrintIfNotEmptyRL(rrPadrao);

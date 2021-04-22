@@ -3,9 +3,9 @@ unit unDesmarcar;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, unSimplePadrao, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniCheckBox;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, StdCtrls, unSimplePadrao,  
+     uniCheckBox;
 
 type
   TfrmDesmarcar = class(TfrmSimplePadrao)

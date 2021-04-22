@@ -3,17 +3,17 @@ unit unConfigNotaMan;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, ComCtrls, DB, Data.SqlExpr,
-  Datasnap.Provider, DBClient, StdCtrls, Mask, UniPageControl,
-  DBCtrls,  Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton,
-  uniBitBtn, uniEdit, uniDBEdit, uniCheckBox, uniDBCheckBox, uniPanel;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao, ComCtrls, DB, Sqldb,
+   memds, StdCtrls,  UniPageControl,
+  DBCtrls,  Buttons, FMTBcd,   
+   uniEdit, uniDBEdit,  uniDBCheckBox, uniPanel;
 
 type
   TfrmConfigNotaMan = class(TfrmSimplePadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoCAMPO: TStringField;
@@ -76,10 +76,10 @@ begin
   //dbcbbRef.Items.Clear;
   if (Tipo = 'C') or (Tipo = 'R') then
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'SELECT RF.RDB$FIELD_NAME FROM RDB$RELATION_FIELDS RF '+
+      SQL.Clear; SQL.Text :='SELECT RF.RDB$FIELD_NAME FROM RDB$RELATION_FIELDS RF '+
                      'WHERE RF.RDB$RELATION_NAME = :PTABLE';
       Params.ParamByName('PTABLE').AsString := 'VIEWVENDA';
       Open;
@@ -101,10 +101,10 @@ begin
   end
   else if (Tipo = 'I') then
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'SELECT RF.RDB$FIELD_NAME FROM RDB$RELATION_FIELDS RF '+
+      SQL.Clear; SQL.Text :='SELECT RF.RDB$FIELD_NAME FROM RDB$RELATION_FIELDS RF '+
                      'WHERE RF.RDB$RELATION_NAME = :PTABLE';
       Params.ParamByName('PTABLE').AsString := 'VIEWITEMVENDA';
       Open;

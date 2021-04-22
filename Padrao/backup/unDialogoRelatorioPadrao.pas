@@ -1,16 +1,17 @@
 unit unDialogoRelatorioPadrao;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, System.Rtti, UniGuiForm,
-  uniGUIBaseClasses, uniGUIClasses, uniPanel, uniButton, uniBitBtn;
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, ExtCtrls, DB;
 
 type
   TfrmDialogoRelatorioPadrao = class(TForm)
     dsPadrao: TDataSource;
-    pnButtons: TContainerPanel;
+    pnButtons: TPanel;
     btnImprimir: TBitBtn;
     btnVisualizar: TBitBtn;
     btnSair: TBitBtn;
@@ -29,7 +30,7 @@ var
 implementation
 
 uses
-  Funcoes, uNotifyEventDispatcher, Vcl.DBCtrls;
+  Funcoes, uNotifyEventDispatcher;
 
 {$R *.dfm}
 

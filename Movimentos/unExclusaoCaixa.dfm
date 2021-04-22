@@ -243,7 +243,7 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
     Left = 248
     Top = 136
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     PacketRecords = 100
     Params = <>

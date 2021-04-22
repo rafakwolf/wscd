@@ -3,9 +3,9 @@ unit unListagemProdutos;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList, UniGuiForm,
-  ExtCtrls, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton, uniBitBtn,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList, 
+  ExtCtrls,   uniLabel,  
   uniBasicGrid, uniDBGrid, uniMainMenu, uniEdit;
 
 type

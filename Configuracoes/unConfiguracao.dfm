@@ -974,7 +974,7 @@ inherited frmConfiguracao: TfrmConfiguracao
     Left = 48
     Top = 318
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <
       item

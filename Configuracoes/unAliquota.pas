@@ -3,18 +3,18 @@ unit unAliquota;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls,
-  ComCtrls, DBClient, Provider, SqlExpr, StdCtrls, Mask, DBCtrls,
-    ConstPadrao, Funcoes, FMTBcd, System.Actions, VarGlobal, uniGUIClasses,
-  uniEdit, uniDBEdit, uniButton, uniBitBtn, uniSpeedButton, uniPanel,
-  uniGUIBaseClasses, uniStatusBar;
+  ComCtrls, memds,  SqlDb, StdCtrls,  DBCtrls,
+    ConstPadrao, Funcoes, FMTBcd,  VarGlobal, 
+  uniEdit, uniDBEdit,    uniPanel,
+   uniStatusBar;
 
 type
   TfrmAliquota = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     cdsPadraoCODALIQUOTA: TIntegerField;
     cdsPadraoDESCRICAO: TStringField;
     dbeAliquota: TDBEdit;

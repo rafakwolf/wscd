@@ -158,7 +158,7 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
     Left = 80
     Top = 136
   end
-  object cdsProdEM: TClientDataSet
+  object cdsProdEM: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProdEM'

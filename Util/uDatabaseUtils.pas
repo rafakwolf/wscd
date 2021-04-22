@@ -2,23 +2,24 @@ unit uDatabaseUtils;
 
 interface
 
-uses Classes, VarGlobal, sqlexpr, Datasnap.DBClient;
+uses Classes, VarGlobal, SQLDB, memds;
 
-procedure UpdateSingleField(sql: String);
+procedure UpdateSingleField(sqlText: String);
 function SelectSingleField(query: string; conn: TSQLConnection): Variant;
 function GetProximoID(tabela, fieldId: string; conn: TSQLConnection): Integer;
 function SQLFind(tabela, campo, valor: string; conn: TSQLConnection): boolean;
 function GetFieldByID(conn: TSQLConnection; tabela, campoPesquisar,
   campoValor: string; valor: integer): Variant;
-function GetSQLFromQuery(cds: TClientDataset): string;
+function GetSQLFromQuery(cds: TMemDataset): string;
 
 implementation
 
-procedure UpdateSingleField(sql: String);
+procedure UpdateSingleField(sqlText: string);
 begin
-  with TSQLDataSet.Create(nil)do try
+  with TSQLQuery.Create(nil)do try
       SQLConnection:= GetConnection;
-      CommandText:=sql;
+      SQL.Clear;
+      SQL.Add(sqlText);
       ExecSQL;
   finally
     free;
@@ -27,9 +28,9 @@ end;
 
 function SelectSingleField(query: string; conn: TSQLConnection): Variant;
 begin
-  with TSQLDataSet.Create(nil)do try
+  with TSQLQuery.Create(nil)do try
       SQLConnection:= GetConnection;
-      CommandText:=query;
+      sql.clear(); sql.Add(query);
       Open;
       Result := Fields[0].Value;
   finally
@@ -52,7 +53,7 @@ begin
   // TODO: Implementar
 end;
 
-function GetSQLFromQuery(cds: TClientDataset): string;
+function GetSQLFromQuery(cds: TMemDataset): string;
 begin
 
 end;

@@ -3,20 +3,20 @@ unit unPrevEtiquetaProduto;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB,DBClient, Provider, SqlExpr, RLReport,
-  RLBarcode, FMTBcd, UniGuiForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB,memds,  SqlDb, RLReport, frce,
+  RLBarcode, FMTBcd;
   
 type
   TfrmPrevEtiquetaProduto = class(TForm)
-    dspEtq: TDataSetProvider;
-    cdsEtq: TClientDataSet;
+    dspEtq: TComponent;
+    cdsEtq: TMemDataSet;
     dsEtq: TDataSource;
     rpEtiqueta: TRLReport;
     Detail: TRLDetailGrid;
     dbtBarcode: TRLDBBarcode;
     dbtPreco: TRLDBText;
-    sqldEtq: TSQLDataSet;
+    sqldEtq: TSQLQuery;
     dbDescricao: TRLDBMemo;
     sqldEtqCODBARRA: TStringField;
     sqldEtqDESCRICAO: TStringField;

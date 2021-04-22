@@ -3,20 +3,19 @@ unit unPagamentoCheque;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Mask, DBCtrls,  ExtCtrls, DBGrids,  uniGUIForm,
-  DB, SqlExpr, FMTBcd, VarGlobal, uDatabaseutils, uniGUIBaseClasses,
-  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniEdit, uniDBEdit;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons,  DBCtrls,  ExtCtrls, DBGrids,  
+  DB, SqlDb, FMTBcd, VarGlobal, uDatabaseutils;
 
 type
   TTipoCheque = (tcAVista, tcPreDatado);
   TTipoChamada = (tcmCompra, tcmVenda);
   TfrmPagamentoCheque = class(TForm)
     dsSelecao: TDataSource;
-    sqldCheque: TSQLDataSet;
-    sqldVenda: TSQLDataSet;
+    sqldCheque: TSQLQuery;
+    sqldVenda: TSQLQuery;
     sqldVendaNOME: TStringField;
-    sqldCompra: TSQLDataSet;
+    sqldCompra: TSQLQuery;
     sqldCompraCODFORNECEDOR: TIntegerField;
     sqldCompraRAZAOSOCIAL: TStringField;
     sqldVendaCODCLIENTE: TIntegerField;
@@ -70,8 +69,8 @@ var
 
 implementation
 
-uses  Funcoes, unModeloConsulta, ConstPadrao, Extensos, System.Math,
-  System.StrUtils;
+uses  Funcoes, unModeloConsulta, ConstPadrao, Extensos, Math,
+  StrUtils, LCLType;
 
 {$R *.dfm}
 
@@ -123,11 +122,11 @@ procedure TfrmPagamentoCheque.btnOkClick(Sender: TObject);
 
   procedure ConcluirCompra(FormaPagto: string; ValorPago: Currency);
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       //SQLConnection := GetConnection;
-      CommandType := ctStoredProc;
-      CommandText := 'STPPAGTOCOMPRA';
+      //CommandType := ctStoredProc;
+      SQL.Clear; SQL.Text :='STPPAGTOCOMPRA';
       Params.ParamByName('IDCOMPRA').AsInteger   := FIdCompra;
       Params.ParamByName('DATAPAGTO').AsDate     := Date;
       Params.ParamByName('FORMAPAGTO').AsString  := Trim(FormaPagto);
@@ -140,11 +139,11 @@ procedure TfrmPagamentoCheque.btnOkClick(Sender: TObject);
 
   procedure ConcluirVenda(FormaRecto: string; ValorRecdo: Currency);
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       //SQLConnection := GetConnection;
-      CommandType := ctStoredProc;
-      CommandText := 'STPRECTOVENDA';
+      //CommandType := ctStoredProc;
+      SQL.Clear; SQL.Text :='STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger     := FIdVenda;
       Params.ParamByName('DATARECTO').AsDate      := Date;
       Params.ParamByName('FORMARECTO').AsString   := Trim(FormaRecto);
@@ -302,10 +301,10 @@ end;
 
 function TfrmPagamentoCheque.RestanteVenda: Real;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
+    SQL.Clear; SQL.Text :='select RESTO from STPRESTOVENDA(:VENDA)';
     Params.ParamByName('VENDA').AsInteger := FIdVenda;
     Open;
     Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
@@ -316,10 +315,10 @@ end;
 
 function TfrmPagamentoCheque.RestanteCompra: Real;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
+    SQL.Clear; SQL.Text :='select RESTO from STPRESTOCOMPRA(:COMPRA)';
     Params.ParamByName('COMPRA').AsInteger := FIdCompra;
     Open;
     Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
@@ -332,10 +331,10 @@ procedure TfrmPagamentoCheque.medBandaMagneticaExit(Sender: TObject);
 
   function BancoExiste(IdBanco: Integer): Boolean;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldCheque.SQLConnection;
-      CommandText := 'select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));
+      SQL.Clear; SQL.Text :='select count(1) from BANCO where IDBANCO = '+QuotedStr(IntToStr(IdBanco));
       Open;
       Result := Fields[0].AsInteger > 0;
     finally
@@ -381,10 +380,10 @@ end;
 function TfrmPagamentoCheque.ChequeExiste(
   pBandaMagnetica: string): Boolean;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select count(1) as CONT from CHEQUE '+
+    SQL.Clear; SQL.Text :='select count(1) as CONT from CHEQUE '+
       'where BANDAMAGNETICA = '+QuotedStr(pBandaMagnetica);
     Open;
     Result := (FieldByName('CONT').AsInteger > 0);
@@ -398,8 +397,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomComboBox) and
+             (TCustomComboBox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -407,15 +406,15 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end;
 end;

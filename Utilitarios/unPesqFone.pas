@@ -3,17 +3,15 @@ unit unPesqFone;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, StdCtrls, DB, DBClient, Provider, SqlExpr, Grids,
-  DBGrids, ExtCtrls, Buttons,  Menus, FMTBcd, uniMainMenu, uniGUIBaseClasses,
-  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniBasicGrid, uniDBGrid,
-  uniRadioGroup;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao, StdCtrls, DB, memds,  SqlDb, Grids,
+  DBGrids, ExtCtrls, Buttons,  Menus, FMTBcd;
 
 type
   TfrmPesqFone = class(TfrmSimplePadrao)
-    sqldFone: TSQLDataSet;
-    dspFone: TDataSetProvider;
-    cdsFone: TClientDataSet;
+    sqldFone: TSQLQuery;
+    dspFone: TComponent;
+    cdsFone: TMemDataSet;
     dsFone: TDataSource;
     sqldFoneNOME: TStringField;
     sqldFoneTELEFONE: TStringField;
@@ -62,7 +60,7 @@ procedure TfrmPesqFone.FormCreate(Sender: TObject);
 begin
   inherited;
   cdsFone.Open;
-  FSQL := sqldFone.CommandText;
+  FSQL := sqldFone.SQL.Text;
 end;
 
 procedure TfrmPesqFone.FormClose(Sender: TObject;
@@ -92,9 +90,9 @@ begin
              AnsiUpperCase(QuotedStr('%'+edtFone.Text+'%'));
        end;
   end;
-  cdsFone.Close;
-  cdsFone.CommandText := FSQL;
-  cdsFone.Open;
+  sqldFone.Close;
+  sqldFone.SQL.Clear; sqldFone.SQL.Text :=FSQL;
+  sqldFone.Open;
 end;
 
 procedure TfrmPesqFone.rgpPesquisaClick(Sender: TObject);
@@ -129,9 +127,9 @@ begin
   inherited;
   with TfrmPrevRelAgenda.Create(Self) do
   try
-    cdsPadrao.Close;
-    cdsPadrao.CommandText := FSQL;
-    cdsPadrao.Open;
+    sqldPadrao.Close;
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=FSQL;
+    sqldPadrao.Open;
     PrintIfNotEmptyRL(rrPadrao);
   finally
     Free;

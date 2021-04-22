@@ -3,11 +3,9 @@ unit unCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, DB, Grids, DBGrids, Buttons, DBClient, Provider, SqlExpr,
-  Menus, ComCtrls, ConstPadrao, DBXCommon, FMTBcd, unSimplePadrao, uniMainMenu,
-  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
-  uniStatusBar, uniPanel, uniBasicGrid, uniDBGrid;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, DB, Grids, DBGrids, Buttons, memds,  SqlDb,
+  Menus, ComCtrls, ConstPadrao, unSimplePadrao, LCLType;
 
 const
   SQLPadrao90Dias: string = 'select '+
@@ -42,14 +40,14 @@ const
 type
   TfrmCaixa = class(TfrmSimplePadrao)
     dsCaixa: TDataSource;
-    sqldCredDeb: TSQLDataSet;
+    sqldCredDeb: TSQLQuery;
     dsCaixas: TDataSource;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
-    sqldCaixas: TSQLDataSet;
-    dspCaixas: TDataSetProvider;
-    cdsCaixas: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
+    sqldCaixas: TSQLQuery;
+    dspCaixas: TComponent;
+    cdsCaixas: TMemDataSet;
     cdsCaixasCODIGO: TIntegerField;
     cdsCaixasNOME: TStringField;
     cdsCaixasINATIVO: TStringField;
@@ -106,7 +104,7 @@ type
     N5: TMenuItem;
     miRelPersonalCaixa: TMenuItem;
     stbCaixa: TStatusBar;
-    pnBotoes: TContainerPanel;
+    pnBotoes: TPanel;
     btnNovo: TSpeedButton;
     btnLocate: TSpeedButton;
     btnAlterar: TSpeedButton;
@@ -175,7 +173,7 @@ begin
 
   { debitos }
   sqldCredDeb.Close;
-  sqldCredDeb.CommandText := 'select'+
+  sqldCredDeb.SQL.Clear; sqldCredDeb.SQL.Text :='select'+
                              ' sum(VALOR) as CRED_DEB '+
                              'from CAIXA '+
                              'where (TIPO = :PTIPO)';
@@ -185,7 +183,7 @@ begin
 
   { creditos }
   sqldCredDeb.Close;
-  sqldCredDeb.CommandText := 'select'+
+  sqldCredDeb.SQL.Clear; sqldCredDeb.SQL.Text :='select'+
                              ' sum(VALOR) as CRED_DEB '+
                              'from CAIXA '+
                              'where (TIPO = :PTIPO)';
@@ -200,12 +198,12 @@ begin
   if cdsPadrao.IsEmpty then Exit;
   if MsgSN('Confirma exclus�o do lan�amento?') then
   begin
-    with TSQLDataSet.Create(Self) do
+    with TSQLQuery.Create(Self) do
     try
       Close;
       SQLConnection := GetConnection;
-      CommandType := ctStoredProc;
-      CommandText := 'STPDELCAIXA';
+      //CommandType := ctStoredProc;
+      SQL.Clear; SQL.Text :='STPDELCAIXA';
       Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODCAIXA.AsInteger;
       ExecSQL;
       cdsPadrao.DisableControls;
@@ -266,10 +264,10 @@ begin
 //          finally
 //            cmd.Free;
 //          end;
-          with TSQLDataSet.Create(nil) do
+          with TSQLQuery.Create(nil) do
           try
             SQLConnection := sqldPadrao.SQLConnection;
-            CommandText := 'delete from CAIXA '+
+            SQL.Clear; SQL.Text :='delete from CAIXA '+
               'where DATA between :DATAINI and :DATAFIM';
             ParamByName('DATAINI').AsDate := StrToDate(dtI);
             ParamByName('DATAFIM').AsDate := StrToDate(dtF);
@@ -362,17 +360,17 @@ end;
 procedure TfrmCaixa.miLimpaFiltroClick(Sender: TObject);
 begin
   try
-    cdsPadrao.DisableControls;
-    cdsPadrao.Close;
-    cdsPadrao.CommandText := SQLPadraoTela;
-
-    if cdsPadrao.Filter <> '' then
-      cdsPadrao.Filter := '';
-    if cdsPadrao.Filtered then
-      cdsPadrao.Filtered := False;
-
-    cdsPadrao.Open;
-    cdsPadrao.Last;
+    //cdsPadrao.DisableControls;
+    //cdsPadrao.Close;
+    //cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
+    //
+    //if cdsPadrao.Filter <> '' then
+    //  cdsPadrao.Filter := '';
+    //if cdsPadrao.Filtered then
+    //  cdsPadrao.Filtered := False;
+    //
+    //cdsPadrao.Open;
+    //cdsPadrao.Last;
   finally
     dsCaixa.OnStateChange(dsCaixa);
     cdsPadrao.EnableControls;
@@ -460,7 +458,7 @@ begin
 //  if not TfrmModeloConsulta.Execute('Consulta Caixa', cdsPadrao, FN_CAIXA, DL_CAIXA) then
 //  begin
 //    cdsPadrao.Close;
-//    cdsPadrao.CommandText := SQLPadraoTela;
+//    cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
 //    cdsPadrao.Open;
 //    cdsPadrao.Last;
 //  end;
@@ -474,7 +472,7 @@ begin
 
     { debitos }
     sqldCredDeb.Close;
-    sqldCredDeb.CommandText := 'select'+
+    sqldCredDeb.SQL.Clear; sqldCredDeb.SQL.Text :='select'+
                                ' sum(VALOR) as CRED_DEB '+
                                'from CAIXA '+
                                'where (TIPO = :PTIPO) '+
@@ -490,7 +488,7 @@ begin
 
     { creditos }
     sqldCredDeb.Close;
-    sqldCredDeb.CommandText := 'select'+
+    sqldCredDeb.SQL.Clear; sqldCredDeb.SQL.Text :='select'+
                                ' sum(VALOR) as CRED_DEB '+
                                'from CAIXA '+
                                'where (TIPO = :PTIPO) '+
@@ -509,7 +507,7 @@ begin
 
     { debitos }
     sqldCredDeb.Close;
-    sqldCredDeb.CommandText := 'select'+
+    sqldCredDeb.SQL.Clear; sqldCredDeb.SQL.Text :='select'+
                                ' sum(VALOR) as CRED_DEB '+
                                'from CAIXA '+
                                'where (TIPO = :PTIPO)';
@@ -519,7 +517,7 @@ begin
 
     { creditos }
     sqldCredDeb.Close;
-    sqldCredDeb.CommandText := 'select'+
+    sqldCredDeb.SQL.Clear; sqldCredDeb.SQL.Text :='select'+
                                ' sum(VALOR) as CRED_DEB '+
                                'from CAIXA '+
                                'where (TIPO = :PTIPO)';
@@ -530,26 +528,26 @@ begin
 end;
 
 procedure TfrmCaixa.SetCaixaDefault;
-var
-  cmd: TDBXCommand;
-  tx: TDBXTransaction;
+//var
+//  cmd: TDBXCommand;
+//  tx: TDBXTransaction;
 begin
-  tx := sqldPadrao.SQLConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-
-  cmd := sqldPadrao.SQLConnection.DBXConnection.CreateCommand;
-  try
-    try
-      cmd.Text := 'execute procedure STPCAIXASPADRAO('+IntToStr( Configuracao.CaixaPadrao )+')';
-      cmd.Prepare;
-      cmd.ExecuteQuery;
-
-      sqldPadrao.SQLConnection.CommitFreeAndNil(tx);
-    except
-      sqldPadrao.SQLConnection.RollbackFreeAndNil(tx);
-    end;
-  finally
-    cmd.Free;
-  end;
+  //tx := sqldPadrao.SQLConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
+  //
+  //cmd := sqldPadrao.SQLConnection.DBXConnection.CreateCommand;
+  //try
+  //  try
+  //    cmd.Text := 'execute procedure STPCAIXASPADRAO('+IntToStr( Configuracao.CaixaPadrao )+')';
+  //    cmd.Prepare;
+  //    cmd.ExecuteQuery;
+  //
+  //    sqldPadrao.SQLConnection.CommitFreeAndNil(tx);
+  //  except
+  //    sqldPadrao.SQLConnection.RollbackFreeAndNil(tx);
+  //  end;
+  //finally
+  //  cmd.Free;
+  //end;
 end;
 
 procedure TfrmCaixa.FormCreate(Sender: TObject);
@@ -562,17 +560,17 @@ begin
     try
       cdsPadrao.DisableControls;
       cdsPadrao.Close;
-      if Configuracao.LancCaixa90Dias then
-        cdsPadrao.CommandText := SQLPadrao90Dias
-      else
-        cdsPadrao.CommandText := SQLPadraoTodos;
+      //if Configuracao.LancCaixa90Dias then
+      //  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadrao90Dias
+      //else
+      //  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTodos;
       cdsPadrao.Open;
       cdsPadrao.Last;
     finally
       cdsPadrao.EnableControls;
     end;
 
-    SQLPadraoTela := sqldPadrao.CommandText;
+    SQLPadraoTela := sqldPadrao.SQL.text;
     CentralizaForm(Self);
   finally
   end;
@@ -654,17 +652,17 @@ begin
 
   with TfrmPrevCaixaTodos.Create(Self) do
   try
-    cdsPadrao.Close;
-    cdsPadrao.CommandText := 'select'+
-                             ' CAIXA,'+
-                             ' DATA,'+
-                             ' DESCRICAO,'+
-                             ' DOCUMENTO,'+
-                             ' TIPO,'+
-                             ' VALOR '+
-                             'from VIEWRELCAIXATODOS '+
-                             'where (DATA = CURRENT_DATE) '+
-                             'order by CAIXA, DATA, TIPO, DESCRICAO';
+    //cdsPadrao.Close;
+    //cdsPadrao.SQL.Clear; SQL.Text :='select'+
+    //                         ' CAIXA,'+
+    //                         ' DATA,'+
+    //                         ' DESCRICAO,'+
+    //                         ' DOCUMENTO,'+
+    //                         ' TIPO,'+
+    //                         ' VALOR '+
+    //                         'from VIEWRELCAIXATODOS '+
+    //                         'where (DATA = CURRENT_DATE) '+
+    //                         'order by CAIXA, DATA, TIPO, DESCRICAO';
     cdsPadrao.Open;
     cdsPadrao.DisableControls;
     //lbCreditos.Caption := 'Entradas R$: ' + FormatFloat('#,##0.00', TotalCredito);

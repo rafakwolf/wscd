@@ -3,21 +3,21 @@ unit unRelatorioFaturamento;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls,  FMTBcd, uniGUIClasses,
-  uniCheckBox, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel, uniEdit,
+  memds,  DB, SqlDb,  DBCtrls,  FMTBcd, 
+      uniPanel, uniEdit,
   uniDBEdit;
 
 type
   TfrmRelatorioFaturamento = class(TfrmDialogoRelatorioPadrao)
-    sqldForn: TSQLDataSet;
+    sqldForn: TSQLQuery;
     sqldFornCODFORNECEDOR: TIntegerField;
     sqldFornFANTAZIA: TStringField;
     sqldFornCNPJ: TStringField;
     sqldFornTELEFONE: TStringField;
-    dspForn: TDataSetProvider;
-    cdsForn: TClientDataSet;
+    dspForn: TComponent;
+    cdsForn: TMemDataSet;
     cdsFornCODFORNECEDOR: TIntegerField;
     cdsFornFANTAZIA: TStringField;
     cdsFornCNPJ: TStringField;
@@ -74,7 +74,7 @@ begin
    with TfrmPrevListaFaturamento.Create(Self) do
    try
      cdsPadrao.Close;
-     cdsPadrao.CommandText := SQL;
+     cdsPadrao.SQL.Clear; SQL.Text :=SQL;
      cdsPadrao.Params.ParamByName('PFORN').AsInteger := cdsFornCODFORNECEDOR.AsInteger;
      cdsPadrao.Open;
      lbTitulo.Caption := 'Listagem de faturamento de produtos';
@@ -92,7 +92,7 @@ procedure TfrmRelatorioFaturamento.dbeFornClickButton(Sender: TObject);
 begin
   inherited;
   cdsForn.Close;
-  cdsForn.CommandText := SQLPadrao;
+  cdsForn.SQL.Clear; SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
 //    cdsForn.Close;
 end;

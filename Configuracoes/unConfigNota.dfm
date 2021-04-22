@@ -183,7 +183,7 @@ inherited frmConfigNota: TfrmConfigNota
     Left = 339
     Top = 141
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

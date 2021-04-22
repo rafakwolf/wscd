@@ -468,7 +468,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
     Left = 160
     Top = 6
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

@@ -3,18 +3,18 @@ unit unParcelaVenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Mask, Grids, DBGrids, Spin, DBCtrls, 
-  DBClient, Datasnap.Provider, DB, uniGuiForm,
-  SqlExpr, DateUtils, ExtCtrls, FMTBcd, uniGUIBaseClasses, uniGUIClasses,
-  uniLabel, uniButton, uniBitBtn, uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons,  Grids, DBGrids, Spin, DBCtrls, 
+  memds,  DB, 
+  SqlDb, DateUtils, ExtCtrls, FMTBcd,  
+  uniLabel,   uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid,
   uniDBGrid;
 
 type
   TfrmParcelaVenda = class(TForm)
-    sqldParcela: TSQLDataSet;
-    dspParcela: TDataSetProvider;
-    cdsParcela: TClientDataSet;
+    sqldParcela: TSQLQuery;
+    dspParcela: TComponent;
+    cdsParcela: TMemDataSet;
     sqldParcelaNUMERO: TIntegerField;
     sqldParcelaVENC: TDateField;
     sqldParcelaDIA: TStringField;
@@ -24,12 +24,12 @@ type
     cdsParcelaDIA: TStringField;
     cdsParcelaVALOR: TFloatField;
     dsParcela: TDataSource;
-    sqldVenda: TSQLDataSet;
+    sqldVenda: TSQLQuery;
     sqldVendaCODCLIENTE: TIntegerField;
     sqldVendaCLIENTE: TStringField;
     sqldVendaDATA: TDateField;
     dsVenda: TDataSource;
-    sqldReceber: TSQLDataSet;
+    sqldReceber: TSQLQuery;
     sqldVendaCODIGO: TIntegerField;
     sqldVendaTOTAL: TFMTBCDField;
     lbParcelas: TLabel;
@@ -69,7 +69,7 @@ var
 
 implementation
 
-uses  Funcoes, VarGlobal, ConstPadrao, uClasses, System.Math, udatabaseutils;
+uses  Funcoes, VarGlobal, ConstPadrao, uClasses, Math, udatabaseutils;
 
 {$R *.dfm}
 
@@ -153,11 +153,11 @@ procedure TfrmParcelaVenda.btnOkClick(Sender: TObject);
 
   procedure ConcluirVenda(FormaRecto: string; ValorRecdo: Extended);
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
       CommandType := ctStoredProc;
-      CommandText := 'STPRECTOVENDA';
+      SQL.Clear; SQL.Text :='STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger := FIdVenda;
       Params.ParamByName('DATARECTO').AsDate := Date;
       Params.ParamByName('FORMARECTO').AsString := Trim(FormaRecto);
@@ -223,10 +223,10 @@ end;
 
 function TfrmParcelaVenda.Restante: Extended;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
+    SQL.Clear; SQL.Text :='select RESTO from STPRESTOVENDA(:VENDA)';
     Params.ParamByName('VENDA').AsInteger := FIdVenda;
     Open;
     Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
@@ -249,7 +249,7 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin

@@ -104,7 +104,7 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     Left = 336
     Top = 256
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -155,7 +155,7 @@ inherited frmEtiquetaProduto: TfrmEtiquetaProduto
     Left = 336
     Top = 224
   end
-  object cdsProduto: TClientDataSet
+  object cdsProduto: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProduto'

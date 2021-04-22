@@ -2318,7 +2318,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 312
     Top = 288
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'
@@ -2441,7 +2441,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 352
     Top = 352
   end
-  object cdsProdutos: TClientDataSet
+  object cdsProdutos: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProdutos'
@@ -2693,7 +2693,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 97
     Top = 289
   end
-  object cdsNFiscais: TClientDataSet
+  object cdsNFiscais: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dtNFiscais'
@@ -2794,7 +2794,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       FieldName = 'sqlDetNFiscais'
     end
   end
-  object cdsDetNFiscais: TClientDataSet
+  object cdsDetNFiscais: TMemDataset
     Aggregates = <>
     DataSetField = cdsNFiscaissqlDetNFiscais
     Params = <>

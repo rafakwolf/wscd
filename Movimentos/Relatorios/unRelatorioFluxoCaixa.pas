@@ -3,17 +3,17 @@ unit unRelatorioFluxoCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask,
-  System.StrUtils, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel, uniRadioGroup;
+  DB, memds,  SqlDb, ComCtrls,  FMTBcd, DBCtrls, 
+  StrUtils,  uniEdit, uniDBEdit,  
+   uniPanel, uniRadioGroup;
 
 type
   TfrmRelatorioFluxoCaixa = class(TfrmDialogoRelatorioPadrao)
-    sqldSelecao: TSQLDataSet;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    sqldSelecao: TSQLQuery;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
     cdsSelecaoDATAINI: TSQLTimeStampField;
@@ -72,7 +72,7 @@ begin
     with cdsPadrao do
     begin
       Close;
-      CommandText := SQL;
+      SQL.Clear; SQL.Text :=SQL;
       Params.ParamByName('PDATAINI').AsDate     := Trunc(cdsSelecaoDATAINI.AsDateTime);
       Params.ParamByName('PDATAFIM').AsDate     := Trunc(cdsSelecaoDATAFIM.AsDateTime);
       Params.ParamByName('PTIPOCONTA').AsString := tipoRel;

@@ -196,7 +196,7 @@ object frmCompNaoConc: TfrmCompNaoConc
     Left = 168
     Top = 128
   end
-  object cdsComp: TClientDataSet
+  object cdsComp: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspComp'

@@ -3,18 +3,18 @@ unit unModeloConsulta;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, StdCtrls, Buttons, DBClient, Grids, DBGrids,
-  Mask, StrUtils, SqlExpr, Provider, Data.FMTBcd, uniGUIForm, uniGUIBaseClasses,
-  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniMultiItem, uniComboBox,
-  uniEdit, uniBasicGrid, uniDBGrid, uniGUIApplication;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, StdCtrls, Buttons, memds, Grids, DBGrids,
+   StrUtils, SqlDb,  FMTBcd,  
+  
+   uniGUIApplication;
 
 type
   TfrmModeloConsulta = class(TForm)
     dsPadrao: TDataSource;
-    sqldPesquisa: TSQLDataSet;
-    dspPesquisa: TDataSetProvider;
-    cdsPesquisa: TClientDataSet;
+    sqldPesquisa: TSQLQuery;
+    dspPesquisa: TComponent;
+    cdsPesquisa: TMemDataSet;
     lbCampo: TLabel;
     lbCondicao: TLabel;
     lbDados: TLabel;
@@ -81,7 +81,7 @@ begin
     Caption := Titulo;
 
     cdsPesquisa.Close;
-    cdsPesquisa.CommandText := 'select * from '+Table;
+    cdsPesquisa.SQL.Clear; SQL.Text :='select * from '+Table;
     cdsPesquisa.PacketRecords := -1;
     cdsPesquisa.Open;
 

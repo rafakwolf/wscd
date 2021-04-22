@@ -194,7 +194,7 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
     Left = 288
     Top = 152
   end
-  object cdsVenda: TClientDataSet
+  object cdsVenda: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspVenda'

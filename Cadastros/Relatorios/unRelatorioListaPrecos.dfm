@@ -148,7 +148,7 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
     Left = 112
     Top = 8
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

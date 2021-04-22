@@ -3,14 +3,14 @@ unit unSituacaoCliente;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, Buttons, SqlExpr, ExtCtrls,  FMTBcd, uniGUIBaseClasses,
-  uniGUIClasses, uniButton, uniBitBtn, uniEdit, uniImage, uniGroupBox, uniGuiForm,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, DB, Buttons, SqlDb, ExtCtrls,  FMTBcd, 
+     uniEdit, uniImage, uniGroupBox, 
   uniMemo;
 
 type
   TfrmSituacaoCliente = class(TForm)
-    spSituacaoCliente: TSQLDataSet;
+    spSituacaoCliente: TSQLQuery;
     spSituacaoClienteCLIENTE: TStringField;
     spSituacaoClienteLIMITECLIENTE: TFMTBCDField;
     spSituacaoClienteDATACADASTRO: TDateField;
@@ -50,7 +50,7 @@ var
 
 implementation
 
-uses Funcoes, unContasReceber, System.Math;
+uses Funcoes, unContasReceber, Math;
 
 {$R *.dfm}
 

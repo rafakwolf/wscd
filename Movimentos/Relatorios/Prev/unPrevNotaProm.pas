@@ -3,16 +3,16 @@ unit unPrevNotaProm;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr, DBCtrls, uniGuiForm,
-  DBClient, Provider, ConstPadrao, Mask,  FMTBcd, uniGUIBaseClasses,
-  uniGUIClasses, uniPanel, uniButton, uniBitBtn, uniEdit, uniDBEdit;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlDb, DBCtrls, 
+  memds,  ConstPadrao,   FMTBcd, 
+   uniPanel,   uniEdit, uniDBEdit;
 
 type
   TfrmPrevNotaProm = class(TForm)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODCLIENTE: TIntegerField;
     sqldPadraoNOME: TStringField;
@@ -65,7 +65,7 @@ begin
     with cdsPadrao do
     begin
       Close;
-      CommandText := 'select '+
+      SQL.Clear; SQL.Text :='select '+
                      'CODIGO, '+
                      'DATA, '+
                      'VENCIMENTO, '+

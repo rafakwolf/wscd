@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <General>
       <Flags>
         <MainUnitHasUsesSectionForAllUnits Value="False"/>
@@ -15,9 +15,6 @@
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
-    <VersionInfo>
-      <StringTable ProductVersion=""/>
-    </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
     </BuildModes>
@@ -25,16 +22,20 @@
       <Version Value="2"/>
     </PublishOptions>
     <RunParams>
-      <local>
-        <FormatVersion Value="1"/>
-      </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default"/>
+      </Modes>
     </RunParams>
-    <RequiredPackages Count="1">
+    <RequiredPackages Count="2">
       <Item1>
-        <PackageName Value="LCL"/>
+        <PackageName Value="frce"/>
       </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
     </RequiredPackages>
-    <Units Count="164">
+    <Units Count="163">
       <Unit0>
         <Filename Value="Poupador.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -787,55 +788,51 @@
         <IsPartOfProject Value="True"/>
       </Unit151>
       <Unit152>
-        <Filename Value="Util/DBXUtils.pas"/>
+        <Filename Value="Util/ImgUtils.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit152>
       <Unit153>
-        <Filename Value="Util/ImgUtils.pas"/>
+        <Filename Value="Util/uDatabaseUtils.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit153>
       <Unit154>
-        <Filename Value="Util/uDatabaseUtils.pas"/>
+        <Filename Value="Util/crypto.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit154>
       <Unit155>
-        <Filename Value="Util/crypto.pas"/>
+        <Filename Value="Util/ClassesGerador.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit155>
       <Unit156>
-        <Filename Value="Util/ClassesGerador.pas"/>
+        <Filename Value="Util/uConfiguraRelatorio.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit156>
       <Unit157>
-        <Filename Value="Util/uConfiguraRelatorio.pas"/>
+        <Filename Value="Util/Extensos.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit157>
       <Unit158>
-        <Filename Value="Util/Extensos.pas"/>
+        <Filename Value="Util/uCheque.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit158>
       <Unit159>
-        <Filename Value="Util/uCheque.pas"/>
+        <Filename Value="Util/uClassesMenu.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit159>
       <Unit160>
-        <Filename Value="Util/uClassesMenu.pas"/>
+        <Filename Value="Cadastros/Datamodule/udmCliente.pas"/>
         <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
       </Unit160>
       <Unit161>
-        <Filename Value="Cadastros/Datamodule/udmCliente.pas"/>
+        <Filename Value="Utilitarios/Datamodule/udmDuplicatas.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
       </Unit161>
       <Unit162>
-        <Filename Value="Utilitarios/Datamodule/udmDuplicatas.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-      </Unit162>
-      <Unit163>
         <Filename Value="Principal/Classes/uMenuActions.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit163>
+      </Unit162>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

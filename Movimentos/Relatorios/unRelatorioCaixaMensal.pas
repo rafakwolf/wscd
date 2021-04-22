@@ -3,9 +3,9 @@ unit unRelatorioCaixaMensal;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils,
-  uniButton, uniBitBtn, uniGUIBaseClasses, uniGUIClasses, uniPanel, uniEdit,
+      uniPanel, uniEdit,
   uniRadioGroup;
 
 type
@@ -30,7 +30,7 @@ var
 implementation
 
 uses
-  Funcoes, unPrevRelCaixa, uConfiguraRelatorio, System.StrUtils;
+  Funcoes, unPrevRelCaixa, uConfiguraRelatorio, StrUtils;
 
 {$R *.dfm}
 
@@ -43,7 +43,7 @@ begin
     with cdsPadrao do
     begin
       Close;
-      CommandText := SQL;
+      SQL.Clear; SQL.Text :=SQL;
       Params.ParamByName('MES').AsInteger   := StrToInt(edtmes.Text);
       Params.ParamByName('ANO').AsInteger   := StrToInt(edtAno.Text);
       Params.ParamByName('PORDEM').AsString := IfThen(rgOrd.ItemIndex = 0, 'L', 'D');

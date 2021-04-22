@@ -72,7 +72,7 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
     Left = 248
     Top = 84
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

@@ -3,8 +3,8 @@ unit unPrevDuplicataSemForm;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Funcoes, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd, uniguiform;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Funcoes, RLReport, memds,  DB, SqlDb, FMTBcd;
 
 type
   TfrmPrevDuplicataSemForm = class(TForm)
@@ -28,9 +28,9 @@ type
     lbBairro: TRLLabel;
     lbInscricao_Estadual: TRLLabel;
     lbEstado: TRLLabel;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoCAMPO: TStringField;
     sqldPadraoNOMECAMPO: TStringField;
     sqldPadraoVERTICAL: TIntegerField;
@@ -151,7 +151,7 @@ begin
         EstiloFonte := 'Negrito It�lico Sublinhado';
       cdsPadraoESTILOFONTE.AsString :=  EstiloFonte;
     end;
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
 end;
 
 procedure TfrmPrevDuplicataSemForm.rrDuplicataAfterPrint(Sender: TObject);
@@ -162,10 +162,10 @@ end;
 
 procedure TfrmPrevDuplicataSemForm.LimpaTabelaConfig;
 begin
-  with TSQLDataSet.Create(Self) do
+  with TSQLQuery.Create(Self) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
-    CommandText := 'delete from CONFIGDUPLICATA';
+    SQL.Clear; SQL.Text :='delete from CONFIGDUPLICATA';
     ExecSQL;
   finally
     Free;

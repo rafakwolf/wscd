@@ -3,18 +3,18 @@ unit unListagemPrecos;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Buttons, Grids, DBGrids, DB,
-  DBClient, Provider, SqlExpr, FMTBcd, unSimplePadrao, uniGUIBaseClasses,
-  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniEdit, uniMultiItem,
+  memds,  SqlDb, FMTBcd, unSimplePadrao, 
+   uniLabel,   uniEdit, 
   uniComboBox, uniBasicGrid, uniDBGrid;
 
 type
   TfrmListagemPrecos = class(TfrmSimplePadrao)
     dsProdutos: TDataSource;
-    sqldProduto: TSQLDataSet;
-    dspProduto: TDataSetProvider;
-    cdsProduto: TClientDataSet;
+    sqldProduto: TSQLQuery;
+    dspProduto: TComponent;
+    cdsProduto: TMemDataSet;
     cdsProdutoCODIGO: TIntegerField;
     cdsProdutoCODIGOBARRA: TStringField;
     cdsProdutoREFERENCIA: TStringField;
@@ -118,8 +118,8 @@ begin
             QuotedStr('%'+edtPesquisa.Text+'%')+'))';
 
   cdsProduto.Close;
-  cdsProduto.CommandText := '';
-  cdsProduto.CommandText := FSQL;
+  cdsProduto.SQL.Clear; SQL.Text :='';
+  cdsProduto.SQL.Clear; SQL.Text :=FSQL;
   cdsProduto.Open;
 end;
 
@@ -150,7 +150,7 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin

@@ -115,7 +115,7 @@ inherited frmVendedor: TfrmVendedor
     Left = 376
     Top = 124
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

@@ -3,17 +3,16 @@ unit unPagamentoCompra;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, Buttons, VarGlobal, uniGUIForm,
-  DB, SqlExpr, DBGrids, DBClient, Provider, FMTBcd, uniGUIBaseClasses,
-  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniBasicGrid, uniDBGrid;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids, Buttons, VarGlobal, 
+  DB, SqlDb, DBGrids, memds,  FMTBcd;
 
 type
   TfrmPagamentoCompra = class(TForm)
-    sqldCompra: TSQLDataSet;
+    sqldCompra: TSQLQuery;
     dsCompra: TDataSource;
-    dspCompra: TDataSetProvider;
-    cdsCompra: TClientDataSet;
+    dspCompra: TComponent;
+    cdsCompra: TMemDataSet;
     sqldCompraDATAPAGTO: TDateField;
     sqldCompraFORMAPAGTO: TStringField;
     cdsCompraDATAPAGTO: TDateField;
@@ -43,7 +42,7 @@ var
 
 implementation
 
-uses unAgenda,  Funcoes;
+uses unAgenda,  Funcoes, LCLType;
 
 {$R *.dfm}
 
@@ -77,7 +76,7 @@ begin
   if (FIdCompra > 0) then
   begin
     cdsCompra.Close;
-    cdsCompra.Params.ParamByName('COMPRA').AsInteger := FIdCompra;
+    //cdsCompra.Params.ParamByName('COMPRA').AsInteger := FIdCompra;
     cdsCompra.Open;
     Status;
   end;
@@ -85,10 +84,10 @@ end;
 
 procedure TfrmPagamentoCompra.Status;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
+    SQL.Clear; SQL.Text :='select RESTO from STPRESTOCOMPRA(:COMPRA)';
     Params.ParamByName('COMPRA').AsInteger := FIdCompra;
     Open;
 

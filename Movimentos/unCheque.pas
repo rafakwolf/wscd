@@ -3,17 +3,15 @@ unit unCheque;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  DBClient, Provider, SqlExpr, Mask, DBCtrls, DateUtils, FMTBcd, System.Actions,
-   uniLabel, uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
-   uniGUIBaseClasses, uniStatusBar, uniImage, uniEdit, uniDBEdit;
+  memds,  SqlDb,  DBCtrls, DateUtils, FMTBcd;
 
 type
   TfrmCheque = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     actBaixar: TAction;
     sqldPadraoIDCHEQUE: TIntegerField;
     sqldPadraoIDBANCO: TIntegerField;
@@ -350,10 +348,10 @@ procedure TfrmCheque.actEstornarBaixaExecute(Sender: TObject);
 
   procedure EstornaCheque;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       //SQLConnection := GetConnection;
-      CommandText := 'delete from CAIXA where DOCUMENTO = '+
+      SQL.Clear; SQL.Text :='delete from CAIXA where DOCUMENTO = '+
         QuotedStr(cdsPadraoNUMERO.AsString);
       ExecSQL;
     finally
@@ -374,7 +372,7 @@ begin
     EstornaCheque;
     cdsPadrao.Edit;
     cdsPadraoDATABAIXADO.Clear;
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
     cdsPadraoAfterScroll(cdsPadrao);
     MsgAviso('Cheque estornado!');
   end;
@@ -521,17 +519,17 @@ begin
 
   cdsPadrao.Edit;
   cdsPadraoDATABAIXADO.AsDateTime := StrToDate(vDataBaixa);
-  cdsPadrao.ApplyUpdates(0);
+  // cdsPadrao.ApplyUpdates(0);
 
   MsgAviso('Cheque baixado!');
 end;
 
 function TfrmCheque.ChequeExiste(pBandaMagnetica: string): Boolean;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     //SQLConnection := GetConnection;
-    CommandText := 'select count(1) as CONT from CHEQUE '+
+    SQL.Clear; SQL.Text :='select count(1) as CONT from CHEQUE '+
       'where BANDAMAGNETICA = '+QuotedStr(pBandaMagnetica);
     Open;
     Result := (FieldByName('CONT').AsInteger > 0);

@@ -48,7 +48,7 @@ inherited frmRelatorioCPAtrasados: TfrmRelatorioCPAtrasados
     Left = 176
     Top = 8
   end
-  object cdsForn: TClientDataSet
+  object cdsForn: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspForn'

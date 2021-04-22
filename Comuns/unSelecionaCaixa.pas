@@ -3,17 +3,17 @@ unit unSelecionaCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, DBClient, Provider, SqlExpr, DBCtrls, StdCtrls,
-  Buttons, Funcoes, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, UniGuiForm, uniMultiItem, uniComboBox, uniDBComboBox,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, memds,  SqlDb, DBCtrls, StdCtrls,
+  Buttons, Funcoes, FMTBcd,   uniLabel,
+      uniComboBox, uniDBComboBox,
   uniDBLookupComboBox;
 
 type
   TfrmSelecionaCaixa = class(TForm)
-    sqldCaixa: TSQLDataSet;
-    dspCaixa: TDataSetProvider;
-    cdsCaixa: TClientDataSet;
+    sqldCaixa: TSQLQuery;
+    dspCaixa: TComponent;
+    cdsCaixa: TMemDataSet;
     dsCaixa: TDataSource;
     sqldCaixaCODIGO: TIntegerField;
     sqldCaixaNOME: TStringField;

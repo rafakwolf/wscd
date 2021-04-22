@@ -3,30 +3,29 @@ unit unNotasFiscais;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Buttons, DB, StdCtrls, DBCtrls, Mask, Grids, DBGrids,
-  SqlExpr, Menus, ComCtrls, DBClient, Provider,  ConstPadrao,
-  FMTBcd, uDatabaseutils, uniMainMenu, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, uniLabel,
-  uniEdit, uniDBEdit, uniGUIForm, uniMemo, uniDBMemo, uniBasicGrid, uniDBGrid;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Buttons, DB, StdCtrls, DBCtrls,  Grids, DBGrids,
+  SqlDb, Menus, ComCtrls, memds,  LCLType, ConstPadrao,
+  FMTBcd, uDatabaseutils;
 
 type
+  TDatasetField = TDataset;
   TfrmNotasFiscais = class(TForm)
     dsDetNFiscais: TDataSource;
     dsNotasFiscais: TDataSource;
-    sqldSelecao: TSQLDataSet;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    sqldSelecao: TSQLQuery;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     dsSelecao: TDataSource;
-    sqldProduto: TSQLDataSet;
-    dspProdutos: TDataSetProvider;
-    cdsProdutos: TClientDataSet;
+    sqldProduto: TSQLQuery;
+    dspProdutos: TComponent;
+    cdsProdutos: TMemDataSet;
     sqlNFiscais: TSQLQuery;
     sqlDetNFiscais: TSQLQuery;
     dsLigaNF: TDataSource;
-    dtNFiscais: TDataSetProvider;
-    cdsNFiscais: TClientDataSet;
-    cdsDetNFiscais: TClientDataSet;
+    dtNFiscais: TComponent;
+    cdsNFiscais: TMemDataSet;
+    cdsDetNFiscais: TMemDataSet;
     cdsNFiscaisNUMERO: TIntegerField;
     cdsNFiscaisCODFORNECEDOR: TIntegerField;
     cdsNFiscaisFORNECEDOR: TStringField;
@@ -65,7 +64,7 @@ type
     cdsSelecaoIPI: TFloatField;
     cdsSelecaoDESCTO: TFloatField;
     cdsNFiscaisCFOP: TStringField;
-    sqldPagto: TSQLDataSet;
+    sqldPagto: TSQLQuery;
     sqlNFiscaisNUMERO: TIntegerField;
     sqlNFiscaisCODFORNECEDOR: TIntegerField;
     sqlNFiscaisFORNECEDOR: TStringField;
@@ -141,8 +140,8 @@ type
     cdsProdutosDATARECEBIDA: TDateField;
     cdsProdutosABREVIACAO: TStringField;
     cdsProdutosPROMOCAO: TStringField;
-    sqldBaixa: TSQLDataSet;
-    sqldEstorna: TSQLDataSet;
+    sqldBaixa: TSQLQuery;
+    sqldEstorna: TSQLQuery;
     mnNotasFiscais: TMainMenu;
     miRegistros: TMenuItem;
     miPrimeiro: TMenuItem;
@@ -186,8 +185,8 @@ type
     miListaFaturamForn: TMenuItem;
     miListaFaturaCorrente: TMenuItem;
     stbCompra: TStatusBar;
-    PanelTotais: TContainerPanel;
-    pnlBotoes: TContainerPanel;
+    PanelTotais: TPanel;
+    pnlBotoes: TPanel;
     btnFechar: TSpeedButton;
     btnConsultar: TSpeedButton;
     btnCancelar: TSpeedButton;
@@ -310,7 +309,7 @@ implementation
 uses  Funcoes, unModeloConsulta, VarGlobal, unPrevCompras,
      uConfiguraRelatorio,  unPagamentoCheque,
      unParcelaCompra, unPagamentoCompra, unPrevListaFaturamento,
-     System.Math;
+     Math;
 
 {$R *.dfm}
 
@@ -331,7 +330,7 @@ begin
     sqldEstorna.Close;
     sqldEstorna.Params.ParamByName('CODIGO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
     sqldEstorna.ExecSQL;
-    PostMessage(Handle, WM_COMPRA_CONCLUIDA, 0, 0);
+    //PostMessage(Handle, WM_COMPRA_CONCLUIDA, 0, 0);
     MsgAviso('Compra estornada!');
   end;
 end;
@@ -350,10 +349,10 @@ begin
   begin
     if cdsNFiscais.State in [dsInsert] then
     begin
-      with TSQLDataSet.Create(nil) do
+      with TSQLQuery.Create(nil) do
       try
         SQLConnection := GetConnection;
-        CommandText := 'select NUMERO from NOTAS_FISCAIS '+
+        SQL.Clear; SQL.Text :='select NUMERO from NOTAS_FISCAIS '+
           'where NUMERO = ' + QuotedStr(Trim(dbeNumero.Text));
         Open;
         Result := (not IsEmpty);
@@ -385,10 +384,10 @@ begin
     SQLPadrao := sqlNFiscais.SQL.Text;
     if Configuracao.CompraConcluida then
     begin
-      with TSQLDataSet.Create(nil) do
+      with TSQLQuery.Create(nil) do
       try
         SQLConnection := GetConnection;
-        CommandText := 'select count(1) as CONT from NOTAS_FISCAIS '+
+        SQL.Clear; SQL.Text :='select count(1) as CONT from NOTAS_FISCAIS '+
           'where concluida = ' + QuotedStr('N');
         Open;
         if (FieldByName('CONT').AsInteger > 0) then
@@ -416,20 +415,20 @@ begin
   if MsgSN('Deseja realmente excluir �sta compra?') then
   begin
     // deleta itens da nota
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'delete from ITEMNOTAFISCAL where NUMERO = :PNUMERO';
+      SQL.Clear; SQL.Text :='delete from ITEMNOTAFISCAL where NUMERO = :PNUMERO';
       Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
       ExecSQL;
     finally
       Free;
     end;
     // deleta cabe�alho da nota
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'delete from NOTAS_FISCAIS where NUMERO = :PNUMERO';
+      SQL.Clear; SQL.Text :='delete from NOTAS_FISCAIS where NUMERO = :PNUMERO';
       Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
       ExecSQL;
     finally
@@ -445,14 +444,14 @@ begin
   if (not Duplicidade) and (not CamposNulos) then
   begin
    // Salvar(cdsNFiscais);
-    cdsNFiscais.ApplyUpdates(0);
+    //cdsNFiscais.ApplyUpdates(0);
     miConcluir.Click;
   end;
 end;
 
 procedure TfrmNotasFiscais.btnCancelarClick(Sender: TObject);
 begin
-  cdsNFiscais.CancelUpdates;
+  //cdsNFiscais.CancelUpdates;
   LimpaEdits;
 end;
 
@@ -569,7 +568,7 @@ begin
   Numero := '0';
   if InputQuery('Localizar por n�mero', 'N�mero da compra:', Numero) and (Numero <> '0') then
   begin
-    cdsNFiscais.IndexFieldNames := 'NUMERO';
+    //cdsNFiscais.IndexFieldNames := 'NUMERO';
     if not cdsNFiscais.Locate('NUMERO', Numero, []) then
       MsgAviso(Numero + ' n�o encontrado');
   end;
@@ -595,7 +594,7 @@ begin
   try
     cdsNFiscais.DisableControls;
     cdsNFiscais.Close;
-    cdsNFiscais.CommandText := SQLPadrao;
+    // cdsNFiscais.SQL.Clear; SQL.Text :=SQLPadrao;
 
     if cdsNFiscais.Filtered then
       cdsNFiscais.Filtered := False;
@@ -616,10 +615,10 @@ begin
     if (ClearMask(dtI) <> '') and (ClearMask(dtF) <> '') then
     begin
       cdsNFiscais.Close;
-      cdsNFiscais.CommandText := 'select * from notas_fiscais ' + #13 +
-        'where datae between :dataI and :dataF';
-      cdsNFiscais.Params.ParamByName('DATAI').AsDate := StrToDate(dtI);
-      cdsNFiscais.Params.ParamByName('DATAF').AsDate := StrToDate(dtF);
+      //cdsNFiscais.SQL.Clear; SQL.Text :='select * from notas_fiscais ' + #13 +
+      //  'where datae between :dataI and :dataF';
+      //cdsNFiscais.Params.ParamByName('DATAI').AsDate := StrToDate(dtI);
+      //cdsNFiscais.Params.ParamByName('DATAF').AsDate := StrToDate(dtF);
       cdsNFiscais.Open;
 
       if cdsNFiscais.IsEmpty then
@@ -758,10 +757,10 @@ var x: Integer;
 begin
   for x := 0 to ComponentCount - 1 do
   begin
-    if Components[x] is TCustomSQLDataSet then
+    if Components[x] is TSqlquery then
     begin
-      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
+      if (not Assigned(TSqlquery(Components[x]).SQLConnection)) then
+        TSqlquery(Components[x]).SQLConnection := GetConnection;
     end;
   end;
 
@@ -804,8 +803,8 @@ begin
       with cdsPadrao do
       begin
         Close;
-        CommandText := CS_NF_ATUAL;
-        Params.ParamByName('NUM').AsInteger := cdsNFiscaisNUMERO.AsInteger;
+        //SQL.Clear; SQL.Text :=CS_NF_ATUAL;
+        //Params.ParamByName('NUM').AsInteger := cdsNFiscaisNUMERO.AsInteger;
         Open;
       end;
       Titulo := 'Relat�rio de Compras';
@@ -955,8 +954,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomCombobox) and
+             (TCustomCombobox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -964,15 +963,15 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end;
 end;
@@ -1026,7 +1025,7 @@ begin
    with TfrmPrevListaFaturamento.Create(Self) do
    try
      cdsPadrao.Close;
-     cdsPadrao.CommandText := SQL;
+     cdsPadrao.SQL.Clear; SQL.Text :=SQL;
      cdsPadrao.Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
      cdsPadrao.Open;
      //lbTitulo.Caption := 'Produtos da Nota: '+IntToStr(cdsNFiscaisNUMERO.AsInteger);
@@ -1068,11 +1067,11 @@ procedure TfrmNotasFiscais.PagarCompra;
 
   procedure ConcluirCompra(FormaPagto: string; ValorPago: Currency);
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
       CommandType := ctStoredProc;
-      CommandText := 'STPPAGTOCOMPRA';
+      SQL.Clear; SQL.Text :='STPPAGTOCOMPRA';
       Params.ParamByName('IDCOMPRA').AsInteger  := cdsNFiscaisNUMERO.AsInteger;
       Params.ParamByName('DATAPAGTO').AsDate    := Date;
       Params.ParamByName('FORMAPAGTO').AsString := Trim(FormaPagto);
@@ -1086,10 +1085,10 @@ procedure TfrmNotasFiscais.PagarCompra;
 
   function Restante: Real;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
+      SQL.Clear; SQL.Text :='select RESTO from STPRESTOCOMPRA(:COMPRA)';
       Params.ParamByName('COMPRA').AsInteger := cdsNFiscaisNUMERO.AsInteger;
       Open;
       Result := RoundTo(FieldByName('RESTO').AsFloat, 2);

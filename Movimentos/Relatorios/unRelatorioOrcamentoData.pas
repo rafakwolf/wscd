@@ -3,10 +3,10 @@ unit unRelatorioOrcamentoData;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, DBCtrls, Vcl.Mask, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniPanel;
+  ComCtrls, DBCtrls,   uniEdit, uniDBEdit, 
+    uniPanel;
 
 type
   TfrmRelatorioOrcamentoData = class(TfrmDialogoRelatorioPadrao)
@@ -40,7 +40,7 @@ begin
     with TfrmPrevOrcamento.Create(Self) do
     try
       cdsPadrao.Close;
-      cdsPadrao.CommandText := 'select '+
+      cdsPadrao.SQL.Clear; SQL.Text :='select '+
                                ' orc.CODIGO, '+
                                ' orc.CODCLIENTE, '+
                                ' cli.Nome NOMECLIENTE, '+

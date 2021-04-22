@@ -2,7 +2,7 @@ unit ImgUtils;
 
 interface
 
-uses Classes, Sysutils, Vcl.Graphics, Clipbrd, Vcl.Imaging.jpeg;
+uses Classes, Sysutils, Graphics, Clipbrd, JPEGLib;
 
 type
   TRGB_Pixel = packed record
@@ -10,7 +10,7 @@ type
     B2: Byte;
     B3: Byte;
   end;
-  TScanLine = array[0..(System.MaxInt div SizeOf(TRGB_Pixel))-1] of TRGB_Pixel;
+  TScanLine = array[0..(MaxInt div SizeOf(TRGB_Pixel))-1] of TRGB_Pixel;
   PScanLine = ^TScanLine;
 
 

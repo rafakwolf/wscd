@@ -228,7 +228,7 @@ inherited frmPerda: TfrmPerda
     Left = 304
     Top = 148
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -310,7 +310,7 @@ inherited frmPerda: TfrmPerda
     Left = 304
     Top = 180
   end
-  object cdsProduto: TClientDataSet
+  object cdsProduto: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProduto'

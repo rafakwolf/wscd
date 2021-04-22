@@ -3,36 +3,36 @@ unit unParcelaCPCR;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, ComCtrls,  DB,
-  DBClient, Datasnap.Provider, SqlExpr,
-  Grids, DBGrids, Spin, StdCtrls, Mask, DBCtrls,
-  Buttons, DateUtils, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid, uniDBGrid;
+  memds,  SqlDb,
+  Grids, DBGrids, Spin, StdCtrls,  DBCtrls,
+  Buttons, DateUtils, FMTBcd,   uniLabel,
+    uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmParcelaCPCR = class(TfrmSimplePadrao)
-    sqldParcela: TSQLDataSet;
+    sqldParcela: TSQLQuery;
     sqldParcelaNUMERO: TIntegerField;
     sqldParcelaVENC: TDateField;
     sqldParcelaDIA: TStringField;
     sqldParcelaVALOR: TFloatField;
-    dspParcela: TDataSetProvider;
-    cdsParcela: TClientDataSet;
+    dspParcela: TComponent;
+    cdsParcela: TMemDataSet;
     cdsParcelaNUMERO: TIntegerField;
     cdsParcelaVENC: TDateField;
     cdsParcelaDIA: TStringField;
     cdsParcelaVALOR: TFloatField;
     dsParcela: TDataSource;
-    sqldContasPagar: TSQLDataSet;
-    sqldReceber: TSQLDataSet;
-    sqldPadrao: TSQLDataSet;
+    sqldContasPagar: TSQLQuery;
+    sqldReceber: TSQLQuery;
+    sqldPadrao: TSQLQuery;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoNOME: TStringField;
     sqldPadraoDATA: TDateField;
     sqldPadraoVALOR: TFloatField;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoNOME: TStringField;
     cdsPadraoDATA: TDateField;
@@ -78,8 +78,8 @@ var
 
 implementation
 
-uses Funcoes,  VarGlobal, unModeloConsulta, ConstPadrao, System.Math, uDatabaseutils,
-  System.StrUtils;
+uses Funcoes,  VarGlobal, unModeloConsulta, ConstPadrao, Math, uDatabaseutils,
+  StrUtils;
 
 {$R *.dfm}
 
@@ -261,7 +261,7 @@ begin
 //    if FTipoChamada = 0 then
 //    begin
 //      GetDmPesquisar.cdsPesqCliente.Close;
-//      GetDmPesquisar.cdsPesqCliente.CommandText := SQLCli;
+//      GetDmPesquisar.cdsPesqCliente.SQL.Clear; SQL.Text :=SQLCli;
 //      GetDmPesquisar.cdsPesqCliente.Open;
 //
 //      if TfrmModeloConsulta.Execute('Cliente', cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
@@ -273,7 +273,7 @@ begin
 //    else if FTipoChamada = 1 then
 //    begin
 //      GetDmPesquisar.cdsPesqForn.Close;
-//      GetDmPesquisar.cdsPesqForn.CommandText := SQLForn;
+//      GetDmPesquisar.cdsPesqForn.SQL.Clear; SQL.Text :=SQLForn;
 //      GetDmPesquisar.cdsPesqForn.Open;
 //
 //      if TfrmModeloConsulta.Execute('Fornecedor', cdsPesqForn, FN_FORN, DL_FORN) then
@@ -317,7 +317,7 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin

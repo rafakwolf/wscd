@@ -211,7 +211,7 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
         ParamType = ptInput
       end>
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftInteger

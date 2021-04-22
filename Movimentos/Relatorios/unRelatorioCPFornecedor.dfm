@@ -60,7 +60,7 @@ inherited frmRelatorioCPFornecedor: TfrmRelatorioCPFornecedor
     Left = 176
     Top = 8
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'

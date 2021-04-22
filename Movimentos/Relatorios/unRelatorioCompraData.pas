@@ -3,10 +3,10 @@ unit unRelatorioCompraData;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls,  FMTBcd, DBCtrls, Vcl.Mask,
-  uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses,
+  DB, memds,  SqlDb, ComCtrls,  FMTBcd, DBCtrls, 
+   uniEdit, uniDBEdit,   
   uniPanel;
 
 const
@@ -36,11 +36,11 @@ const
 
 type
   TfrmRelatorioCompraData = class(TfrmDialogoRelatorioPadrao)
-    sqldSelecao: TSQLDataSet;
+    sqldSelecao: TSQLQuery;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
     edDataIni: TDBEdit;
@@ -71,7 +71,7 @@ begin
     with TfrmPrevCompras.Create(Self), cdsPadrao do
     try
       Close;
-      CommandText := cs_nf_data;
+      SQL.Clear; SQL.Text :=cs_nf_data;
       Params.ParamByName('DATAI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
       Params.ParamByName('DATAF').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
       Open;

@@ -95,7 +95,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     Left = 288
     Top = 136
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'

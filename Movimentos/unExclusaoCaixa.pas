@@ -3,17 +3,17 @@ unit unExclusaoCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ComCtrls, DB, DBClient,
-  Provider, SqlExpr, Grids, DBGrids, ExtCtrls, FMTBcd, unSimplePadrao,
-  uniGUIBaseClasses, uniGUIClasses, uniStatusBar, uniButton, uniBitBtn,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, ComCtrls, DB, memds,
+   SqlDb, Grids, DBGrids, ExtCtrls, FMTBcd, unSimplePadrao,
+    uniStatusBar,  
   uniGroupBox, uniPanel, uniEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmExclusaoCaixa = class(TfrmSimplePadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODCAIXA: TIntegerField;
     sqldPadraoCODCAIXAS: TIntegerField;
@@ -85,10 +85,10 @@ procedure TfrmExclusaoCaixa.btnExcluirClick(Sender: TObject);
 
   function ContasMarcadas: Integer;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select count(1) CONT from CAIXA '+
+      SQL.Clear; SQL.Text :='select count(1) CONT from CAIXA '+
         'where EXCLUIR = '+QuotedStr('S');
       Open;
       Result := FieldByName('CONT').AsInteger;  
@@ -108,11 +108,11 @@ begin
   
   if MsgSN('Deseja realmente excluir os lan�amentos marcados?') then
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
       Close;
-      CommandText := 'DELETE FROM CAIXA WHERE EXCLUIR = ' + QuotedStr('S');
+      SQL.Clear; SQL.Text :='DELETE FROM CAIXA WHERE EXCLUIR = ' + QuotedStr('S');
       ExecSQL;
       MsgAviso('Exclus�o efetuada com sucesso!');
     finally

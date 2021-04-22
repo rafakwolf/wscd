@@ -3,10 +3,10 @@ unit unRelatorioCRCliente;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
-  DBClient, DB, Mask, DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniPanel;
+  memds, DB,  DBCtrls,  uniEdit, uniDBEdit, 
+    uniPanel;
 
 type
   TfrmRelatorioCRCliente = class(TfrmDialogoRelatorioPadrao)
@@ -83,7 +83,7 @@ procedure TfrmRelatorioCRCliente.dbeClienteClickButton(Sender: TObject);
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqCliente.Close;
-//  GetDmPesquisar.cdsPesqCliente.CommandText := SQLPadrao;
+//  GetDmPesquisar.cdsPesqCliente.SQL.Clear; SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente,
 //    FN_CLIENTES, DL_CLIENTES) then
 //    GetDmPesquisar.cdsPesqCliente.Close;

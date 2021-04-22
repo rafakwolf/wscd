@@ -3,13 +3,11 @@ unit unAcesso;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlExpr,  Vcl.Imaging.pngimage,
-  uniGUIForm, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniEdit,
-  uniImage, uniCheckBox;
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlDb,  PNG;
 
 type
-  TfrmAcesso = class(TLoginForm)
+  TfrmAcesso = class(TForm)
     btnOK: TBitBtn;
     edtUsuario: TEdit;
     edtSenha: TEdit;
@@ -25,22 +23,17 @@ type
   end;
 
 
-function frmAcesso: TfrmAcesso;
+var frmAcesso: TfrmAcesso;
 
 implementation
 
 uses unDmPrincipal, Funcoes, VarGlobal,
-  udmAcesso, Datasnap.DBClient, uUtilFncs, IniFiles, UniGUIVars, MainModule;
+  udmAcesso, memds, uUtilFncs, IniFiles;
 
 {$R *.dfm}
 
-function frmAcesso: TfrmAcesso;
-begin
-  Result := TfrmAcesso(UniMainModule.GetFormInstance(TfrmAcesso));
-end;
-
 function TfrmAcesso.ValidaLogin: Boolean;
-var cdsResultado: TClientDataSet;
+var cdsResultado: TMemDataSet;
 begin
   if not (AnsiLowerCase(edtUsuario.Text) = 'adm') then
   begin
@@ -90,8 +83,8 @@ begin
   begin
     if ValidaLogin then
     begin
-        if ckbLembrarLogin.Checked then
-          UniApplication.Cookies.SetCookie('_erp_login', edtUsuario.Text);
+        //if ckbLembrarLogin.Checked then
+        //  Application.Cookies.SetCookie('_erp_login', edtUsuario.Text);
 
       ModalResult := mrOk;
       Ok := True;
@@ -119,8 +112,6 @@ begin
   end;
 end;
 
-initialization
-  RegisterAppFormClass(TfrmAcesso);
 
 end.
 

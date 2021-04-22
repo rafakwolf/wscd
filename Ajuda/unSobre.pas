@@ -3,9 +3,9 @@ unit unSobre;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, jpeg, uniGUIBaseClasses, uniGUIClasses, uniButton,
-  uniLabel, UniGuiForm, uniMemo;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls, jpeg,   
+  uniLabel,  uniMemo;
 
 type
   TfrmSobre = class(TForm)

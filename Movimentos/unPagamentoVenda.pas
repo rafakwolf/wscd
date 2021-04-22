@@ -3,19 +3,19 @@ unit unPagamentoVenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, DB, SqlExpr, DBClient,
-  Provider, Grids, DBGrids, FMTBcd, VarGlobal, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniLabel, uniGuiForm, uniBasicGrid,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, StdCtrls, DB, SqlDb, memds,
+   Grids, DBGrids, FMTBcd, VarGlobal,  
+     uniLabel,  uniBasicGrid,
   uniDBGrid;
 
 type
   TfrmPagamentoVenda = class(TForm)
-    sqldVenda: TSQLDataSet;
+    sqldVenda: TSQLQuery;
     sqldVendaDATARECTO: TDateField;
     sqldVendaFORMARECTO: TStringField;
-    dspVenda: TDataSetProvider;
-    cdsVenda: TClientDataSet;
+    dspVenda: TComponent;
+    cdsVenda: TMemDataSet;
     dsVenda: TDataSource;
     cdsVendaDATARECTO: TDateField;
     cdsVendaFORMARECTO: TStringField;
@@ -87,10 +87,10 @@ end;
 
 procedure TfrmPagamentoVenda.Status;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
+    SQL.Clear; SQL.Text :='select RESTO from STPRESTOVENDA(:VENDA)';
     Params.ParamByName('VENDA').AsInteger := FIdVenda;
     Open;
 

@@ -282,7 +282,7 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       FieldName = 'VALORESTOQUE'
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftInteger

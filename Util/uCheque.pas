@@ -2,7 +2,7 @@ unit uCheque;
 
 interface
 
-uses Classes, Data.SqlExpr;
+uses Classes, Sqldb;
 
 type TTipoCheque = (tcRecebido, tcRepassado);
 

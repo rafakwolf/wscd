@@ -3,19 +3,19 @@ unit ufmImprimeEtiq;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, DBClient, Provider, DB, RLTypes,
-  SqlExpr, StdCtrls, Buttons, ExtCtrls, Spin, RLReport, Funcoes,
-  VarGlobal, FMTBcd, IniFiles, uniLabel, uniGUIBaseClasses, uniGUIClasses,
-  uniPanel, uniMultiItem, uniComboBox, uniButton, uniBitBtn, uniSpinEdit,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, memds,  DB, RLTypes,
+  SqlDb, StdCtrls, Buttons, ExtCtrls, Spin, RLReport, Funcoes,
+  VarGlobal, FMTBcd, IniFiles, uniLabel,  
+  uniPanel,  uniComboBox,   uniSpinEdit,
   uniRadioGroup;
 
 type
   TTipoEtiqueta = (teProduto, teCliente);
   TfrmImprimeEtiq = class(TfrmDialogoRelatorioPadrao)
-    sqldEtiqueta: TSQLDataSet;
-    dspEtiqueta: TDataSetProvider;
-    cdsEtiqueta: TClientDataSet;
+    sqldEtiqueta: TSQLQuery;
+    dspEtiqueta: TComponent;
+    cdsEtiqueta: TMemDataSet;
     sqldEtiquetaIDETIQUETA: TIntegerField;
     sqldEtiquetaETIQUETA: TStringField;
     sqldEtiquetaALTURAFOLHA: TFloatField;
@@ -213,7 +213,7 @@ begin
         end;
 
         cdsEtq.Close;
-        cdsEtq.CommandText := FSQL;
+        cdsEtq.SQL.Clear; SQL.Text :=FSQL;
         cdsEtq.Open;
 
         FSkip := Skip + 1;
@@ -281,7 +281,7 @@ begin
         end;
 
         cdsEtq.Close;
-        cdsEtq.CommandText := FSQL;
+        cdsEtq.SQL.Clear; SQL.Text :=FSQL;
         cdsEtq.Open;
 
         FSkip := Skip + 1;

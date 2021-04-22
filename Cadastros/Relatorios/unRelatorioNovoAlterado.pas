@@ -3,9 +3,9 @@ unit unRelatorioNovoAlterado;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniGUIClasses, uniPanel, uniRadioGroup;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, 
+     uniPanel, uniRadioGroup;
 
 const
   cs_prod_novos_alter: string = 'select '+
@@ -52,14 +52,14 @@ begin
     cdsPadrao.Close;
     if rgpOpcoes.ItemIndex = 0 then
     begin
-      cdsPadrao.CommandText :=  cs_prod_novos_alter;
+      cdsPadrao.SQL.Clear; SQL.Text := cs_prod_novos_alter;
       cdsPadrao.Params.ParamByName('PNOVO').AsInteger := 1;
       cdsPadrao.Params.ParamByName('PALTERADO').AsInteger := 0;
       NovosORAlterados := 'Novos';
     end
     else
     begin
-      cdsPadrao.CommandText :=  cs_prod_novos_alter;
+      cdsPadrao.SQL.Clear; SQL.Text := cs_prod_novos_alter;
       cdsPadrao.Params.ParamByName('PNOVO').AsInteger := 0;
       cdsPadrao.Params.ParamByName('PALTERADO').AsInteger := 1;
       NovosORAlterados := 'Alterados';

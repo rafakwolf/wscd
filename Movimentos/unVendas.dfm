@@ -473,7 +473,7 @@ inherited frmVendas: TfrmVendas
     Left = 56
     Top = 312
   end
-  object cdsClientes: TClientDataSet
+  object cdsClientes: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspClientes'
@@ -564,7 +564,7 @@ inherited frmVendas: TfrmVendas
     Left = 56
     Top = 344
   end
-  object cdsProdutos: TClientDataSet
+  object cdsProdutos: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProdutos'
@@ -660,7 +660,7 @@ inherited frmVendas: TfrmVendas
     Left = 296
     Top = 288
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'
@@ -860,7 +860,7 @@ inherited frmVendas: TfrmVendas
     Left = 294
     Top = 339
   end
-  object cdsVendas: TClientDataSet
+  object cdsVendas: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dtVendas'
@@ -931,7 +931,7 @@ inherited frmVendas: TfrmVendas
       FieldName = 'sqlItens'
     end
   end
-  object cdsItens: TClientDataSet
+  object cdsItens: TMemDataset
     Aggregates = <>
     DataSetField = cdsVendassqlItens
     Params = <>
@@ -1036,7 +1036,7 @@ inherited frmVendas: TfrmVendas
     Left = 56
     Top = 376
   end
-  object cdsVendedor: TClientDataSet
+  object cdsVendedor: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspVendedor'

@@ -220,7 +220,7 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       FieldName = 'TOTAL'
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     object cdsPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'
     end

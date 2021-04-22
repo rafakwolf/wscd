@@ -3,15 +3,15 @@ unit unModeloRelatorio;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DB, DBClient, Provider, SqlExpr, RLParser, FMTBcd,
-  RLConsts, UniGuiForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RLReport, DB, memds,  SqlDb, RLParser, FMTBcd,
+  RLConsts;
 
 type
   TfrmModeloRelatorio = class(TForm)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     rlepCalculos: TRLExpressionParser;
     rbTitulo: TRLBand;
@@ -26,7 +26,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
   public
-    function Totaliza(pDataSet: TClientDataSet; pTotalField, pFieldTipo, pTipo: string): Extended;
+    function Totaliza(pDataSet: TMemDataSet; pTotalField, pFieldTipo, pTipo: string): Extended;
   end;
 
 var
@@ -44,8 +44,8 @@ var
 begin
   for I := 0 to ComponentCount-1 do
   begin
-    if Components[i] is TCustomSQLDataSet then
-      TCustomSQLDataSet(Components[i]).SQLConnection := getConnection;
+    if Components[i] is TSQLQuery then
+      TSQLQuery(Components[i]).SQLConnection := getConnection;
   end;
 end;
 
@@ -76,7 +76,7 @@ begin
   Update;
 end;
 
-function TfrmModeloRelatorio.Totaliza(pDataSet: TClientDataSet; pTotalField,
+function TfrmModeloRelatorio.Totaliza(pDataSet: TMemDataSet; pTotalField,
   pFieldTipo, pTipo: string): Extended;
 var
   Total: Extended;

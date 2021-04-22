@@ -3,8 +3,8 @@ unit unPrevProdutosVencimento;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
@@ -57,7 +57,7 @@ procedure TfrmPrevProdutosVencimento.rrPadraoBeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  lbTitulo.Caption := 'Produtos vencidos até: ' + Data;
+  lbTitulo.Caption := 'Produtos vencidos atï¿½: ' + Data;
   rllbSomaCusto.Caption := 'Custo: '+SomaCusto;
 end;
 

@@ -3,9 +3,9 @@ unit unPrevRelAgenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, RLReport, DB, DBClient, Provider,
-  SqlExpr, VarGlobal, RLParser, FMTBcd;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, RLReport, DB, memds, 
+  SqlDb, VarGlobal, RLParser, FMTBcd;
 
 type
   TfrmPrevRelAgenda = class(TfrmModeloRelatorio)

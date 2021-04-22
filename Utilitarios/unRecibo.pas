@@ -3,18 +3,16 @@ unit unRecibo;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr,
-   DBCtrls, Mask, FMTBcd, System.Actions, uniMainMenu, uniLabel, uniButton,
-  uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses,
-  uniStatusBar, uniEdit, uniDBEdit, uniMemo, uniDBMemo;
+  ExtCtrls, ComCtrls, memds,  SqlDb,
+   DBCtrls,  FMTBcd;
 
 type
   TfrmRecibo = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoIDRECIBO: TIntegerField;
     sqldPadraoDATA: TDateField;
     sqldPadraoRECEBEDOR: TStringField;

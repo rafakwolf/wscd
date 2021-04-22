@@ -372,7 +372,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
     Color = clWindow
     OnDblClick = GradeDblClick
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <
       item
@@ -609,7 +609,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
     Left = 304
     Top = 224
   end
-  object cdsConta: TClientDataSet
+  object cdsConta: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspConta'

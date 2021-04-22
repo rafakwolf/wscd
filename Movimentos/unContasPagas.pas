@@ -3,28 +3,28 @@ unit unContasPagas;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Buttons, DB, StdCtrls, Mask, DBCtrls, SqlExpr,
-  DBClient, Provider, ConstPadrao, ComCtrls, unContasPagar,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Buttons, DB, StdCtrls,  DBCtrls, SqlDb,
+  memds,  ConstPadrao, ComCtrls, unContasPagar,
   Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal, uniMainMenu,
-  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+      
   uniStatusBar, uniPanel, uniLabel, uniEdit, uniDBEdit, uniGroupBox,
   uniBasicGrid, uniDBGrid;
 
 type
   TfrmContasPagas = class(TfrmSimplePadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
-    sqldEstorno: TSQLDataSet;
-    dspEstorno: TDataSetProvider;
-    cdsEstorno: TClientDataSet;
+    sqldEstorno: TSQLQuery;
+    dspEstorno: TComponent;
+    cdsEstorno: TMemDataSet;
     sqldEstornoCODIGO: TIntegerField;
     sqldEstornoORIGEM: TIntegerField;
     cdsEstornoCODIGO: TIntegerField;
     cdsEstornoORIGEM: TIntegerField;
-    sqldContaEstorno: TSQLDataSet;
+    sqldContaEstorno: TSQLQuery;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoDATA: TDateField;
     sqldPadraoVENCIMENTO: TDateField;
@@ -146,7 +146,7 @@ begin
 
   case OpcaoFiltro of
   -1: begin
-         PostMessage(Handle, WM_CLOSE, 0, 0);
+         //PostMessage(Handle, WM_CLOSE, 0, 0);
          Exit;
        end;
    0: begin
@@ -155,7 +155,7 @@ begin
           (ClearMask(DataF) <> '') then
         begin
           cdsPadrao.Close;
-          cdsPadrao.CommandText := GetSQLFromQuery(cdsPadrao) +
+          cdsPadrao.SQL.Clear; SQL.Text :=GetSQLFromQuery(cdsPadrao) +
             ' and DATAPAGTO between :DATAI and :DATAF';
           cdsPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
           cdsPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
@@ -174,7 +174,7 @@ begin
   if cdsPadrao.IsEmpty then
   begin
     MsgErro(UM_PESQUISAVAZIO);
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
   SomaContasPagas;
@@ -191,10 +191,10 @@ procedure TfrmContasPagas.btnEstornarClick(Sender: TObject);
 
   function ContasMarcadas: Integer;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select count(1) as CONT from CONTASPAGAR'+
+      SQL.Clear; SQL.Text :='select count(1) as CONT from CONTASPAGAR'+
         ' where PAGAR = '+QuotedStr('S')+
         ' and PAGA = '+QuotedStr('S')+
         ' and FORNECEDOR = '+QuotedStr(IntToStr(FFornecedor));
@@ -272,10 +272,10 @@ end;
 
 procedure TfrmContasPagas.SomaContasPagas;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select sum(TOTAL) as SOMA from CONTASPAGAR '+
+    SQL.Clear; SQL.Text :='select sum(TOTAL) as SOMA from CONTASPAGAR '+
       'where PAGA = '+QuotedStr('S')+' and FORNECEDOR = :PFORN';
     Params.ParamByName('PFORN').AsInteger := FFornecedor; 
     Open;

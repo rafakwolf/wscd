@@ -244,7 +244,7 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       Size = 80
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftDate

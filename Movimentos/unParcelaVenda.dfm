@@ -325,7 +325,7 @@ object frmParcelaVenda: TfrmParcelaVenda
     Left = 224
     Top = 160
   end
-  object cdsParcela: TClientDataSet
+  object cdsParcela: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspParcela'

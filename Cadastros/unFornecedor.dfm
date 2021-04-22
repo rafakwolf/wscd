@@ -347,7 +347,7 @@ inherited frmFornecedor: TfrmFornecedor
     Left = 540
     Top = 6
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -460,7 +460,7 @@ inherited frmFornecedor: TfrmFornecedor
     Left = 404
     Top = 244
   end
-  object cdsCidade: TClientDataSet
+  object cdsCidade: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCidade'

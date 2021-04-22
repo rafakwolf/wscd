@@ -416,7 +416,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     Left = 248
     Top = 244
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

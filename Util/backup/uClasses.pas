@@ -726,11 +726,11 @@ end;
 
 constructor TSistema.Create;
 begin
-  sqldSistema := TSQLDataSet.Create(nil);
+  sqldSistema := TSQLQuery.Create(nil);
   with sqldSistema do
   begin
     SQLConnection := DmPrincipal.Conexao;
-    CommandText := 'select '+
+    SQL.Clear; SQL.Text :='select '+
                    '  s.IDSISTEMA,'+
                    '  s.VERSAO,'+
                    '  s.DATAVALIDADE,'+

@@ -7,7 +7,7 @@ interface
 uses
   SysUtils, Classes, DB, sqldb, Dialogs, Forms, Controls,
   Messages, Graphics,  LCLIntf, LCLType, LMessages, FMTBcd, {RLConsts,}
-  udmBase{, Data.DBXFirebird, Datasnap.Provider, Datasnap.DBClient};
+  udmBase{, DBXFirebird,  memds};
 
 type
   TDmPrincipal = class(TdmBase)

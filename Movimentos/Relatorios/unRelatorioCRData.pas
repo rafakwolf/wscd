@@ -3,10 +3,10 @@ unit unRelatorioCRData;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, DBCtrls, Vcl.Mask, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniPanel;
+  ComCtrls, DBCtrls,   uniEdit, uniDBEdit, 
+    uniPanel;
 
 type
   TfrmRelatorioCRData = class(TfrmDialogoRelatorioPadrao)
@@ -56,7 +56,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        CommandText := 'select '+
+        SQL.Clear; SQL.Text :='select '+
                        ' DATA, '+
                        ' VENCIMENTO, '+
                        ' CLIENTE, '+

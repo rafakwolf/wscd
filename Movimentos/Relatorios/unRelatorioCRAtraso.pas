@@ -3,16 +3,16 @@ unit unRelatorioCRAtraso;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls,  DBClient, Provider, DB, SqlExpr, FMTBcd, uniGUIClasses, uniEdit,
-  uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
+  DBCtrls,  memds,  DB, SqlDb, FMTBcd,  uniEdit,
+  uniDBEdit,    uniPanel;
 
 type
   TfrmRelatorioCRAtraso = class(TfrmDialogoRelatorioPadrao)
-    sqldCliente: TSQLDataSet;
-    dspCliente: TDataSetProvider;
-    cdsCliente: TClientDataSet;
+    sqldCliente: TSQLQuery;
+    dspCliente: TComponent;
+    cdsCliente: TMemDataSet;
     sqldClienteCODCLIENTE: TIntegerField;
     sqldClienteNOME: TStringField;
     sqldClienteTELEFONE: TStringField;
@@ -99,7 +99,7 @@ procedure TfrmRelatorioCRAtraso.dbeClienteClickButton(Sender: TObject);
 begin
   inherited;
   cdsCliente.Close;
-  cdsCliente.CommandText := SQLPadrao;
+  cdsCliente.SQL.Clear; SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
 //    cdsCliente.Close;
 end;

@@ -3,16 +3,16 @@ unit unTrocaSenhaCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons, DBClient, Provider, DB,
-  SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
-  uniEdit, uniGuiForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Buttons, memds,  DB,
+  SqlDb, FMTBcd,    
+  uniEdit;
 
 type
   TfrmSenhaCaixa = class(TForm)
-    sqldConfig: TSQLDataSet;
-    dspConfig: TDataSetProvider;
-    cdsConfig: TClientDataSet;
+    sqldConfig: TSQLQuery;
+    dspConfig: TComponent;
+    cdsConfig: TMemDataSet;
     sqldConfigSENHAESTOQUE: TStringField;
     sqldConfigSENHACAIXA: TStringField;
     cdsConfigSENHAESTOQUE: TStringField;
@@ -90,7 +90,7 @@ begin
   if Key = Chr(13) then
   begin
     Key := Chr(0);
-    PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+    //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
   end;
 end;
 

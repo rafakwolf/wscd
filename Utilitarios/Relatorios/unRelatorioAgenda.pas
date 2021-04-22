@@ -3,17 +3,16 @@ unit unRelatorioAgenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, DBCtrls,  Mask, uConfiguraRelatorio,
-  FMTBcd, uniLabel, uniGUIBaseClasses, uniGUIClasses, uniPanel, uniEdit,
-  uniDBEdit, uniButton, uniBitBtn, uniRadioGroup;
+  DB, memds,  SqlDb, DBCtrls,   uConfiguraRelatorio,
+  FMTBcd;
 
 type
   TfrmRelatorioAgenda = class(TfrmDialogoRelatorioPadrao)
-    sqldAgenda: TSQLDataSet;
-    dspAgenda: TDataSetProvider;
-    cdsAgenda: TClientDataSet;
+    sqldAgenda: TSQLQuery;
+    dspAgenda: TComponent;
+    cdsAgenda: TMemDataSet;
     cdsAgendaNOME: TStringField;
     cdsAgendaTELEFONE: TStringField;
     cdsAgendaTELEFONE2: TStringField;
@@ -65,10 +64,10 @@ begin
         if Nome = EmptyStr then
           Exit;
 
-        with cdsPadrao do
+        with sqldPadrao do
         begin
           Close;
-          CommandText := 'SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA '+
+          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA '+
             'WHERE NOME LIKE ' + QuotedStr(Nome)+ ' ORDER BY NOME';
           Open;
         end;
@@ -77,20 +76,20 @@ begin
       begin
         if ((edFone.Text = EmptyStr) or (ClearMask(edFone.Text) = '')) then
           Exit;
-        with cdsPadrao do
+        with sqldPadrao do
         begin
           Close;
-          CommandText := 'SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA '+
+          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA '+
             'WHERE TELEFONE LIKE ' + QuotedStr('%'+edFone.Text+'%')+ 'ORDER BY TELEFONE';
           Open;
         end;
       end;
       2:
       begin
-        with cdsPadrao do
+        with sqldPadrao do
         begin
           Close;
-          CommandText := 'SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA ORDER BY NOME';
+          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA ORDER BY NOME';
           Open;
         end;
       end;
@@ -112,7 +111,7 @@ procedure TfrmRelatorioAgenda.dbeNomeClickButton(Sender: TObject);
 begin
   inherited;
 //  cdsAgenda.Close;
-//  cdsAgenda.CommandText := SQLPadrao;
+//  cdsAgenda.SQL.Clear; SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Agenda', cdsAgenda, FN_AGENDA, DL_AGENDA) then
 //    cdsAgenda.Close;
 end;
@@ -148,7 +147,7 @@ end;
 procedure TfrmRelatorioAgenda.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLPadrao := sqldAgenda.CommandText;
+  SQLPadrao := sqldAgenda.SQL.Text;
 end;
 
 initialization

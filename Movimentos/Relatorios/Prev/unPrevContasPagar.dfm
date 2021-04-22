@@ -204,7 +204,7 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       Precision = 15
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftInteger

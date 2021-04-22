@@ -3,18 +3,18 @@ unit unRelatorioClienteCidade;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DBClient, Provider, DB, SqlExpr, Mask, DBCtrls,  FMTBcd, uniGUIClasses,
-  uniEdit, uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel;
+  memds,  DB, SqlDb,  DBCtrls,  FMTBcd, 
+  uniEdit, uniDBEdit,    uniPanel;
 
 type
   TfrmRelatorioClienteCidade = class(TfrmDialogoRelatorioPadrao)
-    sqldCidade: TSQLDataSet;
+    sqldCidade: TSQLQuery;
     sqldCidadeCODCIDADE: TIntegerField;
     sqldCidadeDESCRICAO: TStringField;
-    dspCidade: TDataSetProvider;
-    cdsCidade: TClientDataSet;
+    dspCidade: TComponent;
+    cdsCidade: TMemDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
     dbeCidade: TDBEdit;
@@ -43,7 +43,7 @@ procedure TfrmRelatorioClienteCidade.dbeCidadeClickButton(Sender: TObject);
 begin
   inherited;
   cdsCidade.Close;
-  cdsCidade.CommandText := SQLPadrao;
+  cdsCidade.SQL.Clear; SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
 //    cdsCidade.Close;
 end;
@@ -63,7 +63,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        CommandText := 'select '+
+        SQL.Clear; SQL.Text :='select '+
                        ' CODIGO, '+
                        ' NOME, '+
                        ' ENDERECO, '+

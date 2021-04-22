@@ -1915,7 +1915,7 @@ object frmOrcamentos: TfrmOrcamentos
     TabOrder = 16
     OnClick = btnInsereProdutoClick
   end
-  object dbCliente: TDBEdit
+  object memdse: TDBEdit
     Left = 144
     Top = 96
     Width = 625
@@ -2153,7 +2153,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 310
     Top = 370
   end
-  object cdsOrcam: TClientDataSet
+  object cdsOrcam: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dtOrcam'
@@ -2216,7 +2216,7 @@ object frmOrcamentos: TfrmOrcamentos
       FieldName = 'sqlDetOrcam'
     end
   end
-  object cdsDetOrcam: TClientDataSet
+  object cdsDetOrcam: TMemDataset
     Aggregates = <>
     DataSetField = cdsOrcamsqlDetOrcam
     Params = <>
@@ -2449,7 +2449,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 528
     Top = 333
   end
-  object cdsProdutos: TClientDataSet
+  object cdsProdutos: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProdutos'
@@ -2543,7 +2543,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 312
     Top = 296
   end
-  object cdsSelecao: TClientDataSet
+  object cdsSelecao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSelecao'
@@ -2627,7 +2627,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 528
     Top = 301
   end
-  object cdsCliente: TClientDataSet
+  object cdsCliente: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCliente'
@@ -2699,7 +2699,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 528
     Top = 365
   end
-  object cdsVendedor: TClientDataSet
+  object cdsVendedor: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspVendedor'

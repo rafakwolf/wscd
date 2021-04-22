@@ -3,30 +3,29 @@ unit unParcelaCompra;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, DB, DBClient,  dateutils,
-  Datasnap.Provider, SqlExpr,  Grids, DBGrids, Spin, StdCtrls,
-  Mask, DBCtrls,  Buttons,  funcoes, VarGlobal,
-  ExtCtrls, FMTBcd, uDatabaseutils, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid, uniDBGrid;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao, DB, memds,  dateutils,
+   SqlDb,  Grids, DBGrids, Spin, StdCtrls,
+   DBCtrls,  Buttons,  funcoes, VarGlobal,
+  ExtCtrls, FMTBcd, uDatabaseutils;
 
 type
   TfrmParcelaCompra = class(TfrmSimplePadrao)
-    sqldParcela: TSQLDataSet;
+    sqldParcela: TSQLQuery;
     sqldParcelaNUMERO: TIntegerField;
     sqldParcelaVENC: TDateField;
     sqldParcelaDIA: TStringField;
     sqldParcelaVALOR: TFloatField;
-    dspParcela: TDataSetProvider;
-    cdsParcela: TClientDataSet;
+    dspParcela: TComponent;
+    cdsParcela: TMemDataSet;
     cdsParcelaNUMERO: TIntegerField;
     cdsParcelaVENC: TDateField;
     cdsParcelaDIA: TStringField;
     cdsParcelaVALOR: TFloatField;
     dsParcela: TDataSource;
-    sqldCompra: TSQLDataSet;
+    sqldCompra: TSQLQuery;
     dsCompra: TDataSource;
-    sqldPagar: TSQLDataSet;
+    sqldPagar: TSQLQuery;
     sqldCompraNUMERO: TIntegerField;
     sqldCompraCODFORNECEDOR: TIntegerField;
     sqldCompraFORNECEDOR: TStringField;
@@ -66,7 +65,7 @@ var
 
 implementation
 
-uses ConstPadrao, System.Math;
+uses ConstPadrao, Math;
 
 {$R *.dfm}
 
@@ -84,7 +83,7 @@ begin
   if not cdsParcela.Active then
     cdsParcela.Open;
 
-  cdsParcela.EmptyDataSet;
+  //cdsParcela.EmptyDataSet;
   for x := 1 to seParcelas.Value do
   begin
     if cdsParcela.RecordCount < x then
@@ -147,11 +146,11 @@ procedure TfrmParcelaCompra.btnOkClick(Sender: TObject);
 
   procedure ConcluirCompra(FormaPagto: string; ValorPago: Currency);
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandType := ctStoredProc;
-      CommandText := 'STPPAGTOCOMPRA';
+      //CommandType := ctStoredProc;
+      SQL.Clear; SQL.Text :='STPPAGTOCOMPRA';
       Params.ParamByName('IDCOMPRA').AsInteger  := FIdCompra;
       Params.ParamByName('DATAPAGTO').AsDate    := Date;
       Params.ParamByName('FORMAPAGTO').AsString := Trim(FormaPagto);
@@ -212,10 +211,10 @@ end;
 
 function TfrmParcelaCompra.Restante: Real;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
+    SQL.Clear; SQL.Text :='select RESTO from STPRESTOCOMPRA(:COMPRA)';
     Params.ParamByName('COMPRA').AsInteger := FIdCompra;
     Open;
     Result := RoundTo(FieldByName('RESTO').AsFloat, 2);

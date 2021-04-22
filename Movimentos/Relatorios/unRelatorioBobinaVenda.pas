@@ -3,19 +3,19 @@ unit unRelatorioBobinaVenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, Spin, ExtCtrls, DB,
-  DBClient, Datasnap.Provider,
-  Data.SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel, uniButton,
-  uniBitBtn, uniEdit, uniSpinEdit, uniMemo;
+  memds, 
+  Sqldb, FMTBcd,   uniLabel, 
+   uniEdit, uniSpinEdit, uniMemo;
 
 type
   TfrmRelatorioBobinaVenda = class(TfrmSimplePadrao)
     sqlVendas: TSQLQuery;
     sqlItens: TSQLQuery;
-    dtVendas: TDataSetProvider;
+    dtVendas: TComponent;
     dsLnkVenda: TDataSource;
-    cdsVendas: TClientDataSet;
+    cdsVendas: TMemDataSet;
     cdsVendasCODIGO: TIntegerField;
     cdsVendasCODCLIENTE: TIntegerField;
     cdsVendasCLIENTE: TStringField;
@@ -24,10 +24,10 @@ type
     cdsVendasCONCLUIDA: TStringField;
     cdsVendasBAIXADO: TStringField;
     cdsVendassqlItens: TDataSetField;
-    cdsItens: TClientDataSet;
-    sqldPagamento: TSQLDataSet;
-    dspPagamento: TDataSetProvider;
-    cdspagamento: TClientDataSet;
+    cdsItens: TMemDataSet;
+    sqldPagamento: TSQLQuery;
+    dspPagamento: TComponent;
+    cdspagamento: TMemDataSet;
     sqldPagamentoFORMARECTO: TStringField;
     sqldPagamentoVALORRECDO: TFMTBCDField;
     cdspagamentoFORMARECTO: TStringField;

@@ -155,7 +155,6 @@ uses
   ConstPadrao in 'Util\ConstPadrao.pas',
   Funcoes in 'Util\Funcoes.pas',
   VarGlobal in 'Util\VarGlobal.pas',
-  DBXUtils in 'Util\DBXUtils.pas',
   ImgUtils in 'Util\ImgUtils.pas',
   uDatabaseUtils in 'Util\uDatabaseUtils.pas',
   crypto in 'Util\crypto.pas',

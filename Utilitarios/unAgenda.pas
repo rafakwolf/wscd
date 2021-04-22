@@ -3,18 +3,16 @@ unit unAgenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-  FMTBcd, System.Actions, uniMainMenu, uniBitBtn, uniButton,
-  uniSpeedButton, uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar,
-  uniEdit, uniDBEdit, uniGroupBox, uniMemo, uniDBMemo, UniGUIVars;
+  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls,
+  FMTBcd;
 
 type
   TfrmAgenda = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoNOME: TStringField;
     sqldPadraoTELEFONE: TStringField;
     sqldPadraoTELEFONE2: TStringField;

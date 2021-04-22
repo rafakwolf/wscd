@@ -1,11 +1,13 @@
 unit unDmPrincipal;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  SysUtils, Classes, DB, SqlExpr, Dialogs, Forms, Controls,
-  Messages, Graphics,  Windows, FMTBcd, RLConsts,
-  udmBase, Data.DBXFirebird, Datasnap.Provider, Datasnap.DBClient;
+  SysUtils, Classes, DB, sqldb, Dialogs, Forms, Controls,
+  Messages, Graphics,  LCLIntf, LCLType, LMessages, FMTBcd, {RLConsts,}
+  udmBase{, DBXFirebird,  memds};
 
 type
   TDmPrincipal = class(TdmBase)

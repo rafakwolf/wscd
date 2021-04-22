@@ -142,7 +142,7 @@ object frmPagamentoVenda: TfrmPagamentoVenda
     Left = 232
     Top = 56
   end
-  object cdsVenda: TClientDataSet
+  object cdsVenda: TMemDataset
     Aggregates = <>
     Params = <
       item

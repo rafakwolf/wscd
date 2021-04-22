@@ -3,19 +3,19 @@ unit unImportaOrcam;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, StdCtrls, Buttons, DB, ComCtrls, uniGuiForm,
-  DBClient, Provider, SqlExpr, FMTBcd, uniGUIBaseClasses, uniGUIClasses,
-  uniLabel, uniButton, uniBitBtn, uniGroupBox, uniMultiItem, uniComboBox,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, StdCtrls, Buttons, DB, ComCtrls, 
+  memds,  SqlDb, FMTBcd,  
+  uniLabel,   uniGroupBox,  uniComboBox,
   uniEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmImportaOrcam = class(TForm)
     Progresso: TProgressBar;
-    sqldVenda: TSQLDataSet;
-    sqldItemVenda: TSQLDataSet;
-    dtOrcam: TDataSetProvider;
-    cdsOrcam: TClientDataSet;
+    sqldVenda: TSQLQuery;
+    sqldItemVenda: TSQLQuery;
+    dtOrcam: TComponent;
+    cdsOrcam: TMemDataSet;
     cdsOrcamCODIGO: TIntegerField;
     cdsOrcamCODCLIENTE: TIntegerField;
     cdsOrcamNOMECLIENTE: TStringField;
@@ -24,13 +24,13 @@ type
     cdsOrcamSTATUS: TStringField;
     cdsOrcamCONCLUIDO: TStringField;
     cdsOrcamsqlDetOrcam: TDataSetField;
-    cdsDetOrcam: TClientDataSet;
+    cdsDetOrcam: TMemDataSet;
     cdsDetOrcamCODIGO: TIntegerField;
     cdsDetOrcamCODPRODUTO: TIntegerField;
     cdsDetOrcamNOMEPRODUTO: TStringField;
     dsLink: TDataSource;
-    sqlOrcam: TSQLDataSet;
-    sqlDetOrcam: TSQLDataSet;
+    sqlOrcam: TSQLQuery;
+    sqlDetOrcam: TSQLQuery;
     dsOrcam: TDataSource;
     dsDetOrcam: TDataSource;
     sqlOrcamCODIGO: TIntegerField;

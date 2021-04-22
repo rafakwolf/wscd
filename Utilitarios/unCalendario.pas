@@ -3,10 +3,10 @@ unit unCalendario;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ExtCtrls, Grids, Calendar, Spin, ComCtrls, Mask, Buttons,
-  unSimplePadrao, uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn,
-  uniSpeedButton, uniPanel, uniLabel, uniEdit, uniSpinEdit, uniCalendar;
+   Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, ExtCtrls, Grids, Calendar, Spin, ComCtrls,  Buttons,
+  unSimplePadrao,    
+   uniPanel, uniLabel, uniEdit, uniSpinEdit, uniCalendar;
 
 type
   TfrmCalendario = class(TfrmSimplePadrao)

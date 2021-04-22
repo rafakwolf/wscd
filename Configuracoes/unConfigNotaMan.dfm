@@ -253,7 +253,7 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     Left = 252
     Top = 58
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <
       item

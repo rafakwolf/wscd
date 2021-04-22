@@ -3,8 +3,8 @@ unit unPrevListagemClientes;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
@@ -90,7 +90,7 @@ begin
   inherited;
   sqldPadrao.SQLConnection := GetConnection;
   sqldPadrao.Close;
-  sqldPadrao.CommandText := 'select'+
+  sqldPadrao.SQL.Clear; SQL.Text :='select'+
                              ' CODIGO,'+
                              ' NOME,'+
                              ' ENDERECO,'+

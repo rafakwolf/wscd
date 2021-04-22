@@ -3,17 +3,17 @@ unit unProEstoqueMinimo;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, DBClient, Provider, SqlExpr, Grids, DBGrids,
-  StdCtrls, Buttons, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniButton,
-  uniBitBtn, uniGuiForm, uniBasicGrid, uniDBGrid;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, memds,  SqlDb, Grids, DBGrids,
+  StdCtrls, Buttons, FMTBcd,   
+    uniBasicGrid, uniDBGrid;
 
 type
   TfrmProEstoqueMinimo = class(TForm)
-    dspProdEM: TDataSetProvider;
-    cdsProdEM: TClientDataSet;
+    dspProdEM: TComponent;
+    cdsProdEM: TMemDataSet;
     dsProdEM: TDataSource;
-    sqlProdEM: TSQLDataSet;
+    sqlProdEM: TSQLQuery;
     sqlProdEMCOD_BARRA: TStringField;
     sqlProdEMPRO_DESCRICAO: TStringField;
     sqlProdEMPRO_ESTOQUE: TIntegerField;
@@ -58,7 +58,7 @@ begin
 
   if i = -1 then
   begin
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
     Exit;
   end;
 
@@ -70,13 +70,13 @@ begin
   end;
   
   cdsProdEM.Close;
-  cdsProdEM.CommandText := FSQL;
+  cdsProdEM.SQL.Clear; SQL.Text :=FSQL;
   cdsProdEM.Open;
 
   if cdsProdEM.IsEmpty then
   begin
     MsgErro('Nenhum registro encontrado.');
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
   end;
 end;
 

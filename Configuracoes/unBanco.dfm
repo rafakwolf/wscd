@@ -72,7 +72,7 @@ inherited frmBanco: TfrmBanco
     Left = 184
     Top = 84
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

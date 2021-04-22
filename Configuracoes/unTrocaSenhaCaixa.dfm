@@ -177,7 +177,7 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     Left = 184
     Top = 32
   end
-  object cdsConfig: TClientDataSet
+  object cdsConfig: TMemDataset
     Aggregates = <>
     Params = <
       item

@@ -270,7 +270,7 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       Size = 2
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftDate

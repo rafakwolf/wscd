@@ -3,12 +3,12 @@ unit udmCliente;
 interface
 
 uses
-  System.SysUtils, System.Classes, udmGeralBase, Data.FMTBcd, Datasnap.Provider,
-  Data.DB, Data.SqlExpr, Datasnap.DBClient, Datasnap.Win.TConnect;
+  SysUtils, Classes, udmGeralBase, FMTBcd, 
+  DB, Sqldb, memds;
 
 type
   TdmCliente = class(TdmGeralBase)
-    sqldPadrao: TSQLDataSet;
+    sqldPadrao: TSQLQuery;
     sqldPadraoCODCLIENTE: TIntegerField;
     sqldPadraoTIPO: TStringField;
     sqldPadraoNOME: TStringField;
@@ -43,8 +43,8 @@ type
     sqldPadraoNATURALIDADE: TStringField;
     sqldPadraoLIMITE: TFMTBCDField;
     sqldPadraoFOTO: TBlobField;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     cdsPadraoCODCLIENTE: TIntegerField;
     cdsPadraoTIPO: TStringField;
     cdsPadraoNOME: TStringField;
@@ -80,7 +80,7 @@ type
     cdsPadraoLIMITE: TFMTBCDField;
     cdsPadraoFOTO: TBlobField;
     procedure dspPadraoAfterUpdateRecord(Sender: TObject; SourceDS: TDataSet;
-      DeltaDS: TCustomClientDataSet; UpdateKind: TUpdateKind);
+      DeltaDS: TDataSet; UpdateKind: TUpdateKind);
   private
   public
     function IsClienteRepetido(cpf_cnpj, rg_ie: string): boolean;
@@ -96,7 +96,7 @@ implementation
 
 uses unDmPrincipal, uDatabaseutils;
 
-{ %CLASSGROUP 'Vcl.Controls.TControl' }
+{ %CLASSGROUP 'Controls.TControl' }
 
 {$R *.dfm}
 
@@ -106,7 +106,7 @@ begin
 end;
 
 procedure TdmCliente.dspPadraoAfterUpdateRecord(Sender: TObject;
-  SourceDS: TDataSet; DeltaDS: TCustomClientDataSet; UpdateKind: TUpdateKind);
+  SourceDS: TDataSet; DeltaDS: TDataSet; UpdateKind: TUpdateKind);
 begin
   inherited;
   DeltaDS.FieldByName('CODCLIENTE').NewValue :=
@@ -116,10 +116,10 @@ end;
 
 function TdmCliente.GetUltimaCompraCliente(idCliente: Integer): string;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
     try
       SQLConnection := sqldPadrao.SQLConnection;
-      CommandText := 'select DATA, TOTAL from VENDA ' + 'where CODCLIENTE = ' +
+      SQL.Clear; SQL.Text :='select DATA, TOTAL from VENDA ' + 'where CODCLIENTE = ' +
         QuotedStr(IntToStr(idCliente));
       Open;
       if not IsEmpty then
@@ -127,7 +127,7 @@ begin
           FieldByName('DATA').AsDateTime) + ' - ' + 'Total: ' +
           FormatFloat('#,##0.00', FieldByName('TOTAL').AsFloat)
       else
-        Result := 'Não existem compras deste cliente.';
+        Result := 'Nï¿½o existem compras deste cliente.';
     finally
       Free;
     end;
@@ -136,10 +136,10 @@ end;
 function TdmCliente.IsClienteRepetido(cpf_cnpj, rg_ie: string): boolean;
 begin
   inherited;
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select count(1) from CLIENTES where CPF_CNPJ = ' +
+      SQL.Clear; SQL.Text :='select count(1) from CLIENTES where CPF_CNPJ = ' +
         QuotedStr(cpf_cnpj) + ' or RG_IE = ' + QuotedStr(rg_ie);
       Open;
       Result := Fields[0].AsInteger > 0;

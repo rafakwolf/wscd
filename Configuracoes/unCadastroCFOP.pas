@@ -3,18 +3,18 @@ unit unCadastroCFOP;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, Mask, DBCtrls,
-  FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn, uniSpeedButton,
-  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
+  ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
+  FMTBcd,  uniLabel,   
+   uniPanel,  uniStatusBar, uniEdit, uniDBEdit,
   uniMemo, uniDBMemo;
 
 type
   TfrmCadastroCFOP = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoNUMERO: TStringField;
     sqldPadraoOPERACAO: TStringField;
     cdsPadraoNUMERO: TStringField;

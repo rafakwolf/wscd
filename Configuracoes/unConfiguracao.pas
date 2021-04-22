@@ -3,21 +3,21 @@ unit unConfiguracao;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
+  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, 
   ExtDlgs, FileCtrl, IdMessage, IdBaseComponent, IdComponent,
   IdTCPConnection, IdTCPClient, IdMessageClient, IdSMTP,
-  IdExplicitTLSClientServerBase, IdSMTPBase, FMTBcd, System.Actions,
-  uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn, uniSpeedButton,
-  uniPanel, uniGUIBaseClasses, uniStatusBar, uniPageControl, uniCheckBox,
+  IdExplicitTLSClientServerBase, IdSMTPBase, FMTBcd, 
+   uniEdit, uniDBEdit,   
+  uniPanel,  uniStatusBar, uniPageControl, 
   uniDBCheckBox, uniImage, uniGroupBox, uniRadioGroup;
 
 type
   TfrmConfiguracao = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     PgConfig: TPageControl;
     Tabgeral: TTabSheet;
     TabImg: TTabSheet;

@@ -3,7 +3,7 @@ unit uMenuActions;
 interface
 
 uses
-  Vcl.ActnList;
+  ActnList;
 
 type TMenuActions = class
   private

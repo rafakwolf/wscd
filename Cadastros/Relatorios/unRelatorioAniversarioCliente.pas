@@ -3,20 +3,20 @@ unit unRelatorioAniversarioCliente;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, ComCtrls,  Spin,
-  FMTBcd, DBCtrls, Vcl.Mask, uniGUIBaseClasses, uniGUIClasses, uniPanel,
-  uniLabel, uniEdit, uniButton, uniBitBtn, uniDBEdit, uniMultiItem, uniComboBox,
+  DB, memds,  SqlDb, ComCtrls,  Spin,
+  FMTBcd, DBCtrls,    uniPanel,
+  uniLabel, uniEdit,   uniDBEdit,  uniComboBox,
   uniSpinEdit, uniRadioGroup;
 
 type
   TfrmRelatorioAniversarioCliente = class(TfrmDialogoRelatorioPadrao)
-    sqldSelecao: TSQLDataSet;
+    sqldSelecao: TSQLQuery;
     sqldSelecaoDATAINI: TSQLTimeStampField;
     sqldSelecaoDATAFIM: TSQLTimeStampField;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
     pnDiaMesAno: TContainerPanel;
@@ -106,7 +106,7 @@ begin
           Close;
           if rgDatas.ItemIndex = 0 then  // dis mes ano
           begin
-            CommandText := 'select '+
+            SQL.Clear; SQL.Text :='select '+
                              'NOME, '+
                              'DATA, '+
                              'ENDERECO, '+
@@ -124,7 +124,7 @@ begin
           end
           else if rgDatas.ItemIndex = 1 then   // data inicial e final
           begin
-            CommandText := 'select '+
+            SQL.Clear; SQL.Text :='select '+
                              'NOME, '+
                              'DATA, '+
                              'ENDERECO, '+

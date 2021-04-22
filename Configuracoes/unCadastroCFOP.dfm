@@ -102,7 +102,7 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     Left = 312
     Top = 180
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     PacketRecords = 10
     Params = <>

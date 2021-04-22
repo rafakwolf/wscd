@@ -3,18 +3,18 @@ unit unConfiguracaoGlobal;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, Mask,
-   FMTBcd, System.Actions, uniLabel, uniButton, uniBitBtn, uniSpeedButton,
-  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
-  uniCheckBox, uniDBCheckBox, uniMemo, uniDBMemo, uniPageControl;
+  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, 
+   FMTBcd,  uniLabel,   
+   uniPanel,  uniStatusBar, uniEdit, uniDBEdit,
+   uniDBCheckBox, uniMemo, uniDBMemo, uniPageControl;
 
 type
   TfrmConfigGlobal = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     pgcConfigGlobal: TPageControl;
     tsCrediario: TTabSheet;
     tsCliente: TTabSheet;

@@ -240,7 +240,7 @@ inherited frmPrevProdutosVencimento: TfrmPrevProdutosVencimento
       Size = 2
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftDate

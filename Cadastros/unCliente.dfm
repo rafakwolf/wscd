@@ -385,7 +385,7 @@ inherited frmCliente: TfrmCliente
     Left = 624
     Top = 100
   end
-  object cdsCidade: TClientDataSet
+  object cdsCidade: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCidade'

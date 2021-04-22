@@ -3,11 +3,11 @@ unit unContasReceber;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls, Mask, Buttons, DBClient, DB,
-  DBCtrls, SqlExpr, Menus, ComCtrls, Provider, ConstPadrao,
-  FMTBcd, unSimplePadrao, uniMainMenu, uniGUIBaseClasses, uniGUIClasses,
-  uniButton, uniBitBtn, uniSpeedButton, uniStatusBar, uniPanel, uniEdit,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls,  Buttons, memds, DB,
+  DBCtrls, SqlDb, Menus, ComCtrls,  ConstPadrao,
+  FMTBcd, unSimplePadrao, uniMainMenu,  
+     uniStatusBar, uniPanel, uniEdit,
   uniDBEdit, uniGroupBox, uniBasicGrid, uniDBGrid;
 
 const
@@ -100,13 +100,13 @@ const
 type
   TfrmContasReceber = class(TfrmSimplePadrao)
     dsPadrao: TDataSource;
-    sqldCliente: TSQLDataSet;
-    dspCliente: TDataSetProvider;
-    cdsCliente: TClientDataSet;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
-    sqldDeleta: TSQLDataSet;
+    sqldCliente: TSQLQuery;
+    dspCliente: TComponent;
+    cdsCliente: TMemDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
+    sqldDeleta: TSQLQuery;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoDATA: TDateField;
     cdsPadraoVENCIMENTO: TDateField;
@@ -253,10 +253,10 @@ procedure TfrmContasReceber.btnReceberClick(Sender: TObject);
 
   function ContasMarcadas: Integer;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select count(1) as CONT from CONTASRECEBER'+
+      SQL.Clear; SQL.Text :='select count(1) as CONT from CONTASRECEBER'+
         ' where RECEBER = '+QuotedStr('S')+
         ' and RECDA = '+QuotedStr('N')+
         ' and CLIENTE = '+QuotedStr(IntToStr(IdCliente));
@@ -350,7 +350,7 @@ begin
     miBuscarCliente.Enabled := True;
 
     cdsCliente.Close;
-    cdsCliente.CommandText := SQLPadraoCli;
+    cdsCliente.SQL.Clear; SQL.Text :=SQLPadraoCli;
     cdsCliente.Open;
 
 //    if TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
@@ -365,7 +365,7 @@ begin
 //      if cdsPadrao.IsEmpty then
 //      begin
 //        MsgErro(UM_PESQUISAVAZIO, 'Contas a Receber');
-//        PostMessage(Handle, WM_CLOSE, 0, 0);
+//        //PostMessage(Handle, WM_CLOSE, 0, 0);
 //      end;
 //    end;
   end
@@ -381,7 +381,7 @@ begin
     if cdsPadrao.IsEmpty then
     begin
       MsgErro(UM_PESQUISAVAZIO, 'Contas a Receber');
-      PostMessage(Handle, WM_CLOSE, 0, 0);
+      //PostMessage(Handle, WM_CLOSE, 0, 0);
     end;
   end;
 end;
@@ -407,7 +407,7 @@ end;
 procedure TfrmContasReceber.miContasVencidasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.CommandText := SQLVencidas;
+  cdsPadrao.SQL.Clear; SQL.Text :=SQLVencidas;
   cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
   cdsPadrao.Open;
 end;
@@ -415,14 +415,14 @@ end;
 procedure TfrmContasReceber.miTodasContasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.CommandText := SQLPadraoTela;
+  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
   cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
   cdsPadrao.Open;
 end;
 
 function TfrmContasReceber.ContasAVencer: Currency;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
     CommandText :=
@@ -438,7 +438,7 @@ end;
 
 function TfrmContasReceber.ContasVencedoHoje: Currency;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
     CommandText :=
@@ -454,7 +454,7 @@ end;
 
 function TfrmContasReceber.ContasVencidas: Currency;
 begin
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
     CommandText :=
@@ -501,7 +501,7 @@ end;
 procedure TfrmContasReceber.miVencendoHojeClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.CommandText := SQLHoje;
+  cdsPadrao.SQL.Clear; SQL.Text :=SQLHoje;
   cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
   cdsPadrao.Open;
 end;

@@ -3,10 +3,10 @@ unit unRelatorioFornecedorData;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, Vcl.Mask, Vcl.DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniGUIBaseClasses, uniPanel;
+  ComCtrls,  DBCtrls,  uniEdit, uniDBEdit, 
+    uniPanel;
 
 type
   TfrmRelatorioFornecedorData = class(TfrmDialogoRelatorioPadrao)

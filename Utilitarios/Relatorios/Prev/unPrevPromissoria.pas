@@ -3,8 +3,8 @@ unit unPrevPromissoria;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, uniGUIForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RLReport;
 
 type
   TfrmPrevPromissoria = class(TForm)

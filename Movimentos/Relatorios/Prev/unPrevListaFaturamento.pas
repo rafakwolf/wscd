@@ -3,17 +3,18 @@ unit unPrevListaFaturamento;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
+  TDataSetField = TDataset;
   TfrmPrevListaFaturamento = class(TfrmModeloRelatorio)
     rlbColunas: TRLBand;
     dsDetalhe: TDataSource;
-    cdsDetalhe: TClientDataSet;
+    cdsDetalhe: TMemDataSet;
     dsLink: TDataSource;
-    sqldDetalhe: TSQLDataSet;
+    sqldDetalhe: TSQLQuery;
     lbFornecedor: TRLLabel;
     rldbForn: TRLDBText;
     rlsbDetalhes: TRLSubDetail;

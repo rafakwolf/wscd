@@ -3,16 +3,16 @@ unit unRelatorioCompraFornecedor;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, Mask, DBCtrls,  FMTBcd, uniGUIClasses,
-  uniEdit, uniDBEdit, uniButton, uniBitBtn, uniGUIBaseClasses, uniPanel;
+  DB, memds,  SqlDb,  DBCtrls,  FMTBcd, 
+  uniEdit, uniDBEdit,    uniPanel;
 
 type
   TfrmRelatorioCompraFornecedor = class(TfrmDialogoRelatorioPadrao)
-    sqldSelecao: TSQLDataSet;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    sqldSelecao: TSQLQuery;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     sqldSelecaoCODFORNECEDOR: TIntegerField;
     sqldSelecaoFANTAZIA: TStringField;
     sqldSelecaoCNPJ: TStringField;
@@ -95,7 +95,7 @@ procedure TfrmRelatorioCompraFornecedor.dbeFornClickButton(
 begin
   inherited;
 //  cdsSelecao.Close;
-//  cdsSelecao.CommandText := SQLpadrao;
+//  cdsSelecao.SQL.Clear; SQL.Text :=SQLpadrao;
 //  if not TfrmModeloConsulta.Execute('Fornecedor', cdsSelecao, FN_FORN, DL_FORN) then
 //    cdsSelecao.Close;
 end;

@@ -3,17 +3,17 @@ unit unBanco;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, Provider, SqlExpr, DBClient, Mask, DBCtrls,
-   FMTBcd, System.Actions, uniGUIClasses, uniEdit, uniDBEdit, uniButton,
-  uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses, uniStatusBar;
+  ExtCtrls, ComCtrls,  SqlDb, memds,  DBCtrls,
+   FMTBcd,   uniEdit, uniDBEdit, 
+    uniPanel,  uniStatusBar;
 
 type
   TfrmBanco = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoIDBANCO: TIntegerField;
     sqldPadraoBANCO: TStringField;
     cdsPadraoIDBANCO: TIntegerField;

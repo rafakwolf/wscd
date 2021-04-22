@@ -209,7 +209,7 @@ inherited frmListagemPrecos: TfrmListagemPrecos
     Left = 208
     Top = 152
   end
-  object cdsProduto: TClientDataSet
+  object cdsProduto: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProduto'

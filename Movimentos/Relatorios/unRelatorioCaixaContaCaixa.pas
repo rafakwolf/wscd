@@ -3,17 +3,17 @@ unit unRelatorioCaixaContaCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, DBClient, Provider, SqlExpr, Mask, DBCtrls, 
-  ComCtrls,  FMTBcd, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel;
+  DB, memds,  SqlDb,  DBCtrls, 
+  ComCtrls,  FMTBcd,  uniEdit, uniDBEdit,  
+   uniPanel;
 
 type
   TfrmRelatorioCaixaContaCaixa = class(TfrmDialogoRelatorioPadrao)
-    sqldCaixa: TSQLDataSet;
-    dspCaixa: TDataSetProvider;
-    cdsCaixa: TClientDataSet;
+    sqldCaixa: TSQLQuery;
+    dspCaixa: TComponent;
+    cdsCaixa: TMemDataSet;
     cdsCaixaCODIGO: TIntegerField;
     cdsCaixaNOME: TStringField;
     dsData: TDataSource;
@@ -47,7 +47,7 @@ begin
   with TfrmPrevRelCaixa.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := 'SELECT '+
+    cdsPadrao.SQL.Clear; SQL.Text :='SELECT '+
                              ' CODCAIXA CODIGO,'+
                              ' DATA,'+
                              ' DESCRICAO,'+
@@ -77,7 +77,7 @@ procedure TfrmRelatorioCaixaContaCaixa.dbeCaixaClickButton(Sender: TObject);
 begin
   inherited;
   cdsCaixa.Close;
-  cdsCaixa.CommandText := SQLPadrao;
+  cdsCaixa.SQL.Clear; SQL.Text :=SQLPadrao;
 
 //  if TfrmModeloConsulta.Execute('Busca Caixa', cdsCaixa, FN_CAIXAS, DL_CAIXAS) then
 //    cdsCaixa.Open

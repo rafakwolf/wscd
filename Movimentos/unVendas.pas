@@ -3,32 +3,32 @@
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, DBGrids, Buttons, Mask, DBCtrls, ComCtrls,
-  Menus, ExtCtrls, Db, DBClient, ConstPadrao, Datasnap.Provider,
-  Data.SqlExpr, FMTBcd, unPadrao, System.Actions, Vcl.ActnList, uniMainMenu,
-  uniButton, uniBitBtn, uniSpeedButton, uniGUIClasses, uniPanel,
-  uniGUIBaseClasses, uniStatusBar, uniLabel, uniEdit, uniDBEdit, uniMemo,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids, DBGrids, Buttons,  DBCtrls, ComCtrls,
+  Menus, ExtCtrls, Db, memds, ConstPadrao, 
+  Sqldb, FMTBcd, unPadrao,  ActnList, uniMainMenu,
+      uniPanel,
+   uniStatusBar, uniLabel, uniEdit, uniDBEdit, uniMemo,
   uniDBMemo, uniBasicGrid, uniDBGrid;
 
 type
   TfrmVendas = class(TfrmPadrao)
-    sqldClientes: TSQLDataSet;
-    dspClientes: TDataSetProvider;
-    cdsClientes: TClientDataSet;
-    sqldProdutos: TSQLDataSet;
-    dspProdutos: TDataSetProvider;
-    cdsProdutos: TClientDataSet;
-    sqldSelecao: TSQLDataSet;
-    dspSelecao: TDataSetProvider;
-    cdsSelecao: TClientDataSet;
+    sqldClientes: TSQLQuery;
+    dspClientes: TComponent;
+    cdsClientes: TMemDataSet;
+    sqldProdutos: TSQLQuery;
+    dspProdutos: TComponent;
+    cdsProdutos: TMemDataSet;
+    sqldSelecao: TSQLQuery;
+    dspSelecao: TComponent;
+    cdsSelecao: TMemDataSet;
     dsSelecao: TDataSource;
     sqlVendas: TSQLQuery;
     sqlItens: TSQLQuery;
     dsLigaVenda: TDataSource;
-    dtVendas: TDataSetProvider;
-    cdsVendas: TClientDataSet;
-    cdsItens: TClientDataSet;
+    dtVendas: TComponent;
+    cdsVendas: TMemDataSet;
+    cdsItens: TMemDataSet;
     dsVendas: TDataSource;
     dsItens: TDataSource;
     cdsVendasCODIGO: TIntegerField;
@@ -44,16 +44,16 @@ type
     cdsItensPRODUTO: TStringField;
     cdsVendasIDVENDEDOR: TIntegerField;
     cdsVendasVENDEDOR: TStringField;
-    sqldVendedor: TSQLDataSet;
-    dspVendedor: TDataSetProvider;
-    cdsVendedor: TClientDataSet;
+    sqldVendedor: TSQLQuery;
+    dspVendedor: TComponent;
+    cdsVendedor: TMemDataSet;
     sqldVendedorIDVENDEDOR: TIntegerField;
     sqldVendedorVENDEDOR: TStringField;
     sqldVendedorATIVO: TStringField;
     cdsVendedorIDVENDEDOR: TIntegerField;
     cdsVendedorVENDEDOR: TStringField;
     cdsVendedorATIVO: TStringField;
-    spDeleta: TSQLDataSet;
+    spDeleta: TSQLQuery;
     sqldClientesCODCLIENTE: TIntegerField;
     sqldClientesNOME: TStringField;
     sqldClientesTELEFONE: TStringField;
@@ -122,8 +122,8 @@ type
     cdsProdutosESTOQUE: TIntegerField;
     cdsProdutosESTOQUEMINIMO: TIntegerField;
     cdsProdutosPROMOCAO: TStringField;
-    spEstorna: TSQLDataSet;
-    spBaixa: TSQLDataSet;
+    spEstorna: TSQLQuery;
+    spBaixa: TSQLQuery;
     sqlVendasCANCELADO: TStringField;
     cdsVendasCANCELADO: TStringField;
     sqldSelecaoPRODUTO: TIntegerField;
@@ -276,7 +276,7 @@ uses Funcoes, unModeloConsulta, VarGlobal, unPagamentoVenda,
      unImportaOrcam, unPagamentoCheque,
      unParcelaVenda, unRelatorioBobinaVenda, unPrevNotaVenda,
      unPrevNotaVendaMatric, unDmPrincipal, udatabaseutils,
-     System.Math;
+     Math;
 
 {$R *.dfm}
 
@@ -442,7 +442,7 @@ begin
     cdsVendas.DisableControls;
     cdsVendas.Close;
     cdsVendas.Filtered := False;
-    cdsVendas.CommandText := SQLPadraoTela;
+    cdsVendas.SQL.Clear; SQL.Text :=SQLPadraoTela;
     cdsVendas.Open;
   finally
     cdsVendas.EnableControls;
@@ -794,7 +794,7 @@ begin
     else if not (ActiveControl is TDBGrid) then
     begin
       Key := #0;
-      PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
     end
     else if (ActiveControl is TDBGrid) then
     begin
@@ -892,11 +892,11 @@ procedure TfrmVendas.ReceberVenda;
 
   procedure ConcluirVenda(FormaRecto: string; ValorRecdo: Currency);
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
       CommandType := ctStoredProc;
-      CommandText := 'STPRECTOVENDA';
+      SQL.Clear; SQL.Text :='STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger     := cdsVendasCODIGO.AsInteger;
       Params.ParamByName('DATARECTO').AsDate      := Date;
       Params.ParamByName('FORMARECTO').AsString   := Trim(FormaRecto);
@@ -910,10 +910,10 @@ procedure TfrmVendas.ReceberVenda;
 
   function Restante: Real;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
+      SQL.Clear; SQL.Text :='select RESTO from STPRESTOVENDA(:VENDA)';
       Params.ParamByName('VENDA').AsInteger := cdsVendasCODIGO.AsInteger;
       Open;
       Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
@@ -1006,7 +1006,7 @@ begin
     spEstorna.Close;
     spEstorna.Params.ParamByName('CODIGO').AsInteger := cdsVendasCODIGO.AsInteger;
     spEstorna.ExecSQL;
-    PostMessage(Handle, WM_VENDA_CONCLUIDA, 0, 0);
+    //PostMessage(Handle, WM_VENDA_CONCLUIDA, 0, 0);
     MsgAviso('Venda estornada!');
   end;
 end;

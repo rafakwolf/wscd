@@ -3,22 +3,20 @@ unit unLancCaixa;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Buttons, StdCtrls, Mask, DBCtrls, DB, ComCtrls,
-  DBClient, Provider, SqlExpr, FMTBcd, VarGlobal, uniGUIBaseClasses,
-  uniGUIClasses, uniLabel, uniButton, uniBitBtn, uniEdit, uniDBEdit, uniGUIForm,
-  uniPageControl;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, Buttons, StdCtrls,  DBCtrls, DB, ComCtrls,
+  memds,  SqlDb, FMTBcd, VarGlobal;
 
 type
   TfrmLancCaixa = class(TForm)
-    sqldCaixas: TSQLDataSet;
-    dspCaixas: TDataSetProvider;
-    cdsCaixas: TClientDataSet;
+    sqldCaixas: TSQLQuery;
+    dspCaixas: TComponent;
+    cdsCaixas: TMemDataSet;
     cdsCaixasCODIGO: TIntegerField;
     cdsCaixasNOME: TStringField;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODCAIXA: TIntegerField;
     sqldPadraoCODCAIXAS: TIntegerField;
@@ -91,12 +89,12 @@ begin
     Exit;
   end
   else
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
 end;
 
 procedure TfrmLancCaixa.btnCancelClick(Sender: TObject);
 begin
-  cdsPadrao.CancelUpdates;
+  //cdsPadrao.CancelUpdates;
   Close;
 end;
  
@@ -104,7 +102,7 @@ procedure TfrmLancCaixa.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   if cdsPadrao.State in [dsInsert, dsEdit] then
-    cdsPadrao.CancelUpdates;
+    //cdsPadrao.CancelUpdates;
 
   cdsPadrao.Close;  
 end;
@@ -198,9 +196,9 @@ begin
   begin
     with cdsPadrao do
     begin
-      CancelUpdates;
+      //CancelUpdates;
       Close;
-      Params.ParamByName('CODCAIXA').AsInteger := Value;
+      //Params.ParamByName('CODCAIXA').AsInteger := Value;
       Open;
       Edit;
     end;
@@ -253,13 +251,13 @@ end;
 procedure TfrmLancCaixa.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if (ActiveControl is TCustomMemo) or
-    ((ActiveControl is TCustomCombo) and (TCustomCombo(ActiveControl).DroppedDown)) then
+    ((ActiveControl is TCustomComboBox) and (TCustomComboBox(ActiveControl).DroppedDown)) then
     Exit;
 
   if Key = #13 then
   begin
     Key := #0;
-    PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
+   // //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
   end;
 end;
 

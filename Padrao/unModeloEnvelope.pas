@@ -3,8 +3,8 @@ unit unModeloEnvelope;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DBClient, Provider, DB, SqlExpr, FMTBcd, UniGuiForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RLReport, memds,  DB, SqlDb, FMTBcd;
 
 type
   TfrmModeloEnvelope = class(TForm)
@@ -14,9 +14,9 @@ type
     lbEndereco: TRLLabel;
     lbTelefone: TRLLabel;
     lbCNPJ_IE: TRLLabel;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoNOME: TStringField;
     sqldPadraoENDERECO: TStringField;
@@ -55,8 +55,8 @@ var
 begin
   for I := 0 to ComponentCount-1 do
   begin
-    if Components[i] is TCustomSQLDataSet then
-      TCustomSQLDataSet( Components[i] ).SQLConnection := GetConnection;
+    if Components[i] is TSQLQuery then
+      TSQLQuery( Components[i] ).SQLConnection := GetConnection;
   end;
 end;
 

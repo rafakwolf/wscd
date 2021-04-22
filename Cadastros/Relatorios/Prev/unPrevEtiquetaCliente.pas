@@ -3,17 +3,17 @@ unit unPrevEtiquetaCliente;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, DBClient, Provider, SqlExpr, RLReport, FMTBcd, UniGuiForm;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, memds,  SqlDb, RLReport, FMTBcd;
 
 type
   TfrmPrevEtiquetaCliente = class(TForm)
     rpEtiqueta: TRLReport;
     Detail: TRLDetailGrid;
     dbDescricao: TRLDBMemo;
-    sqldEtq: TSQLDataSet;
-    dspEtq: TDataSetProvider;
-    cdsEtq: TClientDataSet;
+    sqldEtq: TSQLQuery;
+    dspEtq: TComponent;
+    cdsEtq: TMemDataSet;
     dsEtq: TDataSource;
     sqldEtqTITULO: TStringField;
     sqldEtqTEXTO: TStringField;

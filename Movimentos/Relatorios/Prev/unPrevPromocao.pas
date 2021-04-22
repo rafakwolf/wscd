@@ -3,9 +3,9 @@ unit unPrevPromocao;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, RLParser, DB, DBClient, Provider,
-  SqlExpr, RLReport, FMTBcd;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, RLParser, DB, memds, 
+  SqlDb, RLReport, FMTBcd;
 
 type
   TfrmPrevPromocao = class(TfrmModeloRelatorio)

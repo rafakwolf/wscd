@@ -3,15 +3,15 @@ unit unPrevDuplicata;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DBClient, Provider, uniGUIForm,
-  DB, SqlExpr, FMTBcd;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RLReport, memds,  
+  DB, SqlDb, FMTBcd;
 
 type
   TfrmPrevDuplicata = class(TForm)
-    sqldDuplicata: TSQLDataSet;
-    dspDuplicata: TDataSetProvider;
-    cdsDuplicata: TClientDataSet;
+    sqldDuplicata: TSQLQuery;
+    dspDuplicata: TComponent;
+    cdsDuplicata: TMemDataSet;
     rptDuplicata: TRLReport;
     rlbndDuplicata: TRLBand;
     rlimgLogo: TRLImage;

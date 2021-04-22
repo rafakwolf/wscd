@@ -6085,7 +6085,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     Left = 40
     Top = 184
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'

@@ -3,9 +3,9 @@ unit unPrevNotaVenda;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, DBClient, uniGuiForm,
-  Datasnap.Provider, DB, Data.SqlExpr, FMTBcd;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RLReport, memds, 
+   DB, Sqldb, FMTBcd;
 
 type
   TfrmPrevNotaVenda = class(TForm)
@@ -26,12 +26,12 @@ type
     rlblCep: TRLLabel;
     rlblFone: TRLLabel;
     rlblDataVenda: TRLLabel;
-    sqldVenda: TSQLDataSet;
-    dspVenda: TDataSetProvider;
-    cdsVenda: TClientDataSet;
+    sqldVenda: TSQLQuery;
+    dspVenda: TComponent;
+    cdsVenda: TMemDataSet;
     dsVenda: TDataSource;
     rlsdProdutoVenda: TRLSubDetail;
-    sqldItemVenda: TSQLDataSet;
+    sqldItemVenda: TSQLQuery;
     dsLigaVenda: TDataSource;
     cdsVendaCODIGO: TIntegerField;
     cdsVendaCODCLIENTE: TIntegerField;
@@ -49,7 +49,7 @@ type
     cdsVendaCONCLUIDA: TStringField;
     cdsVendaBAIXADO: TStringField;
     cdsVendasqldItemVenda: TDataSetField;
-    cdsItemVenda: TClientDataSet;
+    cdsItemVenda: TMemDataSet;
     dsItemVenda: TDataSource;
     cdsItemVendaCODPRODUTO: TIntegerField;
     cdsItemVendaPRODUTO: TStringField;

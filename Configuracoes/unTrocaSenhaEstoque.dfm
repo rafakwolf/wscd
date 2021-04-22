@@ -7,7 +7,7 @@ inherited frmSenhaEstoque: TfrmSenhaEstoque
   inherited sqldConfig: TSQLDataSet
     Top = 1
   end
-  inherited cdsConfig: TClientDataSet
+  inherited cdsConfig: TMemDataset
     Left = 168
   end
 end

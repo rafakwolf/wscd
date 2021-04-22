@@ -158,7 +158,7 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
       Size = 1000
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     object cdsPadraoNUMERO: TStringField
       FieldName = 'NUMERO'
       Required = True

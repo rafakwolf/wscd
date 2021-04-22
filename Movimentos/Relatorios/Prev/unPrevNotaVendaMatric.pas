@@ -3,12 +3,12 @@ unit unPrevNotaVendaMatric;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, DB, Data.SqlExpr, FMTBcd;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao, DB, Sqldb, FMTBcd;
 
 type
   TfrmPrevNotaVendaMatric = class(TfrmSimplePadrao)
-    sqldCabecalho: TSQLDataSet;
+    sqldCabecalho: TSQLQuery;
     sqldCabecalhoCODIGO: TIntegerField;
     sqldCabecalhoCAMPO: TStringField;
     sqldCabecalhoLAYOUT: TStringField;
@@ -17,7 +17,7 @@ type
     sqldCabecalhoLINHA: TIntegerField;
     sqldCabecalhoCOLUNA: TIntegerField;
     sqldCabecalhoIMPRIMIR: TStringField;
-    sqldCabItens: TSQLDataSet;
+    sqldCabItens: TSQLQuery;
     sqldCabItensCODIGO: TIntegerField;
     sqldCabItensCAMPO: TStringField;
     sqldCabItensLAYOUT: TStringField;
@@ -26,7 +26,7 @@ type
     sqldCabItensLINHA: TIntegerField;
     sqldCabItensCOLUNA: TIntegerField;
     sqldCabItensIMPRIMIR: TStringField;
-    sqldRodape: TSQLDataSet;
+    sqldRodape: TSQLQuery;
     sqldRodapeCODIGO: TIntegerField;
     sqldRodapeCAMPO: TStringField;
     sqldRodapeLAYOUT: TStringField;
@@ -35,9 +35,9 @@ type
     sqldRodapeLINHA: TIntegerField;
     sqldRodapeCOLUNA: TIntegerField;
     sqldRodapeIMPRIMIR: TStringField;
-    sqldVenda: TSQLDataSet;
-    sqldItemVenda: TSQLDataSet;
-    sqldDataItens: TSQLDataSet;
+    sqldVenda: TSQLQuery;
+    sqldItemVenda: TSQLQuery;
+    sqldDataItens: TSQLQuery;
     sqldDataItensCODIGO: TIntegerField;
     sqldDataItensCAMPO: TStringField;
     sqldDataItensLAYOUT: TStringField;
@@ -150,7 +150,7 @@ var
   i: Integer;
   LinhaAtual: Integer;
 begin
-//  TfrmAguarde.Execute('Preparando relatório, aguarde...');
+//  TfrmAguarde.Execute('Preparando relatï¿½rio, aguarde...');
 //
 //  with VDODmPrinter do
 //  begin
@@ -161,10 +161,10 @@ begin
 //    LineSpacing := lsCustom;
 //    LineSpacingCustomValue := 18;
 //
-//    // cabeçalho
+//    // cabeï¿½alho
 //    Cabecalho(VDODmPrinter, LinhaAtual);
 //
-//    // Cabeçalho dos itens
+//    // Cabeï¿½alho dos itens
 //    sqldCabItens.Open;
 //    sqldCabItens.First;
 //
@@ -207,7 +207,7 @@ begin
 //      sqldItemVenda.Next;
 //    end;
 //
-//    // Rodapé
+//    // Rodapï¿½
 //    Rodape(VDODmPrinter, LinhaAtual);
 //
 //    FreeAndNil(frmAguarde);
@@ -249,7 +249,7 @@ end;
 procedure TfrmPrevNotaVendaMatric.SetIdVenda(const Value: Integer);
 begin
   FIdVenda := Value;
-  { cabeçalho }
+  { cabeï¿½alho }
   sqldVenda.Close;
   sqldVenda.Params.ParamByName('IDVENDA').AsInteger := FIdVenda;
   sqldVenda.Open;

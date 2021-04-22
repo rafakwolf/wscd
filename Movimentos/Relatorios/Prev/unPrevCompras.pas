@@ -3,15 +3,16 @@ unit unPrevCompras;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, DBClient, Provider, SqlExpr,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, RLParser, FMTBcd;
 
 type
+  TDataSetField = TDataSet;
   TfrmPrevCompras = class(TfrmModeloRelatorio)
-    sqldDetalhe: TSQLDataSet;
+    sqldDetalhe: TSQLQuery;
     dsLink: TDataSource;
-    cdsDetalhe: TClientDataSet;
+    cdsDetalhe: TMemDataSet;
     dsDetalhe: TDataSource;
     rlgCompras: TRLGroup;
     rlbMestre: TRLBand;

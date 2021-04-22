@@ -3,20 +3,20 @@ unit unCliente;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, SqlExpr, DBCtrls, udmGeralBase,
-  Mask, DBClient, Provider, StrUtils,  ExtDlgs, FMTBcd,
-  System.Actions, uniGUIBaseClasses, uniGUIClasses, uniButton,
-  uniBitBtn, uniSpeedButton, uniPanel, uniStatusBar, uniEdit, uniDBEdit;
+  ExtCtrls, ComCtrls, SqlDb, DBCtrls, udmGeralBase,
+   memds,  StrUtils,  ExtDlgs, FMTBcd,
+     
+    uniPanel, uniStatusBar, uniEdit, uniDBEdit;
 
 type
   TfrmCliente = class(TfrmPadrao)
-    sqldCidade: TSQLDataSet;
+    sqldCidade: TSQLQuery;
     sqldCidadeCODCIDADE: TIntegerField;
     sqldCidadeDESCRICAO: TStringField;
-    dspCidade: TDataSetProvider;
-    cdsCidade: TClientDataSet;
+    dspCidade: TComponent;
+    cdsCidade: TMemDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
     btnContas: TBitBtn;

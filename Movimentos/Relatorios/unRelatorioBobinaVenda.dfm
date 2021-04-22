@@ -310,7 +310,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     Left = 50
     Top = 102
   end
-  object cdsVendas: TClientDataSet
+  object cdsVendas: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dtVendas'
@@ -360,7 +360,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       FieldName = 'sqlItens'
     end
   end
-  object cdsItens: TClientDataSet
+  object cdsItens: TMemDataset
     Aggregates = <>
     DataSetField = cdsVendassqlItens
     Params = <>
@@ -434,7 +434,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
     Left = 104
     Top = 184
   end
-  object cdspagamento: TClientDataSet
+  object cdspagamento: TMemDataset
     Aggregates = <>
     Params = <
       item

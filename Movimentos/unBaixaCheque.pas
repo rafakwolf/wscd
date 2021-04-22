@@ -3,18 +3,15 @@ unit unBaixaCheque;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, 
-  DB, DBClient, Datasnap.Provider,
-  Data.SqlExpr, Mask, FMTBcd, uniGUIBaseClasses, uniGUIClasses, uniLabel,
-  uniButton, uniBitBtn, uniEdit, uniMultiItem, uniComboBox, uniDBComboBox,
-  uniDBLookupComboBox;
+  DB, memds, Sqldb,  FMTBcd;
 
 type
   TfrmBaixaCheque = class(TfrmSimplePadrao)
-    sqldCaixa: TSQLDataSet;
-    dspCaixa: TDataSetProvider;
-    cdsCaixa: TClientDataSet;
+    sqldCaixa: TSQLQuery;
+    dspCaixa: TComponent;
+    cdsCaixa: TMemDataSet;
     dsCaixa: TDataSource;
     sqldCaixaCODIGO: TIntegerField;
     sqldCaixaNOME: TStringField;

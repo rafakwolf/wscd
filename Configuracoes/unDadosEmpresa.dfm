@@ -541,7 +541,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Left = 552
     Top = 268
   end
-  object cdsPadrao: TClientDataSet
+  object cdsPadrao: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPadrao'
@@ -628,7 +628,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Left = 552
     Top = 224
   end
-  object cdsCidade: TClientDataSet
+  object cdsCidade: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCidade'
@@ -677,7 +677,7 @@ inherited frmDadosEmpresa: TfrmDadosEmpresa
     Left = 416
     Top = 296
   end
-  object cdsSistema: TClientDataSet
+  object cdsSistema: TMemDataset
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSistema'

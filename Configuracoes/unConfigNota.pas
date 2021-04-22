@@ -3,18 +3,18 @@ unit unConfigNota;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  SqlExpr, DBClient, Datasnap.Provider,
-  Grids, DBGrids, ConstPadrao, FMTBcd, System.Actions, uniGUIBaseClasses,
-  uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniStatusBar,
+  SqlDb, memds, 
+  Grids, DBGrids, ConstPadrao, FMTBcd,  
+      uniPanel, uniStatusBar,
   uniLabel, uniImage, uniBasicGrid, uniDBGrid, uniMainMenu;
 
 type
   TfrmConfigNota = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoCAMPO: TStringField;
     sqldPadraoLAYOUT: TStringField;

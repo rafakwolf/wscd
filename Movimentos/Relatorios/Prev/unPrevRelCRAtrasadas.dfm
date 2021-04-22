@@ -129,7 +129,7 @@ inherited frmPrevRelCRAtrasadas: TfrmPrevRelCRAtrasadas
         DataSource = dsPadrao
         Text = ''
       end
-      object dbCliente: TRLDBText
+      object memdse: TRLDBText
         Left = 104
         Top = 0
         Width = 289
@@ -232,7 +232,7 @@ inherited frmPrevRelCRAtrasadas: TfrmPrevRelCRAtrasadas
       FieldName = 'TOTAL'
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftString

@@ -3,18 +3,18 @@ unit unExclusaoProduto;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, DB, Buttons, StdCtrls, VarGlobal,
-  SqlExpr, Provider, DBClient, ComCtrls, FMTBcd, unSimplePadrao,
-  uniGUIBaseClasses, uniGUIClasses, uniButton, uniBitBtn, uniSpeedButton,
+  SqlDb,  memds, ComCtrls, FMTBcd, unSimplePadrao,
+      
   uniStatusBar, uniGroupBox, uniPanel, uniEdit, uniBasicGrid, uniDBGrid;
 
 type
   TfrmExclusaoProduto = class(TfrmSimplePadrao)
     dsPadrao: TDataSource;
     sqlPadrao: TSQLQuery;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     sqlPadraoCODBARRA: TStringField;
     sqlPadraoDESCRICAO: TStringField;
     sqlPadraoESTOQUE: TIntegerField;
@@ -72,7 +72,7 @@ begin
   if cdsPadrao.IsEmpty then
   begin
     MsgCuidado('N�o existem produtos cadastrados.');
-    PostMessage(Handle, WM_CLOSE, 0, 0);
+    //PostMessage(Handle, WM_CLOSE, 0, 0);
   end;
 end;
 
@@ -85,10 +85,10 @@ procedure TfrmExclusaoProduto.btnExcluirClick(Sender: TObject);
 
   function RegMarcados: Integer;
   begin
-    with TSQLDataSet.Create(nil) do
+    with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandText := 'select count(1) as CONT from PRODUTOS where EXCLUIR = '+QuotedStr('S');
+      SQL.Clear; SQL.Text :='select count(1) as CONT from PRODUTOS where EXCLUIR = '+QuotedStr('S');
       Open;
       Result := FieldByName('CONT').AsInteger;
     finally
@@ -104,11 +104,11 @@ begin
     Exit;
   end;
 
-  with TSQLDataSet.Create(Self) do
+  with TSQLQuery.Create(Self) do
   try
     SQLConnection := GetConnection;
     Close;
-    CommandText := 'DELETE FROM PRODUTOS WHERE EXCLUIR = ' + QuotedStr('S');
+    SQL.Clear; SQL.Text :='DELETE FROM PRODUTOS WHERE EXCLUIR = ' + QuotedStr('S');
     ExecSQL;
     MsgAviso('Exclus�o efetuada com sucesso!');
   finally

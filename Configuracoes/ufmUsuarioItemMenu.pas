@@ -3,36 +3,36 @@ unit ufmUsuarioItemMenu;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  Data.SqlExpr,ImgList, Menus, uClassesMenu,
-  DBClient,Datasnap.Provider, Mask, DBCtrls,
+  Sqldb,ImgList, Menus, uClassesMenu,
+  memds,  DBCtrls,
   DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
-  System.Actions, System.ImageList, uniGUIClasses, uniEdit, uniDBEdit,
-  uniButton, uniBitBtn, uniSpeedButton, uniPanel, uniGUIBaseClasses,
+   ImageList,  uniEdit, uniDBEdit,
+     uniPanel, 
   uniStatusBar, uniGroupBox, uniMainMenu, uniTreeView, uniGUIAbstractClasses;
 
 type
   TfrmUsuarioItemMenu = class(TfrmPadrao)
-    sqldMenu: TSQLDataSet;
+    sqldMenu: TSQLQuery;
     ilStatusMenu: TImageList;
-    sqldLimpaAcessoUsuario: TSQLDataSet;
-    sqldInsereAcesso: TSQLDataSet;
+    sqldLimpaAcessoUsuario: TSQLQuery;
+    sqldInsereAcesso: TSQLQuery;
     dsAcesso: TDataSource;
     sqldMenuIDMENU: TIntegerField;
     sqldMenuMENUPAI: TIntegerField;
     sqldMenuORDEM: TIntegerField;
     sqldMenuMENUITEM: TStringField;
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
     cdsPadraoIDUSUARIOS: TIntegerField;
     cdsPadraoNOME: TStringField;
     cdsPadraoLOGIN: TStringField;
     cdsPadraoSENHA: TStringField;
-    sqldAcesso: TSQLDataSet;
-    dspAcesso: TDataSetProvider;
-    cdsAcesso: TClientDataSet;
+    sqldAcesso: TSQLQuery;
+    dspAcesso: TComponent;
+    cdsAcesso: TMemDataSet;
     cdsAcessoIDMENU: TIntegerField;
     dbeSenha: TDBEdit;
     dbeLogin: TDBEdit;
@@ -84,7 +84,7 @@ const
 
 implementation
 
-uses System.Math, uniGUIMainModule, MainModule;
+uses Math, uniGUIMainModule, MainModule;
 
 {$R *.dfm}
 

@@ -3,10 +3,10 @@ unit unRelatorioVendaCliente;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
-  DBCtrls, uniGUIClasses, uniEdit, uniDBEdit, uniButton, uniBitBtn,
-  uniGUIBaseClasses, uniPanel;
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, 
+  DBCtrls,  uniEdit, uniDBEdit,  
+   uniPanel;
 
 type
   TfrmRelatorioVendaCliente = class(TfrmDialogoRelatorioPadrao)
@@ -45,7 +45,7 @@ begin
     with TfrmPrevVendas.Create(Self) do
     try
       cdsPadrao.Close;
-      cdsPadrao.CommandText := 'select '+
+      cdsPadrao.SQL.Clear; SQL.Text :='select '+
                                ' v.CODIGO,'+
                                ' v.CODCLIENTE,'+
                                ' cli.NOME CLIENTE,'+
@@ -82,7 +82,7 @@ procedure TfrmRelatorioVendaCliente.dbeClienteClickButton(Sender: TObject);
 begin
   inherited;
 //  GetDmPesquisar.cdsPesqCliente.Close;
-//  GetDmPesquisar.cdsPesqCliente.CommandText := SQLpadrao;
+//  GetDmPesquisar.cdsPesqCliente.SQL.Clear; SQL.Text :=SQLpadrao;
 //  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
 //    GetDmPesquisar.cdsPesqCliente.Close;
 end;

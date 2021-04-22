@@ -3,21 +3,21 @@ unit unFornecedor;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, DBClient, Provider, SqlExpr, DBCtrls, VarGlobal,
-    Mask, FMTBcd, System.Actions, uniBitBtn, uniButton, uniSpeedButton,
-  uniGUIClasses, uniPanel, uniGUIBaseClasses, uniStatusBar, uniEdit, uniDBEdit,
+  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, VarGlobal,
+     FMTBcd,    
+   uniPanel,  uniStatusBar, uniEdit, uniDBEdit,
   uniMemo, uniDBMemo;
 
 type
   TfrmFornecedor = class(TfrmPadrao)
-    sqldPadrao: TSQLDataSet;
-    dspPadrao: TDataSetProvider;
-    cdsPadrao: TClientDataSet;
-    sqldCidade: TSQLDataSet;
-    dspCidade: TDataSetProvider;
-    cdsCidade: TClientDataSet;
+    sqldPadrao: TSQLQuery;
+    dspPadrao: TComponent;
+    cdsPadrao: TMemDataSet;
+    sqldCidade: TSQLQuery;
+    dspCidade: TComponent;
+    cdsCidade: TMemDataSet;
     cdsCidadeCODCIDADE: TIntegerField;
     cdsCidadeDESCRICAO: TStringField;
     sqldPadraoCODFORNECEDOR: TIntegerField;
@@ -123,7 +123,7 @@ begin
   with TfrmPrevRelFornData.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.CommandText := 'select * from VIEWRELFORN order by CIDADE, FANTAZIA';
+    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELFORN order by CIDADE, FANTAZIA';
     cdsPadrao.Open;
     TipoRelatorio := 0;
     PrintIfNotEmptyRL(rrPadrao);
@@ -185,10 +185,10 @@ end;
 procedure TfrmFornecedor.AntesSalvar;
 begin
   inherited;
-  with TSQLDataSet.Create(nil) do
+  with TSQLQuery.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
-    CommandText := 'select count(1) from FORNECEDORES where CNPJ = '+QuotedStr(dbeCnpj.Text);
+    SQL.Clear; SQL.Text :='select count(1) from FORNECEDORES where CNPJ = '+QuotedStr(dbeCnpj.Text);
     Open;
     Repetido := Fields[0].AsInteger > 0;
   finally

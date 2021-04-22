@@ -146,7 +146,7 @@ inherited frmPrevContasReceber: TfrmPrevContasReceber
       FieldName = 'TOTAL'
     end
   end
-  inherited cdsPadrao: TClientDataSet
+  inherited cdsPadrao: TMemDataset
     Params = <
       item
         DataType = ftString
