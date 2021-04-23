@@ -14,7 +14,7 @@ inherited frmCP: TfrmCP
     ExplicitTop = 361
     ExplicitWidth = 521
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 521
     TabOrder = 12
     ExplicitWidth = 521
@@ -380,13 +380,13 @@ inherited frmCP: TfrmCP
       ProviderFlags = []
       Size = 80
     end
-    object sqldPadraoVALORJURO: TSingleField
+    object sqldPadraoVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object sqldPadraoTOTAL: TSingleField
+    object sqldPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object sqldPadraoTOTALPAGO: TSingleField
+    object sqldPadraoTOTALPAGO: TFMTBCDField
       FieldName = 'TOTALPAGO'
     end
   end
@@ -503,13 +503,13 @@ inherited frmCP: TfrmCP
       ProviderFlags = []
       Size = 80
     end
-    object cdsPadraoVALORJURO: TSingleField
+    object cdsPadraoVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object cdsPadraoTOTAL: TSingleField
+    object cdsPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object cdsPadraoTOTALPAGO: TSingleField
+    object cdsPadraoTOTALPAGO: TFMTBCDField
       FieldName = 'TOTALPAGO'
     end
   end

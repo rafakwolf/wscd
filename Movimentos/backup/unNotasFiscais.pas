@@ -711,7 +711,7 @@ begin
 //      cdsSelecaoPRODUTO.AsString := cdsProdutosDESCRICAO.AsString;
 //      cdsSelecaoIDTRIBUTACAO.AsInteger := cdsProdutosIDALIQUOTA.AsInteger;
 //      cdsSelecaoTRIBUTACAO.AsString :=
-//        SelectSingleField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
+//        SelecTFMTBCDField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
 //          QuotedStr(IntToStr(cdsProdutosIDALIQUOTA.AsInteger)), GetConnection);
 //      cdsSelecaoQTDE.AsFloat := 1;
 //      cdsSelecaoTOTAL.AsFloat := 0;
@@ -967,11 +967,11 @@ begin
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end;
 end;
@@ -1025,8 +1025,8 @@ begin
    with TfrmPrevListaFaturamento.Create(Self) do
    try
      cdsPadrao.Close;
-     cdsPadrao.SQL.Clear; SQL.Text :=SQL;
-     cdsPadrao.Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
+     sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL;
+     sqldPadrao.Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
      cdsPadrao.Open;
      //lbTitulo.Caption := 'Produtos da Nota: '+IntToStr(cdsNFiscaisNUMERO.AsInteger);
 

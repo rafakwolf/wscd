@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
-  DBCtrls,  DB, memds,  SqlDb, FMTBcd,  uniEdit,
-  uniDBEdit,    uniPanel;
+  DBCtrls,  DB, memds,  SqlDb, FMTBcd;
 
 type
   TfrmRelatorioCPAtrasados = class(TfrmDialogoRelatorioPadrao)
@@ -59,10 +58,10 @@ begin
   with TfrmPrevContasPagar.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCPATRASADOS '+
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select * from VIEWRELCPATRASADOS '+
                              'where CODFORN = :PFORN '+
                              'order by VENCIMENTO';
-    cdsPadrao.Params.ParamByName('PFORN').AsInteger := cdsFornCODFORNECEDOR.AsInteger;                         
+    sqldPadrao.Params.ParamByName('PFORN').AsInteger := cdsFornCODFORNECEDOR.AsInteger;
     cdsPadrao.Open;
     Titulo := 'Contas a pagar atrasadas: ' + dbeFornecedor.Text;
     PrintIfNotEmptyRL(rrPadrao);
@@ -81,7 +80,7 @@ end;
 procedure TfrmRelatorioCPAtrasados.FormCreate(Sender: TObject);
 begin
   inherited;
-  sqlpadrao := sqldForn.CommandText;
+  sqlpadrao := sqldForn.sql.text;
 end;
 
 initialization

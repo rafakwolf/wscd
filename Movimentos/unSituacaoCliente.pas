@@ -4,9 +4,7 @@ interface
 
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, Buttons, SqlDb, ExtCtrls,  FMTBcd, 
-     uniEdit, uniImage, uniGroupBox, 
-  uniMemo;
+  Dialogs, StdCtrls, DB, Buttons, SqlDb, ExtCtrls,  FMTBcd, lcltype;
 
 type
   TfrmSituacaoCliente = class(TForm)

@@ -6,10 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls,  Buttons, DBCtrls, DB, memds,
   Menus, SqlDb, ComCtrls,  ConstPadrao, ActnList,
-  FMTBcd, unSimplePadrao,  varglobal, uniMainMenu,
-      
-  uniStatusBar, uniPanel, uniEdit, uniDBEdit, uniGroupBox, uniBasicGrid,
-  uniDBGrid;
+  FMTBcd, unSimplePadrao,  varglobal, LCLType;
 
 const
   SQLPadraoTela: string = 'select'+
@@ -160,12 +157,12 @@ type
     cdsPadraoDESCTO: TFMTBCDField;
     cdsPadraoOBS: TMemoField;
     cdsPadraoATRASO: TIntegerField;
-    sqldPadraoVALORJURO: TSingleField;
-    sqldPadraoTOTAL: TSingleField;
-    sqldPadraoTOTALPAGO: TSingleField;
-    cdsPadraoVALORJURO: TSingleField;
-    cdsPadraoTOTAL: TSingleField;
-    cdsPadraoTOTALPAGO: TSingleField;
+    sqldPadraoVALORJURO: TFMTBCDField;
+    sqldPadraoTOTAL: TFMTBCDField;
+    sqldPadraoTOTALPAGO: TFMTBCDField;
+    cdsPadraoVALORJURO: TFMTBCDField;
+    cdsPadraoTOTAL: TFMTBCDField;
+    cdsPadraoTOTALPAGO: TFMTBCDField;
     mnuCP: TMainMenu;
     miOpcoes: TMenuItem;
     miPagar: TMenuItem;
@@ -182,7 +179,7 @@ type
     miRelatorios: TMenuItem;
     miRecibo: TMenuItem;
     Stb: TStatusBar;
-    pnBotoes: TContainerPanel;
+    pnBotoes: TPanel;
     btnExcluir: TSpeedButton;
     btnPagar: TSpeedButton;
     btnFechar: TSpeedButton;
@@ -249,7 +246,7 @@ begin
       cdsPadraoVALOR.AsFloat      := Self.cdsPadraoTOTAL.AsFloat;
       cdsPadraoRECEBEDOR.AsString := Self.cdsPadraoNOMEFORN.AsString;
       cdsPadraoREFERENTE.AsString := Self.cdsPadraoDESCRICAO.AsString;
-      cdsPadrao.ApplyUpdates(0);
+      ////cdsPadrao.ApplyUpdates(0);
       Imprime := True;
       ShowModal;
     finally
@@ -265,7 +262,7 @@ begin
   ClientWidth  := 760;
   CentralizaForm(Self);
   ReordenaBotoes([btnPagar, btnExcluir, btnPagas, btnFechar]);
-  SQLPadraoForn := sqldForn.CommandText;
+  SQLPadraoForn := sqldForn.SQL.text;
 end;
 
 procedure TfrmContasPagar.actExcluirExecute(Sender: TObject);
@@ -303,7 +300,7 @@ begin
     actBuscarForn.Enabled := True;
 
     cdsForn.Close;
-    cdsForn.SQL.Clear; SQL.Text :=SQLPadraoForn;
+    sqldForn.SQL.Clear; sqldForn.SQL.Text :=SQLPadraoForn;
     cdsForn.Open;
 
 //    if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
@@ -328,7 +325,7 @@ begin
     if (IdForn > 0) then
     begin
       cdsPadrao.Close;
-      cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
+      sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
       cdsPadrao.Open;
     end;
     if cdsPadrao.IsEmpty then
@@ -355,7 +352,7 @@ end;
 procedure TfrmContasPagar.ContaModificada;
 begin
   cdsPadrao.Close;
-  cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
+  sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
   cdsPadrao.Open;
   dsPadrao.OnStateChange(dsPadrao);
 end;
@@ -363,16 +360,16 @@ end;
 procedure TfrmContasPagar.miContasvencidasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.SQL.Clear; SQL.Text :=SQLVencidas;
-  cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
+  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLVencidas;
+  sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
   cdsPadrao.Open;
 end;
 
 procedure TfrmContasPagar.miTodasContasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
-  cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
+  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLPadraoTela;
+  sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
   cdsPadrao.Open;
 end;
 
@@ -381,7 +378,7 @@ begin
   with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText :=
+    SQL.text :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO > CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
     Params.ParamByName('FORN').AsInteger := IdForn;  
@@ -397,7 +394,7 @@ begin
   with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText :=
+    SQl.text :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO = CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
     Params.ParamByName('FORN').AsInteger := IdForn;
@@ -413,7 +410,7 @@ begin
   with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText :=
+    SQL.Text :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO < CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
     Params.ParamByName('FORN').AsInteger := IdForn;  
@@ -445,7 +442,7 @@ begin
     cdsPadraoPAGAR.AsString := 'S'
   else
     cdsPadraoPAGAR.AsString := 'N';
-  cdsPadrao.ApplyUpdates(0);
+  ////cdsPadrao.ApplyUpdates(0);
   cdsPadrao.Next;
 end;
 
@@ -457,8 +454,8 @@ end;
 procedure TfrmContasPagar.miVencendohojeClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.SQL.Clear; SQL.Text :=SQLHoje;
-  cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
+  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLHoje;
+  sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
   cdsPadrao.Open;
 end;
 

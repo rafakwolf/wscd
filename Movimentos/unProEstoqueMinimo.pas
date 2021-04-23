@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, memds,  SqlDb, Grids, DBGrids,
-  StdCtrls, Buttons, FMTBcd,   
-    uniBasicGrid, uniDBGrid;
+  StdCtrls, Buttons, FMTBcd, lcltype;
 
 type
   TfrmProEstoqueMinimo = class(TForm)
@@ -65,12 +64,12 @@ begin
   btnZerarNegativo.Enabled := i = 0;
 
   case i of
-    0: FSQL := sqlProdEM.CommandText+' where (PRO_ESTOQUE < 0) order by PRO_ESTOQUE desc';
-    1: FSQL := sqlProdEM.CommandText+' where (PRO_ESTOQUE >= 0) and (PRO_ESTOQUE < QTDE_MINIMA) order by PRO_ESTOQUE desc';
+    0: FSQL := sqlProdEM.SQL.text+' where (PRO_ESTOQUE < 0) order by PRO_ESTOQUE desc';
+    1: FSQL := sqlProdEM.SQL.text+' where (PRO_ESTOQUE >= 0) and (PRO_ESTOQUE < QTDE_MINIMA) order by PRO_ESTOQUE desc';
   end;
   
   cdsProdEM.Close;
-  cdsProdEM.SQL.Clear; SQL.Text :=FSQL;
+  sqlProdEM.SQL.Clear; sqlProdEM.SQL.Text :=FSQL;
   cdsProdEM.Open;
 
   if cdsProdEM.IsEmpty then

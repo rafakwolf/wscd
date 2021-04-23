@@ -6,12 +6,10 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, Buttons,  DBCtrls, ComCtrls,
   Menus, ExtCtrls, Db, memds, ConstPadrao, 
-  Sqldb, FMTBcd, unPadrao,  ActnList, uniMainMenu,
-      uniPanel,
-   uniStatusBar, uniLabel, uniEdit, uniDBEdit, uniMemo,
-  uniDBMemo, uniBasicGrid, uniDBGrid;
+  Sqldb, FMTBcd, unPadrao,  ActnList, lcltype;
 
 type
+  TDataSetField = TDataset;
   TfrmVendas = class(TfrmPadrao)
     sqldClientes: TSQLQuery;
     dspClientes: TComponent;
@@ -128,22 +126,22 @@ type
     cdsVendasCANCELADO: TStringField;
     sqldSelecaoPRODUTO: TIntegerField;
     sqldSelecaoNOMEPRODUTO: TStringField;
-    sqldSelecaoQTDE: TSingleField;
-    sqldSelecaoCUSTO: TSingleField;
-    sqldSelecaoVENDA: TSingleField;
-    sqldSelecaoDESCTO: TSingleField;
-    sqldSelecaoVALORDESCTO: TSingleField;
-    sqldSelecaoTOTAL: TSingleField;
-    sqldSelecaoCOMISSAO: TSingleField;
+    sqldSelecaoQTDE: TFMTBCDField;
+    sqldSelecaoCUSTO: TFMTBCDField;
+    sqldSelecaoVENDA: TFMTBCDField;
+    sqldSelecaoDESCTO: TFMTBCDField;
+    sqldSelecaoVALORDESCTO: TFMTBCDField;
+    sqldSelecaoTOTAL: TFMTBCDField;
+    sqldSelecaoCOMISSAO: TFMTBCDField;
     cdsSelecaoPRODUTO: TIntegerField;
     cdsSelecaoNOMEPRODUTO: TStringField;
-    cdsSelecaoQTDE: TSingleField;
-    cdsSelecaoCUSTO: TSingleField;
-    cdsSelecaoVENDA: TSingleField;
-    cdsSelecaoDESCTO: TSingleField;
-    cdsSelecaoVALORDESCTO: TSingleField;
-    cdsSelecaoTOTAL: TSingleField;
-    cdsSelecaoCOMISSAO: TSingleField;
+    cdsSelecaoQTDE: TFMTBCDField;
+    cdsSelecaoCUSTO: TFMTBCDField;
+    cdsSelecaoVENDA: TFMTBCDField;
+    cdsSelecaoDESCTO: TFMTBCDField;
+    cdsSelecaoVALORDESCTO: TFMTBCDField;
+    cdsSelecaoTOTAL: TFMTBCDField;
+    cdsSelecaoCOMISSAO: TFMTBCDField;
     mnVenda: TMainMenu;
     miRegistros: TMenuItem;
     miIncluir: TMenuItem;
@@ -173,7 +171,7 @@ type
     miRelVendaCliente: TMenuItem;
     N12: TMenuItem;
     miRelComissaoVendedor: TMenuItem;
-    pnlTotal: TContainerPanel;
+    pnlTotal: TPanel;
     LabelObs: TLabel;
     lbNumero: TLabel;
     LabelConcluida: TLabel;
@@ -304,8 +302,8 @@ end;
 
 procedure TfrmVendas.btnCancelClick(Sender: TObject);
 begin
-  cdsVendas.CancelUpdates;
-  cdsSelecao.CancelUpdates;
+  //cdsVendas.CancelUpdates;
+  //cdsSelecao.CancelUpdates;
 end;
 
 procedure TfrmVendas.btnPrimeiroClick(Sender: TObject);
@@ -346,7 +344,7 @@ begin
     if Configuracao.VendaConcluida then
     begin
       NumRegs :=
-        SelectSingleField('select count(1) NUM from VENDA where CONCLUIDA = '+
+        SelecTFMTBCDField('select count(1) NUM from VENDA where CONCLUIDA = '+
           QuotedStr('N')+' and CANCELADO = '+QuotedStr('N'), GetConnection);
 
         if (NumRegs > 0) then
@@ -384,7 +382,7 @@ begin
   begin
     cdsVendas.Edit;
     cdsVendasCONCLUIDA.AsString := 'N';
-    cdsVendas.ApplyUpdates(0);
+    //cdsVendas.ApplyUpdates(0);
     
     spDeleta.Close;
     spDeleta.Params.ParamByName('CODIGO').AsInteger := cdsVendasCODIGO.AsInteger;
@@ -413,7 +411,7 @@ begin
       Valor := cdsVendasTOTAL.AsFloat * (Percent / 100);
       cdsVendas.Edit;
       cdsVendasTOTAL.AsFloat := (cdsVendasTOTAL.AsFloat - Valor);
-      cdsVendas.ApplyUpdates(0);
+      //cdsVendas.ApplyUpdates(0);
     end
     else
       MsgErro('Informe a valor do desconto.');
@@ -429,7 +427,7 @@ begin
   S := '0';
   if InputQuery('Localizar por n�mero', 'N�mero da venda', S) and (S <> '0') then
   begin
-    cdsVendas.IndexFieldNames := 'CODIGO';
+    //cdsVendas.IndexFieldNames := 'CODIGO';
 
     if not cdsVendas.Locate('CODIGO', S, []) then
       MsgAviso(S + ' n�o encontrado');
@@ -442,7 +440,7 @@ begin
     cdsVendas.DisableControls;
     cdsVendas.Close;
     cdsVendas.Filtered := False;
-    cdsVendas.SQL.Clear; SQL.Text :=SQLPadraoTela;
+    //sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLPadraoTela;
     cdsVendas.Open;
   finally
     cdsVendas.EnableControls;
@@ -542,14 +540,14 @@ procedure TfrmVendas.InsereProduto;
   function DescontoPromocao(IdProduto: Integer): Extended;
   begin
     Result :=
-      SelectSingleField('select DESCONTO from PROMOCAO where PRODUTO = '+
+      SelecTFMTBCDField('select DESCONTO from PROMOCAO where PRODUTO = '+
         QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
   end;
 
   function PrecoPromocao(IdProduto: Integer): Extended;
   begin
     Result :=
-      SelectSingleField('select PRECO from PROMOCAO where PRODUTO = '+
+      SelecTFMTBCDField('select PRECO from PROMOCAO where PRODUTO = '+
         QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
   end;
 
@@ -785,8 +783,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomCombobox) and
+             (TCustomCombobox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -798,11 +796,11 @@ begin
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end; 
 end;
@@ -864,7 +862,7 @@ begin
       with TfrmPrevNotaVenda.Create(Self) do
       try
         cdsVenda.Close;
-        cdsVenda.Params.ParamByName('IDVENDA').AsInteger := cdsVendasCODIGO.AsInteger;
+        //cdsVenda.Params.ParamByName('IDVENDA').AsInteger := cdsVendasCODIGO.AsInteger;
         cdsVenda.Open;
         rlrNotaVenda.PreviewModal;
       finally
@@ -895,7 +893,7 @@ procedure TfrmVendas.ReceberVenda;
     with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandType := ctStoredProc;
+      //CommandType := ctStoredProc;
       SQL.Clear; SQL.Text :='STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger     := cdsVendasCODIGO.AsInteger;
       Params.ParamByName('DATARECTO').AsDate      := Date;
@@ -1015,7 +1013,7 @@ procedure TfrmVendas.miReabrirClick(Sender: TObject);
 begin
   cdsVendas.Edit;
   cdsVendasCANCELADO.AsString := 'N';
-  cdsVendas.ApplyUpdates(0);
+  //cdsVendas.ApplyUpdates(0);
   ReabreDataSet(cdsVendas);
   MsgAviso('Venda reaberta!');
 end;

@@ -7,7 +7,7 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
   ExplicitHeight = 207
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 134
     Width = 369
     TabOrder = 3

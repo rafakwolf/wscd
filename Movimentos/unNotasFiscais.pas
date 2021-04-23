@@ -711,7 +711,7 @@ begin
 //      cdsSelecaoPRODUTO.AsString := cdsProdutosDESCRICAO.AsString;
 //      cdsSelecaoIDTRIBUTACAO.AsInteger := cdsProdutosIDALIQUOTA.AsInteger;
 //      cdsSelecaoTRIBUTACAO.AsString :=
-//        SelectSingleField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
+//        SelecTFMTBCDField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
 //          QuotedStr(IntToStr(cdsProdutosIDALIQUOTA.AsInteger)), GetConnection);
 //      cdsSelecaoQTDE.AsFloat := 1;
 //      cdsSelecaoTOTAL.AsFloat := 0;
@@ -1025,8 +1025,8 @@ begin
    with TfrmPrevListaFaturamento.Create(Self) do
    try
      cdsPadrao.Close;
-     cdsPadrao.SQL.Clear; SQL.Text :=SQL;
-     cdsPadrao.Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
+     sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL;
+     sqldPadrao.Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
      cdsPadrao.Open;
      //lbTitulo.Caption := 'Produtos da Nota: '+IntToStr(cdsNFiscaisNUMERO.AsInteger);
 
@@ -1070,7 +1070,7 @@ procedure TfrmNotasFiscais.PagarCompra;
     with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandType := ctStoredProc;
+      //CommandType := ctStoredProc;
       SQL.Clear; SQL.Text :='STPPAGTOCOMPRA';
       Params.ParamByName('IDCOMPRA').AsInteger  := cdsNFiscaisNUMERO.AsInteger;
       Params.ParamByName('DATAPAGTO').AsDate    := Date;

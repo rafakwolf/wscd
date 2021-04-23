@@ -13,7 +13,7 @@ inherited frmBanco: TfrmBanco
     ExplicitTop = 137
     ExplicitWidth = 433
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 472
     TabOrder = 2
     ExplicitWidth = 433

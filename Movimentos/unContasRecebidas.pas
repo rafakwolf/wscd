@@ -6,10 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons,  DBCtrls, DB, SqlDb, varglobal,
   memds, ComCtrls, Menus, Grids, DBGrids,
-   unContasReceber, FMTBcd, unSimplePadrao, uniMainMenu,
-      
-  uniStatusBar, uniPanel, uniLabel, uniEdit, uniDBEdit, uniGroupBox,
-  uniBasicGrid, uniDBGrid;
+   unContasReceber, FMTBcd, unSimplePadrao, LCLType;
 
 type
   TfrmContasRecebidas = class(TfrmSimplePadrao)
@@ -63,12 +60,12 @@ type
     cdsPadraoDESCTO: TFMTBCDField;
     cdsPadraoOBS: TMemoField;
     cdsPadraoATRASO: TIntegerField;
-    sqldPadraoVALORJURO: TSingleField;
-    sqldPadraoTOTAL: TSingleField;
-    sqldPadraoTOTALRECDO: TSingleField;
-    cdsPadraoVALORJURO: TSingleField;
-    cdsPadraoTOTAL: TSingleField;
-    cdsPadraoTOTALRECDO: TSingleField;
+    sqldPadraoVALORJURO: TFMTBCDField;
+    sqldPadraoTOTAL: TFMTBCDField;
+    sqldPadraoTOTALRECDO: TFMTBCDField;
+    cdsPadraoVALORJURO: TFMTBCDField;
+    cdsPadraoTOTAL: TFMTBCDField;
+    cdsPadraoTOTALRECDO: TFMTBCDField;
     mmContasRecebidas: TMainMenu;
     miOpcoes: TMenuItem;
     miEstornar: TMenuItem;
@@ -76,7 +73,7 @@ type
     N1: TMenuItem;
     miFechar: TMenuItem;
     Stb: TStatusBar;
-    pnBotoes: TContainerPanel;
+    pnBotoes: TPanel;
     btnAtualizar: TSpeedButton;
     btnEstornar: TSpeedButton;
     btnFechar: TSpeedButton;
@@ -121,7 +118,7 @@ end;
 procedure TfrmContasRecebidas.btnAtualizarClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
+  sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
   cdsPadrao.Open;
 end;
 
@@ -146,19 +143,19 @@ begin
         (ClearMask(DataF) <> '') then
      begin
        cdsPadrao.Close;
-       cdsPadrao.SQL.Clear; SQL.Text :=GetSQLFromQuery(cdsPadrao) +
+       sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
          ' and CLIENTE = :PCLIENTE' +
          ' and DATARECTO between :DATAI and :DATAF';
-       cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
-       cdsPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
-       cdsPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
+       sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
+       sqldPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
+       sqldPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
        cdsPadrao.Open;
        lbFiltroUsado.Caption := 'Per�odo de '+DataI+' at� '+DataF;
      end;
    end;
    1: begin
      cdsPadrao.Close;
-     cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
+     sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
      cdsPadrao.Open;
      lbFiltrousado.Caption := 'Todas as contas recebidas';
    end;
@@ -219,7 +216,7 @@ begin
       cdsPadraoCAPITALRECDO.AsFloat := 0;
       cdsPadraoJURORECDO.AsFloat := 0;
       cdsPadraoDESCTO.AsFloat := 0;
-      cdsPadrao.ApplyUpdates(0);
+      ////cdsPadrao.ApplyUpdates(0);
       { delete conta restante }
       sqldDeletaConta.Close;
       sqldDeletaConta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
@@ -244,7 +241,7 @@ begin
         cdsPadraoCAPITALRECDO.AsFloat := 0;
         cdsPadraoJURORECDO.AsFloat := 0;
         cdsPadraoDESCTO.AsFloat := 0;
-        cdsPadrao.ApplyUpdates(0);
+        ////cdsPadrao.ApplyUpdates(0);
       end;
     end;
   finally
@@ -294,7 +291,7 @@ begin
     cdsPadraoRECEBER.AsString := 'S'
   else
     cdsPadraoRECEBER.AsString := 'N';
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
   cdsPadrao.Next;
 end;
 

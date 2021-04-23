@@ -94,8 +94,8 @@ type
     cdsPadraoPROMOCAO: TStringField;
     sqldPadraoOBS: TMemoField;
     cdsPadraoOBS: TMemoField;
-    sqldPadraoVALOR_ESTOQUE: TSingleField;
-    cdsPadraoVALOR_ESTOQUE: TSingleField;
+    sqldPadraoVALOR_ESTOQUE: TFMTBCDField;
+    cdsPadraoVALOR_ESTOQUE: TFMTBCDField;
     dbeUnidade: TDBEdit;
     dbeGrupo: TDBEdit;
     dbeFornecedor: TDBEdit;
@@ -551,7 +551,7 @@ begin
         end;
         cdsPadrao.Next;
       end;
-      cdsPadrao.ApplyUpdates(0);
+      //cdsPadrao.ApplyUpdates(0);
     except
       Erro := True;
       raise Exception.Create('Erro ao ajustar c�digos de barras.');

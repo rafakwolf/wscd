@@ -5,11 +5,10 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, Buttons, DB, ComCtrls, 
-  memds,  SqlDb, FMTBcd,  
-  uniLabel,   uniGroupBox,  uniComboBox,
-  uniEdit, uniBasicGrid, uniDBGrid;
+  memds,  SqlDb, FMTBcd, LCLType;
 
 type
+  TDataSetField = TDataset;
   TfrmImportaOrcam = class(TForm)
     Progresso: TProgressBar;
     sqldVenda: TSQLQuery;
@@ -98,7 +97,7 @@ procedure TfrmImportaOrcam.EscreveExportado;
 begin
   cdsOrcam.Edit;
   cdsOrcamSTATUS.AsString := 'E';
-  cdsOrcam.ApplyUpdates(0);
+  //cdsOrcam.ApplyUpdates(0);
 end;
 
 procedure TfrmImportaOrcam.ImportaOrcamento;

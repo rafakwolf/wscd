@@ -5,7 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB, memds,
-   SqlDb, FMTBcd;
+   SqlDb, FMTBcd, LCLType;
 
 type
   TfrmCompNaoConc = class(TForm)

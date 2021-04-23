@@ -291,7 +291,7 @@ begin
   frmSenhaEstoque := TfrmSenhaEstoque.Create(Self);
   if frmSenhaEstoque.ShowModal = mrOk then
   begin
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
     ReabreDataSet(cdsPadrao);
   end;
 end;
@@ -458,7 +458,7 @@ begin
   frmSenhaCaixa := TfrmSenhaCaixa.Create(Self);
   if frmSenhaCaixa.ShowModal = mrOk then
   begin
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
     ReabreDataSet(cdsPadrao);
   end;
 end;

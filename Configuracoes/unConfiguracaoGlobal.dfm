@@ -15,7 +15,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     ExplicitTop = 321
     ExplicitWidth = 470
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 470
     ExplicitWidth = 470
   end

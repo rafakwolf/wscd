@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
-  ConstPadrao, FMTBcd,  VarGlobal, uniLabel,   
-   uniPanel,  uniStatusBar, uniEdit, uniDBEdit,
-  Generics.Collections, uniGroupBox;
+  ConstPadrao, FMTBcd,  VarGlobal;
 
 type
   TfrmCP = class(TfrmPadrao)
@@ -59,12 +57,12 @@ type
     sqldPadraoNOME: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
     cdsPadraoNOME: TStringField;
-    sqldPadraoVALORJURO: TSingleField;
-    sqldPadraoTOTAL: TSingleField;
-    sqldPadraoTOTALPAGO: TSingleField;
-    cdsPadraoVALORJURO: TSingleField;
-    cdsPadraoTOTAL: TSingleField;
-    cdsPadraoTOTALPAGO: TSingleField;
+    sqldPadraoVALORJURO: TFMTBCDField;
+    sqldPadraoTOTAL: TFMTBCDField;
+    sqldPadraoTOTALPAGO: TFMTBCDField;
+    cdsPadraoVALORJURO: TFMTBCDField;
+    cdsPadraoTOTAL: TFMTBCDField;
+    cdsPadraoTOTALPAGO: TFMTBCDField;
     lbStatus: TLabel;
     btnPagar: TBitBtn;
     btnContas: TBitBtn;
@@ -177,7 +175,7 @@ begin
   with TfrmPrevContasPagar.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCPATRASADOS order by FORNECEDOR, VENCIMENTO';
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select * from VIEWRELCPATRASADOS order by FORNECEDOR, VENCIMENTO';
     cdsPadrao.Open;
     Titulo := 'Contas a pagar atrasadas';
     PrintIfNotEmptyRL(rrPadrao);
@@ -199,7 +197,7 @@ begin
   with TfrmPrevContasPagar.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCP order by FORNECEDOR, DATA';
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select * from VIEWRELCP order by FORNECEDOR, DATA';
     cdsPadrao.Open;
     Titulo := 'Listagem de Contas a pagar';
     PrintIfNotEmptyRL(rrPadrao);
@@ -300,7 +298,7 @@ begin
   if cdsPadrao.State in [dsInsert] then
   begin
     if not cdsPadraoDOCUMENTO.IsNull then
-       if SelectSingleField('select count(1) from CONTASPAGAR where (DOCUMENTO = '+
+       if SelecTFMTBCDField('select count(1) from CONTASPAGAR where (DOCUMENTO = '+
         QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (FORNECEDOR = '+
         QuotedStr(IntToStr(cdsPadraoFORNECEDOR.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
       begin
@@ -326,7 +324,7 @@ begin
   // marca a conta
   cdsPadrao.Edit;
   cdsPadraoPAGAR.AsString := 'S';
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
 
   if (cdsPadraoPAGA.AsString = 'N') then
   begin
@@ -339,7 +337,7 @@ begin
     // desmarca a conta
     cdsPadrao.Edit;
     cdsPadraoPAGAR.AsString := 'N';
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
     MsgAviso('�sta conta j� foi paga');
   end;
 end;

@@ -76,7 +76,7 @@ begin
   begin
     cdsPadrao.Edit;
     cdsPadraoINATIVO.AsString := 'S';
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
   end;
 end;
 

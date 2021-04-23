@@ -4,12 +4,8 @@ interface
 
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls,  DB,
-   SqlDb, unContasPagar, Grids,
-  DBGrids, memds, FMTBcd,
-  unSimplePadrao,   uniLabel, 
-   uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
-  uniRadioGroup;
+  Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls,  DB, LCLType,
+   SqlDb, unContasPagar, Grids, DBGrids, memds, FMTBcd, unSimplePadrao;
 
 type
   TTipoPagamento = (tpDinheiro, tpCheque);
@@ -69,12 +65,12 @@ type
     cdsSelecaoIDBANCO: TIntegerField;
     cdsSelecaoBANCO: TStringField;
     dsSelecao: TDataSource;
-    sqldContasPagarVALORJURO: TSingleField;
-    sqldContasPagarTOTAL: TSingleField;
-    sqldContasPagarTOTALPAGO: TSingleField;
-    cdsContasPagarVALORJURO: TSingleField;
-    cdsContasPagarTOTAL: TSingleField;
-    cdsContasPagarTOTALPAGO: TSingleField;
+    sqldContasPagarVALORJURO: TFMTBCDField;
+    sqldContasPagarTOTAL: TFMTBCDField;
+    sqldContasPagarTOTALPAGO: TFMTBCDField;
+    cdsContasPagarVALORJURO: TFMTBCDField;
+    cdsContasPagarTOTAL: TFMTBCDField;
+    cdsContasPagarTOTALPAGO: TFMTBCDField;
     lblVenc: TLabel;
     lblBandaMagnetica: TLabel;
     lblEmissao: TLabel;
@@ -153,7 +149,7 @@ begin
       cdsContasPagarCAPITALPAGO.AsFloat  :=
         (cdsContasPagarTOTAL.AsFloat - cdsContasPagarVALORJURO.AsFloat);
       cdsContasPagarDESCTO.AsFloat       := 0;
-      cdsContasPagar.ApplyUpdates(0);
+      //cdsContasPagar.ApplyUpdates(0);
 
       cdsContasPagar.Next;
     end;
@@ -212,7 +208,7 @@ begin
   end;
 
   edtTotal.Text := FormatFloat('0.00',
-    SelectSingleField('select sum(TOTAL) from CONTASPAGAR where PAGAR = '+
+    SelecTFMTBCDField('select sum(TOTAL) from CONTASPAGAR where PAGAR = '+
     QuotedStr('S'), sqldContasPagar.SQLConnection));
 
   rgTipoPagamento.OnClick(Self);
@@ -412,8 +408,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomCombobox) and
+             (TCustomCombobox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -425,11 +421,11 @@ begin
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end;
 end;
@@ -491,7 +487,7 @@ begin
     cdsContasPagarJUROPAGO.AsFloat     := JurosPagar;
     cdsContasPagarCAPITALPAGO.AsFloat  := (ValorPagar - JurosPagar);
     cdsContasPagarDESCTO.AsFloat       := 0;
-    cdsContasPagar.ApplyUpdates(0);
+    //cdsContasPagar.ApplyUpdates(0);
 
     // ajusta uma nova conta com o restante
     cdsContasPagar.Insert;
@@ -508,7 +504,7 @@ begin
     cdsContasPagarCAPITALPAGO.AsFloat   := 0;
     cdsContasPagarJUROPAGO.AsFloat      := 0;
     cdsContasPagarDESCTO.AsFloat        := 0;
-    cdsContasPagar.ApplyUpdates(0);
+    //cdsContasPagar.ApplyUpdates(0);
 
     { caixa }
     desc := 'Pag. parc. '+NomeFornOld+' Doc. '+DocumentoOld;
@@ -531,7 +527,7 @@ begin
     cdsContasPagarJUROPAGO.AsFloat      := JurosPagar;
     cdsContasPagarCAPITALPAGO.AsFloat   := (ValorPagar - JurosPagar);
     cdsContasPagarDESCTO.AsFloat        := (TotalOld - ValorPagar);
-    cdsContasPagar.ApplyUpdates(0);
+    //cdsContasPagar.ApplyUpdates(0);
 
     { caixa}
     desc := 'Pag. '+cdsContasPagarNOMEFORN.AsString+' Doc. '+cdsContasPagarDOCUMENTO.AsString;

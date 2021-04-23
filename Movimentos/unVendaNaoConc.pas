@@ -6,8 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, DB, memds,
    Sqldb, Grids, DBGrids, StdCtrls,
-  Buttons, FMTBcd,    
-  uniBasicGrid, uniDBGrid;
+  Buttons, FMTBcd, lcltype;
 
 type
   TfrmVendaNaoConc = class(TfrmSimplePadrao)

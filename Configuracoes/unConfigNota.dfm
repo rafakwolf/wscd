@@ -16,7 +16,7 @@ inherited frmConfigNota: TfrmConfigNota
     ExplicitTop = 407
     ExplicitWidth = 403
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 483
     ExplicitWidth = 403
     inherited btnCancelar: TSpeedButton

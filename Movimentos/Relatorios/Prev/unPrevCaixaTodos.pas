@@ -106,22 +106,22 @@ begin
 
   if (DataIni = '') and (DataFim = '') then
   begin
-    TotalC := SelectSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+    TotalC := SelecTFMTBCDField('select sum(VALOR) from VIEWRELCAIXATODOS '+
       'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('C')+')',
       sqldPadrao.SQLConnection);
 
-    TotalD := SelectSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+    TotalD := SelecTFMTBCDField('select sum(VALOR) from VIEWRELCAIXATODOS '+
       'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('D')+')',
       sqldPadrao.SQLConnection);
   end
   else
   begin
-    TotalC := SelectSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+    TotalC := SelecTFMTBCDField('select sum(VALOR) from VIEWRELCAIXATODOS '+
       'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('C')+') '+
       'and (DATA >= '+FormatDateFirebird(StrToDate(DataIni))+') '+
       'and (DATA <= '+FormatDateFirebird(StrToDate(DataFim))+')', sqldPadrao.SQLConnection);
 
-    TotalD := SelectSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+    TotalD := SelecTFMTBCDField('select sum(VALOR) from VIEWRELCAIXATODOS '+
       'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('D')+') '+
       'and (DATA >= '+FormatDateFirebird(StrToDate(DataIni))+') '+
       'and (DATA <= '+FormatDateFirebird(StrToDate(DataFim))+')', sqldPadrao.SQLConnection);

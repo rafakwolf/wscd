@@ -7,7 +7,7 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
   ExplicitHeight = 199
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 126
     Width = 401
     ExplicitTop = 126

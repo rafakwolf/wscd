@@ -110,7 +110,7 @@ procedure TdmCliente.dspPadraoAfterUpdateRecord(Sender: TObject;
 begin
   inherited;
   DeltaDS.FieldByName('CODCLIENTE').NewValue :=
-    SelectSingleField('SELECT NEXT VALUE FOR GENIDCLIENTES FROM RDB$DATABASE',
+    SelecTFMTBCDField('SELECT NEXT VALUE FOR GENIDCLIENTES FROM RDB$DATABASE',
      GetConnection);
 end;
 

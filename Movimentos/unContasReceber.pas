@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls,  Buttons, memds, DB,
   DBCtrls, SqlDb, Menus, ComCtrls,  ConstPadrao,
-  FMTBcd, unSimplePadrao, uniMainMenu,  
-     uniStatusBar, uniPanel, uniEdit,
-  uniDBEdit, uniGroupBox, uniBasicGrid, uniDBGrid;
+  FMTBcd, unSimplePadrao, LCLType;
 
 const
   SQLPadraoTela: string = 'select'+
@@ -161,12 +159,12 @@ type
     sqldPadraoDESCTO: TFMTBCDField;
     sqldPadraoOBS: TMemoField;
     sqldPadraoATRASO: TIntegerField;
-    sqldPadraoVALORJURO: TSingleField;
-    sqldPadraoTOTAL: TSingleField;
-    sqldPadraoTOTALRECDO: TSingleField;
-    cdsPadraoVALORJURO: TSingleField;
-    cdsPadraoTOTAL: TSingleField;
-    cdsPadraoTOTALRECDO: TSingleField;
+    sqldPadraoVALORJURO: TFMTBCDField;
+    sqldPadraoTOTAL: TFMTBCDField;
+    sqldPadraoTOTALRECDO: TFMTBCDField;
+    cdsPadraoVALORJURO: TFMTBCDField;
+    cdsPadraoTOTAL: TFMTBCDField;
+    cdsPadraoTOTALRECDO: TFMTBCDField;
     mnuCP: TMainMenu;
     miOpcoes: TMenuItem;
     miReceber: TMenuItem;
@@ -183,7 +181,7 @@ type
     miRelatorios: TMenuItem;
     miRecibo: TMenuItem;
     Stb: TStatusBar;
-    pnBotoes: TContainerPanel;
+    pnBotoes: TPanel;
     btnExcluir: TSpeedButton;
     btnRecebidas: TSpeedButton;
     btnReceber: TSpeedButton;
@@ -332,7 +330,7 @@ begin
   ClientWidth  := 762;
   CentralizaForm(Self);
   ReordenaBotoes([btnReceber, btnExcluir, btnRecebidas, btnFechar]);
-  SQLPadraoCli := sqldCliente.CommandText;
+  SQLPadraoCli := sqldCliente.sql.text;
 end;
 
 procedure TfrmContasReceber.btnRecebidasClick(Sender: TObject);
@@ -350,7 +348,7 @@ begin
     miBuscarCliente.Enabled := True;
 
     cdsCliente.Close;
-    cdsCliente.SQL.Clear; SQL.Text :=SQLPadraoCli;
+    sqldCliente.SQL.Clear; sqldCliente.SQL.Text :=SQLPadraoCli;
     cdsCliente.Open;
 
 //    if TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
@@ -375,7 +373,7 @@ begin
     if (IdCliente > 0) then
     begin
       cdsPadrao.Close;
-      cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
+      sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
       cdsPadrao.Open;
     end;
     if cdsPadrao.IsEmpty then
@@ -394,7 +392,7 @@ end;
 procedure TfrmContasReceber.ContaModificada;
 begin
   cdsPadrao.Close;
-  cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
+  sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
   cdsPadrao.Open;
   dsPadrao.OnStateChange(dsPadrao);
 end;
@@ -407,16 +405,16 @@ end;
 procedure TfrmContasReceber.miContasVencidasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.SQL.Clear; SQL.Text :=SQLVencidas;
-  cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
+  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLVencidas;
+  sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
   cdsPadrao.Open;
 end;
 
 procedure TfrmContasReceber.miTodasContasClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
-  cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
+  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLPadraoTela;
+  sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
   cdsPadrao.Open;
 end;
 
@@ -425,7 +423,7 @@ begin
   with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText :=
+    sql.text :=
       'select sum(TOTAL) as SOMA from CONTASRECEBER where (VENCIMENTO > CURRENT_DATE) '+
       'and (RECDA = '''+'N'+''') and CLIENTE = :CLI';
     Params.ParamByName('CLI').AsInteger := IdCliente;
@@ -441,7 +439,7 @@ begin
   with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText :=
+    sql.text :=
       'select sum(TOTAL) as SOMA from CONTASRECEBER where (VENCIMENTO = CURRENT_DATE) '+
       'and (RECDA = '''+'N'+''') and CLIENTE = :CLI';
     Params.ParamByName('CLI').AsInteger := IdCliente;
@@ -457,7 +455,7 @@ begin
   with TSQLQuery.Create(nil) do
   try
     SQLConnection := GetConnection;
-    CommandText :=
+    sql.text :=
       'select sum(TOTAL) as SOMA from CONTASRECEBER where (VENCIMENTO < CURRENT_DATE) '+
       'and (RECDA = '''+'N'+''') and CLIENTE = :CLI';
     Params.ParamByName('CLI').AsInteger := IdCliente;
@@ -494,15 +492,15 @@ begin
     cdsPadraoRECEBER.AsString := 'S'
   else
     cdsPadraoRECEBER.AsString := 'N';
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
   cdsPadrao.Next;
 end;
 
 procedure TfrmContasReceber.miVencendoHojeClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.SQL.Clear; SQL.Text :=SQLHoje;
-  cdsPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
+  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLHoje;
+  sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := IdCliente;
   cdsPadrao.Open;
 end;
 

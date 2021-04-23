@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, Grids, DBGrids, memds,  SqlDb,
-   DBCtrls,  FMTBcd,  VarGlobal,  uniEdit,
-  uniDBEdit,    uniPanel, 
-  uniStatusBar, uniBasicGrid, uniDBGrid;
+   DBCtrls,  FMTBcd,  VarGlobal;
 
 type
   TfrmEtiquetaProduto = class(TfrmPadrao)
@@ -76,10 +74,10 @@ begin
     para que possa exibir s� as etiquetas filtradas, caso o usu�rio use filtro }
   with TfrmImprimeEtiq.Create(Self) do
   try
-    if cdsPadrao.CommandText = '' then
-      SQL := sqldPadrao.CommandText
-    else
-      SQL := cdsPadrao.CommandText;
+    //if cdsPadrao.CommandText = '' then
+    //  SQL := sqldPadrao.CommandText
+    //else
+    //  SQL := cdsPadrao.CommandText;
       
     TipoEtq := teProduto;
     ShowModal;
@@ -97,7 +95,7 @@ begin
 //    cdsPadraoCODBARRA.AsString  := cdsProdutoCODBARRA.AsString;
 //    cdsPadraoDESCRICAO.AsString := cdsProdutoABREVIACAO.AsString;
 //    cdsPadraoPRECO.AsFloat      := cdsProdutoVENDA.AsFloat;
-//    cdsPadrao.ApplyUpdates(0);
+//    //cdsPadrao.ApplyUpdates(0);
 //    MsgAviso('Produto inserido com sucesso!');
 //  end;
 //  cdsProduto.Close;
@@ -161,7 +159,7 @@ begin
             cdsPadraoDESCRICAO.AsString := cdsProdutoABREVIACAO.AsString;
             cdsPadraoPRECO.AsFloat      := cdsProdutoVENDA.AsFloat;
           end;
-          cdsPadrao.ApplyUpdates(0);
+          //cdsPadrao.ApplyUpdates(0);
           cdsProduto.Next;
         end;
       end;
@@ -227,13 +225,13 @@ begin
         end;
         cdsPadrao.Next;
       end;
-      cdsPadrao.ApplyUpdates(0);
+      //cdsPadrao.ApplyUpdates(0);
     except
       Erro := True;
       raise Exception.Create('Erro ao ajustar c�digos de barras.');
     end;
   finally
-    BringWindowToTop(Handle);
+    // BringWindowToTop(Handle);
 
     if not Erro then
       MsgAviso('Ajuste de c�digos de barras conclu�do!');

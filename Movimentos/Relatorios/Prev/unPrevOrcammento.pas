@@ -8,6 +8,7 @@ uses
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
+  TDataSetField = TDataset;
   TfrmPrevOrcamento = class(TfrmModeloRelatorio)
     rlgCompras: TRLGroup;
     rlsbDetalhe: TRLSubDetail;

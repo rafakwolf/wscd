@@ -16,7 +16,7 @@ inherited frmVendedor: TfrmVendedor
     ExplicitTop = 210
     ExplicitWidth = 522
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 522
     ExplicitWidth = 522
     inherited btnNovo: TSpeedButton

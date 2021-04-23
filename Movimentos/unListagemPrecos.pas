@@ -5,9 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Buttons, Grids, DBGrids, DB,
-  memds,  SqlDb, FMTBcd, unSimplePadrao, 
-   uniLabel,   uniEdit, 
-  uniComboBox, uniBasicGrid, uniDBGrid;
+  memds,  SqlDb, FMTBcd, unSimplePadrao, LCLType;
 
 type
   TfrmListagemPrecos = class(TfrmSimplePadrao)
@@ -118,8 +116,7 @@ begin
             QuotedStr('%'+edtPesquisa.Text+'%')+'))';
 
   cdsProduto.Close;
-  cdsProduto.SQL.Clear; SQL.Text :='';
-  cdsProduto.SQL.Clear; SQL.Text :=FSQL;
+  sqldProduto.SQL.Clear; sqldProduto.SQL.Text :=FSQL;
   cdsProduto.Open;
 end;
 
@@ -141,8 +138,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomCombobox) and
+             (TCustomCombobox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -154,11 +151,11 @@ begin
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end;
 end;

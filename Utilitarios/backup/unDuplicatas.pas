@@ -123,7 +123,7 @@ procedure TfrmDuplicatas.actPrintExecute(Sender: TObject);
         Self.cdsPadrao.Edit;
         Self.cdsPadraoIMPRESSA.AsString := 'S';
         Self.cdsPadraoDATAIMPRESSAO.AsDateTime := Date;
-        // Self.cdsPadrao.ApplyUpdates(0);
+        // Self.//cdsPadrao.ApplyUpdates(0);
 
         // imprime
         PrintIfNotEmptyRL(rrDuplicata);

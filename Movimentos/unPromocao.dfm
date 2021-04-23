@@ -16,7 +16,7 @@ inherited frmPromocao: TfrmPromocao
     ExplicitTop = 495
     ExplicitWidth = 790
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 790
     ExplicitWidth = 790
     inherited btnNovo: TSpeedButton

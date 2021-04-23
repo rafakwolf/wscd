@@ -5,10 +5,8 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, DateUtils,
-  ExtCtrls, ComCtrls,   DBCtrls, 
-  SqlDb,  memds, ConstPadrao, FMTBcd,  uniLabel,
-      uniPanel,
-   uniStatusBar, uniEdit, uniDBEdit, uniGroupBox;
+  ExtCtrls, ComCtrls, DBCtrls,
+  SqlDb,  memds, ConstPadrao, FMTBcd;
 
 type
   TfrmCR = class(TfrmPadrao)
@@ -61,12 +59,12 @@ type
     sqldPadraoCONTA: TStringField;
     cdsPadraoIDCONTA: TIntegerField;
     cdsPadraoCONTA: TStringField;
-    sqldPadraoVALORJURO: TSingleField;
-    sqldPadraoTOTAL: TSingleField;
-    sqldPadraoTOTALRECDO: TSingleField;
-    cdsPadraoVALORJURO: TSingleField;
-    cdsPadraoTOTAL: TSingleField;
-    cdsPadraoTOTALRECDO: TSingleField;
+    sqldPadraoVALORJURO: TFMTBCDField;
+    sqldPadraoTOTAL: TFMTBCDField;
+    sqldPadraoTOTALRECDO: TFMTBCDField;
+    cdsPadraoVALORJURO: TFMTBCDField;
+    cdsPadraoTOTAL: TFMTBCDField;
+    cdsPadraoTOTALRECDO: TFMTBCDField;
     lbStatus: TLabel;
     btnReceber: TBitBtn;
     btnContas: TBitBtn;
@@ -170,7 +168,7 @@ begin
   with TfrmPrevContasReceber.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELCR order by CLIENTE, DATA';
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select * from VIEWRELCR order by CLIENTE, DATA';
     cdsPadrao.Open;
     Titulo := 'Contas a receber';
     PrintIfNotEmptyRL(rrPadrao);
@@ -189,7 +187,7 @@ end;
 procedure TfrmCR.miContasVencidasClick(Sender: TObject);
 begin
   inherited;
-  with TfrmPrevRelCRAtrasadas.Create(Self), cdsPadrao do
+  with TfrmPrevRelCRAtrasadas.Create(Self), sqldPadrao do
   try
     Close;
     SQL.Clear; SQL.Text :='select * from VIEWRELCRATRASADOS order by CLIENTE, VENCIMENTO';
@@ -310,7 +308,7 @@ begin
   if cdsPadrao.State in [dsInsert] then
   begin
     if not cdsPadraoDOCUMENTO.IsNull then
-      if SelectSingleField('select count(1) from CONTASRECEBER where (DOCUMENTO = '+
+      if SelecTFMTBCDField('select count(1) from CONTASRECEBER where (DOCUMENTO = '+
         QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (CLIENTE = '+
         QuotedStr(IntToStr(cdsPadraoCLIENTE.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
       begin
@@ -342,7 +340,7 @@ begin
   // marca a conta
   cdsPadrao.Edit;
   cdsPadraoRECEBER.AsString := 'S';
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
 
   if cdsPadraoRECDA.AsString = 'N' then
   begin
@@ -357,7 +355,7 @@ begin
     // desmarca a conta
     cdsPadrao.Edit;
     cdsPadraoRECEBER.AsString := 'N';
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
     MsgAviso('�sta conta j� foi recebida');
   end;
 end;
@@ -400,7 +398,7 @@ begin
   frel := TfrmPrevContasReceber.Create(nil);
   try
     frel.cdsPadrao.Close;
-    frel.cdsPadrao.SQL.Clear; SQL.Text :='select '+
+    frel.sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                                   'DATA, '+
                                   'VENCIMENTO, '+
                                   'CLIENTE, '+

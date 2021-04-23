@@ -15,7 +15,7 @@ inherited frmEtiqueta: TfrmEtiqueta
     ExplicitTop = 465
     ExplicitWidth = 538
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 538
     ExplicitWidth = 538
   end

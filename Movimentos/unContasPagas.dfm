@@ -27,7 +27,7 @@ inherited frmContasPagas: TfrmContasPagas
     Color = clBtnFace
     ExplicitTop = 372
   end
-  object pnBotoes: TContainerPanel
+  object pnBotoes: TPanel
     Left = 0
     Top = 0
     Width = 930
@@ -465,13 +465,13 @@ inherited frmContasPagas: TfrmContasPagas
     object sqldPadraoATRASO: TIntegerField
       FieldName = 'ATRASO'
     end
-    object sqldPadraoVALORJURO: TSingleField
+    object sqldPadraoVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object sqldPadraoTOTAL: TSingleField
+    object sqldPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object sqldPadraoTOTALPAGO: TSingleField
+    object sqldPadraoTOTALPAGO: TFMTBCDField
       FieldName = 'TOTALPAGO'
     end
   end
@@ -573,13 +573,13 @@ inherited frmContasPagas: TfrmContasPagas
     object cdsPadraoATRASO: TIntegerField
       FieldName = 'ATRASO'
     end
-    object cdsPadraoVALORJURO: TSingleField
+    object cdsPadraoVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object cdsPadraoTOTAL: TSingleField
+    object cdsPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object cdsPadraoTOTALPAGO: TSingleField
+    object cdsPadraoTOTALPAGO: TFMTBCDField
       FieldName = 'TOTALPAGO'
     end
   end

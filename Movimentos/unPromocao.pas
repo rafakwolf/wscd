@@ -5,10 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
-  Grids, DBGrids, memds,
-    Sqldb, ConstPadrao, DateUtils, FMTBcd,
-       uniPanel,
-   uniStatusBar, uniBasicGrid, uniDBGrid;
+  Grids, DBGrids, memds, Sqldb, ConstPadrao, DateUtils, FMTBcd, lcltype;
 
 type
   TfrmPromocao = class(TfrmPadrao)
@@ -97,7 +94,7 @@ procedure TfrmPromocao.dbgrdPromocaoEditButtonClick(Sender: TObject);
 begin
   inherited;
   cdsProduto.Close;
-  cdsProduto.SQL.Clear; SQL.Text :=SQLProduto;
+  sqldProduto.SQL.Clear; sqldProduto.SQL.Text :=SQLProduto;
   cdsProduto.Open;
 
 //  if ModoInsertEdit(cdsPadrao) then
@@ -122,9 +119,9 @@ begin
   DisplayLabels := DL_PROMOCAO;
   aCaption      := 'Promo��o';
 
-  SQLProduto    := sqldProduto.CommandText;
-  SQLGrupo      := sqldGrupo.CommandText;
-  SQLForn       := sqldForn.CommandText;
+  SQLProduto    := sqldProduto.sql.text;
+  SQLGrupo      := sqldGrupo.sql.text;
+  SQLForn       := sqldForn.sql.text;
 end;
 
 procedure TfrmPromocao.cdsPadraoAfterInsert(DataSet: TDataSet);
@@ -191,7 +188,7 @@ procedure TfrmPromocao.AfterShow(var Msg: TMessage);
   function PromocoesVencidas: Boolean;
   begin
     Result :=
-      SelectSingleField('select count(1) from PROMOCAO where FIM < CURRENT_DATE',
+      SelecTFMTBCDField('select count(1) from PROMOCAO where FIM < CURRENT_DATE',
       sqldPadrao.SQLConnection) > 0;
   end;
 
@@ -211,7 +208,7 @@ var
 begin
   inherited;
   cdsGrupo.Close;
-  cdsGrupo.SQL.Clear; SQL.Text :=SQLGrupo;
+  sqldGrupo.SQL.Clear; sqldGrupo.SQL.Text :=SQLGrupo;
   cdsGrupo.Open;
 
 //  if TfrmModeloConsulta.Execute('Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
@@ -249,7 +246,7 @@ begin
 //          cdsPadraoDESCONTO.AsFloat  := Desconto;
 //          cdsPadraoINICIO.AsDateTime := Date;
 //          cdsPadraoFIM.AsDateTime    := IncDay(Date, Trunc(DiasPromocao));
-//          cdsPadrao.ApplyUpdates(0);
+//          //cdsPadrao.ApplyUpdates(0);
 //        end;
 //        cdsProduto.Next;
 //      end;
@@ -285,7 +282,7 @@ var
 begin
   inherited;
   cdsForn.Close;
-  cdsForn.SQL.Clear; SQL.Text :=SQLForn;
+  sqldForn.SQL.Clear; sqldForn.SQL.Text :=SQLForn;
   cdsForn.Open;
 
 //  if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
@@ -323,7 +320,7 @@ begin
 //          cdsPadraoDESCONTO.AsFloat  := Desconto;
 //          cdsPadraoINICIO.AsDateTime := Date;
 //          cdsPadraoFIM.AsDateTime    := IncDay(Date, Trunc(DiasPromocao));
-//          cdsPadrao.ApplyUpdates(0);
+//          //cdsPadrao.ApplyUpdates(0);
 //        end;
 //        cdsProduto.Next;
 //      end;

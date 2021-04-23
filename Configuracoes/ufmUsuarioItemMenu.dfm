@@ -15,7 +15,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     ExplicitTop = 493
     ExplicitWidth = 475
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 475
     ExplicitWidth = 475
   end

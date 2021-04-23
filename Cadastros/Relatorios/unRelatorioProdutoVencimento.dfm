@@ -7,7 +7,7 @@ inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
   ExplicitHeight = 337
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 264
     Width = 433
     ExplicitTop = 264

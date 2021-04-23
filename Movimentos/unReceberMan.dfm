@@ -420,13 +420,13 @@ inherited frmReceberMan: TfrmReceberMan
       FieldName = 'NOME'
       Size = 80
     end
-    object sqldContaReceberVALORJURO: TSingleField
+    object sqldContaReceberVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object sqldContaReceberTOTAL: TSingleField
+    object sqldContaReceberTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object sqldContaReceberTOTALRECDO: TSingleField
+    object sqldContaReceberTOTALRECDO: TFMTBCDField
       FieldName = 'TOTALRECDO'
     end
   end
@@ -531,13 +531,13 @@ inherited frmReceberMan: TfrmReceberMan
       FieldName = 'NOME'
       Size = 80
     end
-    object cdsContaReceberVALORJURO: TSingleField
+    object cdsContaReceberVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object cdsContaReceberTOTAL: TSingleField
+    object cdsContaReceberTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object cdsContaReceberTOTALRECDO: TSingleField
+    object cdsContaReceberTOTALRECDO: TFMTBCDField
       FieldName = 'TOTALRECDO'
     end
   end

@@ -15,7 +15,7 @@ inherited frmCliente: TfrmCliente
     ExplicitTop = 453
     ExplicitWidth = 785
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 785
     TabOrder = 28
     ExplicitWidth = 785

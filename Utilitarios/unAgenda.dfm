@@ -13,7 +13,7 @@ inherited frmAgenda: TfrmAgenda
     ExplicitTop = 370
     ExplicitWidth = 545
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 564
     TabOrder = 3
     ExplicitWidth = 545

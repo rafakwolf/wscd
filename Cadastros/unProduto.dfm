@@ -15,7 +15,7 @@ inherited frmProduto: TfrmProduto
     ExplicitTop = 401
     ExplicitWidth = 513
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 513
     TabOrder = 20
     ExplicitWidth = 513
@@ -477,7 +477,7 @@ inherited frmProduto: TfrmProduto
       BlobType = ftMemo
       Size = 1
     end
-    object sqldPadraoVALOR_ESTOQUE: TSingleField
+    object sqldPadraoVALOR_ESTOQUE: TFMTBCDField
       FieldName = 'VALOR_ESTOQUE'
     end
   end
@@ -630,7 +630,7 @@ inherited frmProduto: TfrmProduto
       BlobType = ftMemo
       Size = 1
     end
-    object cdsPadraoVALOR_ESTOQUE: TSingleField
+    object cdsPadraoVALOR_ESTOQUE: TFMTBCDField
       FieldName = 'VALOR_ESTOQUE'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'

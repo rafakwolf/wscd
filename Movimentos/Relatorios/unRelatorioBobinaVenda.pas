@@ -5,11 +5,10 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, Spin, ExtCtrls, DB,
-  memds, 
-  Sqldb, FMTBcd,   uniLabel, 
-   uniEdit, uniSpinEdit, uniMemo;
+  memds, Sqldb, FMTBcd, lcltype;
 
 type
+  TDataSetField = TDataset;
   TfrmRelatorioBobinaVenda = class(TfrmSimplePadrao)
     sqlVendas: TSQLQuery;
     sqlItens: TSQLQuery;
@@ -105,7 +104,7 @@ begin
     cdsVendas.Filtered := True;
 
     cdspagamento.Close;
-    cdspagamento.Params.ParamByName('VENDA').AsInteger := FIdVenda;
+    sqldpagamento.Params.ParamByName('VENDA').AsInteger := FIdVenda;
     cdspagamento.Open;
 
     VendaBobina;

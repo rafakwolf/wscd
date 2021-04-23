@@ -15,7 +15,7 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     ExplicitTop = 145
     ExplicitWidth = 535
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 535
     TabOrder = 3
     ExplicitWidth = 535

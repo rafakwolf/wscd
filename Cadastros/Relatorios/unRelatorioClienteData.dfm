@@ -7,7 +7,7 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
   ExplicitHeight = 185
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 112
     Width = 281
     ExplicitTop = 116

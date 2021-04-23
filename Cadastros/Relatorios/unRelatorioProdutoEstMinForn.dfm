@@ -5,7 +5,7 @@ inherited frmRelatorioProdutoEstMinForn: TfrmRelatorioProdutoEstMinForn
   ExplicitHeight = 209
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 136
   end
   object dbeForn: TDBEdit [1]

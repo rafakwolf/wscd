@@ -5,9 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Grids, DBGrids, DB, Buttons, StdCtrls, VarGlobal,
-  SqlDb,  memds, ComCtrls, FMTBcd, unSimplePadrao,
-      
-  uniStatusBar, uniGroupBox, uniPanel, uniEdit, uniBasicGrid, uniDBGrid;
+  SqlDb,  memds, ComCtrls, FMTBcd, unSimplePadrao,LCLType;
 
 type
   TfrmExclusaoProduto = class(TfrmSimplePadrao)
@@ -164,7 +162,7 @@ begin
   else
     cdsPadraoEXCLUIR.AsString := 'S';
 
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
   cdsPadrao.Next;
 end;
 

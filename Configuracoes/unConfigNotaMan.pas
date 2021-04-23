@@ -220,7 +220,7 @@ begin
       Exit;
   end;
 
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
   PostMessageAllForms(WM_CAMPO_CONFIG_NOTA);
 end;
 

@@ -7,7 +7,7 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
   ExplicitHeight = 223
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 150
     Width = 385
     TabOrder = 3

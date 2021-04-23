@@ -14,7 +14,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     ExplicitTop = 433
     ExplicitWidth = 484
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 484
     ExplicitWidth = 484
   end

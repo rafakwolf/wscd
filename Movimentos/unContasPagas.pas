@@ -5,11 +5,8 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, Buttons, DB, StdCtrls,  DBCtrls, SqlDb,
-  memds,  ConstPadrao, ComCtrls, unContasPagar,
-  Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal, uniMainMenu,
-      
-  uniStatusBar, uniPanel, uniLabel, uniEdit, uniDBEdit, uniGroupBox,
-  uniBasicGrid, uniDBGrid;
+  memds,  ConstPadrao, ComCtrls, unContasPagar,  LCLType,
+  Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal;
 
 type
   TfrmContasPagas = class(TfrmSimplePadrao)
@@ -63,12 +60,12 @@ type
     cdsPadraoDESCTO: TFMTBCDField;
     cdsPadraoOBS: TMemoField;
     cdsPadraoATRASO: TIntegerField;
-    sqldPadraoVALORJURO: TSingleField;
-    sqldPadraoTOTAL: TSingleField;
-    sqldPadraoTOTALPAGO: TSingleField;
-    cdsPadraoVALORJURO: TSingleField;
-    cdsPadraoTOTAL: TSingleField;
-    cdsPadraoTOTALPAGO: TSingleField;
+    sqldPadraoVALORJURO: TFMTBCDField;
+    sqldPadraoTOTAL: TFMTBCDField;
+    sqldPadraoTOTALPAGO: TFMTBCDField;
+    cdsPadraoVALORJURO: TFMTBCDField;
+    cdsPadraoTOTAL: TFMTBCDField;
+    cdsPadraoTOTALPAGO: TFMTBCDField;
     mmContasPagas: TMainMenu;
     miOpcoes: TMenuItem;
     miEstornar: TMenuItem;
@@ -76,7 +73,7 @@ type
     N1: TMenuItem;
     miFechar: TMenuItem;
     Stb: TStatusBar;
-    pnBotoes: TContainerPanel;
+    pnBotoes: TPanel;
     btnAtualizar: TSpeedButton;
     btnEstornar: TSpeedButton;
     btnFechar: TSpeedButton;
@@ -121,7 +118,7 @@ end;
 procedure TfrmContasPagas.miAtualizarClick(Sender: TObject);
 begin
   cdsPadrao.Close;
-  cdsPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
+  //cdsPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
   cdsPadrao.Open;
 end;
 
@@ -155,18 +152,18 @@ begin
           (ClearMask(DataF) <> '') then
         begin
           cdsPadrao.Close;
-          cdsPadrao.SQL.Clear; SQL.Text :=GetSQLFromQuery(cdsPadrao) +
+          sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
             ' and DATAPAGTO between :DATAI and :DATAF';
-          cdsPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
-          cdsPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
-          cdsPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
+          sqldPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
+          sqldPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
+          sqldPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
           cdsPadrao.Open;
           lbFiltrousado.Caption := 'Per�odo de '+DataI+' at� '+DataF;
         end;
       end;
    1: begin
         cdsPadrao.Close;
-        cdsPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
+        sqldPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
         cdsPadrao.Open;
         lbFiltrousado.Caption := 'Todas as contas pagas';
       end;
@@ -234,7 +231,7 @@ begin
       cdsPadraoCAPITALPAGO.AsFloat := 0;
       cdsPadraoJUROPAGO.AsFloat := 0;
       cdsPadraoDESCTO.AsFloat := 0;
-      cdsPadrao.ApplyUpdates(0);
+      ////cdsPadrao.ApplyUpdates(0);
       { delete conta restante }
       sqldContaEstorno.Close;
       sqldContaEstorno.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
@@ -259,7 +256,7 @@ begin
         cdsPadraoCAPITALPAGO.AsFloat := 0;
         cdsPadraoJUROPAGO.AsFloat := 0;
         cdsPadraoDESCTO.AsFloat := 0;
-        cdsPadrao.ApplyUpdates(0);
+        ////cdsPadrao.ApplyUpdates(0);
       end;
     end;
   finally
@@ -294,7 +291,7 @@ begin
     cdsPadraoPAGAR.AsString := 'S'
   else
     cdsPadraoPAGAR.AsString := 'N';
-  cdsPadrao.ApplyUpdates(0);
+  ////cdsPadrao.ApplyUpdates(0);
   cdsPadrao.Next;
 end;
 

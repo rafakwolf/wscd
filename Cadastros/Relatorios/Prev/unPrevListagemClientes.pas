@@ -90,7 +90,7 @@ begin
   inherited;
   sqldPadrao.SQLConnection := GetConnection;
   sqldPadrao.Close;
-  sqldPadrao.SQL.Clear; SQL.Text :='select'+
+  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select'+
                              ' CODIGO,'+
                              ' NOME,'+
                              ' ENDERECO,'+

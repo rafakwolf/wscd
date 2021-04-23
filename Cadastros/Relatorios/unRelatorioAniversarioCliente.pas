@@ -19,8 +19,8 @@ type
     cdsSelecao: TMemDataSet;
     cdsSelecaoDATAINI: TSQLTimeStampField;
     cdsSelecaoDATAFIM: TSQLTimeStampField;
-    pnDiaMesAno: TContainerPanel;
-    pnDatas: TContainerPanel;
+    pnDiaMesAno: TPanel;
+    pnDatas: TPanel;
     LabelMes: TLabel;
     LabelDo: TLabel;
     LabelAte: TLabel;

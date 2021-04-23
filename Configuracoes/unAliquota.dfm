@@ -13,7 +13,7 @@ inherited frmAliquota: TfrmAliquota
     ExplicitTop = 153
     ExplicitWidth = 393
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 393
     TabOrder = 2
     ExplicitWidth = 393

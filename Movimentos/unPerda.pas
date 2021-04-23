@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
   memds,  SqlDb, StdCtrls, DBCtrls, VarGlobal,
-     FMTBcd,  uniLabel,  
-    uniPanel,  uniStatusBar,
-  uniEdit, uniDBEdit, uniMemo, uniDBMemo, uniRadioGroup, uniDBRadioGroup;
+     FMTBcd, lcltype;
 
 type
   TfrmPerda = class(TfrmPadrao)

@@ -16,7 +16,7 @@ object frmPrevNotaProm: TfrmPrevNotaProm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlBotoes: TContainerPanel
+  object pnlBotoes: TPanel
     Left = 0
     Top = 97
     Width = 465

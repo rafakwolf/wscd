@@ -17,7 +17,7 @@ inherited frmRecibo: TfrmRecibo
     ExplicitTop = 259
     ExplicitWidth = 617
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 617
     TabOrder = 5
     ExplicitWidth = 617

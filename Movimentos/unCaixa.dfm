@@ -5373,7 +5373,7 @@ inherited frmCaixa: TfrmCaixa
     Color = clBtnFace
     ExplicitTop = 388
   end
-  object pnBotoes: TContainerPanel
+  object pnBotoes: TPanel
     Left = 0
     Top = 0
     Width = 958

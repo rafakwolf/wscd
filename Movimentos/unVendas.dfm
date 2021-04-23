@@ -16,7 +16,7 @@ inherited frmVendas: TfrmVendas
     ExplicitTop = 499
     ExplicitWidth = 890
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 890
     TabOrder = 20
     ExplicitWidth = 890
@@ -45,7 +45,7 @@ inherited frmVendas: TfrmVendas
       Font.Name = 'Verdana'
     end
   end
-  object pnlTotal: TContainerPanel [2]
+  object pnlTotal: TPanel [2]
     Left = 0
     Top = 464
     Width = 890
@@ -633,25 +633,25 @@ inherited frmVendas: TfrmVendas
       FieldName = 'NOMEPRODUTO'
       Size = 80
     end
-    object sqldSelecaoQTDE: TSingleField
+    object sqldSelecaoQTDE: TFMTBCDField
       FieldName = 'QTDE'
     end
-    object sqldSelecaoCUSTO: TSingleField
+    object sqldSelecaoCUSTO: TFMTBCDField
       FieldName = 'CUSTO'
     end
-    object sqldSelecaoVENDA: TSingleField
+    object sqldSelecaoVENDA: TFMTBCDField
       FieldName = 'VENDA'
     end
-    object sqldSelecaoDESCTO: TSingleField
+    object sqldSelecaoDESCTO: TFMTBCDField
       FieldName = 'DESCTO'
     end
-    object sqldSelecaoVALORDESCTO: TSingleField
+    object sqldSelecaoVALORDESCTO: TFMTBCDField
       FieldName = 'VALORDESCTO'
     end
-    object sqldSelecaoTOTAL: TSingleField
+    object sqldSelecaoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object sqldSelecaoCOMISSAO: TSingleField
+    object sqldSelecaoCOMISSAO: TFMTBCDField
       FieldName = 'COMISSAO'
     end
   end
@@ -674,25 +674,25 @@ inherited frmVendas: TfrmVendas
       FieldName = 'NOMEPRODUTO'
       Size = 80
     end
-    object cdsSelecaoQTDE: TSingleField
+    object cdsSelecaoQTDE: TFMTBCDField
       FieldName = 'QTDE'
     end
-    object cdsSelecaoCUSTO: TSingleField
+    object cdsSelecaoCUSTO: TFMTBCDField
       FieldName = 'CUSTO'
     end
-    object cdsSelecaoVENDA: TSingleField
+    object cdsSelecaoVENDA: TFMTBCDField
       FieldName = 'VENDA'
     end
-    object cdsSelecaoDESCTO: TSingleField
+    object cdsSelecaoDESCTO: TFMTBCDField
       FieldName = 'DESCTO'
     end
-    object cdsSelecaoVALORDESCTO: TSingleField
+    object cdsSelecaoVALORDESCTO: TFMTBCDField
       FieldName = 'VALORDESCTO'
     end
-    object cdsSelecaoTOTAL: TSingleField
+    object cdsSelecaoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object cdsSelecaoCOMISSAO: TSingleField
+    object cdsSelecaoCOMISSAO: TFMTBCDField
       FieldName = 'COMISSAO'
     end
   end

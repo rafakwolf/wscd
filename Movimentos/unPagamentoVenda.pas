@@ -5,9 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, StdCtrls, DB, SqlDb, memds,
-   Grids, DBGrids, FMTBcd, VarGlobal,  
-     uniLabel,  uniBasicGrid,
-  uniDBGrid;
+   Grids, DBGrids, FMTBcd, VarGlobal, LCLType;
 
 type
   TfrmPagamentoVenda = class(TForm)
@@ -68,7 +66,7 @@ begin
   if (Value > 0) then
   begin
     cdsVenda.Close;
-    cdsVenda.Params.ParamByName('VENDA').AsInteger := FIdVenda;
+    //cdsVenda.Params.ParamByName('VENDA').AsInteger := FIdVenda;
     cdsVenda.Open;
     Status;
   end;

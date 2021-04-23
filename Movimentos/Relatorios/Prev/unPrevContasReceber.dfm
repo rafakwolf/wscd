@@ -142,7 +142,7 @@ inherited frmPrevContasReceber: TfrmPrevContasReceber
       FieldName = 'CAPITAL'
       Precision = 15
     end
-    object sqldPadraoTOTAL: TSingleField
+    object sqldPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
   end
@@ -170,7 +170,7 @@ inherited frmPrevContasReceber: TfrmPrevContasReceber
       DisplayFormat = '#,##0.00'
       Precision = 15
     end
-    object cdsPadraoTOTAL: TSingleField
+    object cdsPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
   end

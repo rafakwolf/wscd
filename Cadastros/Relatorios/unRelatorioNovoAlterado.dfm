@@ -5,7 +5,7 @@ inherited frmRelatorioNovoAlterado: TfrmRelatorioNovoAlterado
   ExplicitHeight = 180
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 107
     inherited btnVisualizar: TBitBtn
       OnClick = btnVisualizarClick

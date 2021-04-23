@@ -7,7 +7,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
   ExplicitHeight = 247
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 174
     Width = 385
     TabOrder = 4

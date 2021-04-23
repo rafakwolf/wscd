@@ -5,10 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons,  Grids, DBGrids, Spin, DBCtrls, 
-  memds,  DB, 
-  SqlDb, DateUtils, ExtCtrls, FMTBcd,  
-  uniLabel,   uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid,
-  uniDBGrid;
+  memds,  DB, SqlDb, DateUtils, ExtCtrls, FMTBcd, lcltype;
 
 type
   TfrmParcelaVenda = class(TForm)
@@ -93,7 +90,7 @@ var
 begin
   if not cdsParcela.Active then
     cdsParcela.Open;
-  cdsParcela.EmptyDataSet;
+  //cdsParcela.EmptyDataSet;
   for x := 1 to seParcelas.Value do
   begin
     if cdsParcela.RecordCount < x then
@@ -156,7 +153,7 @@ procedure TfrmParcelaVenda.btnOkClick(Sender: TObject);
     with TSQLQuery.Create(nil) do
     try
       SQLConnection := GetConnection;
-      CommandType := ctStoredProc;
+      //CommandType := ctStoredProc;
       SQL.Clear; SQL.Text :='STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger := FIdVenda;
       Params.ParamByName('DATARECTO').AsDate := Date;
@@ -240,8 +237,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomCombobox) and
+             (TCustomCombobox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -253,11 +250,11 @@ begin
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end;
 end;

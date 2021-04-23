@@ -14,7 +14,7 @@ inherited frmCalendario: TfrmCalendario
   ExplicitHeight = 467
   PixelsPerInch = 96
   TextHeight = 13
-  object PanelDias: TContainerPanel
+  object PanelDias: TPanel
     Left = 0
     Top = 54
     Width = 490
@@ -43,7 +43,7 @@ inherited frmCalendario: TfrmCalendario
       ExplicitHeight = 161
     end
   end
-  object PanelMes: TContainerPanel
+  object PanelMes: TPanel
     Left = 0
     Top = 28
     Width = 490
@@ -75,7 +75,7 @@ inherited frmCalendario: TfrmCalendario
       OnKeyPress = FormKeyPress
     end
   end
-  object PanelExtra: TContainerPanel
+  object PanelExtra: TPanel
     Left = 0
     Top = 321
     Width = 490
@@ -306,7 +306,7 @@ inherited frmCalendario: TfrmCalendario
       ReadOnly = True
     end
   end
-  object PnBotoes: TContainerPanel
+  object PnBotoes: TPanel
     Left = 0
     Top = 0
     Width = 490

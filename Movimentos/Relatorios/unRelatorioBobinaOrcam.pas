@@ -5,10 +5,10 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao,  DB, memds, SqlDb,
-  StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd,  
-  uniLabel,   uniEdit, uniSpinEdit, uniMemo;
+  StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd;
 
 type
+  TDataSetField = TDataset;
   TfrmRelatorioBobinaOrcam = class(TfrmSimplePadrao)
     sqlOrcam: TSQLQuery;
     sqlDetOrcam: TSQLQuery;
@@ -151,7 +151,7 @@ begin
   if (Value > 0) then
   begin
     cdsOrcam.Close;
-    cdsOrcam.Params.ParamByName('IDORCAM').AsInteger := FIdOrcamento;
+    //sqldOrcam.Params.ParamByName('IDORCAM').AsInteger := FIdOrcamento;
     cdsOrcam.Open;
     OrcamentoBobina;
   end;

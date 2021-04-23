@@ -26,7 +26,7 @@ inherited frmContasReceber: TfrmContasReceber
     Color = clBtnFace
     ExplicitTop = 380
   end
-  object pnBotoes: TContainerPanel
+  object pnBotoes: TPanel
     Left = 0
     Top = 0
     Width = 762
@@ -692,13 +692,13 @@ inherited frmContasReceber: TfrmContasReceber
     object sqldPadraoATRASO: TIntegerField
       FieldName = 'ATRASO'
     end
-    object sqldPadraoVALORJURO: TSingleField
+    object sqldPadraoVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object sqldPadraoTOTAL: TSingleField
+    object sqldPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object sqldPadraoTOTALRECDO: TSingleField
+    object sqldPadraoTOTALRECDO: TFMTBCDField
       FieldName = 'TOTALRECDO'
     end
   end
@@ -799,15 +799,15 @@ inherited frmContasReceber: TfrmContasReceber
     object cdsPadraoATRASO: TIntegerField
       FieldName = 'ATRASO'
     end
-    object cdsPadraoVALORJURO: TSingleField
+    object cdsPadraoVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
       DisplayFormat = '#,##0.00'
     end
-    object cdsPadraoTOTAL: TSingleField
+    object cdsPadraoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
       DisplayFormat = '#,##0.00'
     end
-    object cdsPadraoTOTALRECDO: TSingleField
+    object cdsPadraoTOTALRECDO: TFMTBCDField
       FieldName = 'TOTALRECDO'
       DisplayFormat = '#,##0.00'
     end

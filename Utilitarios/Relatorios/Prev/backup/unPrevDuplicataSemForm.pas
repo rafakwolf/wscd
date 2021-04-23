@@ -151,7 +151,7 @@ begin
         EstiloFonte := 'Negrito It�lico Sublinhado';
       cdsPadraoESTILOFONTE.AsString :=  EstiloFonte;
     end;
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
 end;
 
 procedure TfrmPrevDuplicataSemForm.rrDuplicataAfterPrint(Sender: TObject);

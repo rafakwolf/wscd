@@ -15,7 +15,7 @@ inherited frmFornecedor: TfrmFornecedor
     ExplicitTop = 345
     ExplicitWidth = 705
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 705
     TabOrder = 16
     ExplicitWidth = 705

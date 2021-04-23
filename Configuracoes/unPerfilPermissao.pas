@@ -96,7 +96,7 @@ begin
       cdsPerfisConf.Post;
       cdsPerfisConf.Next;
     end;
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
   finally
     cdsPerfisConf.EnableControls;
   end;
@@ -116,7 +116,7 @@ begin
       cdsPerfisConf.Post;
       cdsPerfisConf.Next;
     end;
-    cdsPadrao.ApplyUpdates(0);
+    //cdsPadrao.ApplyUpdates(0);
   finally
     cdsPerfisConf.EnableControls;
   end;

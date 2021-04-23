@@ -29,8 +29,8 @@ type
     rlbCliente: TRLLabel;
     rlbValorCap: TRLLabel;
     rlbTotal: TRLLabel;
-    sqldPadraoTOTAL: TSingleField;
-    cdsPadraoTOTAL: TSingleField;
+    sqldPadraoTOTAL: TFMTBCDField;
+    cdsPadraoTOTAL: TFMTBCDField;
     procedure rrPadraoBeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure rbDetalheBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private

@@ -7,13 +7,13 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
   ExplicitHeight = 246
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 173
     Width = 521
     ExplicitTop = 173
     ExplicitWidth = 521
   end
-  object pnDiaMesAno: TContainerPanel [1]
+  object pnDiaMesAno: TPanel [1]
     Left = 8
     Top = 72
     Width = 249
@@ -114,7 +114,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       TabOrder = 2
     end
   end
-  object pnDatas: TContainerPanel [2]
+  object pnDatas: TPanel [2]
     Left = 264
     Top = 72
     Width = 257

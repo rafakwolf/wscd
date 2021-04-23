@@ -90,7 +90,7 @@ begin
 //    edtEmitente.Text := getdmpesquisar.cdsPesqClienteNOME.AsString;
 //    edtCpfCnpjEmitente.Text := getdmpesquisar.cdsPesqClienteCPF_CNPJ.AsString;
 //    edtEndereco.Text :=
-//      SelectSingleField('select ENDERECO from CLIENTES where CODCLIENTE = '+
+//      SelecTFMTBCDField('select ENDERECO from CLIENTES where CODCLIENTE = '+
 //        QuotedStr(IntToStr(getdmpesquisar.cdsPesqCliente.FieldByName('CODCLIENTE').asinteger)),
 //        GetConnection);
 //  end;

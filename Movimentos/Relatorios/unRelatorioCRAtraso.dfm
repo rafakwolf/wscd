@@ -9,7 +9,7 @@ inherited frmRelatorioCRAtraso: TfrmRelatorioCRAtraso
   ExplicitHeight = 166
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     Top = 93
     Width = 401
     ExplicitTop = 97

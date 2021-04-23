@@ -35,7 +35,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clBtnFace
     ExplicitTop = 527
   end
-  object pnBotoes: TContainerPanel
+  object pnBotoes: TPanel
     Left = 0
     Top = 0
     Width = 789
@@ -1772,7 +1772,7 @@ object frmOrcamentos: TfrmOrcamentos
       OnClick = btnPrimeiroClick
     end
   end
-  object pnlTotal: TContainerPanel
+  object pnlTotal: TPanel
     Left = 0
     Top = 470
     Width = 789
@@ -2522,19 +2522,19 @@ object frmOrcamentos: TfrmOrcamentos
       FieldName = 'QTDE'
       Required = True
     end
-    object sqldSelecaoCUSTO: TSingleField
+    object sqldSelecaoCUSTO: TFMTBCDField
       FieldName = 'CUSTO'
     end
-    object sqldSelecaoVENDA: TSingleField
+    object sqldSelecaoVENDA: TFMTBCDField
       FieldName = 'VENDA'
     end
-    object sqldSelecaoDESCTO: TSingleField
+    object sqldSelecaoDESCTO: TFMTBCDField
       FieldName = 'DESCTO'
     end
-    object sqldSelecaoVALORDESCTO: TSingleField
+    object sqldSelecaoVALORDESCTO: TFMTBCDField
       FieldName = 'VALORDESCTO'
     end
-    object sqldSelecaoTOTAL: TSingleField
+    object sqldSelecaoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
   end
@@ -2561,19 +2561,19 @@ object frmOrcamentos: TfrmOrcamentos
       FieldName = 'QTDE'
       Required = True
     end
-    object cdsSelecaoCUSTO: TSingleField
+    object cdsSelecaoCUSTO: TFMTBCDField
       FieldName = 'CUSTO'
     end
-    object cdsSelecaoVENDA: TSingleField
+    object cdsSelecaoVENDA: TFMTBCDField
       FieldName = 'VENDA'
     end
-    object cdsSelecaoDESCTO: TSingleField
+    object cdsSelecaoDESCTO: TFMTBCDField
       FieldName = 'DESCTO'
     end
-    object cdsSelecaoVALORDESCTO: TSingleField
+    object cdsSelecaoVALORDESCTO: TFMTBCDField
       FieldName = 'VALORDESCTO'
     end
-    object cdsSelecaoTOTAL: TSingleField
+    object cdsSelecaoTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
   end

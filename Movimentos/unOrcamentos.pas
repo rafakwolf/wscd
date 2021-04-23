@@ -5,12 +5,10 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, DBCtrls, StdCtrls, DB,  Grids, DBGrids, Buttons,
-  SqlDb, Menus, ComCtrls, memds,  
-   ConstPadrao, FMTBcd, uniMainMenu,  
-     uniStatusBar, uniPanel, uniLabel,
-  uniEdit, uniDBEdit, uniMemo, uniDBMemo, uniBasicGrid, uniDBGrid;
+  SqlDb, Menus, ComCtrls, memds, LCLtype;
 
 type
+  TDataSetField = TDataset;
   TfrmOrcamentos = class(TForm)
     dtOrcam: TComponent;
     cdsOrcam: TMemDataSet;
@@ -122,19 +120,19 @@ type
     sqldSelecaoPRODUTO: TIntegerField;
     sqldSelecaoNOMEPRODUTO: TStringField;
     sqldSelecaoQTDE: TIntegerField;
-    sqldSelecaoCUSTO: TSingleField;
-    sqldSelecaoVENDA: TSingleField;
-    sqldSelecaoDESCTO: TSingleField;
-    sqldSelecaoVALORDESCTO: TSingleField;
-    sqldSelecaoTOTAL: TSingleField;
+    sqldSelecaoCUSTO: TFMTBCDField;
+    sqldSelecaoVENDA: TFMTBCDField;
+    sqldSelecaoDESCTO: TFMTBCDField;
+    sqldSelecaoVALORDESCTO: TFMTBCDField;
+    sqldSelecaoTOTAL: TFMTBCDField;
     cdsSelecaoPRODUTO: TIntegerField;
     cdsSelecaoNOMEPRODUTO: TStringField;
     cdsSelecaoQTDE: TIntegerField;
-    cdsSelecaoCUSTO: TSingleField;
-    cdsSelecaoVENDA: TSingleField;
-    cdsSelecaoDESCTO: TSingleField;
-    cdsSelecaoVALORDESCTO: TSingleField;
-    cdsSelecaoTOTAL: TSingleField;
+    cdsSelecaoCUSTO: TFMTBCDField;
+    cdsSelecaoVENDA: TFMTBCDField;
+    cdsSelecaoDESCTO: TFMTBCDField;
+    cdsSelecaoVALORDESCTO: TFMTBCDField;
+    cdsSelecaoTOTAL: TFMTBCDField;
     Menu: TMainMenu;
     miRegistro: TMenuItem;
     miPrimeiro: TMenuItem;
@@ -173,7 +171,7 @@ type
     N4: TMenuItem;
     Oramentoembobina1: TMenuItem;
     stbOrcamento: TStatusBar;
-    pnBotoes: TContainerPanel;
+    pnBotoes: TPanel;
     btnFechar: TSpeedButton;
     btnConsultar: TSpeedButton;
     btnCancel: TSpeedButton;
@@ -185,7 +183,7 @@ type
     btnProximo: TSpeedButton;
     btnAnterior: TSpeedButton;
     btnPrimeiro: TSpeedButton;
-    pnlTotal: TContainerPanel;
+    pnlTotal: TPanel;
     LabelObs: TLabel;
     lbNumero: TLabel;
     LabelStatus: TLabel;
@@ -307,8 +305,8 @@ end;
 
 procedure TfrmOrcamentos.btnCancelClick(Sender: TObject);
 begin
-  cdsOrcam.CancelUpdates;
-  cdsSelecao.CancelUpdates;
+  //cdsOrcam.CancelUpdates;
+  //cdsSelecao.CancelUpdates;
 end;
 
 procedure TfrmOrcamentos.grdItensDblClick(Sender: TObject);
@@ -335,9 +333,9 @@ begin
   Codigo := '0';
   if InputQuery('Localiza por n�mero', 'N�mero do or�amento:', Codigo) and (Codigo <> '0') then
   begin
-    cdsOrcam.IndexFieldNames := 'CODIGO';
-    if not cdsOrcam.Locate('CODIGO', Codigo, []) then
-      MsgAviso(Codigo+' n�o encontrado.');
+    //cdsOrcam.IndexFieldNames := 'CODIGO';
+    //if not cdsOrcam.Locate('CODIGO', Codigo, []) then
+    //  MsgAviso(Codigo+' n�o encontrado.');
   end;
 end;
 
@@ -379,7 +377,7 @@ begin
     if Configuracao.OrcamConcluido then
     begin
       NroOrcamentoAberto :=
-        SelectSingleField('SELECT COUNT(1) NUM FROM ORCAMENTO WHERE CONCLUIDO = ' +
+        SelecTFMTBCDField('SELECT COUNT(1) NUM FROM ORCAMENTO WHERE CONCLUIDO = ' +
           QuotedStr('N'), GetConnection);
 
       if (NroOrcamentoAberto > 0) then
@@ -396,7 +394,7 @@ begin
         end;
       end;
     end;
-    SQLPadrao := sqlOrcam.CommandText;
+    SQLPadrao := sqlOrcam.sql.text;
   finally
   end;
 end;
@@ -417,7 +415,7 @@ begin
     if ValidaFieldsVazios([cdsOrcamCODCLIENTE, cdsOrcamDATA, cdsOrcamIDVENDEDOR],
       ['Cliente', 'Data', 'Vendedor']) = '' then
       //Salvar(cdsOrcam)
-      cdsOrcam.ApplyUpdates(0)
+      //cdsOrcam.ApplyUpdates(0)
     else
       MsgCuidado('Or�amento incompleto.');
   except
@@ -434,20 +432,20 @@ begin
     if (ClearMask(dtI) <> '') and (ClearMask(dtF) <> '') then
     begin
       cdsOrcam.Close;
-      cdsOrcam.SQL.Clear; SQL.Text := 'select * from ORCAMENTO ' +
-        'where DATA between :DATAINI and :DATAFIM';
-      cdsOrcam.Params.ParamByName('DATAINI').AsDate := StrToDate(dtI);
-      cdsOrcam.Params.ParamByName('DATAFIM').AsDate := StrToDate(dtF);
+      //cdsOrcam.SQL.Clear; SQL.Text := 'select * from ORCAMENTO ' +
+      //  'where DATA between :DATAINI and :DATAFIM';
+      //cdsOrcam.Params.ParamByName('DATAINI').AsDate := StrToDate(dtI);
+      //cdsOrcam.Params.ParamByName('DATAFIM').AsDate := StrToDate(dtF);
       cdsOrcam.Open;
 
       if cdsOrcam.IsEmpty then
       begin
-        MsgCuidado(UM_PESQUISAVAZIO);
+        //MsgCuidado(UM_PESQUISAVAZIO);
         Exit;
       end;
     end
     else
-      MsgErro(UM_DATAINVALIDA);
+      //MsgErro(UM_DATAINVALIDA);
   end;
 end;
 
@@ -469,7 +467,7 @@ begin
     Valor := (cdsOrcamTOTAL.AsFloat * (Percent/100));
     cdsOrcam.Edit;
     cdsOrcamTOTAL.AsFloat := (cdsOrcamTOTAL.AsFloat - Valor);
-    cdsOrcam.ApplyUpdates(0);
+    //cdsOrcam.ApplyUpdates(0);
   end
   else
     MsgErro('Informe o valor do desconto.');
@@ -480,7 +478,7 @@ begin
   try
     cdsOrcam.DisableControls;
     cdsOrcam.Close;
-    cdsOrcam.SQL.Clear; SQL.Text :=SQLPadrao;
+    //cdsOrcam.SQL.Clear; SQL.Text :=SQLPadrao;
     cdsOrcam.Filtered := False;
     cdsOrcam.Open;
   finally
@@ -493,7 +491,7 @@ begin
   with TfrmPrevOrcamento.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.Params.ParamByName('PCODIGO').AsInteger := cdsOrcamCODIGO.AsInteger;
+    //cdsPadrao.Params.ParamByName('PCODIGO').AsInteger := cdsOrcamCODIGO.AsInteger;
     cdsPadrao.Open;
     //lbTitulo.Caption := Global.TituloOrcamento;
     PrintIfNotEmptyRL(rrPadrao);
@@ -523,7 +521,7 @@ begin
   begin
     cdsOrcam.Edit;
     cdsOrcamCONCLUIDO.AsString := 'S';
-    cdsOrcam.ApplyUpdates(0);
+    //cdsOrcam.ApplyUpdates(0);
     MsgAviso('Or�amento conclu�do com sucesso!');
   end;
   { se houver s� um or�amento n�o conclu�do quando ele for conclu�do o dataset
@@ -556,14 +554,14 @@ procedure TfrmOrcamentos.InsereProduto;
   function DescontoPromocao(IdProduto: Integer): Extended;
   begin
     Result :=
-      SelectSingleField('select DESCONTO from PROMOCAO where PRODUTO = '+
+      SelecTFMTBCDField('select DESCONTO from PROMOCAO where PRODUTO = '+
         QuotedStr(IntToStr(IdProduto)), sqlOrcam.SQLConnection);
   end;
 
   function PrecoPromocao(IdProduto: Integer): Extended;
   begin
     Result :=
-      SelectSingleField('select PRECO from PROMOCAO where PRODUTO = '+
+      SelecTFMTBCDField('select PRECO from PROMOCAO where PRODUTO = '+
         QuotedStr(IntToStr(IdProduto)), sqlOrcam.SQLConnection);
   end;
 
@@ -691,10 +689,10 @@ var x: Integer;
 begin
   for x := 0 to ComponentCount - 1 do
   begin
-    if Components[x] is TCustomSQLDataSet then
+    if Components[x] is TSQLQuery then
     begin
-      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
+      if (not Assigned(TSQLQuery(Components[x]).SQLConnection)) then
+        TSQLQuery(Components[x]).SQLConnection := GetConnection;
     end;
   end;
 
@@ -795,8 +793,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomCombobox) and
+             (TCustomCombobox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -808,11 +806,11 @@ begin
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end;
 end;
@@ -853,7 +851,7 @@ begin
   begin
     cdsOrcam.Edit;
     cdsOrcamCONCLUIDO.AsString := 'N';
-    cdsOrcam.ApplyUpdates(0);
+    //cdsOrcam.ApplyUpdates(0);
     MsgAviso('Or�amento reaberto com sucesso!');
   end;
 end;

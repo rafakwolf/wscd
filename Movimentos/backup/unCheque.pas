@@ -260,7 +260,7 @@ begin
     cdsPadraoNUMERO.AsString  := varNroCheque;
     cdsPadraoIDBANCO.AsInteger := StrToInt(varBanco);
 
-    //BancoExiste := SelectSingleField('select count(1) from BANCO where IDBANCO = '+
+    //BancoExiste := SelecTFMTBCDField('select count(1) from BANCO where IDBANCO = '+
     //                 QuotedStr(varBanco), GetConnection]) > 0;
     if not BancoExiste then
     begin
@@ -372,7 +372,7 @@ begin
     EstornaCheque;
     cdsPadrao.Edit;
     cdsPadraoDATABAIXADO.Clear;
-    //cdsPadrao.ApplyUpdates(0);
+    ////cdsPadrao.ApplyUpdates(0);
     cdsPadraoAfterScroll(cdsPadrao);
     MsgAviso('Cheque estornado!');
   end;
@@ -519,7 +519,7 @@ begin
 
   cdsPadrao.Edit;
   cdsPadraoDATABAIXADO.AsDateTime := StrToDate(vDataBaixa);
-  cdsPadrao.ApplyUpdates(0);
+  //cdsPadrao.ApplyUpdates(0);
 
   MsgAviso('Cheque baixado!');
 end;

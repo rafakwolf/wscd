@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, SqlDb, DBCtrls, udmGeralBase,
-   memds,  StrUtils,  ExtDlgs, FMTBcd,
-     
-    uniPanel, uniStatusBar, uniEdit, uniDBEdit;
+   memds,  StrUtils,  ExtDlgs, FMTBcd, LCLType;
 
 type
   TfrmCliente = class(TfrmPadrao)

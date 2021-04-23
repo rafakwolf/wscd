@@ -36,7 +36,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Color = clBtnFace
     ExplicitTop = 561
   end
-  object PanelTotais: TContainerPanel
+  object PanelTotais: TPanel
     Left = 0
     Top = 488
     Width = 810
@@ -203,7 +203,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Color = clInfoBk
     end
   end
-  object pnlBotoes: TContainerPanel
+  object pnlBotoes: TPanel
     Left = 0
     Top = 0
     Width = 810

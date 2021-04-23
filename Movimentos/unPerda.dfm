@@ -14,7 +14,7 @@ inherited frmPerda: TfrmPerda
     ExplicitTop = 377
     ExplicitWidth = 473
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 473
     TabOrder = 6
     ExplicitWidth = 473

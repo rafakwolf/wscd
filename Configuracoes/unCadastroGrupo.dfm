@@ -13,7 +13,7 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
     ExplicitTop = 137
     ExplicitWidth = 606
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 529
     TabOrder = 2
     ExplicitWidth = 606

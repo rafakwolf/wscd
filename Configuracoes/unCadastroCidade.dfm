@@ -15,7 +15,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     ExplicitTop = 182
     ExplicitWidth = 472
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 472
     TabOrder = 2
     ExplicitWidth = 472

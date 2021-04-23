@@ -3,7 +3,7 @@ inherited frmRelatorioCRData: TfrmRelatorioCRData
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
-  inherited pnButtons: TContainerPanel
+  inherited pnButtons: TPanel
     ExplicitTop = 130
     ExplicitWidth = 298
   end

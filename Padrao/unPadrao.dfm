@@ -32,7 +32,7 @@ object frmPadrao: TfrmPadrao
     ParentColor = False
     Color = clBtnFace
   end
-  object pnBotoesPadrao: TContainerPanel
+  object pnBotoesPadrao: TPanel
     Left = 0
     Top = 0
     Width = 755

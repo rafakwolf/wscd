@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls,  DBCtrls, Buttons, DB, varglobal,
    memds,  SqlDb, unContasReceber, Grids,
-  DBGrids, FMTBcd, unSimplePadrao,   uniLabel,
-    uniEdit, uniDBEdit, uniPanel, uniBasicGrid, uniDBGrid,
-  uniRadioGroup;
+  DBGrids, FMTBcd, unSimplePadrao, LCLType;
 
 type
   TfrmReceberMan = class(TfrmSimplePadrao)
@@ -66,12 +64,12 @@ type
     cdsSelecaoIDBANCO: TIntegerField;
     cdsSelecaoBANCO: TStringField;
     dsSelecao: TDataSource;
-    sqldContaReceberVALORJURO: TSingleField;
-    sqldContaReceberTOTAL: TSingleField;
-    sqldContaReceberTOTALRECDO: TSingleField;
-    cdsContaReceberVALORJURO: TSingleField;
-    cdsContaReceberTOTAL: TSingleField;
-    cdsContaReceberTOTALRECDO: TSingleField;
+    sqldContaReceberVALORJURO: TFMTBCDField;
+    sqldContaReceberTOTAL: TFMTBCDField;
+    sqldContaReceberTOTALRECDO: TFMTBCDField;
+    cdsContaReceberVALORJURO: TFMTBCDField;
+    cdsContaReceberTOTAL: TFMTBCDField;
+    cdsContaReceberTOTALRECDO: TFMTBCDField;
     lblBandaMagnetica: TLabel;
     lblEmissao: TLabel;
     lblVenc: TLabel;
@@ -179,7 +177,7 @@ begin
     cdsContaReceberJURORECDO.AsFloat    := JurosReceber;
     cdsContaReceberCAPITALRECDO.AsFloat := (ValorReceber - JurosReceber);
     cdsContaReceberDESCTO.AsFloat       := 0;
-    cdsContaReceber.ApplyUpdates(0);
+    //cdsContaReceber.ApplyUpdates(0);
 
     // ajusta uma nova conta com o restante
     cdsContaReceber.Insert;
@@ -199,7 +197,7 @@ begin
     cdsContaReceberCAPITALRECDO.AsFloat := 0;
     cdsContaReceberJURORECDO.AsFloat    := 0;
     cdsContaReceberDESCTO.AsFloat       := 0;
-    cdsContaReceber.ApplyUpdates(0);
+    //cdsContaReceber.ApplyUpdates(0);
 
     { caixa }
     desc := 'Rec. parc. '+NomeCliOld+' Doc. '+DocumentoOld;
@@ -224,7 +222,7 @@ begin
     cdsContaReceberJURORECDO.AsFloat    := JurosReceber;
     cdsContaReceberCAPITALRECDO.AsFloat := (ValorReceber - JurosReceber);
     cdsContaReceberDESCTO.AsFloat       := (TotalOld - ValorReceber);
-    cdsContaReceber.ApplyUpdates(0);
+    //cdsContaReceber.ApplyUpdates(0);
 
     { caixa }
     desc := 'Rec. '+cdsContaReceberNOMECLIENTE.AsString+' Doc. '+cdsContaReceberDOCUMENTO.AsString;
@@ -258,7 +256,7 @@ begin
       cdsContaReceberCAPITALRECDO.AsFloat :=
         (cdsContaReceberTOTAL.AsFloat - cdsContaReceberVALORJURO.AsFloat);
       cdsContaReceberDESCTO.AsFloat       := 0;
-      cdsContaReceber.ApplyUpdates(0);
+      //cdsContaReceber.ApplyUpdates(0);
 
       cdsContaReceber.Next;
     end;
@@ -369,7 +367,7 @@ begin
   end;
 
   dbValor.Text := FormatFloat('0.00',
-    SelectSingleField('select sum(TOTAL) from CONTASRECEBER where RECEBER = '+
+    SelecTFMTBCDField('select sum(TOTAL) from CONTASRECEBER where RECEBER = '+
     QuotedStr('S'), sqldContaReceber.SQLConnection));
 
   rgreceb.OnClick(Self);

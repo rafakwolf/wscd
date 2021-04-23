@@ -13,7 +13,7 @@ inherited frmEnvelopes: TfrmEnvelopes
     ExplicitTop = 227
     ExplicitWidth = 649
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 649
     TabOrder = 6
     ExplicitWidth = 649

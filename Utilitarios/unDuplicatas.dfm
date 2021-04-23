@@ -15,7 +15,7 @@ inherited frmDuplicatas: TfrmDuplicatas
     ExplicitTop = 507
     ExplicitWidth = 545
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 545
     TabOrder = 21
     ExplicitWidth = 545

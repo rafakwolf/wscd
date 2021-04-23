@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlDb, DBCtrls, 
-  memds,  ConstPadrao,   FMTBcd, 
-   uniPanel,   uniEdit, uniDBEdit;
+  memds,  ConstPadrao,   FMTBcd, lcltype;
 
 type
   TfrmPrevNotaProm = class(TForm)
@@ -30,7 +29,7 @@ type
     cdsPadraoDATA_NASC: TDateField;
     cdsPadraoLIMITE: TFMTBCDField;
     cdsPadraoDESCRICAO: TStringField;
-    pnlBotoes: TContainerPanel;
+    pnlBotoes: TPanel;
     btnImp: TBitBtn;
     btnCancel: TBitBtn;
     btnImprimir: TBitBtn;

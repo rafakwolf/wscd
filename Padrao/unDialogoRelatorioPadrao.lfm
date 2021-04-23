@@ -1,5 +1,5 @@
 object frmDialogoRelatorioPadrao: TfrmDialogoRelatorioPadrao
-  object pnButtons: TContainerPanel
+  object pnButtons: TPanel
     Left = 0
     Top = 209
     Width = 454

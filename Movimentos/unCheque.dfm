@@ -17,7 +17,7 @@ inherited frmCheque: TfrmCheque
     ExplicitWidth = 537
     ExplicitHeight = 22
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 537
     TabOrder = 15
     ExplicitWidth = 537

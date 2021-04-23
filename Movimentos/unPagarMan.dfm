@@ -418,13 +418,13 @@ inherited frmPagarMan: TfrmPagarMan
       FieldName = 'CONTA'
       Size = 80
     end
-    object sqldContasPagarVALORJURO: TSingleField
+    object sqldContasPagarVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object sqldContasPagarTOTAL: TSingleField
+    object sqldContasPagarTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object sqldContasPagarTOTALPAGO: TSingleField
+    object sqldContasPagarTOTALPAGO: TFMTBCDField
       FieldName = 'TOTALPAGO'
     end
   end
@@ -530,13 +530,13 @@ inherited frmPagarMan: TfrmPagarMan
       FieldName = 'CONTA'
       Size = 80
     end
-    object cdsContasPagarVALORJURO: TSingleField
+    object cdsContasPagarVALORJURO: TFMTBCDField
       FieldName = 'VALORJURO'
     end
-    object cdsContasPagarTOTAL: TSingleField
+    object cdsContasPagarTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
     end
-    object cdsContasPagarTOTALPAGO: TSingleField
+    object cdsContasPagarTOTALPAGO: TFMTBCDField
       FieldName = 'TOTALPAGO'
     end
   end

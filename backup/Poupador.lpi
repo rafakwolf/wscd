@@ -61,6 +61,7 @@
       <Unit5>
         <Filename Value="Padrao/ufmImprimeEtiq.pas"/>
         <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="Padrao/unDialogoRelatorioPadrao.pas"/>

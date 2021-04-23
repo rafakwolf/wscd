@@ -5,10 +5,8 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, ComCtrls,  DB,
-  memds,  SqlDb,
-  Grids, DBGrids, Spin, StdCtrls,  DBCtrls,
-  Buttons, DateUtils, FMTBcd,   uniLabel,
-    uniEdit, uniDBEdit, uniSpinEdit, uniBasicGrid, uniDBGrid;
+  memds,  SqlDb, Grids, DBGrids, Spin, StdCtrls,  DBCtrls,
+  Buttons, DateUtils, FMTBcd;
 
 type
   TfrmParcelaCPCR = class(TfrmSimplePadrao)
@@ -99,7 +97,7 @@ procedure TfrmParcelaCPCR.GeraParcelas;
 var
   x: Integer;
 begin
-  cdsParcela.EmptyDataSet;
+  //cdsParcela.EmptyDataSet;
   for x := 1 to seParcelas.Value do
   begin
     if cdsParcela.RecordCount < x then
@@ -308,8 +306,8 @@ begin
   if Key = #13 then
   begin
     if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombo) and
-             (TCustomCombo(ActiveControl).DroppedDown)) then
+            ((ActiveControl is TCustomCombobox) and
+             (TCustomCombobox(ActiveControl).DroppedDown)) then
     begin
       Key := #0;
       Exit;
@@ -321,11 +319,11 @@ begin
     end
     else if (ActiveControl is TDBGrid) then
     begin
-      with TDBGrid(ActiveControl) do
-        if SelectedIndex < (FieldCount-1) then
-          SelectedIndex := SelectedIndex+1
-        else
-          SelectedIndex := 0;
+      //with TDBGrid(ActiveControl) do
+      //  if SelectedIndex < (FieldCount-1) then
+      //    SelectedIndex := SelectedIndex+1
+      //  else
+      //    SelectedIndex := 0;
     end;
   end; 
 end;

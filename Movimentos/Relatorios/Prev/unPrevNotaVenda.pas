@@ -8,6 +8,7 @@ uses
    DB, Sqldb, FMTBcd;
 
 type
+  TDataSetField = TDataset;
   TfrmPrevNotaVenda = class(TForm)
     rlrNotaVenda: TRLReport;
     rlbCabecalho: TRLBand;

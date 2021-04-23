@@ -14,7 +14,7 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     ExplicitTop = 289
     ExplicitWidth = 553
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 553
     TabOrder = 3
     ExplicitWidth = 553

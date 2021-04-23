@@ -89,7 +89,7 @@ begin
     Exit;
   end
   else
-    //cdsPadrao.ApplyUpdates(0);
+    ////cdsPadrao.ApplyUpdates(0);
 end;
 
 procedure TfrmLancCaixa.btnCancelClick(Sender: TObject);

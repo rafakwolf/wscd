@@ -10,10 +10,10 @@ uses
 
 type
   TfrmCalendario = class(TfrmSimplePadrao)
-    PanelDias: TContainerPanel;
-    PanelMes: TContainerPanel;
-    PanelExtra: TContainerPanel;
-    PnBotoes: TContainerPanel;
+    PanelDias: TPanel;
+    PanelMes: TPanel;
+    PanelExtra: TPanel;
+    PnBotoes: TPanel;
     Futura: TSpeedButton;
     Calculo: TSpeedButton;
     btnHoje: TSpeedButton;

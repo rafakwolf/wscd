@@ -16,7 +16,7 @@ inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
     ExplicitTop = 388
     ExplicitWidth = 465
   end
-  inherited pnBotoesPadrao: TContainerPanel
+  inherited pnBotoesPadrao: TPanel
     Width = 513
     ExplicitWidth = 465
   end

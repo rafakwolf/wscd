@@ -5,7 +5,7 @@ interface
 uses Classes, VarGlobal, SQLDB, memds;
 
 procedure UpdateSingleField(sqlText: String);
-function SelectSingleField(query: string; conn: TSQLConnection): Variant;
+function SelecTFMTBCDField(query: string; conn: TSQLConnection): Variant;
 function GetProximoID(tabela, fieldId: string; conn: TSQLConnection): Integer;
 function SQLFind(tabela, campo, valor: string; conn: TSQLConnection): boolean;
 function GetFieldByID(conn: TSQLConnection; tabela, campoPesquisar,
@@ -26,7 +26,7 @@ begin
   end;
 end;
 
-function SelectSingleField(query: string; conn: TSQLConnection): Variant;
+function SelecTFMTBCDField(query: string; conn: TSQLConnection): Variant;
 begin
   with TSQLQuery.Create(nil)do try
       SQLConnection:= GetConnection;

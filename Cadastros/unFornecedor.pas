@@ -255,7 +255,7 @@ begin
           begin
             cdsPadrao.Edit;
             cdsPadraoCNPJ.AsString := FormatarDoc(cdsPadraoCNPJ.AsString, 1);
-            cdsPadrao.ApplyUpdates(0);
+            //cdsPadrao.ApplyUpdates(0);
           end;}
         end;
         cdsPadrao.Next;

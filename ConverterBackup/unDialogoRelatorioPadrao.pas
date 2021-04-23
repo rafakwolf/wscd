@@ -10,7 +10,7 @@ uses
 type
   TfrmDialogoRelatorioPadrao = class(TForm)
     dsPadrao: TDataSource;
-    pnButtons: TContainerPanel;
+    pnButtons: TPanel;
     btnImprimir: TBitBtn;
     btnVisualizar: TBitBtn;
     btnSair: TBitBtn;
