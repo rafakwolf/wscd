@@ -1,7 +1,7 @@
 object frmPrevNotaProm: TfrmPrevNotaProm
-  Left = 224
+  Left = 271
   Height = 180
-  Top = 159
+  Top = 162
   Width = 541
   BorderStyle = bsSingle
   Caption = 'frmPrevNotaProm'

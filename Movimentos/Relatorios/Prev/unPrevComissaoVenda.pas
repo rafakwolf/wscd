@@ -77,7 +77,7 @@ begin
   inherited;
   rlblTotalFinal.Caption :=
     'Total da venda: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'TOTAL', '', ''))+'   '+
-    'Total comiss�es: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'COMISSAO', '', ''));
+    'Total comissões: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'COMISSAO', '', ''));
 end;
 
 end.

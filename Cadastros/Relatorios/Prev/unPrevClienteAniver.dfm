@@ -1,38 +1,29 @@
 inherited frmPrevClientesAniver: TfrmPrevClientesAniver
+  Left = 310
+  Width = 812
   Caption = 'frmPrevClientesAniver'
-  ClientHeight = 457
-  ClientWidth = 800
-  OldCreateOrder = True
-  ExplicitWidth = 816
-  ExplicitHeight = 495
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 812
   inherited rrPadrao: TRLReport
     inherited rbTitulo: TRLBand
       inherited lbTitulo: TRLLabel
-        Top = 81
         Height = 26
-        ExplicitTop = 81
-        ExplicitHeight = 26
+        Top = 81
       end
       inherited rlmCabecalho: TRLMemo
         Height = 80
-        ExplicitHeight = 80
       end
       inherited imgLogo: TRLImage
         Height = 80
-        ExplicitHeight = 80
       end
     end
     inherited rbRodape: TRLBand
-      Top = 170
-      ExplicitTop = 170
+      Top = 120
     end
-    object rlbColunas: TRLBand
+    object rlbColunas: TRLBand[2]
       Left = 38
-      Top = 136
-      Width = 718
       Height = 16
+      Top = 86
+      Width = 718
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -44,11 +35,11 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
       Transparent = False
       object lbNome: TRLLabel
         Left = 5
+        Height = 16
         Top = 0
         Width = 39
-        Height = 16
         Caption = 'Nome'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -58,11 +49,11 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
       end
       object lbDataNasc: TRLLabel
         Left = 200
+        Height = 16
         Top = 0
         Width = 73
-        Height = 16
         Caption = 'Data Nasc.'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -72,11 +63,11 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
       end
       object lbEndereco: TRLLabel
         Left = 304
+        Height = 16
         Top = 0
         Width = 64
-        Height = 16
-        Caption = 'Endere'#231'o'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Endereço'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -86,11 +77,11 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
       end
       object lbCidade: TRLLabel
         Left = 488
+        Height = 16
         Top = 0
         Width = 47
-        Height = 16
         Caption = 'Cidade'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -100,11 +91,11 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
       end
       object lbFone: TRLLabel
         Left = 624
+        Height = 16
         Top = 0
         Width = 34
-        Height = 16
         Caption = 'Fone'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -113,98 +104,90 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
         Transparent = False
       end
     end
-    object rlbDetalhe: TRLBand
+    object rlbDetalhe: TRLBand[3]
       Left = 38
-      Top = 152
-      Width = 718
       Height = 18
+      Top = 102
+      Width = 718
       BeforePrint = rlbDetalheBeforePrint
       object rldbNome: TRLDBText
         Left = 5
+        Height = 16
         Top = 1
         Width = 192
-        Height = 16
         AutoSize = False
         DataField = 'NOME'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbDataNasc: TRLDBText
         Left = 200
+        Height = 15
         Top = 1
-        Width = 68
-        Height = 16
+        Width = 73
         DataField = 'DATANASC'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbEndereco: TRLDBText
         Left = 304
+        Height = 16
         Top = 1
         Width = 183
-        Height = 16
         AutoSize = False
         DataField = 'ENDERECO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbCidade: TRLDBText
         Left = 488
+        Height = 16
         Top = 1
         Width = 134
-        Height = 16
         AutoSize = False
         DataField = 'CIDADE'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbFone: TRLDBText
         Left = 624
+        Height = 16
         Top = 1
         Width = 89
-        Height = 16
         AutoSize = False
         DataField = 'FONE'
         DataSource = dsPadrao
-        Text = ''
       end
     end
   end
   inherited sqldPadrao: TSQLQuery
-    CommandText = 
-      'select * from '#13#10'STPGETCLIENTEANIVER(:PTIPO, :PDIAINI, :PDIAFIM, ' +
-      ':PMES, :PANO, :PDATA1, :PDATA2)'#13#10'order by DATANASC, NOME'
-    Params = <
+    Params = <    
       item
         DataType = ftInteger
         Name = 'PTIPO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'PDIAINI'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'PDIAFIM'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'PMES'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'PANO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'PDATA1'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'PDATA2'
@@ -212,66 +195,72 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
       end>
   end
   inherited cdsPadrao: TMemDataset
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'PTIPO'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PDIAINI'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PDIAFIM'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PMES'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'PANO'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'PDATA1'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'PDATA2'
-        ParamType = ptInput
-      end>
-    object cdsPadraoNOME: TStringField
+    object cdsPadraoNOME: TStringField[0]
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
-    object cdsPadraoDATANASC: TDateField
+    object cdsPadraoDATANASC: TDateField[1]
+      FieldKind = fkData
       FieldName = 'DATANASC'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoENDERECO: TStringField
+    object cdsPadraoENDERECO: TStringField[2]
+      FieldKind = fkData
       FieldName = 'ENDERECO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
-    object cdsPadraoCIDADE: TStringField
+    object cdsPadraoCIDADE: TStringField[3]
+      FieldKind = fkData
       FieldName = 'CIDADE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
-    object cdsPadraoBAIRRO: TStringField
+    object cdsPadraoBAIRRO: TStringField[4]
+      FieldKind = fkData
       FieldName = 'BAIRRO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
-    object cdsPadraoCEP: TStringField
+    object cdsPadraoCEP: TStringField[5]
+      FieldKind = fkData
       FieldName = 'CEP'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoFONE: TStringField
+    object cdsPadraoFONE: TStringField[6]
+      FieldKind = fkData
       FieldName = 'FONE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

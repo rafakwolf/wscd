@@ -1,60 +1,44 @@
 inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
-  Top = 71
+  Left = 325
+  Top = 117
+  Width = 911
   Caption = 'frmPrevProdutoGrupo'
-  ClientHeight = 479
-  ClientWidth = 935
-  OldCreateOrder = True
-  ExplicitWidth = 951
-  ExplicitHeight = 517
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 488
+  ClientWidth = 911
   inherited rrPadrao: TRLReport
-    Width = 1123
     Height = 794
+    Width = 1123
     PageSetup.Orientation = poLandscape
-    ExplicitWidth = 1123
-    ExplicitHeight = 794
     inherited rbTitulo: TRLBand
       Width = 1047
-      ExplicitWidth = 1047
       inherited lbTitulo: TRLLabel
+        Height = 31
         Top = 76
         Width = 1045
-        Height = 31
-        ExplicitTop = 76
-        ExplicitWidth = 1045
-        ExplicitHeight = 31
       end
       inherited rlmCabecalho: TRLMemo
-        Width = 947
         Height = 75
-        ExplicitWidth = 947
-        ExplicitHeight = 75
+        Width = 947
       end
       inherited imgLogo: TRLImage
         Height = 75
-        ExplicitHeight = 75
       end
     end
     inherited rbRodape: TRLBand
-      Top = 169
+      Top = 119
       Width = 1047
-      ExplicitTop = 169
-      ExplicitWidth = 1047
       inherited sysData: TRLSystemInfo
         Left = 935
-        ExplicitLeft = 935
       end
       inherited sysPage: TRLSystemInfo
         Left = 871
-        ExplicitLeft = 871
       end
     end
-    object rlbColunas: TRLBand
+    object rlbColunas: TRLBand[2]
       Left = 38
-      Top = 136
-      Width = 1047
       Height = 17
+      Top = 86
+      Width = 1047
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -63,11 +47,11 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       Borders.DrawBottom = True
       object lbCodBarra: TRLLabel
         Left = 5
+        Height = 16
         Top = 0
         Width = 72
-        Height = 16
         Caption = 'Cod. Barra'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -76,11 +60,11 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       end
       object lbProduto: TRLLabel
         Left = 104
+        Height = 16
         Top = 0
         Width = 56
-        Height = 16
         Caption = 'Produto'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -89,11 +73,11 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       end
       object lbFornecedor: TRLLabel
         Left = 507
+        Height = 16
         Top = 0
         Width = 77
-        Height = 16
         Caption = 'Fornecedor'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -103,11 +87,11 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       end
       object lbCusto: TRLLabel
         Left = 768
+        Height = 16
         Top = 0
         Width = 82
-        Height = 16
-        Caption = 'Pre'#231'o Custo'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Preço Custo'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -116,11 +100,11 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       end
       object lbLucro: TRLLabel
         Left = 861
+        Height = 16
         Top = 0
         Width = 40
-        Height = 16
         Caption = 'Lucro'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -129,11 +113,11 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       end
       object lbPreco: TRLLabel
         Left = 936
+        Height = 16
         Top = 0
         Width = 41
-        Height = 16
-        Caption = 'Pre'#231'o'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Preço'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -142,11 +126,11 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       end
       object lbEstoque: TRLLabel
         Left = 989
+        Height = 16
         Top = 0
         Width = 56
-        Height = 16
         Caption = 'Estoque'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -154,181 +138,301 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
         ParentFont = False
       end
     end
-    object rlbDetalhe: TRLBand
+    object rlbDetalhe: TRLBand[3]
       Left = 38
-      Top = 153
-      Width = 1047
       Height = 16
+      Top = 103
+      Width = 1047
       BeforePrint = rlbDetalheBeforePrint
       object rldbCodbarra: TRLDBText
         Left = 5
+        Height = 16
         Top = 0
         Width = 97
-        Height = 16
         AutoSize = False
         DataField = 'CODBARRA'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbProduto: TRLDBText
         Left = 104
+        Height = 16
         Top = 0
         Width = 393
-        Height = 16
         AutoSize = False
         DataField = 'DESCRICAO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbForn: TRLDBText
         Left = 507
+        Height = 16
         Top = 0
         Width = 249
-        Height = 16
         AutoSize = False
         DataField = 'FORNECEDOR'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbCusto: TRLDBText
-        Left = 805
+        Left = 801
+        Height = 15
         Top = 0
-        Width = 45
-        Height = 16
+        Width = 49
         Alignment = taRightJustify
         DataField = 'CUSTO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbLucro: TRLDBText
-        Left = 858
+        Left = 853
+        Height = 15
         Top = 0
-        Width = 43
-        Height = 16
+        Width = 48
         Alignment = taRightJustify
         DataField = 'LUCRO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbPreco: TRLDBText
-        Left = 934
+        Left = 927
+        Height = 15
         Top = 0
-        Width = 43
-        Height = 16
+        Width = 50
         Alignment = taRightJustify
         DataField = 'PRECO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbEstoque: TRLDBText
-        Left = 985
+        Left = 977
+        Height = 15
         Top = 0
-        Width = 60
-        Height = 16
+        Width = 68
         Alignment = taRightJustify
         DataField = 'ESTOQUE'
         DataSource = dsPadrao
-        Text = ''
       end
     end
   end
   inherited sqldPadrao: TSQLQuery
-    CommandText = 
-      'select '#13#10'  CODBARRA,'#13#10'  DESCRICAO,'#13#10'  FORNECEDOR,'#13#10'  CODGRUPO,'#13#10 +
-      '  GRUPO,'#13#10'  CUSTO,'#13#10'  LUCRO,'#13#10'  PRECO,'#13#10'  ESTOQUE,'#13#10'  VALORESTOQ' +
-      'UE'#13#10'from VIEWRELPRODUTOS'#13#10'where CODGRUPO = :CODIGO'#13#10'order by DES' +
-      'CRICAO'
-    Params = <
+    Params = <    
       item
         DataType = ftInteger
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    object sqldPadraoCODBARRA: TStringField
+    object sqldPadraoCODBARRA: TStringField[0]
+      FieldKind = fkData
       FieldName = 'CODBARRA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
-    object sqldPadraoDESCRICAO: TStringField
+    object sqldPadraoDESCRICAO: TStringField[1]
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object sqldPadraoFORNECEDOR: TStringField
+    object sqldPadraoFORNECEDOR: TStringField[2]
+      FieldKind = fkData
       FieldName = 'FORNECEDOR'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object sqldPadraoCODGRUPO: TIntegerField
+    object sqldPadraoCODGRUPO: TIntegerField[3]
+      FieldKind = fkData
       FieldName = 'CODGRUPO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoGRUPO: TStringField
+    object sqldPadraoGRUPO: TStringField[4]
+      FieldKind = fkData
       FieldName = 'GRUPO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object sqldPadraoCUSTO: TFMTBCDField
+    object sqldPadraoCUSTO: TFMTBCDField[5]
+      FieldKind = fkData
       FieldName = 'CUSTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object sqldPadraoLUCRO: TFMTBCDField
+    object sqldPadraoLUCRO: TFMTBCDField[6]
+      FieldKind = fkData
       FieldName = 'LUCRO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object sqldPadraoPRECO: TFMTBCDField
+    object sqldPadraoPRECO: TFMTBCDField[7]
+      FieldKind = fkData
       FieldName = 'PRECO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object sqldPadraoESTOQUE: TIntegerField
+    object sqldPadraoESTOQUE: TIntegerField[8]
+      FieldKind = fkData
       FieldName = 'ESTOQUE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoVALORESTOQUE: TFloatField
+    object sqldPadraoVALORESTOQUE: TFloatField[9]
+      FieldKind = fkData
       FieldName = 'VALORESTOQUE'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
   inherited cdsPadrao: TMemDataset
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end>
-    object cdsPadraoCODBARRA: TStringField
+    object cdsPadraoCODBARRA: TStringField[0]
+      FieldKind = fkData
       FieldName = 'CODBARRA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
-    object cdsPadraoDESCRICAO: TStringField
+    object cdsPadraoDESCRICAO: TStringField[1]
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object cdsPadraoFORNECEDOR: TStringField
+    object cdsPadraoFORNECEDOR: TStringField[2]
+      FieldKind = fkData
       FieldName = 'FORNECEDOR'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object cdsPadraoCODGRUPO: TIntegerField
+    object cdsPadraoCODGRUPO: TIntegerField[3]
+      FieldKind = fkData
       FieldName = 'CODGRUPO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoGRUPO: TStringField
+    object cdsPadraoGRUPO: TStringField[4]
+      FieldKind = fkData
       FieldName = 'GRUPO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object cdsPadraoCUSTO: TFMTBCDField
+    object cdsPadraoCUSTO: TFMTBCDField[5]
+      FieldKind = fkData
       FieldName = 'CUSTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object cdsPadraoLUCRO: TFMTBCDField
+    object cdsPadraoLUCRO: TFMTBCDField[6]
+      FieldKind = fkData
       FieldName = 'LUCRO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '####0'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object cdsPadraoPRECO: TFMTBCDField
+    object cdsPadraoPRECO: TFMTBCDField[7]
+      FieldKind = fkData
       FieldName = 'PRECO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object cdsPadraoESTOQUE: TIntegerField
+    object cdsPadraoESTOQUE: TIntegerField[8]
+      FieldKind = fkData
       FieldName = 'ESTOQUE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '####0'
     end
-    object cdsPadraoVALORESTOQUE: TFloatField
+    object cdsPadraoVALORESTOQUE: TFloatField[9]
+      FieldKind = fkData
       FieldName = 'VALORESTOQUE'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
     end
   end

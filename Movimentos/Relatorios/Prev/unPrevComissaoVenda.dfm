@@ -1,34 +1,29 @@
 inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
-  Top = 21
+  Left = 352
+  Top = 57
+  Width = 812
   Caption = 'frmPrevComissaoVenda'
-  ClientHeight = 516
-  ClientWidth = 817
-  OldCreateOrder = True
-  ExplicitWidth = 833
-  ExplicitHeight = 554
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 812
   inherited rrPadrao: TRLReport
     inherited rbRodape: TRLBand
-      Top = 248
-      ExplicitTop = 248
+      Top = 198
     end
-    object rlbCabecalhoColuna: TRLBand
+    object rlbCabecalhoColuna: TRLBand[2]
       Left = 38
-      Top = 136
-      Width = 718
       Height = 55
+      Top = 86
+      Width = 718
       BandType = btTitle
       Color = clSilver
       ParentColor = False
       Transparent = False
       object rlblVendedor: TRLLabel
         Left = 8
+        Height = 16
         Top = 8
         Width = 72
-        Height = 16
         Caption = 'Vendedor:'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -38,11 +33,11 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       end
       object rlblPeriodo: TRLLabel
         Left = 8
+        Height = 16
         Top = 32
         Width = 58
-        Height = 16
-        Caption = 'Per'#237'odo:'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Período:'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -52,71 +47,67 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       end
       object rlblDataVendedor: TRLLabel
         Left = 88
+        Height = 15
         Top = 8
-        Width = 103
-        Height = 16
+        Width = 102
         Transparent = False
       end
       object rlblDataPeriodo: TRLLabel
         Left = 72
+        Height = 15
         Top = 32
-        Width = 91
-        Height = 16
+        Width = 92
         Transparent = False
       end
     end
-    object rlbDetalhe: TRLBand
+    object rlbDetalhe: TRLBand[3]
       Left = 38
-      Top = 209
-      Width = 718
       Height = 19
+      Top = 159
+      Width = 718
       BeforePrint = rlbDetalheBeforePrint
       object rldbtProduto: TRLDBText
         Left = 8
+        Height = 16
         Top = 1
         Width = 449
-        Height = 16
         AutoSize = False
         DataField = 'DESCRICAO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbtQtde: TRLDBText
-        Left = 494
+        Left = 492
+        Height = 15
         Top = 1
-        Width = 29
-        Height = 16
+        Width = 31
         Alignment = taRightJustify
         DataField = 'QTD'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbtTotal: TRLDBText
-        Left = 561
+        Left = 559
+        Height = 15
         Top = 1
-        Width = 43
-        Height = 16
+        Width = 45
         Alignment = taRightJustify
         DataField = 'TOTAL'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbtComissao: TRLDBText
-        Left = 644
+        Left = 637
+        Height = 15
         Top = 1
-        Width = 68
-        Height = 16
+        Width = 75
         Alignment = taRightJustify
         DataField = 'COMISSAO'
         DataSource = dsPadrao
-        Text = ''
       end
     end
-    object rlbSumario: TRLBand
+    object rlbSumario: TRLBand[4]
       Left = 38
-      Top = 228
-      Width = 718
       Height = 20
+      Top = 178
+      Width = 718
       BandType = btSummary
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -125,12 +116,12 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       Borders.DrawBottom = False
       object rlblTotalFinal: TRLLabel
         Left = 654
+        Height = 16
         Top = 2
         Width = 58
-        Height = 16
         Alignment = taRightJustify
         Caption = '<Total>'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -138,11 +129,11 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
         ParentFont = False
       end
     end
-    object rlbColuna: TRLBand
+    object rlbColuna: TRLBand[5]
       Left = 38
-      Top = 191
-      Width = 718
       Height = 18
+      Top = 141
+      Width = 718
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -151,11 +142,11 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       Borders.DrawBottom = True
       object rlblProduto: TRLLabel
         Left = 8
+        Height = 16
         Top = 1
         Width = 56
-        Height = 16
         Caption = 'Produto'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -164,11 +155,11 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       end
       object rlblQtde: TRLLabel
         Left = 488
+        Height = 16
         Top = 1
         Width = 35
-        Height = 16
         Caption = 'Qtde'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -177,11 +168,11 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       end
       object rlblTotal: TRLLabel
         Left = 568
+        Height = 16
         Top = 1
         Width = 36
-        Height = 16
         Caption = 'Total'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -190,11 +181,11 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       end
       object rlblComissao: TRLLabel
         Left = 648
+        Height = 16
         Top = 1
         Width = 64
-        Height = 16
-        Caption = 'Comiss'#227'o'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Comissão'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -204,81 +195,136 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
     end
   end
   inherited sqldPadrao: TSQLQuery
-    CommandText = 'select * from'#13#10'STPVENDACOMISSAO(:IDVEND, :DATAINI, :DATAFIM)'
-    Params = <
+    Params = <    
       item
         DataType = ftInteger
         Name = 'IDVEND'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'DATAINI'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'DATAFIM'
         ParamType = ptInput
       end>
-    object sqldPadraoCODPRODUTO: TIntegerField
+    object sqldPadraoCODPRODUTO: TIntegerField[0]
+      FieldKind = fkData
       FieldName = 'CODPRODUTO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoDESCRICAO: TStringField
+    object sqldPadraoDESCRICAO: TStringField[1]
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 150
     end
-    object sqldPadraoQTD: TIntegerField
+    object sqldPadraoQTD: TIntegerField[2]
+      FieldKind = fkData
       FieldName = 'QTD'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoTOTAL: TFMTBCDField
+    object sqldPadraoTOTAL: TFMTBCDField[3]
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
-    object sqldPadraoCOMISSAO: TFMTBCDField
+    object sqldPadraoCOMISSAO: TFMTBCDField[4]
+      FieldKind = fkData
       FieldName = 'COMISSAO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
   end
   inherited cdsPadrao: TMemDataset
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'IDVEND'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'DATAINI'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'DATAFIM'
-        ParamType = ptInput
-      end>
-    object cdsPadraoCODPRODUTO: TIntegerField
+    object cdsPadraoCODPRODUTO: TIntegerField[0]
+      FieldKind = fkData
       FieldName = 'CODPRODUTO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoDESCRICAO: TStringField
+    object cdsPadraoDESCRICAO: TStringField[1]
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 150
     end
-    object cdsPadraoQTD: TIntegerField
+    object cdsPadraoQTD: TIntegerField[2]
+      FieldKind = fkData
       FieldName = 'QTD'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoTOTAL: TFMTBCDField
+    object cdsPadraoTOTAL: TFMTBCDField[3]
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
-    object cdsPadraoCOMISSAO: TFMTBCDField
+    object cdsPadraoCOMISSAO: TFMTBCDField[4]
+      FieldKind = fkData
       FieldName = 'COMISSAO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
   end

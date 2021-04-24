@@ -64,7 +64,7 @@ begin
 //    cdsPadrao.Params.ParamByName('DATAFIM').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime;
 
     cdsPadrao.Open;
-    TituloRel := 'Lan�amentos do caixa: ' + dbeCaixa.Text;
+    TituloRel := 'Lançamentos do caixa: ' + dbeCaixa.Text;
     PrintIfNotEmptyRL(rrPadrao, p);
   finally
     cdsPadrao.Close;

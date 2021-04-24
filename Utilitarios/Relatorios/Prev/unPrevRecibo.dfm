@@ -1,30 +1,27 @@
 object frmPrevRecibo: TfrmPrevRecibo
   Left = 281
+  Height = 495
   Top = 160
-  ClientHeight = 444
-  ClientWidth = 808
+  Width = 912
   Caption = 'frmPrevRecibo'
-  OldCreateOrder = False
-  MonitoredKeys.Keys = <>
+  ClientHeight = 495
+  ClientWidth = 912
   Font.Name = 'MS Sans Serif'
-  PixelsPerInch = 96
-  TextHeight = 13
+  LCLVersion = '2.0.12.0'
   object rrRecibo: TRLReport
     Left = 0
+    Height = 1123
     Top = 0
     Width = 794
-    Height = 1123
-    Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Arial'
-    Font.Style = []
     PreviewOptions.ShowModal = True
     object rbDetalhe: TRLBand
       Left = 38
+      Height = 323
       Top = 38
       Width = 718
-      Height = 323
       BandType = btTitle
       Borders.Sides = sdCustom
       Borders.DrawLeft = True
@@ -34,12 +31,11 @@ object frmPrevRecibo: TfrmPrevRecibo
       CarbonCopies = 2
       object lbEmpresa: TRLLabel
         Left = 32
+        Height = 22
         Top = 16
         Width = 450
-        Height = 22
         Alignment = taCenter
         AutoSize = False
-        Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
         Font.Height = -19
         Font.Name = 'Arial'
@@ -48,95 +44,88 @@ object frmPrevRecibo: TfrmPrevRecibo
       end
       object lbCidadeEstado: TRLLabel
         Left = 32
-        Top = 39
-        Width = 449
         Height = 16
+        Top = 39
+        Width = 450
         Alignment = taCenter
         AutoSize = False
       end
       object lbCNPJ_IE: TRLLabel
         Left = 32
-        Top = 57
-        Width = 449
         Height = 16
+        Top = 57
+        Width = 450
         Alignment = taCenter
         AutoSize = False
       end
       object lbEnderecoFone: TRLLabel
         Left = 32
-        Top = 75
-        Width = 449
         Height = 16
+        Top = 75
+        Width = 450
         Alignment = taCenter
         AutoSize = False
       end
       object lbRecebedor: TRLLabel
         Left = 46
+        Height = 16
         Top = 121
         Width = 66
-        Height = 16
         Caption = 'Recebedor'
-        Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = []
         ParentFont = False
       end
       object lbImportancia: TRLLabel
         Left = 12
+        Height = 16
         Top = 161
         Width = 100
-        Height = 16
-        Caption = 'a Import'#226'ncia de'
-        Font.Charset = DEFAULT_CHARSET
+        Caption = 'a Importância de'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = []
         ParentFont = False
       end
       object lbRefenrete: TRLLabel
         Left = 42
+        Height = 16
         Top = 201
         Width = 70
-        Height = 16
         Caption = 'Referente a'
-        Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Arial'
-        Font.Style = []
         ParentFont = False
       end
       object lbCidade: TRLLabel
         Left = 28
+        Height = 15
         Top = 257
         Width = 54
-        Height = 16
       end
       object lbData: TRLLabel
         Left = 28
+        Height = 15
         Top = 281
         Width = 41
-        Height = 16
       end
       object lbAssinatura: TRLLabel
         Left = 416
-        Top = 290
-        Width = 281
         Height = 16
+        Top = 290
+        Width = 282
         Alignment = taCenter
         AutoSize = False
         Layout = tlCenter
       end
       object lbRecibo: TRLLabel
         Left = 636
+        Height = 22
         Top = 8
         Width = 69
-        Height = 22
         Caption = 'Recibo'
-        Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -19
         Font.Name = 'Arial'
@@ -145,16 +134,16 @@ object frmPrevRecibo: TfrmPrevRecibo
       end
       object spLinhaAssinatura: TRLDraw
         Left = 416
+        Height = 9
         Top = 280
         Width = 281
-        Height = 9
         DrawKind = dkLine
       end
       object pnValor: TRLPanel
         Left = 568
+        Height = 32
         Top = 40
         Width = 137
-        Height = 32
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
         Borders.DrawTop = True
@@ -162,13 +151,12 @@ object frmPrevRecibo: TfrmPrevRecibo
         Borders.DrawBottom = True
         object lbValor: TRLLabel
           Left = 1
+          Height = 30
           Top = 1
           Width = 135
-          Height = 30
           Align = faClient
           Alignment = taCenter
           AutoSize = False
-          Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -19
           Font.Name = 'Arial'
@@ -179,9 +167,9 @@ object frmPrevRecibo: TfrmPrevRecibo
       end
       object pnRecebedor: TRLPanel
         Left = 120
+        Height = 35
         Top = 112
         Width = 545
-        Height = 35
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
         Borders.DrawTop = True
@@ -189,18 +177,18 @@ object frmPrevRecibo: TfrmPrevRecibo
         Borders.DrawBottom = True
         object lbdRecebedor: TRLMemo
           Left = 1
+          Height = 33
           Top = 1
           Width = 543
-          Height = 33
           Align = faClient
           Behavior = [beSiteExpander]
         end
       end
       object pnImportancia: TRLPanel
         Left = 120
+        Height = 35
         Top = 152
         Width = 545
-        Height = 35
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
         Borders.DrawTop = True
@@ -208,18 +196,18 @@ object frmPrevRecibo: TfrmPrevRecibo
         Borders.DrawBottom = True
         object lbdImportancia: TRLMemo
           Left = 1
+          Height = 33
           Top = 1
           Width = 543
-          Height = 33
           Align = faClient
           Behavior = [beSiteExpander]
         end
       end
       object pnReferente: TRLPanel
         Left = 120
+        Height = 35
         Top = 192
         Width = 545
-        Height = 35
         Borders.Sides = sdCustom
         Borders.DrawLeft = True
         Borders.DrawTop = True
@@ -227,9 +215,9 @@ object frmPrevRecibo: TfrmPrevRecibo
         Borders.DrawBottom = True
         object lbdReferente: TRLMemo
           Left = 1
+          Height = 33
           Top = 1
           Width = 543
-          Height = 33
           Align = faClient
           Behavior = [beSiteExpander]
         end

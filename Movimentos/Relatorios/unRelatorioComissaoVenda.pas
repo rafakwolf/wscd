@@ -65,8 +65,8 @@ begin
 //  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
 //    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, dbdtpDataIni) then
 //  begin
-//    with TfrmPrevComissaoVenda.Create(Self) do
-//    try
+    with TfrmPrevComissaoVenda.Create(Self) do
+    try
 //      cdsPadrao.Close;
 //      cdsPadrao.Params.ParamByName('IDVEND').AsInteger :=
 //        GetDmPesquisar.cdsPesqVendedor.FieldByName('IDVENDEDOR').AsInteger;
@@ -82,10 +82,10 @@ begin
 //
 //      lbTitulo.Caption := 'Comiss�o de vendedor';
 //      PrintIfNotEmptyRL(rrPadrao, p);
-//    finally
-//      Free;
-//    end;
- // end;
+    finally
+      Free;
+    end;
+  //end;
 end;
 
 procedure TfrmRelatorioComissaoVenda.btnVisualizarClick(Sender: TObject);

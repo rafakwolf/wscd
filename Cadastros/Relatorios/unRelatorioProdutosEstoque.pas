@@ -43,7 +43,7 @@ procedure TfrmRelatorioProdutosEstoque.rrPadraoBeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
   inherited;
-  lbTitulo.Caption := 'Produtos com Estoque M�nimo';
+  lbTitulo.Caption := 'Produtos com Estoque Minimo';
 end;
 
 end.

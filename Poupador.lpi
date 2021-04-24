@@ -89,7 +89,9 @@
       <Unit9>
         <Filename Value="Padrao/unModeloRelatorio.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmModeloRelatorio"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit9>
       <Unit10>
         <Filename Value="Padrao/unPadrao.pas"/>
@@ -189,7 +191,9 @@
       <Unit25>
         <Filename Value="Utilitarios/Relatorios/Prev/unPrevRelAgenda.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevRelAgenda"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit25>
       <Unit26>
         <Filename Value="Utilitarios/Relatorios/unRelatorioAgenda.pas"/>
@@ -490,7 +494,9 @@
       <Unit76>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevRelCaixa.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevRelCaixa"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit76>
       <Unit77>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevRelCRAtrasadas.pas"/>
@@ -776,7 +782,9 @@
       <Unit120>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevClienteAniver.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevClientesAniver"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit120>
       <Unit121>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevEnvelopeClientes.pas"/>
@@ -796,27 +804,37 @@
       <Unit124>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevListagemClientes.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevListagemClientes"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit124>
       <Unit125>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoEstoque.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevProdutoEstoque"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit125>
       <Unit126>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoGrupo.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevProdutoGrupo"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit126>
       <Unit127>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutosVencimento.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevProdutosVencimento"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit127>
       <Unit128>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevRelFornData.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevRelFornData"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit128>
       <Unit129>
         <Filename Value="Cadastros/Relatorios/unRelatorioAniversarioCliente.pas"/>
@@ -863,7 +881,9 @@
       <Unit135>
         <Filename Value="Cadastros/Relatorios/unRelatorioListaPrecos.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRelatorioListaPrecos"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit135>
       <Unit136>
         <Filename Value="Cadastros/Relatorios/unRelatorioNovoAlterado.pas"/>
@@ -889,7 +909,9 @@
       <Unit139>
         <Filename Value="Cadastros/Relatorios/unRelatorioProdutosEstoque.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRelatorioProdutosEstoque"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit139>
       <Unit140>
         <Filename Value="Cadastros/Relatorios/unRelatorioProdutoVencimento.pas"/>

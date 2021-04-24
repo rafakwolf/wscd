@@ -1,37 +1,28 @@
 inherited frmPrevRelCaixa: TfrmPrevRelCaixa
+  Width = 851
   Caption = 'frmPrevRelCaixa'
-  ClientHeight = 483
-  ClientWidth = 810
-  OldCreateOrder = True
-  ExplicitWidth = 826
-  ExplicitHeight = 521
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 851
   inherited rrPadrao: TRLReport
     inherited rbTitulo: TRLBand
       inherited lbTitulo: TRLLabel
         Height = 30
         Caption = 'Caixa por Tipo de Conta'
-        ExplicitHeight = 30
       end
       inherited rlmCabecalho: TRLMemo
         Height = 76
-        ExplicitHeight = 76
       end
       inherited imgLogo: TRLImage
         Height = 76
-        ExplicitHeight = 76
       end
     end
     inherited rbRodape: TRLBand
-      Top = 198
-      ExplicitTop = 198
+      Top = 145
     end
-    object rbColunas: TRLBand
+    object rbColunas: TRLBand[2]
       Left = 38
-      Top = 139
-      Width = 718
       Height = 17
+      Top = 86
+      Width = 718
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -40,11 +31,11 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       Borders.DrawBottom = True
       object lbData: TRLLabel
         Left = 16
+        Height = 16
         Top = 0
         Width = 35
-        Height = 16
         Caption = 'Data'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -53,11 +44,11 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       end
       object lbDescricao: TRLLabel
         Left = 102
+        Height = 16
         Top = 0
         Width = 67
-        Height = 16
-        Caption = 'Descri'#231#227'o'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Descrição'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -66,11 +57,11 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       end
       object lbDocumento: TRLLabel
         Left = 412
+        Height = 16
         Top = 0
         Width = 77
-        Height = 16
         Caption = 'Documento'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -79,11 +70,11 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       end
       object lbTipo: TRLLabel
         Left = 562
+        Height = 16
         Top = 0
         Width = 42
-        Height = 16
         Caption = 'Conta'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -92,11 +83,11 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       end
       object lbValor: TRLLabel
         Left = 675
+        Height = 16
         Top = 0
         Width = 38
-        Height = 16
         Caption = 'Valor'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -104,11 +95,11 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
         ParentFont = False
       end
     end
-    object rbDetalhe: TRLBand
+    object rbDetalhe: TRLBand[3]
       Left = 38
-      Top = 156
-      Width = 718
       Height = 19
+      Top = 103
+      Width = 718
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
       Borders.DrawTop = False
@@ -117,60 +108,55 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       BeforePrint = rbDetalheBeforePrint
       object dbData: TRLDBText
         Left = 16
+        Height = 15
         Top = 1
         Width = 36
-        Height = 16
         DataField = 'DATA'
         DataSource = dsPadrao
-        Text = ''
       end
       object dbDescricao: TRLDBText
         Left = 102
+        Height = 16
         Top = 1
         Width = 307
-        Height = 16
         AutoSize = False
         DataField = 'DESCRICAO'
         DataSource = dsPadrao
-        Text = ''
       end
       object dbDocumento: TRLDBText
-        Left = 412
+        Left = 403
+        Height = 15
         Top = 1
-        Width = 79
-        Height = 16
+        Width = 88
         Alignment = taRightJustify
         DataField = 'DOCUMENTO'
         DataSource = dsPadrao
-        Text = ''
       end
       object dbTipo: TRLDBText
         Left = 562
+        Height = 15
         Top = 1
-        Width = 32
-        Height = 16
+        Width = 35
         DataField = 'TIPO'
         DataSource = dsPadrao
-        Text = ''
         BeforePrint = dbTipoBeforePrint
       end
       object dbValor: TRLDBText
-        Left = 670
+        Left = 666
+        Height = 15
         Top = 1
-        Width = 43
-        Height = 16
+        Width = 47
         Alignment = taRightJustify
         DataField = 'VALOR'
         DataSource = dsPadrao
         DisplayMask = '#,##0.00'
-        Text = ''
       end
     end
-    object rbSumario: TRLBand
+    object rbSumario: TRLBand[4]
       Left = 38
-      Top = 175
-      Width = 718
       Height = 23
+      Top = 122
+      Width = 718
       BandType = btSummary
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -180,10 +166,10 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       Borders.Width = 2
       object rllbTotalC: TRLLabel
         Left = 265
+        Height = 16
         Top = 5
         Width = 64
-        Height = 16
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -192,10 +178,10 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       end
       object rllbTotalD: TRLLabel
         Left = 8
+        Height = 16
         Top = 5
         Width = 65
-        Height = 16
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -204,10 +190,10 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       end
       object rlbSaldo: TRLLabel
         Left = 536
+        Height = 16
         Top = 5
         Width = 56
-        Height = 16
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -217,108 +203,178 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
     end
   end
   inherited sqldPadrao: TSQLQuery
-    CommandText = 
-      'select * from '#13#10'STPRELCAIXATIPOCONTA'#13#10'(:PDATAINI, :PDATAFIM, :PT' +
-      'IPOCONTA, :PORDEM)'
-    Params = <
+    Params = <    
       item
         DataType = ftDate
         Name = 'PDATAINI'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'PDATAFIM'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFixedChar
         Name = 'PTIPOCONTA'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFixedChar
         Name = 'PORDEM'
         ParamType = ptInput
       end>
-    object sqldPadraoCODIGO: TIntegerField
+    object sqldPadraoCODIGO: TIntegerField[0]
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoTOTAL: TFMTBCDField
+    object sqldPadraoTOTAL: TFMTBCDField[1]
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
-    object sqldPadraoDATA: TDateField
+    object sqldPadraoDATA: TDateField[2]
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoDESCRICAO: TStringField
+    object sqldPadraoDESCRICAO: TStringField[3]
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
-    object sqldPadraoDOCUMENTO: TStringField
+    object sqldPadraoDOCUMENTO: TStringField[4]
+      FieldKind = fkData
       FieldName = 'DOCUMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoTIPO: TStringField
+    object sqldPadraoTIPO: TStringField[5]
+      FieldKind = fkData
       FieldName = 'TIPO'
-      FixedChar = True
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
-    object sqldPadraoVALOR: TFMTBCDField
+    object sqldPadraoVALOR: TFMTBCDField[6]
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
   end
   inherited cdsPadrao: TMemDataset
-    Params = <
-      item
-        DataType = ftDate
-        Name = 'PDATAINI'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'PDATAFIM'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftFixedChar
-        Name = 'PTIPOCONTA'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftFixedChar
-        Name = 'PORDEM'
-        ParamType = ptInput
-      end>
-    object cdsPadraoCODIGO: TIntegerField
+    object cdsPadraoCODIGO: TIntegerField[0]
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoTOTAL: TFMTBCDField
+    object cdsPadraoTOTAL: TFMTBCDField[1]
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
-    object cdsPadraoDATA: TDateField
+    object cdsPadraoDATA: TDateField[2]
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoDESCRICAO: TStringField
+    object cdsPadraoDESCRICAO: TStringField[3]
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
-    object cdsPadraoDOCUMENTO: TStringField
+    object cdsPadraoDOCUMENTO: TStringField[4]
+      FieldKind = fkData
       FieldName = 'DOCUMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoTIPO: TStringField
+    object cdsPadraoTIPO: TStringField[5]
+      FieldKind = fkData
       FieldName = 'TIPO'
-      FixedChar = True
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
-    object cdsPadraoVALOR: TFMTBCDField
+    object cdsPadraoVALOR: TFMTBCDField[6]
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
   end

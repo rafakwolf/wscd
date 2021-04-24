@@ -1,37 +1,34 @@
 object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
-  Left = 2
-  Top = 1
-  ClientHeight = 530
-  ClientWidth = 782
+  Left = 285
+  Height = 573
+  Top = 88
+  Width = 830
   Caption = 'frmRelatorioListaPrecos'
-  OldCreateOrder = False
-  OnClose = FormClose
-  MonitoredKeys.Keys = <>
+  ClientHeight = 573
+  ClientWidth = 830
   Font.Name = 'MS Sans Serif'
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnClose = FormClose
+  LCLVersion = '2.0.12.0'
   object rpLista: TRLReport
     Left = 0
+    Height = 1123
     Top = 0
     Width = 794
-    Height = 1123
-    Margins.LeftMargin = 5.000000000000000000
-    Margins.TopMargin = 5.000000000000000000
-    Margins.RightMargin = 5.000000000000000000
-    Margins.BottomMargin = 5.000000000000000000
     DataSource = dsPadrao
-    Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Arial'
-    Font.Style = []
+    Margins.LeftMargin = 5
+    Margins.TopMargin = 5
+    Margins.RightMargin = 5
+    Margins.BottomMargin = 5
     PreviewOptions.ShowModal = True
     BeforePrint = rpListaBeforePrint
     object bandCabecalho: TRLBand
       Left = 19
+      Height = 67
       Top = 19
       Width = 756
-      Height = 67
       BandType = btTitle
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -40,68 +37,63 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
       Borders.DrawBottom = True
       object lbTitulo: TRLLabel
         Left = 3
+        Height = 23
         Top = 24
         Width = 750
-        Height = 23
         Alignment = taCenter
         AutoSize = False
-        Caption = 'Lista Geral de Pre'#231'os'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Lista Geral de Preços'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -19
         Font.Name = 'Tahoma'
-        Font.Style = []
         ParentFont = False
       end
     end
     object bandDetalhe: TRLDetailGrid
       Left = 19
+      Height = 18
       Top = 86
       Width = 756
-      Height = 18
       Color = 15790320
       ParentColor = False
       Transparent = False
       BeforePrint = bandDetalheBeforePrint
       object dbtDescricao: TRLDBText
         Left = 12
+        Height = 16
         Top = 1
         Width = 80
-        Height = 16
         DataField = 'DESCRICAO'
         DataSource = dsPadrao
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Courier New'
-        Font.Style = []
         ParentFont = False
-        Text = ''
         Transparent = False
       end
       object dbtPreco: TRLDBText
         Left = 648
+        Height = 16
         Top = 1
         Width = 48
-        Height = 16
         Alignment = taRightJustify
         DataField = 'VENDA'
         DataSource = dsPadrao
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Courier New'
-        Font.Style = []
         ParentFont = False
-        Text = ''
         Transparent = False
       end
     end
     object bandRodape: TRLBand
       Left = 19
+      Height = 24
       Top = 104
       Width = 756
-      Height = 24
       BandType = btFooter
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -110,59 +102,78 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
       Borders.DrawBottom = False
       object dbData: TRLSystemInfo
         Left = 6
+        Height = 15
         Top = 3
         Width = 39
-        Height = 16
-        Text = ''
       end
       object dbpage: TRLSystemInfo
         Left = 320
+        Height = 15
         Top = 2
         Width = 87
-        Height = 16
         Info = itPageNumber
-        Text = ''
       end
     end
   end
   object sqldPadrao: TSQLQuery
-    CommandText = 'select '#13#10'  DESCRICAO, '#13#10'  VENDA '#13#10'from PRODUTOS'
-    MaxBlobSize = -1
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 80
     Top = 8
     object sqldPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       Size = 50
     end
     object sqldPadraoVENDA: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VENDA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
   object dspPadrao: TTimer
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
     Left = 112
     Top = 8
   end
   object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+    FieldDefs = <>
     Left = 144
     Top = 8
     object cdsPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       Size = 50
     end
     object cdsPadraoVENDA: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VENDA'
-      currency = True
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = True
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
   object dsPadrao: TDataSource

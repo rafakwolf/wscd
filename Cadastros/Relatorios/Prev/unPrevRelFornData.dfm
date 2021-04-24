@@ -1,51 +1,39 @@
 inherited frmPrevRelFornData: TfrmPrevRelFornData
-  Top = 24
+  Left = 288
+  Top = 103
+  Width = 1036
   Caption = 'frmPrevRelFornData'
-  ClientHeight = 514
-  ClientWidth = 869
-  OldCreateOrder = True
-  ExplicitWidth = 885
-  ExplicitHeight = 552
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 488
+  ClientWidth = 1036
   inherited rrPadrao: TRLReport
-    Width = 1123
     Height = 794
+    Width = 1123
     PageSetup.Orientation = poLandscape
-    ExplicitWidth = 1123
-    ExplicitHeight = 794
     inherited rbTitulo: TRLBand
       Width = 1047
-      ExplicitWidth = 1047
       inherited lbTitulo: TRLLabel
         Width = 1045
-        Caption = 'Relat'#243'rio de Fornecedores'
-        ExplicitWidth = 1045
+        Caption = 'Relatório de Fornecedores'
       end
       inherited rlmCabecalho: TRLMemo
         Width = 947
-        ExplicitWidth = 947
       end
     end
     inherited rbRodape: TRLBand
-      Top = 176
+      Top = 123
       Width = 1047
-      ExplicitTop = 176
-      ExplicitWidth = 1047
       inherited sysData: TRLSystemInfo
         Left = 935
-        ExplicitLeft = 935
       end
       inherited sysPage: TRLSystemInfo
         Left = 871
-        ExplicitLeft = 871
       end
     end
-    object rbColunas: TRLBand
+    object rbColunas: TRLBand[2]
       Left = 38
-      Top = 139
-      Width = 1047
       Height = 19
+      Top = 86
+      Width = 1047
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -54,11 +42,11 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       Borders.DrawBottom = True
       object lbCodigo: TRLLabel
         Left = 8
+        Height = 16
         Top = 1
         Width = 47
-        Height = 16
-        Caption = 'C'#243'digo'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Código'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -67,11 +55,11 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       end
       object lbFantazia: TRLLabel
         Left = 80
+        Height = 16
         Top = 1
         Width = 58
-        Height = 16
         Caption = 'Fantazia'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -80,11 +68,11 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       end
       object lbEndereco: TRLLabel
         Left = 680
+        Height = 16
         Top = 1
         Width = 64
-        Height = 16
-        Caption = 'Endere'#231'o'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Endereço'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -93,11 +81,11 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       end
       object lbCNPJ: TRLLabel
         Left = 544
+        Height = 16
         Top = 1
         Width = 34
-        Height = 16
         Caption = 'CNPJ'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -106,11 +94,11 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       end
       object lbFone: TRLLabel
         Left = 928
+        Height = 16
         Top = 1
         Width = 59
-        Height = 16
         Caption = 'Telefone'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -119,11 +107,11 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       end
       object lbCidade: TRLLabel
         Left = 328
+        Height = 16
         Top = 1
         Width = 47
-        Height = 16
         Caption = 'Cidade'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -131,11 +119,11 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
         ParentFont = False
       end
     end
-    object rbDetalhe: TRLBand
+    object rbDetalhe: TRLBand[3]
       Left = 38
-      Top = 158
-      Width = 1047
       Height = 18
+      Top = 105
+      Width = 1047
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
       Borders.DrawTop = False
@@ -143,142 +131,205 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       Borders.DrawBottom = False
       BeforePrint = rbDetalheBeforePrint
       object dbCodigo: TRLDBText
-        Left = 8
+        Left = 2
+        Height = 15
         Top = 1
-        Width = 50
-        Height = 16
+        Width = 56
         Alignment = taRightJustify
         DataField = 'CODIGO'
         DataSource = dsPadrao
-        Text = ''
       end
       object dbFantazia: TRLDBText
         Left = 80
+        Height = 16
         Top = 1
         Width = 241
-        Height = 16
         AutoSize = False
         DataField = 'FANTAZIA'
         DataSource = dsPadrao
-        Text = ''
       end
       object dbCNPJ: TRLDBText
         Left = 544
+        Height = 16
         Top = 1
         Width = 133
-        Height = 16
         AutoSize = False
         DataField = 'CNPJ'
         DataSource = dsPadrao
-        Text = ''
       end
       object dbFone: TRLDBText
         Left = 928
+        Height = 15
         Top = 1
-        Width = 63
-        Height = 16
+        Width = 73
         DataField = 'TELEFONE'
         DataSource = dsPadrao
-        Text = ''
       end
       object dbEndereco: TRLDBText
         Left = 680
+        Height = 16
         Top = 1
         Width = 241
-        Height = 16
         AutoSize = False
         DataField = 'ENDERECO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbCidade: TRLDBText
         Left = 328
+        Height = 16
         Top = 0
         Width = 209
-        Height = 16
         AutoSize = False
         DataField = 'CIDADE'
         DataSource = dsPadrao
-        Text = ''
       end
     end
   end
   inherited sqldPadrao: TSQLQuery
-    CommandText = 
-      'select '#13#10'  CODIGO, '#13#10'  DATA,'#13#10'  FANTAZIA, '#13#10'  CNPJ,  '#13#10'  ENDEREC' +
-      'O, '#13#10'  CIDADE,'#13#10'  TELEFONE '#13#10'from VIEWRELFORN'#13#10'where DATA betwee' +
-      'n :PDATAINI and :PDATAFIM'#13#10'order by CIDADE, FANTAZIA'
-    Params = <
+    Params = <    
       item
         DataType = ftUnknown
         Name = 'PDATAINI'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftUnknown
         Name = 'PDATAFIM'
         ParamType = ptInput
       end>
-    object sqldPadraoCODIGO: TIntegerField
+    object sqldPadraoCODIGO: TIntegerField[0]
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoDATA: TDateField
+    object sqldPadraoDATA: TDateField[1]
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoFANTAZIA: TStringField
+    object sqldPadraoFANTAZIA: TStringField[2]
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object sqldPadraoCNPJ: TStringField
+    object sqldPadraoCNPJ: TStringField[3]
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoENDERECO: TStringField
+    object sqldPadraoENDERECO: TStringField[4]
+      FieldKind = fkData
       FieldName = 'ENDERECO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object sqldPadraoTELEFONE: TStringField
+    object sqldPadraoTELEFONE: TStringField[5]
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoCIDADE: TStringField
+    object sqldPadraoCIDADE: TStringField[6]
+      FieldKind = fkData
       FieldName = 'CIDADE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
   inherited cdsPadrao: TMemDataset
-    Params = <
-      item
-        DataType = ftDate
-        Name = 'PDATAINI'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'PDATAFIM'
-        ParamType = ptInput
-      end>
-    object cdsPadraoCODIGO: TIntegerField
+    object cdsPadraoCODIGO: TIntegerField[0]
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoDATA: TDateField
+    object cdsPadraoDATA: TDateField[1]
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
-    object cdsPadraoFANTAZIA: TStringField
+    object cdsPadraoFANTAZIA: TStringField[2]
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object cdsPadraoCNPJ: TStringField
+    object cdsPadraoCNPJ: TStringField[3]
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoENDERECO: TStringField
+    object cdsPadraoENDERECO: TStringField[4]
+      FieldKind = fkData
       FieldName = 'ENDERECO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object cdsPadraoTELEFONE: TStringField
+    object cdsPadraoTELEFONE: TStringField[5]
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsPadraoCIDADE: TStringField
+    object cdsPadraoCIDADE: TStringField[6]
+      FieldKind = fkData
       FieldName = 'CIDADE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
