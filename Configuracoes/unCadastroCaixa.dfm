@@ -1,137 +1,150 @@
 inherited frmCadastroCaixa: TfrmCadastroCaixa
   Left = 213
-  ClientHeight = 164
-  ClientWidth = 535
+  Width = 624
   Caption = 'frmCadastroCaixa'
-  OldCreateOrder = True
+  ClientWidth = 624
   Font.Name = 'Verdana'
-  ExplicitWidth = 541
-  ExplicitHeight = 193
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited sbStatus: TStatusBar
-    Top = 145
-    Width = 535
-    ExplicitTop = 145
-    ExplicitWidth = 535
+    Width = 624
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 535
+    Width = 624
+    ClientWidth = 624
     TabOrder = 3
-    ExplicitWidth = 535
     inherited btnConsultar: TSpeedButton
       Left = 253
       Width = 65
-      ExplicitLeft = 253
-      ExplicitWidth = 65
     end
     inherited btnSair: TSpeedButton
       Left = 378
       Width = 53
-      ExplicitLeft = 378
-      ExplicitWidth = 53
     end
     inherited btnPrint: TSpeedButton
       Left = 319
       Width = 59
-      ExplicitLeft = 319
-      ExplicitWidth = 59
     end
   end
-  object dbeNomeCaixa: TDBEdit [2]
+  object dbeNomeCaixa: TDBEdit[2]
     Left = 64
-    Top = 83
+    Height = 33
+    Top = 104
     Width = 305
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object dbeCodCaixa: TDBEdit [3]
+  object dbeCodCaixa: TDBEdit[3]
     Left = 64
+    Height = 33
     Top = 57
     Width = 121
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'CODIGO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
-  object dbchkInativo: TDBCheckBox [4]
-    Left = 64
-    Top = 109
-    Width = 63
+  object dbchkInativo: TDBCheckBox[4]
+    Left = 56
     Height = 17
-    Hint = ''
-    ShowHint = True
+    Top = 152
+    Width = 87
+    Caption = 'Inativo'
     DataField = 'INATIVO'
     DataSource = dsPadrao
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
     ValueChecked = 'S'
     ValueUnchecked = 'N'
-    Caption = 'Inativo'
-    TabOrder = 2
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[5]
     Left = 208
     Top = 36
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[6]
     DataSet = cdsPadrao
     Left = 471
     Top = 36
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select '#13#10'  CODIGO, '#13#10'  NOME,'#13#10'  INATIVO'#13#10'from CAIXAS'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[7]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 280
     Top = 20
     object sqldPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoINATIVO: TStringField
+      FieldKind = fkData
       FieldName = 'INATIVO'
-      FixedChar = True
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
-    UpdateMode = upWhereKeyOnly
+  object dspPadrao: TTimer[8]
     Left = 344
     Top = 44
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[9]
+    FieldDefs = <>
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
     Left = 408
     Top = 92
     object cdsPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoINATIVO: TStringField
+      FieldKind = fkData
       FieldName = 'INATIVO'
-      FixedChar = True
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end

@@ -82,7 +82,7 @@ object frmPrevEtiquetaProduto: TfrmPrevEtiquetaProduto
       end
     end
   end
-  object dspEtq: TDataSetProvider
+  object dspEtq: TTimer
     DataSet = sqldEtq
     Options = [poAllowCommandText]
     Left = 48
@@ -113,7 +113,7 @@ object frmPrevEtiquetaProduto: TfrmPrevEtiquetaProduto
     Left = 112
     Top = 8
   end
-  object sqldEtq: TSQLDataSet
+  object sqldEtq: TSQLQuery
     CommandText = 
       'select '#13#10'  CODBARRA, '#13#10'  DESCRICAO, '#13#10'  PRECO '#13#10'from ETIQUETAPRO' +
       'D'

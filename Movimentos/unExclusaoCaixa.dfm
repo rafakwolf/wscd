@@ -1,37 +1,31 @@
 inherited frmExclusaoCaixa: TfrmExclusaoCaixa
   Left = 216
+  Height = 470
   Top = 135
-  ClientHeight = 443
-  ClientWidth = 769
-  Caption = 'frmExclusaoCaixa'
+  Width = 858
   BorderStyle = bsSingle
+  Caption = 'frmExclusaoCaixa'
+  ClientHeight = 470
+  ClientWidth = 858
   Font.Height = -12
-  ExplicitWidth = 775
-  ExplicitHeight = 472
-  PixelsPerInch = 96
-  TextHeight = 14
-  object stbCaixa: TStatusBar
+  object stbCaixa: TStatusBar[0]
     Left = 0
-    Top = 424
-    Width = 769
-    Height = 19
-    Hint = ''
-    ShowHint = True
-    Panels = <>
-    SizeGrip = True
-    Align = alBottom
-    Anchors = [akLeft, akRight, akBottom]
-    ParentColor = False
+    Height = 18
+    Top = 452
+    Width = 858
     Color = clBtnFace
+    Panels = <>
+    ParentColor = False
+    ParentShowHint = False
     SimpleText = ' Para ajuda pressione F1'
-  end
-  object btnExcluir: TBitBtn
-    Left = 592
-    Top = 392
-    Width = 81
-    Height = 25
-    Hint = ''
     ShowHint = True
+  end
+  object btnExcluir: TBitBtn[1]
+    Left = 600
+    Height = 25
+    Top = 408
+    Width = 81
+    Caption = 'Excluir'
     Glyph.Data = {
       96030000424D9603000000000000960200002800000010000000100000000100
       08000000000000010000120B0000120B0000980000009800000000000000FFFF
@@ -61,18 +55,19 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
       384678807C7E79272402130D3434342C2C2C373D3A394C50240223341A071520
       404D57666F6856412A0234080406162B424D596A6F6E736C28021F030606192E
       434F5A6B6E6E6E762802330F0506182F44515B6E727571552802022727151C30
-      4553616760543C27020202020227272727272727272702020202}
-    Caption = 'Excluir'
-    TabOrder = 2
+      4553616760543C27020202020227272727272727272702020202
+    }
     OnClick = btnExcluirClick
-  end
-  object btnSair: TBitBtn
-    Left = 680
-    Top = 392
-    Width = 81
-    Height = 25
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
+    TabOrder = 2
+  end
+  object btnSair: TBitBtn[2]
+    Left = 688
+    Height = 25
+    Top = 408
+    Width = 81
+    Caption = 'Sair'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -123,168 +118,259 @@ inherited frmExclusaoCaixa: TfrmExclusaoCaixa
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Sair'
-    TabOrder = 3
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnSairClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
   end
-  object grpBusca: TGroupBox
+  object grpBusca: TGroupBox[3]
     Left = 8
+    Height = 78
     Top = 2
     Width = 753
-    Height = 49
-    Hint = ''
-    ShowHint = True
     Caption = ' Pesquisa '
+    ClientHeight = 62
+    ClientWidth = 751
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
-    TabStop = False
     object edDescricao: TEdit
       Left = 184
+      Height = 31
       Top = 17
       Width = 558
-      Hint = ''
-      ShowHint = True
-      Text = 'Descri'#231#227'o...'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
+      Font.CharSet = ANSI_CHARSET
       Font.Height = -12
       Font.Name = 'Verdana'
-      TabOrder = 2
       OnChange = edDescricaoChange
-      OnExit = edDescricaoExit
       OnEnter = edDescricaoEnter
+      OnExit = edDescricaoExit
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+      Text = 'Descrição...'
     end
     object edtDocumento: TEdit
       Left = 8
+      Height = 31
       Top = 17
       Width = 169
-      Hint = ''
-      ShowHint = True
-      Text = 'Documento...'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
+      Font.CharSet = ANSI_CHARSET
       Font.Height = -12
       Font.Name = 'Verdana'
-      TabOrder = 0
       OnChange = edtDocumentoChange
-      OnExit = edtDocumentoExit
       OnEnter = edtDocumentoEnter
+      OnExit = edtDocumentoExit
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      Text = 'Documento...'
     end
   end
-  object bvlLinha: TPanel
+  object bvlLinha: TPanel[4]
     Left = 8
-    Top = 384
+    Height = 26
+    Top = 376
     Width = 753
-    Height = 2
-    Hint = ''
+    Caption = 'bvlLinha'
+    ParentShowHint = False
     ShowHint = True
     TabOrder = 5
-    Caption = 'bvlLinha'
   end
-  object dbgrdCaixa: TDBGrid
+  object dbgrdCaixa: TDBGrid[5]
     Left = 8
-    Top = 57
+    Height = 288
+    Hint = 'Duplo clique para marcar/desmarcar '#13#10'o lançamento que deseja excluir...'
+    Top = 89
     Width = 753
-    Height = 320
-    Hint = 
-      'Duplo clique para marcar/desmarcar '#13#10'o lan'#231'amento que deseja exc' +
-      'luir...'
-    ShowHint = True
-    DataSource = dsPadrao
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    ReadOnly = True
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 1
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsPadrao
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 1
     OnDblClick = dbgrdCaixaDblClick
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select * from CAIXA'#13#10'order by DATA'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
     Left = 160
     Top = 136
     object sqldPadraoCODCAIXA: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCAIXA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoCODCAIXAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCAIXAS'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoDOCUMENTO: TStringField
+      FieldKind = fkData
       FieldName = 'DOCUMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
-      FixedChar = True
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object sqldPadraoVALOR: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoEXCLUIR: TStringField
+      FieldKind = fkData
       FieldName = 'EXCLUIR'
-      FixedChar = True
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
+  object dspPadrao: TTimer[7]
     Left = 248
     Top = 136
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    PacketRecords = 100
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[8]
+    FieldDefs = <>
     Left = 328
     Top = 136
     object cdsPadraoCODCAIXA: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCAIXA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoCODCAIXAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCAIXAS'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoDOCUMENTO: TStringField
+      FieldKind = fkData
       FieldName = 'DOCUMENTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnGetText = cdsPadraoTIPOGetText
-      FixedChar = True
       Size = 1
     end
     object cdsPadraoVALOR: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoEXCLUIR: TStringField
+      FieldKind = fkData
       FieldName = 'EXCLUIR'
-      FixedChar = True
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dsPadrao: TDataSource
+  object dsPadrao: TDataSource[9]
     AutoEdit = False
     DataSet = cdsPadrao
     Left = 424

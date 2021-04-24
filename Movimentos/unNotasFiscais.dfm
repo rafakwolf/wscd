@@ -2264,7 +2264,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 160
     Top = 289
   end
-  object sqldSelecao: TSQLDataSet
+  object sqldSelecao: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  CAST(NULL AS INTEGER) IDPRODUTO,'#13#10'  CAST(NULL AS VARCH' +
       'AR(50)) PRODUTO,'#13#10'  CAST(NULL AS INTEGER) IDTRIBUTACAO,'#13#10'  CAST(' +
@@ -2313,7 +2313,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       FieldName = 'DESCTO'
     end
   end
-  object dspSelecao: TDataSetProvider
+  object dspSelecao: TTimer
     DataSet = sqldSelecao
     Left = 312
     Top = 288
@@ -2365,7 +2365,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 467
     Top = 288
   end
-  object sqldProduto: TSQLDataSet
+  object sqldProduto: TSQLQuery
     CommandText = 
       'select'#13#10'  p.IDPRODUTO,'#13#10'  p.CODBARRA, '#13#10'  p.CODFORNECEDOR,'#13#10'  p.' +
       'DESCRICAO, '#13#10'  p.IDALIQUOTA, '#13#10'  p.CUSTO, '#13#10'  p.LUCRO, '#13#10'  p.VEN' +
@@ -2435,7 +2435,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Size = 1
     end
   end
-  object dspProdutos: TDataSetProvider
+  object dspProdutos: TTimer
     DataSet = sqldProduto
     Options = [poAllowCommandText]
     Left = 352
@@ -2686,7 +2686,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 97
     Top = 325
   end
-  object dtNFiscais: TDataSetProvider
+  object dtNFiscais: TTimer
     DataSet = sqlNFiscais
     Options = [poCascadeDeletes, poCascadeUpdates, poAllowCommandText]
     UpdateMode = upWhereKeyOnly
@@ -2790,7 +2790,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       FixedChar = True
       Size = 1
     end
-    object cdsNFiscaissqlDetNFiscais: TDataSetField
+    object cdsNFiscaissqlDetNFiscais: TDataset
       FieldName = 'sqlDetNFiscais'
     end
   end
@@ -2862,7 +2862,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       Precision = 15
     end
   end
-  object sqldPagto: TSQLDataSet
+  object sqldPagto: TSQLQuery
     CommandText = 'STPPAGTOCOMPRA'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'
@@ -2891,7 +2891,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 96
     Top = 376
   end
-  object sqldBaixa: TSQLDataSet
+  object sqldBaixa: TSQLQuery
     CommandText = 'STPBAIXACOMPRA'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'
@@ -2905,7 +2905,7 @@ object frmNotasFiscais: TfrmNotasFiscais
     Left = 128
     Top = 376
   end
-  object sqldEstorna: TSQLDataSet
+  object sqldEstorna: TSQLQuery
     CommandText = 'STPESTORNACOMPRA'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'

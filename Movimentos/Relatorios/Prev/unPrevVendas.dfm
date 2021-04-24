@@ -251,7 +251,7 @@ inherited frmPrevVendas: TfrmPrevVendas
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  v.CODIGO, '#13#10'  v.CODCLIENTE,'#13#10'  cli.NOME CLIENTE, '#13#10'  ' +
       'v.DATA, '#13#10'  v.OBS, '#13#10'  v.TOTALDESCTO, '#13#10'  v.TOTAL, '#13#10'  v.CONCLUI' +

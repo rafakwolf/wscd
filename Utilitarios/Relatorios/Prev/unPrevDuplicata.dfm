@@ -30855,7 +30855,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
       end
     end
   end
-  object sqldDuplicata: TSQLDataSet
+  object sqldDuplicata: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  D.IDDUPLICATA,'#13#10'  D.NRODUPLICATA,'#13#10'  D.SACADO,'#13#10'  D.CP' +
       'F_CNPJ,'#13#10'  D.ENDERECO,'#13#10'  D.BAIRRO,'#13#10'  D.CEP,'#13#10'  D.IDCIDADE,'#13#10'  ' +
@@ -30960,7 +30960,7 @@ object frmPrevDuplicata: TfrmPrevDuplicata
       Size = 250
     end
   end
-  object dspDuplicata: TDataSetProvider
+  object dspDuplicata: TTimer
     DataSet = sqldDuplicata
     Left = 64
     Top = 499

@@ -216,7 +216,7 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select * from '#13#10'STPRELCAIXATIPOCONTA'#13#10'(:PDATAINI, :PDATAFIM, :PT' +
       'IPOCONTA, :PORDEM)'

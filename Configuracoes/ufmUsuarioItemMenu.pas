@@ -6,11 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
   Sqldb,ImgList, Menus, uClassesMenu,
-  memds,  DBCtrls,
-  DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
-   ImageList,  uniEdit, uniDBEdit,
-     uniPanel, 
-  uniStatusBar, uniGroupBox, uniMainMenu, uniTreeView, uniGUIAbstractClasses;
+  memds,  DBCtrls,ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd;
 
 type
   TfrmUsuarioItemMenu = class(TfrmPadrao)
@@ -84,7 +80,7 @@ const
 
 implementation
 
-uses Math, uniGUIMainModule, MainModule;
+uses Math;
 
 {$R *.dfm}
 
@@ -125,7 +121,7 @@ begin
     
     while not Eof do
     begin
-      CompMenu := UniMainModule.MainForm.FindComponent(sqldMenuMENUITEM.AsString);
+      CompMenu := Application.MainForm.FindComponent(sqldMenuMENUITEM.AsString);
       IsRoot   := sqldMenuMENUITEM.AsString = 'CPR';
       
       if (assigned(CompMenu) and (CompMenu is TMenuItem)) or (IsRoot) then
@@ -250,51 +246,51 @@ var
 begin
   if assigned(TreeNode) then
   begin
-    TreeNode.ImageIndex := ifThen(Liberado, IILIBERADO, IIBLOQUEADO);
-
-    if SetAcessoSubItems then
-    begin
-      for x := 0 to TreeNode.Count - 1 do
-        SetAcesso(TreeNode.Item[x], Liberado, True, False, False);
-    end;
-
-    if Manual then
-    begin
-      if not (cdsAcesso.State in dsEditModes) then
-        cdsAcesso.Edit;
-
-      if Liberado then
-      begin
-        if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
-        begin
-          SetAcesso(GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu),
-            True, False, True, False);
-        end;    
-      end
-      else
-      begin
-        Marcados := 0;
-
-        if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
-        begin
-          ParentNode := GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu);
-
-          for x := 0 to ParentNode.Count - 1 do
-          begin
-            if GetAcesso(ParentNode.Item[x]) then
-            begin
-              Marcados := 1;
-              Break;
-            end;
-          end;
-
-          if Marcados = 0 then
-          begin
-            SetAcesso(ParentNode, False, False, True, False);
-          end;  
-        end;
-      end;
-    end;
+    //TreeNode.ImageIndex := ifThen(Liberado, IILIBERADO, IIBLOQUEADO);
+    //
+    //if SetAcessoSubItems then
+    //begin
+    //  for x := 0 to TreeNode.Count - 1 do
+    //    SetAcesso(TreeNode.Item[x], Liberado, True, False, False);
+    //end;
+    //
+    //if Manual then
+    //begin
+    //  if not (cdsAcesso.State in dsEditModes) then
+    //    cdsAcesso.Edit;
+    //
+    //  if Liberado then
+    //  begin
+    //    if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
+    //    begin
+    //      SetAcesso(GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu),
+    //        True, False, True, False);
+    //    end;    
+    //  end
+    //  else
+    //  begin
+    //    Marcados := 0;
+    //
+    //    if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
+    //    begin
+    //      ParentNode := GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu);
+    //
+    //      for x := 0 to ParentNode.Count - 1 do
+    //      begin
+    //        if GetAcesso(ParentNode.Item[x]) then
+    //        begin
+    //          Marcados := 1;
+    //          Break;
+    //        end;
+    //      end;
+    //
+    //      if Marcados = 0 then
+    //      begin
+    //        SetAcesso(ParentNode, False, False, True, False);
+    //      end;  
+    //    end;
+     // end;
+   // end;
   end;
   
   if RepaintTreeView then
@@ -370,7 +366,7 @@ procedure TfrmUsuarioItemMenu.cdsPadraoAfterScroll(DataSet: TDataSet);
 begin
   inherited;
   cdsAcesso.Close;
-  cdsAcesso.Params.ParamByName('IDUSUARIOS').AsInteger := cdsPadraoIDUSUARIOS.AsInteger;
+  sqldAcesso.Params.ParamByName('IDUSUARIOS').AsInteger := cdsPadraoIDUSUARIOS.AsInteger;
   cdsAcesso.Open;
 
   MarcaTreeViewAcessoUsuario;
@@ -396,33 +392,33 @@ end;
 procedure TfrmUsuarioItemMenu.DepoisSalvar;
 var
   x        : Integer;
-  TranDesc : TDBXTransaction;
+ // TranDesc : TDBXTransaction;
 begin
   inherited;
   try
-    TranDesc := sqldInsereAcesso.SQLConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-
-    LimpaAcessos(cdsPadraoIDUSUARIOS.AsInteger);
-
-    with sqldInsereAcesso do
-    begin
-      for x := 0 to tvAcesso.Items.Count - 1 do
-      begin
-        if GetAcesso(tvAcesso.Items[x]) then
-        begin
-          Close;
-          ParamByName('IDUSUARIOS').AsInteger := cdsPadraoIDUSUARIOS.AsInteger;
-          ParamByName('IDMENU').AsInteger     := TPLItemMenu(tvAcesso.Items[x].Data).IdItemMenu;
-          ExecSQL;
-        end;
-      end;
-    end;
-
-    sqldInsereAcesso.SQLConnection.CommitFreeAndNil(TranDesc);
+    //TranDesc := sqldInsereAcesso.SQLConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
+    //
+    //LimpaAcessos(cdsPadraoIDUSUARIOS.AsInteger);
+    //
+    //with sqldInsereAcesso do
+    //begin
+    //  for x := 0 to tvAcesso.Items.Count - 1 do
+    //  begin
+    //    if GetAcesso(tvAcesso.Items[x]) then
+    //    begin
+    //      Close;
+    //      ParamByName('IDUSUARIOS').AsInteger := cdsPadraoIDUSUARIOS.AsInteger;
+    //      ParamByName('IDMENU').AsInteger     := TPLItemMenu(tvAcesso.Items[x].Data).IdItemMenu;
+    //      ExecSQL;
+    //    end;
+    //  end;
+    //end;
+    //
+    //sqldInsereAcesso.SQLConnection.CommitFreeAndNil(TranDesc);
   except
     on e:Exception do
     begin
-      sqldInsereAcesso.SQLConnection.RollbackFreeAndNil(TranDesc);
+      //sqldInsereAcesso.SQLConnection.RollbackFreeAndNil(TranDesc);
       raise Exception.Create(e.Message);
     end;
   end;

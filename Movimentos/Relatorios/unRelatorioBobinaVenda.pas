@@ -8,7 +8,7 @@ uses
   memds, Sqldb, FMTBcd, lcltype;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmRelatorioBobinaVenda = class(TfrmSimplePadrao)
     sqlVendas: TSQLQuery;
     sqlItens: TSQLQuery;
@@ -22,7 +22,7 @@ type
     cdsVendasOBS: TStringField;
     cdsVendasCONCLUIDA: TStringField;
     cdsVendasBAIXADO: TStringField;
-    cdsVendassqlItens: TDataSetField;
+    cdsVendassqlItens: TDataset;
     cdsItens: TMemDataSet;
     sqldPagamento: TSQLQuery;
     dspPagamento: TComponent;

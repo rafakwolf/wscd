@@ -266,7 +266,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Left = 192
     Top = 8
   end
-  object sqldCheque: TSQLDataSet
+  object sqldCheque: TSQLQuery
     CommandText = 
       'insert into CHEQUE'#13#10'values(:IDCHEQUE, :IDBANCO, :IDCLIENTE, :IDF' +
       'ORN, :BANDAMAG, :AGENCIA,'#13#10'       :CONTA, :NUMERO, :DATAEMISSAO,' +
@@ -352,7 +352,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
     Left = 56
     Top = 104
   end
-  object sqldVenda: TSQLDataSet
+  object sqldVenda: TSQLQuery
     CommandText = 
       'select '#13#10'  ven.CODCLIENTE,'#13#10'  cli.NOME,'#13#10'  ven.TOTAL '#13#10'from VEND' +
       'A ven'#13#10'left join CLIENTES cli on (ven.CODCLIENTE = cli.CODCLIENT' +
@@ -378,7 +378,7 @@ object frmPagamentoCheque: TfrmPagamentoCheque
       Precision = 15
     end
   end
-  object sqldCompra: TSQLDataSet
+  object sqldCompra: TSQLQuery
     CommandText = 
       'select '#13#10'  nf.CODFORNECEDOR,'#13#10'  forn.RAZAOSOCIAL,'#13#10'  nf.TOTAL'#13#10'f' +
       'rom NOTAS_FISCAIS nf'#13#10'left join FORNECEDORES forn on (nf.CODFORN' +

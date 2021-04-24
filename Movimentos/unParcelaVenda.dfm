@@ -1,60 +1,58 @@
 object frmParcelaVenda: TfrmParcelaVenda
   Left = 221
+  Height = 464
   Top = 127
-  ClientHeight = 441
-  ClientWidth = 449
-  Caption = 'Parcelas'
+  Width = 489
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Position = poMainFormCenter
-  OldCreateOrder = False
-  ShowHint = True
+  Caption = 'Parcelas'
+  ClientHeight = 464
+  ClientWidth = 489
+  Font.CharSet = ANSI_CHARSET
+  KeyPreview = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
-  BorderIcons = [biSystemMenu]
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
-  OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  Position = poMainFormCenter
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object lbParcelas: TLabel
     Left = 208
-    Top = 48
-    Width = 40
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Height = 15
+    Top = 63
+    Width = 49
     Caption = 'Parcelas'
-    TabOrder = 11
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object lbPrazoInicio: TLabel
     Left = 288
-    Top = 48
-    Width = 57
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Height = 15
+    Top = 63
+    Width = 74
     Caption = 'Prazo Inicial'
-    TabOrder = 12
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object lbIntervalo: TLabel
     Left = 368
-    Top = 48
-    Width = 44
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Height = 15
+    Top = 63
+    Width = 54
     Caption = 'Intervalo'
-    TabOrder = 13
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object btnOk: TBitBtn
     Left = 256
+    Height = 25
     Top = 408
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&OK'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -105,18 +103,19 @@ object frmParcelaVenda: TfrmParcelaVenda
       8080008080008080008080008080008080008080008080008080008080008080
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080}
-    Caption = '&OK'
-    TabOrder = 0
+      8080008080008080008080008080008080008080008080008080
+    }
     OnClick = btnOkClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
   object btnCancelar: TBitBtn
     Left = 352
+    Height = 25
     Top = 408
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&Cancelar'
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -158,18 +157,19 @@ object frmParcelaVenda: TfrmParcelaVenda
       80800080806B6B6B6B6B6B008080008080000080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
-      00808000808000808000}
-    Caption = '&Cancelar'
+      00808000808000808000
+    }
     ModalResult = 2
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
   object btnCalcular: TBitBtn
     Left = 8
+    Height = 25
     Top = 408
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&Calcular'
     Glyph.Data = {
       9E030000424D9E030000000000009E0200002800000010000000100000000100
       08000000000000010000120B0000120B00009A0000009A00000000000000FFFF
@@ -200,155 +200,200 @@ object frmParcelaVenda: TfrmParcelaVenda
       540A871A8D8E8C8B8A89887A413F3B35550A871B918F8F909093926E4564615C
       560A850D2829292552726F484643423D570A0586848182837C7B7978775E5B5A
       3A05050505050505050505050505050505050505050505050505050505050505
-      0505}
-    Caption = '&Calcular'
-    TabOrder = 9
+      0505
+    }
     OnClick = btnCalcularClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
   end
   object edtRestoVenda: TEdit
     Left = 104
-    Top = 64
+    Height = 33
+    Top = 79
     Width = 97
-    Height = 21
-    Hint = ''
-    ShowHint = True
-    Text = ''
-    TabOrder = 10
     Color = clBtnFace
+    ParentShowHint = False
     ReadOnly = True
+    ShowHint = True
+    TabOrder = 10
   end
   object dbeCodCliente: TDBEdit
     Left = 8
+    Height = 33
     Top = 24
     Width = 89
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'CODCLIENTE'
     DataSource = dsVenda
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
   object dbeNomeCliente: TDBEdit
     Left = 104
+    Height = 33
     Top = 24
     Width = 337
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'CLIENTE'
     DataSource = dsVenda
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
   object dbeDataVenda: TDBEdit
     Left = 8
-    Top = 64
+    Height = 33
+    Top = 79
     Width = 89
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATA'
     DataSource = dsVenda
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
   object seParcelas: TSpinEdit
     Left = 208
-    Top = 64
+    Height = 33
+    Top = 79
     Width = 73
-    Height = 22
-    Hint = ''
-    ShowHint = True
-    Value = 1
-    TabOrder = 5
     OnExit = seParcelasExit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+    Value = 1
   end
   object sePrazoInicio: TSpinEdit
     Left = 288
-    Top = 64
+    Height = 33
+    Top = 79
     Width = 73
-    Height = 22
-    Hint = ''
-    ShowHint = True
-    Value = 1
-    TabOrder = 6
     OnExit = seParcelasExit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+    Value = 1
   end
   object seIntervalo: TSpinEdit
     Left = 368
-    Top = 64
+    Height = 33
+    Top = 79
     Width = 73
-    Height = 22
-    Hint = ''
-    ShowHint = True
-    Value = 1
-    TabOrder = 7
     OnExit = seParcelasExit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+    Value = 1
   end
   object dbgrdParcelas: TDBGrid
     Left = 8
-    Top = 96
+    Height = 265
+    Top = 136
     Width = 433
-    Height = 305
-    Hint = ''
-    ShowHint = True
-    DataSource = dsParcela
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 8
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsParcela
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ShowHint = True
+    TabOrder = 8
   end
-  object sqldParcela: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  cast(NULL as INTEGER) NUMERO,'#13#10'  cast(NULL as DATE) VE' +
-      'NC,'#13#10'  cast(NULL as VARCHAR(20)) DIA,'#13#10'  cast(NULL as FLOAT) VAL' +
-      'OR'#13#10'from RDB$DATABASE'
-    MaxBlobSize = -1
+  object sqldParcela: TSQLQuery
+    FieldDefs = <>
     Params = <>
     Left = 192
     Top = 160
     object sqldParcelaNUMERO: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldParcelaVENC: TDateField
+      FieldKind = fkData
       FieldName = 'VENC'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldParcelaDIA: TStringField
+      FieldKind = fkData
       FieldName = 'DIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldParcelaVALOR: TFloatField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspParcela: TDataSetProvider
-    DataSet = sqldParcela
-    Options = [poPropogateChanges, poUseQuoteChar]
+  object dspParcela: TTimer
     Left = 224
     Top = 160
   end
   object cdsParcela: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspParcela'
+    FieldDefs = <>
     Left = 256
     Top = 160
     object cdsParcelaNUMERO: TIntegerField
-      DisplayLabel = 'N'#250'mero'
+      DisplayLabel = 'Número'
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsParcelaVENC: TDateField
       DisplayLabel = 'Vencimento'
+      FieldKind = fkData
       FieldName = 'VENC'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsParcelaVENCChange
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/9999;1;_'
     end
     object cdsParcelaDIA: TStringField
       DisplayLabel = 'Dia'
+      FieldKind = fkData
       FieldName = 'DIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsParcelaVALOR: TFloatField
       DisplayLabel = 'Valor'
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
@@ -358,14 +403,9 @@ object frmParcelaVenda: TfrmParcelaVenda
     Left = 288
     Top = 160
   end
-  object sqldVenda: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  ven.CODIGO,'#13#10'  ven.CODCLIENTE,'#13#10'  cli.NOME CLIENTE,'#13#10 +
-      '  ven.DATA,'#13#10'  ven.TOTAL'#13#10'from VENDA ven'#13#10'left join CLIENTES cli' +
-      ' on (ven.CODCLIENTE = cli.CODCLIENTE)'#13#10'where ven.CODIGO = :IDVEN' +
-      'DA'
-    MaxBlobSize = -1
-    Params = <
+  object sqldVenda: TSQLQuery
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'IDVENDA'
@@ -374,25 +414,57 @@ object frmParcelaVenda: TfrmParcelaVenda
     Left = 224
     Top = 192
     object sqldVendaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldVendaCODCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCLIENTE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldVendaCLIENTE: TStringField
+      FieldKind = fkData
       FieldName = 'CLIENTE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldVendaDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object sqldVendaTOTAL: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
   object dsVenda: TDataSource
@@ -400,54 +472,49 @@ object frmParcelaVenda: TfrmParcelaVenda
     Left = 264
     Top = 192
   end
-  object sqldReceber: TSQLDataSet
-    CommandText = 
-      'insert into CONTASRECEBER(CODIGO, DATA, VENCIMENTO, CLIENTE, DES' +
-      'CRICAO,'#13#10'  DOCUMENTO, VALOR, JURO, RECEBER, VENDA, RECDA)'#13#10'value' +
-      's(:CODIGO, :DATA, :VENCIMENTO, :IDCLIENTE, :DESCRICAO, :DOCUMENT' +
-      'O,'#13#10'       :VALOR, :JURO, '#39'N'#39', :VENDA, '#39'N'#39')'
-    MaxBlobSize = -1
-    Params = <
+  object sqldReceber: TSQLQuery
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'CODIGO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'VENCIMENTO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'IDCLIENTE'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftString
         Name = 'DESCRICAO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftString
         Name = 'DOCUMENTO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFloat
         Name = 'JURO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'VENDA'

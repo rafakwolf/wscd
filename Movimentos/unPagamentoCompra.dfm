@@ -109,7 +109,7 @@ object frmPagamentoCompra: TfrmPagamentoCompra
     ParentColor = False
     Color = clWindow
   end
-  object sqldCompra: TSQLDataSet
+  object sqldCompra: TSQLQuery
     CommandText = 
       'select '#13#10'  DATAPAGTO,'#13#10'  FORMAPAGTO, '#13#10'  VALORPAGO, '#13#10'  VALORRES' +
       'TO '#13#10'from PAGTOCOMPRA'#13#10'where IDCOMPRA = :COMPRA'
@@ -142,7 +142,7 @@ object frmPagamentoCompra: TfrmPagamentoCompra
     Left = 336
     Top = 40
   end
-  object dspCompra: TDataSetProvider
+  object dspCompra: TTimer
     DataSet = sqldCompra
     Left = 136
     Top = 48

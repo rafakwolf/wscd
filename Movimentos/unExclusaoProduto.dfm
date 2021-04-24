@@ -1,24 +1,19 @@
 inherited frmExclusaoProduto: TfrmExclusaoProduto
   Left = 200
   Top = 131
-  ClientHeight = 396
-  ClientWidth = 641
-  Caption = 'Exclus'#227'o de produtos'
-  OnShow = FormShow
-  BorderStyle = bsSingle
   BorderIcons = [biSystemMenu, biMinimize]
-  Font.Charset = DEFAULT_CHARSET
-  ExplicitWidth = 647
-  ExplicitHeight = 425
-  PixelsPerInch = 96
-  TextHeight = 13
-  object btnFechar: TSpeedButton
+  BorderStyle = bsSingle
+  Caption = 'Exclusão de produtos'
+  Font.CharSet = DEFAULT_CHARSET
+  OnShow = FormShow
+  object btnFechar: TSpeedButton[0]
     Left = 536
-    Top = 344
-    Width = 97
     Height = 25
     Hint = 'Fechar'
-    ShowHint = True
+    Top = 344
+    Width = 97
+    Caption = 'Sair'
+    Color = clWindow
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -60,20 +55,20 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       80800080806B6B6B6B6B6B008080008080000080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
-      00808000808000808000}
-    Caption = 'Sair'
-    ParentColor = False
-    Color = clWindow
-    TabOrder = 2
+      00808000808000808000
+    }
     OnClick = btnFecharClick
+    ShowHint = True
+    ParentShowHint = False
   end
-  object btnExcluir: TSpeedButton
+  object btnExcluir: TSpeedButton[1]
     Left = 432
-    Top = 344
-    Width = 97
     Height = 25
     Hint = 'Excluir produtos selecionados'
-    ShowHint = True
+    Top = 344
+    Width = 97
+    Caption = 'Excluir'
+    Color = clWindow
     Glyph.Data = {
       96030000424D9603000000000000960200002800000010000000100000000100
       08000000000000010000120B0000120B0000980000009800000000000000FFFF
@@ -103,104 +98,99 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       384678807C7E79272402130D3434342C2C2C373D3A394C50240223341A071520
       404D57666F6856412A0234080406162B424D596A6F6E736C28021F030606192E
       434F5A6B6E6E6E762802330F0506182F44515B6E727571552802022727151C30
-      4553616760543C27020202020227272727272727272702020202}
-    Caption = 'Excluir'
-    ParentColor = False
-    Color = clWindow
-    TabOrder = 3
+      4553616760543C27020202020227272727272727272702020202
+    }
     OnClick = btnExcluirClick
-  end
-  object stbStatus: TStatusBar
-    Left = 0
-    Top = 377
-    Width = 641
-    Height = 19
-    Hint = ''
     ShowHint = True
-    Panels = <>
-    SizeGrip = True
-    Align = alBottom
-    Anchors = [akLeft, akRight, akBottom]
-    ParentColor = False
-    Color = clBtnFace
-    SimpleText = ' Para ajuda pressione F1'
+    ParentShowHint = False
   end
-  object grpPesquisa: TGroupBox
+  object stbStatus: TStatusBar[2]
+    Left = 0
+    Height = 18
+    Top = 375
+    Width = 680
+    Color = clBtnFace
+    Panels = <>
+    ParentColor = False
+    ParentShowHint = False
+    SimpleText = ' Para ajuda pressione F1'
+    ShowHint = True
+  end
+  object grpPesquisa: TGroupBox[3]
     Left = 8
+    Height = 49
     Top = 8
     Width = 625
-    Height = 49
-    Hint = ''
-    ShowHint = True
     Caption = ' Pesquisa '
+    ClientHeight = 31
+    ClientWidth = 623
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
-    TabStop = False
     object edCodigo: TEdit
       Left = 8
-      Top = 16
+      Height = 33
+      Top = -3
       Width = 161
-      Hint = ''
-      ShowHint = True
-      Text = 'C'#243'digo...'
-      ParentFont = False
       Font.Name = 'Verdana'
-      TabOrder = 0
       OnChange = edCodigoChange
-      OnExit = edCodigoExit
       OnEnter = edCodigoEnter
+      OnExit = edCodigoExit
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      Text = 'Código...'
     end
     object edDescricao: TEdit
       Left = 176
-      Top = 16
+      Height = 33
+      Top = -3
       Width = 441
-      Hint = ''
-      ShowHint = True
-      Text = 'Descri'#231#227'o...'
-      ParentFont = False
       Font.Name = 'Verdana'
-      TabOrder = 1
       OnChange = edDescricaoChange
-      OnExit = edDescricaoExit
       OnEnter = edDescricaoEnter
+      OnExit = edDescricaoExit
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+      Text = 'Descrição...'
     end
   end
-  object bvlLinha: TPanel
+  object bvlLinha: TPanel[4]
     Left = 8
+    Height = 2
     Top = 336
     Width = 625
-    Height = 2
-    Hint = ''
-    ShowHint = True
-    TabOrder = 5
     Caption = 'bvlLinha'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
   end
-  object Grade: TDBGrid
+  object Grade: TDBGrid[5]
     Left = 8
+    Height = 265
+    Hint = 'Dois cliques para marcar/desmarcar'#13#10'o produto que deseja excluir...'
     Top = 64
     Width = 625
-    Height = 265
-    Hint = 
-      'Dois cliques para marcar/desmarcar'#13#10'o produto que deseja excluir' +
-      '...'
-    ShowHint = True
-    DataSource = dsPadrao
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    ReadOnly = True
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 1
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsPadrao
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 1
     OnDblClick = GradeDblClick
   end
-  object dsPadrao: TDataSource
+  object dsPadrao: TDataSource[6]
     AutoEdit = False
     DataSet = cdsPadrao
     Left = 384
     Top = 184
   end
-  object sqlPadrao: TSQLQuery
-    MaxBlobSize = -1
-    Params = <>
+  object sqlPadrao: TSQLQuery[7]
+    FieldDefs = <>
     SQL.Strings = (
       'SELECT '
       '  CODBARRA, '
@@ -208,52 +198,96 @@ inherited frmExclusaoProduto: TfrmExclusaoProduto
       '  ESTOQUE,'
       '  EXCLUIR'
       'FROM PRODUTOS '
-      'ORDER BY DESCRICAO')
+      'ORDER BY DESCRICAO'
+    )
+    Params = <>
     Left = 144
     Top = 176
     object sqlPadraoCODBARRA: TStringField
+      FieldKind = fkData
       FieldName = 'CODBARRA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object sqlPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqlPadraoESTOQUE: TIntegerField
+      FieldKind = fkData
       FieldName = 'ESTOQUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqlPadraoEXCLUIR: TStringField
+      FieldKind = fkData
       FieldName = 'EXCLUIR'
-      FixedChar = True
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqlPadrao
+  object dspPadrao: TTimer[8]
     Left = 216
     Top = 176
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    PacketRecords = 100
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[9]
+    FieldDefs = <>
     Left = 296
     Top = 184
     object cdsPadraoCODBARRA: TStringField
+      FieldKind = fkData
       FieldName = 'CODBARRA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object cdsPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoESTOQUE: TIntegerField
+      FieldKind = fkData
       FieldName = 'ESTOQUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoEXCLUIR: TStringField
+      FieldKind = fkData
       FieldName = 'EXCLUIR'
-      FixedChar = True
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end

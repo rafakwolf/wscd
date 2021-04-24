@@ -1,61 +1,65 @@
 inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
-  ClientHeight = 168
-  ClientWidth = 369
+  Height = 281
+  Width = 452
   Caption = 'frmRelatorioCaixaMensal'
-  OldCreateOrder = True
-  ExplicitWidth = 385
-  ExplicitHeight = 207
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 281
+  ClientWidth = 452
   inherited pnButtons: TPanel
-    Top = 134
-    Width = 369
+    Top = 247
+    Width = 452
+    ClientWidth = 452
     TabOrder = 3
-    ExplicitTop = 134
-    ExplicitWidth = 369
     inherited btnVisualizar: TBitBtn
       OnClick = btnVisualizarClick
     end
   end
-  object edtMes: TEdit [1]
+  object edtMes: TEdit[1]
     Left = 32
+    Height = 33
     Top = 80
     Width = 41
-    Height = 21
-    Hint = ''
-    ShowHint = True
-    Text = ''
-    TabOrder = 1
     OnExit = edtMesExit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object edtAno: TEdit [2]
+  object edtAno: TEdit[2]
     Left = 80
+    Height = 33
     Top = 80
     Width = 65
-    Height = 21
-    Hint = ''
-    ShowHint = True
-    Text = ''
-    TabOrder = 2
     OnExit = edtAnoExit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
   end
-  object rgOrd: TRadioGroup [3]
+  object rgOrd: TRadioGroup[3]
     Left = 8
+    Height = 50
     Top = 8
     Width = 361
-    Height = 33
-    Hint = ''
-    ShowHint = True
-    Items.Strings = (
-      'Lan'#231'amento'
-      'Data')
-    ItemIndex = 0
+    AutoFill = True
     Caption = ' Ordenar por '
-    TabOrder = 0
-    TabStop = False
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 32
+    ClientWidth = 359
     Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      'Lançamento'
+      'Data'
+    )
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[4]
     Left = 216
     Top = 64
   end

@@ -1,25 +1,24 @@
 object frmImprimeRecibo: TfrmImprimeRecibo
-  Left = 216
-  Top = 135
-  ClientHeight = 185
-  ClientWidth = 361
-  Caption = 'Recibo'
-  OnShow = FormShow
+  Left = 259
+  Height = 219
+  Top = 142
+  Width = 415
   BorderStyle = bsToolWindow
-  OldCreateOrder = False
-  OnClose = FormClose
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  Caption = 'Recibo'
+  ClientHeight = 219
+  ClientWidth = 415
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnShow = FormShow
+  LCLVersion = '2.0.12.0'
   object btnImprimir: TBitBtn
     Left = 73
-    Top = 152
-    Width = 88
     Height = 25
-    Hint = ''
+    Top = 164
+    Width = 88
+    Caption = '&Imprimir'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -70,17 +69,17 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       D8D8A9A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFBD8281BD8281BD8281FF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9A9A9A9A9
-      A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Imprimir'
-    TabOrder = 0
+      A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnImprimirClick
+    TabOrder = 0
   end
   object btnVisualizar: TBitBtn
     Left = 168
-    Top = 152
-    Width = 89
     Height = 25
-    Hint = ''
+    Top = 164
+    Width = 89
+    Caption = '&Visualizar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -131,17 +130,17 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       F6F6F6F6F6F6F6F6D7D7D7999999AAAAAAFF00FFFF00FFFF00FFFF00FFFF00FF
       E7AB79D1926DD1926DD1926DD1926DD1926DD1926DD1926DD1926DA56B5FFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFBFBFBFB1B1B1B1B1B1B1B1B1B1B1B1B1
-      B1B1B1B1B1B1B1B1B1B1B1999999FF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Visualizar'
-    TabOrder = 1
+      B1B1B1B1B1B1B1B1B1B1B1999999FF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnVisualizarClick
+    TabOrder = 1
   end
   object btnSair: TBitBtn
     Left = 264
-    Top = 152
-    Width = 89
     Height = 25
-    Hint = ''
+    Top = 164
+    Width = 89
+    Caption = '&Sair'
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -168,17 +167,16 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       76774E1E1FFAEBC5FCFBD1FCFBCFFCFBD1F7B5B6824B4BFF00FFFF00FFFF00FF
       FF00FFFF00FF824B4B9C5657CB6C6DCF6E6E4E1E1F824B4B824B4B824B4B824B
       4B824B4B824B4BFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B82
-      4B4B4E1E1FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Sair'
-    TabOrder = 2
+      4B4B4E1E1FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnSairClick
+    TabOrder = 2
   end
   object imgImpressora: TImage
     Left = 8
+    Height = 128
     Top = 8
     Width = 128
-    Height = 128
-    Hint = ''
     AutoSize = True
     Picture.Data = {
       07544269746D617036C00000424D36C000000000000036000000280000008000
@@ -1719,67 +1717,62 @@ object frmImprimeRecibo: TfrmImprimeRecibo
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FF}
+      00FF
+    }
     Transparent = True
   end
   object gbRecibo: TGroupBox
     Left = 144
+    Height = 153
     Top = 8
     Width = 209
-    Height = 129
-    Hint = ''
     Caption = ' Recibo: '
+    ClientHeight = 135
+    ClientWidth = 207
     TabOrder = 3
-    TabStop = False
     object lbColunas: TLabel
       Left = 10
+      Height = 15
       Top = 80
-      Width = 46
-      Height = 13
-      Hint = ''
+      Width = 52
       Caption = 'Colunas'
-      ParentColor = False
       Color = clBtnFace
-      TabOrder = 5
+      ParentColor = False
+      Transparent = False
     end
     object edPorta: TEdit
       Left = 105
+      Height = 33
       Top = 95
       Width = 93
-      Height = 21
-      Hint = ''
-      Text = ''
       TabOrder = 0
     end
     object edColunas: TSpinEdit
       Left = 10
+      Height = 33
       Top = 95
       Width = 89
-      Height = 21
-      Hint = ''
-      TabOrder = 2
+      TabOrder = 1
     end
     object rbA4: TRadioButton
       Left = 16
+      Height = 23
       Top = 24
-      Width = 81
-      Height = 17
-      Hint = ''
-      Checked = True
+      Width = 82
       Caption = 'Papel A4'
-      TabOrder = 3
+      Checked = True
       OnClick = rbA4Click
+      TabOrder = 3
+      TabStop = True
     end
     object rbBobina: TRadioButton
       Left = 16
+      Height = 23
       Top = 48
-      Width = 81
-      Height = 17
-      Hint = ''
+      Width = 71
       Caption = 'Bobina'
-      TabOrder = 4
-      TabStop = False
       OnClick = rbBobinaClick
+      TabOrder = 2
     end
   end
 end

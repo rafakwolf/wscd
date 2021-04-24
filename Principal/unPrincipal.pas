@@ -11,7 +11,11 @@ uses
   StdCtrls, DBCtrls, memds, IniFiles, ImgList, ImgUtils, FMTBcd, uMenuActions;
 
 type
+
+  { TMainForm }
+
   TMainForm = class(TForm)
+    btnSair: TSpeedButton;
     ListaAcoes: TActionList;
     actCidade: TAction;
     acTdade: TAction;
@@ -71,9 +75,8 @@ type
     actInfoAvisos: TAction;
     actAuditoriaUser: TAction;
     menuFrame: TFrame;
-    UniPanel1: TPanel;
-    btnSair: TSpeedButton;
-    btnNotificacoes: TSpeedButton;
+    toolsPanel: TPanel;
+    btnNotifficacoes: TSpeedButton;
     procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
     procedure acTdadeExecute(Sender: TObject);
@@ -117,6 +120,7 @@ type
     procedure actChequeExecute(Sender: TObject);
     procedure actRenovaChaveExecute(Sender: TObject);
     procedure btnLogOffClick(Sender: TObject);
+    procedure btnNotifficacoesClick(Sender: TObject);
     procedure btnOrcamentoClick(Sender: TObject);
     procedure btnListaPrecoClick(Sender: TObject);
     procedure btnProdutoClick(Sender: TObject);
@@ -128,14 +132,12 @@ type
     procedure actInfoSistemaExecute(Sender: TObject);
     procedure actVendedorExecute(Sender: TObject);
     procedure actConfigNotaExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure actPromocaoExecute(Sender: TObject);
+    procedure MenuItem1Click(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
-    procedure UniFormResize(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
-    procedure menuFrameAjaxEvent(Sender: TComponent; EventName: string;
-      Params: TStrings);
-    procedure btnNotificacoesClick(Sender: TObject);
   Private
     Lista_permissoes: TMemDataSet;
     MenuActions: TMenuActions;
@@ -147,9 +149,6 @@ type
     procedure SetSistema;
     procedure GetListaPermissoes;
 
-    procedure LoadHtmlMenu;
-
-
     function ValidaDataAcesso(DataEncriptada: string; DataAtual: TDateTime;
       Connection: TSQLConnection): Boolean;
     function ValidaHD(HD, HDGravar: string; Connection: TSQLConnection): Boolean;
@@ -157,20 +156,15 @@ type
   Public
   end;
 
-function MainForm: TMainForm;
+var MainForm: TMainForm;
 
 implementation
 
 uses
-  unAcesso, Funcoes, uUtilFncs, VarGlobal,   {MainModule,} {uniGUIApplication,}
+  unAcesso, Funcoes, uUtilFncs, VarGlobal,
   uClasses, udmAcesso, uNotificacoes;
 
 {$R *.lfm}
-
-function MainForm: TMainForm;
-begin
-   // Result := TMainForm(UniMainModule.GetFormInstance(TMainForm));
-end;
 
 procedure TMainForm.actGrupoExecute(Sender: TObject);
 begin
@@ -459,11 +453,9 @@ begin
     actOutroUsuario.Execute;
 end;
 
-procedure TMainForm.btnNotificacoesClick(Sender: TObject);
+procedure TMainForm.btnNotifficacoesClick(Sender: TObject);
 begin
   frmNotificacoes := TfrmNotificacoes.Create(Application);
-  frmNotificacoes.Top := btnNotificacoes.Top + btnNotificacoes.Height;
-  frmNotificacoes.Left := btnNotificacoes.Left;
   frmNotificacoes.Show();
 end;
 
@@ -514,7 +506,6 @@ end;
 
 procedure TMainForm.UniFormCreate(Sender: TObject);
 begin
-  LoadHtmlMenu;
 
   SetSistema;
   SetEmpresa;
@@ -524,16 +515,9 @@ begin
   MenuActions := TMenuActions.Create(ListaAcoes);
 end;
 
-procedure TMainForm.UniFormResize(Sender: TObject);
-begin
-//   UniSimplePanel1.Top := 0;
-//   UniSimplePanel1.Left := 250; // largura do menu lateral
-//   UniSimplePanel1.Width := self.Width;
-end;
-
 procedure TMainForm.btnSairClick(Sender: TObject);
 begin
-  // Application.Restart;
+  Application.Terminate;
 end;
 
 procedure TMainForm.actAjudaExecute(Sender: TObject);
@@ -550,45 +534,6 @@ begin
   finally
     Free;
   end;
-end;
-
-procedure TMainForm.LoadHtmlMenu;
-var htmlFile: TStream;
-    Bytes: TBytes;
-
-  function HtmlToColor(s:string;aDefault:Tcolor):TColor;
-  begin
-    if copy(s,1,1)='#' then begin
-      s:='$'+copy(s,6,2)+copy(s,4,2)+copy(s,2,2);
-    end
-    else
-      s:='clNone';
-    try
-      result:=StringToColor(s);
-    except
-      result:=aDefault;
-    end;
-  end;
-
-begin
-   //htmlFile := TFileStream.Create('./files/menu.html', fmOpenRead);
-   //try
-   //  menuFrame.HTML.Clear;
-   //
-   //  if htmlFile.Size>0 then begin
-   //   SetLength(Bytes, htmlFile.Size);
-   //   htmlFile.Read(Bytes[0], htmlFile.Size);
-   // end;
-   //
-   // menuFrame.HTML.Add(TEncoding.UTF8.GetString(Bytes));
-   //
-   //finally
-   //  htmlFile.Free;
-   //end;
-   //
-   //
-   //UniPanel1.Color := HtmlToColor('#2e353d', clSilver);
-
 end;
 
 procedure TMainForm.actNotaPromissoriaExecute(Sender: TObject);
@@ -611,6 +556,17 @@ begin
   ChamaForm('TfrmConfigNota', 'Configurãção da nota', Application);
 end;
 
+procedure TMainForm.FormCreate(Sender: TObject);
+var i, j: Integer;
+  menu: TMainMenu;
+begin
+   menu := TMainMenu.Create(Self);
+   for j := 0 to ListaAcoes.ActionCount-1 do
+   begin
+     //
+   end;
+end;
+
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
   if Assigned(Configuracao) then
@@ -631,6 +587,11 @@ end;
 procedure TMainForm.actPromocaoExecute(Sender: TObject);
 begin
   ChamaForm('TfrmPromocao', 'Promoções', Application);
+end;
+
+procedure TMainForm.MenuItem1Click(Sender: TObject);
+begin
+
 end;
 
 function TMainForm.ValidaDataAcesso(DataEncriptada: string;
@@ -675,10 +636,4 @@ begin
   end;
 end;
 
-
-procedure TMainForm.menuFrameAjaxEvent(Sender: TComponent; EventName: string;
-  Params: TStrings);
-begin
-  MenuActions.AbrirForm(EventName);
-end;
 end.

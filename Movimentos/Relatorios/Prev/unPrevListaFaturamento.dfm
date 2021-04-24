@@ -260,7 +260,7 @@ inherited frmPrevListaFaturamento: TfrmPrevListaFaturamento
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'  nf.NUMERO, '#13#10'  nf.CODFORNECEDOR, '#13#10'  fn.FANTAZIA FORNE' +
       'CEDOR, '#13#10'  nf.DATANOTA, '#13#10'  nf.DATAENTRADA, '#13#10'   c.OPERACAO, '#13#10' ' +
@@ -421,7 +421,7 @@ inherited frmPrevListaFaturamento: TfrmPrevListaFaturamento
       FixedChar = True
       Size = 1
     end
-    object cdsPadraosqldDetalhe: TDataSetField
+    object cdsPadraosqldDetalhe: TDataset
       FieldName = 'sqldDetalhe'
     end
   end
@@ -489,7 +489,7 @@ inherited frmPrevListaFaturamento: TfrmPrevListaFaturamento
     Left = 46
     Top = 38
   end
-  object sqldDetalhe: TSQLDataSet
+  object sqldDetalhe: TSQLQuery
     CommandText = 
       'select    '#13#10'  dnf.NUMERO,'#13#10'  p.CODBARRA,   '#13#10'  p.DESCRICAO PRODU' +
       'TO, '#13#10'  dnf.ALIQUOTA, '#13#10'  dnf.QTDE,   '#13#10'  dnf.TOTAL,   '#13#10'  dnf.C' +

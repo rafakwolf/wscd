@@ -1,2 +1,10 @@
 inherited DmPrincipal: TDmPrincipal
+  Height = 292
+  HorizontalOffset = 397
+  VerticalOffset = 147
+  Width = 437
+  inherited Conexao: TMySQL57Connection
+    Left = 136
+    Top = 80
+  end
 end

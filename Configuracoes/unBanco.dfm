@@ -1,91 +1,105 @@
 inherited frmBanco: TfrmBanco
-  ClientHeight = 156
-  ClientWidth = 472
+  Height = 282
+  Width = 640
   Caption = 'frmBanco'
-  OldCreateOrder = True
-  ExplicitWidth = 478
-  ExplicitHeight = 185
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 282
+  ClientWidth = 640
   inherited sbStatus: TStatusBar
-    Top = 137
-    Width = 472
-    ExplicitTop = 137
-    ExplicitWidth = 433
+    Top = 264
+    Width = 640
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 472
+    Width = 640
+    ClientWidth = 640
     TabOrder = 2
-    ExplicitWidth = 433
   end
-  object dbeCodCompensacao: TDBEdit [2]
+  object dbeCodCompensacao: TDBEdit[2]
     Left = 96
+    Height = 33
+    Hint = 'Código de compensação'
     Top = 54
     Width = 105
-    Height = 21
-    Hint = 'C'#243'digo de compensa'#231#227'o'
-    ShowHint = True
     DataField = 'IDBANCO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
-  object dbeBanco: TDBEdit [3]
+  object dbeBanco: TDBEdit[3]
     Left = 96
+    Height = 33
+    Hint = 'Nome do banco'
     Top = 80
     Width = 321
-    Height = 21
-    Hint = 'Nome do banco'
-    ShowHint = True
     DataField = 'BANCO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[4]
     Left = 32
     Top = 76
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[5]
     DataSet = cdsPadrao
     Left = 311
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select * from BANCO'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 112
     Top = 84
     object sqldPadraoIDBANCO: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDBANCO'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoBANCO: TStringField
+      FieldKind = fkData
       FieldName = 'BANCO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
-    UpdateMode = upWhereKeyOnly
+  object dspPadrao: TTimer[7]
     Left = 184
     Top = 84
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[8]
+    FieldDefs = <>
     Left = 256
     Top = 84
     object cdsPadraoIDBANCO: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDBANCO'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
       DisplayFormat = '000'
     end
     object cdsPadraoBANCO: TStringField
+      FieldKind = fkData
       FieldName = 'BANCO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

@@ -232,7 +232,7 @@ inherited frmPrevProdutoGrupo: TfrmPrevProdutoGrupo
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  CODBARRA,'#13#10'  DESCRICAO,'#13#10'  FORNECEDOR,'#13#10'  CODGRUPO,'#13#10 +
       '  GRUPO,'#13#10'  CUSTO,'#13#10'  LUCRO,'#13#10'  PRECO,'#13#10'  ESTOQUE,'#13#10'  VALORESTOQ' +

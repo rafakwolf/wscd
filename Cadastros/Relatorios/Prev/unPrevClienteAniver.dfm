@@ -170,7 +170,7 @@ inherited frmPrevClientesAniver: TfrmPrevClientesAniver
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select * from '#13#10'STPGETCLIENTEANIVER(:PTIPO, :PDIAINI, :PDIAFIM, ' +
       ':PMES, :PANO, :PDATA1, :PDATA2)'#13#10'order by DATANASC, NOME'

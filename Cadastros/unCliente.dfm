@@ -365,7 +365,7 @@ inherited frmCliente: TfrmCliente
     Left = 713
     Top = 36
   end
-  object sqldCidade: TSQLDataSet
+  object sqldCidade: TSQLQuery
     CommandText = 'select * from CIDADES'
     MaxBlobSize = -1
     Params = <>
@@ -380,7 +380,7 @@ inherited frmCliente: TfrmCliente
       Size = 30
     end
   end
-  object dspCidade: TDataSetProvider
+  object dspCidade: TTimer
     DataSet = sqldCidade
     Left = 624
     Top = 100

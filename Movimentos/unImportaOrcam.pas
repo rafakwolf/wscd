@@ -8,7 +8,7 @@ uses
   memds,  SqlDb, FMTBcd, LCLType;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmImportaOrcam = class(TForm)
     Progresso: TProgressBar;
     sqldVenda: TSQLQuery;
@@ -22,7 +22,7 @@ type
     cdsOrcamOBS: TStringField;
     cdsOrcamSTATUS: TStringField;
     cdsOrcamCONCLUIDO: TStringField;
-    cdsOrcamsqlDetOrcam: TDataSetField;
+    cdsOrcamsqlDetOrcam: TDataset;
     cdsDetOrcam: TMemDataSet;
     cdsDetOrcamCODIGO: TIntegerField;
     cdsDetOrcamCODPRODUTO: TIntegerField;

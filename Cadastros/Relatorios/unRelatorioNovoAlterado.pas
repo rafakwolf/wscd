@@ -4,8 +4,7 @@ interface
 
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, 
-     uniPanel, uniRadioGroup;
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB;
 
 const
   cs_prod_novos_alter: string = 'select '+
@@ -52,16 +51,16 @@ begin
     cdsPadrao.Close;
     if rgpOpcoes.ItemIndex = 0 then
     begin
-      cdsPadrao.SQL.Clear; SQL.Text := cs_prod_novos_alter;
-      cdsPadrao.Params.ParamByName('PNOVO').AsInteger := 1;
-      cdsPadrao.Params.ParamByName('PALTERADO').AsInteger := 0;
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text := cs_prod_novos_alter;
+      sqldPadrao.Params.ParamByName('PNOVO').AsInteger := 1;
+      sqldPadrao.Params.ParamByName('PALTERADO').AsInteger := 0;
       NovosORAlterados := 'Novos';
     end
     else
     begin
-      cdsPadrao.SQL.Clear; SQL.Text := cs_prod_novos_alter;
-      cdsPadrao.Params.ParamByName('PNOVO').AsInteger := 0;
-      cdsPadrao.Params.ParamByName('PALTERADO').AsInteger := 1;
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text := cs_prod_novos_alter;
+      sqldPadrao.Params.ParamByName('PNOVO').AsInteger := 0;
+      sqldPadrao.Params.ParamByName('PALTERADO').AsInteger := 1;
       NovosORAlterados := 'Alterados';
     end;
     cdsPadrao.Open;

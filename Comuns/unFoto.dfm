@@ -1,24 +1,20 @@
 inherited frmFoto: TfrmFoto
   Left = 214
+  Height = 379
   Top = 161
-  ClientHeight = 241
-  ClientWidth = 297
-  Caption = 'Web-cam'
-  OnShow = FormShow
+  Width = 466
   BorderStyle = bsToolWindow
-  OldCreateOrder = True
+  Caption = 'Web-cam'
+  ClientHeight = 379
+  ClientWidth = 466
   OnDestroy = FormDestroy
-  ExplicitWidth = 303
-  ExplicitHeight = 270
-  PixelsPerInch = 96
-  TextHeight = 13
-  object btnOK: TBitBtn
+  OnShow = FormShow
+  object btnOK: TBitBtn[0]
     Left = 120
+    Height = 25
     Top = 208
     Width = 81
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&OK'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -69,18 +65,19 @@ inherited frmFoto: TfrmFoto
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&OK'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 1
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object btnCancel: TBitBtn
+  object btnCancel: TBitBtn[1]
     Left = 208
+    Height = 25
     Top = 208
     Width = 81
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&Cancelar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -131,20 +128,21 @@ inherited frmFoto: TfrmFoto
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Cancelar'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 2
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object grpFoto: TGroupBox
+  object grpFoto: TGroupBox[2]
     Left = 8
+    Height = 193
     Top = 8
     Width = 281
-    Height = 193
-    Hint = ''
-    ShowHint = True
     Caption = ' Imagem '
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
-    TabStop = False
   end
 end

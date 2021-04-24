@@ -2147,7 +2147,7 @@ object frmOrcamentos: TfrmOrcamentos
     Color = clWindow
     OnDblClick = grdItensDblClick
   end
-  object dtOrcam: TDataSetProvider
+  object dtOrcam: TTimer
     DataSet = sqlOrcam
     Options = [poAllowCommandText]
     Left = 310
@@ -2212,7 +2212,7 @@ object frmOrcamentos: TfrmOrcamentos
       FixedChar = True
       Size = 1
     end
-    object cdsOrcamsqlDetOrcam: TDataSetField
+    object cdsOrcamsqlDetOrcam: TDataset
       FieldName = 'sqlDetOrcam'
     end
   end
@@ -2276,7 +2276,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 311
     Top = 400
   end
-  object sqlOrcam: TSQLDataSet
+  object sqlOrcam: TSQLQuery
     CommandText = 
       'select'#13#10'    orc.CODIGO,'#13#10'    orc.CODCLIENTE,'#13#10'    cli.Nome NOMEC' +
       'LIENTE,'#13#10'    orc.IDVENDEDOR,'#13#10'    vd.VENDEDOR,'#13#10'    orc.DATA,'#13#10' ' +
@@ -2334,7 +2334,7 @@ object frmOrcamentos: TfrmOrcamentos
       Size = 1
     end
   end
-  object sqlDetOrcam: TSQLDataSet
+  object sqlDetOrcam: TSQLQuery
     CommandText = 
       'select'#13#10'    iorc.CODIGO,'#13#10'    iorc.CODPRODUTO,'#13#10'    prod.Descric' +
       'ao NOMEPRODUTO,'#13#10'    iorc.QTDE,'#13#10'    iorc.CUSTO,'#13#10'    iorc.VENDA' +
@@ -2389,7 +2389,7 @@ object frmOrcamentos: TfrmOrcamentos
       Precision = 15
     end
   end
-  object sqlProdutos: TSQLDataSet
+  object sqlProdutos: TSQLQuery
     CommandText = 
       'select'#13#10'  p.IDPRODUTO,'#13#10'  p.CODBARRA, '#13#10'  p.DESCRICAO,'#13#10'  p.ABRE' +
       'VIACAO,'#13#10'  p.PRECO_PROMOCAO, '#13#10'  p.CUSTO, '#13#10'  p.LUCRO, '#13#10'  p.VEN' +
@@ -2444,7 +2444,7 @@ object frmOrcamentos: TfrmOrcamentos
       Size = 1
     end
   end
-  object dspProdutos: TDataSetProvider
+  object dspProdutos: TTimer
     DataSet = sqlProdutos
     Left = 528
     Top = 333
@@ -2499,7 +2499,7 @@ object frmOrcamentos: TfrmOrcamentos
       Size = 1
     end
   end
-  object sqldSelecao: TSQLDataSet
+  object sqldSelecao: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  cast(NULL as INTEGER) PRODUTO,'#13#10'  cast(NULL as VARCHAR' +
       '(80)) NOMEPRODUTO,'#13#10'  cast(1 as INTEGER) QTDE,'#13#10'  cast(NULL  as ' +
@@ -2538,7 +2538,7 @@ object frmOrcamentos: TfrmOrcamentos
       FieldName = 'TOTAL'
     end
   end
-  object dspSelecao: TDataSetProvider
+  object dspSelecao: TTimer
     DataSet = sqldSelecao
     Left = 312
     Top = 296
@@ -2582,7 +2582,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 376
     Top = 296
   end
-  object sqldCliente: TSQLDataSet
+  object sqldCliente: TSQLQuery
     CommandText = 
       'select'#13#10'  cli.CODCLIENTE,'#13#10'  cli.NOME,'#13#10'  cli.TELEFONE,'#13#10'  cli.R' +
       'G_IE,'#13#10'  cli.CPF_CNPJ,'#13#10'  cli.DATA_NASC,'#13#10'  cli.LIMITE,'#13#10'  cid.D' +
@@ -2622,7 +2622,7 @@ object frmOrcamentos: TfrmOrcamentos
       Size = 80
     end
   end
-  object dspCliente: TDataSetProvider
+  object dspCliente: TTimer
     DataSet = sqldCliente
     Left = 528
     Top = 301
@@ -2673,7 +2673,7 @@ object frmOrcamentos: TfrmOrcamentos
     Left = 372
     Top = 400
   end
-  object sqldVendedor: TSQLDataSet
+  object sqldVendedor: TSQLQuery
     CommandText = 'select '#13#10'  IDVENDEDOR, '#13#10'  VENDEDOR, '#13#10'  ATIVO '#13#10'from VENDEDOR'
     MaxBlobSize = -1
     Params = <>
@@ -2694,7 +2694,7 @@ object frmOrcamentos: TfrmOrcamentos
       Size = 1
     end
   end
-  object dspVendedor: TDataSetProvider
+  object dspVendedor: TTimer
     DataSet = sqldVendedor
     Left = 528
     Top = 365
@@ -2719,7 +2719,7 @@ object frmOrcamentos: TfrmOrcamentos
       Size = 1
     end
   end
-  object spDeleta: TSQLDataSet
+  object spDeleta: TSQLQuery
     CommandText = 'STPDELORCAMENTO'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'

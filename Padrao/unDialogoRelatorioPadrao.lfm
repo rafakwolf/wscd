@@ -1,46 +1,53 @@
 object frmDialogoRelatorioPadrao: TfrmDialogoRelatorioPadrao
+  Left = 323
+  Height = 240
+  Top = 168
+  Width = 320
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '2.0.12.0'
   object pnButtons: TPanel
     Left = 0
-    Top = 209
-    Width = 454
     Height = 34
-    Hint = ''
-    ShowHint = True
-    ParentColor = False
+    Top = 206
+    Width = 320
     Align = alBottom
-    Anchors = [akLeft, akRight, akBottom]
+    ClientHeight = 34
+    ClientWidth = 320
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
-    TabStop = False
     object btnImprimir: TBitBtn
       Left = 5
+      Height = 30
       Top = 2
       Width = 90
-      Height = 30
-      Hint = ''
-      ShowHint = True
       Caption = '&Imprimir'
-      TabOrder = 3
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
     end
     object btnVisualizar: TBitBtn
       Left = 97
+      Height = 30
       Top = 2
       Width = 90
-      Height = 30
-      Hint = ''
-      ShowHint = True
       Caption = '&Visualizar'
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
     end
     object btnSair: TBitBtn
       Left = 189
+      Height = 30
       Top = 2
       Width = 90
-      Height = 30
-      Hint = ''
-      ShowHint = True
       Caption = '&Sair'
-      TabOrder = 2
       OnClick = btnSairClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
     end
   end
   object dsPadrao: TDataSource

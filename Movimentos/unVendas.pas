@@ -9,7 +9,7 @@ uses
   Sqldb, FMTBcd, unPadrao,  ActnList, lcltype;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmVendas = class(TfrmPadrao)
     sqldClientes: TSQLQuery;
     dspClientes: TComponent;
@@ -36,7 +36,7 @@ type
     cdsVendasOBS: TStringField;
     cdsVendasCONCLUIDA: TStringField;
     cdsVendasBAIXADO: TStringField;
-    cdsVendassqlItens: TDataSetField;
+    cdsVendassqlItens: TDataset;
     cdsItensCODIGO: TIntegerField;
     cdsItensCODPRODUTO: TIntegerField;
     cdsItensPRODUTO: TStringField;

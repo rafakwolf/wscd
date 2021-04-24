@@ -117,7 +117,7 @@ inherited frmPrevContasReceber: TfrmPrevContasReceber
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  DATA, '#13#10'  VENCIMENTO, '#13#10'  CLIENTE, '#13#10'  CAPITAL, '#13#10'  T' +
       'OTAL '#13#10'from VIEWRELCR'#13#10'WHERE CLIENTE = :PCLIENTE'#13#10'order by DATA'

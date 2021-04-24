@@ -5,17 +5,16 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, memds, 
-  DB, SqlDb, StdCtrls, Buttons, ExtCtrls, SQLTimST, ComCtrls,
-    DBCtrls,  FMTBcd,  uniEdit, uniDBEdit, 
-    uniPanel, uniRadioGroup;
+  DB, SqlDb, StdCtrls, Buttons, ExtCtrls , ComCtrls,
+    DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioProdutoVencimento = class(TfrmDialogoRelatorioPadrao)
     sqldSelecao: TSQLQuery;
     dspSelecao: TComponent;
     cdsSelecao: TMemDataSet;
-    sqldSelecaoDATA: TSQLTimeStampField;
-    cdsSelecaoDATA: TSQLTimeStampField;
+    sqldSelecaoDATA: TDateTimeField;
+    cdsSelecaoDATA: TDateTimeField;
     sqldUnidade: TSQLQuery;
     dspUnidade: TComponent;
     cdsUnidade: TMemDataSet;
@@ -116,9 +115,9 @@ begin
   EnableFiltros;
   cdsSelecao.Open;
 
-  SQLUnidade := sqldUnidade.CommandText;
-  SQLForn    := sqldForn.CommandText;
-  SQLGrupo   := sqldGrupo.CommandText;
+  SQLUnidade := sqldUnidade.sql.text;
+  SQLForn    := sqldForn.sql.text;
+  SQLGrupo   := sqldGrupo.sql.text;
 end;
 
 procedure TfrmRelatorioProdutoVencimento.FormClose(Sender: TObject;
@@ -137,16 +136,15 @@ begin
     begin
       cdsPadrao.Close;
 
-      cdsPadrao.Params.ParamByName('DATA').AsSQLTimeStamp :=
-        DateTimeToSQLTimeStamp(cdsSelecaoDATA.AsDateTime);
+      sqldPadrao.Params.ParamByName('DATA').AsDateTime := cdsSelecaoDATA.AsDateTime;
 
-      cdsPadrao.Params.ParamByName('UNIDADE').AsInteger :=
+      sqldPadrao.Params.ParamByName('UNIDADE').AsInteger :=
         IfThen(rgTipo.ItemIndex = 1, cdsUnidadeCODUNIDADE.AsInteger, -1);
 
-      cdsPadrao.Params.ParamByName('GRUPO').AsInteger :=
+      sqldPadrao.Params.ParamByName('GRUPO').AsInteger :=
         IfThen(rgTipo.ItemIndex = 2, cdsGrupoCODGRUPO.AsInteger, -1);
 
-      cdsPadrao.Params.ParamByName('FORN').AsInteger :=
+      sqldPadrao.Params.ParamByName('FORN').AsInteger :=
         IfThen(rgTipo.ItemIndex = 3, cdsFornCODFORNECEDOR.AsInteger, -1);
 
       cdsPadrao.Open;
@@ -163,7 +161,7 @@ procedure TfrmRelatorioProdutoVencimento.dbeUnidadeClickButton(Sender: TObject);
 begin
   inherited;
   cdsUnidade.Close;
-  cdsUnidade.SQL.Clear; SQL.Text :=SQLUnidade;
+  sqldUnidade.SQL.Clear; sqldUnidade.SQL.Text :=SQLUnidade;
 //  if not TfrmModeloConsulta.Execute('Busca Unidade', cdsUnidade, FN_UNIDADES, DL_UNIDADES) then
 //    cdsUnidade.Close;
 end;
@@ -172,7 +170,7 @@ procedure TfrmRelatorioProdutoVencimento.dbeGrupoClickButton(Sender: TObject);
 begin
   inherited;
   cdsGrupo.Close;
-  cdsGrupo.SQL.Clear; SQL.Text :=SQLGrupo;
+  sqldGrupo.SQL.Clear; sqldGrupo.SQL.Text :=SQLGrupo;
 //  if not TfrmModeloConsulta.Execute('Busca Grupo', cdsGrupo, FN_GRUPOS, DL_GRUPOS) then
 //    cdsGrupo.Close;
 end;
@@ -181,7 +179,7 @@ procedure TfrmRelatorioProdutoVencimento.dbeFornClickButton(Sender: TObject);
 begin
   inherited;
   cdsForn.Close;
-  cdsForn.SQL.Clear; SQL.Text :=SQLForn;
+  sqldForn.SQL.Clear; sqldForn.SQL.Text :=SQLForn;
 //  if not TfrmModeloConsulta.Execute('Busca Fornecedor', cdsForn, FN_FORN, DL_FORN) then
 //    cdsForn.Close;
 end;

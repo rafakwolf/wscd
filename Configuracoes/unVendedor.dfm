@@ -1,24 +1,16 @@
 inherited frmVendedor: TfrmVendedor
   Left = 229
   Top = 165
-  ClientHeight = 200
-  ClientWidth = 522
+  Width = 691
   Caption = 'frmVendedor'
-  OldCreateOrder = True
+  ClientWidth = 691
   Font.Name = 'Verdana'
-  ExplicitWidth = 528
-  ExplicitHeight = 229
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited sbStatus: TStatusBar
-    Top = 181
-    Width = 522
-    ExplicitTop = 210
-    ExplicitWidth = 522
+    Width = 691
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 522
-    ExplicitWidth = 522
+    Width = 691
+    ClientWidth = 691
     inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
     end
@@ -44,96 +36,127 @@ inherited frmVendedor: TfrmVendedor
       Font.Name = 'Verdana'
     end
   end
-  object dbeIdVendedor: TDBEdit [2]
+  object dbeIdVendedor: TDBEdit[2]
     Left = 80
+    Height = 33
     Top = 56
     Width = 97
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'IDVENDEDOR'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbeVendedor: TDBEdit [3]
+  object dbeVendedor: TDBEdit[3]
     Left = 80
+    Height = 33
     Top = 82
     Width = 305
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'VENDEDOR'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  object dbcbAtivo: TDBCheckBox [4]
-    Left = 80
-    Top = 108
-    Width = 57
-    Height = 17
-    Hint = ''
-    ShowHint = True
+  object dbcbAtivo: TDBCheckBox[4]
+    Left = 88
+    Height = 25
+    Top = 128
+    Width = 80
+    Caption = 'Ativo'
     DataField = 'ATIVO'
     DataSource = dsPadrao
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
     ValueChecked = 'S'
     ValueUnchecked = 'N'
-    Caption = 'Ativo'
-    TabOrder = 4
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[5]
     Left = 184
     Top = 124
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[6]
     DataSet = cdsPadrao
     Left = 439
     Top = 60
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select '#13#10'  IDVENDEDOR, '#13#10'  VENDEDOR, '#13#10'  ATIVO '#13#10'from VENDEDOR'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[7]
+    FieldDefs = <>
     Params = <>
     Left = 288
     Top = 124
     object sqldPadraoIDVENDEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDVENDEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoVENDEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'VENDEDOR'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoATIVO: TStringField
+      FieldKind = fkData
       FieldName = 'ATIVO'
-      FixedChar = True
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poPropogateChanges, poUseQuoteChar]
+  object dspPadrao: TTimer[8]
     Left = 376
     Top = 124
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[9]
+    FieldDefs = <>
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
     Left = 448
     Top = 124
     object cdsPadraoIDVENDEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDVENDEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoVENDEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'VENDEDOR'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoATIVO: TStringField
+      FieldKind = fkData
       FieldName = 'ATIVO'
-      FixedChar = True
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end

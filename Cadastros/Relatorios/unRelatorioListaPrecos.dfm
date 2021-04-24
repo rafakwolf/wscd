@@ -125,7 +125,7 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
       end
     end
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 'select '#13#10'  DESCRICAO, '#13#10'  VENDA '#13#10'from PRODUTOS'
     MaxBlobSize = -1
     Params = <>
@@ -142,7 +142,7 @@ object frmRelatorioListaPrecos: TfrmRelatorioListaPrecos
       Precision = 15
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     Left = 112

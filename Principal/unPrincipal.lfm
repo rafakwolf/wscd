@@ -1,68 +1,51 @@
 object MainForm: TMainForm
-  object menuFrame: THTMLFrame
-    Left = 0
-    Top = 0
-    Width = 205
-    Height = 105
-    Hint = ''
-    ShowHint = True
-    LayoutConfig.Height = '100%'
-    LayoutConfig.Width = '18%'
-    OnAjaxEvent = menuFrameAjaxEvent
-  end
-  object UniPanel1: TPanel
-    Left = 264
-    Top = 8
-    Width = 449
+  Left = 284
+  Height = 544
+  Top = 153
+  Width = 1060
+  ClientHeight = 544
+  ClientWidth = 1060
+  OnCreate = FormCreate
+  LCLVersion = '2.0.12.0'
+  object toolsPanel: TPanel
+    Left = 616
     Height = 57
-    Hint = ''
+    Top = 464
+    Width = 425
+    ClientHeight = 57
+    ClientWidth = 425
+    ParentColor = False
+    ParentShowHint = False
     ShowHint = True
-    TabOrder = 1
-    BorderStyle = ubsNone
-    Caption = ''
-    Color = clSilver
-    LayoutConfig.Height = '8%'
-    LayoutConfig.Width = '82%'
-    object btnSair: TSpeedButton
-      Left = 394
-      Top = 0
-      Width = 55
-      Height = 57
-      Hint = ''
-      ShowHint = True
-      ClientEvents.ExtEvents.Strings = (
-        
-          'added=function added(sender, container, pos, eOpts)'#13#10'{'#13#10'  sender' +
-          '.addCls(btn btn-success);'#13#10'}')
-      Caption = '<i class="fa fa-sign-out fa-2x"></i>'
+    TabOrder = 0
+    object btnNotifficacoes: TSpeedButton
+      Left = 104
+      Height = 55
+      Top = 1
+      Width = 160
       Align = alRight
-      Anchors = [akTop, akRight, akBottom]
-      ParentColor = False
+      Caption = 'Notificações'
       Color = clWindow
-      TabOrder = 1
-      OnClick = btnSairClick
-      ExplicitLeft = 395
+      OnClick = btnNotifficacoesClick
+      ShowHint = True
+      ParentShowHint = False
     end
-    object btnNotificacoes: TSpeedButton
-      Left = 345
-      Top = 0
-      Width = 49
-      Height = 57
-      Hint = ''
-      ShowHint = True
-      Caption = '<i class="fa fa-bell fa-2x"></i>'
+    object btnSair: TSpeedButton
+      Left = 264
+      Height = 55
+      Top = 1
+      Width = 160
       Align = alRight
-      Anchors = [akTop, akRight, akBottom]
-      ParentColor = False
+      Caption = 'SAIR'
       Color = clWindow
-      TabOrder = 2
-      OnClick = btnNotificacoesClick
-      ExplicitLeft = 352
+      OnClick = btnSairClick
+      ShowHint = True
+      ParentShowHint = False
     end
   end
   object ListaAcoes: TActionList
-    Left = 264
-    Top = 160
+    Left = 216
+    Top = 136
     object actCidade: TAction
       Category = 'Configuracao'
       Caption = 'Cidades'
@@ -130,14 +113,14 @@ object MainForm: TMainForm
     object actAgenda: TAction
       Category = 'Util'
       Caption = 'Agenda de telefones'
-      ShortCut = 16449
       OnExecute = actAgendaExecute
+      ShortCut = 16449
     end
     object actCalendario: TAction
       Category = 'Util'
       Caption = 'Calendário'
-      ShortCut = 122
       OnExecute = actCalendarioExecute
+      ShortCut = 122
     end
     object actCalculadora: TAction
       Category = 'Util'
@@ -241,8 +224,8 @@ object MainForm: TMainForm
     object actFechar: TAction
       Category = 'Sair'
       Caption = 'Sair do sistema'
-      ShortCut = 32851
       OnExecute = actFecharExecute
+      ShortCut = 32851
     end
     object actOutroUsuario: TAction
       Category = 'Sair'
@@ -309,8 +292,8 @@ object MainForm: TMainForm
     object actAjuda: TAction
       Category = 'Ajuda'
       Caption = 'Ajuda do sistema'
-      ShortCut = 112
       OnExecute = actAjudaExecute
+      ShortCut = 112
     end
     object actConfigServidor: TAction
       Category = 'Configuracao'

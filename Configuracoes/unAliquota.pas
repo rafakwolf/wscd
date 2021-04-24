@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls,
   ComCtrls, memds,  SqlDb, StdCtrls,  DBCtrls,
-    ConstPadrao, Funcoes, FMTBcd,  VarGlobal, 
-  uniEdit, uniDBEdit,    uniPanel,
-   uniStatusBar;
+    ConstPadrao, Funcoes, FMTBcd,  VarGlobal;
 
 type
   TfrmAliquota = class(TfrmPadrao)

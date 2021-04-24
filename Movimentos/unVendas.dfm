@@ -432,7 +432,7 @@ inherited frmVendas: TfrmVendas
     Left = 503
     Top = 292
   end
-  object sqldClientes: TSQLDataSet
+  object sqldClientes: TSQLQuery
     CommandText = 
       'select'#13#10'  cli.CODCLIENTE,'#13#10'  cli.NOME,'#13#10'  cli.TELEFONE,'#13#10'  cli.R' +
       'G_IE,'#13#10'  cli.CPF_CNPJ,'#13#10'  cli.DATA_NASC,'#13#10'  cid.DESCRICAO'#13#10'from ' +
@@ -468,7 +468,7 @@ inherited frmVendas: TfrmVendas
       Size = 80
     end
   end
-  object dspClientes: TDataSetProvider
+  object dspClientes: TTimer
     DataSet = sqldClientes
     Left = 56
     Top = 312
@@ -504,7 +504,7 @@ inherited frmVendas: TfrmVendas
       Size = 80
     end
   end
-  object sqldProdutos: TSQLDataSet
+  object sqldProdutos: TSQLQuery
     CommandText = 
       'select'#13#10'  p.IDPRODUTO,'#13#10'  p.CODBARRA, '#13#10'  p.DESCRICAO,'#13#10'  p.ABRE' +
       'VIACAO,'#13#10'  p.PRECO_PROMOCAO, '#13#10'  p.CUSTO, '#13#10'  p.LUCRO, '#13#10'  p.VEN' +
@@ -559,7 +559,7 @@ inherited frmVendas: TfrmVendas
       Size = 1
     end
   end
-  object dspProdutos: TDataSetProvider
+  object dspProdutos: TTimer
     DataSet = sqldProdutos
     Left = 56
     Top = 344
@@ -614,7 +614,7 @@ inherited frmVendas: TfrmVendas
       Size = 1
     end
   end
-  object sqldSelecao: TSQLDataSet
+  object sqldSelecao: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  cast(NULL as INTEGER) PRODUTO,'#13#10'  cast(NULL as VARCHAR' +
       '(80)) NOMEPRODUTO,'#13#10'  cast(NULL as FLOAT) QTDE,'#13#10'  cast(NULL  as' +
@@ -655,7 +655,7 @@ inherited frmVendas: TfrmVendas
       FieldName = 'COMISSAO'
     end
   end
-  object dspSelecao: TDataSetProvider
+  object dspSelecao: TTimer
     DataSet = sqldSelecao
     Left = 296
     Top = 288
@@ -854,7 +854,7 @@ inherited frmVendas: TfrmVendas
     Left = 294
     Top = 370
   end
-  object dtVendas: TDataSetProvider
+  object dtVendas: TTimer
     DataSet = sqlVendas
     Options = [poCascadeDeletes, poCascadeUpdates, poAllowCommandText]
     Left = 294
@@ -927,7 +927,7 @@ inherited frmVendas: TfrmVendas
       FixedChar = True
       Size = 1
     end
-    object cdsVendassqlItens: TDataSetField
+    object cdsVendassqlItens: TDataset
       FieldName = 'sqlItens'
     end
   end
@@ -1010,7 +1010,7 @@ inherited frmVendas: TfrmVendas
     Left = 357
     Top = 370
   end
-  object sqldVendedor: TSQLDataSet
+  object sqldVendedor: TSQLQuery
     CommandText = 'select '#13#10'  IDVENDEDOR, '#13#10'  VENDEDOR, '#13#10'  ATIVO'#13#10'from VENDEDOR'
     MaxBlobSize = -1
     Params = <>
@@ -1031,7 +1031,7 @@ inherited frmVendas: TfrmVendas
       Size = 1
     end
   end
-  object dspVendedor: TDataSetProvider
+  object dspVendedor: TTimer
     DataSet = sqldVendedor
     Left = 56
     Top = 376
@@ -1056,7 +1056,7 @@ inherited frmVendas: TfrmVendas
       Size = 1
     end
   end
-  object spDeleta: TSQLDataSet
+  object spDeleta: TSQLQuery
     CommandText = 'STPDELVENDA'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'
@@ -1071,7 +1071,7 @@ inherited frmVendas: TfrmVendas
     Left = 168
     Top = 344
   end
-  object spEstorna: TSQLDataSet
+  object spEstorna: TSQLQuery
     CommandText = 'STPESTORNAVENDA'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'
@@ -1086,7 +1086,7 @@ inherited frmVendas: TfrmVendas
     Left = 168
     Top = 376
   end
-  object spBaixa: TSQLDataSet
+  object spBaixa: TSQLQuery
     CommandText = 'STPBAIXAVENDA'
     CommandType = ctStoredProc
     DbxCommandType = 'Dbx.StoredProcedure'

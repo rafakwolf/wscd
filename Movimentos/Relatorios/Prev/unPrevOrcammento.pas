@@ -8,7 +8,7 @@ uses
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmPrevOrcamento = class(TfrmModeloRelatorio)
     rlgCompras: TRLGroup;
     rlsbDetalhe: TRLSubDetail;
@@ -71,7 +71,7 @@ type
     cdsPadraoITENS: TIntegerField;
     cdsPadraoSTATUS: TStringField;
     cdsPadraoCONCLUIDO: TStringField;
-    cdsPadraosqldDetOrcam: TDataSetField;
+    cdsPadraosqldDetOrcam: TDataset;
     cdsDetOrcamCODIGO: TIntegerField;
     cdsDetOrcamCODPRODUTO: TIntegerField;
     cdsDetOrcamNOMEPRODUTO: TStringField;

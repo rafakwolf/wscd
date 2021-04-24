@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList, 
-  ExtCtrls,   uniLabel,  
-  uniBasicGrid, uniDBGrid, uniMainMenu, uniEdit;
+  ExtCtrls, LCLType;
 
 type
   TfrmListagemProdutos = class(TForm)

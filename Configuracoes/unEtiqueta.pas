@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, memds,  SqlDb, Spin, 
-  DBCtrls, FMTBcd,  uniLabel,  
-    uniPanel,  uniStatusBar,
-  uniImage, uniEdit, uniDBEdit, uniGroupBox;
+  DBCtrls, FMTBcd;
 
 type
   TfrmEtiqueta = class(TfrmPadrao)
@@ -109,21 +107,21 @@ end;
 procedure TfrmEtiqueta.SpinButton1DownClick(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in dsEditModes then
-  begin
-    TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency :=
-      TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency - 1;
-  end;
+  //if cdsPadrao.State in dsEditModes then
+  //begin
+  //  TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency :=
+  //    TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency - 1;
+  //end;
 end;
 
 procedure TfrmEtiqueta.SpinButton1UpClick(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.State in dsEditModes then
-  begin
-    TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency :=
-      TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency + 1;
-  end;
+  //if cdsPadrao.State in dsEditModes then
+  //begin
+  //  TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency :=
+  //    TDBEdit(TSpinButton(Sender).FocusControl).Field.AsCurrency + 1;
+  //end;
 end;
 
 procedure TfrmEtiqueta.cdsPadraoALTURAETIQUETAChange(Sender: TField);

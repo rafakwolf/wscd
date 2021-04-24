@@ -6,8 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, memds,  SqlDb,  DBCtrls, 
-  ComCtrls,  FMTBcd,  uniEdit, uniDBEdit,  
-   uniPanel;
+  ComCtrls, FMTBcd, lcltype;
 
 type
   TfrmRelatorioCaixaContaCaixa = class(TfrmDialogoRelatorioPadrao)
@@ -47,7 +46,7 @@ begin
   with TfrmPrevRelCaixa.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='SELECT '+
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='SELECT '+
                              ' CODCAIXA CODIGO,'+
                              ' DATA,'+
                              ' DESCRICAO,'+
@@ -77,7 +76,7 @@ procedure TfrmRelatorioCaixaContaCaixa.dbeCaixaClickButton(Sender: TObject);
 begin
   inherited;
   cdsCaixa.Close;
-  cdsCaixa.SQL.Clear; SQL.Text :=SQLPadrao;
+  sqldCaixa.SQL.Clear; sqldCaixa.SQL.Text :=SQLPadrao;
 
 //  if TfrmModeloConsulta.Execute('Busca Caixa', cdsCaixa, FN_CAIXAS, DL_CAIXAS) then
 //    cdsCaixa.Open
@@ -100,7 +99,7 @@ end;
 procedure TfrmRelatorioCaixaContaCaixa.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLPadrao := sqldCaixa.CommandText;
+  SQLPadrao := sqldCaixa.sql.text;
 
 //  if not dmPesquisar.cdsPesqData.Active then
 //    DmPesquisar.cdsPesqData.Open;

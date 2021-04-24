@@ -8,7 +8,7 @@ uses
   SqlDb, Menus, ComCtrls, memds, LCLtype;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmOrcamentos = class(TForm)
     dtOrcam: TComponent;
     cdsOrcam: TMemDataSet;
@@ -33,7 +33,7 @@ type
     cdsOrcamOBS: TStringField;
     cdsOrcamSTATUS: TStringField;
     cdsOrcamCONCLUIDO: TStringField;
-    cdsOrcamsqlDetOrcam: TDataSetField;
+    cdsOrcamsqlDetOrcam: TDataset;
     dsOrcam: TDataSource;
     dsDetOrcam: TDataSource;
     sqldVendedor: TSQLQuery;

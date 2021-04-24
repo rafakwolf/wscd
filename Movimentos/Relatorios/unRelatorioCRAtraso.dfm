@@ -1,115 +1,201 @@
 inherited frmRelatorioCRAtraso: TfrmRelatorioCRAtraso
   Left = 238
   Top = 199
-  ClientHeight = 127
-  ClientWidth = 401
+  Width = 496
   Caption = 'frmRelatorioCRAtraso'
-  OldCreateOrder = True
-  ExplicitWidth = 417
-  ExplicitHeight = 166
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 496
   inherited pnButtons: TPanel
-    Top = 93
-    Width = 401
-    ExplicitTop = 97
-    ExplicitWidth = 409
+    Width = 496
+    ClientWidth = 496
   end
-  object dbeCliente: TDBEdit [1]
+  object dbeCliente: TDBEdit[1]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 40
     Width = 355
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[2]
     DataSet = cdsCliente
     Left = 200
   end
-  object sqldCliente: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  cli.CODCLIENTE,'#13#10'  cli.NOME,'#13#10'  cli.TELEFONE,'#13#10'  cli.R' +
-      'G_IE,'#13#10'  cli.CPF_CNPJ,'#13#10'  cli.DATA_NASC,'#13#10'  cli.LIMITE,'#13#10'  cid.D' +
-      'ESCRICAO'#13#10'from CLIENTES cli'#13#10'left join CIDADES cid on (cli.CODCI' +
-      'DADE = cid.CODCIDADE)'#13#10'order by cli.NOME'
-    MaxBlobSize = -1
+  object sqldCliente: TSQLQuery[3]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 104
     Top = 8
     object sqldClienteCODCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldClienteNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldClienteTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldClienteRG_IE: TStringField
+      FieldKind = fkData
       FieldName = 'RG_IE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldClienteCPF_CNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CPF_CNPJ'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldClienteDATA_NASC: TDateField
+      FieldKind = fkData
       FieldName = 'DATA_NASC'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldClienteLIMITE: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'LIMITE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldClienteDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspCliente: TDataSetProvider
-    DataSet = sqldCliente
-    Options = [poAllowCommandText]
+  object dspCliente: TTimer[4]
     Left = 136
     Top = 8
   end
-  object cdsCliente: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCliente'
+  object cdsCliente: TMemDataset[5]
+    FieldDefs = <>
     Left = 168
     Top = 8
     object cdsClienteCODCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsClienteNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsClienteTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsClienteRG_IE: TStringField
+      FieldKind = fkData
       FieldName = 'RG_IE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsClienteCPF_CNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CPF_CNPJ'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsClienteDATA_NASC: TDateField
+      FieldKind = fkData
       FieldName = 'DATA_NASC'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsClienteLIMITE: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'LIMITE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsClienteDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

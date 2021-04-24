@@ -5,10 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
-  memds,  
-  Sqldb, StdCtrls, DBCtrls,   FMTBcd,  
-  uniEdit, uniDBEdit,    uniPanel,
-   uniStatusBar,  uniDBCheckBox;
+  memds, Sqldb, StdCtrls, DBCtrls, FMTBcd;
 
 type
   TfrmVendedor = class(TfrmPadrao)

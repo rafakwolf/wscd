@@ -1,38 +1,36 @@
 object frmListagemProdutos: TfrmListagemProdutos
   Left = 230
+  Height = 430
   Top = 139
-  ClientHeight = 369
-  ClientWidth = 449
-  Caption = 'Listagem de produtos'
+  Width = 512
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  OldCreateOrder = False
-  ShowHint = True
+  Caption = 'Listagem de produtos'
+  ClientHeight = 430
+  ClientWidth = 512
+  Font.CharSet = ANSI_CHARSET
+  Font.Name = 'Verdana'
+  KeyPreview = True
   OnClose = FormClose
   OnKeyDown = FormKeyDown
-  BorderIcons = [biSystemMenu]
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
-  Font.Name = 'Verdana'
-  PixelsPerInch = 96
-  TextHeight = 13
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object lbBuscaProduto: TLabel
     Left = 8
+    Height = 15
     Top = 5
-    Width = 39
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 44
     Caption = 'Buscar'
-    TabOrder = 3
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object btnOK: TBitBtn
     Left = 360
-    Top = 336
-    Width = 81
     Height = 25
-    Hint = ''
-    ShowHint = True
+    Top = 368
+    Width = 81
+    Caption = 'OK'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -83,38 +81,37 @@ object frmListagemProdutos: TfrmListagemProdutos
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'OK'
-    TabOrder = 1
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnOKClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
   object Grade: TDBGrid
-    Left = 8
-    Top = 48
-    Width = 433
+    Left = 16
     Height = 281
-    Hint = ''
-    ShowHint = True
-    DataSource = dsProdutos
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    LoadMask.Message = 'Loading data...'
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    ParentFont = False
-    TabOrder = 0
-    ParentColor = False
+    Top = 64
+    Width = 433
     Color = clWindow
+    Columns = <>
+    DataSource = dsProdutos
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    ShowHint = True
+    TabOrder = 0
   end
   object edtBuscaProduto: TEdit
     Left = 8
+    Height = 33
     Top = 21
     Width = 433
-    Height = 21
-    Hint = ''
-    ShowHint = True
-    Text = ''
-    TabOrder = 2
     OnChange = edtBuscaProdutoChange
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
   end
   object dsProdutos: TDataSource
     AutoEdit = False

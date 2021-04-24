@@ -187,7 +187,7 @@ inherited frmPrevProdutosVencimento: TfrmPrevProdutosVencimento
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select * from '#13#10'  STPPRODUTOSVENCIDOS(:DATA, :UNIDADE, :GRUPO, :' +
       'FORN)'

@@ -1,21 +1,13 @@
 inherited frmConfigNotaMan: TfrmConfigNotaMan
   Left = 221
   Top = 163
-  ClientHeight = 196
-  ClientWidth = 513
   Caption = 'Campos da nota fiscal'
-  OldCreateOrder = True
-  ExplicitWidth = 529
-  ExplicitHeight = 235
-  PixelsPerInch = 96
-  TextHeight = 13
-  object btnCancelar: TBitBtn
+  object btnCancelar: TBitBtn[0]
     Left = 336
-    Top = 160
-    Width = 81
     Height = 25
-    Hint = ''
-    ShowHint = True
+    Top = 188
+    Width = 81
+    Caption = 'Cancelar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -66,18 +58,19 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Cancelar'
-    TabOrder = 0
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnCancelarClick
-  end
-  object btnOk: TBitBtn
-    Left = 424
-    Top = 160
-    Width = 81
-    Height = 25
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
+    TabOrder = 0
+  end
+  object btnOk: TBitBtn[1]
+    Left = 424
+    Height = 25
+    Top = 188
+    Width = 81
+    Caption = 'Ok'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -128,182 +121,272 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Ok'
-    TabOrder = 1
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnOkClick
-  end
-  object btnNovo: TBitBtn
-    Left = 8
-    Top = 160
-    Width = 73
-    Height = 25
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
-    Caption = '+ Novo'
-    TabOrder = 2
-    OnClick = btnNovoClick
+    TabOrder = 1
   end
-  object dbeCampoDescricao: TDBEdit
+  object btnNovo: TBitBtn[2]
+    Left = 8
+    Height = 25
+    Top = 188
+    Width = 73
+    Caption = '+ Novo'
+    OnClick = btnNovoClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+  object dbeCampoDescricao: TDBEdit[3]
     Left = 48
+    Height = 33
     Top = 24
     Width = 400
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'CAMPO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
     OnKeyPress = dbeCampoDescricaoKeyPress
   end
-  object dbeLinha: TDBEdit
+  object dbeLinha: TDBEdit[4]
     Left = 48
+    Height = 33
     Top = 51
     Width = 65
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'LINHA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
-  object dbeColuna: TDBEdit
+  object dbeColuna: TDBEdit[5]
     Left = 48
+    Height = 33
     Top = 77
     Width = 65
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'COLUNA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
   end
-  object dbeLayOut: TDBEdit
+  object dbeLayOut: TDBEdit[6]
     Left = 48
+    Height = 33
     Top = 103
     Width = 400
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'LAYOUT'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
   end
-  object dbckbImprimir: TDBCheckBox
+  object dbckbImprimir: TDBCheckBox[7]
     Left = 48
-    Top = 129
-    Width = 73
     Height = 17
-    Hint = ''
-    ShowHint = True
+    Top = 160
+    Width = 104
+    Caption = 'Imprimir'
     DataField = 'IMPRIMIR'
     DataSource = dsPadrao
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
     ValueChecked = 'S'
     ValueUnchecked = 'N'
-    Caption = 'Imprimir'
-    TabOrder = 7
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select * from CONFIGNOTA'#13#10'where CODIGO = :PCODIGO'
-    MaxBlobSize = -1
-    Params = <
+  object sqldPadrao: TSQLQuery[8]
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'PCODIGO'
         ParamType = ptInput
       end>
-    SQLConnection = DmPrincipal.Conexao
     Left = 180
     Top = 58
     object sqldPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoCAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'CAMPO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoLAYOUT: TStringField
+      FieldKind = fkData
       FieldName = 'LAYOUT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoREFERENCIA: TStringField
+      FieldKind = fkData
       FieldName = 'REFERENCIA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
-      FixedChar = True
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object sqldPadraoLINHA: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoCOLUNA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoIMPRIMIR: TStringField
+      FieldKind = fkData
       FieldName = 'IMPRIMIR'
-      FixedChar = True
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
+  object dspPadrao: TTimer[9]
     Left = 252
     Top = 58
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'PCODIGO'
-        ParamType = ptInput
-      end>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[10]
+    FieldDefs = <>
     BeforeInsert = cdsPadraoBeforeInsert
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
     Left = 308
     Top = 58
     object cdsPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoCAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'CAMPO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoLAYOUT: TStringField
+      FieldKind = fkData
       FieldName = 'LAYOUT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoREFERENCIA: TStringField
+      FieldKind = fkData
       FieldName = 'REFERENCIA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsPadraoTIPOChange
       OnGetText = cdsPadraoTIPOGetText
       OnSetText = cdsPadraoTIPOSetText
-      FixedChar = True
       Size = 1
     end
     object cdsPadraoLINHA: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoCOLUNA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoIMPRIMIR: TStringField
+      FieldKind = fkData
       FieldName = 'IMPRIMIR'
-      FixedChar = True
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dsPadrao: TDataSource
+  object dsPadrao: TDataSource[11]
     DataSet = cdsPadrao
     OnStateChange = dsPadraoStateChange
     Left = 364

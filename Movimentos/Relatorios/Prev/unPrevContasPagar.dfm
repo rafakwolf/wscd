@@ -170,7 +170,7 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select * from VIEWRELCP'#13#10'where CODFORN = :PFORNECEDOR'#13#10'order by ' +
       'DATA'

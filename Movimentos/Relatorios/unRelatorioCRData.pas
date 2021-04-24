@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, DBCtrls,   uniEdit, uniDBEdit, 
-    uniPanel;
+  ComCtrls, DBCtrls;
 
 type
   TfrmRelatorioCRData = class(TfrmDialogoRelatorioPadrao)
@@ -56,7 +55,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        SQL.Clear; SQL.Text :='select '+
+        sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                        ' DATA, '+
                        ' VENCIMENTO, '+
                        ' CLIENTE, '+

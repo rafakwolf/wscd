@@ -1,18 +1,15 @@
 object frmSimplePadrao: TfrmSimplePadrao
-  Left = 166
-  Top = 107
-  ClientHeight = 393
-  ClientWidth = 680
+  Left = 316
+  Height = 393
+  Top = 201
+  Width = 680
   Caption = 'frmSimplePadrao'
-  OldCreateOrder = False
-  ShowHint = True
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  KeyPreview = True
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
 end

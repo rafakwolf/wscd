@@ -9,7 +9,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
   ExplicitHeight = 266
   PixelsPerInch = 96
   TextHeight = 13
-  object sqldCabecalho: TSQLDataSet
+  object sqldCabecalho: TSQLQuery
     CommandText = 
       'select * from CONFIGNOTA'#13#10'where (TIPO = '#39'C'#39') or '#13#10'((TIPO = '#39'T'#39' )' +
       ' and (REFERENCIA = '#39'Cabe'#231'alho'#39'))'#13#10'order by LINHA, COLUNA'
@@ -50,7 +50,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Size = 1
     end
   end
-  object sqldCabItens: TSQLDataSet
+  object sqldCabItens: TSQLQuery
     CommandText = 
       'select *  from CONFIGNOTA'#13#10'where ((TIPO = '#39'T'#39') and (REFERENCIA =' +
       ' '#39'Itens da nota'#39'))'#13#10'order by LINHA, COLUNA'
@@ -91,7 +91,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Size = 1
     end
   end
-  object sqldRodape: TSQLDataSet
+  object sqldRodape: TSQLQuery
     CommandText = 
       'select *  from CONFIGNOTA'#13#10'where (TIPO = '#39'R'#39')'#13#10'or ((TIPO = '#39'T'#39') ' +
       'and (REFERENCIA = '#39'Rodap'#233#39'))'#13#10'order by LINHA, COLUNA'
@@ -132,7 +132,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Size = 1
     end
   end
-  object sqldVenda: TSQLDataSet
+  object sqldVenda: TSQLQuery
     CommandText = 'select * from VIEWVENDA'#13#10'where CODIGO = :IDVENDA'
     MaxBlobSize = -1
     Params = <
@@ -190,7 +190,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Precision = 15
     end
   end
-  object sqldItemVenda: TSQLDataSet
+  object sqldItemVenda: TSQLQuery
     CommandText = 'select * from VIEWITEMVENDA'#13#10'where CODVENDA = :IDVENDA'
     MaxBlobSize = -1
     Params = <
@@ -227,7 +227,7 @@ inherited frmPrevNotaVendaMatric: TfrmPrevNotaVendaMatric
       Precision = 15
     end
   end
-  object sqldDataItens: TSQLDataSet
+  object sqldDataItens: TSQLQuery
     CommandText = 
       'select *  from CONFIGNOTA'#13#10'where ((TIPO = '#39'I'#39') and (REFERENCIA <' +
       '> '#39'Itens da nota'#39'))'#13#10'order by LINHA, COLUNA'

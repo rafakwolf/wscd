@@ -6,12 +6,11 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
-   Grids, DBGrids, ImgList, unPrincipal, FMTBcd, 
-  ImageList,  uniEdit, uniDBEdit,  
-   uniPanel,  uniStatusBar, uniGroupBox,
-  uniBasicGrid, uniDBGrid, uniMainMenu;
+   Grids, DBGrids, ImgList, unPrincipal, FMTBcd;
 
 type
+  TDatasetField = TDataset;
+  TDBGridColumn = TGridColumn;
   TfrmPerfilPermissao = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
     dspPadrao: TComponent;
@@ -21,7 +20,7 @@ type
     sqldPerfisConf: TSQLQuery;
     cdsPerfisConf: TMemDataSet;
     dsLigaPerfis: TDataSource;
-    cdsPadraosqldPerfisConf: TDataSetField;
+    cdsPadraosqldPerfisConf: TDataset;
     dsPerfisConf: TDataSource;
     Imagens: TImageList;
     sqldPadraoIDPERFIL: TIntegerField;
@@ -68,7 +67,7 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao, MainModule;
+uses Funcoes, ConstPadrao;
 
 {$R *.dfm}
 
@@ -134,7 +133,7 @@ begin
     try
       cdsPadrao.DisableControls;
       DropActions(cdsPadraoIDPERFIL.AsInteger);
-      with UniMainModule.MainForm do
+      with Application.MainForm do
       begin
         for x := 0 to ComponentCount - 1 do
           if Components[x] is TAction then
@@ -180,7 +179,7 @@ begin
   with TSQLQuery.Create(nil) do
   try
     SQLConnection := sqldPadrao.SQLConnection;
-    CommandText :=
+    sql.text :=
       'insert into ITEMPERFIL values (GEN_ID(GENIDITEMPERFIL, 1), :ID, :NOME, :CAPTION, :PERMISSAO)';
     Params.ParamByName('ID').AsInteger := IdPerfil;
     Params.ParamByName('NOME').AsString := Nome;
@@ -198,15 +197,15 @@ begin
   if not (cdsPadrao.State in [dsEdit, dsInsert]) then
     Exit;
 
-  if (Column.Field.FieldName = 'LIBERADO') then
-  begin
-    cdsPerfisConf.Edit;
-    if (cdsPerfisConfLIBERADO.AsString = 'N') then
-      cdsPerfisConfLIBERADO.AsString := 'S'
-    else
-      cdsPerfisConfLIBERADO.AsString := 'N';
-    cdsPerfisConf.Post;
-  end;
+  //if (Column.Field.FieldName = 'LIBERADO') then
+  //begin
+  //  cdsPerfisConf.Edit;
+  //  if (cdsPerfisConfLIBERADO.AsString = 'N') then
+  //    cdsPerfisConfLIBERADO.AsString := 'S'
+  //  else
+  //    cdsPerfisConfLIBERADO.AsString := 'N';
+  //  cdsPerfisConf.Post;
+  //end;
 end;
 
 procedure TfrmPerfilPermissao.DropActions(IdPerfil: Integer);

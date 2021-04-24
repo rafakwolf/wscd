@@ -299,7 +299,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       Precision = 15
     end
   end
-  object dtVendas: TDataSetProvider
+  object dtVendas: TTimer
     DataSet = sqlVendas
     Options = [poCascadeDeletes, poCascadeUpdates, poAllowCommandText]
     Left = 48
@@ -356,7 +356,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       FixedChar = True
       Size = 1
     end
-    object cdsVendassqlItens: TDataSetField
+    object cdsVendassqlItens: TDataset
       FieldName = 'sqlItens'
     end
   end
@@ -407,7 +407,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       Precision = 15
     end
   end
-  object sqldPagamento: TSQLDataSet
+  object sqldPagamento: TSQLQuery
     CommandText = 
       'select '#13#10'  FORMARECTO, '#13#10'  VALORRECDO '#13#10'from RECTOVENDA'#13#10'where I' +
       'DVENDA = :VENDA'
@@ -429,7 +429,7 @@ inherited frmRelatorioBobinaVenda: TfrmRelatorioBobinaVenda
       Precision = 15
     end
   end
-  object dspPagamento: TDataSetProvider
+  object dspPagamento: TTimer
     DataSet = sqldPagamento
     Left = 104
     Top = 184

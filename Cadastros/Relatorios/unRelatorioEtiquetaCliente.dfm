@@ -1,66 +1,78 @@
 inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
-  ClientHeight = 160
-  ClientWidth = 401
+  Height = 288
+  Width = 554
   Caption = 'frmRelatorioEtiquetaCliente'
-  OldCreateOrder = True
-  ExplicitWidth = 417
-  ExplicitHeight = 199
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 288
+  ClientWidth = 554
   inherited pnButtons: TPanel
-    Top = 126
-    Width = 401
-    ExplicitTop = 126
-    ExplicitWidth = 401
+    Top = 254
+    Width = 554
+    ClientWidth = 554
   end
-  object dbeCidade: TDBEdit [1]
+  object dbeCidade: TDBEdit[1]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 96
     Width = 355
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsCidade
-    TabOrder = 2
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
   end
-  object dbeCliente: TDBEdit [2]
+  object dbeCliente: TDBEdit[2]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 55
     Width = 355
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object rgpFiltro: TRadioGroup [3]
+  object rgpFiltro: TRadioGroup[3]
     Left = 8
+    Height = 41
     Top = 8
     Width = 393
-    Height = 41
-    Hint = ''
-    ShowHint = True
+    AutoFill = True
+    Caption = 'Filtros'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 3
+    ClientHeight = 23
+    ClientWidth = 391
+    Columns = 3
+    ItemIndex = 0
     Items.Strings = (
       'Cliente'
       'Cidade'
-      'Todos')
-    ItemIndex = 0
-    Caption = 'Filtros'
-    TabOrder = 3
-    TabStop = False
-    Columns = 3
+      'Todos'
+    )
     OnClick = rgpFiltroClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[4]
     Left = 352
   end
-  object dsCidade: TDataSource
+  object dsCidade: TDataSource[5]
     Left = 312
     Top = 32
   end

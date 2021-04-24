@@ -455,7 +455,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
       end
     end
   end
-  object sqldVenda: TSQLDataSet
+  object sqldVenda: TSQLQuery
     CommandText = 
       'select'#13#10'  ven.CODIGO,'#13#10'  ven.CODCLIENTE,'#13#10'  cli.NOME as CLIENTE,' +
       #13#10'  cli.ENDERECO,'#13#10'  cli.BAIRRO,'#13#10'  cid.DESCRICAO as CIDADE,'#13#10'  ' +
@@ -541,7 +541,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
       Size = 1
     end
   end
-  object dspVenda: TDataSetProvider
+  object dspVenda: TTimer
     DataSet = sqldVenda
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 56
@@ -626,7 +626,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
       FixedChar = True
       Size = 1
     end
-    object cdsVendasqldItemVenda: TDataSetField
+    object cdsVendasqldItemVenda: TDataset
       FieldName = 'sqldItemVenda'
     end
   end
@@ -635,7 +635,7 @@ object frmPrevNotaVenda: TfrmPrevNotaVenda
     Left = 120
     Top = 360
   end
-  object sqldItemVenda: TSQLDataSet
+  object sqldItemVenda: TSQLQuery
     CommandText = 
       'select'#13#10'  itv.CODPRODUTO,'#13#10'  pro.DESCRICAO as PRODUTO,'#13#10'  itv.QT' +
       'D,'#13#10'  itv.VENDA,'#13#10'  itv.VALORDESCTO,'#13#10'  itv.TOTAL '#13#10'from ITEMVEN' +

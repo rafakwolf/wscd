@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
   SqlDb, memds, 
-  Grids, DBGrids, ConstPadrao, FMTBcd,  
-      uniPanel, uniStatusBar,
-  uniLabel, uniImage, uniBasicGrid, uniDBGrid, uniMainMenu;
+  Grids, DBGrids, ConstPadrao, FMTBcd;
 
 type
   TfrmConfigNota = class(TfrmPadrao)

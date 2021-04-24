@@ -1,27 +1,31 @@
 inherited frmRelatorioProdutoEstMinForn: TfrmRelatorioProdutoEstMinForn
-  ClientHeight = 170
+  Height = 298
+  Width = 641
   Caption = 'frmRelatorioProdutoEstMinForn'
-  OldCreateOrder = True
-  ExplicitHeight = 209
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 298
+  ClientWidth = 641
   inherited pnButtons: TPanel
-    Top = 136
+    Top = 264
+    Width = 641
+    ClientWidth = 641
   end
-  object dbeForn: TDBEdit [1]
+  object dbeForn: TDBEdit[1]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 40
     Width = 347
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[2]
     Left = 136
     Top = 80
   end

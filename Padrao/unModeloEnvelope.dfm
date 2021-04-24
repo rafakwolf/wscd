@@ -177,7 +177,7 @@ object frmModeloEnvelope: TfrmModeloEnvelope
       end
     end
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'  cast(NULL as Varchar(100)) NOME,'#13#10'  cast(NULL as Varch' +
       'ar(100)) ENDERECO,'#13#10'  cast(NULL as Varchar(100)) CIDADE,'#13#10'  cast' +
@@ -208,7 +208,7 @@ object frmModeloEnvelope: TfrmModeloEnvelope
       Size = 10
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poAllowCommandText]
     Left = 128

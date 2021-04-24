@@ -277,7 +277,7 @@ inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'  CAIXA,'#13#10'  DATA, '#13#10'  DESCRICAO,'#13#10'  DOCUMENTO,'#13#10'  TIPO,'#13 +
       #10'  VALOR '#13#10'from VIEWRELCAIXATODOS'#13#10'order by CAIXA, DATA, TIPO, D' +

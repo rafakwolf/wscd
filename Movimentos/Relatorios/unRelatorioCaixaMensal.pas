@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils,
-      uniPanel, uniEdit,
-  uniRadioGroup;
+      lcltype;
 
 type
   TfrmRelatorioCaixaMensal = class(TfrmDialogoRelatorioPadrao)
@@ -43,10 +42,10 @@ begin
     with cdsPadrao do
     begin
       Close;
-      SQL.Clear; SQL.Text :=SQL;
-      Params.ParamByName('MES').AsInteger   := StrToInt(edtmes.Text);
-      Params.ParamByName('ANO').AsInteger   := StrToInt(edtAno.Text);
-      Params.ParamByName('PORDEM').AsString := IfThen(rgOrd.ItemIndex = 0, 'L', 'D');
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL;
+      sqldPadrao.Params.ParamByName('MES').AsInteger   := StrToInt(edtmes.Text);
+      sqldPadrao.Params.ParamByName('ANO').AsInteger   := StrToInt(edtAno.Text);
+      sqldPadrao.Params.ParamByName('PORDEM').AsString := IfThen(rgOrd.ItemIndex = 0, 'L', 'D');
       Open;
     end;
     TituloRel := 'Caixa do m�s '+edtMes.Text+' de '+edtAno.Text;

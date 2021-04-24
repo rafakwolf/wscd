@@ -5,19 +5,17 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, memds,  SqlDb, ComCtrls, FMTBcd, DBCtrls, 
-   uniEdit, uniDBEdit,   
-  uniPanel;
+  DB, memds,  SqlDb, ComCtrls, FMTBcd, DBCtrls;
 
 type
   TfrmRelatorioClienteData = class(TfrmDialogoRelatorioPadrao)
     sqldSelecao: TSQLQuery;
-    sqldSelecaoDATAINI: TSQLTimeStampField;
-    sqldSelecaoDATAFIM: TSQLTimeStampField;
+    sqldSelecaoDATAINI: TDateTimeField;
+    sqldSelecaoDATAFIM: TDateTimeField;
     dspSelecao: TComponent;
     cdsSelecao: TMemDataSet;
-    cdsSelecaoDATAINI: TSQLTimeStampField;
-    cdsSelecaoDATAFIM: TSQLTimeStampField;
+    cdsSelecaoDATAINI: TDateTimeField;
+    cdsSelecaoDATAFIM: TDateTimeField;
     edDataIni: TDBEdit;
     edDataFim: TDBEdit;
     procedure FormCreate(Sender: TObject);
@@ -62,7 +60,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        SQL.Clear; SQL.Text :='select '+
+        sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                        ' CODIGO, '+
                        ' NOME, '+
                        ' ENDERECO, '+
@@ -76,8 +74,8 @@ begin
                        'from VIEWRELCLIENTES '+
                        'where DATANASCIMENTO between :PDATAINI and :PDATAFIM '+
                        'order by NOME, DATANASCIMENTO';
-        Params.ParamByName('PDATAINI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
-        Params.ParamByName('PDATAFIM').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
+        sqldPadrao.Params.ParamByName('PDATAINI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
+        sqldPadrao.Params.ParamByName('PDATAFIM').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
         Open;
       end;
       DataIni := edDataIni.Text;

@@ -103,7 +103,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
     Left = 343
     Top = 212
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 'select * from PERFIL'
     MaxBlobSize = -1
     Params = <>
@@ -118,7 +118,7 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       Size = 30
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Left = 168
     Top = 220
@@ -137,11 +137,11 @@ inherited frmPerfilPermissao: TfrmPerfilPermissao
       FieldName = 'PERFIL'
       Size = 30
     end
-    object cdsPadraosqldPerfisConf: TDataSetField
+    object cdsPadraosqldPerfisConf: TDataset
       FieldName = 'sqldPerfisConf'
     end
   end
-  object sqldPerfisConf: TSQLDataSet
+  object sqldPerfisConf: TSQLQuery
     CommandText = 
       'select * from ITEMPERFIL'#13#10'where IDPERFIL = :IDPERFIL'#13#10'order by A' +
       'CAO_CAPTION'

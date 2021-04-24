@@ -8,7 +8,7 @@ uses
   RLReport, VarGlobal, RLParser, FMTBcd;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmPrevListaFaturamento = class(TfrmModeloRelatorio)
     rlbColunas: TRLBand;
     dsDetalhe: TDataSource;
@@ -77,7 +77,7 @@ type
     cdsPadraoOBS: TMemoField;
     cdsPadraoBAIXADO: TStringField;
     cdsPadraoCONCLUIDA: TStringField;
-    cdsPadraosqldDetalhe: TDataSetField;
+    cdsPadraosqldDetalhe: TDataset;
     cdsDetalheNUMERO: TIntegerField;
     cdsDetalheCODBARRA: TStringField;
     cdsDetalhePRODUTO: TStringField;

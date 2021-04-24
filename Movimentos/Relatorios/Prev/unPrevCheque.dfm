@@ -282,7 +282,7 @@ inherited frmPrevCheque: TfrmPrevCheque
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  CH.IDCHEQUE,'#13#10'  CH.IDBANCO,'#13#10'  BC.BANCO,'#13#10'  CH.AGENCIA' +
       ','#13#10'  CH.CONTA,'#13#10'  CH.NUMERO,'#13#10'  CH.DATAEMISSAO,'#13#10'  CH.BOMPARA,'#13#10 +

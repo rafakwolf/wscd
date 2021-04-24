@@ -32,7 +32,7 @@ inherited frmRelatorioCPAtrasados: TfrmRelatorioCPAtrasados
     DataSet = cdsForn
     Left = 240
   end
-  object sqldForn: TSQLDataSet
+  object sqldForn: TSQLQuery
     CommandText = 
       'select '#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'fro' +
       'm FORNECEDORES'
@@ -42,7 +42,7 @@ inherited frmRelatorioCPAtrasados: TfrmRelatorioCPAtrasados
     Left = 144
     Top = 8
   end
-  object dspForn: TDataSetProvider
+  object dspForn: TTimer
     DataSet = sqldForn
     Options = [poAllowCommandText]
     Left = 176

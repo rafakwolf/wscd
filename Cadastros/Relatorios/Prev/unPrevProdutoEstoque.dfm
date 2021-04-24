@@ -165,7 +165,7 @@ inherited frmPrevProdutoEstoque: TfrmPrevProdutoEstoque
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  COD_BARRA,'#13#10'  PRO_DESCRICAO,'#13#10'  PRO_ESTOQUE,'#13#10'  QTDE_' +
       'MINIMA,'#13#10'  CODFORNECEDOR,'#13#10'  FORNECEDOR '#13#10'from VIEWPRODUTOSMINIM' +

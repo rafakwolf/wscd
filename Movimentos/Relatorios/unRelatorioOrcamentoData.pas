@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, DBCtrls,   uniEdit, uniDBEdit, 
-    uniPanel;
+  ComCtrls, DBCtrls;
 
 type
   TfrmRelatorioOrcamentoData = class(TfrmDialogoRelatorioPadrao)
@@ -40,7 +39,7 @@ begin
     with TfrmPrevOrcamento.Create(Self) do
     try
       cdsPadrao.Close;
-      cdsPadrao.SQL.Clear; SQL.Text :='select '+
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                                ' orc.CODIGO, '+
                                ' orc.CODCLIENTE, '+
                                ' cli.Nome NOMECLIENTE, '+

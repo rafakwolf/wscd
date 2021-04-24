@@ -1,83 +1,77 @@
 inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
-  ClientHeight = 207
-  ClientWidth = 521
+  Height = 309
+  Width = 598
   Caption = 'frmRelatorioAniversarioCliente'
-  OldCreateOrder = True
-  ExplicitWidth = 537
-  ExplicitHeight = 246
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 309
+  ClientWidth = 598
   inherited pnButtons: TPanel
-    Top = 173
-    Width = 521
-    ExplicitTop = 173
-    ExplicitWidth = 521
+    Top = 275
+    Width = 598
+    ClientWidth = 598
   end
-  object pnDiaMesAno: TPanel [1]
+  object pnDiaMesAno: TPanel[1]
     Left = 8
+    Height = 102
     Top = 72
     Width = 249
-    Height = 97
-    Hint = ''
+    ClientHeight = 102
+    ClientWidth = 249
     Enabled = False
-    ShowHint = True
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
-    TabStop = False
     object LabelMes: TLabel
       Left = 8
+      Height = 15
       Top = 5
-      Width = 19
-      Height = 13
-      Hint = ''
+      Width = 23
+      Caption = 'Mês'
+      ParentColor = False
+      ParentShowHint = False
       ShowHint = True
-      Caption = 'M'#234's'
-      TabOrder = 5
     end
     object LabelDo: TLabel
       Left = 8
+      Height = 15
       Top = 47
-      Width = 30
-      Height = 13
-      Hint = ''
-      ShowHint = True
+      Width = 40
       Caption = 'Do dia'
-      TabOrder = 6
+      ParentColor = False
+      ParentShowHint = False
+      ShowHint = True
     end
     object LabelAte: TLabel
       Left = 88
+      Height = 15
       Top = 47
-      Width = 17
-      Height = 13
-      Hint = ''
+      Width = 20
+      Caption = 'Até'
+      ParentColor = False
+      ParentShowHint = False
       ShowHint = True
-      Caption = 'At'#233
-      TabOrder = 7
     end
     object edAno: TEdit
       Left = 167
+      Height = 33
       Top = 63
       Width = 74
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = '2007'
-      TabOrder = 3
       OnKeyPress = edAnoKeyPress
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+      Text = '2007'
     end
     object cmbMes: TComboBox
       Left = 8
+      Height = 29
       Top = 20
       Width = 233
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Style = csDropDownList
-      Text = ''
+      ItemHeight = 0
       Items.Strings = (
         'Janeiro'
         'Fevereiro'
-        'Mar'#231'o'
+        'Março'
         'Abril'
         'Maio'
         'Junho'
@@ -86,136 +80,182 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
         'Setembro'
         'Outubro'
         'Novembro'
-        'Dezembro')
+        'Dezembro'
+      )
+      ParentShowHint = False
+      ShowHint = True
+      Style = csDropDownList
       TabOrder = 0
     end
     object edDo: TSpinEdit
       Left = 8
+      Height = 33
       Top = 62
       Width = 65
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Value = 1
       MaxValue = 31
       MinValue = 1
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 1
+      Value = 1
     end
     object edAte: TSpinEdit
       Left = 88
+      Height = 33
       Top = 62
       Width = 65
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Value = 31
       MaxValue = 31
       MinValue = 1
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 2
+      Value = 31
     end
   end
-  object pnDatas: TPanel [2]
+  object pnDatas: TPanel[2]
     Left = 264
+    Height = 103
     Top = 72
     Width = 257
-    Height = 97
-    Hint = ''
+    ClientHeight = 103
+    ClientWidth = 257
     Enabled = False
-    ShowHint = True
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
-    TabStop = False
     object dbeDataIni: TDBEdit
       Left = 8
+      Height = 33
       Top = 20
       Width = 241
-      Height = 21
-      Hint = ''
-      ShowHint = True
       DataField = 'DATAINI'
       DataSource = dsPadrao
+      CharCase = ecNormal
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
     end
     object dbeDataFim: TDBEdit
       Left = 8
+      Height = 33
       Top = 63
       Width = 241
-      Height = 21
-      Hint = ''
-      ShowHint = True
       DataField = 'DATAFIM'
       DataSource = dsPadrao
+      CharCase = ecNormal
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 1
     end
   end
-  object rgTipo: TRadioGroup [3]
+  object rgTipo: TRadioGroup[3]
     Left = 8
+    Height = 57
     Top = 8
     Width = 249
-    Height = 57
-    Hint = ''
-    ShowHint = True
+    AutoFill = True
+    Caption = ' Tipo '
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 39
+    ClientWidth = 247
+    ItemIndex = 0
     Items.Strings = (
       'Envelopes'
-      'Elenco')
-    ItemIndex = 0
-    Caption = ' Tipo '
+      'Elenco'
+    )
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
-    TabStop = False
   end
-  object rgDatas: TRadioGroup [4]
+  object rgDatas: TRadioGroup[4]
     Left = 264
+    Height = 57
     Top = 8
     Width = 257
-    Height = 57
-    Hint = ''
-    ShowHint = True
-    Items.Strings = (
-      'Por Dia M'#234's e Ano'
-      'Por Data')
-    ItemIndex = 0
+    AutoFill = True
     Caption = ' Filtro '
-    TabOrder = 2
-    TabStop = False
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 39
+    ClientWidth = 255
+    ItemIndex = 0
+    Items.Strings = (
+      'Por Dia Mês e Ano'
+      'Por Data'
+    )
     OnClick = rgDatasClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[5]
     DataSet = cdsSelecao
     Left = 214
     Top = 27
   end
-  object sqldSelecao: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  cast(NULL as Timestamp) DATAINI,'#13#10'  cast(NULL as Times' +
-      'tamp) DATAFIM'#13#10'from RDB$DATABASE'
-    MaxBlobSize = -1
+  object sqldSelecao: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 120
     Top = 26
-    object sqldSelecaoDATAINI: TSQLTimeStampField
+    object sqldSelecaoDATAINI: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAINI'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldSelecaoDATAFIM: TSQLTimeStampField
+    object sqldSelecaoDATAFIM: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAFIM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspSelecao: TDataSetProvider
-    DataSet = sqldSelecao
+  object dspSelecao: TTimer[7]
     Left = 152
     Top = 26
   end
-  object cdsSelecao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspSelecao'
+  object cdsSelecao: TMemDataset[8]
+    FieldDefs = <>
     Left = 184
     Top = 26
-    object cdsSelecaoDATAINI: TSQLTimeStampField
+    object cdsSelecaoDATAINI: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAINI'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsSelecaoDATAFIM: TSQLTimeStampField
+    object cdsSelecaoDATAFIM: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAFIM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

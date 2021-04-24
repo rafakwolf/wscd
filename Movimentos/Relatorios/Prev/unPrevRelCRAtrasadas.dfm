@@ -198,7 +198,7 @@ inherited frmPrevRelCRAtrasadas: TfrmPrevRelCRAtrasadas
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select * from VIEWRELCRATRASADOS'#13#10'where CODCLIENTE = :PCLIENTE'#13#10 +
       'order by VENCIMENTO'

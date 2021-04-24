@@ -373,7 +373,7 @@ inherited frmContasPagas: TfrmContasPagas
     Color = clWindow
     OnDblClick = GradeDblClick
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'    cp.CODIGO,'#13#10'    cp.DATA,'#13#10'    cp.VENCIMENTO,'#13#10'    cp' +
       '.FORNECEDOR,'#13#10'    forn.Fantazia NOMEFORN,'#13#10'    cp.DESCRICAO,'#13#10'  ' +
@@ -475,7 +475,7 @@ inherited frmContasPagas: TfrmContasPagas
       FieldName = 'TOTALPAGO'
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
@@ -588,7 +588,7 @@ inherited frmContasPagas: TfrmContasPagas
     Left = 536
     Top = 208
   end
-  object sqldEstorno: TSQLDataSet
+  object sqldEstorno: TSQLQuery
     CommandText = 'select CODIGO, ORIGEM from CONTASPAGAR'#13#10'where PAGA = '#39'N'#39
     MaxBlobSize = -1
     Params = <>
@@ -602,7 +602,7 @@ inherited frmContasPagas: TfrmContasPagas
       FieldName = 'ORIGEM'
     end
   end
-  object dspEstorno: TDataSetProvider
+  object dspEstorno: TTimer
     DataSet = sqldEstorno
     Left = 208
     Top = 280
@@ -621,7 +621,7 @@ inherited frmContasPagas: TfrmContasPagas
       FieldName = 'ORIGEM'
     end
   end
-  object sqldContaEstorno: TSQLDataSet
+  object sqldContaEstorno: TSQLQuery
     CommandText = 'delete from CONTASPAGAR'#13#10'where ORIGEM = :CODIGO'
     MaxBlobSize = -1
     Params = <

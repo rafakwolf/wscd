@@ -35,7 +35,7 @@ type
     cdsNFiscaisOBS: TMemoField;
     cdsNFiscaisBAIXADO: TStringField;
     cdsNFiscaisCONCLUIDA: TStringField;
-    cdsNFiscaissqlDetNFiscais: TDataSetField;
+    cdsNFiscaissqlDetNFiscais: TDataset;
     cdsDetNFiscaisNUMERO: TIntegerField;
     cdsDetNFiscaisPRODUTO: TIntegerField;
     cdsDetNFiscaisNOMEPRODUTO: TStringField;

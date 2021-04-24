@@ -147,7 +147,7 @@ object frmPrevDuplicataSemForm: TfrmPrevDuplicataSemForm
       end
     end
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  CAMPO,'#13#10'  NOMECAMPO, '#13#10'  VERTICAL, '#13#10'  HORIZONTAL, '#13#10 +
       '  FONTE, '#13#10'  TIPOFONTE, '#13#10'  ESTILOFONTE'#13#10'from CONFIGDUPLICATA'
@@ -181,7 +181,7 @@ object frmPrevDuplicataSemForm: TfrmPrevDuplicataSemForm
       FieldName = 'ESTILOFONTE'
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Left = 48
     Top = 16

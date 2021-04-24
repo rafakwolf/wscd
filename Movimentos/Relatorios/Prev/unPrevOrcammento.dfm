@@ -373,7 +373,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'    orc.CODIGO,'#13#10'    orc.CODCLIENTE,'#13#10'    cli.Nome NOMEC' +
       'LIENTE,'#13#10'    orc.DATA,'#13#10'    orc.OBS,'#13#10'    orc.TOTAL,'#13#10'    orc.IT' +
@@ -466,7 +466,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
       FixedChar = True
       Size = 1
     end
-    object cdsPadraosqldDetOrcam: TDataSetField
+    object cdsPadraosqldDetOrcam: TDataset
       FieldName = 'sqldDetOrcam'
     end
   end
@@ -478,7 +478,7 @@ inherited frmPrevOrcamento: TfrmPrevOrcamento
     Left = 46
     Top = 40
   end
-  object sqldDetOrcam: TSQLDataSet
+  object sqldDetOrcam: TSQLQuery
     CommandText = 
       'select'#13#10'    iorc.CODIGO,'#13#10'    iorc.CODPRODUTO,'#13#10'    prod.Descric' +
       'ao NOMEPRODUTO,'#13#10'    iorc.QTDE,'#13#10'    iorc.CUSTO,'#13#10'    iorc.VENDA' +

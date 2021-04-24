@@ -6,14 +6,12 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, 
-  ExtDlgs, FileCtrl, IdMessage, IdBaseComponent, IdComponent,
-  IdTCPConnection, IdTCPClient, IdMessageClient, IdSMTP,
-  IdExplicitTLSClientServerBase, IdSMTPBase, FMTBcd, 
-   uniEdit, uniDBEdit,   
-  uniPanel,  uniStatusBar, uniPageControl, 
-  uniDBCheckBox, uniImage, uniGroupBox, uniRadioGroup;
+  ExtDlgs, FileCtrl, FMTBcd;
 
 type
+
+  { TfrmConfiguracao }
+
   TfrmConfiguracao = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
     dspPadrao: TComponent;
@@ -33,8 +31,6 @@ type
     dbeSenhaProduto: TDBEdit;
     opImagem: TOpenPictureDialog;
     tsEmail: TTabSheet;
-    IdSMTP: TIdSMTP;
-    IdMsg: TIdMessage;
     tsRelatorio: TTabSheet;
     sqldPadraoIDCONFIGURACAO: TIntegerField;
     sqldPadraoNOMECOMPUTADOR: TStringField;
@@ -176,6 +172,7 @@ type
     procedure btnAlterarSenhaCaixaClick(Sender: TObject);
     procedure dbeDescontoPadraoKeyPress(Sender: TObject; var Key: Char);
     procedure dbeEstoquePadraoKeyPress(Sender: TObject; var Key: Char);
+    procedure PgConfigChange(Sender: TObject);
     procedure rgOrientationImgClick(Sender: TObject);
     procedure cdsPadraoSENHACAIXAGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
@@ -209,10 +206,10 @@ procedure TfrmConfiguracao.FormCreate(Sender: TObject);
 begin
 
   cdsPadrao.Close;
-  cdsPadrao.Params.ParamByName('PCOMP').AsString := GetComputerName;
+  sqldPadrao.Params.ParamByName('PCOMP').AsString := GetComputerName;
   inherited;
 
-  LockWindowUpdate(Application.MainForm.Handle);
+  //LockWindowUpdate(Application.MainForm.Handle);
   CarregaPapelParede;
   LeDadosEmail;
   PgConfig.TabIndex := 0;
@@ -224,7 +221,7 @@ begin
 
   ReordenaBotoes([btnAlterar, btnSalvar, btnCancelar, btnSair]);
 
-  LockWindowUpdate(0);
+  //LockWindowUpdate(0);
 end;
 
 procedure TfrmConfiguracao.btnBuscarClick(Sender: TObject);
@@ -477,6 +474,11 @@ begin
   inherited;
   if not (Key in ['0'..'9', ',', #8]) then
     Key := #0;
+end;
+
+procedure TfrmConfiguracao.PgConfigChange(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmConfiguracao.CarregaPapelParede;

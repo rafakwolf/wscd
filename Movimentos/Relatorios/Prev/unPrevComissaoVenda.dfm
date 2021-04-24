@@ -203,7 +203,7 @@ inherited frmPrevComissaoVenda: TfrmPrevComissaoVenda
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 'select * from'#13#10'STPVENDACOMISSAO(:IDVEND, :DATAINI, :DATAFIM)'
     Params = <
       item

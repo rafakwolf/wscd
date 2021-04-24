@@ -108,7 +108,7 @@ inherited frmPrevRelAgenda: TfrmPrevRelAgenda
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  va.NOME, '#13#10'  va.TELEFONE, '#13#10'  va.FAX '#13#10'from VIEWAGEND' +
       'A va'#13#10'order by va.NOME'

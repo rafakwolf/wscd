@@ -8,7 +8,7 @@ uses
    DB, Sqldb, FMTBcd;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmPrevNotaVenda = class(TForm)
     rlrNotaVenda: TRLReport;
     rlbCabecalho: TRLBand;
@@ -49,7 +49,7 @@ type
     cdsVendaOBS: TStringField;
     cdsVendaCONCLUIDA: TStringField;
     cdsVendaBAIXADO: TStringField;
-    cdsVendasqldItemVenda: TDataSetField;
+    cdsVendasqldItemVenda: TDataset;
     cdsItemVenda: TMemDataSet;
     dsItemVenda: TDataSource;
     cdsItemVendaCODPRODUTO: TIntegerField;

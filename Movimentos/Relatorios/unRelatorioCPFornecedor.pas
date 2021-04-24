@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  memds,  DB, SqlDb,  DBCtrls,  FMTBcd, 
-  uniEdit, uniDBEdit,    uniPanel;
+  memds,  DB, SqlDb,  DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioCPFornecedor = class(TfrmDialogoRelatorioPadrao)
@@ -67,7 +66,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        Params.ParamByName('PFORNECEDOR').AsInteger := cdsSelecaoCODFORNECEDOR.AsInteger;
+        sqldpadrao.Params.ParamByName('PFORNECEDOR').AsInteger := cdsSelecaoCODFORNECEDOR.AsInteger;
         Open;
       end;
       Titulo := 'Contas a Pagar do Fornecedor: ' + cdsSelecaoFANTAZIA.AsString;
@@ -83,7 +82,7 @@ procedure TfrmRelatorioCPFornecedor.dbeFornClickButton(Sender: TObject);
 begin
   inherited;
   cdsSelecao.Close;
-  cdsSelecao.SQL.Clear; SQL.Text :=SQLpadrao;
+  sqldSelecao.SQL.Clear; sqldSelecao.SQL.Text :=SQLpadrao;
 //  if not TfrmModeloConsulta.Execute('Fornecedor', cdsSelecao, FN_FORN, DL_FORN) then
 //    cdsSelecao.Close;
 end;
@@ -103,7 +102,7 @@ end;
 procedure TfrmRelatorioCPFornecedor.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLPadrao := sqldSelecao.CommandText;
+  SQLPadrao := sqldSelecao.sql.text;
 end;
 
 initialization

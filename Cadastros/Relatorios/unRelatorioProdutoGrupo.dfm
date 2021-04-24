@@ -1,32 +1,28 @@
 inherited frmRelatorioProdutoGrupo: TfrmRelatorioProdutoGrupo
-  ClientHeight = 128
-  ClientWidth = 353
+  Width = 477
   Caption = 'frmRelatorioProdutoGrupo'
-  OldCreateOrder = True
-  ExplicitWidth = 369
-  ExplicitHeight = 167
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 477
   inherited pnButtons: TPanel
-    Top = 94
-    Width = 353
-    ExplicitTop = 94
-    ExplicitWidth = 353
+    Width = 477
+    ClientWidth = 477
   end
-  object dbeGrupo: TDBEdit [1]
+  object dbeGrupo: TDBEdit[1]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 40
     Width = 307
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[2]
     Left = 136
     Top = 8
   end

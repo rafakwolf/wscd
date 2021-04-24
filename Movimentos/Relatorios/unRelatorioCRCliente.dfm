@@ -1,32 +1,28 @@
 inherited frmRelatorioCRCliente: TfrmRelatorioCRCliente
-  ClientHeight = 136
-  ClientWidth = 385
+  Width = 501
   Caption = 'frmRelatorioCRCliente'
-  OldCreateOrder = True
-  ExplicitWidth = 401
-  ExplicitHeight = 175
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 501
   inherited pnButtons: TPanel
-    Top = 102
-    Width = 385
-    ExplicitTop = 102
-    ExplicitWidth = 385
+    Width = 501
+    ClientWidth = 501
   end
-  object dbeCliente: TDBEdit [1]
+  object dbeCliente: TDBEdit[1]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 40
     Width = 339
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[2]
     Left = 128
   end
 end

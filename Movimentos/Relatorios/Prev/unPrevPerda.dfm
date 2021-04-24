@@ -190,7 +190,7 @@ inherited frmPrevPerda: TfrmPrevPerda
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  p.CODIGO, '#13#10'  p.CODPRODUTO,'#13#10'  pro.DESCRICAO,'#13#10'  p.QT' +
       'DE, '#13#10'  p.PRECO, '#13#10'  p.DATA, '#13#10'  p.MOTIVO,'#13#10'  p.OBS '#13#10'from PERDA' +

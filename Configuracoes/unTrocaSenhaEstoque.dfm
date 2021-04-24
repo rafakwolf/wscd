@@ -4,7 +4,7 @@ inherited frmSenhaEstoque: TfrmSenhaEstoque
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sqldConfig: TSQLDataSet
+  inherited sqldConfig: TSQLQuery
     Top = 1
   end
   inherited cdsConfig: TMemDataset

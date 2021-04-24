@@ -1,33 +1,32 @@
 object frmSelecionaCaixa: TfrmSelecionaCaixa
-  Left = 234
-  Top = 167
-  ClientHeight = 89
-  ClientWidth = 273
-  Caption = 'Selecione a conta caixa'
-  BorderStyle = bsSingle
-  OldCreateOrder = False
-  OnClose = FormClose
+  Left = 271
+  Height = 155
+  Top = 195
+  Width = 331
   BorderIcons = [biSystemMenu]
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  BorderStyle = bsSingle
+  Caption = 'Selecione a conta caixa'
+  ClientHeight = 155
+  ClientWidth = 331
+  Font.CharSet = ANSI_CHARSET
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  LCLVersion = '2.0.12.0'
   object lbCaixa: TLabel
     Left = 9
+    Height = 15
     Top = 8
-    Width = 57
-    Height = 13
-    Hint = ''
+    Width = 69
     Caption = 'Conta caixa'
-    TabOrder = 3
+    ParentColor = False
   end
   object btnOk: TBitBtn
     Left = 112
-    Top = 56
-    Width = 73
     Height = 25
-    Hint = ''
+    Top = 72
+    Width = 73
+    Caption = '&OK'
+    Default = True
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -78,18 +77,17 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&OK'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 1
     TabOrder = 1
-    Default = True
   end
   object btnCancel: TBitBtn
     Left = 192
-    Top = 56
-    Width = 73
     Height = 25
-    Hint = ''
+    Top = 72
+    Width = 73
+    Caption = '&Cancelar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -140,55 +138,71 @@ object frmSelecionaCaixa: TfrmSelecionaCaixa
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Cancelar'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 2
     TabOrder = 2
   end
   object dblcbCaixa: TDBLookupComboBox
     Left = 8
+    Height = 33
     Top = 24
     Width = 257
-    Height = 21
-    Hint = ''
-    ListField = 'NOME'
-    ListSource = dsCaixa
-    KeyField = 'CODIGO'
-    ListFieldIndex = 0
-    TabOrder = 0
     Color = clWindow
+    KeyField = 'CODIGO'
+    ListField = 'NOME'
+    ListFieldIndex = 0
+    ListSource = dsCaixa
+    LookupCache = False
+    TabOrder = 0
   end
-  object sqldCaixa: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  CODIGO, '#13#10'  NOME '#13#10'from VIEWCAIXASATIVOS'#13#10'order by NO' +
-      'ME'
-    MaxBlobSize = -1
+  object sqldCaixa: TSQLQuery
+    FieldDefs = <>
     Params = <>
     Left = 88
     object sqldCaixaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldCaixaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspCaixa: TDataSetProvider
-    DataSet = sqldCaixa
+  object dspCaixa: TTimer
     Left = 120
   end
   object cdsCaixa: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCaixa'
+    FieldDefs = <>
     Left = 152
     object cdsCaixaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsCaixaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

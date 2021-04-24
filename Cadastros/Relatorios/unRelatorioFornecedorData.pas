@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls,  DBCtrls,  uniEdit, uniDBEdit, 
-    uniPanel;
+  ComCtrls,  DBCtrls;
 
 type
   TfrmRelatorioFornecedorData = class(TfrmDialogoRelatorioPadrao)

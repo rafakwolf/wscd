@@ -1,42 +1,38 @@
 inherited frmBaixaCheque: TfrmBaixaCheque
   Left = 221
+  Height = 235
   Top = 163
-  ClientHeight = 130
-  ClientWidth = 379
+  Width = 657
   Caption = 'Baixar cheque'
+  ClientHeight = 235
+  ClientWidth = 657
   OnShow = FormShow
-  OldCreateOrder = True
-  ExplicitWidth = 395
-  ExplicitHeight = 169
-  PixelsPerInch = 96
-  TextHeight = 13
-  object lbContaCaixa: TLabel
+  object lbContaCaixa: TLabel[0]
     Left = 8
+    Height = 15
     Top = 48
-    Width = 68
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 77
     Caption = 'Conta caixa'
-    TabOrder = 5
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object lbDataBaixa: TLabel
+  object lbDataBaixa: TLabel[1]
     Left = 272
+    Height = 15
     Top = 48
-    Width = 80
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 91
     Caption = 'Data da baixa'
-    TabOrder = 6
-  end
-  object btnOk: TBitBtn
-    Left = 200
-    Top = 96
-    Width = 81
-    Height = 25
-    Hint = ''
+    ParentColor = False
+    ParentShowHint = False
     ShowHint = True
+  end
+  object btnOk: TBitBtn[2]
+    Left = 200
+    Height = 25
+    Top = 103
+    Width = 81
+    Caption = 'Ok'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -87,18 +83,19 @@ inherited frmBaixaCheque: TfrmBaixaCheque
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Ok'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 1
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TBitBtn[3]
     Left = 288
-    Top = 96
-    Width = 81
     Height = 25
-    Hint = ''
-    ShowHint = True
+    Top = 103
+    Width = 81
+    Caption = 'Cancelar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -149,83 +146,104 @@ inherited frmBaixaCheque: TfrmBaixaCheque
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Cancelar'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 2
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
-  object medtDataBaixa: TEdit
+  object medtDataBaixa: TEdit[4]
     Left = 272
+    Height = 33
     Top = 64
     Width = 97
-    Height = 21
-    Hint = ''
-    ShowHint = True
     MaxLength = 10
-    Text = '  /  /    '
-    TabOrder = 2
-  end
-  object cedHistorico: TEdit
-    Left = 8
-    Top = 24
-    Width = 361
-    Height = 21
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
-    Text = ''
+    TabOrder = 2
+    Text = '  /  /    '
+  end
+  object cedHistorico: TEdit[5]
+    Left = 8
+    Height = 33
+    Top = 13
+    Width = 361
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
-  object dblcbContaCaixa: TDBLookupComboBox
-    Left = 8
+  object dblcbContaCaixa: TDBLookupComboBox[6]
+    Left = 16
+    Height = 33
     Top = 64
     Width = 257
-    Height = 21
-    Hint = ''
-    ShowHint = True
-    ListField = 'NOME'
-    ListSource = dsCaixa
-    KeyField = 'CODIGO'
-    ListFieldIndex = 0
-    TabOrder = 1
     Color = clWindow
+    KeyField = 'CODIGO'
+    ListField = 'NOME'
+    ListFieldIndex = 0
+    ListSource = dsCaixa
+    LookupCache = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object sqldCaixa: TSQLDataSet
-    CommandText = 'select * from VIEWCAIXASATIVOS'
-    MaxBlobSize = -1
+  object sqldCaixa: TSQLQuery[7]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
-    Left = 24
-    Top = 80
+    Left = 40
+    Top = 112
     object sqldCaixaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldCaixaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspCaixa: TDataSetProvider
-    DataSet = sqldCaixa
-    Left = 56
-    Top = 80
+  object dspCaixa: TTimer[8]
+    Left = 72
+    Top = 112
   end
-  object cdsCaixa: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCaixa'
-    Left = 88
-    Top = 80
+  object cdsCaixa: TMemDataset[9]
+    FieldDefs = <>
+    Left = 104
+    Top = 112
     object cdsCaixaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsCaixaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dsCaixa: TDataSource
+  object dsCaixa: TDataSource[10]
     DataSet = cdsCaixa
-    Left = 120
-    Top = 80
+    Left = 136
+    Top = 112
   end
 end

@@ -1,24 +1,19 @@
 inherited frmPromocao: TfrmPromocao
-  Left = 217
-  Top = 118
-  ClientHeight = 514
-  ClientWidth = 790
+  Left = 219
+  Height = 537
+  Top = 173
+  Width = 983
   Caption = 'frmPromocao'
-  OldCreateOrder = True
+  ClientHeight = 537
+  ClientWidth = 983
   Font.Name = 'Verdana'
-  ExplicitWidth = 796
-  ExplicitHeight = 543
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited sbStatus: TStatusBar
-    Top = 495
-    Width = 790
-    ExplicitTop = 495
-    ExplicitWidth = 790
+    Top = 519
+    Width = 983
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 790
-    ExplicitWidth = 790
+    Width = 983
+    ClientWidth = 983
     inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
     end
@@ -44,299 +39,513 @@ inherited frmPromocao: TfrmPromocao
       Font.Name = 'Verdana'
     end
   end
-  object dbgrdPromocao: TDBGrid [2]
+  object dbgrdPromocao: TDBGrid[2]
     Left = 0
-    Top = 40
-    Width = 790
     Height = 455
-    Hint = ''
-    ShowHint = True
-    DataSource = dsPadrao
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    LoadMask.Message = 'Loading data...'
+    Top = 64
+    Width = 983
     Align = alBottom
-    Anchors = [akLeft, akRight, akBottom]
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    ParentFont = False
-    TabOrder = 2
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsPadrao
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    ShowHint = True
+    TabOrder = 2
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[3]
     Left = 104
     Top = 180
     inherited actPrint: TAction
-      ShortCut = 0
       OnExecute = actPrintExecute
+      ShortCut = 0
     end
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[4]
     DataSet = cdsPadrao
     Left = 263
     Top = 180
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  p.CODIGO, '#13#10'  p.PRODUTO, '#13#10'  pro.ABREVIACAO,'#13#10'  pro.V' +
-      'ENDA,'#13#10'  p.DESCONTO,'#13#10'  p.PRECO, '#13#10'  p.INICIO, '#13#10'  p.FIM '#13#10'from ' +
-      'PROMOCAO p'#13#10'left join PRODUTOS pro on (pro.IDPRODUTO = p.PRODUTO' +
-      ')'#13#10'order by FIM desc'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[5]
+    FieldDefs = <>
     Params = <>
     Left = 170
     Top = 180
     object sqldPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoPRODUTO: TIntegerField
+      FieldKind = fkData
       FieldName = 'PRODUTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoABREVIACAO: TStringField
+      FieldKind = fkData
       FieldName = 'ABREVIACAO'
+      Index = 2
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoVENDA: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VENDA'
+      Index = 3
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoDESCONTO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'DESCONTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoPRECO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'PRECO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoINICIO: TDateField
+      FieldKind = fkData
       FieldName = 'INICIO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoFIM: TDateField
+      FieldKind = fkData
       FieldName = 'FIM'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAutoRefresh, poPropogateChanges, poAllowCommandText]
+  object dspPadrao: TTimer[6]
     Left = 200
     Top = 180
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[7]
+    FieldDefs = <>
     AfterInsert = cdsPadraoAfterInsert
     Left = 232
     Top = 180
     object cdsPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoPRODUTO: TIntegerField
+      FieldKind = fkData
       FieldName = 'PRODUTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       OnValidate = cdsPadraoPRODUTOValidate
     end
     object cdsPadraoABREVIACAO: TStringField
+      FieldKind = fkData
       FieldName = 'ABREVIACAO'
+      Index = 2
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoVENDA: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VENDA'
+      Index = 3
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoDESCONTO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'DESCONTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsPadraoDESCONTOChange
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoPRECO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'PRECO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoINICIO: TDateField
+      FieldKind = fkData
       FieldName = 'INICIO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/0000;1;_'
     end
     object cdsPadraoFIM: TDateField
+      FieldKind = fkData
       FieldName = 'FIM'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/0000;1;_'
     end
   end
-  object sqldProduto: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  IDPRODUTO,'#13#10'  CODBARRA,'#13#10'  ABREVIACAO,'#13#10'  VENDA,'#13#10'  CO' +
-      'DGRUPO,'#13#10'  CODFORNECEDOR'#13#10'from PRODUTOS'#13#10'order by ABREVIACAO'
-    MaxBlobSize = -1
+  object sqldProduto: TSQLQuery[8]
+    FieldDefs = <>
     Params = <>
     Left = 432
     Top = 172
     object sqldProdutoIDPRODUTO: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDPRODUTO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldProdutoCODBARRA: TStringField
+      FieldKind = fkData
       FieldName = 'CODBARRA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object sqldProdutoABREVIACAO: TStringField
+      FieldKind = fkData
       FieldName = 'ABREVIACAO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldProdutoVENDA: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VENDA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldProdutoCODGRUPO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODGRUPO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldProdutoCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspProduto: TDataSetProvider
-    DataSet = sqldProduto
-    Options = [poPropogateChanges, poUseQuoteChar]
+  object dspProduto: TTimer[9]
     Left = 464
     Top = 172
   end
-  object cdsProduto: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspProduto'
+  object cdsProduto: TMemDataset[10]
+    FieldDefs = <>
     Left = 496
     Top = 172
     object cdsProdutoIDPRODUTO: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDPRODUTO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsProdutoCODBARRA: TStringField
+      FieldKind = fkData
       FieldName = 'CODBARRA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object cdsProdutoABREVIACAO: TStringField
+      FieldKind = fkData
       FieldName = 'ABREVIACAO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsProdutoVENDA: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VENDA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsProdutoCODGRUPO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODGRUPO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsProdutoCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object sqldSpDesmarcaPromocao: TSQLDataSet
-    CommandText = 'STPDESMARCAPROMOCAO'
-    CommandType = ctStoredProc
-    DbxCommandType = 'Dbx.StoredProcedure'
-    MaxBlobSize = -1
+  object sqldSpDesmarcaPromocao: TSQLQuery[11]
+    FieldDefs = <>
     Params = <>
     Left = 176
     Top = 136
   end
-  object sqldGrupo: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  CODGRUPO, '#13#10'  DESCRICAO'#13#10'from GRUPOS'#13#10'order by DESCRIC' +
-      'AO'
-    MaxBlobSize = -1
+  object sqldGrupo: TSQLQuery[12]
+    FieldDefs = <>
     Params = <>
     Left = 432
     Top = 136
     object sqldGrupoCODGRUPO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODGRUPO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldGrupoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspGrupo: TDataSetProvider
-    DataSet = sqldGrupo
-    Options = [poPropogateChanges, poUseQuoteChar]
+  object dspGrupo: TTimer[13]
     Left = 464
     Top = 136
   end
-  object cdsGrupo: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspGrupo'
+  object cdsGrupo: TMemDataset[14]
+    FieldDefs = <>
     Left = 496
     Top = 136
     object cdsGrupoCODGRUPO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODGRUPO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsGrupoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object sqldForn: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'fro' +
-      'm FORNECEDORES'#13#10'order by FANTAZIA'
-    MaxBlobSize = -1
+  object sqldForn: TSQLQuery[15]
+    FieldDefs = <>
     Params = <>
     Left = 432
     Top = 208
     object sqldFornCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldFornFANTAZIA: TStringField
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldFornCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldFornTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspForn: TDataSetProvider
-    DataSet = sqldForn
-    Options = [poPropogateChanges, poUseQuoteChar]
+  object dspForn: TTimer[16]
     Left = 464
     Top = 208
   end
-  object cdsForn: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspForn'
+  object cdsForn: TMemDataset[17]
+    FieldDefs = <>
     Left = 496
     Top = 208
     object cdsFornCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsFornFANTAZIA: TStringField
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsFornCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsFornTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

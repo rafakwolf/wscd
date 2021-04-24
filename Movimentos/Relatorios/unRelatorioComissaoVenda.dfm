@@ -1,59 +1,62 @@
 inherited frmRelatorioComissaoVenda: TfrmRelatorioComissaoVenda
-  ClientHeight = 167
-  ClientWidth = 345
+  Height = 282
+  Width = 463
   Caption = 'frmRelatorioComissaoVenda'
-  OldCreateOrder = True
-  ExplicitWidth = 361
-  ExplicitHeight = 206
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 282
+  ClientWidth = 463
   inherited pnButtons: TPanel
-    Top = 133
-    Width = 345
+    Top = 248
+    Width = 463
+    ClientWidth = 463
     TabOrder = 3
-    ExplicitTop = 133
-    ExplicitWidth = 345
   end
-  object dbdtpDataFim: TDBEdit [1]
+  object dbdtpDataFim: TDBEdit[1]
     Left = 16
+    Height = 33
     Top = 104
     Width = 137
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAFIM'
     DataSource = dsData
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbdtpDataIni: TDBEdit [2]
+  object dbdtpDataIni: TDBEdit[2]
     Left = 16
+    Height = 33
     Top = 64
     Width = 137
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAINI'
     DataSource = dsData
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object dbeVendedor: TDBEdit [3]
+  object dbeVendedor: TDBEdit[3]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 24
     Width = 299
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'VENDEDOR'
     DataSource = dsPadrao
-    TabOrder = 0
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[4]
     Left = 168
     Top = 56
   end
-  object dsData: TDataSource
+  object dsData: TDataSource[5]
     Left = 168
     Top = 88
   end

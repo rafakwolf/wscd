@@ -1,71 +1,84 @@
 inherited frmRelatorioClienteCidade: TfrmRelatorioClienteCidade
-  ClientHeight = 144
-  ClientWidth = 377
+  Height = 324
+  Width = 543
   Caption = 'frmRelatorioClienteCidade'
-  OldCreateOrder = True
-  ExplicitWidth = 393
-  ExplicitHeight = 183
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 324
+  ClientWidth = 543
   inherited pnButtons: TPanel
-    Top = 110
-    Width = 377
-    ExplicitTop = 110
-    ExplicitWidth = 377
+    Top = 290
+    Width = 543
+    ClientWidth = 543
   end
-  object dbeCidade: TDBEdit [1]
+  object dbeCidade: TDBEdit[1]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 48
     Width = 339
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[2]
     DataSet = cdsCidade
     Left = 224
   end
-  object sqldCidade: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  CODCIDADE, '#13#10'  DESCRICAO '#13#10'from CIDADES'#13#10'order by DES' +
-      'CRICAO'
-    MaxBlobSize = -1
+  object sqldCidade: TSQLQuery[3]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 128
     Top = 8
     object sqldCidadeCODCIDADE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCIDADE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldCidadeDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
   end
-  object dspCidade: TDataSetProvider
-    DataSet = sqldCidade
-    Options = [poAllowCommandText]
+  object dspCidade: TTimer[4]
     Left = 160
     Top = 8
   end
-  object cdsCidade: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCidade'
+  object cdsCidade: TMemDataset[5]
+    FieldDefs = <>
     Left = 192
     Top = 8
     object cdsCidadeCODCIDADE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCIDADE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsCidadeDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
   end

@@ -6,18 +6,17 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, memds,  SqlDb, ComCtrls,  FMTBcd, DBCtrls, 
-  StrUtils,  uniEdit, uniDBEdit,  
-   uniPanel, uniRadioGroup;
+  StrUtils;
 
 type
   TfrmRelatorioFluxoCaixa = class(TfrmDialogoRelatorioPadrao)
     sqldSelecao: TSQLQuery;
     dspSelecao: TComponent;
     cdsSelecao: TMemDataSet;
-    sqldSelecaoDATAINI: TSQLTimeStampField;
-    sqldSelecaoDATAFIM: TSQLTimeStampField;
-    cdsSelecaoDATAINI: TSQLTimeStampField;
-    cdsSelecaoDATAFIM: TSQLTimeStampField;
+    sqldSelecaoDATAINI: TDateTimeField;
+    sqldSelecaoDATAFIM: TDateTimeField;
+    cdsSelecaoDATAINI: TDateTimeField;
+    cdsSelecaoDATAFIM: TDateTimeField;
     dbDataI: TDBEdit;
     dbDataF: TDBEdit;
     rgOrdem: TRadioGroup;
@@ -72,11 +71,11 @@ begin
     with cdsPadrao do
     begin
       Close;
-      SQL.Clear; SQL.Text :=SQL;
-      Params.ParamByName('PDATAINI').AsDate     := Trunc(cdsSelecaoDATAINI.AsDateTime);
-      Params.ParamByName('PDATAFIM').AsDate     := Trunc(cdsSelecaoDATAFIM.AsDateTime);
-      Params.ParamByName('PTIPOCONTA').AsString := tipoRel;
-      Params.ParamByName('PORDEM').AsString     := IfThen(rgOrdem.ItemIndex = 0, 'L', 'D');
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL;
+      sqldPadrao.Params.ParamByName('PDATAINI').AsDate     := Trunc(cdsSelecaoDATAINI.AsDateTime);
+      sqldPadrao.Params.ParamByName('PDATAFIM').AsDate     := Trunc(cdsSelecaoDATAFIM.AsDateTime);
+      sqldPadrao.Params.ParamByName('PTIPOCONTA').AsString := tipoRel;
+      sqldPadrao.Params.ParamByName('PORDEM').AsString     := IfThen(rgOrdem.ItemIndex = 0, 'L', 'D');
       Open;
 
       Tipo      := TipoRel;

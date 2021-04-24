@@ -1,165 +1,154 @@
 object frmPadrao: TfrmPadrao
-  Left = 222
-  Top = 137
+  Left = 356
+  Height = 372
+  Top = 159
+  Width = 810
   HelpContext = 3
   HorzScrollBar.Increment = 72
-  ClientHeight = 300
-  ClientWidth = 755
-  Caption = 'frmPadrao'
-  BorderStyle = bsSingle
-  OldCreateOrder = False
-  ShowHint = True
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'frmPadrao'
+  ClientHeight = 372
+  ClientWidth = 810
+  Font.CharSet = ANSI_CHARSET
   KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object sbStatus: TStatusBar
     Left = 0
-    Top = 281
-    Width = 755
-    Height = 19
-    Hint = ''
-    ShowHint = True
-    Panels = <>
-    SizeGrip = False
-    Align = alBottom
-    Anchors = [akLeft, akRight, akBottom]
-    ParentColor = False
+    Height = 18
+    Top = 354
+    Width = 810
     Color = clBtnFace
+    Panels = <>
+    ParentColor = False
+    ParentShowHint = False
+    SizeGrip = False
+    ShowHint = True
   end
   object pnBotoesPadrao: TPanel
     Left = 0
-    Top = 0
-    Width = 755
     Height = 35
-    Hint = ''
-    ShowHint = True
-    ParentColor = False
+    Top = 0
+    Width = 810
     Align = alTop
-    Anchors = [akLeft, akTop, akRight]
+    ClientHeight = 35
+    ClientWidth = 810
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
-    TabStop = False
     object btnNovo: TSpeedButton
       Left = 1
+      Height = 32
       Top = 1
       Width = 48
-      Height = 32
-      ShowHint = True
       Action = actInsert
-      Caption = '<i class="fa fa-plus-square fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Novo'
       Color = clWindow
-      TabOrder = 0
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
     object btnAlterar: TSpeedButton
       Left = 48
+      Height = 32
       Top = 1
       Width = 49
-      Height = 32
-      ShowHint = True
       Action = actEdit
-      Caption = '<i class="fa fa-pencil fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Editar'
       Color = clWindow
-      TabOrder = 1
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
     object btnExcluir: TSpeedButton
       Left = 98
-      Top = 1
-      Width = 41
       Height = 32
-      ShowHint = True
+      Top = 1
+      Width = 70
       Action = actDelete
-      Caption = '<i class="fa fa-trash fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Remover'
       Color = clWindow
-      TabOrder = 2
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
     object btnSalvar: TSpeedButton
-      Left = 139
+      Left = 170
+      Height = 32
       Top = 1
       Width = 54
-      Height = 32
-      ShowHint = True
       Action = actPost
-      Caption = '<i class="fa fa-check-square fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Salvar'
       Color = clWindow
-      TabOrder = 3
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
     object btnCancelar: TSpeedButton
-      Left = 193
+      Left = 224
+      Height = 32
       Top = 1
       Width = 60
-      Height = 32
-      ShowHint = True
       Action = actCancelUpdates
-      Caption = '<i class="fa fa-mail-reply fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Cancelar'
       Color = clWindow
-      TabOrder = 4
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
     object btnConsultar: TSpeedButton
-      Left = 254
+      Left = 285
+      Height = 32
       Top = 1
       Width = 72
-      Height = 32
-      ShowHint = True
       Action = actSearch
-      Caption = '<i class="fa fa-search fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Buscar'
       Color = clWindow
-      TabOrder = 5
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
     object btnSair: TSpeedButton
-      Left = 401
+      Left = 432
+      Height = 32
       Top = 1
       Width = 56
-      Height = 32
-      ShowHint = True
       Action = actClose
-      Caption = '<i class="fa fa-sign-out fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Sair'
       Color = clWindow
-      TabOrder = 6
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
     object btnPrint: TSpeedButton
-      Left = 329
+      Left = 360
+      Height = 32
       Top = 1
       Width = 66
-      Height = 32
-      ShowHint = True
       Action = actPrint
-      Caption = '<i class="fa fa-print fa-2x"></i>'
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      ParentColor = False
+      Caption = 'Imprimir'
       Color = clWindow
-      TabOrder = 7
+      Font.CharSet = ANSI_CHARSET
+      ShowHint = True
+      ParentFont = False
+      ParentShowHint = False
     end
   end
   object actlNavigateActions: TActionList
-    Left = 56
-    Top = 44
+    Left = 80
+    Top = 72
     object actInsert: TAction
       Category = 'Navigate'
       Hint = 'Novo registro'
@@ -168,8 +157,8 @@ object frmPadrao: TfrmPadrao
     object actEdit: TAction
       Category = 'Navigate'
       Hint = 'Alterar registro'
-      ShortCut = 116
       OnExecute = actEditExecute
+      ShortCut = 116
     end
     object actPost: TAction
       Category = 'Navigate'
@@ -189,8 +178,8 @@ object frmPadrao: TfrmPadrao
     object actSearch: TAction
       Category = 'Navigate'
       Hint = 'Pesquisar'
-      ShortCut = 119
       OnExecute = actSearchExecute
+      ShortCut = 119
     end
     object actCancelUpdates: TAction
       Category = 'Navigate'
@@ -200,16 +189,17 @@ object frmPadrao: TfrmPadrao
     object actClose: TAction
       Category = 'Navigate'
       Hint = 'Fechar'
-      SecondaryShortCuts.Strings = (
-        'Esc')
-      ShortCut = 27
       OnExecute = actCloseExecute
+      SecondaryShortCuts.Strings = (
+        'Esc'
+      )
+      ShortCut = 27
     end
   end
   object dsPadrao: TDataSource
     AutoEdit = False
     OnStateChange = dsPadraoStateChange
-    Left = 159
-    Top = 44
+    Left = 183
+    Top = 72
   end
 end

@@ -6,8 +6,8 @@ interface
 
 uses
   SysUtils, Classes, DB, sqldb, Dialogs, Forms, Controls,
-  Messages, Graphics,  LCLIntf, LCLType, LMessages, FMTBcd, {RLConsts,}
-  udmBase{, DBXFirebird,  memds};
+  Messages, Graphics,  LCLIntf, LCLType, LMessages, FMTBcd,
+  udmBase;
 
 type
   TDmPrincipal = class(TdmBase)

@@ -5,9 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, memds,  SqlDb, ComCtrls,  FMTBcd, DBCtrls, 
-   uniEdit, uniDBEdit,   
-  uniPanel;
+  DB, memds,  SqlDb, ComCtrls,  FMTBcd, DBCtrls, lcltype;
 
 const
   cs_nf_data: string = 'select '+
@@ -37,12 +35,12 @@ const
 type
   TfrmRelatorioCompraData = class(TfrmDialogoRelatorioPadrao)
     sqldSelecao: TSQLQuery;
-    sqldSelecaoDATAINI: TSQLTimeStampField;
-    sqldSelecaoDATAFIM: TSQLTimeStampField;
+    sqldSelecaoDATAINI: TDateTimeField;
+    sqldSelecaoDATAFIM: TDateTimeField;
     dspSelecao: TComponent;
     cdsSelecao: TMemDataSet;
-    cdsSelecaoDATAINI: TSQLTimeStampField;
-    cdsSelecaoDATAFIM: TSQLTimeStampField;
+    cdsSelecaoDATAINI: TDateTimeField;
+    cdsSelecaoDATAFIM: TDateTimeField;
     edDataIni: TDBEdit;
     edDataFim: TDBEdit;
     procedure btnVisualizarClick(Sender: TObject);
@@ -71,9 +69,9 @@ begin
     with TfrmPrevCompras.Create(Self), cdsPadrao do
     try
       Close;
-      SQL.Clear; SQL.Text :=cs_nf_data;
-      Params.ParamByName('DATAI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
-      Params.ParamByName('DATAF').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=cs_nf_data;
+      sqldPadrao.Params.ParamByName('DATAI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
+      sqldPadrao.Params.ParamByName('DATAF').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
       Open;
       Titulo := 'Compras do per�odo: ' + edDataIni.Text + ' at� ' + edDataFim.Text;
       PrintIfNotEmptyRL(rrPadrao, p);

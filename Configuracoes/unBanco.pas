@@ -6,8 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls,  SqlDb, memds,  DBCtrls,
-   FMTBcd,   uniEdit, uniDBEdit, 
-    uniPanel,  uniStatusBar;
+   FMTBcd;
 
 type
   TfrmBanco = class(TfrmPadrao)

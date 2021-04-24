@@ -179,7 +179,7 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
     Color = clBtnFace
     TabOrder = 4
   end
-  object sqlOrcam: TSQLDataSet
+  object sqlOrcam: TSQLQuery
     CommandText = 
       'select'#13#10'    orc.CODIGO,'#13#10'    orc.CODCLIENTE,'#13#10'    cli.Nome NOMEC' +
       'LIENTE,'#13#10'    orc.DATA,'#13#10'    orc.OBS,'#13#10'    orc.TOTAL,'#13#10'    orc.IT' +
@@ -233,7 +233,7 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       Size = 1
     end
   end
-  object sqlDetOrcam: TSQLDataSet
+  object sqlDetOrcam: TSQLQuery
     CommandText = 
       'select'#13#10'    iorc.CODIGO,'#13#10'    iorc.CODPRODUTO,'#13#10'    prod.Descric' +
       'ao NOMEPRODUTO,'#13#10'    iorc.QTDE,'#13#10'    iorc.CUSTO,'#13#10'    iorc.VENDA' +
@@ -389,11 +389,11 @@ inherited frmRelatorioBobinaOrcam: TfrmRelatorioBobinaOrcam
       FixedChar = True
       Size = 1
     end
-    object cdsOrcamsqlDetOrcam: TDataSetField
+    object cdsOrcamsqlDetOrcam: TDataset
       FieldName = 'sqlDetOrcam'
     end
   end
-  object dtOrcam: TDataSetProvider
+  object dtOrcam: TTimer
     DataSet = sqlOrcam
     Options = [poAllowCommandText]
     Left = 150

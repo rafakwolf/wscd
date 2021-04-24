@@ -1,84 +1,118 @@
 inherited frmRelatorioCPFornecedor: TfrmRelatorioCPFornecedor
-  ClientHeight = 144
-  ClientWidth = 385
+  Width = 459
   Caption = 'frmRelatorioCPFornecedor'
-  OldCreateOrder = True
-  ExplicitWidth = 401
-  ExplicitHeight = 183
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 459
   inherited pnButtons: TPanel
-    Top = 110
-    Width = 385
-    ExplicitTop = 110
-    ExplicitWidth = 385
+    Width = 459
+    ClientWidth = 459
   end
-  object dbeForn: TDBEdit [1]
+  object dbeForn: TDBEdit[1]
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 48
     Width = 339
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[2]
     DataSet = cdsSelecao
     Left = 240
   end
-  object sqldSelecao: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'fro' +
-      'm FORNECEDORES'#13#10'order by FANTAZIA'
-    MaxBlobSize = -1
+  object sqldSelecao: TSQLQuery[3]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 144
     Top = 8
     object sqldSelecaoCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldSelecaoFANTAZIA: TStringField
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 40
     end
     object sqldSelecaoCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldSelecaoTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspSelecao: TDataSetProvider
-    DataSet = sqldSelecao
-    Options = [poAllowCommandText]
+  object dspSelecao: TTimer[4]
     Left = 176
     Top = 8
   end
-  object cdsSelecao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspSelecao'
+  object cdsSelecao: TMemDataset[5]
+    FieldDefs = <>
     Left = 208
     Top = 8
     object cdsSelecaoCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsSelecaoFANTAZIA: TStringField
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 40
     end
     object cdsSelecaoCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsSelecaoTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

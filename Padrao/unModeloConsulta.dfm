@@ -148,12 +148,12 @@ object frmModeloConsulta: TfrmModeloConsulta
     Left = 488
     Top = 168
   end
-  object sqldPesquisa: TSQLDataSet
+  object sqldPesquisa: TSQLQuery
     Params = <>
     Left = 176
     Top = 168
   end
-  object dspPesquisa: TDataSetProvider
+  object dspPesquisa: TTimer
     DataSet = sqldPesquisa
     Options = [poAllowCommandText, poUseQuoteChar]
     Left = 296

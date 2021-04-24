@@ -1,90 +1,97 @@
 inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   Left = 240
+  Height = 261
   Top = 195
-  ClientHeight = 168
-  ClientWidth = 345
+  Width = 508
   Caption = 'frmRelatorioCaixaContaCaixa'
-  OldCreateOrder = True
-  ExplicitWidth = 361
-  ExplicitHeight = 207
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 261
+  ClientWidth = 508
   inherited pnButtons: TPanel
-    Top = 134
-    Width = 345
-    ExplicitTop = 134
-    ExplicitWidth = 345
+    Top = 227
+    Width = 508
+    ClientWidth = 508
   end
-  object dbeCaixa: TDBEdit [1]
+  object dbeCaixa: TDBEdit[1]
     Left = 24
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 40
     Width = 283
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object dtpDataIni: TDBEdit [2]
+  object dtpDataIni: TDBEdit[2]
     Left = 24
+    Height = 33
     Top = 88
     Width = 145
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAINI'
     DataSource = dsData
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dtpDataFim: TDBEdit [3]
+  object dtpDataFim: TDBEdit[3]
     Left = 184
+    Height = 33
     Top = 88
     Width = 145
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAFIM'
     DataSource = dsData
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[4]
     DataSet = cdsCaixa
     Left = 296
     Top = 8
   end
-  object sqldCaixa: TSQLDataSet
-    CommandText = 'select CODIGO, NOME from CAIXAS'
-    MaxBlobSize = -1
+  object sqldCaixa: TSQLQuery[5]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 200
     Top = 8
   end
-  object dspCaixa: TDataSetProvider
-    DataSet = sqldCaixa
-    Options = [poAllowCommandText]
+  object dspCaixa: TTimer[6]
     Left = 232
     Top = 8
   end
-  object cdsCaixa: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCaixa'
+  object cdsCaixa: TMemDataset[7]
+    FieldDefs = <>
     Left = 264
     Top = 8
     object cdsCaixaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsCaixaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
   end
-  object dsData: TDataSource
+  object dsData: TDataSource[8]
     Left = 144
     Top = 8
   end

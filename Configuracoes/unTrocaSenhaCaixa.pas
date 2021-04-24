@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Buttons, memds,  DB,
-  SqlDb, FMTBcd,    
-  uniEdit;
+  SqlDb, FMTBcd;
 
 type
   TfrmSenhaCaixa = class(TForm)
@@ -47,7 +46,7 @@ end;
 procedure TfrmSenhaCaixa.btnOkClick(Sender: TObject);
 begin
   cdsConfig.Close;
-  cdsConfig.Params.ParamByName('COMP').AsString := GetComputerName;
+  sqldConfig.Params.ParamByName('COMP').AsString := GetComputerName;
   cdsConfig.Open;
 
   if (edAtual.Text <> '') and (edNova.Text <> '') then
@@ -56,7 +55,7 @@ begin
     begin
       cdsConfig.Edit;
       cdsConfigSENHACAIXA.AsString := Trim(EnDecrypt(edNova.Text));
-      cdsConfig.ApplyUpdates(0);
+      //cdsConfig.ApplyUpdates(0);
       Configuracao.Atualizar;
       MsgAviso('Senha de caixa alterada!');
       ModalResult := mrOk;

@@ -288,7 +288,7 @@ inherited frmParcelaCompra: TfrmParcelaCompra
     ParentColor = False
     Color = clWindow
   end
-  object sqldParcela: TSQLDataSet
+  object sqldParcela: TSQLQuery
     CommandText = 
       'select'#13#10'  cast(NULL as INTEGER) NUMERO,'#13#10'  cast(NULL as DATE) VE' +
       'NC,'#13#10'  cast(NULL as VARCHAR(20)) DIA,'#13#10'  cast(NULL as FLOAT) VAL' +
@@ -310,7 +310,7 @@ inherited frmParcelaCompra: TfrmParcelaCompra
       FieldName = 'VALOR'
     end
   end
-  object dspParcela: TDataSetProvider
+  object dspParcela: TTimer
     DataSet = sqldParcela
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 152
@@ -349,7 +349,7 @@ inherited frmParcelaCompra: TfrmParcelaCompra
     Left = 352
     Top = 160
   end
-  object sqldCompra: TSQLDataSet
+  object sqldCompra: TSQLQuery
     CommandText = 
       'select '#13#10'  nf.NUMERO,'#13#10'  nf.CODFORNECEDOR,'#13#10'  forn.FANTAZIA FORN' +
       'ECEDOR,'#13#10'  nf.DATAENTRADA,'#13#10'  nf.TOTAL'#13#10'from NOTAS_FISCAIS nf'#13#10'l' +
@@ -391,7 +391,7 @@ inherited frmParcelaCompra: TfrmParcelaCompra
     Left = 335
     Top = 224
   end
-  object sqldPagar: TSQLDataSet
+  object sqldPagar: TSQLQuery
     CommandText = 
       'insert into CONTASPAGAR(CODIGO, DATA, VENCIMENTO, FORNECEDOR, DE' +
       'SCRICAO,'#13#10'  DOCUMENTO, VALOR, JURO, PAGAR, COMPRA, PAGA)'#13#10'values' +

@@ -294,7 +294,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     ParentColor = False
     Color = clWindow
   end
-  object sqldParcela: TSQLDataSet
+  object sqldParcela: TSQLQuery
     CommandText = 
       'select'#13#10'  cast(NULL as INTEGER) NUMERO,'#13#10'  cast(NULL as DATE) VE' +
       'NC,'#13#10'  cast(NULL as VARCHAR(20)) DIA,'#13#10'  cast(NULL as FLOAT) VAL' +
@@ -316,7 +316,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
       FieldName = 'VALOR'
     end
   end
-  object dspParcela: TDataSetProvider
+  object dspParcela: TTimer
     DataSet = sqldParcela
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 56
@@ -355,7 +355,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Left = 120
     Top = 328
   end
-  object sqldContasPagar: TSQLDataSet
+  object sqldContasPagar: TSQLQuery
     CommandText = 
       'insert into CONTASPAGAR(CODIGO, DATA, VENCIMENTO, FORNECEDOR, DE' +
       'SCRICAO,'#13#10'  DOCUMENTO, VALOR, JURO, PAGAR, COMPRA, PAGA)'#13#10'values' +
@@ -411,7 +411,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Left = 104
     Top = 200
   end
-  object sqldReceber: TSQLDataSet
+  object sqldReceber: TSQLQuery
     CommandText = 
       'insert into CONTASRECEBER(CODIGO, DATA, VENCIMENTO, CLIENTE, DES' +
       'CRICAO,'#13#10'  DOCUMENTO, VALOR, JURO, RECEBER, VENDA, RECDA)'#13#10'value' +
@@ -467,7 +467,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
     Left = 248
     Top = 216
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  CAST(NULL AS INTEGER) CODIGO,'#13#10'  CAST(NULL AS VARCHAR(' +
       '100)) NOME,'#13#10'  CAST(CURRENT_DATE AS DATE) DATA,'#13#10'  CAST(0 AS FLO' +
@@ -490,7 +490,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
       FieldName = 'VALOR'
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poUseQuoteChar]
     Left = 56

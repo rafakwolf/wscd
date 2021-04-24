@@ -5,9 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  memds,  DB, SqlDb,  DBCtrls,  FMTBcd, 
-      uniPanel, uniEdit,
-  uniDBEdit;
+  memds,  DB, SqlDb,  DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioFaturamento = class(TfrmDialogoRelatorioPadrao)
@@ -74,8 +72,8 @@ begin
    with TfrmPrevListaFaturamento.Create(Self) do
    try
      cdsPadrao.Close;
-     cdsPadrao.SQL.Clear; SQL.Text :=SQL;
-     cdsPadrao.Params.ParamByName('PFORN').AsInteger := cdsFornCODFORNECEDOR.AsInteger;
+     sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL;
+     sqldPadrao.Params.ParamByName('PFORN').AsInteger := cdsFornCODFORNECEDOR.AsInteger;
      cdsPadrao.Open;
      lbTitulo.Caption := 'Listagem de faturamento de produtos';
      lbCusto.Visible := chkCusto.Checked;
@@ -92,7 +90,7 @@ procedure TfrmRelatorioFaturamento.dbeFornClickButton(Sender: TObject);
 begin
   inherited;
   cdsForn.Close;
-  cdsForn.SQL.Clear; SQL.Text :=SQLPadrao;
+  sqldForn.SQL.Clear; sqldForn.SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
 //    cdsForn.Close;
 end;
@@ -103,7 +101,7 @@ begin
   cdsForn.Close;
   chkCusto.Checked := True;
   chkLucro.Checked := True;
-  SQLPadrao := sqldForn.CommandText;
+  SQLPadrao := sqldForn.sql.text;
 end;
 
 procedure TfrmRelatorioFaturamento.FormClose(Sender: TObject;

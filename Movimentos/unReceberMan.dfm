@@ -325,7 +325,7 @@ inherited frmReceberMan: TfrmReceberMan
     Left = 352
     Top = 72
   end
-  object sqldContaReceber: TSQLDataSet
+  object sqldContaReceber: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  CR.CODIGO,'#13#10'  CR.DATA,'#13#10'  CR.VENCIMENTO,'#13#10'  CR.CLIENTE' +
       ','#13#10'  CLI.NOME AS NOMECLIENTE,'#13#10'  CR.IDCONTA,'#13#10'  CC.NOME,'#13#10'  CR.D' +
@@ -430,7 +430,7 @@ inherited frmReceberMan: TfrmReceberMan
       FieldName = 'TOTALRECDO'
     end
   end
-  object dspContaReceber: TDataSetProvider
+  object dspContaReceber: TTimer
     DataSet = sqldContaReceber
     UpdateMode = upWhereKeyOnly
     Left = 288
@@ -541,7 +541,7 @@ inherited frmReceberMan: TfrmReceberMan
       FieldName = 'TOTALRECDO'
     end
   end
-  object sqldSelecao: TSQLDataSet
+  object sqldSelecao: TSQLQuery
     CommandText = 
       'select'#13#10'  cast(null as integer) idbanco,'#13#10'  cast(null as varchar' +
       '(80)) banco'#13#10'from rdb$database'
@@ -557,7 +557,7 @@ inherited frmReceberMan: TfrmReceberMan
       Size = 80
     end
   end
-  object dspSelecao: TDataSetProvider
+  object dspSelecao: TTimer
     DataSet = sqldSelecao
     Left = 288
     Top = 104

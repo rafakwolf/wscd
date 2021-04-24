@@ -1,540 +1,878 @@
 inherited frmCR: TfrmCR
   Left = 219
+  Height = 444
   Top = 148
-  ClientHeight = 380
-  ClientWidth = 522
+  Width = 754
   Caption = 'frmCR'
-  OldCreateOrder = True
-  ExplicitWidth = 528
-  ExplicitHeight = 409
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 444
+  ClientWidth = 754
   inherited sbStatus: TStatusBar
-    Top = 361
-    Width = 522
-    ExplicitTop = 361
-    ExplicitWidth = 522
+    Top = 426
+    Width = 754
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 522
+    Width = 754
+    ClientWidth = 754
     TabOrder = 12
-    ExplicitWidth = 522
   end
-  object lbStatus: TLabel [2]
+  object lbStatus: TLabel[2]
     Left = 8
+    Height = 15
     Top = 336
-    Width = 46
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 53
     Caption = 'lbStatus'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
-    TabOrder = 16
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object btnReceber: TBitBtn [3]
+  object btnReceber: TBitBtn[3]
     Left = 424
+    Height = 25
     Top = 328
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
     Caption = 'Receber'
-    TabOrder = 15
     OnClick = btnReceberClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 15
   end
-  object btnContas: TBitBtn [4]
+  object btnContas: TBitBtn[4]
     Left = 320
+    Height = 25
     Top = 328
     Width = 97
-    Height = 25
-    Hint = ''
-    ShowHint = True
     Caption = 'Contas [F7]'
-    TabOrder = 14
     OnClick = miContasClienteCorrenteClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 14
   end
-  object dbeValorAtual: TDBEdit [5]
+  object dbeValorAtual: TDBEdit[5]
     Left = 136
+    Height = 33
     Top = 208
     Width = 121
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'TOTAL'
     DataSource = dsPadrao
-    TabOrder = 7
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
   end
-  object dbeCliente: TDBEdit [6]
+  object dbeCliente: TDBEdit[6]
     Left = 8
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 64
     Width = 267
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 0
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
-  object dbeDescricao: TDBEdit [7]
+  object dbeDescricao: TDBEdit[7]
     Left = 8
+    Height = 33
     Top = 112
     Width = 505
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
     OnEnter = dbeDescricaoEnter
   end
-  object dbeValor: TDBEdit [8]
+  object dbeValor: TDBEdit[8]
     Left = 8
+    Height = 33
     Top = 208
     Width = 121
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'VALOR'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
   end
-  object dbeDocumento: TDBEdit [9]
+  object dbeDocumento: TDBEdit[9]
     Left = 328
+    Height = 33
     Top = 160
     Width = 185
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DOCUMENTO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
   end
-  object dbeJuros: TDBEdit [10]
+  object dbeJuros: TDBEdit[10]
     Left = 264
+    Height = 33
     Top = 208
     Width = 73
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'JURO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 8
   end
-  object dbeOrigem: TDBEdit [11]
+  object dbeOrigem: TDBEdit[11]
     Left = 344
+    Height = 33
     Top = 208
     Width = 73
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'ORIGEM'
     DataSource = dsPadrao
-    TabOrder = 9
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
   end
-  object dbdData: TDBEdit [12]
+  object dbdData: TDBEdit[12]
     Left = 8
+    Height = 33
     Top = 160
     Width = 153
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  object dbdVencimento: TDBEdit [13]
+  object dbdVencimento: TDBEdit[13]
     Left = 168
+    Height = 33
     Top = 160
     Width = 153
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'VENCIMENTO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
-  object dbeVenda: TDBEdit [14]
+  object dbeVenda: TDBEdit[14]
     Left = 424
+    Height = 33
     Top = 208
     Width = 89
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'VENDA'
     DataSource = dsPadrao
-    TabOrder = 10
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 10
   end
-  object dbeConta: TDBEdit [15]
+  object dbeConta: TDBEdit[15]
     Left = 304
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 64
     Width = 187
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'CONTA'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object grpRecebimento: TGroupBox [16]
+  object grpRecebimento: TGroupBox[16]
     Left = 8
+    Height = 81
     Top = 240
     Width = 505
-    Height = 81
-    Hint = ''
+    Caption = ' Informações de recebimento '
+    ClientHeight = 63
+    ClientWidth = 503
+    ParentShowHint = False
     ShowHint = True
-    Caption = ' Informa'#231#245'es de recebimento '
     TabOrder = 11
-    TabStop = False
     object dbeDataRecdo: TDBEdit
       Left = 8
-      Top = 40
+      Height = 33
+      Top = 14
       Width = 89
-      Height = 21
-      Hint = ''
-      ShowHint = True
       DataField = 'DATARECTO'
       DataSource = dsPadrao
-      TabOrder = 0
-      Color = clBtnFace
       ReadOnly = True
+      CharCase = ecNormal
+      Color = clBtnFace
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
     end
     object dbeDesconto: TDBEdit
       Left = 104
-      Top = 40
+      Height = 33
+      Top = 14
       Width = 89
-      Height = 21
-      Hint = ''
-      ShowHint = True
       DataField = 'DESCTO'
       DataSource = dsPadrao
-      TabOrder = 1
-      Color = clBtnFace
       ReadOnly = True
+      CharCase = ecNormal
+      Color = clBtnFace
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
     end
     object dbeCapitalRecdo: TDBEdit
       Left = 200
-      Top = 40
+      Height = 33
+      Top = 14
       Width = 89
-      Height = 21
-      Hint = ''
-      ShowHint = True
       DataField = 'CAPITALRECDO'
       DataSource = dsPadrao
-      TabOrder = 2
-      Color = clBtnFace
       ReadOnly = True
+      CharCase = ecNormal
+      Color = clBtnFace
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
     end
     object dbeJuroRecdo: TDBEdit
       Left = 296
-      Top = 40
+      Height = 33
+      Top = 14
       Width = 89
-      Height = 21
-      Hint = ''
-      ShowHint = True
       DataField = 'JURORECDO'
       DataSource = dsPadrao
-      TabOrder = 3
-      Color = clBtnFace
       ReadOnly = True
+      CharCase = ecNormal
+      Color = clBtnFace
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
     end
     object dbeTotalRecdo: TDBEdit
       Left = 392
-      Top = 40
+      Height = 33
+      Top = 14
       Width = 105
-      Height = 21
-      Hint = ''
-      ShowHint = True
       DataField = 'TOTALRECDO'
       DataSource = dsPadrao
-      TabOrder = 4
-      Color = clBtnFace
       ReadOnly = True
+      CharCase = ecNormal
+      Color = clBtnFace
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
     end
   end
-  inherited actlNavigateActions: TActionList
-    Left = 400
-    Top = 12
+  inherited actlNavigateActions: TActionList[17]
+    Left = 608
+    Top = 168
     inherited actPrint: TAction
-      Hint = 'Relat'#243'rio para cliente'
-      ShortCut = 0
+      Hint = 'Relatório para cliente'
       OnExecute = actPrintExecute
+      ShortCut = 0
     end
-    object actContasReceber: TAction
+    object actContasReceber: TAction[8]
       Category = 'Navigate'
       Caption = 'Contas a receber por cliente'
       OnExecute = actContasReceberExecute
     end
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[18]
     DataSet = cdsPadrao
     Left = 205
     Top = 315
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 
-      'SELECT'#13#10'    CR.CODIGO,'#13#10'    CR.DATA,'#13#10'    CR.VENCIMENTO,'#13#10'    CR' +
-      '.CLIENTE,'#13#10'    CL.NOME,'#13#10'    CR.IDCONTA,'#13#10'    CC.CAIXANOME AS CO' +
-      'NTA,'#13#10'    CR.DESCRICAO,'#13#10'    CR.DOCUMENTO,'#13#10'    CR.VALOR,'#13#10'    C' +
-      'R.JURO,'#13#10'    CR.RECEBER,'#13#10'    CR.RECDA,'#13#10'    CR.DATARECTO,'#13#10'    ' +
-      'CR.ORIGEM,'#13#10'    CR.VENDA,'#13#10'    CR.CAPITALRECDO,'#13#10'    CR.JURORECD' +
-      'O,'#13#10'    CR.DESCTO,'#13#10'    CR.OBS,'#13#10'    CR.ATRASO,'#13#10'    CR.VALORJUR' +
-      'O,'#13#10'    CR.TOTAL,'#13#10'    CR.TOTALRECDO '#13#10'FROM CONTASRECEBER CR'#13#10'LE' +
-      'FT JOIN CLIENTES CL ON (CR.CLIENTE = CL.CODCLIENTE)'#13#10'LEFT JOIN V' +
-      'IEWCAIXAS CC ON (CC.IDCAIXAS = CR.IDCONTA)'#13#10'ORDER BY CR.CODIGO, ' +
-      'CR.DATA'
-    MaxBlobSize = 1
+  object sqldPadrao: TSQLQuery[19]
+    FieldDefs = <>
     Params = <>
     Left = 110
     Top = 315
     object sqldPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoVENCIMENTO: TDateField
+      FieldKind = fkData
       FieldName = 'VENCIMENTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CLIENTE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 4
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoDOCUMENTO: TStringField
+      FieldKind = fkData
       FieldName = 'DOCUMENTO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoVALOR: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoJURO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'JURO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoRECEBER: TStringField
+      FieldKind = fkData
       FieldName = 'RECEBER'
-      FixedChar = True
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object sqldPadraoRECDA: TStringField
+      FieldKind = fkData
       FieldName = 'RECDA'
-      FixedChar = True
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object sqldPadraoDATARECTO: TDateField
+      FieldKind = fkData
       FieldName = 'DATARECTO'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoORIGEM: TIntegerField
+      FieldKind = fkData
       FieldName = 'ORIGEM'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoVENDA: TIntegerField
+      FieldKind = fkData
       FieldName = 'VENDA'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoCAPITALRECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'CAPITALRECDO'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoJURORECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'JURORECDO'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoDESCTO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'DESCTO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoOBS: TMemoField
+      FieldKind = fkData
       FieldName = 'OBS'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       BlobType = ftMemo
       Size = 1
+      Transliterate = False
     end
     object sqldPadraoATRASO: TIntegerField
+      FieldKind = fkData
       FieldName = 'ATRASO'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoIDCONTA: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDCONTA'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoCONTA: TStringField
+      FieldKind = fkData
       FieldName = 'CONTA'
+      Index = 20
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoVALORJURO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALORJURO'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoTOTAL: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoTOTALRECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTALRECDO'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    UpdateMode = upWhereKeyOnly
+  object dspPadrao: TTimer[20]
     Left = 142
     Top = 315
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[21]
+    FieldDefs = <>
     AfterInsert = cdsPadraoAfterInsert
     AfterScroll = cdsPadraoAfterScroll
     Left = 174
     Top = 315
     object cdsPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsPadraoVENCIMENTO: TDateField
+      FieldKind = fkData
       FieldName = 'VENCIMENTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsPadraoCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CLIENTE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       OnValidate = cdsPadraoCLIENTEValidate
     end
     object cdsPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 4
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoDOCUMENTO: TStringField
+      FieldKind = fkData
       FieldName = 'DOCUMENTO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoRECEBER: TStringField
+      FieldKind = fkData
       FieldName = 'RECEBER'
-      FixedChar = True
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object cdsPadraoRECDA: TStringField
+      FieldKind = fkData
       FieldName = 'RECDA'
-      FixedChar = True
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object cdsPadraoDATARECTO: TDateField
+      FieldKind = fkData
       FieldName = 'DATARECTO'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsPadraoORIGEM: TIntegerField
+      FieldKind = fkData
       FieldName = 'ORIGEM'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoVENDA: TIntegerField
+      FieldKind = fkData
       FieldName = 'VENDA'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoOBS: TMemoField
+      FieldKind = fkData
       FieldName = 'OBS'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       BlobType = ftMemo
       Size = 1
+      Transliterate = False
     end
     object cdsPadraoATRASO: TIntegerField
+      FieldKind = fkData
       FieldName = 'ATRASO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoVALOR: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoJURO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'JURO'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoCAPITALRECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'CAPITALRECDO'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoJURORECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'JURORECDO'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoDESCTO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'DESCTO'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoIDCONTA: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDCONTA'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnValidate = cdsPadraoIDCONTAValidate
     end
     object cdsPadraoCONTA: TStringField
+      FieldKind = fkData
       FieldName = 'CONTA'
+      Index = 20
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoVALORJURO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALORJURO'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoTOTAL: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoTOTALRECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTALRECDO'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
-  object sqlLimite: TSQLDataSet
-    CommandText = 
-      'select sum(TOTAL) as TOTAL_CONTAS from CONTASRECEBER '#13#10'where CLI' +
-      'ENTE = :CLIENTE'
-    MaxBlobSize = -1
-    Params = <
+  object sqlLimite: TSQLQuery[22]
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftString
         Name = 'CLIENTE'
         ParamType = ptInput
       end>
-    Left = 296
-    Top = 12
+    Left = 600
+    Top = 72
     object sqlLimiteTOTAL_CONTAS: TFloatField
+      FieldKind = fkData
       FieldName = 'TOTAL_CONTAS'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object sqldDeleta: TSQLDataSet
-    CommandText = 'STPDELCR'
-    CommandType = ctStoredProc
-    DbxCommandType = 'Dbx.StoredProcedure'
-    MaxBlobSize = -1
-    Params = <
+  object sqldDeleta: TSQLQuery[23]
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'CODIGO'

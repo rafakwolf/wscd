@@ -1,234 +1,310 @@
 inherited frmRelatorioProdutoVencimento: TfrmRelatorioProdutoVencimento
-  ClientHeight = 298
-  ClientWidth = 433
+  Height = 377
+  Width = 608
   Caption = 'frmRelatorioProdutoVencimento'
-  OldCreateOrder = True
-  ExplicitWidth = 449
-  ExplicitHeight = 337
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 377
+  ClientWidth = 608
   inherited pnButtons: TPanel
-    Top = 264
-    Width = 433
-    ExplicitTop = 264
-    ExplicitWidth = 433
+    Top = 343
+    Width = 608
+    ClientWidth = 608
   end
-  object dbdDataVenc: TDBEdit [1]
+  object dbdDataVenc: TDBEdit[1]
     Left = 84
+    Height = 33
+    Hint = 'Produtos vencidos '#13#10'apartir desta data...'
     Top = 104
     Width = 319
-    Height = 21
-    Hint = 'Produtos vencidos '#13#10'apartir desta data...'
-    ShowHint = True
     DataField = 'DATA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbeUnidade: TDBEdit [2]
+  object dbeUnidade: TDBEdit[2]
     Left = 84
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 131
     Width = 319
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsUnidade
-    TabOrder = 3
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
   end
-  object dbeForn: TDBEdit [3]
+  object dbeForn: TDBEdit[3]
     Left = 84
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 160
     Width = 319
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsForn
-    TabOrder = 4
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
   end
-  object dbeGrupo: TDBEdit [4]
+  object dbeGrupo: TDBEdit[4]
     Left = 84
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 189
     Width = 319
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsGrupo
-    TabOrder = 5
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
   end
-  object rgTipo: TRadioGroup [5]
+  object rgTipo: TRadioGroup[5]
     Left = 16
+    Height = 81
     Top = 16
     Width = 409
-    Height = 81
-    Hint = ''
-    ShowHint = True
+    AutoFill = True
+    Caption = ' Tipo de Relatório '
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 63
+    ClientWidth = 407
+    ItemIndex = 1
     Items.Strings = (
       'Todos'
       'Por Unidade de Venda'
       'Por Fornecedor'
-      'Por Grupo')
-    ItemIndex = 1
-    Caption = ' Tipo de Relat'#243'rio '
-    TabOrder = 1
-    TabStop = False
+      'Por Grupo'
+    )
     OnClick = rgTipoClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[6]
     DataSet = cdsSelecao
     Left = 312
     Top = 64
   end
-  object sqldSelecao: TSQLDataSet
-    CommandText = 'select'#13#10'  cast(NULL as TIMESTAMP) DATA'#13#10'from RDB$DATABASE'
-    MaxBlobSize = -1
+  object sqldSelecao: TSQLQuery[7]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 216
     Top = 64
-    object sqldSelecaoDATA: TSQLTimeStampField
+    object sqldSelecaoDATA: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspSelecao: TDataSetProvider
-    DataSet = sqldSelecao
+  object dspSelecao: TTimer[8]
     Left = 248
     Top = 64
   end
-  object cdsSelecao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspSelecao'
+  object cdsSelecao: TMemDataset[9]
+    FieldDefs = <>
     Left = 280
     Top = 64
-    object cdsSelecaoDATA: TSQLTimeStampField
+    object cdsSelecaoDATA: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object sqldUnidade: TSQLDataSet
-    CommandText = 'select * from UNIDADES'
-    MaxBlobSize = -1
+  object sqldUnidade: TSQLQuery[10]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 8
     Top = 216
   end
-  object dspUnidade: TDataSetProvider
-    DataSet = sqldUnidade
+  object dspUnidade: TTimer[11]
     Left = 40
     Top = 216
   end
-  object cdsUnidade: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspUnidade'
+  object cdsUnidade: TMemDataset[12]
+    FieldDefs = <>
     Left = 72
     Top = 216
     object cdsUnidadeCODUNIDADE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODUNIDADE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsUnidadeDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 10
     end
   end
-  object sqldForn: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'fro' +
-      'm FORNECEDORES'
-    MaxBlobSize = -1
+  object sqldForn: TSQLQuery[13]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 296
     Top = 216
     object sqldFornCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldFornFANTAZIA: TStringField
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldFornCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldFornTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspForn: TDataSetProvider
-    DataSet = sqldForn
+  object dspForn: TTimer[14]
     Left = 328
     Top = 216
   end
-  object cdsForn: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspForn'
+  object cdsForn: TMemDataset[15]
+    FieldDefs = <>
     Left = 360
     Top = 216
     object cdsFornCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsFornFANTAZIA: TStringField
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsFornCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsFornTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object sqldGrupo: TSQLDataSet
-    CommandText = 'select * from GRUPOS'
-    MaxBlobSize = -1
+  object sqldGrupo: TSQLQuery[16]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 152
     Top = 216
   end
-  object dspGrupo: TDataSetProvider
-    DataSet = sqldGrupo
+  object dspGrupo: TTimer[17]
     Left = 184
     Top = 216
   end
-  object cdsGrupo: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspGrupo'
+  object cdsGrupo: TMemDataset[18]
+    FieldDefs = <>
     Left = 216
     Top = 216
     object cdsGrupoCODGRUPO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODGRUPO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsGrupoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
   end
-  object dsUnidade: TDataSource
+  object dsUnidade: TDataSource[19]
     DataSet = cdsUnidade
     Left = 104
     Top = 216
   end
-  object dsGrupo: TDataSource
+  object dsGrupo: TDataSource[20]
     DataSet = cdsGrupo
     Left = 248
     Top = 216
   end
-  object dsForn: TDataSource
+  object dsForn: TDataSource[21]
     DataSet = cdsForn
     Left = 392
     Top = 216

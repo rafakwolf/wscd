@@ -5,9 +5,8 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, ComCtrls, DB, Sqldb,
-   memds, StdCtrls,  UniPageControl,
-  DBCtrls,  Buttons, FMTBcd,   
-   uniEdit, uniDBEdit,  uniDBCheckBox, uniPanel;
+   memds, StdCtrls,
+  DBCtrls,  Buttons, FMTBcd;
 
 type
   TfrmConfigNotaMan = class(TfrmSimplePadrao)
@@ -163,7 +162,7 @@ begin
   if (FIdCampo <> -1) then
   begin
     cdsPadrao.Close;
-    cdsPadrao.Params.ParamByName('PCODIGO').AsInteger := FIdCampo;
+    sqldPadrao.Params.ParamByName('PCODIGO').AsInteger := FIdCampo;
     cdsPadrao.Open;
     cdsPadrao.Edit;
     CarregaCamposReferencia(Copy(cdsPadraoTIPO.AsString, 1, 1));
@@ -196,7 +195,7 @@ end;
 procedure TfrmConfigNotaMan.btnCancelarClick(Sender: TObject);
 begin
   inherited;
-  cdsPadrao.CancelUpdates;
+  //cdsPadrao.CancelUpdates;
   Close;
 end;
 

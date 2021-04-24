@@ -6,19 +6,17 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
   DB, memds,  SqlDb, ComCtrls,  Spin,
-  FMTBcd, DBCtrls,    uniPanel,
-  uniLabel, uniEdit,   uniDBEdit,  uniComboBox,
-  uniSpinEdit, uniRadioGroup;
+  FMTBcd, DBCtrls;
 
 type
   TfrmRelatorioAniversarioCliente = class(TfrmDialogoRelatorioPadrao)
     sqldSelecao: TSQLQuery;
-    sqldSelecaoDATAINI: TSQLTimeStampField;
-    sqldSelecaoDATAFIM: TSQLTimeStampField;
+    sqldSelecaoDATAINI: TDateTimeField;
+    sqldSelecaoDATAFIM: TDateTimeField;
     dspSelecao: TComponent;
     cdsSelecao: TMemDataSet;
-    cdsSelecaoDATAINI: TSQLTimeStampField;
-    cdsSelecaoDATAFIM: TSQLTimeStampField;
+    cdsSelecaoDATAINI: TDateTimeField;
+    cdsSelecaoDATAFIM: TDateTimeField;
     pnDiaMesAno: TPanel;
     pnDatas: TPanel;
     LabelMes: TLabel;
@@ -106,7 +104,7 @@ begin
           Close;
           if rgDatas.ItemIndex = 0 then  // dis mes ano
           begin
-            SQL.Clear; SQL.Text :='select '+
+            sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                              'NOME, '+
                              'DATA, '+
                              'ENDERECO, '+
@@ -117,14 +115,14 @@ begin
                            'where extract(month from DATA) = :MES '+
                            'and extract(day from DATA) between :PDIAINI and :PDIAFIM '+
                            'order by DATA, NOME';
-            Params.ParamByName('MES').AsInteger     := cmbMes.ItemIndex+1;
-            Params.ParamByName('PDIAINI').AsInteger := StrToIntDef(edDo.Text, 1);
-            Params.ParamByName('PDIAFIM').AsInteger := StrToIntDef(edAte.Text, 30);
+            sqldPadrao.Params.ParamByName('MES').AsInteger     := cmbMes.ItemIndex+1;
+            sqldPadrao.Params.ParamByName('PDIAINI').AsInteger := StrToIntDef(edDo.Text, 1);
+            sqldPadrao.Params.ParamByName('PDIAFIM').AsInteger := StrToIntDef(edAte.Text, 30);
             //Params.ParamByName('PANO').AsInteger := StrToIntDef(edAno.Text, YearOf(Date));
           end
           else if rgDatas.ItemIndex = 1 then   // data inicial e final
           begin
-            SQL.Clear; SQL.Text :='select '+
+            sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                              'NOME, '+
                              'DATA, '+
                              'ENDERECO, '+
@@ -134,8 +132,8 @@ begin
                            'from VIEWENDERECOCLIENTES '+
                            'where DATA between :PDINI and :PDFIM '+
                            'order by DATA, NOME';
-            Params.ParamByName('PDINI').AsDate := cdsSelecaoDATAINI.AsDateTime;
-            Params.ParamByName('PDFIM').AsDate := cdsSelecaoDATAFIM.AsDateTime;
+            sqldPadrao.Params.ParamByName('PDINI').AsDate := cdsSelecaoDATAINI.AsDateTime;
+            sqldPadrao.Params.ParamByName('PDFIM').AsDate := cdsSelecaoDATAFIM.AsDateTime;
           end;
           Open;
           //ShowMessage(IntToStr(RecordCount));
@@ -152,13 +150,13 @@ begin
         with cdsPadrao do
         begin
           Close;
-          Params.ParamByName('PTIPO').AsInteger   := rgDatas.ItemIndex;
-          Params.ParamByName('PDIAINI').AsInteger := StrToIntDef(edDo.Text, 1);
-          Params.ParamByName('PDIAFIM').AsInteger := StrToIntDef(edAte.Text, 30);
-          Params.ParamByName('PMES').AsInteger    := cmbMes.ItemIndex+1;
-          Params.ParamByName('PANO').AsInteger    := -1;//StrToIntDef(edAno.Text, YearOf(Date));
-          Params.ParamByName('PDATA1').AsDate     := cdsSelecaoDATAINI.AsDateTime;
-          Params.ParamByName('PDATA2').AsDate     := cdsSelecaoDATAFIM.AsDateTime;
+          sqldPadrao.Params.ParamByName('PTIPO').AsInteger   := rgDatas.ItemIndex;
+          sqldPadrao.Params.ParamByName('PDIAINI').AsInteger := StrToIntDef(edDo.Text, 1);
+          sqldPadrao.Params.ParamByName('PDIAFIM').AsInteger := StrToIntDef(edAte.Text, 30);
+          sqldPadrao.Params.ParamByName('PMES').AsInteger    := cmbMes.ItemIndex+1;
+          sqldPadrao.Params.ParamByName('PANO').AsInteger    := -1;//StrToIntDef(edAno.Text, YearOf(Date));
+          sqldPadrao.Params.ParamByName('PDATA1').AsDate     := cdsSelecaoDATAINI.AsDateTime;
+          sqldPadrao.Params.ParamByName('PDATA2').AsDate     := cdsSelecaoDATAFIM.AsDateTime;
           Open;
         end;
         PrintIfNotEmptyRL(rrPadrao);

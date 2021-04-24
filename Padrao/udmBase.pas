@@ -23,7 +23,7 @@ implementation
 
 function TdmBase.ConectaBanco: Boolean;
 begin
- raise Exception.Create('método não implemantado');
+ raise Exception.Create('metodo nao implemantado');
 end;
 
 end.

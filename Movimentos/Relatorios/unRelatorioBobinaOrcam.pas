@@ -8,7 +8,7 @@ uses
   StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd;
 
 type
-  TDataSetField = TDataset;
+  TDatasetField = TDataset;
   TfrmRelatorioBobinaOrcam = class(TfrmSimplePadrao)
     sqlOrcam: TSQLQuery;
     sqlDetOrcam: TSQLQuery;
@@ -43,7 +43,7 @@ type
     cdsOrcamITENS: TIntegerField;
     cdsOrcamSTATUS: TStringField;
     cdsOrcamCONCLUIDO: TStringField;
-    cdsOrcamsqlDetOrcam: TDataSetField;
+    cdsOrcamsqlDetOrcam: TDataset;
     cdsDetOrcamCODIGO: TIntegerField;
     cdsDetOrcamCODPRODUTO: TIntegerField;
     cdsDetOrcamNOMEPRODUTO: TStringField;

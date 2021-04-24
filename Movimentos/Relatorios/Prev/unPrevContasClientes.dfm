@@ -194,7 +194,7 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 'select * from VIEWRELNPCR'#13#10'order by VENCIMENTO'
     object sqldPadraoCODIGO: TIntegerField
       FieldName = 'CODIGO'

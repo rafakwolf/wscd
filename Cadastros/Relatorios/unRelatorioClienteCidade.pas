@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  memds,  DB, SqlDb,  DBCtrls,  FMTBcd, 
-  uniEdit, uniDBEdit,    uniPanel;
+  memds,  DB, SqlDb,  DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioClienteCidade = class(TfrmDialogoRelatorioPadrao)
@@ -43,7 +42,7 @@ procedure TfrmRelatorioClienteCidade.dbeCidadeClickButton(Sender: TObject);
 begin
   inherited;
   cdsCidade.Close;
-  cdsCidade.SQL.Clear; SQL.Text :=SQLPadrao;
+  sqldCidade.SQL.Clear; sqldCidade.SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
 //    cdsCidade.Close;
 end;
@@ -63,7 +62,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        SQL.Clear; SQL.Text :='select '+
+        sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                        ' CODIGO, '+
                        ' NOME, '+
                        ' ENDERECO, '+
@@ -77,7 +76,7 @@ begin
                        'from VIEWRELCLIENTES '+
                        'where CODCIDADE = :COD '+
                        'order by NOME';
-        Params.ParamByName('COD').AsInteger := cdsCidadeCODCIDADE.AsInteger;
+        sqldPadrao.Params.ParamByName('COD').AsInteger := cdsCidadeCODCIDADE.AsInteger;
         Open;
       end;
       TipoRelatorio := 1;
@@ -111,7 +110,7 @@ end;
 procedure TfrmRelatorioClienteCidade.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLPadrao := sqldCidade.CommandText;
+  SQLPadrao := sqldCidade.sql.text;
 end;
 
 initialization

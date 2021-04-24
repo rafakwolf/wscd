@@ -82,13 +82,13 @@ object frmModeloRelatorio: TfrmModeloRelatorio
       end
     end
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     Left = 16
     Top = 8
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poAllowCommandText]
     Left = 88

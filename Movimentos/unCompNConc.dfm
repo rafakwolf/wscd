@@ -1,30 +1,28 @@
 object frmCompNaoConc: TfrmCompNaoConc
-  Left = 138
-  Top = 147
-  ClientHeight = 289
-  ClientWidth = 706
-  Caption = 'Compras n'#227'o conclu'#237'das'
-  OnShow = FormShow
-  BorderStyle = bsSingle
-  OldCreateOrder = False
-  ShowHint = True
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
+  Left = 198
+  Height = 313
+  Top = 149
+  Width = 732
   BorderIcons = [biSystemMenu]
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  BorderStyle = bsSingle
+  Caption = 'Compras não concluídas'
+  ClientHeight = 313
+  ClientWidth = 732
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  KeyPreview = True
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object btnConsultar: TBitBtn
     Left = 512
+    Height = 25
     Top = 256
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&OK'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -75,18 +73,19 @@ object frmCompNaoConc: TfrmCompNaoConc
       8080008080008080008080008080008080008080008080008080008080008080
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080}
-    Caption = '&OK'
-    TabOrder = 0
+      8080008080008080008080008080008080008080008080008080
+    }
     OnClick = btnConsultarClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
   object btnCancelar: TBitBtn
     Left = 608
+    Height = 25
     Top = 256
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&Cancelar'
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -128,24 +127,24 @@ object frmCompNaoConc: TfrmCompNaoConc
       80800080806B6B6B6B6B6B008080008080000080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
-      00808000808000808000}
-    Caption = '&Cancelar'
-    TabOrder = 1
+      00808000808000808000
+    }
     OnClick = btnCancelarClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
   object Grade: TDBGrid
     Left = 8
+    Height = 241
     Top = 8
     Width = 689
-    Height = 241
-    Hint = ''
-    ShowHint = True
-    DataSource = dsComp
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 2
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsComp
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ShowHint = True
+    TabOrder = 2
     OnDblClick = btnConsultarClick
   end
   object dsComp: TDataSource
@@ -153,82 +152,159 @@ object frmCompNaoConc: TfrmCompNaoConc
     Left = 344
     Top = 128
   end
-  object sqlComp: TSQLDataSet
-    CommandText = 
-      'SELECT '#13#10'  NF.NUMERO, '#13#10'  NF.DATANOTA, '#13#10'  NF.DATAENTRADA, '#13#10'  N' +
-      'F.CODFORNECEDOR,'#13#10'  F.RAZAOSOCIAL,'#13#10'  NF.TOTAL, '#13#10'  NF.CONCLUIDA' +
-      ' '#13#10'FROM NOTAS_FISCAIS NF'#13#10'LEFT JOIN FORNECEDORES F ON (F.CODFORN' +
-      'ECEDOR = NF.CODFORNECEDOR)'#13#10'WHERE NF.CONCLUIDA = '#39'N'#39
-    MaxBlobSize = -1
+  object sqlComp: TSQLQuery
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 80
     Top = 112
     object sqlCompNUMERO: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqlCompDATANOTA: TDateField
+      FieldKind = fkData
       FieldName = 'DATANOTA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqlCompDATAENTRADA: TDateField
+      FieldKind = fkData
       FieldName = 'DATAENTRADA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqlCompCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqlCompRAZAOSOCIAL: TStringField
+      FieldKind = fkData
       FieldName = 'RAZAOSOCIAL'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqlCompTOTAL: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqlCompCONCLUIDA: TStringField
+      FieldKind = fkData
       FieldName = 'CONCLUIDA'
-      FixedChar = True
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspComp: TDataSetProvider
-    DataSet = sqlComp
+  object dspComp: TTimer
     Left = 168
     Top = 128
   end
   object cdsComp: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspComp'
+    FieldDefs = <>
     Left = 264
     Top = 128
     object cdsCompNUMERO: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsCompDATANOTA: TDateField
+      FieldKind = fkData
       FieldName = 'DATANOTA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsCompDATAENTRADA: TDateField
+      FieldKind = fkData
       FieldName = 'DATAENTRADA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsCompCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsCompRAZAOSOCIAL: TStringField
+      FieldKind = fkData
       FieldName = 'RAZAOSOCIAL'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsCompTOTAL: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsCompCONCLUIDA: TStringField
+      FieldKind = fkData
       FieldName = 'CONCLUIDA'
-      FixedChar = True
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end

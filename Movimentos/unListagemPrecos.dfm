@@ -1,35 +1,33 @@
 inherited frmListagemPrecos: TfrmListagemPrecos
   Left = 62
+  Height = 458
   Top = 137
-  ClientHeight = 433
-  ClientWidth = 753
-  Caption = 'Listagem de pre'#231'os'
-  OnShow = FormShow
-  BorderStyle = bsSingle
-  OnKeyPress = FormKeyPress
+  Width = 818
   BorderIcons = [biSystemMenu, biMinimize]
-  Font.Charset = DEFAULT_CHARSET
-  ExplicitWidth = 759
-  ExplicitHeight = 462
-  PixelsPerInch = 96
-  TextHeight = 13
-  object lbCampo: TLabel
+  BorderStyle = bsSingle
+  Caption = 'Listagem de preços'
+  ClientHeight = 458
+  ClientWidth = 818
+  Font.CharSet = DEFAULT_CHARSET
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  object lbCampo: TLabel[0]
     Left = 8
+    Height = 15
     Top = 8
-    Width = 41
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 46
     Caption = 'Campo'
-    TabOrder = 5
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object btnFechar: TBitBtn
+  object btnFechar: TBitBtn[1]
     Left = 656
-    Top = 400
-    Width = 89
     Height = 25
     Hint = 'Sair'
-    ShowHint = True
+    Top = 400
+    Width = 89
+    Caption = '&Fechar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -80,18 +78,19 @@ inherited frmListagemPrecos: TfrmListagemPrecos
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Fechar'
-    TabOrder = 4
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnFecharClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
   end
-  object btnPesquisar: TBitBtn
+  object btnPesquisar: TBitBtn[2]
     Left = 648
+    Height = 25
     Top = 21
     Width = 97
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&Pesquisar'
     Glyph.Data = {
       1A030000424D1A030000000000001A0200002800000010000000100000000100
       08000000000000010000120B0000120B0000790000007900000000000000FFFF
@@ -117,133 +116,228 @@ inherited frmListagemPrecos: TfrmListagemPrecos
       5059123732353622172308040404634750590E2E332C241B2620080404046347
       50595F182B1D1927210804040404634750595C61131E25150808040404046348
       4D4B3A3B4A67030604040404040463464543413F3F3E4C680404040404040465
-      514442403D3C690404040404040404046363636363630404040404040404}
-    Caption = '&Pesquisar'
-    TabOrder = 2
+      514442403D3C690404040404040404046363636363630404040404040404
+    }
     OnClick = btnPesquisarClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
   end
-  object edtPesquisa: TEdit
+  object edtPesquisa: TEdit[3]
     Left = 169
+    Height = 33
+    Hint = 'Valor a ser pesquisado'
     Top = 24
     Width = 473
-    Height = 21
-    Hint = 'Valor a ser pesquisado'
-    ShowHint = True
-    Text = ''
-    TabOrder = 1
     OnKeyPress = edtPesquisaKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object cbbCampo: TComboBox
+  object cbbCampo: TComboBox[4]
     Left = 8
+    Height = 32
     Top = 24
     Width = 153
-    Height = 21
-    Hint = ''
+    ItemHeight = 0
+    OnClick = cbbCampoClick
+    ParentShowHint = False
     ShowHint = True
     Style = csDropDownList
-    Text = ''
     TabOrder = 0
-    OnClick = cbbCampoClick
   end
-  object Grade: TDBGrid
+  object Grade: TDBGrid[5]
     Left = 8
+    Height = 341
     Top = 52
     Width = 737
-    Height = 341
-    Hint = ''
-    ShowHint = True
-    DataSource = dsProdutos
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    ReadOnly = True
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 3
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsProdutos
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 3
   end
-  object dsProdutos: TDataSource
+  object dsProdutos: TDataSource[6]
     AutoEdit = False
     DataSet = cdsProduto
     Left = 400
     Top = 168
   end
-  object sqldProduto: TSQLDataSet
-    CommandText = 'select * from VIEWPESQUISAPRECO'
-    MaxBlobSize = -1
+  object sqldProduto: TSQLQuery[7]
+    FieldDefs = <>
     Params = <>
     Left = 136
     Top = 192
     object sqldProdutoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldProdutoCODIGOBARRA: TStringField
+      FieldKind = fkData
       FieldName = 'CODIGOBARRA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object sqldProdutoREFERENCIA: TStringField
+      FieldKind = fkData
       FieldName = 'REFERENCIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldProdutoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldProdutoESTOQUE: TIntegerField
+      FieldKind = fkData
       FieldName = 'ESTOQUE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldProdutoPRECO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'PRECO'
-      Precision = 18
-      Size = 4
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldProdutoFORNECEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'FORNECEDOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldProdutoGRUPO: TStringField
+      FieldKind = fkData
       FieldName = 'GRUPO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspProduto: TDataSetProvider
-    DataSet = sqldProduto
-    Options = [poAllowCommandText]
+  object dspProduto: TTimer[8]
     Left = 208
     Top = 152
   end
-  object cdsProduto: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspProduto'
+  object cdsProduto: TMemDataset[9]
+    FieldDefs = <>
     Left = 296
     Top = 176
     object cdsProdutoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsProdutoCODIGOBARRA: TStringField
+      FieldKind = fkData
       FieldName = 'CODIGOBARRA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object cdsProdutoREFERENCIA: TStringField
+      FieldKind = fkData
       FieldName = 'REFERENCIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsProdutoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsProdutoESTOQUE: TIntegerField
+      FieldKind = fkData
       FieldName = 'ESTOQUE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '####0'
     end
     object cdsProdutoPRECO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'PRECO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsProdutoFORNECEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'FORNECEDOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsProdutoGRUPO: TStringField
+      FieldKind = fkData
       FieldName = 'GRUPO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

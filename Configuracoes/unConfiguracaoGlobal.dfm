@@ -1,509 +1,813 @@
 inherited frmConfigGlobal: TfrmConfigGlobal
   Left = 232
   Top = 148
-  ClientHeight = 340
-  ClientWidth = 470
+  Width = 621
   Caption = 'frmConfigGlobal'
-  OldCreateOrder = True
-  ExplicitWidth = 476
-  ExplicitHeight = 369
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 621
   inherited sbStatus: TStatusBar
-    Top = 321
-    Width = 470
-    ExplicitTop = 321
-    ExplicitWidth = 470
+    Width = 621
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 470
-    ExplicitWidth = 470
+    Width = 621
+    ClientWidth = 621
   end
-  object pgcConfigGlobal: TPageControl [2]
+  object pgcConfigGlobal: TPageControl[2]
     Left = 8
+    Height = 273
     Top = 39
     Width = 385
-    Height = 273
-    Hint = ''
-    ShowHint = True
     ActivePage = tsCrediario
+    ParentShowHint = False
+    ShowHint = True
+    TabIndex = 0
     TabOrder = 2
     object tsCrediario: TTabSheet
-      Hint = ''
+      Caption = 'Crediário'
+      ClientHeight = 242
+      ClientWidth = 375
+      ParentShowHint = False
       ShowHint = True
-      Caption = 'Credi'#225'rio'
       object dbeJuro: TDBEdit
         Left = 8
+        Height = 33
         Top = 32
         Width = 83
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'TAXAJURO'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
         OnKeyPress = dbeJuroKeyPress
       end
       object dbeIntervalo: TDBEdit
         Left = 272
+        Height = 33
         Top = 32
         Width = 97
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'INTERVALO'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 1
       end
       object dbePrazoInicial: TDBEdit
         Left = 184
+        Height = 33
         Top = 32
         Width = 83
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'PRAZOINICIAL'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 2
       end
       object dbeParcelas: TDBEdit
         Left = 96
+        Height = 33
         Top = 32
         Width = 83
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'PARCELAS'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
       end
     end
     object tsCliente: TTabSheet
-      Hint = ''
-      ShowHint = True
-      ImageIndex = 1
       Caption = 'Cliente'
+      ClientHeight = 242
+      ClientWidth = 375
+      ImageIndex = 1
+      ParentShowHint = False
+      ShowHint = True
       object dbeLimiteCliente: TDBEdit
         Left = 8
+        Height = 21
         Top = 32
         Width = 105
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'LIMITECLIENTE'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
       end
       object dbeIdadeCliente: TDBEdit
         Left = 120
+        Height = 21
         Top = 32
         Width = 89
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'IDADECADASTROCLIENTE'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 1
       end
     end
     object tsOrcamento: TTabSheet
-      Hint = ''
-      ShowHint = True
+      Caption = 'Orçamento'
+      ClientHeight = 242
+      ClientWidth = 375
       ImageIndex = 2
-      Caption = 'Or'#231'amento'
+      ParentShowHint = False
+      ShowHint = True
       object lbMsgOrcamRodape: TLabel
         Left = 8
+        Height = 13
         Top = 64
         Width = 190
-        Height = 13
-        Hint = ''
+        Caption = 'Rodapé do orçamento em bobina'
+        ParentColor = False
+        ParentShowHint = False
         ShowHint = True
-        Caption = 'Rodap'#233' do or'#231'amento em bobina'
-        TabOrder = 4
       end
       object dbeTituloOrcam: TDBEdit
         Left = 8
+        Height = 21
         Top = 32
         Width = 249
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'TITULOORCAM'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
       end
       object dbeColunaBobina: TDBEdit
         Left = 263
+        Height = 21
         Top = 32
         Width = 106
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'COLUNAORCAMBOBINA'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 1
       end
       object dbeLinhaPularOrcam: TDBEdit
         Left = 8
+        Height = 21
         Top = 176
         Width = 105
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'LINHAPULARBOBINAORCAM'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
       end
       object dbmmMsgRodape: TDBMemo
         Left = 8
+        Height = 73
         Top = 80
         Width = 361
-        Height = 73
-        Hint = ''
-        ShowHint = True
         DataField = 'MSGRODAPEORCAM'
         DataSource = dsPadrao
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 2
       end
     end
     object tsVenda: TTabSheet
-      Hint = ''
-      ShowHint = True
-      ImageIndex = 3
       Caption = 'Venda'
+      ClientHeight = 242
+      ClientWidth = 375
+      ImageIndex = 3
+      ParentShowHint = False
+      ShowHint = True
       object lbMsgRodapeVenda: TLabel
         Left = 8
+        Height = 13
         Top = 64
         Width = 164
-        Height = 13
-        Hint = ''
+        Caption = 'Rodapé da venda em bobina'
+        ParentColor = False
+        ParentShowHint = False
         ShowHint = True
-        Caption = 'Rodap'#233' da venda em bobina'
-        TabOrder = 5
       end
       object dbeTituloVenda: TDBEdit
         Left = 8
+        Height = 21
         Top = 32
         Width = 249
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'TITULOVENDA'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
       end
       object dbeColunaBobinaVenda: TDBEdit
         Left = 263
+        Height = 21
         Top = 32
         Width = 106
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'COLUNAVENDABOBINA'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 1
       end
       object dbeLinhaPularVenda: TDBEdit
         Left = 8
+        Height = 21
         Top = 176
         Width = 105
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'LINHAPULARBOBINAVENDA'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
       end
       object dbePortaImpVenda: TDBEdit
         Left = 119
+        Height = 21
         Top = 176
         Width = 104
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'PORTAIMPVENDA'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 4
       end
       object dbmmMsgRodapeVenda: TDBMemo
         Left = 8
+        Height = 73
         Top = 80
         Width = 361
-        Height = 73
-        Hint = ''
-        ShowHint = True
         DataField = 'MSGRODAPEVENDA'
         DataSource = dsPadrao
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 2
       end
     end
     object tsFTP: TTabSheet
-      Hint = ''
-      ShowHint = True
+      Caption = 'FTP (Atualização)'
+      ClientHeight = 242
+      ClientWidth = 375
       ImageIndex = 4
-      Caption = 'FTP (Atualiza'#231#227'o)'
+      ParentShowHint = False
+      ShowHint = True
       object dbeHost: TDBEdit
         Left = 16
+        Height = 21
         Top = 24
         Width = 337
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'FTP_HOST'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
       end
       object dbeUserName: TDBEdit
         Left = 16
+        Height = 21
         Top = 64
         Width = 169
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'FTP_USER_NAME'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 1
       end
       object dbePassWord: TDBEdit
         Left = 192
+        Height = 21
         Top = 64
         Width = 161
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'FTP_PASSWORD'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
         PasswordChar = '*'
+        ShowHint = True
         TabOrder = 2
       end
       object dbeDiretorio: TDBEdit
         Left = 16
+        Height = 21
         Top = 104
         Width = 265
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'FTP_DIR'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 3
       end
       object dbeTimeOut: TDBEdit
         Left = 288
+        Height = 21
         Top = 104
         Width = 65
-        Height = 21
-        Hint = ''
-        ShowHint = True
         DataField = 'FTP_TIMEOUT'
         DataSource = dsPadrao
+        CharCase = ecNormal
+        MaxLength = 0
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 4
       end
       object dbckbPassive: TDBCheckBox
         Left = 16
+        Height = 17
         Top = 136
         Width = 65
-        Height = 17
-        Hint = ''
-        ShowHint = True
+        Caption = 'Passive'
         DataField = 'FTP_PASSIVE'
         DataSource = dsPadrao
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 5
         ValueChecked = 'S'
         ValueUnchecked = 'N'
-        Caption = 'Passive'
-        TabOrder = 5
       end
     end
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[3]
     Left = 72
     Top = 252
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[4]
     DataSet = cdsPadrao
     Left = 399
     Top = 228
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select * from CONFIGURACAOGLOBAL'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[5]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 168
     Top = 244
     object sqldPadraoTAXAJURO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TAXAJURO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoINTERVALO: TIntegerField
+      FieldKind = fkData
       FieldName = 'INTERVALO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoPRAZOINICIAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'PRAZOINICIAL'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoPARCELAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'PARCELAS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoLIMITECLIENTE: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'LIMITECLIENTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoTITULOORCAM: TStringField
+      FieldKind = fkData
       FieldName = 'TITULOORCAM'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoCOLUNAORCAMBOBINA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNAORCAMBOBINA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoMSGRODAPEORCAM: TStringField
+      FieldKind = fkData
       FieldName = 'MSGRODAPEORCAM'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 250
     end
     object sqldPadraoTITULOVENDA: TStringField
+      FieldKind = fkData
       FieldName = 'TITULOVENDA'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoCOLUNAVENDABOBINA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNAVENDABOBINA'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoMSGRODAPEVENDA: TStringField
+      FieldKind = fkData
       FieldName = 'MSGRODAPEVENDA'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 250
     end
     object sqldPadraoLINHAPULARBOBINAVENDA: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHAPULARBOBINAVENDA'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoLINHAPULARBOBINAORCAM: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHAPULARBOBINAORCAM'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoPORTAIMPVENDA: TStringField
+      FieldKind = fkData
       FieldName = 'PORTAIMPVENDA'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoFTP_HOST: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_HOST'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoFTP_USER_NAME: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_USER_NAME'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoFTP_PASSWORD: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_PASSWORD'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoFTP_TIMEOUT: TIntegerField
+      FieldKind = fkData
       FieldName = 'FTP_TIMEOUT'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoFTP_PASSIVE: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_PASSIVE'
-      FixedChar = True
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object sqldPadraoFTP_DIR: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_DIR'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoIDADECADASTROCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDADECADASTROCLIENTE'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoIDCONFIGGLOBAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDCONFIGGLOBAL'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
+  object dspPadrao: TTimer[6]
     Left = 248
     Top = 244
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
-    AfterApplyUpdates = cdsPadraoAfterApplyUpdates
+  object cdsPadrao: TMemDataset[7]
+    FieldDefs = <>
     Left = 312
     Top = 228
     object cdsPadraoTAXAJURO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TAXAJURO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoINTERVALO: TIntegerField
+      FieldKind = fkData
       FieldName = 'INTERVALO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoPRAZOINICIAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'PRAZOINICIAL'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoPARCELAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'PARCELAS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoLIMITECLIENTE: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'LIMITECLIENTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoTITULOORCAM: TStringField
+      FieldKind = fkData
       FieldName = 'TITULOORCAM'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoCOLUNAORCAMBOBINA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNAORCAMBOBINA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoMSGRODAPEORCAM: TStringField
+      FieldKind = fkData
       FieldName = 'MSGRODAPEORCAM'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 250
     end
     object cdsPadraoTITULOVENDA: TStringField
+      FieldKind = fkData
       FieldName = 'TITULOVENDA'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoCOLUNAVENDABOBINA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNAVENDABOBINA'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoMSGRODAPEVENDA: TStringField
+      FieldKind = fkData
       FieldName = 'MSGRODAPEVENDA'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 250
     end
     object cdsPadraoLINHAPULARBOBINAVENDA: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHAPULARBOBINAVENDA'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoLINHAPULARBOBINAORCAM: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHAPULARBOBINAORCAM'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoPORTAIMPVENDA: TStringField
+      FieldKind = fkData
       FieldName = 'PORTAIMPVENDA'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoFTP_HOST: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_HOST'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoFTP_USER_NAME: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_USER_NAME'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoFTP_PASSWORD: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_PASSWORD'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoFTP_TIMEOUT: TIntegerField
+      FieldKind = fkData
       FieldName = 'FTP_TIMEOUT'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoFTP_PASSIVE: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_PASSIVE'
-      FixedChar = True
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object cdsPadraoFTP_DIR: TStringField
+      FieldKind = fkData
       FieldName = 'FTP_DIR'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoIDADECADASTROCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDADECADASTROCLIENTE'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoIDCONFIGGLOBAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDCONFIGGLOBAL'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
   end

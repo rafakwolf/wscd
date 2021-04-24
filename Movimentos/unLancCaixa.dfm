@@ -159,7 +159,7 @@ object frmLancCaixa: TfrmLancCaixa
     TabOrder = 1
     OnClick = btnNovoClick
   end
-  object sqldCaixas: TSQLDataSet
+  object sqldCaixas: TSQLQuery
     CommandText = 'select * from CAIXAS'
     MaxBlobSize = -1
     Params = <>
@@ -179,7 +179,7 @@ object frmLancCaixa: TfrmLancCaixa
       Size = 1
     end
   end
-  object dspCaixas: TDataSetProvider
+  object dspCaixas: TTimer
     DataSet = sqldCaixas
     Left = 352
     Top = 56
@@ -204,7 +204,7 @@ object frmLancCaixa: TfrmLancCaixa
       Size = 1
     end
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  cx.CODCAIXA, '#13#10'  cx.CODCAIXAS,'#13#10'  cxs.NOME, '#13#10'  cx.DA' +
       'TA, '#13#10'  cx.DESCRICAO, '#13#10'  cx.DOCUMENTO, '#13#10'  cx.TIPO, '#13#10'  cx.VALO' +
@@ -259,7 +259,7 @@ object frmLancCaixa: TfrmLancCaixa
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     UpdateMode = upWhereKeyOnly
     Left = 336

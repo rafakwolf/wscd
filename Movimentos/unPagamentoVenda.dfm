@@ -1,26 +1,29 @@
 object frmPagamentoVenda: TfrmPagamentoVenda
   Left = 242
+  Height = 208
   Top = 151
-  ClientHeight = 161
-  ClientWidth = 481
-  Caption = 'Recebimentos desta venda'
-  BorderStyle = bsSingle
-  OldCreateOrder = False
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
+  Width = 623
   BorderIcons = [biSystemMenu]
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  BorderStyle = bsSingle
+  Caption = 'Recebimentos desta venda'
+  ClientHeight = 208
+  ClientWidth = 623
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  LCLVersion = '2.0.12.0'
   object btnOk: TSpeedButton
     Left = 392
-    Top = 128
-    Width = 81
     Height = 25
     Hint = 'Efetivar escolha'
+    Top = 128
+    Width = 81
+    Caption = '&Ok'
+    Color = clWindow
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -71,50 +74,38 @@ object frmPagamentoVenda: TfrmPagamentoVenda
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Ok'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    ParentColor = False
-    Color = clWindow
-    TabOrder = 1
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnOkClick
+    ParentFont = False
   end
   object lbStatus: TLabel
     Left = 8
+    Height = 15
     Top = 136
-    Width = 46
-    Height = 13
-    Hint = ''
+    Width = 53
     Caption = 'lbStatus'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
-    TabOrder = 2
+    ParentColor = False
+    ParentFont = False
   end
   object dbgdRectoVenda: TDBGrid
     Left = 0
-    Top = 0
-    Width = 481
     Height = 120
-    Hint = ''
-    DataSource = dsVenda
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    ReadOnly = True
-    LoadMask.Message = 'Loading data...'
+    Top = 0
+    Width = 623
     Align = alTop
-    Anchors = [akLeft, akTop, akRight]
-    TabOrder = 0
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsVenda
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    TabOrder = 0
   end
-  object sqldVenda: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  DATARECTO,'#13#10'  FORMARECTO, '#13#10'  VALORRECDO, '#13#10'  VALORRE' +
-      'STO '#13#10'from RECTOVENDA'#13#10'where IDVENDA = :VENDA'
-    MaxBlobSize = -1
-    Params = <
+  object sqldVenda: TSQLQuery
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'VENDA'
@@ -123,52 +114,104 @@ object frmPagamentoVenda: TfrmPagamentoVenda
     Left = 160
     Top = 48
     object sqldVendaDATARECTO: TDateField
+      FieldKind = fkData
       FieldName = 'DATARECTO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldVendaFORMARECTO: TStringField
+      FieldKind = fkData
       FieldName = 'FORMARECTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldVendaVALORRECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALORRECDO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldVendaVALORRESTO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALORRESTO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
-  object dspVenda: TDataSetProvider
-    DataSet = sqldVenda
+  object dspVenda: TTimer
     Left = 232
     Top = 56
   end
   object cdsVenda: TMemDataset
-    Aggregates = <>
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'VENDA'
-        ParamType = ptInput
-      end>
-    ProviderName = 'dspVenda'
+    FieldDefs = <>
     Left = 304
     Top = 56
     object cdsVendaDATARECTO: TDateField
+      FieldKind = fkData
       FieldName = 'DATARECTO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsVendaFORMARECTO: TStringField
+      FieldKind = fkData
       FieldName = 'FORMARECTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsVendaVALORRECDO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALORRECDO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsVendaVALORRESTO: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'VALORRESTO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
   object dsVenda: TDataSource

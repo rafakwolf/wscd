@@ -276,7 +276,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     ParentColor = False
     Color = clWindow
   end
-  object sqldVenda: TSQLDataSet
+  object sqldVenda: TSQLQuery
     CommandText = 
       'insert into VENDA(CODIGO, CODCLIENTE, IDVENDEDOR, DATA,'#13#10'  OBS, ' +
       'TOTALDESCTO, TOTAL, CONCLUIDA, BAIXADO, CANCELADO)'#13#10'values(:ID, ' +
@@ -337,7 +337,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Left = 72
     Top = 208
   end
-  object sqldItemVenda: TSQLDataSet
+  object sqldItemVenda: TSQLQuery
     CommandText = 
       'insert into ITEMVENDA(CODIGO, CODPRODUTO, QTD, CUSTO,'#13#10'  VENDA, ' +
       'DESCTO, VALORDESCTO, TOTAL, COMISSAO, VALORCOMISSAO)'#13#10'values(:ID' +
@@ -398,7 +398,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Left = 176
     Top = 224
   end
-  object dtOrcam: TDataSetProvider
+  object dtOrcam: TTimer
     DataSet = sqlOrcam
     Options = [poAllowCommandText]
     Left = 150
@@ -454,7 +454,7 @@ object frmImportaOrcam: TfrmImportaOrcam
       FixedChar = True
       Size = 1
     end
-    object cdsOrcamsqlDetOrcam: TDataSetField
+    object cdsOrcamsqlDetOrcam: TDataset
       FieldName = 'sqlDetOrcam'
     end
   end
@@ -514,7 +514,7 @@ object frmImportaOrcam: TfrmImportaOrcam
     Left = 143
     Top = 152
   end
-  object sqlOrcam: TSQLDataSet
+  object sqlOrcam: TSQLQuery
     CommandText = 
       'SELECT'#13#10'    ORC.CODIGO,'#13#10'    ORC.CODCLIENTE,'#13#10'    CLI.NOME NOMEC' +
       'LIENTE,'#13#10'    ORC.IDVENDEDOR,'#13#10'    ORC.DATA,'#13#10'    ORC.OBS,'#13#10'    O' +
@@ -565,7 +565,7 @@ object frmImportaOrcam: TfrmImportaOrcam
       Size = 1
     end
   end
-  object sqlDetOrcam: TSQLDataSet
+  object sqlDetOrcam: TSQLQuery
     CommandText = 
       'select'#13#10'    iorc.CODIGO,'#13#10'    iorc.CODPRODUTO,'#13#10'    prod.Descric' +
       'ao NOMEPRODUTO,'#13#10'    iorc.QTDE,'#13#10'    iorc.CUSTO,'#13#10'    iorc.VENDA' +

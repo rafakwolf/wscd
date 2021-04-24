@@ -1,24 +1,21 @@
 inherited frmPesqFone: TfrmPesqFone
-  Left = 126
-  Top = 57
-  ClientHeight = 473
-  ClientWidth = 713
-  Caption = 'frmPesqFone'
-  OnShow = FormShow
-  BorderStyle = bsSingle
-  OldCreateOrder = True
+  Left = 360
+  Height = 499
+  Top = 127
+  Width = 808
   BorderIcons = [biSystemMenu, biMinimize]
-  ExplicitWidth = 719
-  ExplicitHeight = 502
-  PixelsPerInch = 96
-  TextHeight = 13
-  object btnPesquisar: TBitBtn
+  BorderStyle = bsSingle
+  Caption = 'frmPesqFone'
+  ClientHeight = 499
+  ClientWidth = 808
+  OnShow = FormShow
+  object btnPesquisar: TBitBtn[0]
     Left = 616
-    Top = 24
-    Width = 89
     Height = 25
     Hint = 'Pesquisar'
-    ShowHint = True
+    Top = 24
+    Width = 89
+    Caption = 'Pesquisar'
     Glyph.Data = {
       1A030000424D1A030000000000001A0200002800000010000000100000000100
       08000000000000010000120B0000120B0000790000007900000000000000FFFF
@@ -44,18 +41,20 @@ inherited frmPesqFone: TfrmPesqFone
       5059123732353622172308040404634750590E2E332C241B2620080404046347
       50595F182B1D1927210804040404634750595C61131E25150808040404046348
       4D4B3A3B4A67030604040404040463464543413F3F3E4C680404040404040465
-      514442403D3C690404040404040404046363636363630404040404040404}
-    Caption = 'Pesquisar'
-    TabOrder = 3
+      514442403D3C690404040404040404046363636363630404040404040404
+    }
     OnClick = btnPesquisarClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
   end
-  object btnImprimir: TBitBtn
+  object btnImprimir: TBitBtn[1]
     Left = 616
+    Height = 25
+    Hint = 'Relatório dos dados filtrados...'
     Top = 440
     Width = 89
-    Height = 25
-    Hint = 'Relat'#243'rio dos dados filtrados...'
-    ShowHint = True
+    Caption = 'Imprimir'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -106,112 +105,151 @@ inherited frmPesqFone: TfrmPesqFone
       D8D8A9A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFBD8281BD8281BD8281FF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9A9A9A9A9
-      A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Imprimir'
-    TabOrder = 5
+      A9A9FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnImprimirClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
   end
-  object edtNome: TEdit
+  object edtNome: TEdit[2]
     Left = 128
+    Height = 33
     Top = 28
     Width = 337
-    Height = 21
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
-    Text = ''
     TabOrder = 1
   end
-  object edtFone: TEdit
+  object edtFone: TEdit[3]
     Left = 472
+    Height = 33
     Top = 28
     Width = 137
-    Height = 21
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
-    Text = ''
     TabOrder = 2
   end
-  object dbgrdFones: TDBGrid
+  object dbgrdFones: TDBGrid[4]
     Left = 8
+    Height = 369
     Top = 64
     Width = 697
-    Height = 369
-    Hint = ''
-    ShowHint = True
-    DataSource = dsFone
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    ReadOnly = True
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 4
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsFone
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 4
   end
-  object rgpPesquisa: TRadioGroup
+  object rgpPesquisa: TRadioGroup[5]
     Left = 8
+    Height = 49
     Top = 8
     Width = 113
-    Height = 49
-    Hint = ''
-    ShowHint = True
+    AutoFill = True
+    Caption = ' Pesquisar por '
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 31
+    ClientWidth = 111
+    ItemIndex = 0
     Items.Strings = (
       'Nome'
-      'Telefone')
-    ItemIndex = 0
-    Caption = ' Pesquisar por '
-    TabOrder = 0
-    TabStop = False
+      'Telefone'
+    )
     OnClick = rgpPesquisaClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
-  object sqldFone: TSQLDataSet
-    CommandText = 'select * from VIEWPESQUISAFONE'
-    MaxBlobSize = -1
+  object sqldFone: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
     Left = 168
     Top = 184
     object sqldFoneNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 100
     end
     object sqldFoneTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
     object sqldFoneFAX: TStringField
+      FieldKind = fkData
       FieldName = 'FAX'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
   end
-  object dspFone: TDataSetProvider
-    DataSet = sqldFone
-    Options = [poAllowCommandText]
+  object dspFone: TTimer[7]
     Left = 200
     Top = 184
   end
-  object cdsFone: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspFone'
+  object cdsFone: TMemDataset[8]
+    FieldDefs = <>
     Left = 232
     Top = 184
     object cdsFoneNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 100
     end
     object cdsFoneTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
     object cdsFoneFAX: TStringField
+      FieldKind = fkData
       FieldName = 'FAX'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
   end
-  object dsFone: TDataSource
+  object dsFone: TDataSource[9]
     DataSet = cdsFone
     Left = 272
     Top = 184
   end
-  object mmPesqFone: TMainMenu
+  object mmPesqFone: TMainMenu[10]
     Left = 168
     Top = 144
     object miRegistros: TMenuItem
@@ -229,7 +267,7 @@ inherited frmPesqFone: TfrmPesqFone
       end
     end
     object miOpcoes: TMenuItem
-      Caption = 'Op'#231#245'es'
+      Caption = 'Opções'
       object miOrdenar: TMenuItem
         Caption = 'Ordenar'
       end

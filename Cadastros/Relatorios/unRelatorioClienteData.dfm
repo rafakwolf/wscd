@@ -1,76 +1,93 @@
 inherited frmRelatorioClienteData: TfrmRelatorioClienteData
-  ClientHeight = 146
-  ClientWidth = 281
+  Height = 245
+  Width = 429
   Caption = 'frmRelatorioClienteData'
-  OldCreateOrder = True
-  ExplicitWidth = 297
-  ExplicitHeight = 185
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 245
+  ClientWidth = 429
   inherited pnButtons: TPanel
-    Top = 112
-    Width = 281
-    ExplicitTop = 116
-    ExplicitWidth = 289
+    Top = 211
+    Width = 429
+    ClientWidth = 429
   end
-  object edDataIni: TDBEdit [1]
+  object edDataIni: TDBEdit[1]
     Left = 24
+    Height = 33
     Top = 32
     Width = 185
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAINI'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object edDataFim: TDBEdit [2]
+  object edDataFim: TDBEdit[2]
     Left = 24
+    Height = 33
     Top = 72
     Width = 185
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAFIM'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[3]
     DataSet = cdsSelecao
     Left = 176
   end
-  object sqldSelecao: TSQLDataSet
-    CommandText = 
-      'SELECT'#13#10'  CAST(CURRENT_DATE AS TIMESTAMP)DATAINI,'#13#10'  CAST(CURREN' +
-      'T_DATE AS TIMESTAMP)DATAFIM'#13#10'FROM RDB$DATABASE'
-    MaxBlobSize = -1
+  object sqldSelecao: TSQLQuery[4]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 80
     Top = 8
-    object sqldSelecaoDATAINI: TSQLTimeStampField
+    object sqldSelecaoDATAINI: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAINI'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldSelecaoDATAFIM: TSQLTimeStampField
+    object sqldSelecaoDATAFIM: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAFIM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspSelecao: TDataSetProvider
-    DataSet = sqldSelecao
+  object dspSelecao: TTimer[5]
     Left = 112
     Top = 8
   end
-  object cdsSelecao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspSelecao'
+  object cdsSelecao: TMemDataset[6]
+    FieldDefs = <>
     Left = 144
     Top = 8
-    object cdsSelecaoDATAINI: TSQLTimeStampField
+    object cdsSelecaoDATAINI: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAINI'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object cdsSelecaoDATAFIM: TSQLTimeStampField
+    object cdsSelecaoDATAFIM: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAFIM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

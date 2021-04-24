@@ -64,7 +64,7 @@ begin
     with cdsPadrao do
     begin
       Close;
-      SQL.Clear; SQL.Text :='select '+
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                      'CODIGO, '+
                      'DATA, '+
                      'VENCIMENTO, '+
@@ -75,7 +75,7 @@ begin
                      'from VIEWRELNPCR '+
                      'where CODCLIENTE = :PCLIENTE '+
                      'order by VENCIMENTO';
-     Params.ParamByName('PCLIENTE').AsInteger := Self.cdsPadraoCODCLIENTE.AsInteger;
+     sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := Self.cdsPadraoCODCLIENTE.AsInteger;
      Open;
      PrintIfNotEmptyRL(rrPadrao, p);
    end;

@@ -1,28 +1,27 @@
 object frmProEstoqueMinimo: TfrmProEstoqueMinimo
-  Left = 37
-  Top = 108
-  ClientHeight = 417
-  ClientWidth = 769
-  Caption = 'frmProEstoqueMinimo'
-  OnShow = FormShow
-  BorderStyle = bsSingle
-  OldCreateOrder = False
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
+  Left = 198
+  Height = 417
+  Top = 189
+  Width = 790
   BorderIcons = [biSystemMenu, biMinimize]
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  BorderStyle = bsSingle
+  Caption = 'frmProEstoqueMinimo'
+  ClientHeight = 417
+  ClientWidth = 790
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  KeyPreview = True
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  LCLVersion = '2.0.12.0'
   object btnFechar: TBitBtn
     Left = 672
+    Height = 25
     Top = 384
     Width = 89
-    Height = 25
-    Hint = ''
+    Caption = '&Fechar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -73,17 +72,17 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Fechar'
-    TabOrder = 2
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnFecharClick
+    TabOrder = 2
   end
   object btnZerarNegativo: TBitBtn
     Left = 488
+    Height = 25
     Top = 384
     Width = 177
-    Height = 25
-    Hint = ''
+    Caption = 'Zerar estoque negativo'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -134,52 +133,76 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
       BDBDB8B8B8B5B5B5B2B2B2B0B0B0B1B1B1ACACACFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Zerar estoque negativo'
-    TabOrder = 1
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnZerarNegativoClick
+    TabOrder = 1
   end
   object GradeProd: TDBGrid
     Left = 8
+    Height = 369
     Top = 8
     Width = 753
-    Height = 369
-    Hint = ''
-    DataSource = dsProdEM
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 0
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsProdEM
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    TabOrder = 0
   end
-  object dspProdEM: TDataSetProvider
-    DataSet = sqlProdEM
-    Options = [poAllowCommandText]
+  object dspProdEM: TTimer
     Left = 80
     Top = 136
   end
   object cdsProdEM: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspProdEM'
+    FieldDefs = <>
     Left = 112
     Top = 136
     object cdsProdEMCOD_BARRA: TStringField
+      FieldKind = fkData
       FieldName = 'COD_BARRA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object cdsProdEMPRO_DESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'PRO_DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsProdEMPRO_ESTOQUE: TIntegerField
+      FieldKind = fkData
       FieldName = 'PRO_ESTOQUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsProdEMQTDE_MINIMA: TIntegerField
+      FieldKind = fkData
       FieldName = 'QTDE_MINIMA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsProdEMFORNECEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'FORNECEDOR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
@@ -189,30 +212,57 @@ object frmProEstoqueMinimo: TfrmProEstoqueMinimo
     Left = 144
     Top = 136
   end
-  object sqlProdEM: TSQLDataSet
-    CommandText = 
-      'select '#13#10'  COD_BARRA,'#13#10'  PRO_DESCRICAO,'#13#10'  PRO_ESTOQUE,'#13#10'  QTDE_' +
-      'MINIMA,'#13#10'  FORNECEDOR'#13#10'from VIEWPRODUTOSMINIMOS'
-    MaxBlobSize = -1
+  object sqlProdEM: TSQLQuery
+    FieldDefs = <>
     Params = <>
     Left = 48
     Top = 136
     object sqlProdEMCOD_BARRA: TStringField
+      FieldKind = fkData
       FieldName = 'COD_BARRA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 13
     end
     object sqlProdEMPRO_DESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'PRO_DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqlProdEMPRO_ESTOQUE: TIntegerField
+      FieldKind = fkData
       FieldName = 'PRO_ESTOQUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqlProdEMQTDE_MINIMA: TIntegerField
+      FieldKind = fkData
       FieldName = 'QTDE_MINIMA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqlProdEMFORNECEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'FORNECEDOR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

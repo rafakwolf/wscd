@@ -150,7 +150,7 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     Text = ''
     TabOrder = 1
   end
-  object sqldConfig: TSQLDataSet
+  object sqldConfig: TSQLQuery
     CommandText = 
       'select '#13#10'  SENHAESTOQUE, '#13#10'  SENHACAIXA '#13#10'from CONFIGURACAO'#13#10'whe' +
       're NOMECOMPUTADOR = :COMP'
@@ -172,7 +172,7 @@ object frmSenhaCaixa: TfrmSenhaCaixa
       Size = 10
     end
   end
-  object dspConfig: TDataSetProvider
+  object dspConfig: TTimer
     DataSet = sqldConfig
     Left = 184
     Top = 32

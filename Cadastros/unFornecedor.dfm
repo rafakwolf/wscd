@@ -1,477 +1,720 @@
 inherited frmFornecedor: TfrmFornecedor
   Left = 139
+  Height = 480
   Top = 147
-  ClientHeight = 428
-  ClientWidth = 705
+  Width = 796
   Caption = 'frmFornecedor'
-  OldCreateOrder = True
-  ExplicitWidth = 711
-  ExplicitHeight = 457
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 480
+  ClientWidth = 796
   inherited sbStatus: TStatusBar
-    Top = 409
-    Width = 705
-    ExplicitTop = 345
-    ExplicitWidth = 705
+    Top = 462
+    Width = 796
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 705
+    Width = 796
+    ClientWidth = 796
     TabOrder = 16
-    ExplicitWidth = 705
   end
-  object btnContas: TBitBtn [2]
+  object btnContas: TBitBtn[2]
     Left = 576
+    Height = 25
     Top = 360
     Width = 81
-    Height = 25
-    Hint = ''
-    ShowHint = True
     Caption = '&Contas'
-    TabOrder = 18
     OnClick = btnContasClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 18
   end
-  object dbdDataCadastro: TDBEdit [3]
+  object dbdDataCadastro: TDBEdit[3]
     Left = 280
+    Height = 33
     Top = 196
     Width = 129
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATACAD'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 11
   end
-  object dbeCidade: TDBEdit [4]
+  object dbeCidade: TDBEdit[4]
     Left = 320
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 152
     Width = 299
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOMECIDADE'
     DataSource = dsPadrao
-    TabOrder = 7
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
   end
-  object dbeTelefoneVendedor: TDBEdit [5]
+  object dbeTelefoneVendedor: TDBEdit[5]
     Left = 544
+    Height = 33
     Top = 264
     Width = 153
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'TELEFONEVENDEDOR'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 14
   end
-  object dbeEmailVendedor: TDBEdit [6]
+  object dbeEmailVendedor: TDBEdit[6]
     Left = 8
-    Top = 308
+    Height = 33
+    Top = 301
     Width = 361
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'EMAILVENDEDOR'
     DataSource = dsPadrao
     CharCase = ecLowerCase
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 15
   end
-  object dbeNomeVendedor: TDBEdit [7]
+  object dbeNomeVendedor: TDBEdit[7]
     Left = 8
+    Height = 33
     Top = 264
     Width = 529
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'VENDEDOR'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 13
   end
-  object dbeFax: TDBEdit [8]
+  object dbeFax: TDBEdit[8]
     Left = 144
+    Height = 33
     Top = 196
     Width = 129
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'FAX'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 10
   end
-  object dbeTelefone: TDBEdit [9]
+  object dbeTelefone: TDBEdit[9]
     Left = 8
+    Height = 33
     Top = 196
     Width = 129
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'TELEFONE'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 9
   end
-  object dbeInscEstadual: TDBEdit [10]
+  object dbeInscEstadual: TDBEdit[10]
     Left = 176
+    Height = 33
     Top = 108
     Width = 129
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'IE'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  object dbeCnpj: TDBEdit [11]
+  object dbeCnpj: TDBEdit[11]
     Left = 8
+    Height = 33
     Top = 108
     Width = 161
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'CNPJ'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbeCep: TDBEdit [12]
+  object dbeCep: TDBEdit[12]
     Left = 216
+    Height = 33
     Top = 152
     Width = 97
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'CEP'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
   end
-  object dbeBairro: TDBEdit [13]
+  object dbeBairro: TDBEdit[13]
     Left = 8
+    Height = 33
     Top = 152
     Width = 201
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'BAIRRO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
   end
-  object dbeEstado: TDBEdit [14]
+  object dbeEstado: TDBEdit[14]
     Left = 648
+    Height = 33
     Top = 152
     Width = 49
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'UF'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 8
   end
-  object dbeEndereco: TDBEdit [15]
+  object dbeEndereco: TDBEdit[15]
     Left = 312
+    Height = 33
     Top = 108
     Width = 385
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'ENDERECO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
-  object dbeNomeRzSocial: TDBEdit [16]
+  object dbeNomeRzSocial: TDBEdit[16]
     Left = 8
+    Height = 33
     Top = 64
     Width = 305
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'RAZAOSOCIAL'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
-  object dbeNomeFantazia: TDBEdit [17]
+  object dbeNomeFantazia: TDBEdit[17]
     Left = 320
+    Height = 33
     Top = 64
     Width = 377
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object dbeEmail: TDBEdit [18]
+  object dbeEmail: TDBEdit[18]
     Left = 416
+    Height = 33
     Top = 196
     Width = 281
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'EMAIL'
     DataSource = dsPadrao
     CharCase = ecLowerCase
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 12
   end
-  object bvlLinha: TPanel [19]
+  object bvlLinha: TPanel[19]
     Left = 8
+    Height = 2
     Top = 232
     Width = 689
-    Height = 2
-    Hint = ''
+    Caption = 'bvlLinha'
+    ParentShowHint = False
     ShowHint = True
     TabOrder = 19
-    Caption = 'bvlLinha'
   end
-  object dbmObs: TDBMemo [20]
+  object dbmObs: TDBMemo[20]
     Left = 8
+    Height = 47
     Top = 338
     Width = 449
-    Height = 47
-    Hint = ''
-    ShowHint = True
     DataField = 'OBS'
     DataSource = dsPadrao
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 20
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[21]
     Left = 560
     Top = 212
     inherited actPrint: TAction
       Hint = 'Listagem de fornecedores'
-      ShortCut = 0
       OnExecute = actPrintExecute
+      ShortCut = 0
     end
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[22]
     DataSet = cdsPadrao
     Left = 604
     Top = 6
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 
-      'select'#13#10'    forn.CODFORNECEDOR,'#13#10'    forn.FANTAZIA,'#13#10'    forn.RA' +
-      'ZAOSOCIAL,'#13#10'    forn.DATACAD,'#13#10'    forn.ENDERECO,'#13#10'    forn.CIDA' +
-      'DE,'#13#10'    cid.Descricao NOMECIDADE,'#13#10'    forn.BAIRRO,'#13#10'    forn.C' +
-      'NPJ,'#13#10'    forn.IE,'#13#10'    forn.CEP,'#13#10'    forn.TELEFONE,'#13#10'    forn.' +
-      'FAX,'#13#10'    forn.EMAIL,'#13#10'    forn.UF,'#13#10'    forn.OBS,'#13#10'    forn.VEN' +
-      'DEDOR,'#13#10'    forn.TELEFONEVENDEDOR,'#13#10'    forn.EMAILVENDEDOR,'#13#10'   ' +
-      ' forn.TIPO'#13#10'from FORNECEDORES forn'#13#10'left join CIDADES cid on (fo' +
-      'rn.Cidade = cid.Codcidade)'#13#10'order by forn.RAZAOSOCIAL, cid.DESCR' +
-      'ICAO'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[23]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 508
     Top = 6
     object sqldPadraoCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoFANTAZIA: TStringField
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoDATACAD: TDateField
+      FieldKind = fkData
       FieldName = 'DATACAD'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoRAZAOSOCIAL: TStringField
+      FieldKind = fkData
       FieldName = 'RAZAOSOCIAL'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoENDERECO: TStringField
+      FieldKind = fkData
       FieldName = 'ENDERECO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoCIDADE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CIDADE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoNOMECIDADE: TStringField
+      FieldKind = fkData
       FieldName = 'NOMECIDADE'
+      Index = 6
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoBAIRRO: TStringField
+      FieldKind = fkData
       FieldName = 'BAIRRO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoIE: TStringField
+      FieldKind = fkData
       FieldName = 'IE'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoCEP: TStringField
+      FieldKind = fkData
       FieldName = 'CEP'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 10
     end
     object sqldPadraoTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoFAX: TStringField
+      FieldKind = fkData
       FieldName = 'FAX'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoEMAIL: TStringField
+      FieldKind = fkData
       FieldName = 'EMAIL'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoUF: TStringField
+      FieldKind = fkData
       FieldName = 'UF'
-      FixedChar = True
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 2
     end
     object sqldPadraoOBS: TMemoField
+      FieldKind = fkData
       FieldName = 'OBS'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       BlobType = ftMemo
       Size = 1
+      Transliterate = False
     end
     object sqldPadraoVENDEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'VENDEDOR'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoTELEFONEVENDEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONEVENDEDOR'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoEMAILVENDEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'EMAILVENDEDOR'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
-      FixedChar = True
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    UpdateMode = upWhereKeyOnly
+  object dspPadrao: TTimer[24]
     Left = 540
     Top = 6
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[25]
+    FieldDefs = <>
     AfterInsert = cdsPadraoAfterInsert
     Left = 572
     Top = 6
     object cdsPadraoCODFORNECEDOR: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODFORNECEDOR'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoFANTAZIA: TStringField
       DisplayLabel = 'Fantasia'
+      FieldKind = fkData
       FieldName = 'FANTAZIA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoRAZAOSOCIAL: TStringField
-      DisplayLabel = 'Raz'#227'o Social'
+      DisplayLabel = 'Razão Social'
+      FieldKind = fkData
       FieldName = 'RAZAOSOCIAL'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       Size = 80
     end
     object cdsPadraoDATACAD: TDateField
+      FieldKind = fkData
       FieldName = 'DATACAD'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoENDERECO: TStringField
+      FieldKind = fkData
       FieldName = 'ENDERECO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoCIDADE: TIntegerField
       DisplayLabel = 'Cidade'
+      FieldKind = fkData
       FieldName = 'CIDADE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       OnValidate = cdsPadraoCIDADEValidate
     end
     object cdsPadraoNOMECIDADE: TStringField
+      FieldKind = fkData
       FieldName = 'NOMECIDADE'
+      Index = 6
+      LookupCache = False
       ProviderFlags = []
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoBAIRRO: TStringField
+      FieldKind = fkData
       FieldName = 'BAIRRO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoCNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CNPJ'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       OnSetText = cdsPadraoCNPJSetText
     end
     object cdsPadraoIE: TStringField
+      FieldKind = fkData
       FieldName = 'IE'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoCEP: TStringField
+      FieldKind = fkData
       FieldName = 'CEP'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 10
     end
     object cdsPadraoTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoFAX: TStringField
+      FieldKind = fkData
       FieldName = 'FAX'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoEMAIL: TStringField
+      FieldKind = fkData
       FieldName = 'EMAIL'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoUF: TStringField
+      FieldKind = fkData
       FieldName = 'UF'
-      FixedChar = True
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 2
     end
     object cdsPadraoOBS: TMemoField
+      FieldKind = fkData
       FieldName = 'OBS'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       BlobType = ftMemo
       Size = 1
+      Transliterate = False
     end
     object cdsPadraoVENDEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'VENDEDOR'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       Size = 80
     end
     object cdsPadraoTELEFONEVENDEDOR: TStringField
       DisplayLabel = 'TELEFONE DO VENDEDOR'
+      FieldKind = fkData
       FieldName = 'TELEFONEVENDEDOR'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoEMAILVENDEDOR: TStringField
+      FieldKind = fkData
       FieldName = 'EMAILVENDEDOR'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnGetText = cdsPadraoTIPOGetText
       OnSetText = cdsPadraoTIPOSetText
-      FixedChar = True
       Size = 1
     end
   end
-  object sqldCidade: TSQLDataSet
-    CommandText = 'select * from CIDADES'
-    MaxBlobSize = -1
+  object sqldCidade: TSQLQuery[26]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 324
     Top = 244
   end
-  object dspCidade: TDataSetProvider
-    DataSet = sqldCidade
+  object dspCidade: TTimer[27]
     Left = 404
     Top = 244
   end
-  object cdsCidade: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspCidade'
+  object cdsCidade: TMemDataset[28]
+    FieldDefs = <>
     Left = 476
     Top = 244
     object cdsCidadeCODCIDADE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCIDADE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsCidadeDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
   end

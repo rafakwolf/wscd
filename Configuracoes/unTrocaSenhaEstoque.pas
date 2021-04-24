@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtCtrls, DB, memds,
-   SqlDb, unTrocaSenhaCaixa, FMTBcd,  uniEdit,
-    uniBitBtn;
+   SqlDb, unTrocaSenhaCaixa, FMTBcd;
 
 type
   TfrmSenhaEstoque = class(TfrmSenhaCaixa)
@@ -29,7 +28,7 @@ procedure TfrmSenhaEstoque.btnOkClick(Sender: TObject);
 begin
 
   cdsConfig.Close;
-  cdsConfig.Params.ParamByName('COMP').AsString := GetComputerName;
+  sqldConfig.Params.ParamByName('COMP').AsString := GetComputerName;
   cdsConfig.Open;
 
   if (edAtual.Text <> '') and (edNova.Text <> '') then
@@ -38,7 +37,7 @@ begin
     begin
       cdsConfig.Edit;
       cdsConfigSENHAESTOQUE.AsString := Trim(EnDecrypt(edNova.Text));
-      cdsConfig.ApplyUpdates(0);
+      //cdsConfig.ApplyUpdates(0);
       Configuracao.Atualizar;
       MsgAviso('Senha de estoque alterada!');
       ModalResult := mrOk;

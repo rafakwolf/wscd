@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, memds,  SqlDb, ConstPadrao,
-    DBCtrls,  FMTBcd,    
-   uniPanel,  uniStatusBar, uniImage, uniEdit,
-  uniDBEdit,  uniDBCheckBox;
+    DBCtrls,  FMTBcd, lcltype;
 
 type
   TfrmProduto = class(TfrmPadrao)
@@ -382,8 +380,7 @@ begin
   with TfrmRelatorioListaPrecos.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='';
-    cdsPadrao.SQL.Clear; SQL.Text :=sqldPadrao.CommandText + SQLOrder;
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=sqldPadrao.sql.text + SQLOrder;
     cdsPadrao.Open;
     Titulo := 'Lista de pre�os';
     PrintIfNotEmptyRL(rpLista);
@@ -557,7 +554,7 @@ begin
       raise Exception.Create('Erro ao ajustar c�digos de barras.');
     end;
   finally
-    BringWindowToTop(Handle);
+    //BringWindowToTop(Handle);
 
     if not Erro then
       MsgAviso('Ajuste de c�digos de barras conclu�do!');
@@ -579,7 +576,7 @@ begin
   with TfrmPrevProdutosVencimento.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='SELECT'+
+    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='SELECT'+
                              ' P.CODBARRA,'+
                              ' P.ABREVIACAO AS PRODUTO,'+
                              ' P.DATAVALIDADE AS DATAVENCIMENTO,'+

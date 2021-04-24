@@ -323,7 +323,7 @@ inherited frmPagarMan: TfrmPagarMan
     Left = 167
     Top = 96
   end
-  object sqldContasPagar: TSQLDataSet
+  object sqldContasPagar: TSQLQuery
     CommandText = 
       'SELECT'#13#10'  CP.CODIGO,'#13#10'  CP.DATA,'#13#10'  CP.VENCIMENTO,'#13#10'  CP.FORNECE' +
       'DOR,'#13#10'  FO.FANTAZIA AS NOMEFORN,'#13#10'  CP.IDCONTA,'#13#10'  CC.NOME AS CO' +
@@ -428,7 +428,7 @@ inherited frmPagarMan: TfrmPagarMan
       FieldName = 'TOTALPAGO'
     end
   end
-  object dspContasPagar: TDataSetProvider
+  object dspContasPagar: TTimer
     DataSet = sqldContasPagar
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
@@ -540,7 +540,7 @@ inherited frmPagarMan: TfrmPagarMan
       FieldName = 'TOTALPAGO'
     end
   end
-  object sqldSelecao: TSQLDataSet
+  object sqldSelecao: TSQLQuery
     CommandText = 
       'select'#13#10'  cast(null as integer) idbanco,'#13#10'  cast(null as varchar' +
       '(80)) banco'#13#10'from rdb$database'
@@ -557,7 +557,7 @@ inherited frmPagarMan: TfrmPagarMan
       Size = 80
     end
   end
-  object dspSelecao: TDataSetProvider
+  object dspSelecao: TTimer
     DataSet = sqldSelecao
     Left = 336
     Top = 72

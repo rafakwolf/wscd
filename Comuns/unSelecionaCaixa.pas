@@ -5,9 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, memds,  SqlDb, DBCtrls, StdCtrls,
-  Buttons, Funcoes, FMTBcd,   uniLabel,
-      uniComboBox, uniDBComboBox,
-  uniDBLookupComboBox;
+  Buttons, Funcoes, FMTBcd;
 
 type
   TfrmSelecionaCaixa = class(TForm)

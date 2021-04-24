@@ -1,141 +1,220 @@
 inherited frmConfiguraDuplicata: TfrmConfiguraDuplicata
   Left = 307
+  Height = 472
   Top = 123
-  ClientHeight = 407
-  ClientWidth = 513
+  Width = 581
   Caption = 'frmConfiguraDuplicata'
-  OldCreateOrder = True
+  ClientHeight = 472
+  ClientWidth = 581
   Font.Name = 'Verdana'
-  ExplicitWidth = 519
-  ExplicitHeight = 436
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited sbStatus: TStatusBar
-    Top = 388
-    Width = 513
-    ExplicitTop = 388
-    ExplicitWidth = 465
+    Top = 454
+    Width = 581
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 513
-    ExplicitWidth = 465
+    Width = 581
+    ClientWidth = 581
   end
-  object dbeFontSize: TDBEdit [2]
+  object dbeFontSize: TDBEdit[2]
     Left = 392
+    Height = 33
     Top = 356
     Width = 57
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'FONTE'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbgrdCampos: TDBGrid [3]
+  object dbgrdCampos: TDBGrid[3]
     Left = 8
+    Height = 289
     Top = 40
     Width = 449
-    Height = 289
-    Hint = ''
-    ShowHint = True
+    Color = clWindow
+    Columns = <>
     DataSource = dsPadrao
-    LoadMask.Message = 'Loading data...'
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
     ParentFont = False
+    ShowHint = True
     TabOrder = 3
-    ParentColor = False
-    Color = clWindow
     OnKeyDown = dbgrdCamposKeyDown
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[4]
     Left = 72
     Top = 172
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[5]
     DataSet = cdsPadrao
     Left = 311
     Top = 104
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 
-      'select '#13#10'       cd.idconfigduplicata, '#13#10'       cd.campo, '#13#10'     ' +
-      '  cd.vertical, '#13#10'       cd.horizontal, '#13#10'       cd.fonte, '#13#10'    ' +
-      '   cd.nomecampo, '#13#10'       cd.tipofonte, '#13#10'       cd.estilofonte'#13 +
-      #10'from configduplicata cd'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 72
     Top = 80
     object sqldPadraoCAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'CAMPO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 50
     end
     object sqldPadraoVERTICAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'VERTICAL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoHORIZONTAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'HORIZONTAL'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoFONTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'FONTE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoTIPOFONTE: TStringField
+      FieldKind = fkData
       FieldName = 'TIPOFONTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
     object sqldPadraoESTILOFONTE: TStringField
+      FieldKind = fkData
       FieldName = 'ESTILOFONTE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoIDCONFIGDUPLICATA: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDCONFIGDUPLICATA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoNOMECAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'NOMECAMPO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
+  object dspPadrao: TTimer[7]
     Left = 152
     Top = 96
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[8]
+    FieldDefs = <>
     BeforeInsert = cdsPadraoBeforeInsert
     Left = 224
     Top = 104
     object cdsPadraoCAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'CAMPO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = True
+      Required = False
       Size = 50
     end
     object cdsPadraoVERTICAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'VERTICAL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoHORIZONTAL: TIntegerField
+      FieldKind = fkData
       FieldName = 'HORIZONTAL'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoFONTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'FONTE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoTIPOFONTE: TStringField
+      FieldKind = fkData
       FieldName = 'TIPOFONTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 30
     end
     object cdsPadraoESTILOFONTE: TStringField
+      FieldKind = fkData
       FieldName = 'ESTILOFONTE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoIDCONFIGDUPLICATA: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDCONFIGDUPLICATA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoNOMECAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'NOMECAMPO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

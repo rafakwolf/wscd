@@ -1,35 +1,38 @@
 inherited frmRelatorioCRData: TfrmRelatorioCRData
+  Width = 350
   Caption = 'frmRelatorioCRData'
-  OldCreateOrder = True
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 350
   inherited pnButtons: TPanel
-    ExplicitTop = 130
-    ExplicitWidth = 298
+    Width = 350
+    ClientWidth = 350
   end
-  object edDataIni: TDBEdit [1]
+  object edDataIni: TDBEdit[1]
     Left = 24
+    Height = 33
     Top = 32
     Width = 153
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAINI'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object edDataFim: TDBEdit [2]
+  object edDataFim: TDBEdit[2]
     Left = 24
+    Height = 33
     Top = 72
     Width = 153
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAFIM'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[3]
     Left = 232
   end
 end

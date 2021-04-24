@@ -1,125 +1,188 @@
 inherited frmRelatorioAgenda: TfrmRelatorioAgenda
-  ClientHeight = 184
-  ClientWidth = 385
+  Height = 329
+  Width = 578
   Caption = 'frmRelatorioAgenda'
-  OldCreateOrder = True
-  ExplicitWidth = 401
-  ExplicitHeight = 223
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 329
+  ClientWidth = 578
   inherited pnButtons: TPanel
-    Top = 150
-    Width = 385
+    Top = 295
+    Width = 578
+    ClientWidth = 578
     TabOrder = 3
-    ExplicitTop = 150
-    ExplicitWidth = 385
   end
-  object lbTelefone: TLabel [1]
+  object lbTelefone: TLabel[1]
     Left = 8
+    Height = 15
     Top = 100
-    Width = 42
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 51
     Caption = 'Telefone'
-    TabOrder = 4
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object dbeNome: TDBEdit [2]
+  object dbeNome: TDBEdit[2]
     Left = 8
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 68
     Width = 355
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object edFone: TEdit [3]
+  object edFone: TEdit[3]
     Left = 8
+    Height = 33
     Top = 116
     Width = 147
-    Height = 21
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
-    Text = ''
     TabOrder = 2
   end
-  object rgTipoRelatorio: TRadioGroup [4]
+  object rgTipoRelatorio: TRadioGroup[4]
     Left = 8
+    Height = 33
+    Hint = 'Escolha uma opção'
     Top = 8
     Width = 377
-    Height = 33
-    Hint = 'Escolha uma op'#231#227'o'
-    ShowHint = True
+    AutoFill = True
+    Caption = ' Buscar por '
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 3
+    ClientHeight = 15
+    ClientWidth = 375
+    Columns = 3
+    ItemIndex = 2
     Items.Strings = (
       'Nome'
       'Telefone'
-      'Todos')
-    ItemIndex = 2
-    Caption = ' Buscar por '
-    TabOrder = 0
-    TabStop = False
-    Columns = 3
+      'Todos'
+    )
     OnClick = rgTipoRelatorioClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[5]
     DataSet = cdsAgenda
     Left = 312
     Top = 104
   end
-  object sqldAgenda: TSQLDataSet
-    CommandText = 'select * from VIEWAGENDA'
-    MaxBlobSize = -1
+  object sqldAgenda: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 216
     Top = 104
     object sqldAgendaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldAgendaTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldAgendaTELEFONE2: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE2'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldAgendaTELEFONE3: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE3'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldAgendaFAX: TStringField
+      FieldKind = fkData
       FieldName = 'FAX'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspAgenda: TDataSetProvider
-    DataSet = sqldAgenda
-    Options = [poAllowCommandText]
+  object dspAgenda: TTimer[7]
     Left = 248
     Top = 104
   end
-  object cdsAgenda: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspAgenda'
+  object cdsAgenda: TMemDataset[8]
+    FieldDefs = <>
     Left = 280
     Top = 104
     object cdsAgendaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsAgendaTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsAgendaTELEFONE2: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE2'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsAgendaTELEFONE3: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE3'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsAgendaFAX: TStringField
+      FieldKind = fkData
       FieldName = 'FAX'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

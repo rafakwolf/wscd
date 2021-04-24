@@ -1,112 +1,149 @@
 inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
-  ClientHeight = 208
-  ClientWidth = 385
+  Height = 281
+  Width = 493
   Caption = 'frmRelatorioFluxoCaixa'
-  OldCreateOrder = True
-  ExplicitWidth = 401
-  ExplicitHeight = 247
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 281
+  ClientWidth = 493
   inherited pnButtons: TPanel
-    Top = 174
-    Width = 385
+    Top = 247
+    Width = 493
+    ClientWidth = 493
     TabOrder = 4
-    ExplicitTop = 178
-    ExplicitWidth = 393
   end
-  object dbDataI: TDBEdit [1]
+  object dbDataI: TDBEdit[1]
     Left = 80
+    Height = 33
     Top = 112
     Width = 137
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAINI'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbDataF: TDBEdit [2]
+  object dbDataF: TDBEdit[2]
     Left = 80
-    Top = 136
+    Height = 33
+    Top = 160
     Width = 137
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATAFIM'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  object rgOrdem: TRadioGroup [3]
+  object rgOrdem: TRadioGroup[3]
     Left = 8
+    Height = 41
     Top = 56
     Width = 377
-    Height = 41
-    Hint = ''
-    ShowHint = True
-    Items.Strings = (
-      'Lan'#231'amento'
-      'Data')
-    ItemIndex = 0
+    AutoFill = True
     Caption = ' Ordem '
-    TabOrder = 1
-    TabStop = False
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 23
+    ClientWidth = 375
     Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      'Lançamento'
+      'Data'
+    )
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  object rgRelatorio: TRadioGroup [4]
+  object rgRelatorio: TRadioGroup[4]
     Left = 8
+    Height = 41
     Top = 8
     Width = 377
-    Height = 41
-    Hint = ''
-    ShowHint = True
+    AutoFill = True
+    Caption = ' Seleção '
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 3
+    ClientHeight = 23
+    ClientWidth = 375
+    Columns = 3
+    ItemIndex = 2
     Items.Strings = (
       'Entradas'
-      'Sa'#237'das'
-      'Todos')
-    ItemIndex = 2
-    Caption = ' Sele'#231#227'o '
+      'Saídas'
+      'Todos'
+    )
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
-    TabStop = False
-    Columns = 3
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[5]
     DataSet = cdsSelecao
     Left = 352
     Top = 136
   end
-  object sqldSelecao: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  cast(null as timestamp) as dataini,'#13#10'  cast(null as ti' +
-      'mestamp) as datafim'#13#10'from rdb$database'
-    MaxBlobSize = -1
+  object sqldSelecao: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 256
     Top = 136
-    object sqldSelecaoDATAINI: TSQLTimeStampField
+    object sqldSelecaoDATAINI: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAINI'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldSelecaoDATAFIM: TSQLTimeStampField
+    object sqldSelecaoDATAFIM: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAFIM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspSelecao: TDataSetProvider
-    DataSet = sqldSelecao
+  object dspSelecao: TTimer[7]
     Left = 288
     Top = 136
   end
-  object cdsSelecao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspSelecao'
+  object cdsSelecao: TMemDataset[8]
+    FieldDefs = <>
     Left = 320
     Top = 136
-    object cdsSelecaoDATAINI: TSQLTimeStampField
+    object cdsSelecaoDATAINI: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAINI'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
-    object cdsSelecaoDATAFIM: TSQLTimeStampField
+    object cdsSelecaoDATAFIM: TDateTimeField
+      FieldKind = fkData
       FieldName = 'DATAFIM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
   end

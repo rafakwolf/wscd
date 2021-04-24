@@ -6,10 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, memds, ExtDlgs,
-    DBCtrls,
-   Sqldb, FMTBcd,  uniLabel, 
-     uniPanel, 
-  uniStatusBar, uniEdit, uniDBEdit, uniGroupBox, uniImage, uniDBImage;
+    DBCtrls, Sqldb, FMTBcd;
 
 type
   TfrmDadosEmpresa = class(TfrmPadrao)
@@ -306,8 +303,8 @@ end;
 procedure TfrmDadosEmpresa.btnGravaSerialClick(Sender: TObject);
 begin
   inherited;
-  if cdsSistema.ApplyUpdates(0) > 0 then
-    Raise Exception.Create('Erro ao atualizar serial.');
+  //if cdsSistema.ApplyUpdates(0) > 0 then
+  //  Raise Exception.Create('Erro ao atualizar serial.');
 end;
 
 initialization

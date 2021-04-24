@@ -1,41 +1,39 @@
 object frmPrevNotaProm: TfrmPrevNotaProm
   Left = 224
+  Height = 180
   Top = 159
-  ClientHeight = 131
-  ClientWidth = 465
-  Caption = 'frmPrevNotaProm'
+  Width = 541
   BorderStyle = bsSingle
-  OldCreateOrder = False
-  ShowHint = True
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  Caption = 'frmPrevNotaProm'
+  ClientHeight = 180
+  ClientWidth = 541
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  KeyPreview = True
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object pnlBotoes: TPanel
     Left = 0
-    Top = 97
-    Width = 465
     Height = 34
-    Hint = ''
-    ShowHint = True
-    ParentColor = False
+    Top = 146
+    Width = 541
     Align = alBottom
-    Anchors = [akLeft, akRight, akBottom]
+    ClientHeight = 34
+    ClientWidth = 541
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
-    TabStop = False
-    ExplicitTop = 63
     object btnImp: TBitBtn
       Left = 97
-      Top = 2
-      Width = 90
       Height = 30
       Hint = 'Visualizar'
-      ShowHint = True
+      Top = 2
+      Width = 90
+      Caption = '&Visualizar'
       Glyph.Data = {
         1A0D0000424D1A0D00000000000036000000280000002C000000190000000100
         180000000000E40C0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -141,18 +139,20 @@ object frmPrevNotaProm: TfrmPrevNotaProm
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      Caption = '&Visualizar'
-      TabOrder = 0
+        FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+      }
       OnClick = btnImpClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
     end
     object btnCancel: TBitBtn
       Left = 188
-      Top = 2
-      Width = 90
       Height = 30
       Hint = 'Sair'
-      ShowHint = True
+      Top = 2
+      Width = 90
+      Caption = '&Sair'
       Glyph.Data = {
         760B0000424D760B000000000000360000002800000028000000180000000100
         180000000000400B0000120B0000120B00000000000000000000FF00FFFF00FF
@@ -245,18 +245,20 @@ object frmPrevNotaProm: TfrmPrevNotaProm
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B4E1E1F
         FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF949494767676FF
-        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      Caption = '&Sair'
-      TabOrder = 1
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+      }
       OnClick = btnCancelClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
     end
     object btnImprimir: TBitBtn
       Left = 3
-      Top = 2
-      Width = 90
       Height = 30
       Hint = 'Imprimir'
-      ShowHint = True
+      Top = 2
+      Width = 90
+      Caption = '&Imprimir'
       Glyph.Data = {
         36120000424D3612000000000000360000002800000030000000180000000100
         2000000000000012000000000000000000000000000000000000FF00FF00FF00
@@ -403,103 +405,198 @@ object frmPrevNotaProm: TfrmPrevNotaProm
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
-      Caption = '&Imprimir'
-      TabOrder = 2
+        FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+      }
       OnClick = btnImprimirClick
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
     end
   end
   object dbeCliente: TDBEdit
     Left = 16
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 40
     Width = 411
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 0
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  cli.CODCLIENTE,'#13#10'  cli.NOME,'#13#10'  cli.TELEFONE,'#13#10'  cli.R' +
-      'G_IE,'#13#10'  cli.CPF_CNPJ,'#13#10'  cli.DATA_NASC,'#13#10'  cli.LIMITE,'#13#10'  cid.D' +
-      'ESCRICAO'#13#10'from CLIENTES cli'#13#10'left join CIDADES cid on (cli.CODCI' +
-      'DADE = cid.CODCIDADE)'#13#10'order by cli.NOME'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 128
     Top = 6
     object sqldPadraoCODCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoRG_IE: TStringField
+      FieldKind = fkData
       FieldName = 'RG_IE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoCPF_CNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CPF_CNPJ'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoDATA_NASC: TDateField
+      FieldKind = fkData
       FieldName = 'DATA_NASC'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoLIMITE: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'LIMITE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
+  object dspPadrao: TTimer
     Left = 160
     Top = 6
   end
   object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+    FieldDefs = <>
     Left = 192
     Top = 6
     object cdsPadraoCODCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoTELEFONE: TStringField
+      FieldKind = fkData
       FieldName = 'TELEFONE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoRG_IE: TStringField
+      FieldKind = fkData
       FieldName = 'RG_IE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoCPF_CNPJ: TStringField
+      FieldKind = fkData
       FieldName = 'CPF_CNPJ'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoDATA_NASC: TDateField
+      FieldKind = fkData
       FieldName = 'DATA_NASC'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoLIMITE: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'LIMITE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

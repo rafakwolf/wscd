@@ -1,51 +1,42 @@
 inherited frmConfigNota: TfrmConfigNota
   Left = 215
+  Height = 450
   Top = 110
-  ClientHeight = 426
-  ClientWidth = 483
+  Width = 650
   Caption = 'frmConfigNota'
-  OldCreateOrder = True
+  ClientHeight = 450
+  ClientWidth = 650
   Font.Name = 'Verdana'
-  ExplicitWidth = 489
-  ExplicitHeight = 455
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited sbStatus: TStatusBar
-    Top = 407
-    Width = 483
-    ExplicitTop = 407
-    ExplicitWidth = 403
+    Top = 432
+    Width = 650
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 483
-    ExplicitWidth = 403
+    Width = 650
+    ClientWidth = 650
     inherited btnCancelar: TSpeedButton
       Left = 194
-      ExplicitLeft = 194
     end
     inherited btnConsultar: TSpeedButton
       Left = 322
       Width = 63
-      ExplicitLeft = 322
-      ExplicitWidth = 63
     end
     inherited btnSair: TSpeedButton
       Left = 421
-      ExplicitLeft = 421
     end
     inherited btnPrint: TSpeedButton
       Left = 255
       Hint = ''
       Action = nil
-      ExplicitLeft = 255
     end
-    object btnGrade: TSpeedButton
+    object btnGrade: TSpeedButton[8]
       Left = 388
+      Height = 32
       Top = 1
       Width = 32
-      Height = 32
-      Hint = ''
-      ShowHint = True
+      Color = clWindow
+      Font.CharSet = ANSI_CHARSET
+      Font.Name = 'FontAwesome'
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
         180000000000C0060000230B0000230B00000000000000000000FF00FFFF00FF
@@ -102,143 +93,220 @@ inherited frmConfigNota: TfrmConfigNota
         B3A4C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4
         C8B3A4C8B3A4C8B3A4C8B3A4C8B3A4FF00FFFF00FFFF00FFFF00FFFF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-      Caption = ''
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+      }
+      ShowHint = True
       ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      Font.Name = 'FontAwesome'
-      ParentColor = False
-      Color = clWindow
-      TabOrder = 8
+      ParentShowHint = False
     end
   end
-  object dbgrdCampos: TDBGrid [2]
+  object dbgrdCampos: TDBGrid[2]
     Left = 8
+    Height = 337
     Top = 41
     Width = 293
-    Height = 337
-    Hint = ''
-    Enabled = False
-    ShowHint = True
-    DataSource = dsPadrao
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 2
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsPadrao
+    Enabled = False
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ShowHint = True
+    TabOrder = 2
     OnDblClick = actEditExecute
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[3]
     Left = 232
     Top = 236
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[4]
     AutoEdit = True
     DataSet = cdsPadrao
     Left = 338
     Top = 252
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select * from CONFIGNOTA'#13#10'order by LINHA, COLUNA'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[5]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 347
     Top = 69
     object sqldPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoCAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'CAMPO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoLAYOUT: TStringField
+      FieldKind = fkData
       FieldName = 'LAYOUT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoREFERENCIA: TStringField
+      FieldKind = fkData
       FieldName = 'REFERENCIA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
-      FixedChar = True
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object sqldPadraoLINHA: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoCOLUNA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoIMPRIMIR: TStringField
+      FieldKind = fkData
       FieldName = 'IMPRIMIR'
-      FixedChar = True
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
+  object dspPadrao: TTimer[6]
     Left = 339
     Top = 141
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[7]
+    FieldDefs = <>
     Left = 331
     Top = 197
     object cdsPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoCAMPO: TStringField
+      FieldKind = fkData
       FieldName = 'CAMPO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoLAYOUT: TStringField
+      FieldKind = fkData
       FieldName = 'LAYOUT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoREFERENCIA: TStringField
+      FieldKind = fkData
       FieldName = 'REFERENCIA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoTIPO: TStringField
+      FieldKind = fkData
       FieldName = 'TIPO'
-      FixedChar = True
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
     object cdsPadraoLINHA: TIntegerField
+      FieldKind = fkData
       FieldName = 'LINHA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoCOLUNA: TIntegerField
+      FieldKind = fkData
       FieldName = 'COLUNA'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoIMPRIMIR: TStringField
+      FieldKind = fkData
       FieldName = 'IMPRIMIR'
-      FixedChar = True
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object pmMenuGrid: TPopupMenu
+  object pmMenuGrid: TPopupMenu[8]
     Left = 336
     Top = 316
     object miAlterarP: TMenuItem
       Action = actEdit
-      Caption = 'Alterar...'
     end
     object miExcluirP: TMenuItem
       Action = actDelete
-      Caption = 'Excluir...'
     end
     object N5: TMenuItem
       Caption = '-'
     end
     object miSearchP: TMenuItem
       Action = actSearch
-      Caption = 'Pesquisar...'
     end
   end
 end

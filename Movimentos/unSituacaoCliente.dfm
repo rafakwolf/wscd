@@ -1,27 +1,25 @@
 object frmSituacaoCliente: TfrmSituacaoCliente
   Left = 218
+  Height = 357
   Top = 157
-  ClientHeight = 301
-  ClientWidth = 529
-  Caption = 'Situa'#231#227'o do cliente'
-  OldCreateOrder = False
-  ShowHint = True
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  Width = 590
+  Caption = 'Situação do cliente'
+  ClientHeight = 357
+  ClientWidth = 590
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  KeyPreview = True
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object btnOk: TBitBtn
     Left = 344
+    Height = 25
     Top = 272
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = 'OK'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000008080008080
@@ -72,18 +70,19 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       8080008080008080008080008080008080008080008080008080008080008080
       0080800080800080800080800080800080800080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080}
-    Caption = 'OK'
+      8080008080008080008080008080008080008080008080008080
+    }
     ModalResult = 1
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
   object btnCancelar: TBitBtn
     Left = 440
+    Height = 25
     Top = 272
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = 'Cancelar'
     Glyph.Data = {
       06050000424D060500000000000036000000280000001D0000000E0000000100
       180000000000D0040000C40E0000C40E00000000000000000000008080008080
@@ -125,18 +124,19 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       80800080806B6B6B6B6B6B008080008080000080800080800080800080800080
       8000808000808000808000808000808000808000808000808000808000808000
       8080008080008080008080008080008080008080008080008080008080008080
-      00808000808000808000}
-    Caption = 'Cancelar'
+      00808000808000808000
+    }
     ModalResult = 2
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
   object btnContasCliente: TBitBtn
     Left = 8
+    Height = 25
     Top = 272
     Width = 201
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = 'Abrir as contas deste cliente'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -187,19 +187,20 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = 'Abrir as contas deste cliente'
-    TabOrder = 4
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     OnClick = btnContasClienteClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
   end
   object imgWarn: TImage
     Left = 8
+    Height = 65
     Top = 8
     Width = 65
-    Height = 65
-    Hint = ''
-    ShowHint = True
     Center = True
+    ParentShowHint = False
     Picture.Data = {
       07544269746D617036300000424D363000000000000036000000280000004000
       000040000000010018000000000000300000C40E0000C40E0000000000000000
@@ -587,131 +588,128 @@ object frmSituacaoCliente: TfrmSituacaoCliente
       0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6
       FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0A
       E6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF0AE6FF
-      0AE6}
+      0AE6
+    }
+    ShowHint = True
     Transparent = True
   end
   object grpContas: TGroupBox
     Left = 8
+    Height = 65
     Top = 200
     Width = 521
-    Height = 65
-    Hint = ''
-    ShowHint = True
     Caption = ' Valores (com juro) '
+    ClientHeight = 47
+    ClientWidth = 519
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
-    TabStop = False
     object cedDiasAtraso: TEdit
       Left = 392
-      Top = 32
+      Height = 33
+      Top = 6
       Width = 121
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = ''
-      TabOrder = 0
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
+      TabOrder = 0
     end
     object cedTotalContas: TEdit
       Left = 8
-      Top = 32
+      Height = 33
+      Top = 6
       Width = 121
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = ''
-      TabOrder = 2
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
+      TabOrder = 1
     end
     object cedTotalVencidas: TEdit
       Left = 136
-      Top = 32
+      Height = 33
+      Top = 6
       Width = 121
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = ''
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
+      Font.CharSet = ANSI_CHARSET
       Font.Name = 'Verdana'
-      TabOrder = 3
+      ParentFont = False
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
+      TabOrder = 3
     end
     object cedPrimeiroVenc: TEdit
       Left = 264
-      Top = 32
+      Height = 33
+      Top = 6
       Width = 121
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = ''
-      TabOrder = 4
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
+      TabOrder = 2
     end
   end
   object grpDadosCliente: TGroupBox
     Left = 8
+    Height = 113
     Top = 80
     Width = 521
-    Height = 113
-    Hint = ''
-    ShowHint = True
     Caption = ' Dados do cliente '
+    ClientHeight = 95
+    ClientWidth = 519
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
-    TabStop = False
     object cedLimite: TEdit
       Left = 136
-      Top = 76
+      Height = 33
+      Top = 53
       Width = 121
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = ''
-      TabOrder = 0
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
+      TabOrder = 0
     end
     object cedDataCadastro: TEdit
       Left = 8
-      Top = 76
+      Height = 33
+      Top = 53
       Width = 121
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = ''
-      TabOrder = 1
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
+      TabOrder = 1
     end
     object cedCliente: TEdit
       Left = 8
-      Top = 36
+      Height = 33
+      Top = 13
       Width = 505
-      Height = 21
-      Hint = ''
-      ShowHint = True
-      Text = ''
-      TabOrder = 2
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
+      TabOrder = 2
     end
   end
   object mmoMsg: TMemo
     Left = 80
+    Height = 65
     Top = 8
     Width = 449
-    Height = 65
-    Hint = ''
-    ShowHint = True
-    Lines.Strings = (
-      'Mensagens...')
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    ReadOnly = True
     Color = clBtnFace
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    Lines.Strings = (
+      'Mensagens...'
+    )
+    ParentFont = False
+    ParentShowHint = False
+    ReadOnly = True
+    ShowHint = True
     TabOrder = 5
   end
-  object spSituacaoCliente: TSQLDataSet
-    CommandText = 'select * from'#13#10'STPSITUACAOCLIENTE(:IDCLIENTE)'
-    MaxBlobSize = -1
-    Params = <
+  object spSituacaoCliente: TSQLQuery
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'IDCLIENTE'
@@ -720,37 +718,88 @@ object frmSituacaoCliente: TfrmSituacaoCliente
     Left = 320
     Top = 144
     object spSituacaoClienteCLIENTE: TStringField
+      FieldKind = fkData
       FieldName = 'CLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object spSituacaoClienteLIMITECLIENTE: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'LIMITECLIENTE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
     object spSituacaoClienteDATACADASTRO: TDateField
+      FieldKind = fkData
       FieldName = 'DATACADASTRO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object spSituacaoClienteTOTALCONTAS: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTALCONTAS'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
     object spSituacaoClienteTOTALCONTASVENCIDAS: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTALCONTASVENCIDAS'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
       Size = 2
     end
     object spSituacaoClientePRIMEIROVENCIMENTO: TDateField
+      FieldKind = fkData
       FieldName = 'PRIMEIROVENCIMENTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object spSituacaoClienteDIASATRASO: TIntegerField
+      FieldKind = fkData
       FieldName = 'DIASATRASO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

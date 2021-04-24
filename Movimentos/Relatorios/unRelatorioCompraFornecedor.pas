@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
-  DB, memds,  SqlDb,  DBCtrls,  FMTBcd, 
-  uniEdit, uniDBEdit,    uniPanel;
+  DB, memds,  SqlDb,  DBCtrls,  FMTBcd;
 
 type
   TfrmRelatorioCompraFornecedor = class(TfrmDialogoRelatorioPadrao)
@@ -65,7 +64,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        Params.ParamByName('COD').AsInteger := cdsSelecaoCODFORNECEDOR.AsInteger;
+        sqldPadrao.Params.ParamByName('COD').AsInteger := cdsSelecaoCODFORNECEDOR.AsInteger;
         Open;
       end;
       Titulo := 'Compras do fornecedor: ' + cdsSelecaoFANTAZIA.AsString;
@@ -103,7 +102,7 @@ end;
 procedure TfrmRelatorioCompraFornecedor.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLpadrao := sqldSelecao.CommandText;
+  SQLpadrao := sqldSelecao.sql.text;
 end;
 
 initialization

@@ -1,97 +1,102 @@
 inherited frmCadastroCidade: TfrmCadastroCidade
   Left = 200
   Top = 115
-  ClientHeight = 201
-  ClientWidth = 472
+  Width = 658
   Caption = 'frmCadastroCidade'
-  OldCreateOrder = True
-  ExplicitWidth = 478
-  ExplicitHeight = 230
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientWidth = 658
   inherited sbStatus: TStatusBar
-    Top = 182
-    Width = 472
-    ExplicitTop = 182
-    ExplicitWidth = 472
+    Width = 658
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 472
+    Width = 658
+    ClientWidth = 658
     TabOrder = 2
-    ExplicitWidth = 472
-    inherited btnConsultar: TSpeedButton
-      Left = 255
-      ExplicitLeft = 255
-    end
   end
-  object dbeNomeCidade: TDBEdit [2]
+  object dbeNomeCidade: TDBEdit[2]
     Left = 21
+    Height = 33
     Top = 82
     Width = 313
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object dbeCodCidade: TDBEdit [3]
+  object dbeCodCidade: TDBEdit[3]
     Left = 21
+    Height = 33
     Top = 56
     Width = 97
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'CODCIDADE'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[4]
     Left = 48
     Top = 124
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[5]
     DataSet = cdsPadrao
     Left = 407
     Top = 124
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select '#13#10'  CODCIDADE, '#13#10'  DESCRICAO '#13#10'from CIDADES'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[6]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 152
     Top = 124
     object sqldPadraoCODCIDADE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCIDADE'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
-    Options = [poAllowCommandText]
-    UpdateMode = upWhereKeyOnly
+  object dspPadrao: TTimer[7]
     Left = 248
     Top = 124
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[8]
+    FieldDefs = <>
     Left = 328
     Top = 132
     object cdsPadraoCODCIDADE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCIDADE'
+      Index = 0
+      LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoDESCRICAO: TStringField
+      FieldKind = fkData
       FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
   end

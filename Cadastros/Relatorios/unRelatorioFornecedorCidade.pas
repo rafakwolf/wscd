@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, 
-  DBCtrls,  uniEdit, uniDBEdit,  
-   uniPanel;
+  DBCtrls;
 
 type
   TfrmRelatorioFornecedorCidade = class(TfrmDialogoRelatorioPadrao)
@@ -48,7 +47,7 @@ begin
       with cdsPadrao do
       begin
         Close;
-        SQL.Clear; SQL.Text :='select'+
+        sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select'+
                        ' CODIGO,'+
                        ' DATA,'+
                        ' FANTAZIA,'+
@@ -59,7 +58,7 @@ begin
                        'from VIEWRELFORN '+
                        'where CIDADE = :PCIDADE '+
                        'order by FANTAZIA';
-        //Params.ParamByName('PCIDADE').AsString := GetDmPesquisar.cdsPesqCidadeDESCRICAO.asstring;
+        //sqldPadrao.Params.ParamByName('PCIDADE').AsString := GetDmPesquisar.cdsPesqCidadeDESCRICAO.asstring;
         Open;
       end;
       TipoRelatorio := 1;

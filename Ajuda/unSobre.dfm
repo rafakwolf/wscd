@@ -1,82 +1,80 @@
 object frmSobre: TfrmSobre
-  Left = 222
-  Top = 143
-  ClientHeight = 185
-  ClientWidth = 413
+  Left = 266
+  Height = 236
+  Top = 159
+  Width = 475
   Caption = 'Sobre'
-  OnShow = FormShow
-  OldCreateOrder = False
-  ShowHint = True
-  OnClose = FormClose
-  OnKeyDown = FormKeyDown
-  KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Font.Charset = ANSI_CHARSET
+  ClientHeight = 236
+  ClientWidth = 475
+  Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
+  KeyPreview = True
+  OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object btnOK: TButton
     Left = 312
-    Top = 19
-    Width = 57
     Height = 25
     Hint = 'Fechar'
-    ShowHint = True
+    Top = 19
+    Width = 57
     Caption = '&OK'
-    TabOrder = 0
     OnClick = btnOKClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
   end
   object lblVersao: TLabel
     Left = 8
+    Height = 15
     Top = 43
-    Width = 52
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 60
     Caption = 'lblVersao'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
-    TabOrder = 2
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object lblEmpresa: TLabel
     Left = 8
+    Height = 15
     Top = 8
-    Width = 63
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 73
     Caption = 'lblEmpresa'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
-    TabOrder = 3
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object lblCNPJ: TLabel
     Left = 8
+    Height = 15
     Top = 24
-    Width = 42
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 47
     Caption = 'lblCNPJ'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
-    TabOrder = 4
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object mmoOS: TMemo
     Left = 0
-    Top = 85
-    Width = 413
     Height = 100
-    Hint = ''
-    ShowHint = True
+    Top = 136
+    Width = 475
     Align = alBottom
-    Anchors = [akLeft, akRight, akBottom]
+    ParentShowHint = False
     ReadOnly = True
+    ShowHint = True
     TabOrder = 1
-    ExplicitTop = -15
   end
 end

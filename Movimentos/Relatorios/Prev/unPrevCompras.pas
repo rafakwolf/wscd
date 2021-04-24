@@ -8,7 +8,7 @@ uses
   RLReport, RLParser, FMTBcd;
 
 type
-  TDataSetField = TDataSet;
+  TDatasetField = TDataSet;
   TfrmPrevCompras = class(TfrmModeloRelatorio)
     sqldDetalhe: TSQLQuery;
     dsLink: TDataSource;
@@ -92,7 +92,7 @@ type
     cdsPadraoCFOP: TStringField;
     cdsPadraoBAIXADO: TStringField;
     cdsPadraoCONCLUIDA: TStringField;
-    cdsPadraosqldDetalhe: TDataSetField;
+    cdsPadraosqldDetalhe: TDataset;
     cdsDetalheNUMERO: TIntegerField;
     cdsDetalheCODBARRA: TStringField;
     cdsDetalhePRODUTO: TStringField;

@@ -203,7 +203,7 @@ inherited frmPrevRelFornData: TfrmPrevRelFornData
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  CODIGO, '#13#10'  DATA,'#13#10'  FANTAZIA, '#13#10'  CNPJ,  '#13#10'  ENDEREC' +
       'O, '#13#10'  CIDADE,'#13#10'  TELEFONE '#13#10'from VIEWRELFORN'#13#10'where DATA betwee' +

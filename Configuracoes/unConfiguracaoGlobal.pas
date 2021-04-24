@@ -5,10 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, 
-   FMTBcd,  uniLabel,   
-   uniPanel,  uniStatusBar, uniEdit, uniDBEdit,
-   uniDBCheckBox, uniMemo, uniDBMemo, uniPageControl;
+  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, FMTBcd;
 
 type
   TfrmConfigGlobal = class(TfrmPadrao)

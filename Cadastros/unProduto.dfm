@@ -349,7 +349,7 @@ inherited frmProduto: TfrmProduto
     Left = 391
     Top = 124
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'    prod.IDPRODUTO,'#13#10'    prod.CODBARRA,'#13#10'    prod.REFERE' +
       'NCIA,'#13#10'    prod.CODFORNECEDOR,'#13#10'    forn.FANTAZIA as FORNECEDOR,' +
@@ -481,7 +481,7 @@ inherited frmProduto: TfrmProduto
       FieldName = 'VALOR_ESTOQUE'
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
@@ -636,7 +636,7 @@ inherited frmProduto: TfrmProduto
       EditFormat = '#,##0.00'
     end
   end
-  object sqldUnidade: TSQLDataSet
+  object sqldUnidade: TSQLQuery
     CommandText = 'select * from UNIDADES'
     MaxBlobSize = -1
     Params = <>
@@ -644,7 +644,7 @@ inherited frmProduto: TfrmProduto
     Left = 136
     Top = 88
   end
-  object dspUnidade: TDataSetProvider
+  object dspUnidade: TTimer
     DataSet = sqldUnidade
     Left = 168
     Top = 88
@@ -664,7 +664,7 @@ inherited frmProduto: TfrmProduto
       Size = 10
     end
   end
-  object sqldGrupo: TSQLDataSet
+  object sqldGrupo: TSQLQuery
     CommandText = 'select * from GRUPOS'
     MaxBlobSize = -1
     Params = <>
@@ -672,7 +672,7 @@ inherited frmProduto: TfrmProduto
     Left = 136
     Top = 120
   end
-  object dspGrupo: TDataSetProvider
+  object dspGrupo: TTimer
     DataSet = sqldGrupo
     Left = 168
     Top = 120
@@ -692,7 +692,7 @@ inherited frmProduto: TfrmProduto
       Size = 30
     end
   end
-  object sqldAliquota: TSQLDataSet
+  object sqldAliquota: TSQLQuery
     CommandText = 'select * from ALIQUOTAS'
     MaxBlobSize = -1
     Params = <>
@@ -700,7 +700,7 @@ inherited frmProduto: TfrmProduto
     Left = 136
     Top = 152
   end
-  object dspAliquota: TDataSetProvider
+  object dspAliquota: TTimer
     DataSet = sqldAliquota
     Left = 168
     Top = 152
@@ -719,7 +719,7 @@ inherited frmProduto: TfrmProduto
       FieldName = 'DESCRICAO'
     end
   end
-  object sqldForn: TSQLDataSet
+  object sqldForn: TSQLQuery
     CommandText = 
       'select'#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'from' +
       ' FORNECEDORES'
@@ -729,7 +729,7 @@ inherited frmProduto: TfrmProduto
     Left = 136
     Top = 184
   end
-  object dspForn: TDataSetProvider
+  object dspForn: TTimer
     DataSet = sqldForn
     Left = 168
     Top = 184

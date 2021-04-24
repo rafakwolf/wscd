@@ -165,7 +165,7 @@ inherited frmPrevListagemClientes: TfrmPrevListagemClientes
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select '#13#10'  CODIGO, '#13#10'  NOME, '#13#10'  ENDERECO, '#13#10'  CPF_CNPJ, '#13#10'  RG_' +
       'IE, '#13#10'  DATANASCIMENTO, '#13#10'  CODCIDADE, '#13#10'  CIDADE, '#13#10'  TELEFONE,' +

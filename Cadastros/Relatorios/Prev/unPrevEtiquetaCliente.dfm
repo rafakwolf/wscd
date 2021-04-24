@@ -69,7 +69,7 @@ object frmPrevEtiquetaCliente: TfrmPrevEtiquetaCliente
       end
     end
   end
-  object sqldEtq: TSQLDataSet
+  object sqldEtq: TSQLQuery
     CommandText = 'select'#13#10'  TITULO,'#13#10'  TEXTO'#13#10'from VIEWETIQUETACLIENTE'
     MaxBlobSize = -1
     Params = <>
@@ -85,7 +85,7 @@ object frmPrevEtiquetaCliente: TfrmPrevEtiquetaCliente
       Size = 253
     end
   end
-  object dspEtq: TDataSetProvider
+  object dspEtq: TTimer
     DataSet = sqldEtq
     Options = [poAllowCommandText]
     Left = 72

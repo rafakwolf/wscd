@@ -140,7 +140,7 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
       end
     end
   end
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'  NUMERO, '#13#10'  OPERACAO, '#13#10'  CFNOTA'#13#10'from CFOP'#13#10'order by ' +
       'NUMERO'

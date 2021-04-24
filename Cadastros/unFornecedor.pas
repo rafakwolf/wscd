@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, VarGlobal,
-     FMTBcd,    
-   uniPanel,  uniStatusBar, uniEdit, uniDBEdit,
-  uniMemo, uniDBMemo;
+  FMTBcd;
 
 type
   TfrmFornecedor = class(TfrmPadrao)
@@ -123,7 +121,8 @@ begin
   with TfrmPrevRelFornData.Create(Self) do
   try
     cdsPadrao.Close;
-    cdsPadrao.SQL.Clear; SQL.Text :='select * from VIEWRELFORN order by CIDADE, FANTAZIA';
+    sqldPadrao.SQL.Clear;
+    sqldPadrao.SQL.Text :='select * from VIEWRELFORN order by CIDADE, FANTAZIA';
     cdsPadrao.Open;
     TipoRelatorio := 0;
     PrintIfNotEmptyRL(rrPadrao);

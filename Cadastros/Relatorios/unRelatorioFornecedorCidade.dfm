@@ -1,28 +1,31 @@
 inherited frmRelatorioFornecedorCidade: TfrmRelatorioFornecedorCidade
-  ClientHeight = 178
+  Height = 276
+  Width = 556
   Caption = 'frmRelatorioFornecedorCidade'
-  OldCreateOrder = True
-  ExplicitHeight = 217
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 276
+  ClientWidth = 556
   inherited pnButtons: TPanel
-    Top = 144
-    ExplicitTop = 144
+    Top = 242
+    Width = 556
+    ClientWidth = 556
   end
-  object dbeCidade: TDBEdit [1]
+  object dbeCidade: TDBEdit[1]
     Left = 48
+    Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 56
     Width = 331
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
-    ShowHint = True
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[2]
     Left = 88
     Top = 8
   end

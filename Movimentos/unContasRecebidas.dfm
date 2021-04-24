@@ -474,7 +474,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       FieldName = 'TOTALRECDO'
     end
   end
-  object sqldPadrao: TSQLDataSet
+  object sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'    cr.CODIGO,'#13#10'    cr.DATA,'#13#10'    cr.VENCIMENTO,'#13#10'    cr' +
       '.CLIENTE,'#13#10'    cli.Nome NOMECLIENTE,'#13#10'    cr.DESCRICAO,'#13#10'    cr.' +
@@ -576,7 +576,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       FieldName = 'TOTALRECDO'
     end
   end
-  object dspPadrao: TDataSetProvider
+  object dspPadrao: TTimer
     DataSet = sqldPadrao
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
@@ -588,7 +588,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
     Left = 512
     Top = 152
   end
-  object sqldConta: TSQLDataSet
+  object sqldConta: TSQLQuery
     CommandText = 
       'select '#13#10'  CODIGO,'#13#10'  ORIGEM '#13#10'from CONTASRECEBER'#13#10'where RECDA =' +
       ' '#39'N'#39
@@ -604,7 +604,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       FieldName = 'ORIGEM'
     end
   end
-  object dspConta: TDataSetProvider
+  object dspConta: TTimer
     DataSet = sqldConta
     Left = 304
     Top = 224
@@ -623,7 +623,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       FieldName = 'ORIGEM'
     end
   end
-  object sqldDeletaConta: TSQLDataSet
+  object sqldDeletaConta: TSQLQuery
     CommandText = 'delete from CONTASRECEBER'#13#10'where ORIGEM = :CODIGO'
     MaxBlobSize = -1
     Params = <

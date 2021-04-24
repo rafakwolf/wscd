@@ -5,8 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
-  DBCtrls,  memds,  DB, SqlDb, FMTBcd,  uniEdit,
-  uniDBEdit,    uniPanel;
+  DBCtrls,  memds,  DB, SqlDb, FMTBcd;
 
 type
   TfrmRelatorioCRAtraso = class(TfrmDialogoRelatorioPadrao)
@@ -65,7 +64,7 @@ begin
     with TfrmPrevRelCRAtrasadas.Create(Self), cdsPadrao do
     try
       Close;
-      Params.ParamByName('PCLIENTE').AsInteger := cdsClienteCODCLIENTE.AsInteger;
+      sqldpadrao.Params.ParamByName('PCLIENTE').AsInteger := cdsClienteCODCLIENTE.AsInteger;
       Open;
       Titulo := 'Contas do cliente: ' + cdsClienteNOME.AsString;
       PrintIfNotEmptyRL(rrPadrao, p);
@@ -99,7 +98,7 @@ procedure TfrmRelatorioCRAtraso.dbeClienteClickButton(Sender: TObject);
 begin
   inherited;
   cdsCliente.Close;
-  cdsCliente.SQL.Clear; SQL.Text :=SQLPadrao;
+  sqldCliente.SQL.Clear; sqldCliente.SQL.Text :=SQLPadrao;
 //  if not TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
 //    cdsCliente.Close;
 end;
@@ -107,7 +106,7 @@ end;
 procedure TfrmRelatorioCRAtraso.FormCreate(Sender: TObject);
 begin
   inherited;
-  SQLPadrao := sqldCliente.CommandText;
+  SQLPadrao := sqldCliente.sql.text;
 end;
 
 initialization

@@ -1,24 +1,20 @@
 inherited frmVendaNaoConc: TfrmVendaNaoConc
-  Left = 0
-  Top = 175
-  ClientHeight = 361
-  ClientWidth = 792
-  Caption = 'frmVendaNaoConc'
-  OnShow = FormShow
-  BorderStyle = bsSingle
-  OldCreateOrder = True
+  Left = 192
+  Height = 397
+  Top = 147
+  Width = 866
   BorderIcons = [biSystemMenu]
-  ExplicitWidth = 798
-  ExplicitHeight = 390
-  PixelsPerInch = 96
-  TextHeight = 13
-  object btnOK: TBitBtn
+  BorderStyle = bsSingle
+  Caption = 'frmVendaNaoConc'
+  ClientHeight = 397
+  ClientWidth = 866
+  OnShow = FormShow
+  object btnOK: TBitBtn[0]
     Left = 632
+    Height = 25
     Top = 328
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&OK'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -69,18 +65,19 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&OK'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 1
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TBitBtn[1]
     Left = 728
+    Height = 25
     Top = 328
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
+    Caption = '&Cancelar'
     Glyph.Data = {
       36060000424D3606000000000000360000002800000020000000100000000100
       18000000000000060000C40E0000C40E00000000000000000000FF00FFFF00FF
@@ -131,103 +128,168 @@ inherited frmVendaNaoConc: TfrmVendaNaoConc
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
       FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
       FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
-    Caption = '&Cancelar'
+      00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+    }
     ModalResult = 2
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbgrdVendaNaoConc: TDBGrid
+  object dbgrdVendaNaoConc: TDBGrid[2]
     Left = 8
+    Height = 313
     Top = 8
     Width = 809
-    Height = 313
-    Hint = ''
-    ShowHint = True
-    DataSource = dsVenda
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    ReadOnly = True
-    LoadMask.Message = 'Loading data...'
-    Font.Charset = ANSI_CHARSET
-    Font.Name = 'Verdana'
-    ParentFont = False
-    TabOrder = 0
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsVenda
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    ReadOnly = True
+    ShowHint = True
+    TabOrder = 0
   end
-  object sqldVenda: TSQLDataSet
-    CommandText = 
-      'select'#13#10'  v.CODIGO,'#13#10'  v.DATA,'#13#10'  v.CODCLIENTE,'#13#10'  c.NOME,'#13#10'  v.' +
-      'TOTAL,'#13#10'  v.CONCLUIDA'#13#10'from VENDA v'#13#10'left join CLIENTES c ON (c.' +
-      'CODCLIENTE = v.CODCLIENTE)'#13#10'where v.CONCLUIDA = '#39'N'#39#13#10'   and v.CA' +
-      'NCELADO = '#39'N'#39
-    MaxBlobSize = -1
+  object sqldVenda: TSQLQuery[3]
+    FieldDefs = <>
     Params = <>
     Left = 256
     Top = 152
     object sqldVendaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldVendaDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldVendaCODCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCLIENTE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldVendaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldVendaTOTAL: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object sqldVendaCONCLUIDA: TStringField
+      FieldKind = fkData
       FieldName = 'CONCLUIDA'
-      FixedChar = True
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dspVenda: TDataSetProvider
-    DataSet = sqldVenda
-    Options = [poPropogateChanges, poUseQuoteChar]
+  object dspVenda: TTimer[4]
     Left = 288
     Top = 152
   end
-  object cdsVenda: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspVenda'
+  object cdsVenda: TMemDataset[5]
+    FieldDefs = <>
     Left = 320
     Top = 152
     object cdsVendaCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsVendaDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsVendaCODCLIENTE: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODCLIENTE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsVendaNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsVendaTOTAL: TFMTBCDField
+      FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsVendaCONCLUIDA: TStringField
       Alignment = taCenter
+      FieldKind = fkData
       FieldName = 'CONCLUIDA'
-      FixedChar = True
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1
     end
   end
-  object dsVenda: TDataSource
+  object dsVenda: TDataSource[6]
     AutoEdit = False
     DataSet = cdsVenda
     Left = 360

@@ -6,9 +6,7 @@ uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, DB, memds,  SqlDb, Menus,
   ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls, 
-  DBCtrls,  FMTBcd,   uniEdit, uniDBEdit,
-     uniPanel, 
-  uniStatusBar;
+  DBCtrls,  FMTBcd;
 
 type
   TfrmCadastroUnidade = class(TfrmPadrao)

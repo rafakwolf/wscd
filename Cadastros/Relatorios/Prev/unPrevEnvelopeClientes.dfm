@@ -6,7 +6,7 @@ inherited frmPrevEnvelopeCliente: TfrmPrevEnvelopeCliente
   ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
-  inherited sqldPadrao: TSQLDataSet
+  inherited sqldPadrao: TSQLQuery
     CommandText = 
       'select'#13#10'  cast(NULL as Varchar(100)) NOME,'#13#10'  cast(NULL as DATE)' +
       ' DATA, '#13#10'  cast(NULL as Varchar(100)) ENDERECO,'#13#10'  cast(NULL as ' +

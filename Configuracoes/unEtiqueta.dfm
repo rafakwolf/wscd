@@ -1,292 +1,309 @@
 inherited frmEtiqueta: TfrmEtiqueta
-  Left = 218
-  Top = 43
-  ClientHeight = 484
-  ClientWidth = 538
+  Left = 303
+  Height = 531
+  Top = 147
+  Width = 717
   Caption = 'frmEtiqueta'
-  OldCreateOrder = True
-  ExplicitWidth = 544
-  ExplicitHeight = 513
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 531
+  ClientWidth = 717
   inherited sbStatus: TStatusBar
-    Top = 465
-    Width = 538
-    ExplicitTop = 465
-    ExplicitWidth = 538
+    Top = 513
+    Width = 717
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 538
-    ExplicitWidth = 538
+    Width = 717
+    ClientWidth = 717
   end
-  object LabelEtiqueta: TLabel [2]
+  object LabelEtiqueta: TLabel[2]
     Left = 16
+    Height = 15
     Top = 230
-    Width = 40
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 51
     Caption = 'Etiqueta'
-    TabOrder = 14
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label2: TLabel [3]
+  object Label2: TLabel[3]
     Left = 30
+    Height = 15
     Top = 281
-    Width = 73
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 93
     Caption = 'Altura da Folha'
-    TabOrder = 15
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label3: TLabel [4]
+  object Label3: TLabel[4]
     Left = 20
+    Height = 15
     Top = 316
-    Width = 81
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 101
     Caption = 'Largura da Folha'
-    TabOrder = 16
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label4: TLabel [5]
+  object Label4: TLabel[5]
     Left = 17
+    Height = 15
     Top = 351
-    Width = 81
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 103
     Caption = 'Margem Superior'
-    TabOrder = 17
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label5: TLabel [6]
+  object Label5: TLabel[6]
     Left = 13
+    Height = 15
     Top = 386
-    Width = 86
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 107
     Caption = 'Margem Esquerda'
-    TabOrder = 18
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label7: TLabel [7]
+  object Label7: TLabel[7]
     Left = 269
+    Height = 15
     Top = 281
-    Width = 100
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 128
     Caption = 'Etiquetas por Coluna'
-    TabOrder = 19
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label8: TLabel [8]
+  object Label8: TLabel[8]
     Left = 286
+    Height = 15
     Top = 316
-    Width = 87
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 111
     Caption = 'Altura da Etiqueta'
-    TabOrder = 20
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label9: TLabel [9]
+  object Label9: TLabel[9]
     Left = 276
+    Height = 15
     Top = 351
-    Width = 95
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 119
     Caption = 'Largura da Etiqueta'
-    TabOrder = 21
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object Label10: TLabel [10]
+  object Label10: TLabel[10]
     Left = 289
+    Height = 15
     Top = 386
-    Width = 81
-    Height = 13
-    Hint = ''
+    Width = 105
+    Caption = 'Distância Vertical'
+    ParentColor = False
+    ParentShowHint = False
     ShowHint = True
-    Caption = 'Dist'#226'ncia Vertical'
-    TabOrder = 22
   end
-  object Label11: TLabel [11]
+  object Label11: TLabel[11]
     Left = 275
+    Height = 15
     Top = 421
-    Width = 94
-    Height = 13
-    Hint = ''
+    Width = 124
+    Caption = 'Distância Horizontal'
+    ParentColor = False
+    ParentShowHint = False
     ShowHint = True
-    Caption = 'Dist'#226'ncia Horizontal'
-    TabOrder = 23
   end
-  object LabelMedida: TLabel [12]
+  object LabelMedida: TLabel[12]
     Left = 6
+    Height = 15
     Top = 447
-    Width = 130
-    Height = 13
-    Hint = ''
-    ShowHint = True
-    Caption = 'Medidas em Mil'#237'metros'
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
+    Width = 154
+    Caption = 'Medidas em Milímetros'
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
-    TabOrder = 24
-  end
-  object Label1: TLabel [13]
-    Left = 31
-    Top = 421
-    Width = 70
-    Height = 13
-    Hint = ''
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
     ShowHint = True
-    Caption = 'N'#250'mero Linhas'
-    TabOrder = 25
   end
-  object dbEtiqueta: TDBEdit [14]
+  object Label1: TLabel[13]
+    Left = 31
+    Height = 15
+    Top = 421
+    Width = 92
+    Caption = 'Número Linhas'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object dbEtiqueta: TDBEdit[14]
     Left = 16
+    Height = 33
     Top = 245
     Width = 505
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'ETIQUETA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  object dbAlturaFolha: TDBEdit [15]
+  object dbAlturaFolha: TDBEdit[15]
     Left = 119
+    Height = 33
     Top = 277
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'ALTURAFOLHA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
-  object dbLarguraFolha: TDBEdit [16]
+  object dbLarguraFolha: TDBEdit[16]
     Left = 119
+    Height = 33
     Top = 312
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'LARGURAFOLHA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
   end
-  object dbMargemSuperior: TDBEdit [17]
+  object dbMargemSuperior: TDBEdit[17]
     Left = 119
+    Height = 33
     Top = 347
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'MARGEMSUPERIOR'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
   end
-  object dbMargemEsquerda: TDBEdit [18]
+  object dbMargemEsquerda: TDBEdit[18]
     Left = 119
+    Height = 33
     Top = 382
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'MARGEMESQUERDA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 7
   end
-  object dbEtqColuna: TDBEdit [19]
+  object dbEtqColuna: TDBEdit[19]
     Left = 391
+    Height = 33
     Top = 277
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'NUMEROCOLUNAS'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 8
   end
-  object dbAlturaEtq: TDBEdit [20]
+  object dbAlturaEtq: TDBEdit[20]
     Left = 391
+    Height = 33
     Top = 312
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'ALTURAETIQUETA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 9
   end
-  object dbLarguraEtq: TDBEdit [21]
+  object dbLarguraEtq: TDBEdit[21]
     Left = 391
+    Height = 33
     Top = 347
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'LARGURAETIQUETA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 10
   end
-  object dbDistVert: TDBEdit [22]
+  object dbDistVert: TDBEdit[22]
     Left = 391
+    Height = 33
     Top = 382
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DISTANCIAVERTICAL'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 11
   end
-  object dbDistHoriz: TDBEdit [23]
+  object dbDistHoriz: TDBEdit[23]
     Left = 391
+    Height = 33
     Top = 417
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DISTANCIAHORIZONTAL'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 12
   end
-  object dbNumeroLinhas: TDBEdit [24]
+  object dbNumeroLinhas: TDBEdit[24]
     Left = 119
+    Height = 33
     Top = 417
     Width = 110
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'NUMEROLINHAS'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 13
   end
-  object gbImgMedidas: TGroupBox [25]
+  object gbImgMedidas: TGroupBox[25]
     Left = 0
-    Top = 35
-    Width = 538
     Height = 189
-    Hint = ''
-    ShowHint = True
-    Caption = ' Obtendo Medidas '
+    Top = 35
+    Width = 717
     Align = alTop
-    Anchors = [akLeft, akTop, akRight]
-    TabOrder = 2
-    TabStop = False
-    ParentFont = False
-    Font.Charset = ANSI_CHARSET
+    Caption = ' Obtendo Medidas '
+    ClientHeight = 171
+    ClientWidth = 715
+    Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
     object iEtiqueta: TImage
-      Left = 2
-      Top = 15
-      Width = 384
-      Height = 159
-      Hint = ''
-      ShowHint = True
-      Center = True
+      Left = 0
+      Height = 171
+      Top = 0
+      Width = 715
+      Align = alClient
       AutoSize = True
+      Center = True
+      ParentShowHint = False
       Picture.Data = {
         07544269746D6170B6CB0200424DB6CB02000000000036000000280000008001
         00009F000000010018000000000080CB02000000000000000000000000000000
@@ -6014,150 +6031,311 @@ inherited frmEtiqueta: TfrmEtiqueta
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFF}
-      Align = alClient
-      Anchors = [akLeft, akTop, akRight, akBottom]
+        FFFF
+      }
+      ShowHint = True
       Transparent = True
     end
   end
-  inherited actlNavigateActions: TActionList
+  inherited actlNavigateActions: TActionList[26]
     Left = 448
     Top = 60
   end
-  inherited dsPadrao: TDataSource
+  inherited dsPadrao: TDataSource[27]
     DataSet = cdsPadrao
     Left = 103
     Top = 184
   end
-  object sqldPadrao: TSQLDataSet
-    CommandText = 'select * from ETIQUETA'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[28]
+    FieldDefs = <>
     Params = <>
     Left = 8
     Top = 184
     object sqldPadraoIDETIQUETA: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDETIQUETA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object sqldPadraoETIQUETA: TStringField
+      FieldKind = fkData
       FieldName = 'ETIQUETA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object sqldPadraoALTURAFOLHA: TFloatField
+      FieldKind = fkData
       FieldName = 'ALTURAFOLHA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoLARGURAFOLHA: TFloatField
+      FieldKind = fkData
       FieldName = 'LARGURAFOLHA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoMARGEMSUPERIOR: TFloatField
+      FieldKind = fkData
       FieldName = 'MARGEMSUPERIOR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoMARGEMESQUERDA: TFloatField
+      FieldKind = fkData
       FieldName = 'MARGEMESQUERDA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoNUMEROLINHAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMEROLINHAS'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoNUMEROCOLUNAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMEROCOLUNAS'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoALTURAETIQUETA: TFloatField
+      FieldKind = fkData
       FieldName = 'ALTURAETIQUETA'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoLARGURAETIQUETA: TFloatField
+      FieldKind = fkData
       FieldName = 'LARGURAETIQUETA'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoDISTANCIAVERTICAL: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTANCIAVERTICAL'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoDISTANCIAHORIZONTAL: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTANCIAHORIZONTAL'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoDISTACOLVERTICAL: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTACOLVERTICAL'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoDISTCOLHORIZ: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTCOLHORIZ'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspPadrao: TDataSetProvider
-    DataSet = sqldPadrao
+  object dspPadrao: TTimer[29]
     Left = 40
     Top = 184
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
+  object cdsPadrao: TMemDataset[30]
+    FieldDefs = <>
     AfterInsert = cdsPadraoAfterInsert
-    BeforeApplyUpdates = cdsPadraoBeforeApplyUpdates
     Left = 72
     Top = 184
     object cdsPadraoIDETIQUETA: TIntegerField
+      FieldKind = fkData
       FieldName = 'IDETIQUETA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
     object cdsPadraoETIQUETA: TStringField
+      FieldKind = fkData
       FieldName = 'ETIQUETA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
     object cdsPadraoALTURAFOLHA: TFloatField
+      FieldKind = fkData
       FieldName = 'ALTURAFOLHA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoLARGURAFOLHA: TFloatField
+      FieldKind = fkData
       FieldName = 'LARGURAFOLHA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoMARGEMSUPERIOR: TFloatField
+      FieldKind = fkData
       FieldName = 'MARGEMSUPERIOR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoMARGEMESQUERDA: TFloatField
+      FieldKind = fkData
       FieldName = 'MARGEMESQUERDA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoNUMEROLINHAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMEROLINHAS'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoNUMEROCOLUNAS: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMEROCOLUNAS'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoALTURAETIQUETA: TFloatField
+      FieldKind = fkData
       FieldName = 'ALTURAETIQUETA'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsPadraoALTURAETIQUETAChange
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoLARGURAETIQUETA: TFloatField
+      FieldKind = fkData
       FieldName = 'LARGURAETIQUETA'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsPadraoLARGURAETIQUETAChange
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoDISTANCIAVERTICAL: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTANCIAVERTICAL'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoDISTANCIAHORIZONTAL: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTANCIAHORIZONTAL'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsPadraoDISTANCIAHORIZONTALChange
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoDISTACOLVERTICAL: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTACOLVERTICAL'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsPadraoDISTACOLVERTICALChange
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
     object cdsPadraoDISTCOLHORIZ: TFloatField
+      FieldKind = fkData
       FieldName = 'DISTCOLHORIZ'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end

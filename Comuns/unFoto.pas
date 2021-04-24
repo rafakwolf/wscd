@@ -5,7 +5,7 @@ interface
 uses
    Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons,
-  ExtCtrls,     uniGroupBox;
+  ExtCtrls;
 
 type
   TfrmFoto = class(TfrmSimplePadrao)
