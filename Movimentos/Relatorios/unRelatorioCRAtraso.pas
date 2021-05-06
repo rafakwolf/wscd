@@ -3,8 +3,8 @@ unit unRelatorioCRAtraso;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,   
   DBCtrls,  memds,  DB, SqlDb, FMTBcd;
 
 type

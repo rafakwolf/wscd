@@ -64,81 +64,63 @@ inherited frmCadastroCFOP: TfrmCadastroCFOP
     end
   end
   inherited dsPadrao: TDataSource[6]
-    DataSet = cdsPadrao
-    Left = 447
-    Top = 188
+    DataSet = ZQuery1
+    Left = 392
+    Top = 168
   end
-  object sqldPadrao: TSQLQuery[7]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from CFOP'
+    )
     Params = <>
-    Left = 240
-    Top = 172
-    object sqldPadraoNUMERO: TStringField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoOPERACAO: TStringField
-      FieldKind = fkData
-      FieldName = 'OPERACAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 250
-    end
-    object sqldPadraoCFNOTA: TStringField
-      FieldKind = fkData
-      FieldName = 'CFNOTA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1000
-    end
+    Left = 250
+    Top = 186
   end
-  object dspPadrao: TTimer[8]
-    Left = 312
-    Top = 180
-  end
-  object cdsPadrao: TMemDataset[9]
-    FieldDefs = <>
-    Left = 376
-    Top = 180
-    object cdsPadraoNUMERO: TStringField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoOPERACAO: TStringField
-      FieldKind = fkData
-      FieldName = 'OPERACAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 250
-    end
-    object cdsPadraoCFNOTA: TStringField
-      FieldKind = fkData
-      FieldName = 'CFNOTA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1000
-    end
+  object ZUpdateSQL1: TZUpdateSQL[8]
+    DeleteSQL.Strings = (
+      'DELETE FROM CFOP'
+      'WHERE'
+      '  CFOP.id = :OLD_id'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CFOP'
+      '  (NUMERO, OPERACAO, CFNOTA)'
+      'VALUES'
+      '  (:NUMERO, :OPERACAO, :CFNOTA)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CFOP SET'
+      '  NUMERO = :NUMERO,'
+      '  OPERACAO = :OPERACAO,'
+      '  CFNOTA = :CFNOTA'
+      'WHERE'
+      '  CFOP.id = :OLD_id'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 314
+    Top = 191
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'NUMERO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OPERACAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CFNOTA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_id'
+        ParamType = ptUnknown
+      end>
   end
 end

@@ -3,8 +3,8 @@ unit unRelatorioCompraFornecedor;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,  
   DB, memds,  SqlDb,  DBCtrls,  FMTBcd;
 
 type

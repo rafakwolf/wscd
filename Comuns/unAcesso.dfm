@@ -1,72 +1,62 @@
 object frmAcesso: TfrmAcesso
-  Left = 234
-  Top = 126
+  Left = 391
+  Height = 221
+  Top = 216
+  Width = 299
   HelpContext = 1
+  BorderStyle = bsNone
+  Caption = 'Acesso'
   ClientHeight = 221
   ClientWidth = 299
-  Caption = 'Acesso'
-  BorderStyle = bsNone
-  OldCreateOrder = False
-  ShowHint = True
   KeyPreview = True
-  MonitoredKeys.Keys = <>
-  Movable = False
-  AlignmentControl = uniAlignmentClient
-  PixelsPerInch = 96
-  TextHeight = 13
+  ShowHint = True
+  LCLVersion = '2.0.12.0'
   object btnOK: TBitBtn
     Left = 8
-    Top = 117
-    Width = 271
     Height = 32
     Hint = 'Efetuar login'
-    ShowHint = True
-    Caption = '<i class="fa fa-check-circle" aria-hidden="true"></i> Entrar'
-    ParentFont = False
+    Top = 117
+    Width = 271
+    Caption = 'Entrar'
     Font.Height = -16
-    TabOrder = 1
-    ClientEvents.ExtEvents.Strings = (
-      
-        'added=function added(sender, container, pos, eOpts)'#13#10'{'#13#10'  debugg' +
-        'er; '#13#10'  sender.addCls('#39'btn btn-primary'#39');'#13#10'}')
     OnClick = btnOkClick
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
   object edtUsuario: TEdit
     Left = 8
+    Height = 33
+    Hint = 'Usuário'
     Top = 21
     Width = 271
-    Height = 33
-    Hint = 'Usu'#225'rio'
-    ShowHint = True
     MaxLength = 10
-    Text = ''
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
   object edtSenha: TEdit
     Left = 8
+    Height = 33
     Top = 67
     Width = 271
-    Height = 35
-    Hint = ''
-    ShowHint = True
+    EchoMode = emPassword
+    ParentShowHint = False
     PasswordChar = '*'
-    Text = ''
+    ShowHint = True
     TabOrder = 2
   end
   object ckbLembrarLogin: TCheckBox
     Left = 112
+    Height = 23
     Top = 173
-    Width = 73
-    Height = 17
-    Hint = ''
-    ShowHint = True
+    Width = 75
     Caption = 'Lembrar'
-    ParentFont = False
     Font.Height = -13
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
-    ClientEvents.ExtEvents.Strings = (
-      
-        'activate=function activate(sender, eOpts)'#13#10'{'#13#10'  sender.addCls('#39'c' +
-        'heckbox'#39');'#13#10'}')
   end
 end

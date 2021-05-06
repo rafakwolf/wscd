@@ -3,9 +3,9 @@ unit unCliente;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, SqlDb, DBCtrls, udmGeralBase,
+  ComCtrls,   SqlDb, DBCtrls, udmGeralBase,
    memds,  StrUtils,  ExtDlgs, FMTBcd, LCLType;
 
 type
@@ -93,7 +93,7 @@ end;
 
 procedure TfrmCliente.FormCreate(Sender: TObject);
 begin
-  dsPadrao.DataSet := TdmCliente(GetDm).cdsPadrao;
+  //dsPadrao.DataSet := TdmCliente(GetDm).cdsPadrao;
   inherited;
   FieldNames := FN_CLIENTES;
   DisplayLabels := DL_CLIENTES;

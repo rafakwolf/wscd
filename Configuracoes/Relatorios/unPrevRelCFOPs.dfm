@@ -1,61 +1,41 @@
 inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
-  Left = 2
-  Top = 1
+  Left = 371
+  Top = 180
   Caption = 'frmPrevRelCFOPs'
-  ClientHeight = 530
-  ClientWidth = 971
-  OldCreateOrder = True
-  ExplicitWidth = 987
-  ExplicitHeight = 568
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited rrPadrao: TRLReport
-    Width = 1123
     Height = 794
+    Width = 1123
     PageSetup.Orientation = poLandscape
-    ExplicitWidth = 1123
-    ExplicitHeight = 794
     inherited rbTitulo: TRLBand
       Width = 1047
-      ExplicitWidth = 1047
       inherited lbTitulo: TRLLabel
+        Height = 31
         Top = 76
         Width = 1045
-        Height = 31
-        ExplicitTop = 76
-        ExplicitWidth = 1045
-        ExplicitHeight = 31
       end
       inherited rlmCabecalho: TRLMemo
-        Width = 947
         Height = 75
-        ExplicitWidth = 947
-        ExplicitHeight = 75
+        Width = 947
       end
       inherited imgLogo: TRLImage
         Height = 75
-        ExplicitHeight = 75
       end
     end
     inherited rbRodape: TRLBand
-      Top = 259
+      Top = 206
       Width = 1047
-      ExplicitTop = 259
-      ExplicitWidth = 1047
       inherited sysData: TRLSystemInfo
         Left = 935
-        ExplicitLeft = 935
       end
       inherited sysPage: TRLSystemInfo
         Left = 871
-        ExplicitLeft = 871
       end
     end
-    object rlbndCabecColunas: TRLBand
+    object rlbndCabecColunas: TRLBand[2]
       Left = 38
-      Top = 139
-      Width = 1047
       Height = 20
+      Top = 86
+      Width = 1047
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -64,11 +44,11 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
       Borders.DrawBottom = True
       object rllbNumero: TRLLabel
         Left = 8
+        Height = 16
         Top = 2
         Width = 35
-        Height = 16
         Caption = 'CFOP'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -77,11 +57,11 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
       end
       object rllbOperacao: TRLLabel
         Left = 120
+        Height = 16
         Top = 2
         Width = 66
-        Height = 16
-        Caption = 'Opera'#231#227'o'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Operação'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -90,11 +70,11 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
       end
       object rllbDescricao: TRLLabel
         Left = 552
+        Height = 16
         Top = 2
         Width = 67
-        Height = 16
-        Caption = 'Descri'#231#227'o'
-        Font.Charset = ANSI_CHARSET
+        Caption = 'Descrição'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -102,27 +82,26 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
         ParentFont = False
       end
     end
-    object rlbndColunaDados: TRLBand
+    object rlbndColunaDados: TRLBand[3]
       Left = 38
-      Top = 159
-      Width = 1047
       Height = 100
+      Top = 106
+      Width = 1047
       BeforePrint = rlbndColunaDadosBeforePrint
       object rlbdtNumero: TRLDBText
         Left = 8
+        Height = 16
         Top = 2
         Width = 105
-        Height = 16
         AutoSize = False
         DataField = 'NUMERO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbmOperacao: TRLDBMemo
         Left = 120
+        Height = 95
         Top = 2
         Width = 429
-        Height = 95
         AutoSize = False
         Behavior = [beSiteExpander]
         DataField = 'OPERACAO'
@@ -130,9 +109,9 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
       end
       object rldbmDescricao: TRLDBMemo
         Left = 552
+        Height = 95
         Top = 2
         Width = 489
-        Height = 95
         AutoSize = False
         Behavior = [beSiteExpander]
         DataField = 'CFNOTA'
@@ -141,36 +120,69 @@ inherited frmPrevRelCFOPs: TfrmPrevRelCFOPs
     end
   end
   inherited sqldPadrao: TSQLQuery
-    CommandText = 
-      'select'#13#10'  NUMERO, '#13#10'  OPERACAO, '#13#10'  CFNOTA'#13#10'from CFOP'#13#10'order by ' +
-      'NUMERO'
-    object sqldPadraoNUMERO: TStringField
+    object sqldPadraoNUMERO: TStringField[0]
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
-    object sqldPadraoOPERACAO: TStringField
+    object sqldPadraoOPERACAO: TStringField[1]
+      FieldKind = fkData
       FieldName = 'OPERACAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       Size = 250
     end
-    object sqldPadraoCFNOTA: TStringField
+    object sqldPadraoCFNOTA: TStringField[2]
+      FieldKind = fkData
       FieldName = 'CFNOTA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1000
     end
   end
   inherited cdsPadrao: TMemDataset
-    object cdsPadraoNUMERO: TStringField
+    object cdsPadraoNUMERO: TStringField[0]
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
     end
-    object cdsPadraoOPERACAO: TStringField
+    object cdsPadraoOPERACAO: TStringField[1]
+      FieldKind = fkData
       FieldName = 'OPERACAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
       Required = True
       Size = 250
     end
-    object cdsPadraoCFNOTA: TStringField
+    object cdsPadraoCFNOTA: TStringField[2]
+      FieldKind = fkData
       FieldName = 'CFNOTA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 1000
     end
+  end
+  inherited rlepCalculos: TRLExpressionParser
+    Left = 368
+    Top = 16
   end
 end

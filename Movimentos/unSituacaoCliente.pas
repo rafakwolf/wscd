@@ -3,8 +3,8 @@ unit unSituacaoCliente;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, Buttons, SqlDb, ExtCtrls,  FMTBcd, lcltype;
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, DB, Buttons, SqlDb, FMTBcd, lcltype;
 
 type
   TfrmSituacaoCliente = class(TForm)

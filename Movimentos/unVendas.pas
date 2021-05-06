@@ -3,9 +3,9 @@
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, Buttons,  DBCtrls, ComCtrls,
-  Menus, ExtCtrls, Db, memds, ConstPadrao, 
+  Menus, Db, memds, ConstPadrao,
   Sqldb, FMTBcd, unPadrao,  ActnList, lcltype;
 
 type
@@ -344,8 +344,8 @@ begin
     if Configuracao.VendaConcluida then
     begin
       NumRegs :=
-        SelecTFMTBCDField('select count(1) NUM from VENDA where CONCLUIDA = '+
-          QuotedStr('N')+' and CANCELADO = '+QuotedStr('N'), GetConnection);
+        SelecSingleField('select count(1) NUM from VENDA where CONCLUIDA = '+
+          QuotedStr('N')+' and CANCELADO = '+QuotedStr('N'), GetZConnection);
 
         if (NumRegs > 0) then
         begin
@@ -534,21 +534,21 @@ procedure TfrmVendas.InsereProduto;
   function ProdutoPromocao(IdProduto: Integer): Boolean;
   begin
     Result :=
-      SQLFind('PROMOCAO', 'PRODUTO', IntToStr(IdProduto), sqlVendas.SQLConnection);
+      SQLFind('PROMOCAO', 'PRODUTO', IntToStr(IdProduto), GetZConnection);
   end;
 
   function DescontoPromocao(IdProduto: Integer): Extended;
   begin
     Result :=
-      SelecTFMTBCDField('select DESCONTO from PROMOCAO where PRODUTO = '+
-        QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
+      SelecSingleField('select DESCONTO from PROMOCAO where PRODUTO = '+
+        QuotedStr(IntToStr(IdProduto)), GetZConnection);
   end;
 
   function PrecoPromocao(IdProduto: Integer): Extended;
   begin
     Result :=
-      SelecTFMTBCDField('select PRECO from PROMOCAO where PRODUTO = '+
-        QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
+      SelecSingleField('select PRECO from PROMOCAO where PRODUTO = '+
+        QuotedStr(IntToStr(IdProduto)), GetZConnection);
   end;
 
 begin
@@ -715,7 +715,7 @@ var
   NomeCliente: string;
 begin
   inherited;
-  NomeCliente := GetFieldByID(GetConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
+  NomeCliente := GetFieldByID(GetZConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
     Sender.AsInteger);
   if NomeCliente <> '' then
     cdsVendasCLIENTE.AsString := NomeCliente;
@@ -726,7 +726,7 @@ var
   NomeProd: string;
 begin
   inherited;
-  NomeProd := GetFieldByID(GetConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
+  NomeProd := GetFieldByID(GetZConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
     Sender.AsInteger);
   if NomeProd <> '' then
     cdsItensPRODUTO.AsString := NomeProd;
@@ -760,7 +760,7 @@ var
   NomeProd: string;
 begin
   inherited;
-  NomeProd := GetFieldByID(GetConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
+  NomeProd := GetFieldByID(GetZConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
     Sender.AsInteger);
   if NomeProd <> '' then
     cdsSelecaoNOMEPRODUTO.AsString := NomeProd;
@@ -839,7 +839,7 @@ var
   NomeVend: string;
 begin
   inherited;
-  NomeVend := GetFieldByID(GetConnection, 'VENDEDOR', 'VENDEDOR', 'IDVENDEDOR',
+  NomeVend := GetFieldByID(GetZConnection, 'VENDEDOR', 'VENDEDOR', 'IDVENDEDOR',
     Sender.AsInteger);
   if NomeVend <> '' then
     cdsVendasVENDEDOR.AsString := NomeVend;

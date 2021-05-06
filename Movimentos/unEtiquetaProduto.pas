@@ -3,15 +3,15 @@ unit unEtiquetaProduto;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, Grids, DBGrids, memds,  SqlDb,
+  ComCtrls,   Grids, DBGrids, memds,  SqlDb,
    DBCtrls,  FMTBcd,  VarGlobal;
 
 type
   TfrmEtiquetaProduto = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldProduto: TSQLQuery;
     dspProduto: TComponent;

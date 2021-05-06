@@ -3,8 +3,8 @@ unit unContasRecebidas;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons,  DBCtrls, DB, SqlDb, varglobal,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   StdCtrls, Buttons,  DBCtrls, DB, SqlDb, varglobal,
   memds, ComCtrls, Menus, Grids, DBGrids,
    unContasReceber, FMTBcd, unSimplePadrao, LCLType;
 
@@ -12,7 +12,7 @@ type
   TfrmContasRecebidas = class(TfrmSimplePadrao)
     cdsPadrao: TMemDataSet;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     dsPadrao: TDataSource;
     sqldConta: TSQLQuery;
     dspConta: TComponent;
@@ -143,9 +143,9 @@ begin
         (ClearMask(DataF) <> '') then
      begin
        cdsPadrao.Close;
-       sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
-         ' and CLIENTE = :PCLIENTE' +
-         ' and DATARECTO between :DATAI and :DATAF';
+       //sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
+       //  ' and CLIENTE = :PCLIENTE' +
+       //  ' and DATARECTO between :DATAI and :DATAF';
        sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
        sqldPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
        sqldPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);

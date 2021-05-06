@@ -3,15 +3,15 @@ unit unFornecedor;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, VarGlobal,
+  ComCtrls,   memds,  SqlDb, DBCtrls, VarGlobal,
   FMTBcd;
 
 type
   TfrmFornecedor = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldCidade: TSQLQuery;
     dspCidade: TComponent;
@@ -165,7 +165,7 @@ var
   NomeCidade: string;
 begin
   inherited;
-  NomeCidade := GetFieldByID(GetConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
+  NomeCidade := GetFieldByID(GetZConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
     Sender.AsInteger);
   if NomeCidade <> '' then
     cdsPadraoNOMECIDADE.AsString := NomeCidade;

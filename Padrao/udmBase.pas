@@ -3,15 +3,19 @@ unit udmBase;
 interface
 
 uses
-  sysutils, Classes, db, mysql57conn;
+  sysutils, Classes, ZConnection, db, mysql57conn, SQLDB;
 
 type
+
+  { TdmBase }
+
   TdmBase = class(TDataModule)
-    Conexao: TMySql57Connection;
+    ZConnection1: TZConnection;
   private
   protected
       function ConectaBanco: Boolean; virtual;
   public
+    Conexao: TSQLConnection; // fake component, remove afterwards
   end;
 
 var

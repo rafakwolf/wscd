@@ -3,8 +3,8 @@ unit unListagemPrecos;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons, Grids, DBGrids, DB,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB,
   memds,  SqlDb, FMTBcd, unSimplePadrao, LCLType;
 
 type

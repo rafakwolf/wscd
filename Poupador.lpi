@@ -27,15 +27,21 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="2">
+    <RequiredPackages Count="4">
       <Item1>
-        <PackageName Value="frce"/>
+        <PackageName Value="zcomponent"/>
       </Item1>
       <Item2>
-        <PackageName Value="LCL"/>
+        <PackageName Value="FCL"/>
       </Item2>
+      <Item3>
+        <PackageName Value="frce"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="LCL"/>
+      </Item4>
     </RequiredPackages>
-    <Units Count="163">
+    <Units Count="166">
       <Unit0>
         <Filename Value="Poupador.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -79,12 +85,16 @@
       <Unit7>
         <Filename Value="Padrao/unModeloConsulta.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmModeloConsulta"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit7>
       <Unit8>
         <Filename Value="Padrao/unModeloEnvelope.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmModeloEnvelope"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit8>
       <Unit9>
         <Filename Value="Padrao/unModeloRelatorio.pas"/>
@@ -186,7 +196,9 @@
       <Unit24>
         <Filename Value="Utilitarios/Relatorios/Prev/unPrevRecibo.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevRecibo"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit24>
       <Unit25>
         <Filename Value="Utilitarios/Relatorios/Prev/unPrevRelAgenda.pas"/>
@@ -417,7 +429,9 @@
       <Unit61>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevCaixaTodos.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevCaixaTodos"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit61>
       <Unit62>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevCheque.pas"/>
@@ -427,7 +441,9 @@
       <Unit63>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevComissaoVenda.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevComissaoVenda"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit63>
       <Unit64>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevCompras.pas"/>
@@ -739,7 +755,9 @@
       <Unit113>
         <Filename Value="Comuns/unAcesso.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAcesso"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit113>
       <Unit114>
         <Filename Value="Comuns/unFoto.pas"/>
@@ -951,7 +969,9 @@
       <Unit145>
         <Filename Value="Configuracoes/Relatorios/unPrevRelCFOPs.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevRelCFOPs"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit145>
       <Unit146>
         <Filename Value="Padrao/udmBase.pas"/>
@@ -1030,13 +1050,30 @@
         <Filename Value="Principal/Classes/uMenuActions.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit162>
+      <Unit163>
+        <Filename Value="repos/baserepo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="baseRepo"/>
+      </Unit163>
+      <Unit164>
+        <Filename Value="models/basemodel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="baseModel"/>
+      </Unit164>
+      <Unit165>
+        <Filename Value="Padrao/unlistapadrao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="formListaPadrao"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unListaPadrao"/>
+      </Unit165>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <SearchPaths>
       <IncludeFiles Value="Util;Principal;Padrao;Utilitarios;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Ajuda;Comuns/Dm;Configuracoes/Relatorios;Cadastros/Datamodule;Utilitarios/Datamodule;Principal/Classes;$(ProjOutDir)"/>
-      <OtherUnitFiles Value="Util;Principal;Padrao;Utilitarios;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Ajuda;Comuns/Dm;Configuracoes/Relatorios;Cadastros/Datamodule;Utilitarios/Datamodule;Principal/Classes"/>
+      <OtherUnitFiles Value="Util;Principal;Padrao;Utilitarios;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Ajuda;Comuns/Dm;Configuracoes/Relatorios;Cadastros/Datamodule;Utilitarios/Datamodule;Principal/Classes;repos;models"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

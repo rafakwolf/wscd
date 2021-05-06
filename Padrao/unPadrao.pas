@@ -3,12 +3,15 @@ unit unPadrao;
 interface
 
 uses
-   Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, StdCtrls, Menus, Buttons, memds, DB, ActnList,
-  ComCtrls, Variants, SqlDb, Funcoes, ConstPadrao,  DBGrids,
+  Messages, ExtCtrls,  SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Menus, Buttons, ActnList,
+  ComCtrls, Variants, DB, Funcoes, ConstPadrao, DBGrids,
   udmGeralBase, LCLType;
 
 type
+
+  { TfrmPadrao }
+
   TfrmPadrao = class(TForm)
     actlNavigateActions: TActionList;
     actInsert: TAction;
@@ -48,7 +51,7 @@ type
     ComponentFocusWhenPost: TWinControl;
   protected
     EditModes: Boolean;
-    aCaption, TableName, FieldNames, DisplayLabels: string;
+    aCaption, TableName, FieldNames, DisplayLabels, IdField: string;
 
     function Pesquisa(pCaption: string;
       pFieldNames, pDisplayLabels, pTableName: string): Boolean;
@@ -82,26 +85,11 @@ begin
 
   for x := 0 to ComponentCount - 1 do
   begin
-    if (Components[x] is TMemDataset) then
-    begin
-//
-//      if not Assigned(TMemDataset(Components[x]).OnReconcileError) then
-//        TMemDataset(Components[x]).OnReconcileError :=  MyHandleReconcileError;
-//
-//      TMemDataset(Components[x]).FetchOnDemand := True;
-//
-//      if TMemDataset(Components[x]).Tag <> TAG_IGNORE_FECHPARAMS then
-//        TMemDataset(Components[x]).PacketRecords := 1;
-    end;
-
-
     if Components[x] is TSQLQuery then
     begin
-      if (not Assigned(TSQLQuery(Components[x]).SQLConnection)) then
-        TSQLQuery(Components[x]).SQLConnection := GetConnection;
+      if (not Assigned(TZQuery(Components[x]).Connection)) then
+        TZQuery(Components[x]).Connection := GetZConnection;
     end;
-
-
   end;
 
   ReordenaBotoes([btnNovo, btnAlterar, btnExcluir, btnSalvar,
@@ -141,19 +129,12 @@ procedure TfrmPadrao.actDeleteExecute(Sender: TObject);
 begin
   if not dsPadrao.DataSet.IsEmpty then
   begin
-    MessageDlg('Tem certeza que deseja excluir este registro?',
-      TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],0
-      //procedure (sender: TComponent; AResult: Integer)
-      //begin
-      //  if (AResult = ID_YES) then
-      //  begin
-      //    dsPadrao.DataSet.Delete;
-      //
-      //    if (dsPadrao.DataSet is TMemDataset) then
-      //      TMemDataset(dsPadrao.DataSet).ApplyUpdates(0);
-      //  end;
-      //end
-      );
+    if MessageDlg('Tem certeza que deseja excluir este registro?',
+      TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],0) = ID_YES then
+      begin
+        TZQuery(dsPadrao.DataSet).Delete;
+        TZQuery(dsPadrao.DataSet).ApplyUpdates;
+      end;
   end;
 end;
 
@@ -179,38 +160,21 @@ begin
 end;
 
 procedure TfrmPadrao.actPostExecute(Sender: TObject);
-var
-  Novo: Boolean;
 begin
   AntesSalvar;
 
-  Novo := (dsPadrao.State = dsInsert);
-
-  //FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
   try
     if dsPadrao.DataSet.State in [dsInsert, dsEdit] then
     begin
       dsPadrao.DataSet.Post;
-      if (dsPadrao.DataSet is TMemDataset) then
-      begin
-        //if (TMemDataset(dsPadrao.DataSet).) and Novo then
-        //begin
-        //  dsPadrao.DataSet.DisableControls;
-        //  dsPadrao.DataSet.Close;
-        //  dsPadrao.DataSet.Open;
-        //
-        //  if not dsPadrao.DataSet.IsEmpty then
-        //    dsPadrao.DataSet.Last;
-        //
-        //  dsPadrao.DataSet.EnableControls;
-        //end;
-      end;
-     // GetConnection.CommitFreeAndNil(FTransacao);
+      TZquery(dsPadrao.DataSet).ApplyUpdates;
     end;
   except
     on e: Exception do
+    begin
+      dsPadrao.DataSet.Cancel;
       raise Exception.create('');
-    // GetConnection.RollbackFreeAndNil(FTransacao);
+    end;
   end;
 
   DepoisSalvar;
@@ -231,7 +195,7 @@ begin
   begin
     if dsPadrao.DataSet.Fields[I].Required and dsPadrao.DataSet.Fields[I].IsNull then
     begin
-      MsgErro('O campo '+dsPadrao.DataSet.Fields[I].DisplayLabel+' � obrigat�rio.');
+      MsgErro('O campo '+dsPadrao.DataSet.Fields[I].DisplayLabel+' é obrigatório.');
       Abort;
     end;
   end;

@@ -3,15 +3,15 @@ unit unEnvelopes;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb,  
+  ComCtrls, memds,  SqlDb,
   DBCtrls, FMTBcd,  VarGlobal;
 
 type
   TfrmEnvelopes = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldPadraoIDENVELOPE: TIntegerField;
     sqldPadraoNOME: TStringField;
@@ -120,7 +120,7 @@ var
   NomeCidade: string;
 begin
   inherited;
-  //NomeCidade := GetFieldByID(GetConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
+  //NomeCidade := GetFieldByID(GetZConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
   //  Sender.AsInteger);
   if NomeCidade <> '' then
     cdsPadraoNOMECIDADE.AsString := NomeCidade;

@@ -3,15 +3,15 @@ unit unExclusaoProduto;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Grids, DBGrids, DB, Buttons, StdCtrls, VarGlobal,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   Grids, DBGrids, DB, Buttons, StdCtrls, VarGlobal,
   SqlDb,  memds, ComCtrls, FMTBcd, unSimplePadrao,LCLType;
 
 type
   TfrmExclusaoProduto = class(TfrmSimplePadrao)
     dsPadrao: TDataSource;
     sqlPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqlPadraoCODBARRA: TStringField;
     sqlPadraoDESCRICAO: TStringField;

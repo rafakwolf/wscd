@@ -1,7 +1,7 @@
 inherited frmRelatorioCompraData: TfrmRelatorioCompraData
-  Left = 213
+  Left = 288
   Height = 289
-  Top = 173
+  Top = 176
   Width = 422
   Caption = 'frmRelatorioCompraData'
   ClientHeight = 289

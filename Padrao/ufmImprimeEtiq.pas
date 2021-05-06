@@ -5,9 +5,9 @@ unit ufmImprimeEtiq;
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  LCLIntf, LCLType, LMessages,Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, memds, DB,
-  sqldb, StdCtrls, Buttons, ExtCtrls, Spin, Funcoes,
+  sqldb, StdCtrls, Buttons, Spin, Funcoes,
   VarGlobal, FMTBcd, IniFiles, RLTypes, RLReport;
 
 type

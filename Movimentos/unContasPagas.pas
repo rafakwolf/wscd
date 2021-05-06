@@ -3,15 +3,15 @@ unit unContasPagas;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Buttons, DB, StdCtrls,  DBCtrls, SqlDb,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   Buttons, DB, StdCtrls,  DBCtrls, SqlDb,
   memds,  ConstPadrao, ComCtrls, unContasPagar,  LCLType,
   Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal;
 
 type
   TfrmContasPagas = class(TfrmSimplePadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldEstorno: TSQLQuery;
@@ -152,8 +152,8 @@ begin
           (ClearMask(DataF) <> '') then
         begin
           cdsPadrao.Close;
-          sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
-            ' and DATAPAGTO between :DATAI and :DATAF';
+          //sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
+          //  ' and DATAPAGTO between :DATAI and :DATAF';
           sqldPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
           sqldPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
           sqldPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);

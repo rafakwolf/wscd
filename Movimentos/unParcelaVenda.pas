@@ -3,9 +3,9 @@ unit unParcelaVenda;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons,  Grids, DBGrids, Spin, DBCtrls, 
-  memds,  DB, SqlDb, DateUtils, ExtCtrls, FMTBcd, lcltype;
+  memds,  DB, SqlDb, DateUtils, FMTBcd, lcltype;
 
 type
   TfrmParcelaVenda = class(TForm)
@@ -182,8 +182,8 @@ begin
     begin
       with sqldReceber do
       begin
-        Params.ParamByName('CODIGO').AsInteger :=
-          GetProximoID('CONTASRECEBER', 'CODIGO', GetConnection);
+        //Params.ParamByName('CODIGO').AsInteger :=
+        //  GetProximoID('CONTASRECEBER', 'CODIGO', GetConnection);
 
         Params.ParamByName('DATA').AsDate := sqldVendaDATA.AsDateTime;
         Params.ParamByName('VENCIMENTO').AsDate := cdsParcelaVENC.AsDateTime;

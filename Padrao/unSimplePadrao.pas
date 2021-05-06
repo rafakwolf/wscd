@@ -3,7 +3,7 @@ unit unSimplePadrao;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DBGrids, LCLType;
 
 type

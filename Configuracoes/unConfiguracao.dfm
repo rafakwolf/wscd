@@ -1,7 +1,7 @@
 inherited frmConfiguracao: TfrmConfiguracao
-  Left = 221
+  Left = 282
   Height = 446
-  Top = 141
+  Top = 163
   Width = 779
   Caption = 'frmConfiguracao'
   ClientHeight = 446

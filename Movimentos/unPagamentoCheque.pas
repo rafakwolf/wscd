@@ -3,8 +3,8 @@ unit unPagamentoCheque;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons,  DBCtrls,  ExtCtrls, DBGrids,  
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons,  DBCtrls, DBGrids,
   DB, SqlDb, FMTBcd, VarGlobal, uDatabaseutils;
 
 type
@@ -192,8 +192,8 @@ begin
   with sqldCheque do
   begin
     Close;
-    Params.ParamByName('IDCHEQUE').AsInteger :=
-      GetProximoID('CHEQUE', 'IDCHEQUE', GetConnection);
+    //Params.ParamByName('IDCHEQUE').AsInteger :=
+    //  GetProximoID('CHEQUE', 'IDCHEQUE', GetConnection);
     //Params.ParamByName('IDBANCO').AsInteger := GetDmPesquisar.cdsPesqBanco.FieldByName('IDBANCO').AsInteger;
     Params.ParamByName('AGENCIA').AsString := edtAgencia.Text;
     Params.ParamByName('CONTA').AsString := edtConta.Text;

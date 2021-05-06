@@ -1,21 +1,21 @@
 unit unPrincipal;
 
-{$MODE Delphi}
+{$mode delphi}
 
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, ComCtrls, ExtCtrls, Buttons, sqldb, Types, ActnList, DB,
-  ConstPadrao, ToolWin, uDatabaseUtils, crypto,
-  StdCtrls, DBCtrls, memds, IniFiles, ImgList, ImgUtils, FMTBcd, uMenuActions;
+  LCLIntf, LCLType, LMessages, Messages, ExtCtrls, SysUtils, Variants, Classes,
+  Graphics, Controls, Forms, Dialogs, Menus, ComCtrls, Buttons, sqldb, Types,
+  ActnList, DB, ConstPadrao, ToolWin, uDatabaseUtils, crypto, StdCtrls, DBCtrls,
+  memds, IniFiles, ImgList, ZDataset, ImgUtils, FMTBcd, uMenuActions;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
-    btnSair: TSpeedButton;
+    Button1: TButton;
     ListaAcoes: TActionList;
     actCidade: TAction;
     acTdade: TAction;
@@ -75,8 +75,6 @@ type
     actInfoAvisos: TAction;
     actAuditoriaUser: TAction;
     menuFrame: TFrame;
-    toolsPanel: TPanel;
-    btnNotifficacoes: TSpeedButton;
     procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
     procedure acTdadeExecute(Sender: TObject);
@@ -132,10 +130,10 @@ type
     procedure actInfoSistemaExecute(Sender: TObject);
     procedure actVendedorExecute(Sender: TObject);
     procedure actConfigNotaExecute(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure actPromocaoExecute(Sender: TObject);
-    procedure MenuItem1Click(Sender: TObject);
     procedure UniFormCreate(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
   Private
@@ -162,7 +160,7 @@ implementation
 
 uses
   unAcesso, Funcoes, uUtilFncs, VarGlobal,
-  uClasses, udmAcesso, uNotificacoes;
+  uClasses, udmAcesso, uNotificacoes, baseRepo, unDmPrincipal;
 
 {$R *.lfm}
 
@@ -455,8 +453,6 @@ end;
 
 procedure TMainForm.btnNotifficacoesClick(Sender: TObject);
 begin
-  frmNotificacoes := TfrmNotificacoes.Create(Application);
-  frmNotificacoes.Show();
 end;
 
 procedure TMainForm.btnOrcamentoClick(Sender: TObject);
@@ -517,7 +513,6 @@ end;
 
 procedure TMainForm.btnSairClick(Sender: TObject);
 begin
-  Application.Terminate;
 end;
 
 procedure TMainForm.actAjudaExecute(Sender: TObject);
@@ -556,15 +551,60 @@ begin
   ChamaForm('TfrmConfigNota', 'Configurãção da nota', Application);
 end;
 
+procedure TMainForm.Button1Click(Sender: TObject);
+begin
+
+end;
+
 procedure TMainForm.FormCreate(Sender: TObject);
+
+     function GetActionsByCategory(category: string): TArray<TAction>;
+         var i: Integer;
+         var res: TArray<TAction>;
+     begin
+       res := TArray<TAction>.Create;
+       for i := 0 to ListaAcoes.ActionCount-1 do
+       begin
+          if TAction(ListaAcoes.Actions[i]).Category = category then
+          begin
+             SetLength(res, Length(res) + 1);
+             res[Length(res) - 1] := ListaAcoes.Actions[i] as TAction;
+          end;
+       end;
+       Result := res;
+     end;
+
 var i, j: Integer;
   menu: TMainMenu;
+  subMenu, item: TMenuItem;
+  categories: TStrings;
+  actionsByCategory: TArray<TAction>;
+  act: TAction;
 begin
+   categories := TStringList.Create;
+   categories.AddStrings(['Configuracao', 'Cadastros', 'Movimentos', 'Util', 'Ajuda', 'Sair']);
+
    menu := TMainMenu.Create(Self);
-   for j := 0 to ListaAcoes.ActionCount-1 do
+   for i := 0 to categories.Count-1 do
    begin
-     //
+     actionsByCategory := GetActionsByCategory(categories[i]);
+     subMenu := TMenuItem.Create(menu);
+     subMenu.Caption := categories[i];
+     for j := 0 to Length(actionsByCategory) - 1 do
+     begin
+       item := TMenuItem.Create(subMenu);
+       act := actionsByCategory[j] as TAction;
+       if Assigned(act) then
+       begin
+         item.Caption := TAction(actionsByCategory[j]).Caption;
+         item.Action := TAction(actionsByCategory[j]);
+         subMenu.Add(item);
+       end;
+     end;
+     menu.Items.Add(subMenu);
    end;
+
+   categories.Free;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -587,11 +627,6 @@ end;
 procedure TMainForm.actPromocaoExecute(Sender: TObject);
 begin
   ChamaForm('TfrmPromocao', 'Promoções', Application);
-end;
-
-procedure TMainForm.MenuItem1Click(Sender: TObject);
-begin
-
 end;
 
 function TMainForm.ValidaDataAcesso(DataEncriptada: string;

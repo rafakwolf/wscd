@@ -3,7 +3,7 @@ unit unDesmarcar;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, StdCtrls, unSimplePadrao,  
      uniCheckBox;
 

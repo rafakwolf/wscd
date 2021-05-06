@@ -3,9 +3,9 @@ unit unRelatorioBobinaOrcam;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao,  DB, memds, SqlDb,
-  StdCtrls, ExtCtrls, Spin, Buttons, FMTBcd;
+  StdCtrls, Spin, Buttons, FMTBcd;
 
 type
   TDatasetField = TDataset;

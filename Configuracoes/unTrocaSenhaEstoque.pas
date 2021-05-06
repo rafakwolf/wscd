@@ -3,8 +3,8 @@ unit unTrocaSenhaEstoque;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, memds,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons,   DB, memds,
    SqlDb, unTrocaSenhaCaixa, FMTBcd;
 
 type

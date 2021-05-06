@@ -1,15 +1,23 @@
 object dmBase: TdmBase
   OldCreateOrder = False
   Height = 292
-  HorizontalOffset = 581
-  VerticalOffset = 241
+  HorizontalOffset = 478
+  VerticalOffset = 289
   Width = 437
-  object Conexao: TMySQL57Connection
-    Connected = False
-    LoginPrompt = False
-    KeepConnection = False
-    SkipLibraryVersionCheck = False
-    Left = 176
-    Top = 40
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
+    Properties.Strings = (
+      'AutoEncodeStrings=True'
+      'controls_cp=CP_UTF8'
+    )
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'wscd'
+    User = 'root'
+    Password = 'mysqlrocks!'
+    Protocol = 'mysql'
+    Left = 300
+    Top = 72
   end
 end

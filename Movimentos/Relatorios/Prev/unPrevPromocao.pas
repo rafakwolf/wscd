@@ -3,7 +3,7 @@ unit unPrevPromocao;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloRelatorio, RLParser, DB, memds, 
   SqlDb, RLReport, FMTBcd;
 

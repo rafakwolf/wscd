@@ -1,0 +1,7 @@
+{
+    "omnipascal.defaultDevelopmentEnvironment": "FreePascal",
+    "omnipascal.freePascalSourcePath": "/usr/bin/fpc",
+    "omnipascal.lazbuildPath": "/usr/bin/lazbuild",
+    "omnipascal.searchPath": "/usr/share/lazarus/2.0.12/*;/usr/share/fpcsrc/3.2.0/*",
+    "omnipascal.createBuildScripts": true
+}

@@ -3,14 +3,14 @@ unit unCheque;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,   ComCtrls,
   memds,  SqlDb,  DBCtrls, DateUtils, FMTBcd;
 
 type
   TfrmCheque = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     actBaixar: TAction;
     sqldPadraoIDCHEQUE: TIntegerField;
@@ -157,7 +157,7 @@ var
   NomeBanco: string;
 begin
   inherited;
-  //NomeBanco := GetFieldByID(GetConnection, 'BANCO', 'BANCO', 'IDBANCO',
+  //NomeBanco := GetFieldByID(GetZConnection, 'BANCO', 'BANCO', 'IDBANCO',
   //  Sender.AsInteger);
   if NomeBanco <> '' then
     cdsPadraoBANCO.AsString := NomeBanco;
@@ -260,7 +260,7 @@ begin
     cdsPadraoNUMERO.AsString  := varNroCheque;
     cdsPadraoIDBANCO.AsInteger := StrToInt(varBanco);
 
-    //BancoExiste := SelecTFMTBCDField('select count(1) from BANCO where IDBANCO = '+
+    //BancoExiste := SelecSingleField('select count(1) from BANCO where IDBANCO = '+
     //                 QuotedStr(varBanco), GetConnection]) > 0;
     if not BancoExiste then
     begin
@@ -313,7 +313,7 @@ var
   NomeCliente: string;
 begin
   inherited;
-  //NomeCliente := GetFieldByID(GetConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
+  //NomeCliente := GetFieldByID(GetZConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
   //  Sender.AsInteger);
   if NomeCliente <> '' then
     cdsPadraoCLIENTE.AsString := NomeCliente;
@@ -324,7 +324,7 @@ var
   NomeForn: string;
 begin
   inherited;
-  //NomeForn := GetFieldByID(GetConnection, 'FORNECEDORES', 'RAZAOSOCIAL', 'CODFORNECEDOR',
+  //NomeForn := GetFieldByID(GetZConnection, 'FORNECEDORES', 'RAZAOSOCIAL', 'CODFORNECEDOR',
   //  Sender.AsInteger);
   if NomeForn <> '' then
     cdsPadraoFORN.AsString := NomeForn;

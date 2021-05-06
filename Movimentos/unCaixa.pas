@@ -3,8 +3,8 @@ unit unCaixa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, DB, Grids, DBGrids, Buttons, memds,  SqlDb,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, Buttons, memds,  SqlDb,
   Menus, ComCtrls, ConstPadrao, unSimplePadrao, LCLType;
 
 const
@@ -43,7 +43,7 @@ type
     sqldCredDeb: TSQLQuery;
     dsCaixas: TDataSource;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldCaixas: TSQLQuery;
     dspCaixas: TComponent;

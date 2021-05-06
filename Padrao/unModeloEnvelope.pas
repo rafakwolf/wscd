@@ -3,7 +3,7 @@ unit unModeloEnvelope;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RLReport, memds,  DB, SqlDb, FMTBcd;
 
 type
@@ -15,7 +15,7 @@ type
     lbTelefone: TRLLabel;
     lbCNPJ_IE: TRLLabel;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoNOME: TStringField;

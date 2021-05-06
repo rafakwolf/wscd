@@ -3,25 +3,20 @@ unit unCadastroCaixa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls,  DBCtrls,  memds, 
-  SqlDb, FMTBcd;
+  ComCtrls, DBCtrls, ZDataset, ZSqlUpdate, SqlDb, FMTBcd;
 
 type
+
+  { TfrmCadastroCaixa }
+
   TfrmCadastroCaixa = class(TfrmPadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
-    cdsPadrao: TMemDataSet;
-    sqldPadraoCODIGO: TIntegerField;
-    sqldPadraoNOME: TStringField;
-    sqldPadraoINATIVO: TStringField;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoNOME: TStringField;
-    cdsPadraoINATIVO: TStringField;
     dbeNomeCaixa: TDBEdit;
     dbeCodCaixa: TDBEdit;
     dbchkInativo: TDBCheckBox;
+    ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterScroll(DataSet: TDataSet);
@@ -43,7 +38,7 @@ uses
 procedure TfrmCadastroCaixa.cdsPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  cdsPadraoINATIVO.AsString := 'N';
+  ZQuery1.FieldByName('INATIVO').AsString := 'N';
   SetFocusIfCan(dbeNomeCaixa);
 end;
 
@@ -53,6 +48,7 @@ begin
   FieldNames := FN_CAIXAS;
   DisplayLabels := DL_CAIXAS;
   aCaption := 'Caixas';
+  TableName:='CAIXAS';
 end;
 
 procedure TfrmCadastroCaixa.cdsPadraoAfterScroll(DataSet: TDataSet);
@@ -64,17 +60,17 @@ end;
 
 procedure TfrmCadastroCaixa.actDeleteExecute(Sender: TObject);
 begin
-  if cdsPadraoINATIVO.AsString = 'S' then
+  if ZQuery1.FieldByName('INATIVO').AsString = 'S' then
   begin
-    MsgAviso('Esta conta caixa j� est� inativa.');
+    MsgAviso('Esta conta caixa já está inativa.');
     Exit;
   end;
   
-  if MsgSN('Deseja inativar �sta conta caixa?') then
+  if MsgSN('Deseja inativar esta conta caixa?') then
   begin
-    cdsPadrao.Edit;
-    cdsPadraoINATIVO.AsString := 'S';
-    //cdsPadrao.ApplyUpdates(0);
+    ZQuery1.Edit;
+    ZQuery1.FieldByName('INATIVO').AsString := 'S';
+    ZQuery1.ApplyUpdates;
   end;
 end;
 

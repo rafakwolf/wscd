@@ -3,9 +3,9 @@ unit unListagemProdutos;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList, 
-  ExtCtrls, LCLType;
+  LCLType;
 
 type
   TfrmListagemProdutos = class(TForm)

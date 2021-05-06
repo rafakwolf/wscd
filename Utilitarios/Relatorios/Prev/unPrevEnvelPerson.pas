@@ -3,7 +3,7 @@ unit unPrevEnvelPerson;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloEnvelope, DB, memds,  SqlDb,
   RLReport, FMTBcd;
 

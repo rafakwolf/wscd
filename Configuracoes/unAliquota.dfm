@@ -1,19 +1,24 @@
 inherited frmAliquota: TfrmAliquota
-  Width = 620
+  Left = 410
+  Height = 303
+  Top = 188
+  Width = 597
   Caption = 'frmAliquota'
-  ClientWidth = 620
+  ClientHeight = 303
+  ClientWidth = 597
   inherited sbStatus: TStatusBar
-    Width = 620
+    Top = 285
+    Width = 597
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 620
-    ClientWidth = 620
+    Width = 597
+    ClientWidth = 597
     TabOrder = 2
   end
   object dbeAliquota: TDBEdit[2]
     Left = 80
     Height = 33
-    Top = 82
+    Top = 92
     Width = 273
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
@@ -37,46 +42,54 @@ inherited frmAliquota: TfrmAliquota
     TabOrder = 0
   end
   inherited actlNavigateActions: TActionList[4]
-    Left = 40
-    Top = 100
+    Top = 168
   end
   inherited dsPadrao: TDataSource[5]
-    DataSet = cdsPadrao
-    Left = 327
-    Top = 108
+    DataSet = ZQuery1
+    Left = 320
+    Top = 168
   end
-  object sqldPadrao: TSQLQuery[6]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[6]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from ALIQUOTAS'
+    )
     Params = <>
-    Left = 136
-    Top = 100
+    Left = 156
+    Top = 173
   end
-  object dspPadrao: TTimer[7]
-    Left = 208
-    Top = 108
-  end
-  object cdsPadrao: TMemDataset[8]
-    FieldDefs = <>
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 264
-    Top = 116
-    object cdsPadraoCODALIQUOTA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODALIQUOTA'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
+  object ZUpdateSQL1: TZUpdateSQL[7]
+    DeleteSQL.Strings = (
+      'DELETE FROM ALIQUOTAS'
+      'WHERE'
+      '  ALIQUOTAS.CODALIQUOTA = :OLD_CODALIQUOTA'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO ALIQUOTAS'
+      '  (DESCRICAO)'
+      'VALUES'
+      '  (:DESCRICAO)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE ALIQUOTAS SET'
+      '  DESCRICAO = :DESCRICAO'
+      'WHERE'
+      '  ALIQUOTAS.CODALIQUOTA = :OLD_CODALIQUOTA'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 227
+    Top = 180
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DESCRICAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_CODALIQUOTA'
+        ParamType = ptUnknown
+      end>
   end
 end

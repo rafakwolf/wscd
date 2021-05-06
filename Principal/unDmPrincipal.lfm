@@ -1,10 +1,11 @@
 inherited DmPrincipal: TDmPrincipal
-  Height = 292
-  HorizontalOffset = 397
-  VerticalOffset = 147
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 329
+  HorizontalOffset = 431
+  VerticalOffset = 232
   Width = 437
-  inherited Conexao: TMySQL57Connection
-    Left = 136
-    Top = 80
+  inherited ZConnection1: TZConnection
+    HostName = '127.0.0.1'
   end
 end

@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils, Classes, udmGeralBase, DB, memds,
-   FMTBcd,  Sqldb;
+   FMTBcd, ExtCtrls, Sqldb;
 
 type
   TdmDuplicatas = class(TdmGeralBase)
@@ -32,7 +32,7 @@ type
     sqldPadraoVALOREXTENSO: TStringField;
     sqldPadraoDATAIMPRESSAO: TDateField;
     sqldPadraoIMPRESSA: TStringField;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     sqldDeleta: TSQLQuery;
   private
   public

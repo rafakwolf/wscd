@@ -2,22 +2,20 @@ unit uDatabaseUtils;
 
 interface
 
-uses Classes, VarGlobal, SQLDB, memds;
+uses Classes, VarGlobal, SQLDB, ZDataset, ZConnection, SysUtils;
 
 procedure UpdateSingleField(sqlText: String);
-function SelecTFMTBCDField(query: string; conn: TSQLConnection): Variant;
-function GetProximoID(tabela, fieldId: string; conn: TSQLConnection): Integer;
-function SQLFind(tabela, campo, valor: string; conn: TSQLConnection): boolean;
-function GetFieldByID(conn: TSQLConnection; tabela, campoPesquisar,
+function SelecSingleField(query: string; conn: TZConnection): Variant;
+function SQLFind(tabela, campo, valor: string; conn: TZConnection): boolean;
+function GetFieldByID(conn: TZConnection; tabela, campoPesquisar,
   campoValor: string; valor: integer): Variant;
-function GetSQLFromQuery(cds: TMemDataset): string;
 
 implementation
 
 procedure UpdateSingleField(sqlText: string);
 begin
-  with TSQLQuery.Create(nil)do try
-      SQLConnection:= GetConnection;
+  with TZQuery.Create(nil)do try
+      Connection:= GetZConnection;
       SQL.Clear;
       SQL.Add(sqlText);
       ExecSQL;
@@ -26,11 +24,12 @@ begin
   end;
 end;
 
-function SelecTFMTBCDField(query: string; conn: TSQLConnection): Variant;
+function SelecSingleField(query: string; conn: TZConnection): Variant;
 begin
-  with TSQLQuery.Create(nil)do try
-      SQLConnection:= GetConnection;
-      sql.clear(); sql.Add(query);
+  with TZQuery.Create(nil)do try
+      Connection:= conn;
+      sql.clear();
+      sql.Add(query);
       Open;
       Result := Fields[0].Value;
   finally
@@ -38,24 +37,30 @@ begin
   end;
 end;
 
-function GetProximoID(tabela, fieldId: string; conn: TSQLConnection): Integer;
+function SQLFind(tabela, campo, valor: string; conn: TZConnection): boolean;
 begin
-  Result := 0; // TODO: implementar
+  with TZQuery.Create(nil)do try
+      Connection:= conn;
+      sql.clear();
+      sql.Add('select '+campo+' from '+tabela+' where '+campo+' = :'+valor);
+      Open;
+      Result := Fields[0].Value;
+  finally
+    free;
+  end;
 end;
 
-function SQLFind(tabela, campo, valor: string; conn: TSQLConnection): boolean;
+function GetFieldByID(conn: TZConnection; tabela, campoPesquisar, campoValor: string; valor: integer): Variant;
 begin
-  //TODO: implementar
-end;
-
-function GetFieldByID(conn: TSQLConnection; tabela, campoPesquisar, campoValor: string; valor: integer): Variant;
-begin
-  // TODO: Implementar
-end;
-
-function GetSQLFromQuery(cds: TMemDataset): string;
-begin
-
+  with TZQuery.Create(nil)do try
+      Connection:= conn;
+      sql.clear();
+      sql.Add('select '+campoValor+' from '+tabela+' where '+campoPesquisar+' = :'+IntToStr(valor));
+      Open;
+      Result := Fields[0].Value;
+  finally
+    free;
+  end;
 end;
 
 end.

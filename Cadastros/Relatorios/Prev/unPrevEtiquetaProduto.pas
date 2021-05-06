@@ -3,7 +3,7 @@ unit unPrevEtiquetaProduto;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB,memds,  SqlDb, RLReport, frce,
   RLBarcode, FMTBcd;
   

@@ -3,8 +3,8 @@ unit unRelatorioCaixaMensal;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,   DB, DateUtils,
       lcltype;
 
 type

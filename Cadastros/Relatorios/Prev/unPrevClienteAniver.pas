@@ -3,7 +3,7 @@ unit unPrevClienteAniver;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, RLParser, FMTBcd;
 

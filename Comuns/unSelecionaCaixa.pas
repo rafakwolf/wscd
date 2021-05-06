@@ -3,7 +3,7 @@ unit unSelecionaCaixa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, memds,  SqlDb, DBCtrls, StdCtrls,
   Buttons, Funcoes, FMTBcd;
 

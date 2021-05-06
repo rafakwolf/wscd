@@ -5,8 +5,8 @@ unit unDialogoRelatorioPadrao;
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB;
+  LCLIntf, LCLType, LMessages,Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, DB;
 
 type
   TfrmDialogoRelatorioPadrao = class(TForm)

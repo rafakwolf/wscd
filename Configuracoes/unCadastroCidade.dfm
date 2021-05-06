@@ -1,6 +1,6 @@
 inherited frmCadastroCidade: TfrmCadastroCidade
-  Left = 200
-  Top = 115
+  Left = 268
+  Top = 147
   Width = 658
   Caption = 'frmCadastroCidade'
   ClientWidth = 658
@@ -15,7 +15,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
   object dbeNomeCidade: TDBEdit[2]
     Left = 21
     Height = 33
-    Top = 82
+    Top = 94
     Width = 313
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
@@ -39,19 +39,19 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     TabOrder = 0
   end
   inherited actlNavigateActions: TActionList[4]
-    Left = 48
-    Top = 124
+    Left = 56
+    Top = 168
   end
   inherited dsPadrao: TDataSource[5]
     DataSet = cdsPadrao
-    Left = 407
-    Top = 124
+    Left = 415
+    Top = 168
   end
   object sqldPadrao: TSQLQuery[6]
     FieldDefs = <>
     Params = <>
-    Left = 152
-    Top = 124
+    Left = 160
+    Top = 168
     object sqldPadraoCODCIDADE: TIntegerField
       FieldKind = fkData
       FieldName = 'CODCIDADE'
@@ -73,13 +73,13 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     end
   end
   object dspPadrao: TTimer[7]
-    Left = 248
-    Top = 124
+    Left = 256
+    Top = 168
   end
   object cdsPadrao: TMemDataset[8]
     FieldDefs = <>
-    Left = 328
-    Top = 132
+    Left = 336
+    Top = 176
     object cdsPadraoCODCIDADE: TIntegerField
       FieldKind = fkData
       FieldName = 'CODCIDADE'

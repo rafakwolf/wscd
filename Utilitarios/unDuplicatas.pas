@@ -3,10 +3,9 @@ unit unDuplicatas;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb,
-   DBCtrls, DateUtils, RLReport, FMTBcd;
+  ComCtrls, memds,  SqlDb, DBCtrls, DateUtils, RLReport, FMTBcd;
 
 type
   TfrmDuplicatas = class(TfrmPadrao)
@@ -252,7 +251,7 @@ var
   NomeCidade: string;
 begin
   inherited;
-  NomeCidade := GetFieldByID(GetConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
+  NomeCidade := GetFieldByID(GetZConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
     Sender.AsInteger);
   if NomeCidade <> '' then
     cdsPadraoNOMECIDADE.AsString := NomeCidade;
@@ -315,14 +314,14 @@ begin
     cliente := TdmCliente.Create(nil);
     try
       cdsPadrao.Insert;
-      cdsPadraoSACADO.AsString       := cliente.cdsPadraoNOME.AsString;
-      cdsPadraoCPF_CNPJ.AsString     := cliente.cdsPadraoCPF_CNPJ.AsString;
-      cdsPadraoENDERECO.AsString     := cliente.cdsPadraoENDERECO.AsString;
-      cdsPadraoBAIRRO.AsString       := cliente.cdsPadraoBAIRRO.AsString;
-      cdsPadraoCEP.AsString          := cliente.cdsPadraoCEP.AsString;
-      cdsPadraoIDCIDADE.AsInteger    := cliente.cdsPadraoCODCIDADE.AsInteger;
-      cdsPadraoFONEFAX.AsString      := cliente.cdsPadraoTELEFONE.AsString;
-      cdsPadraoUF.AsString           := cliente.cdsPadraoUF.AsString;
+      //cdsPadraoSACADO.AsString       := cliente.cdsPadraoNOME.AsString;
+      //cdsPadraoCPF_CNPJ.AsString     := cliente.cdsPadraoCPF_CNPJ.AsString;
+      //cdsPadraoENDERECO.AsString     := cliente.cdsPadraoENDERECO.AsString;
+      //cdsPadraoBAIRRO.AsString       := cliente.cdsPadraoBAIRRO.AsString;
+      //cdsPadraoCEP.AsString          := cliente.cdsPadraoCEP.AsString;
+      //cdsPadraoIDCIDADE.AsInteger    := cliente.cdsPadraoCODCIDADE.AsInteger;
+      //cdsPadraoFONEFAX.AsString      := cliente.cdsPadraoTELEFONE.AsString;
+      //cdsPadraoUF.AsString           := cliente.cdsPadraoUF.AsString;
 
       SetValoresDefault;
 

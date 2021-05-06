@@ -3,9 +3,9 @@ unit unConfiguracao;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls, 
+  ComCtrls,   memds,  SqlDb, DBCtrls, 
   ExtDlgs, FileCtrl, FMTBcd;
 
 type
@@ -14,7 +14,7 @@ type
 
   TfrmConfiguracao = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     PgConfig: TPageControl;
     Tabgeral: TTabSheet;

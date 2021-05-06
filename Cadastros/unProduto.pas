@@ -3,15 +3,15 @@ unit unProduto;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb, ConstPadrao,
+  ComCtrls,   memds,  SqlDb, ConstPadrao,
     DBCtrls,  FMTBcd, lcltype;
 
 type
   TfrmProduto = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldUnidade: TSQLQuery;
     dspUnidade: TComponent;
@@ -415,7 +415,7 @@ var
   NomeForn: string;
 begin
   inherited;
-  NomeForn := GetFieldByID(GetConnection, 'FORNECEDORES', 'FANTAZIA', 'CODFORNECEDOR',
+  NomeForn := GetFieldByID(GetZConnection, 'FORNECEDORES', 'FANTAZIA', 'CODFORNECEDOR',
     Sender.AsInteger);
   if NomeForn <> '' then
     cdsPadraoFORNECEDOR.AsString := NomeForn;
@@ -426,7 +426,7 @@ var
   NomeGrupo: string;
 begin
   inherited;
-  NomeGrupo := GetFieldByID(GetConnection, 'GRUPOS', 'DESCRICAO', 'CODGRUPO',
+  NomeGrupo := GetFieldByID(GetZConnection, 'GRUPOS', 'DESCRICAO', 'CODGRUPO',
     Sender.AsInteger);
   if NomeGrupo <> '' then
     cdsPadraoGRUPO.AsString := NomeGrupo;
@@ -437,7 +437,7 @@ var
   NomeUn: string;
 begin
   inherited;
-  NomeUn := GetFieldByID(GetConnection, 'UNIDADES', 'DESCRICAO', 'CODUNIDADE',
+  NomeUn := GetFieldByID(GetZConnection, 'UNIDADES', 'DESCRICAO', 'CODUNIDADE',
     Sender.AsInteger);
   if NomeUn <> '' then
     cdsPadraoUNIDADE.AsString := NomeUn;
@@ -448,7 +448,7 @@ var
   NomeAliq: string;
 begin
   inherited;
-  NomeAliq := GetFieldByID(GetConnection, 'ALIQUOTAS', 'DESCRICAO', 'CODALIQUOTA',
+  NomeAliq := GetFieldByID(GetZConnection, 'ALIQUOTAS', 'DESCRICAO', 'CODALIQUOTA',
     Sender.AsInteger);
   if NomeAliq <> '' then
     cdsPadraoALIQUOTA.AsString := NomeAliq;

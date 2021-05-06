@@ -3,15 +3,15 @@ unit unCadastroUnidade;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, DB, memds,  SqlDb, Menus,
-  ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls, 
+  ActnList, StdCtrls, Buttons,   ComCtrls, 
   DBCtrls,  FMTBcd;
 
 type
   TfrmCadastroUnidade = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldPadraoCODUNIDADE: TIntegerField;
     sqldPadraoDESCRICAO: TStringField;

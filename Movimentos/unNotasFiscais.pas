@@ -3,8 +3,8 @@ unit unNotasFiscais;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Buttons, DB, StdCtrls, DBCtrls,  Grids, DBGrids,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   Buttons, DB, StdCtrls, DBCtrls,  Grids, DBGrids,
   SqlDb, Menus, ComCtrls, memds,  LCLType, ConstPadrao,
   FMTBcd, uDatabaseutils;
 
@@ -479,12 +479,12 @@ end;
 
 procedure TfrmNotasFiscais.btnInserirClick(Sender: TObject);
 begin
-  if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, sqlNFiscais.SQLConnection) then
-  begin
-    MsgCuidado('J� existe uma nota com este n�mero.');
-    SetFocusIfCan(dbeNumero);
-    Exit;
-  end;
+  //if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, sqlNFiscais.SQLConnection) then
+  //begin
+  //  MsgCuidado('J� existe uma nota com este n�mero.');
+  //  SetFocusIfCan(dbeNumero);
+  //  Exit;
+  //end;
 
   if ValoresProduto then
   begin
@@ -711,7 +711,7 @@ begin
 //      cdsSelecaoPRODUTO.AsString := cdsProdutosDESCRICAO.AsString;
 //      cdsSelecaoIDTRIBUTACAO.AsInteger := cdsProdutosIDALIQUOTA.AsInteger;
 //      cdsSelecaoTRIBUTACAO.AsString :=
-//        SelecTFMTBCDField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
+//        SelecSingleField('select DESCRICAO from ALIQUOTAS where CODALIQUOTA =' +
 //          QuotedStr(IntToStr(cdsProdutosIDALIQUOTA.AsInteger)), GetConnection);
 //      cdsSelecaoQTDE.AsFloat := 1;
 //      cdsSelecaoTOTAL.AsFloat := 0;
@@ -834,10 +834,10 @@ procedure TfrmNotasFiscais.cdsNFiscaisCFOPValidate(Sender: TField);
 var
   Operacao: string;
 begin
-  Operacao := GetFieldByID(GetConnection, 'CFOP', 'OPERACAO', 'NUMERO',
-    StrToInt(Sender.AsString));
-  if Operacao <> '' then
-    cdsNFiscaisOPERACAO.AsString := Operacao;
+  //Operacao := GetFieldByID(GetZConnection, 'CFOP', 'OPERACAO', 'NUMERO',
+  //  StrToInt(Sender.AsString));
+  //if Operacao <> '' then
+  //  cdsNFiscaisOPERACAO.AsString := Operacao;
 end;
 
 procedure TfrmNotasFiscais.cdsNFiscaisCODFORNECEDORValidate(
@@ -845,17 +845,17 @@ procedure TfrmNotasFiscais.cdsNFiscaisCODFORNECEDORValidate(
 var
   NomeForn: string;
 begin
-  NomeForn := GetFieldByID(GetConnection, 'FORNECEDORES', 'FANTAZIA', 'CODFORNECEDOR',
-    Sender.AsInteger);
-  if NomeForn <> '' then
-    cdsNFiscaisFORNECEDOR.AsString := NomeForn;
+  //NomeForn := GetFieldByID(GetZConnection, 'FORNECEDORES', 'FANTAZIA', 'CODFORNECEDOR',
+  //  Sender.AsInteger);
+  //if NomeForn <> '' then
+  //  cdsNFiscaisFORNECEDOR.AsString := NomeForn;
 end;
 
 procedure TfrmNotasFiscais.cdsDetNFiscaisPRODUTOValidate(Sender: TField);
 var
   NomeProduto: string;
 begin
-  NomeProduto := GetFieldByID(GetConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
+  NomeProduto := GetFieldByID(GetZConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
     Sender.AsInteger);
   if NomeProduto <> '' then
     cdsDetNFiscaisNOMEPRODUTO.AsString := NomeProduto;
@@ -865,7 +865,7 @@ procedure TfrmNotasFiscais.cdsDetNFiscaisALIQUOTAValidate(Sender: TField);
 var
   Aliquota: string;
 begin
-  Aliquota := GetFieldByID(GetConnection, 'ALIQUOTAS', 'DESCRICAO', 'CODALIQUOTA',
+  Aliquota := GetFieldByID(GetZConnection, 'ALIQUOTAS', 'DESCRICAO', 'CODALIQUOTA',
     Sender.AsInteger);
   if Aliquota <> '' then
     cdsDetNFiscaisNOMEALIQUOTA.AsString := Aliquota;
@@ -1059,7 +1059,7 @@ end;
 
 procedure TfrmNotasFiscais.cdsNFiscaisNUMEROChange(Sender: TField);
 begin
-  if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, sqlNFiscais.SQLConnection) then
+  if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, GetZConnection) then
     MsgCuidado('J� existe uma nota com este n�mero.');
 end;
 

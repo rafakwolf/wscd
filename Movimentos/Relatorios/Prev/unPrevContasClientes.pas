@@ -3,7 +3,7 @@ unit unPrevContasClientes;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
   RLReport, RLParser, FMTBcd;
 
@@ -109,12 +109,12 @@ procedure TfrmPrevContasClientes.CalculaContas;
 var
   AVencer, Vencidas, VencHoje: string;
 begin
-  AVencer := FormatFloat('#,##0.00', SelecTFMTBCDField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO > '+
-    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), sqldPadrao.SQLConnection));
-  Vencidas := FormatFloat('#,##0.00', SelecTFMTBCDField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO < '+
-    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), sqldPadrao.SQLConnection));
-  VencHoje := FormatFloat('#,##0.00', SelecTFMTBCDField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO = '+
-    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), sqldPadrao.SQLConnection));
+  AVencer := FormatFloat('#,##0.00', SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO > '+
+    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), GetZConnection));
+  Vencidas := FormatFloat('#,##0.00', SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO < '+
+    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), GetZConnection));
+  VencHoje := FormatFloat('#,##0.00', SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO = '+
+    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), GetZConnection));
 
   rllbVencer.Caption := 'A vencer: '+AVencer;
   rllbVenvidas.Caption := 'Vencidas: '+Vencidas;

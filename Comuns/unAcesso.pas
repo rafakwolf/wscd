@@ -3,8 +3,8 @@ unit unAcesso;
 interface
 
 uses
-  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlDb,  PNG;
+ Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, DB, SqlDb,  PNG;
 
 type
   TfrmAcesso = class(TForm)
@@ -65,7 +65,7 @@ procedure TfrmAcesso.btnOkClick(Sender: TObject);
 begin
   if Trim(edtUsuario.Text).IsEmpty then
   begin
-    MsgErro('','Informe o usu�rio.');
+    MsgErro('','Informe o usuario.');
     ModalResult := mrNone;
     edtUsuario.SetFocus;
     Exit;
@@ -83,21 +83,18 @@ begin
   begin
     if ValidaLogin then
     begin
-        //if ckbLembrarLogin.Checked then
-        //  Application.Cookies.SetCookie('_erp_login', edtUsuario.Text);
-
       ModalResult := mrOk;
       Ok := True;
     end
     else
     begin
       ModalResult := mrNone;
-      MsgErro('','Usu�rio ou Senha est� incorreto.');
+      MsgErro('','Usuario ou Senha esta incorreto.');
       Abort;
     end;
   end
   else
-    raise Exception.Create('Nenhum usu�rio cadastrado.');
+    raise Exception.Create('Nenhum usuario cadastrado.');
 
   ModalResult := mrOk;
 end;

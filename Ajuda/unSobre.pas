@@ -3,10 +3,13 @@ unit unSobre;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, JPEGLib, lcltype;
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   StdCtrls, JPEGLib, lcltype;
 
 type
+
+  { TfrmSobre }
+
   TfrmSobre = class(TForm)
     btnOK: TButton;
     lblVersao: TLabel;
@@ -20,9 +23,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private
-    //procedure Carrega;
   public
-    constructor Create(Aowner: TComponent); override;
   end;
 
 var
@@ -46,13 +47,6 @@ begin
     Close;
 end;
 
-constructor TfrmSobre.Create(Aowner: TComponent);
-begin
-  inherited;
-  BorderStyle := bsSingle;
-  SetDialogForm(Self);
-end;
-
 procedure TfrmSobre.FormShow(Sender: TObject);
 begin
   Caption := 'Sobre o ' + Sistema.AppCaption;
@@ -66,40 +60,9 @@ begin
   Action := caFree;
 end;
 
-//procedure TfrmSobre.Carrega;
-//var
-//  verInfo: TOSVersionInfo;
-//  str: string;
-//  I: Word;
-//begin
-//  mmoOS.Lines.Clear;
-//  verInfo.dwOSVersionInfoSize := SizeOf(TOSVersionInfo);
-//  if GetVersionEx(verInfo) then
-//  begin
-//    mmoOS.Lines.Add('Vers�o : ' + IntToStr(verInfo.dwMajorVersion) + '.' +
-//      IntToStr(verInfo.dwMinorVersion));
-//    mmoOS.Lines.Add('Compila��o : ' + IntToStr(verInfo.dwBuildNumber));
-//
-//    case verInfo.dwPlatformId of
-//      VER_PLATFORM_WIN32s: mmoOS.Lines.Add('Sistema Operacional : Windows 95');
-//      VER_PLATFORM_WIN32_WINDOWS:
-//        mmoOS.Lines.Add('Sistema Operacional : Windows 95 Osr2 / 98');
-//      VER_PLATFORM_WIN32_NT:
-//        mmoOS.Lines.Add('Sistema Operacional : Windows NT');
-//    end;
-//
-//    str := '';
-//
-//    for I := 0 to 127 do
-//      str := str + verInfo.szCSDVersion[I];
-//
-//    mmoOS.Lines.Add('Informa��es Adicionais : ' + str);
-//  end;
-//end;
-
 procedure TfrmSobre.FormCreate(Sender: TObject);
 begin
-  //Carrega;
+  //
 end;
 
 initialization

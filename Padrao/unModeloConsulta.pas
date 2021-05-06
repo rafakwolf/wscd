@@ -3,16 +3,16 @@ unit unModeloConsulta;
 interface
 
 uses
-  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+ Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, StdCtrls, Buttons, Grids, DBGrids,
-  Masks, StrUtils, SQLDB, FmtBCD, memds, LCLType;
+  Masks, StrUtils, SQLDB, FmtBCD, LCLType, ZDataset;
 
 type
+
+  { TfrmModeloConsulta }
+
   TfrmModeloConsulta = class(TForm)
     dsPadrao: TDataSource;
-    sqldPesquisa: TSQLQuery;
-    dspPesquisa: TComponent;
-    cdsPesquisa: TMemDataSet;
     lbCampo: TLabel;
     lbCondicao: TLabel;
     lbDados: TLabel;
@@ -24,6 +24,7 @@ type
     cmbCampo: TComboBox;
     edtPesquisa: TEdit;
     Grade: TDBGrid;
+    sqldPesquisa: TZReadOnlyQuery;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure GradeDblClick(Sender: TObject);
@@ -55,7 +56,7 @@ end;
 
 procedure TfrmModeloConsulta.btnBuscarClick(Sender: TObject);
 begin
-  ExecPesquisa(edtPesquisa.Text, cdsPesquisa.Fields[ cmbCampo.ItemIndex ].FieldName,
+  ExecPesquisa(edtPesquisa.Text, sqldPesquisa.Fields[ cmbCampo.ItemIndex ].FieldName,
     cmbCondicao.ItemIndex);
 end;
 
@@ -78,22 +79,19 @@ begin
   try
     Caption := Titulo;
 
-    cdsPesquisa.Close;
+    sqldPesquisa.Close;
     sqldPesquisa.SQL.Clear;
-    sqldPesquisa.SQL.Add('select * from '+Table);
-    cdsPesquisa.Open;
+    sqldPesquisa.SQL.Add('select * from '+UpperCase(Table));
+    sqldPesquisa.Open;
 
-    cdsPesquisa.FieldDefs.GetItemNames(cmbCampo.Items);
+    sqldPesquisa.FieldDefs.GetItemNames(cmbCampo.Items);
 
     lbNumRegs.Caption := '';
 
-    //ShowModal(procedure (Sender: TComponent; AResult: Integer)
-    //          begin
-    //            //FreeAndNil(frmModeloConsulta);
-    //          end);
-
+    Result := ShowModal;
 
   finally
+    free;
   end;
 end;
 
@@ -104,18 +102,18 @@ end;
 
 procedure TfrmModeloConsulta.FormCreate(Sender: TObject);
 begin
-  sqldPesquisa.SQLConnection := GetConnection;
+  sqldPesquisa.Connection := GetZConnection;
 end;
 
 procedure TfrmModeloConsulta.NumeroResgistros;
 begin
   lbNumRegs.Caption := '';
-  if cdsPesquisa.Active then
+  if sqldPesquisa.Active then
   begin
-    if cdsPesquisa.RecordCount = 1 then
+    if sqldPesquisa.RecordCount = 1 then
       lbNumRegs.Caption := '1 registro encontrado'
-    else if cdsPesquisa.RecordCount > 1 then
-      lbNumRegs.Caption := IntToStr(cdsPesquisa.RecordCount) + ' registros encontrados'
+    else if sqldPesquisa.RecordCount > 1 then
+      lbNumRegs.Caption := IntToStr(sqldPesquisa.RecordCount) + ' registros encontrados'
     else
       lbNumRegs.Caption := 'Nenhum registro encontrado.';
   end

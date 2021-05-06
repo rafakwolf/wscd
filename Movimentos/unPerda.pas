@@ -3,8 +3,8 @@ unit unPerda;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unPadrao, Menus, DB, ActnList, Buttons,   ComCtrls,
   memds,  SqlDb, StdCtrls, DBCtrls, VarGlobal,
      FMTBcd, lcltype;
 
@@ -17,7 +17,7 @@ type
     sqldPadraoDATA: TDateField;
     sqldPadraoMOTIVO: TStringField;
     sqldPadraoOBS: TMemoField;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoCODPRODUTO: TIntegerField;
@@ -90,7 +90,7 @@ procedure TfrmPerda.cdsPadraoCODPRODUTOValidate(Sender: TField);
 var
   NomeProduto: string;
 begin
-  NomeProduto := GetFieldByID(GetConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
+  NomeProduto := GetFieldByID(GetZConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
     Sender.AsInteger);
   if NomeProduto <> '' then
     cdsPadraoDESCRICAO.AsString := NomeProduto;

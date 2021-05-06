@@ -1,0 +1,123 @@
+inherited frmAgenda: TfrmAgenda
+  Left = 314
+  Height = 319
+  Width = 626
+  ActiveControl = pnBotoesPadrao
+  Caption = 'frmAgenda'
+  ClientHeight = 319
+  ClientWidth = 626
+  inherited sbStatus: TStatusBar
+    Top = 301
+    Width = 626
+  end
+  inherited pnBotoesPadrao: TPanel
+    Width = 626
+    ClientWidth = 626
+    TabOrder = 1
+  end
+  object dbeNome: TDBEdit[2]
+    Left = 56
+    Height = 33
+    Top = 56
+    Width = 345
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object dbmObs: TDBMemo[3]
+    Left = 56
+    Height = 89
+    Top = 136
+    Width = 345
+    DataField = 'OBS'
+    DataSource = dsPadrao
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+  end
+  object dbeFone1: TDBEdit[4]
+    Left = 56
+    Height = 33
+    Top = 96
+    Width = 183
+    DataField = 'TELEFONE'
+    DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  inherited actlNavigateActions: TActionList[5]
+    Left = 328
+    Top = 64
+    inherited actPrint: TAction
+      Hint = 'Listagem de telefones'
+      ShortCut = 0
+    end
+  end
+  inherited dsPadrao: TDataSource[6]
+    DataSet = ZQuery1
+    Left = 296
+    Top = 160
+  end
+  object ZQuery1: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from AGENDA'
+    )
+    Params = <>
+    Left = 112
+    Top = 152
+  end
+  object ZUpdateSQL1: TZUpdateSQL[8]
+    DeleteSQL.Strings = (
+      'DELETE FROM AGENDA'
+      'WHERE'
+      '  AGENDA.IDAGENDA = :OLD_IDAGENDA'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO AGENDA'
+      '  (NOME, TELEFONE, OBS)'
+      'VALUES'
+      '  (:NOME, :TELEFONE, :OBS)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE AGENDA SET'
+      '  NOME = :NOME,'
+      '  TELEFONE = :TELEFONE,'
+      '  OBS = :OBS'
+      'WHERE'
+      '  AGENDA.IDAGENDA = :OLD_IDAGENDA'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 187
+    Top = 155
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'NOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'TELEFONE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OBS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_IDAGENDA'
+        ParamType = ptUnknown
+      end>
+  end
+end

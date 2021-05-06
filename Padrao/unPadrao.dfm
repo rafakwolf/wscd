@@ -1,7 +1,7 @@
 object frmPadrao: TfrmPadrao
-  Left = 356
+  Left = 278
   Height = 372
-  Top = 159
+  Top = 178
   Width = 810
   HelpContext = 3
   HorzScrollBar.Increment = 72

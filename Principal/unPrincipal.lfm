@@ -1,47 +1,22 @@
 object MainForm: TMainForm
-  Left = 284
-  Height = 544
-  Top = 153
-  Width = 1060
-  ClientHeight = 544
-  ClientWidth = 1060
+  Left = 241
+  Height = 369
+  Top = 196
+  Width = 843
+  Caption = 'WSCD'
+  ClientHeight = 369
+  ClientWidth = 843
   OnCreate = FormCreate
+  Position = poScreenCenter
   LCLVersion = '2.0.12.0'
-  object toolsPanel: TPanel
-    Left = 616
-    Height = 57
-    Top = 464
-    Width = 425
-    ClientHeight = 57
-    ClientWidth = 425
-    ParentColor = False
-    ParentShowHint = False
-    ShowHint = True
+  object Button1: TButton
+    Left = 102
+    Height = 25
+    Top = 75
+    Width = 75
+    Caption = 'Button1'
+    OnClick = Button1Click
     TabOrder = 0
-    object btnNotifficacoes: TSpeedButton
-      Left = 104
-      Height = 55
-      Top = 1
-      Width = 160
-      Align = alRight
-      Caption = 'Notificações'
-      Color = clWindow
-      OnClick = btnNotifficacoesClick
-      ShowHint = True
-      ParentShowHint = False
-    end
-    object btnSair: TSpeedButton
-      Left = 264
-      Height = 55
-      Top = 1
-      Width = 160
-      Align = alRight
-      Caption = 'SAIR'
-      Color = clWindow
-      OnClick = btnSairClick
-      ShowHint = True
-      ParentShowHint = False
-    end
   end
   object ListaAcoes: TActionList
     Left = 216

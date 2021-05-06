@@ -3,14 +3,14 @@ unit unPrevNotaProm;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DB, SqlDb, DBCtrls, 
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   StdCtrls, Buttons, DB, SqlDb, DBCtrls, 
   memds,  ConstPadrao,   FMTBcd, lcltype;
 
 type
   TfrmPrevNotaProm = class(TForm)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODCLIENTE: TIntegerField;

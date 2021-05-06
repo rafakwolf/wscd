@@ -3,14 +3,14 @@ unit unModeloRelatorio;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RLReport, DB, memds,  SqlDb, RLParser, FMTBcd,
   RLConsts;
 
 type
   TfrmModeloRelatorio = class(TForm)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     rlepCalculos: TRLExpressionParser;

@@ -3,9 +3,9 @@ unit unConfiguraDuplicata;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb, Grids, DBGrids,
+  ComCtrls, memds,  SqlDb, Grids, DBGrids,
   DBCtrls, FMTBcd, LCLType;
 
 type
@@ -17,7 +17,7 @@ type
     sqldPadraoFONTE: TIntegerField;
     sqldPadraoTIPOFONTE: TStringField;
     sqldPadraoESTILOFONTE: TStringField;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     cdsPadraoCAMPO: TStringField;
     cdsPadraoVERTICAL: TIntegerField;

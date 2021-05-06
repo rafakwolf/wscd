@@ -3,7 +3,7 @@ unit unImportaOrcam;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, StdCtrls, Buttons, DB, ComCtrls, 
   memds,  SqlDb, FMTBcd, LCLType;
 
@@ -110,7 +110,7 @@ begin
       with sqldVenda do
       begin
         Close;
-        ID := GetProximoID('VENDA', 'CODIGO', GetConnection);
+        //ID := GetProximoID('VENDA', 'CODIGO', GetConnection);
         Params.ParamByName('ID').AsInteger         := ID;
         Params.ParamByName('IDCLIENTE').AsInteger  := cdsOrcamCODCLIENTE.AsInteger;
         Params.ParamByName('IDVEND').AsInteger     := cdsOrcamIDVENDEDOR.AsInteger;

@@ -3,14 +3,14 @@ unit unExclusaoCaixa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ComCtrls, DB, memds, LCLType,
-   SqlDb, Grids, DBGrids, ExtCtrls, FMTBcd, unSimplePadrao;
+  SqlDb, Grids, DBGrids, FMTBcd, unSimplePadrao;
 
 type
   TfrmExclusaoCaixa = class(TfrmSimplePadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODCAIXA: TIntegerField;

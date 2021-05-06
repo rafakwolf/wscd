@@ -3,11 +3,10 @@ unit unParcelaCompra;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, DB, memds,  dateutils,
-   SqlDb,  Grids, DBGrids, Spin, StdCtrls,
-   DBCtrls,  Buttons,  funcoes, VarGlobal,
-  ExtCtrls, FMTBcd, uDatabaseutils;
+  SqlDb,  Grids, DBGrids, Spin, StdCtrls,
+  DBCtrls,  Buttons,  funcoes, VarGlobal, FMTBcd, uDatabaseutils;
 
 type
   TfrmParcelaCompra = class(TfrmSimplePadrao)
@@ -176,9 +175,9 @@ begin
   begin
     with sqldPagar do
     begin
-      Params.ParamByName('CODIGO').AsInteger :=
-        GetProximoID('CONTASPAGAr', 'CODIGO', GetConnection);
-
+      //Params.ParamByName('CODIGO').AsInteger :=
+      //  GetProximoID('CONTASPAGAr', 'CODIGO', GetConnection);
+      //
       Params.ParamByName('DATA').AsDate := sqldCompraDATAENTRADA.AsDateTime;
       Params.ParamByName('VENCIMENTO').AsDate := cdsParcelaVENC.AsDateTime;
       Params.ParamByName('IDFORN').AsInteger := sqldCompraCODFORNECEDOR.AsInteger;

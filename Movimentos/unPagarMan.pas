@@ -3,8 +3,8 @@ unit unPagarMan;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Buttons, DBCtrls,  DB, LCLType,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   StdCtrls, Buttons, DBCtrls,  DB, LCLType,
    SqlDb, unContasPagar, Grids, DBGrids, memds, FMTBcd, unSimplePadrao;
 
 type
@@ -208,8 +208,8 @@ begin
   end;
 
   edtTotal.Text := FormatFloat('0.00',
-    SelecTFMTBCDField('select sum(TOTAL) from CONTASPAGAR where PAGAR = '+
-    QuotedStr('S'), sqldContasPagar.SQLConnection));
+    SelecSingleField('select sum(TOTAL) from CONTASPAGAR where PAGAR = '+
+    QuotedStr('S'), GetZConnection));
 
   rgTipoPagamento.OnClick(Self);
 
@@ -562,7 +562,7 @@ procedure TfrmPagarMan.cdsSelecaoIDBANCOValidate(Sender: TField);
 var
   NomeBanco: string;
 begin
-  NomeBanco := GetFieldByID(GetConnection,'BANCO','BANCO','IDBANCO',Sender.AsInteger);
+  NomeBanco := GetFieldByID(GetZConnection,'BANCO','BANCO','IDBANCO',Sender.AsInteger);
   if NomeBanco <> '' then
     cdsSelecaoBANCO.AsString := NomeBanco;
 end;

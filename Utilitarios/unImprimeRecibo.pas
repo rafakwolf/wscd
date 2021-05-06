@@ -3,8 +3,8 @@ unit unImprimeRecibo;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, Spin;
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Spin;
 
 type
   TfrmImprimeRecibo = class(TForm)

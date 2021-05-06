@@ -3,7 +3,7 @@ unit unRelatorioProdutosEstoque;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloRelatorio, FMTBcd, DB, memds,  SqlDb,
   RLReport, RLParser;
 

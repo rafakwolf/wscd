@@ -3,25 +3,21 @@ unit unCadastroCFOP;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
+  ComCtrls,   memds,  SqlDb,  DBCtrls, ZDataset, ZSqlUpdate,
   FMTBcd;
 
 type
+
+  { TfrmCadastroCFOP }
+
   TfrmCadastroCFOP = class(TfrmPadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
-    cdsPadrao: TMemDataSet;
-    sqldPadraoNUMERO: TStringField;
-    sqldPadraoOPERACAO: TStringField;
-    cdsPadraoNUMERO: TStringField;
-    cdsPadraoOPERACAO: TStringField;
-    sqldPadraoCFNOTA: TStringField;
-    cdsPadraoCFNOTA: TStringField;
     dbeNomeCfop: TDBEdit;
     dbeCodCfop: TDBEdit;
     dbmCfNota: TDBMemo;
+    ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
   private
@@ -44,6 +40,7 @@ begin
   FieldNames := FN_CFOP;
   DisplayLabels := DL_CFOP;
   aCaption := 'Cfop';
+  tableName:='CFOP';
 end;
 
 procedure TfrmCadastroCFOP.actPrintExecute(Sender: TObject);

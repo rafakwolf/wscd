@@ -3,8 +3,8 @@ unit unLancCaixa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Buttons, StdCtrls,  DBCtrls, DB, ComCtrls,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   Buttons, StdCtrls,  DBCtrls, DB, ComCtrls,
   memds,  SqlDb, FMTBcd, VarGlobal;
 
 type
@@ -15,7 +15,7 @@ type
     cdsCaixasCODIGO: TIntegerField;
     cdsCaixasNOME: TStringField;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODCAIXA: TIntegerField;
@@ -225,7 +225,7 @@ var
   NomeCaixa: string;
 begin
   inherited;
-  //NomeCaixa := GetFieldByID(GetConnection, 'CAIXAS', 'NOME', 'CODIGO',
+  //NomeCaixa := GetFieldByID(GetZConnection, 'CAIXAS', 'NOME', 'CODIGO',
   //  Sender.AsInteger);
   if NomeCaixa <> '' then
     cdsPadraoNOME.AsString := NomeCaixa;

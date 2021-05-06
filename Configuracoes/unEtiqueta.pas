@@ -3,15 +3,15 @@ unit unEtiqueta;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb, Spin, 
+  ComCtrls,   memds,  SqlDb, Spin, 
   DBCtrls, FMTBcd;
 
 type
   TfrmEtiqueta = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldPadraoIDETIQUETA: TIntegerField;
     sqldPadraoETIQUETA: TStringField;

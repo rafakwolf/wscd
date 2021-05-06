@@ -3,8 +3,8 @@ unit unRelatorioNovoAlterado;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB;
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,   DB;
 
 const
   cs_prod_novos_alter: string = 'select '+

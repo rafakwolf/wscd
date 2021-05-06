@@ -3,8 +3,8 @@ unit unTrocaSenhaCaixa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons, memds,  DB,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, memds,  DB,
   SqlDb, FMTBcd;
 
 type

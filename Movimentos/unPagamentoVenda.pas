@@ -3,7 +3,7 @@ unit unPagamentoVenda;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, StdCtrls, DB, SqlDb, memds,
    Grids, DBGrids, FMTBcd, VarGlobal, LCLType;
 

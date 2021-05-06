@@ -3,7 +3,7 @@ unit unBaixaCheque;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, 
   DB, memds, Sqldb,  FMTBcd;
 

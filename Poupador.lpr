@@ -3,7 +3,8 @@ program Poupador;
 {$MODE Delphi}
 
 uses
-  Forms, Interfaces,
+  Forms,
+  Interfaces,
   uClasses in 'Util\uClasses.pas',
   uNotifyEventDispatcher in 'Util\uNotifyEventDispatcher.pas',
   unDmPrincipal in 'Principal\unDmPrincipal.pas' {DmPrincipal: TDataModule},
@@ -171,6 +172,7 @@ uses
 
 begin
   Application.Initialize;
+  Application.CreateForm(TDmPrincipal, DmPrincipal);
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.

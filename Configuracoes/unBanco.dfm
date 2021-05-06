@@ -31,9 +31,9 @@ inherited frmBanco: TfrmBanco
     Left = 96
     Height = 33
     Hint = 'Nome do banco'
-    Top = 80
+    Top = 88
     Width = 321
-    DataField = 'BANCO'
+    DataField = 'BANCO_NOME'
     DataSource = dsPadrao
     CharCase = ecNormal
     MaxLength = 0
@@ -42,65 +42,55 @@ inherited frmBanco: TfrmBanco
     TabOrder = 1
   end
   inherited actlNavigateActions: TActionList[4]
-    Left = 32
-    Top = 76
+    Left = 72
+    Top = 176
   end
   inherited dsPadrao: TDataSource[5]
-    DataSet = cdsPadrao
-    Left = 311
+    DataSet = ZQuery1
+    Left = 480
+    Top = 160
   end
-  object sqldPadrao: TSQLQuery[6]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[6]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from BANCO'
+    )
     Params = <>
-    Left = 112
-    Top = 84
-    object sqldPadraoIDBANCO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDBANCO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoBANCO: TStringField
-      FieldKind = fkData
-      FieldName = 'BANCO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
+    Left = 232
+    Top = 162
   end
-  object dspPadrao: TTimer[7]
-    Left = 184
-    Top = 84
-  end
-  object cdsPadrao: TMemDataset[8]
-    FieldDefs = <>
-    Left = 256
-    Top = 84
-    object cdsPadraoIDBANCO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDBANCO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-      DisplayFormat = '000'
-    end
-    object cdsPadraoBANCO: TStringField
-      FieldKind = fkData
-      FieldName = 'BANCO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
+  object ZUpdateSQL1: TZUpdateSQL[7]
+    DeleteSQL.Strings = (
+      'DELETE FROM BANCO'
+      'WHERE'
+      '  BANCO.IDBANCO = :OLD_IDBANCO'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO BANCO'
+      '  (BANCO_NOME)'
+      'VALUES'
+      '  (:BANCO_NOME)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE BANCO SET'
+      '  BANCO_NOME = :BANCO_NOME'
+      'WHERE'
+      '  BANCO.IDBANCO = :OLD_IDBANCO'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 306
+    Top = 165
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'BANCO_NOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_IDBANCO'
+        ParamType = ptUnknown
+      end>
   end
 end

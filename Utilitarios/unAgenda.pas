@@ -3,37 +3,21 @@ unit unAgenda;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb, DBCtrls,
+  ComCtrls, SqlDb, DBCtrls, ZDataset, ZSqlUpdate,
   FMTBcd;
 
 type
+
+  { TfrmAgenda }
+
   TfrmAgenda = class(TfrmPadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
-    cdsPadrao: TMemDataSet;
-    sqldPadraoNOME: TStringField;
-    sqldPadraoTELEFONE: TStringField;
-    sqldPadraoTELEFONE2: TStringField;
-    sqldPadraoTELEFONE3: TStringField;
-    sqldPadraoFAX: TStringField;
-    sqldPadraoOBS: TMemoField;
-    cdsPadraoNOME: TStringField;
-    cdsPadraoTELEFONE: TStringField;
-    cdsPadraoTELEFONE2: TStringField;
-    cdsPadraoTELEFONE3: TStringField;
-    cdsPadraoFAX: TStringField;
-    cdsPadraoOBS: TMemoField;
-    sqldPadraoIDAGENDA: TIntegerField;
-    cdsPadraoIDAGENDA: TIntegerField;
-    dbeNome: TDBEdit;
-    dbeFax: TDBEdit;
-    grpTelefone: TGroupBox;
     dbeFone1: TDBEdit;
-    dbeFone2: TDBEdit;
-    dbeFone3: TDBEdit;
+    dbeNome: TDBEdit;
     dbmObs: TDBMemo;
+    ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -45,9 +29,9 @@ var
 implementation
 
 uses
-  ConstPadrao;
+  ConstPadrao, unDmPrincipal;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmAgenda.FormCreate(Sender: TObject);
 begin
@@ -55,6 +39,8 @@ begin
   aCaption := 'Agenda';
   FieldNames := FN_AGENDA;
   DisplayLabels := DL_AGENDA;
+  TableName:= 'Agenda';
+  IdField:='IDAGENDA';
 end;
 
 initialization

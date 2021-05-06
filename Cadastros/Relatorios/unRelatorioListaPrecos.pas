@@ -3,7 +3,7 @@ unit unRelatorioListaPrecos;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RLReport, DB, memds,  SqlDb, FMTBcd;
 
 type
@@ -16,7 +16,7 @@ type
     dbtPreco: TRLDBText;
     bandRodape: TRLBand;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoDESCRICAO: TStringField;

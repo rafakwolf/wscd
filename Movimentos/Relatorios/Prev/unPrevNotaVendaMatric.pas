@@ -3,7 +3,7 @@ unit unPrevNotaVendaMatric;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, DB, Sqldb, FMTBcd;
 
 type

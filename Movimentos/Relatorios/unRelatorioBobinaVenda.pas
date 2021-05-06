@@ -3,8 +3,8 @@ unit unRelatorioBobinaVenda;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, StdCtrls, Buttons, Spin, ExtCtrls, DB,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao, StdCtrls, Buttons, Spin, DB,
   memds, Sqldb, FMTBcd, lcltype;
 
 type

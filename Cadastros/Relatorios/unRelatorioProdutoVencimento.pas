@@ -3,10 +3,10 @@ unit unRelatorioProdutoVencimento;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, memds, 
-  DB, SqlDb, StdCtrls, Buttons, ExtCtrls , ComCtrls,
-    DBCtrls,  FMTBcd;
+  DB, SqlDb, StdCtrls, Buttons, ComCtrls,
+  DBCtrls, FMTBcd;
 
 type
   TfrmRelatorioProdutoVencimento = class(TfrmDialogoRelatorioPadrao)

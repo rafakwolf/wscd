@@ -3,14 +3,14 @@ unit unPromocao;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unPadrao, Menus, DB, ActnList, Buttons,   ComCtrls, VarGlobal,
   Grids, DBGrids, memds, Sqldb, ConstPadrao, DateUtils, FMTBcd, lcltype;
 
 type
   TfrmPromocao = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldPadraoCODIGO: TIntegerField;
     sqldPadraoPRODUTO: TIntegerField;
@@ -136,7 +136,7 @@ var
   NomePro: string;
 begin
   inherited;
-  NomePro := GetFieldByID(sqldPadrao.SQLConnection, 'PRODUTOS', 'ABREVIACAO', 'IDPRODUTO',
+  NomePro := GetFieldByID(GetZConnection, 'PRODUTOS', 'ABREVIACAO', 'IDPRODUTO',
     Sender.AsInteger);
   if NomePro <> '' then
     cdsPadraoABREVIACAO.AsString := NomePro;
@@ -188,8 +188,8 @@ procedure TfrmPromocao.AfterShow(var Msg: TMessage);
   function PromocoesVencidas: Boolean;
   begin
     Result :=
-      SelecTFMTBCDField('select count(1) from PROMOCAO where FIM < CURRENT_DATE',
-      sqldPadrao.SQLConnection) > 0;
+      SelecSingleField('select count(1) from PROMOCAO where FIM < CURRENT_DATE',
+      GetZConnection) > 0;
   end;
 
 begin

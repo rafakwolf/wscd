@@ -3,8 +3,8 @@ unit unPromissoria;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, StdCtrls, Buttons, ExtCtrls;
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unSimplePadrao, StdCtrls, Buttons;
 
 type
   TfrmPromissoria = class(TfrmSimplePadrao)
@@ -90,7 +90,7 @@ begin
 //    edtEmitente.Text := getdmpesquisar.cdsPesqClienteNOME.AsString;
 //    edtCpfCnpjEmitente.Text := getdmpesquisar.cdsPesqClienteCPF_CNPJ.AsString;
 //    edtEndereco.Text :=
-//      SelecTFMTBCDField('select ENDERECO from CLIENTES where CODCLIENTE = '+
+//      SelecSingleField('select ENDERECO from CLIENTES where CODCLIENTE = '+
 //        QuotedStr(IntToStr(getdmpesquisar.cdsPesqCliente.FieldByName('CODCLIENTE').asinteger)),
 //        GetConnection);
 //  end;

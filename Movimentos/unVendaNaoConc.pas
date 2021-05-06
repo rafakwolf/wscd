@@ -3,7 +3,7 @@ unit unVendaNaoConc;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, DB, memds,
    Sqldb, Grids, DBGrids, StdCtrls,
   Buttons, FMTBcd, lcltype;

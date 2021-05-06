@@ -3,7 +3,7 @@ unit unPrevDuplicataSemForm;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Funcoes, RLReport, memds,  DB, SqlDb, FMTBcd;
 
 type
@@ -29,7 +29,7 @@ type
     lbInscricao_Estadual: TRLLabel;
     lbEstado: TRLLabel;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldPadraoCAMPO: TStringField;
     sqldPadraoNOMECAMPO: TStringField;

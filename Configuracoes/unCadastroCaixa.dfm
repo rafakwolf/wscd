@@ -1,5 +1,6 @@
 inherited frmCadastroCaixa: TfrmCadastroCaixa
-  Left = 213
+  Left = 331
+  Top = 179
   Width = 624
   Caption = 'frmCadastroCaixa'
   ClientWidth = 624
@@ -12,22 +13,22 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     ClientWidth = 624
     TabOrder = 3
     inherited btnConsultar: TSpeedButton
-      Left = 253
+      Left = 287
       Width = 65
     end
     inherited btnSair: TSpeedButton
-      Left = 378
+      Left = 412
       Width = 53
     end
     inherited btnPrint: TSpeedButton
-      Left = 319
+      Left = 353
       Width = 59
     end
   end
   object dbeNomeCaixa: TDBEdit[2]
     Left = 64
     Height = 33
-    Top = 104
+    Top = 96
     Width = 305
     DataField = 'NOME'
     DataSource = dsPadrao
@@ -65,87 +66,61 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     ValueUnchecked = 'N'
   end
   inherited actlNavigateActions: TActionList[5]
-    Left = 208
-    Top = 36
+    Left = 144
+    Top = 224
   end
   inherited dsPadrao: TDataSource[6]
-    DataSet = cdsPadrao
-    Left = 471
-    Top = 36
+    DataSet = ZQuery1
+    Left = 456
+    Top = 192
   end
-  object sqldPadrao: TSQLQuery[7]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from CAIXAS'
+    )
     Params = <>
-    Left = 280
-    Top = 20
-    object sqldPadraoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoINATIVO: TStringField
-      FieldKind = fkData
-      FieldName = 'INATIVO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
+    Left = 210
+    Top = 184
   end
-  object dspPadrao: TTimer[8]
-    Left = 344
-    Top = 44
-  end
-  object cdsPadrao: TMemDataset[9]
-    FieldDefs = <>
-    AfterInsert = cdsPadraoAfterInsert
-    AfterScroll = cdsPadraoAfterScroll
-    Left = 408
-    Top = 92
-    object cdsPadraoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoINATIVO: TStringField
-      FieldKind = fkData
-      FieldName = 'INATIVO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
+  object ZUpdateSQL1: TZUpdateSQL[8]
+    DeleteSQL.Strings = (
+      'DELETE FROM CAIXAS'
+      'WHERE'
+      '  CAIXAS.CODIGO = :OLD_CODIGO'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CAIXAS'
+      '  (NOME, INATIVO)'
+      'VALUES'
+      '  (:NOME, :INATIVO)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CAIXAS SET'
+      '  NOME = :NOME,'
+      '  INATIVO = :INATIVO'
+      'WHERE'
+      '  CAIXAS.CODIGO = :OLD_CODIGO'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 304
+    Top = 176
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'NOME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INATIVO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_CODIGO'
+        ParamType = ptUnknown
+      end>
   end
 end

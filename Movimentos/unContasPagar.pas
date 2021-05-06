@@ -3,8 +3,8 @@ unit unContasPagar;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls,  Buttons, DBCtrls, DB, memds,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   Grids, DBGrids, StdCtrls,  Buttons, DBCtrls, DB, memds,
   Menus, SqlDb, ComCtrls,  ConstPadrao, ActnList,
   FMTBcd, unSimplePadrao,  varglobal, LCLType;
 
@@ -99,7 +99,7 @@ type
   TfrmContasPagar = class(TfrmSimplePadrao)
     alContasPagar: TActionList;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     actPagar: TAction;
     actExcluir: TAction;

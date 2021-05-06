@@ -4,8 +4,8 @@ interface
 
 uses
 
-  Variants,  Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, DB, 
+  Variants, Messages, ExtCtrls,  SysUtils, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons,   DB, 
   SqlDb, FMTBcd, LCLType;
 
 type

@@ -3,8 +3,8 @@ unit unContasReceber;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, Grids, DBGrids, StdCtrls,  Buttons, memds, DB,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   Grids, DBGrids, StdCtrls,  Buttons, memds, DB,
   DBCtrls, SqlDb, Menus, ComCtrls,  ConstPadrao,
   FMTBcd, unSimplePadrao, LCLType;
 
@@ -102,7 +102,7 @@ type
     dspCliente: TComponent;
     cdsCliente: TMemDataSet;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldDeleta: TSQLQuery;
     cdsPadraoCODIGO: TIntegerField;

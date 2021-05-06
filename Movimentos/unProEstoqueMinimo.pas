@@ -3,7 +3,7 @@ unit unProEstoqueMinimo;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, memds,  SqlDb, Grids, DBGrids,
   StdCtrls, Buttons, FMTBcd, lcltype;
 

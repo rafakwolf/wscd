@@ -3,15 +3,15 @@ unit unCR;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, DateUtils,
-  ExtCtrls, ComCtrls, DBCtrls,
+  ComCtrls,   DBCtrls,
   SqlDb,  memds, ConstPadrao, FMTBcd;
 
 type
   TfrmCR = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqlLimite: TSQLQuery;
     actContasReceber: TAction;
@@ -226,7 +226,7 @@ var
   NomeCliente: string;
 begin
   inherited;
-  NomeCliente := GetFieldByID(GetConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
+  NomeCliente := GetFieldByID(GetZConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
     Sender.AsInteger);
   if NomeCliente <> '' then
     cdsPadraoNOME.AsString := NomeCliente;
@@ -308,9 +308,9 @@ begin
   if cdsPadrao.State in [dsInsert] then
   begin
     if not cdsPadraoDOCUMENTO.IsNull then
-      if SelecTFMTBCDField('select count(1) from CONTASRECEBER where (DOCUMENTO = '+
+      if SelecSingleField('select count(1) from CONTASRECEBER where (DOCUMENTO = '+
         QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (CLIENTE = '+
-        QuotedStr(IntToStr(cdsPadraoCLIENTE.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
+        QuotedStr(IntToStr(cdsPadraoCLIENTE.AsInteger))+')', GetZConnection) > 0 then
       begin
         MsgCuidado('Este "Documento" j� est� cadastrado para este "Cliente".');
         SetFocusIfCan(dbeDocumento);
@@ -377,7 +377,7 @@ var
   NomeConta: string;
 begin
   inherited;
-  NomeConta := GetFieldByID(GetConnection, 'VIEWCAIXAS', 'CAIXANOME', 'IDCAIXAS',
+  NomeConta := GetFieldByID(GetZConnection, 'VIEWCAIXAS', 'CAIXANOME', 'IDCAIXAS',
     Sender.AsInteger);
   if NomeConta <> '' then
     cdsPadraoCONTA.AsString := NomeConta;

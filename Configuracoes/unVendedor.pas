@@ -3,14 +3,14 @@ unit unVendedor;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unPadrao, Menus, DB, ActnList, Buttons, ExtCtrls, ComCtrls,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unPadrao, Menus, DB, ActnList, Buttons,   ComCtrls,
   memds, Sqldb, StdCtrls, DBCtrls, FMTBcd;
 
 type
   TfrmVendedor = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     sqldPadraoIDVENDEDOR: TIntegerField;
     sqldPadraoVENDEDOR: TStringField;

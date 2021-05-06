@@ -3,8 +3,8 @@ unit ufmUsuarioItemMenu;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ActnList, StdCtrls, Buttons,   ComCtrls,
   Sqldb,ImgList, Menus, uClassesMenu,
   memds,  DBCtrls,ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd;
 
@@ -20,7 +20,7 @@ type
     sqldMenuORDEM: TIntegerField;
     sqldMenuMENUITEM: TStringField;
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     cdsPadraoIDUSUARIOS: TIntegerField;
     cdsPadraoNOME: TStringField;

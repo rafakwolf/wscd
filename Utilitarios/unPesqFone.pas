@@ -3,9 +3,9 @@ unit unPesqFone;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, DB, memds,  SqlDb, Grids,
-  DBGrids, ExtCtrls, Buttons,  Menus, FMTBcd;
+  DBGrids, Buttons,  Menus, FMTBcd;
 
 type
   TfrmPesqFone = class(TfrmSimplePadrao)

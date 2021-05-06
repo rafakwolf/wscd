@@ -3,7 +3,7 @@ unit unPrevRelCaixa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloRelatorio, RLReport, DB, memds, 
   SqlDb, VarGlobal, RLParser, FMTBcd;
 

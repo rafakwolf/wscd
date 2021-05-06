@@ -3,15 +3,15 @@ unit unCP;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds,  SqlDb,  DBCtrls,
+  ComCtrls,   memds,  SqlDb,  DBCtrls,
   ConstPadrao, FMTBcd,  VarGlobal;
 
 type
   TfrmCP = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     actContas: TAction;
     cdsPadraoCODIGO: TIntegerField;
@@ -212,7 +212,7 @@ var
   NomeForn: string;
 begin
   inherited;
-  NomeForn := GetFieldByID(GetConnection, 'FORNECEDORES', 'FANTAZIA', 'CODFORNECEDOR',
+  NomeForn := GetFieldByID(GetZConnection, 'FORNECEDORES', 'FANTAZIA', 'CODFORNECEDOR',
     Sender.AsInteger);
   if NomeForn <> '' then
     cdsPadraoFANTAZIA.AsString := NomeForn;
@@ -298,9 +298,9 @@ begin
   if cdsPadrao.State in [dsInsert] then
   begin
     if not cdsPadraoDOCUMENTO.IsNull then
-       if SelecTFMTBCDField('select count(1) from CONTASPAGAR where (DOCUMENTO = '+
+       if SelecSingleField('select count(1) from CONTASPAGAR where (DOCUMENTO = '+
         QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (FORNECEDOR = '+
-        QuotedStr(IntToStr(cdsPadraoFORNECEDOR.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
+        QuotedStr(IntToStr(cdsPadraoFORNECEDOR.AsInteger))+')', GetZConnection) > 0 then
       begin
         MsgCuidado('Este "Documento" j� est� cadastrado para este "Fornecedor".');
         SetFocusIfCan(dbeDocumento);
@@ -359,7 +359,7 @@ var
   NomeConta: string;
 begin
   inherited;
-  NomeConta := GetFieldByID(GetConnection, 'CAIXAS', 'NOME', 'CODIGO',
+  NomeConta := GetFieldByID(GetZConnection, 'CAIXAS', 'NOME', 'CODIGO',
     Sender.AsInteger);
   if NomeConta <> '' then
     cdsPadraoNOME.AsString := NomeConta;

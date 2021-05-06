@@ -3,7 +3,7 @@ unit unConfigNotaMan;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, ComCtrls, DB, Sqldb,
    memds, StdCtrls,
   DBCtrls,  Buttons, FMTBcd;
@@ -11,7 +11,7 @@ uses
 type
   TfrmConfigNotaMan = class(TfrmSimplePadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     sqldPadraoCODIGO: TIntegerField;
@@ -204,7 +204,7 @@ begin
   inherited;
   if ModoInsert(cdsPadrao) then
   begin
-    if SQLFind('CONFIGNOTA', 'CAMPO', dbeCampoDescricao.Text, GetConnection) then
+    if SQLFind('CONFIGNOTA', 'CAMPO', dbeCampoDescricao.Text, GetZConnection) then
     begin
       MsgErro('Este campo j� existe,  escolha outro nome.');
       Exit;

@@ -3,15 +3,15 @@ unit unDadosEmpresa;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ExtCtrls, ComCtrls, memds, ExtDlgs,
+  ComCtrls,   memds, ExtDlgs,
     DBCtrls, Sqldb, FMTBcd;
 
 type
   TfrmDadosEmpresa = class(TfrmPadrao)
     sqldPadrao: TSQLQuery;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     opdLogo: TOpenPictureDialog;
     sqldPadraoFANTAZIA: TStringField;
@@ -254,7 +254,7 @@ var
   NomeCidade: string;
 begin
   inherited;
-  NomeCidade := GetFieldByID(GetConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
+  NomeCidade := GetFieldByID(GetZConnection, 'CIDADES', 'DESCRICAO', 'CODCIDADE',
     Sender.AsInteger);
   if NomeCidade <> '' then
     cdsPadraoDESCRICAO.AsString := NomeCidade;

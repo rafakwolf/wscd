@@ -3,7 +3,7 @@ unit unParcelaCPCR;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, ComCtrls,  DB,
   memds,  SqlDb, Grids, DBGrids, Spin, StdCtrls,  DBCtrls,
   Buttons, DateUtils, FMTBcd;
@@ -29,7 +29,7 @@ type
     sqldPadraoNOME: TStringField;
     sqldPadraoDATA: TDateField;
     sqldPadraoVALOR: TFloatField;
-    dspPadrao: TComponent;
+    dspPadrao: TTimer;
     cdsPadrao: TMemDataSet;
     cdsPadraoCODIGO: TIntegerField;
     cdsPadraoNOME: TStringField;
@@ -135,8 +135,8 @@ begin
       begin
         with sqldReceber do
         begin
-          Params.ParamByName('CODIGO').AsInteger :=
-            GetProximoID('CONTASRECEBER', 'CODIGO', GetConnection);
+          //Params.ParamByName('CODIGO').AsInteger :=
+          //  GetProximoID('CONTASRECEBER', 'CODIGO', GetConnection);
 
           Params.ParamByName('DATA').AsDate := cdsPadraoDATA.AsDateTime;
           Params.ParamByName('VENCIMENTO').AsDate := cdsParcelaVENC.AsDateTime;
@@ -169,9 +169,9 @@ begin
     begin
       with sqldContasPagar do
       begin
-        Params.ParamByName('CODIGO').AsInteger :=
-          GetProximoID('CONTASPAGAR', 'CODIGO', GetConnection);
-
+        //Params.ParamByName('CODIGO').AsInteger :=
+        //  GetProximoID('CONTASPAGAR', 'CODIGO', GetConnection);
+        //
         Params.ParamByName('DATA').AsDate := cdsPadraoDATA.AsDateTime;
         Params.ParamByName('VENCIMENTO').AsDate := cdsParcelaVENC.AsDateTime;
         Params.ParamByName('IDFORN').AsInteger := cdsPadraoCODIGO.AsInteger;

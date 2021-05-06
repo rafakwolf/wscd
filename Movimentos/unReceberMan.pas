@@ -3,8 +3,8 @@ unit unReceberMan;
 interface
 
 uses
-   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls,  DBCtrls, Buttons, DB, varglobal,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,   StdCtrls,  DBCtrls, Buttons, DB, varglobal,
    memds,  SqlDb, unContasReceber, Grids,
   DBGrids, FMTBcd, unSimplePadrao, LCLType;
 
@@ -367,8 +367,8 @@ begin
   end;
 
   dbValor.Text := FormatFloat('0.00',
-    SelecTFMTBCDField('select sum(TOTAL) from CONTASRECEBER where RECEBER = '+
-    QuotedStr('S'), sqldContaReceber.SQLConnection));
+    SelecSingleField('select sum(TOTAL) from CONTASRECEBER where RECEBER = '+
+    QuotedStr('S'), GetZConnection));
 
   rgreceb.OnClick(Self);
 
@@ -511,7 +511,7 @@ procedure TfrmReceberMan.cdsSelecaoIDBANCOValidate(Sender: TField);
 var
   NomeBanco: string;
 begin
-//  NomeBanco := GetFieldByID(GetConnection,'BANCO','BANCO','IDBANCO',Sender.AsInteger);
+//  NomeBanco := GetFieldByID(GetZConnection,'BANCO','BANCO','IDBANCO',Sender.AsInteger);
 //  if NomeBanco <> '' then
 //    cdsSelecaoBANCO.AsString := NomeBanco;
 end;
