@@ -3,11 +3,10 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="218">
+    <Units Count="219">
       <Unit0>
         <Filename Value="Poupador.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="60"/>
         <CursorPos X="5" Y="68"/>
         <UsageCount Value="200"/>
@@ -38,13 +37,9 @@
         <ComponentName Value="DmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="52"/>
-        <CursorPos X="62" Y="56"/>
-        <ComponentState Value="1"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="56" Y="57"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit3>
       <Unit4>
@@ -326,12 +321,9 @@
         <ComponentName Value="frmBaixaCheque"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="56" Y="6"/>
-        <ComponentState Value="1"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit28>
       <Unit29>
@@ -352,12 +344,10 @@
         <ComponentName Value="frmCheque"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="181"/>
         <CursorPos X="38" Y="182"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit30>
       <Unit31>
@@ -535,10 +525,13 @@
         <ComponentName Value="frmOrcamentos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="268"/>
-        <CursorPos X="56" Y="114"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="459"/>
+        <CursorPos X="68" Y="463"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit46>
       <Unit47>
@@ -644,12 +637,9 @@
         <ComponentName Value="frmPromocao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="27" Y="8"/>
-        <ComponentState Value="1"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit56>
       <Unit57>
@@ -690,11 +680,10 @@
         <ComponentName Value="frmVendas"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="856"/>
         <CursorPos X="25" Y="859"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit60>
       <Unit61>
@@ -1348,13 +1337,10 @@
         <ComponentName Value="frmListagemProdutos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="26"/>
-        <CursorPos X="25" Y="28"/>
-        <ComponentState Value="1"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="54"/>
+        <CursorPos X="58" Y="30"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit118>
       <Unit119>
@@ -1705,9 +1691,10 @@
       <Unit151>
         <Filename Value="Util/VarGlobal.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="27" Y="7"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="10" Y="8"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit151>
       <Unit152>
@@ -1824,7 +1811,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="202"/>
         <CursorPos X="50" Y="208"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="84"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit163>
       <Unit164>
@@ -1833,7 +1820,7 @@
         <UnitName Value="baseModel"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="5"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="84"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit164>
       <Unit165>
@@ -1846,7 +1833,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="12"/>
         <CursorPos X="21" Y="3"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="76"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit165>
       <Unit166>
@@ -1854,7 +1841,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
         <CursorPos X="62" Y="26"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit166>
       <Unit167>
@@ -1862,7 +1849,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="97"/>
         <CursorPos X="3" Y="107"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit167>
       <Unit168>
@@ -1870,7 +1857,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="174"/>
         <CursorPos X="3" Y="184"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit168>
       <Unit169>
@@ -1878,21 +1865,21 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="32"/>
         <CursorPos X="3" Y="44"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit169>
       <Unit170>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/fcl-db/src/memds/memds.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="106"/>
         <CursorPos X="30" Y="155"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit170>
       <Unit171>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/include/messagedialogs.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="114"/>
         <CursorPos X="10" Y="123"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit171>
       <Unit172>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/forms.pp"/>
@@ -1900,14 +1887,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1839"/>
         <CursorPos X="3" Y="1848"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit172>
       <Unit173>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/fortesreport-ce4/Source/RLReport.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="816"/>
         <CursorPos X="3" Y="825"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="50"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit173>
       <Unit174>
@@ -1915,80 +1902,80 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="87"/>
         <CursorPos X="15" Y="95"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="50"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit174>
       <Unit175>
         <Filename Value="Cadastros/Relatorios/unRelatorioAniversarioCliente.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit175>
       <Unit176>
         <Filename Value="Cadastros/Relatorios/unRelatorioClienteCidade.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit176>
       <Unit177>
         <Filename Value="Cadastros/Relatorios/unRelatorioClienteData.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit177>
       <Unit178>
         <Filename Value="Cadastros/Relatorios/unRelatorioEtiquetaCliente.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit178>
       <Unit179>
         <Filename Value="Cadastros/Relatorios/unRelatorioFornecedorCidade.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit179>
       <Unit180>
         <Filename Value="Cadastros/Relatorios/unRelatorioFornecedorData.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit180>
       <Unit181>
         <Filename Value="Cadastros/Relatorios/unRelatorioListaPrecos.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit181>
       <Unit182>
         <Filename Value="Cadastros/Relatorios/unRelatorioNovoAlterado.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit182>
       <Unit183>
         <Filename Value="Cadastros/Relatorios/unRelatorioProdutoEstMinForn.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit183>
       <Unit184>
         <Filename Value="Cadastros/Relatorios/unRelatorioProdutoGrupo.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit184>
       <Unit185>
         <Filename Value="Cadastros/Relatorios/unRelatorioProdutosEstoque.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit185>
       <Unit186>
         <Filename Value="Cadastros/Relatorios/unRelatorioProdutoVencimento.dfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="38" Y="4"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit186>
       <Unit187>
@@ -1996,60 +1983,60 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="197"/>
         <CursorPos X="23" Y="206"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit187>
       <Unit188>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevClienteAniver.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit188>
       <Unit189>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevEnvelopeClientes.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit189>
       <Unit190>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevEtiquetaCliente.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit190>
       <Unit191>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevEtiquetaProduto.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit191>
       <Unit192>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevListagemClientes.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit192>
       <Unit193>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoEstoque.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit193>
       <Unit194>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoGrupo.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit194>
       <Unit195>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutosVencimento.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit195>
       <Unit196>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevRelFornData.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit196>
       <Unit197>
@@ -2057,7 +2044,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="41"/>
         <CursorPos X="27" Y="44"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit197>
       <Unit198>
@@ -2065,31 +2052,31 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="662"/>
         <CursorPos X="14" Y="672"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit198>
       <Unit199>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/nonwin32/messages.pp"/>
         <UnitName Value="Messages"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit199>
       <Unit200>
         <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/objpas/sysutils/syshelph.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="32" Y="4"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit200>
       <Unit201>
         <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/unix/sysutils.pp"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit201>
       <Unit202>
         <Filename Value="Utilitarios/unAgenda.dfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="55" Y="6"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit202>
       <Unit203>
@@ -2097,7 +2084,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="86"/>
         <CursorPos X="66" Y="105"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit203>
       <Unit204>
@@ -2105,7 +2092,7 @@
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <CursorPos X="41" Y="5304"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit204>
       <Unit205>
@@ -2113,27 +2100,27 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="121"/>
         <CursorPos X="3" Y="134"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit205>
       <Unit206>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZConnection.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="46"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit206>
       <Unit207>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZAbstractConnection.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="97"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit207>
       <Unit208>
         <Filename Value="Padrao/unModeloConsulta.dfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="41"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit208>
       <Unit209>
@@ -2141,7 +2128,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="298"/>
         <CursorPos Y="310"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit209>
       <Unit210>
@@ -2150,41 +2137,41 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="5670"/>
         <CursorPos X="75" Y="5693"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit210>
       <Unit211>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZDatasetUtils.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="283"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit211>
       <Unit212>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/fcl-db/src/json/fpjsondataset.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="109"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit212>
       <Unit213>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/fcl-json/src/fpjson.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos X="3" Y="53"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit213>
       <Unit214>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/chm/src/chmreader.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos X="32" Y="75"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="3"/>
       </Unit214>
       <Unit215>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZSqlUpdate.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="226"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit215>
       <Unit216>
@@ -2192,136 +2179,144 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3544"/>
         <CursorPos X="49" Y="3564"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit216>
       <Unit217>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/include/customedit.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="674"/>
         <CursorPos X="24" Y="685"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit217>
+      <Unit218>
+        <Filename Value="/usr/share/fpcsrc/3.2.0/packages/fcl-db/src/base/db.pas"/>
+        <UnitName Value="DB"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="880"/>
+        <CursorPos X="3" Y="848"/>
+        <UsageCount Value="11"/>
+      </Unit218>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="86" Column="25" TopLine="76"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="204" Column="66" TopLine="200"/>
       </Position1>
       <Position2>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="85" Column="25" TopLine="75"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="190" Column="10" TopLine="180"/>
       </Position2>
       <Position3>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="84" Column="25" TopLine="74"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="166" Column="20" TopLine="158"/>
       </Position3>
       <Position4>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="83" Column="25" TopLine="73"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="173" Column="4" TopLine="165"/>
       </Position4>
       <Position5>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="82" Column="25" TopLine="72"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="187" Column="34" TopLine="179"/>
       </Position5>
       <Position6>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="81" Column="25" TopLine="71"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="321" Column="43" TopLine="319"/>
       </Position6>
       <Position7>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="80" Column="25" TopLine="70"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="166" Column="20" TopLine="154"/>
       </Position7>
       <Position8>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="79" Column="25" TopLine="69"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="187" Column="34" TopLine="175"/>
       </Position8>
       <Position9>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="78" Column="25" TopLine="68"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="166" Column="20" TopLine="155"/>
       </Position9>
       <Position10>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="77" Column="25" TopLine="67"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="185" Column="40" TopLine="176"/>
       </Position10>
       <Position11>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="76" Column="25" TopLine="66"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="481" Column="10" TopLine="480"/>
       </Position11>
       <Position12>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="360" Column="40" TopLine="345"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="480" Column="10" TopLine="479"/>
       </Position12>
       <Position13>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="356" Column="64" TopLine="350"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="479" Column="10" TopLine="478"/>
       </Position13>
       <Position14>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="349" Column="11" TopLine="338"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="480" Column="10" TopLine="479"/>
       </Position14>
       <Position15>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="77" Column="11" TopLine="70"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="479" Column="31" TopLine="478"/>
       </Position15>
       <Position16>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="19" Column="24" TopLine="17"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="304" Column="21" TopLine="292"/>
       </Position16>
       <Position17>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="327" Column="5" TopLine="317"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="175" Column="43" TopLine="165"/>
       </Position17>
       <Position18>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="349" Column="80" TopLine="337"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="183" Column="38" TopLine="174"/>
       </Position18>
       <Position19>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="45" TopLine="26"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="320" Column="26" TopLine="309"/>
       </Position19>
       <Position20>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="42" Column="27" TopLine="36"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="6" Column="27"/>
       </Position20>
       <Position21>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="69" Column="40" TopLine="48"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="184" Column="44" TopLine="175"/>
       </Position21>
       <Position22>
-        <Filename Value="Movimentos/unBaixaCheque.pas"/>
-        <Caret Line="6" Column="56"/>
+        <Filename Value="Util/VarGlobal.pas"/>
+        <Caret Line="8" Column="22"/>
       </Position22>
       <Position23>
-        <Filename Value="Principal/unDmPrincipal.pas"/>
-        <Caret Line="56" Column="62" TopLine="52"/>
+        <Filename Value="Util/VarGlobal.pas"/>
+        <Caret Line="29" Column="3" TopLine="20"/>
       </Position23>
       <Position24>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="346" Column="10" TopLine="331"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="184" Column="10" TopLine="175"/>
       </Position24>
       <Position25>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="344" Column="34" TopLine="331"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="186" Column="16" TopLine="176"/>
       </Position25>
       <Position26>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="14" Column="24" TopLine="52"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="341" Column="30" TopLine="330"/>
       </Position26>
       <Position27>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="182" Column="38" TopLine="181"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="390" Column="7" TopLine="379"/>
       </Position27>
       <Position28>
-        <Filename Value="Movimentos/unVendas.pas"/>
-        <Caret Line="275" Column="6" TopLine="267"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="464" Column="40" TopLine="460"/>
       </Position28>
       <Position29>
-        <Filename Value="Movimentos/unVendas.pas"/>
-        <Caret Line="884" Column="43" TopLine="881"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="463" Column="40" TopLine="459"/>
       </Position29>
       <Position30>
-        <Filename Value="Movimentos/unVendas.pas"/>
-        <Caret Line="859" Column="25" TopLine="856"/>
+        <Filename Value="Movimentos/unOrcamentos.pas"/>
+        <Caret Line="462" Column="68" TopLine="458"/>
       </Position30>
     </JumpHistory>
     <RunParams>

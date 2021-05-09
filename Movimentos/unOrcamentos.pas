@@ -5,133 +5,26 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,   DBCtrls, StdCtrls, DB,  Grids, DBGrids, Buttons,
-  SqlDb, Menus, ComCtrls, memds, LCLtype;
+  SqlDb, Menus, ComCtrls, memds, LCLtype, MaskEdit, ZDataset, ZSqlUpdate;
 
 type
+
+  { TfrmOrcamentos }
+
   TfrmOrcamentos = class(TForm)
-    dtOrcam: TComponent;
-    cdsOrcam: TMemDataSet;
-    cdsDetOrcam: TMemDataSet;
-    dsLink: TDataSource;
-    sqlOrcam: TSQLQuery;
-    sqlDetOrcam: TSQLQuery;
-    sqlProdutos: TSQLQuery;
-    dspProdutos: TComponent;
-    cdsProdutos: TMemDataSet;
-    sqldSelecao: TSQLQuery;
-    dspSelecao: TComponent;
-    cdsSelecao: TMemDataSet;
-    dsSelecao: TDataSource;
-    sqldCliente: TSQLQuery;
-    dspCliente: TComponent;
-    cdsCliente: TMemDataSet;
-    cdsOrcamCODIGO: TIntegerField;
-    cdsOrcamCODCLIENTE: TIntegerField;
-    cdsOrcamNOMECLIENTE: TStringField;
-    cdsOrcamDATA: TDateField;
-    cdsOrcamOBS: TStringField;
-    cdsOrcamSTATUS: TStringField;
-    cdsOrcamCONCLUIDO: TStringField;
-    cdsOrcamsqlDetOrcam: TDataset;
+    comboVendedor: TDBLookupComboBox;
+    comboProduto: TDBLookupComboBox;
+    dsCliente: TDataSource;
+    dsVendedor: TDataSource;
+    dsProdutos: TDataSource;
     dsOrcam: TDataSource;
     dsDetOrcam: TDataSource;
-    sqldVendedor: TSQLQuery;
-    dspVendedor: TComponent;
-    cdsVendedor: TMemDataSet;
-    sqldVendedorIDVENDEDOR: TIntegerField;
-    sqldVendedorVENDEDOR: TStringField;
-    sqldVendedorATIVO: TStringField;
-    cdsVendedorIDVENDEDOR: TIntegerField;
-    cdsVendedorVENDEDOR: TStringField;
-    cdsVendedorATIVO: TStringField;
-    cdsOrcamIDVENDEDOR: TIntegerField;
-    cdsOrcamVENDEDOR: TStringField;
-    spDeleta: TSQLQuery;
-    sqldClienteCODCLIENTE: TIntegerField;
-    sqldClienteNOME: TStringField;
-    sqldClienteTELEFONE: TStringField;
-    sqldClienteRG_IE: TStringField;
-    sqldClienteCPF_CNPJ: TStringField;
-    sqldClienteDATA_NASC: TDateField;
-    sqldClienteLIMITE: TFMTBCDField;
-    sqldClienteDESCRICAO: TStringField;
-    cdsClienteCODCLIENTE: TIntegerField;
-    cdsClienteNOME: TStringField;
-    cdsClienteTELEFONE: TStringField;
-    cdsClienteRG_IE: TStringField;
-    cdsClienteCPF_CNPJ: TStringField;
-    cdsClienteDATA_NASC: TDateField;
-    cdsClienteLIMITE: TFMTBCDField;
-    cdsClienteDESCRICAO: TStringField;
-    sqlOrcamCODIGO: TIntegerField;
-    sqlOrcamCODCLIENTE: TIntegerField;
-    sqlOrcamNOMECLIENTE: TStringField;
-    sqlOrcamIDVENDEDOR: TIntegerField;
-    sqlOrcamVENDEDOR: TStringField;
-    sqlOrcamDATA: TDateField;
-    sqlOrcamOBS: TStringField;
-    sqlOrcamTOTAL: TFMTBCDField;
-    sqlOrcamITENS: TIntegerField;
-    sqlOrcamSTATUS: TStringField;
-    sqlOrcamCONCLUIDO: TStringField;
-    sqlDetOrcamCODIGO: TIntegerField;
-    sqlDetOrcamCODPRODUTO: TIntegerField;
-    sqlDetOrcamNOMEPRODUTO: TStringField;
-    sqlDetOrcamQTDE: TIntegerField;
-    sqlDetOrcamCUSTO: TFMTBCDField;
-    sqlDetOrcamVENDA: TFMTBCDField;
-    sqlDetOrcamDESCTO: TFMTBCDField;
-    sqlDetOrcamVALORDESCTO: TFMTBCDField;
-    sqlDetOrcamTOTAL: TFMTBCDField;
-    cdsOrcamTOTAL: TFMTBCDField;
-    cdsOrcamITENS: TIntegerField;
-    cdsDetOrcamCODIGO: TIntegerField;
-    cdsDetOrcamCODPRODUTO: TIntegerField;
-    cdsDetOrcamNOMEPRODUTO: TStringField;
-    cdsDetOrcamQTDE: TIntegerField;
-    cdsDetOrcamCUSTO: TFMTBCDField;
-    cdsDetOrcamVENDA: TFMTBCDField;
-    cdsDetOrcamDESCTO: TFMTBCDField;
-    cdsDetOrcamVALORDESCTO: TFMTBCDField;
-    cdsDetOrcamTOTAL: TFMTBCDField;
-    sqlProdutosIDPRODUTO: TIntegerField;
-    sqlProdutosCODBARRA: TStringField;
-    sqlProdutosDESCRICAO: TStringField;
-    sqlProdutosABREVIACAO: TStringField;
-    sqlProdutosPRECO_PROMOCAO: TFMTBCDField;
-    sqlProdutosCUSTO: TFMTBCDField;
-    sqlProdutosLUCRO: TFMTBCDField;
-    sqlProdutosVENDA: TFMTBCDField;
-    sqlProdutosESTOQUE: TIntegerField;
-    sqlProdutosESTOQUEMINIMO: TIntegerField;
-    sqlProdutosPROMOCAO: TStringField;
-    cdsProdutosIDPRODUTO: TIntegerField;
-    cdsProdutosCODBARRA: TStringField;
-    cdsProdutosDESCRICAO: TStringField;
-    cdsProdutosABREVIACAO: TStringField;
-    cdsProdutosPRECO_PROMOCAO: TFMTBCDField;
-    cdsProdutosCUSTO: TFMTBCDField;
-    cdsProdutosLUCRO: TFMTBCDField;
-    cdsProdutosVENDA: TFMTBCDField;
-    cdsProdutosESTOQUE: TIntegerField;
-    cdsProdutosESTOQUEMINIMO: TIntegerField;
-    cdsProdutosPROMOCAO: TStringField;
-    sqldSelecaoPRODUTO: TIntegerField;
-    sqldSelecaoNOMEPRODUTO: TStringField;
-    sqldSelecaoQTDE: TIntegerField;
-    sqldSelecaoCUSTO: TFMTBCDField;
-    sqldSelecaoVENDA: TFMTBCDField;
-    sqldSelecaoDESCTO: TFMTBCDField;
-    sqldSelecaoVALORDESCTO: TFMTBCDField;
-    sqldSelecaoTOTAL: TFMTBCDField;
-    cdsSelecaoPRODUTO: TIntegerField;
-    cdsSelecaoNOMEPRODUTO: TStringField;
-    cdsSelecaoQTDE: TIntegerField;
-    cdsSelecaoCUSTO: TFMTBCDField;
-    cdsSelecaoVENDA: TFMTBCDField;
-    cdsSelecaoDESCTO: TFMTBCDField;
-    cdsSelecaoVALORDESCTO: TFMTBCDField;
-    cdsSelecaoTOTAL: TFMTBCDField;
+    edtQtde: TMaskEdit;
+    edtCusto: TMaskEdit;
+    edtVenda: TMaskEdit;
+    edtDescto: TMaskEdit;
+    edtValorDescto: TMaskEdit;
+    edtTotalItem: TMaskEdit;
     Menu: TMainMenu;
     miRegistro: TMenuItem;
     miPrimeiro: TMenuItem;
@@ -195,23 +88,22 @@ type
     dbStatus: TDBEdit;
     dbConcluido: TDBEdit;
     dbCodCliente: TDBEdit;
-    dbProduto: TDBEdit;
-    dbQtde: TDBEdit;
-    dbCusto: TDBEdit;
-    dbVenda: TDBEdit;
-    dbDescto: TDBEdit;
-    dbValorDescto: TDBEdit;
-    dbTotalItem: TDBEdit;
     dbdDataOrcam: TDBEdit;
-    dbeIdVendedor: TDBEdit;
-    dbeVendedor: TDBEdit;
     dbeItens: TDBEdit;
     dbeTotal: TDBEdit;
     dbmObs: TDBMemo;
     grdItens: TDBGrid;
+    qVendedor: TZReadOnlyQuery;
+    qProdutos: TZReadOnlyQuery;
+    qOrcam: TZQuery;
+    qDetOrcam: TZQuery;
+    updOrcam: TZUpdateSQL;
+    updDetOrcam: TZUpdateSQL;
+    qCliente: TZReadOnlyQuery;
     procedure btnNovoClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure dsProdutosDataChange(Sender: TObject; Field: TField);
     procedure grdItensDblClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure btnConsultarClick(Sender: TObject);
@@ -270,58 +162,61 @@ implementation
 
 uses unCliente, Funcoes, unModeloConsulta, VarGlobal, unPrevOrcammento,
      uConfiguraRelatorio, unRelatorioBobinaOrcam,
-     uDatabaseutils;
+     uDatabaseUtils;
 
 {$R *.lfm}
 
 procedure TfrmOrcamentos.btnNovoClick(Sender: TObject);
 begin
-  cdsOrcam.Append;
-  cdsOrcamDATA.AsDateTime := Date;
-  cdsOrcamSTATUS.AsString := 'P';
-  cdsOrcamCONCLUIDO.AsString := 'N';
-  cdsOrcamTOTAL.AsFloat := 0;
-  SetFocusIfCan(dbeIdVendedor);
+  qOrcam.Append;
+  qOrcam.FieldByName('DATA').AsDateTime := Date;
+  qOrcam.FieldByName('STATUS').AsString := 'P';
+  qOrcam.FieldByName('CONCLUIDO').AsString := 'N';
+  qOrcam.FieldByName('TOTAL').AsFloat := 0;
 end;
 
 procedure TfrmOrcamentos.btnExcluirClick(Sender: TObject);
 begin
-  if cdsOrcam.IsEmpty then Exit;
+  if qOrcam.IsEmpty then Exit;
+
   if MsgSN('Deseja realmente excluir?') then
   begin
-    with spDeleta do
+    with TZQuery.Create(nil) do
     try
-      Close;
-      Params.ParamByName('CODIGO').AsInteger := cdsOrcamCODIGO.AsInteger;
+      Connection := GetZConnection;
+      SQL.Add('delete from ITEMORCAMENTO where CODIGO = :CODIGO;');
+      SQL.Add('delete from ORCAMENTO where CODIGO = :CODIGO');
+      Prepare;
+      Params.ParamByName('CODIGO').AsInteger := qOrcam.FieldByname('CODIGO').AsInteger;
       ExecSQL;
     finally
-      cdsOrcam.Close;
-      cdsOrcam.Open;
+      free;
+      qOrcam.Close;
+      qOrcam.Open;
     end;
   end;
 end;
 
 procedure TfrmOrcamentos.btnCancelClick(Sender: TObject);
 begin
-  //cdsOrcam.CancelUpdates;
-  //cdsSelecao.CancelUpdates;
+  qOrcam.CancelUpdates;
 end;
 
 procedure TfrmOrcamentos.grdItensDblClick(Sender: TObject);
 begin
-  if cdsOrcam.State in [dsEdit, dsInsert] then
+  if qOrcam.State in [dsEdit, dsInsert] then
   begin
     if MsgSN('Deseja realmente excluir ' + #13#10 +
-      '(' + cdsDetOrcamNOMEPRODUTO.AsString + ')' + #13#10 +
+      '(' + qDetOrcam.FieldByname('NOMEPRODUTO').AsString + ')' + #13#10 +
       'da listagem de produtos?') then
-      cdsDetOrcam.Delete;
+      qDetOrcam.Delete;
   end;
 end;
 
 procedure TfrmOrcamentos.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  //UpdatesPending(cdsOrcam, Self);
+  UpdatesPending(qOrcam, Self);
 end;
 
 procedure TfrmOrcamentos.btnConsultarClick(Sender: TObject);
@@ -331,31 +226,30 @@ begin
   Codigo := '0';
   if InputQuery('Localiza por numero', 'Numero do orcamento:', Codigo) and (Codigo <> '0') then
   begin
-    //cdsOrcam.IndexFieldNames := 'CODIGO';
-    //if not cdsOrcam.Locate('CODIGO', Codigo, []) then
-    //  MsgAviso(Codigo+' n�o encontrado.');
+    qOrcam.IndexFieldNames := 'CODIGO';
+    if not qOrcam.Locate('CODIGO', Codigo, []) then
+      MsgAviso(Codigo+' nao encontrado.');
   end;
 end;
 
 procedure TfrmOrcamentos.btnAnteriorClick(Sender: TObject);
 begin
-//  Anterior(cdsOrcam);
-  cdsOrcam.Prior;
+  qOrcam.Prior;
 end;
 
 procedure TfrmOrcamentos.btnPrimeiroClick(Sender: TObject);
 begin
-cdsOrcam.First;  //Primeiro(cdsOrcam);
+  qOrcam.First;
 end;
 
 procedure TfrmOrcamentos.btnProximoClick(Sender: TObject);
 begin
-  cdsOrcam.Next; //Proximo(cdsOrcam);
+  qOrcam.Next;
 end;
 
 procedure TfrmOrcamentos.btnUltimoClick(Sender: TObject);
 begin
-  cdsOrcam.Last;//Ultimo(cdsOrcam);
+  qOrcam.Last;
 end;
 
 procedure TfrmOrcamentos.btnFecharClick(Sender: TObject);
@@ -368,10 +262,9 @@ var
   NroOrcamentoAberto: Integer;
 begin
   try
-    cdsProdutos.Open;
-    cdsCliente.Open;
-    cdsSelecao.Open;
-    cdsOrcam.Open;
+    qProdutos.Open;
+    qCliente.Open;
+    qOrcam.Open;
     if Configuracao.OrcamConcluido then
     begin
       NroOrcamentoAberto :=
@@ -382,17 +275,17 @@ begin
       begin
 
         if MsgSN('Existe(m) ' + IntToStr(NroOrcamentoAberto) +
-          ' Or�amentos(s), n�o conclu�do(s). '+
+          ' Orcamentos(s), nao concluido(s). '+
           'Por favor verifique, pois estes podem impedir ' +
-          'a importa��o dos mesmos para vendas.'+#13#10+'Exibir somente or�amentos N�O conclu�dos agora?') then
+          'a importacao dos mesmos para vendas.'+#13#10+'Exibir somente orcamentos Nao concluidos agora?') then
         begin
-          cdsOrcam.Filtered := False;
-          cdsOrcam.Filter := 'CONCLUIDO = '+QuotedStr('N');
-          cdsOrcam.Filtered := True;
+          qOrcam.Filtered := False;
+          qOrcam.Filter := 'CONCLUIDO = '+QuotedStr('N');
+          qOrcam.Filtered := True;
         end;
       end;
     end;
-    SQLPadrao := sqlOrcam.sql.text;
+    SQLPadrao := qOrcam.sql.text;
   finally
   end;
 end;
@@ -400,24 +293,25 @@ end;
 procedure TfrmOrcamentos.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsSelecao.Close;
-  cdsProdutos.Close;
-  cdsCliente.Close;
-  cdsOrcam.Close;
+  qProdutos.Close;
+  qCliente.Close;
+  qOrcam.Close;
   Action := caFree;
 end;
 
 procedure TfrmOrcamentos.btnGravarClick(Sender: TObject);
 begin
   try
-    if ValidaFieldsVazios([cdsOrcamCODCLIENTE, cdsOrcamDATA, cdsOrcamIDVENDEDOR],
+    if ValidaFieldsVazios([
+       qOrcam.FieldByname('CODCLIENTE'),
+       qOrcam.FieldByname('DATA'),
+       qOrcam.FieldByname('IDVENDEDOR')],
       ['Cliente', 'Data', 'Vendedor']) = '' then
-      //Salvar(cdsOrcam)
-      //cdsOrcam.ApplyUpdates(0)
+      qOrcam.ApplyUpdates
     else
-      MsgCuidado('Or�amento incompleto.');
+      MsgCuidado('Orcamento incompleto.');
   except
-    raise Exception.Create('Erro ao salvar or�amento.');
+    raise Exception.Create('Erro ao salvar orcamento.');
   end;
 end;
 
@@ -429,21 +323,22 @@ begin
   begin
     if (ClearMask(dtI) <> '') and (ClearMask(dtF) <> '') then
     begin
-      cdsOrcam.Close;
-      //cdsOrcam.SQL.Clear; SQL.Text := 'select * from ORCAMENTO ' +
-      //  'where DATA between :DATAINI and :DATAFIM';
-      //cdsOrcam.Params.ParamByName('DATAINI').AsDate := StrToDate(dtI);
-      //cdsOrcam.Params.ParamByName('DATAFIM').AsDate := StrToDate(dtF);
-      cdsOrcam.Open;
+      qOrcam.Close;
+      qOrcam.SQL.Clear;
+      qOrcam.SQL.Text := 'select * from ORCAMENTO ' +
+        'where DATA between :DATAINI and :DATAFIM';
+      qOrcam.Params.ParamByName('DATAINI').AsDate := StrToDate(dtI);
+      qOrcam.Params.ParamByName('DATAFIM').AsDate := StrToDate(dtF);
+      qOrcam.Open;
 
-      if cdsOrcam.IsEmpty then
+      if qOrcam.IsEmpty then
       begin
-        //MsgCuidado(UM_PESQUISAVAZIO);
+        MsgCuidado('Informe as datas para pesquisa.');
         Exit;
       end;
     end
     else
-      //MsgErro(UM_DATAINVALIDA);
+      MsgErro('Datas invalidas.');
   end;
 end;
 
@@ -452,9 +347,9 @@ var
   Percent, Valor: Real;
 begin
 
-  if cdsOrcamCONCLUIDO.AsString = 'S' then
+  if qOrcam.FieldByname('CONCLUIDO').AsString = 'S' then
   begin
-    MsgAviso('N�o � poss�vel efetuar descontos em um or�amento j� conclu�do.');
+    MsgAviso('Nao e possivel efetuar descontos em um orcamento ja concluido.');
     Exit;
   end;
 
@@ -462,10 +357,10 @@ begin
   if(ObterValor(Percent,'',''))then
   if(Percent <> 0)then
   begin
-    Valor := (cdsOrcamTOTAL.AsFloat * (Percent/100));
-    cdsOrcam.Edit;
-    cdsOrcamTOTAL.AsFloat := (cdsOrcamTOTAL.AsFloat - Valor);
-    //cdsOrcam.ApplyUpdates(0);
+    Valor := (qOrcam.FieldByname('TOTAL').AsFloat * (Percent/100));
+    qOrcam.Edit;
+    qOrcam.FieldByname('TOTAL').AsFloat := (qOrcam.FieldByname('TOTAL').AsFloat - Valor);
+    qOrcam.ApplyUpdates;
   end
   else
     MsgErro('Informe o valor do desconto.');
@@ -474,13 +369,14 @@ end;
 procedure TfrmOrcamentos.miLimpaFiltroClick(Sender: TObject);
 begin
   try
-    cdsOrcam.DisableControls;
-    cdsOrcam.Close;
-    //cdsOrcam.SQL.Clear; SQL.Text :=SQLPadrao;
-    cdsOrcam.Filtered := False;
-    cdsOrcam.Open;
+    qOrcam.DisableControls;
+    qOrcam.Close;
+    qOrcam.SQL.Clear;
+    qOrcam.SQL.Text :=SQLPadrao;
+    qOrcam.Filtered := False;
+    qOrcam.Open;
   finally
-    cdsOrcam.EnableControls;
+    qOrcam.EnableControls;
   end;
 end;
 
@@ -489,9 +385,10 @@ begin
   with TfrmPrevOrcamento.Create(Self) do
   try
     cdsPadrao.Close;
-    //cdsPadrao.Params.ParamByName('PCODIGO').AsInteger := cdsOrcamCODIGO.AsInteger;
+    //cdsPadrao.Params.ParamByName('PCODIGO').AsInteger :=
+    //   qOrcam.FieldByname('CODIGO').AsInteger;
     cdsPadrao.Open;
-    //lbTitulo.Caption := Global.TituloOrcamento;
+    lbTitulo.Caption := Global.TituloOrcamento;
     PrintIfNotEmptyRL(rrPadrao);
   finally
     cdsPadrao.Close;
@@ -501,7 +398,7 @@ end;
 
 procedure TfrmOrcamentos.miRelOrcamClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioOrcamentoData', 'Or�amentos por data', Self);
+  ChamaForm('TfrmRelatorioOrcamentoData', 'Orcamentos por data', Self);
 end;
 
 procedure TfrmOrcamentos.FormKeyDown(Sender: TObject; var Key: Word;
@@ -515,30 +412,29 @@ end;
 
 procedure TfrmOrcamentos.miConcluirClick(Sender: TObject);
 begin
-  if MsgSN('Concluir este or�amento?') then
+  if MsgSN('Concluir este orcamento?') then
   begin
-    cdsOrcam.Edit;
-    cdsOrcamCONCLUIDO.AsString := 'S';
-    //cdsOrcam.ApplyUpdates(0);
-    MsgAviso('Or�amento conclu�do com sucesso!');
+    qOrcam.Edit;
+    qOrcam.FieldByname('CONCLUIDO').AsString := 'S';
+    qOrcam.ApplyUpdates;
+    MsgAviso('Orcamento concluido com sucesso!');
   end;
-  { se houver s� um or�amento n�o conclu�do quando ele for conclu�do o dataset
-    ficar� vazio, ent�o limpamos os filtros pra evitar isso }
-  if cdsOrcam.IsEmpty then
+
+  if qOrcam.IsEmpty then
     miLimpaFiltro.Click;
 end;
 
 procedure TfrmOrcamentos.btnEditarClick(Sender: TObject);
 begin
-  if cdsOrcamCONCLUIDO.AsString = 'S' then
+  if qOrcam.FieldByname('CONCLUIDO').AsString = 'S' then
   begin
     if not Configuracao.EditarOrcam then
-      MsgAviso('Sem premiss�o para editar este or�amento.')
+      MsgAviso('Sem premissao para editar este orcamento.')
     else
-      cdsOrcam.Edit;
+      qOrcam.Edit;
   end
   else
-    cdsOrcam.Edit;
+    qOrcam.Edit;
 end;
 
 procedure TfrmOrcamentos.InsereProduto;
@@ -564,61 +460,23 @@ procedure TfrmOrcamentos.InsereProduto;
   end;
 
 begin
-  cdsSelecao.Edit;
-  cdsSelecaoPRODUTO.AsInteger    := cdsProdutosIDPRODUTO.AsInteger;
-  cdsSelecaoNOMEPRODUTO.AsString := cdsProdutosABREVIACAO.AsString;
-  cdsSelecaoQTDE.AsFloat         := 1;
-  cdsSelecaoCUSTO.AsFloat        := cdsProdutosCUSTO.AsFloat;
+  comboProduto.KeyValue := qProdutos.FieldByName('IDPRODUTO').AsInteger;
+  comboProduto.Text := qProdutos.FieldByName('ABREVIACAO').AsString;
+  edtQtde.Text := '1';
+  edtCusto.Text := qProdutos.FieldByName('CUSTO').AsString;
 
-  if not ProdutoPromocao(cdsSelecaoPRODUTO.AsInteger) then
+  if not ProdutoPromocao(comboProduto.KeyValue) then
   begin
-    cdsSelecaoVENDA.AsFloat     := StrToFloatDef(FormatFloat('#,##0.00', cdsProdutosVENDA.AsFloat), 0);
-    cdsSelecaoDESCTO.AsFloat    := 0;
+    edtVenda.Text := FormatFloat('#,##0.00', StrToFloat(edtVenda.Text));
+    edtDescto.Text := '0';
   end
   else
   begin
-    cdsSelecaoVENDA.AsFloat     :=
-      StrToFloatDef(FormatFloat('#,##0.00', PrecoPromocao(cdsSelecaoPRODUTO.AsInteger)), 0);
-    cdsSelecaoDESCTO.AsFloat    :=
-      StrToFloatDef(FormatFloat('#,##0.00', DescontoPromocao(cdsSelecaoPRODUTO.AsInteger)), 0);
+    edtVenda.Text :=
+      FormatFloat('#,##0.00', PrecoPromocao(comboProduto.KeyValue));
+    edtDescto.Text :=
+      FormatFloat('#,##0.00', DescontoPromocao(comboProduto.KeyValue));
   end;
-
-  cdsSelecao.Post;
-end;
-
-procedure TfrmOrcamentos.dbCodClienteClickButton(Sender: TObject);
-begin
-//  if cdsOrcam.State in [dsEdit, dsInsert] then
-//  begin
-//    if TfrmModeloConsulta.Execute('Busca Clientes', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
-//      cdsOrcamCODCLIENTE.AsInteger := cdsClienteCODCLIENTE.AsInteger;
-//  end;
-end;
-
-procedure TfrmOrcamentos.dbProdutoClickButton(Sender: TObject);
-begin
-//  if cdsOrcam.State in dsEditModes then
-//  begin
-//    if TfrmModeloConsulta.Execute('Produto', cdsProdutos, FN_PRODUTOS, DL_PRODUTOS) then
-//    begin
-//      if cdsProdutos.Locate('IDPRODUTO', cdsProdutosIDPRODUTO.AsInteger, []) then
-//      begin
-//        if not Configuracao.EstoqueOrc then
-//        begin
-//          cdsProdutos.Open;
-//          if (cdsProdutosESTOQUE.AsFloat > cdsProdutosESTOQUEMINIMO.AsFloat) then
-//            InsereProduto
-//          else
-//          begin
-//            MsgErro('Produto com estoque m�nimo, n�o � poss�vel inseri-lo.');
-//            Abort;
-//          end;
-//        end
-//        else
-//          InsereProduto;
-//      end;
-//    end;
-//  end;
 end;
 
 procedure TfrmOrcamentos.btnInsereProdutoClick(Sender: TObject);
@@ -640,14 +498,10 @@ begin
       cdsSelecao.Close;
       cdsSelecao.Open;
       dbProduto.SetFocus;
-
-//      if MsgSN('Inserir novo produto?') then
-//        dbProduto.OnClickButton(Sender);
-
     end
     else
     begin
-      MsgAviso('Selecione um Produto, para depois inser�-lo.');
+      MsgAviso('Selecione um Produto, para depois inseri-lo.');
       Exit;
     end;
   end;
@@ -683,48 +537,9 @@ begin
 end;
 
 procedure TfrmOrcamentos.FormCreate(Sender: TObject);
-var x: Integer;
 begin
-  for x := 0 to ComponentCount - 1 do
-  begin
-    if Components[x] is TSQLQuery then
-    begin
-      if (not Assigned(TSQLQuery(Components[x]).SQLConnection)) then
-        TSQLQuery(Components[x]).SQLConnection := GetConnection;
-    end;
-  end;
-
-  ClientHeight := 570;
-  ClientWidth  := 785;
   CentralizaForm(Self);
   AjustaStatusBar;
-end;
-
-procedure TfrmOrcamentos.cdsOrcamCODCLIENTEValidate(Sender: TField);
-var
-  NomeCliente: string;
-begin
-  inherited;
-  NomeCliente := GetFieldByID(GetZConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
-    Sender.AsInteger);
-  if NomeCliente <> '' then
-    cdsOrcamNOMECLIENTE.AsString := NomeCliente;
-end;
-
-procedure TfrmOrcamentos.cdsDetOrcamCODPRODUTOValidate(Sender: TField);
-var
-  NomeProd: string;
-begin
-  inherited;
-  NomeProd := GetFieldByID(GetZConnection, 'PRODUTOS', 'DESCRICAO', 'IDPRODUTO',
-    Sender.AsInteger);
-  if NomeProd <> '' then
-    cdsDetOrcamNOMEPRODUTO.AsString := NomeProd;
-end;
-
-procedure TfrmOrcamentos.cdsOrcamAfterInsert(DataSet: TDataSet);
-begin
-  //Incrementa('ORCAMENTO', cdsOrcamCODIGO, GetConnection);
 end;
 
 procedure TfrmOrcamentos.dsOrcamStateChange(Sender: TObject);
@@ -768,56 +583,11 @@ begin
 
 end;
 
-procedure TfrmOrcamentos.cdsDetOrcamBeforeDelete(DataSet: TDataSet);
-begin
-  if (cdsOrcam.State in dsEditModes) then
-  begin
-    cdsOrcamTOTAL.AsFloat := (cdsOrcamTOTAL.AsFloat - cdsDetOrcamTOTAL.AsFloat);
-    cdsOrcamITENS.AsFloat := (cdsOrcamITENS.AsFloat - 1);
-  end;
-end;
-
-procedure TfrmOrcamentos.cdsDetOrcamBeforePost(DataSet: TDataSet);
-begin
-  if (cdsOrcam.State in dsEditModes) then
-   begin
-     cdsOrcamTOTAL.AsFloat := (cdsOrcamTOTAL.AsFloat + cdsDetOrcamTOTAL.AsFloat);
-     cdsOrcamITENS.AsFloat := (cdsOrcamITENS.AsFloat + 1);
-   end;
-end;
-
-procedure TfrmOrcamentos.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombobox) and
-             (TCustomCombobox(ActiveControl).DroppedDown)) then
-    begin
-      Key := #0;
-      Exit;
-    end
-    else if not (ActiveControl is TDBGrid) then
-    begin
-      Key := #0;
-      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
-    end
-    else if (ActiveControl is TDBGrid) then
-    begin
-      //with TDBGrid(ActiveControl) do
-      //  if SelectedIndex < (FieldCount-1) then
-      //    SelectedIndex := SelectedIndex+1
-      //  else
-      //    SelectedIndex := 0;
-    end;
-  end;
-end;
-
 procedure TfrmOrcamentos.Oramentoembobina1Click(Sender: TObject);
 begin
   frmRelatorioBobinaOrcam := TfrmRelatorioBobinaOrcam.Create(Self);
   frmRelatorioBobinaOrcam.IdOrcamento := cdsOrcamCODIGO.AsInteger;
-  frmRelatorioBobinaOrcam.Caption := 'Or�amento em bobina';
+  frmRelatorioBobinaOrcam.Caption := 'Orcamento em bobina';
   frmRelatorioBobinaOrcam.ShowModal;
 end;
 
@@ -839,37 +609,19 @@ begin
   if cdsOrcam.IsEmpty then
     Exit;
 
-  if cdsOrcamCONCLUIDO.AsString = 'N' then
+  if qOrcam.FieldByname('CONCLUIDO').AsString = 'N' then
   begin
-    MsgAviso('Or�amento n�o conclu�do.');
+    MsgAviso('Orcamento nao concluido.');
     Exit;
   end;
 
-  if MsgSN('Reabrir este or�amento?') then
+  if MsgSN('Reabrir este orcamento?') then
   begin
-    cdsOrcam.Edit;
-    cdsOrcamCONCLUIDO.AsString := 'N';
-    //cdsOrcam.ApplyUpdates(0);
-    MsgAviso('Or�amento reaberto com sucesso!');
+    qOrcam.Edit;
+    qOrcam.FieldByname('CONCLUIDO').AsString := 'N';
+    qOrcam.ApplyUpdates;
+    MsgAviso('Orcamento reaberto com sucesso!');
   end;
-end;
-
-procedure TfrmOrcamentos.dbeIdVendedorClickButton(Sender: TObject);
-begin
-//  if ModoInsertEdit(cdsOrcam) then
-//    if TfrmModeloConsulta.Execute('Vendedor', cdsVendedor, FN_VENDEDOR, DL_VENDEDOR) then
-//      cdsOrcamIDVENDEDOR.AsInteger := cdsVendedorIDVENDEDOR.AsInteger;
-end;
-
-procedure TfrmOrcamentos.cdsOrcamIDVENDEDORValidate(Sender: TField);
-var
-  NomeVend: string;
-begin
-  inherited;
-  NomeVend := GetFieldByID(GetZConnection, 'VENDEDOR', 'VENDEDOR', 'IDVENDEDOR',
-    Sender.AsInteger);
-  if NomeVend <> '' then
-    cdsOrcamVENDEDOR.AsString := NomeVend;
 end;
 
 procedure TfrmOrcamentos.miCadastraClienteClick(Sender: TObject);
