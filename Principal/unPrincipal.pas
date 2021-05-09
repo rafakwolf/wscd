@@ -8,7 +8,7 @@ uses
   LCLIntf, LCLType, LMessages, Messages, ExtCtrls, SysUtils, Variants, Classes,
   Graphics, Controls, Forms, Dialogs, Menus, ComCtrls, Buttons, sqldb, Types,
   ActnList, DB, ConstPadrao, ToolWin, uDatabaseUtils, crypto, StdCtrls, DBCtrls,
-  memds, IniFiles, ImgList, ZDataset, ImgUtils, FMTBcd, uMenuActions;
+  memds, IniFiles, ImgList, ZDataset, ImgUtils, FMTBcd;
 
 type
 
@@ -19,9 +19,7 @@ type
     actCidade: TAction;
     actUnidade: TAction;
     actGrupo: TAction;
-    actAliquotaIcms: TAction;
     actContaCaixa: TAction;
-    actCfop: TAction;
     actConfiguracaoGlobal: TAction;
     actConfiguracaoLocal: TAction;
     actDadosEmpresa: TAction;
@@ -54,9 +52,7 @@ type
     procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
     procedure actUnidadeExecute(Sender: TObject);
-    procedure actAliquotaIcmsExecute(Sender: TObject);
     procedure actContaCaixaExecute(Sender: TObject);
-    procedure actCfopExecute(Sender: TObject);
     procedure actConfiguracaoGlobalExecute(Sender: TObject);
     procedure actConfiguracaoLocalExecute(Sender: TObject);
     procedure actDadosEmpresaExecute(Sender: TObject);
@@ -88,8 +84,6 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure actPromocaoExecute(Sender: TObject);
   Private
-    MenuActions: TMenuActions;
-
     procedure SetConfigGlobal;
     procedure SetConfiguracao;
     procedure SetEmpresa;
@@ -103,7 +97,7 @@ implementation
 
 uses
   unAcesso, Funcoes, uUtilFncs, VarGlobal,
-  uClasses, udmAcesso, uNotificacoes, baseRepo, unDmPrincipal;
+  uClasses, udmAcesso, baseRepo, unDmPrincipal;
 
 {$R *.lfm}
 
@@ -122,19 +116,9 @@ begin
   ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', Application);
 end;
 
-procedure TMainForm.actAliquotaIcmsExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmAliquota', 'Cadastro de aliquotas', Application);
-end;
-
 procedure TMainForm.actContaCaixaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmCadastroCaixa', 'Contas caixa', Application);
-end;
-
-procedure TMainForm.actCfopExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmCadastroCfop', 'Cadastro de CFOP', Application);
 end;
 
 procedure TMainForm.actConfiguracaoGlobalExecute(Sender: TObject);
@@ -363,8 +347,6 @@ begin
    SetEmpresa;
    SetConfiguracao;
    SetConfigGlobal;
-
-   MenuActions := TMenuActions.Create(ListaAcoes);
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -380,8 +362,6 @@ begin
 
   if Assigned(Sistema) then
    FreeAndNil( Sistema );
-
-   MenuActions.Free;
 end;
 
 procedure TMainForm.actPromocaoExecute(Sender: TObject);

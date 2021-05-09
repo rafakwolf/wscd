@@ -19,8 +19,8 @@ function DiaSemana(Data: TDateTime): string;
 function ObterValor(ValorDinheiro: Real; default, title: string): boolean;
 function PassWord(PassWord, passwordChar: string): boolean;
 
-function ModoInsertEdit(cds: TMemDataset): boolean;
-function ModoInsert(cds: TMemDataset): boolean;
+function ModoInsertEdit(cds: TDataset): boolean;
+function ModoInsert(cds: TDataset): boolean;
 procedure ReabreDataset(cds: TDataSet);
 
 procedure MsgCuidado(title, msg: string); overload;
@@ -169,12 +169,12 @@ begin
   end;
 end;
 
-function ModoInsertEdit(cds: TMemDataset): boolean;
+function ModoInsertEdit(cds: TDataset): boolean;
 begin
   Result := cds.State in dsEditModes;
 end;
 
-function ModoInsert(cds: TMemDataset): boolean;
+function ModoInsert(cds: TDataset): boolean;
 begin
   Result := cds.State in [dsInsert];
 end;

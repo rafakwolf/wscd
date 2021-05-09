@@ -14,6 +14,7 @@
       <Title Value="Poupador"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
+      <Icon Value="0"/>
     </General>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -788,7 +789,9 @@
       <Unit116>
         <Filename Value="Cadastros/unCliente.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCliente"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit116>
       <Unit117>
         <Filename Value="Cadastros/unFornecedor.pas"/>
@@ -807,7 +810,9 @@
       <Unit119>
         <Filename Value="Cadastros/unProduto.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmProduto"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit119>
       <Unit120>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevClienteAniver.pas"/>

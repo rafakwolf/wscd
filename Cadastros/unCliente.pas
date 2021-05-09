@@ -10,13 +10,6 @@ uses
 
 type
   TfrmCliente = class(TfrmPadrao)
-    sqldCidade: TSQLQuery;
-    sqldCidadeCODCIDADE: TIntegerField;
-    sqldCidadeDESCRICAO: TStringField;
-    dspCidade: TComponent;
-    cdsCidade: TMemDataSet;
-    cdsCidadeCODCIDADE: TIntegerField;
-    cdsCidadeDESCRICAO: TStringField;
     btnContas: TBitBtn;
     dbeFax: TDBEdit;
     dbeTelefoneComercial: TDBEdit;
@@ -68,7 +61,7 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao, uConfiguraRelatorio,
+uses Funcoes, ConstPadrao, uConfiguraRelatorio, VarGlobal,
      unPrevListagemClientes,  unContasReceber, udmCliente;
 
 {$R *.dfm}
@@ -93,7 +86,7 @@ end;
 
 procedure TfrmCliente.FormCreate(Sender: TObject);
 begin
-  //dsPadrao.DataSet := TdmCliente(GetDm).cdsPadrao;
+  dsPadrao.DataSet := TdmCliente(GetDm).ZQuery1;
   inherited;
   FieldNames := FN_CLIENTES;
   DisplayLabels := DL_CLIENTES;
@@ -137,11 +130,11 @@ end;
 procedure TfrmCliente.btnContasClick(Sender: TObject);
 begin
   inherited;
-//  frmContasReceber := TfrmContasReceber.Create(self);
-//  frmContasReceber.Caption := 'Contas do cliente: '+cdsPadraoNOME.AsString;
-//  frmContasReceber.TipoChamada := 1;
-//  frmContasReceber.IdCliente := cdsPadraoCODCLIENTE.AsInteger;
-//  frmContasReceber.ShowModal;
+  frmContasReceber := TfrmContasReceber.Create(self);
+  frmContasReceber.Caption := 'Contas do cliente: '+ dmCliente.ZQuery1.FieldByName('NOME').AsString;
+  frmContasReceber.TipoChamada := 1;
+  frmContasReceber.IdCliente := dmCliente.ZQuery1.FieldByName('CODCLIENTE').AsInteger;
+  frmContasReceber.ShowModal;
 end;
 
 procedure TfrmCliente.AntesSalvar;
@@ -149,21 +142,21 @@ var
   Repetido: Boolean;
 begin
   inherited;
-//  Repetido :=
-//    TdmCliente(getDm).IsClienteRepetido(cdsPadraoCPF_CNPJ.AsString,
-//      cdsPadraoRG_IE.AsString);
-//
-//  if (ModoInsert(cdsPadrao) and Repetido) then
-//  begin
-//    MsgAviso('Cliente com este CPF/CNPJ ou RG/IE j� est� cadastrado.');
-//    Abort;
-//  end;
-//
-//  if Idade(cdsPadraoDATA_NASC.AsDateTime) < Global.IdadeCliente then
-//  begin
-//    MsgCuidado('Cliente com idade menor que a permitida, n�o poder� ser cadastrado.');
-//    Abort;
-//  end;
+  Repetido :=
+    TdmCliente(getDm).IsClienteRepetido(dmCliente.ZQuery1.FieldByName('CPF_CNPJ').AsString,
+      dmCliente.ZQuery1.FieldByName('RG_IE').AsString);
+
+  if (ModoInsert(dmCliente.ZQuery1) and Repetido) then
+  begin
+    MsgAviso('Cliente com este CPF/CNPJ ou RG/IE ja esta cadastrado.');
+    Abort;
+  end;
+
+  if Idade(dmCliente.ZQuery1.FieldByName('DATA_NASC').AsDateTime) < Global.IdadeCliente then
+  begin
+    MsgCuidado('Cliente com idade menor que a permitida, nao podera ser cadastrado.');
+    Abort;
+  end;
 end;
 
 procedure TfrmCliente.Foto(Visivel: Boolean);

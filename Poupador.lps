@@ -3,13 +3,11 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="217">
+    <Units Count="218">
       <Unit0>
         <Filename Value="Poupador.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="139"/>
-        <CursorPos X="16" Y="151"/>
+        <CursorPos X="49" Y="10"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -38,9 +36,9 @@
         <ComponentName Value="DmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="52"/>
-        <CursorPos X="92" Y="59"/>
+        <CursorPos X="62" Y="56"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -52,12 +50,10 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="49"/>
-        <CursorPos X="29" Y="8"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="148"/>
+        <CursorPos X="25" Y="154"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit4>
       <Unit5>
@@ -78,7 +74,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="28" Y="9"/>
+        <TopLine Value="22"/>
+        <CursorPos X="8" Y="33"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit6>
@@ -205,7 +202,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="41" Y="8"/>
+        <CursorPos X="57" Y="7"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit17>
@@ -326,10 +323,11 @@
         <ComponentName Value="frmBaixaCheque"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="71"/>
-        <CursorPos X="39" Y="70"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="56" Y="6"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit28>
       <Unit29>
@@ -350,10 +348,13 @@
         <ComponentName Value="frmCheque"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="105"/>
-        <CursorPos X="30" Y="108"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="181"/>
+        <CursorPos X="74" Y="56"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit30>
       <Unit31>
@@ -640,10 +641,11 @@
         <ComponentName Value="frmPromocao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="203"/>
-        <CursorPos X="10" Y="192"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="27" Y="8"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit56>
       <Unit57>
@@ -1060,8 +1062,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="54"/>
-        <CursorPos X="17" Y="61"/>
+        <CursorPos X="41" Y="6"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit94>
@@ -1071,12 +1072,10 @@
         <ComponentName Value="frmUsuarioItemMenu"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
-        <TopLine Value="7"/>
-        <CursorPos X="35" Y="14"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="44"/>
+        <CursorPos X="37" Y="52"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit95>
       <Unit96>
@@ -1122,8 +1121,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="35"/>
-        <CursorPos X="22" Y="41"/>
+        <TopLine Value="21"/>
+        <CursorPos Y="22"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit99>
@@ -1202,12 +1201,10 @@
         <ComponentName Value="frmConfigGlobal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="65"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="52"/>
         <CursorPos X="38" Y="52"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit106>
       <Unit107>
@@ -1216,11 +1213,9 @@
         <ComponentName Value="frmDadosEmpresa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="8"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit107>
       <Unit108>
@@ -1229,11 +1224,10 @@
         <ComponentName Value="frmEtiqueta"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
-        <CursorPos X="27" Y="5"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="49"/>
+        <CursorPos X="23" Y="62"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit108>
       <Unit109>
@@ -1242,11 +1236,10 @@
         <ComponentName Value="frmPerfilPermissao"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
-        <CursorPos X="46" Y="9"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="28"/>
+        <CursorPos X="54" Y="7"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit109>
       <Unit110>
@@ -1255,12 +1248,10 @@
         <ComponentName Value="frmSenhaCaixa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="44"/>
         <CursorPos Y="46"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit110>
       <Unit111>
@@ -1269,12 +1260,10 @@
         <ComponentName Value="frmSenhaEstoque"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="41"/>
         <CursorPos X="25" Y="55"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit111>
       <Unit112>
@@ -1283,12 +1272,10 @@
         <ComponentName Value="frmVendedor"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="29" Y="20"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit112>
       <Unit113>
@@ -1328,10 +1315,12 @@
       <Unit116>
         <Filename Value="Cadastros/unCliente.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCliente"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="83"/>
-        <CursorPos X="5" Y="96"/>
+        <TopLine Value="53"/>
+        <CursorPos X="40" Y="54"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit116>
@@ -1342,8 +1331,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="135"/>
-        <CursorPos X="46" Y="117"/>
+        <TopLine Value="66"/>
+        <CursorPos X="28" Y="72"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit117>
@@ -1353,18 +1342,23 @@
         <ComponentName Value="frmListagemProdutos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="3" Y="8"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="26"/>
+        <CursorPos X="25" Y="28"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit118>
       <Unit119>
         <Filename Value="Cadastros/unProduto.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmProduto"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="571"/>
-        <CursorPos X="39" Y="579"/>
+        <TopLine Value="102"/>
+        <CursorPos X="37" Y="109"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit119>
@@ -1602,12 +1596,10 @@
         <ComponentName Value="frmSobre"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos X="35" Y="48"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit141>
       <Unit142>
@@ -1698,8 +1690,8 @@
         <Filename Value="Util/Funcoes.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="375"/>
-        <CursorPos X="50" Y="382"/>
+        <TopLine Value="171"/>
+        <CursorPos X="31" Y="172"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit150>
@@ -1793,8 +1785,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="25"/>
-        <CursorPos X="9" Y="37"/>
+        <TopLine Value="78"/>
+        <CursorPos X="21" Y="82"/>
         <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit160>
@@ -1825,7 +1817,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="202"/>
         <CursorPos X="50" Y="208"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="79"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit163>
       <Unit164>
@@ -1834,7 +1826,7 @@
         <UnitName Value="baseModel"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="5"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="79"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit164>
       <Unit165>
@@ -1847,7 +1839,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="12"/>
         <CursorPos X="21" Y="3"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="71"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit165>
       <Unit166>
@@ -2195,124 +2187,135 @@
         <CursorPos X="49" Y="3564"/>
         <UsageCount Value="8"/>
       </Unit216>
+      <Unit217>
+        <Filename Value="/usr/share/lazarus/2.0.12/lcl/include/customedit.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="674"/>
+        <CursorPos X="24" Y="685"/>
+        <UsageCount Value="10"/>
+      </Unit217>
     </Units>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="Poupador.lpr"/>
-        <Caret Line="5" Column="42"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="90" Column="25" TopLine="80"/>
       </Position1>
       <Position2>
-        <Filename Value="Poupador.lpr"/>
-        <Caret Line="15" Column="74"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="89" Column="25" TopLine="79"/>
       </Position2>
       <Position3>
-        <Filename Value="Poupador.lpr"/>
-        <Caret Line="20" Column="3" TopLine="2"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="88" Column="25" TopLine="78"/>
       </Position3>
       <Position4>
-        <Filename Value="Poupador.lpr"/>
-        <Caret Line="121" Column="100" TopLine="103"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="87" Column="25" TopLine="77"/>
       </Position4>
       <Position5>
-        <Filename Value="Poupador.lpr"/>
-        <Caret Line="22" TopLine="34"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="86" Column="25" TopLine="76"/>
       </Position5>
       <Position6>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="106" Column="41" TopLine="24"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="85" Column="25" TopLine="75"/>
       </Position6>
       <Position7>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="338" Column="39" TopLine="322"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="84" Column="25" TopLine="74"/>
       </Position7>
       <Position8>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="337" Column="39" TopLine="321"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="83" Column="25" TopLine="73"/>
       </Position8>
       <Position9>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="348" Column="39" TopLine="327"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="82" Column="25" TopLine="72"/>
       </Position9>
       <Position10>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="129" Column="3" TopLine="127"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="81" Column="25" TopLine="71"/>
       </Position10>
       <Position11>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="128" Column="3" TopLine="126"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="80" Column="25" TopLine="70"/>
       </Position11>
       <Position12>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="123" Column="28" TopLine="120"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="79" Column="25" TopLine="69"/>
       </Position12>
       <Position13>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="90" Column="19" TopLine="89"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="78" Column="25" TopLine="68"/>
       </Position13>
       <Position14>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="133" Column="3" TopLine="130"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="77" Column="25" TopLine="67"/>
       </Position14>
       <Position15>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="132" Column="3" TopLine="129"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="76" Column="25" TopLine="66"/>
       </Position15>
       <Position16>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="252" Column="3" TopLine="250"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="360" Column="40" TopLine="345"/>
       </Position16>
       <Position17>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="251" Column="3" TopLine="249"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="356" Column="64" TopLine="350"/>
       </Position17>
       <Position18>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="57" Column="28" TopLine="52"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="349" Column="11" TopLine="338"/>
       </Position18>
       <Position19>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="59" Column="5" TopLine="49"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="77" Column="11" TopLine="70"/>
       </Position19>
       <Position20>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="78" Column="48" TopLine="72"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="19" Column="24" TopLine="17"/>
       </Position20>
       <Position21>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="395" Column="19" TopLine="387"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="327" Column="5" TopLine="317"/>
       </Position21>
       <Position22>
-        <Filename Value="Poupador.lpr"/>
-        <Caret Line="134" Column="22" TopLine="127"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="349" Column="80" TopLine="337"/>
       </Position22>
       <Position23>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="89" Column="26" TopLine="86"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="45" TopLine="26"/>
       </Position23>
       <Position24>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="88" Column="26" TopLine="85"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="42" Column="27" TopLine="36"/>
       </Position24>
       <Position25>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="87" Column="26" TopLine="84"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="69" Column="40" TopLine="48"/>
       </Position25>
       <Position26>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="298" Column="36" TopLine="287"/>
+        <Filename Value="Movimentos/unBaixaCheque.pas"/>
+        <Caret Line="6" Column="56"/>
       </Position26>
       <Position27>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="297" Column="36" TopLine="286"/>
+        <Filename Value="Principal/unDmPrincipal.pas"/>
+        <Caret Line="56" Column="62" TopLine="52"/>
       </Position27>
       <Position28>
-        <Filename Value="Principal/unPrincipal.pas"/>
-        <Caret Line="292" Column="22" TopLine="286"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="346" Column="10" TopLine="331"/>
       </Position28>
       <Position29>
-        <Filename Value="Poupador.lpr"/>
-        <Caret Line="134" Column="22" TopLine="100"/>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="344" Column="34" TopLine="331"/>
       </Position29>
+      <Position30>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="14" Column="24" TopLine="52"/>
+      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

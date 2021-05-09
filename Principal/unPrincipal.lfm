@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 241
+  Left = 225
   Height = 369
-  Top = 196
+  Top = 186
   Width = 843
   Caption = 'WSCD'
   OnCreate = FormCreate
@@ -25,20 +25,10 @@ object MainForm: TMainForm
       Caption = 'Grupos de produtos'
       OnExecute = actGrupoExecute
     end
-    object actAliquotaIcms: TAction
-      Category = 'Configuracao'
-      Caption = 'Alíquotas de icms'
-      OnExecute = actAliquotaIcmsExecute
-    end
     object actContaCaixa: TAction
       Category = 'Configuracao'
       Caption = 'Contas caixa'
       OnExecute = actContaCaixaExecute
-    end
-    object actCfop: TAction
-      Category = 'Configuracao'
-      Caption = 'Operações CFOP'
-      OnExecute = actCfopExecute
     end
     object actConfiguracaoGlobal: TAction
       Category = 'Configuracao'

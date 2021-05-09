@@ -30,7 +30,7 @@ var
 implementation
 
 uses
-  Funcoes, uNotifyEventDispatcher;
+  Funcoes;
 
 {$R *.lfm}
 

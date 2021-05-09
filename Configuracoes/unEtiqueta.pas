@@ -5,8 +5,7 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ComCtrls,   memds,  SqlDb, Spin, 
-  DBCtrls, ZDataset, ZSqlUpdate, FMTBcd;
+  ComCtrls, DBCtrls, ZDataset, ZSqlUpdate, FMTBcd;
 
 type
 

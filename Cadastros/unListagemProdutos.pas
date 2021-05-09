@@ -5,9 +5,12 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, DB, Buttons, StdCtrls, Menus, ImgList, 
-  LCLType;
+  LCLType, ZDataset;
 
 type
+
+  { TfrmListagemProdutos }
+
   TfrmListagemProdutos = class(TForm)
     dsProdutos: TDataSource;
     lbBuscaProduto: TLabel;
@@ -16,6 +19,7 @@ type
     PopupCons: TPopupMenu;
     miFiltrar: TMenuItem;
     edtBuscaProduto: TEdit;
+    ZReadOnlyQuery1: TZReadOnlyQuery;
     procedure btnOKClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);

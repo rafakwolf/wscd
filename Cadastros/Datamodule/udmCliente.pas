@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils, Classes, udmGeralBase, FMTBcd, 
-  DB, Sqldb, memds, ExtCtrls, ZDataset;
+  DB, Sqldb, memds, ExtCtrls, ZDataset, ZSqlUpdate;
 
 type
 
@@ -12,6 +12,7 @@ type
 
   TdmCliente = class(TdmGeralBase)
     ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure DataModuleCreate(Sender: TObject);
   private
   public
