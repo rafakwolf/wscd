@@ -58,7 +58,7 @@ begin
   inherited;
   if cdsVenda.IsEmpty then
   begin
-    MsgAviso('Todas as vendas conclu�das.');
+    MsgAviso('Todas as vendas concluidas.');
     //PostMessage(Handle, WM_CLOSE, 0, 0);
   end;
 end;

@@ -1,7 +1,7 @@
 object frmSobre: TfrmSobre
-  Left = 266
+  Left = 377
   Height = 236
-  Top = 159
+  Top = 203
   Width = 475
   Caption = 'Sobre'
   ClientHeight = 236
@@ -10,7 +10,6 @@ object frmSobre: TfrmSobre
   Font.Name = 'Verdana'
   KeyPreview = True
   OnClose = FormClose
-  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   ShowHint = True

@@ -1,13 +1,8 @@
 inherited frmRecibo: TfrmRecibo
-  Left = 328
+  Left = 291
   Top = 181
   Caption = 'frmRecibo'
-  ClientHeight = 348
   Font.Name = 'Verdana'
-  Menu = mmPadrao
-  inherited sbStatus: TStatusBar
-    Top = 330
-  end
   inherited pnBotoesPadrao: TPanel
     TabOrder = 5
     inherited btnNovo: TSpeedButton
@@ -38,7 +33,7 @@ inherited frmRecibo: TfrmRecibo
   object lbRecebedor: TLabel[2]
     Left = 31
     Height = 15
-    Top = 84
+    Top = 93
     Width = 69
     Caption = 'Recebedor'
     ParentColor = False
@@ -48,7 +43,7 @@ inherited frmRecibo: TfrmRecibo
   object lbRefente: TLabel[3]
     Left = 36
     Height = 15
-    Top = 153
+    Top = 192
     Width = 64
     Caption = 'Referente'
     ParentColor = False
@@ -58,7 +53,7 @@ inherited frmRecibo: TfrmRecibo
   object lbValor: TLabel[4]
     Left = 62
     Height = 15
-    Top = 176
+    Top = 221
     Width = 33
     Caption = 'Valor'
     ParentColor = False
@@ -68,7 +63,7 @@ inherited frmRecibo: TfrmRecibo
   object lbValorExtenso: TLabel[5]
     Left = 12
     Height = 15
-    Top = 221
+    Top = 257
     Width = 89
     Caption = 'Valor extenso'
     ParentColor = False
@@ -78,7 +73,7 @@ inherited frmRecibo: TfrmRecibo
   object dbData: TDBEdit[6]
     Left = 108
     Height = 33
-    Top = 56
+    Top = 46
     Width = 186
     DataField = 'DATA'
     DataSource = dsPadrao
@@ -91,7 +86,7 @@ inherited frmRecibo: TfrmRecibo
   object dbRecebedor: TDBEdit[7]
     Left = 108
     Height = 33
-    Top = 80
+    Top = 89
     Width = 500
     DataField = 'RECEBEDOR'
     DataSource = dsPadrao
@@ -104,7 +99,7 @@ inherited frmRecibo: TfrmRecibo
   object dbValor: TDBEdit[8]
     Left = 108
     Height = 33
-    Top = 172
+    Top = 217
     Width = 134
     DataField = 'VALOR'
     DataSource = dsPadrao
@@ -113,11 +108,12 @@ inherited frmRecibo: TfrmRecibo
     ParentShowHint = False
     ShowHint = True
     TabOrder = 3
+    OnExit = dbValorExit
   end
   object dbReferente: TDBMemo[9]
     Left = 108
     Height = 65
-    Top = 104
+    Top = 143
     Width = 500
     DataField = 'REFERENTE'
     DataSource = dsPadrao
@@ -128,7 +124,7 @@ inherited frmRecibo: TfrmRecibo
   object dbValorExtenso: TDBMemo[10]
     Left = 108
     Height = 65
-    Top = 196
+    Top = 255
     Width = 500
     DataField = 'VALOREXTENSO'
     DataSource = dsPadrao
@@ -137,176 +133,83 @@ inherited frmRecibo: TfrmRecibo
     TabOrder = 4
   end
   inherited actlNavigateActions: TActionList[11]
-    Left = 236
-    Top = 117
+    Left = 680
+    Top = 64
     inherited actPrint: TAction
       OnExecute = actPrintExecute
       ShortCut = 0
     end
   end
   inherited dsPadrao: TDataSource[12]
-    DataSet = cdsPadrao
-    Left = 443
-    Top = 124
+    DataSet = ZQuery1
+    Left = 608
+    Top = 46
   end
-  object sqldPadrao: TSQLQuery[13]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[13]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from RECIBO'
+    )
     Params = <>
-    Left = 348
-    Top = 68
-    object sqldPadraoIDRECIBO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDRECIBO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoDATA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoRECEBEDOR: TStringField
-      FieldKind = fkData
-      FieldName = 'RECEBEDOR'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object sqldPadraoREFERENTE: TMemoField
-      FieldKind = fkData
-      FieldName = 'REFERENTE'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
-    object sqldPadraoVALOR: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoVALOREXTENSO: TMemoField
-      FieldKind = fkData
-      FieldName = 'VALOREXTENSO'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
+    Left = 448
+    Top = 48
   end
-  object dspPadrao: TTimer[14]
-    Left = 436
-    Top = 68
-  end
-  object cdsPadrao: TMemDataset[15]
-    FieldDefs = <>
-    Left = 364
-    Top = 124
-    object cdsPadraoIDRECIBO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDRECIBO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoDATA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoRECEBEDOR: TStringField
-      FieldKind = fkData
-      FieldName = 'RECEBEDOR'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object cdsPadraoREFERENTE: TMemoField
-      FieldKind = fkData
-      FieldName = 'REFERENTE'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
-    object cdsPadraoVALOR: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoVALOREXTENSO: TMemoField
-      FieldKind = fkData
-      FieldName = 'VALOREXTENSO'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
-  end
-  object mmPadrao: TMainMenu[16]
-    Left = 284
-    Top = 84
-    object miRelatorios: TMenuItem
-      object mImprimir: TMenuItem
-        Caption = 'Imprimir recibo'
-      end
-      object N5: TMenuItem
-        Caption = '-'
-      end
-    end
+  object ZUpdateSQL1: TZUpdateSQL[14]
+    DeleteSQL.Strings = (
+      'DELETE FROM RECIBO'
+      'WHERE'
+      '  RECIBO.IDRECIBO = :OLD_IDRECIBO'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO RECIBO'
+      '  (DATA, RECEBEDOR, REFERENTE, VALOR, VALOREXTENSO)'
+      'VALUES'
+      '  (:DATA, :RECEBEDOR, :REFERENTE, :VALOR, :VALOREXTENSO)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE RECIBO SET'
+      '  DATA = :DATA,'
+      '  RECEBEDOR = :RECEBEDOR,'
+      '  REFERENTE = :REFERENTE,'
+      '  VALOR = :VALOR,'
+      '  VALOREXTENSO = :VALOREXTENSO'
+      'WHERE'
+      '  RECIBO.IDRECIBO = :OLD_IDRECIBO'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 521
+    Top = 46
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DATA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'RECEBEDOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'REFERENTE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'VALOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'VALOREXTENSO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_IDRECIBO'
+        ParamType = ptUnknown
+      end>
   end
 end

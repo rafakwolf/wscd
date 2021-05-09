@@ -8,7 +8,6 @@ uses
   SqlDb, Menus, ComCtrls, memds, LCLtype;
 
 type
-  TDatasetField = TDataset;
   TfrmOrcamentos = class(TForm)
     dtOrcam: TComponent;
     cdsOrcam: TMemDataSet;
@@ -208,7 +207,6 @@ type
     dbeVendedor: TDBEdit;
     dbeItens: TDBEdit;
     dbeTotal: TDBEdit;
-    bvlLinha: TPanel;
     dbmObs: TDBMemo;
     grdItens: TDBGrid;
     procedure btnNovoClick(Sender: TObject);
@@ -274,7 +272,7 @@ uses unCliente, Funcoes, unModeloConsulta, VarGlobal, unPrevOrcammento,
      uConfiguraRelatorio, unRelatorioBobinaOrcam,
      uDatabaseutils;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmOrcamentos.btnNovoClick(Sender: TObject);
 begin
@@ -323,7 +321,7 @@ end;
 procedure TfrmOrcamentos.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  UpdatesPending(cdsOrcam, Self);
+  //UpdatesPending(cdsOrcam, Self);
 end;
 
 procedure TfrmOrcamentos.btnConsultarClick(Sender: TObject);
@@ -331,7 +329,7 @@ var
   Codigo: String;
 begin
   Codigo := '0';
-  if InputQuery('Localiza por n�mero', 'N�mero do or�amento:', Codigo) and (Codigo <> '0') then
+  if InputQuery('Localiza por numero', 'Numero do orcamento:', Codigo) and (Codigo <> '0') then
   begin
     //cdsOrcam.IndexFieldNames := 'CODIGO';
     //if not cdsOrcam.Locate('CODIGO', Codigo, []) then

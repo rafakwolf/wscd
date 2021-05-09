@@ -6,7 +6,7 @@ uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,   Grids, DBGrids, StdCtrls,  Buttons, DBCtrls, DB, memds,
   Menus, SqlDb, ComCtrls,  ConstPadrao, ActnList,
-  FMTBcd, unSimplePadrao,  varglobal, LCLType;
+  FMTBcd, unSimplePadrao,  VarGlobal, LCLType;
 
 const
   SQLPadraoTela: string = 'select'+
@@ -237,21 +237,12 @@ procedure TfrmContasPagar.miReciboClick(Sender: TObject);
 begin
   if MsgSN('Exportar esta conta para recibo?')then
   begin
-    with TfrmRecibo.Create(Self)do
-    try
-      Caption := 'Recibos';
-      cdsPadrao.Open;
-      cdsPadrao.Insert;
-      cdsPadraoDATA.AsDateTime    := Self.cdsPadraoVENCIMENTO.AsDateTime;
-      cdsPadraoVALOR.AsFloat      := Self.cdsPadraoTOTAL.AsFloat;
-      cdsPadraoRECEBEDOR.AsString := Self.cdsPadraoNOMEFORN.AsString;
-      cdsPadraoREFERENTE.AsString := Self.cdsPadraoDESCRICAO.AsString;
-      ////cdsPadrao.ApplyUpdates(0);
-      Imprime := True;
-      ShowModal;
-    finally
-      Free;
-    end;
+    TfrmRecibo.AddAndPrint(
+       cdsPadraoVENCIMENTO.AsDateTime,
+       cdsPadraoTOTAL.AsFloat,
+       cdsPadraoNOMEFORN.AsString,
+       cdsPadraoDESCRICAO.AsString
+    );
   end;  
 end;
 

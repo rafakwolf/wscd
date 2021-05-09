@@ -306,20 +306,12 @@ procedure TfrmContasReceber.miReciboClick(Sender: TObject);
 begin
   if MsgSN('Exportar esta conta para recibo?')then
   begin
-    with TfrmRecibo.Create(Self) do
-    try
-      Caption := 'Recibos';
-      cdsPadrao.Open;
-      cdsPadrao.Insert;
-      cdsPadraoDATA.AsDateTime    := self.cdsPadraoVENCIMENTO.AsDateTime;
-      cdsPadraoVALOR.AsFloat      := self.cdsPadraoTOTAL.AsFloat;
-      cdsPadraoRECEBEDOR.AsString := '';//Empresa.Nome;
-      cdsPadraoREFERENTE.AsString := self.cdsPadraoDESCRICAO.AsString;
-      imprime := True;
-      ShowModal;
-    finally
-      Free;
-    end;
+    TfrmRecibo.AddAndPrint(
+       cdsPadraoVENCIMENTO.AsDateTime,
+       cdsPadraoTOTAL.AsFloat,
+       Empresa.Nome,
+       cdsPadraoDESCRICAO.AsString
+    );
   end;
 end;
 

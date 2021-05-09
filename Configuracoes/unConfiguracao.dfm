@@ -19,12 +19,11 @@ inherited frmConfiguracao: TfrmConfiguracao
     Height = 317
     Top = 36
     Width = 729
-    ActivePage = tsEmail
+    ActivePage = TabProdutos
     ParentShowHint = False
     ShowHint = True
-    TabIndex = 9
+    TabIndex = 4
     TabOrder = 1
-    OnChange = PgConfigChange
     object Tabgeral: TTabSheet
       Caption = '    &Geral    '
       ClientHeight = 286
@@ -36,7 +35,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Height = 17
         Hint = 'Ativar barra de atalhos na tela principal'
         Top = 26
-        Width = 259
+        Width = 297
         Caption = 'Mostrar barra de atalhos na tela principal'
         DataField = 'BARRAFERRAMENTA'
         DataSource = dsPadrao
@@ -339,7 +338,7 @@ inherited frmConfiguracao: TfrmConfiguracao
       object dbeSenhaProduto: TDBEdit
         Left = 8
         Height = 33
-        Top = 187
+        Top = 208
         Width = 121
         DataField = 'SENHAESTOQUE'
         DataSource = dsPadrao
@@ -353,7 +352,7 @@ inherited frmConfiguracao: TfrmConfiguracao
       object dbcbEstoqueSenhaProd: TDBCheckBox
         Left = 8
         Height = 17
-        Top = 148
+        Top = 181
         Width = 243
         Caption = 'Pedir senha para alteração de estoque'
         DataField = 'USARSENHAESTOQUE'
@@ -367,7 +366,7 @@ inherited frmConfiguracao: TfrmConfiguracao
       object dbcbBordaEtqProd: TDBCheckBox
         Left = 8
         Height = 17
-        Top = 127
+        Top = 160
         Width = 224
         Caption = 'Exibir borda na etiqueta de produto '
         DataField = 'BORDAETQPROD'
@@ -381,7 +380,7 @@ inherited frmConfiguracao: TfrmConfiguracao
       object dbcbLetraNumCodBarra: TDBCheckBox
         Left = 8
         Height = 17
-        Top = 107
+        Top = 140
         Width = 220
         Caption = 'Permitir letras no código de barras'
         DataField = 'LETRACODIGOBARRA'
@@ -394,22 +393,22 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
       object grpValorProdutoPadrao: TGroupBox
         Left = 8
-        Height = 97
+        Height = 130
         Top = 6
         Width = 369
         Caption = ' Valores Padrão '
-        ClientHeight = 79
+        ClientHeight = 112
         ClientWidth = 367
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
         object dbeAliqPadrao: TDBEdit
-          Left = 204
+          Left = 32
           Height = 33
           Hint = 'Pesquisar < F2 >'
           Top = 15
           Width = 130
-          DataField = 'ALIQUOTA'
+          DataField = 'ALIQUOTAPADRAO'
           DataSource = dsPadrao
           ReadOnly = True
           CharCase = ecNormal
@@ -423,7 +422,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         object dbeEstoquePadrao: TDBEdit
           Left = 204
           Height = 33
-          Top = 40
+          Top = 15
           Width = 130
           DataField = 'ESTOQUEPADRAO'
           DataSource = dsPadrao
@@ -436,7 +435,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           OnKeyPress = dbeEstoquePadraoKeyPress
         end
         object dbeDescontoPadrao: TDBEdit
-          Left = 204
+          Left = 160
           Height = 33
           Top = 66
           Width = 130
@@ -454,7 +453,7 @@ inherited frmConfiguracao: TfrmConfiguracao
       object btnAlterarSenhaProduto: TBitBtn
         Left = 8
         Height = 25
-        Top = 213
+        Top = 248
         Width = 121
         Caption = '&Alterar Senha'
         OnClick = btnAlterarSenhaProdutoClick
@@ -529,7 +528,7 @@ inherited frmConfiguracao: TfrmConfiguracao
           Hint = 'Pesquisar < F2 >'
           Top = 20
           Width = 239
-          DataField = 'CAIXA'
+          DataField = 'CAIXAPADRAO'
           DataSource = dsPadrao
           ReadOnly = True
           CharCase = ecNormal
@@ -807,811 +806,284 @@ inherited frmConfiguracao: TfrmConfiguracao
     end
   end
   inherited actlNavigateActions: TActionList[3]
-    Left = 286
-    Top = 318
+    Left = 416
+    Top = 376
   end
   inherited dsPadrao: TDataSource[4]
-    DataSet = cdsPadrao
-    Left = 111
-    Top = 318
+    AutoEdit = True
+    DataSet = ZQuery1
+    Left = 192
+    Top = 368
   end
-  object sqldPadrao: TSQLQuery[5]
-    FieldDefs = <>
-    Params = <    
-      item
-        DataType = ftString
-        Name = 'PCOMP'
-        ParamType = ptInput
-      end>
-    Left = 14
-    Top = 318
-    object sqldPadraoIDCONFIGURACAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDCONFIGURACAO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoNOMECOMPUTADOR: TStringField
-      FieldKind = fkData
-      FieldName = 'NOMECOMPUTADOR'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoBARRAFERRAMENTA: TStringField
-      FieldKind = fkData
-      FieldName = 'BARRAFERRAMENTA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoHINTBALAO: TStringField
-      FieldKind = fkData
-      FieldName = 'HINTBALAO'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoGRAVAERRO: TStringField
-      FieldKind = fkData
-      FieldName = 'GRAVAERRO'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoBACKUP: TStringField
-      FieldKind = fkData
-      FieldName = 'BACKUP'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoLOG: TStringField
-      FieldKind = fkData
-      FieldName = 'LOG'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoIMPRESSORA: TStringField
-      FieldKind = fkData
-      FieldName = 'IMPRESSORA'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoRESOLUCAO: TStringField
-      FieldKind = fkData
-      FieldName = 'RESOLUCAO'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoLETRACODIGOBARRA: TStringField
-      FieldKind = fkData
-      FieldName = 'LETRACODIGOBARRA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoEXIBEDICADIA: TStringField
-      FieldKind = fkData
-      FieldName = 'EXIBEDICADIA'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoAVISACLIENTEATRASO: TStringField
-      FieldKind = fkData
-      FieldName = 'AVISACLIENTEATRASO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoDIREXPORTPADRAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DIREXPORTPADRAO'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object sqldPadraoSENHAESTOQUE: TStringField
-      FieldKind = fkData
-      FieldName = 'SENHAESTOQUE'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 10
-    end
-    object sqldPadraoUSARSENHAESTOQUE: TStringField
-      FieldKind = fkData
-      FieldName = 'USARSENHAESTOQUE'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoESTOQUEPADRAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ESTOQUEPADRAO'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoBORDAETQPROD: TStringField
-      FieldKind = fkData
-      FieldName = 'BORDAETQPROD'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoALIQUOTAPADRAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ALIQUOTAPADRAO'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoALIQUOTA: TStringField
-      FieldKind = fkData
-      FieldName = 'ALIQUOTA'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoDESCPADRAOPROD: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCPADRAOPROD'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoCAIXAPADRAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CAIXAPADRAO'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoCAIXA: TStringField
-      FieldKind = fkData
-      FieldName = 'CAIXA'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoSENHACAIXA: TStringField
-      FieldKind = fkData
-      FieldName = 'SENHACAIXA'
-      Index = 22
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 10
-    end
-    object sqldPadraoPRODSEMESTOQORCAM: TStringField
-      FieldKind = fkData
-      FieldName = 'PRODSEMESTOQORCAM'
-      Index = 23
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoORCAMNAOCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'ORCAMNAOCONC'
-      Index = 24
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoEDITORCAMCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'EDITORCAMCONC'
-      Index = 25
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoCOMPRANAOCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'COMPRANAOCONC'
-      Index = 26
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoEDITCOMPRACONC: TStringField
-      FieldKind = fkData
-      FieldName = 'EDITCOMPRACONC'
-      Index = 27
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoPRODSEMESTOQVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'PRODSEMESTOQVENDA'
-      Index = 28
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoVENDANAOCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'VENDANAOCONC'
-      Index = 29
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoEDITVENDACONC: TStringField
-      FieldKind = fkData
-      FieldName = 'EDITVENDACONC'
-      Index = 30
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoBORDAETQCLIENTE: TStringField
-      FieldKind = fkData
-      FieldName = 'BORDAETQCLIENTE'
-      Index = 31
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoMOSTRARSALDOCAIXA: TStringField
-      FieldKind = fkData
-      FieldName = 'MOSTRARSALDOCAIXA'
-      Index = 32
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoCAIXA90DIAS: TStringField
-      FieldKind = fkData
-      FieldName = 'CAIXA90DIAS'
-      Index = 33
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoRELZEBRADO: TStringField
-      FieldKind = fkData
-      FieldName = 'RELZEBRADO'
-      Index = 34
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoVERIFICA_UPD: TStringField
-      FieldKind = fkData
-      FieldName = 'VERIFICA_UPD'
-      Index = 35
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoCONTACHEQUE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CONTACHEQUE'
-      Index = 36
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoNCONTACHEQUE: TStringField
-      FieldKind = fkData
-      FieldName = 'NCONTACHEQUE'
-      Index = 37
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoINFOAVISOS: TStringField
-      FieldKind = fkData
-      FieldName = 'INFOAVISOS'
-      Index = 38
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-  end
-  object dspPadrao: TTimer[6]
-    Left = 48
-    Top = 318
-  end
-  object cdsPadrao: TMemDataset[7]
-    FieldDefs = <>
-    Left = 80
-    Top = 318
-    object cdsPadraoIDCONFIGURACAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDCONFIGURACAO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoNOMECOMPUTADOR: TStringField
-      FieldKind = fkData
-      FieldName = 'NOMECOMPUTADOR'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoBARRAFERRAMENTA: TStringField
-      FieldKind = fkData
-      FieldName = 'BARRAFERRAMENTA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoHINTBALAO: TStringField
-      FieldKind = fkData
-      FieldName = 'HINTBALAO'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoGRAVAERRO: TStringField
-      FieldKind = fkData
-      FieldName = 'GRAVAERRO'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoBACKUP: TStringField
-      FieldKind = fkData
-      FieldName = 'BACKUP'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoLOG: TStringField
-      FieldKind = fkData
-      FieldName = 'LOG'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoIMPRESSORA: TStringField
-      FieldKind = fkData
-      FieldName = 'IMPRESSORA'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoRESOLUCAO: TStringField
-      FieldKind = fkData
-      FieldName = 'RESOLUCAO'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoLETRACODIGOBARRA: TStringField
-      FieldKind = fkData
-      FieldName = 'LETRACODIGOBARRA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoEXIBEDICADIA: TStringField
-      FieldKind = fkData
-      FieldName = 'EXIBEDICADIA'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoAVISACLIENTEATRASO: TStringField
-      FieldKind = fkData
-      FieldName = 'AVISACLIENTEATRASO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoDIREXPORTPADRAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DIREXPORTPADRAO'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object cdsPadraoSENHAESTOQUE: TStringField
-      FieldKind = fkData
-      FieldName = 'SENHAESTOQUE'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 10
-    end
-    object cdsPadraoUSARSENHAESTOQUE: TStringField
-      FieldKind = fkData
-      FieldName = 'USARSENHAESTOQUE'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoESTOQUEPADRAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ESTOQUEPADRAO'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoBORDAETQPROD: TStringField
-      FieldKind = fkData
-      FieldName = 'BORDAETQPROD'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoALIQUOTAPADRAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ALIQUOTAPADRAO'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoALIQUOTA: TStringField
-      FieldKind = fkData
-      FieldName = 'ALIQUOTA'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoDESCPADRAOPROD: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCPADRAOPROD'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoCAIXAPADRAO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CAIXAPADRAO'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoCAIXA: TStringField
-      FieldKind = fkData
-      FieldName = 'CAIXA'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoSENHACAIXA: TStringField
-      FieldKind = fkData
-      FieldName = 'SENHACAIXA'
-      Index = 22
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 10
-    end
-    object cdsPadraoPRODSEMESTOQORCAM: TStringField
-      FieldKind = fkData
-      FieldName = 'PRODSEMESTOQORCAM'
-      Index = 23
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoORCAMNAOCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'ORCAMNAOCONC'
-      Index = 24
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoEDITORCAMCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'EDITORCAMCONC'
-      Index = 25
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoCOMPRANAOCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'COMPRANAOCONC'
-      Index = 26
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoEDITCOMPRACONC: TStringField
-      FieldKind = fkData
-      FieldName = 'EDITCOMPRACONC'
-      Index = 27
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoPRODSEMESTOQVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'PRODSEMESTOQVENDA'
-      Index = 28
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoVENDANAOCONC: TStringField
-      FieldKind = fkData
-      FieldName = 'VENDANAOCONC'
-      Index = 29
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoEDITVENDACONC: TStringField
-      FieldKind = fkData
-      FieldName = 'EDITVENDACONC'
-      Index = 30
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoBORDAETQCLIENTE: TStringField
-      FieldKind = fkData
-      FieldName = 'BORDAETQCLIENTE'
-      Index = 31
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoMOSTRARSALDOCAIXA: TStringField
-      FieldKind = fkData
-      FieldName = 'MOSTRARSALDOCAIXA'
-      Index = 32
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoCAIXA90DIAS: TStringField
-      FieldKind = fkData
-      FieldName = 'CAIXA90DIAS'
-      Index = 33
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoRELZEBRADO: TStringField
-      FieldKind = fkData
-      FieldName = 'RELZEBRADO'
-      Index = 34
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoVERIFICA_UPD: TStringField
-      FieldKind = fkData
-      FieldName = 'VERIFICA_UPD'
-      Index = 35
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoCONTACHEQUE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CONTACHEQUE'
-      Index = 36
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoNCONTACHEQUE: TStringField
-      FieldKind = fkData
-      FieldName = 'NCONTACHEQUE'
-      Index = 37
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoINFOAVISOS: TStringField
-      FieldKind = fkData
-      FieldName = 'INFOAVISOS'
-      Index = 38
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-  end
-  object opImagem: TOpenPictureDialog[8]
+  object opImagem: TOpenPictureDialog[5]
     Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp)|*.bmp'
-    Left = 254
-    Top = 318
+    Left = 280
+    Top = 376
+  end
+  object ZUpdateSQL1: TZUpdateSQL[6]
+    DeleteSQL.Strings = (
+      'DELETE FROM CONFIGURACAO'
+      'WHERE'
+      '  CONFIGURACAO.IDCONFIGURACAO = :OLD_IDCONFIGURACAO'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CONFIGURACAO'
+      '  (NOMECOMPUTADOR, BARRAFERRAMENTA, HINTBALAO, GRAVAERRO, BACKUP, LOG, '
+      '   IMPRESSORA, RESOLUCAO, LETRACODIGOBARRA, EXIBEDICADIA, AVISACLIENTEATRASO, '
+      '   DIREXPORTPADRAO, SENHAESTOQUE, USARSENHAESTOQUE, ESTOQUEPADRAO, BORDAETQPROD, '
+      '   ALIQUOTAPADRAO, DESCPADRAOPROD, CAIXAPADRAO, SENHACAIXA, PRODSEMESTOQORCAM, '
+      '   ORCAMNAOCONC, EDITORCAMCONC, COMPRANAOCONC, EDITCOMPRACONC, PRODSEMESTOQVENDA, '
+      '   VENDANAOCONC, EDITVENDACONC, BORDAETQCLIENTE, MOSTRARSALDOCAIXA, CAIXA90DIAS, '
+      '   RELZEBRADO, VERIFICA_UPD, CONTACHEQUE, INFOAVISOS, NCONTACHEQUE)'
+      'VALUES'
+      '  (:NOMECOMPUTADOR, :BARRAFERRAMENTA, :HINTBALAO, :GRAVAERRO, :BACKUP, '
+      '   :LOG, :IMPRESSORA, :RESOLUCAO, :LETRACODIGOBARRA, :EXIBEDICADIA, :AVISACLIENTEATRASO, '
+      '   :DIREXPORTPADRAO, :SENHAESTOQUE, :USARSENHAESTOQUE, :ESTOQUEPADRAO, '
+      '   :BORDAETQPROD, :ALIQUOTAPADRAO, :DESCPADRAOPROD, :CAIXAPADRAO, :SENHACAIXA, '
+      '   :PRODSEMESTOQORCAM, :ORCAMNAOCONC, :EDITORCAMCONC, :COMPRANAOCONC, :EDITCOMPRACONC, '
+      '   :PRODSEMESTOQVENDA, :VENDANAOCONC, :EDITVENDACONC, :BORDAETQCLIENTE, '
+      '   :MOSTRARSALDOCAIXA, :CAIXA90DIAS, :RELZEBRADO, :VERIFICA_UPD, :CONTACHEQUE, '
+      '   :INFOAVISOS, :NCONTACHEQUE)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CONFIGURACAO SET'
+      '  NOMECOMPUTADOR = :NOMECOMPUTADOR,'
+      '  BARRAFERRAMENTA = :BARRAFERRAMENTA,'
+      '  HINTBALAO = :HINTBALAO,'
+      '  GRAVAERRO = :GRAVAERRO,'
+      '  BACKUP = :BACKUP,'
+      '  LOG = :LOG,'
+      '  IMPRESSORA = :IMPRESSORA,'
+      '  RESOLUCAO = :RESOLUCAO,'
+      '  LETRACODIGOBARRA = :LETRACODIGOBARRA,'
+      '  EXIBEDICADIA = :EXIBEDICADIA,'
+      '  AVISACLIENTEATRASO = :AVISACLIENTEATRASO,'
+      '  DIREXPORTPADRAO = :DIREXPORTPADRAO,'
+      '  SENHAESTOQUE = :SENHAESTOQUE,'
+      '  USARSENHAESTOQUE = :USARSENHAESTOQUE,'
+      '  ESTOQUEPADRAO = :ESTOQUEPADRAO,'
+      '  BORDAETQPROD = :BORDAETQPROD,'
+      '  ALIQUOTAPADRAO = :ALIQUOTAPADRAO,'
+      '  DESCPADRAOPROD = :DESCPADRAOPROD,'
+      '  CAIXAPADRAO = :CAIXAPADRAO,'
+      '  SENHACAIXA = :SENHACAIXA,'
+      '  PRODSEMESTOQORCAM = :PRODSEMESTOQORCAM,'
+      '  ORCAMNAOCONC = :ORCAMNAOCONC,'
+      '  EDITORCAMCONC = :EDITORCAMCONC,'
+      '  COMPRANAOCONC = :COMPRANAOCONC,'
+      '  EDITCOMPRACONC = :EDITCOMPRACONC,'
+      '  PRODSEMESTOQVENDA = :PRODSEMESTOQVENDA,'
+      '  VENDANAOCONC = :VENDANAOCONC,'
+      '  EDITVENDACONC = :EDITVENDACONC,'
+      '  BORDAETQCLIENTE = :BORDAETQCLIENTE,'
+      '  MOSTRARSALDOCAIXA = :MOSTRARSALDOCAIXA,'
+      '  CAIXA90DIAS = :CAIXA90DIAS,'
+      '  RELZEBRADO = :RELZEBRADO,'
+      '  VERIFICA_UPD = :VERIFICA_UPD,'
+      '  CONTACHEQUE = :CONTACHEQUE,'
+      '  INFOAVISOS = :INFOAVISOS,'
+      '  NCONTACHEQUE = :NCONTACHEQUE'
+      'WHERE'
+      '  CONFIGURACAO.IDCONFIGURACAO = :OLD_IDCONFIGURACAO'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 112
+    Top = 368
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'NOMECOMPUTADOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'BARRAFERRAMENTA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'HINTBALAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'GRAVAERRO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'BACKUP'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LOG'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'IMPRESSORA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'RESOLUCAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LETRACODIGOBARRA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'EXIBEDICADIA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'AVISACLIENTEATRASO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DIREXPORTPADRAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'SENHAESTOQUE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'USARSENHAESTOQUE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ESTOQUEPADRAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'BORDAETQPROD'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ALIQUOTAPADRAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DESCPADRAOPROD'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CAIXAPADRAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'SENHACAIXA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PRODSEMESTOQORCAM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ORCAMNAOCONC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'EDITORCAMCONC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'COMPRANAOCONC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'EDITCOMPRACONC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PRODSEMESTOQVENDA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'VENDANAOCONC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'EDITVENDACONC'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'BORDAETQCLIENTE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MOSTRARSALDOCAIXA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CAIXA90DIAS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'RELZEBRADO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'VERIFICA_UPD'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'CONTACHEQUE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INFOAVISOS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'NCONTACHEQUE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_IDCONFIGURACAO'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQuery1: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from CONFIGURACAO'
+    )
+    Params = <>
+    Left = 30
+    Top = 368
   end
 end

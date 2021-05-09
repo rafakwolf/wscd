@@ -5,31 +5,18 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB, memds,
-   SqlDb, FMTBcd, LCLType;
+   SqlDb, FMTBcd, LCLType, ZDataset;
 
 type
+
+  { TfrmCompNaoConc }
+
   TfrmCompNaoConc = class(TForm)
     dsComp: TDataSource;
-    sqlComp: TSQLQuery;
-    dspComp: TComponent;
-    cdsComp: TMemDataSet;
-    sqlCompNUMERO: TIntegerField;
-    sqlCompDATANOTA: TDateField;
-    sqlCompDATAENTRADA: TDateField;
-    sqlCompCODFORNECEDOR: TIntegerField;
-    sqlCompRAZAOSOCIAL: TStringField;
-    sqlCompTOTAL: TFMTBCDField;
-    sqlCompCONCLUIDA: TStringField;
-    cdsCompNUMERO: TIntegerField;
-    cdsCompDATANOTA: TDateField;
-    cdsCompDATAENTRADA: TDateField;
-    cdsCompCODFORNECEDOR: TIntegerField;
-    cdsCompRAZAOSOCIAL: TStringField;
-    cdsCompTOTAL: TFMTBCDField;
-    cdsCompCONCLUIDA: TStringField;
     btnConsultar: TBitBtn;
     btnCancelar: TBitBtn;
     Grade: TDBGrid;
+    ZReadOnlyQuery1: TZReadOnlyQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure GradeDblClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -83,11 +70,11 @@ end;
 
 procedure TfrmCompNaoConc.FormShow(Sender: TObject);
 begin
-  cdsComp.Open;
-  if cdsComp.IsEmpty then
+  ZReadOnlyQuery1.Open;
+  if ZReadOnlyQuery1.IsEmpty then
   begin
-    MsgAviso('Todas as compras conclu�das.');
-    //PostMessage(Handle, WM_CLOSE, 0, 0);
+    MsgAviso('Todas as compras concluidas.');
+    self.Close;
     Exit;
   end;
 end;
@@ -103,7 +90,7 @@ begin
   if Sender.AsString = 'S' then
     Text := 'Sim'
   else
-    Text := 'N�o';  
+    Text := 'Nao';
 end;
 
 initialization

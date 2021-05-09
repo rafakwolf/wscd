@@ -6038,306 +6038,131 @@ inherited frmEtiqueta: TfrmEtiqueta
     end
   end
   inherited actlNavigateActions: TActionList[26]
-    Left = 448
-    Top = 60
+    Left = 568
+    Top = 320
   end
   inherited dsPadrao: TDataSource[27]
-    DataSet = cdsPadrao
-    Left = 103
-    Top = 184
+    DataSet = ZQuery1
+    Left = 600
+    Top = 264
   end
-  object sqldPadrao: TSQLQuery[28]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[28]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from ETIQUETA'
+    )
     Params = <>
-    Left = 8
-    Top = 184
-    object sqldPadraoIDETIQUETA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDETIQUETA'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoETIQUETA: TStringField
-      FieldKind = fkData
-      FieldName = 'ETIQUETA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoALTURAFOLHA: TFloatField
-      FieldKind = fkData
-      FieldName = 'ALTURAFOLHA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoLARGURAFOLHA: TFloatField
-      FieldKind = fkData
-      FieldName = 'LARGURAFOLHA'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoMARGEMSUPERIOR: TFloatField
-      FieldKind = fkData
-      FieldName = 'MARGEMSUPERIOR'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoMARGEMESQUERDA: TFloatField
-      FieldKind = fkData
-      FieldName = 'MARGEMESQUERDA'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoNUMEROLINHAS: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMEROLINHAS'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoNUMEROCOLUNAS: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMEROCOLUNAS'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoALTURAETIQUETA: TFloatField
-      FieldKind = fkData
-      FieldName = 'ALTURAETIQUETA'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoLARGURAETIQUETA: TFloatField
-      FieldKind = fkData
-      FieldName = 'LARGURAETIQUETA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoDISTANCIAVERTICAL: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTANCIAVERTICAL'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoDISTANCIAHORIZONTAL: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTANCIAHORIZONTAL'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoDISTACOLVERTICAL: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTACOLVERTICAL'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoDISTCOLHORIZ: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTCOLHORIZ'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
+    Left = 612
+    Top = 381
   end
-  object dspPadrao: TTimer[29]
-    Left = 40
-    Top = 184
-  end
-  object cdsPadrao: TMemDataset[30]
-    FieldDefs = <>
-    AfterInsert = cdsPadraoAfterInsert
-    Left = 72
-    Top = 184
-    object cdsPadraoIDETIQUETA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDETIQUETA'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoETIQUETA: TStringField
-      FieldKind = fkData
-      FieldName = 'ETIQUETA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoALTURAFOLHA: TFloatField
-      FieldKind = fkData
-      FieldName = 'ALTURAFOLHA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoLARGURAFOLHA: TFloatField
-      FieldKind = fkData
-      FieldName = 'LARGURAFOLHA'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoMARGEMSUPERIOR: TFloatField
-      FieldKind = fkData
-      FieldName = 'MARGEMSUPERIOR'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoMARGEMESQUERDA: TFloatField
-      FieldKind = fkData
-      FieldName = 'MARGEMESQUERDA'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoNUMEROLINHAS: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMEROLINHAS'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoNUMEROCOLUNAS: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMEROCOLUNAS'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoALTURAETIQUETA: TFloatField
-      FieldKind = fkData
-      FieldName = 'ALTURAETIQUETA'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      OnChange = cdsPadraoALTURAETIQUETAChange
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoLARGURAETIQUETA: TFloatField
-      FieldKind = fkData
-      FieldName = 'LARGURAETIQUETA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      OnChange = cdsPadraoLARGURAETIQUETAChange
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoDISTANCIAVERTICAL: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTANCIAVERTICAL'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoDISTANCIAHORIZONTAL: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTANCIAHORIZONTAL'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      OnChange = cdsPadraoDISTANCIAHORIZONTALChange
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoDISTACOLVERTICAL: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTACOLVERTICAL'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      OnChange = cdsPadraoDISTACOLVERTICALChange
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsPadraoDISTCOLHORIZ: TFloatField
-      FieldKind = fkData
-      FieldName = 'DISTCOLHORIZ'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
+  object ZUpdateSQL1: TZUpdateSQL[29]
+    DeleteSQL.Strings = (
+      'DELETE FROM ETIQUETA'
+      'WHERE'
+      '  ETIQUETA.IDETIQUETA = :OLD_IDETIQUETA'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO ETIQUETA'
+      '  (ETIQUETA, ALTURAFOLHA, LARGURAFOLHA, MARGEMSUPERIOR, MARGEMESQUERDA, '
+      '   NUMEROLINHAS, NUMEROCOLUNAS, ALTURAETIQUETA, LARGURAETIQUETA, DISTANCIAVERTICAL, '
+      '   DISTANCIAHORIZONTAL, DISTACOLVERTICAL, DISTCOLHORIZ)'
+      'VALUES'
+      '  (:ETIQUETA, :ALTURAFOLHA, :LARGURAFOLHA, :MARGEMSUPERIOR, :MARGEMESQUERDA, '
+      '   :NUMEROLINHAS, :NUMEROCOLUNAS, :ALTURAETIQUETA, :LARGURAETIQUETA, :DISTANCIAVERTICAL, '
+      '   :DISTANCIAHORIZONTAL, :DISTACOLVERTICAL, :DISTCOLHORIZ)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE ETIQUETA SET'
+      '  ETIQUETA = :ETIQUETA,'
+      '  ALTURAFOLHA = :ALTURAFOLHA,'
+      '  LARGURAFOLHA = :LARGURAFOLHA,'
+      '  MARGEMSUPERIOR = :MARGEMSUPERIOR,'
+      '  MARGEMESQUERDA = :MARGEMESQUERDA,'
+      '  NUMEROLINHAS = :NUMEROLINHAS,'
+      '  NUMEROCOLUNAS = :NUMEROCOLUNAS,'
+      '  ALTURAETIQUETA = :ALTURAETIQUETA,'
+      '  LARGURAETIQUETA = :LARGURAETIQUETA,'
+      '  DISTANCIAVERTICAL = :DISTANCIAVERTICAL,'
+      '  DISTANCIAHORIZONTAL = :DISTANCIAHORIZONTAL,'
+      '  DISTACOLVERTICAL = :DISTACOLVERTICAL,'
+      '  DISTCOLHORIZ = :DISTCOLHORIZ'
+      'WHERE'
+      '  ETIQUETA.IDETIQUETA = :OLD_IDETIQUETA'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 545
+    Top = 408
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'ETIQUETA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ALTURAFOLHA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LARGURAFOLHA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MARGEMSUPERIOR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MARGEMESQUERDA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'NUMEROLINHAS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'NUMEROCOLUNAS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'ALTURAETIQUETA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LARGURAETIQUETA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DISTANCIAVERTICAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DISTANCIAHORIZONTAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DISTACOLVERTICAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'DISTCOLHORIZ'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_IDETIQUETA'
+        ParamType = ptUnknown
+      end>
   end
 end

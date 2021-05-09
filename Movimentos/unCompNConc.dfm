@@ -1,7 +1,7 @@
 object frmCompNaoConc: TfrmCompNaoConc
-  Left = 198
+  Left = 284
   Height = 313
-  Top = 149
+  Top = 156
   Width = 732
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -148,164 +148,17 @@ object frmCompNaoConc: TfrmCompNaoConc
     OnDblClick = btnConsultarClick
   end
   object dsComp: TDataSource
-    DataSet = cdsComp
+    DataSet = ZReadOnlyQuery1
     Left = 344
     Top = 128
   end
-  object sqlComp: TSQLQuery
-    FieldDefs = <>
+  object ZReadOnlyQuery1: TZReadOnlyQuery
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from NOTAS_FISCAIS where CONCLUIDA = ''N'' or CONCLUIDA is null'
+    )
     Params = <>
-    Left = 80
-    Top = 112
-    object sqlCompNUMERO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlCompDATANOTA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATANOTA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlCompDATAENTRADA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATAENTRADA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlCompCODFORNECEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODFORNECEDOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlCompRAZAOSOCIAL: TStringField
-      FieldKind = fkData
-      FieldName = 'RAZAOSOCIAL'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqlCompTOTAL: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlCompCONCLUIDA: TStringField
-      FieldKind = fkData
-      FieldName = 'CONCLUIDA'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-  end
-  object dspComp: TTimer
-    Left = 168
-    Top = 128
-  end
-  object cdsComp: TMemDataset
-    FieldDefs = <>
-    Left = 264
-    Top = 128
-    object cdsCompNUMERO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsCompDATANOTA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATANOTA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsCompDATAENTRADA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATAENTRADA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsCompCODFORNECEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODFORNECEDOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsCompRAZAOSOCIAL: TStringField
-      FieldKind = fkData
-      FieldName = 'RAZAOSOCIAL'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsCompTOTAL: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsCompCONCLUIDA: TStringField
-      FieldKind = fkData
-      FieldName = 'CONCLUIDA'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
+    Left = 237
+    Top = 82
   end
 end

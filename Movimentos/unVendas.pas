@@ -3,13 +3,12 @@
 interface
 
 uses
-  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, Buttons,  DBCtrls, ComCtrls,
   Menus, Db, memds, ConstPadrao,
   Sqldb, FMTBcd, unPadrao,  ActnList, lcltype;
 
 type
-  TDatasetField = TDataset;
   TfrmVendas = class(TfrmPadrao)
     sqldClientes: TSQLQuery;
     dspClientes: TComponent;
@@ -353,7 +352,7 @@ begin
           if MsgSn('Existe(m) ' + IntToStr(NumRegs) +
             ' Vendas(s) n�o conclu�da(s). Por favor verifique, pois estas podem' +
             ' causar inconsist�ncias no banco de dados, e no controle de estoque.'+#13#10+
-            'Deseja exibir somente as vendas n�o conclu�das agora?') then
+            'Deseja exibir somente as vendas n�o concluidas agora?') then
           begin
             cdsVendas.Filtered := False;
             cdsVendas.Filter := '(CONCLUIDA = '+QuotedStr('N')+') and (CANCELADO = '+QuotedStr('N')+')';
@@ -486,7 +485,7 @@ end;
 procedure TfrmVendas.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  UpdatesPending(cdsVendas, Self);
+  //UpdatesPending(cdsVendas, Self);
 end;
 
 procedure TfrmVendas.miRelVendaClienteClick(Sender: TObject);
@@ -883,7 +882,7 @@ end;
 
 procedure TfrmVendas.miVendasNaoConcClick(Sender: TObject);
 begin
-  ChamaForm('TfrmVendaNaoConc', 'Vendas n�o conclu�das', Self);
+  ChamaForm('TfrmVendaNaoConc', 'Vendas n�o concluidas', Self);
 end;
 
 procedure TfrmVendas.ReceberVenda;

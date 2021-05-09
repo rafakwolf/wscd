@@ -5,20 +5,14 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, StdCtrls, DB, memds,  SqlDb, Grids,
-  DBGrids, Buttons,  Menus, FMTBcd;
+  DBGrids, Buttons,  Menus, ZDataset, FMTBcd;
 
 type
+
+  { TfrmPesqFone }
+
   TfrmPesqFone = class(TfrmSimplePadrao)
-    sqldFone: TSQLQuery;
-    dspFone: TComponent;
-    cdsFone: TMemDataSet;
     dsFone: TDataSource;
-    sqldFoneNOME: TStringField;
-    sqldFoneTELEFONE: TStringField;
-    sqldFoneFAX: TStringField;
-    cdsFoneNOME: TStringField;
-    cdsFoneTELEFONE: TStringField;
-    cdsFoneFAX: TStringField;
     mmPesqFone: TMainMenu;
     miRegistros: TMenuItem;
     miCadastrar: TMenuItem;
@@ -34,6 +28,7 @@ type
     edtFone: TEdit;
     dbgrdFones: TDBGrid;
     rgpPesquisa: TRadioGroup;
+    ZReadOnlyQuery1: TZReadOnlyQuery;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnPesquisarClick(Sender: TObject);
@@ -59,15 +54,15 @@ uses Funcoes, unAgenda, unPrevRelAgenda, uConfiguraRelatorio;
 procedure TfrmPesqFone.FormCreate(Sender: TObject);
 begin
   inherited;
-  cdsFone.Open;
-  FSQL := sqldFone.SQL.Text;
+  ZReadOnlyQuery1.Open;
+  FSQL := ZReadOnlyQuery1.SQL.Text;
 end;
 
 procedure TfrmPesqFone.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
-  cdsFone.Close;
+  ZReadOnlyQuery1.Close;
 end;
 
 procedure TfrmPesqFone.btnPesquisarClick(Sender: TObject);
@@ -76,23 +71,16 @@ begin
   FSQL := '';
   case rgpPesquisa.ItemIndex of
     0: begin
-         if (ClearMask(edtNome.Text) = '') then
-           FSQL := 'select * from VIEWPESQUISAFONE'
-         else
-           FSQL := 'select * from VIEWPESQUISAFONE where upper(udf_CollateBr(NOME)) like '+
-             AnsiUpperCase(QuotedStr('%'+edtNome.Text+'%'));
+         ZReadOnlyQuery1.Filtered:=false;
+         ZReadOnlyQuery1.filter := 'NOME like '+QuotedStr('%'+edtNome.Text+'%');
+         ZReadOnlyQuery1.Filtered:=true;
        end;
     1: begin
-         if (ClearMask(edtFone.Text) = '') then
-           FSQL := 'select * from VIEWPESQUISAFONE'
-         else
-           FSQL := 'select * from VIEWPESQUISAFONE where upper(udf_CollateBr(TELEFONE)) like '+
-             AnsiUpperCase(QuotedStr('%'+edtFone.Text+'%'));
+         ZReadOnlyQuery1.Filtered:=false;
+         ZReadOnlyQuery1.filter := 'TELEFONE like '+QuotedStr('%'+edtFone.Text+'%');
+         ZReadOnlyQuery1.Filtered:=true;
        end;
   end;
-  sqldFone.Close;
-  sqldFone.SQL.Clear; sqldFone.SQL.Text :=FSQL;
-  sqldFone.Open;
 end;
 
 procedure TfrmPesqFone.rgpPesquisaClick(Sender: TObject);
@@ -128,7 +116,8 @@ begin
   with TfrmPrevRelAgenda.Create(Self) do
   try
     sqldPadrao.Close;
-    sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=FSQL;
+    sqldPadrao.SQL.Clear;
+    sqldPadrao.SQL.Text :=FSQL;
     sqldPadrao.Open;
     PrintIfNotEmptyRL(rrPadrao);
   finally

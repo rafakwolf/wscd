@@ -1,7 +1,7 @@
 inherited frmFornecedor: TfrmFornecedor
-  Left = 139
+  Left = 262
   Height = 480
-  Top = 147
+  Top = 156
   Width = 796
   Caption = 'frmFornecedor'
   ClientHeight = 480
@@ -17,8 +17,8 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object btnContas: TBitBtn[2]
     Left = 576
-    Height = 25
-    Top = 360
+    Height = 34
+    Top = 351
     Width = 81
     Caption = '&Contas'
     OnClick = btnContasClick
@@ -237,17 +237,7 @@ inherited frmFornecedor: TfrmFornecedor
     ShowHint = True
     TabOrder = 12
   end
-  object bvlLinha: TPanel[19]
-    Left = 8
-    Height = 2
-    Top = 232
-    Width = 689
-    Caption = 'bvlLinha'
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 19
-  end
-  object dbmObs: TDBMemo[20]
+  object dbmObs: TDBMemo[19]
     Left = 8
     Height = 47
     Top = 338
@@ -256,9 +246,9 @@ inherited frmFornecedor: TfrmFornecedor
     DataSource = dsPadrao
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 20
+    TabOrder = 19
   end
-  inherited actlNavigateActions: TActionList[21]
+  inherited actlNavigateActions: TActionList[20]
     Left = 560
     Top = 212
     inherited actPrint: TAction
@@ -267,12 +257,12 @@ inherited frmFornecedor: TfrmFornecedor
       ShortCut = 0
     end
   end
-  inherited dsPadrao: TDataSource[22]
+  inherited dsPadrao: TDataSource[21]
     DataSet = cdsPadrao
     Left = 604
     Top = 6
   end
-  object sqldPadrao: TSQLQuery[23]
+  object sqldPadrao: TSQLQuery[22]
     FieldDefs = <>
     Params = <>
     Left = 508
@@ -472,11 +462,11 @@ inherited frmFornecedor: TfrmFornecedor
       Size = 1
     end
   end
-  object dspPadrao: TTimer[24]
+  object dspPadrao: TTimer[23]
     Left = 540
     Top = 6
   end
-  object cdsPadrao: TMemDataset[25]
+  object cdsPadrao: TMemDataset[24]
     FieldDefs = <>
     AfterInsert = cdsPadraoAfterInsert
     Left = 572
@@ -684,17 +674,17 @@ inherited frmFornecedor: TfrmFornecedor
       Size = 1
     end
   end
-  object sqldCidade: TSQLQuery[26]
+  object sqldCidade: TSQLQuery[25]
     FieldDefs = <>
     Params = <>
     Left = 324
     Top = 244
   end
-  object dspCidade: TTimer[27]
+  object dspCidade: TTimer[26]
     Left = 404
     Top = 244
   end
-  object cdsCidade: TMemDataset[28]
+  object cdsCidade: TMemDataset[27]
     FieldDefs = <>
     Left = 476
     Top = 244

@@ -1,11 +1,14 @@
 inherited frmCadastroCaixa: TfrmCadastroCaixa
   Left = 331
+  Height = 326
   Top = 179
   Width = 624
   Caption = 'frmCadastroCaixa'
+  ClientHeight = 326
   ClientWidth = 624
   Font.Name = 'Verdana'
   inherited sbStatus: TStatusBar
+    Top = 308
     Width = 624
   end
   inherited pnBotoesPadrao: TPanel
@@ -66,13 +69,13 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     ValueUnchecked = 'N'
   end
   inherited actlNavigateActions: TActionList[5]
-    Left = 144
-    Top = 224
+    Left = 104
+    Top = 200
   end
   inherited dsPadrao: TDataSource[6]
     DataSet = ZQuery1
-    Left = 456
-    Top = 192
+    Left = 408
+    Top = 168
   end
   object ZQuery1: TZQuery[7]
     Connection = DmPrincipal.ZConnection1

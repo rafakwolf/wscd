@@ -5,7 +5,7 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, Grids, DBGrids, Buttons, memds,  SqlDb,
-  Menus, ComCtrls, ConstPadrao, unSimplePadrao, LCLType;
+  Menus, ComCtrls, ConstPadrao, unSimplePadrao, LCLType, ZDataset;
 
 const
   SQLPadrao90Dias: string = 'select '+
@@ -38,38 +38,12 @@ const
                            'order by cx.DATA';
 
 type
+
+  { TfrmCaixa }
+
   TfrmCaixa = class(TfrmSimplePadrao)
     dsCaixa: TDataSource;
-    sqldCredDeb: TSQLQuery;
     dsCaixas: TDataSource;
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
-    sqldCaixas: TSQLQuery;
-    dspCaixas: TComponent;
-    cdsCaixas: TMemDataSet;
-    cdsCaixasCODIGO: TIntegerField;
-    cdsCaixasNOME: TStringField;
-    cdsCaixasINATIVO: TStringField;
-    sqldPadraoCODCAIXA: TIntegerField;
-    sqldPadraoCODCAIXAS: TIntegerField;
-    sqldPadraoNOME: TStringField;
-    sqldPadraoDATA: TDateField;
-    sqldPadraoDESCRICAO: TStringField;
-    sqldPadraoDOCUMENTO: TStringField;
-    sqldPadraoTIPO: TStringField;
-    sqldPadraoEXCLUIR: TStringField;
-    cdsPadraoCODCAIXA: TIntegerField;
-    cdsPadraoCODCAIXAS: TIntegerField;
-    cdsPadraoNOME: TStringField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoDESCRICAO: TStringField;
-    cdsPadraoDOCUMENTO: TStringField;
-    cdsPadraoTIPO: TStringField;
-    cdsPadraoEXCLUIR: TStringField;
-    sqldPadraoVALOR: TFMTBCDField;
-    cdsPadraoVALOR: TFMTBCDField;
-    sqldCredDebCRED_DEB: TFMTBCDField;
     mnCaixa: TMainMenu;
     miRegistro: TMenuItem;
     miNovo: TMenuItem;
@@ -115,6 +89,9 @@ type
     PopupConsulta: TPopupMenu;
     miDeleteItem: TMenuItem;
     miLocalizaColuna: TMenuItem;
+    sqldCredDeb: TZQuery;
+    sqlPadrao: TZQuery;
+    ZQuery3: TZQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnExcluirClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -136,16 +113,10 @@ type
     procedure FormCreate(Sender: TObject);
     procedure miRelContaCaixaClick(Sender: TObject);
     procedure miExcluirVariosClick(Sender: TObject);
-    procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;
-      DisplayText: Boolean);
     procedure btnNovoClick(Sender: TObject);
-    procedure btnLocateClick(Sender: TObject);
     procedure dsCaixaStateChange(Sender: TObject);
-    procedure cdsPadraoAfterOpen(DataSet: TDataSet);
     procedure miMovimentoHojeClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure dspPadraoGetTableName(Sender: TObject; DataSet: TDataSet;
-      var TableName: WideString);
   private
     SQLPadraoTela: string;
     procedure SetCaixaDefault;
@@ -179,7 +150,7 @@ begin
                              'where (TIPO = :PTIPO)';
   sqldCredDeb.ParamByName('PTIPO').AsString := 'D';
   sqldCredDeb.Open;
-  TotalDebito := sqldCredDebCRED_DEB.AsFloat;
+  TotalDebito := sqldCredDeb.FieldbyName('CRED_DEB').AsFloat;
 
   { creditos }
   sqldCredDeb.Close;
@@ -189,30 +160,28 @@ begin
                              'where (TIPO = :PTIPO)';
   sqldCredDeb.ParamByName('PTIPO').AsString := 'C';
   sqldCredDeb.Open;
-  TotalCredito := sqldCredDebCRED_DEB.AsFloat;
+  TotalCredito := sqldCredDeb.FieldbyName('CRED_DEB').AsFloat;
 
 end;
 
 procedure TfrmCaixa.btnExcluirClick(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then Exit;
-  if MsgSN('Confirma exclus�o do lan�amento?') then
+  if sqlPadrao.IsEmpty then Exit;
+
+  if MsgSN('Confirma exclusão do lançamento?') then
   begin
-    with TSQLQuery.Create(Self) do
+    with TZQuery.Create(Self) do
     try
       Close;
-      SQLConnection := GetConnection;
-      //CommandType := ctStoredProc;
-      SQL.Clear; SQL.Text :='STPDELCAIXA';
-      Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODCAIXA.AsInteger;
+      Connection := GetZConnection;
+      SQL.Clear;
+      SQL.Text :='DELETE FROM CAIXA WHERE CODCAIXA = :CODIGO';
+      Params.ParamByName('CODIGO').AsInteger := sqlPadrao.FieldbyName('CODCAIXA').AsInteger;
       ExecSQL;
-      cdsPadrao.DisableControls;
-      cdsPadrao.Close;
-      cdsPadrao.Open;
-      cdsPadrao.Last;
-      cdsPadrao.EnableControls;
+
+      sqlPadrao.Close;
+      sqlPadrao.Open;
     finally
-      dsCaixaStateChange(dsCaixa);
       Free;
     end;
   end;
@@ -225,49 +194,26 @@ end;
 
 procedure TfrmCaixa.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  UpdatesPending(cdsPadrao, Self);
+  UpdatesPending(sqlPadrao, Self);
 end;
 
 procedure TfrmCaixa.miExcluirPeriodoClick(Sender: TObject);
 var
   dtI, dtF: String;
-  //cmd: TDBXCommand;
-  //tx: TDBXTransaction;
-  //data: TDBXValue;
 begin
   try
     try
-      cdsPadrao.DisableControls;
+      sqlPadrao.DisableControls;
 
       if ObterDatas(dtI, dtF) then
       begin
         if (ClearMask(dtI) <> '') and (ClearMask(dtF) <> '') then
         begin
-//          tx := sqldPadrao.SQLConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-//          cmd := sqldPadrao.SQLConnection.DBXConnection.CreateCommand;
-//          try
-//            try
-//              cmd.Text := 'delete from CAIXA '+
-//                'where DATA between ? and ?';
-//              cmd.Prepare;
-//
-//              ShowMessage('parametros '+IntToStr(cmd.Parameters.Count));
-//
-//              cmd.Parameters.Parameter[0].Value.SetDate(StrToDate(dtI));
-//              cmd.Parameters.Parameter[1].Value.SetDate(StrToDate(dtF));
-//              cmd.ExecuteQuery;
-//
-//              sqldPadrao.SQLConnection.CommitFreeAndNil(tx);
-//            except
-//              sqldPadrao.SQLConnection.RollbackFreeAndNil(tx);
-//            end;
-//          finally
-//            cmd.Free;
-//          end;
-          with TSQLQuery.Create(nil) do
+          with TZQuery.Create(nil) do
           try
-            SQLConnection := sqldPadrao.SQLConnection;
-            SQL.Clear; SQL.Text :='delete from CAIXA '+
+            Connection := sqlPadrao.Connection;
+            SQL.Clear;
+            SQL.Text :='delete from CAIXA '+
               'where DATA between :DATAINI and :DATAFIM';
             ParamByName('DATAINI').AsDate := StrToDate(dtI);
             ParamByName('DATAFIM').AsDate := StrToDate(dtF);
@@ -279,16 +225,16 @@ begin
         else
           MsgErro('',UM_DATAINVALIDA);
 
-        MsgAviso('','Exclus�o concluida com sucesso.');
+        MsgAviso('','Exclusão concluida com sucesso.');
       end;
     except
       raise Exception.Create('Erro excluindo caixa por periodo');
     end;
   finally
-    cdsPadrao.Close;
-    cdsPadrao.Open;
-    cdsPadrao.Last;
-    cdsPadrao.EnableControls;
+    sqlPadrao.Close;
+    sqlPadrao.Open;
+    sqlPadrao.Last;
+    sqlPadrao.EnableControls;
   end;
 end;
 
@@ -300,17 +246,17 @@ begin
   begin
     if (ClearMask(DataIni) <> '') and (ClearMask(DataFim) <> '') then
     begin
-      cdsPadrao.Close;
-      cdsPadrao.Filtered := False;
-      cdsPadrao.Filter :=
+      sqlPadrao.Close;
+      sqlPadrao.Filtered := False;
+      sqlPadrao.Filter :=
         'DATA >= ' + QuotedStr(DataIni) + ' AND DATA <= ' + QuotedStr(DataFim);
-      cdsPadrao.Filtered := True;
-      cdsPadrao.Open;
+      sqlPadrao.Filtered := True;
+      sqlPadrao.Open;
 
-      if cdsPadrao.IsEmpty then
+      if sqlPadrao.IsEmpty then
       begin
         MsgCuidado(UM_PESQUISAVAZIO);
-        cdsPadrao.Filtered := False;
+        sqlPadrao.Filtered := False;
         Exit;
       end;
     end
@@ -323,16 +269,16 @@ procedure TfrmCaixa.miFiltraCreditoClick(Sender: TObject);
 begin
   if MsgSN('Mostrar apenas Entradas efetuadas?') then
   begin
-    cdsPadrao.Close;
-    cdsPadrao.Filtered := False;
-    cdsPadrao.Filter := 'TIPO = ' + QuotedStr('C');
-    cdsPadrao.Filtered := True;
-    cdsPadrao.Open;
+    sqlPadrao.Close;
+    sqlPadrao.Filtered := False;
+    sqlPadrao.Filter := 'TIPO = ' + QuotedStr('C');
+    sqlPadrao.Filtered := True;
+    sqlPadrao.Open;
 
-    if cdsPadrao.IsEmpty then
+    if sqlPadrao.IsEmpty then
     begin
       MsgCuidado('',UM_PESQUISAVAZIO);
-      cdsPadrao.Filtered := False;
+      sqlPadrao.Filtered := False;
       Exit;
     end;
   end;
@@ -340,18 +286,18 @@ end;
 
 procedure TfrmCaixa.miFiltraDebitoClick(Sender: TObject);
 begin
-  if MsgSN('Mostrar apenas Sa�das efetuadas?') then
+  if MsgSN('Mostrar apenas Saidas efetuadas?') then
   begin
-    cdsPadrao.Close;
-    cdsPadrao.Filtered := False;
-    cdsPadrao.Filter := 'TIPO = ' + QuotedStr('D');
-    cdsPadrao.Filtered := True;
-    cdsPadrao.Open;
+    sqlPadrao.Close;
+    sqlPadrao.Filtered := False;
+    sqlPadrao.Filter := 'TIPO = ' + QuotedStr('D');
+    sqlPadrao.Filtered := True;
+    sqlPadrao.Open;
 
-    if cdsPadrao.IsEmpty then
+    if sqlPadrao.IsEmpty then
     begin
       MsgCuidado(UM_PESQUISAVAZIO);
-      cdsPadrao.Filtered := False;
+      sqlPadrao.Filtered := False;
       Exit;
     end;
   end;
@@ -360,20 +306,22 @@ end;
 procedure TfrmCaixa.miLimpaFiltroClick(Sender: TObject);
 begin
   try
-    //cdsPadrao.DisableControls;
-    //cdsPadrao.Close;
-    //cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
-    //
-    //if cdsPadrao.Filter <> '' then
-    //  cdsPadrao.Filter := '';
-    //if cdsPadrao.Filtered then
-    //  cdsPadrao.Filtered := False;
-    //
-    //cdsPadrao.Open;
-    //cdsPadrao.Last;
+    sqlPadrao.DisableControls;
+    sqlPadrao.Close;
+    sqlPadrao.SQL.Clear;
+    sqlPadrao.SQL.Text :=SQLPadraoTela;
+
+    if sqlPadrao.Filter <> '' then
+      sqlPadrao.Filter := '';
+
+    if sqlPadrao.Filtered then
+      sqlPadrao.Filtered := False;
+
+    sqlPadrao.Open;
+    sqlPadrao.Last;
   finally
     dsCaixa.OnStateChange(dsCaixa);
-    cdsPadrao.EnableControls;
+    sqlPadrao.EnableControls;
   end;
 end;
 
@@ -394,15 +342,15 @@ end;
 
 procedure TfrmCaixa.btnAlterarClick(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then Exit;
+  if sqlPadrao.IsEmpty then Exit;
   frmLancCaixa := TfrmLancCaixa.Create(Self);
-  frmLancCaixa.IdCaixa := cdsPadraoCODCAIXA.AsInteger;
+  frmLancCaixa.IdCaixa := sqlPadrao.FieldByName('CODCAIXA').AsInteger;
   frmLancCaixa.ShowModal;
 end;
 
 procedure TfrmCaixa.miRelFluxoCaixaClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioFluxoCaixa', 'Relat�rio de caixa', Self);
+  ChamaForm('TfrmRelatorioFluxoCaixa', 'Relatorio de caixa', Self);
 end;
 
 procedure TfrmCaixa.miRelTodosClick(Sender: TObject);
@@ -416,32 +364,32 @@ begin
   Totais_Rel(vDataIni,vDataFim);
   with TfrmPrevCaixaTodos.Create(Self) do
   try
-    if not cdsPadrao.Active then
-      cdsPadrao.Open;
+    if not sqlPadrao.Active then
+      sqlPadrao.Open;
 
-    cdsPadrao.Filtered := False;
-    cdsPadrao.Filter   := 'DATA >= '+QuotedStr(vDataIni)+' and DATA <= '+QuotedStr(vDataFim);
-    cdsPadrao.Filtered := True;
+    sqlPadrao.Filtered := False;
+    sqlPadrao.Filter   := 'DATA >= '+QuotedStr(vDataIni)+' and DATA <= '+QuotedStr(vDataFim);
+    sqlPadrao.Filtered := True;
 
-    //lbCreditos.Caption := 'Cr�ditos R$: ' + FormatFloat('#,##0.00', TotalCredito);
-    //lbDebitos.Caption  := 'D�bitos R$: ' + FormatFloat('#,##0.00', TotalDebito);
-    //lbSaldo.Caption    := 'Saldo R$: ' + FormatFloat('#,##0.00', (TotalCredito - TotalDebito));
+    lbCreditos.Caption := 'Creditos R$: ' + FormatFloat('#,##0.00', TotalCredito);
+    lbDebitos.Caption  := 'Debitos R$: ' + FormatFloat('#,##0.00', TotalDebito);
+    lbSaldo.Caption    := 'Saldo R$: ' + FormatFloat('#,##0.00', (TotalCredito - TotalDebito));
 
-    //lbSaldo.Visible := Configuracao.MostrarSaldoCaixa;
-    //Titulo  := 'Livro caixa entre '+vDataIni+' e '+vDataFim;
-    //DataIni := vDataIni;
-    //DataFim := vDataFim;
+    lbSaldo.Visible := Configuracao.MostrarSaldoCaixa;
+    Titulo  := 'Livro caixa entre '+vDataIni+' e '+vDataFim;
+    DataIni := vDataIni;
+    DataFim := vDataFim;
 
     PrintIfNotEmptyRL(rrPadrao);
   finally
-    cdsPadrao.Close;
+    sqlPadrao.Close;
     Free;
   end;
 end;
 
 procedure TfrmCaixa.miRelMesAnoClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCaixaMensal', 'Caixa por m�s e ano', Self);
+  ChamaForm('TfrmRelatorioCaixaMensal', 'Caixa por mes e ano', Self);
 end;
 
 procedure TfrmCaixa.FormKeyDown(Sender: TObject; var Key: Word;
@@ -455,13 +403,14 @@ end;
 
 procedure TfrmCaixa.btnFiltrarClick(Sender: TObject);
 begin
-//  if not TfrmModeloConsulta.Execute('Consulta Caixa', cdsPadrao, FN_CAIXA, DL_CAIXA) then
-//  begin
-//    cdsPadrao.Close;
-//    cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTela;
-//    cdsPadrao.Open;
-//    cdsPadrao.Last;
-//  end;
+  if TfrmModeloConsulta.Execute('Consulta Caixa', 'CAIXA', FN_CAIXA, DL_CAIXA, self) > 0 then
+  begin
+    sqlPadrao.Close;
+    sqlPadrao.SQL.Clear;
+    sqlPadrao.SQL.Text :=SQLPadraoTela;
+    sqlPadrao.Open;
+    sqlPadrao.Last;
+  end;
 end;
 
 procedure TfrmCaixa.Totais_Rel(DataIni: string = ''; DataFim: string = '');
@@ -484,7 +433,7 @@ begin
     sqldCredDeb.ParamByName('PTIPO').AsString        := 'D';
 
     sqldCredDeb.Open;
-    TotalDebito := sqldCredDebCRED_DEB.AsFloat;
+    TotalDebito := sqldCredDeb.FieldByName('CRED_DEB').AsFloat;
 
     { creditos }
     sqldCredDeb.Close;
@@ -500,7 +449,7 @@ begin
     sqldCredDeb.ParamByName('PTIPO').AsString        := 'C';
 
     sqldCredDeb.Open;
-    TotalCredito := sqldCredDebCRED_DEB.AsFloat;
+    TotalCredito := sqldCredDeb.FieldByName('CRED_DEB').AsFloat;
   end
   else
   begin
@@ -513,7 +462,7 @@ begin
                                'where (TIPO = :PTIPO)';
     sqldCredDeb.ParamByName('PTIPO').AsString := 'D';
     sqldCredDeb.Open;
-    TotalDebito := sqldCredDebCRED_DEB.AsFloat;
+    TotalDebito := sqldCredDeb.FieldByName('CRED_DEB').AsFloat;
 
     { creditos }
     sqldCredDeb.Close;
@@ -523,31 +472,23 @@ begin
                                'where (TIPO = :PTIPO)';
     sqldCredDeb.ParamByName('PTIPO').AsString := 'C';
     sqldCredDeb.Open;
-    TotalCredito := sqldCredDebCRED_DEB.AsFloat;
+    TotalCredito := sqldCredDeb.FieldByName('CRED_DEB').AsFloat;
   end;
 end;
 
 procedure TfrmCaixa.SetCaixaDefault;
-//var
-//  cmd: TDBXCommand;
-//  tx: TDBXTransaction;
 begin
-  //tx := sqldPadrao.SQLConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-  //
-  //cmd := sqldPadrao.SQLConnection.DBXConnection.CreateCommand;
-  //try
-  //  try
-  //    cmd.Text := 'execute procedure STPCAIXASPADRAO('+IntToStr( Configuracao.CaixaPadrao )+')';
-  //    cmd.Prepare;
-  //    cmd.ExecuteQuery;
-  //
-  //    sqldPadrao.SQLConnection.CommitFreeAndNil(tx);
-  //  except
-  //    sqldPadrao.SQLConnection.RollbackFreeAndNil(tx);
-  //  end;
-  //finally
-  //  cmd.Free;
-  //end;
+  with TZQuery.create(nil) do
+  try
+    Connection:=GetZConnection;
+    SQL.Clear;
+    SQL.Add('UPDATE CAIXA cx SET cx.Codcaixas = :ID WHERE (cx.Codcaixas IS NULL)');
+    Prepare;
+    ParamByName('ID').AsInteger := Configuracao.CaixaPadrao;
+    ExecSQL;
+  finally
+    free;
+  end;
 end;
 
 procedure TfrmCaixa.FormCreate(Sender: TObject);
@@ -558,19 +499,24 @@ begin
     SetCaixaDefault;
 
     try
-      cdsPadrao.DisableControls;
-      cdsPadrao.Close;
-      //if Configuracao.LancCaixa90Dias then
-      //  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadrao90Dias
-      //else
-      //  cdsPadrao.SQL.Clear; SQL.Text :=SQLPadraoTodos;
-      cdsPadrao.Open;
-      cdsPadrao.Last;
+      sqlPadrao.DisableControls;
+      sqlPadrao.Close;
+      sqlPadrao.SQL.Clear;
+      if Configuracao.LancCaixa90Dias then
+      begin
+        sqlPadrao.SQL.Text :=SQLPadrao90Dias
+      end
+      else
+      begin
+        sqlPadrao.SQL.Text :=SQLPadraoTodos;
+      end;
+      sqlPadrao.Open;
+      sqlPadrao.Last;
     finally
-      cdsPadrao.EnableControls;
+      sqlPadrao.EnableControls;
     end;
 
-    SQLPadraoTela := sqldPadrao.SQL.text;
+    SQLPadraoTela := sqlPadrao.SQL.text;
     CentralizaForm(Self);
   finally
   end;
@@ -578,12 +524,12 @@ end;
 
 procedure TfrmCaixa.miRelContaCaixaClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCaixaContaCaixa', 'Relat�rio por conta caixa', Self);
+  ChamaForm('TfrmRelatorioCaixaContaCaixa', 'Relatorio por conta caixa', Self);
 end;
 
 procedure TfrmCaixa.miExcluirVariosClick(Sender: TObject);
 begin
-  ChamaForm('TfrmExclusaoCaixa', 'Exclus�o de lan�amentos do caixa', Self);
+  ChamaForm('TfrmExclusaoCaixa', 'Exclusão de lançamentos do caixa', Self);
 end;
 
 procedure TfrmCaixa.CaixaInserido(var Msg: TMessage);
@@ -591,28 +537,11 @@ begin
   miLimpaFiltro.Click;
 end;
 
-procedure TfrmCaixa.cdsPadraoTIPOGetText(Sender: TField; var Text: String;
-  DisplayText: Boolean);
-begin
-  if Sender.AsString = 'C' then
-    Text := 'Entrada'
-  else
-  if Sender.AsString = 'D' then
-    Text := 'Sa�da'
-  else
-    Text := '';
-end;
-
 procedure TfrmCaixa.btnNovoClick(Sender: TObject);
 begin
   frmLancCaixa := TfrmLancCaixa.Create(Self);
   frmLancCaixa.IdCaixa := 0;
   frmLancCaixa.ShowModal;
-end;
-
-procedure TfrmCaixa.btnLocateClick(Sender: TObject);
-begin
-  //Ed_Localizar(cdsPadrao, Self, dbgdCaixa);
 end;
 
 procedure TfrmCaixa.dsCaixaStateChange(Sender: TObject);
@@ -628,22 +557,10 @@ begin
     stbCaixa.Panels[1].Text := FormatDateTime('dd/mm/yyyy', Date);
 
   if Configuracao.LancCaixa90Dias then
-    stbCaixa.Panels[0].Text := 'Exibindo lan�amentos dos �ltimos 90 dias'
+    stbCaixa.Panels[0].Text := 'Exibindo lançamentos dos últimos 90 dias'
   else
-    stbCaixa.Panels[0].Text := 'Exibindo todos os lan�amentos';
+    stbCaixa.Panels[0].Text := 'Exibindo todos os lançamentos';
 
-end;
-
-procedure TfrmCaixa.dspPadraoGetTableName(Sender: TObject; DataSet: TDataSet;
-  var TableName: WideString);
-begin
-  TableName := 'CAIXA';
-end;
-
-procedure TfrmCaixa.cdsPadraoAfterOpen(DataSet: TDataSet);
-begin
-  dbgdCaixa.DataSource := nil;
-  dbgdCaixa.DataSource := dsCaixa;
 end;
 
 procedure TfrmCaixa.miMovimentoHojeClick(Sender: TObject);
@@ -652,8 +569,8 @@ begin
 
   with TfrmPrevCaixaTodos.Create(Self) do
   try
-    //cdsPadrao.Close;
-    //cdsPadrao.SQL.Clear; SQL.Text :='select'+
+    //sqlPadrao.Close;
+    //sqlPadrao.SQL.Clear; SQL.Text :='select'+
     //                         ' CAIXA,'+
     //                         ' DATA,'+
     //                         ' DESCRICAO,'+
@@ -663,24 +580,24 @@ begin
     //                         'from VIEWRELCAIXATODOS '+
     //                         'where (DATA = CURRENT_DATE) '+
     //                         'order by CAIXA, DATA, TIPO, DESCRICAO';
-    cdsPadrao.Open;
-    cdsPadrao.DisableControls;
-    //lbCreditos.Caption := 'Entradas R$: ' + FormatFloat('#,##0.00', TotalCredito);
-    //lbDebitos.Caption := 'Sa�das R$: ' + FormatFloat('#,##0.00', TotalDebito);
+    sqlPadrao.Open;
+    sqlPadrao.DisableControls;
+    lbCreditos.Caption := 'Entradas R$: ' + FormatFloat('#,##0.00', TotalCredito);
+    lbDebitos.Caption := 'Saídas R$: ' + FormatFloat('#,##0.00', TotalDebito);
 
-    //if Configuracao.MostrarSaldoCaixa then
-    //  lbSaldo.Caption := 'Saldo R$: ' + FormatFloat('#,##0.00', (TotalCredito - TotalDebito))
-    //else
-    //  lbSaldo.Caption := '';
+    if Configuracao.MostrarSaldoCaixa then
+      lbSaldo.Caption := 'Saldo R$: ' + FormatFloat('#,##0.00', (TotalCredito - TotalDebito))
+    else
+      lbSaldo.Caption := '';
 
-    //Titulo  := 'Movimenta��o do dia '+FormatDateTime('dd/mm/yyyy', Date);
-    //DataIni := FormatDateTime('dd/mm/yyyy', Date);
-    //DataFim := FormatDateTime('dd/mm/yyyy', Date);
+    Titulo  := 'Movimentação do dia '+FormatDateTime('dd/mm/yyyy', Date);
+    DataIni := FormatDateTime('dd/mm/yyyy', Date);
+    DataFim := FormatDateTime('dd/mm/yyyy', Date);
 
     PrintIfNotEmptyRL(rrPadrao);
   finally
-    cdsPadrao.EnableControls;
-    cdsPadrao.Close;
+    sqlPadrao.EnableControls;
+    sqlPadrao.Close;
     Free;
   end;
 end;

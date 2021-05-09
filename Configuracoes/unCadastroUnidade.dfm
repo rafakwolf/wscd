@@ -16,7 +16,7 @@ inherited frmCadastroUnidade: TfrmCadastroUnidade
   object dbeNomeUnidade: TDBEdit[2]
     Left = 70
     Height = 33
-    Top = 82
+    Top = 95
     Width = 297
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
@@ -40,63 +40,55 @@ inherited frmCadastroUnidade: TfrmCadastroUnidade
     TabOrder = 0
   end
   inherited actlNavigateActions: TActionList[4]
-    Left = 48
-    Top = 68
+    Left = 144
+    Top = 192
   end
   inherited dsPadrao: TDataSource[5]
-    DataSet = cdsPadrao
-    Left = 423
-    Top = 52
+    DataSet = ZQuery1
+    Left = 440
+    Top = 176
   end
-  object sqldPadrao: TSQLQuery[6]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[6]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from UNIDADES'
+    )
     Params = <>
-    Left = 176
-    Top = 44
-    object sqldPadraoCODUNIDADE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODUNIDADE'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
+    Left = 234
+    Top = 156
   end
-  object dspPadrao: TTimer[7]
-    Left = 264
-    Top = 44
-  end
-  object cdsPadrao: TMemDataset[8]
-    FieldDefs = <>
-    Left = 344
-    Top = 44
-    object cdsPadraoCODUNIDADE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODUNIDADE'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
+  object ZUpdateSQL1: TZUpdateSQL[7]
+    DeleteSQL.Strings = (
+      'DELETE FROM UNIDADES'
+      'WHERE'
+      '  UNIDADES.CODUNIDADE = :OLD_CODUNIDADE'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO UNIDADES'
+      '  (DESCRICAO)'
+      'VALUES'
+      '  (:DESCRICAO)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE UNIDADES SET'
+      '  DESCRICAO = :DESCRICAO'
+      'WHERE'
+      '  UNIDADES.CODUNIDADE = :OLD_CODUNIDADE'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 328
+    Top = 168
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DESCRICAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_CODUNIDADE'
+        ParamType = ptUnknown
+      end>
   end
 end

@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, Forms, Dialogs, StdCtrls, Clipbrd, DateUtils,
-  UITypes, SysUtils, Buttons, Controls, DB, memds;
+  UITypes, SysUtils, Buttons, Controls, DB, memds, ZDataset;
 
 function ChamaForm(pClass, pTitle: string; pOwner: TComponent): TForm;
 procedure CentralizaForm(form: TForm);
@@ -21,7 +21,7 @@ function PassWord(PassWord, passwordChar: string): boolean;
 
 function ModoInsertEdit(cds: TMemDataset): boolean;
 function ModoInsert(cds: TMemDataset): boolean;
-procedure ReabreDataset(cds: TMemDataset);
+procedure ReabreDataset(cds: TDataSet);
 
 procedure MsgCuidado(title, msg: string); overload;
 procedure MsgAviso(title, msg: string); overload;
@@ -45,7 +45,7 @@ procedure SetFocusIfCan(ctrl: TWinControl);
 function FieldIsNumeric(f: TField): boolean;
 function FieldIsDateTime(f: TField): boolean;
 function FieldIsString(f: TField): boolean;
-function UpdatesPending(cds: TMemDataSet; form: TForm): boolean;
+function UpdatesPending(cds: TZQuery; form: TForm): boolean;
 function Locate(cds: TMemDataSet; field: TField; value: string): boolean;
 procedure Filtro(cds: TMemDataSet; field, value: string);
 function ValidaFieldsVazios(fields: array of TField;
@@ -83,9 +83,9 @@ implementation
 uses
   Variants, IniFiles;
 
-function UpdatesPending(cds: TMemDataSet; form: TForm): boolean;
+function UpdatesPending(cds: TZQuery; form: TForm): boolean;
 begin
-  Result := cds.FileModified;
+  Result := cds.UpdatesPending;
 end;
 
 function Locate(cds: TMemDataSet; field: TField; value: string): boolean;
@@ -179,7 +179,7 @@ begin
   Result := cds.State in [dsInsert];
 end;
 
-procedure ReabreDataset(cds: TMemDataset);
+procedure ReabreDataset(cds: TDataSet);
 begin
   cds.Close;
   cds.Open;
@@ -338,8 +338,12 @@ end;
 
 procedure SetFocusIfCan(ctrl: TWinControl);
 begin
-  if ctrl.Visible then
-    ctrl.SetFocus;
+  if (ctrl <> nil) then
+    begin
+         if ctrl.Visible then
+            ctrl.SetFocus;
+    end;
+
 end;
 
 procedure ReordenaBotoes(btns: array of TBitBtn);
@@ -379,7 +383,7 @@ var
 begin
   formClass := TFormClass(GetClass(pClass));
 
-  if (formClass = nil) then raise Exception.Create('Classe '+pClass+' n�o encontrada.');
+  if (formClass = nil) then raise Exception.Create('Classe '+pClass+' nao encontrada.');
 
   Result := formClass.Create(pOwner);
   Result.Caption := pTitle;

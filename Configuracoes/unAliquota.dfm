@@ -56,8 +56,8 @@ inherited frmAliquota: TfrmAliquota
       'select * from ALIQUOTAS'
     )
     Params = <>
-    Left = 156
-    Top = 173
+    Left = 176
+    Top = 152
   end
   object ZUpdateSQL1: TZUpdateSQL[7]
     DeleteSQL.Strings = (

@@ -26,25 +26,25 @@ uses Funcoes, VarGlobal, uutilfncs, crypto;
 
 procedure TfrmSenhaEstoque.btnOkClick(Sender: TObject);
 begin
-
-  cdsConfig.Close;
-  sqldConfig.Params.ParamByName('COMP').AsString := GetComputerName;
-  cdsConfig.Open;
+  zquery1.Open;
+  zquery1.Filtered:=false;
+  ZQuery1.Filter:='NOMECOMPUTADOR = '+QuotedStr(GetComputerName);
+  zquery1.Filtered:=true;
 
   if (edAtual.Text <> '') and (edNova.Text <> '') then
   begin
-    if cdsConfigSENHAESTOQUE.AsString = EnDecrypt(edAtual.Text) then
+    if zquery1.FieldByName('SENHAESTOQUE').AsString = EnDecrypt(edAtual.Text) then
     begin
-      cdsConfig.Edit;
-      cdsConfigSENHAESTOQUE.AsString := Trim(EnDecrypt(edNova.Text));
-      //cdsConfig.ApplyUpdates(0);
+      zquery1.Edit;
+      zquery1.FieldByName('SENHAESTOQUE').AsString := Trim(EnDecrypt(edNova.Text));
+      zquery1.ApplyUpdates;
       Configuracao.Atualizar;
       MsgAviso('Senha de estoque alterada!');
       ModalResult := mrOk;
     end
     else
     begin
-      MsgErro('Senha atual n�o confere, digite novamente.');
+      MsgErro('Senha atual nao confere, digite novamente.');
       edAtual.Clear;
       edNova.Clear;
       edAtual.SelectAll;
@@ -52,7 +52,7 @@ begin
   end
   else
   begin
-    MsgCuidado('Para alterar as senhas, voc� deve digita-las.');
+    MsgCuidado('Para alterar as senhas, voce deve digita-las.');
     edAtual.Clear;
     edNova.Clear;
     edAtual.SelectAll;

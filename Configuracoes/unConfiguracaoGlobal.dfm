@@ -1,6 +1,6 @@
 inherited frmConfigGlobal: TfrmConfigGlobal
-  Left = 232
-  Top = 148
+  Left = 365
+  Top = 152
   Width = 621
   Caption = 'frmConfigGlobal'
   ClientWidth = 621
@@ -16,10 +16,10 @@ inherited frmConfigGlobal: TfrmConfigGlobal
     Height = 273
     Top = 39
     Width = 385
-    ActivePage = tsCrediario
+    ActivePage = tsVenda
     ParentShowHint = False
     ShowHint = True
-    TabIndex = 0
+    TabIndex = 3
     TabOrder = 2
     object tsCrediario: TTabSheet
       Caption = 'Crediário'
@@ -90,7 +90,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       ShowHint = True
       object dbeLimiteCliente: TDBEdit
         Left = 8
-        Height = 21
+        Height = 33
         Top = 32
         Width = 105
         DataField = 'LIMITECLIENTE'
@@ -103,7 +103,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbeIdadeCliente: TDBEdit
         Left = 120
-        Height = 21
+        Height = 33
         Top = 32
         Width = 89
         DataField = 'IDADECADASTROCLIENTE'
@@ -124,9 +124,9 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       ShowHint = True
       object lbMsgOrcamRodape: TLabel
         Left = 8
-        Height = 13
+        Height = 15
         Top = 64
-        Width = 190
+        Width = 204
         Caption = 'Rodapé do orçamento em bobina'
         ParentColor = False
         ParentShowHint = False
@@ -134,7 +134,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbeTituloOrcam: TDBEdit
         Left = 8
-        Height = 21
+        Height = 33
         Top = 32
         Width = 249
         DataField = 'TITULOORCAM'
@@ -147,7 +147,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbeColunaBobina: TDBEdit
         Left = 263
-        Height = 21
+        Height = 33
         Top = 32
         Width = 106
         DataField = 'COLUNAORCAMBOBINA'
@@ -160,7 +160,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbeLinhaPularOrcam: TDBEdit
         Left = 8
-        Height = 21
+        Height = 33
         Top = 176
         Width = 105
         DataField = 'LINHAPULARBOBINAORCAM'
@@ -192,9 +192,9 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       ShowHint = True
       object lbMsgRodapeVenda: TLabel
         Left = 8
-        Height = 13
+        Height = 15
         Top = 64
-        Width = 164
+        Width = 174
         Caption = 'Rodapé da venda em bobina'
         ParentColor = False
         ParentShowHint = False
@@ -202,7 +202,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbeTituloVenda: TDBEdit
         Left = 8
-        Height = 21
+        Height = 33
         Top = 32
         Width = 249
         DataField = 'TITULOVENDA'
@@ -215,7 +215,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbeColunaBobinaVenda: TDBEdit
         Left = 263
-        Height = 21
+        Height = 33
         Top = 32
         Width = 106
         DataField = 'COLUNAVENDABOBINA'
@@ -228,7 +228,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbeLinhaPularVenda: TDBEdit
         Left = 8
-        Height = 21
+        Height = 33
         Top = 176
         Width = 105
         DataField = 'LINHAPULARBOBINAVENDA'
@@ -241,7 +241,7 @@ inherited frmConfigGlobal: TfrmConfigGlobal
       end
       object dbePortaImpVenda: TDBEdit
         Left = 119
-        Height = 21
+        Height = 33
         Top = 176
         Width = 104
         DataField = 'PORTAIMPVENDA'
@@ -264,551 +264,185 @@ inherited frmConfigGlobal: TfrmConfigGlobal
         TabOrder = 2
       end
     end
-    object tsFTP: TTabSheet
-      Caption = 'FTP (Atualização)'
-      ClientHeight = 242
-      ClientWidth = 375
-      ImageIndex = 4
-      ParentShowHint = False
-      ShowHint = True
-      object dbeHost: TDBEdit
-        Left = 16
-        Height = 21
-        Top = 24
-        Width = 337
-        DataField = 'FTP_HOST'
-        DataSource = dsPadrao
-        CharCase = ecNormal
-        MaxLength = 0
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-      end
-      object dbeUserName: TDBEdit
-        Left = 16
-        Height = 21
-        Top = 64
-        Width = 169
-        DataField = 'FTP_USER_NAME'
-        DataSource = dsPadrao
-        CharCase = ecNormal
-        MaxLength = 0
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-      end
-      object dbePassWord: TDBEdit
-        Left = 192
-        Height = 21
-        Top = 64
-        Width = 161
-        DataField = 'FTP_PASSWORD'
-        DataSource = dsPadrao
-        CharCase = ecNormal
-        MaxLength = 0
-        ParentShowHint = False
-        PasswordChar = '*'
-        ShowHint = True
-        TabOrder = 2
-      end
-      object dbeDiretorio: TDBEdit
-        Left = 16
-        Height = 21
-        Top = 104
-        Width = 265
-        DataField = 'FTP_DIR'
-        DataSource = dsPadrao
-        CharCase = ecNormal
-        MaxLength = 0
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 3
-      end
-      object dbeTimeOut: TDBEdit
-        Left = 288
-        Height = 21
-        Top = 104
-        Width = 65
-        DataField = 'FTP_TIMEOUT'
-        DataSource = dsPadrao
-        CharCase = ecNormal
-        MaxLength = 0
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 4
-      end
-      object dbckbPassive: TDBCheckBox
-        Left = 16
-        Height = 17
-        Top = 136
-        Width = 65
-        Caption = 'Passive'
-        DataField = 'FTP_PASSIVE'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 5
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-    end
   end
   inherited actlNavigateActions: TActionList[3]
-    Left = 72
-    Top = 252
+    Left = 464
+    Top = 304
   end
   inherited dsPadrao: TDataSource[4]
-    DataSet = cdsPadrao
-    Left = 399
-    Top = 228
+    AutoEdit = True
+    DataSet = ZQuery1
+    Left = 488
+    Top = 56
   end
-  object sqldPadrao: TSQLQuery[5]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[5]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from CONFIGURACAOGLOBAL'
+    )
     Params = <>
-    Left = 168
-    Top = 244
-    object sqldPadraoTAXAJURO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TAXAJURO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoINTERVALO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'INTERVALO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoPRAZOINICIAL: TIntegerField
-      FieldKind = fkData
-      FieldName = 'PRAZOINICIAL'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoPARCELAS: TIntegerField
-      FieldKind = fkData
-      FieldName = 'PARCELAS'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoLIMITECLIENTE: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'LIMITECLIENTE'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoTITULOORCAM: TStringField
-      FieldKind = fkData
-      FieldName = 'TITULOORCAM'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoCOLUNAORCAMBOBINA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'COLUNAORCAMBOBINA'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoMSGRODAPEORCAM: TStringField
-      FieldKind = fkData
-      FieldName = 'MSGRODAPEORCAM'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object sqldPadraoTITULOVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'TITULOVENDA'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoCOLUNAVENDABOBINA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'COLUNAVENDABOBINA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoMSGRODAPEVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'MSGRODAPEVENDA'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object sqldPadraoLINHAPULARBOBINAVENDA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'LINHAPULARBOBINAVENDA'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoLINHAPULARBOBINAORCAM: TIntegerField
-      FieldKind = fkData
-      FieldName = 'LINHAPULARBOBINAORCAM'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoPORTAIMPVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'PORTAIMPVENDA'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoFTP_HOST: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_HOST'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoFTP_USER_NAME: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_USER_NAME'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoFTP_PASSWORD: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_PASSWORD'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoFTP_TIMEOUT: TIntegerField
-      FieldKind = fkData
-      FieldName = 'FTP_TIMEOUT'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoFTP_PASSIVE: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_PASSIVE'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoFTP_DIR: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_DIR'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoIDADECADASTROCLIENTE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDADECADASTROCLIENTE'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoIDCONFIGGLOBAL: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDCONFIGGLOBAL'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
+    Left = 496
+    Top = 192
   end
-  object dspPadrao: TTimer[6]
-    Left = 248
-    Top = 244
-  end
-  object cdsPadrao: TMemDataset[7]
-    FieldDefs = <>
-    Left = 312
-    Top = 228
-    object cdsPadraoTAXAJURO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TAXAJURO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoINTERVALO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'INTERVALO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoPRAZOINICIAL: TIntegerField
-      FieldKind = fkData
-      FieldName = 'PRAZOINICIAL'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoPARCELAS: TIntegerField
-      FieldKind = fkData
-      FieldName = 'PARCELAS'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoLIMITECLIENTE: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'LIMITECLIENTE'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoTITULOORCAM: TStringField
-      FieldKind = fkData
-      FieldName = 'TITULOORCAM'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoCOLUNAORCAMBOBINA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'COLUNAORCAMBOBINA'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoMSGRODAPEORCAM: TStringField
-      FieldKind = fkData
-      FieldName = 'MSGRODAPEORCAM'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object cdsPadraoTITULOVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'TITULOVENDA'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoCOLUNAVENDABOBINA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'COLUNAVENDABOBINA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoMSGRODAPEVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'MSGRODAPEVENDA'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object cdsPadraoLINHAPULARBOBINAVENDA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'LINHAPULARBOBINAVENDA'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoLINHAPULARBOBINAORCAM: TIntegerField
-      FieldKind = fkData
-      FieldName = 'LINHAPULARBOBINAORCAM'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoPORTAIMPVENDA: TStringField
-      FieldKind = fkData
-      FieldName = 'PORTAIMPVENDA'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoFTP_HOST: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_HOST'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoFTP_USER_NAME: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_USER_NAME'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoFTP_PASSWORD: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_PASSWORD'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoFTP_TIMEOUT: TIntegerField
-      FieldKind = fkData
-      FieldName = 'FTP_TIMEOUT'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoFTP_PASSIVE: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_PASSIVE'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoFTP_DIR: TStringField
-      FieldKind = fkData
-      FieldName = 'FTP_DIR'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoIDADECADASTROCLIENTE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDADECADASTROCLIENTE'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoIDCONFIGGLOBAL: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDCONFIGGLOBAL'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
+  object ZUpdateSQL1: TZUpdateSQL[6]
+    DeleteSQL.Strings = (
+      'DELETE FROM CONFIGURACAOGLOBAL'
+      'WHERE'
+      '  CONFIGURACAOGLOBAL.IDCONFIGGLOBAL = :OLD_IDCONFIGGLOBAL'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CONFIGURACAOGLOBAL'
+      '  (TAXAJURO, INTERVALO, PRAZOINICIAL, PARCELAS, LIMITECLIENTE, TITULOORCAM, '
+      '   COLUNAORCAMBOBINA, MSGRODAPEORCAM, TITULOVENDA, COLUNAVENDABOBINA, MSGRODAPEVENDA, '
+      '   LINHAPULARBOBINAVENDA, LINHAPULARBOBINAORCAM, PORTAIMPVENDA, FTP_HOST, '
+      '   FTP_USER_NAME, FTP_PASSWORD, FTP_TIMEOUT, FTP_PASSIVE, FTP_DIR, IDADECADASTROCLIENTE)'
+      'VALUES'
+      '  (:TAXAJURO, :INTERVALO, :PRAZOINICIAL, :PARCELAS, :LIMITECLIENTE, :TITULOORCAM, '
+      '   :COLUNAORCAMBOBINA, :MSGRODAPEORCAM, :TITULOVENDA, :COLUNAVENDABOBINA, '
+      '   :MSGRODAPEVENDA, :LINHAPULARBOBINAVENDA, :LINHAPULARBOBINAORCAM, :PORTAIMPVENDA, '
+      '   :FTP_HOST, :FTP_USER_NAME, :FTP_PASSWORD, :FTP_TIMEOUT, :FTP_PASSIVE, '
+      '   :FTP_DIR, :IDADECADASTROCLIENTE)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CONFIGURACAOGLOBAL SET'
+      '  TAXAJURO = :TAXAJURO,'
+      '  INTERVALO = :INTERVALO,'
+      '  PRAZOINICIAL = :PRAZOINICIAL,'
+      '  PARCELAS = :PARCELAS,'
+      '  LIMITECLIENTE = :LIMITECLIENTE,'
+      '  TITULOORCAM = :TITULOORCAM,'
+      '  COLUNAORCAMBOBINA = :COLUNAORCAMBOBINA,'
+      '  MSGRODAPEORCAM = :MSGRODAPEORCAM,'
+      '  TITULOVENDA = :TITULOVENDA,'
+      '  COLUNAVENDABOBINA = :COLUNAVENDABOBINA,'
+      '  MSGRODAPEVENDA = :MSGRODAPEVENDA,'
+      '  LINHAPULARBOBINAVENDA = :LINHAPULARBOBINAVENDA,'
+      '  LINHAPULARBOBINAORCAM = :LINHAPULARBOBINAORCAM,'
+      '  PORTAIMPVENDA = :PORTAIMPVENDA,'
+      '  FTP_HOST = :FTP_HOST,'
+      '  FTP_USER_NAME = :FTP_USER_NAME,'
+      '  FTP_PASSWORD = :FTP_PASSWORD,'
+      '  FTP_TIMEOUT = :FTP_TIMEOUT,'
+      '  FTP_PASSIVE = :FTP_PASSIVE,'
+      '  FTP_DIR = :FTP_DIR,'
+      '  IDADECADASTROCLIENTE = :IDADECADASTROCLIENTE'
+      'WHERE'
+      '  CONFIGURACAOGLOBAL.IDCONFIGGLOBAL = :OLD_IDCONFIGGLOBAL'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 440
+    Top = 120
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'TAXAJURO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'INTERVALO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PRAZOINICIAL'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PARCELAS'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LIMITECLIENTE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'TITULOORCAM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'COLUNAORCAMBOBINA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MSGRODAPEORCAM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'TITULOVENDA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'COLUNAVENDABOBINA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'MSGRODAPEVENDA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LINHAPULARBOBINAVENDA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'LINHAPULARBOBINAORCAM'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'PORTAIMPVENDA'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'FTP_HOST'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'FTP_USER_NAME'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'FTP_PASSWORD'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'FTP_TIMEOUT'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'FTP_PASSIVE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'FTP_DIR'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'IDADECADASTROCLIENTE'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_IDCONFIGGLOBAL'
+        ParamType = ptUnknown
+      end>
   end
 end

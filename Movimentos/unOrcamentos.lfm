@@ -1,232 +1,51 @@
-object frmNotasFiscais: TfrmNotasFiscais
-  Left = 305
-  Height = 600
-  Top = 71
-  Width = 867
+object frmOrcamentos: TfrmOrcamentos
+  Left = 311
+  Height = 555
+  Top = 112
+  Width = 846
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Compras '
-  ClientHeight = 575
-  ClientWidth = 867
+  Caption = 'Orçamentos'
+  ClientHeight = 530
+  ClientWidth = 846
   Font.CharSet = ANSI_CHARSET
   Font.Name = 'Verdana'
   KeyPreview = True
-  Menu = mnNotasFiscais
+  Menu = Menu
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
-  OnResize = FormResize
   OnShow = FormShow
   ShowHint = True
   LCLVersion = '2.0.12.0'
-  object stbCompra: TStatusBar
+  object stbOrcamento: TStatusBar
     Left = 0
     Height = 18
-    Top = 557
-    Width = 867
+    Top = 512
+    Width = 846
     Color = clBtnFace
     Panels = <>
     ParentColor = False
     ParentShowHint = False
     ShowHint = True
   end
-  object PanelTotais: TPanel
-    Left = 0
-    Height = 53
-    Top = 504
-    Width = 867
-    Align = alBottom
-    ClientHeight = 53
-    ClientWidth = 867
-    ParentColor = False
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 20
-    object LabelFrete: TLabel
-      Left = 7
-      Height = 15
-      Top = 6
-      Width = 68
-      Caption = 'Valor frete'
-      ParentColor = False
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object LabelIcms: TLabel
-      Left = 117
-      Height = 15
-      Top = 6
-      Width = 68
-      Caption = 'Total ICMS'
-      ParentColor = False
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object LabelIpi: TLabel
-      Left = 228
-      Height = 15
-      Top = 6
-      Width = 51
-      Caption = 'Total IPI'
-      ParentColor = False
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object LabelDesp: TLabel
-      Left = 339
-      Height = 15
-      Top = 6
-      Width = 108
-      Caption = 'Outras despesas'
-      ParentColor = False
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object LabelTotDesc: TLabel
-      Left = 457
-      Height = 15
-      Top = 6
-      Width = 94
-      Caption = 'Total desconto'
-      ParentColor = False
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object LabelTotParc: TLabel
-      Left = 567
-      Height = 15
-      Top = 6
-      Width = 92
-      Caption = 'Total produtos'
-      ParentColor = False
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object LabelTotTotal: TLabel
-      Left = 678
-      Height = 15
-      Top = 6
-      Width = 68
-      Caption = 'Total geral'
-      ParentColor = False
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object edtFrete: TDBEdit
-      Left = 7
-      Height = 33
-      Top = 22
-      Width = 100
-      DataField = 'FRETE'
-      DataSource = dsNotasFiscais
-      CharCase = ecNormal
-      MaxLength = 0
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 0
-    end
-    object edtIcms: TDBEdit
-      Left = 117
-      Height = 33
-      Top = 22
-      Width = 100
-      DataField = 'ICMS'
-      DataSource = dsNotasFiscais
-      CharCase = ecNormal
-      MaxLength = 0
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 1
-    end
-    object edtIPITotal: TDBEdit
-      Left = 228
-      Height = 33
-      Top = 22
-      Width = 100
-      DataField = 'IPI'
-      DataSource = dsNotasFiscais
-      CharCase = ecNormal
-      Enabled = False
-      MaxLength = 0
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 2
-    end
-    object edtDespesas: TDBEdit
-      Left = 339
-      Height = 33
-      Top = 22
-      Width = 108
-      DataField = 'DESPESAS'
-      DataSource = dsNotasFiscais
-      CharCase = ecNormal
-      MaxLength = 0
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 3
-    end
-    object edtTotalDesconto: TDBEdit
-      Left = 457
-      Height = 33
-      Top = 22
-      Width = 100
-      DataField = 'DESCONTO'
-      DataSource = dsNotasFiscais
-      CharCase = ecNormal
-      MaxLength = 0
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 4
-    end
-    object edtTotalParcial: TDBEdit
-      Left = 567
-      Height = 33
-      Top = 22
-      Width = 100
-      DataField = 'TOTALPRODUTO'
-      DataSource = dsNotasFiscais
-      CharCase = ecNormal
-      Enabled = False
-      MaxLength = 0
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 5
-    end
-    object edtTotalTotal: TDBEdit
-      Left = 678
-      Height = 33
-      Top = 22
-      Width = 124
-      DataField = 'TOTAL'
-      DataSource = dsNotasFiscais
-      CharCase = ecNormal
-      Color = clInfoBk
-      Font.CharSet = ANSI_CHARSET
-      Font.Name = 'Verdana'
-      MaxLength = 0
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 6
-    end
-  end
-  object pnlBotoes: TPanel
+  object pnBotoes: TPanel
     Left = 0
     Height = 34
     Top = 0
-    Width = 867
+    Width = 846
     Align = alTop
     ClientHeight = 34
-    ClientWidth = 867
+    ClientWidth = 846
     ParentColor = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 21
+    TabOrder = 19
     object btnFechar: TSpeedButton
-      Left = 320
+      Left = 321
       Height = 32
-      Hint = 'Fechar (Esc)'
+      Hint = 'Fechar'
       Top = 1
       Width = 32
       Color = clWindow
@@ -347,9 +166,9 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
     object btnConsultar: TSpeedButton
-      Left = 288
+      Left = 289
       Height = 32
-      Hint = 'Pesquisar (F8)'
+      Hint = 'Consultar'
       Top = 1
       Width = 32
       Color = clWindow
@@ -505,8 +324,8 @@ object frmNotasFiscais: TfrmNotasFiscais
       ShowHint = True
       ParentShowHint = False
     end
-    object btnCancelar: TSpeedButton
-      Left = 256
+    object btnCancel: TSpeedButton
+      Left = 257
       Height = 32
       Hint = 'Cancelar'
       Top = 1
@@ -660,12 +479,12 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
       }
-      OnClick = btnCancelarClick
+      OnClick = btnCancelClick
       ShowHint = True
       ParentShowHint = False
     end
-    object btnSalvar: TSpeedButton
-      Left = 224
+    object btnGravar: TSpeedButton
+      Left = 225
       Height = 32
       Hint = 'Salvar'
       Top = 1
@@ -819,12 +638,12 @@ object frmNotasFiscais: TfrmNotasFiscais
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
         FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
       }
-      OnClick = btnSalvarClick
+      OnClick = btnGravarClick
       ShowHint = True
       ParentShowHint = False
     end
     object btnExcluir: TSpeedButton
-      Left = 192
+      Left = 193
       Height = 32
       Hint = 'Excluir'
       Top = 1
@@ -983,9 +802,9 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
     object btnEditar: TSpeedButton
-      Left = 160
+      Left = 161
       Height = 32
-      Hint = 'Editar (F5)'
+      Hint = 'Editar'
       Top = 1
       Width = 32
       Color = clWindow
@@ -1142,7 +961,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
     object btnNovo: TSpeedButton
-      Left = 128
+      Left = 129
       Height = 32
       Hint = 'Novo'
       Top = 1
@@ -1301,7 +1120,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
     object btnUltimo: TSpeedButton
-      Left = 96
+      Left = 97
       Height = 32
       Hint = 'Último'
       Top = 1
@@ -1460,9 +1279,9 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
     object btnProximo: TSpeedButton
-      Left = 64
+      Left = 65
       Height = 32
-      Hint = 'Proximo'
+      Hint = 'Próximo'
       Top = 1
       Width = 32
       Color = clWindow
@@ -1619,7 +1438,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
     object btnAnterior: TSpeedButton
-      Left = 32
+      Left = 33
       Height = 32
       Hint = 'Anterior'
       Top = 1
@@ -1778,7 +1597,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
     object btnPrimeiro: TSpeedButton
-      Left = 0
+      Left = 1
       Height = 32
       Hint = 'Primeiro'
       Top = 1
@@ -1937,27 +1756,72 @@ object frmNotasFiscais: TfrmNotasFiscais
       ParentShowHint = False
     end
   end
-  object LabelNumero: TLabel
-    Left = 16
-    Height = 15
-    Top = 40
-    Width = 69
-    Caption = 'Nº da nota'
+  object pnlTotal: TPanel
+    Left = 0
+    Height = 37
+    Top = 475
+    Width = 846
+    Align = alBottom
+    ClientHeight = 37
+    ClientWidth = 846
     ParentColor = False
     ParentShowHint = False
     ShowHint = True
+    TabOrder = 18
+    object lbItens: TLabel
+      Left = 526
+      Height = 15
+      Top = 12
+      Width = 32
+      Caption = 'Itens'
+      ParentColor = False
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object lbTotal: TLabel
+      Left = 622
+      Height = 15
+      Top = 12
+      Width = 31
+      Caption = 'Total'
+      ParentColor = False
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object dbeItens: TDBEdit
+      Left = 558
+      Height = 33
+      Top = 8
+      Width = 57
+      DataField = 'ITENS'
+      DataSource = dsOrcam
+      ReadOnly = True
+      CharCase = ecNormal
+      Color = clBtnFace
+      MaxLength = 0
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object dbeTotal: TDBEdit
+      Left = 653
+      Height = 33
+      Top = 8
+      Width = 127
+      DataField = 'TOTAL'
+      DataSource = dsOrcam
+      CharCase = ecNormal
+      Color = clInfoBk
+      Font.CharSet = ANSI_CHARSET
+      Font.Name = 'Verdana'
+      MaxLength = 0
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+    end
   end
-  object lbBaixado: TLabel
-    Left = 736
-    Height = 15
-    Top = 40
-    Width = 64
-    Caption = 'Concluída'
-    ParentColor = False
-    ParentShowHint = False
-    ShowHint = True
-  end
-  object lbObs: TLabel
+  object LabelObs: TLabel
     Left = 16
     Height = 15
     Top = 120
@@ -1967,10 +1831,42 @@ object frmNotasFiscais: TfrmNotasFiscais
     ParentShowHint = False
     ShowHint = True
   end
-  object btnInserir: TBitBtn
-    Left = 784
-    Height = 32
-    Hint = 'Inserir produto na nota'
+  object lbNumero: TLabel
+    Left = 16
+    Height = 15
+    Top = 40
+    Width = 85
+    Caption = 'Nº do orçam.'
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object LabelStatus: TLabel
+    Left = 688
+    Height = 15
+    Top = 40
+    Width = 41
+    Caption = 'Status'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object LabelConcluido: TLabel
+    Left = 624
+    Height = 15
+    Top = 40
+    Width = 64
+    Caption = 'Concluído'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object btnInsereProduto: TBitBtn
+    Left = 760
+    Height = 33
     Top = 216
     Width = 40
     Glyph.Data = {
@@ -2001,31 +1897,18 @@ object frmNotasFiscais: TfrmNotasFiscais
       310C9A23FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
       00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
     }
-    OnClick = btnInserirClick
+    OnClick = btnInsereProdutoClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 18
+    TabOrder = 16
   end
-  object dbeNumero: TDBEdit
-    Left = 16
-    Height = 33
-    Top = 56
-    Width = 105
-    DataField = 'NUMERO'
-    DataSource = dsNotasFiscais
-    CharCase = ecNormal
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 0
-  end
-  object dbFornecedor: TDBEdit
-    Left = 136
+  object memdse: TDBEdit
+    Left = 144
     Height = 33
     Top = 96
-    Width = 657
-    DataField = 'FORNECEDOR'
-    DataSource = dsNotasFiscais
+    Width = 625
+    DataField = 'NOMECLIENTE'
+    DataSource = dsOrcam
     ReadOnly = True
     CharCase = ecNormal
     Color = clBtnFace
@@ -2034,15 +1917,31 @@ object frmNotasFiscais: TfrmNotasFiscais
     ShowHint = True
     TabOrder = 7
   end
-  object dbEstornada: TDBEdit
-    Left = 736
+  object edtNumero: TDBEdit
+    Left = 16
     Height = 33
     Top = 56
-    Width = 57
-    DataField = 'CONCLUIDA'
-    DataSource = dsNotasFiscais
+    Width = 89
+    DataField = 'CODIGO'
+    DataSource = dsOrcam
+    ReadOnly = True
     CharCase = ecNormal
     Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object dbStatus: TDBEdit
+    Left = 688
+    Height = 33
+    Top = 56
+    Width = 81
+    DataField = 'STATUS'
+    DataSource = dsOrcam
+    ReadOnly = True
+    CharCase = ecNormal
+    Color = clInfoBk
     Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
     MaxLength = 0
@@ -2051,14 +1950,32 @@ object frmNotasFiscais: TfrmNotasFiscais
     ShowHint = True
     TabOrder = 5
   end
-  object dbCodFornecedor: TDBEdit
+  object dbConcluido: TDBEdit
+    Left = 624
+    Height = 33
+    Top = 56
+    Width = 58
+    DataField = 'CONCLUIDO'
+    DataSource = dsOrcam
+    ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    MaxLength = 0
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  object dbCodCliente: TDBEdit
     Left = 16
     Height = 33
     Hint = 'Pesquisar < F2 >'
     Top = 96
-    Width = 91
-    DataField = 'CODFORNECEDOR'
-    DataSource = dsNotasFiscais
+    Width = 99
+    DataField = 'CODCLIENTE'
+    DataSource = dsOrcam
     ReadOnly = True
     CharCase = ecNormal
     Color = clBtnFace
@@ -2072,8 +1989,8 @@ object frmNotasFiscais: TfrmNotasFiscais
     Height = 33
     Hint = 'Pesquisar < F2 >'
     Top = 216
-    Width = 243
-    DataField = 'PRODUTO'
+    Width = 279
+    DataField = 'NOMEPRODUTO'
     DataSource = dsSelecao
     ReadOnly = True
     CharCase = ecNormal
@@ -2083,12 +2000,12 @@ object frmNotasFiscais: TfrmNotasFiscais
     ShowHint = True
     TabOrder = 9
   end
-  object dbTributacao: TDBEdit
-    Left = 267
+  object dbQtde: TDBEdit
+    Left = 303
     Height = 33
     Top = 216
-    Width = 73
-    DataField = 'TRIBUTACAO'
+    Width = 50
+    DataField = 'QTDE'
     DataSource = dsSelecao
     CharCase = ecNormal
     MaxLength = 0
@@ -2096,12 +2013,12 @@ object frmNotasFiscais: TfrmNotasFiscais
     ShowHint = True
     TabOrder = 10
   end
-  object dbQtde: TDBEdit
-    Left = 342
+  object dbCusto: TDBEdit
+    Left = 355
     Height = 33
     Top = 216
-    Width = 44
-    DataField = 'QTDE'
+    Width = 77
+    DataField = 'CUSTO'
     DataSource = dsSelecao
     CharCase = ecNormal
     MaxLength = 0
@@ -2109,121 +2026,96 @@ object frmNotasFiscais: TfrmNotasFiscais
     ShowHint = True
     TabOrder = 11
   end
-  object dbTotal: TDBEdit
-    Left = 388
-    Height = 33
-    Top = 216
-    Width = 74
-    DataField = 'TOTAL'
-    DataSource = dsSelecao
-    CharCase = ecNormal
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 12
-    OnExit = dbTotalExit
-  end
-  object dbCusto: TDBEdit
-    Left = 463
-    Height = 33
-    Top = 216
-    Width = 61
-    DataField = 'CUSTO'
-    DataSource = dsSelecao
-    CharCase = ecNormal
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 13
-  end
-  object dbLucro: TDBEdit
-    Left = 526
-    Height = 33
-    Top = 216
-    Width = 48
-    DataField = 'LUCRO'
-    DataSource = dsSelecao
-    CharCase = ecNormal
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 14
-    OnExit = dbLucroExit
-  end
   object dbVenda: TDBEdit
-    Left = 575
+    Left = 434
     Height = 33
     Top = 216
-    Width = 72
+    Width = 76
     DataField = 'VENDA'
     DataSource = dsSelecao
     CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 15
+    TabOrder = 12
     OnExit = dbVendaExit
   end
-  object dbIPI: TDBEdit
-    Left = 649
-    Height = 33
-    Top = 216
-    Width = 46
-    DataField = 'IPI'
-    DataSource = dsSelecao
-    CharCase = ecNormal
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 16
-  end
   object dbDescto: TDBEdit
-    Left = 697
+    Left = 512
     Height = 33
     Top = 216
-    Width = 85
+    Width = 73
     DataField = 'DESCTO'
     DataSource = dsSelecao
     CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 17
+    TabOrder = 13
+    OnExit = dbDesctoExit
   end
-  object dbdDataNota: TDBEdit
-    Left = 128
+  object dbValorDescto: TDBEdit
+    Left = 587
+    Height = 33
+    Top = 216
+    Width = 83
+    DataField = 'VALORDESCTO'
+    DataSource = dsSelecao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 14
+  end
+  object dbTotalItem: TDBEdit
+    Left = 672
+    Height = 33
+    Top = 216
+    Width = 87
+    DataField = 'TOTAL'
+    DataSource = dsSelecao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 15
+  end
+  object dbdDataOrcam: TDBEdit
+    Left = 111
     Height = 33
     Top = 56
-    Width = 113
-    DataField = 'DATANOTA'
-    DataSource = dsNotasFiscais
+    Width = 122
+    DataField = 'DATA'
+    DataSource = dsOrcam
     CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 1
   end
-  object dbdDataEntrada: TDBEdit
-    Left = 248
+  object dbeIdVendedor: TDBEdit
+    Left = 240
     Height = 33
+    Hint = 'Pesquisar < F2 >'
     Top = 56
-    Width = 113
-    DataField = 'DATAENTRADA'
-    DataSource = dsNotasFiscais
+    Width = 91
+    DataField = 'IDVENDEDOR'
+    DataSource = dsOrcam
+    ReadOnly = True
     CharCase = ecNormal
+    Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 2
   end
-  object dbeCfop: TDBEdit
-    Left = 367
+  object dbeVendedor: TDBEdit
+    Left = 360
     Height = 33
-    Hint = 'Pesquisar < F2 >'
     Top = 56
-    Width = 100
-    DataField = 'CFOP'
-    DataSource = dsNotasFiscais
+    Width = 257
+    DataField = 'VENDEDOR'
+    DataSource = dsOrcam
     ReadOnly = True
     CharCase = ecNormal
     Color = clBtnFace
@@ -2232,288 +2124,531 @@ object frmNotasFiscais: TfrmNotasFiscais
     ShowHint = True
     TabOrder = 3
   end
-  object dbeOperacao: TDBEdit
-    Left = 495
-    Height = 33
-    Top = 56
-    Width = 234
-    DataField = 'OPERACAO'
-    DataSource = dsNotasFiscais
-    ReadOnly = True
-    CharCase = ecNormal
-    Color = clBtnFace
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 4
-  end
-  object dbmmObservacao: TDBMemo
+  object dbmObs: TDBMemo
     Left = 16
     Height = 49
     Top = 136
-    Width = 777
+    Width = 753
     DataField = 'OBS'
-    DataSource = dsNotasFiscais
+    DataSource = dsOrcam
     ParentShowHint = False
     ScrollBars = ssVertical
     ShowHint = True
     TabOrder = 8
   end
-  object Grade: TDBGrid
+  object grdItens: TDBGrid
     Left = 0
-    Height = 249
-    Top = 255
-    Width = 867
+    Height = 214
+    Hint = '<F2> para buscar produto'
+    Top = 261
+    Width = 846
     Align = alBottom
     Color = clWindow
     Columns = <>
-    DataSource = dsDetNFiscais
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
+    DataSource = dsDetOrcam
+    Font.CharSet = ANSI_CHARSET
+    Font.Name = 'Verdana'
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
     ShowHint = True
-    TabOrder = 19
-    OnDblClick = GradeDblClick
+    TabOrder = 17
+    OnDblClick = grdItensDblClick
   end
-  object dsDetNFiscais: TDataSource
-    AutoEdit = False
-    DataSet = cdsDetNFiscais
-    Left = 161
-    Top = 324
+  object dtOrcam: TTimer
+    Left = 310
+    Top = 370
   end
-  object dsNotasFiscais: TDataSource
-    AutoEdit = False
-    DataSet = cdsNFiscais
-    OnStateChange = dsNotasFiscaisStateChange
-    Left = 160
-    Top = 289
-  end
-  object sqldSelecao: TSQLQuery
+  object cdsOrcam: TMemDataset
     FieldDefs = <>
-    Params = <>
-    Left = 248
-    Top = 288
-    object sqldSelecaoIDPRODUTO: TIntegerField
+    AfterInsert = cdsOrcamAfterInsert
+    Left = 341
+    Top = 369
+    object cdsOrcamCODIGO: TIntegerField
       FieldKind = fkData
-      FieldName = 'IDPRODUTO'
+      FieldName = 'CODIGO'
       Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
-      Required = False
+      Required = True
     end
-    object sqldSelecaoPRODUTO: TStringField
+    object cdsOrcamIDVENDEDOR: TIntegerField
       FieldKind = fkData
-      FieldName = 'PRODUTO'
+      FieldName = 'IDVENDEDOR'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      Size = 50
+      OnValidate = cdsOrcamIDVENDEDORValidate
     end
-    object sqldSelecaoIDTRIBUTACAO: TIntegerField
+    object cdsOrcamVENDEDOR: TStringField
       FieldKind = fkData
-      FieldName = 'IDTRIBUTACAO'
+      FieldName = 'VENDEDOR'
       Index = 2
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
+      ProviderFlags = []
       ReadOnly = False
       Required = False
+      Size = 80
     end
-    object sqldSelecaoTRIBUTACAO: TStringField
+    object cdsOrcamCODCLIENTE: TIntegerField
       FieldKind = fkData
-      FieldName = 'TRIBUTACAO'
+      FieldName = 'CODCLIENTE'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      Size = 50
+      OnValidate = cdsOrcamCODCLIENTEValidate
     end
-    object sqldSelecaoQTDE: TFloatField
+    object cdsOrcamNOMECLIENTE: TStringField
       FieldKind = fkData
-      FieldName = 'QTDE'
+      FieldName = 'NOMECLIENTE'
       Index = 4
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
+      ProviderFlags = []
       ReadOnly = False
       Required = False
+      Size = 80
     end
-    object sqldSelecaoTOTAL: TFloatField
+    object cdsOrcamDATA: TDateField
       FieldKind = fkData
-      FieldName = 'TOTAL'
+      FieldName = 'DATA'
       Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = 'dd/mm/yyyy'
     end
-    object sqldSelecaoCUSTO: TFloatField
+    object cdsOrcamOBS: TStringField
       FieldKind = fkData
-      FieldName = 'CUSTO'
+      FieldName = 'OBS'
       Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 250
     end
-    object sqldSelecaoLUCRO: TFloatField
+    object cdsOrcamTOTAL: TFMTBCDField
       FieldKind = fkData
-      FieldName = 'LUCRO'
+      FieldName = 'TOTAL'
       Index = 7
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object sqldSelecaoVENDA: TFloatField
+    object cdsOrcamITENS: TIntegerField
       FieldKind = fkData
-      FieldName = 'VENDA'
+      FieldName = 'ITENS'
       Index = 8
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object sqldSelecaoIPI: TFloatField
+    object cdsOrcamSTATUS: TStringField
+      Alignment = taCenter
       FieldKind = fkData
-      FieldName = 'IPI'
+      FieldName = 'STATUS'
       Index = 9
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      OnGetText = cdsOrcamSTATUSGetText
+      Size = 1
     end
-    object sqldSelecaoDESCTO: TFloatField
+    object cdsOrcamCONCLUIDO: TStringField
+      Alignment = taCenter
       FieldKind = fkData
-      FieldName = 'DESCTO'
+      FieldName = 'CONCLUIDO'
       Index = 10
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 1
     end
-  end
-  object dspSelecao: TTimer
-    Left = 312
-    Top = 288
-  end
-  object cdsSelecao: TMemDataset
-    FieldDefs = <>
-    Left = 400
-    Top = 288
-    object cdsSelecaoIDPRODUTO: TIntegerField
+    object cdsOrcamsqlDetOrcam: TStringField
       FieldKind = fkData
-      FieldName = 'IDPRODUTO'
-      Index = 0
+      FieldName = 'sqlDetOrcam'
+      Index = 11
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object cdsSelecaoPRODUTO: TStringField
+  end
+  object cdsDetOrcam: TMemDataset
+    FieldDefs = <>
+    BeforePost = cdsDetOrcamBeforePost
+    BeforeDelete = cdsDetOrcamBeforeDelete
+    Left = 341
+    Top = 400
+    object cdsDetOrcamCODIGO: TIntegerField
       FieldKind = fkData
-      FieldName = 'PRODUTO'
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object cdsDetOrcamCODPRODUTO: TIntegerField
+      FieldKind = fkData
+      FieldName = 'CODPRODUTO'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      Size = 50
+      OnValidate = cdsDetOrcamCODPRODUTOValidate
     end
-    object cdsSelecaoIDTRIBUTACAO: TIntegerField
+    object cdsDetOrcamNOMEPRODUTO: TStringField
       FieldKind = fkData
-      FieldName = 'IDTRIBUTACAO'
+      FieldName = 'NOMEPRODUTO'
       Index = 2
       LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
+      ProviderFlags = []
       ReadOnly = False
       Required = False
+      Size = 80
     end
-    object cdsSelecaoTRIBUTACAO: TStringField
+    object cdsDetOrcamQTDE: TIntegerField
       FieldKind = fkData
-      FieldName = 'TRIBUTACAO'
+      FieldName = 'QTDE'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      Size = 50
     end
-    object cdsSelecaoQTDE: TFloatField
+    object cdsDetOrcamCUSTO: TFMTBCDField
       FieldKind = fkData
-      FieldName = 'QTDE'
+      FieldName = 'CUSTO'
       Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object cdsSelecaoTOTAL: TFloatField
+    object cdsDetOrcamVENDA: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VENDA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object cdsDetOrcamDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'DESCTO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object cdsDetOrcamVALORDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VALORDESCTO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object cdsDetOrcamTOTAL: TFMTBCDField
       FieldKind = fkData
       FieldName = 'TOTAL'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+  end
+  object dsLink: TDataSource
+    DataSet = sqlOrcam
+    Left = 311
+    Top = 400
+  end
+  object sqlOrcam: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    Left = 280
+    Top = 370
+    object sqlOrcamCODIGO: TIntegerField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlOrcamCODCLIENTE: TIntegerField
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlOrcamNOMECLIENTE: TStringField
+      FieldKind = fkData
+      FieldName = 'NOMECLIENTE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = []
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object sqlOrcamIDVENDEDOR: TIntegerField
+      FieldKind = fkData
+      FieldName = 'IDVENDEDOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlOrcamVENDEDOR: TStringField
+      FieldKind = fkData
+      FieldName = 'VENDEDOR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = []
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object sqlOrcamDATA: TDateField
+      FieldKind = fkData
+      FieldName = 'DATA'
       Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object cdsSelecaoCUSTO: TFloatField
+    object sqlOrcamOBS: TStringField
       FieldKind = fkData
-      FieldName = 'CUSTO'
+      FieldName = 'OBS'
       Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 250
     end
-    object cdsSelecaoLUCRO: TFloatField
+    object sqlOrcamTOTAL: TFMTBCDField
       FieldKind = fkData
-      FieldName = 'LUCRO'
+      FieldName = 'TOTAL'
       Index = 7
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object cdsSelecaoVENDA: TFloatField
+    object sqlOrcamITENS: TIntegerField
       FieldKind = fkData
-      FieldName = 'VENDA'
+      FieldName = 'ITENS'
       Index = 8
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object cdsSelecaoIPI: TFloatField
+    object sqlOrcamSTATUS: TStringField
       FieldKind = fkData
-      FieldName = 'IPI'
+      FieldName = 'STATUS'
       Index = 9
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 1
     end
-    object cdsSelecaoDESCTO: TFloatField
+    object sqlOrcamCONCLUIDO: TStringField
       FieldKind = fkData
-      FieldName = 'DESCTO'
+      FieldName = 'CONCLUIDO'
       Index = 10
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 1
     end
   end
-  object dsSelecao: TDataSource
-    DataSet = cdsSelecao
-    Left = 467
-    Top = 288
+  object sqlDetOrcam: TSQLQuery
+    FieldDefs = <>
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'CODIGO'
+        ParamType = ptInput
+        Size = 4
+      end>
+    DataSource = dsLink
+    Left = 280
+    Top = 400
+    object sqlDetOrcamCODIGO: TIntegerField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqlDetOrcamCODPRODUTO: TIntegerField
+      FieldKind = fkData
+      FieldName = 'CODPRODUTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlDetOrcamNOMEPRODUTO: TStringField
+      FieldKind = fkData
+      FieldName = 'NOMEPRODUTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = []
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object sqlDetOrcamQTDE: TIntegerField
+      FieldKind = fkData
+      FieldName = 'QTDE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqlDetOrcamCUSTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'CUSTO'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqlDetOrcamVENDA: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VENDA'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqlDetOrcamDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'DESCTO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqlDetOrcamVALORDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VALORDESCTO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqlDetOrcamTOTAL: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
   end
-  object sqldProduto: TSQLQuery
+  object sqlProdutos: TSQLQuery
     FieldDefs = <>
     Params = <>
-    Left = 272
-    Top = 352
-    object sqldProdutoIDPRODUTO: TIntegerField
+    Left = 496
+    Top = 333
+    object sqlProdutosIDPRODUTO: TIntegerField
       FieldKind = fkData
       FieldName = 'IDPRODUTO'
       Index = 0
@@ -2522,7 +2657,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       ReadOnly = False
       Required = True
     end
-    object sqldProdutoCODBARRA: TStringField
+    object sqlProdutosCODBARRA: TStringField
       FieldKind = fkData
       FieldName = 'CODBARRA'
       Index = 1
@@ -2532,18 +2667,19 @@ object frmNotasFiscais: TfrmNotasFiscais
       Required = False
       Size = 13
     end
-    object sqldProdutoCODFORNECEDOR: TIntegerField
+    object sqlProdutosDESCRICAO: TStringField
       FieldKind = fkData
-      FieldName = 'CODFORNECEDOR'
+      FieldName = 'DESCRICAO'
       Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 80
     end
-    object sqldProdutoDESCRICAO: TStringField
+    object sqlProdutosABREVIACAO: TStringField
       FieldKind = fkData
-      FieldName = 'DESCRICAO'
+      FieldName = 'ABREVIACAO'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -2551,16 +2687,20 @@ object frmNotasFiscais: TfrmNotasFiscais
       Required = False
       Size = 80
     end
-    object sqldProdutoIDALIQUOTA: TIntegerField
+    object sqlProdutosPRECO_PROMOCAO: TFMTBCDField
       FieldKind = fkData
-      FieldName = 'IDALIQUOTA'
+      FieldName = 'PRECO_PROMOCAO'
       Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object sqldProdutoCUSTO: TFMTBCDField
+    object sqlProdutosCUSTO: TFMTBCDField
       FieldKind = fkData
       FieldName = 'CUSTO'
       Index = 5
@@ -2573,7 +2713,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       MaxValue = '0'
       MinValue = '0'
     end
-    object sqldProdutoLUCRO: TFMTBCDField
+    object sqlProdutosLUCRO: TFMTBCDField
       FieldKind = fkData
       FieldName = 'LUCRO'
       Index = 6
@@ -2586,7 +2726,7 @@ object frmNotasFiscais: TfrmNotasFiscais
       MaxValue = '0'
       MinValue = '0'
     end
-    object sqldProdutoVENDA: TFMTBCDField
+    object sqlProdutosVENDA: TFMTBCDField
       FieldKind = fkData
       FieldName = 'VENDA'
       Index = 7
@@ -2599,78 +2739,28 @@ object frmNotasFiscais: TfrmNotasFiscais
       MaxValue = '0'
       MinValue = '0'
     end
-    object sqldProdutoPRECO_PROMOCAO: TFMTBCDField
+    object sqlProdutosESTOQUE: TIntegerField
       FieldKind = fkData
-      FieldName = 'PRECO_PROMOCAO'
+      FieldName = 'ESTOQUE'
       Index = 8
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
     end
-    object sqldProdutoESTOQUE: TIntegerField
+    object sqlProdutosESTOQUEMINIMO: TIntegerField
       FieldKind = fkData
-      FieldName = 'ESTOQUE'
+      FieldName = 'ESTOQUEMINIMO'
       Index = 9
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object sqldProdutoESTOQUEMINIMO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ESTOQUEMINIMO'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldProdutoALTERADO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ALTERADO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldProdutoQTDERECEBIDA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'QTDERECEBIDA'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldProdutoDATARECEBIDA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATARECEBIDA'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldProdutoABREVIACAO: TStringField
-      FieldKind = fkData
-      FieldName = 'ABREVIACAO'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldProdutoPROMOCAO: TStringField
+    object sqlProdutosPROMOCAO: TStringField
       FieldKind = fkData
       FieldName = 'PROMOCAO'
-      Index = 15
+      Index = 10
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2679,13 +2769,13 @@ object frmNotasFiscais: TfrmNotasFiscais
     end
   end
   object dspProdutos: TTimer
-    Left = 352
-    Top = 352
+    Left = 528
+    Top = 333
   end
   object cdsProdutos: TMemDataset
     FieldDefs = <>
-    Left = 440
-    Top = 352
+    Left = 560
+    Top = 333
     object cdsProdutosIDPRODUTO: TIntegerField
       FieldKind = fkData
       FieldName = 'IDPRODUTO'
@@ -2705,18 +2795,19 @@ object frmNotasFiscais: TfrmNotasFiscais
       Required = False
       Size = 13
     end
-    object cdsProdutosCODFORNECEDOR: TIntegerField
+    object cdsProdutosDESCRICAO: TStringField
       FieldKind = fkData
-      FieldName = 'CODFORNECEDOR'
+      FieldName = 'DESCRICAO'
       Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Size = 80
     end
-    object cdsProdutosDESCRICAO: TStringField
+    object cdsProdutosABREVIACAO: TStringField
       FieldKind = fkData
-      FieldName = 'DESCRICAO'
+      FieldName = 'ABREVIACAO'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
@@ -2724,14 +2815,18 @@ object frmNotasFiscais: TfrmNotasFiscais
       Required = False
       Size = 80
     end
-    object cdsProdutosIDALIQUOTA: TIntegerField
+    object cdsProdutosPRECO_PROMOCAO: TFMTBCDField
       FieldKind = fkData
-      FieldName = 'IDALIQUOTA'
+      FieldName = 'PRECO_PROMOCAO'
       Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
     object cdsProdutosCUSTO: TFMTBCDField
       FieldKind = fkData
@@ -2772,23 +2867,10 @@ object frmNotasFiscais: TfrmNotasFiscais
       MaxValue = '0'
       MinValue = '0'
     end
-    object cdsProdutosPRECO_PROMOCAO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'PRECO_PROMOCAO'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
     object cdsProdutosESTOQUE: TIntegerField
       FieldKind = fkData
       FieldName = 'ESTOQUE'
-      Index = 9
+      Index = 8
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2797,53 +2879,16 @@ object frmNotasFiscais: TfrmNotasFiscais
     object cdsProdutosESTOQUEMINIMO: TIntegerField
       FieldKind = fkData
       FieldName = 'ESTOQUEMINIMO'
-      Index = 10
+      Index = 9
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-    end
-    object cdsProdutosALTERADO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ALTERADO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsProdutosQTDERECEBIDA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'QTDERECEBIDA'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsProdutosDATARECEBIDA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATARECEBIDA'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsProdutosABREVIACAO: TStringField
-      FieldKind = fkData
-      FieldName = 'ABREVIACAO'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
     end
     object cdsProdutosPROMOCAO: TStringField
       FieldKind = fkData
       FieldName = 'PROMOCAO'
-      Index = 15
+      Index = 10
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -2851,794 +2896,459 @@ object frmNotasFiscais: TfrmNotasFiscais
       Size = 1
     end
   end
-  object sqlNFiscais: TSQLQuery
+  object sqldSelecao: TSQLQuery
     FieldDefs = <>
-    SQL.Strings = (
-      'select'
-      '    nf.NUMERO,'
-      '    nf.CODFORNECEDOR,'
-      '     f.FANTAZIA FORNECEDOR,'
-      '    nf.DATANOTA,'
-      '    nf.DATAENTRADA,'
-      '    nf.CFOP,'
-      '     c.OPERACAO,'
-      '    nf.DESCONTO,'
-      '    nf.ICMS,'
-      '    nf.IPI,'
-      '    nf.FRETE,'
-      '    nf.DESPESAS,'
-      '    nf.TOTALPRODUTO,'
-      '    nf.TOTAL,'
-      '    nf.OBS,'
-      '    nf.BAIXADO,'
-      '    nf.CONCLUIDA'
-      'from NOTAS_FISCAIS nf'
-      'left join FORNECEDORES f on (nf.CODFORNECEDOR = f.CODFORNECEDOR)'
-      'left join CFOP c on (nf.CFOP = c.NUMERO)'
-      'order by nf.DATANOTA'
-    )
     Params = <>
-    Left = 66
-    Top = 290
-    object sqlNFiscaisNUMERO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlNFiscaisCODFORNECEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODFORNECEDOR'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlNFiscaisFORNECEDOR: TStringField
-      FieldKind = fkData
-      FieldName = 'FORNECEDOR'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqlNFiscaisDATANOTA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATANOTA'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlNFiscaisDATAENTRADA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATAENTRADA'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlNFiscaisCFOP: TStringField
-      FieldKind = fkData
-      FieldName = 'CFOP'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlNFiscaisOPERACAO: TStringField
-      FieldKind = fkData
-      FieldName = 'OPERACAO'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object sqlNFiscaisDESCONTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCONTO'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlNFiscaisICMS: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'ICMS'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlNFiscaisIPI: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'IPI'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlNFiscaisFRETE: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'FRETE'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlNFiscaisDESPESAS: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESPESAS'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlNFiscaisTOTALPRODUTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTALPRODUTO'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlNFiscaisTOTAL: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlNFiscaisOBS: TMemoField
-      FieldKind = fkData
-      FieldName = 'OBS'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
-    object sqlNFiscaisBAIXADO: TStringField
-      FieldKind = fkData
-      FieldName = 'BAIXADO'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqlNFiscaisCONCLUIDA: TStringField
-      FieldKind = fkData
-      FieldName = 'CONCLUIDA'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-  end
-  object sqlDetNFiscais: TSQLQuery
-    FieldDefs = <>
-    SQL.Strings = (
-      'select'
-      '    inf.NUMERO,'
-      '    inf.PRODUTO,'
-      '      p.DESCRICAO NOMEPRODUTO,'
-      '    inf.ALIQUOTA,'
-      '      a.DESCRICAO NOMEALIQUOTA,'
-      '    inf.QTDE,'
-      '    inf.TOTAL,'
-      '    inf.CUSTO,'
-      '    inf.LUCRO,'
-      '    inf.VENDA,'
-      '    inf.IPI,'
-      '    inf.DESCONTO'
-      'from ITEMNOTAFISCAL inf'
-      'left join PRODUTOS p on (inf.PRODUTO = p.IDPRODUTO)'
-      'left join ALIQUOTAS a on (inf.ALIQUOTA = a.CODALIQUOTA)'
-      'where inf.NUMERO = :NUMERO'
-    )
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'NUMERO'
-        ParamType = ptInput
-        Size = 4
-      end>
-    DataSource = dsLigaNF
-    Left = 66
-    Top = 325
-    object sqlDetNFiscaisNUMERO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqlDetNFiscaisPRODUTO: TIntegerField
+    Left = 280
+    Top = 296
+    object sqldSelecaoPRODUTO: TIntegerField
       FieldKind = fkData
       FieldName = 'PRODUTO'
-      Index = 1
+      Index = 0
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object sqlDetNFiscaisNOMEPRODUTO: TStringField
+    object sqldSelecaoNOMEPRODUTO: TStringField
       FieldKind = fkData
       FieldName = 'NOMEPRODUTO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqlDetNFiscaisALIQUOTA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ALIQUOTA'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlDetNFiscaisNOMEALIQUOTA: TStringField
-      FieldKind = fkData
-      FieldName = 'NOMEALIQUOTA'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-    end
-    object sqlDetNFiscaisQTDE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'QTDE'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlDetNFiscaisTOTAL: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlDetNFiscaisCUSTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'CUSTO'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlDetNFiscaisLUCRO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'LUCRO'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqlDetNFiscaisVENDA: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VENDA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlDetNFiscaisIPI: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'IPI'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqlDetNFiscaisDESCONTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCONTO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-  end
-  object dsLigaNF: TDataSource
-    DataSet = sqlNFiscais
-    Left = 97
-    Top = 325
-  end
-  object dtNFiscais: TTimer
-    Left = 97
-    Top = 289
-  end
-  object cdsNFiscais: TMemDataset
-    FieldDefs = <>
-    Left = 129
-    Top = 289
-    object cdsNFiscaisNUMERO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-      OnChange = cdsNFiscaisNUMEROChange
-    end
-    object cdsNFiscaisCODFORNECEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODFORNECEDOR'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      OnValidate = cdsNFiscaisCODFORNECEDORValidate
-    end
-    object cdsNFiscaisFORNECEDOR: TStringField
-      FieldKind = fkData
-      FieldName = 'FORNECEDOR'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
       Size = 80
     end
-    object cdsNFiscaisDATANOTA: TDateField
+    object sqldSelecaoQTDE: TIntegerField
       FieldKind = fkData
-      FieldName = 'DATANOTA'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsNFiscaisDATAENTRADA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATAENTRADA'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsNFiscaisCFOP: TStringField
-      FieldKind = fkData
-      FieldName = 'CFOP'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      OnValidate = cdsNFiscaisCFOPValidate
-    end
-    object cdsNFiscaisOPERACAO: TStringField
-      FieldKind = fkData
-      FieldName = 'OPERACAO'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
-      Size = 250
-    end
-    object cdsNFiscaisDESCONTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCONTO'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsNFiscaisICMS: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'ICMS'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsNFiscaisIPI: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'IPI'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsNFiscaisFRETE: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'FRETE'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsNFiscaisDESPESAS: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESPESAS'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsNFiscaisTOTALPRODUTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTALPRODUTO'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsNFiscaisTOTAL: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsNFiscaisOBS: TMemoField
-      FieldKind = fkData
-      FieldName = 'OBS'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
-    object cdsNFiscaisBAIXADO: TStringField
-      Alignment = taCenter
-      FieldKind = fkData
-      FieldName = 'BAIXADO'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsNFiscaisCONCLUIDA: TStringField
-      Alignment = taCenter
-      FieldKind = fkData
-      FieldName = 'CONCLUIDA'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsNFiscaissqlDetNFiscais: TStringField
-      FieldKind = fkData
-      FieldName = 'sqlDetNFiscais'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object cdsDetNFiscais: TMemDataset
-    FieldDefs = <>
-    BeforePost = cdsDetNFiscaisBeforePost
-    BeforeDelete = cdsDetNFiscaisBeforeDelete
-    Left = 129
-    Top = 324
-    object cdsDetNFiscaisNUMERO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
+      FieldName = 'QTDE'
+      Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
     end
-    object cdsDetNFiscaisPRODUTO: TIntegerField
+    object sqldSelecaoCUSTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'CUSTO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqldSelecaoVENDA: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VENDA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqldSelecaoDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'DESCTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqldSelecaoVALORDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VALORDESCTO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object sqldSelecaoTOTAL: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+  end
+  object dspSelecao: TTimer
+    Left = 312
+    Top = 296
+  end
+  object cdsSelecao: TMemDataset
+    FieldDefs = <>
+    AfterPost = cdsSelecaoAfterPost
+    Left = 344
+    Top = 296
+    object cdsSelecaoPRODUTO: TIntegerField
       FieldKind = fkData
       FieldName = 'PRODUTO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object cdsSelecaoNOMEPRODUTO: TStringField
+      FieldKind = fkData
+      FieldName = 'NOMEPRODUTO'
       Index = 1
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      OnValidate = cdsDetNFiscaisPRODUTOValidate
-    end
-    object cdsDetNFiscaisNOMEPRODUTO: TStringField
-      FieldKind = fkData
-      FieldName = 'NOMEPRODUTO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = []
-      ReadOnly = False
-      Required = False
       Size = 80
     end
-    object cdsDetNFiscaisALIQUOTA: TIntegerField
+    object cdsSelecaoQTDE: TIntegerField
       FieldKind = fkData
-      FieldName = 'ALIQUOTA'
+      FieldName = 'QTDE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object cdsSelecaoCUSTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'CUSTO'
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      OnValidate = cdsDetNFiscaisALIQUOTAValidate
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object cdsDetNFiscaisNOMEALIQUOTA: TStringField
+    object cdsSelecaoVENDA: TFMTBCDField
       FieldKind = fkData
-      FieldName = 'NOMEALIQUOTA'
+      FieldName = 'VENDA'
       Index = 4
       LookupCache = False
-      ProviderFlags = []
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object cdsSelecaoDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'DESCTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object cdsSelecaoVALORDESCTO: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'VALORDESCTO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object cdsSelecaoTOTAL: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+  end
+  object dsSelecao: TDataSource
+    DataSet = cdsSelecao
+    Left = 376
+    Top = 296
+  end
+  object sqldCliente: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    Left = 496
+    Top = 301
+    object sqldClienteCODCLIENTE: TIntegerField
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqldClienteNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object sqldClienteTELEFONE: TStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object cdsDetNFiscaisQTDE: TIntegerField
+    object sqldClienteRG_IE: TStringField
       FieldKind = fkData
-      FieldName = 'QTDE'
+      FieldName = 'RG_IE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldClienteCPF_CNPJ: TStringField
+      FieldKind = fkData
+      FieldName = 'CPF_CNPJ'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldClienteDATA_NASC: TDateField
+      FieldKind = fkData
+      FieldName = 'DATA_NASC'
       Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
     end
-    object cdsDetNFiscaisTOTAL: TFMTBCDField
+    object sqldClienteLIMITE: TFMTBCDField
       FieldKind = fkData
-      FieldName = 'TOTAL'
+      FieldName = 'LIMITE'
       Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
       Precision = 15
       Currency = False
       MaxValue = '0'
       MinValue = '0'
     end
-    object cdsDetNFiscaisCUSTO: TFMTBCDField
+    object sqldClienteDESCRICAO: TStringField
       FieldKind = fkData
-      FieldName = 'CUSTO'
+      FieldName = 'DESCRICAO'
       Index = 7
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsDetNFiscaisLUCRO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'LUCRO'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-    object cdsDetNFiscaisVENDA: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VENDA'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsDetNFiscaisIPI: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'IPI'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsDetNFiscaisDESCONTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCONTO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
+      Size = 80
     end
   end
-  object sqldPagto: TSQLQuery
+  object dspCliente: TTimer
+    Left = 528
+    Top = 301
+  end
+  object cdsCliente: TMemDataset
     FieldDefs = <>
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'IDCOMPRA'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftDate
-        Name = 'DATAPAGTO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftString
-        Name = 'FORMAPAGTO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftFloat
-        Name = 'VALORPAGO'
-        ParamType = ptInput
-      end>
-    Left = 96
-    Top = 376
+    Left = 560
+    Top = 301
+    object cdsClienteCODCLIENTE: TIntegerField
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object cdsClienteNOME: TStringField
+      FieldKind = fkData
+      FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object cdsClienteTELEFONE: TStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object cdsClienteRG_IE: TStringField
+      FieldKind = fkData
+      FieldName = 'RG_IE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object cdsClienteCPF_CNPJ: TStringField
+      FieldKind = fkData
+      FieldName = 'CPF_CNPJ'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object cdsClienteDATA_NASC: TDateField
+      FieldKind = fkData
+      FieldName = 'DATA_NASC'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object cdsClienteLIMITE: TFMTBCDField
+      FieldKind = fkData
+      FieldName = 'LIMITE'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
+    object cdsClienteDESCRICAO: TStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAO'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
   end
-  object sqldBaixa: TSQLQuery
+  object dsOrcam: TDataSource
+    DataSet = cdsOrcam
+    OnStateChange = dsOrcamStateChange
+    Left = 371
+    Top = 369
+  end
+  object dsDetOrcam: TDataSource
+    DataSet = cdsDetOrcam
+    Left = 372
+    Top = 400
+  end
+  object sqldVendedor: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    Left = 496
+    Top = 365
+    object sqldVendedorIDVENDEDOR: TIntegerField
+      FieldKind = fkData
+      FieldName = 'IDVENDEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqldVendedorVENDEDOR: TStringField
+      FieldKind = fkData
+      FieldName = 'VENDEDOR'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object sqldVendedorATIVO: TStringField
+      FieldKind = fkData
+      FieldName = 'ATIVO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+  end
+  object dspVendedor: TTimer
+    Left = 528
+    Top = 365
+  end
+  object cdsVendedor: TMemDataset
+    FieldDefs = <>
+    Left = 560
+    Top = 365
+    object cdsVendedorIDVENDEDOR: TIntegerField
+      FieldKind = fkData
+      FieldName = 'IDVENDEDOR'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object cdsVendedorVENDEDOR: TStringField
+      FieldKind = fkData
+      FieldName = 'VENDEDOR'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object cdsVendedorATIVO: TStringField
+      FieldKind = fkData
+      FieldName = 'ATIVO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+  end
+  object spDeleta: TSQLQuery
     FieldDefs = <>
     Params = <    
       item
@@ -3646,24 +3356,13 @@ object frmNotasFiscais: TfrmNotasFiscais
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    Left = 128
-    Top = 376
+    Left = 208
+    Top = 288
   end
-  object sqldEstorna: TSQLQuery
-    FieldDefs = <>
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end>
-    Left = 160
-    Top = 376
-  end
-  object mnNotasFiscais: TMainMenu
-    Left = 64
-    Top = 376
-    object miRegistros: TMenuItem
+  object Menu: TMainMenu
+    Left = 131
+    Top = 293
+    object miRegistro: TMenuItem
       Caption = 'Registros'
       object miPrimeiro: TMenuItem
         Caption = 'Primeiro'
@@ -3688,8 +3387,8 @@ object frmNotasFiscais: TfrmNotasFiscais
         Caption = 'Novo'
         OnClick = btnNovoClick
       end
-      object miExcluir: TMenuItem
-        Caption = 'Excluir'
+      object miDeletar: TMenuItem
+        Caption = 'Deletar'
         OnClick = btnExcluirClick
       end
       object miAlterar: TMenuItem
@@ -3702,11 +3401,11 @@ object frmNotasFiscais: TfrmNotasFiscais
       end
       object miSalvar: TMenuItem
         Caption = 'Salvar'
-        OnClick = btnSalvarClick
+        OnClick = btnGravarClick
       end
       object miCancelar: TMenuItem
         Caption = 'Cancelar'
-        OnClick = btnCancelarClick
+        OnClick = btnCancelClick
       end
       object N3: TMenuItem
         Caption = '-'
@@ -3717,33 +3416,26 @@ object frmNotasFiscais: TfrmNotasFiscais
         OnClick = btnFecharClick
       end
     end
-    object miFerramentas: TMenuItem
+    object mFerramentas: TMenuItem
       Caption = 'Ferramentas'
       object miLocalizar: TMenuItem
-        Caption = 'Pesquisar'
+        Caption = '&Localizar por número'
         ShortCut = 119
         OnClick = btnConsultarClick
       end
-      object miOutrosFiltros: TMenuItem
-        Caption = 'Outros filtros'
-        object miFiltroData: TMenuItem
+      object miOutroFiltro: TMenuItem
+        Caption = 'Outro filtros'
+        object miFiltrarData: TMenuItem
           Caption = 'Filtrar por data'
-          OnClick = miFiltroDataClick
+          OnClick = miFiltrarDataClick
         end
-        object miFiltrarForn: TMenuItem
-          Caption = 'Filtrar por fornecedor'
-        end
-        object N6: TMenuItem
-          Caption = '-'
-        end
-        object miCompraNaoConc: TMenuItem
-          Caption = 'Compras não concluídas'
-          OnClick = miCompraNaoConcClick
+        object miFiltrarCliente: TMenuItem
+          Caption = 'Filtrar por cliente'
         end
       end
-      object miMostrarTodos: TMenuItem
+      object miLimpaFiltro: TMenuItem
         Caption = 'Limpar filtro'
-        OnClick = miMostrarTodosClick
+        OnClick = miLimpaFiltroClick
       end
       object N5: TMenuItem
         Caption = '-'
@@ -3751,67 +3443,58 @@ object frmNotasFiscais: TfrmNotasFiscais
       object miContar: TMenuItem
         Caption = 'Contar registros'
       end
-      object N9: TMenuItem
+      object N7: TMenuItem
         Caption = '-'
       end
-      object miCadastraForn: TMenuItem
-        Caption = 'Cadastrar fornecedor'
-        OnClick = miCadastraFornClick
+      object miCadastraCliente: TMenuItem
+        Caption = 'Cadastrar cliente'
+        OnClick = miCadastraClienteClick
       end
-      object miCadastrarCFOP: TMenuItem
-        Caption = 'Cadastrar CFOP'
-        OnClick = miCadastrarCFOPClick
+      object miCadastrarvendedor: TMenuItem
+        Caption = 'Cadastrar vendedor'
+        OnClick = miCadastrarvendedorClick
       end
-      object miCadastrodeproduto: TMenuItem
-        Caption = 'Cadastro de produto'
-        OnClick = miCadastrodeprodutoClick
+      object miCadastrarproduto: TMenuItem
+        Caption = 'Cadastrar produto'
+        OnClick = miCadastrarprodutoClick
       end
     end
     object miOpcoes: TMenuItem
       Caption = 'Opções'
       object miConcluir: TMenuItem
-        Caption = 'Concluir'
+        Caption = 'Concluir orçamento'
+        ShortCut = 117
         OnClick = miConcluirClick
       end
-      object miEstornar: TMenuItem
-        Caption = 'Estornar'
-        OnClick = miEstornarClick
+      object miReabrir: TMenuItem
+        Caption = 'Reabrir orçamento'
+        ShortCut = 118
+        OnClick = miReabrirClick
       end
-      object N8: TMenuItem
+      object N6: TMenuItem
         Caption = '-'
       end
-      object miPagamentoCompra: TMenuItem
-        Caption = 'Ver pagamentos'
-        OnClick = miPagamentoCompraClick
+      object miAplicarDesc: TMenuItem
+        Caption = 'Aplicar desconto no total'
+        OnClick = miAplicarDescClick
       end
     end
-    object miRelatorios: TMenuItem
-      Caption = 'Relatórios'
-      object miCompraAtual: TMenuItem
-        Caption = 'Compra atual'
-        OnClick = miCompraAtualClick
+    object miRelatorio: TMenuItem
+      Caption = '&Relatórios'
+      object miRelOramento: TMenuItem
+        Caption = 'Orçamento atual'
+        OnClick = miRelOramentoClick
       end
-      object N7: TMenuItem
-        Caption = '-'
-      end
-      object miRelDatas: TMenuItem
-        Caption = 'Por intervalo de datas'
-        OnClick = miRelDatasClick
-      end
-      object miRelForn: TMenuItem
-        Caption = 'Por fornecedor'
-        OnClick = miRelFornClick
+      object miRelOrcam: TMenuItem
+        Caption = 'Orçamento por data'
+        OnClick = miRelOrcamClick
       end
       object N4: TMenuItem
         Caption = '-'
       end
-      object miListaFaturamForn: TMenuItem
-        Caption = 'Listagem de faturamento por fornecedor'
-        OnClick = miListaFaturamFornClick
-      end
-      object miListaFaturaCorrente: TMenuItem
-        Caption = 'Listagem de faturamento desta compra'
-        OnClick = miListaFaturaCorrenteClick
+      object Oramentoembobina1: TMenuItem
+        Caption = 'Orçamento em bobina'
+        OnClick = Oramentoembobina1Click
       end
     end
   end

@@ -21,7 +21,6 @@ type
       Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormCreate(Sender: TObject);
   private
   public
   end;
@@ -50,7 +49,7 @@ end;
 procedure TfrmSobre.FormShow(Sender: TObject);
 begin
   Caption := 'Sobre o ' + Sistema.AppCaption;
-  lblVersao.Caption := 'Vers�o e Revis�o: ' + Sistema.VersaoApp;
+  lblVersao.Caption := 'Versao e Revisao: ' + Sistema.VersaoApp;
   lblEmpresa.Caption := 'Empresa: ' + Empresa.Nome;
   lblCNPJ.Caption := 'CNPJ: ' + empresa.Cnpj;
 end;
@@ -58,11 +57,6 @@ end;
 procedure TfrmSobre.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
-end;
-
-procedure TfrmSobre.FormCreate(Sender: TObject);
-begin
-  //
 end;
 
 initialization

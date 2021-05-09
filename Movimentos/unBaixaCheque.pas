@@ -4,19 +4,15 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, 
-  DB, memds, Sqldb,  FMTBcd;
+  Dialogs, unSimplePadrao, StdCtrls, Buttons, DBCtrls, ZDataset, 
+  DB, memds, Sqldb, FMTBcd;
 
 type
+
+  { TfrmBaixaCheque }
+
   TfrmBaixaCheque = class(TfrmSimplePadrao)
-    sqldCaixa: TSQLQuery;
-    dspCaixa: TComponent;
-    cdsCaixa: TMemDataSet;
     dsCaixa: TDataSource;
-    sqldCaixaCODIGO: TIntegerField;
-    sqldCaixaNOME: TStringField;
-    cdsCaixaCODIGO: TIntegerField;
-    cdsCaixaNOME: TStringField;
     lbContaCaixa: TLabel;
     lbDataBaixa: TLabel;
     btnOk: TBitBtn;
@@ -24,6 +20,7 @@ type
     medtDataBaixa: TEdit;
     cedHistorico: TEdit;
     dblcbContaCaixa: TDBLookupComboBox;
+    ZQuery1: TZQuery;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -51,7 +48,7 @@ end;
 procedure TfrmBaixaCheque.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsCaixa.Close;
+  ZQuery1.Close;
   inherited;
 end;
 
@@ -62,7 +59,7 @@ begin
    with frmBaixaCheque do
    try
 
-     cdsCaixa.Open;
+     ZQuery1.Open;
      dblcbContaCaixa.KeyValue := Configuracao.CaixaPadrao;
      medtDataBaixa.Text := FormatDateTime('dd/mm/yyyy', Date);
 
@@ -81,7 +78,7 @@ begin
        DataBaixa    := '';
      end;
    finally
-     cdsCaixa.Close;
+     ZQuery1.Close;
      FreeAndNil(frmBaixaCheque);
    end;
 end;

@@ -218,7 +218,7 @@ end;
 procedure TfrmCR.actPrintExecute(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmPrevNotaProm', 'Relat�rio para cliente', Self);
+  ChamaForm('TfrmPrevNotaProm', 'Relatório para cliente', Self);
 end;
 
 procedure TfrmCR.cdsPadraoCLIENTEValidate(Sender: TField);

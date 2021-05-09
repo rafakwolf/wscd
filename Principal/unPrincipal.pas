@@ -15,27 +15,19 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
-    Button1: TButton;
     ListaAcoes: TActionList;
     actCidade: TAction;
-    acTdade: TAction;
+    actUnidade: TAction;
     actGrupo: TAction;
     actAliquotaIcms: TAction;
     actContaCaixa: TAction;
     actCfop: TAction;
     actConfiguracaoGlobal: TAction;
     actConfiguracaoLocal: TAction;
-    actImpressora: TAction;
     actDadosEmpresa: TAction;
     actUsuario: TAction;
     actPerfis: TAction;
-    actTrocaSenha: TAction;
     actAgenda: TAction;
-    actCalendario: TAction;
-    actCalculadora: TAction;
-    actEditorTexto: TAction;
-    actDuplicata: TAction;
-    actNotaPromissoria: TAction;
     actRecibo: TAction;
     actCliente: TAction;
     actProduto: TAction;
@@ -47,37 +39,21 @@ type
     actCompra: TAction;
     actPerda: TAction;
     actCaixa: TAction;
-    actDesmarcaProduto: TAction;
     actListaPreco: TAction;
     actExcluirProduto: TAction;
     actEtiquetaProduto: TAction;
-    actFechar: TAction;
-    actOutroUsuario: TAction;
     actSobreSistema: TAction;
-    actDicaDia: TAction;
     actRelatorioAgenda: TAction;
-    actEnvelope: TAction;
-    actBackup: TAction;
-    actRestore: TAction;
     actEtiqueta: TAction;
     actPesqFone: TAction;
     actBanco: TAction;
     actCheque: TAction;
-    actRenovaChave: TAction;
-    actAtualizacao: TAction;
-    actPostIt: TAction;
-    actAjuda: TAction;
-    actConfigServidor: TAction;
-    actInfoSistema: TAction;
     actVendedor: TAction;
-    actConfigNota: TAction;
     actPromocao: TAction;
-    actInfoAvisos: TAction;
-    actAuditoriaUser: TAction;
     menuFrame: TFrame;
     procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
-    procedure acTdadeExecute(Sender: TObject);
+    procedure actUnidadeExecute(Sender: TObject);
     procedure actAliquotaIcmsExecute(Sender: TObject);
     procedure actContaCaixaExecute(Sender: TObject);
     procedure actCfopExecute(Sender: TObject);
@@ -86,9 +62,6 @@ type
     procedure actDadosEmpresaExecute(Sender: TObject);
     procedure actUsuarioExecute(Sender: TObject);
     procedure actAgendaExecute(Sender: TObject);
-    procedure actCalendarioExecute(Sender: TObject);
-    procedure actDuplicataExecute(Sender: TObject);
-    procedure actBackupExecute(Sender: TObject);
     procedure actClienteExecute(Sender: TObject);
     procedure actProdutoExecute(Sender: TObject);
     procedure actFornecedorExecute(Sender: TObject);
@@ -99,58 +72,28 @@ type
     procedure actCompraExecute(Sender: TObject);
     procedure actPerdaExecute(Sender: TObject);
     procedure actCaixaExecute(Sender: TObject);
-    procedure actDesmarcaProdutoExecute(Sender: TObject);
     procedure actExcluirProdutoExecute(Sender: TObject);
     procedure actListaPrecoExecute(Sender: TObject);
     procedure actEtiquetaProdutoExecute(Sender: TObject);
-    procedure actOutroUsuarioExecute(Sender: TObject);
-    procedure actFecharExecute(Sender: TObject);
     procedure actSobreSistemaExecute(Sender: TObject);
-    procedure actDicaDiaExecute(Sender: TObject);
     procedure actPerfisExecute(Sender: TObject);
-    procedure actTrocaSenhaExecute(Sender: TObject);
     procedure actReciboExecute(Sender: TObject);
     procedure actRelatorioAgendaExecute(Sender: TObject);
-    procedure actEnvelopeExecute(Sender: TObject);
     procedure actEtiquetaExecute(Sender: TObject);
     procedure actPesqFoneExecute(Sender: TObject);
     procedure actBancoExecute(Sender: TObject);
     procedure actChequeExecute(Sender: TObject);
-    procedure actRenovaChaveExecute(Sender: TObject);
-    procedure btnLogOffClick(Sender: TObject);
-    procedure btnNotifficacoesClick(Sender: TObject);
-    procedure btnOrcamentoClick(Sender: TObject);
-    procedure btnListaPrecoClick(Sender: TObject);
-    procedure btnProdutoClick(Sender: TObject);
-    procedure btnFornecedorClick(Sender: TObject);
-    procedure btnClienteClick(Sender: TObject);
-    procedure btnAgendaClick(Sender: TObject);
-    procedure actAjudaExecute(Sender: TObject);
-    procedure actNotaPromissoriaExecute(Sender: TObject);
-    procedure actInfoSistemaExecute(Sender: TObject);
     procedure actVendedorExecute(Sender: TObject);
-    procedure actConfigNotaExecute(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure actPromocaoExecute(Sender: TObject);
-    procedure UniFormCreate(Sender: TObject);
-    procedure btnSairClick(Sender: TObject);
   Private
-    Lista_permissoes: TMemDataSet;
     MenuActions: TMenuActions;
 
-    procedure SetEnableMenu(adm: Boolean);
     procedure SetConfigGlobal;
     procedure SetConfiguracao;
     procedure SetEmpresa;
     procedure SetSistema;
-    procedure GetListaPermissoes;
-
-    function ValidaDataAcesso(DataEncriptada: string; DataAtual: TDateTime;
-      Connection: TSQLConnection): Boolean;
-    function ValidaHD(HD, HDGravar: string; Connection: TSQLConnection): Boolean;
-
   Public
   end;
 
@@ -174,7 +117,7 @@ begin
   ChamaForm('TfrmCadastroCidade', 'Cadastro de cidades', Application);
 end;
 
-procedure TMainForm.acTdadeExecute(Sender: TObject);
+procedure TMainForm.actUnidadeExecute(Sender: TObject);
 begin
   ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', Application);
 end;
@@ -217,21 +160,6 @@ end;
 procedure TMainForm.actAgendaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmAgenda', 'Agenda de telefones', Application);
-end;
-
-procedure TMainForm.actCalendarioExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmCalendario', 'Calendário', Application);
-end;
-
-procedure TMainForm.actDuplicataExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmDuplicatas', 'Cadastro e impressão de duplicatas', Application);
-end;
-
-procedure TMainForm.actBackupExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmBackup', 'Fazer uma cópia dos dados', Application);
 end;
 
 procedure TMainForm.actClienteExecute(Sender: TObject);
@@ -284,11 +212,6 @@ begin
   ChamaForm('TfrmCaixa', 'Livro caixa', Application);
 end;
 
-procedure TMainForm.actDesmarcaProdutoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmDesmarcar', 'Produtos novos e alterados', Application);
-end;
-
 procedure TMainForm.actExcluirProdutoExecute(Sender: TObject);
 begin
   ChamaForm('TfrmExclusaoProduto', 'Exclusão de produtos', Application);
@@ -304,39 +227,14 @@ begin
   ChamaForm('TfrmEtiquetaProduto', 'Etiquetas de produtos', Application);
 end;
 
-procedure TMainForm.actOutroUsuarioExecute(Sender: TObject);
-begin
-//  if not TfrmAcesso.Execute(True) then
-//    MsgAviso('','Troca de usuário cancelada.')
-//  else
-//  begin
-//    SetEnableMenu(IdUsuario = 0);
-//  end;
-end;
-
-procedure TMainForm.actFecharExecute(Sender: TObject);
-begin
-  Close;
-end;
-
 procedure TMainForm.actSobreSistemaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmSobre', 'Sobre o sistema', Application);
 end;
 
-procedure TMainForm.actDicaDiaExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmDicas', 'Dica do dia', Application);
-end;
-
 procedure TMainForm.actPerfisExecute(Sender: TObject);
 begin
   ChamaForm('TfrmPerfilPermissao', 'Perfis e permissões de usuários', Application);
-end;
-
-procedure TMainForm.actTrocaSenhaExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmTrocaSenha', 'Trocar senha', Application);
 end;
 
 procedure TMainForm.actReciboExecute(Sender: TObject);
@@ -347,48 +245,6 @@ end;
 procedure TMainForm.actRelatorioAgendaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmRelatorioAgenda', 'Listagem de telefones', Application);
-end;
-
-procedure TMainForm.actEnvelopeExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmEnvelopes', 'Envelopes', Application);
-end;
-
-procedure TMainForm.SetEnableMenu(adm: Boolean);
-
-  procedure SetVisibleAction(MenuItem: TMenuItem);
-  var x: Integer;
-  begin
-    // se não encontrar a permissão
-    if (not Lista_permissoes.Locate('MENUITEM', trim(MenuItem.Name),[])) and (not MenuItem.IsLine) then
-    begin
-      if (assigned(MenuItem.Action)) and (MenuItem.Action is TCustomAction) then
-        TCustomAction(MenuItem.Action).Enabled := False
-      else
-        MenuItem.Enabled := False;
-    end;
-
-    for x := 0 to MenuItem.Count - 1 do
-      SetVisibleAction(MenuItem.Items[x]);
-  end;
-
-var
-  x: Integer;
-begin
-  if not adm then
-  begin
-      GetListaPermissoes;
-
-      for x := 0 to self.ComponentCount - 1 do
-      begin
-        if Components[x] is TMenuItem then
-          SetVisibleAction(TMenuItem(Components[x]));
-      end;
-  end;
-
-
-  if assigned(Lista_permissoes) then
-    FreeAndNil(Lista_permissoes);
 end;
 
 procedure TMainForm.SetConfigGlobal;
@@ -440,58 +296,6 @@ begin
   ChamaForm('TfrmCheque', 'Controle de cheques', Application);
 end;
 
-procedure TMainForm.actRenovaChaveExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Application);
-end;
-
-procedure TMainForm.btnLogOffClick(Sender: TObject);
-begin
-  if actOutroUsuario.Enabled then
-    actOutroUsuario.Execute;
-end;
-
-procedure TMainForm.btnNotifficacoesClick(Sender: TObject);
-begin
-end;
-
-procedure TMainForm.btnOrcamentoClick(Sender: TObject);
-begin
-  if actOrcamento.Enabled then
-    actOrcamento.Execute;
-end;
-
-procedure TMainForm.btnListaPrecoClick(Sender: TObject);
-begin
-  if actListaPreco.Enabled then
-    actListaPreco.Execute;
-end;
-
-procedure TMainForm.btnProdutoClick(Sender: TObject);
-begin
-  if actProduto.Enabled then
-    actProduto.Execute;
-end;
-
-procedure TMainForm.btnFornecedorClick(Sender: TObject);
-begin
-  if actFornecedor.Enabled then
-    actFornecedor.Execute;
-end;
-
-procedure TMainForm.btnClienteClick(Sender: TObject);
-begin
-  if actCliente.Enabled then
-    actCliente.Execute;
-end;
-
-procedure TMainForm.btnAgendaClick(Sender: TObject);
-begin
-  if actAgenda.Enabled then
-     actAgenda.Execute;
-end;
-
-
 procedure TMainForm.SetSistema;
 begin
   if Assigned(Sistema) then
@@ -500,60 +304,9 @@ begin
     Sistema := TSistema.Create;
 end;
 
-procedure TMainForm.UniFormCreate(Sender: TObject);
-begin
-
-  SetSistema;
-  SetEmpresa;
-  SetConfiguracao;
-  SetConfigGlobal;
-
-  MenuActions := TMenuActions.Create(ListaAcoes);
-end;
-
-procedure TMainForm.btnSairClick(Sender: TObject);
-begin
-end;
-
-procedure TMainForm.actAjudaExecute(Sender: TObject);
-begin
-  ChamaHelp(Self, 0,'');
-end;
-
-procedure TMainForm.GetListaPermissoes;
-begin
-  with TdmAcesso.Create(nil) do
-  try
-    if not assigned(Lista_permissoes) then
-      Lista_permissoes := GetListaAcesso(IdUsuario);
-  finally
-    Free;
-  end;
-end;
-
-procedure TMainForm.actNotaPromissoriaExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmPromissoria', 'Promissória avulsa', Application);
-end;
-
-procedure TMainForm.actInfoSistemaExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmInformacaoSistema', 'Informações sobre o sistema', Application);
-end;
-
 procedure TMainForm.actVendedorExecute(Sender: TObject);
 begin
   ChamaForm('TfrmVendedor', 'Vendedores', Application);
-end;
-
-procedure TMainForm.actConfigNotaExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmConfigNota', 'Configurãção da nota', Application);
-end;
-
-procedure TMainForm.Button1Click(Sender: TObject);
-begin
-
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -582,7 +335,7 @@ var i, j: Integer;
   act: TAction;
 begin
    categories := TStringList.Create;
-   categories.AddStrings(['Configuracao', 'Cadastros', 'Movimentos', 'Util', 'Ajuda', 'Sair']);
+   categories.AddStrings(['Configuracao', 'Cadastros', 'Movimentos', 'Util', 'Ajuda']);
 
    menu := TMainMenu.Create(Self);
    for i := 0 to categories.Count-1 do
@@ -605,6 +358,13 @@ begin
    end;
 
    categories.Free;
+
+   SetSistema;
+   SetEmpresa;
+   SetConfiguracao;
+   SetConfigGlobal;
+
+   MenuActions := TMenuActions.Create(ListaAcoes);
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -627,48 +387,6 @@ end;
 procedure TMainForm.actPromocaoExecute(Sender: TObject);
 begin
   ChamaForm('TfrmPromocao', 'Promoções', Application);
-end;
-
-function TMainForm.ValidaDataAcesso(DataEncriptada: string;
-  DataAtual: TDateTime; Connection: TSQLConnection): Boolean;
-
-  procedure RegistraData(DataATual: TDateTime; Connection: TSQLConnection);
-  begin
-    with TSQLQuery.Create(nil) do
-    try
-      SQLConnection := Connection;
-      Close;
-      SQL.add('UPDATE SISTEMA SET DATA_ACESSO = :PDATA_ACESSO');
-      Params.ParamByName('PDATA_ACESSO').AsString := EnDeCrypt( DateToStr( DataAtual));
-      ExecSQL;
-      Result := True;
-    finally
-      Free;
-    end;
-  end;
-
-var
-  Dias: Integer;
-  DataUltimoAcesso: TDateTime;
-begin
-//
-end;
-
-function TMainForm.ValidaHD(HD, HDGravar: string;
-  Connection: TSQLConnection): Boolean;
-begin
-  Result := True;
-  if Trim(HD) = '' then
-    UpdateSingleField('update SISTEMA s set s.HD = ' + QuotedStr(HDGravar))
-  else
-  begin
-    if SerialHD(Copy(Application.ExeName, 1, 1)) <> HD then
-    begin
-      MsgErro('Cópia inválida do sistema, por favor entre em contato com o suporte para adquirir uma nova cópia.',
-        'Cópia inválida');
-      Result := False;
-    end;
-  end;
 end;
 
 end.

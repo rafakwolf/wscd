@@ -5,12 +5,12 @@ unit uClasses;
 interface
 
 uses
-  SysUtils, Classes, sqldb, DB, Forms, unDmPrincipal, uUtilFncs, inifiles;
+  SysUtils, Classes, ZDataset, DB, Forms, unDmPrincipal, uUtilFncs, inifiles;
 
 type
   TConfigGlobal = class
   private
-    sqldConfigGlobal: TSQLQuery;
+    sqldConfigGlobal: TZQuery;
 
     function GetIntervalo: Integer;
     function GetJuro: Real;
@@ -63,7 +63,7 @@ type
 
   TConfiguracao = class
   private
-    sqldConfiguracao: TSQLQuery;
+    sqldConfiguracao: TZQuery;
     function GetAliquotaPadrao: Integer;
     function GetAtalhos: Boolean;
     function GetBackup: Boolean;
@@ -145,7 +145,7 @@ type
 
   TEmpresa = class
   private
-    sqldEmpresa: TSQLQuery;
+    sqldEmpresa: TZQuery;
     function GetBairro: String;
     function GetCep: String;
     function GetCidade: String;
@@ -179,7 +179,7 @@ type
 
   TSistema = class
   private
-    sqldSistema: TSQLQuery;
+    sqldSistema: TZQuery;
     function GetAppCaption: String;
     function GetDataAcesso: String;
     function GetDataValidade: String;
@@ -213,10 +213,10 @@ end;
 
 constructor TConfigGlobal.Create;
 begin
-  sqldConfigGlobal := TSQLQuery.Create(nil);
+  sqldConfigGlobal := TZQuery.Create(nil);
   with sqldConfigGlobal do
   begin
-    SQLConnection := DmPrincipal.Conexao;
+    Connection := DmPrincipal.ZConnection1;
     SQL.Text := 'select '+
                    ' TAXAJURO,'+
                    ' INTERVALO,'+
@@ -363,10 +363,10 @@ end;
 
 constructor TConfiguracao.Create;
 begin
-  sqldConfiguracao := TSQLQUery.Create(nil);
+  sqldConfiguracao := TZQUery.Create(nil);
   with sqldConfiguracao do
   begin
-    SQLConnection := DmPrincipal.Conexao;
+    Connection := DmPrincipal.ZConnection1;
     Close;
     SQL.Text := 'select'+
                    ' BARRAFERRAMENTA,'+
@@ -410,12 +410,15 @@ begin
 
     if IsEmpty then
     begin
-      with TSQLQuery.Create(nil) do
+      with TZQuery.Create(nil) do
       try
-        SQLConnection := DmPrincipal.Conexao;
-        SQL.Text := 'STPCONFIGPADRAO';
-        Params.ParamByName('COMPUTADOR').AsString := GetComputerName;
-        Params.ParamByName('DIRETORIO').AsString  := ExtractFilePath( Application.ExeName );
+        Connection := DmPrincipal.ZConnection1;
+        SQL.Text := 'insert into CONFIGURACAO(NOMECOMPUTADOR, DIREXPORTPADRAO, ALIQUOTAPADRAO, CAIXAPADRAO) values(:NOMECOMPUTADOR, :DIREXPORTPADRAO, :ALIQUOTAPADRAO, :CAIXAPADRAO)';
+        Prepare;
+        Params.ParamByName('NOMECOMPUTADOR').AsString := GetComputerName;
+        Params.ParamByName('DIREXPORTPADRAO').AsString  := ExtractFilePath( Application.ExeName );
+        Params.ParamByName('ALIQUOTAPADRAO').AsInteger := 10;
+        Params.ParamByName('CAIXAPADRAO').AsInteger := 0;
         ExecSQL;
       finally
         Free;
@@ -630,25 +633,26 @@ end;
 
 constructor TEmpresa.Create;
 begin
-  sqldEmpresa := TSQLQuery.Create(nil);
+  sqldEmpresa := TZQuery.Create(nil);
   with sqldEmpresa do
   begin
-    SQLConnection := DmPrincipal.Conexao;
-    SQL.Text := 'select '+
-                   'RAZAOSOCIAL, '+
-                   'CNPJ, '+
-                   'IE, '+
-                   'ENDERECO, '+
-                   'CIDADE, '+
-                   'BAIRRO, '+
-                   'CEP, '+
-                   'TELEFONE, '+
-                   'FAX, '+
-                   'UF, '+
-                   'RESPONSAVEL, '+
-                   'LOGOEMPRESA, '+
-                   'EMAIL '+
-                   'from VIEWEMPRESA';
+    Connection := DmPrincipal.ZConnection1;
+    SQL.Text := 'SELECT '+
+     ' e.RAZASOCIAL as RAZAOSOCIAL, '+
+     ' e.CNPJ, '+
+     ' e.IE, '+
+     ' e.ENDERECO, '+
+     ' c.Descricao, '+
+     ' e.BAIRRO, '+
+     ' e.CEP, '+
+     ' e.TELEFONE, '+
+     ' e.FAX, '+
+     ' e.UF, '+
+     ' e.RESPONSAVEL, '+
+     ' e.Logoempresa, '+
+     ' e.EMAIL '+
+    'FROM EMPRESA e '+
+    'LEFT JOIN CIDADES c on (e.Idcidade = c.Codcidade)';
     Open;
   end;
 end;
@@ -726,10 +730,10 @@ end;
 
 constructor TSistema.Create;
 begin
-  sqldSistema := TSQLQuery.Create(nil);
+  sqldSistema := TZQuery.Create(nil);
   with sqldSistema do
   begin
-    SQLConnection := DmPrincipal.Conexao;
+    Connection := DmPrincipal.ZConnection1;
     SQL.Text := 'select '+
                    '  s.IDSISTEMA,'+
                    '  s.VERSAO,'+

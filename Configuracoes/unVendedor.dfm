@@ -1,11 +1,14 @@
 inherited frmVendedor: TfrmVendedor
-  Left = 229
-  Top = 165
+  Left = 264
+  Height = 291
+  Top = 173
   Width = 691
   Caption = 'frmVendedor'
+  ClientHeight = 291
   ClientWidth = 691
   Font.Name = 'Verdana'
   inherited sbStatus: TStatusBar
+    Top = 273
     Width = 691
   end
   inherited pnBotoesPadrao: TPanel
@@ -52,7 +55,7 @@ inherited frmVendedor: TfrmVendedor
   object dbeVendedor: TDBEdit[3]
     Left = 80
     Height = 33
-    Top = 82
+    Top = 90
     Width = 305
     DataField = 'VENDEDOR'
     DataSource = dsPadrao
@@ -77,87 +80,27 @@ inherited frmVendedor: TfrmVendedor
     ValueUnchecked = 'N'
   end
   inherited actlNavigateActions: TActionList[5]
-    Left = 184
-    Top = 124
+    Left = 280
+    Top = 152
   end
   inherited dsPadrao: TDataSource[6]
-    DataSet = cdsPadrao
+    DataSet = ZQuery1
     Left = 439
     Top = 60
   end
-  object sqldPadrao: TSQLQuery[7]
-    FieldDefs = <>
+  object ZUpdateSQL1: TZUpdateSQL[7]
+    UseSequenceFieldForRefreshSQL = False
+    Left = 453
+    Top = 160
+  end
+  object ZQuery1: TZQuery[8]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from VENDEDOR'
+    )
     Params = <>
-    Left = 288
-    Top = 124
-    object sqldPadraoIDVENDEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDVENDEDOR'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoVENDEDOR: TStringField
-      FieldKind = fkData
-      FieldName = 'VENDEDOR'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoATIVO: TStringField
-      FieldKind = fkData
-      FieldName = 'ATIVO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-  end
-  object dspPadrao: TTimer[8]
-    Left = 376
-    Top = 124
-  end
-  object cdsPadrao: TMemDataset[9]
-    FieldDefs = <>
-    AfterInsert = cdsPadraoAfterInsert
-    AfterScroll = cdsPadraoAfterScroll
-    Left = 448
-    Top = 124
-    object cdsPadraoIDVENDEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'IDVENDEDOR'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoVENDEDOR: TStringField
-      FieldKind = fkData
-      FieldName = 'VENDEDOR'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoATIVO: TStringField
-      FieldKind = fkData
-      FieldName = 'ATIVO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
+    Left = 567
+    Top = 138
   end
 end

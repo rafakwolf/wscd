@@ -4,22 +4,20 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, memds,  DB,
+  Dialogs, StdCtrls, Buttons, ZDataset, ZSqlUpdate, memds,  DB,
   SqlDb, FMTBcd;
 
 type
+
+  { TfrmSenhaCaixa }
+
   TfrmSenhaCaixa = class(TForm)
-    sqldConfig: TSQLQuery;
-    dspConfig: TComponent;
-    cdsConfig: TMemDataSet;
-    sqldConfigSENHAESTOQUE: TStringField;
-    sqldConfigSENHACAIXA: TStringField;
-    cdsConfigSENHAESTOQUE: TStringField;
-    cdsConfigSENHACAIXA: TStringField;
     btnOk: TBitBtn;
     btnCancelar: TBitBtn;
     edAtual: TEdit;
     edNova: TEdit;
+    ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure FormShow(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -45,24 +43,25 @@ end;
 
 procedure TfrmSenhaCaixa.btnOkClick(Sender: TObject);
 begin
-  cdsConfig.Close;
-  sqldConfig.Params.ParamByName('COMP').AsString := GetComputerName;
-  cdsConfig.Open;
+  zquery1.Open;
+  zquery1.Filtered:=false;
+  ZQuery1.Filter:='NOMECOMPUTADOR = '+QuotedStr(GetComputerName);
+  zquery1.Filtered:=true;
 
   if (edAtual.Text <> '') and (edNova.Text <> '') then
   begin
-    if EnDecrypt(cdsConfigSENHACAIXA.AsString) = edAtual.Text then
+    if EnDecrypt(zquery1.FieldByName('SENHACAIXA').AsString) = edAtual.Text then
     begin
-      cdsConfig.Edit;
-      cdsConfigSENHACAIXA.AsString := Trim(EnDecrypt(edNova.Text));
-      //cdsConfig.ApplyUpdates(0);
+      zquery1.Edit;
+      zquery1.FieldByName('SENHACAIXA').AsString := Trim(EnDecrypt(edNova.Text));
+      zquery1.ApplyUpdates;
       Configuracao.Atualizar;
       MsgAviso('Senha de caixa alterada!');
       ModalResult := mrOk;
     end
     else
     begin
-      MsgErro('Senha atual n�o confere, digite novamente.');
+      MsgErro('Senha atual nao confere, digite novamente.');
       edAtual.Clear;
       edNova.Clear;
       edAtual.SelectAll;
@@ -70,7 +69,7 @@ begin
   end
   else
   begin
-    MsgCuidado('Para alterar as senhas, voc� deve digita-las.');
+    MsgCuidado('Para alterar as senhas, voce deve digita-las.');
     edAtual.Clear;
     edNova.Clear;
     edAtual.SelectAll;
@@ -80,17 +79,12 @@ end;
 procedure TfrmSenhaCaixa.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsConfig.Close;
+  zquery1.Close;
   Action := caFree;
 end;
 
 procedure TfrmSenhaCaixa.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key = Chr(13) then
-  begin
-    Key := Chr(0);
-    //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
-  end;
 end;
 
 initialization

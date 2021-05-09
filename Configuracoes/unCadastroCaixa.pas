@@ -17,9 +17,7 @@ type
     dbchkInativo: TDBCheckBox;
     ZQuery1: TZQuery;
     ZUpdateSQL1: TZUpdateSQL;
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
-    procedure cdsPadraoAfterScroll(DataSet: TDataSet);
     procedure actDeleteExecute(Sender: TObject);
   private
   public
@@ -35,13 +33,6 @@ uses
 
 {$R *.dfm}
 
-procedure TfrmCadastroCaixa.cdsPadraoAfterInsert(DataSet: TDataSet);
-begin
-  inherited;
-  ZQuery1.FieldByName('INATIVO').AsString := 'N';
-  SetFocusIfCan(dbeNomeCaixa);
-end;
-
 procedure TfrmCadastroCaixa.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -49,13 +40,6 @@ begin
   DisplayLabels := DL_CAIXAS;
   aCaption := 'Caixas';
   TableName:='CAIXAS';
-end;
-
-procedure TfrmCadastroCaixa.cdsPadraoAfterScroll(DataSet: TDataSet);
-begin
-  inherited;
-  dbchkInativo.Enabled := (DataSet.State = dsEdit) or
-    ((DataSet.State = dsBrowse) and (not DataSet.IsEmpty));
 end;
 
 procedure TfrmCadastroCaixa.actDeleteExecute(Sender: TObject);

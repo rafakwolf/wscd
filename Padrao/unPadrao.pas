@@ -6,7 +6,7 @@ uses
   Messages, ExtCtrls,  SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Menus, Buttons, ActnList,
   ComCtrls, Variants, DB, Funcoes, ConstPadrao, DBGrids,
-  udmGeralBase, LCLType;
+  udmGeralBase, LCLType, ZDataset;
 
 type
 
@@ -85,7 +85,7 @@ begin
 
   for x := 0 to ComponentCount - 1 do
   begin
-    if Components[x] is TSQLQuery then
+    if Components[x] is TZQuery then
     begin
       if (not Assigned(TZQuery(Components[x]).Connection)) then
         TZQuery(Components[x]).Connection := GetZConnection;
@@ -155,8 +155,8 @@ end;
 procedure TfrmPadrao.actCancelUpdatesExecute(Sender: TObject);
 begin
   dsPadrao.DataSet.Cancel;
-  if (dsPadrao.DataSet is TMemDataset) then
-    TMemDataset(dsPadrao.DataSet).Cancel;
+  if (dsPadrao.DataSet is TZQuery) then
+    TZQuery(dsPadrao.DataSet).CancelUpdates;
 end;
 
 procedure TfrmPadrao.actPostExecute(Sender: TObject);
@@ -173,7 +173,7 @@ begin
     on e: Exception do
     begin
       dsPadrao.DataSet.Cancel;
-      raise Exception.create('');
+      raise Exception.create('Error applying updates');
     end;
   end;
 
@@ -186,19 +186,7 @@ begin
 end;
 
 procedure TfrmPadrao.AntesSalvar;
-var
-  I: Integer;
 begin
-  ComponentFocusWhenPost := ActiveControl;
-
-  for I := 0 to dsPadrao.DataSet.FieldCount-1 do
-  begin
-    if dsPadrao.DataSet.Fields[I].Required and dsPadrao.DataSet.Fields[I].IsNull then
-    begin
-      MsgErro('O campo '+dsPadrao.DataSet.Fields[I].DisplayLabel+' é obrigatório.');
-      Abort;
-    end;
-  end;
 end;
 
 procedure TfrmPadrao.DepoisSalvar;

@@ -2,10 +2,11 @@ inherited DmPrincipal: TDmPrincipal
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 329
-  HorizontalOffset = 431
-  VerticalOffset = 232
+  HorizontalOffset = 411
+  VerticalOffset = 225
   Width = 437
   inherited ZConnection1: TZConnection
+    Connected = True
     HostName = '127.0.0.1'
   end
 end

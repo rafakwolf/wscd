@@ -16,7 +16,7 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
   object dbeNomeGrupo: TDBEdit[2]
     Left = 62
     Height = 33
-    Top = 82
+    Top = 94
     Width = 305
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
@@ -40,64 +40,55 @@ inherited frmCadastroGrupo: TfrmCadastroGrupo
     TabOrder = 0
   end
   inherited actlNavigateActions: TActionList[4]
-    Left = 392
+    Left = 424
+    Top = 64
   end
   inherited dsPadrao: TDataSource[5]
-    DataSet = cdsPadrao
-    Left = 407
-    Top = 100
+    DataSet = ZQuery1
+    Left = 408
+    Top = 160
   end
-  object sqldPadrao: TSQLQuery[6]
-    FieldDefs = <>
+  object ZUpdateSQL1: TZUpdateSQL[6]
+    DeleteSQL.Strings = (
+      'DELETE FROM GRUPOS'
+      'WHERE'
+      '  GRUPOS.CODGRUPO = :OLD_CODGRUPO'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO GRUPOS'
+      '  (DESCRICAO)'
+      'VALUES'
+      '  (:DESCRICAO)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE GRUPOS SET'
+      '  DESCRICAO = :DESCRICAO'
+      'WHERE'
+      '  GRUPOS.CODGRUPO = :OLD_CODGRUPO'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 260
+    Top = 156
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DESCRICAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_CODGRUPO'
+        ParamType = ptUnknown
+      end>
+  end
+  object ZQuery1: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from GRUPOS'
+    )
     Params = <>
-    Left = 176
-    Top = 84
-    object sqldPadraoCODGRUPO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODGRUPO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-  end
-  object dspPadrao: TTimer[7]
-    Left = 248
-    Top = 84
-  end
-  object cdsPadrao: TMemDataset[8]
-    FieldDefs = <>
-    Left = 304
-    Top = 44
-    object cdsPadraoCODGRUPO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODGRUPO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
+    Left = 170
+    Top = 150
   end
 end

@@ -9,7 +9,6 @@ uses
   FMTBcd, uDatabaseutils;
 
 type
-  TDatasetField = TDataset;
   TfrmNotasFiscais = class(TForm)
     dsDetNFiscais: TDataSource;
     dsNotasFiscais: TDataSource;
@@ -233,7 +232,6 @@ type
     edtTotalDesconto: TDBEdit;
     edtTotalParcial: TDBEdit;
     edtTotalTotal: TDBEdit;
-    BevelSepara: TPanel;
     dbmmObservacao: TDBMemo;
     Grade: TDBGrid;
     procedure FormShow(Sender: TObject);
@@ -397,7 +395,7 @@ begin
             ' compra(s) n�o conclu�da(s). ' +
             'Por favor verifique, pois �stas podem causar ' +
             'inconsist�ncias no banco de dados e no controle do estoque.'+#13#10+
-            'Deseja exibir somente as n�o conclu�das agora?') then
+            'Deseja exibir somente as n�o concluidas agora?') then
             miCompraNaoConc.Click;
         end;
       finally
@@ -654,18 +652,18 @@ end;
 
 procedure TfrmNotasFiscais.miRelFornClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCompraFornecedor', 'Relat�rio de Compras', Self);
+  ChamaForm('TfrmRelatorioCompraFornecedor', 'Relatorio de Compras', Self);
 end;
 
 procedure TfrmNotasFiscais.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
-  UpdatesPending(cdsNFiscais, Self);
+  //UpdatesPending(cdsNFiscais, Self);
 end;
 
 procedure TfrmNotasFiscais.miCompraNaoConcClick(Sender: TObject);
 begin
-  ChamaForm('TfrmCompNaoConc', 'Compras n�o conclu�das', Self);
+  ChamaForm('TfrmCompNaoConc', 'Compras nao concluidas', Self);
 end;
 
 function TfrmNotasFiscais.ValoresProduto: Boolean;

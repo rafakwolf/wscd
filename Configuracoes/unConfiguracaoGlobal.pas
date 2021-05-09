@@ -5,63 +5,18 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ComCtrls,   memds,  SqlDb, DBCtrls, FMTBcd;
+  ComCtrls,   memds,  SqlDb, DBCtrls, ZDataset, ZSqlUpdate, FMTBcd;
 
 type
+
+  { TfrmConfigGlobal }
+
   TfrmConfigGlobal = class(TfrmPadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
     pgcConfigGlobal: TPageControl;
     tsCrediario: TTabSheet;
     tsCliente: TTabSheet;
     tsOrcamento: TTabSheet;
     tsVenda: TTabSheet;
-    tsFTP: TTabSheet;
-    sqldPadraoTAXAJURO: TFMTBCDField;
-    sqldPadraoINTERVALO: TIntegerField;
-    sqldPadraoPRAZOINICIAL: TIntegerField;
-    sqldPadraoPARCELAS: TIntegerField;
-    sqldPadraoLIMITECLIENTE: TFMTBCDField;
-    sqldPadraoTITULOORCAM: TStringField;
-    sqldPadraoCOLUNAORCAMBOBINA: TIntegerField;
-    sqldPadraoMSGRODAPEORCAM: TStringField;
-    sqldPadraoTITULOVENDA: TStringField;
-    sqldPadraoCOLUNAVENDABOBINA: TIntegerField;
-    sqldPadraoMSGRODAPEVENDA: TStringField;
-    sqldPadraoLINHAPULARBOBINAVENDA: TIntegerField;
-    sqldPadraoLINHAPULARBOBINAORCAM: TIntegerField;
-    sqldPadraoPORTAIMPVENDA: TStringField;
-    sqldPadraoFTP_HOST: TStringField;
-    sqldPadraoFTP_USER_NAME: TStringField;
-    sqldPadraoFTP_PASSWORD: TStringField;
-    sqldPadraoFTP_TIMEOUT: TIntegerField;
-    sqldPadraoFTP_PASSIVE: TStringField;
-    sqldPadraoFTP_DIR: TStringField;
-    sqldPadraoIDADECADASTROCLIENTE: TIntegerField;
-    sqldPadraoIDCONFIGGLOBAL: TIntegerField;
-    cdsPadraoTAXAJURO: TFMTBCDField;
-    cdsPadraoINTERVALO: TIntegerField;
-    cdsPadraoPRAZOINICIAL: TIntegerField;
-    cdsPadraoPARCELAS: TIntegerField;
-    cdsPadraoLIMITECLIENTE: TFMTBCDField;
-    cdsPadraoTITULOORCAM: TStringField;
-    cdsPadraoCOLUNAORCAMBOBINA: TIntegerField;
-    cdsPadraoMSGRODAPEORCAM: TStringField;
-    cdsPadraoTITULOVENDA: TStringField;
-    cdsPadraoCOLUNAVENDABOBINA: TIntegerField;
-    cdsPadraoMSGRODAPEVENDA: TStringField;
-    cdsPadraoLINHAPULARBOBINAVENDA: TIntegerField;
-    cdsPadraoLINHAPULARBOBINAORCAM: TIntegerField;
-    cdsPadraoPORTAIMPVENDA: TStringField;
-    cdsPadraoFTP_HOST: TStringField;
-    cdsPadraoFTP_USER_NAME: TStringField;
-    cdsPadraoFTP_PASSWORD: TStringField;
-    cdsPadraoFTP_TIMEOUT: TIntegerField;
-    cdsPadraoFTP_PASSIVE: TStringField;
-    cdsPadraoFTP_DIR: TStringField;
-    cdsPadraoIDADECADASTROCLIENTE: TIntegerField;
-    cdsPadraoIDCONFIGGLOBAL: TIntegerField;
     lbMsgOrcamRodape: TLabel;
     lbMsgRodapeVenda: TLabel;
     dbeJuro: TDBEdit;
@@ -77,20 +32,14 @@ type
     dbeColunaBobinaVenda: TDBEdit;
     dbeLinhaPularVenda: TDBEdit;
     dbePortaImpVenda: TDBEdit;
-    dbeHost: TDBEdit;
-    dbeUserName: TDBEdit;
-    dbePassWord: TDBEdit;
-    dbeDiretorio: TDBEdit;
-    dbeTimeOut: TDBEdit;
-    dbckbPassive: TDBCheckBox;
     dbmmMsgRodape: TDBMemo;
     dbmmMsgRodapeVenda: TDBMemo;
+    ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterApplyUpdates(Sender: TObject;
       var OwnerData: OleVariant);
     procedure dbeJuroKeyPress(Sender: TObject; var Key: Char);
-    procedure cdsPadraoCOLUNAORCAMBOBINAChange(Sender: TField);
-    procedure cdsPadraoCOLUNAVENDABOBINAChange(Sender: TField);
   private
   public
   end;
@@ -100,7 +49,7 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao;
+uses Funcoes, ConstPadrao, unDmPrincipal;
 
 {$R *.dfm}
 
@@ -111,12 +60,6 @@ begin
   actPrint.Visible := False;
   actDelete.Visible := False;
   actSearch.Visible := False;
-//  actPrimeiro.Visible := False;
-//  actAnterior.Visible := False;
-//  actProximo.Visible := False;
-//  actUltimo.Visible := False;
-//  miRelatorios.Visible := False;
-//  miOpcoes.Visible := False;
   ReordenaBotoes([btnAlterar, btnSalvar, btnCancelar, btnSair]);
   pgcConfigGlobal.ActivePageIndex := 0;
 end;
@@ -134,28 +77,6 @@ begin
   inherited;
   if not (Key in ['0'..'9', ',', #8]) then
     Key := #0;
-end;
-
-procedure TfrmConfigGlobal.cdsPadraoCOLUNAORCAMBOBINAChange(
-  Sender: TField);
-begin
-  inherited;
-  if Sender.AsInteger > 40 then
-  begin
-    MsgAviso('O n�mero de colunas n�o deve ser maior que 40.');
-    Sender.AsInteger := 40;
-  end;
-end;
-
-procedure TfrmConfigGlobal.cdsPadraoCOLUNAVENDABOBINAChange(
-  Sender: TField);
-begin
-  inherited;
-  if Sender.AsInteger > 40 then
-  begin
-    MsgAviso('O n�mero de colunas n�o deve ser maior que 40.');
-    Sender.AsInteger := 40;
-  end;
 end;
 
 initialization

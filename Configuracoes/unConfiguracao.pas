@@ -5,17 +5,13 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ComCtrls,   memds,  SqlDb, DBCtrls, 
-  ExtDlgs, FileCtrl, FMTBcd;
+  ComCtrls, SqlDb, DBCtrls, ExtDlgs, FileCtrl, ZSqlUpdate, ZDataset, FMTBcd;
 
 type
 
   { TfrmConfiguracao }
 
   TfrmConfiguracao = class(TfrmPadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
     PgConfig: TPageControl;
     Tabgeral: TTabSheet;
     TabImg: TTabSheet;
@@ -32,84 +28,6 @@ type
     opImagem: TOpenPictureDialog;
     tsEmail: TTabSheet;
     tsRelatorio: TTabSheet;
-    sqldPadraoIDCONFIGURACAO: TIntegerField;
-    sqldPadraoNOMECOMPUTADOR: TStringField;
-    sqldPadraoBARRAFERRAMENTA: TStringField;
-    sqldPadraoHINTBALAO: TStringField;
-    sqldPadraoGRAVAERRO: TStringField;
-    sqldPadraoBACKUP: TStringField;
-    sqldPadraoLOG: TStringField;
-    sqldPadraoIMPRESSORA: TStringField;
-    sqldPadraoRESOLUCAO: TStringField;
-    sqldPadraoLETRACODIGOBARRA: TStringField;
-    sqldPadraoEXIBEDICADIA: TStringField;
-    sqldPadraoAVISACLIENTEATRASO: TStringField;
-    sqldPadraoDIREXPORTPADRAO: TStringField;
-    sqldPadraoSENHAESTOQUE: TStringField;
-    sqldPadraoUSARSENHAESTOQUE: TStringField;
-    sqldPadraoESTOQUEPADRAO: TIntegerField;
-    sqldPadraoBORDAETQPROD: TStringField;
-    sqldPadraoALIQUOTAPADRAO: TIntegerField;
-    sqldPadraoALIQUOTA: TStringField;
-    sqldPadraoDESCPADRAOPROD: TFMTBCDField;
-    sqldPadraoCAIXAPADRAO: TIntegerField;
-    sqldPadraoCAIXA: TStringField;
-    sqldPadraoSENHACAIXA: TStringField;
-    sqldPadraoPRODSEMESTOQORCAM: TStringField;
-    sqldPadraoORCAMNAOCONC: TStringField;
-    sqldPadraoEDITORCAMCONC: TStringField;
-    sqldPadraoCOMPRANAOCONC: TStringField;
-    sqldPadraoEDITCOMPRACONC: TStringField;
-    sqldPadraoPRODSEMESTOQVENDA: TStringField;
-    sqldPadraoVENDANAOCONC: TStringField;
-    sqldPadraoEDITVENDACONC: TStringField;
-    sqldPadraoBORDAETQCLIENTE: TStringField;
-    sqldPadraoMOSTRARSALDOCAIXA: TStringField;
-    sqldPadraoCAIXA90DIAS: TStringField;
-    sqldPadraoRELZEBRADO: TStringField;
-    cdsPadraoIDCONFIGURACAO: TIntegerField;
-    cdsPadraoNOMECOMPUTADOR: TStringField;
-    cdsPadraoBARRAFERRAMENTA: TStringField;
-    cdsPadraoHINTBALAO: TStringField;
-    cdsPadraoGRAVAERRO: TStringField;
-    cdsPadraoBACKUP: TStringField;
-    cdsPadraoLOG: TStringField;
-    cdsPadraoIMPRESSORA: TStringField;
-    cdsPadraoRESOLUCAO: TStringField;
-    cdsPadraoLETRACODIGOBARRA: TStringField;
-    cdsPadraoEXIBEDICADIA: TStringField;
-    cdsPadraoAVISACLIENTEATRASO: TStringField;
-    cdsPadraoDIREXPORTPADRAO: TStringField;
-    cdsPadraoSENHAESTOQUE: TStringField;
-    cdsPadraoUSARSENHAESTOQUE: TStringField;
-    cdsPadraoESTOQUEPADRAO: TIntegerField;
-    cdsPadraoBORDAETQPROD: TStringField;
-    cdsPadraoALIQUOTAPADRAO: TIntegerField;
-    cdsPadraoALIQUOTA: TStringField;
-    cdsPadraoDESCPADRAOPROD: TFMTBCDField;
-    cdsPadraoCAIXAPADRAO: TIntegerField;
-    cdsPadraoCAIXA: TStringField;
-    cdsPadraoSENHACAIXA: TStringField;
-    cdsPadraoPRODSEMESTOQORCAM: TStringField;
-    cdsPadraoORCAMNAOCONC: TStringField;
-    cdsPadraoEDITORCAMCONC: TStringField;
-    cdsPadraoCOMPRANAOCONC: TStringField;
-    cdsPadraoEDITCOMPRACONC: TStringField;
-    cdsPadraoPRODSEMESTOQVENDA: TStringField;
-    cdsPadraoVENDANAOCONC: TStringField;
-    cdsPadraoEDITVENDACONC: TStringField;
-    cdsPadraoBORDAETQCLIENTE: TStringField;
-    cdsPadraoMOSTRARSALDOCAIXA: TStringField;
-    cdsPadraoCAIXA90DIAS: TStringField;
-    cdsPadraoRELZEBRADO: TStringField;
-    sqldPadraoVERIFICA_UPD: TStringField;
-    cdsPadraoVERIFICA_UPD: TStringField;
-    sqldPadraoCONTACHEQUE: TIntegerField;
-    cdsPadraoCONTACHEQUE: TIntegerField;
-    sqldPadraoNCONTACHEQUE: TStringField;
-    cdsPadraoNCONTACHEQUE: TStringField;
-    sqldPadraoINFOAVISOS: TStringField;
-    cdsPadraoINFOAVISOS: TStringField;
     chAtalhos: TDBCheckBox;
     chHint: TDBCheckBox;
     chErro: TDBCheckBox;
@@ -158,6 +76,8 @@ type
     edSenha: TEdit;
     chkAutenticacao: TCheckBox;
     rgOrientationImg: TRadioGroup;
+    ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure btnExImgClick(Sender: TObject);
@@ -172,23 +92,13 @@ type
     procedure btnAlterarSenhaCaixaClick(Sender: TObject);
     procedure dbeDescontoPadraoKeyPress(Sender: TObject; var Key: Char);
     procedure dbeEstoquePadraoKeyPress(Sender: TObject; var Key: Char);
-    procedure PgConfigChange(Sender: TObject);
     procedure rgOrientationImgClick(Sender: TObject);
-    procedure cdsPadraoSENHACAIXAGetText(Sender: TField; var Text: String;
-      DisplayText: Boolean);
-    procedure cdsPadraoSENHACAIXASetText(Sender: TField;
-      const Text: String);
-    procedure cdsPadraoSENHAESTOQUEGetText(Sender: TField;
-      var Text: String; DisplayText: Boolean);
-    procedure cdsPadraoSENHAESTOQUESetText(Sender: TField;
-      const Text: String);
     procedure dbeContaChequeClickButton(Sender: TObject);
   private
     procedure GravaPapelParede;
     procedure CarregaPapelParede;
-    procedure EnviaEmail;
-    procedure GravaDadosEmail;
-    procedure LeDadosEmail;
+  protected
+    procedure AntesSalvar; override;
   public
   end;
 
@@ -205,13 +115,14 @@ uses Funcoes, ConstPadrao, VarGlobal, unModeloConsulta, unTrocaSenhaCaixa,
 procedure TfrmConfiguracao.FormCreate(Sender: TObject);
 begin
 
-  cdsPadrao.Close;
-  sqldPadrao.Params.ParamByName('PCOMP').AsString := GetComputerName;
+  zquery1.Open;
+  zquery1.Filtered:=false;
+  ZQuery1.Filter:='NOMECOMPUTADOR = '+QuotedStr(GetComputerName);
+  zquery1.Filtered:=true;
+
   inherited;
 
-  //LockWindowUpdate(Application.MainForm.Handle);
   CarregaPapelParede;
-  LeDadosEmail;
   PgConfig.TabIndex := 0;
   CentralizaForm(Self);
   actInsert.Visible := False;
@@ -221,7 +132,6 @@ begin
 
   ReordenaBotoes([btnAlterar, btnSalvar, btnCancelar, btnSair]);
 
-  //LockWindowUpdate(0);
 end;
 
 procedure TfrmConfiguracao.btnBuscarClick(Sender: TObject);
@@ -252,7 +162,7 @@ begin
   inherited;
   if (imgPapelParede.Picture.Graphic = nil) then
   begin
-    MsgAviso('N�o existe imagem para limpar');
+    MsgAviso('Nao existe imagem para limpar');
     Exit;
   end
   else
@@ -274,7 +184,7 @@ begin
     S := '';
 
   if SelectDirectory('Selecione a Pasta - [Destino]', '', S) then
-    cdsPadraoDIREXPORTPADRAO.AsString := S;
+    zquery1.FieldByName('DIREXPORTPADRAO').AsString := S;
 end;
 
 procedure TfrmConfiguracao.GravaPapelParede;
@@ -288,8 +198,8 @@ begin
   frmSenhaEstoque := TfrmSenhaEstoque.Create(Self);
   if frmSenhaEstoque.ShowModal = mrOk then
   begin
-    //cdsPadrao.ApplyUpdates(0);
-    ReabreDataSet(cdsPadrao);
+    zquery1.ApplyUpdates;
+    ReabreDataSet(zquery1);
   end;
 end;
 
@@ -298,7 +208,7 @@ var
   EditModes: Boolean;
 begin
   inherited;
-  EditModes := (cdsPadrao.State in [dsInsert, dsEdit]);
+  EditModes := (zquery1.State in [dsInsert, dsEdit]);
 
   dbeSenhaCaixa.ReadOnly   := (Configuracao.SenhaCaixa <> '');
   dbeSenhaProduto.ReadOnly := (Configuracao.SenhaEstoque <> '');
@@ -330,7 +240,7 @@ begin
       end
       else
       begin
-        MsgErro('Senha incorreta ou n�o informada.');
+        MsgErro('Senha incorreta ou nao informada.');
         actCancelUpdates.Execute;
       end;
     end
@@ -338,78 +248,22 @@ begin
       actCancelUpdates.Execute;
 
     GravaPapelParede;
-    GravaDadosEmail;
+
   end
   else
   begin
     inherited;
     GravaPapelParede;
-    GravaDadosEmail;
+
     PostMessageAllForms(WM_CONFIG_ALTERADO);
     Application.ProcessMessages;
   end;
 end;
 
-procedure TfrmConfiguracao.EnviaEmail;
-var
-  Email: string;
-begin
-  GravaDadosEmail;
-//  if ObterTexto(Email, 'Digite um e-mail') then
-//  begin
-//    IdMsg.From.Address := edUsuario.Text; // e-mail do remetente
-//    IdMsg.Recipients.EMailAddresses := Email; // e-mail do destinat�rio
-//    IdMsg.Subject := 'Teste de envio'; // assunto
-//    IdMsg.Body.Add('Testando e-mail CPR'); // corpo da mensagem
-//
-//    IdSMTP.Host := edServidor.Text; // host SMTP
-//    IdSMTP.Port := StrToInt(edPorta.Text); // porta
-//    IdSMTP.Username := edUsuario.Text; // login do usu�rio
-//    IdSMTP.Password := edSenha.Text; // senha do usu�rio
-//
-//    IdSMTP.Connect; // estabelece a conex�o
-//
-//    if chkAutenticacao.Checked then
-//    begin
-//      IdSMTP.AuthType := satDefault;
-//      IdSMTP.Authenticate; // faz a autentica��o
-//    end
-//    else
-//      IdSMTP.AuthType := satNone;
-//
-//    try
-//      IdSMTP.Send(IdMsg); // envia a mensagem
-//    except
-//      on e: Exception do
-//        MsgErro('ERRO: ' + e.Message); // mensagem de erro
-//    end;
-//    MsgAviso('Teste de Envio OK!');
-//  end;
-end;
-
-procedure TfrmConfiguracao.GravaDadosEmail;
-begin
-  WriteIniFile('EMAIL', 'Servidor', edServidor.Text);
-  WriteIniFile('EMAIL', 'Porta', edPorta.Text);
-  WriteIniFile('EMAIL', 'Autenticacao', BoolToStr(chkAutenticacao.Checked));
-  WriteIniFile('EMAIL', 'Usuario', edUsuario.Text);
-  WriteIniFile('EMAIL', 'Senha', edSenha.Text);
-end;
-
-procedure TfrmConfiguracao.LeDadosEmail;
-begin
-  edServidor.Text         := ReadIniFile('EMAIL', 'Servidor');
-  edPorta.Text            := ReadIniFile('EMAIL', 'Porta');
-  chkAutenticacao.Checked := StrToBoolDef(ReadIniFile('EMAIL', 'Autenticacao'), False);
-  edUsuario.Text          := ReadIniFile('EMAIL', 'Usuario');
-  edSenha.Text            := ReadIniFile('EMAIL', 'Senha');
-  chkAutenticacaoClick(Self);
-end;
-
 procedure TfrmConfiguracao.chkAutenticacaoClick(Sender: TObject);
 begin
   inherited;
-  if chkAutenticacao.Checked and (cdsPadrao.State in [dsInsert, dsEdit]) then
+  if chkAutenticacao.Checked and (zquery1.State in [dsInsert, dsEdit]) then
   begin
     edUsuario.Enabled := True;
     edSenha.Enabled := True;
@@ -424,29 +278,19 @@ end;
 procedure TfrmConfiguracao.btnTesteClick(Sender: TObject);
 begin
   inherited;
-  EnviaEmail;
+
 end;
 
 procedure TfrmConfiguracao.dbeAliqPadraoClickButton(Sender: TObject);
 begin
   inherited;
-//  if cdsPadrao.State in [dsEdit] then
-//    if TfrmModeloConsulta.Execute('Aliquotas', GetDmPesquisar.cdsPesqAliquota, FN_ALIQUOTAS, DL_ALIQUOTAS) then
-//    begin
-//      cdsPadraoALIQUOTAPADRAO.AsInteger := GetDmPesquisar.cdsPesqAliquota.FieldByName('CODALIQUOTA').AsInteger;
-//      cdsPadraoALIQUOTA.AsString := GetDmPesquisar.cdsPesqAliquota.FieldByName('DESCRICAO').AsString;
-//    end;
+
 end;
 
 procedure TfrmConfiguracao.dbeCaixaPadraoClickButton(Sender: TObject);
 begin
   inherited;
-//  if cdsPadrao.State in [dsEdit] then
-//    if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
-//    begin
-//      cdsPadraoCAIXAPADRAO.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;
-//      cdsPadraoCAIXA.AsString := GetDmPesquisar.cdsPesqCaixas.FieldByName('NOME').AsString;
-//    end;
+
 end;
 
 procedure TfrmConfiguracao.btnAlterarSenhaCaixaClick(Sender: TObject);
@@ -455,8 +299,8 @@ begin
   frmSenhaCaixa := TfrmSenhaCaixa.Create(Self);
   if frmSenhaCaixa.ShowModal = mrOk then
   begin
-    //cdsPadrao.ApplyUpdates(0);
-    ReabreDataSet(cdsPadrao);
+    zquery1.ApplyUpdates;
+    ReabreDataSet(zquery1);
   end;
 end;
 
@@ -474,11 +318,6 @@ begin
   inherited;
   if not (Key in ['0'..'9', ',', #8]) then
     Key := #0;
-end;
-
-procedure TfrmConfiguracao.PgConfigChange(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmConfiguracao.CarregaPapelParede;
@@ -512,6 +351,13 @@ begin
   end;
 end;
 
+procedure TfrmConfiguracao.AntesSalvar;
+begin
+  inherited AntesSalvar;
+  ZQuery1.FieldByName('senhacaixa').asstring := crypto.EnDeCrypt(dbeSenhaCaixa.text);
+  ZQuery1.FieldByName('senhaestoque').asstring := crypto.EnDeCrypt(dbeSenhaProduto.text);
+end;
+
 procedure TfrmConfiguracao.rgOrientationImgClick(Sender: TObject);
 begin
   inherited;
@@ -527,42 +373,14 @@ begin
   end;
 end;
 
-procedure TfrmConfiguracao.cdsPadraoSENHACAIXAGetText(Sender: TField;
-  var Text: String; DisplayText: Boolean);
-begin
-  inherited;
-  Text := crypto.EnDeCrypt(Sender.AsString);
-end;
-
-procedure TfrmConfiguracao.cdsPadraoSENHACAIXASetText(Sender: TField;
-  const Text: String);
-begin
-  inherited;
-  Sender.AsString := crypto.EnDeCrypt(Text);
-end;
-
-procedure TfrmConfiguracao.cdsPadraoSENHAESTOQUEGetText(Sender: TField;
-  var Text: String; DisplayText: Boolean);
-begin
-  inherited;
-  Text := crypto.EnDeCrypt(Sender.AsString);
-end;
-
-procedure TfrmConfiguracao.cdsPadraoSENHAESTOQUESetText(Sender: TField;
-  const Text: String);
-begin
-  inherited;
-  Sender.AsString := crypto.EnDeCrypt(Text);
-end;
-
 procedure TfrmConfiguracao.dbeContaChequeClickButton(Sender: TObject);
 begin
   inherited;
-//  if ModoEdicao(cdsPadrao) then
+//  if ModoEdicao(zquery1) then
 //    if TfrmModeloConsulta.Execute('Caixas', GetDmPesquisar.cdsPesqCaixas, FN_CAIXAS, DL_CAIXAS) then
 //    begin
-//      cdsPadraoCONTACHEQUE.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;
-//      cdsPadraoNCONTACHEQUE.AsString := GetDmPesquisar.cdsPesqCaixas.FieldByName('NOME').AsString;
+//      zquery1CONTACHEQUE.AsInteger := GetDmPesquisar.cdsPesqCaixas.FieldByName('CODIGO').AsInteger;
+//      zquery1NCONTACHEQUE.AsString := GetDmPesquisar.cdsPesqCaixas.FieldByName('NOME').AsString;
 //    end;
 end;
 

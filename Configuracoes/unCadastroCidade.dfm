@@ -1,19 +1,22 @@
 inherited frmCadastroCidade: TfrmCadastroCidade
   Left = 268
+  Height = 308
   Top = 147
-  Width = 658
+  Width = 599
   Caption = 'frmCadastroCidade'
-  ClientWidth = 658
+  ClientHeight = 308
+  ClientWidth = 599
   inherited sbStatus: TStatusBar
-    Width = 658
+    Top = 290
+    Width = 599
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 658
-    ClientWidth = 658
+    Width = 599
+    ClientWidth = 599
     TabOrder = 2
   end
   object dbeNomeCidade: TDBEdit[2]
-    Left = 21
+    Left = 26
     Height = 33
     Top = 94
     Width = 313
@@ -26,7 +29,7 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     TabOrder = 1
   end
   object dbeCodCidade: TDBEdit[3]
-    Left = 21
+    Left = 26
     Height = 33
     Top = 56
     Width = 97
@@ -43,61 +46,51 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     Top = 168
   end
   inherited dsPadrao: TDataSource[5]
-    DataSet = cdsPadrao
-    Left = 415
+    DataSet = ZQuery1
+    Left = 408
     Top = 168
   end
-  object sqldPadrao: TSQLQuery[6]
-    FieldDefs = <>
+  object ZQuery1: TZQuery[6]
+    Connection = DmPrincipal.ZConnection1
+    UpdateObject = ZUpdateSQL1
+    SQL.Strings = (
+      'select * from CIDADES'
+    )
     Params = <>
-    Left = 160
-    Top = 168
-    object sqldPadraoCODCIDADE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODCIDADE'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
+    Left = 220
+    Top = 184
   end
-  object dspPadrao: TTimer[7]
-    Left = 256
-    Top = 168
-  end
-  object cdsPadrao: TMemDataset[8]
-    FieldDefs = <>
-    Left = 336
+  object ZUpdateSQL1: TZUpdateSQL[7]
+    DeleteSQL.Strings = (
+      'DELETE FROM CIDADES'
+      'WHERE'
+      '  CIDADES.CODCIDADE = :OLD_CODCIDADE'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CIDADES'
+      '  (DESCRICAO)'
+      'VALUES'
+      '  (:DESCRICAO)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CIDADES SET'
+      '  DESCRICAO = :DESCRICAO'
+      'WHERE'
+      '  CIDADES.CODCIDADE = :OLD_CODCIDADE'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 312
     Top = 176
-    object cdsPadraoCODCIDADE: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODCIDADE'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
+    ParamData = <    
+      item
+        DataType = ftUnknown
+        Name = 'DESCRICAO'
+        ParamType = ptUnknown
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'OLD_CODCIDADE'
+        ParamType = ptUnknown
+      end>
   end
 end

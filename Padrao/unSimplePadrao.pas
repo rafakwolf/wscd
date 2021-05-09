@@ -4,7 +4,7 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBGrids, LCLType;
+  Dialogs, StdCtrls, DBGrids, LCLType, ZDataset;
 
 type
   TfrmSimplePadrao = class(TForm)
@@ -34,10 +34,10 @@ var x: Integer;
 begin
   for x := 0 to ComponentCount - 1 do
   begin
-    if Components[x] is TSQLQuery then
+    if Components[x] is TZQuery then
     begin
-      if (not Assigned(TSQLQuery(Components[x]).SQLConnection)) then
-        TSQLQuery(Components[x]).SQLConnection := GetConnection;
+      if (not Assigned(TZQuery(Components[x]).Connection)) then
+        TZQuery(Components[x]).Connection := GetZConnection;
     end;
 
   end;

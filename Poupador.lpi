@@ -335,12 +335,16 @@
       <Unit45>
         <Filename Value="Movimentos/unNotasFiscais.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmNotasFiscais"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit45>
       <Unit46>
         <Filename Value="Movimentos/unOrcamentos.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOrcamentos"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit46>
       <Unit47>
         <Filename Value="Movimentos/unPagamentoCheque.pas"/>
@@ -424,7 +428,9 @@
       <Unit60>
         <Filename Value="Movimentos/unVendas.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmVendas"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit60>
       <Unit61>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevCaixaTodos.pas"/>
@@ -733,17 +739,23 @@
       <Unit109>
         <Filename Value="Configuracoes/unPerfilPermissao.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPerfilPermissao"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit109>
       <Unit110>
         <Filename Value="Configuracoes/unTrocaSenhaCaixa.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSenhaCaixa"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit110>
       <Unit111>
         <Filename Value="Configuracoes/unTrocaSenhaEstoque.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSenhaEstoque"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit111>
       <Unit112>
         <Filename Value="Configuracoes/unVendedor.pas"/>
@@ -1064,6 +1076,7 @@
         <Filename Value="Padrao/unlistapadrao.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="formListaPadrao"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="unListaPadrao"/>
       </Unit165>

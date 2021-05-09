@@ -3,12 +3,14 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="216">
+    <Units Count="217">
       <Unit0>
         <Filename Value="Poupador.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="13"/>
-        <UsageCount Value="154"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="139"/>
+        <CursorPos X="16" Y="151"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit0>
@@ -16,9 +18,9 @@
         <Filename Value="Util/uClasses.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="207"/>
-        <CursorPos X="55" Y="215"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="410"/>
+        <CursorPos X="178" Y="416"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
@@ -27,7 +29,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="17"/>
         <CursorPos X="60" Y="9"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit2>
       <Unit3>
@@ -36,10 +38,12 @@
         <ComponentName Value="DmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="52"/>
         <CursorPos X="92" Y="59"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit3>
       <Unit4>
@@ -48,10 +52,12 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="547"/>
-        <CursorPos Y="556"/>
-        <UsageCount Value="154"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="49"/>
+        <CursorPos X="29" Y="8"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit4>
       <Unit5>
@@ -62,7 +68,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="29" Y="10"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit5>
       <Unit6>
@@ -73,7 +79,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="9"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit6>
       <Unit7>
@@ -83,9 +89,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="10"/>
-        <CursorPos X="100" Y="13"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="114"/>
+        <CursorPos X="51" Y="33"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit7>
       <Unit8>
@@ -96,7 +102,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="46" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit8>
       <Unit9>
@@ -107,7 +113,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="35" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit9>
       <Unit10>
@@ -117,9 +123,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="158"/>
-        <CursorPos X="24" Y="162"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="187"/>
+        <CursorPos X="31" Y="188"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit10>
       <Unit11>
@@ -129,9 +135,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="6"/>
-        <CursorPos X="28" Y="6"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="29"/>
+        <CursorPos X="57" Y="35"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit11>
       <Unit12>
@@ -141,9 +147,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="13"/>
-        <CursorPos X="41" Y="16"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="30"/>
+        <CursorPos X="22" Y="32"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit12>
       <Unit13>
@@ -154,7 +160,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit13>
       <Unit14>
@@ -164,9 +170,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="317"/>
-        <CursorPos X="77" Y="324"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="114"/>
+        <CursorPos X="33" Y="122"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit14>
       <Unit15>
@@ -177,7 +183,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="4" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit15>
       <Unit16>
@@ -187,8 +193,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="27" Y="7"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="281"/>
+        <CursorPos X="34" Y="297"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit16>
       <Unit17>
@@ -198,8 +205,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="9" Y="8"/>
-        <UsageCount Value="154"/>
+        <CursorPos X="41" Y="8"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit17>
       <Unit18>
@@ -210,7 +217,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="44" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit18>
       <Unit19>
@@ -220,8 +227,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="16" Y="8"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="87"/>
+        <CursorPos X="57" Y="101"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit19>
       <Unit20>
@@ -232,7 +240,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit20>
       <Unit21>
@@ -242,7 +250,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="158"/>
         <CursorPos X="25" Y="168"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit21>
       <Unit22>
@@ -253,7 +261,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit22>
       <Unit23>
@@ -264,7 +272,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit23>
       <Unit24>
@@ -275,7 +283,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit24>
       <Unit25>
@@ -286,7 +294,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="32" Y="3"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit25>
       <Unit26>
@@ -297,7 +305,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="46" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit26>
       <Unit27>
@@ -309,7 +317,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="122"/>
         <CursorPos X="33" Y="126"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit27>
       <Unit28>
@@ -319,8 +327,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="11" Y="8"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="71"/>
+        <CursorPos X="39" Y="70"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit28>
       <Unit29>
@@ -330,8 +339,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="12" Y="7"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="600"/>
+        <CursorPos X="37" Y="608"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit29>
       <Unit30>
@@ -343,7 +353,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="105"/>
         <CursorPos X="30" Y="108"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit30>
       <Unit31>
@@ -353,8 +363,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="26" Y="8"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="64"/>
+        <CursorPos X="21" Y="73"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit31>
       <Unit32>
@@ -364,8 +375,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="45" Y="9"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="235"/>
+        <CursorPos X="25" Y="238"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit32>
       <Unit33>
@@ -375,7 +387,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="143"/>
         <CursorPos Y="155"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit33>
       <Unit34>
@@ -385,9 +397,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="491"/>
-        <CursorPos X="34" Y="502"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="305"/>
+        <CursorPos X="14" Y="313"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit34>
       <Unit35>
@@ -397,7 +409,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="134"/>
         <CursorPos Y="146"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit35>
       <Unit36>
@@ -409,7 +421,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="290"/>
         <CursorPos X="68" Y="303"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit36>
       <Unit37>
@@ -421,7 +433,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="301"/>
         <CursorPos X="64" Y="313"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit37>
       <Unit38>
@@ -433,7 +445,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="6"/>
         <CursorPos X="7" Y="15"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit38>
       <Unit39>
@@ -445,7 +457,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="225"/>
         <CursorPos X="88" Y="227"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit39>
       <Unit40>
@@ -456,7 +468,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit40>
       <Unit41>
@@ -467,7 +479,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="57" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit41>
       <Unit42>
@@ -477,7 +489,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="124"/>
         <CursorPos X="11" Y="113"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit42>
       <Unit43>
@@ -487,7 +499,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="245"/>
         <CursorPos X="48" Y="251"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit43>
       <Unit44>
@@ -498,27 +510,31 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="22" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit44>
       <Unit45>
         <Filename Value="Movimentos/unNotasFiscais.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmNotasFiscais"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="1049"/>
-        <CursorPos X="65" Y="1062"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="596"/>
+        <CursorPos X="30" Y="598"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit45>
       <Unit46>
         <Filename Value="Movimentos/unOrcamentos.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOrcamentos"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="545"/>
-        <CursorPos X="55" Y="565"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="268"/>
+        <CursorPos X="56" Y="114"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit46>
       <Unit47>
@@ -528,7 +544,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="183"/>
         <CursorPos X="7" Y="196"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit47>
       <Unit48>
@@ -538,7 +554,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="56"/>
         <CursorPos X="65" Y="24"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit48>
       <Unit49>
@@ -550,7 +566,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="60"/>
         <CursorPos X="16" Y="69"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit49>
       <Unit50>
@@ -560,7 +576,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="199"/>
         <CursorPos X="24" Y="212"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit50>
       <Unit51>
@@ -570,7 +586,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="166"/>
         <CursorPos X="6" Y="177"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit51>
       <Unit52>
@@ -580,7 +596,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="161"/>
         <CursorPos X="8" Y="174"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit52>
       <Unit53>
@@ -592,7 +608,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="173"/>
         <CursorPos X="59" Y="175"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit53>
       <Unit54>
@@ -603,7 +619,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="13" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit54>
       <Unit55>
@@ -615,7 +631,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="64"/>
         <CursorPos X="51" Y="68"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit55>
       <Unit56>
@@ -625,9 +641,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="179"/>
+        <TopLine Value="203"/>
         <CursorPos X="10" Y="192"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit56>
       <Unit57>
@@ -637,7 +653,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="358"/>
         <CursorPos X="24" Y="371"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit57>
       <Unit58>
@@ -648,7 +664,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="42" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit58>
       <Unit59>
@@ -659,17 +675,18 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="25" Y="9"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit59>
       <Unit60>
         <Filename Value="Movimentos/unVendas.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmVendas"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="531"/>
-        <CursorPos X="55" Y="551"/>
-        <UsageCount Value="154"/>
+        <CursorPos X="26" Y="12"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit60>
       <Unit61>
@@ -681,7 +698,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="110"/>
         <CursorPos X="11" Y="128"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit61>
       <Unit62>
@@ -692,7 +709,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit62>
       <Unit63>
@@ -704,7 +721,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="66"/>
         <CursorPos X="18" Y="79"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit63>
       <Unit64>
@@ -713,7 +730,7 @@
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit64>
       <Unit65>
@@ -723,7 +740,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="98"/>
         <CursorPos X="117" Y="117"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit65>
       <Unit66>
@@ -734,7 +751,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit66>
       <Unit67>
@@ -745,7 +762,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit67>
       <Unit68>
@@ -755,7 +772,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="73"/>
         <CursorPos X="27" Y="83"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit68>
       <Unit69>
@@ -764,7 +781,7 @@
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="15" Y="11"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit69>
       <Unit70>
@@ -776,7 +793,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="62"/>
         <CursorPos X="18" Y="78"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit70>
       <Unit71>
@@ -785,7 +802,7 @@
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="15" Y="11"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit71>
       <Unit72>
@@ -796,7 +813,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit72>
       <Unit73>
@@ -805,7 +822,7 @@
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="15" Y="11"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit73>
       <Unit74>
@@ -816,7 +833,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit74>
       <Unit75>
@@ -827,7 +844,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit75>
       <Unit76>
@@ -839,7 +856,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="3" Y="11"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit76>
       <Unit77>
@@ -850,7 +867,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit77>
       <Unit78>
@@ -861,7 +878,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit78>
       <Unit79>
@@ -870,7 +887,7 @@
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="13" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit79>
       <Unit80>
@@ -879,7 +896,7 @@
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="53" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit80>
       <Unit81>
@@ -891,7 +908,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="51"/>
         <CursorPos X="23" Y="67"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit81>
       <Unit82>
@@ -903,7 +920,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="36"/>
         <CursorPos X="18" Y="47"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit82>
       <Unit83>
@@ -915,7 +932,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="60"/>
         <CursorPos X="14" Y="88"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit83>
       <Unit84>
@@ -927,7 +944,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="63"/>
         <CursorPos X="40" Y="67"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit84>
       <Unit85>
@@ -939,7 +956,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="91"/>
         <CursorPos X="65" Y="94"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit85>
       <Unit86>
@@ -950,7 +967,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="19" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit86>
       <Unit87>
@@ -962,7 +979,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="91"/>
         <CursorPos X="35" Y="105"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit87>
       <Unit88>
@@ -974,7 +991,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="95"/>
         <CursorPos X="35" Y="109"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit88>
       <Unit89>
@@ -985,7 +1002,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit89>
       <Unit90>
@@ -997,7 +1014,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="65"/>
         <CursorPos X="58" Y="66"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit90>
       <Unit91>
@@ -1009,7 +1026,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="95"/>
         <CursorPos X="80" Y="99"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit91>
       <Unit92>
@@ -1021,7 +1038,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="66"/>
         <CursorPos X="71" Y="75"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit92>
       <Unit93>
@@ -1033,7 +1050,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="49"/>
         <CursorPos X="14" Y="59"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit93>
       <Unit94>
@@ -1045,7 +1062,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="17" Y="61"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit94>
       <Unit95>
@@ -1054,10 +1071,12 @@
         <ComponentName Value="frmUsuarioItemMenu"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="335"/>
-        <CursorPos X="47" Y="344"/>
-        <UsageCount Value="154"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="7"/>
+        <CursorPos X="35" Y="14"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit95>
       <Unit96>
@@ -1067,8 +1086,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="47" Y="9"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="32"/>
+        <CursorPos X="44" Y="8"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit96>
       <Unit97>
@@ -1078,9 +1098,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="22"/>
+        <TopLine Value="15"/>
         <CursorPos X="50" Y="32"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit97>
       <Unit98>
@@ -1090,9 +1110,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="8"/>
-        <CursorPos X="30" Y="8"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="44"/>
+        <CursorPos X="42" Y="53"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit98>
       <Unit99>
@@ -1102,9 +1122,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="41"/>
-        <CursorPos X="51" Y="42"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="35"/>
+        <CursorPos X="22" Y="41"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit99>
       <Unit100>
@@ -1114,8 +1134,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="7" Y="9"/>
-        <UsageCount Value="154"/>
+        <CursorPos X="46" Y="33"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit100>
       <Unit101>
@@ -1125,8 +1145,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="8" Y="9"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="27"/>
+        <CursorPos X="24" Y="36"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit101>
       <Unit102>
@@ -1136,8 +1157,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="18" Y="9"/>
-        <UsageCount Value="154"/>
+        <CursorPos X="43" Y="30"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit102>
       <Unit103>
@@ -1147,8 +1168,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="36" Y="9"/>
-        <UsageCount Value="154"/>
+        <CursorPos X="58" Y="6"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit103>
       <Unit104>
@@ -1158,9 +1179,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="229"/>
-        <CursorPos X="49" Y="235"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="163"/>
+        <CursorPos X="54" Y="132"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit104>
       <Unit105>
@@ -1170,9 +1191,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="13"/>
-        <CursorPos X="41" Y="11"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="372"/>
+        <CursorPos X="46" Y="376"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit105>
       <Unit106>
@@ -1181,9 +1202,12 @@
         <ComponentName Value="frmConfigGlobal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="86" Y="7"/>
-        <UsageCount Value="154"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="65"/>
+        <CursorPos X="38" Y="52"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit106>
       <Unit107>
@@ -1192,10 +1216,11 @@
         <ComponentName Value="frmDadosEmpresa"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="294"/>
-        <CursorPos X="5" Y="306"/>
-        <UsageCount Value="154"/>
+        <EditorIndex Value="8"/>
+        <CursorPos X="45" Y="8"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit107>
       <Unit108>
@@ -1204,39 +1229,52 @@
         <ComponentName Value="frmEtiqueta"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="113"/>
-        <CursorPos X="4" Y="119"/>
-        <UsageCount Value="154"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="27" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit108>
       <Unit109>
         <Filename Value="Configuracoes/unPerfilPermissao.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPerfilPermissao"/>
         <HasResources Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2"/>
-        <CursorPos X="47" Y="9"/>
-        <UsageCount Value="154"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="46" Y="9"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit109>
       <Unit110>
         <Filename Value="Configuracoes/unTrocaSenhaCaixa.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSenhaCaixa"/>
         <HasResources Value="True"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="22" Y="7"/>
-        <UsageCount Value="154"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="44"/>
+        <CursorPos Y="46"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit110>
       <Unit111>
         <Filename Value="Configuracoes/unTrocaSenhaEstoque.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSenhaEstoque"/>
         <HasResources Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="32"/>
-        <CursorPos X="19" Y="40"/>
-        <UsageCount Value="154"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="41"/>
+        <CursorPos X="25" Y="55"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit111>
       <Unit112>
@@ -1245,9 +1283,12 @@
         <ComponentName Value="frmVendedor"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="11" Y="8"/>
-        <UsageCount Value="154"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="19"/>
+        <CursorPos X="29" Y="20"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit112>
       <Unit113>
@@ -1259,7 +1300,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="89"/>
         <CursorPos X="40" Y="106"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit113>
       <Unit114>
@@ -1270,7 +1311,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="44" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit114>
       <Unit115>
@@ -1281,7 +1322,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="26" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit115>
       <Unit116>
@@ -1291,7 +1332,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="83"/>
         <CursorPos X="5" Y="96"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit116>
       <Unit117>
@@ -1301,9 +1342,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="115"/>
-        <CursorPos X="7" Y="124"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="135"/>
+        <CursorPos X="46" Y="117"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit117>
       <Unit118>
@@ -1314,7 +1355,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit118>
       <Unit119>
@@ -1324,7 +1365,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="571"/>
         <CursorPos X="39" Y="579"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit119>
       <Unit120>
@@ -1336,7 +1377,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="27" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit120>
       <Unit121>
@@ -1344,7 +1385,7 @@
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit121>
       <Unit122>
@@ -1352,7 +1393,7 @@
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit122>
       <Unit123>
@@ -1361,7 +1402,7 @@
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="37" Y="6"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit123>
       <Unit124>
@@ -1373,7 +1414,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos X="3" Y="11"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit124>
       <Unit125>
@@ -1383,7 +1424,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit125>
       <Unit126>
@@ -1393,7 +1434,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit126>
       <Unit127>
@@ -1403,7 +1444,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit127>
       <Unit128>
@@ -1413,9 +1454,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="74"/>
-        <CursorPos X="25" Y="78"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="27"/>
+        <CursorPos X="3" Y="11"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit128>
       <Unit129>
@@ -1427,7 +1468,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="145"/>
         <CursorPos X="30" Y="148"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit129>
       <Unit130>
@@ -1439,7 +1480,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="35" Y="113"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit130>
       <Unit131>
@@ -1451,7 +1492,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="62"/>
         <CursorPos X="18" Y="78"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit131>
       <Unit132>
@@ -1462,7 +1503,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="9" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit132>
       <Unit133>
@@ -1474,7 +1515,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="79" Y="61"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit133>
       <Unit134>
@@ -1485,7 +1526,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit134>
       <Unit135>
@@ -1495,7 +1536,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit135>
       <Unit136>
@@ -1507,7 +1548,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="9" Y="63"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit136>
       <Unit137>
@@ -1518,7 +1559,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="103" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit137>
       <Unit138>
@@ -1529,7 +1570,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="9" Y="8"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit138>
       <Unit139>
@@ -1541,7 +1582,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="32"/>
         <CursorPos X="47" Y="46"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit139>
       <Unit140>
@@ -1552,7 +1593,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="9"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit140>
       <Unit141>
@@ -1561,10 +1602,12 @@
         <ComponentName Value="frmSobre"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="51"/>
-        <CursorPos X="19" Y="63"/>
-        <UsageCount Value="154"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="43"/>
+        <CursorPos X="35" Y="48"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit141>
       <Unit142>
@@ -1576,7 +1619,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="27"/>
         <CursorPos X="43" Y="30"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit142>
       <Unit143>
@@ -1587,7 +1630,7 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="56" Y="5"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit143>
       <Unit144>
@@ -1599,7 +1642,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="57" Y="6"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit144>
       <Unit145>
@@ -1609,8 +1652,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="48" Y="6"/>
-        <UsageCount Value="154"/>
+        <CursorPos X="3" Y="11"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit145>
       <Unit146>
@@ -1622,7 +1665,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="11"/>
         <CursorPos X="63" Y="18"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit146>
       <Unit147>
@@ -1630,7 +1673,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="47" Y="3"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit147>
       <Unit148>
@@ -1639,7 +1682,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="55"/>
         <CursorPos X="38" Y="3"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit148>
       <Unit149>
@@ -1648,15 +1691,16 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="32"/>
         <CursorPos X="3" Y="61"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit149>
       <Unit150>
         <Filename Value="Util/Funcoes.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="11" Y="10"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="375"/>
+        <CursorPos X="50" Y="382"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit150>
       <Unit151>
@@ -1664,7 +1708,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="27" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit151>
       <Unit152>
@@ -1672,7 +1716,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="49" Y="5"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit152>
       <Unit153>
@@ -1680,7 +1724,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="22" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit153>
       <Unit154>
@@ -1690,7 +1734,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit154>
       <Unit155>
@@ -1699,7 +1743,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="34"/>
         <CursorPos X="30" Y="42"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit155>
       <Unit156>
@@ -1709,7 +1753,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit156>
       <Unit157>
@@ -1719,7 +1763,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit157>
       <Unit158>
@@ -1729,7 +1773,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit158>
       <Unit159>
@@ -1739,7 +1783,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit159>
       <Unit160>
@@ -1751,7 +1795,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <CursorPos X="9" Y="37"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit160>
       <Unit161>
@@ -1762,17 +1806,16 @@
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="7"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit161>
       <Unit162>
         <Filename Value="Principal/Classes/uMenuActions.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="154"/>
+        <TopLine Value="17"/>
+        <CursorPos X="35" Y="8"/>
+        <UsageCount Value="200"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit162>
       <Unit163>
@@ -1780,9 +1823,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseRepo"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="203"/>
-        <CursorPos X="24" Y="212"/>
-        <UsageCount Value="29"/>
+        <TopLine Value="202"/>
+        <CursorPos X="50" Y="208"/>
+        <UsageCount Value="76"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit163>
       <Unit164>
@@ -1791,375 +1834,485 @@
         <UnitName Value="baseModel"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="5"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="76"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit164>
       <Unit165>
+        <Filename Value="Padrao/unlistapadrao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="formListaPadrao"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unListaPadrao"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12"/>
+        <CursorPos X="21" Y="3"/>
+        <UsageCount Value="68"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit165>
+      <Unit166>
         <Filename Value="Util/DBXUtils.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
         <CursorPos X="62" Y="26"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="7"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit165>
-      <Unit166>
+      </Unit166>
+      <Unit167>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/fcl-db/src/sqldb/mysql/mysqlconn.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="97"/>
         <CursorPos X="3" Y="107"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit166>
-      <Unit167>
+      </Unit167>
+      <Unit168>
         <Filename Value="/usr/share/fpcsrc/3.0.4/packages/fcl-db/src/sqldb/sqldb.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="174"/>
         <CursorPos X="3" Y="184"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit167>
-      <Unit168>
+      </Unit168>
+      <Unit169>
         <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/wince/windows.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="32"/>
         <CursorPos X="3" Y="44"/>
-        <UsageCount Value="8"/>
-      </Unit168>
-      <Unit169>
+        <UsageCount Value="3"/>
+      </Unit169>
+      <Unit170>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/fcl-db/src/memds/memds.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="106"/>
         <CursorPos X="30" Y="155"/>
-        <UsageCount Value="9"/>
-      </Unit169>
-      <Unit170>
+        <UsageCount Value="4"/>
+      </Unit170>
+      <Unit171>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/include/messagedialogs.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="114"/>
         <CursorPos X="10" Y="123"/>
-        <UsageCount Value="8"/>
-      </Unit170>
-      <Unit171>
+        <UsageCount Value="3"/>
+      </Unit171>
+      <Unit172>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/forms.pp"/>
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1839"/>
         <CursorPos X="3" Y="1848"/>
-        <UsageCount Value="8"/>
-      </Unit171>
-      <Unit172>
+        <UsageCount Value="3"/>
+      </Unit172>
+      <Unit173>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/fortesreport-ce4/Source/RLReport.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="816"/>
         <CursorPos X="3" Y="825"/>
-        <UsageCount Value="56"/>
+        <UsageCount Value="51"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit172>
-      <Unit173>
+      </Unit173>
+      <Unit174>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/fortesreport-ce4/Source/RLTypes.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="87"/>
         <CursorPos X="15" Y="95"/>
-        <UsageCount Value="56"/>
+        <UsageCount Value="51"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit173>
-      <Unit174>
-        <Filename Value="Cadastros/Relatorios/unRelatorioAniversarioCliente.dfm"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit174>
       <Unit175>
-        <Filename Value="Cadastros/Relatorios/unRelatorioClienteCidade.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioAniversarioCliente.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit175>
       <Unit176>
-        <Filename Value="Cadastros/Relatorios/unRelatorioClienteData.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioClienteCidade.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit176>
       <Unit177>
-        <Filename Value="Cadastros/Relatorios/unRelatorioEtiquetaCliente.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioClienteData.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit177>
       <Unit178>
-        <Filename Value="Cadastros/Relatorios/unRelatorioFornecedorCidade.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioEtiquetaCliente.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit178>
       <Unit179>
-        <Filename Value="Cadastros/Relatorios/unRelatorioFornecedorData.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioFornecedorCidade.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit179>
       <Unit180>
-        <Filename Value="Cadastros/Relatorios/unRelatorioListaPrecos.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioFornecedorData.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit180>
       <Unit181>
-        <Filename Value="Cadastros/Relatorios/unRelatorioNovoAlterado.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioListaPrecos.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit181>
       <Unit182>
-        <Filename Value="Cadastros/Relatorios/unRelatorioProdutoEstMinForn.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioNovoAlterado.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit182>
       <Unit183>
-        <Filename Value="Cadastros/Relatorios/unRelatorioProdutoGrupo.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioProdutoEstMinForn.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit183>
       <Unit184>
-        <Filename Value="Cadastros/Relatorios/unRelatorioProdutosEstoque.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioProdutoGrupo.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit184>
       <Unit185>
-        <Filename Value="Cadastros/Relatorios/unRelatorioProdutoVencimento.dfm"/>
+        <Filename Value="Cadastros/Relatorios/unRelatorioProdutosEstoque.dfm"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="38" Y="4"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit185>
       <Unit186>
+        <Filename Value="Cadastros/Relatorios/unRelatorioProdutoVencimento.dfm"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="38" Y="4"/>
+        <UsageCount Value="3"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit186>
+      <Unit187>
         <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/inc/objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="197"/>
         <CursorPos X="23" Y="206"/>
-        <UsageCount Value="8"/>
-      </Unit186>
-      <Unit187>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevClienteAniver.dfm"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
+        <UsageCount Value="3"/>
       </Unit187>
       <Unit188>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevEnvelopeClientes.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevClienteAniver.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit188>
       <Unit189>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevEtiquetaCliente.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevEnvelopeClientes.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit189>
       <Unit190>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevEtiquetaProduto.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevEtiquetaCliente.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit190>
       <Unit191>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevListagemClientes.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevEtiquetaProduto.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit191>
       <Unit192>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoEstoque.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevListagemClientes.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit192>
       <Unit193>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoGrupo.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoEstoque.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit193>
       <Unit194>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutosVencimento.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutoGrupo.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit194>
       <Unit195>
-        <Filename Value="Cadastros/Relatorios/Prev/unPrevRelFornData.dfm"/>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevProdutosVencimento.dfm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit195>
       <Unit196>
+        <Filename Value="Cadastros/Relatorios/Prev/unPrevRelFornData.dfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="3"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit196>
+      <Unit197>
         <Filename Value="Principal/unPrincipal.lfm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="41"/>
         <CursorPos X="27" Y="44"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="3"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit196>
-      <Unit197>
+      </Unit197>
+      <Unit198>
         <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/objpas/classes/classesh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="662"/>
         <CursorPos X="14" Y="672"/>
-        <UsageCount Value="8"/>
-      </Unit197>
-      <Unit198>
+        <UsageCount Value="3"/>
+      </Unit198>
+      <Unit199>
         <Filename Value="/usr/share/lazarus/2.0.12/lcl/nonwin32/messages.pp"/>
         <UnitName Value="Messages"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
-        <UsageCount Value="9"/>
-      </Unit198>
-      <Unit199>
+        <UsageCount Value="4"/>
+      </Unit199>
+      <Unit200>
         <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/objpas/sysutils/syshelph.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="32" Y="4"/>
-        <UsageCount Value="8"/>
-      </Unit199>
-      <Unit200>
-        <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/unix/sysutils.pp"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="3"/>
       </Unit200>
       <Unit201>
+        <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/unix/sysutils.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="4"/>
+      </Unit201>
+      <Unit202>
         <Filename Value="Utilitarios/unAgenda.dfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="55" Y="6"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit201>
-      <Unit202>
+      </Unit202>
+      <Unit203>
         <Filename Value="Utilitarios/unAgenda.lfm"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="86"/>
         <CursorPos X="66" Y="105"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit202>
-      <Unit203>
+      </Unit203>
+      <Unit204>
         <Filename Value="../../lazarus/ide/config_lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZAbstractRODataset.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <CursorPos X="41" Y="5304"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit203>
-      <Unit204>
+      </Unit204>
+      <Unit205>
         <Filename Value="/usr/share/fpcsrc/3.2.0/rtl/objpas/sysutils/sysinth.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="121"/>
         <CursorPos X="3" Y="134"/>
-        <UsageCount Value="9"/>
-      </Unit204>
-      <Unit205>
+        <UsageCount Value="4"/>
+      </Unit205>
+      <Unit206>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZConnection.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="46"/>
-        <UsageCount Value="9"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit205>
-      <Unit206>
-        <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZAbstractConnection.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="97"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit206>
       <Unit207>
+        <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZAbstractConnection.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="97"/>
+        <UsageCount Value="4"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit207>
+      <Unit208>
         <Filename Value="Padrao/unModeloConsulta.dfm"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="41"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit207>
-      <Unit208>
+      </Unit208>
+      <Unit209>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/dbc/ZDbcMySqlUtils.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="298"/>
         <CursorPos Y="310"/>
         <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit208>
-      <Unit209>
+      </Unit209>
+      <Unit210>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/CORE/Source/Memdataset/uDWDataset.pas"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <TopLine Value="5670"/>
         <CursorPos X="75" Y="5693"/>
-        <UsageCount Value="9"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit209>
-      <Unit210>
-        <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZDatasetUtils.pas"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="283"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="4"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit210>
       <Unit211>
+        <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZDatasetUtils.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="283"/>
+        <UsageCount Value="4"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit211>
+      <Unit212>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/fcl-db/src/json/fpjsondataset.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="109"/>
-        <UsageCount Value="9"/>
-      </Unit211>
-      <Unit212>
+        <UsageCount Value="4"/>
+      </Unit212>
+      <Unit213>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/fcl-json/src/fpjson.pp"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos X="3" Y="53"/>
-        <UsageCount Value="10"/>
-      </Unit212>
-      <Unit213>
+        <UsageCount Value="5"/>
+      </Unit213>
+      <Unit214>
         <Filename Value="/usr/share/fpcsrc/3.2.0/packages/chm/src/chmreader.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos X="32" Y="75"/>
-        <UsageCount Value="9"/>
-      </Unit213>
-      <Unit214>
+        <UsageCount Value="4"/>
+      </Unit214>
+      <Unit215>
         <Filename Value="/home/rafael/.lazarus/onlinepackagemanager/packages/zeosdbo/src/component/ZSqlUpdate.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="226"/>
-        <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit214>
-      <Unit215>
-        <Filename Value="Padrao/unlistapadrao.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="formListaPadrao"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="unListaPadrao"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="38" Y="5"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="5"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit215>
+      <Unit216>
+        <Filename Value="/usr/share/lazarus/2.0.12/lcl/include/control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3544"/>
+        <CursorPos X="49" Y="3564"/>
+        <UsageCount Value="8"/>
+      </Unit216>
     </Units>
-    <JumpHistory Count="3" HistoryIndex="2">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
-        <Filename Value="Padrao/unlistapadrao.pas"/>
-        <Caret Line="4" Column="22"/>
+        <Filename Value="Poupador.lpr"/>
+        <Caret Line="5" Column="42"/>
       </Position1>
       <Position2>
-        <Filename Value="Padrao/unlistapadrao.pas"/>
-        <Caret Line="3" Column="31"/>
+        <Filename Value="Poupador.lpr"/>
+        <Caret Line="15" Column="74"/>
       </Position2>
       <Position3>
-        <Filename Value="Padrao/unlistapadrao.pas"/>
-        <Caret Line="11" Column="59"/>
+        <Filename Value="Poupador.lpr"/>
+        <Caret Line="20" Column="3" TopLine="2"/>
       </Position3>
+      <Position4>
+        <Filename Value="Poupador.lpr"/>
+        <Caret Line="121" Column="100" TopLine="103"/>
+      </Position4>
+      <Position5>
+        <Filename Value="Poupador.lpr"/>
+        <Caret Line="22" TopLine="34"/>
+      </Position5>
+      <Position6>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="106" Column="41" TopLine="24"/>
+      </Position6>
+      <Position7>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="338" Column="39" TopLine="322"/>
+      </Position7>
+      <Position8>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="337" Column="39" TopLine="321"/>
+      </Position8>
+      <Position9>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="348" Column="39" TopLine="327"/>
+      </Position9>
+      <Position10>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="129" Column="3" TopLine="127"/>
+      </Position10>
+      <Position11>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="128" Column="3" TopLine="126"/>
+      </Position11>
+      <Position12>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="123" Column="28" TopLine="120"/>
+      </Position12>
+      <Position13>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="90" Column="19" TopLine="89"/>
+      </Position13>
+      <Position14>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="133" Column="3" TopLine="130"/>
+      </Position14>
+      <Position15>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="132" Column="3" TopLine="129"/>
+      </Position15>
+      <Position16>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="252" Column="3" TopLine="250"/>
+      </Position16>
+      <Position17>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="251" Column="3" TopLine="249"/>
+      </Position17>
+      <Position18>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="57" Column="28" TopLine="52"/>
+      </Position18>
+      <Position19>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="59" Column="5" TopLine="49"/>
+      </Position19>
+      <Position20>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="78" Column="48" TopLine="72"/>
+      </Position20>
+      <Position21>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="395" Column="19" TopLine="387"/>
+      </Position21>
+      <Position22>
+        <Filename Value="Poupador.lpr"/>
+        <Caret Line="134" Column="22" TopLine="127"/>
+      </Position22>
+      <Position23>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="89" Column="26" TopLine="86"/>
+      </Position23>
+      <Position24>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="88" Column="26" TopLine="85"/>
+      </Position24>
+      <Position25>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="87" Column="26" TopLine="84"/>
+      </Position25>
+      <Position26>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="298" Column="36" TopLine="287"/>
+      </Position26>
+      <Position27>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="297" Column="36" TopLine="286"/>
+      </Position27>
+      <Position28>
+        <Filename Value="Principal/unPrincipal.pas"/>
+        <Caret Line="292" Column="22" TopLine="286"/>
+      </Position28>
+      <Position29>
+        <Filename Value="Poupador.lpr"/>
+        <Caret Line="134" Column="22" TopLine="100"/>
+      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

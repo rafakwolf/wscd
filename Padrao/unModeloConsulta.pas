@@ -3,7 +3,7 @@ unit unModeloConsulta;
 interface
 
 uses
- Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, StdCtrls, Buttons, Grids, DBGrids,
   Masks, StrUtils, SQLDB, FmtBCD, LCLType, ZDataset;
 

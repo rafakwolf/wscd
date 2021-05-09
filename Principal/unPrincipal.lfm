@@ -4,20 +4,9 @@ object MainForm: TMainForm
   Top = 196
   Width = 843
   Caption = 'WSCD'
-  ClientHeight = 369
-  ClientWidth = 843
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.0.12.0'
-  object Button1: TButton
-    Left = 102
-    Height = 25
-    Top = 75
-    Width = 75
-    Caption = 'Button1'
-    OnClick = Button1Click
-    TabOrder = 0
-  end
   object ListaAcoes: TActionList
     Left = 216
     Top = 136
@@ -26,10 +15,10 @@ object MainForm: TMainForm
       Caption = 'Cidades'
       OnExecute = actCidadeExecute
     end
-    object acTdade: TAction
+    object actUnidade: TAction
       Category = 'Configuracao'
       Caption = 'Unidades de medida'
-      OnExecute = acTdadeExecute
+      OnExecute = actUnidadeExecute
     end
     object actGrupo: TAction
       Category = 'Configuracao'
@@ -61,10 +50,6 @@ object MainForm: TMainForm
       Caption = 'Configurações locais'
       OnExecute = actConfiguracaoLocalExecute
     end
-    object actImpressora: TAction
-      Category = 'Configuracao'
-      Caption = 'Impressora'
-    end
     object actDadosEmpresa: TAction
       Category = 'Configuracao'
       Caption = 'Dados da empresa'
@@ -80,41 +65,11 @@ object MainForm: TMainForm
       Caption = 'Perfis'
       OnExecute = actPerfisExecute
     end
-    object actTrocaSenha: TAction
-      Category = 'Configuracao'
-      Caption = 'Trocar minha senha'
-      OnExecute = actTrocaSenhaExecute
-    end
     object actAgenda: TAction
       Category = 'Util'
       Caption = 'Agenda de telefones'
       OnExecute = actAgendaExecute
       ShortCut = 16449
-    end
-    object actCalendario: TAction
-      Category = 'Util'
-      Caption = 'Calendário'
-      OnExecute = actCalendarioExecute
-      ShortCut = 122
-    end
-    object actCalculadora: TAction
-      Category = 'Util'
-      Caption = 'Calculadora'
-      ShortCut = 123
-    end
-    object actEditorTexto: TAction
-      Category = 'Util'
-      Caption = 'Editor de texto'
-    end
-    object actDuplicata: TAction
-      Category = 'Util'
-      Caption = 'Duplicatas'
-      OnExecute = actDuplicataExecute
-    end
-    object actNotaPromissoria: TAction
-      Category = 'Util'
-      Caption = 'Nota promissória'
-      OnExecute = actNotaPromissoriaExecute
     end
     object actRecibo: TAction
       Category = 'Util'
@@ -176,11 +131,6 @@ object MainForm: TMainForm
       Caption = 'Livro caixa'
       OnExecute = actCaixaExecute
     end
-    object actDesmarcaProduto: TAction
-      Category = 'Movimentos'
-      Caption = 'Desmarcar produtos novos e alterados'
-      OnExecute = actDesmarcaProdutoExecute
-    end
     object actListaPreco: TAction
       Category = 'Movimentos'
       Caption = 'Lista de preços'
@@ -196,40 +146,10 @@ object MainForm: TMainForm
       Caption = 'Etiquetas de produtos'
       OnExecute = actEtiquetaProdutoExecute
     end
-    object actFechar: TAction
-      Category = 'Sair'
-      Caption = 'Sair do sistema'
-      OnExecute = actFecharExecute
-      ShortCut = 32851
-    end
-    object actOutroUsuario: TAction
-      Category = 'Sair'
-      Caption = 'Outro usuário'
-      OnExecute = actOutroUsuarioExecute
-    end
     object actSobreSistema: TAction
       Category = 'Ajuda'
       Caption = 'Sobre'
       OnExecute = actSobreSistemaExecute
-    end
-    object actDicaDia: TAction
-      Category = 'Ajuda'
-      Caption = 'Dica do dia'
-      OnExecute = actDicaDiaExecute
-    end
-    object actEnvelope: TAction
-      Category = 'Util'
-      Caption = 'Envelope personalizado'
-      OnExecute = actEnvelopeExecute
-    end
-    object actBackup: TAction
-      Category = 'Util'
-      Caption = 'Cópia de segurança'
-      OnExecute = actBackupExecute
-    end
-    object actRestore: TAction
-      Category = 'Util'
-      Caption = 'Restauração'
     end
     object actEtiqueta: TAction
       Category = 'Configuracao'
@@ -251,56 +171,15 @@ object MainForm: TMainForm
       Caption = 'Cheques'
       OnExecute = actChequeExecute
     end
-    object actRenovaChave: TAction
-      Category = 'Configuracao'
-      Caption = 'Renovar chave de liberação'
-      OnExecute = actRenovaChaveExecute
-    end
-    object actAtualizacao: TAction
-      Category = 'Ajuda'
-      Caption = 'Verificar atualização'
-    end
-    object actPostIt: TAction
-      Category = 'Util'
-      Caption = 'Post it'
-    end
-    object actAjuda: TAction
-      Category = 'Ajuda'
-      Caption = 'Ajuda do sistema'
-      OnExecute = actAjudaExecute
-      ShortCut = 112
-    end
-    object actConfigServidor: TAction
-      Category = 'Configuracao'
-      Caption = 'Configuração do banco de dados'
-    end
-    object actInfoSistema: TAction
-      Category = 'Ajuda'
-      Caption = 'Informações sobre o sistema'
-      OnExecute = actInfoSistemaExecute
-    end
     object actVendedor: TAction
       Category = 'Configuracao'
       Caption = 'Vendedores'
       OnExecute = actVendedorExecute
     end
-    object actConfigNota: TAction
-      Category = 'Configuracao'
-      Caption = 'Configuração da nota'
-      OnExecute = actConfigNotaExecute
-    end
     object actPromocao: TAction
       Category = 'Movimentos'
       Caption = 'Promoções'
       OnExecute = actPromocaoExecute
-    end
-    object actInfoAvisos: TAction
-      Category = 'Ajuda'
-      Caption = 'Informações e avisos'
-    end
-    object actAuditoriaUser: TAction
-      Category = 'Util'
-      Caption = 'Auditoria de registros'
     end
   end
 end

@@ -5,20 +5,18 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
-  ComCtrls,   memds,  SqlDb,  DBCtrls,
+  ComCtrls,   memds,  SqlDb,  DBCtrls, ZDataset, ZSqlUpdate,
   FMTBcd;
 
 type
+
+  { TfrmCadastroCidade }
+
   TfrmCadastroCidade = class(TfrmPadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
-    sqldPadraoCODCIDADE: TIntegerField;
-    sqldPadraoDESCRICAO: TStringField;
-    cdsPadraoCODCIDADE: TIntegerField;
-    cdsPadraoDESCRICAO: TStringField;
     dbeNomeCidade: TDBEdit;
     dbeCodCidade: TDBEdit;
+    ZQuery1: TZQuery;
+    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
   private
   public

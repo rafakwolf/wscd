@@ -29,7 +29,7 @@ type
       function Add(data: string): string;
       function Update(id: Integer; data: string): string;
       procedure Remove(id: Integer);
-      function GetAll(fields, sortField: string): TZQuery;
+      function GetAll(fieldlist, sortField: string): TZQuery;
       function GetById(id: Integer): TZQuery;
 
   end;
@@ -201,7 +201,7 @@ begin
    end;
 end;
 
-function TBaseRepo.GetAll(fields, sortField: string): TZQuery;
+function TBaseRepo.GetAll(fieldlist, sortField: string): TZQuery;
 var q: TZQuery;
 begin
   q := TZQuery.create(nil);
@@ -209,7 +209,7 @@ begin
   begin
      Connection:=conn;
      SQL.Clear;
-     SQL.Add('select '+fields+' from '+fTableName+ ' order by '+sortField);
+     SQL.Add('select '+fieldlist+' from '+fTableName+ ' order by '+sortField);
      Prepare;
      Open;
   end;

@@ -75,7 +75,6 @@ type
     dbeNomeRzSocial: TDBEdit;
     dbeNomeFantazia: TDBEdit;
     dbeEmail: TDBEdit;
-    bvlLinha: TPanel;
     dbmObs: TDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
@@ -211,16 +210,16 @@ end;
 procedure TfrmFornecedor.cdsPadraoCNPJSetText(Sender: TField;
   const Text: String);
 begin
-  inherited;    {
-  if ValidaCampo(Text, 1) then
-    Sender.AsString := FormatarDoc(Text, 1)
-  else
-  begin
-    MsgCuidado('CNPJ inv�lido.');
-    Sender.Clear;
-    Sender.FocusControl;
-    Exit;
-  end;   }
+  inherited;
+  //if ValidaCampo(Text, 1) then
+  //  Sender.AsString := FormatarDoc(Text, 1)
+  //else
+  //begin
+  //  MsgCuidado('CNPJ invalido.');
+  //  Sender.Clear;
+  //  Sender.FocusControl;
+  //  Exit;
+  //end;
 end;
 
 procedure TfrmFornecedor.miAjustarCNPJClick(Sender: TObject);

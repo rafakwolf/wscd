@@ -11,7 +11,6 @@ type
     btnImprimir: TBitBtn;
     btnVisualizar: TBitBtn;
     btnSair: TBitBtn;
-    imgImpressora: TImage;
     gbRecibo: TGroupBox;
     lbColunas: TLabel;
     edPorta: TEdit;
@@ -219,7 +218,7 @@ begin
     Add(Centraliza('***RECIBO***'));
     Add(ReplicateStr('-',edColunas.Value));
     Add(Ajusta(' Recebedor: ' + Recebedor));
-    Add(Ajusta(' A Import�ncia de: ' + ValorExtenso));
+    Add(Ajusta(' A Importancia de: ' + ValorExtenso));
     Add(Ajusta(' Referente: ' + Referente));
     Add(' Valor: ' + '' + FormatFloat('#,##0.00', Valor));
     Add(ReplicateStr(#13#10, 1));
