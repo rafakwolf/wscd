@@ -272,7 +272,7 @@ implementation
 uses Funcoes, unModeloConsulta, VarGlobal, unPagamentoVenda,
      unImportaOrcam, unPagamentoCheque,
      unParcelaVenda, unRelatorioBobinaVenda, unPrevNotaVenda,
-     unPrevNotaVendaMatric, unDmPrincipal, udatabaseutils,
+     unDmPrincipal, udatabaseutils,
      Math;
 
 {$R *.dfm}
@@ -856,28 +856,15 @@ end;
 
 procedure TfrmVendas.miRelVendaAtualClick(Sender: TObject);
 begin
-  case FormRadioButtons('Impressora Jato/Lazer, Impressora matricial', 'Impress�o da venda', 0) of
-  0:begin
-      with TfrmPrevNotaVenda.Create(Self) do
-      try
-        cdsVenda.Close;
-        //cdsVenda.Params.ParamByName('IDVENDA').AsInteger := cdsVendasCODIGO.AsInteger;
-        cdsVenda.Open;
-        rlrNotaVenda.PreviewModal;
-      finally
-        Free;
-      end;
+    with TfrmPrevNotaVenda.Create(Self) do
+    try
+      cdsVenda.Close;
+      //cdsVenda.Params.ParamByName('IDVENDA').AsInteger := cdsVendasCODIGO.AsInteger;
+      cdsVenda.Open;
+      rlrNotaVenda.PreviewModal;
+    finally
+      Free;
     end;
-  1:begin
-      with TfrmPrevNotaVendaMatric.Create(Self) do
-      try
-        IdVenda := cdsVendasCODIGO.AsInteger;
-        ImprimirVDO;
-      finally
-        Free;
-      end;
-    end;
-  end;
 end;
 
 procedure TfrmVendas.miVendasNaoConcClick(Sender: TObject);

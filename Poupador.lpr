@@ -65,7 +65,6 @@ uses
   unPrevListaFaturamento in 'Movimentos\Relatorios\Prev\unPrevListaFaturamento.pas' {frmPrevListaFaturamento},
   unPrevNotaProm in 'Movimentos\Relatorios\Prev\unPrevNotaProm.pas' {frmPrevNotaProm},
   unPrevNotaVenda in 'Movimentos\Relatorios\Prev\unPrevNotaVenda.pas' {frmPrevNotaVenda},
-  unPrevNotaVendaMatric in 'Movimentos\Relatorios\Prev\unPrevNotaVendaMatric.pas' {frmPrevNotaVendaMatric},
   unPrevOrcammento in 'Movimentos\Relatorios\Prev\unPrevOrcammento.pas' {frmPrevOrcamento},
   unPrevPerda in 'Movimentos\Relatorios\Prev\unPrevPerda.pas' {frmPrevPerda},
   unPrevPromocao in 'Movimentos\Relatorios\Prev\unPrevPromocao.pas' {frmPrevPromocao},

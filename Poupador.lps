@@ -7,7 +7,9 @@
       <Unit0>
         <Filename Value="Poupador.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="49" Y="10"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="60"/>
+        <CursorPos X="5" Y="68"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -36,9 +38,10 @@
         <ComponentName Value="DmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="52"/>
         <CursorPos X="62" Y="56"/>
+        <ComponentState Value="1"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -323,8 +326,9 @@
         <ComponentName Value="frmBaixaCheque"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <CursorPos X="56" Y="6"/>
+        <ComponentState Value="1"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -348,10 +352,9 @@
         <ComponentName Value="frmCheque"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <TopLine Value="181"/>
-        <CursorPos X="74" Y="56"/>
+        <CursorPos X="38" Y="182"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -643,6 +646,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
         <CursorPos X="27" Y="8"/>
+        <ComponentState Value="1"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -686,9 +690,11 @@
         <ComponentName Value="frmVendas"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="26" Y="12"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="856"/>
+        <CursorPos X="25" Y="859"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit60>
       <Unit61>
@@ -1345,6 +1351,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="26"/>
         <CursorPos X="25" Y="28"/>
+        <ComponentState Value="1"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -2198,123 +2205,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="90" Column="25" TopLine="80"/>
+        <Caret Line="86" Column="25" TopLine="76"/>
       </Position1>
       <Position2>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="89" Column="25" TopLine="79"/>
+        <Caret Line="85" Column="25" TopLine="75"/>
       </Position2>
       <Position3>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="88" Column="25" TopLine="78"/>
+        <Caret Line="84" Column="25" TopLine="74"/>
       </Position3>
       <Position4>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="87" Column="25" TopLine="77"/>
+        <Caret Line="83" Column="25" TopLine="73"/>
       </Position4>
       <Position5>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="86" Column="25" TopLine="76"/>
+        <Caret Line="82" Column="25" TopLine="72"/>
       </Position5>
       <Position6>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="85" Column="25" TopLine="75"/>
+        <Caret Line="81" Column="25" TopLine="71"/>
       </Position6>
       <Position7>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="84" Column="25" TopLine="74"/>
+        <Caret Line="80" Column="25" TopLine="70"/>
       </Position7>
       <Position8>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="83" Column="25" TopLine="73"/>
+        <Caret Line="79" Column="25" TopLine="69"/>
       </Position8>
       <Position9>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="82" Column="25" TopLine="72"/>
+        <Caret Line="78" Column="25" TopLine="68"/>
       </Position9>
       <Position10>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="81" Column="25" TopLine="71"/>
+        <Caret Line="77" Column="25" TopLine="67"/>
       </Position10>
       <Position11>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="80" Column="25" TopLine="70"/>
+        <Caret Line="76" Column="25" TopLine="66"/>
       </Position11>
       <Position12>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="79" Column="25" TopLine="69"/>
+        <Caret Line="360" Column="40" TopLine="345"/>
       </Position12>
       <Position13>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="78" Column="25" TopLine="68"/>
+        <Caret Line="356" Column="64" TopLine="350"/>
       </Position13>
       <Position14>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="77" Column="25" TopLine="67"/>
+        <Caret Line="349" Column="11" TopLine="338"/>
       </Position14>
       <Position15>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="76" Column="25" TopLine="66"/>
+        <Caret Line="77" Column="11" TopLine="70"/>
       </Position15>
       <Position16>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="360" Column="40" TopLine="345"/>
+        <Caret Line="19" Column="24" TopLine="17"/>
       </Position16>
       <Position17>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="356" Column="64" TopLine="350"/>
+        <Caret Line="327" Column="5" TopLine="317"/>
       </Position17>
       <Position18>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="349" Column="11" TopLine="338"/>
+        <Caret Line="349" Column="80" TopLine="337"/>
       </Position18>
       <Position19>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="77" Column="11" TopLine="70"/>
+        <Caret Line="45" TopLine="26"/>
       </Position19>
       <Position20>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="19" Column="24" TopLine="17"/>
+        <Caret Line="42" Column="27" TopLine="36"/>
       </Position20>
       <Position21>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="327" Column="5" TopLine="317"/>
+        <Caret Line="69" Column="40" TopLine="48"/>
       </Position21>
       <Position22>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="349" Column="80" TopLine="337"/>
+        <Filename Value="Movimentos/unBaixaCheque.pas"/>
+        <Caret Line="6" Column="56"/>
       </Position22>
       <Position23>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="45" TopLine="26"/>
+        <Filename Value="Principal/unDmPrincipal.pas"/>
+        <Caret Line="56" Column="62" TopLine="52"/>
       </Position23>
       <Position24>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="42" Column="27" TopLine="36"/>
+        <Caret Line="346" Column="10" TopLine="331"/>
       </Position24>
       <Position25>
         <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="69" Column="40" TopLine="48"/>
+        <Caret Line="344" Column="34" TopLine="331"/>
       </Position25>
       <Position26>
-        <Filename Value="Movimentos/unBaixaCheque.pas"/>
-        <Caret Line="6" Column="56"/>
-      </Position26>
-      <Position27>
-        <Filename Value="Principal/unDmPrincipal.pas"/>
-        <Caret Line="56" Column="62" TopLine="52"/>
-      </Position27>
-      <Position28>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="346" Column="10" TopLine="331"/>
-      </Position28>
-      <Position29>
-        <Filename Value="Movimentos/unCheque.pas"/>
-        <Caret Line="344" Column="34" TopLine="331"/>
-      </Position29>
-      <Position30>
         <Filename Value="Movimentos/unCheque.pas"/>
         <Caret Line="14" Column="24" TopLine="52"/>
+      </Position26>
+      <Position27>
+        <Filename Value="Movimentos/unCheque.pas"/>
+        <Caret Line="182" Column="38" TopLine="181"/>
+      </Position27>
+      <Position28>
+        <Filename Value="Movimentos/unVendas.pas"/>
+        <Caret Line="275" Column="6" TopLine="267"/>
+      </Position28>
+      <Position29>
+        <Filename Value="Movimentos/unVendas.pas"/>
+        <Caret Line="884" Column="43" TopLine="881"/>
+      </Position29>
+      <Position30>
+        <Filename Value="Movimentos/unVendas.pas"/>
+        <Caret Line="859" Column="25" TopLine="856"/>
       </Position30>
     </JumpHistory>
     <RunParams>
