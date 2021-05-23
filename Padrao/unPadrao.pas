@@ -84,7 +84,6 @@ type
     procedure actCancelUpdatesExecute(Sender: TObject);
     procedure actPostExecute(Sender: TObject);
     procedure actSearchExecute(Sender: TObject);
-    procedure actPrintPersonExecute(Sender: TObject);
     procedure actLimparFiltroExecute(Sender: TObject);
     procedure actContarExecute(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -130,7 +129,7 @@ var
 
 implementation
 
-uses unModeloConsulta, unGeraRelatorio,
+uses unModeloConsulta,
       unOrdenarDados, VarGlobal;
 
 {$R *.DFM}
@@ -148,10 +147,10 @@ begin
     begin
       if ((TClientDataSet(dsPadrao.DataSet).ChangeCount <> 0) or (TClientDataSet(dsPadrao.DataSet).Modified)) then
         case
-          Application.MessageBox(PChar('Existem alterações pendentes no processo "'
+          Application.MessageBox(PChar('Existem alteraï¿½ï¿½es pendentes no processo "'
           +
-          Caption + '".' + #13#10 + 'Deseja gravar as alterações?'),
-            'Confirmação',
+          Caption + '".' + #13#10 + 'Deseja gravar as alteraï¿½ï¿½es?'),
+            'Confirmaï¿½ï¿½o',
           MB_YESNOCANCEL or MB_ICONQUESTION) of
 
           Id_Yes: actPost.Execute;
@@ -174,13 +173,13 @@ begin
   Action := raAbort;
 
   if Pos('PRIMARY OR UNIQUE KEY', AnsiUpperCase(E.Message)) <> 0 then
-    S := 'Já existe um registro no banco de dados com este mesmo identificador.'
+    S := 'Jï¿½ existe um registro no banco de dados com este mesmo identificador.'
   else
   if Pos('VIOLATION OF FOREIGN KEY', AnsiUpperCase(E.Message)) <> 0 then
     if UpdateKind = ukDelete then
-      S := 'O registro que você está tentando excluir já está sendo utilizado em outras partes do sistema.'
+      S := 'O registro que vocï¿½ estï¿½ tentando excluir jï¿½ estï¿½ sendo utilizado em outras partes do sistema.'
     else
-      S := 'O registro que você está tentando gravar depende de uma informação que foi excluída.'
+      S := 'O registro que vocï¿½ estï¿½ tentando gravar depende de uma informaï¿½ï¿½o que foi excluï¿½da.'
         + CRLF +
         'Verifique o preenchimento dos campos com pesquisa e tente novamente.'
   else
@@ -189,15 +188,15 @@ begin
     S := S + CRLF + CRLF + 'DataSet: ' + DataSet.Owner.Name + CRLF;
 
     case UpdateKind of
-      ukModify: S := S + 'Operação: Alteração' + CRLF;
-      ukInsert: S := S + 'Operação: Inserção' + CRLF;
-      ukDelete: S := S + 'Operação: Exclusão' + CRLF;
+      ukModify: S := S + 'Operaï¿½ï¿½o: Alteraï¿½ï¿½o' + CRLF;
+      ukInsert: S := S + 'Operaï¿½ï¿½o: Inserï¿½ï¿½o' + CRLF;
+      ukDelete: S := S + 'Operaï¿½ï¿½o: Exclusï¿½o' + CRLF;
     end;
 
     raise EDatabaseError.Create(S);
   end;
 
-  Application.MessageBox(PChar(S), 'Exclusão não permitida', MB_OK or
+  Application.MessageBox(PChar(S), 'Exclusï¿½o nï¿½o permitida', MB_OK or
     MB_ICONWARNING);
   Action := raCancel;
 end;
@@ -214,30 +213,30 @@ begin
   SetDataSets;
   Closing := False;
 
-  for x := 0 to ComponentCount - 1 do
-  begin
-    if Components[x] is TCustomSQLDataSet then
-    begin
-      if not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
-    end
-    else
-    if (Components[x] is TClientDataSet) then
-    begin
-      if not Assigned(TClientDataSet(Components[x]).OnReconcileError) then
-        TClientDataSet(Components[x]).OnReconcileError :=  MyHandleReconcileError;
-
-      TClientDataSet(Components[x]).FetchOnDemand := True;
-
-      if TClientDataSet(Components[x]).Tag <> TAG_IGNORE_FECHPARAMS then
-        TClientDataSet(Components[x]).PacketRecords := 1;
-    end
-    else
-    if (Components[x] is TDataSetProvider) then
-    begin
-      TDataSetProvider(Components[x]).Options := [poAllowCommandText];
-    end;
-  end;
+//  for x := 0 to ComponentCount - 1 do
+//  begin
+//    if Components[x] is TCustomSQLDataSet then
+//    begin
+//      if not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection) then
+//        TCustomSQLDataSet(Components[x]).//SQLConnection := GetConnection;
+//    end
+//    else
+//    if (Components[x] is TClientDataSet) then
+//    begin
+//      if not Assigned(TClientDataSet(Components[x]).OnReconcileError) then
+//        TClientDataSet(Components[x]).OnReconcileError :=  MyHandleReconcileError;
+//
+//      TClientDataSet(Components[x]).FetchOnDemand := True;
+//
+//      if TClientDataSet(Components[x]).Tag <> TAG_IGNORE_FECHPARAMS then
+//        TClientDataSet(Components[x]).PacketRecords := 1;
+//    end
+//    else
+//    if (Components[x] is TDataSetProvider) then
+//    begin
+//      TDataSetProvider(Components[x]).Options := [poAllowCommandText];
+//    end;
+//  end;
 
   ReordenaBotoes([btnPrimeiro, btnAnterior, btnProximo, btnUltimo, btnNovo,
     btnAlterar, btnExcluir, btnSalvar, btnCancelar, btnConsultar, btnPrint,
@@ -301,26 +300,26 @@ end;
 
 procedure TfrmPadrao.actDeleteExecute(Sender: TObject);
 begin
-  if not dsPadrao.DataSet.IsEmpty then
-  begin
-    if Application.MessageBox('Tem certeza que deseja excluir este registro?',
-      'Exclusão de registro', MB_ICONQUESTION or MB_YESNO or MB_DEFBUTTON2) =  IDYES then
-    begin
-      FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-      try
-        dsPadrao.DataSet.Delete;
-
-        if (dsPadrao.DataSet is TClientDataSet) then
-          TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0);
-
-        dsPadrao.OnStateChange(dsPadrao);
-        GetConnection.CommitFreeAndNil(FTransacao);
-      except
-        on e: Exception do
-          GetConnection.RollbackFreeAndNil(FTransacao);
-      end;
-    end;
-  end;
+//  if not dsPadrao.DataSet.IsEmpty then
+//  begin
+//    if Application.MessageBox('Tem certeza que deseja excluir este registro?',
+//      'Exclusï¿½o de registro', MB_ICONQUESTION or MB_YESNO or MB_DEFBUTTON2) =  IDYES then
+//    begin
+//      FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
+//      try
+//        dsPadrao.DataSet.Delete;
+//
+//        if (dsPadrao.DataSet is TClientDataSet) then
+//          TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0);
+//
+//        dsPadrao.OnStateChange(dsPadrao);
+//        GetConnection.CommitFreeAndNil(FTransacao);
+//      except
+//        on e: Exception do
+//          GetConnection.RollbackFreeAndNil(FTransacao);
+//      end;
+//    end;
+//  end;
 end;
 
 procedure TfrmPadrao.dsPadraoStateChange(Sender: TObject);
@@ -368,31 +367,31 @@ begin
 
   Novo := (dsPadrao.State = dsInsert);
 
-  FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
-  try
-    if dsPadrao.DataSet.State in [dsInsert, dsEdit] then
-    begin
-      dsPadrao.DataSet.Post;
-      if (dsPadrao.DataSet is TClientDataSet) then
-      begin
-        if (TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0) = 0) and Novo then
-        begin
-          dsPadrao.DataSet.DisableControls;
-          dsPadrao.DataSet.Close;
-          dsPadrao.DataSet.Open;
-
-          if not dsPadrao.DataSet.IsEmpty then
-            dsPadrao.DataSet.Last;
-
-          dsPadrao.DataSet.EnableControls;
-        end;
-      end;
-      GetConnection.CommitFreeAndNil(FTransacao);
-    end;
-  except
-    on e: Exception do
-     GetConnection.RollbackFreeAndNil(FTransacao);
-  end;
+//  FTransacao := GetConnection.BeginTransaction(TDBXIsolations.ReadCommitted);
+//  try
+//    if dsPadrao.DataSet.State in [dsInsert, dsEdit] then
+//    begin
+//      dsPadrao.DataSet.Post;
+//      if (dsPadrao.DataSet is TClientDataSet) then
+//      begin
+//        if (TClientDataSet(dsPadrao.DataSet).ApplyUpdates(0) = 0) and Novo then
+//        begin
+//          dsPadrao.DataSet.DisableControls;
+//          dsPadrao.DataSet.Close;
+//          dsPadrao.DataSet.Open;
+//
+//          if not dsPadrao.DataSet.IsEmpty then
+//            dsPadrao.DataSet.Last;
+//
+//          dsPadrao.DataSet.EnableControls;
+//        end;
+//      end;
+//      GetConnection.CommitFreeAndNil(FTransacao);
+//    end;
+//  except
+//    on e: Exception do
+//     GetConnection.RollbackFreeAndNil(FTransacao);
+//  end;
 
   DepoisSalvar;
 end;
@@ -406,19 +405,9 @@ begin
     (DisplayLabels = '') or
     (ComandoSQLPadrao = '')) then
     raise
-      Exception.Create('Erro ao executar pesquisa, verifique os parâmetros.');
+      Exception.Create('Erro ao executar pesquisa, verifique os parï¿½metros.');
       
   Pesquisa('Pesquisa ' + Caption, Cds, FieldNames, DisplayLabels, TableName);
-end;
-
-procedure TfrmPadrao.actPrintPersonExecute(Sender: TObject);
-begin
-  if ((TableName = '') or (TabelanaoExiste(TableName)) or  (aCaption = '')) then
-    raise
-      Exception.Create('Erro ao executar o relatório padrão, verifique os parâmetros.');
-  if TfrmGeraRelatorio.Execute(aCaption, TableName, GetConnection) then
-  begin
-  end;
 end;
 
 procedure TfrmPadrao.AntesSalvar;
@@ -527,14 +516,14 @@ end;
 function TfrmPadrao.TabelaNaoExiste(Tabela: string): Boolean;
 var List: TStrings;
 begin
-  List := TStringList.Create;
-  try
-    GetConnection.GetTableNames(List);
-
-    Result := List.IndexOf(Trim(AnsiUpperCase(Tabela))) < 0;
-  finally
-    FreeAndNil(List);
-  end;
+//  List := TStringList.Create;
+//  try
+//    GetConnection.GetTableNames(List);
+//
+//    Result := List.IndexOf(Trim(AnsiUpperCase(Tabela))) < 0;
+//  finally
+//    FreeAndNil(List);
+//  end;
 end;
 
 procedure TfrmPadrao.FormKeyDown(Sender: TObject; var Key: Word;
@@ -573,9 +562,9 @@ begin
   begin
     if dsPadrao.DataSet.IsEmpty then
     begin
-      if MessageDlgCheck('Não existe nenhum registro cadastrado nesta tela.' +
+      if MessageDlgCheck('Nï¿½o existe nenhum registro cadastrado nesta tela.' +
         #13 + 'Deseja cadastrar agora?', mtConfirmation, [mbYes, mbNo], -1, mrOk,
-          True, True, 'Não exibir novamente esta mensagem.', @ConfigMsgEmptyTable) = ID_YES then
+          True, True, 'Nï¿½o exibir novamente esta mensagem.', @ConfigMsgEmptyTable) = ID_YES then
         actInsert.Execute;
     end;
   end;

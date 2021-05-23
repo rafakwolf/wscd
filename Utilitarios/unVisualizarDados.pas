@@ -66,8 +66,6 @@ type
     procedure ckFilterClick(Sender: TObject);
     procedure cdsDadosBeforeOpen(DataSet: TDataSet);
     procedure cdsDadosAfterDelete(DataSet: TDataSet);
-    procedure btnPrintClick(Sender: TObject);
-    procedure dbgrdDadosTitleClick(Column: TColumn);
   private
     procedure CarregaTabelas;
     procedure HabilitaBotoes(e: Boolean);
@@ -94,7 +92,7 @@ var
 
 implementation
 
-uses unCommandoSQL, Funcoes, unGeraRelatorio;
+uses unCommandoSQL, Funcoes;
 
 {$R *.dfm}
 
@@ -547,17 +545,6 @@ begin
   for i := 0 to dbgrdDados.Columns.Count -1 do
     if dbgrdDados.Columns[i].Width > 300 then
       dbgrdDados.Columns[i].Width := 300;
-end;
-
-procedure TfrmVisualizarDados.btnPrintClick(Sender: TObject);
-begin
-  TfrmGeraRelatorio.Execute(Caption,cbbTabela.Items[cbbTabela.ItemIndex],sqldDados.SQLConnection);
-end;
-
-procedure TfrmVisualizarDados.dbgrdDadosTitleClick(Column: TColumn);
-begin
-//  if cdsDados.Active then
-//    //OrdenaColunasGrid(dbgrdDados,Column,cdsDados);
 end;
 
 initialization

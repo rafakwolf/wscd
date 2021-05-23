@@ -4,14 +4,12 @@ uses
   Vcl.Forms,
   Vcl.Controls,
   uClasses in 'Util\uClasses.pas',
-  uNotifyEventDispatcher in 'Util\uNotifyEventDispatcher.pas',
   unDmPrincipal in 'Principal\unDmPrincipal.pas' {DmPrincipal: TDataModule},
   unPrincipal in 'Principal\unPrincipal.pas' {frmPrincipal},
   ufmImprimeEtiq in 'Padrao\ufmImprimeEtiq.pas' {frmImprimeEtiq},
   unDialogoRelatorioPadrao in 'Padrao\unDialogoRelatorioPadrao.pas' {frmDialogoRelatorioPadrao},
   unExecutaScript in 'Padrao\unExecutaScript.pas' {frmExecutaScript},
   unFiltroSimples in 'Padrao\unFiltroSimples.pas' {frmFiltroSimples},
-  unGeraRelatorio in 'Padrao\unGeraRelatorio.pas' {frmGeraRelatorio},
   unModeloConsulta in 'Padrao\unModeloConsulta.pas' {frmModeloConsulta},
   unModeloEnvelope in 'Padrao\unModeloEnvelope.pas' {frmModeloEnvelope},
   unModeloRelatorio in 'Padrao\unModeloRelatorio.pas' {frmModeloRelatorio},
@@ -19,23 +17,6 @@ uses
   unPadrao in 'Padrao\unPadrao.pas' {frmPadrao},
   unSimplePadrao in 'Padrao\unSimplePadrao.pas' {frmSimplePadrao},
   unAgenda in 'Utilitarios\unAgenda.pas' {frmAgenda},
-  unBackup in 'Utilitarios\unBackup.pas' {frmBackup},
-  unCalendario in 'Utilitarios\unCalendario.pas' {frmCalendario},
-  unConfiguraDuplicata in 'Utilitarios\unConfiguraDuplicata.pas' {frmConfiguraDuplicata},
-  unDuplicatas in 'Utilitarios\unDuplicatas.pas' {frmDuplicatas},
-  unEnvelopes in 'Utilitarios\unEnvelopes.pas' {frmEnvelopes},
-  unImprimeRecibo in 'Utilitarios\unImprimeRecibo.pas' {frmImprimeRecibo},
-  unPesqFone in 'Utilitarios\unPesqFone.pas' {frmPesqFone},
-  unPromissoria in 'Utilitarios\unPromissoria.pas' {frmPromissoria},
-  unRecibo in 'Utilitarios\unRecibo.pas' {frmRecibo},
-  unRepararIndice in 'Utilitarios\unRepararIndice.pas' {frmRepararIndice},
-  unRestore in 'Utilitarios\unRestore.pas' {frmRestore},
-  unVisualizarDados in 'Utilitarios\unVisualizarDados.pas' {frmVisualizarDados},
-  unPrevDuplicata in 'Utilitarios\Relatorios\Prev\unPrevDuplicata.pas' {frmPrevDuplicata},
-  unPrevDuplicataSemForm in 'Utilitarios\Relatorios\Prev\unPrevDuplicataSemForm.pas' {frmPrevDuplicataSemForm},
-  unPrevEnvelPerson in 'Utilitarios\Relatorios\Prev\unPrevEnvelPerson.pas' {frmPrevEnvelPerson},
-  unPrevPromissoria in 'Utilitarios\Relatorios\Prev\unPrevPromissoria.pas' {frmPrevPromissoria},
-  unPrevRecibo in 'Utilitarios\Relatorios\Prev\unPrevRecibo.pas' {frmPrevRecibo},
   unPrevRelAgenda in 'Utilitarios\Relatorios\Prev\unPrevRelAgenda.pas' {frmPrevRelAgenda},
   unRelatorioAgenda in 'Utilitarios\Relatorios\unRelatorioAgenda.pas' {frmRelatorioAgenda},
   unTrocaSenha in 'Sair\unTrocaSenha.pas' {frmTrocaSenha},
@@ -161,8 +142,6 @@ uses
   unRelatorioProdutoGrupo in 'Cadastros\Relatorios\unRelatorioProdutoGrupo.pas' {frmRelatorioProdutoGrupo},
   unRelatorioProdutosEstoque in 'Cadastros\Relatorios\unRelatorioProdutosEstoque.pas' {frmRelatorioProdutosEstoque},
   unRelatorioProdutoVencimento in 'Cadastros\Relatorios\unRelatorioProdutoVencimento.pas' {frmRelatorioProdutoVencimento},
-  unDicas in 'Ajuda\unDicas.pas' {frmDicas},
-  unSobre in 'Ajuda\unSobre.pas' {frmSobre},
   uDmPesquisar in 'Padrao\uDmPesquisar.pas' {DmPesquisar: TDataModule},
   udmGeralBase in 'Padrao\udmGeralBase.pas' {dmGeralBase: TDataModule},
   udmAcesso in 'Comuns\Dm\udmAcesso.pas' {dmAcesso: TDataModule},
@@ -177,28 +156,38 @@ uses
   ImgUtils in 'Util\ImgUtils.pas',
   uDatabaseUtils in 'Util\uDatabaseUtils.pas',
   crypto in 'Util\crypto.pas',
-  ClassesGerador in 'Util\ClassesGerador.pas',
   uConfiguraRelatorio in 'Util\uConfiguraRelatorio.pas',
   Extensos in 'Util\Extensos.pas',
   uCheque in 'Util\uCheque.pas',
-  uClassesMenu in 'Util\uClassesMenu.pas';
+  Routes in 'Routes.pas',
+  udmUser in 'Configuracoes\udmUser.pas' {dmUser: TDataModule},
+  BaseRepo in 'Padrao\BaseRepo.pas',
+  User in 'Configuracoes\user\User.pas',
+  Banco in 'Configuracoes\banco\Banco.pas',
+  ContaCaixa in 'Configuracoes\ContaCaixa\ContaCaixa.pas',
+  GrupoProduto in 'Configuracoes\grupo\GrupoProduto.pas',
+  Agenda in 'Utilitarios\Agenda\Agenda.pas',
+  Perfil in 'Configuracoes\user\Perfil.pas',
+  Vendedor in 'Configuracoes\Vendedor\Vendedor.pas',
+  Cliente in 'Cadastros\Cliente\Cliente.pas',
+  Cidades in 'Utilitarios\Cidades\Cidades.pas',
+  Fornecedor in 'Cadastros\Fornecedor\Fornecedor.pas',
+  ContasPagar in 'Movimentos\ContasPagar\ContasPagar.pas',
+  ContasReceber in 'Movimentos\ContasReceber\ContasReceber.pas',
+  Caixa in 'Movimentos\Caixa\Caixa.pas',
+  BancoRoutes in 'Configuracoes\banco\BancoRoutes.pas',
+  BaseController in 'Padrao\BaseController.pas',
+  ContaCaixaRoutes in 'Configuracoes\ContaCaixa\ContaCaixaRoutes.pas',
+  GrupoProdutoRoutes in 'Configuracoes\grupo\GrupoProdutoRoutes.pas';
 
+{$APPTYPE CONSOLE}
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDmPrincipal, DmPrincipal);
-  Application.CreateForm(TDmPesquisar, DmPesquisar);
-  Application.CreateForm(TdmBase, dmBase);
-  frmAcesso := TfrmAcesso.Create(Application);
-  if frmAcesso.ShowModal = mrOk then
-  begin
+  Application.CreateForm(TdmUser, dmUser);
+  StartApp;
 
-    Application.CreateForm(TfrmPrincipal, frmPrincipal);
-    Application.Run;
-  end
-  else
-    Application.Terminate;
-
+  Application.Run;
 end.

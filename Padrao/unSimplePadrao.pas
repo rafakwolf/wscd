@@ -32,14 +32,14 @@ end;
 procedure TfrmSimplePadrao.FormCreate(Sender: TObject);
 var x: Integer;
 begin
-  for x := 0 to ComponentCount - 1 do
-  begin
-    if Components[x] is TCustomSQLDataSet then
-    begin
-      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
-    end;
-  end;
+//  for x := 0 to ComponentCount - 1 do
+//  begin
+//    if Components[x] is TCustomSQLDataSet then
+//    begin
+//      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
+//        TCustomSQLDataSet(Components[x]).//SQLConnection := GetConnection;
+//    end;
+//  end;
 end;
 
 procedure TfrmSimplePadrao.FormKeyDown(Sender: TObject; var Key: Word;

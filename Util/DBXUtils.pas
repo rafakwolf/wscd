@@ -496,42 +496,6 @@ function GetUpdateSet(AConnection: TSQLConnection; const AFields, ATable: string
   AWhere: string = ''; AParams: TParams = nil; AFreeParams: Boolean = True): TClientDataSet; overload;
 
 ///  <summary>
-///  Create a <c>TParam</c> with the specified values
-///  </summary>
-///  <remarks>
-///  This object will need to be freed in the client code, or with its parent <c>TParams</c>
-///  </remarks>
-///  <param name="AName">Name of the parameter to create</param>
-///  <param name="ADataType"><c>TFieldType</c> to use as the DataType for the
-///  <c>TParam</c></param>
-///  <param name="AValue">Value to assign to the <c>TParam</c></param>
-///  <param name="AParamType">Optional <c>TParamType</c> for the <c>TParam</c>.
-///  Defaults to <c>ptInput</c></param>
-///  <param name="ASize">Optional <c>Integer</c> to use as the Size. Defaults to 0,
-///  but it must be set for some data types.</param>
-///  <returns>The initialized <c>TParam</c></returns>
-function MakeParam(const AName: string; ADataType: TFieldType; AValue: Variant;
-  AParamType: TParamType = ptInput; ASize: Integer = 0): TParam;
-
-///  <summary>
-///  Creates a <c>TParams</c> and adds one initialized <c>TParam</c> to it
-///  </summary>
-///  <remarks>
-///  This object will need to be freed in the client code
-///  </remarks>
-///  <param name="AName">Name of the parameter to create</param>
-///  <param name="ADataType"><c>TFieldType</c> to use as the DataType for the
-///  <c>TParam</c></param>
-///  <param name="AValue">Value to assign to the <c>TParam</c></param>
-///  <param name="AParamType">Optional <c>TParamType</c> for the <c>TParam</c>.
-///  Defaults to <c>ptInput</c></param>
-///  <param name="ASize">Optional <c>Integer</c> to use as the Size. Defaults to 0,
-///  but it must be set for some data types.</param>
-///  <returns>The initialized <c>TParams</c> collection</returns>
-function MakeParamList(const AName: string; ADataType: TFieldType; AValue: Variant;
-  AParamType: TParamType = ptInput; ASize: Integer = 0): TParams; overload;
-
-///  <summary>
 ///  Creates a <c>TParams</c> and adds one initialized <c>TParam</c> to it
 ///  </summary>
 ///  <remarks>
@@ -1897,29 +1861,6 @@ begin
     FreeAndNil(lDataSet);
     FreeAndNil(lProv);
   end;
-end;
-
-function MakeParam(const AName: string; ADataType: TFieldType; AValue: Variant;
-  AParamType: TParamType = ptInput; ASize: Integer = 0): TParam;
-begin
-  Result := TParam.Create(nil);
-  Result.Name := AName;
-  Result.DataType := ADataType;
-  Result.ParamType := AParamType;
-  Result.Size := ASize;
-  if ((ADataType in [ftString, ftWideString, ftMemo]) and (ASize > 0) and (Length(AValue) > ASize)) then
-    AValue := Copy(AValue, 1, ASize);
-  if (ADataType = ftMemo) and (AValue <> '') then
-    Result.AsBlob := TEncoding.Default.GetBytes(AValue)
-  else
-    Result.Value := AValue;
-end;
-
-function MakeParamList(const AName: string; ADataType: TFieldType; AValue: Variant;
-  AParamType: TParamType = ptInput; ASize: Integer = 0): TParams;
-begin
-  Result := TParams.Create();
-  Result.AddParam(MakeParam(AName, ADataType, AValue, AParamType, ASize));
 end;
 
 function MakeParamList(AParams: array of TParam): TParams;

@@ -32,7 +32,7 @@ var
 implementation
 
 uses
-  Funcoes,   uNotifyEventDispatcher, Vcl.DBCtrls;
+  Funcoes, Vcl.DBCtrls;
 
 {$R *.dfm}
 

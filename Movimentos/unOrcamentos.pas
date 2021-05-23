@@ -1,4 +1,4 @@
-unit unOrcamentos;
+ï»¿unit unOrcamentos;
 
 interface
 
@@ -334,11 +334,11 @@ var
   Codigo: String;
 begin
   Codigo := '0';
-  if InputQuery('Localiza por número', 'Número do orçamento:', Codigo) and (Codigo <> '0') then
+  if InputQuery('Localiza por nï¿½mero', 'Nï¿½mero do orï¿½amento:', Codigo) and (Codigo <> '0') then
   begin
     cdsOrcam.IndexFieldNames := 'CODIGO';
     if not cdsOrcam.Locate('CODIGO', Codigo, []) then
-      MsgAviso(Codigo+' não encontrado.');
+      MsgAviso(Codigo+' nï¿½o encontrado.');
   end;
 end;
 
@@ -388,9 +388,9 @@ begin
       begin
         frmAguarde.Fecha;
         if MsgSN('Existe(m) ' + IntToStr(NroOrcamentoAberto) +
-          ' Orçamentos(s), não concluído(s). '+
+          ' Orï¿½amentos(s), nï¿½o concluï¿½do(s). '+
           'Por favor verifique, pois estes podem impedir ' +
-          'a importação dos mesmos para vendas.'+#13#10+'Exibir somente orçamentos NÃO concluídos agora?') then
+          'a importaï¿½ï¿½o dos mesmos para vendas.'+#13#10+'Exibir somente orï¿½amentos Nï¿½O concluï¿½dos agora?') then
         begin
           cdsOrcam.Filtered := False;
           cdsOrcam.Filter := 'CONCLUIDO = '+QuotedStr('N');
@@ -428,9 +428,9 @@ begin
       //Salvar(cdsOrcam)
       cdsOrcam.ApplyUpdates(0)
     else
-      MsgCuidado('Orçamento incompleto.');
+      MsgCuidado('Orï¿½amento incompleto.');
   except
-    raise Exception.Create('Erro ao salvar orçamento.');
+    raise Exception.Create('Erro ao salvar orï¿½amento.');
   end;
 end;
 
@@ -467,7 +467,7 @@ begin
 
   if cdsOrcamCONCLUIDO.AsString = 'S' then
   begin
-    MsgAviso('Não é possível efetuar descontos em um orçamento já concluído.');
+    MsgAviso('Nï¿½o ï¿½ possï¿½vel efetuar descontos em um orï¿½amento jï¿½ concluï¿½do.');
     Exit;
   end;
 
@@ -514,7 +514,7 @@ end;
 
 procedure TfrmOrcamentos.miRelOrcamClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioOrcamentoData', 'Orçamentos por data', Self);
+  ChamaForm('TfrmRelatorioOrcamentoData', 'Orï¿½amentos por data', Self);
 end;
 
 procedure TfrmOrcamentos.FormKeyDown(Sender: TObject; var Key: Word;
@@ -528,15 +528,15 @@ end;
 
 procedure TfrmOrcamentos.miConcluirClick(Sender: TObject);
 begin
-  if MsgSN('Concluir este orçamento?') then
+  if MsgSN('Concluir este orï¿½amento?') then
   begin
     cdsOrcam.Edit;
     cdsOrcamCONCLUIDO.AsString := 'S';
     cdsOrcam.ApplyUpdates(0);
-    MsgAviso('Orçamento concluído com sucesso!');
+    MsgAviso('Orï¿½amento concluï¿½do com sucesso!');
   end;
-  { se houver só um orçamento não concluído quando ele for concluído o dataset
-    ficará vazio, então limpamos os filtros pra evitar isso }
+  { se houver sï¿½ um orï¿½amento nï¿½o concluï¿½do quando ele for concluï¿½do o dataset
+    ficarï¿½ vazio, entï¿½o limpamos os filtros pra evitar isso }
   if cdsOrcam.IsEmpty then
     miLimpaFiltro.Click;
 end;
@@ -546,7 +546,7 @@ begin
   if cdsOrcamCONCLUIDO.AsString = 'S' then
   begin
     if not Configuracao.EditarOrcam then
-      MsgAviso('Sem premissão para editar este orçamento.')
+      MsgAviso('Sem premissï¿½o para editar este orï¿½amento.')
     else
       cdsOrcam.Edit;
   end
@@ -564,16 +564,16 @@ procedure TfrmOrcamentos.InsereProduto;
 
   function DescontoPromocao(IdProduto: Integer): Extended;
   begin
-    Result :=
-      SelectSingleField('select DESCONTO from PROMOCAO where PRODUTO = '+
-        QuotedStr(IntToStr(IdProduto)), sqlOrcam.SQLConnection);
+//    Result :=
+//      SelectSingleField('select DESCONTO from PROMOCAO where PRODUTO = '+
+//        QuotedStr(IntToStr(IdProduto)), sqlOrcam.SQLConnection);
   end;
 
   function PrecoPromocao(IdProduto: Integer): Extended;
   begin
-    Result :=
-      SelectSingleField('select PRECO from PROMOCAO where PRODUTO = '+
-        QuotedStr(IntToStr(IdProduto)), sqlOrcam.SQLConnection);
+//    Result :=
+//      SelectSingleField('select PRECO from PROMOCAO where PRODUTO = '+
+//        QuotedStr(IntToStr(IdProduto)), sqlOrcam.SQLConnection);
   end;
 
 begin
@@ -623,7 +623,7 @@ begin
             InsereProduto
           else
           begin
-            MsgErro('Produto com estoque mínimo, não é possível inseri-lo.');
+            MsgErro('Produto com estoque mï¿½nimo, nï¿½o ï¿½ possï¿½vel inseri-lo.');
             Abort;
           end;
         end
@@ -660,7 +660,7 @@ begin
     end
     else
     begin
-      MsgAviso('Selecione um Produto, para depois inserí-lo.');
+      MsgAviso('Selecione um Produto, para depois inserï¿½-lo.');
       Exit;
     end;
   end;
@@ -698,14 +698,14 @@ end;
 procedure TfrmOrcamentos.FormCreate(Sender: TObject);
 var x: Integer;
 begin
-  for x := 0 to ComponentCount - 1 do
-  begin
-    if Components[x] is TCustomSQLDataSet then
-    begin
-      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
-    end;
-  end;
+//  for x := 0 to ComponentCount - 1 do
+//  begin
+//    if Components[x] is TCustomSQLDataSet then
+//    begin
+//      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
+//        TCustomSQLDataSet(Components[x]).//SQLConnection := GetConnection;
+//    end;
+//  end;
 
   ClientHeight := 570;
   ClientWidth  := 785;
@@ -853,7 +853,7 @@ procedure TfrmOrcamentos.Oramentoembobina1Click(Sender: TObject);
 begin
   frmRelatorioBobinaOrcam := TfrmRelatorioBobinaOrcam.Create(Self);
   frmRelatorioBobinaOrcam.IdOrcamento := cdsOrcamCODIGO.AsInteger;
-  frmRelatorioBobinaOrcam.Caption := 'Orçamento em bobina';
+  frmRelatorioBobinaOrcam.Caption := 'Orï¿½amento em bobina';
   frmRelatorioBobinaOrcam.ShowModal;
 end;
 
@@ -888,16 +888,16 @@ begin
 
   if cdsOrcamCONCLUIDO.AsString = 'N' then
   begin
-    MsgAviso('Orçamento não concluído.');
+    MsgAviso('Orï¿½amento nï¿½o concluï¿½do.');
     Exit;
   end;
 
-  if MsgSN('Reabrir este orçamento?') then
+  if MsgSN('Reabrir este orï¿½amento?') then
   begin
     cdsOrcam.Edit;
     cdsOrcamCONCLUIDO.AsString := 'N';
     cdsOrcam.ApplyUpdates(0);
-    MsgAviso('Orçamento reaberto com sucesso!');
+    MsgAviso('Orï¿½amento reaberto com sucesso!');
   end;
 end;
 

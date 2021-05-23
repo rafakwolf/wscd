@@ -1,5 +1,12 @@
 object dmGeralBase: TdmGeralBase
   OldCreateOrder = False
-  Height = 150
-  Width = 215
+  OnCreate = DataModuleCreate
+  Height = 285
+  Width = 378
+  object zqDefault: TZQuery
+    Connection = DmPrincipal.dbConn
+    Params = <>
+    Left = 96
+    Top = 112
+  end
 end

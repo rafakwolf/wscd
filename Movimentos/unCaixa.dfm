@@ -6120,7 +6120,6 @@ inherited frmCaixa: TfrmCaixa
       end
       object miRelPersonalCaixa: TMenuItem
         Caption = 'Assistente de relat'#243'rio'
-        OnClick = miRelPersonalCaixaClick
       end
     end
   end

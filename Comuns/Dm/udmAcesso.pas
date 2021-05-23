@@ -3,7 +3,8 @@ unit udmAcesso;
 interface
 
 uses
-  System.SysUtils, System.Classes, udmGeralBase, Data.SqlExpr, Datasnap.DBClient;
+  System.SysUtils, System.Classes, udmGeralBase, Data.SqlExpr, Datasnap.DBClient,
+  Data.DB, ZAbstractRODataset, ZAbstractDataset, ZDataset;
 
 type
   TdmAcesso = class(TdmGeralBase)
@@ -25,23 +26,23 @@ uses DBXUtils;
 
 function TdmAcesso.GetListaAcesso(IdUsuario: Integer): TClientDataSet;
 begin
-  Result := GetClientDataSet(GetConnection,
-    'SELECT a.IDUSUARIOS, a.IDMENU, m.MENUITEM '+
-    'FROM USUARIOSMENU a '+
-    'join MENU m on (m.IDMENU = a.IDMENU) '+
-    'where a.IDUSUARIOS = '+IntToStr(IdUsuario));
+//  Result := GetClientDataSet(GetConnection,
+//    'SELECT a.IDUSUARIOS, a.IDMENU, m.MENUITEM '+
+//    'FROM USUARIOSMENU a '+
+//    'join MENU m on (m.IDMENU = a.IDMENU) '+
+//    'where a.IDUSUARIOS = '+IntToStr(IdUsuario));
 end;
 
 function TdmAcesso.UsuarioExiste(login: string): Boolean;
 begin
-  Result := GetCount(GetConnection,'USUARIOS','LOGIN like '+QuotedStr(login)) > 0;
+//  Result := GetCount(GetConnection,'USUARIOS','LOGIN like '+QuotedStr(login)) > 0;
 end;
 
 function TdmAcesso.ValidaLogin(login, senha: string): TClientDataSet;
 begin
-  Result := GetClientDataSet(GetConnection,
-    'SELECT a.IDUSUARIOS, a.NOME, a.LOGIN, a.SENHA FROM USUARIOS a '+
-    'where a.LOGIN = '+QuotedStr(login)+' and a.SENHA = '+QuotedStr(senha));
+//  Result := GetClientDataSet(GetConnection,
+//    'SELECT a.IDUSUARIOS, a.NOME, a.LOGIN, a.SENHA FROM USUARIOS a '+
+//    'where a.LOGIN = '+QuotedStr(login)+' and a.SENHA = '+QuotedStr(senha));
 end;
 
 end.

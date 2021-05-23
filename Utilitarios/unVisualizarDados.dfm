@@ -30,7 +30,6 @@ object frmVisualizarDados: TfrmVisualizarDados
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
-    OnTitleClick = dbgrdDadosTitleClick
   end
   object pnlTop: TPanel
     Left = 0
@@ -1416,7 +1415,6 @@ object frmVisualizarDados: TfrmVisualizarDados
       Layout = blGlyphTop
       NumGlyphs = 2
       Transparent = False
-      OnClick = btnPrintClick
     end
   end
   object sqldTabelas: TSQLDataSet

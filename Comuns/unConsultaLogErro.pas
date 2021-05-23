@@ -82,7 +82,7 @@ begin
   try
     DataI := StrToDate(medtDataI.text);
   except
-    MsgAviso('Data inicial inválida.');
+    MsgAviso('Data inicial invï¿½lida.');
     medtDataI.SetFocus;
     Exit;
   end;
@@ -90,7 +90,7 @@ begin
   try
     DataF := strtodate(medtDataF.text);
   except
-    MsgAviso('Data final inválida.');
+    MsgAviso('Data final invï¿½lida.');
     medtDataF.setFocus;
     exit;
   end;
@@ -119,14 +119,14 @@ begin
 
   if dsLogErro.DataSet.IsEmpty then
   begin
-    MsgAviso('Não existem dados para gerar relatório.');
+    MsgAviso('Nï¿½o existem dados para gerar relatï¿½rio.');
     Exit;
   end;
 
   TfrmAguarde.Execute('Gerando...');
 
   mensagem := TStringList.Create;
-  mensagem.Add('********************RELATÓRIO DE ERROS********************');
+  mensagem.Add('********************RELATï¿½RIO DE ERROS********************');
 
   try
     with dsLogErro.DataSet do
@@ -147,13 +147,13 @@ begin
     end;
 
     sdlgLogErro.InitialDir := ExtractFilePath(ParamStr(0));
-    sdlgLogErro.FileName := 'Relatório de erros.txt';
+    sdlgLogErro.FileName := 'Relatï¿½rio de erros.txt';
     frmAguarde.Fecha;
     if sdlgLogErro.Execute then
     begin
 
       mensagem.SaveToFile(sdlgLogErro.FileName);
-      if MsgSN('Relatório gerado com sucesso, deseja visualizá-lo?') then
+      if MsgSN('Relatï¿½rio gerado com sucesso, deseja visualizï¿½-lo?') then
         ShellExecute(Handle, 'open', PChar(sdlgLogErro.FileName), nil, nil, SW_SHOWMAXIMIZED);
     end;
   finally
@@ -166,11 +166,11 @@ end;
 procedure TfrmConsultaLogErro.btnLimparClick(Sender: TObject);
 begin
   inherited;
-  if not MsgSN('Deseja excluir o histórico de erros do sistema?') then
+  if not MsgSN('Deseja excluir o histï¿½rico de erros do sistema?') then
     Exit;
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText := 'delete from LOGERRO';
     ExecSQL;
     dsLogErro.DataSet.Close;

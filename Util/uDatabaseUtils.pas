@@ -2,34 +2,35 @@ unit uDatabaseUtils;
 
 interface
 
-uses Classes, VarGlobal, sqlexpr, Datasnap.DBClient;
+uses
+  Classes, VarGlobal, ZConnection, Datasnap.DBClient, ZDataset, sqlexpr;
 
-procedure UpdateSingleField(sql: String);
-function SelectSingleField(query: string; conn: TSQLConnection): Variant;
-function GetProximoID(tabela, fieldId: string; conn: TSQLConnection): Integer;
+procedure UpdateSingleField(psql: String);
+function SelectSingleField(query: string; conn: TZConnection): Variant;
+function GetProximoID(tabela, fieldId: string; conn: TZConnection): Integer;
 function SQLFind(tabela, campo, valor: string; conn: TSQLConnection): boolean;
-function GetFieldByID(conn: TSQLConnection; tabela, campoPesquisar,
+function GetFieldByID(conn: TZConnection; tabela, campoPesquisar,
   campoValor: string; valor: integer): Variant;
 function GetSQLFromQuery(cds: TClientDataset): string;
 
 implementation
 
-procedure UpdateSingleField(sql: String);
+procedure UpdateSingleField(psql: String);
 begin
-  with TSQLDataSet.Create(nil)do try
-      SQLConnection:= GetConnection;
-      CommandText:=sql;
+  with TZQuery.Create(nil)do try
+      Connection:= GetConnection;
+      SQL.Text := psql;
       ExecSQL;
   finally
     free;
   end;
 end;
 
-function SelectSingleField(query: string; conn: TSQLConnection): Variant;
+function SelectSingleField(query: string; conn: TZConnection): Variant;
 begin
-  with TSQLDataSet.Create(nil)do try
-      SQLConnection:= GetConnection;
-      CommandText:=query;
+  with TZQuery.Create(nil)do try
+      Connection:= GetConnection;
+      SQL.Text:=query;
       Open;
       Result := Fields[0].Value;
   finally
@@ -37,7 +38,7 @@ begin
   end;
 end;
 
-function GetProximoID(tabela, fieldId: string; conn: TSQLConnection): Integer;
+function GetProximoID(tabela, fieldId: string; conn: TZConnection): Integer;
 begin
   Result := 0; // TODO: implementar
 end;
@@ -47,7 +48,7 @@ begin
   //TODO: implementar
 end;
 
-function GetFieldByID(conn: TSQLConnection; tabela, campoPesquisar, campoValor: string; valor: integer): Variant;
+function GetFieldByID(conn: TZConnection; tabela, campoPesquisar, campoValor: string; valor: integer): Variant;
 begin
   // TODO: Implementar
 end;

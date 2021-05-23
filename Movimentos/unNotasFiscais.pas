@@ -1,4 +1,4 @@
-unit unNotasFiscais;
+ï»¿unit unNotasFiscais;
 
 interface
 
@@ -340,7 +340,7 @@ function TfrmNotasFiscais.CamposNulos: Boolean;
 begin
  // Result := (ValidaFieldsVazios([cdsNFiscaisNUMERO, cdsNFiscaisCODFORNECEDOR,
  //   cdsNFiscaisDATANOTA, cdsNFiscaisDATAENTRADA, cdsNFiscaisOPERACAO],
- //   ['Número', 'Fornecedor', 'Data da nota', 'Data de chegada', 'Operação CFOP']) <> '');
+ //   ['Nï¿½mero', 'Fornecedor', 'Data da nota', 'Data de chegada', 'Operaï¿½ï¿½o CFOP']) <> '');
 end;
 
 function TfrmNotasFiscais.Duplicidade: Boolean;
@@ -352,7 +352,7 @@ begin
     begin
       with TSQLDataSet.Create(nil) do
       try
-        SQLConnection := GetConnection;
+        //SQLConnection := GetConnection;
         CommandText := 'select NUMERO from NOTAS_FISCAIS '+
           'where NUMERO = ' + QuotedStr(Trim(dbeNumero.Text));
         Open;
@@ -363,7 +363,7 @@ begin
     end;
     if Result then
     begin
-      MsgCuidado('Já existe uma nota com este número.');
+      MsgCuidado('Jï¿½ existe uma nota com este nï¿½mero.');
       SetFocusIfCan(dbeNumero);
       Exit;
     end;
@@ -387,7 +387,7 @@ begin
     begin
       with TSQLDataSet.Create(nil) do
       try
-        SQLConnection := GetConnection;
+        //SQLConnection := GetConnection;
         CommandText := 'select count(1) as CONT from NOTAS_FISCAIS '+
           'where concluida = ' + QuotedStr('N');
         Open;
@@ -395,10 +395,10 @@ begin
         begin
           frmAguarde.Fecha;
           if MsgSN('Existe(m) ' + IntToStr(FieldByName('CONT').AsInteger)+
-            ' compra(s) não concluída(s). ' +
-            'Por favor verifique, pois éstas podem causar ' +
-            'inconsistências no banco de dados e no controle do estoque.'+#13#10+
-            'Deseja exibir somente as não concluídas agora?') then
+            ' compra(s) nï¿½o concluï¿½da(s). ' +
+            'Por favor verifique, pois ï¿½stas podem causar ' +
+            'inconsistï¿½ncias no banco de dados e no controle do estoque.'+#13#10+
+            'Deseja exibir somente as nï¿½o concluï¿½das agora?') then
             miCompraNaoConc.Click;
         end;
       finally
@@ -414,22 +414,22 @@ end;
 procedure TfrmNotasFiscais.btnExcluirClick(Sender: TObject);
 begin
   if cdsNFiscais.IsEmpty then Exit;
-  if MsgSN('Deseja realmente excluir ésta compra?') then
+  if MsgSN('Deseja realmente excluir ï¿½sta compra?') then
   begin
     // deleta itens da nota
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'delete from ITEMNOTAFISCAL where NUMERO = :PNUMERO';
       Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
       ExecSQL;
     finally
       Free;
     end;
-    // deleta cabeçalho da nota
+    // deleta cabeï¿½alho da nota
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'delete from NOTAS_FISCAIS where NUMERO = :PNUMERO';
       Params.ParamByName('PNUMERO').AsInteger := cdsNFiscaisNUMERO.AsInteger;
       ExecSQL;
@@ -483,7 +483,7 @@ procedure TfrmNotasFiscais.btnInserirClick(Sender: TObject);
 begin
   if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, sqlNFiscais.SQLConnection) then
   begin
-    MsgCuidado('Já existe uma nota com este número.');
+    MsgCuidado('Jï¿½ existe uma nota com este nï¿½mero.');
     SetFocusIfCan(dbeNumero);
     Exit;
   end;
@@ -505,7 +505,7 @@ begin
     LimpaEdits;
     SetFocusIfCan(dbProduto);
 
-//    if MsgSN('Inserir novo ítem?') then
+//    if MsgSN('Inserir novo ï¿½tem?') then
 //      dbProduto.OnClickButton(Sender);
   end;
 end;
@@ -555,7 +555,7 @@ begin
   if cdsNFiscaisCONCLUIDA.AsString = 'S' then
   begin
     if not Configuracao.EditarCompra then
-      MsgAviso('Compra concluída e sem permissão para editar.')
+      MsgAviso('Compra concluï¿½da e sem permissï¿½o para editar.')
     else
       cdsNFiscais.Edit;
   end
@@ -568,11 +568,11 @@ var
   Numero: String;
 begin
   Numero := '0';
-  if InputQuery('Localizar por número', 'Número da compra:', Numero) and (Numero <> '0') then
+  if InputQuery('Localizar por nï¿½mero', 'Nï¿½mero da compra:', Numero) and (Numero <> '0') then
   begin
     cdsNFiscais.IndexFieldNames := 'NUMERO';
     if not cdsNFiscais.Locate('NUMERO', Numero, []) then
-      MsgAviso(Numero + ' não encontrado');
+      MsgAviso(Numero + ' nï¿½o encontrado');
   end;
 end;
 
@@ -668,24 +668,24 @@ begin
 
   if cdsNFiscaisCONCLUIDA.AsString = 'N' then
   begin
-    MsgAviso('Compra não concluída.');
+    MsgAviso('Compra nï¿½o concluï¿½da.');
     Exit;
   end;
 
-  if MsgSN('Deseja realmente estornar ésta compra?'+#13#10+
-    'Ésta ação irá voltar apenas alterações da quantidade de estoque e transações financeiras,'+#13#10+
-    'o restante dos dados dos produtos não serão estornados. Continua?') then
+  if MsgSN('Deseja realmente estornar ï¿½sta compra?'+#13#10+
+    'ï¿½sta aï¿½ï¿½o irï¿½ voltar apenas alteraï¿½ï¿½es da quantidade de estoque e transaï¿½ï¿½es financeiras,'+#13#10+
+    'o restante dos dados dos produtos nï¿½o serï¿½o estornados. Continua?') then
     Estornar;
 end;
 
 procedure TfrmNotasFiscais.miRelDatasClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCompraData', 'Relatório de Compras por Data', Self);
+  ChamaForm('TfrmRelatorioCompraData', 'Relatï¿½rio de Compras por Data', Self);
 end;
 
 procedure TfrmNotasFiscais.miRelFornClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCompraFornecedor', 'Relatório de Compras', Self);
+  ChamaForm('TfrmRelatorioCompraFornecedor', 'Relatï¿½rio de Compras', Self);
 end;
 
 procedure TfrmNotasFiscais.FormCloseQuery(Sender: TObject;
@@ -696,7 +696,7 @@ end;
 
 procedure TfrmNotasFiscais.miCompraNaoConcClick(Sender: TObject);
 begin
-  ChamaForm('TfrmCompNaoConc', 'Compras não concluídas', Self);
+  ChamaForm('TfrmCompNaoConc', 'Compras nï¿½o concluï¿½das', Self);
 end;
 
 function TfrmNotasFiscais.ValoresProduto: Boolean;
@@ -768,7 +768,7 @@ begin
   begin
     cdsSelecaoVENDA.AsFloat := ((cdsSelecaoCUSTO.AsFloat * cdsSelecaoLUCRO.AsFloat / 100) + cdsSelecaoCUSTO.AsFloat);
 
-    if MsgSN('Preço de venda R$ ' + FormatFloat('#,##0.00', cdsSelecaoVENDA.AsFloat) + '. Confirma?') then
+    if MsgSN('Preï¿½o de venda R$ ' + FormatFloat('#,##0.00', cdsSelecaoVENDA.AsFloat) + '. Confirma?') then
       SetFocusIfCan(dbVenda);
   end;
 end;
@@ -786,14 +786,14 @@ end;
 procedure TfrmNotasFiscais.FormCreate(Sender: TObject);
 var x: Integer;
 begin
-  for x := 0 to ComponentCount - 1 do
-  begin
-    if Components[x] is TCustomSQLDataSet then
-    begin
-      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
-        TCustomSQLDataSet(Components[x]).SQLConnection := GetConnection;
-    end;
-  end;
+//  for x := 0 to ComponentCount - 1 do
+//  begin
+//    if Components[x] is TCustomSQLDataSet then
+//    begin
+//      if (not Assigned(TCustomSQLDataSet(Components[x]).SQLConnection)) then
+//        TCustomSQLDataSet(Components[x]).//SQLConnection := GetConnection;
+//    end;
+//  end;
 
   ClientHeight := 560;
   ClientWidth  := 810;
@@ -838,7 +838,7 @@ begin
         Params.ParamByName('NUM').AsInteger := cdsNFiscaisNUMERO.AsInteger;
         Open;
       end;
-      Titulo := 'Relatório de Compras';
+      Titulo := 'Relatï¿½rio de Compras';
       PrintIfNotEmptyRL(rrPadrao);
     finally
       cdsPadrao.Close;
@@ -1061,7 +1061,7 @@ begin
      cdsPadrao.Open;
      //lbTitulo.Caption := 'Produtos da Nota: '+IntToStr(cdsNFiscaisNUMERO.AsInteger);
 
-     x := FormRadioButtons('Mostrar lucro e preço de custo, Ocultar lucro e preço de custo', 'Listagem de produtos');
+     x := FormRadioButtons('Mostrar lucro e preï¿½o de custo, Ocultar lucro e preï¿½o de custo', 'Listagem de produtos');
      //lbCusto.Visible        := (x = 0);
      //rldbPrecoCusto.Visible := (x = 0);
      //lbLucro.Visible        := (x = 0);
@@ -1091,7 +1091,7 @@ end;
 procedure TfrmNotasFiscais.cdsNFiscaisNUMEROChange(Sender: TField);
 begin
   if SQLFind('NOTAS_FISCAIS', 'NUMERO', dbeNumero.Text, sqlNFiscais.SQLConnection) then
-    MsgCuidado('Já existe uma nota com este número.');
+    MsgCuidado('Jï¿½ existe uma nota com este nï¿½mero.');
 end;
 
 procedure TfrmNotasFiscais.PagarCompra;
@@ -1100,7 +1100,7 @@ procedure TfrmNotasFiscais.PagarCompra;
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandType := ctStoredProc;
       CommandText := 'STPPAGTOCOMPRA';
       Params.ParamByName('IDCOMPRA').AsInteger  := cdsNFiscaisNUMERO.AsInteger;
@@ -1118,7 +1118,7 @@ procedure TfrmNotasFiscais.PagarCompra;
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
       Params.ParamByName('COMPRA').AsInteger := cdsNFiscaisNUMERO.AsInteger;
       Open;
@@ -1136,7 +1136,7 @@ begin
   begin
 
     FormaPagamento :=
-      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Pré-datado, &4 - Crediário', 'Forma de pagamento');
+      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Prï¿½-datado, &4 - Crediï¿½rio', 'Forma de pagamento');
 
     case FormaPagamento of
       0: {dinheiro}
@@ -1146,13 +1146,13 @@ begin
 
           if RoundTo(ValorDinheiro, 2) > RoundTo(Restante, 2) then
           begin
-            MsgErro('Valor digitado é maior que o resto a pagar, tente novamente.');
+            MsgErro('Valor digitado ï¿½ maior que o resto a pagar, tente novamente.');
             Exit;
           end;
 
           if ValorDinheiro = 0 then
           begin
-            MsgErro('Valor digitado é inválido, tente novamente.');
+            MsgErro('Valor digitado ï¿½ invï¿½lido, tente novamente.');
             Exit;
           end;
 
@@ -1160,7 +1160,7 @@ begin
             'C'+IntToStr(cdsNFiscaisNUMERO.AsInteger), 'D', ValorDinheiro) then
             ConcluirCompra('Dinheiro', ValorDinheiro)
           else
-            MsgAviso('Compra não foi concluída.');
+            MsgAviso('Compra nï¿½o foi concluï¿½da.');
 
         end;
       end;
@@ -1171,7 +1171,7 @@ begin
         frmPagamentoCheque.IdCompra := cdsNFiscaisNUMERO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmCompra;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Compra não foi concluída.');
+          MsgAviso('Compra nï¿½o foi concluï¿½da.');
       end;
       2: {cheque pre-datado}
       begin
@@ -1180,19 +1180,19 @@ begin
         frmPagamentoCheque.IdCompra := cdsNFiscaisNUMERO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmCompra;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Compra não foi concluída.');
+          MsgAviso('Compra nï¿½o foi concluï¿½da.');
       end;
       3: {parcelamento}
       begin
         frmParcelaCompra := TfrmParcelaCompra.Create(Self);
         frmParcelaCompra.IdCompra := cdsNFiscaisNUMERO.AsInteger;
         if frmParcelaCompra.ShowModal <> mrOk then
-          MsgAviso('Compra não foi concluída.');
+          MsgAviso('Compra nï¿½o foi concluï¿½da.');
       end;
     end;
   end
   else
-    MsgAviso('Compra já foi concluída.');
+    MsgAviso('Compra jï¿½ foi concluï¿½da.');
 end;
 
 procedure TfrmNotasFiscais.miCadastraFornClick(Sender: TObject);

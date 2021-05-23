@@ -144,10 +144,10 @@ var
   NomePro: string;
 begin
   inherited;
-  NomePro := GetFieldByID(sqldPadrao.SQLConnection, 'PRODUTOS', 'ABREVIACAO', 'IDPRODUTO',
-    Sender.AsInteger);
-  if NomePro <> '' then
-    cdsPadraoABREVIACAO.AsString := NomePro;
+//  NomePro := GetFieldByID(sqldPadrao.SQLConnection, 'PRODUTOS', 'ABREVIACAO', 'IDPRODUTO',
+//    Sender.AsInteger);
+//  if NomePro <> '' then
+//    cdsPadraoABREVIACAO.AsString := NomePro;
 end;
 
 procedure TfrmPromocao.cdsPadraoDESCONTOChange(Sender: TField);
@@ -195,9 +195,9 @@ procedure TfrmPromocao.AfterShow(var Msg: TMessage);
 
   function PromocoesVencidas: Boolean;
   begin
-    Result :=
-      SelectSingleField('select count(1) from PROMOCAO where FIM < CURRENT_DATE',
-      sqldPadrao.SQLConnection) > 0;
+//    Result :=
+//      SelectSingleField('select count(1) from PROMOCAO where FIM < CURRENT_DATE',
+//      sqldPadrao.SQLConnection) > 0;
   end;
 
 begin

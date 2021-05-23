@@ -2418,7 +2418,6 @@ object frmOrcamentos: TfrmOrcamentos
       'DVENDEDOR = orc.IDVENDEDOR)'#13#10'order by orc.DATA'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 280
     Top = 370
     object sqlOrcamCODIGO: TIntegerField
@@ -2482,7 +2481,6 @@ object frmOrcamentos: TfrmOrcamentos
         ParamType = ptInput
         Size = 4
       end>
-    SQLConnection = DmPrincipal.Conexao
     Left = 280
     Top = 400
     object sqlDetOrcamCODIGO: TIntegerField
@@ -2529,7 +2527,6 @@ object frmOrcamentos: TfrmOrcamentos
       'UTOS p'#13#10'order by p.DESCRICAO'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 496
     Top = 333
     object sqlProdutosIDPRODUTO: TIntegerField
@@ -2640,7 +2637,6 @@ object frmOrcamentos: TfrmOrcamentos
       'LOAT) TOTAL'#13#10'from RDB$DATABASE'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 280
     Top = 296
     object sqldSelecaoPRODUTO: TIntegerField
@@ -2722,7 +2718,6 @@ object frmOrcamentos: TfrmOrcamentos
       'DADE = cid.CODCIDADE)'#13#10'order by cli.NOME'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 496
     Top = 301
     object sqldClienteCODCLIENTE: TIntegerField
@@ -2809,7 +2804,6 @@ object frmOrcamentos: TfrmOrcamentos
     CommandText = 'select '#13#10'  IDVENDEDOR, '#13#10'  VENDEDOR, '#13#10'  ATIVO '#13#10'from VENDEDOR'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 496
     Top = 365
     object sqldVendedorIDVENDEDOR: TIntegerField
@@ -2862,7 +2856,6 @@ object frmOrcamentos: TfrmOrcamentos
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    SQLConnection = DmPrincipal.Conexao
     Left = 208
     Top = 288
   end

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ActnList, StdCtrls, Buttons, ExtCtrls, ComCtrls,
-  Data.SqlExpr,ImgList, Menus,  uClassesMenu,
+  Data.SqlExpr,ImgList, Menus,
   DBClient,Datasnap.Provider, Mask, DBCtrls,
    DBXCommon, ConstPadrao, Funcoes, unPadrao, unDmPrincipal, FMTBcd,
   System.Actions, System.ImageList;
@@ -56,7 +56,6 @@ type
     procedure cdsPadraoSENHAGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
   private
-    ItemsMenu: TPLItemsMenu;
 
     function GetNodeById(pId: Integer): TTreeNode;
     function GetAcesso(TreeNode: TTreeNode): Boolean;
@@ -88,27 +87,27 @@ uses unPrincipal, System.Math;
 
 procedure TfrmUsuarioItemMenu.FormCreate(Sender: TObject);
 
-  function AddTreeNode(PLMenuIndex: Integer): TTreeNode;
-  var
-    ParentNode : TTreeNode;
-    PLItemMenu : TPLItemMenu;
-  begin;
-    PLItemMenu := ItemsMenu[PLMenuIndex];
-    
-    if PLItemMenu.IdParentItemMenu > 0 then
-    begin
-      ParentNode := GetNodeById(PLItemMenu.IdParentItemMenu);
-      Result := tvAcesso.Items.AddChildObject(ParentNode, PLItemMenu.Caption, PLItemMenu);
-    end
-    else
-    begin
-      Result := tvAcesso.Items.AddObject(nil, PLItemMenu.Caption, PLItemMenu);
-    end;  
-  end;
+//  function AddTreeNode(PLMenuIndex: Integer): TTreeNode;
+//  var
+//    ParentNode : TTreeNode;
+//    PLItemMenu : TPLItemMenu;
+//  begin;
+//    PLItemMenu := ItemsMenu[PLMenuIndex];
+//
+//    if PLItemMenu.IdParentItemMenu > 0 then
+//    begin
+//      ParentNode := GetNodeById(PLItemMenu.IdParentItemMenu);
+//      Result := tvAcesso.Items.AddChildObject(ParentNode, PLItemMenu.Caption, PLItemMenu);
+//    end
+//    else
+//    begin
+//      Result := tvAcesso.Items.AddObject(nil, PLItemMenu.Caption, PLItemMenu);
+//    end;
+//  end;
 
 var
   CompMenu : TComponent;
-  MenuItem : TMenuItem;
+  // MenuItem : TMenuItem;
   IsRoot   : Boolean;
 begin
   inherited;
@@ -127,27 +126,27 @@ begin
       CompMenu := frmPrincipal.FindComponent(sqldMenuMENUITEM.AsString);
       IsRoot   := sqldMenuMENUITEM.AsString = 'CPR';
       
-      if (assigned(CompMenu) and (CompMenu is TMenuItem)) or (IsRoot) then
-      begin
-        MenuItem := TMenuItem(CompMenu);
-        SetLength(ItemsMenu, Length(ItemsMenu) + 1);
-        
-        if not IsRoot then
-        begin
-          ItemsMenu[length(ItemsMenu) - 1] := TPLItemMenu.Create(sqldMenuIDMENU.AsInteger,
-            sqldMenuMENUITEM.AsString,
-            StringReplace(MenuItem.Caption, '&','', [rfReplaceAll]),
-            sqldMenuMENUPAI.AsInteger);
-        end
-        else
-        begin
-          ItemsMenu[length(ItemsMenu) - 1] := TPLItemMenu.Create(sqldMenuIDMENU.AsInteger,
-            sqldMenuMENUITEM.AsString, 'CPR Sistema Comercial',
-            sqldMenuMENUPAI.AsInteger);
-        end;    
-
-        AddTreeNode(length(ItemsMenu) - 1);
-      end;
+//      if (assigned(CompMenu) and (CompMenu is TMenuItem)) or (IsRoot) then
+//      begin
+//        MenuItem := TMenuItem(CompMenu);
+//        SetLength(ItemsMenu, Length(ItemsMenu) + 1);
+//
+//        if not IsRoot then
+//        begin
+//          ItemsMenu[length(ItemsMenu) - 1] := TPLItemMenu.Create(sqldMenuIDMENU.AsInteger,
+//            sqldMenuMENUITEM.AsString,
+//            StringReplace(MenuItem.Caption, '&','', [rfReplaceAll]),
+//            sqldMenuMENUPAI.AsInteger);
+//        end
+//        else
+//        begin
+//          ItemsMenu[length(ItemsMenu) - 1] := TPLItemMenu.Create(sqldMenuIDMENU.AsInteger,
+//            sqldMenuMENUITEM.AsString, 'CPR Sistema Comercial',
+//            sqldMenuMENUPAI.AsInteger);
+//        end;
+//
+//        AddTreeNode(length(ItemsMenu) - 1);
+//      end;
 
       Next;
     end;
@@ -170,11 +169,11 @@ begin
   Result := nil;
   for x := 0 to tvAcesso.Items.Count - 1 do
   begin
-    if TPLItemMenu(tvAcesso.Items[x].Data).IdItemMenu = pId then
-    begin
-      Result := tvAcesso.Items[x];
-      Break;
-    end;
+//    if TPLItemMenu(tvAcesso.Items[x].Data).IdItemMenu = pId then
+//    begin
+//      Result := tvAcesso.Items[x];
+//      Break;
+//    end;
   end;
 end;
 
@@ -264,34 +263,34 @@ begin
 
       if Liberado then
       begin
-        if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
-        begin
-          SetAcesso(GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu),
-            True, False, True, False);
-        end;    
+//        if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
+//        begin
+//          SetAcesso(GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu),
+//            True, False, True, False);
+//        end;
       end
       else
       begin
         Marcados := 0;
 
-        if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
-        begin
-          ParentNode := GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu);
-
-          for x := 0 to ParentNode.Count - 1 do
-          begin
-            if GetAcesso(ParentNode.Item[x]) then
-            begin
-              Marcados := 1;
-              Break;
-            end;
-          end;
-
-          if Marcados = 0 then
-          begin
-            SetAcesso(ParentNode, False, False, True, False);
-          end;  
-        end;
+//        if TPLItemMenu(TreeNode.Data).IdParentItemMenu > 0 then
+//        begin
+//          ParentNode := GetNodeById(TPLItemMenu(TreeNode.Data).IdParentItemMenu);
+//
+//          for x := 0 to ParentNode.Count - 1 do
+//          begin
+//            if GetAcesso(ParentNode.Item[x]) then
+//            begin
+//              Marcados := 1;
+//              Break;
+//            end;
+//          end;
+//
+//          if Marcados = 0 then
+//          begin
+//            SetAcesso(ParentNode, False, False, True, False);
+//          end;
+//        end;
       end;
     end;
   end;
@@ -409,10 +408,10 @@ begin
       begin
         if GetAcesso(tvAcesso.Items[x]) then
         begin
-          Close;
-          ParamByName('IDUSUARIOS').AsInteger := cdsPadraoIDUSUARIOS.AsInteger;
-          ParamByName('IDMENU').AsInteger     := TPLItemMenu(tvAcesso.Items[x].Data).IdItemMenu;
-          ExecSQL;
+//          Close;
+//          ParamByName('IDUSUARIOS').AsInteger := cdsPadraoIDUSUARIOS.AsInteger;
+//          ParamByName('IDMENU').AsInteger     := TPLItemMenu(tvAcesso.Items[x].Data).IdItemMenu;
+//          ExecSQL;
         end;
       end;
     end;

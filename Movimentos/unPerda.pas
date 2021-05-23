@@ -62,7 +62,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure actPrintExecute(Sender: TObject);
-    procedure actPrintPersonExecute(Sender: TObject);
   private
   public
   end;
@@ -73,7 +72,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao,  unModeloConsulta, unPrevPerda,
-     uConfiguraRelatorio, unGeraRelatorio, uDatabaseutils;
+     uConfiguraRelatorio, uDatabaseutils;
 
 {$R *.dfm}
 
@@ -137,11 +136,6 @@ begin
   finally
     Free;
   end;
-end;
-
-procedure TfrmPerda.actPrintPersonExecute(Sender: TObject);
-begin
-  TfrmGeraRelatorio.Execute('Perdas', 'VIEWPERDAS', GetConnection);
 end;
 
 initialization

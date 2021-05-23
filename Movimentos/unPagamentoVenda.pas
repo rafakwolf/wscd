@@ -87,17 +87,17 @@ procedure TfrmPagamentoVenda.Status;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
     Params.ParamByName('VENDA').AsInteger := FIdVenda;
     Open;
 
     if (FieldByName('RESTO').AsFloat = 0) then
-      lbStatus.Caption := 'Venda concluída'
+      lbStatus.Caption := 'Venda concluï¿½da'
     else if (FieldByName('RESTO').AsFloat > 0) then
       lbStatus.Caption := 'Restante: R$ '+FormatFloat('#,##0.00', FieldByName('RESTO').AsFloat)
     else
-      lbStatus.Caption := 'Venda não concluída';
+      lbStatus.Caption := 'Venda nï¿½o concluï¿½da';
 
   finally
     Free;

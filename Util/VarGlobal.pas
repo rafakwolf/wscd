@@ -2,9 +2,9 @@ unit VarGlobal;
 
 interface
 
-uses Classes, Data.SqlExpr, unDmPrincipal, uClasses, uDmPesquisar;
+uses Classes, unDmPrincipal, uClasses, uDmPesquisar, ZConnection;
 
-function GetConnection: TSQLConnection;
+function GetConnection: TZConnection; overload;
 function GetDataModule: TDmPrincipal;
 function GetDmPesquisar: TDmPesquisar;
 
@@ -18,9 +18,9 @@ var
 
 implementation
 
-function GetConnection: TSQLConnection;
+function GetConnection: TZConnection;
 begin
-  result := DmPrincipal.Conexao;
+  Result := DmPrincipal.Conexao;
 end;
 
 function GetDataModule: TDmPrincipal;

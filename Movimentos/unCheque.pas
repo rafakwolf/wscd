@@ -135,8 +135,7 @@ implementation
 
 uses
    Funcoes,  ConstPadrao, unModeloConsulta, unPrevCheque,
-   uConfiguraRelatorio, Extensos, VarGlobal, unBaixaCheque,
-   unGeraRelatorio;
+   uConfiguraRelatorio, Extensos, VarGlobal, unBaixaCheque;
 
 {$R *.dfm}
 
@@ -157,7 +156,7 @@ begin
   inherited;
   if not cdsPadraoDATABAIXADO.IsNull then
   begin
-    MsgAviso('Este cheque já foi baixado.');
+    MsgAviso('Este cheque jï¿½ foi baixado.');
     Exit;
   end;
 
@@ -236,7 +235,7 @@ begin
     cdsPadrao.Filtered := False;
     cdsPadrao.Filter := '(DATAEMISSAO < BOMPARA) and (REPASSADO = '+QuotedStr('S')+')';
     cdsPadrao.Filtered := True;
-    //lbTitulo.Caption := 'Cheques pré-datados';
+    //lbTitulo.Caption := 'Cheques prï¿½-datados';
     TextoSoma('Total de emitidos a prazo');
     PrintIfNotEmptyRL(rrPadrao);
   finally
@@ -269,7 +268,7 @@ begin
 
   if ChequeExiste(Sender.AsString) then
   begin
-    MsgCuidado('Cheque já existente.');
+    MsgCuidado('Cheque jï¿½ existente.');
     Sender.Clear;
     Sender.FocusControl;
     Exit;
@@ -277,12 +276,12 @@ begin
 
 //  if not ValidaCMC7(Sender.AsString) then
 //  begin
-//    MsgErro('Banda magnética inválida.');
+//    MsgErro('Banda magnï¿½tica invï¿½lida.');
 //    Sender.FocusControl;
 //    Exit;
 //  end;
 
-  //341378140090004285081430432989 -> exemplo de banda válida
+  //341378140090004285081430432989 -> exemplo de banda vï¿½lida
 
   if Sender.AsString <> '' then
   begin
@@ -297,7 +296,7 @@ begin
     //                 QuotedStr(varBanco), GetConnection]) > 0;
     if not BancoExiste then
     begin
-      if MsgSN('O Banco "'+varBanco+'" não está cadastrado, deseja cadastrá-lo agora?') then
+      if MsgSN('O Banco "'+varBanco+'" nï¿½o estï¿½ cadastrado, deseja cadastrï¿½-lo agora?') then
         ChamaForm('TfrmBanco', 'Bancos', Self);
     end
     else
@@ -383,7 +382,7 @@ procedure TfrmCheque.actEstornarBaixaExecute(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      //SQLConnection := GetConnection;
+      ////SQLConnection := GetConnection;
       CommandText := 'delete from CAIXA where DOCUMENTO = '+
         QuotedStr(cdsPadraoNUMERO.AsString);
       ExecSQL;
@@ -396,7 +395,7 @@ begin
   inherited;
   if cdsPadraoDATABAIXADO.IsNull then
   begin
-    MsgAviso('Este cheque ainda não foi baixado.');
+    MsgAviso('Este cheque ainda nï¿½o foi baixado.');
     Exit;
   end;
 
@@ -419,7 +418,7 @@ begin
     cdsPadrao.Filtered := False;
     cdsPadrao.Filter := '(DATAEMISSAO < BOMPARA) and (REPASSADO = '+QuotedStr('N')+')';
     cdsPadrao.Filtered := True;
-    //lbTitulo.Caption := 'Cheques pré-datados';
+    //lbTitulo.Caption := 'Cheques prï¿½-datados';
     PrintIfNotEmptyRL(rrPadrao);
   finally
     Free;
@@ -502,7 +501,7 @@ begin
   lbValorExtenso.Caption :=
     ReplicateStr(' ', 22)+FirstUpper(Extenso(cdsPadraoVALOR.AsFloat));
 
-  { se não tem cliente então mostra os dados do fornecedor, pois mesmo um cheque emitido
+  { se nï¿½o tem cliente entï¿½o mostra os dados do fornecedor, pois mesmo um cheque emitido
     pode ter sido emitido para um cliente e vice versa }
   if cdsPadraoIDCLIENTE.IsNull then
   begin
@@ -545,7 +544,7 @@ begin
 
   if cdsPadraoBANDAMAGNETICA.AsString = '' then
   begin
-    MsgCuidado('O Campo "Banda magnética" é obrigatório.');
+    MsgCuidado('O Campo "Banda magnï¿½tica" ï¿½ obrigatï¿½rio.');
     Exit;
   end;
 
@@ -558,7 +557,7 @@ begin
       Exit;
     end;
 
-      { cheque repassado é débito, e cheque recebido e crédito }
+      { cheque repassado ï¿½ dï¿½bito, e cheque recebido e crï¿½dito }
       if cdsPadraoREPASSADO.AsString = 'S' then
         vCredDeb := 'D'
       else if cdsPadraoREPASSADO.AsString = 'N' then
@@ -578,7 +577,7 @@ begin
 
   end;
 
-  { se as datas forem iguais então é um cheque a vista, e ele já foi lançado em caixa }
+  { se as datas forem iguais entï¿½o ï¿½ um cheque a vista, e ele jï¿½ foi lanï¿½ado em caixa }
   if SameDate(cdsPadraoDATAEMISSAO.AsDateTime, cdsPadraoBOMPARA.AsDateTime) then
     ObterData(vDataBaixa);
 
@@ -599,7 +598,7 @@ function TfrmCheque.ChequeExiste(pBandaMagnetica: string): Boolean;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    //SQLConnection := GetConnection;
+    ////SQLConnection := GetConnection;
     CommandText := 'select count(1) as CONT from CHEQUE '+
       'where BANDAMAGNETICA = '+QuotedStr(pBandaMagnetica);
     Open;
@@ -615,13 +614,13 @@ begin
   if ModoInsert(cdsPadrao) then
     if ChequeExiste(cdsPadraoBANDAMAGNETICA.AsString) then
     begin
-      MsgCuidado('Este cheque já está cadastrado, verifique a digitação '+
-        'da banda magnética e tente novamente.');
+      MsgCuidado('Este cheque jï¿½ estï¿½ cadastrado, verifique a digitaï¿½ï¿½o '+
+        'da banda magnï¿½tica e tente novamente.');
       Abort;
     end;
 
 //  if not ValidaDataIniFim(cdsPadraoDATAEMISSAO.AsDateTime, cdsPadraoBOMPARA.AsDateTime,
-//    dbdDataEmissao, False, True, 'A "Data de emissão" não pode ser maior que a data de "Bom para".', True) then
+//    dbdDataEmissao, False, True, 'A "Data de emissï¿½o" nï¿½o pode ser maior que a data de "Bom para".', True) then
 //    Abort;
 end;
 

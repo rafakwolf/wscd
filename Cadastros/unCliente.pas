@@ -144,7 +144,6 @@ type
     procedure miRelAniversariantesClick(Sender: TObject);
     procedure cdsPadraoAfterInsert(DataSet: TDataSet);
     procedure dbeCidadeClickButton(Sender: TObject);
-    procedure actPrintPersonExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
     procedure miFiltroCidadeClick(Sender: TObject);
@@ -178,7 +177,7 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao, unModeloConsulta, unGeraRelatorio, uConfiguraRelatorio,
+uses Funcoes, ConstPadrao, unModeloConsulta, uConfiguraRelatorio,
      unPrevListagemClientes, VarGlobal,  unFiltroSimples, unContasReceber,
      Extensos, unAguarde, unFoto, udatabaseutils;
 
@@ -219,11 +218,6 @@ begin
   if (cdsPadrao.State in [dsInsert, dsEdit]) then
     if TfrmModeloConsulta.Execute('Busca Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
       cdsPadraoCODCIDADE.AsInteger := cdsCidadeCODCIDADE.AsInteger;
-end;
-
-procedure TfrmCliente.actPrintPersonExecute(Sender: TObject);
-begin
-  TfrmGeraRelatorio.Execute('Clientes', 'VIEWFICHACLIENTE', GetConnection);
 end;
 
 procedure TfrmCliente.FormCreate(Sender: TObject);

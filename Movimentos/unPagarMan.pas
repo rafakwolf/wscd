@@ -209,9 +209,9 @@ begin
     Exit;
   end;
 
-  edtTotal.Text := FormatFloat('0.00',
-    SelectSingleField('select sum(TOTAL) from CONTASPAGAR where PAGAR = '+
-    QuotedStr('S'), sqldContasPagar.SQLConnection));
+//  edtTotal.Text := FormatFloat('0.00',
+//    SelectSingleField('select sum(TOTAL) from CONTASPAGAR where PAGAR = '+
+//    QuotedStr('S'), sqldContasPagar.SQLConnection));
 
   rgTipoPagamento.OnClick(Self);
 

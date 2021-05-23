@@ -373,9 +373,9 @@ begin
 //  case RetornoValidacao of
 //    tvSerialErrado, tvChaveErrada:
 //      begin
-//        if Application.MessageBox('A chave de liberação informada está incorreta ' +
-//          'ou ainda não foi informada, os dados da empresa também podem ter sido alterados.' + #13 +
-//          'Deseja efetuar a correção agora?', 'Dados incorretos',
+//        if Application.MessageBox('A chave de liberaï¿½ï¿½o informada estï¿½ incorreta ' +
+//          'ou ainda nï¿½o foi informada, os dados da empresa tambï¿½m podem ter sido alterados.' + #13 +
+//          'Deseja efetuar a correï¿½ï¿½o agora?', 'Dados incorretos',
 //          MB_YESNO or MB_ICONWARNING) = ID_YES then
 //          SimNao := True
 //        else
@@ -383,10 +383,10 @@ begin
 //      end;
 //    tvExpirouPrazo:
 //      begin
-//        if Application.MessageBox('A chave de liberação está expirada.' + #13 +
-//          'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato ' +
-//          'com o suporte para obter uma nova chave de liberação.' + #13 +
-//          'Deseja informar uma nova chave de liberação agora?', 'Chave expirada',
+//        if Application.MessageBox('A chave de liberaï¿½ï¿½o estï¿½ expirada.' + #13 +
+//          'O sistema poderï¿½ ser bloqueado a qualquer momento. Por favor entre em contato ' +
+//          'com o suporte para obter uma nova chave de liberaï¿½ï¿½o.' + #13 +
+//          'Deseja informar uma nova chave de liberaï¿½ï¿½o agora?', 'Chave expirada',
 //          MB_YESNO or MB_ICONWARNING) = ID_YES then
 //          SimNao := True
 //        else
@@ -394,10 +394,10 @@ begin
 //      end;
 //    tvBloqueioSistema:
 //      begin
-//        if Application.MessageBox('CHAVE DE LIBERAÇÃO EXPIRADA.' + #13 +
-//          'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias. ' +
-//          'Por favor entre em contato com o suporte para obter uma nova chave de liberação.' + #13 +
-//          'Deseja informar uma nova chave de liberação?',
+//        if Application.MessageBox('CHAVE DE LIBERAï¿½ï¿½O EXPIRADA.' + #13 +
+//          'Seu sistema foi bloqueado pois sua chave de liberaï¿½ï¿½o expirou a mais de 3 dias. ' +
+//          'Por favor entre em contato com o suporte para obter uma nova chave de liberaï¿½ï¿½o.' + #13 +
+//          'Deseja informar uma nova chave de liberaï¿½ï¿½o?',
 //          'Sistema bloqueado', MB_YESNO or MB_ICONERROR) = ID_YES then
 //          SimNao := True
 //        else
@@ -405,10 +405,10 @@ begin
 //      end;
 //    tvPrazoMtoLongo:
 //      begin
-//        if Application.MessageBox('A chave de liberação informada está fora de um período válido. ' +
+//        if Application.MessageBox('A chave de liberaï¿½ï¿½o informada estï¿½ fora de um perï¿½odo vï¿½lido. ' +
 //          'Verifique a data do seu computador e se a chave foi digitada corretamente.' + #13 +
-//          'Deseja informar uma nova chave de liberação?',
-//          'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
+//          'Deseja informar uma nova chave de liberaï¿½ï¿½o?',
+//          'Chave invï¿½lida', MB_YESNO or MB_ICONWARNING) = ID_YES then
 //          SimNao := True
 //        else
 //          SimNao := False;
@@ -417,7 +417,7 @@ begin
 //      begin
 //        Application.MessageBox('Primeiro acesso, informe os dados de registro do sistema.',
 //          'Registro do sistema', MB_OK + MB_ICONINFORMATION);
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
+//        ChamaForm('TfrmRegistro', 'Registro - Validaï¿½ï¿½o do Serial', Self);
 //      end;
 //  end;
 //
@@ -426,13 +426,13 @@ begin
 //    if (RetornoValidacao <> tvValidacaoOk) and (SimNao) then
 //    begin
 //      if (RetornoValidacao = tvExpirouPrazo) then
-//        ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Self)
+//        ChamaForm('TfrmRenovaChave', 'Renovaï¿½ï¿½o da chave de liberaï¿½ï¿½o', Self)
 //      else
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do Serial', Self);
+//        ChamaForm('TfrmRegistro', 'Registro - Validaï¿½ï¿½o do Serial', Self);
 //    end
 //    else if (RetornoValidacao <> tvExpirouPrazo) then
 //    begin
-//      if Application.MessageBox(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. ' +
+//      if Application.MessageBox(PChar('Nï¿½o ï¿½ possï¿½vel utilizar o sistema sem informar uma chave de liberaï¿½ï¿½o vï¿½lida. ' +
 //        'Para obter uma nova chave, entre em contato com o suporte.' + #13 +
 //        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
 //      begin
@@ -440,7 +440,7 @@ begin
 //        Application.Terminate;
 //      end
 //      else
-//        ChamaForm('TfrmRegistro', 'Registro - Validação do serial', Self);
+//        ChamaForm('TfrmRegistro', 'Registro - Validaï¿½ï¿½o do serial', Self);
 //    end;
 //  end;
 end;
@@ -477,12 +477,12 @@ end;
 
 procedure TfrmPrincipal.actConfiguracaoGlobalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigGlobal', 'Configurações globais', Self);
+  ChamaForm('TfrmConfigGlobal', 'Configuraï¿½ï¿½es globais', Self);
 end;
 
 procedure TfrmPrincipal.actConfiguracaoLocalExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfiguracao', 'Configurações locais', Self);
+  ChamaForm('TfrmConfiguracao', 'Configuraï¿½ï¿½es locais', Self);
 end;
 
 procedure TfrmPrincipal.actImpressoraExecute(Sender: TObject);
@@ -490,7 +490,7 @@ begin
   if PrinterExists then
     pstpImpressora.Execute
   else
-    MsgCuidado(MSG_IMPRESSORA, 'Impressora não Instalada');
+    MsgCuidado(MSG_IMPRESSORA, 'Impressora nï¿½o Instalada');
 end;
 
 procedure TfrmPrincipal.actDadosEmpresaExecute(Sender: TObject);
@@ -500,7 +500,7 @@ end;
 
 procedure TfrmPrincipal.actUsuarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmUsuarioItemMenu', 'Usuários', Self);
+  ChamaForm('TfrmUsuarioItemMenu', 'Usuï¿½rios', Self);
 end;
 
 procedure TfrmPrincipal.actAgendaExecute(Sender: TObject);
@@ -510,7 +510,7 @@ end;
 
 procedure TfrmPrincipal.actCalendarioExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmCalendario', 'Calendário', Self);
+  ChamaForm('TfrmCalendario', 'Calendï¿½rio', Self);
 end;
 
 procedure TfrmPrincipal.actCalculadoraExecute(Sender: TObject);
@@ -525,12 +525,12 @@ end;
 
 procedure TfrmPrincipal.actDuplicataExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmDuplicatas', 'Cadastro e impressão de duplicatas', Self);
+  ChamaForm('TfrmDuplicatas', 'Cadastro e impressï¿½o de duplicatas', Self);
 end;
 
 procedure TfrmPrincipal.actBackupExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmBackup', 'Fazer uma cópia dos dados', self);
+  ChamaForm('TfrmBackup', 'Fazer uma cï¿½pia dos dados', self);
 end;
 
 procedure TfrmPrincipal.actClienteExecute(Sender: TObject);
@@ -560,7 +560,7 @@ end;
 
 procedure TfrmPrincipal.actOrcamentoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmOrcamentos', 'Orçamentos', Self);
+  ChamaForm('TfrmOrcamentos', 'Orï¿½amentos', Self);
 end;
 
 procedure TfrmPrincipal.actVendaExecute(Sender: TObject);
@@ -590,12 +590,12 @@ end;
 
 procedure TfrmPrincipal.actExcluirProdutoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmExclusaoProduto', 'Exclusão de produtos', Self);
+  ChamaForm('TfrmExclusaoProduto', 'Exclusï¿½o de produtos', Self);
 end;
 
 procedure TfrmPrincipal.actListaPrecoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmListagemPrecos', 'Lista de preços', Self);
+  ChamaForm('TfrmListagemPrecos', 'Lista de preï¿½os', Self);
 end;
 
 procedure TfrmPrincipal.actEtiquetaProdutoExecute(Sender: TObject);
@@ -606,7 +606,7 @@ end;
 procedure TfrmPrincipal.actOutroUsuarioExecute(Sender: TObject);
 begin
   if not TfrmAcesso.Execute(True) then
-    MsgAviso('','Troca de usuário cancelada.')
+    MsgAviso('','Troca de usuï¿½rio cancelada.')
   else
   begin
     SetEnableMenu(IdUsuario = 0);
@@ -631,7 +631,7 @@ end;
 
 procedure TfrmPrincipal.actPerfisExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissões de usuários', Self);
+  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissï¿½es de usuï¿½rios', Self);
 end;
 
 procedure TfrmPrincipal.actTrocaSenhaExecute(Sender: TObject);
@@ -708,7 +708,7 @@ end;
 
 procedure TfrmPrincipal.actRestoreExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRestore', 'Voltar uma cópia dos dados', self);
+  ChamaForm('TfrmRestore', 'Voltar uma cï¿½pia dos dados', self);
 end;
 
 procedure TfrmPrincipal.SetEnableMenu(adm: Boolean);
@@ -823,7 +823,7 @@ procedure TfrmPrincipal.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if copiando then
   begin
-    if MsgSN('Existe uma copia automática em andamento, deseja finalizar mesmo assim?') then
+    if MsgSN('Existe uma copia automï¿½tica em andamento, deseja finalizar mesmo assim?') then
     begin
       CanClose := True;
     end
@@ -836,12 +836,12 @@ begin
 
   if Configuracao.Backup then
   begin
-    case Application.MessageBox('Deseja efetuar uma cópia de segurança agora?', 'Finalizando o sistema',
+    case Application.MessageBox('Deseja efetuar uma cï¿½pia de seguranï¿½a agora?', 'Finalizando o sistema',
       MB_YESNOCANCEL or MB_ICONQUESTION) of
       ID_YES:
         begin
           CanClose := False;
-          ChamaForm('TfrmBackup', 'Cópia de segurança', Self);
+          ChamaForm('TfrmBackup', 'Cï¿½pia de seguranï¿½a', Self);
         end;
       ID_NO:
         begin
@@ -858,7 +858,7 @@ end;
 
 procedure TfrmPrincipal.actEtiquetaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmEtiqueta', 'Configuração de etiquetas', Self);
+  ChamaForm('TfrmEtiqueta', 'Configuraï¿½ï¿½o de etiquetas', Self);
 end;
 
 procedure TfrmPrincipal.actPesqFoneExecute(Sender: TObject);
@@ -903,7 +903,7 @@ end;
 
 procedure TfrmPrincipal.actRenovaChaveExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmRenovaChave', 'Renovação da chave de liberação', Self);
+  ChamaForm('TfrmRenovaChave', 'Renovaï¿½ï¿½o da chave de liberaï¿½ï¿½o', Self);
 end;
 
 procedure TfrmPrincipal.tbCalculadoraClick(Sender: TObject);
@@ -1013,7 +1013,7 @@ begin
 //  if not ValidaDataAcesso(Sistema.DataAcesso, Date, GetConnection) then
 //  begin
 //    MsgAviso('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
-//      'O sistema será finalizado.', 'Data inválida');
+//      'O sistema serï¿½ finalizado.', 'Data invï¿½lida');
 //    SistemaOk := False;
 //    Application.Terminate;
 //  end;
@@ -1041,7 +1041,7 @@ begin
     free;
   end;
 
-  sbPrincipal.Panels[0].Text := 'Usuário: ' + AnsiUpperCase(Usuario);
+  sbPrincipal.Panels[0].Text := 'Usuï¿½rio: ' + AnsiUpperCase(Usuario);
   sbPrincipal.Panels[1].Text := 'Dados: ' + ServerName;
   sbPrincipal.Panels[2].Text := 'Computador: ' + GetComputerName;
 
@@ -1110,7 +1110,7 @@ begin
     if Configuracao.ExibirDica then
       actDicaDia.Execute;
 
-    { apos as atualizações vai mostrar "o que há de novo" no sistema }
+    { apos as atualizaï¿½ï¿½es vai mostrar "o que hï¿½ de novo" no sistema }
 //    if ReadIniFile('NEW', 'Mostrou') = 'N' then
 //    begin
 //      WriteIniFile('NEW', 'Mostrou', 'S');
@@ -1150,18 +1150,18 @@ begin
   frmSetupConnection := TfrmSetupConnection.Create(Self);
   if frmSetupConnection.ShowModal = mrOk then
   begin
-    MsgAviso('','Esta alteração só terá efeito da próxima vez que o sistema for iniciado.');
+    MsgAviso('','Esta alteraï¿½ï¿½o sï¿½ terï¿½ efeito da prï¿½xima vez que o sistema for iniciado.');
   end;
 end;
 
 procedure TfrmPrincipal.actNotaPromissoriaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromissoria', 'Promissória avulsa', Self);
+  ChamaForm('TfrmPromissoria', 'Promissï¿½ria avulsa', Self);
 end;
 
 procedure TfrmPrincipal.actInfoSistemaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmInformacaoSistema', 'Informações sobre o sistema', Self);
+  ChamaForm('TfrmInformacaoSistema', 'Informaï¿½ï¿½es sobre o sistema', Self);
 end;
 
 procedure TfrmPrincipal.actVendedorExecute(Sender: TObject);
@@ -1171,7 +1171,7 @@ end;
 
 procedure TfrmPrincipal.actConfigNotaExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmConfigNota', 'Configurãção da nota', Self);
+  ChamaForm('TfrmConfigNota', 'Configurï¿½ï¿½ï¿½o da nota', Self);
 end;
 
 procedure TfrmPrincipal.actAtualizacaoExecute(Sender: TObject);
@@ -1181,13 +1181,13 @@ begin
 //
 //  if not NetIsPresent then
 //  begin
-//    MsgCuidado('Verifique sua conexão com a internet.');
+//    MsgCuidado('Verifique sua conexï¿½o com a internet.');
 //    Exit;
 //  end;
 //
 //  if Atualizando then
 //  begin
-//    MsgAviso('Atualização já está em andamento.');
+//    MsgAviso('Atualizaï¿½ï¿½o jï¿½ estï¿½ em andamento.');
 //    Exit;
 //  end;
 //
@@ -1196,7 +1196,7 @@ begin
 //    if FormatDateTime('dd/mm/yyyy', FileDateToDateTime(FileAge(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe')))
 //      = FormatDateTime('dd/mm/yyyy', Date) then
 //    begin
-//      if MsgSN('Já existe uma atualização baixada hoje! Deseja executá-la?') then
+//      if MsgSN('Jï¿½ existe uma atualizaï¿½ï¿½o baixada hoje! Deseja executï¿½-la?') then
 //      begin
 //        WinExec(PansiChar(ExtractFilePath(ParamStr(0)) + 'UpdateCPR.exe'), SW_SHOWNORMAL);
 //        Application.Terminate;
@@ -1215,21 +1215,21 @@ begin
   Result := False;  {
   if StrToInt(GetVersaoAppNoBuild) > StrToInt(Sistema.VersaoDB) then
   begin
-    MsgAviso('Nova versão do sistema encontrada.' + #13#10 +
-      'A atualização automáticamente iniciará agora.', 'Nova versão');
+    MsgAviso('Nova versï¿½o do sistema encontrada.' + #13#10 +
+      'A atualizaï¿½ï¿½o automï¿½ticamente iniciarï¿½ agora.', 'Nova versï¿½o');
     if ComputerIsServer then
     begin
       GetDataModule.Conexao.Connected := False;
       frmLogAtualizacao := TfrmLogAtualizacao.Create(Self);
       if frmLogAtualizacao.ShowModal <> mrOk then
       begin
-        MsgErro('Houveram problemas durante a atualização, entre em contado com suporte.');
+        MsgErro('Houveram problemas durante a atualizaï¿½ï¿½o, entre em contado com suporte.');
         Result := False;
         Application.Terminate;
       end
       else
       begin
-        MsgAviso('Atualização efetuada com sucesso. Versão ' + Sistema.VersaoApp + '.');
+        MsgAviso('Atualizaï¿½ï¿½o efetuada com sucesso. Versï¿½o ' + Sistema.VersaoApp + '.');
         Result := True;
         if not GetDataModule.Conexao.Connected then
           GetDataModule.Conexao.Connected := True;
@@ -1243,9 +1243,9 @@ begin
   end
   else if StrToInt(GetVersaoAppNoBuild) < StrToInt(Sistema.VersaoDB) then
   begin
-    MsgCuidado('A versão da base de dados é mais recente que a versão do executável.' + #13 +
+    MsgCuidado('A versï¿½o da base de dados ï¿½ mais recente que a versï¿½o do executï¿½vel.' + #13 +
       'Entre em contato com suporte. ' +
-      'O sistema será finalizado.');
+      'O sistema serï¿½ finalizado.');
     Result := False;
     Application.Terminate;
   end;   }
@@ -1321,7 +1321,7 @@ end;
 
 procedure TfrmPrincipal.actPromocaoExecute(Sender: TObject);
 begin
-  ChamaForm('TfrmPromocao', 'Promoções', Self);
+  ChamaForm('TfrmPromocao', 'Promoï¿½ï¿½es', Self);
 end;
 
 procedure TfrmPrincipal.btnPromocaoClick(Sender: TObject);
@@ -1342,7 +1342,7 @@ begin
 //    try
 //      with TSQLDataSet.Create(nil) do
 //      try
-//        SQLConnection := GetConnection;
+//        //SQLConnection := GetConnection;
 //        CommandText := 'insert into LOGERRO ' +
 //          'values(:ID, :DATAHORA, :FORM, :CONTROLE, :MSG)';
 //        Params.ParamByName('ID').AsInteger :=
@@ -1370,14 +1370,14 @@ begin
 //  if Configuracao.GravarErro then
 //    msg := msg + 'Erro gravado pelo sistema.'
 //  else
-//    msg := msg + 'Erro NÃO gravado pelo sistema.';
+//    msg := msg + 'Erro Nï¿½O gravado pelo sistema.';
 
   MsgErro(msg, 'Erro');
 end;
 
 procedure TfrmPrincipal.VerificacaoAutomatica;
 begin
-  ChamaForm('TfrmForceAtualizacao', 'Atualização', Self);
+  ChamaForm('TfrmForceAtualizacao', 'Atualizaï¿½ï¿½o', Self);
 end;
 
 procedure TfrmPrincipal.CopiaAutomatica;
@@ -1451,7 +1451,7 @@ begin
     sbPrincipal.ShowHint := False;
     BarWidth := sbPrincipal.Width div 3;
     if X < BarWidth then
-      sbPrincipal.Hint := 'Usuário logado'
+      sbPrincipal.Hint := 'Usuï¿½rio logado'
     else
     if (X > BarWidth) and (X < (sbPrincipal.Width - BarWidth)) then
       sbPrincipal.Hint := 'Servidor de dados'
@@ -1498,12 +1498,12 @@ end;
 procedure TfrmPrincipal.InfoAvisos;
 begin
   if Configuracao.InfoAvisos then
-    ChamaForm('TfrmInfoAvisos', 'Informaçãoes e avisos', Self);
+    ChamaForm('TfrmInfoAvisos', 'Informaï¿½ï¿½oes e avisos', Self);
 end;
 
 procedure TfrmPrincipal.actInfoAvisosExecute(Sender: TObject);
 begin
-  ChamaForm('TfrminfoAvisos', 'Informações e avisos', Self);
+  ChamaForm('TfrminfoAvisos', 'Informaï¿½ï¿½es e avisos', Self);
 end;
 
 function TfrmPrincipal.ValidaDataAcesso(DataEncriptada: string;
@@ -1532,14 +1532,14 @@ begin
   if (DataEncriptada = '') then
   begin
     if Application.MessageBox(PChar('Primeiro acesso ao sistema.' + #13#10 +
-      'O sistema utiliza a data de acesso para validar sua chave de liberação.' + #13#10 +
-      'A data atual do seu computador é ' + FormatDateTime('dd/mm/yyyy', DataAtual) + ', continua?'),
+      'O sistema utiliza a data de acesso para validar sua chave de liberaï¿½ï¿½o.' + #13#10 +
+      'A data atual do seu computador ï¿½ ' + FormatDateTime('dd/mm/yyyy', DataAtual) + ', continua?'),
       'Data do primeiro acesso', MB_YESNO or MB_ICONQUESTION) = ID_YES then
       RegistraData(DataAtual, Connection)
     else
     begin
       Application.MessageBox('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
-        'O sistema será finalizado.', 'Data inválida', MB_OK or MB_ICONINFORMATION);
+        'O sistema serï¿½ finalizado.', 'Data invï¿½lida', MB_OK or MB_ICONINFORMATION);
       Application.Terminate;
       Abort;
     end;
@@ -1552,12 +1552,12 @@ begin
 
     if (Dias > 3) then
     begin
-      if Application.MessageBox(PChar('A última abertura do sistema foi registrada com a data ' +
+      if Application.MessageBox(PChar('A ï¿½ltima abertura do sistema foi registrada com a data ' +
         FormatDateTime('dd/mm/yyyy', DataUltimoAcesso) + '.' + #13#10 +
-        'O registro de uma data incorreta pode invalidar a chave de liberação deste sistema' + #13#10 +
-        'e não será possível desfazer esta operação sem uma nova chave.' + #13#10 +
+        'O registro de uma data incorreta pode invalidar a chave de liberaï¿½ï¿½o deste sistema' + #13#10 +
+        'e nï¿½o serï¿½ possï¿½vel desfazer esta operaï¿½ï¿½o sem uma nova chave.' + #13#10 +
         'Tem certeza que deseja registrar a data atual ' + FormatDateTime('dd/mm/yyyy', DataAtual) +
-        ' como sendo a nova data de acesso?'), 'Violação de data',
+        ' como sendo a nova data de acesso?'), 'Violaï¿½ï¿½o de data',
         MB_YESNO or MB_ICONQUESTION) = ID_YES then
       begin
         RegistraData(DataAtual, Connection);
@@ -1565,7 +1565,7 @@ begin
       else
       begin
         Application.MessageBox('Por favor, corrija a data do computador e tente novamente.' + #13#10 +
-          'O sistema será finalizado.', 'Data inválida', MB_OK or MB_ICONINFORMATION);
+          'O sistema serï¿½ finalizado.', 'Data invï¿½lida', MB_OK or MB_ICONINFORMATION);
         Application.Terminate;
         Abort;
       end;
@@ -1573,11 +1573,11 @@ begin
     else
       if (Dias < 0) then
       begin
-        Application.MessageBox(PChar('A data do último acesso ao sistema foi ' +
+        Application.MessageBox(PChar('A data do ï¿½ltimo acesso ao sistema foi ' +
           FormatDateTime('dd/mm/yyyy', DataUltimoAcesso) + '.' + #13 +
-          'Não é possível abrir o sistema com a data atual sendo inferior à do último acesso.' + #13 +
+          'Nï¿½o ï¿½ possï¿½vel abrir o sistema com a data atual sendo inferior ï¿½ do ï¿½ltimo acesso.' + #13 +
           'Por favor, corrija a data do computador e tente novamente.' + #13#13 +
-          'O sistema será finalizado.'), 'Data inválida', MB_OK or MB_ICONINFORMATION);
+          'O sistema serï¿½ finalizado.'), 'Data invï¿½lida', MB_OK or MB_ICONINFORMATION);
         Application.Terminate;
         Abort;
       end
@@ -1598,8 +1598,8 @@ begin
   begin
     if SerialHD(Copy(Application.ExeName, 1, 1)) <> HD then
     begin
-      MsgErro('Cópia inválida do sistema, por favor entre em contato com o suporte para adquirir uma nova cópia.',
-        'Cópia inválida');
+      MsgErro('Cï¿½pia invï¿½lida do sistema, por favor entre em contato com o suporte para adquirir uma nova cï¿½pia.',
+        'Cï¿½pia invï¿½lida');
       Result := False;
     end;
   end;
@@ -1622,7 +1622,7 @@ end;
 
 procedure TfrmPrincipal.miRepararIndicesClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRepararIndice', 'Reparar índices', Self);
+  ChamaForm('TfrmRepararIndice', 'Reparar ï¿½ndices', Self);
 end;
 
 procedure TfrmPrincipal.miVisualizarDadosClick(Sender: TObject);

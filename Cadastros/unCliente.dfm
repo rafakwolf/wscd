@@ -5,7 +5,6 @@ inherited frmCliente: TfrmCliente
   ClientHeight = 452
   ClientWidth = 785
   OldCreateOrder = True
-  ExplicitTop = -62
   ExplicitWidth = 791
   ExplicitHeight = 501
   PixelsPerInch = 96

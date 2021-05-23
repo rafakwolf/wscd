@@ -103,7 +103,7 @@ procedure TfrmExclusaoCaixa.btnExcluirClick(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'select count(1) CONT from CAIXA '+
         'where EXCLUIR = '+QuotedStr('S');
       Open;
@@ -117,20 +117,20 @@ begin
 
   if ContasMarcadas < 1 then
   begin
-    MsgCuidado('Não existe nenhum registro marcado para exclusão.'+#13#10+
-      'Para marcar/desmarcar dê duplo clique no lançamento desejado.');
+    MsgCuidado('Nï¿½o existe nenhum registro marcado para exclusï¿½o.'+#13#10+
+      'Para marcar/desmarcar dï¿½ duplo clique no lanï¿½amento desejado.');
     Exit;
   end;
   
-  if MsgSN('Deseja realmente excluir os lançamentos marcados?') then
+  if MsgSN('Deseja realmente excluir os lanï¿½amentos marcados?') then
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       Close;
       CommandText := 'DELETE FROM CAIXA WHERE EXCLUIR = ' + QuotedStr('S');
       ExecSQL;
-      MsgAviso('Exclusão efetuada com sucesso!');
+      MsgAviso('Exclusï¿½o efetuada com sucesso!');
     finally
       Free;
       cdsPadrao.Close;
@@ -166,7 +166,7 @@ begin
   if Sender.AsString = 'C' then
     Text:= 'Entrada'
   else if Sender.AsString = 'D' then
-    Text := 'Saída';
+    Text := 'Saï¿½da';
 end;
 
 procedure TfrmExclusaoCaixa.edDescricaoChange(Sender: TObject);
@@ -184,7 +184,7 @@ end;
 procedure TfrmExclusaoCaixa.edDescricaoExit(Sender: TObject);
 begin
   if Trim(edDescricao.Text) = '' then
-    edDescricao.Text := 'Descrição...';
+    edDescricao.Text := 'Descriï¿½ï¿½o...';
 end;
 
 procedure TfrmExclusaoCaixa.edtDocumentoEnter(Sender: TObject);
@@ -195,7 +195,7 @@ end;
 
 procedure TfrmExclusaoCaixa.edDescricaoEnter(Sender: TObject);
 begin
-  if Trim(edDescricao.Text) = 'Descrição...' then
+  if Trim(edDescricao.Text) = 'Descriï¿½ï¿½o...' then
     edDescricao.Clear;
 end;
 

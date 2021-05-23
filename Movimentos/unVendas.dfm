@@ -546,7 +546,6 @@ inherited frmVendas: TfrmVendas
       'IDADE)'#13#10'order by cli.NOME'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 24
     Top = 312
     object sqldClientesCODCLIENTE: TIntegerField
@@ -618,7 +617,6 @@ inherited frmVendas: TfrmVendas
       'UTOS p'#13#10'order by p.DESCRICAO'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 24
     Top = 344
     object sqldProdutosIDPRODUTO: TIntegerField
@@ -729,7 +727,6 @@ inherited frmVendas: TfrmVendas
       'FLOAT) TOTAL,'#13#10'  cast(NULL as FLOAT) COMISSAO'#13#10'from RDB$DATABASE'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 264
     Top = 288
     object sqldSelecaoPRODUTO: TIntegerField
@@ -828,7 +825,6 @@ inherited frmVendas: TfrmVendas
       'left join CLIENTES cli on (cli.Codcliente = ven.Codcliente)'
       'left join VENDEDOR vd on (vd.IDVENDEDOR = ven.IDVENDEDOR)'
       'where ven.CANCELADO = '#39'N'#39)
-    SQLConnection = DmPrincipal.Conexao
     Left = 263
     Top = 339
     object sqlVendasCODIGO: TIntegerField
@@ -908,7 +904,6 @@ inherited frmVendas: TfrmVendas
       'FROM ITEMVENDA ITV'
       'LEFT JOIN PRODUTOS PRO ON (ITV.CODPRODUTO = PRO.IDPRODUTO)'
       'WHERE ITV.CODIGO = :CODIGO')
-    SQLConnection = DmPrincipal.Conexao
     Left = 263
     Top = 370
     object sqlItensCODIGO: TIntegerField
@@ -1120,7 +1115,6 @@ inherited frmVendas: TfrmVendas
     CommandText = 'select '#13#10'  IDVENDEDOR, '#13#10'  VENDEDOR, '#13#10'  ATIVO'#13#10'from VENDEDOR'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 24
     Top = 376
     object sqldVendedorIDVENDEDOR: TIntegerField
@@ -1173,7 +1167,6 @@ inherited frmVendas: TfrmVendas
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    SQLConnection = DmPrincipal.Conexao
     Left = 168
     Top = 344
   end
@@ -1188,7 +1181,6 @@ inherited frmVendas: TfrmVendas
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    SQLConnection = DmPrincipal.Conexao
     Left = 168
     Top = 376
   end
@@ -1203,7 +1195,6 @@ inherited frmVendas: TfrmVendas
         Name = 'CODIGO'
         ParamType = ptInput
       end>
-    SQLConnection = DmPrincipal.Conexao
     Left = 168
     Top = 408
   end

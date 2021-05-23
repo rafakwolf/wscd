@@ -411,7 +411,7 @@ function TfrmContasPagar.ContasAVencer: Currency;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO > CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
@@ -427,7 +427,7 @@ function TfrmContasPagar.ContasVencendoHoje: Currency;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO = CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
@@ -443,7 +443,7 @@ function TfrmContasPagar.ContasVencidas: Currency;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO < CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';

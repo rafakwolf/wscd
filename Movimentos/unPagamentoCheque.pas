@@ -1,4 +1,4 @@
-unit unPagamentoCheque;
+ï»¿unit unPagamentoCheque;
 
 interface
 
@@ -103,7 +103,7 @@ begin
   end
   else if FTipoCheque = tcPreDatado then
   begin
-    Caption := 'Cheque pré-datado';
+    Caption := 'Cheque prï¿½-datado';
     medtEmissao.Text := DateToStr(Date);
     medtEmissao.ReadOnly := True;
     medtVencimento.ReadOnly := False;
@@ -124,7 +124,7 @@ procedure TfrmPagamentoCheque.btnOkClick(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      //SQLConnection := GetConnection;
+      ////SQLConnection := GetConnection;
       CommandType := ctStoredProc;
       CommandText := 'STPPAGTOCOMPRA';
       Params.ParamByName('IDCOMPRA').AsInteger   := FIdCompra;
@@ -141,7 +141,7 @@ procedure TfrmPagamentoCheque.btnOkClick(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      //SQLConnection := GetConnection;
+      ////SQLConnection := GetConnection;
       CommandType := ctStoredProc;
       CommandText := 'STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger     := FIdVenda;
@@ -166,7 +166,7 @@ begin
   begin
     if RoundTo(StrToFloat(edtValor.Text), 2) > RoundTo(RestanteVenda, 2) then
     begin
-      MsgErro('O valor informado para recebimento inválido, tente novamente.');
+      MsgErro('O valor informado para recebimento invï¿½lido, tente novamente.');
       Exit;
     end;
   end
@@ -174,7 +174,7 @@ begin
   begin
     if RoundTo(StrToFloat(edtValor.Text), 2) > RoundTo(RestanteCompra, 2) then
     begin
-      MsgErro('O valor informado para pagamento inválido, tente novamente.');
+      MsgErro('O valor informado para pagamento invï¿½lido, tente novamente.');
       Exit;
     end;
   end;
@@ -301,23 +301,23 @@ end;
 
 function TfrmPagamentoCheque.RestanteVenda: Real;
 begin
-  with TSQLDataSet.Create(nil) do
-  try
-    SQLConnection := GetConnection;
-    CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
-    Params.ParamByName('VENDA').AsInteger := FIdVenda;
-    Open;
-    Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
-  finally
-    Free;
-  end;
+//  with TSQLDataSet.Create(nil) do
+//  try
+//    //SQLConnection := GetConnection;
+//    CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
+//    Params.ParamByName('VENDA').AsInteger := FIdVenda;
+//    Open;
+//    Result := RoundTo(FieldByName('RESTO').AsFloat, 2);
+//  finally
+//    Free;
+//  end;
 end;
 
 function TfrmPagamentoCheque.RestanteCompra: Real;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText := 'select RESTO from STPRESTOCOMPRA(:COMPRA)';
     Params.ParamByName('COMPRA').AsInteger := FIdCompra;
     Open;
@@ -349,7 +349,7 @@ begin
   begin
     if ChequeExiste(medBandaMagnetica.Text) then
     begin
-      MsgCuidado('Cheque já existente, verifique a digitação da banda magnética.');
+      MsgCuidado('Cheque jï¿½ existente, verifique a digitaï¿½ï¿½o da banda magnï¿½tica.');
       medBandaMagnetica.Clear;
       medBandaMagnetica.SetFocus;
       Exit;
@@ -371,7 +371,7 @@ begin
     end
     else
     begin
-      if MsgSN('O Banco "'+varBanco+'" não está cadastrado, deseja cadastrá-lo agora?') then
+      if MsgSN('O Banco "'+varBanco+'" nï¿½o estï¿½ cadastrado, deseja cadastrï¿½-lo agora?') then
         ChamaForm('TfrmBanco', 'Bancos', Self);
     end;
   end;
@@ -382,7 +382,7 @@ function TfrmPagamentoCheque.ChequeExiste(
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText := 'select count(1) as CONT from CHEQUE '+
       'where BANDAMAGNETICA = '+QuotedStr(pBandaMagnetica);
     Open;

@@ -309,18 +309,18 @@ begin
 //    True) then
 //    Abort;
 
-  if cdsPadrao.State in [dsInsert] then
-  begin
-    if not cdsPadraoDOCUMENTO.IsNull then
-       if SelectSingleField('select count(1) from CONTASPAGAR where (DOCUMENTO = '+
-        QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (FORNECEDOR = '+
-        QuotedStr(IntToStr(cdsPadraoFORNECEDOR.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
-      begin
-        MsgCuidado('Este "Documento" já está cadastrado para este "Fornecedor".');
-        SetFocusIfCan(dbeDocumento);
-        Abort;
-      end;
-  end;
+//  if cdsPadrao.State in [dsInsert] then
+//  begin
+//    if not cdsPadraoDOCUMENTO.IsNull then
+//       if SelectSingleField('select count(1) from CONTASPAGAR where (DOCUMENTO = '+
+//        QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (FORNECEDOR = '+
+//        QuotedStr(IntToStr(cdsPadraoFORNECEDOR.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
+//      begin
+//        MsgCuidado('Este "Documento" já está cadastrado para este "Fornecedor".');
+//        SetFocusIfCan(dbeDocumento);
+//        Abort;
+//      end;
+//  end;
 
   if cdsPadraoIDCONTA.IsNull then
   begin

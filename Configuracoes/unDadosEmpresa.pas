@@ -165,9 +165,9 @@ begin
 //  case RetornoValidacao of
 //    tvSerialErrado, tvChaveErrada:
 //    begin
-//      if Application.MessageBox('A chave de liberação informada está incorreta '+
-//        'ou os dados informados estão incorretos. '+#13+
-//        'Deseja efetuar a correção agora?', 'Dados incorretos',
+//      if Application.MessageBox('A chave de liberaï¿½ï¿½o informada estï¿½ incorreta '+
+//        'ou os dados informados estï¿½o incorretos. '+#13+
+//        'Deseja efetuar a correï¿½ï¿½o agora?', 'Dados incorretos',
 //        MB_YESNO or MB_ICONWARNING) = ID_YES then
 //        SimNao := True
 //      else
@@ -175,10 +175,10 @@ begin
 //    end;
 //    tvExpirouPrazo:
 //    begin
-//      if Application.MessageBox('A chave de liberação do sistema está expirada.'+#13+
-//        'O sistema poderá ser bloqueado a qualquer momento. Por favor entre em contato '+
-//        'com o suporte para obter uma nova chave de liberação.'+#13+
-//        'Deseja informar uma nova chave de liberação?', 'Chave Expirada',
+//      if Application.MessageBox('A chave de liberaï¿½ï¿½o do sistema estï¿½ expirada.'+#13+
+//        'O sistema poderï¿½ ser bloqueado a qualquer momento. Por favor entre em contato '+
+//        'com o suporte para obter uma nova chave de liberaï¿½ï¿½o.'+#13+
+//        'Deseja informar uma nova chave de liberaï¿½ï¿½o?', 'Chave Expirada',
 //        MB_YESNO or MB_ICONWARNING) = ID_YES then
 //        SimNao := True
 //      else
@@ -186,10 +186,10 @@ begin
 //    end;
 //    tvBloqueioSistema:
 //    begin
-//      if Application.MessageBox('CHAVE DE LIBERAÇÃO EXPIRADA.'+#13+
-//        'Seu sistema foi bloqueado pois sua chave de liberação expirou a mais de 3 dias.'+
-//        'Por favor entre em contato com o suporte para obter uma nova chave de liberação.'+#13+
-//        'Deseja informar uma nova chave de liberação?',
+//      if Application.MessageBox('CHAVE DE LIBERAï¿½ï¿½O EXPIRADA.'+#13+
+//        'Seu sistema foi bloqueado pois sua chave de liberaï¿½ï¿½o expirou a mais de 3 dias.'+
+//        'Por favor entre em contato com o suporte para obter uma nova chave de liberaï¿½ï¿½o.'+#13+
+//        'Deseja informar uma nova chave de liberaï¿½ï¿½o?',
 //        'Sistema bloqueado', MB_YESNO or MB_ICONERROR) = ID_YES then
 //        SimNao := True
 //      else
@@ -197,10 +197,10 @@ begin
 //    end;
 //    tvPrazoMtoLongo:
 //    begin
-//      if Application.MessageBox('A Chave de Liberação informada está fora de um período válido. '+
+//      if Application.MessageBox('A Chave de Liberaï¿½ï¿½o informada estï¿½ fora de um perï¿½odo vï¿½lido. '+
 //        'Verifique a data do seu computador e se a chave foi digitada corretamente.' + #13 +
-//        'Deseja informar uma nova chave de liberação?',
-//        'Chave inválida', MB_YESNO or MB_ICONWARNING) = ID_YES then
+//        'Deseja informar uma nova chave de liberaï¿½ï¿½o?',
+//        'Chave invï¿½lida', MB_YESNO or MB_ICONWARNING) = ID_YES then
 //        SimNao := True
 //      else
 //        SimNao := False;
@@ -216,8 +216,8 @@ begin
 //    end
 //    else if(RetornoValidacao <> tvExpirouPrazo)then
 //    begin
-//      if Application.MessageBox(PChar('Não é possível utilizar o sistema sem informar uma chave de liberação válida. '+
-//        'Para obter uma nova chave de liberação entre em contato com o suporte.' + #13 +
+//      if Application.MessageBox(PChar('Nï¿½o ï¿½ possï¿½vel utilizar o sistema sem informar uma chave de liberaï¿½ï¿½o vï¿½lida. '+
+//        'Para obter uma nova chave de liberaï¿½ï¿½o entre em contato com o suporte.' + #13 +
 //        'Clique em OK para finalizar o sistema.'), 'Finalizando o sistema', MB_OKCANCEL or MB_ICONERROR) = ID_OK then
 //      begin
 //        Application.Terminate;
@@ -280,7 +280,7 @@ procedure TfrmDadosEmpresa.GravaNovaChave(Chave: string);
 begin
   with TSQLDataSet.Create(Self) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     Close;
     CommandText := 'update SISTEMA set DATAVALIDADE = :DATAVALIDADE, ' +
                    'SERIAL = :SERIAL';
@@ -290,7 +290,7 @@ begin
     ExecSQL;
   finally
     Free;
-//    MsgAviso('Ok!!! Nova chave válida até '+
+//    MsgAviso('Ok!!! Nova chave vï¿½lida atï¿½ '+
 //      DateToStr(DecriptData(Copy(Chave, 1, Pos('-', Chave) - 1)))+'.');
   end;
 end;

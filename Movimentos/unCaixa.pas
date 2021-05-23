@@ -138,7 +138,6 @@ type
       Shift: TShiftState);
     procedure btnFiltrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure miRelPersonalCaixaClick(Sender: TObject);
     procedure miRelContaCaixaClick(Sender: TObject);
     procedure miExcluirVariosClick(Sender: TObject);
     procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;
@@ -169,7 +168,7 @@ var
 implementation
 
 uses  unLancCaixa, Funcoes, unFiltroSimples, unModeloConsulta,
-     VarGlobal, unGeraRelatorio, unPrevCaixaTodos,  uConfiguraRelatorio,
+     VarGlobal, unPrevCaixaTodos,  uConfiguraRelatorio,
      unAguarde;
 
 {$R *.dfm}
@@ -202,12 +201,12 @@ end;
 procedure TfrmCaixa.btnExcluirClick(Sender: TObject);
 begin
   if cdsPadrao.IsEmpty then Exit;
-  if MsgSN('Confirma exclusão do lançamento?') then
+  if MsgSN('Confirma exclusï¿½o do lanï¿½amento?') then
   begin
     with TSQLDataSet.Create(Self) do
     try
       Close;
-      //SQLConnection := GetConnection;
+      ////SQLConnection := GetConnection;
       CommandType := ctStoredProc;
       CommandText := 'STPDELCAIXA';
       Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODCAIXA.AsInteger;
@@ -298,7 +297,7 @@ begin
         else
           MsgErro('',UM_DATAINVALIDA);
 
-        MsgAviso('','Exclusão concluida com sucesso.');
+        MsgAviso('','Exclusï¿½o concluida com sucesso.');
       end;
     except
       raise Exception.Create('Erro excluindo caixa por periodo');
@@ -359,7 +358,7 @@ end;
 
 procedure TfrmCaixa.miFiltraDebitoClick(Sender: TObject);
 begin
-  if MsgSN('Mostrar apenas Saídas efetuadas?') then
+  if MsgSN('Mostrar apenas Saï¿½das efetuadas?') then
   begin
     cdsPadrao.Close;
     cdsPadrao.Filtered := False;
@@ -447,7 +446,7 @@ end;
 
 procedure TfrmCaixa.miRelFluxoCaixaClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioFluxoCaixa', 'Relatório de caixa', Self);
+  ChamaForm('TfrmRelatorioFluxoCaixa', 'Relatï¿½rio de caixa', Self);
 end;
 
 procedure TfrmCaixa.miExportaDadosClick(Sender: TObject);
@@ -475,8 +474,8 @@ begin
     cdsPadrao.Filter   := 'DATA >= '+QuotedStr(vDataIni)+' and DATA <= '+QuotedStr(vDataFim);
     cdsPadrao.Filtered := True;
 
-    //lbCreditos.Caption := 'Créditos R$: ' + FormatFloat('#,##0.00', TotalCredito);
-    //lbDebitos.Caption  := 'Débitos R$: ' + FormatFloat('#,##0.00', TotalDebito);
+    //lbCreditos.Caption := 'Crï¿½ditos R$: ' + FormatFloat('#,##0.00', TotalCredito);
+    //lbDebitos.Caption  := 'Dï¿½bitos R$: ' + FormatFloat('#,##0.00', TotalDebito);
     //lbSaldo.Caption    := 'Saldo R$: ' + FormatFloat('#,##0.00', (TotalCredito - TotalDebito));
 
     //lbSaldo.Visible := Configuracao.MostrarSaldoCaixa;
@@ -493,7 +492,7 @@ end;
 
 procedure TfrmCaixa.miRelMesAnoClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCaixaMensal', 'Caixa por mês e ano', Self);
+  ChamaForm('TfrmRelatorioCaixaMensal', 'Caixa por mï¿½s e ano', Self);
 end;
 
 procedure TfrmCaixa.FormKeyDown(Sender: TObject; var Key: Word;
@@ -630,19 +629,14 @@ begin
   end;
 end;
 
-procedure TfrmCaixa.miRelPersonalCaixaClick(Sender: TObject);
-begin
-  TfrmGeraRelatorio.Execute('Caixa', 'CAIXA', GetConnection);
-end;
-
 procedure TfrmCaixa.miRelContaCaixaClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioCaixaContaCaixa', 'Relatório por conta caixa', Self);
+  ChamaForm('TfrmRelatorioCaixaContaCaixa', 'Relatï¿½rio por conta caixa', Self);
 end;
 
 procedure TfrmCaixa.miExcluirVariosClick(Sender: TObject);
 begin
-  ChamaForm('TfrmExclusaoCaixa', 'Exclusão de lançamentos do caixa', Self);
+  ChamaForm('TfrmExclusaoCaixa', 'Exclusï¿½o de lanï¿½amentos do caixa', Self);
 end;
 
 procedure TfrmCaixa.CaixaInserido(var Msg: TMessage);
@@ -657,7 +651,7 @@ begin
     Text := 'Entrada'
   else
   if Sender.AsString = 'D' then
-    Text := 'Saída'
+    Text := 'Saï¿½da'
   else
     Text := '';
 end;
@@ -687,9 +681,9 @@ begin
     stbCaixa.Panels[1].Text := FormatDateTime('dd/mm/yyyy', Date);
 
   if Configuracao.LancCaixa90Dias then
-    stbCaixa.Panels[0].Text := 'Exibindo lançamentos dos últimos 90 dias'
+    stbCaixa.Panels[0].Text := 'Exibindo lanï¿½amentos dos ï¿½ltimos 90 dias'
   else
-    stbCaixa.Panels[0].Text := 'Exibindo todos os lançamentos';
+    stbCaixa.Panels[0].Text := 'Exibindo todos os lanï¿½amentos';
 
 end;
 
@@ -725,14 +719,14 @@ begin
     cdsPadrao.Open;
     cdsPadrao.DisableControls;
     //lbCreditos.Caption := 'Entradas R$: ' + FormatFloat('#,##0.00', TotalCredito);
-    //lbDebitos.Caption := 'Saídas R$: ' + FormatFloat('#,##0.00', TotalDebito);
+    //lbDebitos.Caption := 'Saï¿½das R$: ' + FormatFloat('#,##0.00', TotalDebito);
 
     //if Configuracao.MostrarSaldoCaixa then
     //  lbSaldo.Caption := 'Saldo R$: ' + FormatFloat('#,##0.00', (TotalCredito - TotalDebito))
     //else
     //  lbSaldo.Caption := '';
 
-    //Titulo  := 'Movimentação do dia '+FormatDateTime('dd/mm/yyyy', Date);
+    //Titulo  := 'Movimentaï¿½ï¿½o do dia '+FormatDateTime('dd/mm/yyyy', Date);
     //DataIni := FormatDateTime('dd/mm/yyyy', Date);
     //DataFim := FormatDateTime('dd/mm/yyyy', Date);
 

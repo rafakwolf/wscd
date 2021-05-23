@@ -5,7 +5,6 @@ inherited frmCheque: TfrmCheque
   ClientHeight = 501
   ClientWidth = 537
   OldCreateOrder = True
-  ExplicitTop = -94
   ExplicitWidth = 543
   ExplicitHeight = 550
   PixelsPerInch = 96

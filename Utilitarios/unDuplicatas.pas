@@ -238,8 +238,8 @@ begin
   inherited;
   if cdsPadraoIMPRESSA.AsString = 'S' then
   begin
-//    case CustomMsgDlg('Esta Duplicata já foi impressa. O que deseja fazer ?',
-//                    'Opçoes de Impressão', '&Excluir', '&Imprimir', '&Cancelar') of
+//    case CustomMsgDlg('Esta Duplicata jï¿½ foi impressa. O que deseja fazer ?',
+//                    'Opï¿½oes de Impressï¿½o', '&Excluir', '&Imprimir', '&Cancelar') of
 //      ID_YES:
 //      begin
 //        actDelete.Execute;
@@ -263,7 +263,7 @@ end;
 procedure TfrmDuplicatas.miConfigurarClick(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmConfiguraDuplicata', 'Configuração de duplicatas', Self);
+  ChamaForm('TfrmConfiguraDuplicata', 'Configuraï¿½ï¿½o de duplicatas', Self);
 end;
 
 procedure TfrmDuplicatas.dbeValorExit(Sender: TObject);
@@ -313,7 +313,7 @@ begin
 
   with TSQLDataSet.Create(nil) do
   try
-    //SQLConnection := GetConnection;
+    ////SQLConnection := GetConnection;
     CommandText := 'select count(1) as CONT from CLIENTES'+
       ' where CPF_CNPJ like '+QuotedStr(dbeCpfCnpj.Text)+
       ' or NOME like '+QuotedStr(dbeSacado.Text);
@@ -331,9 +331,9 @@ begin
         cdsCliente.Insert;
         cdsClienteCODCLIENTE.AsInteger := (ID + 1);
 
-        if MsgSN('Este cliente é pessoa física ou pessoa jurídica?'+#13#13+
-          'Sim - Pessoa Física;'+#13#10+
-          'Não - Pessoa Jurídica;') then
+        if MsgSN('Este cliente ï¿½ pessoa fï¿½sica ou pessoa jurï¿½dica?'+#13#13+
+          'Sim - Pessoa Fï¿½sica;'+#13#10+
+          'Nï¿½o - Pessoa Jurï¿½dica;') then
           cdsClienteTIPO.AsString := 'F'
         else
           cdsClienteTIPO.AsString := 'J';
@@ -473,7 +473,7 @@ begin
 
   if (ModoInsert(cdsPadrao) and Repetido) then
   begin
-    MsgAviso('','Já existe uma duplicata com este número.');
+    MsgAviso('','Jï¿½ existe uma duplicata com este nï¿½mero.');
     Abort;
   end;
  {
@@ -482,7 +482,7 @@ begin
     if ((not ValidaCampo(dbeCpfCnpj.Text, 0)) and
         (not ValidaCampo(dbeCpfCnpj.Text, 1))) then
     begin
-      MsgAviso('CPF ou CNPJ inválido ou não preenchido.');
+      MsgAviso('CPF ou CNPJ invï¿½lido ou nï¿½o preenchido.');
       SetFocusIfCan(dbeCpfCnpj);
       Abort;
     end;
@@ -499,7 +499,7 @@ begin
     Sender.AsString := FormatarDoc(Text, 1)
   else
   begin
-    MsgCuidado('CPF/CNPJ inválido.');
+    MsgCuidado('CPF/CNPJ invï¿½lido.');
     Sender.Clear;
     Sender.FocusControl;
     Exit;
@@ -536,7 +536,7 @@ begin
     cdsPadraoVALOREXTENSO.AsString := Extenso(cdsPadraoVALOR.AsFloat);
     cdsPadraoIMPRESSA.AsString     := 'N';
 
-    if MsgSN('Confirma importação dos dados deste cliente?')then
+    if MsgSN('Confirma importaï¿½ï¿½o dos dados deste cliente?')then
       btnSalvar.Click
     else
     begin
@@ -589,7 +589,7 @@ begin
       cdsPadraoDATAIMPRESSAO.AsDateTime := Date;
       cdsPadraoIMPRESSA.AsString        := 'N';
 
-      if MsgSN('Confirma importação dos dados desta conta?')then
+      if MsgSN('Confirma importaï¿½ï¿½o dos dados desta conta?')then
         btnSalvar.Click
       else
       begin

@@ -1,10 +1,10 @@
 inherited frmBanco: TfrmBanco
   Caption = 'frmBanco'
-  ClientHeight = 156
-  ClientWidth = 433
+  ClientHeight = 210
+  ClientWidth = 470
   OldCreateOrder = True
-  ExplicitWidth = 439
-  ExplicitHeight = 205
+  ExplicitWidth = 476
+  ExplicitHeight = 259
   PixelsPerInch = 96
   TextHeight = 13
   object dbeCodCompensacao: TDBEdit [0]
@@ -28,13 +28,13 @@ inherited frmBanco: TfrmBanco
     TabOrder = 1
   end
   inherited sbStatus: TStatusBar
-    Top = 137
-    Width = 433
+    Top = 191
+    Width = 470
     ExplicitTop = 137
     ExplicitWidth = 433
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 433
+    Width = 470
     TabOrder = 2
     ExplicitWidth = 433
   end
@@ -55,7 +55,6 @@ inherited frmBanco: TfrmBanco
     CommandText = 'select * from BANCO'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
     Left = 104
     Top = 108
     object sqldPadraoIDBANCO: TIntegerField

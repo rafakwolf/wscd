@@ -366,9 +366,9 @@ begin
     Exit;
   end;
 
-  dbValor.Text := FormatFloat('0.00',
-    SelectSingleField('select sum(TOTAL) from CONTASRECEBER where RECEBER = '+
-    QuotedStr('S'), sqldContaReceber.SQLConnection));
+//  dbValor.Text := FormatFloat('0.00',
+//    SelectSingleField('select sum(TOTAL) from CONTASRECEBER where RECEBER = '+
+//    QuotedStr('S'), sqldContaReceber.SQLConnection));
 
   rgreceb.OnClick(Self);
 

@@ -153,7 +153,7 @@ procedure TfrmParcelaVenda.btnOkClick(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandType := ctStoredProc;
       CommandText := 'STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger := FIdVenda;
@@ -223,7 +223,7 @@ function TfrmParcelaVenda.Restante: Extended;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
     Params.ParamByName('VENDA').AsInteger := FIdVenda;
     Open;

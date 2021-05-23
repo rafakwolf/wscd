@@ -117,7 +117,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     Left = 237
     Top = 364
     Bitmap = {
-      494C010102000500100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -321,7 +321,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   object dspPadrao: TDataSetProvider
     DataSet = sqldPadrao
     Options = [poPropogateChanges, poUseQuoteChar]
-    Left = 160
+    Left = 192
     Top = 156
   end
   object cdsPadrao: TClientDataSet
@@ -369,8 +369,8 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   object dspAcesso: TDataSetProvider
     DataSet = sqldAcesso
     Options = [poPropogateChanges, poUseQuoteChar]
-    Left = 152
-    Top = 216
+    Left = 184
+    Top = 208
   end
   object cdsAcesso: TClientDataSet
     Tag = 1

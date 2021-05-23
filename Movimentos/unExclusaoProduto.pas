@@ -60,7 +60,7 @@ uses Funcoes,  unAguarde, uDatabaseutils;
 
 procedure TfrmExclusaoProduto.edDescricaoChange(Sender: TObject);
 begin
-  if edDescricao.Text <> 'Descrição...' then
+  if edDescricao.Text <> 'Descriï¿½ï¿½o...' then
   begin
     Filtro(cdsPadrao, 'DESCRICAO', edDescricao.Text);
     cdsPadrao.Filtered := True;
@@ -71,7 +71,7 @@ procedure TfrmExclusaoProduto.FormShow(Sender: TObject);
 begin
   if cdsPadrao.IsEmpty then
   begin
-    MsgCuidado('Não existem produtos cadastrados.');
+    MsgCuidado('Nï¿½o existem produtos cadastrados.');
     PostMessage(Handle, WM_CLOSE, 0, 0);
   end;
 end;
@@ -87,7 +87,7 @@ procedure TfrmExclusaoProduto.btnExcluirClick(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'select count(1) as CONT from PRODUTOS where EXCLUIR = '+QuotedStr('S');
       Open;
       Result := FieldByName('CONT').AsInteger;
@@ -100,17 +100,17 @@ begin
 
   if RegMarcados < 1 then
   begin
-    MsgCuidado('Nenhum registro marcado, para marcar/desmarcar dê um duplo clique no registro desejado.');
+    MsgCuidado('Nenhum registro marcado, para marcar/desmarcar dï¿½ um duplo clique no registro desejado.');
     Exit;
   end;
 
   with TSQLDataSet.Create(Self) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     Close;
     CommandText := 'DELETE FROM PRODUTOS WHERE EXCLUIR = ' + QuotedStr('S');
     ExecSQL;
-    MsgAviso('Exclusão efetuada com sucesso!');
+    MsgAviso('Exclusï¿½o efetuada com sucesso!');
   finally
     Free;
     cdsPadrao.Close;
@@ -143,7 +143,7 @@ end;
 
 procedure TfrmExclusaoProduto.edCodigoChange(Sender: TObject);
 begin
-  if edCodigo.Text <> 'Código...' then
+  if edCodigo.Text <> 'Cï¿½digo...' then
   begin
     Filtro(cdsPadrao, 'CODBARRA', edCodigo.Text);
     cdsPadrao.Filtered := True;
@@ -187,26 +187,26 @@ end;
 
 procedure TfrmExclusaoProduto.edCodigoEnter(Sender: TObject);
 begin
-  if Trim(edCodigo.Text) = 'Código...' then
+  if Trim(edCodigo.Text) = 'Cï¿½digo...' then
     edCodigo.Clear;
 end;
 
 procedure TfrmExclusaoProduto.edDescricaoEnter(Sender: TObject);
 begin
-  if Trim(edDescricao.Text) = 'Descrição...' then
+  if Trim(edDescricao.Text) = 'Descriï¿½ï¿½o...' then
     edDescricao.Clear;
 end;
 
 procedure TfrmExclusaoProduto.edCodigoExit(Sender: TObject);
 begin
   if Trim(edCodigo.Text) = '' then
-    edCodigo.Text := 'Código...';
+    edCodigo.Text := 'Cï¿½digo...';
 end;
 
 procedure TfrmExclusaoProduto.edDescricaoExit(Sender: TObject);
 begin
   if Trim(edDescricao.Text) = '' then
-    edDescricao.Text := 'Descrição...';
+    edDescricao.Text := 'Descriï¿½ï¿½o...';
 end;
 
 initialization

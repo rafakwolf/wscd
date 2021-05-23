@@ -2007,7 +2007,6 @@ object frmPadrao: TfrmPadrao
     object actPrintPerson: TAction
       Category = 'Navigate'
       Caption = 'Assistente de relat'#243'rio'
-      OnExecute = actPrintPersonExecute
     end
     object actLimparFiltro: TAction
       Category = 'Navigate'

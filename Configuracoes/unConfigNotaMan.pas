@@ -1,4 +1,4 @@
-unit unConfigNotaMan;
+ï»¿unit unConfigNotaMan;
 
 interface
 
@@ -80,7 +80,7 @@ begin
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'SELECT RF.RDB$FIELD_NAME FROM RDB$RELATION_FIELDS RF '+
                      'WHERE RF.RDB$RELATION_NAME = :PTABLE';
       Params.ParamByName('PTABLE').AsString := 'VIEWVENDA';
@@ -97,15 +97,15 @@ begin
   end
   else if (Tipo = 'T') then
   begin
-    //dbcbbRef.Items.Add('Cabeçalho');
+    //dbcbbRef.Items.Add('Cabeï¿½alho');
     //dbcbbRef.Items.Add('Itens da nota');
-    //dbcbbRef.Items.Add('Rodapé');
+    //dbcbbRef.Items.Add('Rodapï¿½');
   end
   else if (Tipo = 'I') then
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'SELECT RF.RDB$FIELD_NAME FROM RDB$RELATION_FIELDS RF '+
                      'WHERE RF.RDB$RELATION_NAME = :PTABLE';
       Params.ParamByName('PTABLE').AsString := 'VIEWITEMVENDA';
@@ -137,9 +137,9 @@ procedure TfrmConfigNotaMan.cdsPadraoTIPOGetText(Sender: TField;
 begin
   inherited;
   if Sender.AsString = 'C' then
-    Text := 'Cabeçalho'
+    Text := 'Cabeï¿½alho'
   else if Sender.AsString = 'R' then
-    Text := 'Rodapé'
+    Text := 'Rodapï¿½'
   else if Sender.AsString = 'T' then
     Text := 'Texto fixo'
   else
@@ -207,18 +207,18 @@ begin
   inherited;
   if ModoInsert(cdsPadrao) then
   begin
-    if SQLFind('CONFIGNOTA', 'CAMPO', dbeCampoDescricao.Text, GetConnection) then
-    begin
-      MsgErro('Este campo já existe,  escolha outro nome.');
-      Exit;
-    end;
+//    if SQLFind('CONFIGNOTA', 'CAMPO', dbeCampoDescricao.Text, GetConnection) then
+//    begin
+//      MsgErro('Este campo jï¿½ existe,  escolha outro nome.');
+//      Exit;
+//    end;
   end;
 
   if ModoInsertEdit(cdsPadrao) then
   begin
     if ValidaFieldsVazios([cdsPadraoCAMPO, cdsPadraoLAYOUT, cdsPadraoREFERENCIA,
       cdsPadraoTIPO, cdsPadraoLINHA, cdsPadraoCOLUNA], ['Nome do campo', 'LayOut',
-      'Referência', 'Tipo', 'Linha', 'Coluna']) <> '' then
+      'Referï¿½ncia', 'Tipo', 'Linha', 'Coluna']) <> '' then
       Exit;
   end;
 

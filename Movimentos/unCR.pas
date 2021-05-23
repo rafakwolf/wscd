@@ -321,18 +321,18 @@ begin
 //    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
 //    True) then Abort;
 
-  if cdsPadrao.State in [dsInsert] then
-  begin
-    if not cdsPadraoDOCUMENTO.IsNull then
-      if SelectSingleField('select count(1) from CONTASRECEBER where (DOCUMENTO = '+
-        QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (CLIENTE = '+
-        QuotedStr(IntToStr(cdsPadraoCLIENTE.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
-      begin
-        MsgCuidado('Este "Documento" já está cadastrado para este "Cliente".');
-        SetFocusIfCan(dbeDocumento);
-        Abort;
-      end;
-  end;
+//  if cdsPadrao.State in [dsInsert] then
+//  begin
+//    if not cdsPadraoDOCUMENTO.IsNull then
+//      if SelectSingleField('select count(1) from CONTASRECEBER where (DOCUMENTO = '+
+//        QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (CLIENTE = '+
+//        QuotedStr(IntToStr(cdsPadraoCLIENTE.AsInteger))+')', sqldPadrao.SQLConnection) > 0 then
+//      begin
+//        MsgCuidado('Este "Documento" já está cadastrado para este "Cliente".');
+//        SetFocusIfCan(dbeDocumento);
+//        Abort;
+//      end;
+//  end;
 
   if cdsPadraoIDCONTA.IsNull then
   begin

@@ -3,11 +3,12 @@ unit udmBase;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, Data.SqlExpr;
+  System.SysUtils, System.Classes, ZAbstractConnection,
+  ZConnection;
 
 type
   TdmBase = class(TDataModule)
-    Conexao: TSQLConnection;
+    dbConn: TZConnection;
   private
     { Private declarations }
   protected

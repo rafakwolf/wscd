@@ -3,14 +3,15 @@ unit unDmPrincipal;
 interface
 
 uses
-  SysUtils, Classes, DB, SqlExpr, Dialogs, Forms, Controls,
-  Messages, Graphics,  Windows, FMTBcd, RLConsts,
-  udmBase, Data.DBXFirebird, Datasnap.Provider, Datasnap.DBClient;
+  SysUtils, Classes, DB, Dialogs, Forms, Controls,
+  Messages, Graphics, Windows, FMTBcd,
+  udmBase, ZAbstractConnection, ZConnection, ormbr.dml.generator.firebird;
 
 type
   TDmPrincipal = class(TdmBase)
-    procedure DataModuleCreate(Sender: TObject);
     procedure ConexaoBeforeConnect(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
   private
   public
     function ConectaBanco: Boolean; override;
@@ -19,29 +20,43 @@ type
       Doc: string; Tipo: string; Valor: Currency; IdConta: Integer = 0): Boolean;
 
     function SituacaoClienteOk(Valor: Currency; Codigo: Integer): Boolean;
+
+    function Conexao: TZConnection;
   end;
 
 var
   DmPrincipal: TDmPrincipal;
 
 implementation
-uses uDBXConnectionParams;
 
 {$R *.dfm}
+
+function TDmPrincipal.Conexao: TZConnection;
+begin
+  Result := dbConn;
+end;
 
 procedure TDmPrincipal.ConexaoBeforeConnect(Sender: TObject);
 begin
   inherited;
-  TDBXConnectionParams.setParams(Conexao,
-    'localhost/3050',
-    'D:\ProjetosDELPHI\WSCD\Database\CPR2.fdb',
-    'SYSDBA','masterkey','RDB$ADMIN',0,3050);
+  dbConn.HostName := 'localhost';
+  dbConn.Port := 3050;
+  dbConn.Database := 'd:\dev\desktop\wscd\database\CPR2.fdb';
+  dbConn.User := 'SYSDBA';
+  dbConn.Password := 'masterkey';
+  dbConn.Catalog := 'UTF8';
 end;
 
 procedure TDmPrincipal.DataModuleCreate(Sender: TObject);
 begin
-  Application.HintHidePause := 5000;
-  Application.HintPause := 10;
+  inherited;
+  dbConn.Connect;
+end;
+
+procedure TDmPrincipal.DataModuleDestroy(Sender: TObject);
+begin
+  inherited;
+  dbConn.Disconnect;
 end;
 
 function TDmPrincipal.EnviaCaixa(Data: TDateTime; Historico, Doc, Tipo: string;
@@ -56,10 +71,12 @@ end;
 
 function TDmPrincipal.ConectaBanco: Boolean;
 begin
-  Conexao.Open;
+ try
+   dbConn.Connected := true;
+   Result := true;
+ except
+   Result := false;
+ end;
 end;
-
-//initialization
-//  RLConsts.SetVersion(3,71,'B');
 
 end.

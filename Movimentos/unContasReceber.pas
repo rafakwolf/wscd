@@ -245,7 +245,7 @@ begin
       ReabreDataset(cdsPadrao);
     end
     else
-      MsgAviso('Não é permitido excluir uma conta já recebida.');
+      MsgAviso('Nï¿½o ï¿½ permitido excluir uma conta jï¿½ recebida.');
   end;
 end;
 
@@ -255,7 +255,7 @@ procedure TfrmContasReceber.btnReceberClick(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'select count(1) as CONT from CONTASRECEBER'+
         ' where RECEBER = '+QuotedStr('S')+
         ' and RECDA = '+QuotedStr('N')+
@@ -285,8 +285,8 @@ begin
       FreeAndNil(frmReceberMan);
  // end
  // else
-  //  MsgAviso('Não há conta marcada para recebimento.'+#13#10+
-  //    'Para marcar/desmarcar dê um duplo clique sobre a conta desejada.');
+  //  MsgAviso('Nï¿½o hï¿½ conta marcada para recebimento.'+#13#10+
+  //    'Para marcar/desmarcar dï¿½ um duplo clique sobre a conta desejada.');
 end;
 
 procedure TfrmContasReceber.FormClose(Sender: TObject;
@@ -424,7 +424,7 @@ function TfrmContasReceber.ContasAVencer: Currency;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText :=
       'select sum(TOTAL) as SOMA from CONTASRECEBER where (VENCIMENTO > CURRENT_DATE) '+
       'and (RECDA = '''+'N'+''') and CLIENTE = :CLI';
@@ -440,7 +440,7 @@ function TfrmContasReceber.ContasVencedoHoje: Currency;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText :=
       'select sum(TOTAL) as SOMA from CONTASRECEBER where (VENCIMENTO = CURRENT_DATE) '+
       'and (RECDA = '''+'N'+''') and CLIENTE = :CLI';
@@ -456,7 +456,7 @@ function TfrmContasReceber.ContasVencidas: Currency;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText :=
       'select sum(TOTAL) as SOMA from CONTASRECEBER where (VENCIMENTO < CURRENT_DATE) '+
       'and (RECDA = '''+'N'+''') and CLIENTE = :CLI';

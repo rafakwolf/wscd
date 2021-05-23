@@ -1,4 +1,4 @@
- unit unVendas;
+ï»¿ unit unVendas;
 
 interface
 
@@ -352,9 +352,9 @@ begin
         begin
           frmAguarde.Fecha;
           if MsgSn('Existe(m) ' + IntToStr(NumRegs) +
-            ' Vendas(s) não concluída(s). Por favor verifique, pois estas podem' +
-            ' causar inconsistências no banco de dados, e no controle de estoque.'+#13#10+
-            'Deseja exibir somente as vendas não concluídas agora?') then
+            ' Vendas(s) nï¿½o concluï¿½da(s). Por favor verifique, pois estas podem' +
+            ' causar inconsistï¿½ncias no banco de dados, e no controle de estoque.'+#13#10+
+            'Deseja exibir somente as vendas nï¿½o concluï¿½das agora?') then
           begin
             cdsVendas.Filtered := False;
             cdsVendas.Filter := '(CONCLUIDA = '+QuotedStr('N')+') and (CANCELADO = '+QuotedStr('N')+')';
@@ -377,7 +377,7 @@ begin
   { cancelada }
   if cdsVendasCANCELADO.AsString = 'S' then
   begin
-    MsgErro('Venda já cancelada.');
+    MsgErro('Venda jï¿½ cancelada.');
     Exit;
   end;
 
@@ -420,7 +420,7 @@ begin
       MsgErro('Informe a valor do desconto.');
   end
   else
-    MsgAviso('Venda já está concluída.');
+    MsgAviso('Venda jï¿½ estï¿½ concluï¿½da.');
 end;
 
 procedure TfrmVendas.btnConsultarClick(Sender: TObject);
@@ -428,12 +428,12 @@ var
   S: String;
 begin
   S := '0';
-  if InputQuery('Localizar por número', 'Número da venda', S) and (S <> '0') then
+  if InputQuery('Localizar por nï¿½mero', 'Nï¿½mero da venda', S) and (S <> '0') then
   begin
     cdsVendas.IndexFieldNames := 'CODIGO';
 
     if not cdsVendas.Locate('CODIGO', S, []) then
-      MsgAviso(S + ' não encontrado');
+      MsgAviso(S + ' nï¿½o encontrado');
   end;
 end;
 
@@ -457,7 +457,7 @@ end;
 
 procedure TfrmVendas.miImportarOrcamentoClick(Sender: TObject);
 begin
-  ChamaForm('TfrmImportaOrcam', 'Importar orçamento', Self);
+  ChamaForm('TfrmImportaOrcam', 'Importar orï¿½amento', Self);
   miMostrarTodos.Click;
 end;
 
@@ -565,16 +565,16 @@ procedure TfrmVendas.InsereProduto;
 
   function DescontoPromocao(IdProduto: Integer): Extended;
   begin
-    Result :=
-      SelectSingleField('select DESCONTO from PROMOCAO where PRODUTO = '+
-        QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
+//    Result :=
+//      SelectSingleField('select DESCONTO from PROMOCAO where PRODUTO = '+
+//        QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
   end;
 
   function PrecoPromocao(IdProduto: Integer): Extended;
   begin
-    Result :=
-      SelectSingleField('select PRECO from PROMOCAO where PRODUTO = '+
-        QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
+//    Result :=
+//      SelectSingleField('select PRECO from PROMOCAO where PRODUTO = '+
+//        QuotedStr(IntToStr(IdProduto)), sqlVendas.SQLConnection);
   end;
 
 begin
@@ -616,7 +616,7 @@ begin
             InsereProduto
           else
           begin
-            MsgErro('Produto com estoque mínimo, não é possível inseri-lo.');
+            MsgErro('Produto com estoque mï¿½nimo, nï¿½o ï¿½ possï¿½vel inseri-lo.');
             Exit;
           end;
         end
@@ -765,7 +765,7 @@ begin
     cdsVendasTOTAL.AsFloat := (cdsVendasTOTAL.AsFloat + cdsItensTOTAL.AsFloat);
     cdsVendasTOTALDESCTO.AsFloat :=
       (cdsVendasTOTALDESCTO.AsFloat + cdsItensVALORDESCTO.AsFloat);
-    { calcula valor de comissão }
+    { calcula valor de comissï¿½o }
     cdsItensVALORCOMISSAO.AsFloat :=
       RoundTo((cdsItensTOTAL.AsFloat * cdsItensCOMISSAO.AsFloat)/100, 2);
   end;
@@ -846,7 +846,7 @@ begin
     if Configuracao.EditarVenda then
       inherited
     else
-      MsgAviso('Sem permissão para editar ésta venda.');
+      MsgAviso('Sem permissï¿½o para editar ï¿½sta venda.');
   end
   else
     inherited;
@@ -878,12 +878,12 @@ end;
 
 procedure TfrmVendas.miRelComissaoVendedorClick(Sender: TObject);
 begin
-  ChamaForm('TfrmRelatorioComissaoVenda', 'Comissão de vendedor', Self);
+  ChamaForm('TfrmRelatorioComissaoVenda', 'Comissï¿½o de vendedor', Self);
 end;
 
 procedure TfrmVendas.miRelVendaAtualClick(Sender: TObject);
 begin
-  case FormRadioButtons('Impressora Jato/Lazer, Impressora matricial', 'Impressão da venda', 0) of
+  case FormRadioButtons('Impressora Jato/Lazer, Impressora matricial', 'Impressï¿½o da venda', 0) of
   0:begin
       with TfrmPrevNotaVenda.Create(Self) do
       try
@@ -909,7 +909,7 @@ end;
 
 procedure TfrmVendas.miVendasNaoConcClick(Sender: TObject);
 begin
-  ChamaForm('TfrmVendaNaoConc', 'Vendas não concluídas', Self);
+  ChamaForm('TfrmVendaNaoConc', 'Vendas nï¿½o concluï¿½das', Self);
 end;
 
 procedure TfrmVendas.ReceberVenda;
@@ -918,7 +918,7 @@ procedure TfrmVendas.ReceberVenda;
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandType := ctStoredProc;
       CommandText := 'STPRECTOVENDA';
       Params.ParamByName('IDVENDA').AsInteger     := cdsVendasCODIGO.AsInteger;
@@ -936,7 +936,7 @@ procedure TfrmVendas.ReceberVenda;
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'select RESTO from STPRESTOVENDA(:VENDA)';
       Params.ParamByName('VENDA').AsInteger := cdsVendasCODIGO.AsInteger;
       Open;
@@ -955,7 +955,7 @@ begin
   begin
 
     FormaRecto :=
-      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Pré-datado, &4 - Crediário', 'Forma de recebimento');
+      FormRadioButtons('&1 - Dinheiro, &2 - Cheque a Vista, &3 - Cheque Prï¿½-datado, &4 - Crediï¿½rio', 'Forma de recebimento');
 
     case FormaRecto of
       0: {dinheiro}
@@ -965,13 +965,13 @@ begin
 
           if RoundTo(ValorDinheiro, 2) > RoundTo(Restante, 2) then
           begin
-            MsgErro('Valor digitado é maior que o restante a receber, digite novamente.');
+            MsgErro('Valor digitado ï¿½ maior que o restante a receber, digite novamente.');
             Exit;
           end;
 
           if ValorDinheiro = 0 then
           begin
-            MsgErro('Valor digitado é inválido, digite novamente.');
+            MsgErro('Valor digitado ï¿½ invï¿½lido, digite novamente.');
             Exit;
           end;
 
@@ -979,7 +979,7 @@ begin
             'V'+IntToStr(cdsVendasCODIGO.AsInteger), 'C', ValorDinheiro) then
             ConcluirVenda('Dinheiro', ValorDinheiro)
           else
-            MsgAviso('Venda não foi concluída.');
+            MsgAviso('Venda nï¿½o foi concluï¿½da.');
 
         end;
       end;
@@ -990,7 +990,7 @@ begin
         frmPagamentoCheque.IdVenda := cdsVendasCODIGO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmVenda;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Venda não foi concluída.');
+          MsgAviso('Venda nï¿½o foi concluï¿½da.');
       end;
       2: {cheque pre-datado}
       begin
@@ -999,19 +999,19 @@ begin
         frmPagamentoCheque.IdVenda := cdsVendasCODIGO.AsInteger;
         frmPagamentoCheque.TipoChamada := tcmVenda;
         if frmPagamentoCheque.ShowModal <> mrOk then
-          MsgAviso('Venda não foi concluída.');
+          MsgAviso('Venda nï¿½o foi concluï¿½da.');
       end;
       3: {parcelamento}
       begin
         frmParcelaVenda := TfrmParcelaVenda.Create(Self);
         frmParcelaVenda.IdVenda := cdsVendasCODIGO.AsInteger;
         if frmParcelaVenda.ShowModal <> mrOk then
-          MsgAviso('Venda não foi concluída.');
+          MsgAviso('Venda nï¿½o foi concluï¿½da.');
       end;
     end;
   end
   else
-    MsgAviso('Venda já foi concluída.');
+    MsgAviso('Venda jï¿½ foi concluï¿½da.');
 end;
 
 procedure TfrmVendas.miEstornarClick(Sender: TObject);
@@ -1021,11 +1021,11 @@ begin
 
   if cdsVendasCONCLUIDA.AsString = 'N' then
   begin
-    MsgAviso('Venda não concluída.');
+    MsgAviso('Venda nï¿½o concluï¿½da.');
     Exit;
   end;
 
-  if MsgSN('Deseja realmente estornar ésta venda?') then
+  if MsgSN('Deseja realmente estornar ï¿½sta venda?') then
   begin
     spEstorna.Close;
     spEstorna.Params.ParamByName('CODIGO').AsInteger := cdsVendasCODIGO.AsInteger;

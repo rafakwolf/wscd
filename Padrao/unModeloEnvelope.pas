@@ -53,11 +53,11 @@ procedure TfrmModeloEnvelope.FormCreate(Sender: TObject);
 var
   I: Integer;
 begin
-  for I := 0 to ComponentCount-1 do
-  begin
-    if Components[i] is TCustomSQLDataSet then
-      TCustomSQLDataSet( Components[i] ).SQLConnection := GetConnection;
-  end;
+//  for I := 0 to ComponentCount-1 do
+//  begin
+//    if Components[i] is TCustomSQLDataSet then
+//      TCustomSQLDataSet( Components[i] ).//SQLConnection := GetConnection;
+//  end;
 end;
 
 procedure TfrmModeloEnvelope.rrEnvelopeBeforePrint(Sender: TObject;

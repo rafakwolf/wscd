@@ -152,7 +152,7 @@ begin
        cdsPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
        cdsPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
        cdsPadrao.Open;
-       lbFiltroUsado.Caption := 'Período de '+DataI+' até '+DataF;
+       lbFiltroUsado.Caption := 'Perï¿½odo de '+DataI+' atï¿½ '+DataF;
      end;
    end;
    1: begin
@@ -177,7 +177,7 @@ procedure TfrmContasRecebidas.btnEstornarClick(Sender: TObject);
   begin
     with TSQLDataSet.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      //SQLConnection := GetConnection;
       CommandText := 'select count(1) as CONT from CONTASRECEBER'+
         ' where RECEBER = '+QuotedStr('S')+
         ' and RECDA = '+QuotedStr('S')+
@@ -202,8 +202,8 @@ begin
       Estornar;
   end
   else
-    MsgAviso('Não há conta marcada para estorno.'+#13#10+
-      'Para marcar/desmarcar dê um duplo clique sobre a conta desejada.');
+    MsgAviso('Nï¿½o hï¿½ conta marcada para estorno.'+#13#10+
+      'Para marcar/desmarcar dï¿½ um duplo clique sobre a conta desejada.');
 end;
 
 procedure TfrmContasRecebidas.Estornar;
@@ -229,7 +229,7 @@ begin
       cdsConta.Open;
       if cdsConta.Locate('ORIGEM', cdsPadraoCODIGO.AsInteger, []) then
       begin
-        MsgAviso('O recebimento desta conta gerou a conta restante de código = ' +
+        MsgAviso('O recebimento desta conta gerou a conta restante de cï¿½digo = ' +
           IntToStr(cdsContaCODIGO.AsInteger) + '.' + #13#10 +
           'Exclua a conta restante para prosseguir.');
         Abort;
@@ -273,7 +273,7 @@ procedure TfrmContasRecebidas.SomaContasRecebidas;
 begin
   with TSQLDataSet.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    //SQLConnection := GetConnection;
     CommandText := 'select sum(TOTAL) as SOMA from CONTASRECEBER '+
       'where RECDA = '+QuotedStr('S')+' and CLIENTE = :PCLIENTE';
     Params.ParamByName('PCLIENTE').AsInteger := FCliente; 

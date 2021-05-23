@@ -3,12 +3,13 @@ unit uClasses;
 interface
 
 uses
-  SysUtils, Classes, SqlExpr, DB, Forms, unDmPrincipal, uutilfncs, inifiles;
+  SysUtils, Classes, SqlExpr, DB, Forms,
+  unDmPrincipal, uutilfncs, inifiles, ZDataset, ZStoredProcedure;
 
 type
   TConfigGlobal = class
   private
-    sqldConfigGlobal: TSQLDataSet;
+    sqldConfigGlobal: TZQuery;
 
     function GetIntervalo: Integer;
     function GetJuro: Real;
@@ -61,7 +62,7 @@ type
 
   TConfiguracao = class
   private
-    sqldConfiguracao: TSQLDataSet;
+    sqldConfiguracao: TZQuery;
     function GetAliquotaPadrao: Integer;
     function GetAtalhos: Boolean;
     function GetBackup: Boolean;
@@ -143,7 +144,7 @@ type
 
   TEmpresa = class
   private
-    sqldEmpresa: TSQLDataSet;
+    sqldEmpresa: TZQuery;
     function GetBairro: String;
     function GetCep: String;
     function GetCidade: String;
@@ -177,7 +178,7 @@ type
 
   TSistema = class
   private
-    sqldSistema: TSQLDataSet;
+    sqldSistema: TZQuery;
     function GetAppCaption: String;
     function GetDataAcesso: String;
     function GetDataValidade: String;
@@ -211,11 +212,11 @@ end;
 
 constructor TConfigGlobal.Create;
 begin
-  sqldConfigGlobal := TSQLDataSet.Create(nil);
+  sqldConfigGlobal := TZQuery.Create(nil);
   with sqldConfigGlobal do
   begin
-    SQLConnection := DmPrincipal.Conexao;
-    CommandText := 'select '+
+    Connection := DmPrincipal.Conexao;
+    Sql.Text := 'select '+
                    ' TAXAJURO,'+
                    ' INTERVALO,'+
                    ' PRAZOINICIAL,'+
@@ -361,12 +362,12 @@ end;
 
 constructor TConfiguracao.Create;
 begin
-  sqldConfiguracao := TSQLDataSet.Create(nil);
+  sqldConfiguracao := TZQuery.Create(nil);
   with sqldConfiguracao do
   begin
-    SQLConnection := DmPrincipal.Conexao;
+    Connection := DmPrincipal.Conexao;
     Close;
-    CommandText := 'select'+
+    SQl.Text := 'select'+
                    ' BARRAFERRAMENTA,'+
                    ' HINTBALAO,'+
                    ' GRAVAERRO,'+
@@ -408,12 +409,10 @@ begin
 
     if IsEmpty then
     begin
-      with TSQLDataSet.Create(nil) do
+      with TZStoredProc.Create(nil) do
       try
-        SQLConnection := DmPrincipal.Conexao;
-        CommandType := ctStoredProc;
-        DbxCommandType := 'Dbx.StoredProcedure';
-        CommandText := 'STPCONFIGPADRAO';
+        Connection := DmPrincipal.Conexao;
+        StoredProcName := 'STPCONFIGPADRAO';
         Params.ParamByName('COMPUTADOR').AsString := GetComputerName;
         Params.ParamByName('DIRETORIO').AsString  := ExtractFilePath( Application.ExeName );
         ExecSQL;
@@ -630,11 +629,11 @@ end;
 
 constructor TEmpresa.Create;
 begin
-  sqldEmpresa := TSQLDataSet.Create(nil);
+  sqldEmpresa := TZQuery.Create(nil);
   with sqldEmpresa do
   begin
-    SQLConnection := DmPrincipal.Conexao;
-    CommandText := 'select '+
+    Connection := DmPrincipal.Conexao;
+    SQL.Text := 'select '+
                    'RAZAOSOCIAL, '+
                    'CNPJ, '+
                    'IE, '+
@@ -726,11 +725,11 @@ end;
 
 constructor TSistema.Create;
 begin
-  sqldSistema := TSQLDataSet.Create(nil);
+  sqldSistema := TZQuery.Create(nil);
   with sqldSistema do
   begin
-    SQLConnection := DmPrincipal.Conexao;
-    CommandText := 'select '+
+    Connection := DmPrincipal.Conexao;
+    SQL.Text := 'select '+
                    '  s.IDSISTEMA,'+
                    '  s.VERSAO,'+
                    '  s.DATAVALIDADE,'+

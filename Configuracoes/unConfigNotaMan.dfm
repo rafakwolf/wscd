@@ -18,6 +18,10 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
     TabOrder = 0
     object tsCadastro: TTabSheet
       Caption = 'Cadastro'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbtxtRef: TDBText
         Left = 264
         Top = 66
@@ -217,7 +221,6 @@ inherited frmConfigNotaMan: TfrmConfigNotaMan
         Name = 'PCODIGO'
         ParamType = ptInput
       end>
-    SQLConnection = DmPrincipal.Conexao
     Left = 108
     Top = 194
     object sqldPadraoCODIGO: TIntegerField
