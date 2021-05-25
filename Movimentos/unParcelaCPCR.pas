@@ -9,7 +9,11 @@ uses
   Buttons, DateUtils, FMTBcd;
 
 type
+
+  { TfrmParcelaCPCR }
+
   TfrmParcelaCPCR = class(TfrmSimplePadrao)
+    edtJuro: TLabeledEdit;
     sqldParcela: TSQLQuery;
     sqldParcelaNUMERO: TIntegerField;
     sqldParcelaVENC: TDateField;
@@ -150,7 +154,7 @@ begin
             'P'+IntToStr(cdsPadraoCODIGO.AsInteger)+Alfa[i];
 
           Params.ParamByName('VALOR').AsFloat := cdsParcelaVALOR.AsFloat;
-          Params.ParamByName('JURO').AsFloat := Global.Juro;
+          Params.ParamByName('JURO').AsFloat := StrtoFloatDef(edtJuro.Text, 1);
           Params.ParamByName('VENDA').Value := Null;
           ExecSQL;
         end;
@@ -184,7 +188,7 @@ begin
           'P'+IntToStr(cdsPadraoCODIGO.AsInteger)+Alfa[i];
 
         Params.ParamByName('VALOR').AsFloat := cdsParcelaVALOR.AsFloat;
-        Params.ParamByName('JURO').AsFloat := Global.Juro;
+        Params.ParamByName('JURO').AsFloat := strtofloatDef(edtJuro.Text, 1);
         Params.ParamByName('COMPRA').Value := Null;
         ExecSQL;
       end;
@@ -289,9 +293,9 @@ end;
 procedure TfrmParcelaCPCR.FormShow(Sender: TObject);
 begin
   inherited;
-  sePrazoInicio.Value := Trunc(Global.PrazoInicial);
-  seIntervalo.Value := Trunc(Global.Intervalo);
-  seParcelas.Value := Trunc(Global.Parcelas);
+  sePrazoInicio.Value := 1;
+  seIntervalo.Value := 1;
+  seParcelas.Value := 1;
 end;
 
 procedure TfrmParcelaCPCR.cdsParcelaVENCChange(Sender: TField);

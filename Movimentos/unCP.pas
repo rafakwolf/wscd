@@ -115,8 +115,7 @@ var
 implementation
 
 uses Funcoes, unPrevContasPagar,  udatabaseutils,
-     unContasPagar, unPrevCPAtrasados,  uConfiguraRelatorio,
-     unPagarMan, unParcelaCPCR;
+     unContasPagar, unPrevCPAtrasados,  uConfiguraRelatorio, unParcelaCPCR;
 
 {$R *.dfm}
 
@@ -328,9 +327,9 @@ begin
 
   if (cdsPadraoPAGA.AsString = 'N') then
   begin
-    frmPagarMan := TfrmPagarMan.Create(Self);
-    frmPagarMan.Caption := 'Pagamento';
-    frmPagarMan.ShowModal;
+    //frmPagarMan := TfrmPagarMan.Create(Self);
+    //frmPagarMan.Caption := 'Pagamento';
+    //frmPagarMan.ShowModal;
   end
   else
   begin
@@ -338,7 +337,7 @@ begin
     cdsPadrao.Edit;
     cdsPadraoPAGAR.AsString := 'N';
     //cdsPadrao.ApplyUpdates(0);
-    MsgAviso('�sta conta j� foi paga');
+    MsgAviso('Esta conta ja foi paga');
   end;
 end;
 

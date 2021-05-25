@@ -119,7 +119,7 @@ var
 implementation
 
 uses VarGlobal, Funcoes, uConfiguraRelatorio, unPrevContasReceber,
-     unPrevRelCRAtrasadas, unContasReceber,  unReceberMan,
+     unPrevRelCRAtrasadas, unContasReceber,
      unParcelaCPCR, uDatabaseutils;
 
 {$R *.dfm}
@@ -149,8 +149,8 @@ begin
   inherited;
   //Incrementa('CONTASRECEBER', cdsPadraoCODIGO, GetConnection);
   cdsPadraoDATA.AsDateTime := Date;
-  cdsPadraoVENCIMENTO.AsDateTime := IncDay(Date, Global.PrazoInicial);
-  cdsPadraoJURO.AsFloat := Global.Juro;
+  cdsPadraoVENCIMENTO.AsDateTime := IncDay(Date, 1);
+  cdsPadraoJURO.AsFloat := 1;
   cdsPadraoRECEBER.AsString := 'N';
   cdsPadraoRECDA.AsString := 'N';
   SetFocusIfCan(dbeCliente);
@@ -344,11 +344,11 @@ begin
 
   if cdsPadraoRECDA.AsString = 'N' then
   begin
-    frmReceberMan := TfrmReceberMan.Create(Self);
-    frmReceberMan.Caption := 'Recebimento';
-    frmReceberMan.ShowModal;
-    if Assigned(frmReceberMan) then
-      FreeAndNil(frmReceberMan);
+    //frmReceberMan := TfrmReceberMan.Create(Self);
+    //frmReceberMan.Caption := 'Recebimento';
+    //frmReceberMan.ShowModal;
+    //if Assigned(frmReceberMan) then
+    //  FreeAndNil(frmReceberMan);
   end
   else
   begin
@@ -356,7 +356,7 @@ begin
     cdsPadrao.Edit;
     cdsPadraoRECEBER.AsString := 'N';
     //cdsPadrao.ApplyUpdates(0);
-    MsgAviso('�sta conta j� foi recebida');
+    MsgAviso('Esta conta ja foi recebida');
   end;
 end;
 

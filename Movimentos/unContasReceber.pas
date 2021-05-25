@@ -224,7 +224,7 @@ var
 
 implementation
 
-uses Funcoes, unContasRecebidas, unModeloConsulta, VarGlobal, unRecibo, unReceberMan;
+uses Funcoes, unContasRecebidas, unModeloConsulta, VarGlobal, unRecibo;
 
 {$R *.dfm}
 
@@ -276,11 +276,11 @@ begin
 
  // if Locate(cdsPadrao, cdsPadraoRECEBER, 'S') then
 //  begin
-    frmReceberMan := TfrmReceberMan.Create(Self);
-    frmReceberMan.Caption := 'Recebimento';
-    frmReceberMan.ShowModal;
-    if Assigned(frmReceberMan) then
-      FreeAndNil(frmReceberMan);
+ //   frmReceberMan := TfrmReceberMan.Create(Self);
+ //   frmReceberMan.Caption := 'Recebimento';
+ //   frmReceberMan.ShowModal;
+ //   if Assigned(frmReceberMan) then
+ //     FreeAndNil(frmReceberMan);
  // end
  // else
   //  MsgAviso('N�o h� conta marcada para recebimento.'+#13#10+

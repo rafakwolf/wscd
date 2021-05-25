@@ -108,7 +108,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao, VarGlobal, unModeloConsulta, unTrocaSenhaCaixa,
-     unTrocaSenhaEstoque, uUtilFncs, crypto;
+     uUtilFncs, crypto;
 
 {$R *.dfm}
 
@@ -195,12 +195,6 @@ end;
 procedure TfrmConfiguracao.btnAlterarSenhaProdutoClick(Sender: TObject);
 begin
   inherited;
-  frmSenhaEstoque := TfrmSenhaEstoque.Create(Self);
-  if frmSenhaEstoque.ShowModal = mrOk then
-  begin
-    zquery1.ApplyUpdates;
-    ReabreDataSet(zquery1);
-  end;
 end;
 
 procedure TfrmConfiguracao.dsPadraoStateChange(Sender: TObject);
@@ -211,7 +205,6 @@ begin
   EditModes := (zquery1.State in [dsInsert, dsEdit]);
 
   dbeSenhaCaixa.ReadOnly   := (Configuracao.SenhaCaixa <> '');
-  dbeSenhaProduto.ReadOnly := (Configuracao.SenhaEstoque <> '');
 
   rgOrientationImg.Enabled       := EditModes;
   btnLocalizar.Enabled           := EditModes;

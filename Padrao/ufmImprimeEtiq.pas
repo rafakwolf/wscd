@@ -77,7 +77,7 @@ var
 
 implementation
 
-uses unPrevEtiquetaProduto, unPrevEtiquetaCliente;
+uses unPrevEtiquetaCliente;
 
 {$R *.lfm}
 
@@ -159,77 +159,8 @@ begin
     cdsEtiqueta.Open;
     cdsEtiqueta.Locate('ETIQUETA', cbListaEtiq.Text, []);
 
-    { etiquetas de produtos }
-    if TipoEtq = teProduto then
-
-      with TfrmPrevEtiquetaProduto.Create(Self) do
-      try
-        rpEtiqueta.PageSetup.PaperSize := TRLPaperSize.fpCustom;
-        rpEtiqueta.PageSetup.PaperHeight := cdsEtiquetaALTURAFOLHA.AsCurrency;
-        rpEtiqueta.PageSetup.PaperWidth := cdsEtiquetaLARGURAFOLHA.AsCurrency;
-        rpEtiqueta.Margins.TopMargin := cdsEtiquetaMARGEMSUPERIOR.AsCurrency;
-        rpEtiqueta.Margins.LeftMargin := cdsEtiquetaMARGEMESQUERDA.AsCurrency;
-
-        Detail.RealBounds.UsedUnit := buMilimeters;
-        Detail.ColCount := cdsEtiquetaNUMEROCOLUNAS.AsInteger;
-        Detail.ColSpacing := cdsEtiquetaDISTCOLHORIZ.AsCurrency;
-        Detail.Margins.BottomMargin := cdsEtiquetaDISTACOLVERTICAL.AsCurrency;
-        Detail.ColWidth := cdsEtiquetaLARGURAETIQUETA.AsCurrency;
-        Detail.Height := cdsEtiquetaALTURAETIQUETA.AsVariant * 10 - 154;
-
-        Linhas := cdsEtiquetaNUMEROLINHAS.AsInteger + 1;
-        MargemInferior := cdsEtiquetaALTURAFOLHA.AsCurrency -
-                          (Linhas * cdsEtiquetaALTURAETIQUETA.AsCurrency);
-        rpEtiqueta.Margins.BottomMargin := MargemInferior;
-
-        NumLinhas := cdsEtiquetaNUMEROCOLUNAS.AsInteger;
-
-        if rgTraversal.ItemIndex = 0 then
-        begin
-          Skip := ((seLinhaIni.Value - 1) * cdsEtiquetaNUMEROCOLUNAS.AsInteger) +
-                  (seColunaIni.Value - 1) ;
-          Detail.Organization := goInRows;
-        end
-        else
-        begin
-          Skip := ((seColunaIni.Value - 1) * cdsEtiquetaNUMEROLINHAS.AsInteger) +
-                  (seLinhaIni.Value - 1) ;
-          Detail.Organization := goInColumns;
-        end;
-
-        if Configuracao.BordaEtiquetaProd then
-        begin
-          Detail.Borders.DrawBottom := True;
-          Detail.Borders.DrawLeft := True;
-          Detail.Borders.DrawRight := True;
-          Detail.Borders.DrawTop := True;
-        end
-        else
-        begin
-          Detail.Borders.DrawBottom := False;
-          Detail.Borders.DrawLeft := False;
-          Detail.Borders.DrawRight := False;
-          Detail.Borders.DrawTop := False;
-        end;
-
-        cdsEtq.Close;
-        sqldEtq.SQL.Clear;
-        sqldEtq.SQL.add(FSQL);
-        cdsEtq.Open;
-
-        FSkip := Skip + 1;
-
-        case aSaida of
-          0: rpEtiqueta.Preview;
-          1: rpEtiqueta.Print;
-        end;
-      finally
-        cdsEtiqueta.Close;
-        Free;
-      end
-
     { etiquetas de clientes }
-    else if TipoEtq = teCliente then
+    if TipoEtq = teCliente then
 
       with TfrmPrevEtiquetaCliente.Create(Self) do
       try
@@ -266,20 +197,25 @@ begin
           Detail.Organization := goInColumns;
         end;      
 
-        if Configuracao.BordaEtiquetaCli then
-        begin
-          Detail.Borders.DrawBottom := True;
-          Detail.Borders.DrawLeft := True;
-          Detail.Borders.DrawRight := True;
-          Detail.Borders.DrawTop := True;
-        end
-        else
-        begin
-          Detail.Borders.DrawBottom := False;
-          Detail.Borders.DrawLeft := False;
-          Detail.Borders.DrawRight := False;
-          Detail.Borders.DrawTop := False;
-        end;
+        Detail.Borders.DrawBottom := True;
+        Detail.Borders.DrawLeft := True;
+        Detail.Borders.DrawRight := True;
+        Detail.Borders.DrawTop := True;
+
+        //if Configuracao.BordaEtiquetaCli then
+        //begin
+        //  Detail.Borders.DrawBottom := True;
+        //  Detail.Borders.DrawLeft := True;
+        //  Detail.Borders.DrawRight := True;
+        //  Detail.Borders.DrawTop := True;
+        //end
+        //else
+        //begin
+        //  Detail.Borders.DrawBottom := False;
+        //  Detail.Borders.DrawLeft := False;
+        //  Detail.Borders.DrawRight := False;
+        //  Detail.Borders.DrawTop := False;
+        //end;
 
         cdsEtq.Close;
         sqldEtq.SQL.Clear;

@@ -1,0 +1,10 @@
+inherited frmPerfil: TfrmPerfil
+  Left = 259
+  Top = 167
+  Caption = 'frmPerfil'
+  OnCreate = FormCreate
+  inherited sbStatus: TStatusBar
+    Height = 17
+    Top = 355
+  end
+end

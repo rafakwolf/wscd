@@ -5,7 +5,8 @@ inherited frmBanco: TfrmBanco
   ClientHeight = 282
   ClientWidth = 640
   inherited sbStatus: TStatusBar
-    Top = 264
+    Height = 17
+    Top = 265
     Width = 640
   end
   inherited pnBotoesPadrao: TPanel
@@ -15,7 +16,7 @@ inherited frmBanco: TfrmBanco
   end
   object dbeCodCompensacao: TDBEdit[2]
     Left = 96
-    Height = 33
+    Height = 27
     Hint = 'Código de compensação'
     Top = 54
     Width = 105
@@ -29,11 +30,11 @@ inherited frmBanco: TfrmBanco
   end
   object dbeBanco: TDBEdit[3]
     Left = 96
-    Height = 33
+    Height = 27
     Hint = 'Nome do banco'
     Top = 88
     Width = 321
-    DataField = 'BANCO_NOME'
+    DataField = 'BANCO'
     DataSource = dsPadrao
     CharCase = ecNormal
     MaxLength = 0
@@ -57,8 +58,8 @@ inherited frmBanco: TfrmBanco
       'select * from BANCO'
     )
     Params = <>
-    Left = 232
-    Top = 162
+    Left = 216
+    Top = 160
   end
   object ZUpdateSQL1: TZUpdateSQL[7]
     DeleteSQL.Strings = (
@@ -68,13 +69,13 @@ inherited frmBanco: TfrmBanco
     )
     InsertSQL.Strings = (
       'INSERT INTO BANCO'
-      '  (BANCO_NOME)'
+      '  (BANCO)'
       'VALUES'
-      '  (:BANCO_NOME)'
+      '  (:BANCO)'
     )
     ModifySQL.Strings = (
       'UPDATE BANCO SET'
-      '  BANCO_NOME = :BANCO_NOME'
+      '  BANCO = :BANCO'
       'WHERE'
       '  BANCO.IDBANCO = :OLD_IDBANCO'
     )
@@ -84,7 +85,7 @@ inherited frmBanco: TfrmBanco
     ParamData = <    
       item
         DataType = ftUnknown
-        Name = 'BANCO_NOME'
+        Name = 'BANCO'
         ParamType = ptUnknown
       end    
       item

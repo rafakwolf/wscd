@@ -17,10 +17,7 @@ type
   TMainForm = class(TForm)
     ListaAcoes: TActionList;
     actCidade: TAction;
-    actUnidade: TAction;
-    actGrupo: TAction;
     actContaCaixa: TAction;
-    actConfiguracaoGlobal: TAction;
     actConfiguracaoLocal: TAction;
     actDadosEmpresa: TAction;
     actUsuario: TAction;
@@ -28,63 +25,37 @@ type
     actAgenda: TAction;
     actRecibo: TAction;
     actCliente: TAction;
-    actProduto: TAction;
     actFornecedor: TAction;
     actContasPagar: TAction;
     actContasReceber: TAction;
-    actOrcamento: TAction;
-    actVenda: TAction;
-    actCompra: TAction;
-    actPerda: TAction;
     actCaixa: TAction;
-    actListaPreco: TAction;
-    actExcluirProduto: TAction;
-    actEtiquetaProduto: TAction;
     actSobreSistema: TAction;
     actRelatorioAgenda: TAction;
     actEtiqueta: TAction;
     actPesqFone: TAction;
     actBanco: TAction;
-    actCheque: TAction;
-    actVendedor: TAction;
-    actPromocao: TAction;
     menuFrame: TFrame;
-    procedure actGrupoExecute(Sender: TObject);
     procedure actCidadeExecute(Sender: TObject);
-    procedure actUnidadeExecute(Sender: TObject);
     procedure actContaCaixaExecute(Sender: TObject);
-    procedure actConfiguracaoGlobalExecute(Sender: TObject);
     procedure actConfiguracaoLocalExecute(Sender: TObject);
     procedure actDadosEmpresaExecute(Sender: TObject);
+    procedure actPerfisExecute(Sender: TObject);
     procedure actUsuarioExecute(Sender: TObject);
     procedure actAgendaExecute(Sender: TObject);
     procedure actClienteExecute(Sender: TObject);
-    procedure actProdutoExecute(Sender: TObject);
     procedure actFornecedorExecute(Sender: TObject);
     procedure actContasPagarExecute(Sender: TObject);
     procedure actContasReceberExecute(Sender: TObject);
-    procedure actOrcamentoExecute(Sender: TObject);
-    procedure actVendaExecute(Sender: TObject);
-    procedure actCompraExecute(Sender: TObject);
-    procedure actPerdaExecute(Sender: TObject);
     procedure actCaixaExecute(Sender: TObject);
-    procedure actExcluirProdutoExecute(Sender: TObject);
-    procedure actListaPrecoExecute(Sender: TObject);
-    procedure actEtiquetaProdutoExecute(Sender: TObject);
     procedure actSobreSistemaExecute(Sender: TObject);
-    procedure actPerfisExecute(Sender: TObject);
     procedure actReciboExecute(Sender: TObject);
     procedure actRelatorioAgendaExecute(Sender: TObject);
     procedure actEtiquetaExecute(Sender: TObject);
     procedure actPesqFoneExecute(Sender: TObject);
     procedure actBancoExecute(Sender: TObject);
-    procedure actChequeExecute(Sender: TObject);
-    procedure actVendedorExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure actPromocaoExecute(Sender: TObject);
   Private
-    procedure SetConfigGlobal;
     procedure SetConfiguracao;
     procedure SetEmpresa;
     procedure SetSistema;
@@ -101,29 +72,14 @@ uses
 
 {$R *.lfm}
 
-procedure TMainForm.actGrupoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmCadastroGrupo', 'Cadastro de grupos', Application);
-end;
-
 procedure TMainForm.actCidadeExecute(Sender: TObject);
 begin
   ChamaForm('TfrmCadastroCidade', 'Cadastro de cidades', Application);
 end;
 
-procedure TMainForm.actUnidadeExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmCadastroUnidade', 'Cadastro de unidades', Application);
-end;
-
 procedure TMainForm.actContaCaixaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmCadastroCaixa', 'Contas caixa', Application);
-end;
-
-procedure TMainForm.actConfiguracaoGlobalExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmConfigGlobal', 'Configurações globais', Application);
 end;
 
 procedure TMainForm.actConfiguracaoLocalExecute(Sender: TObject);
@@ -134,6 +90,11 @@ end;
 procedure TMainForm.actDadosEmpresaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmDadosEmpresa', 'Dados da empresa', Application);
+end;
+
+procedure TMainForm.actPerfisExecute(Sender: TObject);
+begin
+  ChamaForm('TfrmPerfil', 'Perfis', Application);
 end;
 
 procedure TMainForm.actUsuarioExecute(Sender: TObject);
@@ -151,11 +112,6 @@ begin
   ChamaForm('TfrmCliente', 'Cadastro de clientes', Application);
 end;
 
-procedure TMainForm.actProdutoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmProduto', 'Cadastro de produtos', Application);
-end;
-
 procedure TMainForm.actFornecedorExecute(Sender: TObject);
 begin
   ChamaForm('TfrmFornecedor', 'Cadastro de fornecedores', Application);
@@ -171,54 +127,14 @@ begin
   ChamaForm('TfrmCR', 'Contas a receber', Application);
 end;
 
-procedure TMainForm.actOrcamentoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmOrcamentos', 'Orçamentos', Application);
-end;
-
-procedure TMainForm.actVendaExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmVendas', 'Vendas', Application);
-end;
-
-procedure TMainForm.actCompraExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmNotasFiscais', 'Compras', Application);
-end;
-
-procedure TMainForm.actPerdaExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmPerda', 'Perdas de produtos', Application);
-end;
-
 procedure TMainForm.actCaixaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmCaixa', 'Livro caixa', Application);
 end;
 
-procedure TMainForm.actExcluirProdutoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmExclusaoProduto', 'Exclusão de produtos', Application);
-end;
-
-procedure TMainForm.actListaPrecoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmListagemPrecos', 'Lista de preços', Application);
-end;
-
-procedure TMainForm.actEtiquetaProdutoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmEtiquetaProduto', 'Etiquetas de produtos', Application);
-end;
-
 procedure TMainForm.actSobreSistemaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmSobre', 'Sobre o sistema', Application);
-end;
-
-procedure TMainForm.actPerfisExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmPerfilPermissao', 'Perfis e permissões de usuários', Application);
 end;
 
 procedure TMainForm.actReciboExecute(Sender: TObject);
@@ -229,14 +145,6 @@ end;
 procedure TMainForm.actRelatorioAgendaExecute(Sender: TObject);
 begin
   ChamaForm('TfrmRelatorioAgenda', 'Listagem de telefones', Application);
-end;
-
-procedure TMainForm.SetConfigGlobal;
-begin
-  if Assigned(Global) then
-    Global.Atualizar
-  else
-    Global := TConfigGlobal.Create;
 end;
 
 procedure TMainForm.SetConfiguracao;
@@ -275,22 +183,12 @@ begin
   ChamaForm('TfrmBanco', 'Bancos', Application);
 end;
 
-procedure TMainForm.actChequeExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmCheque', 'Controle de cheques', Application);
-end;
-
 procedure TMainForm.SetSistema;
 begin
   if Assigned(Sistema) then
     Sistema.Atualizar
   else
     Sistema := TSistema.Create;
-end;
-
-procedure TMainForm.actVendedorExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmVendedor', 'Vendedores', Application);
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -346,7 +244,6 @@ begin
    SetSistema;
    SetEmpresa;
    SetConfiguracao;
-   SetConfigGlobal;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -354,19 +251,11 @@ begin
   if Assigned(Configuracao) then
    FreeAndNil( Configuracao );
 
-  if Assigned(Global) then
-   FreeAndNil( Global );
-
   if Assigned(Empresa) then
    FreeAndNil( Empresa );
 
   if Assigned(Sistema) then
    FreeAndNil( Sistema );
-end;
-
-procedure TMainForm.actPromocaoExecute(Sender: TObject);
-begin
-  ChamaForm('TfrmPromocao', 'Promoções', Application);
 end;
 
 end.

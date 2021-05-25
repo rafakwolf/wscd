@@ -1,527 +1,489 @@
 inherited frmParcelaCPCR: TfrmParcelaCPCR
-  Left = 221
-  Top = 127
-  ClientHeight = 437
-  ClientWidth = 465
+  Left = 322
+  Height = 452
+  Top = 107
+  Width = 587
   Caption = 'frmParcelaCPCR'
+  ClientHeight = 452
+  ClientWidth = 587
   OnShow = FormShow
-  OldCreateOrder = True
-  ExplicitWidth = 481
-  ExplicitHeight = 476
-  PixelsPerInch = 96
-  TextHeight = 13
-  object lbParcelas: TLabel
+  object lbParcelas: TLabel[0]
     Left = 232
+    Height = 15
     Top = 48
-    Width = 40
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 54
     Caption = 'Parcelas'
-    TabOrder = 11
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object lbPrazoInicio: TLabel
+  object lbPrazoInicio: TLabel[1]
     Left = 312
+    Height = 15
     Top = 48
-    Width = 57
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 79
     Caption = 'Prazo Inicial'
-    TabOrder = 12
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object lbIntervalo: TLabel
+  object lbIntervalo: TLabel[2]
     Left = 392
+    Height = 15
     Top = 48
-    Width = 44
-    Height = 13
-    Hint = ''
-    ShowHint = True
+    Width = 58
     Caption = 'Intervalo'
-    TabOrder = 13
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
-  object btnOk: TBitBtn
+  object btnOk: TBitBtn[3]
     Left = 280
+    Height = 25
     Top = 408
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
-    Glyph.Data = {
-      36060000424D3606000000000000360000002800000020000000100000000100
-      18000000000000060000C40E0000C40E00000000000000000000008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080008080008080
-      0080800080800080800066000066000080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808065656565656500
-      8080008080008080008080008080008080008080008080008080008080008080
-      0080800080800066001EB2311FB1330066000080800080800080800080800080
-      800080800080800080800080800080800080800080806565659A9A9A9A9A9A65
-      6565008080008080008080008080008080008080008080008080008080008080
-      00808000660031C24F22B7381AB02D21B4370066000080800080800080800080
-      80008080008080008080008080008080008080656565ABABAB9E9E9E9797979C
-      9C9C656565008080008080008080008080008080008080008080008080008080
-      00660047D36D3BCB5E25A83B0066001BA92E1DB1320066000080800080800080
-      80008080008080008080008080008080656565BFBFBFB5B5B598989865656594
-      9494999999656565008080008080008080008080008080008080008080006600
-      4FD67953DE7F31B54D006600008080006600179D271EAE310066000080800080
-      80008080008080008080008080656565C4C4C4CACACAA5A5A565656500808065
-      65658C8C8C989898656565008080008080008080008080008080008080008080
-      00660041C56300660000808000808000808000808000660019AA2B0066000080
-      80008080008080008080008080008080656565B5B5B565656500808000808000
-      8080008080656565939393656565008080008080008080008080008080008080
-      008080006600008080008080008080008080008080008080006600149D210066
-      0000808000808000808000808000808000808065656500808000808000808000
-      80800080800080806565658A8A8A656565008080008080008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800066
-      0000660000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080656565656565008080008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000660000660000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080656565656565008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080}
     Caption = '&OK'
-    TabOrder = 9
     OnClick = btnOkClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
   end
-  object btnCancelar: TBitBtn
+  object btnCancelar: TBitBtn[4]
     Left = 376
+    Height = 25
     Top = 408
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
-    Glyph.Data = {
-      06050000424D060500000000000036000000280000001D0000000E0000000100
-      180000000000D0040000C40E0000C40E00000000000000000000008080008080
-      0080800080800080800080800080800080800080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      80800080800080800080800080800080800000808000808000009A00009A0080
-      8000808000808000808000808000808000009A00009A00808000808000808000
-      80800080806B6B6B6B6B6B0080800080800080800080800080800080806B6B6B
-      6B6B6B0080800080800000808000009A174AFD103BF400009A00808000808000
-      808000808000009A002CF80030FC00009A0080800080800080806B6B6BA8A8A8
-      A0A0A06B6B6B0080800080800080800080806B6B6B9A9A9A9C9C9C6B6B6B0080
-      800000808000009A1A47F81A4CFF123BF100009A00808000808000009A012DF6
-      0132FF002AF300009A0080800080800080806B6B6BA7A7A7AAAAAA9F9F9F6B6B
-      6B0080800080806B6B6B9999999E9E9E9797976B6B6B00808000008080008080
-      00009A1C47F61B4DFF143EF400009A00009A002DF80134FF032BF200009A0080
-      800080800080800080800080806B6B6BA7A7A7ABABABA2A2A26B6B6B6B6B6B9A
-      9A9A9E9E9E9898986B6B6B0080800080800000808000808000808000009A1D48
-      F61D50FF103DFB0431FE0132FF002CF600009A00808000808000808000808000
-      80800080800080806B6B6BA7A7A7ACACACA3A3A39F9F9F9E9E9E9999996B6B6B
-      0080800080800080800000808000808000808000808000009A1A48F91342FF0C
-      3CFF0733F600009A008080008080008080008080008080008080008080008080
-      0080806B6B6BA7A7A7A7A7A7A3A3A39C9C9C6B6B6B0080800080800080800080
-      800000808000808000808000808000009A214EFC1D4BFF1847FF1743F600009A
-      0080800080800080800080800080800080800080800080800080806B6B6BACAC
-      ACACACACA9A9A9A4A4A46B6B6B00808000808000808000808000008080008080
-      00808000009A2E5BF92C5FFF224DF8204BF82355FF1B46F600009A0080800080
-      800080800080800080800080800080806B6B6BB1B1B1B3B3B3ABABABAAAAAAAF
-      AFAFA6A6A66B6B6B0080800080800080800000808000808000009A3664FA386B
-      FF2D59F400009A00009A224CF42558FF1D49F600009A00808000808000808000
-      80800080806B6B6BB6B6B6B9B9B9AEAEAE6B6B6B6B6B6BA9A9A9B0B0B0A7A7A7
-      6B6B6B0080800080800000808000009A4071FA4274FF325DF100009A00808000
-      808000009A224DF1275AFF204CF800009A0080800080800080806B6B6BBBBBBB
-      BEBEBEAFAFAF6B6B6B0080800080806B6B6BA7A7A7B1B1B1AAAAAA6B6B6B0080
-      800000808000009A497AFC3B66F300009A00808000808000808000808000009A
-      2550F42655FA00009A0080800080800080806B6B6BC0C0C0B5B5B56B6B6B0080
-      800080800080800080806B6B6BAAAAAAAEAEAE6B6B6B00808000008080008080
-      00009A00009A00808000808000808000808000808000808000009A00009A0080
-      800080800080800080800080806B6B6B6B6B6B00808000808000808000808000
-      80800080806B6B6B6B6B6B008080008080000080800080800080800080800080
-      8000808000808000808000808000808000808000808000808000808000808000
-      8080008080008080008080008080008080008080008080008080008080008080
-      00808000808000808000}
     Caption = '&Cancelar'
     ModalResult = 2
-    TabOrder = 10
     OnClick = btnCancelarClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 10
   end
-  object btnCalcular: TBitBtn
+  object btnCalcular: TBitBtn[5]
     Left = 8
+    Height = 25
     Top = 408
     Width = 89
-    Height = 25
-    Hint = ''
-    ShowHint = True
-    Glyph.Data = {
-      9E030000424D9E030000000000009E0200002800000010000000100000000100
-      08000000000000010000120B0000120B00009A0000009A00000000000000FFFF
-      FF00534B8F0052498A006E587B00FF00FF007F63790086697F0084594E008A59
-      4400994517009A653C00B7743B00F6BA8B00453B3300403730002E292500A660
-      2100A35E2100BB702F00FBB77B00F2B07700E9AF7A00FFC28900E7B18100E2AD
-      7F00F2BB8900C79A730041372E00B56B2200C0773200E2903D00DA8E4100EA9C
-      4F00FEAF6300BB8B5B009F785100C4976B00FEC48B00AA835D00C4976C00C498
-      6C00FFC78F00352D25003E352C00483E3400393129002B272300FE860000FB81
-      0000FA800000F37F0000FA820100F6860800D7740700FA880900E57A0A00EE80
-      0D00C56B0C00F3881000DA780F00EF891600E9831800EF8C1E00C9771B00FB96
-      2500E0862100FB9A2D00E28A2A00BB742600F39A3800CA883E00FFAB4F00FAAB
-      5200C6864100C68A4A008A603400C58B4D00FCB46500AF7F4D00BF8F59007255
-      3500C495600070563B00FF880000FF880100FF8B0400FF910A00FE8C0A00FF93
-      1100DE7F0F00E1831500B0681300FB951D00E0881C00E78F2800D1842700985F
-      1C00A7692200FFA43500A1672300EA953400ED993500A16A2800FFAB4500FFAB
-      4600A66E2E009F6C300047311600DC994C00FBB56000D1965000E3A45C006C4F
-      2D00C18E5300FFC17900FFC47D00382B1C00FF971300E28E2300E3932D00E99C
-      3500FFAD4200EEA34000EEA747003B2C1800362B1C00CF8923003A2D1B00EBA5
-      3400E9A33400E29E3400E79F2300EAA12700DC910300E0970E00DEC68800D4C9
-      9200DACF9D00D8D1A600D4D0AA00D8D4AF00D9D7B00051CBC00051CBC10050C6
-      BB0074D7CE004BCBC4001427DA001C2EC6001C2FC5001F2FBD002030BD001A2A
-      D400050505050505050505050505050505050505050505050505050505050505
-      0505050A0A0A0A0A0A0A0A0A0A0A0A0A0A057F74706D6866605D593734323231
-      540A87162C2E4A712F62407E80757D6C330A8717234F49476A5F440B1D361211
-      300A87180E1C4D512B67069903139598380A872627244E4B4C651F040C580809
-      300A87192D0F5053106B0794021E96973C0A872A141573222169632041763E39
-      540A871A8D8E8C8B8A89887A413F3B35550A871B918F8F909093926E4564615C
-      560A850D2829292552726F484643423D570A0586848182837C7B7978775E5B5A
-      3A05050505050505050505050505050505050505050505050505050505050505
-      0505}
     Caption = '&Calcular'
-    TabOrder = 8
     OnClick = btnCalcularClick
-  end
-  object dbeCodigo: TDBEdit
-    Left = 8
-    Top = 24
-    Width = 81
-    Height = 21
-    Hint = ''
+    ParentShowHint = False
     ShowHint = True
+    TabOrder = 8
+  end
+  object dbeCodigo: TDBEdit[6]
+    Left = 8
+    Height = 28
+    Top = 17
+    Width = 81
     DataField = 'CODIGO'
     DataSource = dsPadrao
-    TabOrder = 0
-    Color = clBtnFace
     ReadOnly = True
-  end
-  object dbeNome: TDBEdit
-    Left = 96
-    Top = 24
-    Width = 347
-    Height = 21
-    Hint = 'Pesquisar < F2 >'
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
     ShowHint = True
+    TabOrder = 0
+  end
+  object dbeNome: TDBEdit[7]
+    Left = 96
+    Height = 28
+    Hint = 'Pesquisar < F2 >'
+    Top = 17
+    Width = 347
     DataField = 'NOME'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    CharCase = ecNormal
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
     OnEnter = dbeNomeEnter
   end
-  object dbdtpData: TDBEdit
+  object dbdtpData: TDBEdit[8]
     Left = 8
+    Height = 28
     Top = 64
     Width = 113
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'DATA'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
-  object dbeValor: TDBEdit
+  object dbeValor: TDBEdit[9]
     Left = 128
+    Height = 28
     Top = 64
     Width = 97
-    Height = 21
-    Hint = ''
-    ShowHint = True
     DataField = 'VALOR'
     DataSource = dsPadrao
+    CharCase = ecNormal
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
-  object seParcelas: TSpinEdit
+  object seParcelas: TSpinEdit[10]
     Left = 232
+    Height = 28
     Top = 64
     Width = 73
-    Height = 22
-    Hint = ''
+    OnExit = seParcelasExit
+    ParentShowHint = False
     ShowHint = True
-    Value = 1
     TabOrder = 4
-    OnExit = seParcelasExit
+    Value = 1
   end
-  object sePrazoInicio: TSpinEdit
+  object sePrazoInicio: TSpinEdit[11]
     Left = 312
+    Height = 28
     Top = 64
     Width = 73
-    Height = 22
-    Hint = ''
+    OnExit = seParcelasExit
+    ParentShowHint = False
     ShowHint = True
-    Value = 1
     TabOrder = 5
-    OnExit = seParcelasExit
+    Value = 1
   end
-  object seIntervalo: TSpinEdit
+  object seIntervalo: TSpinEdit[12]
     Left = 392
+    Height = 28
     Top = 64
     Width = 73
-    Height = 22
-    Hint = ''
-    ShowHint = True
-    Value = 1
-    TabOrder = 6
     OnExit = seParcelasExit
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+    Value = 1
   end
-  object dbgrdParcelas: TDBGrid
+  object dbgrdParcelas: TDBGrid[13]
     Left = 8
+    Height = 305
     Top = 96
     Width = 457
-    Height = 305
-    Hint = ''
-    ShowHint = True
-    DataSource = dsParcela
-    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgConfirmDelete, dgTabs, dgCancelOnExit]
-    LoadMask.Message = 'Loading data...'
-    TabOrder = 7
-    ParentColor = False
     Color = clWindow
+    Columns = <>
+    DataSource = dsParcela
+    Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ShowHint = True
+    TabOrder = 7
   end
-  object sqldParcela: TSQLQuery
-    CommandText = 
-      'select'#13#10'  cast(NULL as INTEGER) NUMERO,'#13#10'  cast(NULL as DATE) VE' +
-      'NC,'#13#10'  cast(NULL as VARCHAR(20)) DIA,'#13#10'  cast(NULL as FLOAT) VAL' +
-      'OR'#13#10'from RDB$DATABASE'
-    MaxBlobSize = -1
+  object edtJuro: TLabeledEdit[14]
+    Left = 482
+    Height = 28
+    Top = 56
+    Width = 80
+    EditLabel.Height = 15
+    EditLabel.Width = 80
+    EditLabel.Caption = 'Juros'
+    EditLabel.ParentColor = False
+    TabOrder = 11
+    Text = 'edtJuro'
+  end
+  object sqldParcela: TSQLQuery[15]
+    FieldDefs = <>
     Params = <>
-    Left = 24
-    Top = 328
+    Left = 40
+    Top = 248
     object sqldParcelaNUMERO: TIntegerField
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldParcelaVENC: TDateField
+      FieldKind = fkData
       FieldName = 'VENC'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldParcelaDIA: TStringField
+      FieldKind = fkData
       FieldName = 'DIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldParcelaVALOR: TFloatField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspParcela: TTimer
-    DataSet = sqldParcela
-    Options = [poPropogateChanges, poUseQuoteChar]
-    Left = 56
-    Top = 328
+  object dspParcela: TTimer[16]
+    Left = 120
+    Top = 248
   end
-  object cdsParcela: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspParcela'
-    Left = 88
-    Top = 328
+  object cdsParcela: TMemDataset[17]
+    FieldDefs = <>
+    Left = 208
+    Top = 240
     object cdsParcelaNUMERO: TIntegerField
-      DisplayLabel = 'N'#250'mero'
+      DisplayLabel = 'Número'
+      FieldKind = fkData
       FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsParcelaVENC: TDateField
       DisplayLabel = 'Vencimento'
+      FieldKind = fkData
       FieldName = 'VENC'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       OnChange = cdsParcelaVENCChange
       DisplayFormat = 'dd/mm/yyyy'
       EditMask = '!99/99/9999;1;_'
     end
     object cdsParcelaDIA: TStringField
       DisplayLabel = 'Dia'
+      FieldKind = fkData
       FieldName = 'DIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsParcelaVALOR: TFloatField
       DisplayLabel = 'Valor'
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
   end
-  object dsParcela: TDataSource
+  object dsParcela: TDataSource[18]
     DataSet = cdsParcela
-    Left = 120
-    Top = 328
+    Left = 288
+    Top = 240
   end
-  object sqldContasPagar: TSQLQuery
-    CommandText = 
-      'insert into CONTASPAGAR(CODIGO, DATA, VENCIMENTO, FORNECEDOR, DE' +
-      'SCRICAO,'#13#10'  DOCUMENTO, VALOR, JURO, PAGAR, COMPRA, PAGA)'#13#10'values' +
-      '(:CODIGO, :DATA, :VENCIMENTO, :IDFORN, :DESCRICAO, :DOCUMENTO,'#13#10 +
-      '           :VALOR, :JURO, '#39'N'#39', :COMPRA, '#39'N'#39')'
-    MaxBlobSize = -1
-    Params = <
+  object sqldContasPagar: TSQLQuery[19]
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'CODIGO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'VENCIMENTO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'IDFORN'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftString
         Name = 'DESCRICAO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftString
         Name = 'DOCUMENTO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFloat
         Name = 'JURO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'COMPRA'
         ParamType = ptInput
       end>
-    Left = 104
-    Top = 200
+    Left = 152
+    Top = 128
   end
-  object sqldReceber: TSQLQuery
-    CommandText = 
-      'insert into CONTASRECEBER(CODIGO, DATA, VENCIMENTO, CLIENTE, DES' +
-      'CRICAO,'#13#10'  DOCUMENTO, VALOR, JURO, RECEBER, VENDA, RECDA)'#13#10'value' +
-      's(:CODIGO, :DATA, :VENCIMENTO, :IDCLIENTE, :DESCRICAO, :DOCUMENT' +
-      'O,'#13#10'           :VALOR, :JURO, '#39'N'#39', :VENDA, '#39'N'#39')'
-    MaxBlobSize = -1
-    Params = <
+  object sqldReceber: TSQLQuery[20]
+    FieldDefs = <>
+    Params = <    
       item
         DataType = ftInteger
         Name = 'CODIGO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftDate
         Name = 'VENCIMENTO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'IDCLIENTE'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftString
         Name = 'DESCRICAO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftString
         Name = 'DOCUMENTO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftFloat
         Name = 'JURO'
         ParamType = ptInput
-      end
+      end    
       item
         DataType = ftInteger
         Name = 'VENDA'
         ParamType = ptInput
       end>
-    Left = 248
-    Top = 216
+    Left = 312
+    Top = 144
   end
-  object sqldPadrao: TSQLQuery
-    CommandText = 
-      'SELECT'#13#10'  CAST(NULL AS INTEGER) CODIGO,'#13#10'  CAST(NULL AS VARCHAR(' +
-      '100)) NOME,'#13#10'  CAST(CURRENT_DATE AS DATE) DATA,'#13#10'  CAST(0 AS FLO' +
-      'AT) VALOR'#13#10'FROM RDB$DATABASE'
-    MaxBlobSize = -1
+  object sqldPadrao: TSQLQuery[21]
+    FieldDefs = <>
     Params = <>
-    Left = 24
-    Top = 360
+    Left = 32
+    Top = 312
     object sqldPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 100
     end
     object sqldPadraoDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object sqldPadraoVALOR: TFloatField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
-  object dspPadrao: TTimer
-    DataSet = sqldPadrao
-    Options = [poPropogateChanges, poUseQuoteChar]
-    Left = 56
-    Top = 360
+  object dspPadrao: TTimer[22]
+    Left = 120
+    Top = 312
   end
-  object cdsPadrao: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspPadrao'
-    Left = 88
-    Top = 360
+  object cdsPadrao: TMemDataset[23]
+    FieldDefs = <>
+    Left = 200
+    Top = 320
     object cdsPadraoCODIGO: TIntegerField
+      FieldKind = fkData
       FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
     object cdsPadraoNOME: TStringField
+      FieldKind = fkData
       FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 100
     end
     object cdsPadraoDATA: TDateField
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsPadraoVALOR: TFloatField
+      FieldKind = fkData
       FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
   end
-  object dsPadrao: TDataSource
+  object dsPadrao: TDataSource[24]
     DataSet = cdsPadrao
-    Left = 120
-    Top = 360
+    Left = 288
+    Top = 320
   end
 end

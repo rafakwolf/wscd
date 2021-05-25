@@ -11,9 +11,9 @@ inherited frmContasReceber: TfrmContasReceber
   OnShow = FormShow
   object Stb: TStatusBar[0]
     Left = 0
-    Height = 18
+    Height = 17
     Hint = 'Valores gerais'
-    Top = 429
+    Top = 430
     Width = 773
     Color = clBtnFace
     Panels = <>
@@ -468,7 +468,7 @@ inherited frmContasReceber: TfrmContasReceber
     TabOrder = 1
     object dbeCliente: TDBEdit
       Left = 8
-      Height = 33
+      Height = 28
       Top = -2
       Width = 433
       DataField = 'NOMECLIENTE'
@@ -486,7 +486,7 @@ inherited frmContasReceber: TfrmContasReceber
     Left = 0
     Height = 295
     Hint = 'Dois cliques para marcar '#13#10'ou desmarcar este ítem...'
-    Top = 134
+    Top = 135
     Width = 773
     Align = alBottom
     Color = clWindow

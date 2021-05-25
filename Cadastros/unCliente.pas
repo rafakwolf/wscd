@@ -151,12 +151,6 @@ begin
     MsgAviso('Cliente com este CPF/CNPJ ou RG/IE ja esta cadastrado.');
     Abort;
   end;
-
-  if Idade(dmCliente.ZQuery1.FieldByName('DATA_NASC').AsDateTime) < Global.IdadeCliente then
-  begin
-    MsgCuidado('Cliente com idade menor que a permitida, nao podera ser cadastrado.');
-    Abort;
-  end;
 end;
 
 procedure TfrmCliente.Foto(Visivel: Boolean);

@@ -15,25 +15,10 @@ object MainForm: TMainForm
       Caption = 'Cidades'
       OnExecute = actCidadeExecute
     end
-    object actUnidade: TAction
-      Category = 'Configuracao'
-      Caption = 'Unidades de medida'
-      OnExecute = actUnidadeExecute
-    end
-    object actGrupo: TAction
-      Category = 'Configuracao'
-      Caption = 'Grupos de produtos'
-      OnExecute = actGrupoExecute
-    end
     object actContaCaixa: TAction
       Category = 'Configuracao'
       Caption = 'Contas caixa'
       OnExecute = actContaCaixaExecute
-    end
-    object actConfiguracaoGlobal: TAction
-      Category = 'Configuracao'
-      Caption = 'Configurações globais'
-      OnExecute = actConfiguracaoGlobalExecute
     end
     object actConfiguracaoLocal: TAction
       Category = 'Configuracao'
@@ -76,11 +61,6 @@ object MainForm: TMainForm
       Caption = 'Clientes'
       OnExecute = actClienteExecute
     end
-    object actProduto: TAction
-      Category = 'Cadastros'
-      Caption = 'Produtos'
-      OnExecute = actProdutoExecute
-    end
     object actFornecedor: TAction
       Category = 'Cadastros'
       Caption = 'Fornecedores'
@@ -96,45 +76,10 @@ object MainForm: TMainForm
       Caption = 'Contas a receber'
       OnExecute = actContasReceberExecute
     end
-    object actOrcamento: TAction
-      Category = 'Movimentos'
-      Caption = 'Orçamentos'
-      OnExecute = actOrcamentoExecute
-    end
-    object actVenda: TAction
-      Category = 'Movimentos'
-      Caption = 'Vendas'
-      OnExecute = actVendaExecute
-    end
-    object actCompra: TAction
-      Category = 'Movimentos'
-      Caption = 'Compras'
-      OnExecute = actCompraExecute
-    end
-    object actPerda: TAction
-      Category = 'Movimentos'
-      Caption = 'Perdas'
-      OnExecute = actPerdaExecute
-    end
     object actCaixa: TAction
       Category = 'Movimentos'
       Caption = 'Livro caixa'
       OnExecute = actCaixaExecute
-    end
-    object actListaPreco: TAction
-      Category = 'Movimentos'
-      Caption = 'Lista de preços'
-      OnExecute = actListaPrecoExecute
-    end
-    object actExcluirProduto: TAction
-      Category = 'Movimentos'
-      Caption = 'Exclusão de vários produtos'
-      OnExecute = actExcluirProdutoExecute
-    end
-    object actEtiquetaProduto: TAction
-      Category = 'Movimentos'
-      Caption = 'Etiquetas de produtos'
-      OnExecute = actEtiquetaProdutoExecute
     end
     object actSobreSistema: TAction
       Category = 'Ajuda'
@@ -155,21 +100,6 @@ object MainForm: TMainForm
       Category = 'Configuracao'
       Caption = 'Bancos'
       OnExecute = actBancoExecute
-    end
-    object actCheque: TAction
-      Category = 'Movimentos'
-      Caption = 'Cheques'
-      OnExecute = actChequeExecute
-    end
-    object actVendedor: TAction
-      Category = 'Configuracao'
-      Caption = 'Vendedores'
-      OnExecute = actVendedorExecute
-    end
-    object actPromocao: TAction
-      Category = 'Movimentos'
-      Caption = 'Promoções'
-      OnExecute = actPromocaoExecute
     end
   end
 end

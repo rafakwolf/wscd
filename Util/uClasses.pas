@@ -8,135 +8,20 @@ uses
   SysUtils, Classes, ZDataset, DB, Forms, unDmPrincipal, uUtilFncs, inifiles;
 
 type
-  TConfigGlobal = class
-  private
-    sqldConfigGlobal: TZQuery;
-
-    function GetIntervalo: Integer;
-    function GetJuro: Real;
-    function GetPrazoInicial: Integer;
-    function GetParcelas: Integer;
-    function GetLimiteCliente: Real;
-    function GetTituloOrcamento: String;
-    function GetColunaOrcamBobina: Integer;
-    function GetMsgRodapeOrcam: string;
-    function GetColunaVendaBobina: Integer;
-    function GetMsgRodapeVenda: string;
-    function GetTituloVenda: String;
-    function GetLinhaBobinaOrcam: Integer;
-    function GetLinhaBobinaVenda: Integer;
-    function GetFTP_Dir: string;
-    function GetFTP_Host: string;
-    function GetFTP_Passive: Boolean;
-    function GetFTP_Password: string;
-    function GetFTP_TimeOut: Integer;
-    function GetFTP_UserName: string;
-    function GetIdadeCliente: Integer;
-    function GetPortaImpVenda: string;
-  public
-    property Juro             : Real read GetJuro;
-    property Intervalo        : Integer read GetIntervalo;
-    property PrazoInicial     : Integer read GetPrazoInicial;
-    property Parcelas         : Integer read GetParcelas;
-    property LimiteCliente    : Real read GetLimiteCliente;
-    property TituloOrcamento  : String read GetTituloOrcamento;
-    property ColunaOrcamBobina: Integer read GetColunaOrcamBobina;
-    property MsgRodapeOrcam   : string read GetMsgRodapeOrcam;
-    property TituloVenda      : String read GetTituloVenda;
-    property ColunaVendaBobina: Integer read GetColunaVendaBobina;
-    property MsgRodapeVenda   : string read GetMsgRodapeVenda;
-    property LinhaBobinaOrcam : Integer read GetLinhaBobinaOrcam;
-    property LinhaBobinaVenda : Integer read GetLinhaBobinaVenda;
-    property PortaImpVenda    : string read GetPortaImpVenda;
-    property IdadeCliente     : Integer read GetIdadeCliente;
-    property FTP_Host         : string read GetFTP_Host;
-    property FTP_UserName     : string read GetFTP_UserName;
-    property FTP_Password     : string read GetFTP_Password;
-    property FTP_Dir          : string read GetFTP_Dir;
-    property FTP_TimeOut      : Integer read GetFTP_TimeOut;
-    property FTP_Passive      : Boolean read GetFTP_Passive;
-
-    constructor Create;
-    destructor Free;
-    procedure Atualizar;
-  end;
-
   TConfiguracao = class
   private
     sqldConfiguracao: TZQuery;
-    function GetAliquotaPadrao: Integer;
-    function GetAtalhos: Boolean;
-    function GetBackup: Boolean;
-    function GetBloqCliente: Boolean;
-    function GetBordaEtiquetaCli: Boolean;
-    function GetBordaEtiquetaProd: Boolean;
     function GetCaixaPadrao: Integer;
-    function GetCompraConcluida: Boolean;
-    function GetDescontoPadrao: Real;
-    function GetDiretorioExportacao: String;
-    function GetEditarCompra: Boolean;
-    function GetEditarOrcam: Boolean;
-    function GetEditarVenda: Boolean;
-    function GetEstoqueOrc: Boolean;
-    function GetEstoquePadrao: Real;
-    function GetEstoqueSenha: Boolean;
-    function GetEstoqueVenda: Boolean;
-    function GetExibirDica: Boolean;
-    function GetGravarErro: Boolean;
-    function GetGravarLog: Boolean;
-    function GetHintBalao: Boolean;
-    function GetLetraNumCodBarra: Boolean;
-    function GetOrcamConcluido: Boolean;
-    function GetResolucao: Boolean;
     function GetSenhaCaixa: String;
-    function GetSenhaEstoque: String;
-    function GetVendaConcluida: Boolean;
-    function GetVerImpressora: Boolean;
-    function GetOrientPapelParede: string;
-    function GetPapelParede: string;
     function GetLancCaixa90Dias: Boolean;
     function GetMostrarSaldoCaixa: Boolean;
     function getRelZebrado: Boolean;
-    function GetVerificaUPD: Boolean;
-    function GetContaCheque: Integer;
-    function getInfoAvisos: Boolean;
   public
-    property Atalhos             : Boolean read GetAtalhos;
-    property HintBalao           : Boolean read GetHintBalao;
-    property GravarErro          : Boolean read GetGravarErro;
-    property Backup              : Boolean read GetBackup;
-    property GravarLog           : Boolean read GetGravarLog;
-    property BloqCliente         : Boolean read GetBloqCliente;
-    property VerImpressora       : Boolean read GetVerImpressora;
-    property EstoqueSenha        : Boolean read GetEstoqueSenha;
-    property Resolucao           : Boolean read GetResolucao;
-    property EstoqueOrc          : Boolean read GetEstoqueOrc;
-    property CompraConcluida     : Boolean read GetCompraConcluida;
-    property EstoquePadrao       : Real read GetEstoquePadrao;
-    property DescontoPadrao      : Real read GetDescontoPadrao;
-    property AliquotaPadrao      : Integer read GetAliquotaPadrao;
-    property VendaConcluida      : Boolean read GetVendaConcluida;
-    property EstoqueVenda        : Boolean read GetEstoqueVenda;
     property CaixaPadrao         : Integer read GetCaixaPadrao;
-    property EditarVenda         : Boolean read GetEditarVenda;
-    property ExibirDica          : Boolean read GetExibirDica;
-    property OrcamConcluido      : Boolean read GetOrcamConcluido;
-    property EditarOrcam         : Boolean read GetEditarOrcam;
-    property EditarCompra        : Boolean read GetEditarCompra;
-    property BordaEtiquetaProd   : Boolean read GetBordaEtiquetaProd;
-    property DiretorioExportacao : String read GetDiretorioExportacao;
-    property SenhaEstoque        : String read GetSenhaEstoque;
     property SenhaCaixa          : String read GetSenhaCaixa;
-    property LetraNumCodBarra    : Boolean read GetLetraNumCodBarra;
-    property BordaEtiquetaCli    : Boolean read GetBordaEtiquetaCli;
-    property PapelParede         : string read GetPapelParede;
-    property OrientPapelParede   : string read GetOrientPapelParede;
     property MostrarSaldoCaixa   : Boolean read GetMostrarSaldoCaixa;
     property LancCaixa90Dias     : Boolean read GetLancCaixa90Dias;
     property RelZebrado          : Boolean read GetRelZebrado;
-    property VerificaUPD         : Boolean read GetVerificaUPD;
-    property ContaCheque         : Integer read GetContaCheque;
-    property InfoAvisos          : Boolean read getInfoAvisos;
 
     constructor Create;
     destructor Free;
@@ -205,156 +90,6 @@ type
 
 implementation
 
-procedure TConfigGlobal.Atualizar;
-begin
-   sqldConfigGlobal.Close;
-   sqldConfigGlobal.Open;
-end;
-
-constructor TConfigGlobal.Create;
-begin
-  sqldConfigGlobal := TZQuery.Create(nil);
-  with sqldConfigGlobal do
-  begin
-    Connection := DmPrincipal.ZConnection1;
-    SQL.Text := 'select '+
-                   ' TAXAJURO,'+
-                   ' INTERVALO,'+
-                   ' PRAZOINICIAL,'+
-                   ' PARCELAS,'+
-                   ' LIMITECLIENTE,'+
-                   ' TITULOORCAM,'+
-                   ' COLUNAORCAMBOBINA,'+
-                   ' MSGRODAPEORCAM,'+
-                   ' TITULOVENDA,'+
-                   ' COLUNAVENDABOBINA,'+
-                   ' MSGRODAPEVENDA,'+
-                   ' LINHAPULARBOBINAVENDA,'+
-                   ' LINHAPULARBOBINAORCAM,'+
-                   ' PORTAIMPVENDA,'+
-                   ' FTP_HOST,'+
-                   ' FTP_USER_NAME,'+
-                   ' FTP_PASSWORD,'+
-                   ' FTP_TIMEOUT,'+
-                   ' FTP_PASSIVE,'+
-                   ' FTP_DIR, '+
-                   ' IDADECADASTROCLIENTE '+
-                   'from CONFIGURACAOGLOBAL '+
-                   'where IDCONFIGGLOBAL = '+QuotedStr('1');
-    Open;
-  end;
-end;
-
-destructor TConfigGlobal.Free;
-begin
-  sqldConfigGlobal.Free;
-end;
-
-function TConfigGlobal.GetColunaOrcamBobina: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('COLUNAORCAMBOBINA').AsInteger;
-end;
-
-function TConfigGlobal.GetColunaVendaBobina: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('COLUNAVENDABOBINA').AsInteger;
-end;
-
-function TConfigGlobal.GetFTP_Dir: string;
-begin
-  Result := sqldConfigGlobal.FieldByName('FTP_DIR').AsString;
-end;
-
-function TConfigGlobal.GetFTP_Host: string;
-begin
-  Result := sqldConfigGlobal.FieldByName('FTP_HOST').AsString;
-end;
-
-function TConfigGlobal.GetFTP_Passive: Boolean;
-begin
-  Result := (sqldConfigGlobal.FieldByName('FTP_PASSIVE').AsString = 'S');
-end;
-
-function TConfigGlobal.GetFTP_Password: string;
-begin
-  Result := sqldConfigGlobal.FieldByName('FTP_PASSWORD').AsString;
-end;
-
-function TConfigGlobal.GetFTP_TimeOut: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('FTP_TIMEOUT').AsInteger;
-end;
-
-function TConfigGlobal.GetFTP_UserName: string;
-begin
-  Result := sqldConfigGlobal.FieldByName('FTP_USER_NAME').AsString;
-end;
-
-function TConfigGlobal.GetIdadeCliente: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('IDADECADASTROCLIENTE').AsInteger;
-end;
-
-function TConfigGlobal.GetIntervalo: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('INTERVALO').AsInteger;
-end;
-
-function TConfigGlobal.GetJuro: Real;
-begin
-  Result := sqldConfigGlobal.FieldByName('TAXAJURO').AsFloat;
-end;
-
-function TConfigGlobal.GetLimiteCliente: Real;
-begin
-  Result := sqldConfigGlobal.FieldByName('LIMITECLIENTE').AsFloat;
-end;
-
-function TConfigGlobal.GetLinhaBobinaOrcam: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('LINHAPULARBOBINAORCAM').AsInteger;
-end;
-
-function TConfigGlobal.GetLinhaBobinaVenda: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('LINHAPULARBOBINAVENDA').AsInteger;
-end;
-
-function TConfigGlobal.GetMsgRodapeOrcam: string;
-begin
-  Result := sqldConfigGlobal.FieldByName('MSGRODAPEORCAM').AsString;
-end;
-
-function TConfigGlobal.GetMsgRodapeVenda: string;
-begin
-  Result := sqldConfigGlobal.FieldByName('MSGRODAPEVENDA').AsString;
-end;
-
-function TConfigGlobal.GetParcelas: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('PARCELAS').AsInteger;
-end;
-
-function TConfigGlobal.GetPortaImpVenda: string;
-begin
-  Result := sqldConfigGlobal.FieldByName('PORTAIMPVENDA').AsString;
-end;
-
-function TConfigGlobal.GetPrazoInicial: Integer;
-begin
-  Result := sqldConfigGlobal.FieldByName('PRAZOINICIAL').AsInteger;
-end;
-
-function TConfigGlobal.GetTituloOrcamento: String;
-begin
-  Result := sqldConfigGlobal.FieldByName('TITULOORCAM').AsString;
-end;
-
-function TConfigGlobal.GetTituloVenda: String;
-begin
-  Result := sqldConfigGlobal.FieldByName('TITULOVENDA').AsString;
-end;
-
 procedure TConfiguracao.Atualizar;
 begin
   sqldConfiguracao.Close;
@@ -369,40 +104,11 @@ begin
     Connection := DmPrincipal.ZConnection1;
     Close;
     SQL.Text := 'select'+
-                   ' BARRAFERRAMENTA,'+
-                   ' HINTBALAO,'+
-                   ' GRAVAERRO,'+
-                   ' BACKUP,'+
-                   ' LOG,'+
-                   ' IMPRESSORA,'+
-                   ' RESOLUCAO,'+
-                   ' LETRACODIGOBARRA,'+
-                   ' EXIBEDICADIA,'+
-                   ' AVISACLIENTEATRASO,'+
-                   ' DIREXPORTPADRAO,'+
-                   ' SENHAESTOQUE,'+
-                   ' USARSENHAESTOQUE,'+
-                   ' ESTOQUEPADRAO,'+
-                   ' BORDAETQPROD,'+
-                   ' BORDAETQCLIENTE,'+
-                   ' ALIQUOTAPADRAO,'+
-                   ' DESCPADRAOPROD,'+
                    ' CAIXAPADRAO,'+
                    ' SENHACAIXA,'+
-                   ' PRODSEMESTOQORCAM,'+
-                   ' EDITORCAMCONC,'+
-                   ' ORCAMNAOCONC,'+
-                   ' COMPRANAOCONC,'+
-                   ' EDITCOMPRACONC,'+
-                   ' VENDANAOCONC,'+
-                   ' PRODSEMESTOQVENDA,'+
-                   ' EDITVENDACONC,'+
                    ' MOSTRARSALDOCAIXA,'+
                    ' CAIXA90DIAS,'+
-                   ' INFOAVISOS,'+
-                   ' RELZEBRADO, '+
-                   ' VERIFICA_UPD, '+
-                   ' CONTACHEQUE '+
+                   ' RELZEBRADO '+
                    'from CONFIGURACAO '+
                    'where NOMECOMPUTADOR = :COMP';
     Params.ParamByName('COMP').AsString := GetComputerName;
@@ -413,11 +119,9 @@ begin
       with TZQuery.Create(nil) do
       try
         Connection := DmPrincipal.ZConnection1;
-        SQL.Text := 'insert into CONFIGURACAO(NOMECOMPUTADOR, DIREXPORTPADRAO, ALIQUOTAPADRAO, CAIXAPADRAO) values(:NOMECOMPUTADOR, :DIREXPORTPADRAO, :ALIQUOTAPADRAO, :CAIXAPADRAO)';
+        SQL.Text := 'insert into CONFIGURACAO(NOMECOMPUTADOR, CAIXAPADRAO) values(:NOMECOMPUTADOR, :CAIXAPADRAO)';
         Prepare;
         Params.ParamByName('NOMECOMPUTADOR').AsString := GetComputerName;
-        Params.ParamByName('DIREXPORTPADRAO').AsString  := ExtractFilePath( Application.ExeName );
-        Params.ParamByName('ALIQUOTAPADRAO').AsInteger := 10;
         Params.ParamByName('CAIXAPADRAO').AsInteger := 0;
         ExecSQL;
       finally
@@ -432,119 +136,9 @@ begin
   sqldConfiguracao.Free;
 end;
 
-function TConfiguracao.GetAliquotaPadrao: Integer;
-begin
-  Result := sqldConfiguracao.FieldByName('ALIQUOTAPADRAO').AsInteger;
-end;
-
-function TConfiguracao.GetAtalhos: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('BARRAFERRAMENTA').AsString = 'S');
-end;
-
-function TConfiguracao.GetBackup: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('BACKUP').AsString = 'S');
-end;
-
-function TConfiguracao.GetBloqCliente: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('AVISACLIENTEATRASO').AsString = 'S');
-end;
-
-function TConfiguracao.GetBordaEtiquetaCli: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('BORDAETQCLIENTE').AsString = 'S');
-end;
-
-function TConfiguracao.GetBordaEtiquetaProd: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('BORDAETQPROD').AsString = 'S');
-end;
-
 function TConfiguracao.GetCaixaPadrao: Integer;
 begin
   Result := sqldConfiguracao.FieldByName('CAIXAPADRAO').AsInteger;
-end;
-
-function TConfiguracao.GetCompraConcluida: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('COMPRANAOCONC').AsString = 'S');
-end;
-
-function TConfiguracao.GetContaCheque: Integer;
-begin
-  Result := sqldConfiguracao.FieldByName('CONTACHEQUE').AsInteger;
-end;
-
-function TConfiguracao.GetDescontoPadrao: Real;
-begin
-  Result := sqldConfiguracao.FieldByName('DESCPADRAOPROD').AsFloat;
-end;
-
-function TConfiguracao.GetDiretorioExportacao: String;
-begin
-  Result := sqldConfiguracao.FieldByName('DIREXPORTPADRAO').AsString;
-end;
-
-function TConfiguracao.GetEditarCompra: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('EDITCOMPRACONC').AsString = 'S');
-end;
-
-function TConfiguracao.GetEditarOrcam: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('EDITORCAMCONC').AsString = 'S');
-end;
-
-function TConfiguracao.GetEditarVenda: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('VENDANAOCONC').AsString = 'S');
-end;
-
-function TConfiguracao.GetEstoqueOrc: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('PRODSEMESTOQORCAM').AsString = 'S');
-end;
-
-function TConfiguracao.GetEstoquePadrao: Real;
-begin
-  Result := sqldConfiguracao.FieldByName('ESTOQUEPADRAO').AsFloat;
-end;
-
-function TConfiguracao.GetEstoqueSenha: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('USARSENHAESTOQUE').AsString = 'S');
-end;
-
-function TConfiguracao.GetEstoqueVenda: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('PRODSEMESTOQVENDA').AsString = 'S');
-end;
-
-function TConfiguracao.GetExibirDica: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('EXIBEDICADIA').AsString = 'S');
-end;
-
-function TConfiguracao.GetGravarErro: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('GRAVAERRO').AsString = 'S');
-end;
-
-function TConfiguracao.GetGravarLog: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('LOG').AsString = 'S');
-end;
-
-function TConfiguracao.GetHintBalao: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('HINTBALAO').AsString = 'S');
-end;
-
-function TConfiguracao.getInfoAvisos: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('INFOAVISOS').AsString = 'S');
 end;
 
 function TConfiguracao.GetLancCaixa90Dias: Boolean;
@@ -552,42 +146,9 @@ begin
   Result := (sqldConfiguracao.FieldByName('CAIXA90DIAS').AsString = 'S');
 end;
 
-function TConfiguracao.GetLetraNumCodBarra: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('LETRACODIGOBARRA').AsString = 'S');
-end;
-
 function TConfiguracao.GetMostrarSaldoCaixa: Boolean;
 begin
   Result := (sqldConfiguracao.FieldByName('MOSTRARSALDOCAIXA').AsString = 'S');
-end;
-
-function TConfiguracao.GetOrcamConcluido: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('ORCAMNAOCONC').AsString = 'S');
-end;
-
-function TConfiguracao.GetOrientPapelParede: string;
-begin
-  with TIniFile.Create(
-    IncludeTrailingPathDelimiter( ExtractFilePath( Application.ExeName ))+'cfg.ini' )do
-    try
-      Result := ReadString('PapelParede', 'Orientacao','');
-    finally
-      free;
-    end;
-
-end;
-
-function TConfiguracao.GetPapelParede: string;
-begin
-  with TIniFile.Create(
-    IncludeTrailingPathDelimiter( ExtractFilePath( Application.ExeName ))+'cfg.ini' )do
-    try
-      Result := ReadString('PapelParede', 'Local','');
-    finally
-      free;
-    end;
 end;
 
 function TConfiguracao.getRelZebrado: Boolean;
@@ -595,34 +156,9 @@ begin
   Result := (sqldConfiguracao.FieldByName('RELZEBRADO').AsString = 'S');
 end;
 
-function TConfiguracao.GetResolucao: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('RESOLUCAO').AsString = 'S');
-end;
-
 function TConfiguracao.GetSenhaCaixa: String;
 begin
   Result := sqldConfiguracao.FieldByName('SENHACAIXA').AsString;
-end;
-
-function TConfiguracao.GetSenhaEstoque: String;
-begin
-  Result := sqldConfiguracao.FieldByName('SENHAESTOQUE').AsString;
-end;
-
-function TConfiguracao.GetVendaConcluida: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('VENDANAOCONC').AsString = 'S');
-end;
-
-function TConfiguracao.GetVerificaUPD: Boolean;
-begin
-  Result := sqldConfiguracao.FieldByName('VERIFICA_UPD').AsString = 'S';
-end;
-
-function TConfiguracao.GetVerImpressora: Boolean;
-begin
-  Result := (sqldConfiguracao.FieldByName('IMPRESSORA').AsString = 'S');
 end;
 
 procedure TEmpresa.Atualizar;

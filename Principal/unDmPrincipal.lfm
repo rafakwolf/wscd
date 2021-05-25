@@ -2,11 +2,11 @@ inherited DmPrincipal: TDmPrincipal
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
   Height = 329
-  HorizontalOffset = 411
-  VerticalOffset = 225
+  HorizontalOffset = 374
+  VerticalOffset = 193
   Width = 437
   inherited ZConnection1: TZConnection
-    Connected = True
     HostName = '127.0.0.1'
+    LibraryLocation = '/lib/x86_64-linux-gnu/libmysqlclient.so.21'
   end
 end

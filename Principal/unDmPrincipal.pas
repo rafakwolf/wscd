@@ -6,7 +6,7 @@ interface
 
 uses
   SysUtils, Classes, DB, sqldb, Dialogs, Forms, Controls,
- Messages, ExtCtrls,  Graphics,  LCLIntf, LCLType, LMessages, FMTBcd,
+  Messages, ExtCtrls,  Graphics,  LCLIntf, LCLType, LMessages, FMTBcd,
   udmBase;
 
 type
@@ -44,6 +44,7 @@ begin
   ZConnection1.User:='root';
   ZConnection1.Password:='mysqlrocks!';
   ZConnection1.Protocol:='mysql';
+  ZConnection1.LibraryLocation:='/lib/x86_64-linux-gnu/libmysqlclient.so.21';
 end;
 
 procedure TDmPrincipal.DataModuleDestroy(Sender: TObject);
