@@ -15,8 +15,8 @@ object frmPadrao: TfrmPadrao
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  OnShow = FormShow
   ShowHint = True
-  LCLVersion = '2.0.12.0'
   object sbStatus: TStatusBar
     Left = 0
     Height = 18

@@ -98,35 +98,59 @@ end;
 
 constructor TConfiguracao.Create;
 begin
-  sqldConfiguracao := TZQUery.Create(nil);
-  with sqldConfiguracao do
-  begin
-    Connection := DmPrincipal.ZConnection1;
-    Close;
-    SQL.Text := 'select'+
-                   ' CAIXAPADRAO,'+
-                   ' SENHACAIXA,'+
-                   ' MOSTRARSALDOCAIXA,'+
-                   ' CAIXA90DIAS,'+
-                   ' RELZEBRADO '+
-                   'from CONFIGURACAO '+
-                   'where NOMECOMPUTADOR = :COMP';
-    Params.ParamByName('COMP').AsString := GetComputerName;
-    Open;
-
-    if IsEmpty then
+  try
+    sqldConfiguracao := TZQUery.Create(nil);
+    with sqldConfiguracao do
     begin
-      with TZQuery.Create(nil) do
-      try
-        Connection := DmPrincipal.ZConnection1;
-        SQL.Text := 'insert into CONFIGURACAO(NOMECOMPUTADOR, CAIXAPADRAO) values(:NOMECOMPUTADOR, :CAIXAPADRAO)';
-        Prepare;
-        Params.ParamByName('NOMECOMPUTADOR').AsString := GetComputerName;
-        Params.ParamByName('CAIXAPADRAO').AsInteger := 0;
-        ExecSQL;
-      finally
-        Free;
+      // Verificar se o DataModule principal está disponível
+      if not Assigned(DmPrincipal) then
+        raise Exception.Create('DataModule principal não está disponível');
+        
+      // Verificar se a conexão está disponível
+      if not Assigned(DmPrincipal.ZConnection1) then
+        raise Exception.Create('Conexão com banco não está disponível');
+        
+      // Verificar se a conexão está ativa
+      if not DmPrincipal.ZConnection1.Connected then
+        raise Exception.Create('Conexão com banco não está ativa');
+        
+      Connection := DmPrincipal.ZConnection1;
+      Close;
+      SQL.Text := 'select'+
+                     ' CAIXAPADRAO,'+
+                     ' SENHACAIXA,'+
+                     ' MOSTRARSALDOCAIXA,'+
+                     ' CAIXA90DIAS,'+
+                     ' RELZEBRADO '+
+                     'from CONFIGURACAO '+
+                     'where NOMECOMPUTADOR = :COMP';
+      Params.ParamByName('COMP').AsString := GetComputerName;
+      Open;
+
+      if IsEmpty then
+      begin
+        with TZQuery.Create(nil) do
+        try
+          Connection := DmPrincipal.ZConnection1;
+          SQL.Text := 'insert into CONFIGURACAO(NOMECOMPUTADOR, CAIXAPADRAO) values(:NOMECOMPUTADOR, :CAIXAPADRAO)';
+          Prepare;
+          Params.ParamByName('NOMECOMPUTADOR').AsString := GetComputerName;
+          Params.ParamByName('CAIXAPADRAO').AsInteger := 0;
+          ExecSQL;
+        finally
+          Free;
+        end;
       end;
+    end;
+  except
+    on E: Exception do
+    begin
+      // Se houver erro, criar uma query vazia para evitar crash
+      if Assigned(sqldConfiguracao) then
+        FreeAndNil(sqldConfiguracao);
+      sqldConfiguracao := TZQuery.Create(nil);
+      // Não abrir a query se houver erro
+      raise Exception.Create('Erro ao carregar configurações: ' + E.Message);
     end;
   end;
 end;
@@ -169,27 +193,51 @@ end;
 
 constructor TEmpresa.Create;
 begin
-  sqldEmpresa := TZQuery.Create(nil);
-  with sqldEmpresa do
-  begin
-    Connection := DmPrincipal.ZConnection1;
-    SQL.Text := 'SELECT '+
-     ' e.RAZASOCIAL as RAZAOSOCIAL, '+
-     ' e.CNPJ, '+
-     ' e.IE, '+
-     ' e.ENDERECO, '+
-     ' c.Descricao, '+
-     ' e.BAIRRO, '+
-     ' e.CEP, '+
-     ' e.TELEFONE, '+
-     ' e.FAX, '+
-     ' e.UF, '+
-     ' e.RESPONSAVEL, '+
-     ' e.Logoempresa, '+
-     ' e.EMAIL '+
-    'FROM EMPRESA e '+
-    'LEFT JOIN CIDADES c on (e.Idcidade = c.Codcidade)';
-    Open;
+  try
+    sqldEmpresa := TZQuery.Create(nil);
+    with sqldEmpresa do
+    begin
+      // Verificar se o DataModule principal está disponível
+      if not Assigned(DmPrincipal) then
+        raise Exception.Create('DataModule principal não está disponível');
+        
+      // Verificar se a conexão está disponível
+      if not Assigned(DmPrincipal.ZConnection1) then
+        raise Exception.Create('Conexão com banco não está disponível');
+        
+      // Verificar se a conexão está ativa
+      if not DmPrincipal.ZConnection1.Connected then
+        raise Exception.Create('Conexão com banco não está ativa');
+        
+      Connection := DmPrincipal.ZConnection1;
+      SQL.Text := 'SELECT '+
+       ' e.RAZASOCIAL as RAZAOSOCIAL, '+
+       ' e.CNPJ, '+
+       ' e.IE, '+
+       ' e.ENDERECO, '+
+       ' c.Descricao, '+
+       ' e.BAIRRO, '+
+       ' e.CEP, '+
+       ' e.TELEFONE, '+
+       ' e.FAX, '+
+       ' e.UF, '+
+       ' e.RESPONSAVEL, '+
+       ' e.Logoempresa, '+
+       ' e.EMAIL '+
+      'FROM EMPRESA e '+
+      'LEFT JOIN CIDADES c on (e.Idcidade = c.Codcidade)';
+      Open;
+    end;
+  except
+    on E: Exception do
+    begin
+      // Se houver erro, criar uma query vazia para evitar crash
+      if Assigned(sqldEmpresa) then
+        FreeAndNil(sqldEmpresa);
+      sqldEmpresa := TZQuery.Create(nil);
+      // Não abrir a query se houver erro
+      raise Exception.Create('Erro ao carregar dados da empresa: ' + E.Message);
+    end;
   end;
 end;
 
@@ -266,20 +314,44 @@ end;
 
 constructor TSistema.Create;
 begin
-  sqldSistema := TZQuery.Create(nil);
-  with sqldSistema do
-  begin
-    Connection := DmPrincipal.ZConnection1;
-    SQL.Text := 'select '+
-                   '  s.IDSISTEMA,'+
-                   '  s.VERSAO,'+
-                   '  s.DATAVALIDADE,'+
-                   '  s.DATA_ACESSO,'+
-                   '  s.SERIAL,'+
-                   '  s.HD '+
-                   'from SISTEMA s '+
-                   'where s.IDSISTEMA = 1';
-    Open;
+  try
+    sqldSistema := TZQuery.Create(nil);
+    with sqldSistema do
+    begin
+      // Verificar se o DataModule principal está disponível
+      if not Assigned(DmPrincipal) then
+        raise Exception.Create('DataModule principal não está disponível');
+        
+      // Verificar se a conexão está disponível
+      if not Assigned(DmPrincipal.ZConnection1) then
+        raise Exception.Create('Conexão com banco não está disponível');
+        
+      // Verificar se a conexão está ativa
+      if not DmPrincipal.ZConnection1.Connected then
+        raise Exception.Create('Conexão com banco não está ativa');
+        
+      Connection := DmPrincipal.ZConnection1;
+      SQL.Text := 'select '+
+                     '  s.IDSISTEMA,'+
+                     '  s.VERSAO,'+
+                     '  s.DATAVALIDADE,'+
+                     '  s.DATA_ACESSO,'+
+                     '  s.SERIAL,'+
+                     '  s.HD '+
+                     'from SISTEMA s '+
+                     'where s.IDSISTEMA = 1';
+      Open;
+    end;
+  except
+    on E: Exception do
+    begin
+      // Se houver erro, criar uma query vazia para evitar crash
+      if Assigned(sqldSistema) then
+        FreeAndNil(sqldSistema);
+      sqldSistema := TZQuery.Create(nil);
+      // Não abrir a query se houver erro
+      raise Exception.Create('Erro ao inicializar sistema: ' + E.Message);
+    end;
   end;
 end;
 

@@ -1,7 +1,7 @@
 inherited frmCadastroCidade: TfrmCadastroCidade
-  Left = 268
+  Left = 536
   Height = 308
-  Top = 147
+  Top = 356
   Width = 599
   Caption = 'frmCadastroCidade'
   ClientHeight = 308
@@ -17,12 +17,11 @@ inherited frmCadastroCidade: TfrmCadastroCidade
   end
   object dbeNomeCidade: TDBEdit[2]
     Left = 26
-    Height = 33
+    Height = 21
     Top = 94
     Width = 313
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -30,12 +29,11 @@ inherited frmCadastroCidade: TfrmCadastroCidade
   end
   object dbeCodCidade: TDBEdit[3]
     Left = 26
-    Height = 33
+    Height = 21
     Top = 56
     Width = 97
     DataField = 'CODCIDADE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -52,45 +50,11 @@ inherited frmCadastroCidade: TfrmCadastroCidade
   end
   object ZQuery1: TZQuery[6]
     Connection = DmPrincipal.ZConnection1
-    UpdateObject = ZUpdateSQL1
     SQL.Strings = (
       'select * from CIDADES'
     )
     Params = <>
     Left = 220
     Top = 184
-  end
-  object ZUpdateSQL1: TZUpdateSQL[7]
-    DeleteSQL.Strings = (
-      'DELETE FROM CIDADES'
-      'WHERE'
-      '  CIDADES.CODCIDADE = :OLD_CODCIDADE'
-    )
-    InsertSQL.Strings = (
-      'INSERT INTO CIDADES'
-      '  (DESCRICAO)'
-      'VALUES'
-      '  (:DESCRICAO)'
-    )
-    ModifySQL.Strings = (
-      'UPDATE CIDADES SET'
-      '  DESCRICAO = :DESCRICAO'
-      'WHERE'
-      '  CIDADES.CODCIDADE = :OLD_CODCIDADE'
-    )
-    UseSequenceFieldForRefreshSQL = False
-    Left = 312
-    Top = 176
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'DESCRICAO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'OLD_CODCIDADE'
-        ParamType = ptUnknown
-      end>
   end
 end

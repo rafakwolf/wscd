@@ -1,6 +1,6 @@
 inherited frmRelatorioCPData: TfrmRelatorioCPData
-  Left = 213
-  Top = 163
+  Left = 474
+  Top = 279
   Width = 380
   Caption = 'frmRelatorioCPData'
   ClientWidth = 380
@@ -10,12 +10,11 @@ inherited frmRelatorioCPData: TfrmRelatorioCPData
   end
   object edDataFim: TDBEdit[1]
     Left = 24
-    Height = 33
+    Height = 21
     Top = 72
     Width = 161
     DataField = 'DATAFIM'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -23,12 +22,11 @@ inherited frmRelatorioCPData: TfrmRelatorioCPData
   end
   object edDataIni: TDBEdit[2]
     Left = 24
-    Height = 33
+    Height = 21
     Top = 32
     Width = 161
     DataField = 'DATAINI'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True

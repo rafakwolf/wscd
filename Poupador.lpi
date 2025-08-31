@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <General>
       <Flags>
         <MainUnitHasUsesSectionForAllUnits Value="False"/>
         <MainUnitHasCreateFormStatements Value="False"/>
         <MainUnitHasTitleStatement Value="False"/>
         <MainUnitHasScaledStatement Value="False"/>
+        <CompatibilityMode Value="True"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <MainUnit Value="0"/>
       <Title Value="Poupador"/>
-      <UseAppBundle Value="False"/>
+      <Scaled Value="True"/>
+      <NSPrincipalClass Value="TMainForm"/>
       <ResourceType Value="res"/>
       <Icon Value="0"/>
     </General>
+    <VersionInfo>
+      <UseVersionInfo Value="True"/>
+    </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
     </BuildModes>
@@ -28,22 +32,31 @@
         <Mode0 Name="default"/>
       </Modes>
     </RunParams>
-    <RequiredPackages Count="5">
+    <RequiredPackages Count="8">
       <Item1>
-        <PackageName Value="MemDSLaz"/>
+        <PackageName Value="DateTimeCtrlsDsgn"/>
       </Item1>
       <Item2>
-        <PackageName Value="zcomponent"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item2>
       <Item3>
-        <PackageName Value="FCL"/>
+        <PackageName Value="zcomponentdesign"/>
       </Item3>
       <Item4>
-        <PackageName Value="frce"/>
+        <PackageName Value="MemDSLaz"/>
       </Item4>
       <Item5>
-        <PackageName Value="LCL"/>
+        <PackageName Value="zcomponent"/>
       </Item5>
+      <Item6>
+        <PackageName Value="FCL"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="frce"/>
+      </Item7>
+      <Item8>
+        <PackageName Value="LCL"/>
+      </Item8>
     </RequiredPackages>
     <Units Count="84">
       <Unit0>
@@ -71,7 +84,7 @@
       <Unit4>
         <Filename Value="Padrao/ufmImprimeEtiq.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="fmImprimeEtiq"/>
+        <ComponentName Value="frmImprimeEtiq"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit4>
@@ -176,7 +189,9 @@
       <Unit19>
         <Filename Value="Movimentos/unContasPagas.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmContasPagas"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit19>
       <Unit20>
         <Filename Value="Movimentos/unContasReceber.pas"/>
@@ -188,7 +203,9 @@
       <Unit21>
         <Filename Value="Movimentos/unContasRecebidas.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmContasRecebidas"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit21>
       <Unit22>
         <Filename Value="Movimentos/unCP.pas"/>
@@ -214,7 +231,9 @@
       <Unit25>
         <Filename Value="Movimentos/unLancCaixa.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmLancCaixa"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit25>
       <Unit26>
         <Filename Value="Movimentos/unParcelaCPCR.pas"/>
@@ -238,17 +257,23 @@
       <Unit29>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevContasPagar.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevContasPagar"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit29>
       <Unit30>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevContasReceber.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevContasReceber"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit30>
       <Unit31>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevCPAtrasados.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmRelatorioCPAtrasados"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit31>
       <Unit32>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevRelCaixa.pas"/>
@@ -260,7 +285,9 @@
       <Unit33>
         <Filename Value="Movimentos/Relatorios/Prev/unPrevRelCRAtrasadas.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevRelCRAtrasadas"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit33>
       <Unit34>
         <Filename Value="Movimentos/Relatorios/unRelatorioCaixaContaCaixa.pas"/>
@@ -424,7 +451,9 @@
       <Unit57>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevEtiquetaCliente.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrevEtiquetaCliente"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit57>
       <Unit58>
         <Filename Value="Cadastros/Relatorios/Prev/unPrevListagemClientes.pas"/>
@@ -554,29 +583,30 @@
         <IsPartOfProject Value="True"/>
       </Unit79>
       <Unit80>
-        <Filename Value="Cadastros/Datamodule/udmCliente.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="dmCliente"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="DataModule"/>
-      </Unit80>
-      <Unit81>
         <Filename Value="repos/baserepo.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseRepo"/>
-      </Unit81>
-      <Unit82>
+      </Unit80>
+      <Unit81>
         <Filename Value="models/basemodel.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseModel"/>
-      </Unit82>
-      <Unit83>
+      </Unit81>
+      <Unit82>
         <Filename Value="Configuracoes/unperfil.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmPerfil"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="unPerfil"/>
+      </Unit82>
+      <Unit83>
+        <Filename Value="Util/ufmdatas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmDatas"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ufmDatas"/>
       </Unit83>
     </Units>
   </ProjectOptions>
@@ -584,7 +614,8 @@
     <Version Value="11"/>
     <SearchPaths>
       <IncludeFiles Value="Util;Principal;Padrao;Utilitarios;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Ajuda;Comuns/Dm;Configuracoes/Relatorios;Cadastros/Datamodule;Utilitarios/Datamodule;Principal/Classes;$(ProjOutDir)"/>
-      <OtherUnitFiles Value="Util;Principal;Padrao;Utilitarios;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Ajuda;Comuns/Dm;Cadastros/Datamodule;repos;models"/>
+      <Libraries Value="/opt/homebrew/opt/libpng/lib/"/>
+      <OtherUnitFiles Value="Util;Principal;Padrao;Utilitarios;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Ajuda;Comuns/Dm;repos;models"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
@@ -593,6 +624,9 @@
       </SyntaxOptions>
     </Parsing>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

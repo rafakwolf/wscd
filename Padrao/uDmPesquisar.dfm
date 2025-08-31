@@ -1,7 +1,7 @@
 object DmPesquisar: TDmPesquisar
   OldCreateOrder = False
   Height = 445
-  HorizontalOffset = 393
-  VerticalOffset = 147
+  HorizontalOffset = 651
+  VerticalOffset = 194
   Width = 644
 end

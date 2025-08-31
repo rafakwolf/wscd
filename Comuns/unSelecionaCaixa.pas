@@ -5,22 +5,19 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, memds,  SqlDb, DBCtrls, StdCtrls,
-  Buttons, Funcoes, FMTBcd;
+  Buttons, Funcoes, ZDataset, FMTBcd;
 
 type
+
+  { TfrmSelecionaCaixa }
+
   TfrmSelecionaCaixa = class(TForm)
-    sqldCaixa: TSQLQuery;
-    dspCaixa: TComponent;
-    cdsCaixa: TMemDataSet;
     dsCaixa: TDataSource;
-    sqldCaixaCODIGO: TIntegerField;
-    sqldCaixaNOME: TStringField;
-    cdsCaixaCODIGO: TIntegerField;
-    cdsCaixaNOME: TStringField;
     lbCaixa: TLabel;
     btnOk: TBitBtn;
     btnCancel: TBitBtn;
     dblcbCaixa: TDBLookupComboBox;
+    ZQuery1: TZQuery;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -40,7 +37,7 @@ begin
   frmSelecionaCaixa := TfrmSelecionaCaixa.Create(Application);
   with frmSelecionaCaixa do
   try
-    cdsCaixa.Open;
+    ZQuery1.Open;
 
     Result := ShowModal = mrOk;
 
@@ -49,7 +46,7 @@ begin
     else
       Retorno := -1;
   finally
-    cdsCaixa.Close;
+    ZQuery1.Close;
     FreeAndNil(frmSelecionaCaixa);
   end;
 end;

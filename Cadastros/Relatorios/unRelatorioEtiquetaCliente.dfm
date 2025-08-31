@@ -8,17 +8,22 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
     Top = 254
     Width = 554
     ClientWidth = 554
+    inherited btnImprimir: TBitBtn
+      OnClick = btnVisualizarClick
+    end
+    inherited btnVisualizar: TBitBtn
+      OnClick = btnVisualizarClick
+    end
   end
   object dbeCidade: TDBEdit[1]
     Left = 16
-    Height = 33
+    Height = 21
     Hint = 'Pesquisar < F2 >'
-    Top = 96
+    Top = 120
     Width = 355
     DataField = 'DESCRICAO'
     DataSource = dsCidade
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -27,14 +32,13 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
   end
   object dbeCliente: TDBEdit[2]
     Left = 16
-    Height = 33
+    Height = 21
     Hint = 'Pesquisar < F2 >'
-    Top = 55
+    Top = 80
     Width = 355
     DataField = 'NOME'
     DataSource = dsPadrao
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -55,8 +59,8 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 3
-    ClientHeight = 23
-    ClientWidth = 391
+    ClientHeight = 14
+    ClientWidth = 383
     Columns = 3
     ItemIndex = 0
     Items.Strings = (
@@ -69,11 +73,88 @@ inherited frmRelatorioEtiquetaCliente: TfrmRelatorioEtiquetaCliente
     ShowHint = True
     TabOrder = 3
   end
-  inherited dsPadrao: TDataSource[4]
-    Left = 352
+  object btnCliente: TButton[4]
+    Left = 376
+    Height = 25
+    Top = 76
+    Width = 75
+    Caption = 'Cliente'
+    TabOrder = 4
+    OnClick = dbeClienteClickButton
   end
-  object dsCidade: TDataSource[5]
-    Left = 312
-    Top = 32
+  object btnCidade: TButton[5]
+    Left = 376
+    Height = 25
+    Top = 116
+    Width = 75
+    Caption = 'Cidade'
+    TabOrder = 5
+    OnClick = dbeCidadeClickButton
+  end
+  inherited dsPadrao: TDataSource[6]
+    DataSet = cdsPesqCliente
+    Left = 416
+    Top = 160
+  end
+  object dsCidade: TDataSource[7]
+    DataSet = cdsPesqCidade
+    Left = 416
+    Top = 224
+  end
+  object cdsPesqCliente: TZQuery[8]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from CLIENTES'
+    )
+    Params = <>
+    Left = 344
+    Top = 152
+    object cdsPesqClienteCODCLIENTE: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object cdsPesqClienteNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+  end
+  object cdsPesqCidade: TZQuery[9]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from CIDADES'
+    )
+    Params = <>
+    Left = 336
+    Top = 208
+    object cdsPesqCidadeCODCIDADE: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'CODCIDADE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object cdsPesqCidadeDESCRICAO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
   end
 end

@@ -6,7 +6,7 @@ uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,   Buttons, DB, StdCtrls,  DBCtrls, SqlDb,
   memds,  ConstPadrao, ComCtrls, unContasPagar,  LCLType,
-  Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal;
+  Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal, zdataset;
 
 type
   TfrmContasPagas = class(TfrmSimplePadrao)
@@ -188,9 +188,9 @@ procedure TfrmContasPagas.btnEstornarClick(Sender: TObject);
 
   function ContasMarcadas: Integer;
   begin
-    with TSQLQuery.Create(nil) do
+    with TZQuery.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      Connection := GetZConnection;
       SQL.Clear; SQL.Text :='select count(1) as CONT from CONTASPAGAR'+
         ' where PAGAR = '+QuotedStr('S')+
         ' and PAGA = '+QuotedStr('S')+
@@ -269,9 +269,9 @@ end;
 
 procedure TfrmContasPagas.SomaContasPagas;
 begin
-  with TSQLQuery.Create(nil) do
+  with TZQuery.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    Connection := GetZConnection;
     SQL.Clear; SQL.Text :='select sum(TOTAL) as SOMA from CONTASPAGAR '+
       'where PAGA = '+QuotedStr('S')+' and FORNECEDOR = :PFORN';
     Params.ParamByName('PFORN').AsInteger := FFornecedor; 

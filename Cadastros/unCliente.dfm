@@ -1,13 +1,21 @@
 inherited frmCliente: TfrmCliente
-  Left = 260
-  Height = 467
-  Top = 138
+  Left = 412
+  Height = 517
+  Top = 215
+  Width = 966
   Caption = 'frmCliente'
-  ClientHeight = 467
+  ClientHeight = 517
+  ClientWidth = 966
+  Font.Height = -13
+  Font.Name = '.SF NS'
+  Menu = MainMenu1
   inherited sbStatus: TStatusBar
-    Top = 449
+    Top = 499
+    Width = 966
   end
   inherited pnBotoesPadrao: TPanel
+    Width = 966
+    ClientWidth = 966
     TabOrder = 28
     inherited btnAlterar: TSpeedButton
       Left = 49
@@ -37,12 +45,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeFax: TDBEdit[3]
     Left = 120
-    Height = 33
+    Height = 21
     Top = 156
     Width = 105
     DataField = 'FAX'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -50,12 +57,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeTelefoneComercial: TDBEdit[4]
     Left = 639
-    Height = 33
+    Height = 21
     Top = 300
     Width = 138
     DataField = 'FONE_COM'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -63,12 +69,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeRefComercial: TDBEdit[5]
     Left = 528
-    Height = 33
+    Height = 21
     Top = 348
     Width = 249
     DataField = 'REFER_COM'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -76,12 +81,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeRefPessoal: TDBEdit[6]
     Left = 280
-    Height = 33
+    Height = 21
     Top = 348
     Width = 241
     DataField = 'REFER_PES'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -89,12 +93,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeLocalTrabalho: TDBEdit[7]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 348
     Width = 265
     DataField = 'LOCAL_TRAB'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -102,12 +105,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeSalario: TDBEdit[8]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 396
     Width = 129
     DataField = 'SALARIO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -116,12 +118,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeInicioTrabalho: TDBEdit[9]
     Left = 520
-    Height = 33
+    Height = 21
     Top = 300
     Width = 113
     DataField = 'DATA_INICIO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -129,12 +130,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeCargo: TDBEdit[10]
     Left = 264
-    Height = 33
+    Height = 21
     Top = 300
     Width = 249
     DataField = 'CARGO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -142,12 +142,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeTrabalho: TDBEdit[11]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 300
     Width = 249
     DataField = 'TRABALHO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -155,7 +154,7 @@ inherited frmCliente: TfrmCliente
   end
   object dbeEmail: TDBEdit[12]
     Left = 232
-    Height = 33
+    Height = 21
     Top = 156
     Width = 289
     DataField = 'E_MAIL'
@@ -168,12 +167,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeNaturalidade: TDBEdit[13]
     Left = 616
-    Height = 33
+    Height = 21
     Top = 204
     Width = 161
     DataField = 'NATURALIDADE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -181,12 +179,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeDataCadastro: TDBEdit[14]
     Left = 656
-    Height = 33
+    Height = 21
     Top = 156
     Width = 121
     DataField = 'CADASTRO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -194,12 +191,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeMae: TDBEdit[15]
     Left = 312
-    Height = 33
+    Height = 21
     Top = 204
     Width = 297
     DataField = 'MAE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -207,12 +203,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbePai: TDBEdit[16]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 204
     Width = 297
     DataField = 'PAI'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -220,12 +215,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeConjuge: TDBEdit[17]
     Left = 584
-    Height = 33
+    Height = 21
     Top = 252
     Width = 193
     DataField = 'CONJUGUE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -233,12 +227,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeEnderecoAnterior: TDBEdit[18]
     Left = 247
-    Height = 33
+    Height = 21
     Top = 252
     Width = 322
     DataField = 'END_ANTERIOR'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -246,12 +239,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeTempoMoradia: TDBEdit[19]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 252
     Width = 233
     DataField = 'TEMPO_MORADIA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -259,12 +251,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeLimite: TDBEdit[20]
     Left = 144
-    Height = 33
+    Height = 21
     Top = 396
     Width = 121
     DataField = 'LIMITE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     Font.CharSet = ANSI_CHARSET
     MaxLength = 0
     ParentFont = False
@@ -275,12 +266,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeDataNasc: TDBEdit[21]
     Left = 528
-    Height = 33
+    Height = 21
     Top = 156
     Width = 121
     DataField = 'DATA_NASC'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -288,12 +278,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeCpf: TDBEdit[22]
     Left = 376
-    Height = 33
+    Height = 21
     Top = 64
     Width = 137
     DataField = 'CPF_CNPJ'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -301,12 +290,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeRg: TDBEdit[23]
     Left = 520
-    Height = 33
+    Height = 21
     Top = 64
     Width = 129
     DataField = 'RG_IE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -314,12 +302,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeTelefone: TDBEdit[24]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 156
     Width = 105
     DataField = 'TELEFONE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -327,12 +314,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeCep: TDBEdit[25]
     Left = 416
-    Height = 33
+    Height = 21
     Top = 108
     Width = 97
     DataField = 'CEP'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -340,12 +326,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeBairro: TDBEdit[26]
     Left = 232
-    Height = 33
+    Height = 21
     Top = 108
     Width = 177
     DataField = 'BAIRRO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -353,12 +338,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeEndereco: TDBEdit[27]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 108
     Width = 217
     DataField = 'ENDERECO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -366,12 +350,11 @@ inherited frmCliente: TfrmCliente
   end
   object dbeNome: TDBEdit[28]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 64
     Width = 361
     DataField = 'NOME'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -379,20 +362,19 @@ inherited frmCliente: TfrmCliente
   end
   object dbmObs: TDBEdit[29]
     Left = 280
-    Height = 33
+    Height = 21
     Top = 396
     Width = 377
     DataField = 'OBS'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 29
   end
   inherited actlNavigateActions: TActionList[30]
-    Left = 600
-    Top = 12
+    Left = 664
+    Top = 96
     inherited actPrint: TAction
       Hint = 'Listagem de clientes'
       OnExecute = actPrintExecute
@@ -400,8 +382,41 @@ inherited frmCliente: TfrmCliente
     end
   end
   inherited dsPadrao: TDataSource[31]
-    DataSet = dmCliente.ZQuery1
-    Left = 713
-    Top = 36
+    DataSet = sqldClientes
+    Left = 744
+    Top = 64
+  end
+  object MainMenu1: TMainMenu[32]
+    Left = 560
+    Top = 96
+    object MenuItem1: TMenuItem
+      Caption = 'Relatórios'
+      OnClick = MenuItem1Click
+      object MenuItem2: TMenuItem
+        Caption = 'Clientes por Cidade'
+        OnClick = miRelClientesCidadeClick
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Aniversariantes'
+        OnClick = miRelAniversariantesClick
+      end
+      object MenuItem4: TMenuItem
+        Caption = 'Clientes por Nascimento'
+        OnClick = miRelClientesDataNascClick
+      end
+      object MenuItem5: TMenuItem
+        Caption = 'Etiquetas'
+        OnClick = miEtiquetaClienteClick
+      end
+    end
+  end
+  object sqldClientes: TZQuery[33]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from CLIENTES'
+    )
+    Params = <>
+    Left = 672
+    Top = 40
   end
 end

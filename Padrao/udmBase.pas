@@ -3,7 +3,7 @@ unit udmBase;
 interface
 
 uses
-  sysutils, Classes, ZConnection, db, mysql57conn, SQLDB;
+  sysutils, Classes, ZConnection, db;
 
 type
 
@@ -15,7 +15,6 @@ type
   protected
       function ConectaBanco: Boolean; virtual;
   public
-    Conexao: TSQLConnection; // fake component, remove afterwards
   end;
 
 var

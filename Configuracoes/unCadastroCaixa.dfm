@@ -30,12 +30,11 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   end
   object dbeNomeCaixa: TDBEdit[2]
     Left = 64
-    Height = 33
+    Height = 21
     Top = 96
     Width = 305
     DataField = 'NOME'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -43,12 +42,11 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   end
   object dbeCodCaixa: TDBEdit[3]
     Left = 64
-    Height = 33
+    Height = 21
     Top = 57
     Width = 121
     DataField = 'CODIGO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -79,51 +77,11 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   end
   object ZQuery1: TZQuery[7]
     Connection = DmPrincipal.ZConnection1
-    UpdateObject = ZUpdateSQL1
     SQL.Strings = (
       'select * from CAIXAS'
     )
     Params = <>
     Left = 210
     Top = 184
-  end
-  object ZUpdateSQL1: TZUpdateSQL[8]
-    DeleteSQL.Strings = (
-      'DELETE FROM CAIXAS'
-      'WHERE'
-      '  CAIXAS.CODIGO = :OLD_CODIGO'
-    )
-    InsertSQL.Strings = (
-      'INSERT INTO CAIXAS'
-      '  (NOME, INATIVO)'
-      'VALUES'
-      '  (:NOME, :INATIVO)'
-    )
-    ModifySQL.Strings = (
-      'UPDATE CAIXAS SET'
-      '  NOME = :NOME,'
-      '  INATIVO = :INATIVO'
-      'WHERE'
-      '  CAIXAS.CODIGO = :OLD_CODIGO'
-    )
-    UseSequenceFieldForRefreshSQL = False
-    Left = 304
-    Top = 176
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'NOME'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'INATIVO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'OLD_CODIGO'
-        ParamType = ptUnknown
-      end>
   end
 end

@@ -2,13 +2,12 @@ object frmModeloEnvelope: TfrmModeloEnvelope
   Left = 354
   Height = 443
   Top = 186
-  Width = 784
+  Width = 865
   Caption = 'frmModeloEnvelope'
   ClientHeight = 443
-  ClientWidth = 784
+  ClientWidth = 865
   Font.Name = 'MS Sans Serif'
   OnCreate = FormCreate
-  LCLVersion = '2.0.12.0'
   object rrEnvelope: TRLReport
     Left = 0
     Height = 416
@@ -156,124 +155,14 @@ object frmModeloEnvelope: TfrmModeloEnvelope
       end
     end
   end
-  object sqldPadrao: TSQLQuery
-    FieldDefs = <>
-    Params = <>
-    Left = 40
-    Top = 8
-    object sqldPadraoNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object sqldPadraoENDERECO: TStringField
-      FieldKind = fkData
-      FieldName = 'ENDERECO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object sqldPadraoCIDADE: TStringField
-      FieldKind = fkData
-      FieldName = 'CIDADE'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object sqldPadraoBAIRRO: TStringField
-      FieldKind = fkData
-      FieldName = 'BAIRRO'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object sqldPadraoCEP: TStringField
-      FieldKind = fkData
-      FieldName = 'CEP'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 10
-    end
-  end
-  object dspPadrao: TTimer
-    Left = 128
-    Top = 8
-  end
-  object cdsPadrao: TMemDataset
-    FieldDefs = <>
-    Left = 216
-    Top = 8
-    object cdsPadraoNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object cdsPadraoENDERECO: TStringField
-      FieldKind = fkData
-      FieldName = 'ENDERECO'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object cdsPadraoCIDADE: TStringField
-      FieldKind = fkData
-      FieldName = 'CIDADE'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object cdsPadraoBAIRRO: TStringField
-      FieldKind = fkData
-      FieldName = 'BAIRRO'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object cdsPadraoCEP: TStringField
-      FieldKind = fkData
-      FieldName = 'CEP'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 10
-    end
-  end
   object dsPadrao: TDataSource
-    DataSet = cdsPadrao
-    Left = 304
-    Top = 8
+    DataSet = sqldPadrao
+    Left = 312
+    Top = 144
+  end
+  object sqldPadrao: TZQuery
+    Params = <>
+    Left = 218
+    Top = 183
   end
 end

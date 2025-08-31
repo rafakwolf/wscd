@@ -5,30 +5,19 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,   
-  DBCtrls,  memds,  DB, SqlDb, FMTBcd;
+  DBCtrls, ZDataset, ZAbstractRODataset, DB,SqlDb, FMTBcd;
 
 type
+
+  { TfrmRelatorioCRAtraso }
+
   TfrmRelatorioCRAtraso = class(TfrmDialogoRelatorioPadrao)
-    sqldCliente: TSQLQuery;
-    dspCliente: TComponent;
-    cdsCliente: TMemDataSet;
-    sqldClienteCODCLIENTE: TIntegerField;
-    sqldClienteNOME: TStringField;
-    sqldClienteTELEFONE: TStringField;
-    sqldClienteRG_IE: TStringField;
-    sqldClienteCPF_CNPJ: TStringField;
-    sqldClienteDATA_NASC: TDateField;
-    sqldClienteLIMITE: TFMTBCDField;
-    sqldClienteDESCRICAO: TStringField;
-    cdsClienteCODCLIENTE: TIntegerField;
-    cdsClienteNOME: TStringField;
-    cdsClienteTELEFONE: TStringField;
-    cdsClienteRG_IE: TStringField;
-    cdsClienteCPF_CNPJ: TStringField;
-    cdsClienteDATA_NASC: TDateField;
-    cdsClienteLIMITE: TFMTBCDField;
-    cdsClienteDESCRICAO: TStringField;
+    Button1: TButton;
     dbeCliente: TDBEdit;
+    sqldCliente: TZQuery;
+    sqldClienteCODCLIENTE: TZIntegerField;
+    sqldClienteNOME: TZRawStringField;
+    procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
@@ -61,26 +50,32 @@ begin
   end
   else
   begin
-    with TfrmPrevRelCRAtrasadas.Create(Self), cdsPadrao do
+    with TfrmPrevRelCRAtrasadas.Create(Self),sqldCliente do
     try
       Close;
-      sqldpadrao.Params.ParamByName('PCLIENTE').AsInteger := cdsClienteCODCLIENTE.AsInteger;
+      sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := sqldClienteCODCLIENTE.AsInteger;
       Open;
-      Titulo := 'Contas do cliente: ' + cdsClienteNOME.AsString;
+      Titulo := 'Contas do cliente: ' + sqldClienteNOME.AsString;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
-      cdsPadrao.Close;
+      sqldCliente.Close;
       Free;
     end;
   end;
 end;
 
+procedure TfrmRelatorioCRAtraso.Button1Click(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmRelatorioCRAtraso.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsCliente.Close;
+  sqldCliente.Close;
   inherited;
 end;
+
 
 procedure TfrmRelatorioCRAtraso.btnImprimirClick(Sender: TObject);
 begin
@@ -97,10 +92,11 @@ end;
 procedure TfrmRelatorioCRAtraso.dbeClienteClickButton(Sender: TObject);
 begin
   inherited;
-  cdsCliente.Close;
-  sqldCliente.SQL.Clear; sqldCliente.SQL.Text :=SQLPadrao;
-//  if not TfrmModeloConsulta.Execute('Cliente', cdsCliente, FN_CLIENTES, DL_CLIENTES) then
-//    cdsCliente.Close;
+  sqldCliente.Close;
+  sqldCliente.SQL.Clear;
+  sqldCliente.SQL.Text := SQLPadrao;
+  if not TfrmModeloConsulta.Execute('Cliente', 'CLIENTES', FN_CLIENTES, DL_CLIENTES, self) = mrOK then
+    sqldCliente.Close;
 end;
 
 procedure TfrmRelatorioCRAtraso.FormCreate(Sender: TObject);

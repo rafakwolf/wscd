@@ -1,13 +1,14 @@
 inherited frmPesqFone: TfrmPesqFone
-  Left = 360
+  Left = 395
   Height = 499
-  Top = 127
+  Top = 176
   Width = 741
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'frmPesqFone'
   ClientHeight = 499
   ClientWidth = 741
+  Menu = mmPesqFone
   OnShow = FormShow
   object btnPesquisar: TBitBtn[0]
     Left = 613
@@ -35,7 +36,7 @@ inherited frmPesqFone: TfrmPesqFone
   end
   object edtNome: TEdit[2]
     Left = 128
-    Height = 33
+    Height = 21
     Top = 28
     Width = 337
     ParentShowHint = False
@@ -44,7 +45,7 @@ inherited frmPesqFone: TfrmPesqFone
   end
   object edtFone: TEdit[3]
     Left = 472
-    Height = 33
+    Height = 21
     Top = 28
     Width = 137
     ParentShowHint = False
@@ -78,8 +79,8 @@ inherited frmPesqFone: TfrmPesqFone
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 39
-    ClientWidth = 111
+    ClientHeight = 31
+    ClientWidth = 103
     ItemIndex = 0
     Items.Strings = (
       'Nome'
@@ -96,8 +97,8 @@ inherited frmPesqFone: TfrmPesqFone
     Top = 144
   end
   object mmPesqFone: TMainMenu[7]
-    Left = 168
-    Top = 144
+    Left = 120
+    Top = 152
     object miRegistros: TMenuItem
       Caption = 'Registros'
       object miCadastrar: TMenuItem
@@ -138,7 +139,7 @@ inherited frmPesqFone: TfrmPesqFone
       '  UNION'
       ''
       '  SELECT'
-      '    FORN.FANTAZIA NOME,'
+      '    FORN.FANTASIA NOME,'
       '    FORN.TELEFONE'
       '  FROM FORNECEDORES FORN'
       '  WHERE (FORN.TELEFONE <> '''')'
@@ -152,7 +153,7 @@ inherited frmPesqFone: TfrmPesqFone
       '  WHERE (AG.TELEFONE <> '''')'
     )
     Params = <>
-    Left = 272
-    Top = 208
+    Left = 248
+    Top = 160
   end
 end

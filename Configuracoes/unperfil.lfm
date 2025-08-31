@@ -1,10 +1,65 @@
 inherited frmPerfil: TfrmPerfil
-  Left = 259
-  Top = 167
+  Left = 359
+  Height = 356
+  Top = 217
+  Width = 665
   Caption = 'frmPerfil'
+  ClientHeight = 356
+  ClientWidth = 665
   OnCreate = FormCreate
   inherited sbStatus: TStatusBar
-    Height = 17
-    Top = 355
+    Top = 338
+    Width = 665
+  end
+  inherited pnBotoesPadrao: TPanel
+    Width = 665
+    ClientWidth = 665
+  end
+  object DBEdit1: TDBEdit[2]
+    Left = 40
+    Height = 21
+    Top = 80
+    Width = 392
+    DataField = 'PERFIL'
+    DataSource = dsPadrao
+    MaxLength = 0
+    TabOrder = 2
+  end
+  inherited actlNavigateActions: TActionList[3]
+    Left = 88
+    Top = 128
+  end
+  inherited dsPadrao: TDataSource[4]
+    DataSet = ZQuery1
+    Left = 208
+    Top = 128
+  end
+  object ZQuery1: TZQuery[5]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from PERFIL'
+    )
+    Params = <>
+    Left = 264
+    Top = 152
+    object ZQuery1IDPERFIL: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'IDPERFIL'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object ZQuery1PERFIL: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PERFIL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
   end
 end

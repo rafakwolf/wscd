@@ -17,7 +17,6 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     Width = 137
     DataField = 'DATAINI'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -30,7 +29,6 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
     Width = 137
     DataField = 'DATAFIM'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -97,6 +95,7 @@ inherited frmRelatorioFluxoCaixa: TfrmRelatorioFluxoCaixa
   object sqldSelecao: TSQLQuery[6]
     FieldDefs = <>
     Params = <>
+    Macros = <>
     Left = 256
     Top = 136
     object sqldSelecaoDATAINI: TDateTimeField

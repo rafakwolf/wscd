@@ -124,10 +124,10 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
         DataSource = dsPadrao
       end
       object dbDocumento: TRLDBText
-        Left = 403
+        Left = 402
         Height = 15
         Top = 1
-        Width = 88
+        Width = 89
         Alignment = taRightJustify
         DataField = 'DOCUMENTO'
         DataSource = dsPadrao
@@ -136,7 +136,7 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
         Left = 562
         Height = 15
         Top = 1
-        Width = 35
+        Width = 34
         DataField = 'TIPO'
         DataSource = dsPadrao
         BeforePrint = dbTipoBeforePrint
@@ -293,84 +293,6 @@ inherited frmPrevRelCaixa: TfrmPrevRelCaixa
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-      Size = 2
-    end
-  end
-  inherited cdsPadrao: TMemDataset
-    object cdsPadraoCODIGO: TIntegerField[0]
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoTOTAL: TFMTBCDField[1]
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-      Size = 2
-    end
-    object cdsPadraoDATA: TDateField[2]
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoDESCRICAO: TStringField[3]
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 50
-    end
-    object cdsPadraoDOCUMENTO: TStringField[4]
-      FieldKind = fkData
-      FieldName = 'DOCUMENTO'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoTIPO: TStringField[5]
-      FieldKind = fkData
-      FieldName = 'TIPO'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoVALOR: TFMTBCDField[6]
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
       Precision = 15
       Currency = False
       MaxValue = '0'

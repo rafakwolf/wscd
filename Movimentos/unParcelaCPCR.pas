@@ -6,39 +6,23 @@ uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unSimplePadrao, ComCtrls,  DB,
   memds,  SqlDb, Grids, DBGrids, Spin, StdCtrls,  DBCtrls,
-  Buttons, DateUtils, FMTBcd;
+  Buttons, ZDataset, ZAbstractRODataset, DateUtils, FMTBcd;
 
 type
 
   { TfrmParcelaCPCR }
 
   TfrmParcelaCPCR = class(TfrmSimplePadrao)
+    cdsPadraoCODIGO: TZInt64Field;
+    cdsPadraoDATA: TZDateField;
+    cdsPadraoNOME: TZRawStringField;
+    cdsPadraoVALOR: TZDoubleField;
+    cdsParcelaDIA: TZRawStringField;
+    cdsParcelaNUMERO: TZInt64Field;
+    cdsParcelaVALOR: TZBCDField;
+    cdsParcelaVENC: TZDateField;
     edtJuro: TLabeledEdit;
-    sqldParcela: TSQLQuery;
-    sqldParcelaNUMERO: TIntegerField;
-    sqldParcelaVENC: TDateField;
-    sqldParcelaDIA: TStringField;
-    sqldParcelaVALOR: TFloatField;
-    dspParcela: TComponent;
-    cdsParcela: TMemDataSet;
-    cdsParcelaNUMERO: TIntegerField;
-    cdsParcelaVENC: TDateField;
-    cdsParcelaDIA: TStringField;
-    cdsParcelaVALOR: TFloatField;
     dsParcela: TDataSource;
-    sqldContasPagar: TSQLQuery;
-    sqldReceber: TSQLQuery;
-    sqldPadrao: TSQLQuery;
-    sqldPadraoCODIGO: TIntegerField;
-    sqldPadraoNOME: TStringField;
-    sqldPadraoDATA: TDateField;
-    sqldPadraoVALOR: TFloatField;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoNOME: TStringField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoVALOR: TFloatField;
     dsPadrao: TDataSource;
     lbParcelas: TLabel;
     lbPrazoInicio: TLabel;
@@ -54,6 +38,10 @@ type
     sePrazoInicio: TSpinEdit;
     seIntervalo: TSpinEdit;
     dbgrdParcelas: TDBGrid;
+    cdsParcela: TZQuery;
+    sqldContasPagar: TZQuery;
+    sqldReceber: TZQuery;
+    cdsPadrao: TZQuery;
     procedure FormCreate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnCalcularClick(Sender: TObject);
@@ -62,7 +50,6 @@ type
     procedure dbeNomeClickButton(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cdsParcelaVENCChange(Sender: TField);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dbeNomeEnter(Sender: TObject);
   private
@@ -93,15 +80,15 @@ begin
   cdsPadrao.Open;
   cdsPadrao.Edit;
 
-//  SQLCli  := GetDmPesquisar.sqldPesqCliente.CommandText;
-//  SQLForn := GetDmPesquisar.sqldPesqForn.CommandText;
+  SQLCli  := 'selet * from CLIENTES';
+  SQLForn := 'select * from FORNECEDORES';
 end;
 
 procedure TfrmParcelaCPCR.GeraParcelas;
 var
   x: Integer;
 begin
-  //cdsParcela.EmptyDataSet;
+  cdsParcela.EmptyDataSet;
   for x := 1 to seParcelas.Value do
   begin
     if cdsParcela.RecordCount < x then
@@ -139,8 +126,8 @@ begin
       begin
         with sqldReceber do
         begin
-          //Params.ParamByName('CODIGO').AsInteger :=
-          //  GetProximoID('CONTASRECEBER', 'CODIGO', GetConnection);
+          Params.ParamByName('CODIGO').AsInteger :=
+            GetProximoID('CONTASRECEBER', 'CODIGO', GetZConnection);
 
           Params.ParamByName('DATA').AsDate := cdsPadraoDATA.AsDateTime;
           Params.ParamByName('VENCIMENTO').AsDate := cdsParcelaVENC.AsDateTime;
@@ -173,9 +160,9 @@ begin
     begin
       with sqldContasPagar do
       begin
-        //Params.ParamByName('CODIGO').AsInteger :=
-        //  GetProximoID('CONTASPAGAR', 'CODIGO', GetConnection);
-        //
+        Params.ParamByName('CODIGO').AsInteger :=
+          GetProximoID('CONTASPAGAR', 'CODIGO', GetZConnection);
+
         Params.ParamByName('DATA').AsDate := cdsPadraoDATA.AsDateTime;
         Params.ParamByName('VENCIMENTO').AsDate := cdsParcelaVENC.AsDateTime;
         Params.ParamByName('IDFORN').AsInteger := cdsPadraoCODIGO.AsInteger;
@@ -302,34 +289,6 @@ procedure TfrmParcelaCPCR.cdsParcelaVENCChange(Sender: TField);
 begin
   inherited;
   cdsParcelaDIA.AsString := DiaSemana(Sender.AsDateTime);
-end;
-
-procedure TfrmParcelaCPCR.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if Key = #13 then
-  begin
-    if (ActiveControl is TCustomMemo) or
-            ((ActiveControl is TCustomCombobox) and
-             (TCustomCombobox(ActiveControl).DroppedDown)) then
-    begin
-      Key := #0;
-      Exit;
-    end
-    else if not (ActiveControl is TDBGrid) then
-    begin
-      Key := #0;
-      //PostMessage(Handle, WM_KEYDOWN, VK_TAB, 1);
-    end
-    else if (ActiveControl is TDBGrid) then
-    begin
-      //with TDBGrid(ActiveControl) do
-      //  if SelectedIndex < (FieldCount-1) then
-      //    SelectedIndex := SelectedIndex+1
-      //  else
-      //    SelectedIndex := 0;
-    end;
-  end; 
 end;
 
 procedure TfrmParcelaCPCR.FormClose(Sender: TObject;

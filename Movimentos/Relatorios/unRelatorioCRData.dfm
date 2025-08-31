@@ -13,7 +13,6 @@ inherited frmRelatorioCRData: TfrmRelatorioCRData
     Width = 153
     DataField = 'DATAINI'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -26,7 +25,6 @@ inherited frmRelatorioCRData: TfrmRelatorioCRData
     Width = 153
     DataField = 'DATAFIM'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True

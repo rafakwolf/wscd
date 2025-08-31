@@ -16,7 +16,6 @@ type
     dbeNomeCidade: TDBEdit;
     dbeCodCidade: TDBEdit;
     ZQuery1: TZQuery;
-    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
   private
   public

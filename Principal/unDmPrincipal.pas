@@ -44,7 +44,7 @@ begin
   ZConnection1.User:='root';
   ZConnection1.Password:='mysqlrocks!';
   ZConnection1.Protocol:='mysql';
-  ZConnection1.LibraryLocation:='/lib/x86_64-linux-gnu/libmysqlclient.so.21';
+  ZConnection1.LibraryLocation:='/opt/homebrew/Cellar/mysql-client/9.4.0/lib/libmysqlclient.24.dylib';
 end;
 
 procedure TDmPrincipal.DataModuleDestroy(Sender: TObject);
@@ -70,9 +70,9 @@ begin
 end;
 
 function TDmPrincipal.EnviaCaixa(Data: TDateTime; Historico: string;
-  Doc: string; Tipo: string; Valor: Currency; IdConta: Integer = 0): Boolean;
+  Doc: string; Tipo: string; Valor: Currency; IdConta: Integer): Boolean;
 begin
-
+  // not implemented yet
 end;
 
 end.

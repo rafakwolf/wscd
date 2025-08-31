@@ -1,7 +1,7 @@
 inherited frmCaixa: TfrmCaixa
-  Left = 248
+  Left = 358
   Height = 475
-  Top = 116
+  Top = 193
   Width = 918
   ActiveControl = pnBotoes
   BorderIcons = [biSystemMenu, biMinimize]
@@ -5357,6 +5357,7 @@ inherited frmCaixa: TfrmCaixa
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
     FFFFFFFFFFFFFFFFFFFF
   }
+  Menu = mnCaixa
   OnShow = FormShow
   object stbCaixa: TStatusBar[0]
     Left = 0
@@ -5364,9 +5365,19 @@ inherited frmCaixa: TfrmCaixa
     Top = 457
     Width = 918
     Color = clBtnFace
-    Panels = <>
+    Panels = <    
+      item
+        Width = 200
+      end    
+      item
+        Width = 200
+      end    
+      item
+        Width = 50
+      end>
     ParentColor = False
     ParentShowHint = False
+    SimplePanel = False
     ShowHint = True
   end
   object pnBotoes: TPanel[1]
@@ -5488,6 +5499,7 @@ inherited frmCaixa: TfrmCaixa
   end
   object dsCaixa: TDataSource[3]
     AutoEdit = False
+    DataSet = sqlPadrao
     OnStateChange = dsCaixaStateChange
     Left = 360
     Top = 144

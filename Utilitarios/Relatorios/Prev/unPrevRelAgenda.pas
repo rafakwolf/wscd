@@ -19,9 +19,6 @@ type
     sqldPadraoNOME: TStringField;
     sqldPadraoTELEFONE: TStringField;
     sqldPadraoFAX: TStringField;
-    cdsPadraoNOME: TStringField;
-    cdsPadraoTELEFONE: TStringField;
-    cdsPadraoFAX: TStringField;
     procedure rbDetalheBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
   public

@@ -5,13 +5,13 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, RLReport, DB, memds,  SqlDb, RLParser, FMTBcd,
-  RLConsts;
+  RLConsts, ZDataset;
 
 type
+
+  { TfrmModeloRelatorio }
+
   TfrmModeloRelatorio = class(TForm)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
     rlepCalculos: TRLExpressionParser;
     rbTitulo: TRLBand;
@@ -22,11 +22,12 @@ type
     rlmCabecalho: TRLMemo;
     imgLogo: TRLImage;
     rrPadrao: TRLReport;
+    sqldPadrao: TZQuery;
     procedure rrPadraoBeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure FormCreate(Sender: TObject);
   private
   public
-    function Totaliza(pDataSet: TMemDataSet; pTotalField, pFieldTipo, pTipo: string): Extended;
+    function Totaliza(pDataSet: TDataSet; pTotalField, pFieldTipo, pTipo: string): Extended;
   end;
 
 var
@@ -45,7 +46,7 @@ begin
   for I := 0 to ComponentCount-1 do
   begin
     if Components[i] is TSQLQuery then
-      TSQLQuery(Components[i]).SQLConnection := getConnection;
+      TZQuery(Components[i]).Connection := GetZConnection;
   end;
 end;
 
@@ -76,7 +77,7 @@ begin
   Update;
 end;
 
-function TfrmModeloRelatorio.Totaliza(pDataSet: TMemDataSet; pTotalField,
+function TfrmModeloRelatorio.Totaliza(pDataSet: TDataSet; pTotalField,
   pFieldTipo, pTipo: string): Extended;
 var
   Total: Extended;

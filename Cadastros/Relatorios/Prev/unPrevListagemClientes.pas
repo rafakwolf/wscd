@@ -31,16 +31,6 @@ type
     sqldPadraoCIDADE: TStringField;
     sqldPadraoTELEFONE: TStringField;
     sqldPadraoTIPO: TStringField;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoNOME: TStringField;
-    cdsPadraoENDERECO: TStringField;
-    cdsPadraoCPF_CNPJ: TStringField;
-    cdsPadraoRG_IE: TStringField;
-    cdsPadraoDATANASCIMENTO: TDateField;
-    cdsPadraoCODCIDADE: TIntegerField;
-    cdsPadraoCIDADE: TStringField;
-    cdsPadraoTELEFONE: TStringField;
-    cdsPadraoTIPO: TStringField;
     procedure rrPadraoBeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure rbDetalheBeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure FormCreate(Sender: TObject);
@@ -76,7 +66,7 @@ begin
     end;
     1: // por cidade
     begin
-      lbTitulo.Caption := 'Clientes da Cidade de: ' + cdsPadraoCIDADE.AsString;
+      lbTitulo.Caption := 'Clientes da Cidade de: ' + sqldPadrao.fieldByname('CIDADE').AsString;
     end;
     2: // entre datas
     begin
@@ -88,7 +78,7 @@ end;
 procedure TfrmPrevListagemClientes.FormCreate(Sender: TObject);
 begin
   inherited;
-  sqldPadrao.SQLConnection := GetConnection;
+  sqldPadrao.Connection := GetZConnection;
   sqldPadrao.Close;
   sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select'+
                              ' CODIGO,'+

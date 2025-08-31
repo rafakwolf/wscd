@@ -44,7 +44,7 @@ begin
   begin
     with TfrmPrevRelFornData.Create(Self) do
     try
-      with cdsPadrao do
+      with sqldPadrao do
       begin
         Close;
         sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select'+
@@ -64,7 +64,7 @@ begin
       TipoRelatorio := 1;
       PrintIfNotEmptyRL(rrPadrao);
     finally
-      cdsPadrao.Close;
+      sqldPadrao.Close;
       Free;
     end;
   end;

@@ -1,22 +1,14 @@
 inherited frmPrevContasPagar: TfrmPrevContasPagar
   Caption = 'frmPrevContasPagar'
-  ClientHeight = 465
-  ClientWidth = 805
-  OldCreateOrder = True
-  ExplicitWidth = 821
-  ExplicitHeight = 503
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited rrPadrao: TRLReport
     inherited rbRodape: TRLBand
-      Top = 190
-      ExplicitTop = 190
+      Top = 137
     end
-    object rlbTitulo: TRLBand
+    object rlbTitulo: TRLBand[2]
       Left = 38
-      Top = 139
-      Width = 718
       Height = 16
+      Top = 86
+      Width = 718
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -25,11 +17,11 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       Borders.DrawBottom = True
       object lbData: TRLLabel
         Left = 8
+        Height = 16
         Top = 0
         Width = 35
-        Height = 16
         Caption = 'Data'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -38,11 +30,11 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       end
       object lbvenc: TRLLabel
         Left = 112
+        Height = 16
         Top = 0
         Width = 80
-        Height = 16
         Caption = 'Vencimento'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -51,11 +43,11 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       end
       object lbFornecedor: TRLLabel
         Left = 232
+        Height = 16
         Top = 0
         Width = 77
-        Height = 16
         Caption = 'Fornecedor'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -64,11 +56,11 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       end
       object lbDocumento: TRLLabel
         Left = 528
+        Height = 16
         Top = 0
         Width = 77
-        Height = 16
         Caption = 'Documento'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -77,11 +69,11 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       end
       object lbvalor: TRLLabel
         Left = 664
+        Height = 16
         Top = 0
         Width = 38
-        Height = 16
         Caption = 'Valor'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -89,65 +81,60 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
         ParentFont = False
       end
     end
-    object rlbDetalhe: TRLBand
+    object rlbDetalhe: TRLBand[3]
       Left = 38
-      Top = 155
-      Width = 718
       Height = 16
+      Top = 102
+      Width = 718
       BeforePrint = rlbDetalheBeforePrint
       object rldbData: TRLDBText
         Left = 8
+        Height = 15
         Top = 0
         Width = 36
-        Height = 16
         DataField = 'DATA'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbvenc: TRLDBText
         Left = 112
+        Height = 15
         Top = 0
-        Width = 81
-        Height = 16
+        Width = 90
         DataField = 'VENCIMENTO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbForn: TRLDBText
         Left = 232
+        Height = 15
         Top = 0
-        Width = 83
-        Height = 16
+        Width = 96
         DataField = 'FORNECEDOR'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbDoc: TRLDBText
-        Left = 526
+        Left = 516
+        Height = 15
         Top = 0
-        Width = 79
-        Height = 16
+        Width = 89
         Alignment = taRightJustify
         DataField = 'DOCUMENTO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbValor: TRLDBText
-        Left = 659
+        Left = 655
+        Height = 15
         Top = 0
-        Width = 43
-        Height = 16
+        Width = 47
         Alignment = taRightJustify
         DataField = 'VALOR'
         DataSource = dsPadrao
-        Text = ''
       end
     end
-    object rlbSumario: TRLBand
+    object rlbSumario: TRLBand[4]
       Left = 38
-      Top = 171
-      Width = 718
       Height = 19
+      Top = 118
+      Width = 718
       BandType = btSummary
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -156,12 +143,12 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       Borders.DrawBottom = False
       object rllbTotal: TRLLabel
         Left = 644
+        Height = 16
         Top = 2
         Width = 58
-        Height = 16
         Alignment = taRightJustify
         Caption = '<Total>'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -170,75 +157,94 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
       end
     end
   end
-  inherited sqldPadrao: TSQLQuery
-    CommandText = 
-      'select * from VIEWRELCP'#13#10'where CODFORN = :PFORNECEDOR'#13#10'order by ' +
-      'DATA'
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'PFORNECEDOR'
-        ParamType = ptInput
-      end>
-    object sqldPadraoCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-    end
-    object sqldPadraoDATA: TDateField
-      FieldName = 'DATA'
-    end
-    object sqldPadraoVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-    end
-    object sqldPadraoCODFORN: TIntegerField
-      FieldName = 'CODFORN'
-    end
-    object sqldPadraoFORNECEDOR: TStringField
-      FieldName = 'FORNECEDOR'
-      Size = 80
-    end
-    object sqldPadraoDOCUMENTO: TStringField
-      FieldName = 'DOCUMENTO'
-    end
-    object sqldPadraoVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      Precision = 15
-    end
-  end
-  inherited cdsPadrao: TMemDataset
-    Params = <
-      item
-        DataType = ftInteger
-        Name = 'PFORNECEDOR'
-        ParamType = ptInput
-      end>
-    object cdsPadraoCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-    end
-    object cdsPadraoDATA: TDateField
-      FieldName = 'DATA'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoCODFORN: TIntegerField
-      FieldName = 'CODFORN'
-    end
-    object cdsPadraoFORNECEDOR: TStringField
-      FieldName = 'FORNECEDOR'
-      Size = 80
-    end
-    object cdsPadraoDOCUMENTO: TStringField
-      FieldName = 'DOCUMENTO'
-    end
-    object cdsPadraoVALOR: TFMTBCDField
-      FieldName = 'VALOR'
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-    end
-  end
   inherited rlepCalculos: TRLExpressionParser
-    Left = 148
+    Left = 160
+    Top = 192
+  end
+  inherited sqldPadrao: TZQuery
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'PFORNECEDOR'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 160
+    Top = 264
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'PFORNECEDOR'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    object sqldPadraoCODIGO: TIntegerField[0]
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoDATA: TDateField[1]
+      FieldKind = fkData
+      FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoVENCIMENTO: TDateField[2]
+      FieldKind = fkData
+      FieldName = 'VENCIMENTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoCODFORN: TIntegerField[3]
+      FieldKind = fkData
+      FieldName = 'CODFORN'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoFORNECEDOR: TStringField[4]
+      FieldKind = fkData
+      FieldName = 'FORNECEDOR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object sqldPadraoDOCUMENTO: TStringField[5]
+      FieldKind = fkData
+      FieldName = 'DOCUMENTO'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoVALOR: TFMTBCDField[6]
+      FieldKind = fkData
+      FieldName = 'VALOR'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+    end
   end
 end

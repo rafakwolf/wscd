@@ -10,37 +10,37 @@ object frmModeloConsulta: TfrmModeloConsulta
   KeyPreview = True
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '3.6.0.0'
   object lbCampo: TLabel
     Left = 8
-    Height = 15
+    Height = 16
     Top = 8
-    Width = 41
+    Width = 43
     Caption = 'Campo'
     ParentColor = False
   end
   object lbCondicao: TLabel
     Left = 144
-    Height = 15
+    Height = 16
     Top = 8
-    Width = 56
+    Width = 57
     Caption = 'Condição'
     ParentColor = False
   end
   object lbDados: TLabel
     Left = 280
-    Height = 15
+    Height = 16
     Top = 4
-    Width = 169
+    Width = 168
     Caption = 'Digite os dados à pesquisar'
     ParentColor = False
   end
   object lbNumRegs: TLabel
     Left = 8
-    Height = 15
+    Height = 16
     Hint = 'Número de registros da pesquisa atual'
     Top = 304
-    Width = 68
+    Width = 70
     Caption = 'lbNumRegs'
     Font.CharSet = ANSI_CHARSET
     ParentColor = False
@@ -81,11 +81,11 @@ object frmModeloConsulta: TfrmModeloConsulta
   end
   object cmbCondicao: TComboBox
     Left = 144
-    Height = 29
+    Height = 20
     Hint = 'Condição da pesquisa'
     Top = 24
     Width = 129
-    ItemHeight = 0
+    ItemHeight = 26
     Items.Strings = (
       'Igual a'
       'Contendo'
@@ -97,11 +97,11 @@ object frmModeloConsulta: TfrmModeloConsulta
   end
   object cmbCampo: TComboBox
     Left = 8
-    Height = 29
+    Height = 20
     Hint = 'Campo a ser pesquisado'
     Top = 24
     Width = 129
-    ItemHeight = 0
+    ItemHeight = 26
     Items.Strings = (
       'Por código'
       'Por razão social'
@@ -114,7 +114,7 @@ object frmModeloConsulta: TfrmModeloConsulta
   end
   object edtPesquisa: TEdit
     Left = 280
-    Height = 33
+    Height = 21
     Hint = 'Valor a ser pesquisado'
     Top = 20
     Width = 289
@@ -138,8 +138,8 @@ object frmModeloConsulta: TfrmModeloConsulta
   object dsPadrao: TDataSource
     AutoEdit = False
     DataSet = sqldPesquisa
-    Left = 336
-    Top = 168
+    Left = 328
+    Top = 160
   end
   object sqldPesquisa: TZReadOnlyQuery
     Connection = DmPrincipal.ZConnection1

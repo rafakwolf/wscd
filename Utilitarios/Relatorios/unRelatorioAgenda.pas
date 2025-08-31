@@ -5,28 +5,19 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,  
-  DB, memds,  SqlDb, DBCtrls,   uConfiguraRelatorio,
+  DB, memds,  SqlDb, DBCtrls,   uConfiguraRelatorio, ZDataset,
   FMTBcd;
 
 type
+
+  { TfrmRelatorioAgenda }
+
   TfrmRelatorioAgenda = class(TfrmDialogoRelatorioPadrao)
-    sqldAgenda: TSQLQuery;
-    dspAgenda: TComponent;
-    cdsAgenda: TMemDataSet;
-    cdsAgendaNOME: TStringField;
-    cdsAgendaTELEFONE: TStringField;
-    cdsAgendaTELEFONE2: TStringField;
-    cdsAgendaTELEFONE3: TStringField;
-    cdsAgendaFAX: TStringField;
-    sqldAgendaNOME: TStringField;
-    sqldAgendaTELEFONE: TStringField;
-    sqldAgendaTELEFONE2: TStringField;
-    sqldAgendaTELEFONE3: TStringField;
-    sqldAgendaFAX: TStringField;
     lbTelefone: TLabel;
     dbeNome: TDBEdit;
     edFone: TEdit;
     rgTipoRelatorio: TRadioGroup;
+    sqldAgenda: TZQuery;
     procedure FormShow(Sender: TObject);
     procedure dbeNomeClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -46,7 +37,7 @@ var
 implementation
 
 uses
-  unModeloConsulta, unPrevRelAgenda, Funcoes, ConstPadrao;
+  unModeloConsulta, unPrevRelAgenda, Funcoes, ConstPadrao, VarGlobal;
 
 {$R *.dfm}
 
@@ -67,7 +58,8 @@ begin
         with sqldPadrao do
         begin
           Close;
-          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA '+
+          Connection := GetZConnection;
+          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM AGENDA '+
             'WHERE NOME LIKE ' + QuotedStr(Nome)+ ' ORDER BY NOME';
           Open;
         end;
@@ -79,7 +71,8 @@ begin
         with sqldPadrao do
         begin
           Close;
-          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA '+
+          Connection := GetZConnection;
+          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM AGENDA '+
             'WHERE TELEFONE LIKE ' + QuotedStr('%'+edFone.Text+'%')+ 'ORDER BY TELEFONE';
           Open;
         end;
@@ -89,14 +82,15 @@ begin
         with sqldPadrao do
         begin
           Close;
-          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM VIEWAGENDA ORDER BY NOME';
+          sqldPadrao.Connection := GetZConnection;
+          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM AGENDA ORDER BY NOME';
           Open;
         end;
       end;
     end;
     PrintIfNotEmptyRL(rrPadrao, p);
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;
@@ -104,7 +98,7 @@ end;
 procedure TfrmRelatorioAgenda.FormShow(Sender: TObject);
 begin
   inherited;
-  cdsAgenda.Close;
+  sqldAgenda.close;
 end;
 
 procedure TfrmRelatorioAgenda.dbeNomeClickButton(Sender: TObject);
@@ -119,7 +113,7 @@ end;
 procedure TfrmRelatorioAgenda.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsAgenda.Close;
+  sqldAgenda.Close;
   inherited;
 end;
 

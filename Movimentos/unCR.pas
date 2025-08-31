@@ -5,71 +5,23 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons, DateUtils,
-  ComCtrls,   DBCtrls,
-  SqlDb,  memds, ConstPadrao, FMTBcd;
+  ComCtrls, DBCtrls, unDmPrincipal,
+  SqlDb,  memds, ConstPadrao, ZDataset, FMTBcd;
 
 type
+
+  { TfrmCR }
+
   TfrmCR = class(TfrmPadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
-    sqlLimite: TSQLQuery;
+    DataSource1: TDataSource;
+    DataSource2: TDataSource;
     actContasReceber: TAction;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoVENCIMENTO: TDateField;
-    cdsPadraoCLIENTE: TIntegerField;
-    cdsPadraoDESCRICAO: TStringField;
-    cdsPadraoDOCUMENTO: TStringField;
-    cdsPadraoRECEBER: TStringField;
-    cdsPadraoRECDA: TStringField;
-    cdsPadraoDATARECTO: TDateField;
-    cdsPadraoORIGEM: TIntegerField;
-    cdsPadraoVENDA: TIntegerField;
-    cdsPadraoOBS: TMemoField;
-    cdsPadraoATRASO: TIntegerField;
-    cdsPadraoNOME: TStringField;
-    sqldPadraoCODIGO: TIntegerField;
-    sqldPadraoDATA: TDateField;
-    sqldPadraoVENCIMENTO: TDateField;
-    sqldPadraoCLIENTE: TIntegerField;
-    sqldPadraoNOME: TStringField;
-    sqldPadraoDESCRICAO: TStringField;
-    sqldPadraoDOCUMENTO: TStringField;
-    sqldPadraoVALOR: TFMTBCDField;
-    sqldPadraoJURO: TFMTBCDField;
-    sqldPadraoRECEBER: TStringField;
-    sqldPadraoRECDA: TStringField;
-    sqldPadraoDATARECTO: TDateField;
-    sqldPadraoORIGEM: TIntegerField;
-    sqldPadraoVENDA: TIntegerField;
-    sqldPadraoCAPITALRECDO: TFMTBCDField;
-    sqldPadraoJURORECDO: TFMTBCDField;
-    sqldPadraoDESCTO: TFMTBCDField;
-    sqldPadraoOBS: TMemoField;
-    sqldPadraoATRASO: TIntegerField;
-    cdsPadraoVALOR: TFMTBCDField;
-    cdsPadraoJURO: TFMTBCDField;
-    cdsPadraoCAPITALRECDO: TFMTBCDField;
-    cdsPadraoJURORECDO: TFMTBCDField;
-    cdsPadraoDESCTO: TFMTBCDField;
-    sqlLimiteTOTAL_CONTAS: TFloatField;
-    sqldDeleta: TSQLQuery;
-    sqldPadraoIDCONTA: TIntegerField;
-    sqldPadraoCONTA: TStringField;
-    cdsPadraoIDCONTA: TIntegerField;
-    cdsPadraoCONTA: TStringField;
-    sqldPadraoVALORJURO: TFMTBCDField;
-    sqldPadraoTOTAL: TFMTBCDField;
-    sqldPadraoTOTALRECDO: TFMTBCDField;
-    cdsPadraoVALORJURO: TFMTBCDField;
-    cdsPadraoTOTAL: TFMTBCDField;
-    cdsPadraoTOTALRECDO: TFMTBCDField;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
     lbStatus: TLabel;
     btnReceber: TBitBtn;
     btnContas: TBitBtn;
     dbeValorAtual: TDBEdit;
-    dbeCliente: TDBEdit;
     dbeDescricao: TDBEdit;
     dbeValor: TDBEdit;
     dbeDocumento: TDBEdit;
@@ -78,16 +30,28 @@ type
     dbdData: TDBEdit;
     dbdVencimento: TDBEdit;
     dbeVenda: TDBEdit;
-    dbeConta: TDBEdit;
     grpRecebimento: TGroupBox;
     dbeDataRecdo: TDBEdit;
     dbeDesconto: TDBEdit;
     dbeCapitalRecdo: TDBEdit;
     dbeJuroRecdo: TDBEdit;
     dbeTotalRecdo: TDBEdit;
-    procedure dbeClienteClickButton(Sender: TObject);
+    MainMenu1: TMainMenu;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    sqldPadrao: TZQuery;
+    sqldLimite: TZQuery;
+    sqldDeleta: TZQuery;
+    ZReadOnlyQuery1: TZReadOnlyQuery;
+    ZReadOnlyQuery2: TZReadOnlyQuery;
     procedure FormCreate(Sender: TObject);
-    procedure cdsPadraoAfterInsert(DataSet: TDataSet);
+    procedure MenuItem1Click(Sender: TObject);
+    procedure sqldPadraoAfterInsert(DataSet: TDataSet);
     procedure miContasporClienteClick(Sender: TObject);
     procedure miTodasContasClick(Sender: TObject);
     procedure miContasIntervaloDatasClick(Sender: TObject);
@@ -95,18 +59,16 @@ type
     procedure miContasVencidasClienteClick(Sender: TObject);
     procedure actContasReceberExecute(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
-    procedure cdsPadraoCLIENTEValidate(Sender: TField);
-    procedure cdsPadraoAfterScroll(DataSet: TDataSet);
+    procedure sqldPadraoAfterScroll(DataSet: TDataSet);
     procedure miContasClienteCorrenteClick(Sender: TObject);
     procedure dbeDescricaoEnter(Sender: TObject);
     procedure miParcelamentoClick(Sender: TObject);
     procedure dsPadraoStateChange(Sender: TObject);
     procedure btnReceberClick(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
-    procedure cdsPadraoIDCONTAValidate(Sender: TField);
-    procedure dbeContaClickButton(Sender: TObject);
     procedure miProximosVencClick(Sender: TObject);
   private
+    function GetNextCodigo: Integer;
   protected
     procedure ContaRecebida(var Msg: TMessage); message WM_CONTA_RECEBER_RECEBIDA;
   public
@@ -120,16 +82,10 @@ implementation
 
 uses VarGlobal, Funcoes, uConfiguraRelatorio, unPrevContasReceber,
      unPrevRelCRAtrasadas, unContasReceber,
-     unParcelaCPCR, uDatabaseutils;
+     unParcelaCPCR, uDatabaseUtils;
 
 {$R *.dfm}
 
-procedure TfrmCR.dbeClienteClickButton(Sender: TObject);
-begin
-  inherited;
-  if cdsPadrao.State in [dsEdit, dsInsert] then
-    cdsPadraoCLIENTE.AsVariant := GetDmPesquisar.GetCliente;
-end;
 
 procedure TfrmCR.FormCreate(Sender: TObject);
 begin
@@ -137,23 +93,51 @@ begin
   aCaption := 'Contas a receber';
   FieldNames := FN_CR;
   DisplayLabels := DL_CR;
+  TableName := 'CONTASRECEBER';
+
   UpdateSingleField('update CONTASRECEBER set RECEBER = '+
     QuotedStr('N'));
 
-  if cdspadrao.IsEmpty then
+  if sqldPadrao.IsEmpty then
     lbStatus.Caption := '';
+
+  ZReadOnlyQuery1.open;
+  ZReadOnlyQuery2.open;
 end;
 
-procedure TfrmCR.cdsPadraoAfterInsert(DataSet: TDataSet);
+procedure TfrmCR.MenuItem1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmCR.sqldPadraoAfterInsert(DataSet: TDataSet);
 begin
   inherited;
-  //Incrementa('CONTASRECEBER', cdsPadraoCODIGO, GetConnection);
-  cdsPadraoDATA.AsDateTime := Date;
-  cdsPadraoVENCIMENTO.AsDateTime := IncDay(Date, 1);
-  cdsPadraoJURO.AsFloat := 1;
-  cdsPadraoRECEBER.AsString := 'N';
-  cdsPadraoRECDA.AsString := 'N';
-  SetFocusIfCan(dbeCliente);
+  // Incrementa o campo CODIGO automaticamente
+  sqldPadrao.FieldByName('CODIGO').AsInteger := GetNextCodigo;
+  sqldPadrao.FieldByName('DATA').AsDateTime := Date;
+  sqldPadrao.FieldByName('VENCIMENTO').AsDateTime := IncDay(Date, 1);
+  sqldPadrao.FieldByName('JURO').AsFloat := 1;
+  sqldPadrao.FieldByName('RECEBER').AsString := 'N';
+  sqldPadrao.FieldByName('RECDA').AsString := 'N';
+end;
+
+function TfrmCR.GetNextCodigo: Integer;
+var
+  Query: TZQuery;
+begin
+  Result := 1;
+  Query := TZQuery.Create(nil);
+  try
+    Query.Connection := GetZConnection;
+    Query.SQL.Text := 'SELECT COALESCE(MAX(CODIGO), 0) + 1 FROM CONTASRECEBER';
+    Query.Open;
+    if not Query.IsEmpty then
+      Result := Query.Fields[0].AsInteger;
+    Query.Close;
+  finally
+    Query.Free;
+  end;
 end;
 
 procedure TfrmCR.miContasporClienteClick(Sender: TObject);
@@ -167,13 +151,13 @@ begin
   inherited;
   with TfrmPrevContasReceber.Create(Self) do
   try
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select * from VIEWRELCR order by CLIENTE, DATA';
-    cdsPadrao.Open;
+    sqldPadrao.Open;
     Titulo := 'Contas a receber';
     PrintIfNotEmptyRL(rrPadrao);
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;
@@ -195,7 +179,7 @@ begin
     Titulo := 'Contas a receber atrasadas';
     PrintIfNotEmptyRL(rrPadrao);
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;
@@ -221,18 +205,7 @@ begin
   ChamaForm('TfrmPrevNotaProm', 'Relatório para cliente', Self);
 end;
 
-procedure TfrmCR.cdsPadraoCLIENTEValidate(Sender: TField);
-var
-  NomeCliente: string;
-begin
-  inherited;
-  NomeCliente := GetFieldByID(GetZConnection, 'CLIENTES', 'NOME', 'CODCLIENTE',
-    Sender.AsInteger);
-  if NomeCliente <> '' then
-    cdsPadraoNOME.AsString := NomeCliente;
-end;
-
-procedure TfrmCR.cdsPadraoAfterScroll(DataSet: TDataSet);
+procedure TfrmCR.sqldPadraoAfterScroll(DataSet: TDataSet);
 
   procedure msg(Texto: string; Cor: TColor);
   begin
@@ -243,18 +216,18 @@ procedure TfrmCR.cdsPadraoAfterScroll(DataSet: TDataSet);
 
 begin
   inherited;
-  if cdspadrao.IsEmpty then
+  if sqldPadrao.IsEmpty then
     msg('',clBlack);
 
-  if cdsPadrao.State in [dsBrowse] then
+  if sqldPadrao.State in [dsBrowse] then
   begin
-    if (cdsPadraoVENCIMENTO.AsDateTime > Date) and (cdsPadraoRECDA.AsString = 'N') then
+    if (sqldPadrao.FieldByName('VENCIMENTO').AsDateTime > Date) and (sqldPadrao.FieldByName('RECDA').AsString = 'N') then
       msg('A vencer...', clBlack)
-    else if (cdsPadraoVENCIMENTO.AsDateTime = Date) and (cdsPadraoRECDA.AsString = 'N') then
+    else if (sqldPadrao.FieldByName('VENCIMENTO').AsDateTime = Date) and (sqldPadrao.FieldByName('RECDA').AsString = 'N') then
       msg('Vencendo hoje...', clBlue)
-    else if (cdsPadraoVENCIMENTO.AsDateTime < Date) and (cdsPadraoRECDA.AsString = 'N') then
+    else if (sqldPadrao.FieldByName('VENCIMENTO').AsDateTime < Date) and (sqldPadrao.FieldByName('RECDA').AsString = 'N') then
       msg('Vencida...', clRed)
-    else if (cdsPadraoRECDA.AsString = 'S') then
+    else if (sqldPadrao.FieldByName('RECDA').AsString = 'S') then
       msg('Recebida...', clGreen);
   end
   else
@@ -263,8 +236,8 @@ end;
 
 procedure TfrmCR.ContaRecebida(var Msg: TMessage);
 begin
-  if cdsPadrao.Active then
-    ReabreDataSet(cdsPadrao);
+  if sqldPadrao.Active then
+    ReabreDataSet(sqldPadrao);
 end;
 
 procedure TfrmCR.miContasClienteCorrenteClick(Sender: TObject);
@@ -273,17 +246,17 @@ begin
   frmContasReceber := TfrmContasReceber.Create(self);
   frmContasReceber.Caption := 'Contas por cliente';
   frmContasReceber.TipoChamada := 1;
-  frmContasReceber.IdCliente := cdsPadraoCLIENTE.AsInteger;
+  frmContasReceber.IdCliente := sqldPadrao.FieldByName('CLIENTE').AsInteger;
   frmContasReceber.ShowModal;
 end;
 
 procedure TfrmCR.dbeDescricaoEnter(Sender: TObject);
 begin
   inherited;
-  if ModoInsert(cdsPadrao) then
+  if ModoInsert(sqldPadrao) then
   begin
-    if cdsPadraoNOME.AsString <> '' then
-      cdsPadraoDESCRICAO.AsString := 'Recebimento: '+cdsPadraoNOME.AsString;
+    if ZReadOnlyQuery1.FieldByName('NOME').AsString <> '' then
+      sqldPadrao.FieldByName('DESCRICAO').AsString := 'Recebimento: '+ZReadOnlyQuery1.FieldByName('NOME').AsString;
   end;
 end;
 
@@ -298,29 +271,29 @@ end;
 procedure TfrmCR.AntesSalvar;
 begin
   inherited;
-  if not GetDataModule.SituacaoClienteOk(cdsPadraoVALOR.AsFloat,
-    cdsPadraoCLIENTE.AsInteger) then Abort;
+  if not GetDataModule.SituacaoClienteOk(sqldPadrao.FieldByName('VALOR').AsFloat,
+    sqldPadrao.FieldByName('CLIENTE').AsInteger) then Abort;
 
-//  if not ValidaDataIniFim(cdsPadraoDATA.AsDateTime, cdsPadraoVENCIMENTO.AsDateTime,
-//    dbdData, False, True, 'A "Data de emiss�o" n�o pode ser maior que a data de "Data de vencimento".',
+//  if not ValidaDataIniFim(sqldPadrao.FieldByName('DATA').AsDateTime, sqldPadrao.FieldByName('VENCIMENTO').AsDateTime,
+//    dbdData, False, True, 'A "Data de emissão" não pode ser maior que a data de "Data de vencimento".',
 //    True) then Abort;
 
-  if cdsPadrao.State in [dsInsert] then
+  if sqldPadrao.State in [dsInsert] then
   begin
-    if not cdsPadraoDOCUMENTO.IsNull then
+    if not sqldPadrao.FieldByName('DOCUMENTO').IsNull then
       if SelecSingleField('select count(1) from CONTASRECEBER where (DOCUMENTO = '+
-        QuotedStr(cdsPadraoDOCUMENTO.AsString)+') and (CLIENTE = '+
-        QuotedStr(IntToStr(cdsPadraoCLIENTE.AsInteger))+')', GetZConnection) > 0 then
+        QuotedStr(sqldPadrao.FieldByName('DOCUMENTO').AsString)+') and (CLIENTE = '+
+        QuotedStr(IntToStr(sqldPadrao.FieldByName('CLIENTE').AsInteger))+')', GetZConnection) > 0 then
       begin
-        MsgCuidado('Este "Documento" j� est� cadastrado para este "Cliente".');
+        MsgCuidado('Este "Documento" já está cadastrado para este "Cliente".');
         SetFocusIfCan(dbeDocumento);
         Abort;
       end;
   end;
 
-  if cdsPadraoIDCONTA.IsNull then
+  if sqldPadrao.FieldByName('IDCONTA').IsNull then
   begin
-    MsgCuidado('O campo "Conta" � de preenchimento obrigat�rio.');
+    MsgCuidado('O campo "Conta" é de preenchimento obrigatório.');
     Abort;
   end;
 end;
@@ -334,15 +307,15 @@ end;
 procedure TfrmCR.btnReceberClick(Sender: TObject);
 begin
   inherited;
-  if cdsPadrao.IsEmpty then
+  if sqldPadrao.IsEmpty then
     Exit;
 
   // marca a conta
-  cdsPadrao.Edit;
-  cdsPadraoRECEBER.AsString := 'S';
-  //cdsPadrao.ApplyUpdates(0);
+  sqldPadrao.Edit;
+  sqldPadrao.FieldByName('RECEBER').AsString := 'S';
+  //sqldPadrao.ApplyUpdates(0);
 
-  if cdsPadraoRECDA.AsString = 'N' then
+  if sqldPadrao.FieldByName('RECDA').AsString = 'N' then
   begin
     //frmReceberMan := TfrmReceberMan.Create(Self);
     //frmReceberMan.Caption := 'Recebimento';
@@ -353,41 +326,23 @@ begin
   else
   begin
     // desmarca a conta
-    cdsPadrao.Edit;
-    cdsPadraoRECEBER.AsString := 'N';
-    //cdsPadrao.ApplyUpdates(0);
+    sqldPadrao.Edit;
+    sqldPadrao.FieldByName('RECEBER').AsString := 'N';
+    sqldPadrao.ApplyUpdates;
     MsgAviso('Esta conta ja foi recebida');
   end;
 end;
 
 procedure TfrmCR.actDeleteExecute(Sender: TObject);
 begin
-  if MsgSN('Deseja realmente excluir este lan�amento?') then
+  if MsgSN('Deseja realmente excluir este lançamento?') then
   begin
     sqldDeleta.Close;
-    sqldDeleta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
+    sqldDeleta.Params.ParamByName('CODIGO').AsInteger := sqldPadrao.FieldByName('CODIGO').AsInteger;
     sqldDeleta.ExecSQL;
     //actLimparFiltro.Execute;
-    MsgAviso('Registro exclu�do!');
+    MsgAviso('Registro excluído!');
   end;
-end;
-
-procedure TfrmCR.cdsPadraoIDCONTAValidate(Sender: TField);
-var
-  NomeConta: string;
-begin
-  inherited;
-  NomeConta := GetFieldByID(GetZConnection, 'VIEWCAIXAS', 'CAIXANOME', 'IDCAIXAS',
-    Sender.AsInteger);
-  if NomeConta <> '' then
-    cdsPadraoCONTA.AsString := NomeConta;
-end;
-
-procedure TfrmCR.dbeContaClickButton(Sender: TObject);
-begin
-  inherited;
-  if cdsPadrao.State in [dsEdit, dsInsert] then
-    cdsPadraoIDCONTA.AsVariant := GetDmPesquisar.GetContaCaixa;
 end;
 
 procedure TfrmCR.miProximosVencClick(Sender: TObject);
@@ -397,7 +352,7 @@ begin
   inherited;
   frel := TfrmPrevContasReceber.Create(nil);
   try
-    frel.cdsPadrao.Close;
+    frel.sqldPadrao.Close;
     frel.sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
                                   'DATA, '+
                                   'VENCIMENTO, '+
@@ -408,7 +363,7 @@ begin
                                   //'WHERE CLIENTE = :PCLIENTE '+
                                   'where VENCIMENTO >= CURRENT_DATE '+
                                   'order by DATA';
-    frel.cdsPadrao.Open;
+    frel.sqldPadrao.Open;
 
     PrintIfNotEmptyRL(frel.rrPadrao);
   finally

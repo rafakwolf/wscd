@@ -63,7 +63,7 @@ begin
   begin
     with TfrmPrevContasPagar.Create(Self) do
     try
-      with cdsPadrao do
+      with sqldPadrao do
       begin
         Close;
         sqldpadrao.Params.ParamByName('PFORNECEDOR').AsInteger := cdsSelecaoCODFORNECEDOR.AsInteger;
@@ -72,7 +72,7 @@ begin
       Titulo := 'Contas a Pagar do Fornecedor: ' + cdsSelecaoFANTAZIA.AsString;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
-      cdsPadrao.Close;
+      sqldPadrao.Close;
       Free;
     end;
   end;

@@ -12,7 +12,7 @@ const
                             'cx.CODCAIXA, '+
                             'cx.CODCAIXAS, '+
                             'cxs.NOME, '+
-                            'cx.DATA, '+
+                            'cx.DATA_LANC, '+
                             'cx.DESCRICAO, '+
                             'cx.DOCUMENTO, '+
                             'cx.TIPO, '+
@@ -20,14 +20,14 @@ const
                             'cx.EXCLUIR '+
                             'from CAIXA cx '+
                             'left join CAIXAS cxs on (cx.CODCAIXAS = cxs.CODIGO) '+
-                            'where (cx.DATA >= (CURRENT_DATE - 90)) '+
-                            'order by cx.DATA';
+                            'where (cx.DATA_LANC >= (CURRENT_DATE - 90)) '+
+                            'order by cx.DATA_LANC';
 
   SQLPadraoTodos: string = 'select '+
                            'cx.CODCAIXA, '+
                            'cx.CODCAIXAS, '+
                            'cxs.NOME, '+
-                           'cx.DATA, '+
+                           'cx.DATA_LANC, '+
                            'cx.DESCRICAO, '+
                            'cx.DOCUMENTO, '+
                            'cx.TIPO, '+
@@ -35,7 +35,7 @@ const
                            'cx.EXCLUIR '+
                            'from CAIXA cx '+
                            'left join CAIXAS cxs on (cx.CODCAIXAS = cxs.CODIGO) '+
-                           'order by cx.DATA';
+                           'order by cx.DATA_LANC';
 
 type
 
@@ -214,7 +214,7 @@ begin
             Connection := sqlPadrao.Connection;
             SQL.Clear;
             SQL.Text :='delete from CAIXA '+
-              'where DATA between :DATAINI and :DATAFIM';
+              'where DATA_LANC between :DATAINI and :DATAFIM';
             ParamByName('DATAINI').AsDate := StrToDate(dtI);
             ParamByName('DATAFIM').AsDate := StrToDate(dtF);
             ExecSQL;
@@ -368,7 +368,7 @@ begin
       sqlPadrao.Open;
 
     sqlPadrao.Filtered := False;
-    sqlPadrao.Filter   := 'DATA >= '+QuotedStr(vDataIni)+' and DATA <= '+QuotedStr(vDataFim);
+    sqlPadrao.Filter   := 'DATA_LANC >= '+QuotedStr(vDataIni)+' and DATA_LANC <= '+QuotedStr(vDataFim);
     sqlPadrao.Filtered := True;
 
     lbCreditos.Caption := 'Creditos R$: ' + FormatFloat('#,##0.00', TotalCredito);
@@ -425,8 +425,8 @@ begin
                                ' sum(VALOR) as CRED_DEB '+
                                'from CAIXA '+
                                'where (TIPO = :PTIPO) '+
-                               'and (DATA >= :DATAINI) '+
-                               'and (DATA <= :DATAFIM)';
+                               'and (DATA_LANC >= :DATAINI) '+
+                               'and (DATA_LANC <= :DATAFIM)';
 
     sqldCredDeb.Params.ParamByName('DATAINI').AsDate := StrToDateTime(DataIni);
     sqldCredDeb.Params.ParamByName('DATAFIM').AsDate := StrToDateTime(DataFim);
@@ -441,8 +441,8 @@ begin
                                ' sum(VALOR) as CRED_DEB '+
                                'from CAIXA '+
                                'where (TIPO = :PTIPO) '+
-                               'and (DATA >= :DATAINI) '+
-                               'and (DATA <= :DATAFIM)';
+                               'and (DATA_LANC >= :DATAINI) '+
+                               'and (DATA_LANC <= :DATAFIM)';
 
     sqldCredDeb.Params.ParamByName('DATAINI').AsDate := StrToDateTime(DataIni);
     sqldCredDeb.Params.ParamByName('DATAFIM').AsDate := StrToDateTime(DataFim);
@@ -546,20 +546,24 @@ end;
 
 procedure TfrmCaixa.dsCaixaStateChange(Sender: TObject);
 begin
-
-  if Configuracao.MostrarSaldoCaixa then
+  if (stbCaixa.Panels.Count > 0) then
   begin
-    Totais_Caixa;
-    stbCaixa.Panels[1].Text := 'Saldo: R$ '+
-      FormatFloat('#,##0.00', (TotalCredito - TotalDebito));
-  end
-  else
-    stbCaixa.Panels[1].Text := FormatDateTime('dd/mm/yyyy', Date);
+    if Configuracao.MostrarSaldoCaixa then
+    begin
+      Totais_Caixa;
+        stbCaixa.Panels[1].Text := 'Saldo: R$ '+
+          FormatFloat('#,##0.00', (TotalCredito - TotalDebito));
 
-  if Configuracao.LancCaixa90Dias then
-    stbCaixa.Panels[0].Text := 'Exibindo lançamentos dos últimos 90 dias'
-  else
-    stbCaixa.Panels[0].Text := 'Exibindo todos os lançamentos';
+    end
+    else
+      stbCaixa.Panels[1].Text := FormatDateTime('dd/mm/yyyy', Date);
+
+    if Configuracao.LancCaixa90Dias then
+      stbCaixa.Panels[0].Text := 'Exibindo lançamentos dos últimos 90 dias'
+    else
+      stbCaixa.Panels[0].Text := 'Exibindo todos os lançamentos';
+
+  end;
 
 end;
 
@@ -607,6 +611,7 @@ begin
   miMovimentoHoje.Caption :=
     miMovimentoHoje.Caption +' '+ FormatDateTime('dd/mm/yyyy', Date);
 end;
+
 
 procedure TfrmCaixa.ExclusaoCaixa(var Msg: TMessage);
 begin

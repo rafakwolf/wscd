@@ -39,12 +39,20 @@ uses
 {$R *.dfm}
 
 procedure TfrmRelatorioClienteCidade.dbeCidadeClickButton(Sender: TObject);
+var idCidade: Integer;
 begin
   inherited;
   cdsCidade.Close;
-  sqldCidade.SQL.Clear; sqldCidade.SQL.Text :=SQLPadrao;
-//  if not TfrmModeloConsulta.Execute('Cidade', cdsCidade, FN_CIDADES, DL_CIDADES) then
-//    cdsCidade.Close;
+  sqldCidade.SQL.Clear;
+  sqldCidade.SQL.Text :=SQLPadrao;
+  
+  idCidade := TfrmModeloConsulta.Execute('Cidade', 'CIDADES', FN_CIDADES, DL_CIDADES, self);
+
+  if idCidade <> 0 then
+  begin
+    cdsCidade.Open;
+    cdsCidade.Locate('CODCIDADE', idCidade, []);
+  end;
 end;
 
 procedure TfrmRelatorioClienteCidade.Imprimir(p: Boolean);
@@ -59,7 +67,7 @@ begin
   begin
     with TfrmPrevListagemClientes.Create(Self)do
     try
-      with cdsPadrao do
+      with sqldPadrao do
       begin
         Close;
         sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
@@ -82,7 +90,7 @@ begin
       TipoRelatorio := 1;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
-      cdsPadrao.Close;
+      sqldPadrao.Close;
       Free;
     end;
   end;

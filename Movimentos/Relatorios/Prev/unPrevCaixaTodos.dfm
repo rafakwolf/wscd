@@ -1,7 +1,11 @@
 inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
-  Left = 317
-  Top = 81
+  Left = 342
+  Height = 714
+  Top = 150
+  Width = 858
   Caption = 'frmPrevCaixaTodos'
+  ClientHeight = 714
+  ClientWidth = 858
   inherited rrPadrao: TRLReport
     inherited rbTitulo: TRLBand
       inherited lbTitulo: TRLLabel
@@ -195,10 +199,10 @@ inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
           DataSource = dsPadrao
         end
         object rldbDoc: TRLDBText
-          Left = 501
+          Left = 500
           Height = 15
           Top = 0
-          Width = 88
+          Width = 89
           Alignment = taRightJustify
           DataField = 'DOCUMENTO'
           DataSource = dsPadrao
@@ -207,7 +211,7 @@ inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
           Left = 592
           Height = 15
           Top = 0
-          Width = 35
+          Width = 34
           DataField = 'TIPO'
           DataSource = dsPadrao
           BeforePrint = rldbContaBeforePrint
@@ -267,137 +271,16 @@ inherited frmPrevCaixaTodos: TfrmPrevCaixaTodos
       end
     end
   end
-  inherited sqldPadrao: TSQLQuery
-    object sqldPadraoCAIXA: TStringField[0]
-      FieldKind = fkData
-      FieldName = 'CAIXA'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoDATA: TDateField[1]
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoDESCRICAO: TStringField[2]
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoDOCUMENTO: TStringField[3]
-      FieldKind = fkData
-      FieldName = 'DOCUMENTO'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoTIPO: TStringField[4]
-      FieldKind = fkData
-      FieldName = 'TIPO'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoVALOR: TFMTBCDField[5]
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-  end
-  inherited cdsPadrao: TMemDataset
-    object cdsPadraoCAIXA: TStringField[0]
-      FieldKind = fkData
-      FieldName = 'CAIXA'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoDATA: TDateField[1]
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoDESCRICAO: TStringField[2]
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoDOCUMENTO: TStringField[3]
-      FieldKind = fkData
-      FieldName = 'DOCUMENTO'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoTIPO: TStringField[4]
-      FieldKind = fkData
-      FieldName = 'TIPO'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoVALOR: TFMTBCDField[5]
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
+  inherited dsPadrao: TDataSource
+    Left = 296
+    Top = 240
   end
   inherited rlepCalculos: TRLExpressionParser
     Left = 400
     Top = 16
+  end
+  inherited sqldPadrao: TZQuery
+    Left = 136
+    Top = 232
   end
 end

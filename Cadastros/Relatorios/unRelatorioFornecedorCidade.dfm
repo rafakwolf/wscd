@@ -11,14 +11,13 @@ inherited frmRelatorioFornecedorCidade: TfrmRelatorioFornecedorCidade
   end
   object dbeCidade: TDBEdit[1]
     Left = 48
-    Height = 33
+    Height = 21
     Hint = 'Pesquisar < F2 >'
     Top = 56
     Width = 331
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -26,7 +25,7 @@ inherited frmRelatorioFornecedorCidade: TfrmRelatorioFornecedorCidade
     TabOrder = 1
   end
   inherited dsPadrao: TDataSource[2]
-    Left = 88
-    Top = 8
+    Left = 312
+    Top = 168
   end
 end

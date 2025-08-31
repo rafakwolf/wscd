@@ -18,16 +18,16 @@ const
 
   MSG_IMPRESSORA: string = 'Impressora';
   UM_PESQUISAVAZIO: string = 'Nenhum registro encontrado';
-  UM_DATAINVALIDA: string = 'Data inv·lida';
-  UM_FILTROINVALIDO: string = 'Filtro inv·lido';
-  UM_OPCAO: string = 'Escolha uma opÁ„o';
+  UM_DATAINVALIDA: string = 'Data inv√°lida';
+  UM_FILTROINVALIDO: string = 'Filtro inv√°lido';
+  UM_OPCAO: string = 'Escolha uma op√ß√£o';
 
 
   FN_AGENDA: string = '';
   DL_AGENDA: string = '';
 
   FN_CIDADES: string = 'CODCIDADE;DESCRICAO';
-  DL_CIDADES: string = 'CÛdigo;DescriÁ„o';
+  DL_CIDADES: string = 'C√≥digo;Descri√ß√£o';
 
   FN_CLIENTES: string = 'NOME;TELEFONE;E_MAIL;CPF_CNPJ';
   DL_CLIENTES: string = 'Nome;Telefone;E-mail;Documento';

@@ -59,7 +59,7 @@ procedure TfrmPrevContasPagar.rrPadraoBeforePrint(Sender: TObject;
 begin
   inherited;
   lbTitulo.Caption := Trim(Titulo);
-  rllbTotal.Caption := 'Total: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'VALOR', '', ''));
+  rllbTotal.Caption := 'Total: '+FormatFloat('#,##0.00', Totaliza(sqldPadrao, 'VALOR', '', ''));
 end;
 
 procedure TfrmPrevContasPagar.rlbDetalheBeforePrint(Sender: TObject;

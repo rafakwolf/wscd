@@ -57,7 +57,7 @@ begin
 //    if ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime, cdsSelecaoDATAFIM.AsDateTime,
 //      edDataIni)then
 //    begin
-      with cdsPadrao do
+      with sqldPadrao do
       begin
         Close;
         sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
@@ -84,7 +84,7 @@ begin
       PrintIfNotEmptyRL(rrPadrao, p);
     //end;
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;

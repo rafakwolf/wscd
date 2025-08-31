@@ -77,7 +77,6 @@ type
     chkAutenticacao: TCheckBox;
     rgOrientationImg: TRadioGroup;
     ZQuery1: TZQuery;
-    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure btnExImgClick(Sender: TObject);

@@ -16,7 +16,6 @@ type
     dbeCodCompensacao: TDBEdit;
     dbeBanco: TDBEdit;
     ZQuery1: TZQuery;
-    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
   private
   public

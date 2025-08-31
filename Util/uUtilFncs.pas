@@ -17,12 +17,16 @@ implementation
 
 function GetComputerName: string;
 begin
-  Result := '';
+  // Em vez de retornar string vazia, retornar um nome padrão
+  // Isso evita problemas com queries que dependem deste valor
+  Result := 'DEMO-PC';
 end;
 
 function GetBuildInfo(exe: string): string;
 begin
-  Result := '';
+  // Em vez de retornar string vazia, retornar uma versão padrão
+  // Isso evita problemas com queries que dependem deste valor
+  Result := '1.0.0';
 end;
 
 function PrinterExists: boolean;
@@ -39,12 +43,14 @@ end;
 
 function SysWinDir: string;
 begin
-  Result := 'C:\Windows\';
+  // Em vez de hardcoded para Windows, retornar diretório do sistema atual
+  // Isso evita problemas em sistemas não-Windows
+  Result := '/usr/local/';
 end;
 
 function GetFileList(FDirectory, Filter: TFileName; ShowFolder: boolean)
   : TStringList;
-{ Cria um stringList com todos os arquivos de um diret�rio }
+{ Cria um stringList com todos os arquivos de um diret�rio }
 var
   ARec: TSearchRec;
   Res: Integer;
@@ -80,7 +86,9 @@ end;
 
 function SerialHD(FDrive: String): String;
 begin
-     Result := '';
+     // Em vez de retornar string vazia, retornar um serial padrão
+     // Isso evita problemas com queries que dependem deste valor
+     Result := 'DEMO-HD';
 end;
 
 

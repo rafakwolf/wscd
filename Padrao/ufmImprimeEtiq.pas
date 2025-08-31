@@ -7,43 +7,15 @@ interface
 uses
   LCLIntf, LCLType, LMessages,Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, memds, DB,
-  sqldb, StdCtrls, Buttons, Spin, Funcoes,
-  VarGlobal, FMTBcd, IniFiles, RLTypes, RLReport;
+  sqldb, StdCtrls, Buttons, Spin, Funcoes, unDmPrincipal,
+  VarGlobal, FMTBcd, IniFiles, RLTypes, RLReport, ZDataset, ZAbstractRODataset;
 
 type
   TTipoEtiqueta = (teProduto, teCliente);
+
+  { TfrmImprimeEtiq }
+
   TfrmImprimeEtiq = class(TfrmDialogoRelatorioPadrao)
-    sqldEtiqueta: TSQLQuery;
-    dspEtiqueta: TComponent;
-    cdsEtiqueta: TMemDataSet;
-    sqldEtiquetaIDETIQUETA: TIntegerField;
-    sqldEtiquetaETIQUETA: TStringField;
-    sqldEtiquetaALTURAFOLHA: TFloatField;
-    sqldEtiquetaLARGURAFOLHA: TFloatField;
-    sqldEtiquetaMARGEMSUPERIOR: TFloatField;
-    sqldEtiquetaMARGEMESQUERDA: TFloatField;
-    sqldEtiquetaNUMEROLINHAS: TIntegerField;
-    sqldEtiquetaNUMEROCOLUNAS: TIntegerField;
-    sqldEtiquetaALTURAETIQUETA: TFloatField;
-    sqldEtiquetaLARGURAETIQUETA: TFloatField;
-    sqldEtiquetaDISTANCIAVERTICAL: TFloatField;
-    sqldEtiquetaDISTANCIAHORIZONTAL: TFloatField;
-    sqldEtiquetaDISTACOLVERTICAL: TFloatField;
-    sqldEtiquetaDISTCOLHORIZ: TFloatField;
-    cdsEtiquetaIDETIQUETA: TIntegerField;
-    cdsEtiquetaETIQUETA: TStringField;
-    cdsEtiquetaALTURAFOLHA: TFloatField;
-    cdsEtiquetaLARGURAFOLHA: TFloatField;
-    cdsEtiquetaMARGEMSUPERIOR: TFloatField;
-    cdsEtiquetaMARGEMESQUERDA: TFloatField;
-    cdsEtiquetaNUMEROLINHAS: TIntegerField;
-    cdsEtiquetaNUMEROCOLUNAS: TIntegerField;
-    cdsEtiquetaALTURAETIQUETA: TFloatField;
-    cdsEtiquetaLARGURAETIQUETA: TFloatField;
-    cdsEtiquetaDISTANCIAVERTICAL: TFloatField;
-    cdsEtiquetaDISTANCIAHORIZONTAL: TFloatField;
-    cdsEtiquetaDISTACOLVERTICAL: TFloatField;
-    cdsEtiquetaDISTCOLHORIZ: TFloatField;
     lbModeloEtq: TLabel;
     lbLinhaIni: TLabel;
     lbColIni: TLabel;
@@ -51,6 +23,21 @@ type
     seColunaIni: TSpinEdit;
     seLinhaIni: TSpinEdit;
     rgTraversal: TRadioGroup;
+    sqldEtiqueta: TZQuery;
+    sqldEtiquetaALTURAETIQUETA: TBCDField;
+    sqldEtiquetaALTURAFOLHA: TBCDField;
+    sqldEtiquetaDISTACOLVERTICAL: TBCDField;
+    sqldEtiquetaDISTANCIAHORIZONTAL: TBCDField;
+    sqldEtiquetaDISTANCIAVERTICAL: TBCDField;
+    sqldEtiquetaDISTCOLHORIZ: TBCDField;
+    sqldEtiquetaETIQUETA: TStringField;
+    sqldEtiquetaIDETIQUETA: TLongintField;
+    sqldEtiquetaLARGURAETIQUETA: TBCDField;
+    sqldEtiquetaLARGURAFOLHA: TBCDField;
+    sqldEtiquetaMARGEMESQUERDA: TBCDField;
+    sqldEtiquetaMARGEMSUPERIOR: TBCDField;
+    sqldEtiquetaNUMEROCOLUNAS: TLongintField;
+    sqldEtiquetaNUMEROLINHAS: TLongintField;
     procedure FormCreate(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
@@ -79,11 +66,11 @@ implementation
 
 uses unPrevEtiquetaCliente;
 
-{$R *.lfm}
+{$R *.dfm}
 
 procedure TfrmImprimeEtiq.PreencheComboModelos;
 begin
-  with cdsEtiqueta do
+  with sqldEtiqueta do
   begin
     Close;
     Open;
@@ -97,7 +84,7 @@ begin
     cbListaEtiq.Items.Clear;
     while not Eof do
     begin
-      cbListaEtiq.Items.Add(cdsEtiquetaETIQUETA.AsString);
+      cbListaEtiq.Items.Add(sqldEtiquetaETIQUETA.AsString);
       Next;
     end;
   end;
@@ -156,8 +143,8 @@ begin
       free;
     end;
 
-    cdsEtiqueta.Open;
-    cdsEtiqueta.Locate('ETIQUETA', cbListaEtiq.Text, []);
+    sqldEtiqueta.Open;
+    sqldEtiqueta.Locate('ETIQUETA', cbListaEtiq.Text, []);
 
     { etiquetas de clientes }
     if TipoEtq = teCliente then
@@ -165,34 +152,34 @@ begin
       with TfrmPrevEtiquetaCliente.Create(Self) do
       try
         rpEtiqueta.PageSetup.PaperSize := fpCustom;
-        rpEtiqueta.PageSetup.PaperHeight := cdsEtiquetaALTURAFOLHA.AsCurrency;
-        rpEtiqueta.PageSetup.PaperWidth := cdsEtiquetaLARGURAFOLHA.AsCurrency;
-        rpEtiqueta.Margins.TopMargin := cdsEtiquetaMARGEMSUPERIOR.AsCurrency;
-        rpEtiqueta.Margins.LeftMargin := cdsEtiquetaMARGEMESQUERDA.AsCurrency;
+        rpEtiqueta.PageSetup.PaperHeight := sqldEtiquetaALTURAFOLHA.AsCurrency;
+        rpEtiqueta.PageSetup.PaperWidth := sqldEtiquetaLARGURAFOLHA.AsCurrency;
+        rpEtiqueta.Margins.TopMargin := sqldEtiquetaMARGEMSUPERIOR.AsCurrency;
+        rpEtiqueta.Margins.LeftMargin := sqldEtiquetaMARGEMESQUERDA.AsCurrency;
 
         Detail.RealBounds.UsedUnit := buMilimeters;
-        Detail.ColCount := cdsEtiquetaNUMEROCOLUNAS.AsInteger;
-        Detail.ColSpacing := cdsEtiquetaDISTCOLHORIZ.AsCurrency;
-        Detail.Margins.BottomMargin := cdsEtiquetaDISTACOLVERTICAL.AsCurrency;
-        Detail.ColWidth := cdsEtiquetaLARGURAETIQUETA.AsCurrency;
-        Detail.Height := Trunc(cdsEtiquetaALTURAETIQUETA.AsVariant * 10 - 154);
+        Detail.ColCount := sqldEtiquetaNUMEROCOLUNAS.AsInteger;
+        Detail.ColSpacing := sqldEtiquetaDISTCOLHORIZ.AsCurrency;
+        Detail.Margins.BottomMargin := sqldEtiquetaDISTACOLVERTICAL.AsCurrency;
+        Detail.ColWidth := sqldEtiquetaLARGURAETIQUETA.AsCurrency;
+        Detail.Height := sqldEtiquetaALTURAETIQUETA.AsVariant * 10 - 154;
 
-        Linhas := cdsEtiquetaNUMEROLINHAS.AsInteger + 1;
-        MargemInferior := cdsEtiquetaALTURAFOLHA.AsCurrency -
-                          (Linhas * cdsEtiquetaALTURAETIQUETA.AsCurrency);
+        Linhas := sqldEtiquetaNUMEROLINHAS.AsInteger + 1;
+        MargemInferior := sqldEtiquetaALTURAFOLHA.AsCurrency -
+                          (Linhas * sqldEtiquetaALTURAETIQUETA.AsCurrency);
         rpEtiqueta.Margins.BottomMargin := MargemInferior;
 
-        NumLinhas := cdsEtiquetaNUMEROCOLUNAS.AsInteger;
+        NumLinhas := sqldEtiquetaNUMEROCOLUNAS.AsInteger;
 
         if rgTraversal.ItemIndex = 0 then
         begin
-          Skip := ((seLinhaIni.Value - 1) * cdsEtiquetaNUMEROCOLUNAS.AsInteger) +
+          Skip := ((seLinhaIni.Value - 1) * sqldEtiquetaNUMEROCOLUNAS.AsInteger) +
                   (seColunaIni.Value - 1);
           Detail.Organization := goInRows;
         end
         else
         begin
-          Skip := ((seColunaIni.Value - 1) * cdsEtiquetaNUMEROLINHAS.AsInteger) +
+          Skip := ((seColunaIni.Value - 1) * sqldEtiquetaNUMEROLINHAS.AsInteger) +
                   (seLinhaIni.Value - 1);
           Detail.Organization := goInColumns;
         end;      
@@ -217,10 +204,10 @@ begin
         //  Detail.Borders.DrawTop := False;
         //end;
 
-        cdsEtq.Close;
-        sqldEtq.SQL.Clear;
-        sqldEtq.SQL.add(FSQL);
-        cdsEtq.Open;
+        sqldEtiq.Close;
+        sqldEtiq.SQL.Clear;
+        sqldEtiq.SQL.add(FSQL);
+        sqldEtiq.Open;
 
         FSkip := Skip + 1;
 
@@ -229,7 +216,7 @@ begin
           1: rpEtiqueta.Print;
         end;
       finally
-        cdsEtiqueta.Close;
+        sqldEtiqueta.Close;
         Free;
       end;
   finally
@@ -267,34 +254,40 @@ procedure TfrmImprimeEtiq.seLinhaIniExit(Sender: TObject);
 begin
   inherited;
 
-  if not cdsEtiqueta.Active then
-    cdsEtiqueta.Open;
+  if not sqldEtiqueta.Active then
+    sqldEtiqueta.Open;
 
   if seLinhaIni.Value < 1 then
     seLinhaIni.Value := 1;
-  if seLinhaIni.Value > cdsEtiquetaNUMEROLINHAS.AsInteger then
-    seLinhaIni.Value := cdsEtiquetaNUMEROLINHAS.AsInteger;
+  if seLinhaIni.Value > sqldEtiquetaNUMEROLINHAS.AsInteger then
+    seLinhaIni.Value := sqldEtiquetaNUMEROLINHAS.AsInteger;
 end;
 
 procedure TfrmImprimeEtiq.seColunaIniExit(Sender: TObject);
 begin
   inherited;
 
-  if not cdsEtiqueta.Active then
-    cdsEtiqueta.Open;
+  if not sqldEtiqueta.Active then
+    sqldEtiqueta.Open;
 
   if seColunaIni.Value < 1 then
     seColunaIni.Value := 1;
-  if seColunaIni.Value > cdsEtiquetaNUMEROCOLUNAS.AsInteger then
-    seColunaIni.Value := cdsEtiquetaNUMEROCOLUNAS.AsInteger;
+  if seColunaIni.Value > sqldEtiquetaNUMEROCOLUNAS.AsInteger then
+    seColunaIni.Value := sqldEtiquetaNUMEROCOLUNAS.AsInteger;
 end;
 
 procedure TfrmImprimeEtiq.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  if cdsEtiqueta.Active then
-    cdsEtiqueta.Close;
+  if sqldEtiqueta.Active then
+    sqldEtiqueta.Close;
   inherited;
 end;
+
+initialization
+  RegisterClass(TfrmImprimeEtiq);
+finalization
+  UnRegisterClass(TfrmImprimeEtiq);
+end.
 
 end.

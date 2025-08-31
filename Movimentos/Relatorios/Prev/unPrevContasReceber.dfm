@@ -1,79 +1,64 @@
 inherited frmPrevContasReceber: TfrmPrevContasReceber
   Caption = 'frmPrevContasReceber'
-  ClientHeight = 460
-  ClientWidth = 811
-  OldCreateOrder = True
-  ExplicitWidth = 827
-  ExplicitHeight = 498
-  PixelsPerInch = 96
-  TextHeight = 13
   inherited rrPadrao: TRLReport
-    DataSource = dsPadrao
     inherited rbRodape: TRLBand
-      Top = 179
       Height = 57
-      ExplicitTop = 179
-      ExplicitHeight = 57
+      Top = 126
     end
-    object rbDetalhe: TRLBand
+    object rbDetalhe: TRLBand[2]
       Left = 38
-      Top = 160
-      Width = 718
       Height = 19
+      Top = 107
+      Width = 718
       BeforePrint = rbDetalheBeforePrint
       object rldbtdata: TRLDBText
         Left = 8
+        Height = 15
         Top = 1
-        Width = 38
-        Height = 16
+        Width = 36
         DataField = 'DATA'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbtVenc: TRLDBText
         Left = 88
+        Height = 15
         Top = 1
-        Width = 89
-        Height = 16
+        Width = 90
         DataField = 'VENCIMENTO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbtClient: TRLDBText
         Left = 176
+        Height = 15
         Top = 1
-        Width = 57
-        Height = 16
+        Width = 59
         DataField = 'CLIENTE'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbtValorCapital: TRLDBText
-        Left = 553
+        Left = 554
+        Height = 15
         Top = 1
-        Width = 57
-        Height = 16
+        Width = 56
         Alignment = taRightJustify
         DataField = 'CAPITAL'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbtTotal: TRLDBText
         Left = 668
+        Height = 15
         Top = 1
         Width = 44
-        Height = 16
         Alignment = taRightJustify
         DataField = 'TOTAL'
         DataSource = dsPadrao
-        Text = ''
       end
     end
-    object rbColunas: TRLBand
+    object rbColunas: TRLBand[3]
       Left = 38
-      Top = 139
-      Width = 718
       Height = 21
+      Top = 86
+      Width = 718
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -82,96 +67,100 @@ inherited frmPrevContasReceber: TfrmPrevContasReceber
       Borders.DrawBottom = True
       object rlbData: TRLLabel
         Left = 8
+        Height = 15
         Top = 2
         Width = 31
-        Height = 16
         Caption = 'Data'
       end
       object rlbVenc: TRLLabel
         Left = 88
+        Height = 15
         Top = 2
-        Width = 73
-        Height = 16
+        Width = 72
         Caption = 'Vencimento'
       end
       object rlbCliente: TRLLabel
         Left = 176
+        Height = 15
         Top = 2
         Width = 44
-        Height = 16
         Caption = 'Cliente'
       end
       object rlbValorCap: TRLLabel
         Left = 576
+        Height = 15
         Top = 2
-        Width = 34
-        Height = 16
+        Width = 33
         Caption = 'Valor'
       end
       object rlbTotal: TRLLabel
         Left = 683
+        Height = 15
         Top = 2
-        Width = 32
-        Height = 16
+        Width = 31
         Caption = 'Total'
       end
     end
   end
   inherited sqldPadrao: TSQLQuery
-    CommandText = 
-      'select '#13#10'  DATA, '#13#10'  VENCIMENTO, '#13#10'  CLIENTE, '#13#10'  CAPITAL, '#13#10'  T' +
-      'OTAL '#13#10'from VIEWRELCR'#13#10'WHERE CLIENTE = :PCLIENTE'#13#10'order by DATA'
-    Params = <
+    Params = <    
       item
         DataType = ftString
         Name = 'PCLIENTE'
         ParamType = ptInput
       end>
-    SQLConnection = DmPrincipal.Conexao
-    object sqldPadraoDATA: TDateField
+    object sqldPadraoDATA: TDateField[0]
+      FieldKind = fkData
       FieldName = 'DATA'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoVENCIMENTO: TDateField
+    object sqldPadraoVENCIMENTO: TDateField[1]
+      FieldKind = fkData
       FieldName = 'VENCIMENTO'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
-    object sqldPadraoCLIENTE: TStringField
+    object sqldPadraoCLIENTE: TStringField[2]
+      FieldKind = fkData
       FieldName = 'CLIENTE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Size = 80
     end
-    object sqldPadraoCAPITAL: TFMTBCDField
+    object sqldPadraoCAPITAL: TFMTBCDField[3]
+      FieldKind = fkData
       FieldName = 'CAPITAL'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
       Precision = 15
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
-    object sqldPadraoTOTAL: TFMTBCDField
+    object sqldPadraoTOTAL: TFMTBCDField[4]
+      FieldKind = fkData
       FieldName = 'TOTAL'
-    end
-  end
-  inherited cdsPadrao: TMemDataset
-    Params = <
-      item
-        DataType = ftString
-        Name = 'PCLIENTE'
-        ParamType = ptInput
-      end>
-    object cdsPadraoDATA: TDateField
-      FieldName = 'DATA'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoCLIENTE: TStringField
-      FieldName = 'CLIENTE'
-      Size = 80
-    end
-    object cdsPadraoCAPITAL: TFMTBCDField
-      FieldName = 'CAPITAL'
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-    end
-    object cdsPadraoTOTAL: TFMTBCDField
-      FieldName = 'TOTAL'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
     end
   end
 end

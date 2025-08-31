@@ -56,6 +56,10 @@ end;
 
 procedure TfrmModeloConsulta.btnBuscarClick(Sender: TObject);
 begin
+  if ((cmbCampo.ItemIndex = -1) or (cmbCondicao.ItemIndex = -1)) then
+  begin
+    Exit;
+  end;
   ExecPesquisa(edtPesquisa.Text, sqldPesquisa.Fields[ cmbCampo.ItemIndex ].FieldName,
     cmbCondicao.ItemIndex);
 end;
@@ -81,14 +85,20 @@ begin
 
     sqldPesquisa.Close;
     sqldPesquisa.SQL.Clear;
-    sqldPesquisa.SQL.Add('select * from '+UpperCase(Table));
+    sqldPesquisa.SQL.Add('select * FROM '+UpperCase(Table));
     sqldPesquisa.Open;
 
+    cmbCampo.Items.Clear;
     sqldPesquisa.FieldDefs.GetItemNames(cmbCampo.Items);
 
     lbNumRegs.Caption := '';
 
-    Result := ShowModal;
+    if (ShowModal = mrOk) then
+    begin
+    Result := sqldPesquisa.fields[0].AsInteger; // retorna o ID
+    end else begin
+      Result := 0;
+    end;
 
   finally
     free;
@@ -96,8 +106,66 @@ begin
 end;
 
 procedure TfrmModeloConsulta.ExecPesquisa(Valor, Campo: String; Condicao: Integer);
+var
+  SQLOriginal: String;
+  WhereClause: String;
 begin
-  // implementar
+  // Salva o SQL original
+  SQLOriginal := sqldPesquisa.SQL.Text;
+  
+  // Fecha a query atual
+  sqldPesquisa.Close;
+  sqldPesquisa.SQL.Clear;
+  
+  // Reconstrói o SQL base com WHERE
+  sqldPesquisa.SQL.Add('SELECT * FROM ' + Copy(SQLOriginal, Pos('FROM', UpperCase(SQLOriginal)) + 4, Length(SQLOriginal)));
+  
+  // Adiciona a cláusula WHERE baseada na condição selecionada
+  case Condicao of
+    0: // Igual a
+      WhereClause := Campo + ' = :valor';
+    1: // Contendo
+      WhereClause := Campo + ' LIKE :valor';
+    2: // Começando com
+      WhereClause := Campo + ' LIKE :valor';
+    3: // Terminando com
+      WhereClause := Campo + ' LIKE :valor';
+  end;
+  
+  // Adiciona WHERE se houver valor para pesquisar
+  if Trim(Valor) <> '' then
+  begin
+    sqldPesquisa.SQL.Add('WHERE ' + WhereClause);
+    
+    // Ajusta o valor para LIKE quando necessário
+    case Condicao of
+      1: // Contendo
+        sqldPesquisa.ParamByName('valor').AsString := '%' + Valor + '%';
+      2: // Começando com
+        sqldPesquisa.ParamByName('valor').AsString := Valor + '%';
+      3: // Terminando com
+        sqldPesquisa.ParamByName('valor').AsString := '%' + Valor;
+      else // Igual a
+        sqldPesquisa.ParamByName('valor').AsString := Valor;
+    end;
+  end;
+
+  ShowMessage(sqldPesquisa.SQL.Text);
+  
+  // Executa a pesquisa
+  try
+    sqldPesquisa.Open;
+    NumeroResgistros; // Atualiza o contador de registros
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Erro ao executar pesquisa: ' + E.Message);
+      // Restaura o SQL original em caso de erro
+      sqldPesquisa.Close;
+      sqldPesquisa.SQL.Text := SQLOriginal;
+      sqldPesquisa.Open;
+    end;
+  end;
 end;
 
 procedure TfrmModeloConsulta.FormCreate(Sender: TObject);

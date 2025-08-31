@@ -11,11 +11,6 @@ type
   TfrmRelatorioCPAtrasados = class(TfrmDialogoRelatorioPadrao)
     sqldForn: TSQLQuery;
     dspForn: TComponent;
-    cdsForn: TMemDataSet;
-    cdsFornCODFORNECEDOR: TIntegerField;
-    cdsFornFANTAZIA: TStringField;
-    cdsFornCNPJ: TStringField;
-    cdsFornTELEFONE: TStringField;
     dbeFornecedor: TDBEdit;
     procedure dbeFornecedorClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -39,17 +34,18 @@ uses unModeloConsulta, ConstPadrao, unPrevContasPagar, Funcoes, uConfiguraRelato
 procedure TfrmRelatorioCPAtrasados.dbeFornecedorClickButton(Sender: TObject);
 begin
   inherited;
-//  cdsForn.Close;
-//  cdsForn.SQL.Clear; SQL.Text :=sqlpadrao;
-//  if not TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-//    cdsForn.Close;
+  sqldForn.Close;
+  sqldForn.SQL.Clear;
+  sqldForn.SQL.Text :=sqlpadrao;
+  if TfrmModeloConsulta.Execute('Fornecedor', 'FORN', FN_FORN, DL_FORN, self) > 0 then
+    sqldForn.Close;
 end;
 
 procedure TfrmRelatorioCPAtrasados.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
-  cdsForn.Close;
+  sqldForn.Close;
 end;
 
 procedure TfrmRelatorioCPAtrasados.btnVisualizarClick(Sender: TObject);
@@ -57,16 +53,16 @@ begin
   inherited;
   with TfrmPrevContasPagar.Create(Self) do
   try
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select * from VIEWRELCPATRASADOS '+
                              'where CODFORN = :PFORN '+
                              'order by VENCIMENTO';
-    sqldPadrao.Params.ParamByName('PFORN').AsInteger := cdsFornCODFORNECEDOR.AsInteger;
-    cdsPadrao.Open;
+    sqldPadrao.Params.ParamByName('PFORN').AsInteger := sqldForn.fieldByName('CODFORNECEDOR').AsInteger;
+    sqldPadrao.Open;
     Titulo := 'Contas a pagar atrasadas: ' + dbeFornecedor.Text;
     PrintIfNotEmptyRL(rrPadrao);
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;

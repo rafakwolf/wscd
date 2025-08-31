@@ -3,7 +3,6 @@ inherited frmPrevRelAgenda: TfrmPrevRelAgenda
   Top = 116
   Width = 811
   Caption = 'frmPrevRelAgenda'
-  ClientHeight = 488
   ClientWidth = 811
   inherited rrPadrao: TRLReport
     inherited rbTitulo: TRLBand
@@ -35,42 +34,24 @@ inherited frmPrevRelAgenda: TfrmPrevRelAgenda
       BeforePrint = rbDetalheBeforePrint
       object lbNome: TRLLabel
         Left = 3
-        Height = 18
+        Height = 15
         Top = 2
-        Width = 47
+        Width = 38
         Caption = 'Nome'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
       end
       object lbFone: TRLLabel
         Left = 3
-        Height = 18
+        Height = 15
         Top = 22
-        Width = 40
+        Width = 33
         Caption = 'Fone'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
       end
       object lbFax: TRLLabel
         Left = 3
-        Height = 18
+        Height = 15
         Top = 43
-        Width = 31
+        Width = 25
         Caption = 'Fax'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
       end
       object dbNome: TRLDBText
         Left = 55
@@ -84,7 +65,7 @@ inherited frmPrevRelAgenda: TfrmPrevRelAgenda
         Left = 55
         Height = 15
         Top = 24
-        Width = 73
+        Width = 72
         DataField = 'TELEFONE'
         DataSource = dsPadrao
       end
@@ -92,73 +73,22 @@ inherited frmPrevRelAgenda: TfrmPrevRelAgenda
         Left = 55
         Height = 15
         Top = 45
-        Width = 29
+        Width = 28
         DataField = 'FAX'
         DataSource = dsPadrao
       end
     end
   end
-  inherited sqldPadrao: TSQLQuery
-    object sqldPadraoNOME: TStringField[0]
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoTELEFONE: TStringField[1]
-      FieldKind = fkData
-      FieldName = 'TELEFONE'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoFAX: TStringField[2]
-      FieldKind = fkData
-      FieldName = 'FAX'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  inherited cdsPadrao: TMemDataset
-    object cdsPadraoNOME: TStringField[0]
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoTELEFONE: TStringField[1]
-      FieldKind = fkData
-      FieldName = 'TELEFONE'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoFAX: TStringField[2]
-      FieldKind = fkData
-      FieldName = 'FAX'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
+  inherited dsPadrao: TDataSource
+    Left = 256
+    Top = 216
   end
   inherited rlepCalculos: TRLExpressionParser
-    Left = 148
+    Left = 176
+    Top = 248
+  end
+  inherited sqldPadrao: TZQuery
+    Left = 88
+    Top = 224
   end
 end

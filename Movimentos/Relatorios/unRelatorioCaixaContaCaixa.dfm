@@ -1,7 +1,7 @@
 inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
-  Left = 240
+  Left = 442
   Height = 261
-  Top = 195
+  Top = 247
   Width = 508
   Caption = 'frmRelatorioCaixaContaCaixa'
   ClientHeight = 261
@@ -13,14 +13,13 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   end
   object dbeCaixa: TDBEdit[1]
     Left = 24
-    Height = 33
+    Height = 21
     Hint = 'Pesquisar < F2 >'
     Top = 40
     Width = 283
     DataField = 'NOME'
     DataSource = dsPadrao
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -29,12 +28,11 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   end
   object dtpDataIni: TDBEdit[2]
     Left = 24
-    Height = 33
+    Height = 21
     Top = 88
     Width = 145
     DataField = 'DATAINI'
     DataSource = dsData
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -42,12 +40,11 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   end
   object dtpDataFim: TDBEdit[3]
     Left = 184
-    Height = 33
+    Height = 21
     Top = 88
     Width = 145
     DataField = 'DATAFIM'
     DataSource = dsData
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -61,6 +58,7 @@ inherited frmRelatorioCaixaContaCaixa: TfrmRelatorioCaixaContaCaixa
   object sqldCaixa: TSQLQuery[5]
     FieldDefs = <>
     Params = <>
+    Macros = <>
     Left = 200
     Top = 8
   end

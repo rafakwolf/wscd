@@ -84,7 +84,6 @@ uses
   crypto in 'Util\crypto.pas',
   uConfiguraRelatorio in 'Util\uConfiguraRelatorio.pas',
   Extensos in 'Util\Extensos.pas',
-  udmCliente in 'Cadastros\Datamodule\udmCliente.pas' {dmCliente: TDataModule},
   unPerfil in 'Configuracoes\unPerfil.pas' {frmPerfil};
 
 {$R *.res}
@@ -93,5 +92,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TDmPrincipal, DmPrincipal);
   Application.CreateForm(TMainForm, MainForm);
+  MainForm.Show;
   Application.Run;
 end.

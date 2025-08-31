@@ -5,9 +5,12 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
-  RLReport, RLParser, FMTBcd;
+  RLReport, RLParser, ZDataset, FMTBcd;
 
 type
+
+  { TfrmPrevCaixaTodos }
+
   TfrmPrevCaixaTodos = class(TfrmModeloRelatorio)
     rlbColunas: TRLBand;
     lbLanc: TRLLabel;
@@ -62,7 +65,7 @@ var
 
 implementation
 
-uses VarGlobal, Funcoes, udatabaseutils;
+uses VarGlobal, Funcoes, uDatabaseUtils;
 
 {$R *.dfm}
 
@@ -80,7 +83,7 @@ begin
   if AnsiUpperCase(Text) = 'C' then
     Text := 'Entrada'
   else
-    Text := 'Sa�da';
+    Text := 'Saida';
 end;
 
 procedure TfrmPrevCaixaTodos.rldbCaixaBeforePrint(Sender: TObject;
@@ -104,31 +107,31 @@ begin
   inherited;
   PrintFirst := True;
 
-  //if (DataIni = '') and (DataFim = '') then
-  //begin
-  //  TotalC := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
-  //    'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('C')+')',
-  //    sqldPadrao.SQLConnection);
-  //
-  //  TotalD := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
-  //    'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('D')+')',
-  //    sqldPadrao.SQLConnection);
-  //end
-  //else
-  //begin
-  //  TotalC := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
-  //    'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('C')+') '+
-  //    'and (DATA >= '+FormatDateFirebird(StrToDate(DataIni))+') '+
-  //    'and (DATA <= '+FormatDateFirebird(StrToDate(DataFim))+')', sqldPadrao.SQLConnection);
-  //
-  //  TotalD := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
-  //    'where (CAIXA = '+QuotedStr(cdsPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('D')+') '+
-  //    'and (DATA >= '+FormatDateFirebird(StrToDate(DataIni))+') '+
-  //    'and (DATA <= '+FormatDateFirebird(StrToDate(DataFim))+')', sqldPadrao.SQLConnection);
-  //end;
+  if (DataIni = '') and (DataFim = '') then
+  begin
+    TotalC := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+      'where (CAIXA = '+QuotedStr(sqldPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('C')+')',
+      getZConnection);
+
+    TotalD := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+      'where (CAIXA = '+QuotedStr(sqldPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('D')+')',
+      getZConnection);
+  end
+  else
+  begin
+    TotalC := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+      'where (CAIXA = '+QuotedStr(sqldPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('C')+') '+
+      'and (DATA >= '+FormatDateFirebird(StrToDate(DataIni))+') '+
+      'and (DATA <= '+FormatDateFirebird(StrToDate(DataFim))+')', getZConnection);
+
+    TotalD := SelecSingleField('select sum(VALOR) from VIEWRELCAIXATODOS '+
+      'where (CAIXA = '+QuotedStr(sqldPadraoCAIXA.AsString)+') and (TIPO = '+QuotedStr('D')+') '+
+      'and (DATA >= '+FormatDateFirebird(StrToDate(DataIni))+') '+
+      'and (DATA <= '+FormatDateFirebird(StrToDate(DataFim))+')', getZConnection);
+  end;
 
   rllbSomaC.Caption := 'Entradas: '+FormatFloat('#,##0.00', TotalC);
-  rllbSomaD.Caption := 'Sa�das: '+FormatFloat('#,##0.00', TotalD);
+  rllbSomaD.Caption := 'Saidas: '+FormatFloat('#,##0.00', TotalD);
 end;
 
 procedure TfrmPrevCaixaTodos.rlbDetalheBeforePrint(Sender: TObject;

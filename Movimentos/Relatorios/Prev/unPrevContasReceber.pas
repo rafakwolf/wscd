@@ -53,7 +53,7 @@ procedure TfrmPrevContasReceber.rrPadraoBeforePrint(Sender: TObject;
 begin
   inherited;
   lbTitulo.Caption := Trim(Titulo);
-  rldbtTotal.Caption := 'Total: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'TOTAl', '', ''));
+  rldbtTotal.Caption := 'Total: '+FormatFloat('#,##0.00', Totaliza(sqldPadrao, 'TOTAl', '', ''));
 end;
 
 procedure TfrmPrevContasReceber.rbDetalheBeforePrint(Sender: TObject;

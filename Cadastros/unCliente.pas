@@ -6,9 +6,12 @@ uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unPadrao, Menus, DB, ActnList, StdCtrls, Buttons,
   ComCtrls,   SqlDb, DBCtrls, udmGeralBase,
-   memds,  StrUtils,  ExtDlgs, FMTBcd, LCLType;
+   memds,  StrUtils,  ExtDlgs, FMTBcd, LCLType, ZDataset;
 
 type
+
+  { TfrmCliente }
+
   TfrmCliente = class(TfrmPadrao)
     btnContas: TBitBtn;
     dbeFax: TDBEdit;
@@ -38,6 +41,14 @@ type
     dbeEndereco: TDBEdit;
     dbeNome: TDBEdit;
     dbmObs: TDBEdit;
+    MainMenu1: TMainMenu;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    sqldClientes: TZQuery;
+    procedure MenuItem1Click(Sender: TObject);
     procedure miRelClientesCidadeClick(Sender: TObject);
     procedure miRelClientesDataNascClick(Sender: TObject);
     procedure miRelAniversariantesClick(Sender: TObject);
@@ -50,8 +61,9 @@ type
   private
     SQLPadraoTela: string;
     procedure Foto(Visivel: Boolean);
-  protected
-    function GetDm: TdmGeralBase; override;
+
+      function IsClienteRepetido(cpf_cnpj, rg_ie: string): boolean;
+    function GetUltimaCompraCliente(idCliente: Integer): string;
   public
     procedure AntesSalvar; override;
   end;
@@ -62,7 +74,7 @@ var
 implementation
 
 uses Funcoes, ConstPadrao, uConfiguraRelatorio, VarGlobal,
-     unPrevListagemClientes,  unContasReceber, udmCliente;
+     unPrevListagemClientes,  unContasReceber;
 
 {$R *.dfm}
 
@@ -70,6 +82,11 @@ procedure TfrmCliente.miRelClientesCidadeClick(Sender: TObject);
 begin
   inherited;
   ChamaForm('TfrmRelatorioClienteCidade', 'Clientes por cidade', Self);
+end;
+
+procedure TfrmCliente.MenuItem1Click(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmCliente.miRelClientesDataNascClick(Sender: TObject);
@@ -86,7 +103,6 @@ end;
 
 procedure TfrmCliente.FormCreate(Sender: TObject);
 begin
-  dsPadrao.DataSet := TdmCliente(GetDm).ZQuery1;
   inherited;
   FieldNames := FN_CLIENTES;
   DisplayLabels := DL_CLIENTES;
@@ -98,13 +114,13 @@ begin
   inherited;
   with TfrmPrevListagemClientes.Create(Self) do
   try
-    cdsPadrao.Close;
-    cdsPadrao.Open;
+    sqldPadrao.Close;
+    sqldPadrao.Open;
 
     TipoRelatorio := 0;
     PrintIfNotEmptyRL(rrPadrao);
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;
@@ -131,9 +147,9 @@ procedure TfrmCliente.btnContasClick(Sender: TObject);
 begin
   inherited;
   frmContasReceber := TfrmContasReceber.Create(self);
-  frmContasReceber.Caption := 'Contas do cliente: '+ dmCliente.ZQuery1.FieldByName('NOME').AsString;
+  frmContasReceber.Caption := 'Contas do cliente: '+ sqldClientes.FieldByName('NOME').AsString;
   frmContasReceber.TipoChamada := 1;
-  frmContasReceber.IdCliente := dmCliente.ZQuery1.FieldByName('CODCLIENTE').AsInteger;
+  frmContasReceber.IdCliente := sqldClientes.FieldByName('CODCLIENTE').AsInteger;
   frmContasReceber.ShowModal;
 end;
 
@@ -143,10 +159,10 @@ var
 begin
   inherited;
   Repetido :=
-    TdmCliente(getDm).IsClienteRepetido(dmCliente.ZQuery1.FieldByName('CPF_CNPJ').AsString,
-      dmCliente.ZQuery1.FieldByName('RG_IE').AsString);
+    IsClienteRepetido(sqldClientes.FieldByName('CPF_CNPJ').AsString,
+      sqldClientes.FieldByName('RG_IE').AsString);
 
-  if (ModoInsert(dmCliente.ZQuery1) and Repetido) then
+  if (ModoInsert(sqldClientes) and Repetido) then
   begin
     MsgAviso('Cliente com este CPF/CNPJ ou RG/IE ja esta cadastrado.');
     Abort;
@@ -158,13 +174,41 @@ begin
 
 end;
 
-function TfrmCliente.GetDm: TdmGeralBase;
+function TfrmCliente.IsClienteRepetido(cpf_cnpj, rg_ie: string): boolean;
 begin
-  if not assigned(dmCliente) then
-    dmCliente := TdmCliente.Create(self);
-
-  Result := dmCliente;
+   with TZQuery.Create(nil) do
+    try
+      Connection := sqldClientes.Connection;
+      SQL.Clear;
+      SQL.add('select count(1) from CLIENTES where CPF_CNPJ = ' +
+        QuotedStr(cpf_cnpj) + ' or RG_IE = ' + QuotedStr(rg_ie));
+      Open;
+      Result := Fields[0].AsInteger > 0;
+    finally
+      Free;
+    end;
 end;
+
+function TfrmCliente.GetUltimaCompraCliente(idCliente: Integer): string;
+begin
+   with TZQuery.Create(nil) do
+    try
+      Connection := sqldClientes.Connection;
+      SQL.Clear;
+      SQL.Add('select DATA, TOTAL from VENDA where CODCLIENTE = ' +
+        QuotedStr(IntToStr(idCliente)));
+      Open;
+      if not IsEmpty then
+        Result := 'Data: ' + FormatDateTime('dd/mm/yyyy',
+          FieldByName('DATA').AsDateTime) + ' - ' + 'Total: ' +
+          FormatFloat('#,##0.00', FieldByName('TOTAL').AsFloat)
+      else
+        Result := 'Nao existem compras deste cliente.';
+    finally
+      Free;
+    end;
+end;
+
 
 initialization
   RegisterClass(TfrmCliente);

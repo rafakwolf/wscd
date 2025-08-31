@@ -34,7 +34,6 @@ type
     dsPadrao1: TDataSource;
     ZQuery1: TZQuery;
     ZReadOnlyQuery1: TZReadOnlyQuery;
-    ZUpdateSQL1: TZUpdateSQL;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
@@ -78,14 +77,14 @@ begin
   inherited;
   with TfrmPrevRelFornData.Create(Self) do
   try
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     sqldPadrao.SQL.Clear;
     sqldPadrao.SQL.Text :='select * from VIEWRELFORN order by CIDADE, FANTAZIA';
-    cdsPadrao.Open;
+    sqldPadrao.Open;
     TipoRelatorio := 0;
     PrintIfNotEmptyRL(rrPadrao);
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;
@@ -107,7 +106,7 @@ begin
   inherited;
   frmContasPagar := TfrmContasPagar.Create(Self);
   frmContasPagar.Caption := 'Contas por Fornecedor: '+
-    zquery1.FieldByName('FANTAZIA').AsString;
+    zquery1.FieldByName('FANTASIA').AsString;
   frmContasPagar.TipoChamada := 1;
   frmContasPagar.IdForn := zquery1.FieldByName('CODFORNECEDOR').AsInteger;
   frmContasPagar.ShowModal;

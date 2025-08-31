@@ -56,11 +56,11 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       Height = 33
       Top = 63
       Width = 74
-      OnKeyPress = edAnoKeyPress
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
       Text = '2007'
+      OnKeyPress = edAnoKeyPress
     end
     object cmbMes: TComboBox
       Left = 8
@@ -131,7 +131,6 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       Width = 241
       DataField = 'DATAINI'
       DataSource = dsPadrao
-      CharCase = ecNormal
       MaxLength = 0
       ParentShowHint = False
       ShowHint = True
@@ -144,7 +143,6 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       Width = 241
       DataField = 'DATAFIM'
       DataSource = dsPadrao
-      CharCase = ecNormal
       MaxLength = 0
       ParentShowHint = False
       ShowHint = True
@@ -210,6 +208,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
   object sqldSelecao: TSQLQuery[6]
     FieldDefs = <>
     Params = <>
+    Macros = <>
     Left = 120
     Top = 26
     object sqldSelecaoDATAINI: TDateTimeField

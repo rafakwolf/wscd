@@ -71,14 +71,14 @@ procedure TfrmPrevRelCaixa.rrPadraoBeforePrint(Sender: TObject;
 begin
   inherited;
   lbTitulo.Caption := Trim(TituloRel);
-  rllbTotalC.Caption := 'Entradas: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'VALOR', 'TIPO', 'C'));
-  rllbTotalD.Caption := 'Sa�das: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'VALOR', 'TIPO', 'D'));
+  rllbTotalC.Caption := 'Entradas: '+FormatFloat('#,##0.00', Totaliza(sqldPadrao, 'VALOR', 'TIPO', 'C'));
+  rllbTotalD.Caption := 'Sa�das: '+FormatFloat('#,##0.00', Totaliza(sqldPadrao, 'VALOR', 'TIPO', 'D'));
 
   rllbTotalD.Visible := True;
   rllbTotalC.Visible := True;
 
-  rlbSaldo.Caption := 'Saldo: '+FormatFloat('#,##0.00', Totaliza(cdsPadrao, 'VALOR', 'TIPO', 'C')-
-    Totaliza(cdsPadrao, 'VALOR', 'TIPO', 'D'));
+  rlbSaldo.Caption := 'Saldo: '+FormatFloat('#,##0.00', Totaliza(sqldPadrao, 'VALOR', 'TIPO', 'C')-
+    Totaliza(sqldPadrao, 'VALOR', 'TIPO', 'D'));
 end;
 
 procedure TfrmPrevRelCaixa.rbDetalheBeforePrint(Sender: TObject;

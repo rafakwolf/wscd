@@ -15,7 +15,6 @@ inherited frmRelatorioCPFornecedor: TfrmRelatorioCPFornecedor
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -29,6 +28,7 @@ inherited frmRelatorioCPFornecedor: TfrmRelatorioCPFornecedor
   object sqldSelecao: TSQLQuery[3]
     FieldDefs = <>
     Params = <>
+    Macros = <>
     Left = 144
     Top = 8
     object sqldSelecaoCODFORNECEDOR: TIntegerField

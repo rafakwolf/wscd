@@ -1,7 +1,7 @@
 object frmSobre: TfrmSobre
-  Left = 377
+  Left = 358
   Height = 236
-  Top = 203
+  Top = 197
   Width = 475
   Caption = 'Sobre'
   ClientHeight = 236
@@ -13,7 +13,7 @@ object frmSobre: TfrmSobre
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   ShowHint = True
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '3.6.0.0'
   object btnOK: TButton
     Left = 312
     Height = 25
@@ -21,16 +21,16 @@ object frmSobre: TfrmSobre
     Top = 19
     Width = 57
     Caption = '&OK'
-    OnClick = btnOKClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
+    OnClick = btnOKClick
   end
   object lblVersao: TLabel
     Left = 8
-    Height = 15
+    Height = 16
     Top = 43
-    Width = 60
+    Width = 59
     Caption = 'lblVersao'
     Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
@@ -41,9 +41,9 @@ object frmSobre: TfrmSobre
   end
   object lblEmpresa: TLabel
     Left = 8
-    Height = 15
+    Height = 16
     Top = 8
-    Width = 73
+    Width = 72
     Caption = 'lblEmpresa'
     Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
@@ -54,9 +54,9 @@ object frmSobre: TfrmSobre
   end
   object lblCNPJ: TLabel
     Left = 8
-    Height = 15
+    Height = 16
     Top = 24
-    Width = 47
+    Width = 48
     Caption = 'lblCNPJ'
     Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'

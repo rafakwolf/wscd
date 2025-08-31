@@ -4,9 +4,12 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, RLReport, memds,  DB, SqlDb, FMTBcd;
+  Dialogs, RLReport, ZDataset, memds,  DB, SqlDb, FMTBcd;
 
 type
+
+  { TfrmModeloEnvelope }
+
   TfrmModeloEnvelope = class(TForm)
     rrEnvelope: TRLReport;
     rbFundo: TRLBand;
@@ -14,26 +17,14 @@ type
     lbEndereco: TRLLabel;
     lbTelefone: TRLLabel;
     lbCNPJ_IE: TRLLabel;
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
     dsPadrao: TDataSource;
-    sqldPadraoNOME: TStringField;
-    sqldPadraoENDERECO: TStringField;
-    sqldPadraoCIDADE: TStringField;
-    sqldPadraoBAIRRO: TStringField;
-    sqldPadraoCEP: TStringField;
-    cdsPadraoNOME: TStringField;
-    cdsPadraoENDERECO: TStringField;
-    cdsPadraoCIDADE: TStringField;
-    cdsPadraoBAIRRO: TStringField;
-    cdsPadraoCEP: TStringField;
     dbNome: TRLDBText;
     dbEndereco: TRLDBText;
     dbCidade: TRLDBText;
     dbBairro: TRLDBText;
     dbCep: TRLDBText;
     lbPara: TRLLabel;
+    sqldPadrao: TZQuery;
     procedure rrEnvelopeBeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure FormCreate(Sender: TObject);
   private
@@ -56,7 +47,7 @@ begin
   for I := 0 to ComponentCount-1 do
   begin
     if Components[i] is TSQLQuery then
-      TSQLQuery( Components[i] ).SQLConnection := GetConnection;
+      TZQuery( Components[i] ).Connection := GetZConnection;
   end;
 end;
 

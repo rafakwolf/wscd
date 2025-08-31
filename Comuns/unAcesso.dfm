@@ -1,33 +1,35 @@
 object frmAcesso: TfrmAcesso
   Left = 391
-  Height = 221
+  Height = 220
   Top = 216
-  Width = 299
+  Width = 291
   HelpContext = 1
-  BorderStyle = bsNone
+  BorderStyle = bsDialog
   Caption = 'Acesso'
-  ClientHeight = 221
-  ClientWidth = 299
+  ClientHeight = 220
+  ClientWidth = 291
   KeyPreview = True
   ShowHint = True
-  LCLVersion = '2.0.12.0'
   object btnOK: TBitBtn
     Left = 8
     Height = 32
     Hint = 'Efetuar login'
-    Top = 117
+    Top = 168
     Width = 271
-    Caption = 'Entrar'
+    Default = True
+    DefaultCaption = True
     Font.Height = -16
+    Kind = bkOK
+    ModalResult = 1
     OnClick = btnOkClick
     ParentFont = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 1
+    TabOrder = 3
   end
   object edtUsuario: TEdit
     Left = 8
-    Height = 33
+    Height = 21
     Hint = 'Usuário'
     Top = 21
     Width = 271
@@ -38,25 +40,25 @@ object frmAcesso: TfrmAcesso
   end
   object edtSenha: TEdit
     Left = 8
-    Height = 33
+    Height = 21
     Top = 67
     Width = 271
     EchoMode = emPassword
     ParentShowHint = False
     PasswordChar = '*'
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 1
   end
   object ckbLembrarLogin: TCheckBox
-    Left = 112
-    Height = 23
-    Top = 173
-    Width = 75
+    Left = 96
+    Height = 18
+    Top = 104
+    Width = 77
     Caption = 'Lembrar'
     Font.Height = -13
     ParentFont = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 2
   end
 end

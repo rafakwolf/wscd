@@ -16,7 +16,6 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
     Width = 185
     DataField = 'DATAINI'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -29,7 +28,6 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
     Width = 185
     DataField = 'DATAFIM'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -42,6 +40,7 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
   object sqldSelecao: TSQLQuery[4]
     FieldDefs = <>
     Params = <>
+    Macros = <>
     Left = 80
     Top = 8
     object sqldSelecaoDATAINI: TDateTimeField

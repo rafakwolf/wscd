@@ -1,15 +1,15 @@
 inherited frmParcelaCPCR: TfrmParcelaCPCR
-  Left = 322
-  Height = 452
-  Top = 107
-  Width = 587
+  Left = 446
+  Height = 511
+  Top = 208
+  Width = 608
   Caption = 'frmParcelaCPCR'
-  ClientHeight = 452
-  ClientWidth = 587
+  ClientHeight = 511
+  ClientWidth = 608
   OnShow = FormShow
   object lbParcelas: TLabel[0]
     Left = 232
-    Height = 15
+    Height = 16
     Top = 48
     Width = 54
     Caption = 'Parcelas'
@@ -19,7 +19,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object lbPrazoInicio: TLabel[1]
     Left = 312
-    Height = 15
+    Height = 16
     Top = 48
     Width = 79
     Caption = 'Prazo Inicial'
@@ -29,9 +29,9 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object lbIntervalo: TLabel[2]
     Left = 392
-    Height = 15
+    Height = 16
     Top = 48
-    Width = 58
+    Width = 59
     Caption = 'Intervalo'
     ParentColor = False
     ParentShowHint = False
@@ -39,7 +39,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object btnOk: TBitBtn[3]
     Left = 280
-    Height = 25
+    Height = 32
     Top = 408
     Width = 89
     Caption = '&OK'
@@ -50,7 +50,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object btnCancelar: TBitBtn[4]
     Left = 376
-    Height = 25
+    Height = 32
     Top = 408
     Width = 89
     Caption = '&Cancelar'
@@ -62,7 +62,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object btnCalcular: TBitBtn[5]
     Left = 8
-    Height = 25
+    Height = 32
     Top = 408
     Width = 89
     Caption = '&Calcular'
@@ -73,13 +73,12 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object dbeCodigo: TDBEdit[6]
     Left = 8
-    Height = 28
+    Height = 21
     Top = 17
     Width = 81
     DataField = 'CODIGO'
     DataSource = dsPadrao
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -88,14 +87,13 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object dbeNome: TDBEdit[7]
     Left = 96
-    Height = 28
+    Height = 21
     Hint = 'Pesquisar < F2 >'
     Top = 17
     Width = 347
     DataField = 'NOME'
     DataSource = dsPadrao
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -105,12 +103,11 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object dbdtpData: TDBEdit[8]
     Left = 8
-    Height = 28
+    Height = 21
     Top = 64
     Width = 113
     DataField = 'DATA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -118,12 +115,11 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object dbeValor: TDBEdit[9]
     Left = 128
-    Height = 28
+    Height = 21
     Top = 64
     Width = 97
     DataField = 'VALOR'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -131,7 +127,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object seParcelas: TSpinEdit[10]
     Left = 232
-    Height = 28
+    Height = 21
     Top = 64
     Width = 73
     OnExit = seParcelasExit
@@ -142,7 +138,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object sePrazoInicio: TSpinEdit[11]
     Left = 312
-    Height = 28
+    Height = 21
     Top = 64
     Width = 73
     OnExit = seParcelasExit
@@ -153,7 +149,7 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object seIntervalo: TSpinEdit[12]
     Left = 392
-    Height = 28
+    Height = 21
     Top = 64
     Width = 73
     OnExit = seParcelasExit
@@ -176,314 +172,258 @@ inherited frmParcelaCPCR: TfrmParcelaCPCR
   end
   object edtJuro: TLabeledEdit[14]
     Left = 482
-    Height = 28
+    Height = 21
     Top = 56
     Width = 80
-    EditLabel.Height = 15
+    EditLabel.Height = 16
     EditLabel.Width = 80
     EditLabel.Caption = 'Juros'
     EditLabel.ParentColor = False
     TabOrder = 11
     Text = 'edtJuro'
   end
-  object sqldParcela: TSQLQuery[15]
-    FieldDefs = <>
-    Params = <>
-    Left = 40
-    Top = 248
-    object sqldParcelaNUMERO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldParcelaVENC: TDateField
-      FieldKind = fkData
-      FieldName = 'VENC'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldParcelaDIA: TStringField
-      FieldKind = fkData
-      FieldName = 'DIA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldParcelaVALOR: TFloatField
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object dspParcela: TTimer[16]
-    Left = 120
-    Top = 248
-  end
-  object cdsParcela: TMemDataset[17]
-    FieldDefs = <>
-    Left = 208
-    Top = 240
-    object cdsParcelaNUMERO: TIntegerField
-      DisplayLabel = 'Número'
-      FieldKind = fkData
-      FieldName = 'NUMERO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsParcelaVENC: TDateField
-      DisplayLabel = 'Vencimento'
-      FieldKind = fkData
-      FieldName = 'VENC'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      OnChange = cdsParcelaVENCChange
-      DisplayFormat = 'dd/mm/yyyy'
-      EditMask = '!99/99/9999;1;_'
-    end
-    object cdsParcelaDIA: TStringField
-      DisplayLabel = 'Dia'
-      FieldKind = fkData
-      FieldName = 'DIA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsParcelaVALOR: TFloatField
-      DisplayLabel = 'Valor'
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-  end
-  object dsParcela: TDataSource[18]
+  object dsParcela: TDataSource[15]
     DataSet = cdsParcela
     Left = 288
     Top = 240
   end
-  object sqldContasPagar: TSQLQuery[19]
-    FieldDefs = <>
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftDate
-        Name = 'DATA'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftDate
-        Name = 'VENCIMENTO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftInteger
-        Name = 'IDFORN'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftString
-        Name = 'DESCRICAO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftString
-        Name = 'DOCUMENTO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftFloat
-        Name = 'VALOR'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftFloat
-        Name = 'JURO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftInteger
-        Name = 'COMPRA'
-        ParamType = ptInput
-      end>
-    Left = 152
-    Top = 128
-  end
-  object sqldReceber: TSQLQuery[20]
-    FieldDefs = <>
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftDate
-        Name = 'DATA'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftDate
-        Name = 'VENCIMENTO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftInteger
-        Name = 'IDCLIENTE'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftString
-        Name = 'DESCRICAO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftString
-        Name = 'DOCUMENTO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftFloat
-        Name = 'VALOR'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftFloat
-        Name = 'JURO'
-        ParamType = ptInput
-      end    
-      item
-        DataType = ftInteger
-        Name = 'VENDA'
-        ParamType = ptInput
-      end>
-    Left = 312
-    Top = 144
-  end
-  object sqldPadrao: TSQLQuery[21]
-    FieldDefs = <>
-    Params = <>
-    Left = 32
-    Top = 312
-    object sqldPadraoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object sqldPadraoDATA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoVALOR: TFloatField
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object dspPadrao: TTimer[22]
-    Left = 120
-    Top = 312
-  end
-  object cdsPadrao: TMemDataset[23]
-    FieldDefs = <>
-    Left = 200
-    Top = 320
-    object cdsPadraoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoNOME: TStringField
-      FieldKind = fkData
-      FieldName = 'NOME'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 100
-    end
-    object cdsPadraoDATA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoVALOR: TFloatField
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      EditFormat = '#,##0.00'
-    end
-  end
-  object dsPadrao: TDataSource[24]
+  object dsPadrao: TDataSource[16]
     DataSet = cdsPadrao
     Left = 288
     Top = 320
+  end
+  object cdsParcela: TZQuery[17]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'SELECT'
+      '    CAST(NULL AS SIGNED) AS NUMERO,'
+      '    CAST(NULL AS DATE) AS VENC,'
+      '    CAST(NULL AS CHAR(20)) AS DIA,'
+      '    CAST(NULL AS DECIMAL(15,2)) AS VALOR;'
+    )
+    Params = <>
+    Left = 200
+    Top = 232
+    object cdsParcelaNUMERO: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'NUMERO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object cdsParcelaVENC: TZDateField
+      FieldKind = fkData
+      FieldName = 'VENC'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object cdsParcelaDIA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DIA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object cdsParcelaVALOR: TZBCDField
+      FieldKind = fkData
+      FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Precision = 15
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+  end
+  object sqldContasPagar: TZQuery[18]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'insert into CONTASPAGAR(CODIGO, DATA, VENCIMENTO, FORNECEDOR, DESCRICAO, DOCUMENTO, VALOR, JURO, PAGAR, COMPRA, PAGA)'
+      'values(:CODIGO, :DATA, :VENCIMENTO, :IDFORN, :DESCRICAO, :DOCUMENTO, :VALOR, :JURO, ''N'', :COMPRA, ''N'')'
+    )
+    Params = <    
+      item
+        Name = 'CODIGO'
+      end    
+      item
+        Name = 'DATA'
+      end    
+      item
+        Name = 'VENCIMENTO'
+      end    
+      item
+        Name = 'IDFORN'
+      end    
+      item
+        Name = 'DESCRICAO'
+      end    
+      item
+        Name = 'DOCUMENTO'
+      end    
+      item
+        Name = 'VALOR'
+      end    
+      item
+        Name = 'JURO'
+      end    
+      item
+        Name = 'COMPRA'
+      end>
+    Left = 197
+    Top = 138
+    ParamData = <    
+      item
+        Name = 'CODIGO'
+      end    
+      item
+        Name = 'DATA'
+      end    
+      item
+        Name = 'VENCIMENTO'
+      end    
+      item
+        Name = 'IDFORN'
+      end    
+      item
+        Name = 'DESCRICAO'
+      end    
+      item
+        Name = 'DOCUMENTO'
+      end    
+      item
+        Name = 'VALOR'
+      end    
+      item
+        Name = 'JURO'
+      end    
+      item
+        Name = 'COMPRA'
+      end>
+  end
+  object sqldReceber: TZQuery[19]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'insert into CONTASRECEBER(CODIGO, DATA, VENCIMENTO, CLIENTE, DESCRICAO, DOCUMENTO, VALOR, JURO, RECEBER, VENDA, RECDA)'
+      'values(:CODIGO, :DATA, :VENCIMENTO, :IDCLIENTE, :DESCRICAO, :DOCUMENTO, :VALOR, :JURO, ''N'', :VENDA, ''N'')'
+    )
+    Params = <    
+      item
+        Name = 'CODIGO'
+      end    
+      item
+        Name = 'DATA'
+      end    
+      item
+        Name = 'VENCIMENTO'
+      end    
+      item
+        Name = 'IDCLIENTE'
+      end    
+      item
+        Name = 'DESCRICAO'
+      end    
+      item
+        Name = 'DOCUMENTO'
+      end    
+      item
+        Name = 'VALOR'
+      end    
+      item
+        Name = 'JURO'
+      end    
+      item
+        Name = 'VENDA'
+      end>
+    Left = 334
+    Top = 153
+    ParamData = <    
+      item
+        Name = 'CODIGO'
+      end    
+      item
+        Name = 'DATA'
+      end    
+      item
+        Name = 'VENCIMENTO'
+      end    
+      item
+        Name = 'IDCLIENTE'
+      end    
+      item
+        Name = 'DESCRICAO'
+      end    
+      item
+        Name = 'DOCUMENTO'
+      end    
+      item
+        Name = 'VALOR'
+      end    
+      item
+        Name = 'JURO'
+      end    
+      item
+        Name = 'VENDA'
+      end>
+  end
+  object cdsPadrao: TZQuery[20]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'SELECT  CAST(NULL AS SIGNED) CODIGO,'
+      'CAST(NULL AS CHAR(100)) NOME,'
+      'CAST(CURRENT_DATE AS DATE) DATA,'
+      'CAST(0 AS FLOAT) VALOR;'
+    )
+    Params = <>
+    Left = 169
+    Top = 329
+    object cdsPadraoCODIGO: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object cdsPadraoNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 100
+    end
+    object cdsPadraoDATA: TZDateField
+      FieldKind = fkData
+      FieldName = 'DATA'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+    object cdsPadraoVALOR: TZDoubleField
+      FieldKind = fkData
+      FieldName = 'VALOR'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Precision = 23
+    end
   end
 end

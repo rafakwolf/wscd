@@ -8,7 +8,7 @@ uses
   LCLIntf, LCLType, LMessages, Messages, ExtCtrls, SysUtils, Variants, Classes,
   Graphics, Controls, Forms, Dialogs, Menus, ComCtrls, Buttons, sqldb, Types,
   ActnList, DB, ConstPadrao, ToolWin, uDatabaseUtils, crypto, StdCtrls, DBCtrls,
-  memds, IniFiles, ImgList, ZDataset, ImgUtils, FMTBcd;
+  memds, IniFiles, ImgList, ZDataset, ImgUtils, FMTBcd, uClasses;
 
 type
 
@@ -68,7 +68,7 @@ implementation
 
 uses
   unAcesso, Funcoes, uUtilFncs, VarGlobal,
-  uClasses, udmAcesso, baseRepo, unDmPrincipal;
+  udmAcesso, baseRepo, unDmPrincipal;
 
 {$R *.lfm}
 
@@ -165,7 +165,7 @@ begin
   else
     Empresa := TEmpresa.Create;
 
-  self.Caption := Application.Title + ' - ' + Sistema.VersaoApp + ' - ' + Empresa.Nome;
+  self.Caption := Application.Title + ' - ' + Empresa.Nome;
 end;
 
 procedure TMainForm.actEtiquetaExecute(Sender: TObject);
@@ -197,15 +197,24 @@ procedure TMainForm.FormCreate(Sender: TObject);
          var i: Integer;
          var res: TArray<TAction>;
      begin
+       WriteLn('  Buscando ações para categoria: "' + category + '"');
+       WriteLn('  Total de ações disponíveis: ' + IntToStr(ListaAcoes.ActionCount));
+       
        res := TArray<TAction>.Create;
        for i := 0 to ListaAcoes.ActionCount-1 do
        begin
+          WriteLn('    Ação ' + IntToStr(i) + ': ' + TAction(ListaAcoes.Actions[i]).Caption + 
+                  ' (Categoria: "' + TAction(ListaAcoes.Actions[i]).Category + '")');
+          
           if TAction(ListaAcoes.Actions[i]).Category = category then
           begin
              SetLength(res, Length(res) + 1);
              res[Length(res) - 1] := ListaAcoes.Actions[i] as TAction;
+             WriteLn('    ✓ Ação "' + TAction(ListaAcoes.Actions[i]).Caption + '" adicionada à categoria "' + category + '"');
           end;
        end;
+       
+       WriteLn('  Total de ações encontradas para categoria "' + category + '": ' + IntToStr(Length(res)));
        Result := res;
      end;
 
@@ -216,35 +225,144 @@ var i, j: Integer;
   actionsByCategory: TArray<TAction>;
   act: TAction;
 begin
-   categories := TStringList.Create;
-   categories.AddStrings(['Configuracao', 'Cadastros', 'Movimentos', 'Util', 'Ajuda']);
+     try
+        frmAcesso := TfrmAcesso.create(self);
+        if (frmAcesso.ShowModal <> mrOk) then
+        begin
+           Application.Terminate;
+        end;
+     finally
+       frmAcesso.free;
+     end;
 
-   menu := TMainMenu.Create(Self);
-   for i := 0 to categories.Count-1 do
-   begin
-     actionsByCategory := GetActionsByCategory(categories[i]);
-     subMenu := TMenuItem.Create(menu);
-     subMenu.Caption := categories[i];
-     for j := 0 to Length(actionsByCategory) - 1 do
+
+   try
+     WriteLn('=== Iniciando FormCreate ===');
+     
+     // Verificar se o DataModule principal foi criado
+     if not Assigned(DmPrincipal) then
      begin
-       item := TMenuItem.Create(subMenu);
-       act := actionsByCategory[j] as TAction;
-       if Assigned(act) then
+       ShowMessage('Erro: DataModule principal não foi criado!');
+       WriteLn('✗ DataModule não encontrado');
+       Exit;
+     end;
+     WriteLn('✓ DataModule encontrado');
+
+     // Verificar se consegue conectar ao banco
+     if not DmPrincipal.ConectaBanco then
+     begin
+       ShowMessage('Erro: Não foi possível conectar ao banco de dados!' + #13#10 +
+                  'Verifique se o MySQL está rodando e as configurações estão corretas.');
+       WriteLn('✗ Falha na conexão com banco');
+       Exit;
+     end;
+     WriteLn('✓ Conexão com banco estabelecida');
+
+     // Criar menu temporariamente comentado para identificar o problema
+     WriteLn('Criando menu...');
+     try
+       categories := TStringList.Create;
+       categories.AddStrings(['Configuracao', 'Cadastros', 'Movimentos', 'Util', 'Ajuda']);
+
+
+       menu := TMainMenu.Create(Self);
+
+       // IMPORTANTE: Atribuir o menu ao formulário para que ele apareça
+       Self.Menu := menu;
+       for i := 0 to categories.Count-1 do
        begin
-         item.Caption := TAction(actionsByCategory[j]).Caption;
-         item.Action := TAction(actionsByCategory[j]);
-         subMenu.Add(item);
+         actionsByCategory := GetActionsByCategory(categories[i]);
+
+
+         WriteLn('Categoria "' + categories[i] + '": ' + IntToStr(Length(actionsByCategory)) + ' ações encontradas');
+
+         if Length(actionsByCategory) > 0 then
+         begin
+           subMenu := TMenuItem.Create(menu);
+           subMenu.Caption := categories[i];
+           
+           for j := 0 to Length(actionsByCategory) - 1 do
+           begin
+             act := actionsByCategory[j] as TAction;
+             if Assigned(act) then
+             begin
+               item := TMenuItem.Create(subMenu);
+               item.Caption := act.Caption;
+               item.Action := act;
+               subMenu.Add(item);
+               WriteLn('  - Item adicionado: ' + act.Caption);
+             end;
+           end;
+           
+           menu.Items.Add(subMenu);
+           WriteLn('Submenu "' + categories[i] + '" criado com ' + IntToStr(subMenu.Count) + ' itens');
+         end
+         else
+         begin
+           WriteLn('  - Nenhuma ação encontrada para categoria "' + categories[i] + '"');
+         end;
+       end;
+
+       WriteLn('Menu criado com ' + IntToStr(menu.Items.Count) + ' submenus');
+       categories.Free;
+       WriteLn('✓ Menu criado com sucesso');
+     except
+       on E: Exception do
+       begin
+         WriteLn('✗ Erro ao criar menu: ' + E.Message);
+         ShowMessage('Erro ao criar menu: ' + E.Message);
        end;
      end;
-     menu.Items.Add(subMenu);
+
+     // Inicializar componentes do sistema com tratamento de erro
+     WriteLn('Inicializando sistema...');
+     try
+       SetSistema;
+       WriteLn('✓ Sistema inicializado');
+     except
+       on E: Exception do
+       begin
+         WriteLn('✗ Erro ao inicializar sistema: ' + E.Message);
+         ShowMessage('Erro ao inicializar sistema: ' + E.Message);
+       end;
+     end;
+
+     WriteLn('Inicializando empresa...');
+     try
+       SetEmpresa;
+       WriteLn('✓ Empresa inicializada');
+     except
+       on E: Exception do
+       begin
+         WriteLn('✗ Erro ao carregar dados da empresa: ' + E.Message);
+         ShowMessage('Erro ao carregar dados da empresa: ' + E.Message);
+       end;
+     end;
+
+     WriteLn('Inicializando configuração...');
+     try
+       SetConfiguracao;
+       WriteLn('✓ Configuração inicializada');
+     except
+       on E: Exception do
+       begin
+         WriteLn('✗ Erro ao carregar configurações: ' + E.Message);
+         ShowMessage('Erro ao carregar configurações: ' + E.Message);
+       end;
+     end;
+
+     WriteLn('=== FormCreate concluído com sucesso ===');
+
+   except
+     on E: Exception do
+     begin
+       WriteLn('✗ Erro crítico na inicialização: ' + E.Message);
+       ShowMessage('Erro crítico na inicialização do formulário: ' + E.Message);
+       // Tentar fechar o formulário se houver erro crítico
+       Close;
+     end;
    end;
-
-   categories.Free;
-
-   SetSistema;
-   SetEmpresa;
-   SetConfiguracao;
-end;
+  end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
@@ -257,5 +375,6 @@ begin
   if Assigned(Sistema) then
    FreeAndNil( Sistema );
 end;
+
 
 end.

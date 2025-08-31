@@ -1,0 +1,54 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TfrmRecibo','FORMDATA',[
+  'TPF0'#241#10'TfrmRecibo'#9'frmRecibo'#4'Left'#3'#'#1#3'Top'#3#181#0#7'Captio'
+  +'n'#6#9'frmRecibo'#9'Font.Name'#6#7'Verdana'#0#241#6'TPanel'#14'pnBotoesPadr'
+  +'ao'#8'TabOrder'#2#5#0#241#12'TSpeedButton'#7'btnNovo'#9'Font.Name'#6#7'Verd'
+  +'ana'#0#0#241#12'TSpeedButton'#10'btnAlterar'#9'Font.Name'#6#7'Verdana'#0#0
+  +#241#12'TSpeedButton'#10'btnExcluir'#9'Font.Name'#6#7'Verdana'#0#0#241#12'TS'
+  +'peedButton'#9'btnSalvar'#9'Font.Name'#6#7'Verdana'#0#0#241#12'TSpeedButton'
+  +#11'btnCancelar'#9'Font.Name'#6#7'Verdana'#0#0#241#12'TSpeedButton'#12'btnCo'
+  +'nsultar'#9'Font.Name'#6#7'Verdana'#0#0#241#12'TSpeedButton'#7'btnSair'#9'Fo'
+  +'nt.Name'#6#7'Verdana'#0#0#241#12'TSpeedButton'#8'btnPrint'#9'Font.Name'#6#7
+  +'Verdana'#0#0#0#242#2#2#6'TLabel'#11'lbRecebedor'#4'Left'#2#31#6'Height'#2#16
+  +#3'Top'#2']'#5'Width'#2'D'#7'Caption'#6#9'Recebedor'#11'ParentColor'#8#14'Pa'
+  +'rentShowHint'#8#8'ShowHint'#9#0#0#242#2#3#6'TLabel'#9'lbRefente'#4'Left'#2
+  +'$'#6'Height'#2#16#3'Top'#3#192#0#5'Width'#2'?'#7'Caption'#6#9'Referente'#11
+  +'ParentColor'#8#14'ParentShowHint'#8#8'ShowHint'#9#0#0#242#2#4#6'TLabel'#7'l'
+  +'bValor'#4'Left'#2'>'#6'Height'#2#16#3'Top'#3#221#0#5'Width'#2'!'#7'Caption'
+  +#6#5'Valor'#11'ParentColor'#8#14'ParentShowHint'#8#8'ShowHint'#9#0#0#242#2#5
+  +#6'TLabel'#14'lbValorExtenso'#4'Left'#2#12#6'Height'#2#16#3'Top'#3#1#1#5'Wid'
+  +'th'#2'Y'#7'Caption'#6#13'Valor extenso'#11'ParentColor'#8#14'ParentShowHint'
+  +#8#8'ShowHint'#9#0#0#242#2#6#7'TDBEdit'#6'dbData'#4'Left'#2'l'#6'Height'#2#21
+  +#3'Top'#2'.'#5'Width'#3#186#0#9'DataField'#6#4'DATA'#10'DataSource'#7#8'dsPa'
+  +'drao'#9'MaxLength'#2#0#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'#2#0#0
+  +#0#242#2#7#7'TDBEdit'#11'dbRecebedor'#4'Left'#2'l'#6'Height'#2#21#3'Top'#2'Y'
+  +#5'Width'#3#244#1#9'DataField'#6#9'RECEBEDOR'#10'DataSource'#7#8'dsPadrao'#9
+  +'MaxLength'#2#0#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'#2#1#0#0#242#2
+  +#8#7'TDBEdit'#7'dbValor'#4'Left'#2'l'#6'Height'#2#21#3'Top'#3#217#0#5'Width'
+  +#3#134#0#9'DataField'#6#5'VALOR'#10'DataSource'#7#8'dsPadrao'#9'MaxLength'#2
+  +#0#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'#2#3#6'OnExit'#7#11'dbValor'
+  +'Exit'#0#0#242#2#9#7'TDBMemo'#11'dbReferente'#4'Left'#2'l'#6'Height'#2'A'#3
+  +'Top'#3#143#0#5'Width'#3#244#1#9'DataField'#6#9'REFERENTE'#10'DataSource'#7#8
+  +'dsPadrao'#14'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'#2#2#0#0#242#2#10#7
+  +'TDBMemo'#14'dbValorExtenso'#4'Left'#2'l'#6'Height'#2'A'#3'Top'#3#255#0#5'Wi'
+  +'dth'#3#244#1#9'DataField'#6#12'VALOREXTENSO'#10'DataSource'#7#8'dsPadrao'#14
+  +'ParentShowHint'#8#8'ShowHint'#9#8'TabOrder'#2#4#0#0#243#2#11#11'TActionList'
+  +#19'actlNavigateActions'#4'Left'#3#184#2#3'Top'#2'('#0#241#7'TAction'#8'actP'
+  +'rint'#9'OnExecute'#7#15'actPrintExecute'#8'ShortCut'#2#0#0#0#0#243#2#12#11
+  +'TDataSource'#8'dsPadrao'#7'DataSet'#7#7'ZQuery1'#4'Left'#3'`'#2#3'Top'#2'.'
+  +#0#0#242#2#13#7'TZQuery'#7'ZQuery1'#10'Connection'#7#24'DmPrincipal.ZConnect'
+  +'ion1'#12'UpdateObject'#7#11'ZUpdateSQL1'#11'SQL.Strings'#1#6#20'select * fr'
+  +'om RECIBO'#0#6'Params'#14#0#4'Left'#3#192#1#3'Top'#2'0'#0#0#242#2#14#11'TZU'
+  +'pdateSQL'#11'ZUpdateSQL1'#17'DeleteSQL.Strings'#1#6#18'DELETE FROM RECIBO'#6
+  +#5'WHERE'#6'!  RECIBO.IDRECIBO = :OLD_IDRECIBO'#0#17'InsertSQL.Strings'#1#6
+  +#18'INSERT INTO RECIBO'#6'3  (DATA, RECEBEDOR, REFERENTE, VALOR, VALOREXTENS'
+  +'O)'#6#6'VALUES'#6'8  (:DATA, :RECEBEDOR, :REFERENTE, :VALOR, :VALOREXTENSO)'
+  +#0#17'ModifySQL.Strings'#1#6#17'UPDATE RECIBO SET'#6#15'  DATA = :DATA,'#6#25
+  +'  RECEBEDOR = :RECEBEDOR,'#6#25'  REFERENTE = :REFERENTE,'#6#17'  VALOR = :'
+  +'VALOR,'#6#30'  VALOREXTENSO = :VALOREXTENSO'#6#5'WHERE'#6'!  RECIBO.IDRECIB'
+  +'O = :OLD_IDRECIBO'#0#29'UseSequenceFieldForRefreshSQL'#8#4'Left'#3#16#2#3'T'
+  +'op'#2'('#9'ParamData'#14#1#4'Name'#6#4'DATA'#0#1#4'Name'#6#9'RECEBEDOR'#0#1
+  +#4'Name'#6#9'REFERENTE'#0#1#4'Name'#6#5'VALOR'#0#1#4'Name'#6#12'VALOREXTENSO'
+  +#0#1#4'Name'#6#12'OLD_IDRECIBO'#0#0#0#0#0
+]);

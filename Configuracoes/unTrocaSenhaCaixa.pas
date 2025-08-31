@@ -4,7 +4,7 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ZDataset, ZSqlUpdate, memds,  DB,
+  Dialogs, StdCtrls, Buttons, ZDataset, ZSqlUpdate, memds, DB,
   SqlDb, FMTBcd;
 
 type

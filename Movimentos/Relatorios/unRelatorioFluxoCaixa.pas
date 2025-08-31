@@ -68,10 +68,10 @@ begin
   
   with TfrmPrevRelCaixa.Create(Self) do
   try
-    with cdsPadrao do
+    with sqldPadrao do
     begin
       Close;
-      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL;
+      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL.Text;
       sqldPadrao.Params.ParamByName('PDATAINI').AsDate     := Trunc(cdsSelecaoDATAINI.AsDateTime);
       sqldPadrao.Params.ParamByName('PDATAFIM').AsDate     := Trunc(cdsSelecaoDATAFIM.AsDateTime);
       sqldPadrao.Params.ParamByName('PTIPOCONTA').AsString := tipoRel;

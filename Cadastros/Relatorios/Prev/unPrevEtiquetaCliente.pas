@@ -4,22 +4,22 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, memds,  SqlDb, RLReport, FMTBcd;
+  Dialogs, DB, memds,  SqlDb, RLReport, ZDataset, FMTBcd;
 
 type
+
+  { TfrmPrevEtiquetaCliente }
+
   TfrmPrevEtiquetaCliente = class(TForm)
     rpEtiqueta: TRLReport;
     Detail: TRLDetailGrid;
     dbDescricao: TRLDBMemo;
-    sqldEtq: TSQLQuery;
     dspEtq: TComponent;
-    cdsEtq: TMemDataSet;
     dsEtq: TDataSource;
-    sqldEtqTITULO: TStringField;
-    sqldEtqTEXTO: TStringField;
-    cdsEtqTITULO: TStringField;
-    cdsEtqTEXTO: TStringField;
     dbmTexto: TRLDBMemo;
+    sqldEtiq: TZQuery;
+    sqldEtiqTEXTO: TStringField;
+    sqldEtiqTITULO: TStringField;
     procedure dbDescricaoBeforePrint(Sender: TObject; var Text: String;
       var PrintIt: Boolean);
     procedure dbmTextoBeforePrint(Sender: TObject; var Text: String;

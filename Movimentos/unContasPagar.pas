@@ -6,7 +6,7 @@ uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,   Grids, DBGrids, StdCtrls,  Buttons, DBCtrls, DB, memds,
   Menus, SqlDb, ComCtrls,  ConstPadrao, ActnList,
-  FMTBcd, unSimplePadrao,  VarGlobal, LCLType;
+  FMTBcd, unSimplePadrao,  VarGlobal, LCLType, ZDataset;
 
 const
   SQLPadraoTela: string = 'select'+
@@ -14,7 +14,7 @@ const
                           ' cp.DATA,'+
                           ' cp.VENCIMENTO,'+
                           ' cp.FORNECEDOR,'+
-                          ' forn.FANTAZIA NOMEFORN,'+
+                          ' forn.FANTASIA NOMEFORN,'+
                           ' cp.DESCRICAO,'+
                           ' cp.DOCUMENTO,'+
                           ' cp.VALOR,'+
@@ -42,7 +42,7 @@ const
                           ' cp.DATA,'+
                           ' cp.VENCIMENTO,'+
                           ' cp.FORNECEDOR,'+
-                          ' forn.FANTAZIA NOMEFORN,'+
+                          ' forn.FANTASIA NOMEFORN,'+
                           ' cp.DESCRICAO,'+
                           ' cp.DOCUMENTO,'+
                           ' cp.VALOR,'+
@@ -71,7 +71,7 @@ const
                           ' cp.DATA,'+
                           ' cp.VENCIMENTO,'+
                           ' cp.FORNECEDOR,'+
-                          ' forn.FANTAZIA NOMEFORN,'+
+                          ' forn.FANTASIA NOMEFORN,'+
                           ' cp.DESCRICAO,'+
                           ' cp.DOCUMENTO,'+
                           ' cp.VALOR,'+
@@ -96,73 +96,17 @@ const
                           'order by cp.VENCIMENTO desc';
 
 type
+
+  { TfrmContasPagar }
+
   TfrmContasPagar = class(TfrmSimplePadrao)
     alContasPagar: TActionList;
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
     actPagar: TAction;
     actExcluir: TAction;
     actFechar: TAction;
     dsPadrao: TDataSource;
-    sqldForn: TSQLQuery;
-    dspForn: TComponent;
-    cdsForn: TMemDataSet;
-    cdsFornCODFORNECEDOR: TIntegerField;
-    cdsFornFANTAZIA: TStringField;
-    cdsFornCNPJ: TStringField;
-    cdsFornTELEFONE: TStringField;
     actBuscarForn: TAction;
     actPagas: TAction;
-    sqldDeleta: TSQLQuery;
-    sqldFornCODFORNECEDOR: TIntegerField;
-    sqldFornFANTAZIA: TStringField;
-    sqldFornCNPJ: TStringField;
-    sqldFornTELEFONE: TStringField;
-    sqldPadraoCODIGO: TIntegerField;
-    sqldPadraoDATA: TDateField;
-    sqldPadraoVENCIMENTO: TDateField;
-    sqldPadraoFORNECEDOR: TIntegerField;
-    sqldPadraoNOMEFORN: TStringField;
-    sqldPadraoDESCRICAO: TStringField;
-    sqldPadraoDOCUMENTO: TStringField;
-    sqldPadraoVALOR: TFMTBCDField;
-    sqldPadraoJURO: TFMTBCDField;
-    sqldPadraoPAGAR: TStringField;
-    sqldPadraoPAGA: TStringField;
-    sqldPadraoDATAPAGTO: TDateField;
-    sqldPadraoORIGEM: TIntegerField;
-    sqldPadraoCOMPRA: TIntegerField;
-    sqldPadraoCAPITALPAGO: TFMTBCDField;
-    sqldPadraoJUROPAGO: TFMTBCDField;
-    sqldPadraoDESCTO: TFMTBCDField;
-    sqldPadraoOBS: TMemoField;
-    sqldPadraoATRASO: TIntegerField;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoVENCIMENTO: TDateField;
-    cdsPadraoFORNECEDOR: TIntegerField;
-    cdsPadraoNOMEFORN: TStringField;
-    cdsPadraoDESCRICAO: TStringField;
-    cdsPadraoDOCUMENTO: TStringField;
-    cdsPadraoVALOR: TFMTBCDField;
-    cdsPadraoJURO: TFMTBCDField;
-    cdsPadraoPAGAR: TStringField;
-    cdsPadraoPAGA: TStringField;
-    cdsPadraoDATAPAGTO: TDateField;
-    cdsPadraoORIGEM: TIntegerField;
-    cdsPadraoCOMPRA: TIntegerField;
-    cdsPadraoCAPITALPAGO: TFMTBCDField;
-    cdsPadraoJUROPAGO: TFMTBCDField;
-    cdsPadraoDESCTO: TFMTBCDField;
-    cdsPadraoOBS: TMemoField;
-    cdsPadraoATRASO: TIntegerField;
-    sqldPadraoVALORJURO: TFMTBCDField;
-    sqldPadraoTOTAL: TFMTBCDField;
-    sqldPadraoTOTALPAGO: TFMTBCDField;
-    cdsPadraoVALORJURO: TFMTBCDField;
-    cdsPadraoTOTAL: TFMTBCDField;
-    cdsPadraoTOTALPAGO: TFMTBCDField;
     mnuCP: TMainMenu;
     miOpcoes: TMenuItem;
     miPagar: TMenuItem;
@@ -187,6 +131,9 @@ type
     grpForn: TGroupBox;
     dbeFornecedor: TDBEdit;
     Grade: TDBGrid;
+    sqldForn: TZQuery;
+    sqldPadrao: TZQuery;
+    sqldDeleta: TZQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure miReciboClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -200,7 +147,6 @@ type
     procedure miTodasContasClick(Sender: TObject);
     procedure dsPadraoStateChange(Sender: TObject);
     procedure GradeDblClick(Sender: TObject);
-    procedure GradeTitleClick(Column: TColumn);
     procedure miVencendohojeClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -238,10 +184,10 @@ begin
   if MsgSN('Exportar esta conta para recibo?')then
   begin
     TfrmRecibo.AddAndPrint(
-       cdsPadraoVENCIMENTO.AsDateTime,
-       cdsPadraoTOTAL.AsFloat,
-       cdsPadraoNOMEFORN.AsString,
-       cdsPadraoDESCRICAO.AsString
+       sqldPadrao.fieldByName('VENCIMENTO').AsDateTime,
+       sqldPadrao.fieldByName('TOTAL').AsFloat,
+       sqldPadrao.fieldByName('NOMEFORN').AsString,
+       sqldPadrao.fieldByName('DESCRICAO').AsString
     );
   end;  
 end;
@@ -258,23 +204,23 @@ end;
 
 procedure TfrmContasPagar.actExcluirExecute(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then Exit;
+  if sqldPadrao.IsEmpty then Exit;
   if MsgSN('Deseja realmente excluir ?')then
   begin
     with sqldDeleta do
     begin
       Close;
-      Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
+      Params.ParamByName('CODIGO').AsInteger := sqldPadrao.fieldByName('CODIGO').AsInteger;
       ExecSQL;
     end;
-    cdsPadrao.Close;
-    cdsPadrao.Open;
+    sqldPadrao.Close;
+    sqldPadrao.Open;
   end;
 end;
 
 procedure TfrmContasPagar.actPagarExecute(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then
+  if sqldPadrao.IsEmpty then
     Exit;
   ChamaForm('TfrmPagarMan', 'Pagamento', Self);
 end;
@@ -290,39 +236,40 @@ begin
   begin
     actBuscarForn.Enabled := True;
 
-    cdsForn.Close;
-    sqldForn.SQL.Clear; sqldForn.SQL.Text :=SQLPadraoForn;
-    cdsForn.Open;
+    sqldForn.Close;
+    sqldForn.SQL.Clear;
+    sqldForn.SQL.Text := SQLPadraoForn;
+    sqldForn.Open;
 
-//    if TfrmModeloConsulta.Execute('Fornecedor', cdsForn, FN_FORN, DL_FORN) then
-//    begin
-//      IdForn := cdsFornCODFORNECEDOR.AsInteger;
-//      if (IdForn > 0) then
-//      begin
-//        cdsPadrao.Close;
-//        cdsPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
-//        cdsPadrao.Open;
-//      end;
-//      if cdsPadrao.IsEmpty then
-//      begin
-//        MsgErro(UM_PESQUISAVAZIO, 'Contas a Pagar');
-//        //PostMessage(Handle, WM_CLOSE, 0, 0);
-//      end;
-//    end;
+    if TfrmModeloConsulta.Execute('Fornecedor', 'FORNECEDORES', FN_FORN, DL_FORN, self) > 0 then
+    begin
+      IdForn := sqldForn.fieldByName('CODFORNECEDOR').AsInteger;
+      if (IdForn > 0) then
+      begin
+        sqldPadrao.Close;
+        sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
+        sqldPadrao.Open;
+      end;
+      if sqldPadrao.IsEmpty then
+      begin
+        MsgErro(UM_PESQUISAVAZIO, 'Contas a Pagar');
+        self.close;
+      end;
+    end;
   end
   else if TipoChamada = 1 then
   begin
     actBuscarForn.Enabled := False;
     if (IdForn > 0) then
     begin
-      cdsPadrao.Close;
+      sqldPadrao.Close;
       sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
-      cdsPadrao.Open;
+      sqldPadrao.Open;
     end;
-    if cdsPadrao.IsEmpty then
+    if sqldPadrao.IsEmpty then
     begin
       MsgErro(UM_PESQUISAVAZIO, 'Contas a Pagar');
-      //PostMessage(Handle, WM_CLOSE, 0, 0);
+      self.close;
     end;
   end;
 end;
@@ -342,33 +289,35 @@ end;
 
 procedure TfrmContasPagar.ContaModificada;
 begin
-  cdsPadrao.Close;
+  sqldPadrao.Close;
   sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
-  cdsPadrao.Open;
+  sqldPadrao.Open;
   dsPadrao.OnStateChange(dsPadrao);
 end;
 
 procedure TfrmContasPagar.miContasvencidasClick(Sender: TObject);
 begin
-  cdsPadrao.Close;
-  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLVencidas;
+  sqldPadrao.Close;
+  sqldPadrao.SQL.Clear;
+  sqldPadrao.SQL.Text :=SQLVencidas;
   sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
-  cdsPadrao.Open;
+  sqldPadrao.Open;
 end;
 
 procedure TfrmContasPagar.miTodasContasClick(Sender: TObject);
 begin
-  cdsPadrao.Close;
-  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLPadraoTela;
+  sqldPadrao.Close;
+  sqldPadrao.SQL.Clear;
+  sqldPadrao.SQL.Text :=SQLPadraoTela;
   sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
-  cdsPadrao.Open;
+  sqldPadrao.Open;
 end;
 
 function TfrmContasPagar.ContasAVencer: Currency;
 begin
-  with TSQLQuery.Create(nil) do
+  with TZQuery.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    Connection := GetZConnection;
     SQL.text :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO > CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
@@ -382,9 +331,9 @@ end;
 
 function TfrmContasPagar.ContasVencendoHoje: Currency;
 begin
-  with TSQLQuery.Create(nil) do
+  with TZQuery.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    Connection := GetZConnection;
     SQl.text :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO = CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
@@ -398,9 +347,9 @@ end;
 
 function TfrmContasPagar.ContasVencidas: Currency;
 begin
-  with TSQLQuery.Create(nil) do
+  with TZQuery.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    Connection := GetZConnection;
     SQL.Text :=
       'select sum(TOTAL) as SOMA from CONTASPAGAR where (VENCIMENTO < CURRENT_DATE) '+
       'and (PAGA = '''+'N'+''') and FORNECEDOR = :FORN';
@@ -426,28 +375,24 @@ end;
 
 procedure TfrmContasPagar.GradeDblClick(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then Exit;
-  if not (cdsPadrao.State in dsEditModes) then
-    cdsPadrao.Edit;
-  if cdsPadraoPAGAR.AsString = 'N' then
-    cdsPadraoPAGAR.AsString := 'S'
+  if sqldPadrao.IsEmpty then Exit;
+  if not (sqldPadrao.State in dsEditModes) then
+    sqldPadrao.Edit;
+  if sqldPadrao.fieldByName('PAGAR').AsString = 'N' then
+    sqldPadrao.fieldByName('PAGAR').AsString := 'S'
   else
-    cdsPadraoPAGAR.AsString := 'N';
-  ////cdsPadrao.ApplyUpdates(0);
-  cdsPadrao.Next;
-end;
-
-procedure TfrmContasPagar.GradeTitleClick(Column: TColumn);
-begin
-  //OrdenaColunasGrid(Grade, Column, cdsPadrao);
+    sqldPadrao.fieldByName('PAGAR').AsString := 'N';
+  sqldPadrao.ApplyUpdates;
+  sqldPadrao.Next;
 end;
 
 procedure TfrmContasPagar.miVencendohojeClick(Sender: TObject);
 begin
-  cdsPadrao.Close;
-  sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQLHoje;
+  sqldPadrao.Close;
+  sqldPadrao.SQL.Clear;
+  sqldPadrao.SQL.Text :=SQLHoje;
   sqldPadrao.Params.ParamByName('PFORN').AsInteger := IdForn;
-  cdsPadrao.Open;
+  sqldPadrao.Open;
 end;
 
 procedure TfrmContasPagar.FormKeyDown(Sender: TObject; var Key: Word;

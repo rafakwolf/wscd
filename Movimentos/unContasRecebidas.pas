@@ -3,75 +3,48 @@ unit unContasRecebidas;
 interface
 
 uses
-  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,   StdCtrls, Buttons,  DBCtrls, DB, SqlDb, varglobal,
-  memds, ComCtrls, Menus, Grids, DBGrids,
-   unContasReceber, FMTBcd, unSimplePadrao, LCLType;
+  Messages, ExtCtrls, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, DBCtrls, DB, SqlDb, VarGlobal, memds, ComCtrls,
+  Menus, Grids, DBGrids, ZDataset, ZAbstractRODataset, unDmPrincipal,
+  unContasReceber, FMTBcd, unSimplePadrao, LCLType;
+
+const DefaultQuery = 'select * from CONTASRECEGER';
 
 type
+
+  { TfrmContasRecebidas }
+
   TfrmContasRecebidas = class(TfrmSimplePadrao)
-    cdsPadrao: TMemDataSet;
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
     dsPadrao: TDataSource;
-    sqldConta: TSQLQuery;
     dspConta: TComponent;
-    cdsConta: TMemDataSet;
-    cdsContaORIGEM: TIntegerField;
-    sqldContaCODIGO: TIntegerField;
-    sqldContaORIGEM: TIntegerField;
-    cdsContaCODIGO: TIntegerField;
-    sqldDeletaConta: TSQLQuery;
-    sqldPadraoCODIGO: TIntegerField;
-    sqldPadraoDATA: TDateField;
-    sqldPadraoVENCIMENTO: TDateField;
-    sqldPadraoCLIENTE: TIntegerField;
-    sqldPadraoNOMECLIENTE: TStringField;
-    sqldPadraoDESCRICAO: TStringField;
-    sqldPadraoDOCUMENTO: TStringField;
-    sqldPadraoVALOR: TFMTBCDField;
-    sqldPadraoJURO: TFMTBCDField;
-    sqldPadraoRECEBER: TStringField;
-    sqldPadraoRECDA: TStringField;
-    sqldPadraoDATARECTO: TDateField;
-    sqldPadraoORIGEM: TIntegerField;
-    sqldPadraoVENDA: TIntegerField;
-    sqldPadraoCAPITALRECDO: TFMTBCDField;
-    sqldPadraoJURORECDO: TFMTBCDField;
-    sqldPadraoDESCTO: TFMTBCDField;
-    sqldPadraoOBS: TMemoField;
-    sqldPadraoATRASO: TIntegerField;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoVENCIMENTO: TDateField;
-    cdsPadraoCLIENTE: TIntegerField;
-    cdsPadraoNOMECLIENTE: TStringField;
-    cdsPadraoDESCRICAO: TStringField;
-    cdsPadraoDOCUMENTO: TStringField;
-    cdsPadraoVALOR: TFMTBCDField;
-    cdsPadraoJURO: TFMTBCDField;
-    cdsPadraoRECEBER: TStringField;
-    cdsPadraoRECDA: TStringField;
-    cdsPadraoDATARECTO: TDateField;
-    cdsPadraoORIGEM: TIntegerField;
-    cdsPadraoVENDA: TIntegerField;
-    cdsPadraoCAPITALRECDO: TFMTBCDField;
-    cdsPadraoJURORECDO: TFMTBCDField;
-    cdsPadraoDESCTO: TFMTBCDField;
-    cdsPadraoOBS: TMemoField;
-    cdsPadraoATRASO: TIntegerField;
-    sqldPadraoVALORJURO: TFMTBCDField;
-    sqldPadraoTOTAL: TFMTBCDField;
-    sqldPadraoTOTALRECDO: TFMTBCDField;
-    cdsPadraoVALORJURO: TFMTBCDField;
-    cdsPadraoTOTAL: TFMTBCDField;
-    cdsPadraoTOTALRECDO: TFMTBCDField;
     mmContasRecebidas: TMainMenu;
     miOpcoes: TMenuItem;
     miEstornar: TMenuItem;
     miAtualizar: TMenuItem;
     N1: TMenuItem;
     miFechar: TMenuItem;
+    sqldPadraoATRASO: TZIntegerField;
+    sqldPadraoCAPITALRECDO: TZBCDField;
+    sqldPadraoCLIENTE: TZIntegerField;
+    sqldPadraoCODIGO: TZIntegerField;
+    sqldPadraoDATA: TZDateField;
+    sqldPadraoDATARECTO: TZDateField;
+    sqldPadraoDESCRICAO: TZRawStringField;
+    sqldPadraoDESCTO: TZBCDField;
+    sqldPadraoDOCUMENTO: TZRawStringField;
+    sqldPadraoIDCONTA: TZIntegerField;
+    sqldPadraoJURO: TZBCDField;
+    sqldPadraoJURORECDO: TZBCDField;
+    sqldPadraoOBS: TZRawStringField;
+    sqldPadraoORIGEM: TZIntegerField;
+    sqldPadraoRECDA: TZRawStringField;
+    sqldPadraoRECEBER: TZRawStringField;
+    sqldPadraoTOTAL: TZBCDField;
+    sqldPadraoTOTALRECDO: TZBCDField;
+    sqldPadraoVALOR: TZBCDField;
+    sqldPadraoVALORJURO: TZBCDField;
+    sqldPadraoVENCIMENTO: TZDateField;
+    sqldPadraoVENDA: TZIntegerField;
     Stb: TStatusBar;
     pnBotoes: TPanel;
     btnAtualizar: TSpeedButton;
@@ -82,6 +55,9 @@ type
     grpFiltro: TGroupBox;
     lbFiltroUsado: TLabel;
     Grade: TDBGrid;
+    sqldPadrao: TZQuery;
+    sqldConta: TZQuery;
+    sqldDeletaConta: TZQuery;
     procedure btnFecharClick(Sender: TObject);
     procedure btnAtualizarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -90,7 +66,6 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure GradeDblClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure GradeTitleClick(Column: TColumn);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
@@ -106,7 +81,7 @@ var
 
 implementation
 
-uses Funcoes, ConstPadrao, uDatabaseutils;
+uses Funcoes, ConstPadrao, uDatabaseUtils;
 
 {$R *.dfm}
 
@@ -117,9 +92,9 @@ end;
 
 procedure TfrmContasRecebidas.btnAtualizarClick(Sender: TObject);
 begin
-  cdsPadrao.Close;
+  sqldPadrao.Close;
   sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
-  cdsPadrao.Open;
+  sqldPadrao.Open;
 end;
 
 procedure TfrmContasRecebidas.FormShow(Sender: TObject);
@@ -134,7 +109,7 @@ begin
 
   case OpcaoFiltro of
    -1: begin
-     //PostMessage(Handle, WM_CLOSE, 0, 0);
+     self.close;
      Exit;
    end;
    0: begin
@@ -142,28 +117,29 @@ begin
         (ClearMask(DataI) <> '') and
         (ClearMask(DataF) <> '') then
      begin
-       cdsPadrao.Close;
-       //sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
-       //  ' and CLIENTE = :PCLIENTE' +
-       //  ' and DATARECTO between :DATAI and :DATAF';
+       sqldPadrao.Close;
+       sqldPadrao.SQL.Clear;
+       sqldPadrao.SQL.Text := DefaultQuery +
+         ' and CLIENTE = :PCLIENTE' +
+         ' and DATARECTO between :DATAI and :DATAF';
        sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
        sqldPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
        sqldPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
-       cdsPadrao.Open;
-       lbFiltroUsado.Caption := 'Per�odo de '+DataI+' at� '+DataF;
+       sqldPadrao.Open;
+       lbFiltroUsado.Caption := 'Período de '+DataI+' até '+DataF;
      end;
    end;
    1: begin
-     cdsPadrao.Close;
+     sqldPadrao.Close;
      sqldPadrao.Params.ParamByName('PCLIENTE').AsInteger := FCliente;
-     cdsPadrao.Open;
+     sqldPadrao.Open;
      lbFiltrousado.Caption := 'Todas as contas recebidas';
    end;
   end;
-  if cdsPadrao.IsEmpty then
+  if sqldPadrao.IsEmpty then
   begin
     MsgErro(UM_PESQUISAVAZIO);
-    //PostMessage(Handle, WM_CLOSE, 0, 0);
+    self.Close;
     Exit;
   end;
   SomaContasRecebidas;
@@ -173,9 +149,9 @@ procedure TfrmContasRecebidas.btnEstornarClick(Sender: TObject);
 
   function ContasMarcadas: Integer;
   begin
-    with TSQLQuery.Create(nil) do
+    with TZQuery.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      Connection := GetZConnection;
       SQL.Clear; SQL.Text :='select count(1) as CONT from CONTASRECEBER'+
         ' where RECEBER = '+QuotedStr('S')+
         ' and RECDA = '+QuotedStr('S')+
@@ -194,60 +170,60 @@ begin
     Exit;
   end;
 
-  if Locate(cdsPadrao, cdsPadraoRECEBER, 'S') then
+  if Locate(sqldPadrao, sqldPadraoRECEBER, 'S') then
   begin
     if MsgSN('Deseja estornar esta conta?') then
       Estornar;
   end
   else
-    MsgAviso('N�o h� conta marcada para estorno.'+#13#10+
-      'Para marcar/desmarcar d� um duplo clique sobre a conta desejada.');
+    MsgAviso('Não há conta marcada para estorno.'+#13#10+
+      'Para marcar/desmarcar, duplo clique sobre a conta desejada.');
 end;
 
 procedure TfrmContasRecebidas.Estornar;
 begin
   try
-    if cdsPadraoORIGEM.IsNull then
+    if sqldPadraoORIGEM.IsNull then
     begin
-      cdsPadrao.Edit;
-      cdsPadraoRECDA.AsString := 'N';
-      cdsPadraoRECEBER.AsString := 'N';
-      cdsPadraoDATARECTO.Clear;
-      cdsPadraoCAPITALRECDO.AsFloat := 0;
-      cdsPadraoJURORECDO.AsFloat := 0;
-      cdsPadraoDESCTO.AsFloat := 0;
-      ////cdsPadrao.ApplyUpdates(0);
+      sqldPadrao.Edit;
+      sqldPadraoRECDA.AsString := 'N';
+      sqldPadraoRECEBER.AsString := 'N';
+      sqldPadraoDATARECTO.Clear;
+      sqldPadraoCAPITALRECDO.AsFloat := 0;
+      sqldPadraoJURORECDO.AsFloat := 0;
+      sqldPadraoDESCTO.AsFloat := 0;
+      sqldPadrao.ApplyUpdates;
       { delete conta restante }
       sqldDeletaConta.Close;
-      sqldDeletaConta.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
+      sqldDeletaConta.Params.ParamByName('CODIGO').AsInteger := sqldPadraoCODIGO.AsInteger;
       sqldDeletaConta.ExecSQL;
     end
     else
     begin
-      cdsConta.Open;
-      if cdsConta.Locate('ORIGEM', cdsPadraoCODIGO.AsInteger, []) then
+      sqldConta.Open;
+      if sqldConta.Locate('ORIGEM', sqldPadraoCODIGO.AsInteger, []) then
       begin
-        MsgAviso('O recebimento desta conta gerou a conta restante de c�digo = ' +
-          IntToStr(cdsContaCODIGO.AsInteger) + '.' + #13#10 +
+        MsgAviso('O recebimento desta conta gerou a conta restante de código = ' +
+          IntToStr(sqldConta.fieldByName('CODIGO').AsInteger) + '.' + #13#10 +
           'Exclua a conta restante para prosseguir.');
         Abort;
       end
       else
       begin
-        cdsPadrao.Edit;
-        cdsPadraoRECDA.AsString := 'N';
-        cdsPadraoRECEBER.AsString := 'N';
-        cdsPadraoDATARECTO.Clear;
-        cdsPadraoCAPITALRECDO.AsFloat := 0;
-        cdsPadraoJURORECDO.AsFloat := 0;
-        cdsPadraoDESCTO.AsFloat := 0;
-        ////cdsPadrao.ApplyUpdates(0);
+        sqldPadrao.Edit;
+        sqldPadraoRECDA.AsString := 'N';
+        sqldPadraoRECEBER.AsString := 'N';
+        sqldPadraoDATARECTO.Clear;
+        sqldPadraoCAPITALRECDO.AsFloat := 0;
+        sqldPadraoJURORECDO.AsFloat := 0;
+        sqldPadraoDESCTO.AsFloat := 0;
+        sqldPadrao.ApplyUpdates;
       end;
     end;
   finally
     btnAtualizar.Click;
     PostMessageAllForms(WM_CONTA_RECEBER_RECEBIDA);
-    cdsConta.Close;
+    sqldConta.Close;
   end;
   SomaContasRecebidas;
 end;
@@ -263,15 +239,15 @@ end;
 procedure TfrmContasRecebidas.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsPadrao.Close;
+  sqldPadrao.Close;
   Action := caFree;
 end;
 
 procedure TfrmContasRecebidas.SomaContasRecebidas;
 begin
-  with TSQLQuery.Create(nil) do
+  with TZQuery.Create(nil) do
   try
-    SQLConnection := GetConnection;
+    Connection := GetZConnection;
     SQL.Clear; SQL.Text :='select sum(TOTAL) as SOMA from CONTASRECEBER '+
       'where RECDA = '+QuotedStr('S')+' and CLIENTE = :PCLIENTE';
     Params.ParamByName('PCLIENTE').AsInteger := FCliente; 
@@ -285,14 +261,14 @@ end;
 
 procedure TfrmContasRecebidas.GradeDblClick(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then Exit;
-  cdsPadrao.Edit;
-  if (cdsPadraoRECEBER.AsString = 'N') then
-    cdsPadraoRECEBER.AsString := 'S'
+  if sqldPadrao.IsEmpty then Exit;
+  sqldPadrao.Edit;
+  if (sqldPadraoRECEBER.AsString = 'N') then
+    sqldPadraoRECEBER.AsString := 'S'
   else
-    cdsPadraoRECEBER.AsString := 'N';
-  //cdsPadrao.ApplyUpdates(0);
-  cdsPadrao.Next;
+    sqldPadraoRECEBER.AsString := 'N';
+  sqldPadrao.ApplyUpdates;
+  sqldPadrao.Next;
 end;
 
 procedure TfrmContasRecebidas.FormResize(Sender: TObject);
@@ -302,11 +278,6 @@ begin
   Size := Trunc(Self.Width div 2);
   Stb.Panels[0].Width := Size;
   Stb.Panels[1].Width := Size;
-end;
-
-procedure TfrmContasRecebidas.GradeTitleClick(Column: TColumn);
-begin
-  //OrdenaColunasGrid(Grade, Column, cdsPadrao);
 end;
 
 procedure TfrmContasRecebidas.FormKeyDown(Sender: TObject; var Key: Word;

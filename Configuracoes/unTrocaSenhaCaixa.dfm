@@ -1,7 +1,7 @@
 object frmSenhaCaixa: TfrmSenhaCaixa
-  Left = 276
+  Left = 479
   Height = 214
-  Top = 167
+  Top = 246
   Width = 330
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -14,11 +14,10 @@ object frmSenhaCaixa: TfrmSenhaCaixa
   OnClose = FormClose
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  LCLVersion = '2.0.12.0'
   object btnOk: TBitBtn
-    Left = 34
+    Left = 24
     Height = 37
-    Top = 106
+    Top = 112
     Width = 81
     Caption = '&Ok'
     ModalResult = 1
@@ -26,9 +25,9 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     TabOrder = 2
   end
   object btnCancelar: TBitBtn
-    Left = 122
+    Left = 112
     Height = 37
-    Top = 106
+    Top = 112
     Width = 81
     Caption = '&Cancelar'
     ModalResult = 2
@@ -36,18 +35,18 @@ object frmSenhaCaixa: TfrmSenhaCaixa
   end
   object edAtual: TEdit
     Left = 16
-    Height = 33
+    Height = 21
     Top = 24
-    Width = 145
+    Width = 169
     EchoMode = emPassword
     PasswordChar = '*'
     TabOrder = 0
   end
   object edNova: TEdit
     Left = 16
-    Height = 33
+    Height = 21
     Top = 64
-    Width = 145
+    Width = 169
     EchoMode = emPassword
     PasswordChar = '*'
     TabOrder = 1
@@ -132,184 +131,112 @@ object frmSenhaCaixa: TfrmSenhaCaixa
     Top = 112
     ParamData = <    
       item
-        DataType = ftUnknown
         Name = 'NOMECOMPUTADOR'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'BARRAFERRAMENTA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'HINTBALAO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'GRAVAERRO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'BACKUP'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'LOG'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'IMPRESSORA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'RESOLUCAO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'LETRACODIGOBARRA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'EXIBEDICADIA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'AVISACLIENTEATRASO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'DIREXPORTPADRAO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'SENHAESTOQUE'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'USARSENHAESTOQUE'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'ESTOQUEPADRAO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'BORDAETQPROD'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'ALIQUOTAPADRAO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'DESCPADRAOPROD'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'CAIXAPADRAO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'SENHACAIXA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'PRODSEMESTOQORCAM'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'ORCAMNAOCONC'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'EDITORCAMCONC'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'COMPRANAOCONC'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'EDITCOMPRACONC'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'PRODSEMESTOQVENDA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'VENDANAOCONC'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'EDITVENDACONC'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'BORDAETQCLIENTE'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'MOSTRARSALDOCAIXA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'CAIXA90DIAS'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'RELZEBRADO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'VERIFICA_UPD'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'CONTACHEQUE'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'INFOAVISOS'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'OLD_IDCONFIGURACAO'
-        ParamType = ptUnknown
       end>
   end
 end

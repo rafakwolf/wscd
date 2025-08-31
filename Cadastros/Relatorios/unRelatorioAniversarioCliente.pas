@@ -99,7 +99,7 @@ begin
     begin
       with TfrmPrevEnvelopeCliente.Create(Self) do
       try
-        with cdsPadrao do
+        with sqldPadrao do
         begin
           Close;
           if rgDatas.ItemIndex = 0 then  // dis mes ano
@@ -147,7 +147,7 @@ begin
     begin
       with TfrmPrevClientesAniver.Create(Self) do
       try
-        with cdsPadrao do
+        with sqldPadrao do
         begin
           Close;
           sqldPadrao.Params.ParamByName('PTIPO').AsInteger   := rgDatas.ItemIndex;
@@ -161,7 +161,7 @@ begin
         end;
         PrintIfNotEmptyRL(rrPadrao);
       finally
-        cdsPadrao.Close;
+        sqldPadrao.Close;
         Free;
       end;
     end;

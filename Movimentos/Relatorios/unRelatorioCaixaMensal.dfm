@@ -18,20 +18,20 @@ inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
     Height = 33
     Top = 80
     Width = 41
-    OnExit = edtMesExit
     ParentShowHint = False
     ShowHint = True
     TabOrder = 1
+    OnExit = edtMesExit
   end
   object edtAno: TEdit[2]
     Left = 80
     Height = 33
     Top = 80
     Width = 65
-    OnExit = edtAnoExit
     ParentShowHint = False
     ShowHint = True
     TabOrder = 2
+    OnExit = edtAnoExit
   end
   object rgOrd: TRadioGroup[3]
     Left = 8

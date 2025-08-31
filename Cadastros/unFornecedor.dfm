@@ -1,7 +1,7 @@
 inherited frmFornecedor: TfrmFornecedor
-  Left = 262
+  Left = 379
   Height = 480
-  Top = 156
+  Top = 201
   Width = 796
   Caption = 'frmFornecedor'
   ClientHeight = 480
@@ -30,12 +30,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbdDataCadastro: TDBEdit[3]
     Left = 280
-    Height = 33
+    Height = 21
     Top = 196
     Width = 129
     DataField = 'DATACAD'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -43,12 +42,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeTelefoneVendedor: TDBEdit[4]
     Left = 544
-    Height = 33
+    Height = 21
     Top = 264
     Width = 153
     DataField = 'TELEFONEVENDEDOR'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -56,7 +54,7 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeEmailVendedor: TDBEdit[5]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 301
     Width = 361
     DataField = 'EMAILVENDEDOR'
@@ -69,12 +67,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeNomeVendedor: TDBEdit[6]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 264
     Width = 529
     DataField = 'VENDEDOR'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -82,12 +79,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeFax: TDBEdit[7]
     Left = 144
-    Height = 33
+    Height = 21
     Top = 196
     Width = 129
     DataField = 'FAX'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -95,12 +91,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeTelefone: TDBEdit[8]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 196
     Width = 129
     DataField = 'TELEFONE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -108,12 +103,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeInscEstadual: TDBEdit[9]
     Left = 176
-    Height = 33
+    Height = 21
     Top = 108
     Width = 129
     DataField = 'IE'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -121,12 +115,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeCnpj: TDBEdit[10]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 108
     Width = 161
     DataField = 'CNPJ'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -134,12 +127,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeCep: TDBEdit[11]
     Left = 216
-    Height = 33
+    Height = 21
     Top = 152
     Width = 97
     DataField = 'CEP'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -147,12 +139,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeBairro: TDBEdit[12]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 152
     Width = 201
     DataField = 'BAIRRO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -160,12 +151,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeEstado: TDBEdit[13]
     Left = 648
-    Height = 33
+    Height = 21
     Top = 152
     Width = 49
     DataField = 'UF'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -173,12 +163,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeEndereco: TDBEdit[14]
     Left = 312
-    Height = 33
+    Height = 21
     Top = 108
     Width = 385
     DataField = 'ENDERECO'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -186,12 +175,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeNomeRzSocial: TDBEdit[15]
     Left = 8
-    Height = 33
+    Height = 21
     Top = 64
     Width = 305
     DataField = 'RAZAOSOCIAL'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -199,12 +187,11 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeNomeFantazia: TDBEdit[16]
     Left = 320
-    Height = 33
+    Height = 21
     Top = 64
     Width = 377
-    DataField = 'FANTAZIA'
+    DataField = 'FANTASIA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -212,7 +199,7 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object dbeEmail: TDBEdit[17]
     Left = 416
-    Height = 33
+    Height = 21
     Top = 196
     Width = 281
     DataField = 'EMAIL'
@@ -236,7 +223,7 @@ inherited frmFornecedor: TfrmFornecedor
   end
   object DBLookupComboBox1: TDBLookupComboBox[19]
     Left = 320
-    Height = 33
+    Height = 20
     Top = 152
     Width = 320
     DataField = 'CIDADE'
@@ -262,165 +249,25 @@ inherited frmFornecedor: TfrmFornecedor
     Left = 704
     Top = 24
   end
-  object ZUpdateSQL1: TZUpdateSQL[22]
-    DeleteSQL.Strings = (
-      'DELETE FROM FORNECEDORES'
-      'WHERE'
-      '  FORNECEDORES.CODFORNECEDOR = :OLD_CODFORNECEDOR'
-    )
-    InsertSQL.Strings = (
-      'INSERT INTO FORNECEDORES'
-      '  (FANTAZIA, RAZAOSOCIAL, DATACAD, ENDERECO, CIDADE, BAIRRO, CNPJ, IE, '
-      '   CEP, TELEFONE, FAX, EMAIL, UF, OBS, VENDEDOR, TELEFONEVENDEDOR, EMAILVENDEDOR, '
-      '   TIPO)'
-      'VALUES'
-      '  (:FANTAZIA, :RAZAOSOCIAL, :DATACAD, :ENDERECO, :CIDADE, :BAIRRO, :CNPJ, '
-      '   :IE, :CEP, :TELEFONE, :FAX, :EMAIL, :UF, :OBS, :VENDEDOR, :TELEFONEVENDEDOR, '
-      '   :EMAILVENDEDOR, :TIPO)'
-    )
-    ModifySQL.Strings = (
-      'UPDATE FORNECEDORES SET'
-      '  FANTAZIA = :FANTAZIA,'
-      '  RAZAOSOCIAL = :RAZAOSOCIAL,'
-      '  DATACAD = :DATACAD,'
-      '  ENDERECO = :ENDERECO,'
-      '  CIDADE = :CIDADE,'
-      '  BAIRRO = :BAIRRO,'
-      '  CNPJ = :CNPJ,'
-      '  IE = :IE,'
-      '  CEP = :CEP,'
-      '  TELEFONE = :TELEFONE,'
-      '  FAX = :FAX,'
-      '  EMAIL = :EMAIL,'
-      '  UF = :UF,'
-      '  OBS = :OBS,'
-      '  VENDEDOR = :VENDEDOR,'
-      '  TELEFONEVENDEDOR = :TELEFONEVENDEDOR,'
-      '  EMAILVENDEDOR = :EMAILVENDEDOR,'
-      '  TIPO = :TIPO'
-      'WHERE'
-      '  FORNECEDORES.CODFORNECEDOR = :OLD_CODFORNECEDOR'
-    )
-    UseSequenceFieldForRefreshSQL = False
-    Left = 581
-    Top = 29
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'FANTAZIA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'RAZAOSOCIAL'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'DATACAD'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ENDERECO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CIDADE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'BAIRRO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CNPJ'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'IE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CEP'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'TELEFONE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'FAX'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'EMAIL'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'UF'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'OBS'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'VENDEDOR'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'TELEFONEVENDEDOR'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'EMAILVENDEDOR'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'TIPO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'OLD_CODFORNECEDOR'
-        ParamType = ptUnknown
-      end>
-  end
-  object ZQuery1: TZQuery[23]
+  object ZQuery1: TZQuery[22]
     Connection = DmPrincipal.ZConnection1
-    UpdateObject = ZUpdateSQL1
     SQL.Strings = (
       'select * from FORNECEDORES'
     )
     Params = <>
-    Left = 485
-    Top = 48
+    Left = 592
+    Top = 24
   end
-  object ZReadOnlyQuery1: TZReadOnlyQuery[24]
+  object ZReadOnlyQuery1: TZReadOnlyQuery[23]
     Connection = DmPrincipal.ZConnection1
     SQL.Strings = (
       'SELECT * FROM CIDADES'
     )
     Params = <>
     Left = 632
-    Top = 80
+    Top = 96
   end
-  object dsPadrao1: TDataSource[25]
+  object dsPadrao1: TDataSource[24]
     AutoEdit = False
     DataSet = ZReadOnlyQuery1
     Left = 720

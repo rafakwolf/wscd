@@ -32,9 +32,9 @@ inherited frmRecibo: TfrmRecibo
   end
   object lbRecebedor: TLabel[2]
     Left = 31
-    Height = 15
+    Height = 16
     Top = 93
-    Width = 69
+    Width = 68
     Caption = 'Recebedor'
     ParentColor = False
     ParentShowHint = False
@@ -42,9 +42,9 @@ inherited frmRecibo: TfrmRecibo
   end
   object lbRefente: TLabel[3]
     Left = 36
-    Height = 15
+    Height = 16
     Top = 192
-    Width = 64
+    Width = 63
     Caption = 'Referente'
     ParentColor = False
     ParentShowHint = False
@@ -52,7 +52,7 @@ inherited frmRecibo: TfrmRecibo
   end
   object lbValor: TLabel[4]
     Left = 62
-    Height = 15
+    Height = 16
     Top = 221
     Width = 33
     Caption = 'Valor'
@@ -62,7 +62,7 @@ inherited frmRecibo: TfrmRecibo
   end
   object lbValorExtenso: TLabel[5]
     Left = 12
-    Height = 15
+    Height = 16
     Top = 257
     Width = 89
     Caption = 'Valor extenso'
@@ -72,12 +72,11 @@ inherited frmRecibo: TfrmRecibo
   end
   object dbData: TDBEdit[6]
     Left = 108
-    Height = 33
+    Height = 21
     Top = 46
     Width = 186
     DataField = 'DATA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -85,12 +84,11 @@ inherited frmRecibo: TfrmRecibo
   end
   object dbRecebedor: TDBEdit[7]
     Left = 108
-    Height = 33
+    Height = 21
     Top = 89
     Width = 500
     DataField = 'RECEBEDOR'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -98,12 +96,11 @@ inherited frmRecibo: TfrmRecibo
   end
   object dbValor: TDBEdit[8]
     Left = 108
-    Height = 33
+    Height = 21
     Top = 217
     Width = 134
     DataField = 'VALOR'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -133,8 +130,8 @@ inherited frmRecibo: TfrmRecibo
     TabOrder = 4
   end
   inherited actlNavigateActions: TActionList[11]
-    Left = 680
-    Top = 64
+    Left = 696
+    Top = 40
     inherited actPrint: TAction
       OnExecute = actPrintExecute
       ShortCut = 0
@@ -178,38 +175,26 @@ inherited frmRecibo: TfrmRecibo
       '  RECIBO.IDRECIBO = :OLD_IDRECIBO'
     )
     UseSequenceFieldForRefreshSQL = False
-    Left = 521
-    Top = 46
+    Left = 528
+    Top = 40
     ParamData = <    
       item
-        DataType = ftUnknown
         Name = 'DATA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'RECEBEDOR'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'REFERENTE'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'VALOR'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'VALOREXTENSO'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'OLD_IDRECIBO'
-        ParamType = ptUnknown
       end>
   end
 end

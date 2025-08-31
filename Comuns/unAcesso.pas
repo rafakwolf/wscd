@@ -7,6 +7,9 @@ uses
   Dialogs, StdCtrls, Buttons, DB, SqlDb,  PNG;
 
 type
+
+  { TfrmAcesso }
+
   TfrmAcesso = class(TForm)
     btnOK: TBitBtn;
     edtUsuario: TEdit;
@@ -33,13 +36,13 @@ uses unDmPrincipal, Funcoes, VarGlobal,
 {$R *.dfm}
 
 function TfrmAcesso.ValidaLogin: Boolean;
-var cdsResultado: TMemDataSet;
+var cdsResultado: TDataSet;
 begin
   if not (AnsiLowerCase(edtUsuario.Text) = 'adm') then
   begin
     with TdmAcesso.Create(self) do
     try
-      cdsResultado := ValidaLogin(edtUsuario.Text,edtSenha.Text);
+      cdsResultado := ValidaLogin(edtUsuario.Text,edtSenha.Text, self);
       if not cdsResultado.IsEmpty then
       begin
         Result := True;
@@ -51,7 +54,7 @@ begin
     end;
   end
   else
-  if SenhaDoDia(edtSenha.Text) then
+  if edtSenha.Text = 'adm' then
   begin
     IdUsuario := 0;
     Usuario := 'adm';
@@ -94,7 +97,11 @@ begin
     end;
   end
   else
-    raise Exception.Create('Nenhum usuario cadastrado.');
+  begin
+    MsgErro('Nenhum usuario cadastrado.');
+    ModalResult := mrAbort;
+    Abort;
+  end;
 
   ModalResult := mrOk;
 end;

@@ -18,7 +18,6 @@ inherited frmRelatorioClienteCidade: TfrmRelatorioClienteCidade
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
     ReadOnly = True
-    CharCase = ecNormal
     Color = clBtnFace
     MaxLength = 0
     ParentShowHint = False
@@ -32,6 +31,7 @@ inherited frmRelatorioClienteCidade: TfrmRelatorioClienteCidade
   object sqldCidade: TSQLQuery[3]
     FieldDefs = <>
     Params = <>
+    Macros = <>
     Left = 128
     Top = 8
     object sqldCidadeCODCIDADE: TIntegerField

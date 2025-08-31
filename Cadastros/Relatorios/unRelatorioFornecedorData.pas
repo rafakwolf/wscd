@@ -37,19 +37,19 @@ begin
 //  begin
     with TfrmPrevRelFornData.Create(Self) do
     try
-      with cdsPadrao do
+      with sqldPadrao do
       begin
-        cdsPadrao.Close;
+        sqldPadrao.Close;
 //        Params.ParamByName('PDATAINI').AsDate :=
 //          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
 //        Params.ParamByName('PDATAFIM').AsDate :=
 //          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
-        cdsPadrao.Open;
+        sqldPadrao.Open;
       end;
         TipoRelatorio := 2;
         PrintIfNotEmptyRL(rrPadrao, p);
     finally
-      cdsPadrao.Close;
+      sqldPadrao.Close;
       Free;
     end;
   //end;

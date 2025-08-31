@@ -10,6 +10,8 @@ function SQLFind(tabela, campo, valor: string; conn: TZConnection): boolean;
 function GetFieldByID(conn: TZConnection; tabela, campoPesquisar,
   campoValor: string; valor: integer): Variant;
 
+function GetProximoID(tabela: string; idField: string; conn: TZConnection): Integer;
+
 implementation
 
 procedure UpdateSingleField(sqlText: string);
@@ -58,6 +60,19 @@ begin
       sql.Add('select '+campoValor+' from '+tabela+' where '+campoPesquisar+' = :'+IntToStr(valor));
       Open;
       Result := Fields[0].Value;
+  finally
+    free;
+  end;
+end;
+
+function GetProximoID(tabela: string; idField: string; conn: TZConnection): Integer;
+begin
+  with TZQuery.Create(nil)do try
+      Connection:= conn;
+      sql.clear();
+      sql.Add('select max('+idField+') + 1 from '+tabela);
+      Open;
+      Result := Fields[0].AsInteger + 1;
   finally
     free;
   end;

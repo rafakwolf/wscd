@@ -60,6 +60,7 @@ begin
   FieldNames := FN_ETQ;
   DisplayLabels := DL_ETQ;
   aCaption := 'Etiquetas';
+  IgnoreAutoGenerateLabels := True;
 end;
 
 initialization

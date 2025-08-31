@@ -45,7 +45,7 @@ procedure TfrmRelatorioCaixaContaCaixa.Imprimir(p: Boolean);
 begin
   with TfrmPrevRelCaixa.Create(Self) do
   try
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='SELECT '+
                              ' CODCAIXA CODIGO,'+
                              ' DATA,'+
@@ -63,11 +63,11 @@ begin
 //    cdsPadrao.Params.ParamByName('DATAINI').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime;
 //    cdsPadrao.Params.ParamByName('DATAFIM').AsDate     := DmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime;
 
-    cdsPadrao.Open;
+    sqldPadrao.Open;
     TituloRel := 'Lançamentos do caixa: ' + dbeCaixa.Text;
     PrintIfNotEmptyRL(rrPadrao, p);
   finally
-    cdsPadrao.Close;
+    sqldPadrao.Close;
     Free;
   end;
 end;

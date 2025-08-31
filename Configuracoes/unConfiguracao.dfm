@@ -1,7 +1,7 @@
 inherited frmConfiguracao: TfrmConfiguracao
-  Left = 282
+  Left = 394
   Height = 446
-  Top = 163
+  Top = 213
   Width = 779
   Caption = 'frmConfiguracao'
   ClientHeight = 446
@@ -25,9 +25,9 @@ inherited frmConfiguracao: TfrmConfiguracao
     TabIndex = 4
     TabOrder = 1
     object Tabgeral: TTabSheet
-      Caption = '    &Geral    '
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = '    Geral    '
+      ClientHeight = 281
+      ClientWidth = 723
       ParentShowHint = False
       ShowHint = True
       object chAtalhos: TDBCheckBox
@@ -177,9 +177,9 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabImg: TTabSheet
-      Caption = 'Papel &Parede'
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = 'Papel Parede'
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 1
       ParentShowHint = False
       ShowHint = True
@@ -229,8 +229,8 @@ inherited frmConfiguracao: TfrmConfiguracao
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 31
-        ClientWidth = 182
+        ClientHeight = 22
+        ClientWidth = 174
         ItemIndex = 1
         Items.Strings = (
           'Lado a lado'
@@ -243,9 +243,9 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabOrcam: TTabSheet
-      Caption = '&Orçamentos'
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = 'Orçamentos'
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 2
       ParentShowHint = False
       ShowHint = True
@@ -293,9 +293,9 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabCompras: TTabSheet
-      Caption = ' &Compras '
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = ' Compras '
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 3
       ParentShowHint = False
       ShowHint = True
@@ -329,20 +329,19 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabProdutos: TTabSheet
-      Caption = ' &Produtos '
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = ' Produtos '
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 4
       ParentShowHint = False
       ShowHint = True
       object dbeSenhaProduto: TDBEdit
         Left = 8
-        Height = 33
+        Height = 21
         Top = 208
         Width = 121
         DataField = 'SENHAESTOQUE'
         DataSource = dsPadrao
-        CharCase = ecNormal
         MaxLength = 0
         ParentShowHint = False
         PasswordChar = '*'
@@ -397,21 +396,20 @@ inherited frmConfiguracao: TfrmConfiguracao
         Top = 6
         Width = 369
         Caption = ' Valores Padrão '
-        ClientHeight = 112
-        ClientWidth = 367
+        ClientHeight = 103
+        ClientWidth = 359
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
         object dbeAliqPadrao: TDBEdit
           Left = 32
-          Height = 33
+          Height = 21
           Hint = 'Pesquisar < F2 >'
           Top = 15
           Width = 130
           DataField = 'ALIQUOTAPADRAO'
           DataSource = dsPadrao
           ReadOnly = True
-          CharCase = ecNormal
           Color = clBtnFace
           MaxLength = 0
           ParentFont = False
@@ -421,12 +419,11 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
         object dbeEstoquePadrao: TDBEdit
           Left = 204
-          Height = 33
+          Height = 21
           Top = 15
           Width = 130
           DataField = 'ESTOQUEPADRAO'
           DataSource = dsPadrao
-          CharCase = ecNormal
           MaxLength = 0
           ParentFont = False
           ParentShowHint = False
@@ -436,12 +433,11 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
         object dbeDescontoPadrao: TDBEdit
           Left = 160
-          Height = 33
+          Height = 21
           Top = 66
           Width = 130
           DataField = 'DESCPADRAOPROD'
           DataSource = dsPadrao
-          CharCase = ecNormal
           MaxLength = 0
           ParentFont = False
           ParentShowHint = False
@@ -463,20 +459,19 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabCaixa: TTabSheet
-      Caption = '    &Caixa    '
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = '    Caixa    '
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 5
       ParentShowHint = False
       ShowHint = True
       object dbeSenhaCaixa: TDBEdit
         Left = 8
-        Height = 33
+        Height = 21
         Top = 135
         Width = 129
         DataField = 'SENHACAIXA'
         DataSource = dsPadrao
-        CharCase = ecNormal
         MaxLength = 0
         ParentShowHint = False
         PasswordChar = '*'
@@ -517,21 +512,20 @@ inherited frmConfiguracao: TfrmConfiguracao
         Top = 5
         Width = 365
         Caption = ' Conta caixa padrão '
-        ClientHeight = 34
-        ClientWidth = 363
+        ClientHeight = 25
+        ClientWidth = 355
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
         object dbeCaixaPadrao: TDBEdit
           Left = 90
-          Height = 33
+          Height = 21
           Hint = 'Pesquisar < F2 >'
           Top = 20
           Width = 239
           DataField = 'CAIXAPADRAO'
           DataSource = dsPadrao
           ReadOnly = True
-          CharCase = ecNormal
           Color = clBtnFace
           MaxLength = 0
           ParentFont = False
@@ -546,21 +540,20 @@ inherited frmConfiguracao: TfrmConfiguracao
         Top = 64
         Width = 365
         Caption = 'Conta padrão para cheques'
-        ClientHeight = 31
-        ClientWidth = 363
+        ClientHeight = 22
+        ClientWidth = 355
         ParentShowHint = False
         ShowHint = True
         TabOrder = 5
         object dbeContaCheque: TDBEdit
           Left = 90
-          Height = 33
+          Height = 21
           Hint = 'Pesquisar < F2 >'
           Top = 18
           Width = 239
           DataField = 'NCONTACHEQUE'
           DataSource = dsPadrao
           ReadOnly = True
-          CharCase = ecNormal
           Color = clBtnFace
           MaxLength = 0
           ParentFont = False
@@ -582,9 +575,9 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabVenda: TTabSheet
-      Caption = '&Vendas'
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = 'Vendas'
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 6
       ParentShowHint = False
       ShowHint = True
@@ -632,9 +625,9 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabClientes: TTabSheet
-      Caption = '&Clientes'
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = 'Clientes'
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 8
       ParentShowHint = False
       ShowHint = True
@@ -668,20 +661,19 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
     end
     object TabExportacao: TTabSheet
-      Caption = '&Exportação de dados'
-      ClientHeight = 286
-      ClientWidth = 719
+      Caption = 'Exportação de dados'
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 9
       ParentShowHint = False
       ShowHint = True
       object dbeDirExportacao: TDBEdit
         Left = 16
-        Height = 33
+        Height = 21
         Top = 40
         Width = 321
         DataField = 'DIREXPORTPADRAO'
         DataSource = dsPadrao
-        CharCase = ecNormal
         MaxLength = 0
         ParentShowHint = False
         ShowHint = True
@@ -703,8 +695,8 @@ inherited frmConfiguracao: TfrmConfiguracao
     end
     object tsEmail: TTabSheet
       Caption = 'E-mail'
-      ClientHeight = 286
-      ClientWidth = 719
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 10
       ParentShowHint = False
       ShowHint = True
@@ -714,8 +706,8 @@ inherited frmConfiguracao: TfrmConfiguracao
         Top = 8
         Width = 353
         Caption = ' Configurações '
-        ClientHeight = 175
-        ClientWidth = 351
+        ClientHeight = 166
+        ClientWidth = 343
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
@@ -732,7 +724,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
         object edServidor: TEdit
           Left = 16
-          Height = 33
+          Height = 21
           Top = 32
           Width = 249
           ParentShowHint = False
@@ -741,7 +733,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
         object edPorta: TEdit
           Left = 272
-          Height = 33
+          Height = 21
           Top = 32
           Width = 65
           ParentShowHint = False
@@ -751,7 +743,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
         object edUsuario: TEdit
           Left = 16
-          Height = 33
+          Height = 21
           Top = 112
           Width = 193
           ParentShowHint = False
@@ -760,7 +752,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
         object edSenha: TEdit
           Left = 216
-          Height = 33
+          Height = 21
           Top = 112
           Width = 121
           EchoMode = emPassword
@@ -771,21 +763,21 @@ inherited frmConfiguracao: TfrmConfiguracao
         end
         object chkAutenticacao: TCheckBox
           Left = 16
-          Height = 23
+          Height = 18
           Top = 72
-          Width = 230
+          Width = 231
           Caption = 'Meu servidor requer autenticação'
-          OnClick = chkAutenticacaoClick
           ParentShowHint = False
           ShowHint = True
           TabOrder = 2
+          OnClick = chkAutenticacaoClick
         end
       end
     end
     object tsRelatorio: TTabSheet
       Caption = 'Relatórios'
-      ClientHeight = 286
-      ClientWidth = 719
+      ClientHeight = 281
+      ClientWidth = 723
       ImageIndex = 12
       ParentShowHint = False
       ShowHint = True
@@ -820,265 +812,8 @@ inherited frmConfiguracao: TfrmConfiguracao
     Left = 280
     Top = 376
   end
-  object ZUpdateSQL1: TZUpdateSQL[6]
-    DeleteSQL.Strings = (
-      'DELETE FROM CONFIGURACAO'
-      'WHERE'
-      '  CONFIGURACAO.IDCONFIGURACAO = :OLD_IDCONFIGURACAO'
-    )
-    InsertSQL.Strings = (
-      'INSERT INTO CONFIGURACAO'
-      '  (NOMECOMPUTADOR, BARRAFERRAMENTA, HINTBALAO, GRAVAERRO, BACKUP, LOG, '
-      '   IMPRESSORA, RESOLUCAO, LETRACODIGOBARRA, EXIBEDICADIA, AVISACLIENTEATRASO, '
-      '   DIREXPORTPADRAO, SENHAESTOQUE, USARSENHAESTOQUE, ESTOQUEPADRAO, BORDAETQPROD, '
-      '   ALIQUOTAPADRAO, DESCPADRAOPROD, CAIXAPADRAO, SENHACAIXA, PRODSEMESTOQORCAM, '
-      '   ORCAMNAOCONC, EDITORCAMCONC, COMPRANAOCONC, EDITCOMPRACONC, PRODSEMESTOQVENDA, '
-      '   VENDANAOCONC, EDITVENDACONC, BORDAETQCLIENTE, MOSTRARSALDOCAIXA, CAIXA90DIAS, '
-      '   RELZEBRADO, VERIFICA_UPD, CONTACHEQUE, INFOAVISOS, NCONTACHEQUE)'
-      'VALUES'
-      '  (:NOMECOMPUTADOR, :BARRAFERRAMENTA, :HINTBALAO, :GRAVAERRO, :BACKUP, '
-      '   :LOG, :IMPRESSORA, :RESOLUCAO, :LETRACODIGOBARRA, :EXIBEDICADIA, :AVISACLIENTEATRASO, '
-      '   :DIREXPORTPADRAO, :SENHAESTOQUE, :USARSENHAESTOQUE, :ESTOQUEPADRAO, '
-      '   :BORDAETQPROD, :ALIQUOTAPADRAO, :DESCPADRAOPROD, :CAIXAPADRAO, :SENHACAIXA, '
-      '   :PRODSEMESTOQORCAM, :ORCAMNAOCONC, :EDITORCAMCONC, :COMPRANAOCONC, :EDITCOMPRACONC, '
-      '   :PRODSEMESTOQVENDA, :VENDANAOCONC, :EDITVENDACONC, :BORDAETQCLIENTE, '
-      '   :MOSTRARSALDOCAIXA, :CAIXA90DIAS, :RELZEBRADO, :VERIFICA_UPD, :CONTACHEQUE, '
-      '   :INFOAVISOS, :NCONTACHEQUE)'
-    )
-    ModifySQL.Strings = (
-      'UPDATE CONFIGURACAO SET'
-      '  NOMECOMPUTADOR = :NOMECOMPUTADOR,'
-      '  BARRAFERRAMENTA = :BARRAFERRAMENTA,'
-      '  HINTBALAO = :HINTBALAO,'
-      '  GRAVAERRO = :GRAVAERRO,'
-      '  BACKUP = :BACKUP,'
-      '  LOG = :LOG,'
-      '  IMPRESSORA = :IMPRESSORA,'
-      '  RESOLUCAO = :RESOLUCAO,'
-      '  LETRACODIGOBARRA = :LETRACODIGOBARRA,'
-      '  EXIBEDICADIA = :EXIBEDICADIA,'
-      '  AVISACLIENTEATRASO = :AVISACLIENTEATRASO,'
-      '  DIREXPORTPADRAO = :DIREXPORTPADRAO,'
-      '  SENHAESTOQUE = :SENHAESTOQUE,'
-      '  USARSENHAESTOQUE = :USARSENHAESTOQUE,'
-      '  ESTOQUEPADRAO = :ESTOQUEPADRAO,'
-      '  BORDAETQPROD = :BORDAETQPROD,'
-      '  ALIQUOTAPADRAO = :ALIQUOTAPADRAO,'
-      '  DESCPADRAOPROD = :DESCPADRAOPROD,'
-      '  CAIXAPADRAO = :CAIXAPADRAO,'
-      '  SENHACAIXA = :SENHACAIXA,'
-      '  PRODSEMESTOQORCAM = :PRODSEMESTOQORCAM,'
-      '  ORCAMNAOCONC = :ORCAMNAOCONC,'
-      '  EDITORCAMCONC = :EDITORCAMCONC,'
-      '  COMPRANAOCONC = :COMPRANAOCONC,'
-      '  EDITCOMPRACONC = :EDITCOMPRACONC,'
-      '  PRODSEMESTOQVENDA = :PRODSEMESTOQVENDA,'
-      '  VENDANAOCONC = :VENDANAOCONC,'
-      '  EDITVENDACONC = :EDITVENDACONC,'
-      '  BORDAETQCLIENTE = :BORDAETQCLIENTE,'
-      '  MOSTRARSALDOCAIXA = :MOSTRARSALDOCAIXA,'
-      '  CAIXA90DIAS = :CAIXA90DIAS,'
-      '  RELZEBRADO = :RELZEBRADO,'
-      '  VERIFICA_UPD = :VERIFICA_UPD,'
-      '  CONTACHEQUE = :CONTACHEQUE,'
-      '  INFOAVISOS = :INFOAVISOS,'
-      '  NCONTACHEQUE = :NCONTACHEQUE'
-      'WHERE'
-      '  CONFIGURACAO.IDCONFIGURACAO = :OLD_IDCONFIGURACAO'
-    )
-    UseSequenceFieldForRefreshSQL = False
-    Left = 112
-    Top = 368
-    ParamData = <    
-      item
-        DataType = ftUnknown
-        Name = 'NOMECOMPUTADOR'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'BARRAFERRAMENTA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'HINTBALAO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'GRAVAERRO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'BACKUP'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'LOG'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'IMPRESSORA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'RESOLUCAO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'LETRACODIGOBARRA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'EXIBEDICADIA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'AVISACLIENTEATRASO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'DIREXPORTPADRAO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'SENHAESTOQUE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'USARSENHAESTOQUE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ESTOQUEPADRAO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'BORDAETQPROD'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ALIQUOTAPADRAO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'DESCPADRAOPROD'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CAIXAPADRAO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'SENHACAIXA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'PRODSEMESTOQORCAM'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'ORCAMNAOCONC'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'EDITORCAMCONC'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'COMPRANAOCONC'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'EDITCOMPRACONC'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'PRODSEMESTOQVENDA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'VENDANAOCONC'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'EDITVENDACONC'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'BORDAETQCLIENTE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'MOSTRARSALDOCAIXA'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CAIXA90DIAS'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'RELZEBRADO'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'VERIFICA_UPD'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'CONTACHEQUE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'INFOAVISOS'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'NCONTACHEQUE'
-        ParamType = ptUnknown
-      end    
-      item
-        DataType = ftUnknown
-        Name = 'OLD_IDCONFIGURACAO'
-        ParamType = ptUnknown
-      end>
-  end
-  object ZQuery1: TZQuery[7]
+  object ZQuery1: TZQuery[6]
     Connection = DmPrincipal.ZConnection1
-    UpdateObject = ZUpdateSQL1
     SQL.Strings = (
       'select * from CONFIGURACAO'
     )

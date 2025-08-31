@@ -46,8 +46,8 @@ function FieldIsNumeric(f: TField): boolean;
 function FieldIsDateTime(f: TField): boolean;
 function FieldIsString(f: TField): boolean;
 function UpdatesPending(cds: TZQuery; form: TForm): boolean;
-function Locate(cds: TMemDataSet; field: TField; value: string): boolean;
-procedure Filtro(cds: TMemDataSet; field, value: string);
+function Locate(cds: TDataSet; field: TField; value: string): boolean;
+procedure Filtro(cds: TDataSet; field, value: string);
 function ValidaFieldsVazios(fields: array of TField;
   labels: array of string): string;
 
@@ -81,21 +81,22 @@ function Idade(dataNasc: TDateTime): Integer;
 implementation
 
 uses
-  Variants, IniFiles;
+  Variants, IniFiles, ufmDatas;
 
 function UpdatesPending(cds: TZQuery; form: TForm): boolean;
 begin
   Result := cds.UpdatesPending;
 end;
 
-function Locate(cds: TMemDataSet; field: TField; value: string): boolean;
+function Locate(cds: TDataSet; field: TField; value: string): boolean;
 begin
-
+  Result := cds.Locate(field.FieldName, value, []);
 end;
 
-procedure Filtro(cds: TMemDataSet; field, value: string);
+procedure Filtro(cds: TDataSet; field, value: string);
 begin
-
+  cds.Filter := field + ' = ' + value;
+  cds.Filtered := True;
 end;
 
 function ValidaFieldsVazios(fields: array of TField;
@@ -157,7 +158,7 @@ begin
     2:
       s := 'segunda-feira';
     3:
-      s := 'ter�a-feira';
+      s := 'terça-feira';
     4:
       s := 'quarta-feira';
     5:
@@ -165,7 +166,7 @@ begin
     6:
       s := 'sexta-feira';
     7:
-      s := 's�bado';
+      s := 'sábado';
   end;
 end;
 
@@ -271,8 +272,8 @@ begin
 
   for x := 1 to Length(SQL) do
   begin
-    if ((SQL[x] <> ' ') and { espa�o }
-      (SQL[x] <> ',') and { v�rgula }
+    if ((SQL[x] <> ' ') and { espaço }
+      (SQL[x] <> ',') and { virgula }
       (SQL[x] <> #13) and { quebra de linha }
       (SQL[x] <> #10)) then { quebra de linha }
       SQLResult := SQLResult + SQL[x]
@@ -397,7 +398,14 @@ end;
 
 function ObterDatas(var d1, d2: string): boolean;
 begin
-  // TODO: implementar
+  with TfmDatas.create(nil) do
+    try
+       d1 := DateToStr(data1);
+       d2 := DateToStr(Data2);
+       ShowModal;
+    finally;
+      free;
+    end;
 end;
 
 function ObterData(var Data: string): boolean;
@@ -473,13 +481,13 @@ begin
     if Portugues then
     begin
       if AType = mtConfirmation then
-        Caption := 'Confirma��o'
+        Caption := 'Confirmação'
       else if AType = mtWarning then
         Caption := 'Aviso'
       else if AType = mtError then
         Caption := 'Erro'
       else if AType = mtInformation then
-        Caption := 'Informa��o';
+        Caption := 'Informação';
     end;
   end;
   if Portugues then
@@ -525,12 +533,12 @@ begin
   Wdigit1 := 0;
   Wdigit2 := 0;
   Want := cpf[1];
-  // variavel para testar se o cpf � repetido como 111.111.111-11
+  // variavel para testar se o cpf e repetido como 111.111.111-11
   Delete(cpf, ansipos('.', cpf), 1); // retira as mascaras se houver
   Delete(cpf, ansipos('.', cpf), 1);
   Delete(cpf, ansipos('-', cpf), 1);
 
-  // testar se o cpf � repetido como 111.111.111-11
+  // testar se o cpf e repetido como 111.111.111-11
   for I := 1 to Length(cpf) do
   begin
     if cpf[I] <> Want then
@@ -540,7 +548,7 @@ begin
       Break
     end;
   end;
-  // se o cpf � composto por numeros repetido retorna falso
+  // se o cpf e composto por numeros repetido retorna falso
   if not Wvalid then
   begin
     Result := false;

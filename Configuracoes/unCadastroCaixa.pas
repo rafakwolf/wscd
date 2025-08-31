@@ -16,7 +16,6 @@ type
     dbeCodCaixa: TDBEdit;
     dbchkInativo: TDBCheckBox;
     ZQuery1: TZQuery;
-    ZUpdateSQL1: TZUpdateSQL;
     procedure FormCreate(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
   private

@@ -3,13 +3,13 @@ unit udmGeralBase;
 interface
 
 uses
-  SysUtils, Classes, Sqldb, DB, memds;
+  SysUtils, Classes, Sqldb, DB, memds, ZConnection;
 
 type
   TdmGeralBase = class(TDataModule)
   private
   protected
-    function GetConnection: TSQLConnection; virtual;
+    function GetConnection: TZConnection; virtual;
   public
   end;
 
@@ -21,9 +21,9 @@ uses VarGlobal;
 
 {$R *.dfm}
 
-function TdmGeralBase.GetConnection: TSQLConnection;
+function TdmGeralBase.GetConnection: TZConnection;
 begin
-  Result := VarGlobal.GetConnection;
+  Result := VarGlobal.GetZConnection;
 end;
 
 end.

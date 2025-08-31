@@ -1,75 +1,40 @@
 inherited frmRelatorioCPAtrasados: TfrmRelatorioCPAtrasados
   Left = 219
+  Height = 269
   Top = 164
-  ClientHeight = 144
-  ClientWidth = 361
+  Width = 400
   Caption = 'frmRelatorioCPAtrasados'
-  OldCreateOrder = True
-  ExplicitWidth = 377
-  ExplicitHeight = 183
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 269
+  ClientWidth = 400
   inherited pnButtons: TPanel
-    Top = 110
-    Width = 361
-    ExplicitTop = 110
-    ExplicitWidth = 361
+    Top = 235
+    Width = 400
+    ClientWidth = 400
   end
-  object dbeFornecedor: TDBEdit [1]
+  object dbeFornecedor: TDBEdit[1]
     Left = 16
-    Top = 48
-    Width = 321
     Height = 21
     Hint = 'Pesquisar < F2 >'
-    ShowHint = True
+    Top = 48
+    Width = 321
     DataField = 'FANTAZIA'
     DataSource = dsPadrao
-    TabOrder = 1
-    Color = clBtnFace
     ReadOnly = True
+    Color = clBtnFace
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
   end
-  inherited dsPadrao: TDataSource
-    DataSet = cdsForn
+  inherited dsPadrao: TDataSource[2]
+    DataSet = sqldForn
     Left = 240
   end
-  object sqldForn: TSQLQuery
-    CommandText = 
-      'select '#13#10'  CODFORNECEDOR,'#13#10'  FANTAZIA,'#13#10'  CNPJ,'#13#10'  TELEFONE'#13#10'fro' +
-      'm FORNECEDORES'
-    MaxBlobSize = -1
+  object sqldForn: TSQLQuery[3]
+    FieldDefs = <>
     Params = <>
-    SQLConnection = DmPrincipal.Conexao
-    Left = 144
-    Top = 8
-  end
-  object dspForn: TTimer
-    DataSet = sqldForn
-    Options = [poAllowCommandText]
-    Left = 176
-    Top = 8
-  end
-  object cdsForn: TMemDataset
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspForn'
-    Left = 208
-    Top = 8
-    object cdsFornCODFORNECEDOR: TIntegerField
-      FieldName = 'CODFORNECEDOR'
-      Required = True
-    end
-    object cdsFornFANTAZIA: TStringField
-      FieldName = 'FANTAZIA'
-      Required = True
-      Size = 40
-    end
-    object cdsFornCNPJ: TStringField
-      FieldName = 'CNPJ'
-      Required = True
-    end
-    object cdsFornTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-      Required = True
-    end
+    Macros = <>
+    Left = 96
+    Top = 96
   end
 end

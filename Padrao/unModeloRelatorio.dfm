@@ -1,14 +1,13 @@
 object frmModeloRelatorio: TfrmModeloRelatorio
   Left = 369
-  Height = 488
+  Height = 598
   Top = 156
-  Width = 820
+  Width = 869
   Caption = 'frmModeloRelatorio'
-  ClientHeight = 488
-  ClientWidth = 820
+  ClientHeight = 598
+  ClientWidth = 869
   Font.CharSet = ANSI_CHARSET
   OnCreate = FormCreate
-  LCLVersion = '2.0.12.0'
   WindowState = wsMaximized
   object rrPadrao: TRLReport
     Left = 0
@@ -60,46 +59,36 @@ object frmModeloRelatorio: TfrmModeloRelatorio
       Width = 718
       BandType = btFooter
       object sysData: TRLSystemInfo
-        Left = 633
+        Left = 632
         Height = 15
         Top = 6
-        Width = 70
+        Width = 71
         Alignment = taRightJustify
         Text = 'Data:'
       end
       object sysPage: TRLSystemInfo
-        Left = 568
+        Left = 566
         Height = 15
         Top = 28
-        Width = 135
+        Width = 137
         Alignment = taRightJustify
         Info = itPageNumber
         Text = 'Página: '
       end
     end
   end
-  object sqldPadrao: TSQLQuery
-    FieldDefs = <>
-    Params = <>
-    Left = 16
-    Top = 8
-  end
-  object dspPadrao: TTimer
-    Left = 88
-    Top = 8
-  end
-  object cdsPadrao: TMemDataset
-    FieldDefs = <>
-    Left = 168
-    Top = 16
-  end
   object dsPadrao: TDataSource
-    DataSet = cdsPadrao
-    Left = 256
-    Top = 16
+    DataSet = sqldPadrao
+    Left = 312
+    Top = 192
   end
   object rlepCalculos: TRLExpressionParser
     Left = 376
     Top = 8
+  end
+  object sqldPadrao: TZQuery
+    Params = <>
+    Left = 152
+    Top = 184
   end
 end

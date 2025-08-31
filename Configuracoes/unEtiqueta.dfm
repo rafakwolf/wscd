@@ -1,7 +1,7 @@
 inherited frmEtiqueta: TfrmEtiqueta
-  Left = 303
+  Left = 343
   Height = 531
-  Top = 147
+  Top = 158
   Width = 717
   Caption = 'frmEtiqueta'
   ClientHeight = 531
@@ -16,9 +16,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object LabelEtiqueta: TLabel[2]
     Left = 16
-    Height = 15
+    Height = 16
     Top = 230
-    Width = 51
+    Width = 50
     Caption = 'Etiqueta'
     ParentColor = False
     ParentShowHint = False
@@ -26,9 +26,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label2: TLabel[3]
     Left = 30
-    Height = 15
-    Top = 281
-    Width = 93
+    Height = 16
+    Top = 292
+    Width = 91
     Caption = 'Altura da Folha'
     ParentColor = False
     ParentShowHint = False
@@ -36,8 +36,8 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label3: TLabel[4]
     Left = 20
-    Height = 15
-    Top = 316
+    Height = 16
+    Top = 327
     Width = 101
     Caption = 'Largura da Folha'
     ParentColor = False
@@ -46,9 +46,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label4: TLabel[5]
     Left = 17
-    Height = 15
-    Top = 351
-    Width = 103
+    Height = 16
+    Top = 362
+    Width = 104
     Caption = 'Margem Superior'
     ParentColor = False
     ParentShowHint = False
@@ -56,9 +56,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label5: TLabel[6]
     Left = 13
-    Height = 15
-    Top = 386
-    Width = 107
+    Height = 16
+    Top = 397
+    Width = 110
     Caption = 'Margem Esquerda'
     ParentColor = False
     ParentShowHint = False
@@ -66,9 +66,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label7: TLabel[7]
     Left = 269
-    Height = 15
-    Top = 281
-    Width = 128
+    Height = 16
+    Top = 292
+    Width = 126
     Caption = 'Etiquetas por Coluna'
     ParentColor = False
     ParentShowHint = False
@@ -76,9 +76,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label8: TLabel[8]
     Left = 286
-    Height = 15
-    Top = 316
-    Width = 111
+    Height = 16
+    Top = 327
+    Width = 108
     Caption = 'Altura da Etiqueta'
     ParentColor = False
     ParentShowHint = False
@@ -86,9 +86,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label9: TLabel[9]
     Left = 276
-    Height = 15
-    Top = 351
-    Width = 119
+    Height = 16
+    Top = 362
+    Width = 118
     Caption = 'Largura da Etiqueta'
     ParentColor = False
     ParentShowHint = False
@@ -96,8 +96,8 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label10: TLabel[10]
     Left = 289
-    Height = 15
-    Top = 386
+    Height = 16
+    Top = 397
     Width = 105
     Caption = 'Distância Vertical'
     ParentColor = False
@@ -106,19 +106,19 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label11: TLabel[11]
     Left = 275
-    Height = 15
-    Top = 421
-    Width = 124
+    Height = 16
+    Top = 432
+    Width = 121
     Caption = 'Distância Horizontal'
     ParentColor = False
     ParentShowHint = False
     ShowHint = True
   end
   object LabelMedida: TLabel[12]
-    Left = 6
-    Height = 15
-    Top = 447
-    Width = 154
+    Left = 8
+    Height = 16
+    Top = 467
+    Width = 150
     Caption = 'Medidas em Milímetros'
     Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
@@ -129,9 +129,9 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object Label1: TLabel[13]
     Left = 31
-    Height = 15
-    Top = 421
-    Width = 92
+    Height = 16
+    Top = 432
+    Width = 91
     Caption = 'Número Linhas'
     ParentColor = False
     ParentShowHint = False
@@ -139,142 +139,131 @@ inherited frmEtiqueta: TfrmEtiqueta
   end
   object dbEtiqueta: TDBEdit[14]
     Left = 16
-    Height = 33
-    Top = 245
-    Width = 505
+    Height = 21
+    Top = 256
+    Width = 496
     DataField = 'ETIQUETA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 3
   end
   object dbAlturaFolha: TDBEdit[15]
-    Left = 119
-    Height = 33
-    Top = 277
+    Left = 128
+    Height = 21
+    Top = 288
     Width = 110
     DataField = 'ALTURAFOLHA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
   end
   object dbLarguraFolha: TDBEdit[16]
-    Left = 119
-    Height = 33
-    Top = 312
+    Left = 128
+    Height = 21
+    Top = 323
     Width = 110
     DataField = 'LARGURAFOLHA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 5
   end
   object dbMargemSuperior: TDBEdit[17]
-    Left = 119
-    Height = 33
-    Top = 347
+    Left = 128
+    Height = 21
+    Top = 358
     Width = 110
     DataField = 'MARGEMSUPERIOR'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 6
   end
   object dbMargemEsquerda: TDBEdit[18]
-    Left = 119
-    Height = 33
-    Top = 382
+    Left = 128
+    Height = 21
+    Top = 393
     Width = 110
     DataField = 'MARGEMESQUERDA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 7
   end
   object dbEtqColuna: TDBEdit[19]
-    Left = 391
-    Height = 33
-    Top = 277
+    Left = 400
+    Height = 21
+    Top = 288
     Width = 110
     DataField = 'NUMEROCOLUNAS'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 8
   end
   object dbAlturaEtq: TDBEdit[20]
-    Left = 391
-    Height = 33
-    Top = 312
+    Left = 400
+    Height = 21
+    Top = 323
     Width = 110
     DataField = 'ALTURAETIQUETA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 9
   end
   object dbLarguraEtq: TDBEdit[21]
-    Left = 391
-    Height = 33
-    Top = 347
+    Left = 400
+    Height = 21
+    Top = 358
     Width = 110
     DataField = 'LARGURAETIQUETA'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 10
   end
   object dbDistVert: TDBEdit[22]
-    Left = 391
-    Height = 33
-    Top = 382
+    Left = 400
+    Height = 21
+    Top = 393
     Width = 110
     DataField = 'DISTANCIAVERTICAL'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 11
   end
   object dbDistHoriz: TDBEdit[23]
-    Left = 391
-    Height = 33
-    Top = 417
+    Left = 400
+    Height = 21
+    Top = 428
     Width = 110
     DataField = 'DISTANCIAHORIZONTAL'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
     TabOrder = 12
   end
   object dbNumeroLinhas: TDBEdit[24]
-    Left = 119
-    Height = 33
-    Top = 417
+    Left = 128
+    Height = 21
+    Top = 428
     Width = 110
     DataField = 'NUMEROLINHAS'
     DataSource = dsPadrao
-    CharCase = ecNormal
     MaxLength = 0
     ParentShowHint = False
     ShowHint = True
@@ -287,8 +276,8 @@ inherited frmEtiqueta: TfrmEtiqueta
     Width = 717
     Align = alTop
     Caption = ' Obtendo Medidas '
-    ClientHeight = 171
-    ClientWidth = 715
+    ClientHeight = 163
+    ClientWidth = 707
     Font.CharSet = ANSI_CHARSET
     Font.Name = 'Verdana'
     ParentFont = False
@@ -297,9 +286,9 @@ inherited frmEtiqueta: TfrmEtiqueta
     TabOrder = 2
     object iEtiqueta: TImage
       Left = 0
-      Height = 171
+      Height = 163
       Top = 0
-      Width = 715
+      Width = 707
       Align = alClient
       AutoSize = True
       Center = True
@@ -6095,74 +6084,46 @@ inherited frmEtiqueta: TfrmEtiqueta
     Top = 408
     ParamData = <    
       item
-        DataType = ftUnknown
         Name = 'ETIQUETA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'ALTURAFOLHA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'LARGURAFOLHA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'MARGEMSUPERIOR'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'MARGEMESQUERDA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'NUMEROLINHAS'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'NUMEROCOLUNAS'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'ALTURAETIQUETA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'LARGURAETIQUETA'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'DISTANCIAVERTICAL'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'DISTANCIAHORIZONTAL'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'DISTACOLVERTICAL'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'DISTCOLHORIZ'
-        ParamType = ptUnknown
       end    
       item
-        DataType = ftUnknown
         Name = 'OLD_IDETIQUETA'
-        ParamType = ptUnknown
       end>
   end
 end

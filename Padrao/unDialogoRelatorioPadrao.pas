@@ -9,6 +9,9 @@ uses
   Dialogs, StdCtrls, Buttons, DB;
 
 type
+
+  { TfrmDialogoRelatorioPadrao }
+
   TfrmDialogoRelatorioPadrao = class(TForm)
     dsPadrao: TDataSource;
     pnButtons: TPanel;

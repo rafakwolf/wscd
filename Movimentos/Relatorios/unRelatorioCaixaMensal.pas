@@ -39,10 +39,11 @@ begin
 
   with TfrmPrevRelCaixa.Create(nil) do
   try
-    with cdsPadrao do
+    with sqldPadrao do
     begin
       Close;
-      sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=SQL;
+      sqldPadrao.SQL.Clear;
+      sqldPadrao.SQL.Text :=SQL.Text;
       sqldPadrao.Params.ParamByName('MES').AsInteger   := StrToInt(edtmes.Text);
       sqldPadrao.Params.ParamByName('ANO').AsInteger   := StrToInt(edtAno.Text);
       sqldPadrao.Params.ParamByName('PORDEM').AsString := IfThen(rgOrd.ItemIndex = 0, 'L', 'D');

@@ -52,7 +52,7 @@ begin
 //  begin
     with TfrmPrevContasReceber.Create(Self) do
     try
-      with cdsPadrao do
+      with sqldPadrao do
       begin
         Close;
         sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select '+
@@ -76,7 +76,7 @@ begin
       Titulo := 'Contas a Receber entre: ' + edDataIni.Text + ' e ' + edDataFim.Text;
       PrintIfNotEmptyRL(rrPadrao, p);
     finally
-      cdsPadrao.Close;
+      sqldPadrao.Close;
       Free;
     end;
   //end;

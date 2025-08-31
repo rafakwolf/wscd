@@ -5,7 +5,7 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ComCtrls, DB, memds, LCLType,
-  SqlDb, Grids, DBGrids, FMTBcd, unSimplePadrao;
+  SqlDb, Grids, DBGrids, FMTBcd, unSimplePadrao, zdataset;
 
 type
   TfrmExclusaoCaixa = class(TfrmSimplePadrao)
@@ -83,9 +83,9 @@ procedure TfrmExclusaoCaixa.btnExcluirClick(Sender: TObject);
 
   function ContasMarcadas: Integer;
   begin
-    with TSQLQuery.Create(nil) do
+    with TZQuery.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      Connection := GetZConnection;
       SQL.Clear; SQL.Text :='select count(1) CONT from CAIXA '+
         'where EXCLUIR = '+QuotedStr('S');
       Open;
@@ -106,9 +106,9 @@ begin
   
   if MsgSN('Deseja realmente excluir os lan�amentos marcados?') then
   begin
-    with TSQLQuery.Create(nil) do
+    with TZQuery.Create(nil) do
     try
-      SQLConnection := GetConnection;
+      Connection := GetZConnection;
       Close;
       SQL.Clear; SQL.Text :='DELETE FROM CAIXA WHERE EXCLUIR = ' + QuotedStr('S');
       ExecSQL;

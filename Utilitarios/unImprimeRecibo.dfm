@@ -1,7 +1,7 @@
 object frmImprimeRecibo: TfrmImprimeRecibo
-  Left = 259
+  Left = 605
   Height = 219
-  Top = 142
+  Top = 265
   Width = 351
   BorderStyle = bsToolWindow
   Caption = 'Recibo'
@@ -12,7 +12,7 @@ object frmImprimeRecibo: TfrmImprimeRecibo
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '3.6.0.0'
   object btnImprimir: TBitBtn
     Left = 24
     Height = 35
@@ -46,12 +46,12 @@ object frmImprimeRecibo: TfrmImprimeRecibo
     Top = 0
     Width = 209
     Caption = ' Recibo: '
-    ClientHeight = 135
-    ClientWidth = 207
+    ClientHeight = 127
+    ClientWidth = 199
     TabOrder = 3
     object lbColunas: TLabel
       Left = 10
-      Height = 15
+      Height = 16
       Top = 80
       Width = 52
       Caption = 'Colunas'
@@ -61,37 +61,37 @@ object frmImprimeRecibo: TfrmImprimeRecibo
     end
     object edPorta: TEdit
       Left = 105
-      Height = 33
+      Height = 21
       Top = 95
       Width = 93
       TabOrder = 0
     end
     object edColunas: TSpinEdit
       Left = 10
-      Height = 33
+      Height = 21
       Top = 95
       Width = 89
       TabOrder = 1
     end
     object rbA4: TRadioButton
       Left = 16
-      Height = 23
+      Height = 18
       Top = 24
-      Width = 82
+      Width = 83
       Caption = 'Papel A4'
       Checked = True
-      OnClick = rbA4Click
       TabOrder = 3
       TabStop = True
+      OnClick = rbA4Click
     end
     object rbBobina: TRadioButton
       Left = 16
-      Height = 23
+      Height = 18
       Top = 48
       Width = 71
       Caption = 'Bobina'
-      OnClick = rbBobinaClick
       TabOrder = 2
+      OnClick = rbBobinaClick
     end
   end
 end

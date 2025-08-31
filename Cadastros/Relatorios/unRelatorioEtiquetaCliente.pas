@@ -5,14 +5,26 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons,   
-  DBCtrls;
+  DBCtrls, ZDataset, ZAbstractRODataset;
 
 type
+
+  { TfrmRelatorioEtiquetaCliente }
+
   TfrmRelatorioEtiquetaCliente = class(TfrmDialogoRelatorioPadrao)
+    btnCliente: TButton;
+    btnCidade: TButton;
+    cdsPesqClienteCODCLIENTE: TZIntegerField;
+    cdsPesqClienteNOME: TZRawStringField;
+    cdsPesqCidadeCODCIDADE: TZIntegerField;
+    cdsPesqCidadeDESCRICAO: TZRawStringField;
     dsCidade: TDataSource;
     dbeCidade: TDBEdit;
     dbeCliente: TDBEdit;
     rgpFiltro: TRadioGroup;
+    cdsPesqCliente: TZQuery;
+    cdsPesqCidade: TZQuery;
+    procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
     procedure dbeClienteClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -34,121 +46,124 @@ uses
 
 {$R *.dfm}
 
+procedure TfrmRelatorioEtiquetaCliente.btnImprimirClick(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmRelatorioEtiquetaCliente.btnVisualizarClick(Sender: TObject);
 begin
   inherited;
-//
-//  with TfrmImprimeEtiq.Create(Self) do
-//  try
-//    if rgpFiltro.ItemIndex = 0 then
-//      SQL := 'select '+
-//             ' TITULO, '+
-//             ' TEXTO '+
-//             'from VIEWETIQUETACLIENTE '+
-//             'where IDCLIENTE = '+
-//        QuotedStr(IntToStr(GetDmPesquisar.cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger))+
-//        'order by TITULO'
-//    else
-//    if rgpFiltro.ItemIndex = 1 then
-//      SQL := 'select '+
-//             ' TITULO, '+
-//             ' TEXTO '+
-//             'from VIEWETIQUETACLIENTE '+
-//             'where IDCIDADE = '+
-//        QuotedStr(IntToStr(GetDmPesquisar.cdsPesqCidadeCODCIDADE.AsInteger))+
-//        'order by IDCIDADE'
-//    else if rgpFiltro.ItemIndex = 2 then
-//      SQL := 'select '+
-//             ' TITULO, '+
-//             ' TEXTO '+
-//             'from VIEWETIQUETACLIENTE '+
-//             'order by TITULO';
-//
-//    if rgpFiltro.ItemIndex = 0 then
-//    begin
-//      if dbeCliente.Text = '' then
-//      begin
-//        MsgCuidado(UM_FILTROINVALIDO);
-//        Exit;
-//      end;
-//    end
-//    else if rgpFiltro.ItemIndex = 1 then
-//    begin
-//      if dbeCidade.Text = '' then
-//      begin
-//        MsgCuidado(UM_FILTROINVALIDO);
-//        Exit;
-//      end;
-//    end;
-//
-//    TipoEtq := teCliente;
-//    ShowModal;
-//  finally
-//    Free;
-//  end;
+
+  with TfrmImprimeEtiq.Create(Self) do
+  try
+    if rgpFiltro.ItemIndex = 0 then
+      SQL := 'select '+
+             ' TITULO, '+
+             ' TEXTO '+
+             'from VIEWETIQUETACLIENTE '+
+             'where IDCLIENTE = '+
+        QuotedStr(IntToStr(cdsPesqCliente.FieldByName('CODCLIENTE').AsInteger))+
+        'order by TITULO'
+    else
+    if rgpFiltro.ItemIndex = 1 then
+      SQL := 'select '+
+             ' TITULO, '+
+             ' TEXTO '+
+             'from VIEWETIQUETACLIENTE '+
+             'where IDCIDADE = '+
+        QuotedStr(IntToStr(cdsPesqCidadeCODCIDADE.AsInteger))+
+        'order by IDCIDADE'
+    else if rgpFiltro.ItemIndex = 2 then
+      SQL := 'select '+
+             ' TITULO, '+
+             ' TEXTO '+
+             'from VIEWETIQUETACLIENTE '+
+             'order by TITULO';
+
+    if rgpFiltro.ItemIndex = 0 then
+    begin
+      if dbeCliente.Text = '' then
+      begin
+        MsgCuidado(UM_FILTROINVALIDO);
+        Exit;
+      end;
+    end
+    else if rgpFiltro.ItemIndex = 1 then
+    begin
+      if dbeCidade.Text = '' then
+      begin
+        MsgCuidado(UM_FILTROINVALIDO);
+        Exit;
+      end;
+    end;
+
+    TipoEtq := teCliente;
+    ShowModal;
+  finally
+    Free;
+  end;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.dbeClienteClickButton(
   Sender: TObject);
+var IdCliente: Integer;
 begin
   inherited;
-//  GetDmPesquisar.cdsPesqCliente.Close;
-//  GetDmPesquisar.cdsPesqCliente.SQL.Clear; SQL.Text :=SQLCliente;
-//  if not TfrmModeloConsulta.Execute('Cliente', GetDmPesquisar.cdsPesqCliente, FN_CLIENTES, DL_CLIENTES) then
-//    GetDmPesquisar.cdsPesqCliente.Close;
+  cdsPesqCliente.Close;
+  cdsPesqCliente.SQL.Clear;
+  cdsPesqCliente.SQL.Text := SQLCliente;
+
+  IdCliente := TfrmModeloConsulta.Execute('Cliente', 'CLIENTES', FN_CLIENTES, DL_CLIENTES, self);
+
+  if (IdCliente > 0) then
+  begin
+    cdsPesqCliente.Open;
+    cdsPesqCliente.Locate('CODCLIENTE', IdCliente, []);
+  end;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-//  GetDmPesquisar.cdsPesqCidade.Close;
-//  GetDmPesquisar.cdsPesqCliente.Close;
+  cdsPesqCidade.Close;
+  cdsPesqCliente.Close;
   inherited;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.FormCreate(Sender: TObject);
 begin
   inherited;
-//  ReordenaBotoes([btnVisualizar, btnSair]);
-//  dsPadrao.DataSet := GetDmPesquisar.cdsPesqCliente;
-//  dsCidade.DataSet := GetDmPesquisar.cdsPesqCidade;
-//  dbeCidade.Top := dbeCliente.Top;
-//  rgpFiltroClick(Self);
-//
-//  SQLCidade := GetDmpesquisar.sqldPesqCidade.CommandText;
-//  SQLCliente := GetDmpesquisar.sqldPesqCliente.CommandText;
+  dsPadrao.DataSet := cdsPesqCliente;
+  dsCidade.DataSet := cdsPesqCidade;
+
+  SQLCidade := 'select * from CIDADES';
+  SQLCliente := 'select * from CLIENTES';
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.dbeCidadeClickButton(
   Sender: TObject);
+var IdCidade : Integer;
 begin
   inherited;
-//  GetDmPesquisar.cdsPesqCidade.Close;
-//  GetDmPesquisar.cdsPesqCidade.SQL.Clear; SQL.Text :=SQLCidade;
-//  if not TfrmModeloConsulta.Execute('Cidade', GetDmPesquisar.cdsPesqCidade, FN_CIDADES, DL_CIDADES) then
-//    GetDmPesquisar.cdsPesqCidade.Close;
+  cdsPesqCidade.Close;
+  cdsPesqCidade.SQL.Clear;
+  cdsPesqCidade.SQL.Text := SQLCidade;
+
+  IdCidade := TfrmModeloConsulta.Execute('Cidade', 'CIDADES', FN_CIDADES, DL_CIDADES, self);
+
+  if (idCidade > 0) then
+  begin
+    cdsPesqCidade.Open;
+    CdsPesqCidade.Locate('CODCIDADE', IdCidade, []);
+  end;
 end;
 
 procedure TfrmRelatorioEtiquetaCliente.rgpFiltroClick(Sender: TObject);
 begin
-  inherited;
-  case rgpFiltro.ItemIndex of
-  0: begin
-       dbeCliente.Visible := True;
-       dbeCidade.Visible  := False;
-       //dbeCliente.Button.Enabled := True;
-     end;
-  1: begin
-       dbeCliente.Visible := False;
-       dbeCidade.Visible  := True;
-       //dbeCidade.Button.Enabled := True;
-     end;
-  2: begin
-       dbeCliente.Visible := False;
-       dbeCidade.Visible := False;
-     end;
-  end;
+
 end;
+
 
 initialization
   RegisterClass(TfrmRelatorioEtiquetaCliente);
