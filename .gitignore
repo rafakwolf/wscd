@@ -68,3 +68,15 @@ __recovery/
 # Delphi folders
 Win32/
 Win64/
+
+# Node / web app
+node_modules/
+.next/
+.turbo/
+dist/
+coverage/
+.vercel/
+.env
+.env.local
+.env.*.local
+!.env.example

@@ -1,0 +1,12 @@
+{
+  "name": "wscd",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "typecheck": "pnpm --filter web typecheck",
+    "db:apply": "pnpm --filter web db:apply"
+  }
+}
