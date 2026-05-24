@@ -23,9 +23,9 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     TabOrder = 3
     object LabelMes: TLabel
       Left = 8
-      Height = 15
+      Height = 16
       Top = 5
-      Width = 23
+      Width = 25
       Caption = 'Mês'
       ParentColor = False
       ParentShowHint = False
@@ -33,9 +33,9 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     end
     object LabelDo: TLabel
       Left = 8
-      Height = 15
+      Height = 16
       Top = 47
-      Width = 40
+      Width = 39
       Caption = 'Do dia'
       ParentColor = False
       ParentShowHint = False
@@ -43,7 +43,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     end
     object LabelAte: TLabel
       Left = 88
-      Height = 15
+      Height = 16
       Top = 47
       Width = 20
       Caption = 'Até'
@@ -53,7 +53,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     end
     object edAno: TEdit
       Left = 167
-      Height = 33
+      Height = 21
       Top = 63
       Width = 74
       ParentShowHint = False
@@ -64,10 +64,10 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     end
     object cmbMes: TComboBox
       Left = 8
-      Height = 29
+      Height = 20
       Top = 20
       Width = 233
-      ItemHeight = 0
+      ItemHeight = 26
       Items.Strings = (
         'Janeiro'
         'Fevereiro'
@@ -89,7 +89,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     end
     object edDo: TSpinEdit
       Left = 8
-      Height = 33
+      Height = 20
       Top = 62
       Width = 65
       MaxValue = 31
@@ -101,7 +101,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     end
     object edAte: TSpinEdit
       Left = 88
-      Height = 33
+      Height = 20
       Top = 62
       Width = 65
       MaxValue = 31
@@ -126,7 +126,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     TabOrder = 4
     object dbeDataIni: TDBEdit
       Left = 8
-      Height = 33
+      Height = 21
       Top = 20
       Width = 241
       DataField = 'DATAINI'
@@ -138,7 +138,7 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     end
     object dbeDataFim: TDBEdit
       Left = 8
-      Height = 33
+      Height = 21
       Top = 63
       Width = 241
       DataField = 'DATAFIM'
@@ -163,8 +163,8 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 39
-    ClientWidth = 247
+    ClientHeight = 30
+    ClientWidth = 239
     ItemIndex = 0
     Items.Strings = (
       'Envelopes'
@@ -188,8 +188,8 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 39
-    ClientWidth = 255
+    ClientHeight = 30
+    ClientWidth = 247
     ItemIndex = 0
     Items.Strings = (
       'Por Dia Mês e Ano'
@@ -201,16 +201,15 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
     TabOrder = 2
   end
   inherited dsPadrao: TDataSource[5]
-    DataSet = cdsSelecao
-    Left = 214
-    Top = 27
+    DataSet = sqldSelecao
+    Left = 328
+    Top = 192
   end
-  object sqldSelecao: TSQLQuery[6]
-    FieldDefs = <>
+  object sqldSelecao: TZQuery[6]
+    Connection = DmPrincipal.ZConnection1
     Params = <>
-    Macros = <>
-    Left = 120
-    Top = 26
+    Left = 240
+    Top = 192
     object sqldSelecaoDATAINI: TDateTimeField
       FieldKind = fkData
       FieldName = 'DATAINI'
@@ -221,33 +220,6 @@ inherited frmRelatorioAniversarioCliente: TfrmRelatorioAniversarioCliente
       Required = False
     end
     object sqldSelecaoDATAFIM: TDateTimeField
-      FieldKind = fkData
-      FieldName = 'DATAFIM'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object dspSelecao: TTimer[7]
-    Left = 152
-    Top = 26
-  end
-  object cdsSelecao: TMemDataset[8]
-    FieldDefs = <>
-    Left = 184
-    Top = 26
-    object cdsSelecaoDATAINI: TDateTimeField
-      FieldKind = fkData
-      FieldName = 'DATAINI'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsSelecaoDATAFIM: TDateTimeField
       FieldKind = fkData
       FieldName = 'DATAFIM'
       Index = 1

@@ -5,14 +5,15 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons,  
-  ComCtrls,  DBCtrls;
+  ComCtrls,  DBCtrls, DateTimePicker;
 
 type
+
+  { TfrmRelatorioFornecedorData }
+
   TfrmRelatorioFornecedorData = class(TfrmDialogoRelatorioPadrao)
-    edDataFim: TDBEdit;
-    edDataIni: TDBEdit;
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormCreate(Sender: TObject);
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
     procedure btnVisualizarClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
   private
@@ -32,18 +33,16 @@ uses
 
 procedure TfrmRelatorioFornecedorData.Imprimir(p: Boolean);
 begin
-//  if ValidaDataIniFim(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime,
-//    GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime, edDataIni)then
-//  begin
+
     with TfrmPrevRelFornData.Create(Self) do
     try
       with sqldPadrao do
       begin
         sqldPadrao.Close;
-//        Params.ParamByName('PDATAINI').AsDate :=
-//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAINI').AsDateTime);
-//        Params.ParamByName('PDATAFIM').AsDate :=
-//          Trunc(GetDmPesquisar.cdsPesqData.FieldByName('DATAFIM').AsDateTime);
+        Params.ParamByName('PDATAINI').AsDate :=
+          DateTimePicker1.Date;
+        Params.ParamByName('PDATAFIM').AsDate :=
+          DateTimePicker2.Date;
         sqldPadrao.Open;
       end;
         TipoRelatorio := 2;
@@ -52,21 +51,7 @@ begin
       sqldPadrao.Close;
       Free;
     end;
-  //end;
-end;
 
-procedure TfrmRelatorioFornecedorData.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-  //GetDmPesquisar.cdsPesqData.Close;
-  inherited;
-end;
-
-procedure TfrmRelatorioFornecedorData.FormCreate(Sender: TObject);
-begin
-  inherited;
- // dsPadrao.DataSet := GetDmPesquisar.cdsPesqData;
- // GetDmPesquisar.cdsPesqData.Open;
 end;
 
 procedure TfrmRelatorioFornecedorData.btnVisualizarClick(Sender: TObject);

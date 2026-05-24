@@ -4,7 +4,7 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ZDataset, ZSqlUpdate, memds, DB,
+  Dialogs, StdCtrls, Buttons, ZDataset, ZSqlUpdate, DB,
   SqlDb, FMTBcd;
 
 type
@@ -16,6 +16,8 @@ type
     btnCancelar: TBitBtn;
     edAtual: TEdit;
     edNova: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
     ZQuery1: TZQuery;
     ZUpdateSQL1: TZUpdateSQL;
     procedure FormShow(Sender: TObject);
@@ -31,7 +33,7 @@ var
 
 implementation
 
-uses Funcoes, VarGlobal, uUtilFncs, crypto;
+uses Funcoes, VarGlobal, crypto;
 
 {$R *.dfm}
 
@@ -45,12 +47,12 @@ procedure TfrmSenhaCaixa.btnOkClick(Sender: TObject);
 begin
   zquery1.Open;
   zquery1.Filtered:=false;
-  ZQuery1.Filter:='NOMECOMPUTADOR = '+QuotedStr(GetComputerName);
+  ZQuery1.Filter:='NOMECOMPUTADOR = '+VarGlobal.Usuario;
   zquery1.Filtered:=true;
 
   if (edAtual.Text <> '') and (edNova.Text <> '') then
   begin
-    if EnDecrypt(zquery1.FieldByName('SENHACAIXA').AsString) = edAtual.Text then
+    if zquery1.FieldByName('SENHACAIXA').AsString = EnDeCrypt(edAtual.Text) then
     begin
       zquery1.Edit;
       zquery1.FieldByName('SENHACAIXA').AsString := Trim(EnDecrypt(edNova.Text));

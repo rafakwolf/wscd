@@ -5,17 +5,17 @@ interface
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,  
-  DB, memds,  SqlDb, ComCtrls, FMTBcd, DBCtrls;
+  DB, SqlDb, ComCtrls, FMTBcd, DBCtrls, ZDataset;
 
 type
   TfrmRelatorioClienteData = class(TfrmDialogoRelatorioPadrao)
-    sqldSelecao: TSQLQuery;
+    sqldSelecao: TZQuery;
     sqldSelecaoDATAINI: TDateTimeField;
     sqldSelecaoDATAFIM: TDateTimeField;
-    dspSelecao: TComponent;
-    cdsSelecao: TMemDataSet;
-    cdsSelecaoDATAINI: TDateTimeField;
-    cdsSelecaoDATAFIM: TDateTimeField;
+
+
+
+
     edDataIni: TDBEdit;
     edDataFim: TDBEdit;
     procedure FormCreate(Sender: TObject);
@@ -40,13 +40,13 @@ uses
 procedure TfrmRelatorioClienteData.FormCreate(Sender: TObject);
 begin
   inherited;
-  cdsSelecao.Open;
+  sqldSelecao.Open;
 end;
 
 procedure TfrmRelatorioClienteData.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsSelecao.Close;
+  sqldSelecao.Close;
   inherited;
 end;
 
@@ -54,7 +54,7 @@ procedure TfrmRelatorioClienteData.Imprimir(p: Boolean);
 begin
   with TfrmPrevListagemClientes.Create(Self) do
   try
-//    if ValidaDataIniFim(cdsSelecaoDATAINI.AsDateTime, cdsSelecaoDATAFIM.AsDateTime,
+//    if ValidaDataIniFim(sqldSelecaoDATAINI.AsDateTime, sqldSelecaoDATAFIM.AsDateTime,
 //      edDataIni)then
 //    begin
       with sqldPadrao do
@@ -74,8 +74,8 @@ begin
                        'from VIEWRELCLIENTES '+
                        'where DATANASCIMENTO between :PDATAINI and :PDATAFIM '+
                        'order by NOME, DATANASCIMENTO';
-        sqldPadrao.Params.ParamByName('PDATAINI').AsDate := Trunc(cdsSelecaoDATAINI.AsDateTime);
-        sqldPadrao.Params.ParamByName('PDATAFIM').AsDate := Trunc(cdsSelecaoDATAFIM.AsDateTime);
+        sqldPadrao.Params.ParamByName('PDATAINI').AsDate := Trunc(sqldSelecaoDATAINI.AsDateTime);
+        sqldPadrao.Params.ParamByName('PDATAFIM').AsDate := Trunc(sqldSelecaoDATAFIM.AsDateTime);
         Open;
       end;
       DataIni := edDataIni.Text;

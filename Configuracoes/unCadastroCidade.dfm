@@ -16,9 +16,9 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     TabOrder = 2
   end
   object dbeNomeCidade: TDBEdit[2]
-    Left = 26
+    Left = 32
     Height = 21
-    Top = 94
+    Top = 120
     Width = 313
     DataField = 'DESCRICAO'
     DataSource = dsPadrao
@@ -28,9 +28,9 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     TabOrder = 1
   end
   object dbeCodCidade: TDBEdit[3]
-    Left = 26
+    Left = 32
     Height = 21
-    Top = 56
+    Top = 72
     Width = 97
     DataField = 'CODCIDADE'
     DataSource = dsPadrao
@@ -39,22 +39,36 @@ inherited frmCadastroCidade: TfrmCadastroCidade
     ShowHint = True
     TabOrder = 0
   end
-  inherited actlNavigateActions: TActionList[4]
-    Left = 56
+  object Label1: TLabel[4]
+    Left = 32
+    Height = 16
+    Top = 56
+    Width = 43
+    Caption = 'Código'
+  end
+  object Label2: TLabel[5]
+    Left = 32
+    Height = 16
+    Top = 104
+    Width = 36
+    Caption = 'Nome'
+  end
+  inherited actlNavigateActions: TActionList[6]
+    Left = 72
+    Top = 176
+  end
+  inherited dsPadrao: TDataSource[7]
+    DataSet = sqldPadrao
+    Left = 320
     Top = 168
   end
-  inherited dsPadrao: TDataSource[5]
-    DataSet = ZQuery1
-    Left = 408
-    Top = 168
-  end
-  object ZQuery1: TZQuery[6]
+  object sqldPadrao: TZQuery[8]
     Connection = DmPrincipal.ZConnection1
     SQL.Strings = (
       'select * from CIDADES'
     )
     Params = <>
     Left = 220
-    Top = 184
+    Top = 168
   end
 end

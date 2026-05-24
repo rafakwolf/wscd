@@ -31,7 +31,7 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   object dbeNomeCaixa: TDBEdit[2]
     Left = 64
     Height = 21
-    Top = 96
+    Top = 128
     Width = 305
     DataField = 'NOME'
     DataSource = dsPadrao
@@ -43,7 +43,7 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
   object dbeCodCaixa: TDBEdit[3]
     Left = 64
     Height = 21
-    Top = 57
+    Top = 72
     Width = 121
     DataField = 'CODIGO'
     DataSource = dsPadrao
@@ -53,9 +53,9 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     TabOrder = 0
   end
   object dbchkInativo: TDBCheckBox[4]
-    Left = 56
+    Left = 64
     Height = 17
-    Top = 152
+    Top = 160
     Width = 87
     Caption = 'Inativo'
     DataField = 'INATIVO'
@@ -66,22 +66,36 @@ inherited frmCadastroCaixa: TfrmCadastroCaixa
     ValueChecked = 'S'
     ValueUnchecked = 'N'
   end
-  inherited actlNavigateActions: TActionList[5]
+  object Label1: TLabel[5]
+    Left = 64
+    Height = 16
+    Top = 51
+    Width = 45
+    Caption = 'Código'
+  end
+  object Label2: TLabel[6]
+    Left = 64
+    Height = 16
+    Top = 104
+    Width = 101
+    Caption = 'Nome da Conta'
+  end
+  inherited actlNavigateActions: TActionList[7]
     Left = 104
     Top = 200
   end
-  inherited dsPadrao: TDataSource[6]
-    DataSet = ZQuery1
-    Left = 408
-    Top = 168
+  inherited dsPadrao: TDataSource[8]
+    DataSet = sqldPadrao
+    Left = 336
+    Top = 200
   end
-  object ZQuery1: TZQuery[7]
+  object sqldPadrao: TZQuery[9]
     Connection = DmPrincipal.ZConnection1
     SQL.Strings = (
       'select * from CAIXAS'
     )
     Params = <>
-    Left = 210
-    Top = 184
+    Left = 248
+    Top = 192
   end
 end

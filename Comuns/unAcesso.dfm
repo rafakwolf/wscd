@@ -21,17 +21,17 @@ object frmAcesso: TfrmAcesso
     Font.Height = -16
     Kind = bkOK
     ModalResult = 1
-    OnClick = btnOkClick
     ParentFont = False
     ParentShowHint = False
     ShowHint = True
     TabOrder = 3
+    OnClick = btnOkClick
   end
   object edtUsuario: TEdit
     Left = 8
     Height = 21
     Hint = 'Usuário'
-    Top = 21
+    Top = 29
     Width = 271
     MaxLength = 10
     ParentShowHint = False
@@ -41,7 +41,7 @@ object frmAcesso: TfrmAcesso
   object edtSenha: TEdit
     Left = 8
     Height = 21
-    Top = 67
+    Top = 75
     Width = 271
     EchoMode = emPassword
     ParentShowHint = False
@@ -52,7 +52,7 @@ object frmAcesso: TfrmAcesso
   object ckbLembrarLogin: TCheckBox
     Left = 96
     Height = 18
-    Top = 104
+    Top = 128
     Width = 77
     Caption = 'Lembrar'
     Font.Height = -13
@@ -60,5 +60,19 @@ object frmAcesso: TfrmAcesso
     ParentShowHint = False
     ShowHint = True
     TabOrder = 2
+  end
+  object Label1: TLabel
+    Left = 10
+    Height = 16
+    Top = 8
+    Width = 46
+    Caption = 'Usuário'
+  end
+  object Label2: TLabel
+    Left = 8
+    Height = 16
+    Top = 56
+    Width = 38
+    Caption = 'Senha'
   end
 end

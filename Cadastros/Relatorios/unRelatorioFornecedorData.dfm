@@ -1,33 +1,48 @@
 inherited frmRelatorioFornecedorData: TfrmRelatorioFornecedorData
   Caption = 'frmRelatorioFornecedorData'
-  inherited pnButtons: TPanel
-    Top = 138
-    Width = 374
-    ClientWidth = 374
-  end
-  object edDataFim: TDBEdit[1]
-    Left = 24
-    Height = 21
-    Top = 72
-    Width = 153
-    DataField = 'DATAFIM'
-    DataSource = dsPadrao
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 2
-  end
-  object edDataIni: TDBEdit[2]
+  object DateTimePicker1: TDateTimePicker[1]
     Left = 24
     Height = 21
     Top = 32
-    Width = 153
-    DataField = 'DATAINI'
-    DataSource = dsPadrao
-    MaxLength = 0
-    ParentShowHint = False
-    ShowHint = True
+    Width = 95
+    CenturyFrom = 1941
+    MaxDate = 2958465
+    MinDate = -53780
     TabOrder = 1
+    TrailingSeparator = False
+    TextForNullDate = 'NULL'
+    LeadingZeros = True
+    Kind = dtkDate
+    TimeFormat = tf24
+    TimeDisplay = tdHMS
+    DateMode = dmComboBox
+    Date = 45908
+    Time = 0.971270983798604
+    UseDefaultSeparators = True
+    HideDateTimeParts = []
+    MonthNames = 'Long'
+  end
+  object DateTimePicker2: TDateTimePicker[2]
+    Left = 24
+    Height = 21
+    Top = 80
+    Width = 95
+    CenturyFrom = 1941
+    MaxDate = 2958465
+    MinDate = -53780
+    TabOrder = 2
+    TrailingSeparator = False
+    TextForNullDate = 'NULL'
+    LeadingZeros = True
+    Kind = dtkDate
+    TimeFormat = tf24
+    TimeDisplay = tdHMS
+    DateMode = dmComboBox
+    Date = 45908
+    Time = 0.971270983798604
+    UseDefaultSeparators = True
+    HideDateTimeParts = []
+    MonthNames = 'Long'
   end
   inherited dsPadrao: TDataSource[3]
     Left = 240

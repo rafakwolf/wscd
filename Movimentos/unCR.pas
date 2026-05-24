@@ -13,11 +13,27 @@ type
   { TfrmCR }
 
   TfrmCR = class(TfrmPadrao)
-    DataSource1: TDataSource;
-    DataSource2: TDataSource;
+    lbCliente: TLabel;
+    lbConta: TLabel;
+    lbDescricao: TLabel;
+    lbData: TLabel;
+    lbVencimento: TLabel;
+    lbDocumento: TLabel;
+    lbValor: TLabel;
+    lbValorAtual: TLabel;
+    lbJuros: TLabel;
+    lbOrigem: TLabel;
+    lbVenda: TLabel;
+    lbDataRecdo: TLabel;
+    lbDesconto: TLabel;
+    lbCapitalRecdo: TLabel;
+    lbJuroRecdo: TLabel;
+    lbTotalRecdo: TLabel;
+    dsCliente: TDataSource;
+    dsConta: TDataSource;
     actContasReceber: TAction;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
+    dbcmbCliente: TDBLookupComboBox;
+    dbcmbConta: TDBLookupComboBox;
     lbStatus: TLabel;
     btnReceber: TBitBtn;
     btnContas: TBitBtn;
@@ -36,7 +52,7 @@ type
     dbeCapitalRecdo: TDBEdit;
     dbeJuroRecdo: TDBEdit;
     dbeTotalRecdo: TDBEdit;
-    MainMenu1: TMainMenu;
+    menu: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -47,8 +63,8 @@ type
     sqldPadrao: TZQuery;
     sqldLimite: TZQuery;
     sqldDeleta: TZQuery;
-    ZReadOnlyQuery1: TZReadOnlyQuery;
-    ZReadOnlyQuery2: TZReadOnlyQuery;
+    sqldCliente: TZReadOnlyQuery;
+    sqldConta: TZReadOnlyQuery;
     procedure FormCreate(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure sqldPadraoAfterInsert(DataSet: TDataSet);
@@ -82,7 +98,7 @@ implementation
 
 uses VarGlobal, Funcoes, uConfiguraRelatorio, unPrevContasReceber,
      unPrevRelCRAtrasadas, unContasReceber,
-     unParcelaCPCR, uDatabaseUtils;
+     unParcelaCPCR, uDatabaseUtils, unPrevNotaProm;
 
 {$R *.dfm}
 
@@ -101,8 +117,10 @@ begin
   if sqldPadrao.IsEmpty then
     lbStatus.Caption := '';
 
-  ZReadOnlyQuery1.open;
-  ZReadOnlyQuery2.open;
+  sqldCliente.open;
+  sqldConta.open;
+
+  IgnoreAutoGenerateLabels:=true;
 end;
 
 procedure TfrmCR.MenuItem1Click(Sender: TObject);
@@ -202,7 +220,9 @@ end;
 procedure TfrmCR.actPrintExecute(Sender: TObject);
 begin
   inherited;
-  ChamaForm('TfrmPrevNotaProm', 'Relatório para cliente', Self);
+  frmPrevNotaProm := TfrmPrevNotaProm.Create(self);
+  frmPrevNotaProm.ShowModal;
+  frmPrevNotaProm.Free;
 end;
 
 procedure TfrmCR.sqldPadraoAfterScroll(DataSet: TDataSet);
@@ -255,8 +275,8 @@ begin
   inherited;
   if ModoInsert(sqldPadrao) then
   begin
-    if ZReadOnlyQuery1.FieldByName('NOME').AsString <> '' then
-      sqldPadrao.FieldByName('DESCRICAO').AsString := 'Recebimento: '+ZReadOnlyQuery1.FieldByName('NOME').AsString;
+    if sqldCliente.FieldByName('NOME').AsString <> '' then
+      sqldPadrao.FieldByName('DESCRICAO').AsString := 'Recebimento: '+sqldCliente.FieldByName('NOME').AsString;
   end;
 end;
 

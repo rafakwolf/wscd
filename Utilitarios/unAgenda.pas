@@ -14,10 +14,16 @@ type
 
   TfrmAgenda = class(TfrmPadrao)
     dbeFone1: TDBEdit;
+    dbeFone2: TDBEdit;
     dbeNome: TDBEdit;
     dbmObs: TDBMemo;
-    ZQuery1: TZQuery;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    sqldPadrao: TZQuery;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
   public
   end;
@@ -40,6 +46,12 @@ begin
   DisplayLabels := DL_AGENDA;
   TableName:= 'Agenda';
   IdField:='IDAGENDA';
+end;
+
+procedure TfrmAgenda.FormShow(Sender: TObject);
+begin
+  IgnoreAutoGenerateLabels:=true;
+  inherited;
 end;
 
 initialization

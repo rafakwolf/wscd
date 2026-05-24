@@ -13,6 +13,7 @@ type
 
   TfrmRecibo = class(TfrmPadrao)
     lbRecebedor: TLabel;
+    lbData: TLabel;
     lbRefente: TLabel;
     lbValor: TLabel;
     lbValorExtenso: TLabel;
@@ -21,8 +22,7 @@ type
     dbValor: TDBEdit;
     dbReferente: TDBMemo;
     dbValorExtenso: TDBMemo;
-    ZQuery1: TZQuery;
-    ZUpdateSQL1: TZUpdateSQL;
+    sqldPadrao: TZQuery;
     procedure actPrintExecute(Sender: TObject);
     procedure dbValorExit(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -46,7 +46,7 @@ uses ConstPadrao, Funcoes, unImprimeRecibo,
 procedure TfrmRecibo.actPrintExecute(Sender: TObject);
 begin
   inherited;
-  if not(ZQuery1.FieldByName('IDRECIBO').IsNull)then
+  if not(sqldPadrao.FieldByName('IDRECIBO').IsNull)then
   begin
     with TfrmImprimeRecibo.Create(Self)do
     try
@@ -76,7 +76,7 @@ end;
 
 procedure TfrmRecibo.dbValorExit(Sender: TObject);
 begin
-  ZQuery1.FieldByName('VALOREXTENSO').AsString:= Extenso(StrToFloat(dbValor.Text));
+  sqldPadrao.FieldByName('VALOREXTENSO').AsString:= Extenso(StrToFloat(dbValor.Text));
 end;
 
 procedure TfrmRecibo.FormCreate(Sender: TObject);
@@ -85,6 +85,8 @@ begin
   FieldNames := FN_RECIBO;
   DisplayLabels := DL_RECIBO;
   aCaption := 'Recibos';
+  TableName:='RECIBO';
+  IgnoreAutoGenerateLabels:=true;
 end;
 
 class procedure TfrmRecibo.AddAndPrint(data: TDateTime; valor: Currency;
@@ -93,13 +95,13 @@ begin
   with TfrmRecibo.Create(nil) do
   try
     Caption := 'Recibos';
-    ZQuery1.Open;
-    ZQuery1.Insert;
-    ZQuery1.FieldByName('DATA').AsDateTime    := data;
-    ZQuery1.FieldByName('VALOR').AsFloat      := valor;
-    ZQuery1.FieldByName('RECEBEDOR').AsString := recebedor;
-    ZQuery1.FieldByName('REFERENTE').AsString := referente;
-    ZQuery1.ApplyUpdates;
+    sqldPadrao.Open;
+    sqldPadrao.Insert;
+    sqldPadrao.FieldByName('DATA').AsDateTime    := data;
+    sqldPadrao.FieldByName('VALOR').AsFloat      := valor;
+    sqldPadrao.FieldByName('RECEBEDOR').AsString := recebedor;
+    sqldPadrao.FieldByName('REFERENTE').AsString := referente;
+    sqldPadrao.ApplyUpdates;
     Imprime := True;
     ShowModal;
   finally

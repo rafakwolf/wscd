@@ -11,7 +11,7 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
   end
   object edDataIni: TDBEdit[1]
     Left = 24
-    Height = 33
+    Height = 21
     Top = 32
     Width = 185
     DataField = 'DATAINI'
@@ -23,7 +23,7 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
   end
   object edDataFim: TDBEdit[2]
     Left = 24
-    Height = 33
+    Height = 21
     Top = 72
     Width = 185
     DataField = 'DATAFIM'
@@ -34,15 +34,15 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
     TabOrder = 2
   end
   inherited dsPadrao: TDataSource[3]
-    DataSet = cdsSelecao
+    DataSet = sqldSelecao
     Left = 176
+    Top = 128
   end
-  object sqldSelecao: TSQLQuery[4]
-    FieldDefs = <>
+  object sqldSelecao: TZQuery[4]
+    Connection = DmPrincipal.ZConnection1
     Params = <>
-    Macros = <>
     Left = 80
-    Top = 8
+    Top = 120
     object sqldSelecaoDATAINI: TDateTimeField
       FieldKind = fkData
       FieldName = 'DATAINI'
@@ -53,33 +53,6 @@ inherited frmRelatorioClienteData: TfrmRelatorioClienteData
       Required = False
     end
     object sqldSelecaoDATAFIM: TDateTimeField
-      FieldKind = fkData
-      FieldName = 'DATAFIM'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object dspSelecao: TTimer[5]
-    Left = 112
-    Top = 8
-  end
-  object cdsSelecao: TMemDataset[6]
-    FieldDefs = <>
-    Left = 144
-    Top = 8
-    object cdsSelecaoDATAINI: TDateTimeField
-      FieldKind = fkData
-      FieldName = 'DATAINI'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsSelecaoDATAFIM: TDateTimeField
       FieldKind = fkData
       FieldName = 'DATAFIM'
       Index = 1

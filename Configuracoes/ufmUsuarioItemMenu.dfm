@@ -18,7 +18,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   object dbeSenha: TDBEdit[2]
     Left = 96
     Height = 21
-    Top = 120
+    Top = 126
     Width = 121
     DataField = 'SENHA'
     DataSource = dsPadrao
@@ -31,7 +31,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   object dbeLogin: TDBEdit[3]
     Left = 96
     Height = 21
-    Top = 83
+    Top = 89
     Width = 280
     DataField = 'LOGIN'
     DataSource = dsPadrao
@@ -43,7 +43,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   object dbeNomeUsuario: TDBEdit[4]
     Left = 96
     Height = 21
-    Top = 46
+    Top = 52
     Width = 417
     DataField = 'NOME'
     DataSource = dsPadrao
@@ -55,7 +55,7 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
   object DBLookupComboBox1: TDBLookupComboBox[5]
     Left = 96
     Height = 20
-    Top = 160
+    Top = 166
     Width = 352
     DataField = 'IDPERFIL'
     DataSource = dsPadrao
@@ -99,8 +99,8 @@ inherited frmUsuarioItemMenu: TfrmUsuarioItemMenu
     ParentColor = False
   end
   inherited actlNavigateActions: TActionList[10]
-    Left = 416
-    Top = 104
+    Left = 432
+    Top = 96
   end
   inherited dsPadrao: TDataSource[11]
     DataSet = ZQuery1

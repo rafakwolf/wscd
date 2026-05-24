@@ -17,6 +17,7 @@ object frmPadrao: TfrmPadrao
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   ShowHint = True
+  LCLVersion = '3.6.0.0'
   object sbStatus: TStatusBar
     Left = 0
     Height = 18

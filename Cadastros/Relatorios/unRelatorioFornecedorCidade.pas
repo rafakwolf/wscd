@@ -47,7 +47,8 @@ begin
       with sqldPadrao do
       begin
         Close;
-        sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :='select'+
+        sqldPadrao.SQL.Clear;
+        sqldPadrao.SQL.Text :='select'+
                        ' CODIGO,'+
                        ' DATA,'+
                        ' FANTAZIA,'+

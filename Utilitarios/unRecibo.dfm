@@ -1,9 +1,19 @@
 inherited frmRecibo: TfrmRecibo
   Left = 291
+  Height = 381
   Top = 181
+  Width = 789
   Caption = 'frmRecibo'
+  ClientHeight = 381
+  ClientWidth = 789
   Font.Name = 'Verdana'
+  inherited sbStatus: TStatusBar
+    Top = 363
+    Width = 789
+  end
   inherited pnBotoesPadrao: TPanel
+    Width = 789
+    ClientWidth = 789
     TabOrder = 5
     inherited btnNovo: TSpeedButton
       Font.Name = 'Verdana'
@@ -43,7 +53,7 @@ inherited frmRecibo: TfrmRecibo
   object lbRefente: TLabel[3]
     Left = 36
     Height = 16
-    Top = 192
+    Top = 177
     Width = 63
     Caption = 'Referente'
     ParentColor = False
@@ -51,7 +61,7 @@ inherited frmRecibo: TfrmRecibo
     ShowHint = True
   end
   object lbValor: TLabel[4]
-    Left = 62
+    Left = 66
     Height = 16
     Top = 221
     Width = 33
@@ -61,9 +71,9 @@ inherited frmRecibo: TfrmRecibo
     ShowHint = True
   end
   object lbValorExtenso: TLabel[5]
-    Left = 12
+    Left = 10
     Height = 16
-    Top = 257
+    Top = 297
     Width = 89
     Caption = 'Valor extenso'
     ParentColor = False
@@ -110,7 +120,7 @@ inherited frmRecibo: TfrmRecibo
   object dbReferente: TDBMemo[9]
     Left = 108
     Height = 65
-    Top = 143
+    Top = 128
     Width = 500
     DataField = 'REFERENTE'
     DataSource = dsPadrao
@@ -129,72 +139,36 @@ inherited frmRecibo: TfrmRecibo
     ShowHint = True
     TabOrder = 4
   end
-  inherited actlNavigateActions: TActionList[11]
+  object lbData: TLabel[11]
+    Left = 68
+    Height = 16
+    Top = 51
+    Width = 31
+    Caption = 'Data'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  inherited actlNavigateActions: TActionList[12]
     Left = 696
     Top = 40
     inherited actPrint: TAction
-      OnExecute = actPrintExecute
       ShortCut = 0
+      OnExecute = actPrintExecute
     end
   end
-  inherited dsPadrao: TDataSource[12]
-    DataSet = ZQuery1
-    Left = 608
-    Top = 46
+  inherited dsPadrao: TDataSource[13]
+    DataSet = sqldPadrao
+    Left = 696
+    Top = 104
   end
-  object ZQuery1: TZQuery[13]
+  object sqldPadrao: TZQuery[14]
     Connection = DmPrincipal.ZConnection1
-    UpdateObject = ZUpdateSQL1
     SQL.Strings = (
       'select * from RECIBO'
     )
     Params = <>
-    Left = 448
-    Top = 48
-  end
-  object ZUpdateSQL1: TZUpdateSQL[14]
-    DeleteSQL.Strings = (
-      'DELETE FROM RECIBO'
-      'WHERE'
-      '  RECIBO.IDRECIBO = :OLD_IDRECIBO'
-    )
-    InsertSQL.Strings = (
-      'INSERT INTO RECIBO'
-      '  (DATA, RECEBEDOR, REFERENTE, VALOR, VALOREXTENSO)'
-      'VALUES'
-      '  (:DATA, :RECEBEDOR, :REFERENTE, :VALOR, :VALOREXTENSO)'
-    )
-    ModifySQL.Strings = (
-      'UPDATE RECIBO SET'
-      '  DATA = :DATA,'
-      '  RECEBEDOR = :RECEBEDOR,'
-      '  REFERENTE = :REFERENTE,'
-      '  VALOR = :VALOR,'
-      '  VALOREXTENSO = :VALOREXTENSO'
-      'WHERE'
-      '  RECIBO.IDRECIBO = :OLD_IDRECIBO'
-    )
-    UseSequenceFieldForRefreshSQL = False
-    Left = 528
-    Top = 40
-    ParamData = <    
-      item
-        Name = 'DATA'
-      end    
-      item
-        Name = 'RECEBEDOR'
-      end    
-      item
-        Name = 'REFERENTE'
-      end    
-      item
-        Name = 'VALOR'
-      end    
-      item
-        Name = 'VALOREXTENSO'
-      end    
-      item
-        Name = 'OLD_IDRECIBO'
-      end>
+    Left = 696
+    Top = 184
   end
 end

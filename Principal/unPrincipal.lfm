@@ -4,9 +4,10 @@ object MainForm: TMainForm
   Top = 226
   Width = 1052
   Caption = 'WSCD'
-  OnCreate = FormCreate
   Position = poScreenCenter
+  LCLVersion = '4.2.0.0'
   WindowState = wsMaximized
+  OnCreate = FormCreate
   object ListaAcoes: TActionList
     Left = 176
     Top = 112
@@ -43,8 +44,8 @@ object MainForm: TMainForm
     object actAgenda: TAction
       Category = 'Util'
       Caption = 'Agenda de telefones'
-      OnExecute = actAgendaExecute
       ShortCut = 16449
+      OnExecute = actAgendaExecute
     end
     object actRecibo: TAction
       Category = 'Util'

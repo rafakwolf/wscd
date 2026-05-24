@@ -68,7 +68,7 @@ implementation
 
 uses
   unAcesso, Funcoes, uUtilFncs, VarGlobal,
-  udmAcesso, baseRepo, unDmPrincipal;
+  udmAcesso, unDmPrincipal, unRecibo;
 
 {$R *.lfm}
 
@@ -153,7 +153,7 @@ begin
     Configuracao.Atualizar
   else
   begin
-    Configuracao := TConfiguracao.Create;
+    Configuracao := TConfiguracao.Create(Usuario);
     Configuracao.Atualizar;
   end;
 end;

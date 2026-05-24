@@ -1,19 +1,19 @@
 inherited frmPerfil: TfrmPerfil
   Left = 359
-  Height = 356
+  Height = 263
   Top = 217
-  Width = 665
+  Width = 640
   Caption = 'frmPerfil'
-  ClientHeight = 356
-  ClientWidth = 665
+  ClientHeight = 263
+  ClientWidth = 640
   OnCreate = FormCreate
   inherited sbStatus: TStatusBar
-    Top = 338
-    Width = 665
+    Top = 245
+    Width = 640
   end
   inherited pnBotoesPadrao: TPanel
-    Width = 665
-    ClientWidth = 665
+    Width = 640
+    ClientWidth = 640
   end
   object DBEdit1: TDBEdit[2]
     Left = 40
@@ -25,16 +25,23 @@ inherited frmPerfil: TfrmPerfil
     MaxLength = 0
     TabOrder = 2
   end
-  inherited actlNavigateActions: TActionList[3]
+  object Label1: TLabel[3]
+    Left = 40
+    Height = 16
+    Top = 61
+    Width = 90
+    Caption = 'Nome do Perfil'
+  end
+  inherited actlNavigateActions: TActionList[4]
     Left = 88
     Top = 128
   end
-  inherited dsPadrao: TDataSource[4]
+  inherited dsPadrao: TDataSource[5]
     DataSet = ZQuery1
     Left = 208
     Top = 128
   end
-  object ZQuery1: TZQuery[5]
+  object ZQuery1: TZQuery[6]
     Connection = DmPrincipal.ZConnection1
     SQL.Strings = (
       'select * from PERFIL'

@@ -91,7 +91,6 @@ type
     miLocalizaColuna: TMenuItem;
     sqldCredDeb: TZQuery;
     sqlPadrao: TZQuery;
-    ZQuery3: TZQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnExcluirClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);

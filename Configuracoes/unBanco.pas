@@ -15,8 +15,11 @@ type
   TfrmBanco = class(TfrmPadrao)
     dbeCodCompensacao: TDBEdit;
     dbeBanco: TDBEdit;
-    ZQuery1: TZQuery;
+    Label1: TLabel;
+    Label2: TLabel;
+    sqldPadrao: TZQuery;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
   public
   end;
@@ -37,6 +40,12 @@ begin
   DisplayLabels := DL_BANCO;
   aCaption := 'Bancos';
   TableName:='BANCO';
+end;
+
+procedure TfrmBanco.FormShow(Sender: TObject);
+begin
+  IgnoreAutoGenerateLabels:=true;
+  inherited;
 end;
 
 initialization

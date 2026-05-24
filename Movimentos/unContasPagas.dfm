@@ -8,6 +8,7 @@ inherited frmContasPagas: TfrmContasPagas
   Caption = 'frmContasPagas'
   ClientHeight = 392
   ClientWidth = 937
+  Menu = mmContasPagas
   OnResize = FormResize
   OnShow = FormShow
   object Stb: TStatusBar[0]
@@ -16,9 +17,19 @@ inherited frmContasPagas: TfrmContasPagas
     Top = 374
     Width = 937
     Color = clBtnFace
-    Panels = <>
+    Panels = <    
+      item
+        Width = 200
+      end    
+      item
+        Width = 200
+      end    
+      item
+        Width = 50
+      end>
     ParentColor = False
     ParentShowHint = False
+    SimplePanel = False
     ShowHint = True
   end
   object pnBotoes: TPanel[1]
@@ -137,569 +148,12 @@ inherited frmContasPagas: TfrmContasPagas
     TabOrder = 0
     OnDblClick = GradeDblClick
   end
-  object sqldPadrao: TSQLQuery[5]
-    FieldDefs = <>
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'PFORN'
-        ParamType = ptInput
-      end>
-    Macros = <>
-    Left = 288
-    Top = 160
-    object sqldPadraoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldPadraoDATA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoVENCIMENTO: TDateField
-      FieldKind = fkData
-      FieldName = 'VENCIMENTO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoFORNECEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'FORNECEDOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoNOMEFORN: TStringField
-      FieldKind = fkData
-      FieldName = 'NOMEFORN'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object sqldPadraoDOCUMENTO: TStringField
-      FieldKind = fkData
-      FieldName = 'DOCUMENTO'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoVALOR: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoJURO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'JURO'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoPAGAR: TStringField
-      FieldKind = fkData
-      FieldName = 'PAGAR'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoPAGA: TStringField
-      FieldKind = fkData
-      FieldName = 'PAGA'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object sqldPadraoDATAPAGTO: TDateField
-      FieldKind = fkData
-      FieldName = 'DATAPAGTO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoORIGEM: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ORIGEM'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoCOMPRA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'COMPRA'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoCAPITALPAGO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'CAPITALPAGO'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoJUROPAGO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'JUROPAGO'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoDESCTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCTO'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoOBS: TMemoField
-      FieldKind = fkData
-      FieldName = 'OBS'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
-    object sqldPadraoATRASO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ATRASO'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object sqldPadraoVALORJURO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VALORJURO'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoTOTAL: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object sqldPadraoTOTALPAGO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTALPAGO'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-  end
-  object dspPadrao: TTimer[6]
-    Left = 400
-    Top = 240
-  end
-  object cdsPadrao: TMemDataset[7]
-    FieldDefs = <>
-    Left = 456
-    Top = 152
-    object cdsPadraoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsPadraoDATA: TDateField
-      FieldKind = fkData
-      FieldName = 'DATA'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoVENCIMENTO: TDateField
-      FieldKind = fkData
-      FieldName = 'VENCIMENTO'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoFORNECEDOR: TIntegerField
-      FieldKind = fkData
-      FieldName = 'FORNECEDOR'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoNOMEFORN: TStringField
-      FieldKind = fkData
-      FieldName = 'NOMEFORN'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoDESCRICAO: TStringField
-      FieldKind = fkData
-      FieldName = 'DESCRICAO'
-      Index = 5
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 80
-    end
-    object cdsPadraoDOCUMENTO: TStringField
-      FieldKind = fkData
-      FieldName = 'DOCUMENTO'
-      Index = 6
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoVALOR: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VALOR'
-      Index = 7
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoJURO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'JURO'
-      Index = 8
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoPAGAR: TStringField
-      FieldKind = fkData
-      FieldName = 'PAGAR'
-      Index = 9
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoPAGA: TStringField
-      FieldKind = fkData
-      FieldName = 'PAGA'
-      Index = 10
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 1
-    end
-    object cdsPadraoDATAPAGTO: TDateField
-      FieldKind = fkData
-      FieldName = 'DATAPAGTO'
-      Index = 11
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoORIGEM: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ORIGEM'
-      Index = 12
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoCOMPRA: TIntegerField
-      FieldKind = fkData
-      FieldName = 'COMPRA'
-      Index = 13
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoCAPITALPAGO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'CAPITALPAGO'
-      Index = 14
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoJUROPAGO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'JUROPAGO'
-      Index = 15
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoDESCTO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'DESCTO'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoOBS: TMemoField
-      FieldKind = fkData
-      FieldName = 'OBS'
-      Index = 17
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      BlobType = ftMemo
-      Size = 1
-      Transliterate = False
-    end
-    object cdsPadraoATRASO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ATRASO'
-      Index = 18
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-    object cdsPadraoVALORJURO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'VALORJURO'
-      Index = 19
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoTOTAL: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTAL'
-      Index = 20
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-    object cdsPadraoTOTALPAGO: TFMTBCDField
-      FieldKind = fkData
-      FieldName = 'TOTALPAGO'
-      Index = 21
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Currency = False
-      MaxValue = '0'
-      MinValue = '0'
-    end
-  end
-  object dsPadrao: TDataSource[8]
-    DataSet = cdsPadrao
+  object dsPadrao: TDataSource[5]
+    DataSet = sqldPadrao
     Left = 552
     Top = 160
   end
-  object sqldEstorno: TSQLQuery[9]
-    FieldDefs = <>
-    Params = <>
-    Macros = <>
-    Left = 120
-    Top = 272
-    object sqldEstornoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object sqldEstornoORIGEM: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ORIGEM'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object cdsEstorno: TMemDataset[10]
-    FieldDefs = <>
-    Left = 288
-    Top = 264
-    object cdsEstornoCODIGO: TIntegerField
-      FieldKind = fkData
-      FieldName = 'CODIGO'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object cdsEstornoORIGEM: TIntegerField
-      FieldKind = fkData
-      FieldName = 'ORIGEM'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-    end
-  end
-  object sqldContaEstorno: TSQLQuery[11]
-    FieldDefs = <>
-    Params = <    
-      item
-        DataType = ftInteger
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end>
-    Macros = <>
-    Left = 152
-    Top = 200
-  end
-  object mmContasPagas: TMainMenu[12]
+  object mmContasPagas: TMainMenu[6]
     Left = 152
     Top = 112
     object miOpcoes: TMenuItem
@@ -719,6 +173,311 @@ inherited frmContasPagas: TfrmContasPagas
         Caption = 'Fechar'
         OnClick = miFecharClick
       end
+    end
+  end
+  object sqldPadrao: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select cp.*, f.RAZAOSOCIAL as NOMEFORN'
+      'from CONTASPAGAR cp'
+      'join FORNECEDORES f on (f.CODFORNECEDOR = cp.FORNECEDOR)'
+      'where cp.FORNECEDOR = :PFORN'
+    )
+    Params = <    
+      item
+        DataType = ftString
+        Name = 'PFORN'
+        SQLType = stString
+        Value = '0'
+      end>
+    Left = 368
+    Top = 176
+    ParamData = <    
+      item
+        DataType = ftString
+        Name = 'PFORN'
+        SQLType = stString
+        Value = '0'
+      end>
+    object sqldPadraoCODIGO: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqldPadraoDATA: TZDateField
+      FieldKind = fkData
+      FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoVENCIMENTO: TZDateField
+      FieldKind = fkData
+      FieldName = 'VENCIMENTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoDESCRICAO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DESCRICAO'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqldPadraoFORNECEDOR: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'FORNECEDOR'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoVALOR: TZBCDField
+      FieldKind = fkData
+      FieldName = 'VALOR'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoDOCUMENTO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'DOCUMENTO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object sqldPadraoPAGAR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PAGAR'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object sqldPadraoJURO: TZBCDField
+      FieldKind = fkData
+      FieldName = 'JURO'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoPAGA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'PAGA'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object sqldPadraoDATAPAGTO: TZDateField
+      FieldKind = fkData
+      FieldName = 'DATAPAGTO'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoORIGEM: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'ORIGEM'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoCOMPRA: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'COMPRA'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoCAPITALPAGO: TZBCDField
+      FieldKind = fkData
+      FieldName = 'CAPITALPAGO'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoJUROPAGO: TZBCDField
+      FieldKind = fkData
+      FieldName = 'JUROPAGO'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoDESCTO: TZBCDField
+      FieldKind = fkData
+      FieldName = 'DESCTO'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoOBS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'OBS'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object sqldPadraoIDCONTA: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'IDCONTA'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoATRASO: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'ATRASO'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoVALORJURO: TZBCDField
+      FieldKind = fkData
+      FieldName = 'VALORJURO'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoTOTAL: TZBCDField
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoTOTALPAGO: TZBCDField
+      FieldKind = fkData
+      FieldName = 'TOTALPAGO'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoNOMEFORN: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NOMEFORN'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+  end
+  object sqldEstorno: TZQuery[8]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select CODIGO, ORIGEM from CONTASPAGAR where PAGA = ''N'''
+    )
+    Params = <>
+    Left = 384
+    Top = 256
+    object sqldEstornoCODIGO: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqldEstornoORIGEM: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'ORIGEM'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
     end
   end
 end

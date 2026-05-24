@@ -13,6 +13,23 @@ type
   { TfrmFornecedor }
 
   TfrmFornecedor = class(TfrmPadrao)
+    lbNomeRzSocial: TLabel;
+    lbNomeFantazia: TLabel;
+    lbCnpj: TLabel;
+    lbInscEstadual: TLabel;
+    lbEndereco: TLabel;
+    lbBairro: TLabel;
+    lbCep: TLabel;
+    lbEstado: TLabel;
+    lbCidade: TLabel;
+    lbTelefone: TLabel;
+    lbFax: TLabel;
+    lbDataCadastro: TLabel;
+    lbEmail: TLabel;
+    lbNomeVendedor: TLabel;
+    lbTelefoneVendedor: TLabel;
+    lbEmailVendedor: TLabel;
+    lbObs: TLabel;
     btnContas: TBitBtn;
     dbdDataCadastro: TDBEdit;
     dbeTelefoneVendedor: TDBEdit;
@@ -29,14 +46,20 @@ type
     dbeNomeRzSocial: TDBEdit;
     dbeNomeFantazia: TDBEdit;
     dbeEmail: TDBEdit;
-    DBLookupComboBox1: TDBLookupComboBox;
+    dbcmbCidade: TDBLookupComboBox;
     dbmObs: TDBMemo;
-    dsPadrao1: TDataSource;
-    ZQuery1: TZQuery;
-    ZReadOnlyQuery1: TZReadOnlyQuery;
+    dsCidades: TDataSource;
+    menu: TMainMenu;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    sqldPadrao: TZQuery;
+    sqldCidades: TZReadOnlyQuery;
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure actPrintExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure MenuItem1Click(Sender: TObject);
     procedure miRelFornDataClick(Sender: TObject);
     procedure miRelPorCidadeClick(Sender: TObject);
     procedure btnContasClick(Sender: TObject);
@@ -62,14 +85,14 @@ begin
   FieldNames := FN_FORN;
   DisplayLabels := DL_FORN;
   aCaption := 'Fornecedores';
-  ZReadOnlyQuery1.open;
+  sqldCidades.open;
 end;
 
 procedure TfrmFornecedor.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   inherited;
-  ZReadOnlyQuery1.close;
+  sqldCidades.close;
 end;
 
 procedure TfrmFornecedor.actPrintExecute(Sender: TObject);
@@ -89,6 +112,17 @@ begin
   end;
 end;
 
+procedure TfrmFornecedor.FormShow(Sender: TObject);
+begin
+  IgnoreAutoGenerateLabels:=true;
+  inherited;
+end;
+
+procedure TfrmFornecedor.MenuItem1Click(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmFornecedor.miRelFornDataClick(Sender: TObject);
 begin
   inherited;
@@ -106,9 +140,9 @@ begin
   inherited;
   frmContasPagar := TfrmContasPagar.Create(Self);
   frmContasPagar.Caption := 'Contas por Fornecedor: '+
-    zquery1.FieldByName('FANTASIA').AsString;
+    sqldPadrao.FieldByName('FANTASIA').AsString;
   frmContasPagar.TipoChamada := 1;
-  frmContasPagar.IdForn := zquery1.FieldByName('CODFORNECEDOR').AsInteger;
+  frmContasPagar.IdForn := sqldPadrao.FieldByName('CODFORNECEDOR').AsInteger;
   frmContasPagar.ShowModal;
 end;
 
@@ -126,7 +160,7 @@ begin
     Free;
   end;
 
-  if (ModoInsert(zquery1) and Repetido) then
+  if (ModoInsert(sqldPadrao) and Repetido) then
   begin
     MsgAviso('Fornecedor com este CNPJ ja esta cadastrado.');
     Abort;

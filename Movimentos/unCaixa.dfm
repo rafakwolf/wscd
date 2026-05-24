@@ -5492,6 +5492,7 @@ inherited frmCaixa: TfrmCaixa
     Font.Name = 'Verdana'
     Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
     ParentFont = False
+    PopupMenu = PopupConsulta
     ReadOnly = True
     ShowHint = True
     TabOrder = 1
@@ -5501,12 +5502,12 @@ inherited frmCaixa: TfrmCaixa
     AutoEdit = False
     DataSet = sqlPadrao
     OnStateChange = dsCaixaStateChange
-    Left = 360
-    Top = 144
+    Left = 336
+    Top = 120
   end
   object dsCaixas: TDataSource[4]
-    Left = 368
-    Top = 232
+    Left = 344
+    Top = 184
   end
   object mnCaixa: TMainMenu[5]
     Left = 336
@@ -5649,10 +5650,5 @@ inherited frmCaixa: TfrmCaixa
     Params = <>
     Left = 184
     Top = 192
-  end
-  object ZQuery3: TZQuery[9]
-    Params = <>
-    Left = 176
-    Top = 280
   end
 end

@@ -5,8 +5,8 @@ unit unPerfil;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, DBCtrls, unPadrao,
-  ZDataset, ZSqlUpdate, ZAbstractRODataset;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, DBCtrls, StdCtrls,
+  unPadrao, ZDataset, ZSqlUpdate, ZAbstractRODataset;
 
 type
 
@@ -14,6 +14,7 @@ type
 
   TfrmPerfil = class(TfrmPadrao)
     DBEdit1: TDBEdit;
+    Label1: TLabel;
     ZQuery1: TZQuery;
     ZQuery1IDPERFIL: TZIntegerField;
     ZQuery1PERFIL: TZRawStringField;
@@ -36,7 +37,7 @@ implementation
 procedure TfrmPerfil.FormCreate(Sender: TObject);
 begin
   inherited;
-  //
+  IgnoreAutoGenerateLabels:=true;
 end;
 
 initialization

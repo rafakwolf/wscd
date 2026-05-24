@@ -2,10 +2,10 @@ object fmDatas: TfmDatas
   Left = 301
   Height = 240
   Top = 38
-  Width = 320
+  Width = 281
   Caption = 'Datas'
   ClientHeight = 240
-  ClientWidth = 320
+  ClientWidth = 281
   object DateTimePicker1: TDateTimePicker
     Left = 60
     Height = 21
@@ -29,9 +29,9 @@ object fmDatas: TfmDatas
     MonthNames = 'Long'
   end
   object DateTimePicker2: TDateTimePicker
-    Left = 64
+    Left = 60
     Height = 21
-    Top = 88
+    Top = 112
     Width = 95
     CenturyFrom = 1941
     MaxDate = 2958465
@@ -60,12 +60,26 @@ object fmDatas: TfmDatas
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 184
+    Left = 152
     Height = 25
     Top = 180
     Width = 75
     Caption = 'Cancelar'
     TabOrder = 3
     OnClick = Button2Click
+  end
+  object Label1: TLabel
+    Left = 62
+    Height = 16
+    Top = 26
+    Width = 66
+    Caption = 'Data Inicial'
+  end
+  object Label2: TLabel
+    Left = 62
+    Height = 16
+    Top = 88
+    Width = 60
+    Caption = 'Data Final'
   end
 end

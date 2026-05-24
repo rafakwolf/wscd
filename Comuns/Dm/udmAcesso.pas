@@ -42,7 +42,7 @@ var count: Integer;
 begin
   if (login = 'adm') then begin
     Result := True;
-    Abort;
+    Exit;
   end;
 
  count := SelecSingleField('select count(1) from USUARIOS where LOGIN like '+QuotedStr(login), getzConnection);

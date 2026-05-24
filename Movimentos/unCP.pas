@@ -13,10 +13,26 @@ type
   { TfrmCP }
 
   TfrmCP = class(TfrmPadrao)
+    lbFornecedor: TLabel;
+    lbConta: TLabel;
+    lbDescricao: TLabel;
+    lbData: TLabel;
+    lbVencimento: TLabel;
+    lbDocumento: TLabel;
+    lbValor: TLabel;
+    lbValorAtual: TLabel;
+    lbJuros: TLabel;
+    lbOrigem: TLabel;
+    lbCompra: TLabel;
+    lbDataPagto: TLabel;
+    lbDesconto: TLabel;
+    lbCapitalPago: TLabel;
+    lbJuroPago: TLabel;
+    lbTotalPago: TLabel;
     actContas: TAction;
-    DataSource1: TDataSource;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
+    dsCaixas: TDataSource;
+    dbcmbFornecedor: TDBLookupComboBox;
+    dbcmbConta: TDBLookupComboBox;
     dsForn: TDataSource;
     lbStatus: TLabel;
     btnPagar: TBitBtn;
@@ -39,7 +55,7 @@ type
     sqldPadrao: TZQuery;
     sqldDeleta: TZQuery;
     zForn: TZQuery;
-    ZReadOnlyQuery1: TZReadOnlyQuery;
+    sqldCaixas: TZReadOnlyQuery;
     procedure FormCreate(Sender: TObject);
     procedure sqldPadraoAfterInsert(DataSet: TDataSet);
     procedure actContasExecute(Sender: TObject);
@@ -86,7 +102,9 @@ begin
 
 
   zForn.Open;
-  ZReadOnlyQuery1.Open;
+  sqldCaixas.Open;
+
+  IgnoreAutoGenerateLabels:=true;
 end;
 
 procedure TfrmCP.sqldPadraoAfterInsert(DataSet: TDataSet);

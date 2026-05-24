@@ -3,75 +3,51 @@ unit unContasPagas;
 interface
 
 uses
-  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,   Buttons, DB, StdCtrls,  DBCtrls, SqlDb,
-  memds,  ConstPadrao, ComCtrls, unContasPagar,  LCLType,
-  Menus, Grids, DBGrids, FMTBcd, unSimplePadrao, varglobal, zdataset;
+  Messages, ExtCtrls, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, DB, StdCtrls, DBCtrls, SqlDb, ConstPadrao, ComCtrls,
+  unContasPagar, LCLType, Menus, Grids, DBGrids, FMTBcd, unSimplePadrao,
+  ZAbstractRODataset, varglobal, zdataset;
 
 type
+
+  { TfrmContasPagas }
+
   TfrmContasPagas = class(TfrmSimplePadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
+    sqldEstornoCODIGO: TZIntegerField;
+    sqldEstornoORIGEM: TZIntegerField;
+    sqldPadrao: TZQuery;
     dsPadrao: TDataSource;
-    sqldEstorno: TSQLQuery;
-    dspEstorno: TComponent;
-    cdsEstorno: TMemDataSet;
-    sqldEstornoCODIGO: TIntegerField;
-    sqldEstornoORIGEM: TIntegerField;
-    cdsEstornoCODIGO: TIntegerField;
-    cdsEstornoORIGEM: TIntegerField;
-    sqldContaEstorno: TSQLQuery;
-    sqldPadraoCODIGO: TIntegerField;
-    sqldPadraoDATA: TDateField;
-    sqldPadraoVENCIMENTO: TDateField;
-    sqldPadraoFORNECEDOR: TIntegerField;
+    sqldEstorno: TZQuery;
+    sqldContaEstorno: TZQuery;
+    sqldPadraoATRASO: TZIntegerField;
+    sqldPadraoCAPITALPAGO: TZBCDField;
+    sqldPadraoCODIGO: TZIntegerField;
+    sqldPadraoCOMPRA: TZIntegerField;
+    sqldPadraoDATA: TZDateField;
+    sqldPadraoDATAPAGTO: TZDateField;
+    sqldPadraoDESCRICAO: TZRawStringField;
+    sqldPadraoDESCTO: TZBCDField;
+    sqldPadraoDOCUMENTO: TZRawStringField;
+    sqldPadraoFORNECEDOR: TZIntegerField;
+    sqldPadraoIDCONTA: TZIntegerField;
+    sqldPadraoJURO: TZBCDField;
+    sqldPadraoJUROPAGO: TZBCDField;
     sqldPadraoNOMEFORN: TStringField;
-    sqldPadraoDESCRICAO: TStringField;
-    sqldPadraoDOCUMENTO: TStringField;
-    sqldPadraoVALOR: TFMTBCDField;
-    sqldPadraoJURO: TFMTBCDField;
-    sqldPadraoPAGAR: TStringField;
-    sqldPadraoPAGA: TStringField;
-    sqldPadraoDATAPAGTO: TDateField;
-    sqldPadraoORIGEM: TIntegerField;
-    sqldPadraoCOMPRA: TIntegerField;
-    sqldPadraoCAPITALPAGO: TFMTBCDField;
-    sqldPadraoJUROPAGO: TFMTBCDField;
-    sqldPadraoDESCTO: TFMTBCDField;
-    sqldPadraoOBS: TMemoField;
-    sqldPadraoATRASO: TIntegerField;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoVENCIMENTO: TDateField;
-    cdsPadraoFORNECEDOR: TIntegerField;
-    cdsPadraoNOMEFORN: TStringField;
-    cdsPadraoDESCRICAO: TStringField;
-    cdsPadraoDOCUMENTO: TStringField;
-    cdsPadraoVALOR: TFMTBCDField;
-    cdsPadraoJURO: TFMTBCDField;
-    cdsPadraoPAGAR: TStringField;
-    cdsPadraoPAGA: TStringField;
-    cdsPadraoDATAPAGTO: TDateField;
-    cdsPadraoORIGEM: TIntegerField;
-    cdsPadraoCOMPRA: TIntegerField;
-    cdsPadraoCAPITALPAGO: TFMTBCDField;
-    cdsPadraoJUROPAGO: TFMTBCDField;
-    cdsPadraoDESCTO: TFMTBCDField;
-    cdsPadraoOBS: TMemoField;
-    cdsPadraoATRASO: TIntegerField;
-    sqldPadraoVALORJURO: TFMTBCDField;
-    sqldPadraoTOTAL: TFMTBCDField;
-    sqldPadraoTOTALPAGO: TFMTBCDField;
-    cdsPadraoVALORJURO: TFMTBCDField;
-    cdsPadraoTOTAL: TFMTBCDField;
-    cdsPadraoTOTALPAGO: TFMTBCDField;
     mmContasPagas: TMainMenu;
     miOpcoes: TMenuItem;
     miEstornar: TMenuItem;
     miAtualizar: TMenuItem;
     N1: TMenuItem;
     miFechar: TMenuItem;
+    sqldPadraoOBS: TZRawStringField;
+    sqldPadraoORIGEM: TZIntegerField;
+    sqldPadraoPAGA: TZRawStringField;
+    sqldPadraoPAGAR: TZRawStringField;
+    sqldPadraoTOTAL: TZBCDField;
+    sqldPadraoTOTALPAGO: TZBCDField;
+    sqldPadraoVALOR: TZBCDField;
+    sqldPadraoVALORJURO: TZBCDField;
+    sqldPadraoVENCIMENTO: TZDateField;
     Stb: TStatusBar;
     pnBotoes: TPanel;
     btnAtualizar: TSpeedButton;
@@ -91,7 +67,6 @@ type
     procedure Estornar;
     procedure GradeDblClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure GradeTitleClick(Column: TColumn);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
@@ -117,9 +92,9 @@ end;
 
 procedure TfrmContasPagas.miAtualizarClick(Sender: TObject);
 begin
-  cdsPadrao.Close;
-  //cdsPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
-  cdsPadrao.Open;
+  sqldPadrao.Close;
+  sqldPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
+  sqldPadrao.Open;
 end;
 
 procedure TfrmContasPagas.FormCreate(Sender: TObject);
@@ -143,7 +118,7 @@ begin
 
   case OpcaoFiltro of
   -1: begin
-         //PostMessage(Handle, WM_CLOSE, 0, 0);
+         self.Close;
          Exit;
        end;
    0: begin
@@ -151,27 +126,28 @@ begin
           (ClearMask(DataI) <> '') and
           (ClearMask(DataF) <> '') then
         begin
-          cdsPadrao.Close;
-          //sqldPadrao.SQL.Clear; sqldPadrao.SQL.Text :=GetSQLFromQuery(cdsPadrao) +
-          //  ' and DATAPAGTO between :DATAI and :DATAF';
+          sqldPadrao.Close;
+          sqldPadrao.SQL.Clear;
+          sqldPadrao.SQL.Text :=
+            'select * from CONTASPAGAR and DATAPAGTO between :DATAI and :DATAF';
           sqldPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
           sqldPadrao.Params.ParamByName('DATAI').AsDate := StrToDateTime(DataI);
           sqldPadrao.Params.ParamByName('DATAF').AsDate := StrToDateTime(DataF);
-          cdsPadrao.Open;
-          lbFiltrousado.Caption := 'Per�odo de '+DataI+' at� '+DataF;
+          sqldPadrao.Open;
+          lbFiltrousado.Caption := 'Período de '+DataI+' até '+DataF;
         end;
       end;
    1: begin
-        cdsPadrao.Close;
+        sqldPadrao.Close;
         sqldPadrao.Params.ParamByName('PFORN').AsInteger := FFornecedor;
-        cdsPadrao.Open;
+        sqldPadrao.Open;
         lbFiltrousado.Caption := 'Todas as contas pagas';
       end;
   end;
-  if cdsPadrao.IsEmpty then
+  if sqldPadrao.IsEmpty then
   begin
     MsgErro(UM_PESQUISAVAZIO);
-    //PostMessage(Handle, WM_CLOSE, 0, 0);
+    self.Close;
     Exit;
   end;
   SomaContasPagas;
@@ -180,7 +156,7 @@ end;
 procedure TfrmContasPagas.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsPadrao.Close;
+  sqldPadrao.Close;
   Action := caFree;
 end;
 
@@ -209,60 +185,60 @@ begin
     Exit;
   end;
 
-  if Locate(cdsPadrao, cdsPadraoPAGAR, 'S') then
+  if Locate(sqldPadrao, sqldPadraoPAGAR, 'S') then
   begin
     if MsgSN('Deseja estornar esta conta?') then
       Estornar;
   end
   else
-    MsgAviso('N�o h� conta marcada para estorno.'+#13#10+
-      'Para marcar/desmarcar d� um duplo clique sobre a conta desejada.');
+    MsgAviso('Não há conta marcada para estorno.'+#13#10+
+      'Para marcar/desmarcar, duplo clique sobre a conta desejada.');
 end;
 
 procedure TfrmContasPagas.Estornar;
 begin
   try
-    if cdsPadraoORIGEM.IsNull then
+    if sqldPadraoORIGEM.IsNull then
     begin
-      cdsPadrao.Edit;
-      cdsPadraoPAGA.AsString := 'N';
-      cdsPadraoPAGAR.AsString := 'N';
-      cdsPadraoDATAPAGTO.Clear;
-      cdsPadraoCAPITALPAGO.AsFloat := 0;
-      cdsPadraoJUROPAGO.AsFloat := 0;
-      cdsPadraoDESCTO.AsFloat := 0;
-      ////cdsPadrao.ApplyUpdates(0);
+      sqldPadrao.Edit;
+      sqldPadraoPAGA.AsString := 'N';
+      sqldPadraoPAGAR.AsString := 'N';
+      sqldPadraoDATAPAGTO.Clear;
+      sqldPadraoCAPITALPAGO.AsFloat := 0;
+      sqldPadraoJUROPAGO.AsFloat := 0;
+      sqldPadraoDESCTO.AsFloat := 0;
+      sqldPadrao.ApplyUpdates;
       { delete conta restante }
       sqldContaEstorno.Close;
-      sqldContaEstorno.Params.ParamByName('CODIGO').AsInteger := cdsPadraoCODIGO.AsInteger;
+      sqldContaEstorno.Params.ParamByName('CODIGO').AsInteger := sqldPadraoCODIGO.AsInteger;
       sqldContaEstorno.ExecSQL;
     end
     else
     begin
-      cdsEstorno.Open;
-      if cdsEstorno.Locate('ORIGEM', cdsPadraoCODIGO.AsInteger, []) then
+      sqldEstorno.Open;
+      if sqldEstorno.Locate('ORIGEM', sqldPadraoCODIGO.AsInteger, []) then
       begin
-        MsgAviso('O pagamento desta conta gerou a conta restante de c�digo = ' +
-          IntToStr(cdsEstornoCODIGO.AsInteger) + '.' + #13#10 +
+        MsgAviso('O pagamento desta conta gerou a conta restante de código = ' +
+          IntToStr(sqldEstornoCODIGO.AsInteger) + '.' + #13#10 +
           'Exclua a conta restante para prosseguir.');
         Exit;
       end
       else
       begin
-        cdsPadrao.Edit;
-        cdsPadraoPAGA.AsString := 'N';
-        cdsPadraoPAGAR.AsString := 'N';
-        cdsPadraoDATAPAGTO.Clear;
-        cdsPadraoCAPITALPAGO.AsFloat := 0;
-        cdsPadraoJUROPAGO.AsFloat := 0;
-        cdsPadraoDESCTO.AsFloat := 0;
-        ////cdsPadrao.ApplyUpdates(0);
+        sqldPadrao.Edit;
+        sqldPadraoPAGA.AsString := 'N';
+        sqldPadraoPAGAR.AsString := 'N';
+        sqldPadraoDATAPAGTO.Clear;
+        sqldPadraoCAPITALPAGO.AsFloat := 0;
+        sqldPadraoJUROPAGO.AsFloat := 0;
+        sqldPadraoDESCTO.AsFloat := 0;
+        sqldPadrao.ApplyUpdates;
       end;
     end;
   finally
     btnAtualizar.Click;
     PostMessageAllForms(WM_CONTA_PAGAR_PAGA);
-    cdsEstorno.Close;
+    sqldEstorno.Close;
   end;
   SomaContasPagas;
 end;
@@ -285,14 +261,14 @@ end;
 
 procedure TfrmContasPagas.GradeDblClick(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then Exit;
-  cdsPadrao.Edit;
-  if (cdsPadraoPAGAR.AsString = 'N') then
-    cdsPadraoPAGAR.AsString := 'S'
+  if sqldPadrao.IsEmpty then Exit;
+  sqldPadrao.Edit;
+  if (sqldPadraoPAGAR.AsString = 'N') then
+    sqldPadraoPAGAR.AsString := 'S'
   else
-    cdsPadraoPAGAR.AsString := 'N';
-  ////cdsPadrao.ApplyUpdates(0);
-  cdsPadrao.Next;
+    sqldPadraoPAGAR.AsString := 'N';
+  sqldPadrao.ApplyUpdates;
+  sqldPadrao.Next;
 end;
 
 procedure TfrmContasPagas.FormResize(Sender: TObject);
@@ -302,11 +278,6 @@ begin
   Size := Trunc(Self.Width div 2);
   Stb.Panels[0].Width := Size;
   Stb.Panels[1].Width := Size;
-end;
-
-procedure TfrmContasPagas.GradeTitleClick(Column: TColumn);
-begin
-  ////OrdenaColunasGrid(Grade, Column, cdsPadrao);
 end;
 
 procedure TfrmContasPagas.FormKeyDown(Sender: TObject; var Key: Word;

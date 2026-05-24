@@ -13,6 +13,33 @@ type
   { TfrmCliente }
 
   TfrmCliente = class(TfrmPadrao)
+    lbNome: TLabel;
+    lbCpf: TLabel;
+    lbRg: TLabel;
+    lbEndereco: TLabel;
+    lbBairro: TLabel;
+    lbCep: TLabel;
+    lbTelefone: TLabel;
+    lbFax: TLabel;
+    lbEmail: TLabel;
+    lbDataNasc: TLabel;
+    lbDataCadastro: TLabel;
+    lbPai: TLabel;
+    lbMae: TLabel;
+    lbNaturalidade: TLabel;
+    lbTempoMoradia: TLabel;
+    lbEnderecoAnterior: TLabel;
+    lbConjuge: TLabel;
+    lbTrabalho: TLabel;
+    lbCargo: TLabel;
+    lbInicioTrabalho: TLabel;
+    lbTelefoneComercial: TLabel;
+    lbLocalTrabalho: TLabel;
+    lbRefPessoal: TLabel;
+    lbRefComercial: TLabel;
+    lbSalario: TLabel;
+    lbLimite: TLabel;
+    lbObs: TLabel;
     btnContas: TBitBtn;
     dbeFax: TDBEdit;
     dbeTelefoneComercial: TDBEdit;
@@ -48,6 +75,7 @@ type
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     sqldClientes: TZQuery;
+    procedure FormShow(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure miRelClientesCidadeClick(Sender: TObject);
     procedure miRelClientesDataNascClick(Sender: TObject);
@@ -78,15 +106,21 @@ uses Funcoes, ConstPadrao, uConfiguraRelatorio, VarGlobal,
 
 {$R *.dfm}
 
-procedure TfrmCliente.miRelClientesCidadeClick(Sender: TObject);
+procedure TfrmCliente.FormShow(Sender: TObject);
 begin
+  IgnoreAutoGenerateLabels := true;
   inherited;
-  ChamaForm('TfrmRelatorioClienteCidade', 'Clientes por cidade', Self);
 end;
 
 procedure TfrmCliente.MenuItem1Click(Sender: TObject);
 begin
 
+end;
+
+procedure TfrmCliente.miRelClientesCidadeClick(Sender: TObject);
+begin
+  inherited;
+  ChamaForm('TfrmRelatorioClienteCidade', 'Clientes por cidade', Self);
 end;
 
 procedure TfrmCliente.miRelClientesDataNascClick(Sender: TObject);

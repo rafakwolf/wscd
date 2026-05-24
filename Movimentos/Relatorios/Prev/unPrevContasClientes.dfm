@@ -1,85 +1,73 @@
 inherited frmPrevContasClientes: TfrmPrevContasClientes
+  Height = 626
+  Width = 811
   Caption = 'frmPrevContasClientes'
-  ClientHeight = 463
-  ClientWidth = 800
-  OldCreateOrder = True
-  ExplicitWidth = 816
-  ExplicitHeight = 502
-  PixelsPerInch = 96
-  TextHeight = 13
+  ClientHeight = 626
+  ClientWidth = 811
   inherited rrPadrao: TRLReport
     inherited rbTitulo: TRLBand
       inherited lbTitulo: TRLLabel
-        Top = 76
         Height = 31
-        ExplicitTop = 76
-        ExplicitHeight = 31
+        Top = 76
       end
       inherited rlmCabecalho: TRLMemo
         Height = 75
-        ExplicitHeight = 75
       end
       inherited imgLogo: TRLImage
         Height = 75
-        ExplicitHeight = 75
       end
     end
     inherited rbRodape: TRLBand
-      Top = 220
-      ExplicitTop = 220
+      Top = 167
     end
-    object rlbColunas: TRLBand
+    object rlbColunas: TRLBand[2]
       Left = 38
-      Top = 155
-      Width = 718
       Height = 16
+      Top = 102
+      Width = 718
       BeforePrint = rlbColunasBeforePrint
       object rldbData: TRLDBText
         Left = 4
+        Height = 16
         Top = 0
         Width = 89
-        Height = 16
         AutoSize = False
         DataField = 'DATA'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbvenc: TRLDBText
         Left = 98
+        Height = 16
         Top = 0
         Width = 81
-        Height = 16
         AutoSize = False
         DataField = 'VENCIMENTO'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbCapital: TRLDBText
-        Left = 291
+        Left = 288
+        Height = 15
         Top = 0
-        Width = 53
-        Height = 16
+        Width = 56
         Alignment = taRightJustify
         DataField = 'CAPITAL'
         DataSource = dsPadrao
-        Text = ''
       end
       object rldbTotal: TRLDBText
-        Left = 431
+        Left = 430
+        Height = 15
         Top = 0
-        Width = 43
-        Height = 16
+        Width = 44
         Alignment = taRightJustify
         DataField = 'TOTAL'
         DataSource = dsPadrao
-        Text = ''
       end
     end
-    object rlbDetalhe: TRLBand
+    object rlbDetalhe: TRLBand[3]
       Left = 38
-      Top = 139
-      Width = 718
       Height = 16
+      Top = 86
+      Width = 718
       BandType = btColumnHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -88,11 +76,11 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       Borders.DrawBottom = True
       object lbDatalanc: TRLLabel
         Left = 4
+        Height = 16
         Top = 0
         Width = 35
-        Height = 16
         Caption = 'Data'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -101,11 +89,11 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
       object lbvenc: TRLLabel
         Left = 98
+        Height = 16
         Top = 0
         Width = 80
-        Height = 16
         Caption = 'Vencimento'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -114,11 +102,11 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
       object lbCapital: TRLLabel
         Left = 245
+        Height = 16
         Top = 0
         Width = 99
-        Height = 16
         Caption = 'Valor da conta'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -127,11 +115,11 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
       object lbTotal: TRLLabel
         Left = 399
+        Height = 16
         Top = 0
         Width = 75
-        Height = 16
         Caption = 'Valor atual'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -139,11 +127,11 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
         ParentFont = False
       end
     end
-    object rlbSumario: TRLBand
+    object rlbSumario: TRLBand[4]
       Left = 38
-      Top = 171
-      Width = 718
       Height = 49
+      Top = 118
+      Width = 718
       BandType = btSummary
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
@@ -152,12 +140,12 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       Borders.DrawBottom = False
       object rllbVencer: TRLLabel
         Left = 650
+        Height = 16
         Top = 0
         Width = 63
-        Height = 16
         Alignment = taRightJustify
         Caption = 'A vencer'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -166,12 +154,12 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
       object rllbVenvidas: TRLLabel
         Left = 650
+        Height = 16
         Top = 16
         Width = 63
-        Height = 16
         Alignment = taRightJustify
         Caption = 'Venvidas'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clRed
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -180,12 +168,12 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
       object rllbVencendoHoje: TRLLabel
         Left = 613
+        Height = 16
         Top = 32
         Width = 100
-        Height = 16
         Alignment = taRightJustify
         Caption = 'Vencendo hoje'
-        Font.Charset = ANSI_CHARSET
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clBlue
         Font.Height = -13
         Font.Name = 'Tahoma'
@@ -194,62 +182,93 @@ inherited frmPrevContasClientes: TfrmPrevContasClientes
       end
     end
   end
-  inherited sqldPadrao: TSQLQuery
-    CommandText = 'select * from VIEWRELNPCR'#13#10'order by VENCIMENTO'
-    object sqldPadraoCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-    end
-    object sqldPadraoDATA: TDateField
-      FieldName = 'DATA'
-    end
-    object sqldPadraoVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-    end
-    object sqldPadraoCODCLIENTE: TIntegerField
-      FieldName = 'CODCLIENTE'
-    end
-    object sqldPadraoCLIENTE: TStringField
-      FieldName = 'CLIENTE'
-      Size = 80
-    end
-    object sqldPadraoCAPITAL: TFMTBCDField
-      FieldName = 'CAPITAL'
-      Precision = 15
-    end
-    object sqldPadraoTOTAL: TFloatField
-      FieldName = 'TOTAL'
-    end
-  end
-  inherited cdsPadrao: TMemDataset
-    object cdsPadraoCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-    end
-    object cdsPadraoDATA: TDateField
-      FieldName = 'DATA'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-      DisplayFormat = 'dd/mm/yyyy'
-    end
-    object cdsPadraoCODCLIENTE: TIntegerField
-      FieldName = 'CODCLIENTE'
-    end
-    object cdsPadraoCLIENTE: TStringField
-      FieldName = 'CLIENTE'
-      Size = 80
-    end
-    object cdsPadraoCAPITAL: TFMTBCDField
-      FieldName = 'CAPITAL'
-      DisplayFormat = '#,##0.00'
-      Precision = 15
-    end
-    object cdsPadraoTOTAL: TFloatField
-      FieldName = 'TOTAL'
-      DisplayFormat = '#,##0.00'
-    end
+  inherited dsPadrao: TDataSource
+    Left = 240
+    Top = 248
   end
   inherited rlepCalculos: TRLExpressionParser
-    Left = 148
+    Left = 72
+    Top = 248
+  end
+  inherited sqldPadrao: TZQuery
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from VIEWRELNPCR'
+    )
+    Top = 248
+    object sqldPadraoCODIGO: TZIntegerField[0]
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoDATA: TZDateField[1]
+      FieldKind = fkData
+      FieldName = 'DATA'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoVENCIMENTO: TZDateField[2]
+      FieldKind = fkData
+      FieldName = 'VENCIMENTO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoCODCLIENTE: TZIntegerField[3]
+      FieldKind = fkData
+      FieldName = 'CODCLIENTE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldPadraoCLIENTE: TZRawStringField[4]
+      FieldKind = fkData
+      FieldName = 'CLIENTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqldPadraoCAPITAL: TZBCDField[5]
+      FieldKind = fkData
+      FieldName = 'CAPITAL'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object sqldPadraoTOTAL: TZBCDField[6]
+      FieldKind = fkData
+      FieldName = 'TOTAL'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 13
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
   end
 end

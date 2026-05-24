@@ -4,14 +4,15 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ComCtrls, DB, memds, LCLType,
+  Dialogs, StdCtrls, Buttons, ComCtrls, DB, LCLType,
   SqlDb, Grids, DBGrids, FMTBcd, unSimplePadrao, zdataset;
 
 type
+
+  { TfrmExclusaoCaixa }
+
   TfrmExclusaoCaixa = class(TfrmSimplePadrao)
-    sqldPadrao: TSQLQuery;
-    dspPadrao: TTimer;
-    cdsPadrao: TMemDataSet;
+    sqldPadrao: TZQuery;
     dsPadrao: TDataSource;
     sqldPadraoCODCAIXA: TIntegerField;
     sqldPadraoCODCAIXAS: TIntegerField;
@@ -21,14 +22,6 @@ type
     sqldPadraoTIPO: TStringField;
     sqldPadraoVALOR: TFMTBCDField;
     sqldPadraoEXCLUIR: TStringField;
-    cdsPadraoCODCAIXA: TIntegerField;
-    cdsPadraoCODCAIXAS: TIntegerField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoDESCRICAO: TStringField;
-    cdsPadraoDOCUMENTO: TStringField;
-    cdsPadraoTIPO: TStringField;
-    cdsPadraoVALOR: TFMTBCDField;
-    cdsPadraoEXCLUIR: TStringField;
     stbCaixa: TStatusBar;
     btnExcluir: TBitBtn;
     btnSair: TBitBtn;
@@ -43,7 +36,7 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure cdsPadraoTIPOGetText(Sender: TField; var Text: String;
+    procedure sqldPadraoTIPOGetText(Sender: TField; var Text: String;
       DisplayText: Boolean);
     procedure edDescricaoChange(Sender: TObject);
     procedure edtDocumentoExit(Sender: TObject);
@@ -99,12 +92,12 @@ begin
 
   if ContasMarcadas < 1 then
   begin
-    MsgCuidado('N�o existe nenhum registro marcado para exclus�o.'+#13#10+
-      'Para marcar/desmarcar d� duplo clique no lan�amento desejado.');
+    MsgCuidado('Não existe nenhum registro marcado para exclusão.'+#13#10+
+      'Para marcar/desmarcar, duplo clique no lançamento desejado.');
     Exit;
   end;
   
-  if MsgSN('Deseja realmente excluir os lan�amentos marcados?') then
+  if MsgSN('Deseja realmente excluir os lançamentos marcados?') then
   begin
     with TZQuery.Create(nil) do
     try
@@ -115,8 +108,8 @@ begin
       MsgAviso('Exclus�o efetuada com sucesso!');
     finally
       Free;
-      cdsPadrao.Close;
-      cdsPadrao.Open;
+      sqldPadrao.Close;
+      sqldPadrao.Open;
       PostMessageAllForms(WM_EXCLUSAO_CAIXA);
     end;
   end;  
@@ -128,7 +121,7 @@ begin
     inherited;
     CentralizaForm(Self);
     UpdateSingleField('update CAIXA set EXCLUIR = '+QuotedStr('N'));
-    cdsPadrao.Open;
+    sqldPadrao.Open;
   finally
 
   end;
@@ -137,11 +130,11 @@ end;
 procedure TfrmExclusaoCaixa.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  cdsPadrao.Close;
+  sqldPadrao.Close;
   Action := caFree;
 end;
 
-procedure TfrmExclusaoCaixa.cdsPadraoTIPOGetText(Sender: TField;
+procedure TfrmExclusaoCaixa.sqldPadraoTIPOGetText(Sender: TField;
   var Text: String; DisplayText: Boolean);
 begin
   if Sender.AsString = 'C' then
@@ -152,7 +145,7 @@ end;
 
 procedure TfrmExclusaoCaixa.edDescricaoChange(Sender: TObject);
 begin
-  cdsPadrao.Locate('DESCRICAO', edDescricao.Text,
+  sqldPadrao.Locate('DESCRICAO', edDescricao.Text,
     [loCaseInsensitive, loPartialKey]);
 end;
 
@@ -182,22 +175,22 @@ end;
 
 procedure TfrmExclusaoCaixa.edtDocumentoChange(Sender: TObject);
 begin
-  cdsPadrao.Locate('DOCUMENTO', edtDocumento.Text,
+  sqldPadrao.Locate('DOCUMENTO', edtDocumento.Text,
     [loCaseInsensitive, loPartialKey]);
 end;
 
 procedure TfrmExclusaoCaixa.dbgrdCaixaDblClick(Sender: TObject);
 begin
-  if cdsPadrao.IsEmpty then
+  if sqldPadrao.IsEmpty then
     Exit;
-  cdsPadrao.Edit;
-  if cdsPadraoEXCLUIR.AsString = 'S' then
-    cdsPadraoEXCLUIR.AsString := 'N'
+  sqldPadrao.Edit;
+  if sqldPadraoEXCLUIR.AsString = 'S' then
+    sqldPadraoEXCLUIR.AsString := 'N'
   else
-    cdsPadraoEXCLUIR.AsString := 'S';
+    sqldPadraoEXCLUIR.AsString := 'S';
 
-  //cdsPadrao.ApplyUpdates(0);
-  cdsPadrao.Next;
+  //sqldPadrao.ApplyUpdates(0);
+  sqldPadrao.Next;
 end;
 
 initialization

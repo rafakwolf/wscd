@@ -17,39 +17,53 @@ object frmSenhaCaixa: TfrmSenhaCaixa
   object btnOk: TBitBtn
     Left = 24
     Height = 37
-    Top = 112
+    Top = 136
     Width = 81
     Caption = '&Ok'
     ModalResult = 1
-    OnClick = btnOkClick
     TabOrder = 2
+    OnClick = btnOkClick
   end
   object btnCancelar: TBitBtn
     Left = 112
     Height = 37
-    Top = 112
+    Top = 136
     Width = 81
     Caption = '&Cancelar'
     ModalResult = 2
     TabOrder = 3
   end
   object edAtual: TEdit
-    Left = 16
+    Left = 24
     Height = 21
-    Top = 24
+    Top = 32
     Width = 169
     EchoMode = emPassword
     PasswordChar = '*'
     TabOrder = 0
   end
   object edNova: TEdit
-    Left = 16
+    Left = 24
     Height = 21
-    Top = 64
+    Top = 88
     Width = 169
     EchoMode = emPassword
     PasswordChar = '*'
     TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 24
+    Height = 16
+    Top = 15
+    Width = 79
+    Caption = 'Senha Atual'
+  end
+  object Label2: TLabel
+    Left = 24
+    Height = 16
+    Top = 70
+    Width = 78
+    Caption = 'Nova Senha'
   end
   object ZQuery1: TZQuery
     Connection = DmPrincipal.ZConnection1
@@ -58,8 +72,8 @@ object frmSenhaCaixa: TfrmSenhaCaixa
       'select * from CONFIGURACAO'
     )
     Params = <>
-    Left = 232
-    Top = 48
+    Left = 248
+    Top = 40
   end
   object ZUpdateSQL1: TZUpdateSQL
     DeleteSQL.Strings = (

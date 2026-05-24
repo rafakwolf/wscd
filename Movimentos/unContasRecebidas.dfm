@@ -17,9 +17,19 @@ inherited frmContasRecebidas: TfrmContasRecebidas
     Top = 374
     Width = 930
     Color = clBtnFace
-    Panels = <>
+    Panels = <    
+      item
+        Width = 200
+      end    
+      item
+        Width = 200
+      end    
+      item
+        Width = 50
+      end>
     ParentColor = False
     ParentShowHint = False
+    SimplePanel = False
     ShowHint = True
   end
   object pnBotoes: TPanel[1]
@@ -109,7 +119,7 @@ inherited frmContasRecebidas: TfrmContasRecebidas
       Left = 8
       Height = 13
       Top = 2
-      Width = 55
+      Width = 448
       AutoSize = False
       Caption = 'lbFiltroUsado'
       Color = clBtnFace

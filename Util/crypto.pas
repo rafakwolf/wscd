@@ -2,19 +2,15 @@ unit crypto;
 
 interface
 
-uses Classes;
+uses Classes, md5;
 
 function EnDeCrypt(const Value : String) : String;
 
 implementation
 
 function EnDeCrypt(const Value : String) : String;
-var
-  CharIndex : integer;
 begin
-  Result := Value;
-  for CharIndex := 1 to Length(Value) do
-    Result[CharIndex] := chr(not(ord(Value[CharIndex])));
+     Result := md5Print(md5String(Value));
 end;
 
 end.

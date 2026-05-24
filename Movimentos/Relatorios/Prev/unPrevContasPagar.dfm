@@ -162,6 +162,7 @@ inherited frmPrevContasPagar: TfrmPrevContasPagar
     Top = 192
   end
   inherited sqldPadrao: TZQuery
+    Connection = DmPrincipal.ZConnection1
     Params = <    
       item
         DataType = ftInteger

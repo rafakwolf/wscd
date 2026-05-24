@@ -84,7 +84,9 @@ uses
   crypto in 'Util\crypto.pas',
   uConfiguraRelatorio in 'Util\uConfiguraRelatorio.pas',
   Extensos in 'Util\Extensos.pas',
-  unPerfil in 'Configuracoes\unPerfil.pas' {frmPerfil};
+  unPerfil in 'Configuracoes\unPerfil.pas' {frmPerfil},
+  unRecibo in 'Utilitarios\unRecibo.pas' {frmRecibo},
+  unPagarMan in 'Movimentos\unPagarMan.pas' {frmPagarMan};
 
 {$R *.res}
 

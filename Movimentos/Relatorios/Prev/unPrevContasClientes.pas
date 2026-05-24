@@ -4,10 +4,13 @@ interface
 
 uses
   Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unModeloRelatorio, DB, memds,  SqlDb,
-  RLReport, RLParser, FMTBcd;
+  Dialogs, unModeloRelatorio, DB, SqlDb,
+  RLReport, RLParser, ZAbstractRODataset, FMTBcd;
 
 type
+
+  { TfrmPrevContasClientes }
+
   TfrmPrevContasClientes = class(TfrmModeloRelatorio)
     rlbColunas: TRLBand;
     rlbDetalhe: TRLBand;
@@ -23,20 +26,13 @@ type
     rllbVencer: TRLLabel;
     rllbVenvidas: TRLLabel;
     rllbVencendoHoje: TRLLabel;
-    sqldPadraoCODIGO: TIntegerField;
-    sqldPadraoDATA: TDateField;
-    sqldPadraoVENCIMENTO: TDateField;
-    sqldPadraoCODCLIENTE: TIntegerField;
-    sqldPadraoCLIENTE: TStringField;
-    sqldPadraoCAPITAL: TFMTBCDField;
-    sqldPadraoTOTAL: TFloatField;
-    cdsPadraoCODIGO: TIntegerField;
-    cdsPadraoDATA: TDateField;
-    cdsPadraoVENCIMENTO: TDateField;
-    cdsPadraoCODCLIENTE: TIntegerField;
-    cdsPadraoCLIENTE: TStringField;
-    cdsPadraoCAPITAL: TFMTBCDField;
-    cdsPadraoTOTAL: TFloatField;
+    sqldPadraoCAPITAL: TZBCDField;
+    sqldPadraoCLIENTE: TZRawStringField;
+    sqldPadraoCODCLIENTE: TZIntegerField;
+    sqldPadraoCODIGO: TZIntegerField;
+    sqldPadraoDATA: TZDateField;
+    sqldPadraoTOTAL: TZBCDField;
+    sqldPadraoVENCIMENTO: TZDateField;
     procedure rrPadraoBeforePrint(Sender: TObject; var PrintIt: Boolean);
     procedure rlbColunasBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
@@ -50,7 +46,7 @@ var
 
 implementation
 
-uses VarGlobal, Funcoes, udatabaseutils;
+uses VarGlobal, Funcoes, uDatabaseUtils;
 
 {$R *.dfm}
 
@@ -59,8 +55,8 @@ procedure TfrmPrevContasClientes.rrPadraoBeforePrint(Sender: TObject;
 begin
   inherited;
   lbTitulo.Caption :=
-    'Contas do cliente: '+IntToStr(cdsPadraoCODCLIENTE.AsInteger)+' - '+
-    cdsPadraoCLIENTE.AsString;
+    'Contas do cliente: '+IntToStr(sqldPadraoCODCLIENTE.AsInteger)+' - '+
+    sqldPadraoCLIENTE.AsString;
   CalculaContas;  
 end;
 
@@ -73,7 +69,7 @@ begin
     if Cor then
     begin
       Cor := False;
-      rlbColunas.Color := $00F0F0F0;
+      rlbColunas.Color := clCream;
     end
     else
     begin
@@ -82,21 +78,21 @@ begin
     end;
   end;
 
-  if cdsPadraoVENCIMENTO.AsDateTime < Date then
+  if sqldPadraoVENCIMENTO.AsDateTime < Date then
   begin
     rldbData.Font.Color := clRed;
     rldbvenc.Font.Color := clRed;
     rldbCapital.Font.Color := clRed;
     rldbTotal.Font.Color := clRed;
   end
-  else if cdsPadraoVENCIMENTO.AsDateTime > Date then
+  else if sqldPadraoVENCIMENTO.AsDateTime > Date then
   begin
     rldbData.Font.Color := clBlack;
     rldbvenc.Font.Color := clBlack;
     rldbCapital.Font.Color := clBlack;
     rldbTotal.Font.Color := clBlack;
   end
-  else if cdsPadraoVENCIMENTO.AsDateTime = Date then
+  else if sqldPadraoVENCIMENTO.AsDateTime = Date then
   begin
     rldbData.Font.Color := clBlue;
     rldbvenc.Font.Color := clBlue;
@@ -109,14 +105,17 @@ procedure TfrmPrevContasClientes.CalculaContas;
 var
   AVencer, Vencidas, VencHoje: string;
 begin
-  AVencer := FormatFloat('#,##0.00', SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO > '+
-    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), GetZConnection));
-  Vencidas := FormatFloat('#,##0.00', SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO < '+
-    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), GetZConnection));
-  VencHoje := FormatFloat('#,##0.00', SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO = '+
-    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(cdsPadraoCODCLIENTE.AsInteger)), GetZConnection));
+  AVencer := VarToStrDef(SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO > '+
+    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(sqldPadraoCODCLIENTE.AsInteger)), GetZConnection), '0');
 
-  rllbVencer.Caption := 'A vencer: '+AVencer;
+  Vencidas := VarToStrDef(SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO < '+
+    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(sqldPadraoCODCLIENTE.AsInteger)), GetZConnection), '0');
+
+  VencHoje := VarToStrDef(SelecSingleField('select sum(TOTAL) from VIEWRELNPCR where VENCIMENTO = '+
+    FormatDateFirebird(Date)+' and CODCLIENTE = '+QuotedStr(IntToStr(sqldPadraoCODCLIENTE.AsInteger)), GetZConnection), '0');
+
+
+  rllbVencer.Caption := 'A vencer: '+ AVencer;
   rllbVenvidas.Caption := 'Vencidas: '+Vencidas;
   rllbVencendoHoje.Caption := 'Vencendo hoje: '+VencHoje;
 end;

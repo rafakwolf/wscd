@@ -8,6 +8,9 @@ uses
   SysUtils, Classes, ZDataset, DB, Forms, unDmPrincipal, uUtilFncs, inifiles;
 
 type
+
+  { TConfiguracao }
+
   TConfiguracao = class
   private
     sqldConfiguracao: TZQuery;
@@ -23,7 +26,7 @@ type
     property LancCaixa90Dias     : Boolean read GetLancCaixa90Dias;
     property RelZebrado          : Boolean read GetRelZebrado;
 
-    constructor Create;
+    constructor Create(userName: string);
     destructor Free;
     procedure Atualizar;
   end;
@@ -96,7 +99,7 @@ begin
   sqldConfiguracao.Open;
 end;
 
-constructor TConfiguracao.Create;
+constructor TConfiguracao.Create(userName: string);
 begin
   try
     sqldConfiguracao := TZQUery.Create(nil);
@@ -124,7 +127,7 @@ begin
                      ' RELZEBRADO '+
                      'from CONFIGURACAO '+
                      'where NOMECOMPUTADOR = :COMP';
-      Params.ParamByName('COMP').AsString := GetComputerName;
+      Params.ParamByName('COMP').AsString := userName; // computer name is actually changed to the username
       Open;
 
       if IsEmpty then
@@ -134,7 +137,7 @@ begin
           Connection := DmPrincipal.ZConnection1;
           SQL.Text := 'insert into CONFIGURACAO(NOMECOMPUTADOR, CAIXAPADRAO) values(:NOMECOMPUTADOR, :CAIXAPADRAO)';
           Prepare;
-          Params.ParamByName('NOMECOMPUTADOR').AsString := GetComputerName;
+          Params.ParamByName('NOMECOMPUTADOR').AsString := userName;
           Params.ParamByName('CAIXAPADRAO').AsInteger := 0;
           ExecSQL;
         finally
@@ -215,7 +218,7 @@ begin
        ' e.CNPJ, '+
        ' e.IE, '+
        ' e.ENDERECO, '+
-       ' c.Descricao, '+
+       ' c.Descricao as CIDADE, '+
        ' e.BAIRRO, '+
        ' e.CEP, '+
        ' e.TELEFONE, '+
@@ -392,7 +395,7 @@ end;
 
 function TSistema.GetVersaoApp: String;
 begin
-  Result := GetBuildInfo(ParamStr(0));
+  Result := '1.0.0';
 end;
 
 function TSistema.GetVersaoDB: String;

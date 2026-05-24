@@ -47,6 +47,7 @@ begin
   DisplayLabels := DL_USUARIOS;
   aCaption      := 'Usuarios';
   ZReadOnlyQuery1.Open;
+  IgnoreAutoGenerateLabels:=true;
 end;
 
 procedure TfrmUsuarioItemMenu.FormClose(Sender: TObject;

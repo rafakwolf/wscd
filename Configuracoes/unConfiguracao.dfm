@@ -19,163 +19,11 @@ inherited frmConfiguracao: TfrmConfiguracao
     Height = 317
     Top = 36
     Width = 729
-    ActivePage = TabProdutos
+    ActivePage = TabCaixa
     ParentShowHint = False
     ShowHint = True
-    TabIndex = 4
+    TabIndex = 1
     TabOrder = 1
-    object Tabgeral: TTabSheet
-      Caption = '    Geral    '
-      ClientHeight = 281
-      ClientWidth = 723
-      ParentShowHint = False
-      ShowHint = True
-      object chAtalhos: TDBCheckBox
-        Left = 23
-        Height = 17
-        Hint = 'Ativar barra de atalhos na tela principal'
-        Top = 26
-        Width = 297
-        Caption = 'Mostrar barra de atalhos na tela principal'
-        DataField = 'BARRAFERRAMENTA'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chHint: TDBCheckBox
-        Left = 23
-        Height = 17
-        Hint = 'Mensagem de informação na forma de balão'
-        Top = 44
-        Width = 166
-        Caption = 'Mostrar hints estilo balão'
-        DataField = 'HINTBALAO'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chErro: TDBCheckBox
-        Left = 23
-        Height = 17
-        Hint = 'Grava todos os erros que o sistema gerar'
-        Top = 63
-        Width = 162
-        Caption = 'Gravar erros do sistema'
-        DataField = 'GRAVAERRO'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chBackup: TDBCheckBox
-        Left = 23
-        Height = 17
-        Hint = 'Sugere copia de segurança ao finalizar o sistema'
-        Top = 81
-        Width = 224
-        Caption = 'Sugerir cópia de segurança ao sair'
-        DataField = 'BACKUP'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 3
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chResolucao: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 100
-        Width = 186
-        Caption = 'Verificar resolução ao iniciar'
-        DataField = 'RESOLUCAO'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 4
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chLog: TDBCheckBox
-        Left = 23
-        Height = 17
-        Hint = 'Grava as transações do banco de dados'
-        Top = 118
-        Width = 258
-        Caption = 'Gerar log de registro do banco de dados'
-        DataField = 'LOG'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 5
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chImpressora: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 137
-        Width = 137
-        Caption = 'Verificar impressora'
-        DataField = 'IMPRESSORA'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 6
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chDica: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 155
-        Width = 188
-        Caption = 'Mostrar dica do dia ao iniciar'
-        DataField = 'EXIBEDICADIA'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 7
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object dbckbVerificaUpd: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 174
-        Width = 249
-        Caption = 'Verificar atualizações automáticamente'
-        DataField = 'VERIFICA_UPD'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 8
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object dbchkInfoAvisos: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 192
-        Width = 241
-        Caption = 'Exibir informações a avisos ao iniciar'
-        DataField = 'INFOAVISOS'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 9
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-    end
     object TabImg: TTabSheet
       Caption = 'Papel Parede'
       ClientHeight = 281
@@ -194,30 +42,30 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
       object btnBuscar: TBitBtn
         Left = 12
-        Height = 25
+        Height = 28
         Hint = 'Procurar'
-        Top = 212
+        Top = 224
         Width = 80
         Caption = '&Procurar'
-        OnClick = btnBuscarClick
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
+        OnClick = btnBuscarClick
       end
       object btnExImg: TBitBtn
         Left = 100
-        Height = 25
-        Top = 212
+        Height = 28
+        Top = 224
         Width = 80
         Caption = '&Limpar'
-        OnClick = btnExImgClick
         ParentShowHint = False
         ShowHint = True
         TabOrder = 1
+        OnClick = btnExImgClick
       end
       object rgOrientationImg: TRadioGroup
         Left = 194
-        Height = 49
+        Height = 66
         Top = 198
         Width = 184
         AutoFill = True
@@ -229,233 +77,17 @@ inherited frmConfiguracao: TfrmConfiguracao
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 22
+        ClientHeight = 39
         ClientWidth = 174
         ItemIndex = 1
         Items.Strings = (
           'Lado a lado'
           'Estender'
         )
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 2
         OnClick = rgOrientationImgClick
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-      end
-    end
-    object TabOrcam: TTabSheet
-      Caption = 'Orçamentos'
-      ClientHeight = 281
-      ClientWidth = 723
-      ImageIndex = 2
-      ParentShowHint = False
-      ShowHint = True
-      object cbVerificaEstoqueOrcam: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 26
-        Width = 244
-        Caption = 'Permitir produtos com estoque mínimo'
-        DataField = 'PRODSEMESTOQORCAM'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object cbEditOrcamConc: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 44
-        Width = 242
-        Caption = 'Permitir editar orçamentos concluídos'
-        DataField = 'EDITORCAMCONC'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object cbOrcamNaoConc: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 62
-        Width = 230
-        Caption = 'Verificar orçamentos não concluídos'
-        DataField = 'ORCAMNAOCONC'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-    end
-    object TabCompras: TTabSheet
-      Caption = ' Compras '
-      ClientHeight = 281
-      ClientWidth = 723
-      ImageIndex = 3
-      ParentShowHint = False
-      ShowHint = True
-      object cbCompraNaoConc: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 26
-        Width = 213
-        Caption = 'Verificar compras não concluídas'
-        DataField = 'COMPRANAOCONC'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object cbEditCompraConc: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 44
-        Width = 219
-        Caption = 'Permitir editar compras concluídas'
-        DataField = 'EDITCOMPRACONC'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-    end
-    object TabProdutos: TTabSheet
-      Caption = ' Produtos '
-      ClientHeight = 281
-      ClientWidth = 723
-      ImageIndex = 4
-      ParentShowHint = False
-      ShowHint = True
-      object dbeSenhaProduto: TDBEdit
-        Left = 8
-        Height = 21
-        Top = 208
-        Width = 121
-        DataField = 'SENHAESTOQUE'
-        DataSource = dsPadrao
-        MaxLength = 0
-        ParentShowHint = False
-        PasswordChar = '*'
-        ShowHint = True
-        TabOrder = 4
-      end
-      object dbcbEstoqueSenhaProd: TDBCheckBox
-        Left = 8
-        Height = 17
-        Top = 181
-        Width = 243
-        Caption = 'Pedir senha para alteração de estoque'
-        DataField = 'USARSENHAESTOQUE'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 3
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object dbcbBordaEtqProd: TDBCheckBox
-        Left = 8
-        Height = 17
-        Top = 160
-        Width = 224
-        Caption = 'Exibir borda na etiqueta de produto '
-        DataField = 'BORDAETQPROD'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object dbcbLetraNumCodBarra: TDBCheckBox
-        Left = 8
-        Height = 17
-        Top = 140
-        Width = 220
-        Caption = 'Permitir letras no código de barras'
-        DataField = 'LETRACODIGOBARRA'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object grpValorProdutoPadrao: TGroupBox
-        Left = 8
-        Height = 130
-        Top = 6
-        Width = 369
-        Caption = ' Valores Padrão '
-        ClientHeight = 103
-        ClientWidth = 359
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        object dbeAliqPadrao: TDBEdit
-          Left = 32
-          Height = 21
-          Hint = 'Pesquisar < F2 >'
-          Top = 15
-          Width = 130
-          DataField = 'ALIQUOTAPADRAO'
-          DataSource = dsPadrao
-          ReadOnly = True
-          Color = clBtnFace
-          MaxLength = 0
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 0
-        end
-        object dbeEstoquePadrao: TDBEdit
-          Left = 204
-          Height = 21
-          Top = 15
-          Width = 130
-          DataField = 'ESTOQUEPADRAO'
-          DataSource = dsPadrao
-          MaxLength = 0
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 1
-          OnKeyPress = dbeEstoquePadraoKeyPress
-        end
-        object dbeDescontoPadrao: TDBEdit
-          Left = 160
-          Height = 21
-          Top = 66
-          Width = 130
-          DataField = 'DESCPADRAOPROD'
-          DataSource = dsPadrao
-          MaxLength = 0
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 2
-          OnKeyPress = dbeDescontoPadraoKeyPress
-        end
-      end
-      object btnAlterarSenhaProduto: TBitBtn
-        Left = 8
-        Height = 25
-        Top = 248
-        Width = 121
-        Caption = '&Alterar Senha'
-        OnClick = btnAlterarSenhaProdutoClick
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 5
       end
     end
     object TabCaixa: TTabSheet
@@ -469,7 +101,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Left = 8
         Height = 21
         Top = 135
-        Width = 129
+        Width = 184
         DataField = 'SENHACAIXA'
         DataSource = dsPadrao
         MaxLength = 0
@@ -482,7 +114,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Left = 8
         Height = 17
         Top = 192
-        Width = 152
+        Width = 176
         Caption = 'Mostrar saldo do caixa'
         DataField = 'MOSTRARSALDOCAIXA'
         DataSource = dsPadrao
@@ -496,7 +128,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Left = 8
         Height = 17
         Top = 212
-        Width = 257
+        Width = 281
         Caption = 'Mostrar lançamentos dos últimos 90 dias'
         DataField = 'CAIXA90DIAS'
         DataSource = dsPadrao
@@ -508,270 +140,47 @@ inherited frmConfiguracao: TfrmConfiguracao
       end
       object grpCaixaPadrao: TGroupBox
         Left = 8
-        Height = 52
+        Height = 68
         Top = 5
         Width = 365
         Caption = ' Conta caixa padrão '
-        ClientHeight = 25
+        ClientHeight = 41
         ClientWidth = 355
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
-        object dbeCaixaPadrao: TDBEdit
-          Left = 90
-          Height = 21
-          Hint = 'Pesquisar < F2 >'
-          Top = 20
-          Width = 239
+        object dbcmbContas: TDBLookupComboBox
+          Left = 8
+          Height = 20
+          Top = 8
+          Width = 340
           DataField = 'CAIXAPADRAO'
           DataSource = dsPadrao
-          ReadOnly = True
-          Color = clBtnFace
-          MaxLength = 0
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 0
-        end
-      end
-      object grpContaCheque: TGroupBox
-        Left = 8
-        Height = 49
-        Top = 64
-        Width = 365
-        Caption = 'Conta padrão para cheques'
-        ClientHeight = 22
-        ClientWidth = 355
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 5
-        object dbeContaCheque: TDBEdit
-          Left = 90
-          Height = 21
-          Hint = 'Pesquisar < F2 >'
-          Top = 18
-          Width = 239
-          DataField = 'NCONTACHEQUE'
-          DataSource = dsPadrao
-          ReadOnly = True
-          Color = clBtnFace
-          MaxLength = 0
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
+          KeyField = 'CODIGO'
+          ListField = 'NOME'
+          ListFieldIndex = 0
+          ListSource = dsContas
+          LookupCache = False
           TabOrder = 0
         end
       end
       object btnAlterarSenhaCaixa: TBitBtn
-        Left = 8
-        Height = 25
-        Top = 160
+        Left = 208
+        Height = 32
+        Top = 128
         Width = 129
         Caption = 'Alterar senha'
-        OnClick = btnAlterarSenhaCaixaClick
         ParentShowHint = False
         ShowHint = True
         TabOrder = 4
+        OnClick = btnAlterarSenhaCaixaClick
       end
-    end
-    object TabVenda: TTabSheet
-      Caption = 'Vendas'
-      ClientHeight = 281
-      ClientWidth = 723
-      ImageIndex = 6
-      ParentShowHint = False
-      ShowHint = True
-      object chVendaEstoque: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 24
-        Width = 244
-        Caption = 'Permitir produtos com estoque mínimo'
-        DataField = 'PRODSEMESTOQVENDA'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chVendaConc: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 42
-        Width = 202
-        Caption = 'Verificar vendas não concluídas'
-        DataField = 'VENDANAOCONC'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object chEditvenda: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 60
-        Width = 211
-        Caption = 'Permitir editar vendas concluídas'
-        DataField = 'EDITVENDACONC'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 2
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-    end
-    object TabClientes: TTabSheet
-      Caption = 'Clientes'
-      ClientHeight = 281
-      ClientWidth = 723
-      ImageIndex = 8
-      ParentShowHint = False
-      ShowHint = True
-      object chBloqCli: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 24
-        Width = 190
-        Caption = 'Avisar quando exceder limite '
-        DataField = 'AVISACLIENTEATRASO'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-      object dbcbBordaEtq: TDBCheckBox
-        Left = 23
-        Height = 17
-        Top = 44
-        Width = 172
-        Caption = 'Exibir borda nas etiquetas'
-        DataField = 'BORDAETQCLIENTE'
-        DataSource = dsPadrao
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-        ValueChecked = 'S'
-        ValueUnchecked = 'N'
-      end
-    end
-    object TabExportacao: TTabSheet
-      Caption = 'Exportação de dados'
-      ClientHeight = 281
-      ClientWidth = 723
-      ImageIndex = 9
-      ParentShowHint = False
-      ShowHint = True
-      object dbeDirExportacao: TDBEdit
-        Left = 16
-        Height = 21
-        Top = 40
-        Width = 321
-        DataField = 'DIREXPORTPADRAO'
-        DataSource = dsPadrao
-        MaxLength = 0
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 1
-      end
-      object btnLocalizar: TBitBtn
-        Left = 339
-        Height = 25
-        Top = 38
-        Width = 25
-        Caption = '...'
-        Font.CharSet = ANSI_CHARSET
-        OnClick = btnLocalizarClick
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-      end
-    end
-    object tsEmail: TTabSheet
-      Caption = 'E-mail'
-      ClientHeight = 281
-      ClientWidth = 723
-      ImageIndex = 10
-      ParentShowHint = False
-      ShowHint = True
-      object grpEmail: TGroupBox
-        Left = 16
-        Height = 193
-        Top = 8
-        Width = 353
-        Caption = ' Configurações '
-        ClientHeight = 166
-        ClientWidth = 343
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        object btnTeste: TBitBtn
-          Left = 261
-          Height = 25
-          Top = 152
-          Width = 75
-          Caption = 'Testar'
-          OnClick = btnTesteClick
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 5
-        end
-        object edServidor: TEdit
-          Left = 16
-          Height = 21
-          Top = 32
-          Width = 249
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 0
-        end
-        object edPorta: TEdit
-          Left = 272
-          Height = 21
-          Top = 32
-          Width = 65
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 1
-          Text = '25'
-        end
-        object edUsuario: TEdit
-          Left = 16
-          Height = 21
-          Top = 112
-          Width = 193
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 3
-        end
-        object edSenha: TEdit
-          Left = 216
-          Height = 21
-          Top = 112
-          Width = 121
-          EchoMode = emPassword
-          ParentShowHint = False
-          PasswordChar = '*'
-          ShowHint = True
-          TabOrder = 4
-        end
-        object chkAutenticacao: TCheckBox
-          Left = 16
-          Height = 18
-          Top = 72
-          Width = 231
-          Caption = 'Meu servidor requer autenticação'
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 2
-          OnClick = chkAutenticacaoClick
-        end
+      object Label1: TLabel
+        Left = 8
+        Height = 16
+        Top = 112
+        Width = 170
+        Caption = 'Senha para acesso ao Caixa'
       end
     end
     object tsRelatorio: TTabSheet
@@ -785,7 +194,7 @@ inherited frmConfiguracao: TfrmConfiguracao
         Left = 24
         Height = 17
         Top = 24
-        Width = 129
+        Width = 152
         Caption = 'Visualizar zebrado'
         DataField = 'RELZEBRADO'
         DataSource = dsPadrao
@@ -799,26 +208,145 @@ inherited frmConfiguracao: TfrmConfiguracao
   end
   inherited actlNavigateActions: TActionList[3]
     Left = 416
-    Top = 376
+    Top = 360
   end
   inherited dsPadrao: TDataSource[4]
     AutoEdit = True
-    DataSet = ZQuery1
-    Left = 192
+    DataSet = sqldPadrao
+    Left = 152
     Top = 368
   end
   object opImagem: TOpenPictureDialog[5]
     Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Bitmaps (*.bmp)|*.bmp'
-    Left = 280
-    Top = 376
+    Left = 288
+    Top = 368
   end
-  object ZQuery1: TZQuery[6]
+  object sqldPadrao: TZQuery[6]
     Connection = DmPrincipal.ZConnection1
     SQL.Strings = (
       'select * from CONFIGURACAO'
+      'where NOMECOMPUTADOR = :COMP'
+    )
+    Params = <    
+      item
+        Name = 'COMP'
+      end>
+    Left = 56
+    Top = 368
+    ParamData = <    
+      item
+        Name = 'COMP'
+      end>
+    object sqldPadraoIDCONFIGURACAO: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'IDCONFIGURACAO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqldPadraoNOMECOMPUTADOR: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NOMECOMPUTADOR'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqldPadraoCAIXAPADRAO: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'CAIXAPADRAO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqldPadraoSENHACAIXA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'SENHACAIXA'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object sqldPadraoMOSTRARSALDOCAIXA: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'MOSTRARSALDOCAIXA'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object sqldPadraoCAIXA90DIAS: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'CAIXA90DIAS'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object sqldPadraoRELZEBRADO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'RELZEBRADO'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+  end
+  object sqldContas: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from CAIXAS'
     )
     Params = <>
-    Left = 30
-    Top = 368
+    Left = 560
+    Top = 224
+    object sqldContasCODIGO: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'CODIGO'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object sqldContasNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NOME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqldContasINATIVO: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'INATIVO'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+  end
+  object dsContas: TDataSource[8]
+    DataSet = sqldContas
+    Left = 648
+    Top = 232
   end
 end

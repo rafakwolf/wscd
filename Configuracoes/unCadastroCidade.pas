@@ -15,7 +15,9 @@ type
   TfrmCadastroCidade = class(TfrmPadrao)
     dbeNomeCidade: TDBEdit;
     dbeCodCidade: TDBEdit;
-    ZQuery1: TZQuery;
+    Label1: TLabel;
+    Label2: TLabel;
+    sqldPadrao: TZQuery;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -37,6 +39,7 @@ begin
   FieldNames := FN_CIDADES;
   DisplayLabels := DL_CIDADES;
   aCaption := 'Cidades';
+  IgnoreAutoGenerateLabels:=true;
 end;
 
 initialization

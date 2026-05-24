@@ -4,7 +4,7 @@ interface
 
 uses
   Classes, Forms, Dialogs, StdCtrls, Clipbrd, DateUtils,
-  UITypes, SysUtils, Buttons, Controls, DB, memds, ZDataset;
+  System.UITypes, SysUtils, Buttons, Controls, DB, memds, ZDataset;
 
 function ChamaForm(pClass, pTitle: string; pOwner: TComponent): TForm;
 procedure CentralizaForm(form: TForm);
@@ -107,7 +107,7 @@ end;
 
 function FormatDateFirebird(d: TDateTime): string;
 begin
-  Result := FormatDateTime('yyyy.MM.dd', d);
+  Result := FormatDateTime('yyyy-MM-dd', d);
 end;
 
 function NomeMes(mes: Integer): string;
@@ -120,7 +120,7 @@ begin
     02:
       n := 'Fevereiro';
     03:
-      n := 'Mar�o';
+      n := 'Março';
     04:
       n := 'Abril';
     05:

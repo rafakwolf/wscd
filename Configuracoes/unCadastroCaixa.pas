@@ -15,7 +15,9 @@ type
     dbeNomeCaixa: TDBEdit;
     dbeCodCaixa: TDBEdit;
     dbchkInativo: TDBCheckBox;
-    ZQuery1: TZQuery;
+    Label1: TLabel;
+    Label2: TLabel;
+    sqldPadrao: TZQuery;
     procedure FormCreate(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
   private
@@ -39,11 +41,13 @@ begin
   DisplayLabels := DL_CAIXAS;
   aCaption := 'Caixas';
   TableName:='CAIXAS';
+
+  IgnoreAutoGenerateLabels:=true;
 end;
 
 procedure TfrmCadastroCaixa.actDeleteExecute(Sender: TObject);
 begin
-  if ZQuery1.FieldByName('INATIVO').AsString = 'S' then
+  if sqldPadrao.FieldByName('INATIVO').AsString = 'S' then
   begin
     MsgAviso('Esta conta caixa já está inativa.');
     Exit;
@@ -51,9 +55,9 @@ begin
   
   if MsgSN('Deseja inativar esta conta caixa?') then
   begin
-    ZQuery1.Edit;
-    ZQuery1.FieldByName('INATIVO').AsString := 'S';
-    ZQuery1.ApplyUpdates;
+    sqldPadrao.Edit;
+    sqldPadrao.FieldByName('INATIVO').AsString := 'S';
+    sqldPadrao.ApplyUpdates;
   end;
 end;
 

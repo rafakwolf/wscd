@@ -17,6 +17,8 @@ type
     Button2: TButton;
     DateTimePicker1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
@@ -24,8 +26,8 @@ type
     fData2: TdateTime;
 
   public
-         property Data1: TDateTime read fData1 write fData1;
-         property Data2: TdateTime read fData2 write fData2;
+     property Data1: TDateTime read fData1 write fData1;
+     property Data2: TdateTime read fData2 write fData2;
   end;
 
 var

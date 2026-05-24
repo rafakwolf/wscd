@@ -15,6 +15,8 @@ type
     edtUsuario: TEdit;
     edtSenha: TEdit;
     ckbLembrarLogin: TCheckBox;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure btnOkClick(Sender: TObject);
   private
     Ok: Boolean;

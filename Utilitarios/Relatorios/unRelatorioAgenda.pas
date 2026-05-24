@@ -3,23 +3,28 @@ unit unRelatorioAgenda;
 interface
 
 uses
-  Messages, ExtCtrls,  SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons,  
-  DB, memds,  SqlDb, DBCtrls,   uConfiguraRelatorio, ZDataset,
-  FMTBcd;
+  Messages, ExtCtrls, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, DB, memds, SqlDb,
+  DBCtrls, uConfiguraRelatorio, ZDataset, ZAbstractRODataset, FMTBcd;
 
 type
 
   { TfrmRelatorioAgenda }
 
   TfrmRelatorioAgenda = class(TfrmDialogoRelatorioPadrao)
+    Button1: TButton;
     lbTelefone: TLabel;
     dbeNome: TDBEdit;
     edFone: TEdit;
     rgTipoRelatorio: TRadioGroup;
     sqldAgenda: TZQuery;
+    sqldAgendaFAX: TZRawStringField;
+    sqldAgendaNOME: TZRawStringField;
+    sqldAgendaTELEFONE: TZRawStringField;
+    sqldAgendaTELEFONE2: TZRawStringField;
+    sqldAgendaTELEFONE3: TZRawStringField;
+    procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure dbeNomeClickButton(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnImprimirClick(Sender: TObject);
     procedure btnVisualizarClick(Sender: TObject);
@@ -59,7 +64,8 @@ begin
         begin
           Close;
           Connection := GetZConnection;
-          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM AGENDA '+
+          SQL.Clear;
+          SQL.Text := 'SELECT NOME, TELEFONE, FAX FROM AGENDA '+
             'WHERE NOME LIKE ' + QuotedStr(Nome)+ ' ORDER BY NOME';
           Open;
         end;
@@ -72,7 +78,8 @@ begin
         begin
           Close;
           Connection := GetZConnection;
-          SQL.Clear; SQL.Text :='SELECT NOME, TELEFONE, FAX FROM AGENDA '+
+          SQL.Clear;
+          SQL.Text :='SELECT NOME, TELEFONE, FAX FROM AGENDA '+
             'WHERE TELEFONE LIKE ' + QuotedStr('%'+edFone.Text+'%')+ 'ORDER BY TELEFONE';
           Open;
         end;
@@ -101,14 +108,29 @@ begin
   sqldAgenda.close;
 end;
 
-procedure TfrmRelatorioAgenda.dbeNomeClickButton(Sender: TObject);
+procedure TfrmRelatorioAgenda.Button1Click(Sender: TObject);
+var idAgenda: Integer;
 begin
-  inherited;
-//  cdsAgenda.Close;
-//  cdsAgenda.SQL.Clear; SQL.Text :=SQLPadrao;
-//  if not TfrmModeloConsulta.Execute('Agenda', cdsAgenda, FN_AGENDA, DL_AGENDA) then
-//    cdsAgenda.Close;
+    sqldAgenda.Close;
+    sqldAgenda.SQL.Clear;
+    sqldAgenda.SQL.Text :=SQLPadrao;
+
+  idAgenda := TfrmModeloConsulta.Execute('Agenda', 'AGENDA', FN_AGENDA, DL_AGENDA, self);
+
+  if (idAgenda > 0) then begin
+     case rgTipoRelatorio.ItemIndex of
+       0:
+      begin
+        dbeNome.Text := sqldAgendaNOME.AsString;
+      end;
+      1:
+      begin
+         edFone.Text := sqldAgendaTELEFONE.AsString;
+      end;
+     end;
+  end;
 end;
+
 
 procedure TfrmRelatorioAgenda.FormClose(Sender: TObject;
   var Action: TCloseAction);
@@ -132,10 +154,6 @@ end;
 procedure TfrmRelatorioAgenda.rgTipoRelatorioClick(Sender: TObject);
 begin
   inherited;
-//  if rgTipoRelatorio.ItemIndex = 0 then
-//    dbeNome.Button.Click
-//  else if rgTipoRelatorio.ItemIndex = 1 then
-//    edFone.SetFocus;
 end;
 
 procedure TfrmRelatorioAgenda.FormCreate(Sender: TObject);

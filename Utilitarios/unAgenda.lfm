@@ -7,6 +7,7 @@ inherited frmAgenda: TfrmAgenda
   Caption = 'frmAgenda'
   ClientHeight = 319
   ClientWidth = 626
+  OnShow = FormShow
   inherited sbStatus: TStatusBar
     Top = 301
     Width = 626
@@ -19,7 +20,7 @@ inherited frmAgenda: TfrmAgenda
   object dbeNome: TDBEdit[2]
     Left = 56
     Height = 21
-    Top = 56
+    Top = 64
     Width = 345
     DataField = 'NOME'
     DataSource = dsPadrao
@@ -30,8 +31,8 @@ inherited frmAgenda: TfrmAgenda
   end
   object dbmObs: TDBMemo[3]
     Left = 56
-    Height = 89
-    Top = 136
+    Height = 80
+    Top = 208
     Width = 345
     DataField = 'OBS'
     DataSource = dsPadrao
@@ -42,7 +43,7 @@ inherited frmAgenda: TfrmAgenda
   object dbeFone1: TDBEdit[4]
     Left = 56
     Height = 21
-    Top = 96
+    Top = 112
     Width = 183
     DataField = 'TELEFONE'
     DataSource = dsPadrao
@@ -51,7 +52,47 @@ inherited frmAgenda: TfrmAgenda
     ShowHint = True
     TabOrder = 4
   end
-  inherited actlNavigateActions: TActionList[5]
+  object dbeFone2: TDBEdit[5]
+    Left = 56
+    Height = 21
+    Top = 164
+    Width = 183
+    DataField = 'TELEFONE2'
+    DataSource = dsPadrao
+    MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object Label1: TLabel[6]
+    Left = 56
+    Height = 16
+    Top = 48
+    Width = 36
+    Caption = 'Nome'
+  end
+  object Label2: TLabel[7]
+    Left = 56
+    Height = 16
+    Top = 96
+    Width = 69
+    Caption = 'Telefone 01'
+  end
+  object Label3: TLabel[8]
+    Left = 56
+    Height = 16
+    Top = 144
+    Width = 71
+    Caption = 'Telefone 02'
+  end
+  object Label4: TLabel[9]
+    Left = 56
+    Height = 16
+    Top = 192
+    Width = 80
+    Caption = 'Observações'
+  end
+  inherited actlNavigateActions: TActionList[10]
     Left = 472
     Top = 104
     inherited actPrint: TAction
@@ -59,18 +100,18 @@ inherited frmAgenda: TfrmAgenda
       ShortCut = 0
     end
   end
-  inherited dsPadrao: TDataSource[6]
-    DataSet = ZQuery1
-    Left = 296
-    Top = 160
+  inherited dsPadrao: TDataSource[11]
+    DataSet = sqldPadrao
+    Left = 520
+    Top = 200
   end
-  object ZQuery1: TZQuery[7]
+  object sqldPadrao: TZQuery[12]
     Connection = DmPrincipal.ZConnection1
     SQL.Strings = (
       'select * from AGENDA'
     )
     Params = <>
-    Left = 112
-    Top = 152
+    Left = 440
+    Top = 192
   end
 end

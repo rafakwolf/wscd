@@ -80,14 +80,76 @@ inherited frmRelatorioAgenda: TfrmRelatorioAgenda
     ShowHint = True
     TabOrder = 0
   end
-  inherited dsPadrao: TDataSource[5]
+  object Button1: TButton[5]
+    Left = 376
+    Height = 25
+    Top = 64
+    Width = 75
+    Caption = 'Buscar'
+    TabOrder = 4
+    OnClick = Button1Click
+  end
+  inherited dsPadrao: TDataSource[6]
     DataSet = sqldAgenda
     Left = 320
     Top = 144
   end
-  object sqldAgenda: TZQuery[6]
+  object sqldAgenda: TZQuery[7]
+    Connection = DmPrincipal.ZConnection1
+    SQL.Strings = (
+      'select * from VIEWAGENDA'
+    )
     Params = <>
-    Left = 202
-    Top = 174
+    Left = 216
+    Top = 144
+    object sqldAgendaNOME: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'NOME'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqldAgendaTELEFONE: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONE'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object sqldAgendaTELEFONE2: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONE2'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqldAgendaTELEFONE3: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'TELEFONE3'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object sqldAgendaFAX: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'FAX'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
   end
 end
