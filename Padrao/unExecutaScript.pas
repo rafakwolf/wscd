@@ -1,10 +1,12 @@
 unit unExecutaScript;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons,  FileCtrl, uutilfncs;
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Buttons,  FileCtrl, uUtilFncs;
 
 type
   TConnectErrorCallbackFunc      = function (AErrorMessage : PChar) : Integer;  stdcall;
@@ -67,7 +69,7 @@ implementation
 
 uses Funcoes;
 
-{$R *.dfm}
+{$R *.lfm}
 
 function HandleError(AStmtText, AErrMessage : PChar) : Integer; stdcall;
 begin
@@ -162,7 +164,7 @@ begin
   ErrCount  := 0;
   StmtCount := 0;
 
-  // Tratamento para qndo chama a execuÁ„o externa.
+  // Tratamento para qndo chama a execu√ß√£o externa.
   if Path <> '' then
   begin
     script := TStringList.Create;
@@ -175,7 +177,7 @@ begin
   if Trim(s) = '' then
   begin
     if ShowMessages then
-      ShowMessage('Script inv·lido.');
+      ShowMessage('Script inv√°lido.');
       
     Exit;
   end;

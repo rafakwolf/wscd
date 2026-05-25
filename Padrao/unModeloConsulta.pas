@@ -1,11 +1,13 @@
 unit unModeloConsulta;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, StdCtrls, Grids, DBGrids, Buttons, DBClient, 
-  Mask, StrUtils, SqlExpr, Provider;
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, StdCtrls, Grids, DBGrids, Buttons, {DBClient,} 
+  Masks, StrUtils, sqldb{, Provider};
 
 type
   TfrmModeloConsulta = class(TForm)
@@ -63,7 +65,7 @@ implementation
 
 uses Funcoes;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmModeloConsulta.GradeDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
@@ -110,7 +112,7 @@ begin
     edtPesquisa.Clear;
   end
   else
-  { usu·rio escolhe }
+  { usu√°rio escolhe }
   begin
     cmbCondicao.ItemIndex := 1;
     cmbCondicao.Enabled   := True;
@@ -216,7 +218,7 @@ begin
     FDisplayLabels.Text := DisplayLabels;
 
     if (FFieldNames.Count <> FDisplayLabels.Count) then
-      raise Exception.Create('A quantidade de valores no par‚metro ' +
+      raise Exception.Create('A quantidade de valores no par√¢metro ' +
         'FieldNames deve ser igual a do DisplayLabels');
 
     cmbCampo.Enabled := (FFieldNames.Count > 1);
@@ -321,7 +323,7 @@ begin
         else
           FCDS.CommandText := FCDS.CommandText + Operador + Campo + ' = %s '
       end
-      else // presume que È string e utiliza uma UDF "udf_CollateBr"
+      else // presume que √© string e utiliza uma UDF "udf_CollateBr"
         FCDS.CommandText := FCDS.CommandText + Operador +
           'upper(udf_CollateBr(' + Campo + ')) like upper(udf_CollateBr(%s)) ';
     end;
@@ -344,14 +346,14 @@ begin
         0: FCDS.CommandText := Format(FCDS.CommandText, [QuotedStr(Valor)]);
         { contendo }
         1: FCDS.CommandText := Format(FCDS.CommandText, [QuotedStr('%' + Valor + '%')]);
-        { inÌcio do campo }
+        { in√≠cio do campo }
         2: FCDS.CommandText := Format(FCDS.CommandText, [QuotedStr(Valor + '%')]);
         { fim do campo }
         3: FCDS.CommandText := Format(FCDS.CommandText, [QuotedStr('%' + Valor)]);
       end;
 
-    { caso n„o tenha sido definido nenhum valor pelo usu·rio
-      ent„o passa a SQL padr„o para buscar todos os registros }
+    { caso n√£o tenha sido definido nenhum valor pelo usu√°rio
+      ent√£o passa a SQL padr√£o para buscar todos os registros }
     if ClearMask(Valor) = '' then
       FCDS.CommandText := SQL + GroupBy + ' ' + OrderBy;
 
@@ -361,7 +363,7 @@ begin
       begin
         if not IsDateTime(Valor) then
         begin
-          MsgCuidado('','Valor de data inv·lido.');
+          MsgCuidado('','Valor de data inv√°lido.');
           SetFocusIfCan(edtPesquisa);
           FCDS.CommandText := SQL + GroupBy + ' ' + OrderBy;
         end;
@@ -370,14 +372,14 @@ begin
       begin
         if not IsNumeric(Valor) then
         begin
-          MsgCuidado('','Valor numÈrico inv·lido.');
+          MsgCuidado('','Valor num√©rico inv√°lido.');
           SetFocusIfCan(edtPesquisa);
           FCDS.CommandText := SQL + GroupBy + ' ' + OrderBy;
         end;
       end;
     end;
 
-    ToClipBoard(FCDS.CommandText); // copia a SQL para a ·rea de tranferencia
+    ToClipBoard(FCDS.CommandText); // copia a SQL para a √°rea de tranferencia
 
     FCDS.Open;
     NumeroResgistros;

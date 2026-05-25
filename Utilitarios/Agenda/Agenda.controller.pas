@@ -8,9 +8,11 @@ uses
   SysUtils,
   mormot.core.base,
   mormot.core.json,
+  mormot.core.os,
   mormot.core.text,
   mormot.core.unicode,
   mormot.orm.core,
+  mormot.orm.rest,
   mormot.rest.core,
   mormot.rest.server,
   mormot.rest.sqlite3,
@@ -19,7 +21,7 @@ uses
   Agenda.service;
 
 type
-  TAgendaController = class(TRestServerDB)
+  TAgendaEndpointController = class
   private
     FRepository: TAgendaRepository;
     FService: TAgendaService;
@@ -30,39 +32,38 @@ type
     procedure HandleUpdate(Ctxt: TRestServerUriContext);
     procedure HandleException(Ctxt: TRestServerUriContext; E: Exception);
   public
+    constructor Create(const AOrm: IRestOrm);
+    destructor Destroy; override;
+    procedure Handle(Ctxt: TRestServerUriContext);
+  end;
+
+  TAgendaController = class(TRestServerDB)
+  private
+    FEndpoint: TAgendaEndpointController;
+    function RouteAgenda(Ctxt: TRestServerUriContext): Boolean;
+  public
     constructor CreateInMemory(const ARoot: RawUtf8 = 'api'); reintroduce;
     constructor CreateWithDatabase(const ADbFileName: TFileName; const ARoot: RawUtf8 = 'api'); reintroduce;
     destructor Destroy; override;
-  published
-    procedure Agenda(Ctxt: TRestServerUriContext);
   end;
 
 implementation
 
-constructor TAgendaController.CreateInMemory(const ARoot: RawUtf8);
+constructor TAgendaEndpointController.Create(const AOrm: IRestOrm);
 begin
-  inherited CreateWithOwnModel([TOrmAgenda], {HandleUserAuthentication=}False, ARoot);
-  Server.CreateMissingTables;
-  FRepository := TAgendaRepository.Create(Orm);
+  inherited Create;
+  FRepository := TAgendaRepository.Create(AOrm);
   FService := TAgendaService.Create(FRepository);
 end;
 
-constructor TAgendaController.CreateWithDatabase(const ADbFileName: TFileName; const ARoot: RawUtf8);
-begin
-  inherited CreateWithOwnModel([TOrmAgenda], ADbFileName, {HandleUserAuthentication=}False, ARoot);
-  Server.CreateMissingTables;
-  FRepository := TAgendaRepository.Create(Orm);
-  FService := TAgendaService.Create(FRepository);
-end;
-
-destructor TAgendaController.Destroy;
+destructor TAgendaEndpointController.Destroy;
 begin
   FService.Free;
   FRepository.Free;
   inherited Destroy;
 end;
 
-function TAgendaController.RequestId(Ctxt: TRestServerUriContext): TID;
+function TAgendaEndpointController.RequestId(Ctxt: TRestServerUriContext): TID;
 begin
   Result := Ctxt.InputInt['id'];
   if Result = 0 then
@@ -71,7 +72,7 @@ begin
     Result := Ctxt.InputInt['IDAGENDA'];
 end;
 
-procedure TAgendaController.HandleCreate(Ctxt: TRestServerUriContext);
+procedure TAgendaEndpointController.HandleCreate(Ctxt: TRestServerUriContext);
 var
   Input: TAgendaInput;
   Output: TAgendaOutput;
@@ -87,7 +88,7 @@ begin
   Ctxt.Returns(RecordSaveJson(Output, TypeInfo(TAgendaOutput)), HTTP_CREATED, JSON_CONTENT_TYPE_HEADER);
 end;
 
-procedure TAgendaController.HandleDelete(Ctxt: TRestServerUriContext);
+procedure TAgendaEndpointController.HandleDelete(Ctxt: TRestServerUriContext);
 var
   Id: TID;
 begin
@@ -102,7 +103,7 @@ begin
   Ctxt.Success(HTTP_NOCONTENT);
 end;
 
-procedure TAgendaController.HandleGet(Ctxt: TRestServerUriContext);
+procedure TAgendaEndpointController.HandleGet(Ctxt: TRestServerUriContext);
 var
   Id: TID;
   Item: TAgendaOutput;
@@ -121,7 +122,7 @@ begin
   end;
 end;
 
-procedure TAgendaController.HandleUpdate(Ctxt: TRestServerUriContext);
+procedure TAgendaEndpointController.HandleUpdate(Ctxt: TRestServerUriContext);
 var
   Id: TID;
   Input: TAgendaInput;
@@ -145,7 +146,7 @@ begin
   Ctxt.Returns(RecordSaveJson(Output, TypeInfo(TAgendaOutput)), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
 end;
 
-procedure TAgendaController.HandleException(Ctxt: TRestServerUriContext; E: Exception);
+procedure TAgendaEndpointController.HandleException(Ctxt: TRestServerUriContext; E: Exception);
 begin
   if E is EAgendaValidation then
     Ctxt.Error(StringToUtf8(E.Message), HTTP_BADREQUEST)
@@ -155,7 +156,7 @@ begin
     Ctxt.Error(E, 'Erro ao processar Agenda', [], HTTP_SERVERERROR);
 end;
 
-procedure TAgendaController.Agenda(Ctxt: TRestServerUriContext);
+procedure TAgendaEndpointController.Handle(Ctxt: TRestServerUriContext);
 begin
   try
     case Ctxt.Method of
@@ -174,6 +175,35 @@ begin
     on E: Exception do
       HandleException(Ctxt, E);
   end;
+end;
+
+constructor TAgendaController.CreateInMemory(const ARoot: RawUtf8);
+begin
+  inherited CreateWithOwnModel([TOrmAgenda], {HandleUserAuthentication=}False, ARoot);
+  Server.CreateMissingTables;
+  FEndpoint := TAgendaEndpointController.Create(Orm);
+  OnBeforeUri := RouteAgenda;
+end;
+
+constructor TAgendaController.CreateWithDatabase(const ADbFileName: TFileName; const ARoot: RawUtf8);
+begin
+  inherited CreateWithOwnModel([TOrmAgenda], ADbFileName, {HandleUserAuthentication=}False, ARoot);
+  Server.CreateMissingTables;
+  FEndpoint := TAgendaEndpointController.Create(Orm);
+  OnBeforeUri := RouteAgenda;
+end;
+
+destructor TAgendaController.Destroy;
+begin
+  FEndpoint.Free;
+  inherited Destroy;
+end;
+
+function TAgendaController.RouteAgenda(Ctxt: TRestServerUriContext): Boolean;
+begin
+  Result := Ctxt.Table <> TOrmAgenda;
+  if not Result then
+    FEndpoint.Handle(Ctxt);
 end;
 
 end.

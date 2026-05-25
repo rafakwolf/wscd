@@ -1,0 +1,54 @@
+inherited frmRelatorioCaixaMensal: TfrmRelatorioCaixaMensal
+  Caption = 'frmRelatorioCaixaMensal'
+  inherited pnButtons: TPanel
+    TabOrder = 3
+    inherited btnVisualizar: TBitBtn
+      OnClick = btnVisualizarClick
+    end
+  end
+  object rgOrd: TRadioGroup[1]
+    Left = 8
+    Height = 33
+    Top = 8
+    Width = 361
+    AutoFill = True
+    Caption = ' Ordenar por '
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 7
+    ClientWidth = 351
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      'Lançamento'
+      'Data'
+    )
+    ParentBackground = False
+    TabOrder = 0
+  end
+  object edtMes: TEdit[2]
+    Left = 32
+    Height = 18
+    Top = 80
+    Width = 41
+    TabOrder = 1
+    OnExit = edtMesExit
+  end
+  object edtAno: TEdit[3]
+    Left = 80
+    Height = 18
+    Top = 80
+    Width = 65
+    TabOrder = 2
+    OnExit = edtAnoExit
+  end
+  inherited dsPadrao: TDataSource[4]
+    Left = 216
+    Top = 64
+  end
+end

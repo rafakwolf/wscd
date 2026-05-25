@@ -1,0 +1,38 @@
+inherited frmRelatorioOrcamentoData: TfrmRelatorioOrcamentoData
+  Caption = 'frmRelatorioOrcamentoData'
+  inherited pnButtons: TPanel
+    inherited btnImprimir: TBitBtn
+      Left = 2
+    end
+    inherited btnVisualizar: TBitBtn
+      Left = 92
+      OnClick = btnVisualizarClick
+    end
+    inherited btnSair: TBitBtn
+      Left = 182
+    end
+  end
+  object edDataFim: TDBEdit[1]
+    Left = 16
+    Height = 18
+    Top = 72
+    Width = 161
+    DataField = 'DATAFIM'
+    DataSource = dsPadrao
+    MaxLength = 0
+    TabOrder = 2
+  end
+  object edDataIni: TDBEdit[2]
+    Left = 16
+    Height = 18
+    Top = 32
+    Width = 161
+    DataField = 'DATAINI'
+    DataSource = dsPadrao
+    MaxLength = 0
+    TabOrder = 1
+  end
+  inherited dsPadrao: TDataSource[3]
+    Left = 224
+  end
+end

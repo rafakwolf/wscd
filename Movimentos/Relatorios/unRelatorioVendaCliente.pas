@@ -1,10 +1,12 @@
 unit unRelatorioVendaCliente;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Mask,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls, Masks,
   DBCtrls;
 
 type
@@ -29,7 +31,7 @@ implementation
 uses uConfiguraRelatorio, VarGlobal, Funcoes, unPrevVendas, ConstPadrao,
      unModeloConsulta;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmRelatorioVendaCliente.Imprimir(p: Boolean);
 begin

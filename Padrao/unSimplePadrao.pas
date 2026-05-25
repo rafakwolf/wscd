@@ -1,9 +1,11 @@
 unit unSimplePadrao;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DBGrids;
 
 type
@@ -20,9 +22,9 @@ var
   frmSimplePadrao: TfrmSimplePadrao;
 
 implementation
-uses SQLExpr, VarGlobal;
+uses sqldb, VarGlobal;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmSimplePadrao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

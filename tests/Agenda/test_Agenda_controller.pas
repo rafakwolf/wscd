@@ -10,6 +10,7 @@ uses
   testregistry,
   mormot.core.base,
   mormot.core.json,
+  mormot.core.os,
   mormot.core.text,
   mormot.core.unicode,
   mormot.rest.client,

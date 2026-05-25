@@ -1,9 +1,11 @@
 unit unDesmarcar;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, StdCtrls, unSimplePadrao;
 
 type
@@ -30,9 +32,9 @@ var
 
 implementation
 
-uses Funcoes, VarGlobal, uDatabaseutils;
+uses Funcoes, VarGlobal, uDatabaseUtils;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmDesmarcar.DesmarcaNovos;
 begin

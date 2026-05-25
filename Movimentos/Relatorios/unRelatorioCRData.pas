@@ -1,11 +1,13 @@
 unit unRelatorioCRData;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, DB, StdCtrls, Buttons, ExtCtrls,
-  ComCtrls, DBCtrls, Vcl.Mask;
+  ComCtrls, DBCtrls{, Vcl.Mask};
 
 type
   TfrmRelatorioCRData = class(TfrmDialogoRelatorioPadrao)
@@ -29,7 +31,7 @@ implementation
 uses
   VarGlobal, Funcoes, uConfiguraRelatorio, unPrevContasReceber;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmRelatorioCRData.FormCreate(Sender: TObject);
 begin

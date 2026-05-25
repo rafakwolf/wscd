@@ -1,0 +1,18 @@
+object frmSimplePadrao: TfrmSimplePadrao
+  Left = 166
+  Height = 393
+  Top = 107
+  Width = 680
+  Caption = 'frmSimplePadrao'
+  Color = clBtnFace
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Verdana'
+  KeyPreview = True
+  ShowHint = True
+  LCLVersion = '4.6.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+end

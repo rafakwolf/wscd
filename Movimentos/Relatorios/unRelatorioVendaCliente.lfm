@@ -1,0 +1,25 @@
+inherited frmRelatorioVendaCliente: TfrmRelatorioVendaCliente
+  Caption = 'frmRelatorioVendaCliente'
+  inherited pnButtons: TPanel
+    inherited btnVisualizar: TBitBtn
+      OnClick = btnVisualizarClick
+    end
+  end
+  object dbeCliente: TDBEdit[1]
+    Left = 16
+    Height = 18
+    Hint = 'Pesquisar < F2 >'
+    Top = 32
+    Width = 339
+    DataField = 'NOME'
+    DataSource = dsPadrao
+    ReadOnly = True
+    Color = clBtnFace
+    MaxLength = 0
+    TabOrder = 1
+  end
+  inherited dsPadrao: TDataSource[2]
+    Left = 120
+    Top = 2
+  end
+end

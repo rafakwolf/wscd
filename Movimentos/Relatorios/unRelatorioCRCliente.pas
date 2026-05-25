@@ -1,11 +1,13 @@
 unit unRelatorioCRCliente;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, 
-  DBClient, DB, Mask, DBCtrls;
+  {DBClient,} DB, Masks, DBCtrls;
 
 type
   TfrmRelatorioCRCliente = class(TfrmDialogoRelatorioPadrao)
@@ -29,7 +31,7 @@ uses
   VarGlobal, Funcoes, uConfiguraRelatorio, unPrevContasReceber, ConstPadrao,
   unModeloConsulta;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmRelatorioCRCliente.Imprimir(p: Boolean);
 begin

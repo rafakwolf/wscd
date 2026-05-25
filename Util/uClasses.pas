@@ -1,10 +1,12 @@
 unit uClasses;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  SysUtils, Classes, SqlExpr, DB, Forms,
-  unDmPrincipal, uutilfncs, inifiles, ZDataset, ZStoredProcedure;
+  {SysUtils, Classes,} sqldb, DB, Forms,
+  unDmPrincipal, uUtilFncs{, inifiles, ZDataset, ZStoredProcedure};
 
 type
   TConfigGlobal = class

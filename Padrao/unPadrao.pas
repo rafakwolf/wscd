@@ -1,12 +1,14 @@
 unit unPadrao;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, StdCtrls, Menus, Buttons, DBClient, DB, ActnList, DBXCommon,
-  ComCtrls, Variants, SQLExpr, Funcoes, ConstPadrao, Provider, DBGrids,
-  System.Actions;
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, StdCtrls, Menus, Buttons, {DBClient,} DB, ActnList, {DBXCommon,}
+  ComCtrls, Variants, sqldb, Funcoes, ConstPadrao, {Provider,} DBGrids{,
+  System.Actions};
 
 type
   TfrmPadrao = class(TForm)
@@ -132,7 +134,7 @@ implementation
 uses unModeloConsulta,
       unOrdenarDados, VarGlobal;
 
-{$R *.DFM}
+{$R *.lfm}
 
 procedure TfrmPadrao.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);

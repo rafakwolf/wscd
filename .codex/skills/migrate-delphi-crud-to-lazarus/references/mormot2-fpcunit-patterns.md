@@ -4,6 +4,8 @@ Use estes modelos como ponto de partida e adapte aos nomes, units e helpers ja e
 
 Substitua `{Modulo}` pelo nome normalizado sem prefixo tecnico. Para `unAgenda`, usar pasta `Agenda/`, units `Agenda.repository`, `Agenda.service`, `Agenda.controller`, e teste `tests/Agenda/test_Agenda_controller.pas`.
 
+IDs sao sempre auto-incrementais. Defina DTOs de entrada sem campo ID; use ID apenas como parametro de rota/query para localizar registros em `GET` unico, `PUT` e `DELETE`; inclua ID nos DTOs de saida.
+
 ## Repository
 
 ```pascal
@@ -82,6 +84,16 @@ uses
 type
   E{Modulo}Validation = class(Exception);
 
+  T{Modulo}Input = packed record
+    // Nao incluir ID: a chave primaria e gerada automaticamente.
+    Nome: RawUtf8;
+  end;
+
+  T{Modulo}Output = packed record
+    ID{Modulo}: Int64;
+    Nome: RawUtf8;
+  end;
+
   T{Modulo}Service = class
   private
     FRepository: T{Modulo}Repository;
@@ -104,6 +116,8 @@ end;
 
 procedure T{Modulo}Service.ValidateForSave(const AInput: T{Modulo}Input);
 begin
+  // AInput nao deve carregar ID. Em create, deixar o ORM/banco gerar a chave.
+  // Em update/delete/get, receber o ID separadamente da rota/query.
   if Trim(AInput.Nome) = '' then
     raise E{Modulo}Validation.Create('Nome e obrigatorio');
 end;
@@ -195,6 +209,11 @@ begin
   // controller e cliente HTTP/REST conforme padrao do projeto.
 end;
 
+procedure T{Modulo}ControllerTest.CreateReturnsCreatedPayload;
+begin
+  // Enviar payload de criacao sem ID e verificar que o controller retorna ID gerado.
+end;
+
 procedure T{Modulo}ControllerTest.TearDown;
 begin
   // Liberar cliente, servidor, banco temporario e fixtures.
@@ -213,6 +232,7 @@ end.
 - Confirmar que service nao contem SQL direto nem dependencia de componentes visuais.
 - Confirmar que controller nao contem regra de negocio alem de traducao HTTP/DTO.
 - Confirmar que o teste passa por endpoints REST reais do controller.
+- Confirmar que DTOs de entrada nao exigem ID e que criacao retorna ID gerado.
 - Confirmar que `.pas` e `.dfm` antigos foram usados como fonte das regras migradas.
 - Confirmar que os novos arquivos estao na pasta do modulo normalizado e os legados em `old/`.
 - Confirmar que o teste esta em `tests/{Modulo}/`.

@@ -1,9 +1,11 @@
 unit unRelatorioCaixaMensal;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, unDialogoRelatorioPadrao, StdCtrls, Buttons, ExtCtrls, DB, DateUtils;
 
 type
@@ -28,9 +30,9 @@ var
 implementation
 
 uses
-  Funcoes, unPrevRelCaixa, uConfiguraRelatorio, System.StrUtils;
+  Funcoes, unPrevRelCaixa, uConfiguraRelatorio{, System.StrUtils};
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TfrmRelatorioCaixaMensal.Imprimir(p: Boolean);
 begin
@@ -47,7 +49,7 @@ begin
       Params.ParamByName('PORDEM').AsString := IfThen(rgOrd.ItemIndex = 0, 'L', 'D');
       Open;
     end;
-    TituloRel := 'Caixa do mês '+edtMes.Text+' de '+edtAno.Text;
+    TituloRel := 'Caixa do mÃªs '+edtMes.Text+' de '+edtAno.Text;
     PrintIfNotEmptyRL(rrPadrao, p);
   finally
     Free;
@@ -84,7 +86,7 @@ begin
   begin
     if (Mes < 1) or (Mes > 12) then
     begin
-      MsgAviso('Mês deve estar entre 1 e 12.');
+      MsgAviso('MÃªs deve estar entre 1 e 12.');
       edtMes.Clear;
       edtMes.SetFocus;
       Exit;
