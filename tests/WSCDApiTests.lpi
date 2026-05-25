@@ -41,6 +41,10 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="Vendedor/test_Vendedor_controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="../Api/WscdApiServer.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
@@ -69,6 +73,18 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="../Configuracoes/Vendedor/Vendedor.repository.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Configuracoes/Vendedor/Vendedor.service.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Configuracoes/Vendedor/Vendedor.controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="../Util/Extensos.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
@@ -80,9 +96,9 @@
       <Filename Value="WSCDApiTests"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="../libs/mORMot2/src;../libs/mORMot2/src/core;../libs/mORMot2/src/net;../Api;../Util;../Utilitarios/Agenda;../Utilitarios/Recibo;Api;Agenda;Recibo"/>
+      <IncludeFiles Value="../libs/mORMot2/src;../libs/mORMot2/src/core;../libs/mORMot2/src/net;../Api;../Util;../Utilitarios/Agenda;../Utilitarios/Recibo;../Configuracoes/Vendedor;Api;Agenda;Recibo;Vendedor"/>
       <Libraries Value="../libs/mORMot2/static/$(TargetCPU)-$(TargetOS)"/>
-      <OtherUnitFiles Value="../Api;../Util;../Utilitarios/Agenda;../Utilitarios/Recibo;Api;Agenda;Recibo;../libs/mORMot2/src/app;../libs/mORMot2/src/core;../libs/mORMot2/src/crypt;../libs/mORMot2/src/db;../libs/mORMot2/src/lib;../libs/mORMot2/src/net;../libs/mORMot2/src/orm;../libs/mORMot2/src/rest;../libs/mORMot2/src/soa;../libs/mORMot2/src/script;../libs/mORMot2/src/misc;../libs/mORMot2/src/tools/mget"/>
+      <OtherUnitFiles Value="../Api;../Util;../Utilitarios/Agenda;../Utilitarios/Recibo;../Configuracoes/Vendedor;Api;Agenda;Recibo;Vendedor;../libs/mORMot2/src/app;../libs/mORMot2/src/core;../libs/mORMot2/src/crypt;../libs/mORMot2/src/db;../libs/mORMot2/src/lib;../libs/mORMot2/src/net;../libs/mORMot2/src/orm;../libs/mORMot2/src/rest;../libs/mORMot2/src/soa;../libs/mORMot2/src/script;../libs/mORMot2/src/misc;../libs/mORMot2/src/tools/mget"/>
       <UnitOutputDirectory Value="../lib/$(TargetCPU)-$(TargetOS)/api-tests"/>
     </SearchPaths>
     <Parsing>

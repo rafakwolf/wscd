@@ -1133,7 +1133,7 @@
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
-        <Filename Value="Configuracoes/unVendedor.pas"/>
+        <Filename Value="Configuracoes/Vendedor/old/unVendedor.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>

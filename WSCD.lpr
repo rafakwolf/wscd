@@ -106,7 +106,7 @@ uses
   unPerfilPermissao in 'Configuracoes\unPerfilPermissao.pas' {frmPerfilPermissao},
   unTrocaSenhaCaixa in 'Configuracoes\unTrocaSenhaCaixa.pas' {frmSenhaCaixa},
   unTrocaSenhaEstoque in 'Configuracoes\unTrocaSenhaEstoque.pas' {frmSenhaEstoque},
-  unVendedor in 'Configuracoes\unVendedor.pas' {frmVendedor},
+  unVendedor in 'Configuracoes\Vendedor\old\unVendedor.pas' {frmVendedor},
   unAcesso in 'Comuns\unAcesso.pas' {frmAcesso},
   unAguarde in 'Comuns\unAguarde.pas' {frmAguarde},
   unCommandoSQL in 'Comuns\unCommandoSQL.pas' {frmCommandoSQL},

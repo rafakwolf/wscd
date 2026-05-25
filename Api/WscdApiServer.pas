@@ -18,13 +18,16 @@ uses
   Agenda.repository,
   Agenda.controller,
   Recibo.repository,
-  Recibo.controller;
+  Recibo.controller,
+  Vendedor.repository,
+  Vendedor.controller;
 
 type
   TWscdApiServer = class(TRestServerDB)
   private
     FAgendaController: TAgendaEndpointController;
     FReciboController: TReciboEndpointController;
+    FVendedorController: TVendedorEndpointController;
     function RouteApi(Ctxt: TRestServerUriContext): Boolean;
   public
     constructor CreateInMemory(const ARoot: RawUtf8 = 'api'); reintroduce;
@@ -53,26 +56,29 @@ implementation
 
 constructor TWscdApiServer.CreateInMemory(const ARoot: RawUtf8);
 begin
-  inherited CreateWithOwnModel([TOrmAgenda, TOrmRecibo], {HandleUserAuthentication=}False, ARoot);
+  inherited CreateWithOwnModel([TOrmAgenda, TOrmRecibo, TOrmVendedor], {HandleUserAuthentication=}False, ARoot);
   Server.CreateMissingTables;
 
   FAgendaController := TAgendaEndpointController.Create(Orm);
   FReciboController := TReciboEndpointController.Create(Orm);
+  FVendedorController := TVendedorEndpointController.Create(Orm);
   OnBeforeUri := RouteApi;
 end;
 
 constructor TWscdApiServer.CreateWithDatabase(const ADbFileName: TFileName; const ARoot: RawUtf8);
 begin
-  inherited CreateWithOwnModel([TOrmAgenda, TOrmRecibo], ADbFileName, {HandleUserAuthentication=}False, ARoot);
+  inherited CreateWithOwnModel([TOrmAgenda, TOrmRecibo, TOrmVendedor], ADbFileName, {HandleUserAuthentication=}False, ARoot);
   Server.CreateMissingTables;
 
   FAgendaController := TAgendaEndpointController.Create(Orm);
   FReciboController := TReciboEndpointController.Create(Orm);
+  FVendedorController := TVendedorEndpointController.Create(Orm);
   OnBeforeUri := RouteApi;
 end;
 
 destructor TWscdApiServer.Destroy;
 begin
+  FVendedorController.Free;
   FReciboController.Free;
   FAgendaController.Free;
   inherited Destroy;
@@ -91,6 +97,8 @@ begin
     FAgendaController.Handle(Ctxt)
   else if Ctxt.Table = TOrmRecibo then
     FReciboController.Handle(Ctxt)
+  else if Ctxt.Table = TOrmVendedor then
+    FVendedorController.Handle(Ctxt)
   else
     Result := True;
 end;

@@ -563,7 +563,7 @@
         <HasResources Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="Configuracoes/unVendedor.pas"/>
+        <Filename Value="Configuracoes/Vendedor/old/unVendedor.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
       </Unit>
@@ -872,8 +872,8 @@
   <CompilerOptions>
     <Version Value="11"/>
     <SearchPaths>
-      <IncludeFiles Value="Util;Principal;Padrao;Utilitarios/Agenda/old;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Comuns/Dm;Configuracoes/Relatorios;Configuracoes/user;Configuracoes/banco;Configuracoes/ContaCaixa;Configuracoes/grupo;Utilitarios/Agenda;Configuracoes/Vendedor;Cadastros/Cliente;Cadastros/Fornecedor;Movimentos/ContasPagar;Movimentos/ContasReceber;Movimentos/Caixa"/>
-      <OtherUnitFiles Value="Util;Principal;Padrao;Utilitarios/Agenda/old;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Comuns/Dm;Configuracoes/Relatorios;Configuracoes/user;Configuracoes/banco;Configuracoes/ContaCaixa;Configuracoes/grupo;Utilitarios/Agenda;Configuracoes/Vendedor;Cadastros/Cliente;Cadastros/Fornecedor;Movimentos/ContasPagar;Movimentos/ContasReceber;Movimentos/Caixa"/>
+      <IncludeFiles Value="Util;Principal;Padrao;Utilitarios/Agenda/old;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Configuracoes/Vendedor/old;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Comuns/Dm;Configuracoes/Relatorios;Configuracoes/user;Configuracoes/banco;Configuracoes/ContaCaixa;Configuracoes/grupo;Utilitarios/Agenda;Configuracoes/Vendedor;Cadastros/Cliente;Cadastros/Fornecedor;Movimentos/ContasPagar;Movimentos/ContasReceber;Movimentos/Caixa"/>
+      <OtherUnitFiles Value="Util;Principal;Padrao;Utilitarios/Agenda/old;Utilitarios/Relatorios/Prev;Utilitarios/Relatorios;Sair;Movimentos;Movimentos/Relatorios/Prev;Movimentos/Relatorios;Configuracoes;Configuracoes/Vendedor/old;Comuns;Cadastros;Cadastros/Relatorios/Prev;Cadastros/Relatorios;Comuns/Dm;Configuracoes/Relatorios;Configuracoes/user;Configuracoes/banco;Configuracoes/ContaCaixa;Configuracoes/grupo;Utilitarios/Agenda;Configuracoes/Vendedor;Cadastros/Cliente;Cadastros/Fornecedor;Movimentos/ContasPagar;Movimentos/ContasReceber;Movimentos/Caixa"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>

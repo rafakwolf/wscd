@@ -7,6 +7,7 @@ interface
 uses
   SysUtils,
   mormot.core.base,
+  mormot.core.datetime,
   mormot.core.json,
   mormot.core.os,
   mormot.core.text,
@@ -25,6 +26,9 @@ type
   private
     FRepository: TAgendaRepository;
     FService: TAgendaService;
+    function LoadInput(const AJson: RawUtf8; out AInput: TAgendaInput): Boolean;
+    function OutputJson(const AOutput: TAgendaOutput): RawUtf8;
+    function OutputListJson(const AItems: TAgendaOutputDynArray): RawUtf8;
     function RequestId(Ctxt: TRestServerUriContext): TID;
     procedure HandleCreate(Ctxt: TRestServerUriContext);
     procedure HandleDelete(Ctxt: TRestServerUriContext);
@@ -63,13 +67,65 @@ begin
   inherited Destroy;
 end;
 
+function TAgendaEndpointController.LoadInput(const AJson: RawUtf8;
+  out AInput: TAgendaInput): Boolean;
+var
+  Body: RawUtf8;
+  Values: array[0..5] of TValuePUtf8Char;
+begin
+  FillChar(AInput, SizeOf(AInput), 0);
+  Body := AJson;
+  Result := JsonDecode(PUtf8Char(UniqueRawUtf8(Body)),
+    ['Nome', 'Telefone', 'Telefone2', 'Telefone3', 'Fax', 'Obs'], @Values) <> nil;
+  if not Result then
+    Exit;
+  if Values[0].Text <> nil then
+    Values[0].ToUtf8(AInput.Nome);
+  if Values[1].Text <> nil then
+    Values[1].ToUtf8(AInput.Telefone);
+  if Values[2].Text <> nil then
+    Values[2].ToUtf8(AInput.Telefone2);
+  if Values[3].Text <> nil then
+    Values[3].ToUtf8(AInput.Telefone3);
+  if Values[4].Text <> nil then
+    Values[4].ToUtf8(AInput.Fax);
+  if Values[5].Text <> nil then
+    Values[5].ToUtf8(AInput.Obs);
+end;
+
+function TAgendaEndpointController.OutputJson(const AOutput: TAgendaOutput): RawUtf8;
+begin
+  Result := JsonEncode([
+    'IDAgenda', AOutput.IDAgenda,
+    'Nome', AOutput.Nome,
+    'Telefone', AOutput.Telefone,
+    'Telefone2', AOutput.Telefone2,
+    'Telefone3', AOutput.Telefone3,
+    'Fax', AOutput.Fax,
+    'Obs', AOutput.Obs]);
+end;
+
+function TAgendaEndpointController.OutputListJson(const AItems: TAgendaOutputDynArray): RawUtf8;
+var
+  I: PtrInt;
+begin
+  Result := '[';
+  for I := 0 to High(AItems) do
+  begin
+    if I > 0 then
+      Result := Result + ',';
+    Result := Result + OutputJson(AItems[I]);
+  end;
+  Result := Result + ']';
+end;
+
 function TAgendaEndpointController.RequestId(Ctxt: TRestServerUriContext): TID;
 begin
-  Result := Ctxt.InputInt['id'];
+  Result := Ctxt.InputIntOrVoid['id'];
   if Result = 0 then
-    Result := Ctxt.InputInt['ID'];
+    Result := Ctxt.InputIntOrVoid['ID'];
   if Result = 0 then
-    Result := Ctxt.InputInt['IDAGENDA'];
+    Result := Ctxt.InputIntOrVoid['IDAGENDA'];
 end;
 
 procedure TAgendaEndpointController.HandleCreate(Ctxt: TRestServerUriContext);
@@ -77,15 +133,14 @@ var
   Input: TAgendaInput;
   Output: TAgendaOutput;
 begin
-  FillChar(Input, SizeOf(Input), 0);
-  if not RecordLoadJson(Input, Ctxt.Call.InBody, TypeInfo(TAgendaInput)) then
+  if not LoadInput(Ctxt.Call.InBody, Input) then
   begin
     Ctxt.Error('JSON invalido para Agenda', HTTP_BADREQUEST);
     Exit;
   end;
 
   Output := FService.CreateItem(Input);
-  Ctxt.Returns(RecordSaveJson(Output, TypeInfo(TAgendaOutput)), HTTP_CREATED, JSON_CONTENT_TYPE_HEADER);
+  Ctxt.Returns(OutputJson(Output), HTTP_CREATED, JSON_CONTENT_TYPE_HEADER);
 end;
 
 procedure TAgendaEndpointController.HandleDelete(Ctxt: TRestServerUriContext);
@@ -113,12 +168,12 @@ begin
   if Id > 0 then
   begin
     Item := FService.GetItem(Id);
-    Ctxt.Returns(RecordSaveJson(Item, TypeInfo(TAgendaOutput)), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
+    Ctxt.Returns(OutputJson(Item), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
   end
   else
   begin
     Items := FService.ListItems;
-    Ctxt.Returns(DynArraySaveJson(Items, TypeInfo(TAgendaOutputDynArray)), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
+    Ctxt.Returns(OutputListJson(Items), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
   end;
 end;
 
@@ -135,15 +190,14 @@ begin
     Exit;
   end;
 
-  FillChar(Input, SizeOf(Input), 0);
-  if not RecordLoadJson(Input, Ctxt.Call.InBody, TypeInfo(TAgendaInput)) then
+  if not LoadInput(Ctxt.Call.InBody, Input) then
   begin
     Ctxt.Error('JSON invalido para Agenda', HTTP_BADREQUEST);
     Exit;
   end;
 
   Output := FService.UpdateItem(Id, Input);
-  Ctxt.Returns(RecordSaveJson(Output, TypeInfo(TAgendaOutput)), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
+  Ctxt.Returns(OutputJson(Output), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
 end;
 
 procedure TAgendaEndpointController.HandleException(Ctxt: TRestServerUriContext; E: Exception);

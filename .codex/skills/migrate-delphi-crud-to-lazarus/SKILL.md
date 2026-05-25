@@ -43,6 +43,9 @@ Cada modulo migrado deve seguir o desenho confirmado em `Agenda` e `Recibo`:
 - `T[Modulo]EndpointController` deve receber `IRestOrm` no construtor, criar repository/service internamente e expor `Handle(Ctxt: TRestServerUriContext)`.
 - O `Handle` deve despachar por `Ctxt.Method` para `HandleGet`, `HandleCreate`, `HandleUpdate` e `HandleDelete`.
 - Erros de validacao do service devem virar `HTTP_BADREQUEST`; registros nao encontrados devem virar `HTTP_NOTFOUND`; erros inesperados devem virar `HTTP_SERVERERROR`.
+- Para payloads de `POST` e `PUT`, nao depender de `RecordLoadJson(Input, Ctxt.Call.InBody, TypeInfo(T[Modulo]Input))` no controller. Criar um helper privado `LoadInput(const AJson: RawUtf8; out AInput: T[Modulo]Input): Boolean` e preencher o record explicitamente via `JsonDecode`/`TValuePUtf8Char` com os nomes JSON publicos do contrato. Isso evita falso `JSON invalido` em payloads validos enviados por clientes externos.
+- Para respostas de `POST`, `GET` e `PUT`, nao depender de `RecordSaveJson(Output, TypeInfo(T[Modulo]Output))` nem `DynArraySaveJson` para DTOs packed record. Criar helpers privados `OutputJson(const AOutput: T[Modulo]Output): RawUtf8` e `OutputListJson(const AItems: T[Modulo]OutputDynArray): RawUtf8`, usando `JsonEncode` para objetos e concatenando arrays de objetos. Isso evita respostas como arrays de blobs/base64 em vez de JSON publico.
+- Para obter IDs opcionais em `GET` de listagem, usar `Ctxt.InputIntOrVoid['id']`, `Ctxt.InputIntOrVoid['ID']` e `Ctxt.InputIntOrVoid['ID[MODULO]']`. Nao usar `Ctxt.InputInt[...]` em helper de ID opcional, porque o mORMot2 lanca excecao quando o parametro esta ausente e transforma `GET /api/[Modulo]` em erro 500.
 - O controller pode manter uma classe wrapper `T[Modulo]Controller = class(TRestServerDB)` apenas para testes legados ou compatibilidade, mas ela deve registrar a rota via `OnBeforeUri`, nao por metodo `published` com o mesmo nome da tabela.
 - Nao declarar `procedure [Modulo](Ctxt: TRestServerUriContext)` em `published` quando existir uma tabela `TOrm[Modulo]` no mesmo model. O mORMot2 acusa conflito entre nome de metodo publicado e tabela.
 - O bootstrap `Api/WscdApiServer.pas` deve manter um unico `TRestServerDB` com todas as tabelas ativas, criar um endpoint controller por modulo e delegar via `OnBeforeUri`.
@@ -79,6 +82,9 @@ Escrever testes de integracao FPCUnit que exercitem o controller REST, nao apena
 - Popular dados minimos via repository ou fixture.
 - Testar criar, consultar, atualizar, excluir e pelo menos um erro de validacao/regra de negocio.
 - Confirmar que o teste de criacao envia payload sem ID e valida que o ID retornado foi gerado.
+- Nos testes de controller, enviar pelo menos um payload JSON literal com os nomes publicos do contrato, em vez de gerar todos os bodies com `RecordSaveJson`, para cobrir o mesmo formato enviado por clientes HTTP reais.
+- Nos testes de controller, validar respostas JSON publicas por campo usando `JsonDecode`/`TValuePUtf8Char` ou assercoes de texto JSON, nao `RecordLoadJson` sobre os DTOs, para nao mascarar problemas de contrato HTTP.
+- Testar `GET /api/[Modulo]` sem `id` e validar que retorna lista com `HTTP_SUCCESS`.
 - Verificar codigo HTTP, payload e efeito persistido.
 - Isolar dados do teste para permitir execucao repetida.
 - Testar tambem o servidor unificado em `tests/Api/test_WscdApiServer.pas`, cobrindo pelo menos um fluxo CRUD basico do modulo novo via `TWscdApiServer.CreateInMemory`.

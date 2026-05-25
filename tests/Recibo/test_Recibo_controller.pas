@@ -9,6 +9,7 @@ uses
   fpcunit,
   testregistry,
   mormot.core.base,
+  mormot.core.datetime,
   mormot.core.json,
   mormot.core.os,
   mormot.core.text,
@@ -23,6 +24,7 @@ type
   private
     FServer: TReciboController;
     FClient: TRestClientDB;
+    function LoadReciboOutput(const AJson: RawUtf8; out AOutput: TReciboOutput): Boolean;
     function ReciboPayload(const ARecebedor, AReferente: RawUtf8; AValor: Currency): RawUtf8;
     function CreateRecibo(const ARecebedor, AReferente: RawUtf8; AValor: Currency): TReciboOutput;
   protected
@@ -30,6 +32,7 @@ type
     procedure TearDown; override;
   published
     procedure CreateReturnsCreatedPayload;
+    procedure GetWithoutIdReturnsList;
     procedure GetReturnsPersistedPayload;
     procedure UpdateChangesPersistedPayload;
     procedure DeleteRemovesPayload;
@@ -39,15 +42,13 @@ type
 implementation
 
 function TReciboControllerTest.ReciboPayload(const ARecebedor, AReferente: RawUtf8; AValor: Currency): RawUtf8;
-var
-  Input: TReciboInput;
 begin
-  FillChar(Input, SizeOf(Input), 0);
-  Input.Data := EncodeDate(2026, 5, 25);
-  Input.Recebedor := ARecebedor;
-  Input.Referente := AReferente;
-  Input.Valor := AValor;
-  Result := RecordSaveJson(Input, TypeInfo(TReciboInput));
+  Result := FormatUtf8('{'#10 +
+    '  "Data": "2026-05-25",'#10 +
+    '  "Recebedor": "%",'#10 +
+    '  "Referente": "%",'#10 +
+    '  "Valor": %'#10 +
+    '}', [ARecebedor, AReferente, Double(AValor)]);
 end;
 
 function TReciboControllerTest.CreateRecibo(const ARecebedor, AReferente: RawUtf8; AValor: Currency): TReciboOutput;
@@ -58,8 +59,34 @@ begin
   FillChar(Result, SizeOf(Result), 0);
   Status := FClient.CallBack(mPOST, 'Recibo', ReciboPayload(ARecebedor, AReferente, AValor), Response);
   CheckEquals(HTTP_CREATED, Status);
-  CheckTrue(RecordLoadJson(Result, Response, TypeInfo(TReciboOutput)));
+  CheckTrue(LoadReciboOutput(Response, Result));
   CheckTrue(Result.IDRecibo > 0);
+end;
+
+function TReciboControllerTest.LoadReciboOutput(const AJson: RawUtf8;
+  out AOutput: TReciboOutput): Boolean;
+var
+  Body: RawUtf8;
+  Values: array[0..5] of TValuePUtf8Char;
+begin
+  FillChar(AOutput, SizeOf(AOutput), 0);
+  Body := AJson;
+  Result := JsonDecode(PUtf8Char(UniqueRawUtf8(Body)),
+    ['IDRecibo', 'Data', 'Recebedor', 'Referente', 'Valor', 'ValorExtenso'], @Values) <> nil;
+  if not Result then
+    Exit;
+  if Values[0].Text <> nil then
+    AOutput.IDRecibo := Values[0].ToInt64;
+  if Values[1].Text <> nil then
+    AOutput.Data := Values[1].Iso8601ToDateTime;
+  if Values[2].Text <> nil then
+    Values[2].ToUtf8(AOutput.Recebedor);
+  if Values[3].Text <> nil then
+    Values[3].ToUtf8(AOutput.Referente);
+  if Values[4].Text <> nil then
+    AOutput.Valor := Values[4].ToDouble;
+  if Values[5].Text <> nil then
+    Values[5].ToUtf8(AOutput.ValorExtenso);
 end;
 
 procedure TReciboControllerTest.SetUp;
@@ -86,6 +113,16 @@ begin
   CheckEquals(120.0, Double(Created.Valor), 0.001);
 end;
 
+procedure TReciboControllerTest.GetWithoutIdReturnsList;
+var
+  Response: RawUtf8;
+begin
+  CreateRecibo('Recebedor lista', 'Referente lista', 15);
+
+  CheckEquals(HTTP_SUCCESS, FClient.CallBackGet('Recibo', [], Response));
+  CheckTrue(Pos('"Recebedor":"Recebedor lista"', Utf8ToString(Response)) > 0);
+end;
+
 procedure TReciboControllerTest.GetReturnsPersistedPayload;
 var
   Created: TReciboOutput;
@@ -95,7 +132,7 @@ begin
   Created := CreateRecibo('SUPERMERCADO ALVORADA', 'Compra mensal', 32.10);
 
   CheckEquals(HTTP_SUCCESS, FClient.CallBackGet('Recibo', ['id', Created.IDRecibo], Response));
-  CheckTrue(RecordLoadJson(Found, Response, TypeInfo(TReciboOutput)));
+  CheckTrue(LoadReciboOutput(Response, Found));
   CheckEquals(Created.IDRecibo, Found.IDRecibo);
   CheckEquals('SUPERMERCADO ALVORADA', Utf8ToString(Found.Recebedor));
 end;
@@ -110,7 +147,7 @@ begin
 
   CheckEquals(HTTP_SUCCESS, FClient.CallBack(mPUT, 'Recibo?id=' + Int64ToUtf8(Created.IDRecibo),
     ReciboPayload('Recebedor atualizado', 'Referente atualizado', 250), Response));
-  CheckTrue(RecordLoadJson(Updated, Response, TypeInfo(TReciboOutput)));
+  CheckTrue(LoadReciboOutput(Response, Updated));
   CheckEquals(Created.IDRecibo, Updated.IDRecibo);
   CheckEquals('Recebedor atualizado', Utf8ToString(Updated.Recebedor));
   CheckEquals(250.0, Double(Updated.Valor), 0.001);

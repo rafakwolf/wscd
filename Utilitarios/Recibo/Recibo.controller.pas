@@ -7,6 +7,7 @@ interface
 uses
   SysUtils,
   mormot.core.base,
+  mormot.core.datetime,
   mormot.core.json,
   mormot.core.os,
   mormot.core.text,
@@ -25,6 +26,9 @@ type
   private
     FRepository: TReciboRepository;
     FService: TReciboService;
+    function LoadInput(const AJson: RawUtf8; out AInput: TReciboInput): Boolean;
+    function OutputJson(const AOutput: TReciboOutput): RawUtf8;
+    function OutputListJson(const AItems: TReciboOutputDynArray): RawUtf8;
     function RequestId(Ctxt: TRestServerUriContext): TID;
     procedure HandleCreate(Ctxt: TRestServerUriContext);
     procedure HandleDelete(Ctxt: TRestServerUriContext);
@@ -63,13 +67,60 @@ begin
   inherited Destroy;
 end;
 
+function TReciboEndpointController.LoadInput(const AJson: RawUtf8;
+  out AInput: TReciboInput): Boolean;
+var
+  Body: RawUtf8;
+  Values: array[0..3] of TValuePUtf8Char;
+begin
+  FillChar(AInput, SizeOf(AInput), 0);
+  Body := AJson;
+  Result := JsonDecode(PUtf8Char(UniqueRawUtf8(Body)),
+    ['Data', 'Recebedor', 'Referente', 'Valor'], @Values) <> nil;
+  if not Result then
+    Exit;
+  if Values[0].Text <> nil then
+    AInput.Data := Values[0].Iso8601ToDateTime;
+  if Values[1].Text <> nil then
+    Values[1].ToUtf8(AInput.Recebedor);
+  if Values[2].Text <> nil then
+    Values[2].ToUtf8(AInput.Referente);
+  if Values[3].Text <> nil then
+    AInput.Valor := Values[3].ToDouble;
+end;
+
+function TReciboEndpointController.OutputJson(const AOutput: TReciboOutput): RawUtf8;
+begin
+  Result := JsonEncode([
+    'IDRecibo', AOutput.IDRecibo,
+    'Data', DateTimeToIso8601Text(AOutput.Data),
+    'Recebedor', AOutput.Recebedor,
+    'Referente', AOutput.Referente,
+    'Valor', Double(AOutput.Valor),
+    'ValorExtenso', AOutput.ValorExtenso]);
+end;
+
+function TReciboEndpointController.OutputListJson(const AItems: TReciboOutputDynArray): RawUtf8;
+var
+  I: PtrInt;
+begin
+  Result := '[';
+  for I := 0 to High(AItems) do
+  begin
+    if I > 0 then
+      Result := Result + ',';
+    Result := Result + OutputJson(AItems[I]);
+  end;
+  Result := Result + ']';
+end;
+
 function TReciboEndpointController.RequestId(Ctxt: TRestServerUriContext): TID;
 begin
-  Result := Ctxt.InputInt['id'];
+  Result := Ctxt.InputIntOrVoid['id'];
   if Result = 0 then
-    Result := Ctxt.InputInt['ID'];
+    Result := Ctxt.InputIntOrVoid['ID'];
   if Result = 0 then
-    Result := Ctxt.InputInt['IDRECIBO'];
+    Result := Ctxt.InputIntOrVoid['IDRECIBO'];
 end;
 
 procedure TReciboEndpointController.HandleCreate(Ctxt: TRestServerUriContext);
@@ -77,15 +128,14 @@ var
   Input: TReciboInput;
   Output: TReciboOutput;
 begin
-  FillChar(Input, SizeOf(Input), 0);
-  if not RecordLoadJson(Input, Ctxt.Call.InBody, TypeInfo(TReciboInput)) then
+  if not LoadInput(Ctxt.Call.InBody, Input) then
   begin
     Ctxt.Error('JSON invalido para Recibo', HTTP_BADREQUEST);
     Exit;
   end;
 
   Output := FService.CreateItem(Input);
-  Ctxt.Returns(RecordSaveJson(Output, TypeInfo(TReciboOutput)), HTTP_CREATED, JSON_CONTENT_TYPE_HEADER);
+  Ctxt.Returns(OutputJson(Output), HTTP_CREATED, JSON_CONTENT_TYPE_HEADER);
 end;
 
 procedure TReciboEndpointController.HandleDelete(Ctxt: TRestServerUriContext);
@@ -113,12 +163,12 @@ begin
   if Id > 0 then
   begin
     Item := FService.GetItem(Id);
-    Ctxt.Returns(RecordSaveJson(Item, TypeInfo(TReciboOutput)), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
+    Ctxt.Returns(OutputJson(Item), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
   end
   else
   begin
     Items := FService.ListItems;
-    Ctxt.Returns(DynArraySaveJson(Items, TypeInfo(TReciboOutputDynArray)), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
+    Ctxt.Returns(OutputListJson(Items), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
   end;
 end;
 
@@ -135,15 +185,14 @@ begin
     Exit;
   end;
 
-  FillChar(Input, SizeOf(Input), 0);
-  if not RecordLoadJson(Input, Ctxt.Call.InBody, TypeInfo(TReciboInput)) then
+  if not LoadInput(Ctxt.Call.InBody, Input) then
   begin
     Ctxt.Error('JSON invalido para Recibo', HTTP_BADREQUEST);
     Exit;
   end;
 
   Output := FService.UpdateItem(Id, Input);
-  Ctxt.Returns(RecordSaveJson(Output, TypeInfo(TReciboOutput)), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
+  Ctxt.Returns(OutputJson(Output), HTTP_SUCCESS, JSON_CONTENT_TYPE_HEADER);
 end;
 
 procedure TReciboEndpointController.HandleException(Ctxt: TRestServerUriContext; E: Exception);
