@@ -33,6 +33,10 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="Api/WscdApiConfig.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="Utilitarios/Agenda/Agenda.repository.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>

@@ -85,3 +85,6 @@ backup/
 
 # Mac OS
 .DS_Store
+
+# Local testing data
+data/
