@@ -152,7 +152,7 @@
         <DCCReference Include="Padrao\unSimplePadrao.pas">
             <Form>frmSimplePadrao</Form>
         </DCCReference>
-        <DCCReference Include="Utilitarios\unAgenda.pas">
+        <DCCReference Include="Utilitarios\Agenda\old\unAgenda.pas">
             <Form>frmAgenda</Form>
         </DCCReference>
         <DCCReference Include="Utilitarios\Relatorios\Prev\unPrevRelAgenda.pas">

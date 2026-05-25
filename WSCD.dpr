@@ -16,7 +16,7 @@ uses
   unOrdenarDados in 'Padrao\unOrdenarDados.pas' {frmOrdenarDados},
   unPadrao in 'Padrao\unPadrao.pas' {frmPadrao},
   unSimplePadrao in 'Padrao\unSimplePadrao.pas' {frmSimplePadrao},
-  unAgenda in 'Utilitarios\unAgenda.pas' {frmAgenda},
+  unAgenda in 'Utilitarios\Agenda\old\unAgenda.pas' {frmAgenda},
   unPrevRelAgenda in 'Utilitarios\Relatorios\Prev\unPrevRelAgenda.pas' {frmPrevRelAgenda},
   unRelatorioAgenda in 'Utilitarios\Relatorios\unRelatorioAgenda.pas' {frmRelatorioAgenda},
   unTrocaSenha in 'Sair\unTrocaSenha.pas' {frmTrocaSenha},
