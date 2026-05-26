@@ -37,6 +37,14 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="Cliente/test_Cliente_controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Fornecedor/test_Fornecedor_controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="Recibo/test_Recibo_controller.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
@@ -58,6 +66,30 @@
       </Unit>
       <Unit>
         <Filename Value="../Utilitarios/Agenda/Agenda.controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Cadastros/Cliente/Cliente.repository.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Cadastros/Cliente/Cliente.service.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Cadastros/Cliente/Cliente.controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Cadastros/Fornecedor/Fornecedor.repository.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Cadastros/Fornecedor/Fornecedor.service.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../Cadastros/Fornecedor/Fornecedor.controller.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
@@ -96,9 +128,9 @@
       <Filename Value="WSCDApiTests"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="../libs/mORMot2/src;../libs/mORMot2/src/core;../libs/mORMot2/src/net;../Api;../Util;../Utilitarios/Agenda;../Utilitarios/Recibo;../Configuracoes/Vendedor;Api;Agenda;Recibo;Vendedor"/>
+      <IncludeFiles Value="../libs/mORMot2/src;../libs/mORMot2/src/core;../libs/mORMot2/src/net;../Api;../Util;../Utilitarios/Agenda;../Cadastros/Cliente;../Cadastros/Fornecedor;../Utilitarios/Recibo;../Configuracoes/Vendedor;Api;Agenda;Cliente;Fornecedor;Recibo;Vendedor"/>
       <Libraries Value="../libs/mORMot2/static/$(TargetCPU)-$(TargetOS)"/>
-      <OtherUnitFiles Value="../Api;../Util;../Utilitarios/Agenda;../Utilitarios/Recibo;../Configuracoes/Vendedor;Api;Agenda;Recibo;Vendedor;../libs/mORMot2/src/app;../libs/mORMot2/src/core;../libs/mORMot2/src/crypt;../libs/mORMot2/src/db;../libs/mORMot2/src/lib;../libs/mORMot2/src/net;../libs/mORMot2/src/orm;../libs/mORMot2/src/rest;../libs/mORMot2/src/soa;../libs/mORMot2/src/script;../libs/mORMot2/src/misc;../libs/mORMot2/src/tools/mget"/>
+      <OtherUnitFiles Value="../Api;../Util;../Utilitarios/Agenda;../Cadastros/Cliente;../Cadastros/Fornecedor;../Utilitarios/Recibo;../Configuracoes/Vendedor;Api;Agenda;Cliente;Fornecedor;Recibo;Vendedor;../libs/mORMot2/src/app;../libs/mORMot2/src/core;../libs/mORMot2/src/crypt;../libs/mORMot2/src/db;../libs/mORMot2/src/lib;../libs/mORMot2/src/net;../libs/mORMot2/src/orm;../libs/mORMot2/src/rest;../libs/mORMot2/src/soa;../libs/mORMot2/src/script;../libs/mORMot2/src/misc;../libs/mORMot2/src/tools/mget"/>
       <UnitOutputDirectory Value="../lib/$(TargetCPU)-$(TargetOS)/api-tests"/>
     </SearchPaths>
     <Parsing>

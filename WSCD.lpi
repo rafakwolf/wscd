@@ -593,12 +593,12 @@
         <HasResources Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="Cadastros/unCliente.pas"/>
+        <Filename Value="Cadastros/Cliente/old/unCliente.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="Cadastros/unFornecedor.pas"/>
+        <Filename Value="Cadastros/Fornecedor/old/unFornecedor.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
       </Unit>

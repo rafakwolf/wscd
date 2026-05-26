@@ -1,4 +1,4 @@
 interface:
   display_name: "Migrar CRUD Delphi para Lazarus"
   short_description: "Migra CRUD Delphi para Lazarus/mORMot2"
-  default_prompt: "Use $migrate-delphi-crud-to-lazarus para migrar o módulo informado de Delphi para Lazarus com mORMot2, pasta normalizada e testes FPCUnit."
+  default_prompt: "Use $migrate-delphi-crud-to-lazarus para migrar o módulo informado de Delphi para Lazarus com mORMot2, pasta normalizada, OpenAPI e testes FPCUnit."

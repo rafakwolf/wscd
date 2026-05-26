@@ -1,6 +1,6 @@
 ---
 name: migrate-delphi-crud-to-lazarus
-description: Migrar modulos CRUD Delphi para Lazarus/Free Pascal separando persistencia, regras de negocio e endpoints REST. Use quando o usuario pedir para migrar um modulo Delphi existente a partir de arquivos .pas e .dfm, criar units repository/service/controller com mORMot2 em pasta normalizada do modulo, preservar fontes legados em old, registrar o modulo no projeto API WSCDApi, ou adicionar testes de integracao FPCUnit para controllers REST migrados.
+description: Migrar modulos CRUD Delphi para Lazarus/Free Pascal separando persistencia, regras de negocio, endpoints REST e definicoes OpenAPI. Use quando o usuario pedir para migrar um modulo Delphi existente a partir de arquivos .pas e .dfm, criar units repository/service/controller com mORMot2 em pasta normalizada do modulo, preservar fontes legados em old, registrar o modulo no projeto API WSCDApi, atualizar as defs OpenAPI, ou adicionar testes de integracao FPCUnit para controllers REST migrados.
 ---
 
 # Migrate Delphi CRUD To Lazarus
@@ -16,9 +16,10 @@ description: Migrar modulos CRUD Delphi para Lazarus/Free Pascal separando persi
    - Rotas, serializacao HTTP, codigos de status e contratos REST: mover para `[modulo].controller.pas`.
    - Comportamento puramente visual ou de navegacao de tela: descartar ou registrar como nao migrado, salvo se revelar regra de negocio.
 5. Antes de criar codigo, inspecionar units Lazarus/mORMot2 ja existentes no projeto para seguir nomes, rotas, modelo ORM, injecao de dependencias, runner de testes e estilo local.
-6. Criar ou atualizar somente os arquivos do modulo migrado, os fontes legados movidos, os testes correspondentes e os projetos `WSCDApi.lpi`/`tests/WSCDApiTests.lpi`.
+6. Criar ou atualizar somente os arquivos do modulo migrado, os fontes legados movidos, as definicoes OpenAPI, os testes correspondentes e os projetos `WSCDApi.lpi`/`tests/WSCDApiTests.lpi`.
 7. Registrar o modulo novo no bootstrap da API em `Api/WscdApiServer.pas`, mantendo um unico `TRestServerDB` para todos os modulos ativos.
-8. Executar formatacao/compilacao/testes disponiveis no projeto. Se o toolchain nao existir localmente, informar exatamente o que nao foi possivel validar.
+8. Atualizar a especificacao OpenAPI exposta pela API para incluir o modulo novo antes de considerar a migracao concluida.
+9. Executar formatacao/compilacao/testes disponiveis no projeto. Se o toolchain nao existir localmente, informar exatamente o que nao foi possivel validar.
 
 ## Arquivos
 
@@ -53,6 +54,20 @@ Cada modulo migrado deve seguir o desenho confirmado em `Agenda` e `Recibo`:
 - Nao usar `RootRedirectGet` para health check se isso puder redirecionar `GET` de tabelas. Preferir endpoint explicito como `/api/Health`.
 - A rota publica do modulo deve permanecer `/api/[Modulo]`.
 
+## OpenAPI
+
+Ao registrar um novo modulo CRUD, atualizar tambem a especificacao OpenAPI servida pela API:
+
+- Localizar a definicao atual em `Api/WscdApiServer.pas` (por exemplo `WscdOpenApiJson`) ou no arquivo dedicado de OpenAPI, se ela tiver sido extraida no futuro.
+- Adicionar uma tag com o nome do modulo.
+- Adicionar o path `/[Modulo]` com operacoes `GET`, `POST`, `PUT` e `DELETE`, mantendo a rota publica `/api/[Modulo]` pelo `server.url` da spec.
+- Documentar parametros de query usados pelo controller, especialmente `id` e filtros de listagem como `codcidade`.
+- Adicionar schemas `[Modulo]Input` e `[Modulo]` em `components.schemas`, usando os mesmos nomes JSON publicos usados por `LoadInput` e `OutputJson`.
+- Refletir campos obrigatorios, tipos escalares, `format` de datas/numeros/base64 e restricoes conhecidas (`maxLength`, `enum`) que vierem das regras do service ou da tabela legada.
+- Documentar respostas principais: `200` para consulta/atualizacao, `201` para criacao, `204` para exclusao, `400` para validacao e `404` para registro inexistente.
+- Atualizar o teste `OpenApiReturnsSpec` em `tests/Api/test_WscdApiServer.pas` para garantir que o path e/ou schema do modulo novo aparece na spec.
+- Se a spec for um JSON montado em string Pascal, validar que o JSON final continua parseavel antes de encerrar.
+
 ## Projetos API E Testes
 
 Ao concluir uma migracao de modulo:
@@ -61,6 +76,7 @@ Ao concluir uma migracao de modulo:
 - Adicionar os mesmos arquivos, mais `tests/[Modulo]/test_[Modulo]_controller.pas`, em `tests/WSCDApiTests.lpi`.
 - Adicionar a unit de teste no `uses` de `tests/WSCDApiTests.lpr`.
 - Atualizar `Api/WscdApiServer.pas` para incluir o novo repository/controller no `uses`, o novo `TOrm[Modulo]` no model e o novo endpoint controller no roteamento.
+- Atualizar a definicao OpenAPI da API para incluir o novo modulo, seus DTOs e seus endpoints.
 - Manter `WSCDApi.lpi` livre de `LCL`, `Forms`, `Application`, `Horse`, `Routes.pas`, `.dfm`, `.lfm` e units desktop fora das dependencias reais do modulo.
 
 ## Heuristicas De Migracao
@@ -88,6 +104,7 @@ Escrever testes de integracao FPCUnit que exercitem o controller REST, nao apena
 - Verificar codigo HTTP, payload e efeito persistido.
 - Isolar dados do teste para permitir execucao repetida.
 - Testar tambem o servidor unificado em `tests/Api/test_WscdApiServer.pas`, cobrindo pelo menos um fluxo CRUD basico do modulo novo via `TWscdApiServer.CreateInMemory`.
+- Testar tambem que a especificacao OpenAPI do servidor unificado inclui o modulo novo, atualizando `OpenApiReturnsSpec` ou teste equivalente.
 - Rodar `lazbuild WSCDApi.lpi`, `lazbuild tests/WSCDApiTests.lpi` e `./tests/WSCDApiTests --all --format=plain` quando o toolchain estiver disponivel.
 - Verificar que o projeto API novo nao referencia LCL, Forms, Horse, Routes, telas ou units desktop fora das dependencias explicitamente migradas.
 

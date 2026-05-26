@@ -1199,7 +1199,7 @@
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
-        <Filename Value="Cadastros/unCliente.pas"/>
+        <Filename Value="Cadastros/Cliente/old/unCliente.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>
@@ -1210,7 +1210,7 @@
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
-        <Filename Value="Cadastros/unFornecedor.pas"/>
+        <Filename Value="Cadastros/Fornecedor/old/unFornecedor.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
         <EditorIndex Value="-1"/>

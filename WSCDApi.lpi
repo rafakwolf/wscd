@@ -45,6 +45,30 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
+        <Filename Value="Cadastros/Cliente/Cliente.repository.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Cadastros/Cliente/Cliente.service.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Cadastros/Cliente/Cliente.controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Cadastros/Fornecedor/Fornecedor.repository.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Cadastros/Fornecedor/Fornecedor.service.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Cadastros/Fornecedor/Fornecedor.controller.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
         <Filename Value="Utilitarios/Recibo/Recibo.repository.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
@@ -80,9 +104,9 @@
       <Filename Value="WSCDApi"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="libs/mORMot2/src;libs/mORMot2/src/core;libs/mORMot2/src/net;Api;Util;Utilitarios/Agenda;Utilitarios/Recibo;Configuracoes/Vendedor"/>
+      <IncludeFiles Value="libs/mORMot2/src;libs/mORMot2/src/core;libs/mORMot2/src/net;Api;Util;Utilitarios/Agenda;Cadastros/Cliente;Cadastros/Fornecedor;Utilitarios/Recibo;Configuracoes/Vendedor"/>
       <Libraries Value="libs/mORMot2/static/$(TargetCPU)-$(TargetOS)"/>
-      <OtherUnitFiles Value="Api;Util;Utilitarios/Agenda;Utilitarios/Recibo;Configuracoes/Vendedor;libs/mORMot2/src/app;libs/mORMot2/src/core;libs/mORMot2/src/crypt;libs/mORMot2/src/db;libs/mORMot2/src/lib;libs/mORMot2/src/net;libs/mORMot2/src/orm;libs/mORMot2/src/rest;libs/mORMot2/src/soa;libs/mORMot2/src/script;libs/mORMot2/src/misc;libs/mORMot2/src/tools/mget"/>
+      <OtherUnitFiles Value="Api;Util;Utilitarios/Agenda;Cadastros/Cliente;Cadastros/Fornecedor;Utilitarios/Recibo;Configuracoes/Vendedor;libs/mORMot2/src/app;libs/mORMot2/src/core;libs/mORMot2/src/crypt;libs/mORMot2/src/db;libs/mORMot2/src/lib;libs/mORMot2/src/net;libs/mORMot2/src/orm;libs/mORMot2/src/rest;libs/mORMot2/src/soa;libs/mORMot2/src/script;libs/mORMot2/src/misc;libs/mORMot2/src/tools/mget"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)/api"/>
     </SearchPaths>
     <Parsing>

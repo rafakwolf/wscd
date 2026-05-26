@@ -18,6 +18,8 @@ uses
   mormot.rest.sqlite3,
   WscdApiServer,
   Agenda.service,
+  Cliente.service,
+  Fornecedor.service,
   Recibo.service,
   Vendedor.service;
 
@@ -28,6 +30,10 @@ type
     FServer: TWscdApiServer;
     function AgendaPayload(const ANome, ATelefone: RawUtf8): RawUtf8;
     function LoadAgendaOutput(const AJson: RawUtf8; out AOutput: TAgendaOutput): Boolean;
+    function ClientePayload(const ANome, ACpfCnpj, ARgIe: RawUtf8): RawUtf8;
+    function LoadClienteOutput(const AJson: RawUtf8; out AOutput: TClienteOutput): Boolean;
+    function FornecedorPayload(const ARazaoSocial, ACnpj: RawUtf8): RawUtf8;
+    function LoadFornecedorOutput(const AJson: RawUtf8; out AOutput: TFornecedorOutput): Boolean;
     function LoadReciboOutput(const AJson: RawUtf8; out AOutput: TReciboOutput): Boolean;
     function LoadVendedorOutput(const AJson: RawUtf8; out AOutput: TVendedorOutput): Boolean;
     function ReciboPayload(const ARecebedor: RawUtf8; AValor: Currency): RawUtf8;
@@ -37,7 +43,10 @@ type
     procedure TearDown; override;
   published
     procedure HealthReturnsOk;
+    procedure OpenApiReturnsSpec;
     procedure AgendaCrudRunsOnUnifiedServer;
+    procedure ClienteCrudRunsOnUnifiedServer;
+    procedure FornecedorCrudRunsOnUnifiedServer;
     procedure ReciboCrudRunsOnUnifiedServer;
     procedure VendedorCrudRunsOnUnifiedServer;
   end;
@@ -70,6 +79,79 @@ begin
     Values[1].ToUtf8(AOutput.Nome);
   if Values[2].Text <> nil then
     Values[2].ToUtf8(AOutput.Telefone);
+end;
+
+function TWscdApiServerTest.ClientePayload(const ANome, ACpfCnpj,
+  ARgIe: RawUtf8): RawUtf8;
+begin
+  Result := FormatUtf8('{'#10 +
+    '  "Tipo": "F",'#10 +
+    '  "Nome": "%",'#10 +
+    '  "CodCidade": 10,'#10 +
+    '  "DataNasc": "1990-01-10",'#10 +
+    '  "CpfCnpj": "%",'#10 +
+    '  "RgIe": "%",'#10 +
+    '  "Limite": 200.50'#10 +
+    '}', [ANome, ACpfCnpj, ARgIe]);
+end;
+
+function TWscdApiServerTest.LoadClienteOutput(const AJson: RawUtf8;
+  out AOutput: TClienteOutput): Boolean;
+var
+  Body: RawUtf8;
+  Values: array[0..3] of TValuePUtf8Char;
+begin
+  FillChar(AOutput, SizeOf(AOutput), 0);
+  Body := AJson;
+  Result := JsonDecode(PUtf8Char(UniqueRawUtf8(Body)),
+    ['IDCliente', 'Nome', 'CpfCnpj', 'RgIe'], @Values) <> nil;
+  if not Result then
+    Exit;
+  if Values[0].Text <> nil then
+    AOutput.IDCliente := Values[0].ToInt64;
+  if Values[1].Text <> nil then
+    Values[1].ToUtf8(AOutput.Nome);
+  if Values[2].Text <> nil then
+    Values[2].ToUtf8(AOutput.CpfCnpj);
+  if Values[3].Text <> nil then
+    Values[3].ToUtf8(AOutput.RgIe);
+end;
+
+function TWscdApiServerTest.FornecedorPayload(const ARazaoSocial,
+  ACnpj: RawUtf8): RawUtf8;
+begin
+  Result := FormatUtf8('{'#10 +
+    '  "Fantazia": "% Fantasia",'#10 +
+    '  "RazaoSocial": "%",'#10 +
+    '  "Cidade": 10,'#10 +
+    '  "Cnpj": "%",'#10 +
+    '  "Telefone": "4635551071",'#10 +
+    '  "Vendedor": "Representante API",'#10 +
+    '  "TelefoneVendedor": "46999990000",'#10 +
+    '  "Tipo": "J"'#10 +
+    '}', [ARazaoSocial, ARazaoSocial, ACnpj]);
+end;
+
+function TWscdApiServerTest.LoadFornecedorOutput(const AJson: RawUtf8;
+  out AOutput: TFornecedorOutput): Boolean;
+var
+  Body: RawUtf8;
+  Values: array[0..3] of TValuePUtf8Char;
+begin
+  FillChar(AOutput, SizeOf(AOutput), 0);
+  Body := AJson;
+  Result := JsonDecode(PUtf8Char(UniqueRawUtf8(Body)),
+    ['IDFornecedor', 'RazaoSocial', 'Cnpj', 'Cidade'], @Values) <> nil;
+  if not Result then
+    Exit;
+  if Values[0].Text <> nil then
+    AOutput.IDFornecedor := Values[0].ToInt64;
+  if Values[1].Text <> nil then
+    Values[1].ToUtf8(AOutput.RazaoSocial);
+  if Values[2].Text <> nil then
+    Values[2].ToUtf8(AOutput.Cnpj);
+  if Values[3].Text <> nil then
+    AOutput.Cidade := Values[3].ToInt64;
 end;
 
 function TWscdApiServerTest.LoadReciboOutput(const AJson: RawUtf8;
@@ -156,6 +238,20 @@ begin
   CheckEquals('{"status":"ok"}', Utf8ToString(Response));
 end;
 
+procedure TWscdApiServerTest.OpenApiReturnsSpec;
+var
+  Response: RawUtf8;
+begin
+  CheckEquals(HTTP_SUCCESS, FClient.CallBack(mGET, 'OpenAPI', '', Response));
+  CheckTrue(Pos('"openapi":"3.0.3"', Response) > 0);
+  CheckTrue(Pos('"/Agenda"', Response) > 0);
+  CheckTrue(Pos('"/Cliente"', Response) > 0);
+  CheckTrue(Pos('"/Fornecedor"', Response) > 0);
+  CheckTrue(Pos('"FornecedorInput"', Response) > 0);
+  CheckTrue(Pos('"/Recibo"', Response) > 0);
+  CheckTrue(Pos('"/Vendedor"', Response) > 0);
+end;
+
 procedure TWscdApiServerTest.AgendaCrudRunsOnUnifiedServer;
 var
   Created: TAgendaOutput;
@@ -174,6 +270,52 @@ begin
   CheckEquals('Agenda API atualizada', Utf8ToString(Updated.Nome));
   CheckEquals(HTTP_NOCONTENT, FClient.CallBack(mDELETE, 'Agenda?id=' + Int64ToUtf8(Created.IDAgenda), '', Response));
   CheckEquals(HTTP_NOTFOUND, FClient.CallBackGet('Agenda', ['id', Created.IDAgenda], Response));
+end;
+
+procedure TWscdApiServerTest.ClienteCrudRunsOnUnifiedServer;
+var
+  Created: TClienteOutput;
+  Updated: TClienteOutput;
+  Response: RawUtf8;
+begin
+  CheckEquals(HTTP_CREATED, FClient.CallBack(mPOST, 'Cliente',
+    ClientePayload('Cliente API', '22233344455', 'RGAPI001'), Response));
+  CheckTrue(LoadClienteOutput(Response, Created));
+  CheckTrue(Created.IDCliente > 0);
+
+  CheckEquals(HTTP_SUCCESS, FClient.CallBackGet('Cliente', [], Response));
+  CheckEquals(HTTP_SUCCESS, FClient.CallBackGet('Cliente', ['id', Created.IDCliente], Response));
+  CheckEquals(HTTP_SUCCESS, FClient.CallBack(mPUT, 'Cliente?id=' + Int64ToUtf8(Created.IDCliente),
+    ClientePayload('Cliente API atualizado', '22233344455', 'RGAPI001'), Response));
+  CheckTrue(LoadClienteOutput(Response, Updated));
+  CheckEquals('Cliente API atualizado', Utf8ToString(Updated.Nome));
+  CheckEquals(HTTP_NOCONTENT, FClient.CallBack(mDELETE, 'Cliente?id=' + Int64ToUtf8(Created.IDCliente), '', Response));
+  CheckEquals(HTTP_NOTFOUND, FClient.CallBackGet('Cliente', ['id', Created.IDCliente], Response));
+end;
+
+procedure TWscdApiServerTest.FornecedorCrudRunsOnUnifiedServer;
+var
+  Created: TFornecedorOutput;
+  Updated: TFornecedorOutput;
+  Response: RawUtf8;
+begin
+  CheckEquals(HTTP_CREATED, FClient.CallBack(mPOST, 'Fornecedor',
+    FornecedorPayload('Fornecedor API', '33222444000155'), Response));
+  CheckTrue(LoadFornecedorOutput(Response, Created));
+  CheckTrue(Created.IDFornecedor > 0);
+
+  CheckEquals(HTTP_SUCCESS, FClient.CallBackGet('Fornecedor', [], Response));
+  CheckEquals(HTTP_SUCCESS, FClient.CallBackGet('Fornecedor',
+    ['id', Created.IDFornecedor], Response));
+  CheckEquals(HTTP_SUCCESS, FClient.CallBack(mPUT,
+    'Fornecedor?id=' + Int64ToUtf8(Created.IDFornecedor),
+    FornecedorPayload('Fornecedor API atualizado', '33222444000155'), Response));
+  CheckTrue(LoadFornecedorOutput(Response, Updated));
+  CheckEquals('Fornecedor API atualizado', Utf8ToString(Updated.RazaoSocial));
+  CheckEquals(HTTP_NOCONTENT, FClient.CallBack(mDELETE,
+    'Fornecedor?id=' + Int64ToUtf8(Created.IDFornecedor), '', Response));
+  CheckEquals(HTTP_NOTFOUND, FClient.CallBackGet('Fornecedor',
+    ['id', Created.IDFornecedor], Response));
 end;
 
 procedure TWscdApiServerTest.ReciboCrudRunsOnUnifiedServer;
