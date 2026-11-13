@@ -1,0 +1,19 @@
+{
+  "name": "WSCD Web",
+  "dockerComposeFile": "compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/node:2": {
+      "version": "24"
+    }
+  },
+  "forwardPorts": [5080],
+  "portsAttributes": {
+    "5080": {
+      "label": "WSCD web",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "dotnet restore web/Wscd.sln && npm ci --prefix web/Wscd.Web && npm run css:build --prefix web/Wscd.Web"
+}
