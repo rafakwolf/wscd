@@ -1,0 +1,10 @@
+services:
+  app:
+    image: mcr.microsoft.com/dotnet/sdk:10.0
+    command: sleep infinity
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace:cached
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=wolf-server.local;Port=5432;Database=wscd
