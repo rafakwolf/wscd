@@ -15,5 +15,5 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "dotnet restore web/Wscd.Web/Wscd.Web.csproj && npm ci --prefix web/Wscd.Web && npm run css:build --prefix web/Wscd.Web"
+  "postCreateCommand": "dotnet restore web/Wscd.sln && npm ci --prefix web/Wscd.Web && npm run css:build --prefix web/Wscd.Web"
 }

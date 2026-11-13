@@ -2,7 +2,7 @@
 
 ## Stack e estrutura
 
-O app usa ASP.NET Core 10 com Razor Pages, C# e Tailwind CSS. A aplicação está em `Wscd.Web/`; os class libraries `Wscd.Domain`, `Wscd.Services` e `Wscd.Data` serão criados antes da migração dos módulos, conforme `../MIGRATION_PLAN.md`.
+O app usa ASP.NET Core 10 com Razor Pages, C# e Tailwind CSS. A aplicação está em `Wscd.Web/`; os class libraries `Wscd.Domain`, `Wscd.Services` e `Wscd.Data` compõem as camadas de domínio, negócio e persistência, conforme `../MIGRATION_PLAN.md`.
 
 Mantenha as páginas focadas em apresentação e fluxo HTTP. Regras de negócio ficam em Services; persistência, EF Core e Npgsql ficam em Data; entidades e conceitos do negócio ficam em Domain. Razor Pages não deve acessar o banco diretamente.
 
@@ -19,9 +19,10 @@ Execute .NET e Node no Dev Container, nunca exigindo SDK no macOS. PostgreSQL es
 No Dev Container:
 
 ```sh
-dotnet build web/Wscd.Web/Wscd.Web.csproj
+dotnet build web/Wscd.sln
+dotnet test web/Wscd.sln
 dotnet run --project web/Wscd.Web
 npm run css:build --prefix web/Wscd.Web
 ```
 
-Use `npm run css:watch --prefix web/Wscd.Web` durante alterações de CSS. Ainda não há suíte automatizada de testes configurada.
+Use `npm run css:watch --prefix web/Wscd.Web` durante alterações de CSS. Os projetos de teste usam xUnit v3: coloque testes unitários de Domain/Services em `Wscd.UnitTests` e testes do pipeline HTTP em `Wscd.IntegrationTests`, usando `WebApplicationFactory` sem depender do PostgreSQL de desenvolvimento. O `global.json` seleciona Microsoft Testing Platform para o `dotnet test` do SDK 10.

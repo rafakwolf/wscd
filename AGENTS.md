@@ -13,11 +13,11 @@ npm run css:watch --prefix web/Wscd.Web
 dotnet run --project web/Wscd.Web
 ```
 
-Build the Tailwind asset with `npm run css:build --prefix web/Wscd.Web`. Keep local PostgreSQL credentials in the ignored `.devcontainer/.env`; do not put secrets in Compose or commit them. The app connection string currently names the server and planned database, but the data layer is not wired yet. The Delphi project still requires RAD Studio/MSBuild on Windows; it cannot be built in this container. No automated test suite is present yet; build and manually check the affected web workflow.
+Build the Tailwind asset with `npm run css:build --prefix web/Wscd.Web`. Run automated tests with `dotnet test web/Wscd.sln`; unit and integration tests live in separate projects. Keep local PostgreSQL credentials in the ignored `.devcontainer/.env`; do not put secrets in Compose or commit them. The app connection string currently names the server and planned database, but the data layer is not wired yet. The Delphi project still requires RAD Studio/MSBuild on Windows; it cannot be built in this container.
 
 ## Coding Style
 
-For Delphi changes, follow surrounding Object Pascal style and keep paired `.pas` and `.dfm` forms consistent. For the new app, use standard C# and Razor Pages conventions, and keep features in `web/Wscd.Web/`.
+For Delphi changes, follow surrounding Object Pascal style and keep paired `.pas` and `.dfm` forms consistent. For the new app, use C# and Razor Pages conventions; keep UI in `web/Wscd.Web/`, domain entities in `web/Wscd.Domain/`, business rules in `web/Wscd.Services/`, and persistence in `web/Wscd.Data/`.
 
 ## Data and Configuration
 
