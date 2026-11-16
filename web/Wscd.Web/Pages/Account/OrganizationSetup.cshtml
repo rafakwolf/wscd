@@ -1,0 +1,20 @@
+@page
+@model Wscd.Web.Pages.Account.OrganizationSetupModel
+@{
+    ViewData["Title"] = "Configurar organização";
+}
+
+<section class="mx-auto max-w-md rounded-lg bg-white p-8 shadow-sm">
+    <h1 class="text-2xl font-semibold">Configurar organização</h1>
+    <p class="mt-2 text-sm text-slate-600">Sua conta administrativa ainda não está vinculada a uma organização. Informe o nome para concluir a configuração inicial.</p>
+
+    <form method="post" class="mt-6 space-y-4">
+        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+        <div>
+            <label asp-for="Input.OrganizationName" class="block text-sm font-medium"></label>
+            <input asp-for="Input.OrganizationName" autocomplete="organization" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+            <span asp-validation-for="Input.OrganizationName" class="text-sm text-red-700"></span>
+        </div>
+        <button type="submit" class="w-full rounded bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700">Salvar organização</button>
+    </form>
+</section>

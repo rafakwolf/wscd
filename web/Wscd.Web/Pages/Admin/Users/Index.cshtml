@@ -1,0 +1,68 @@
+@page
+@model Wscd.Web.Pages.Admin.Users.IndexModel
+@{
+    ViewData["Title"] = "Usuários";
+}
+
+<div class="space-y-6">
+    <h1 class="text-2xl font-semibold">Usuários</h1>
+
+    @if (TempData["StatusMessage"] is string statusMessage)
+    {
+        <p class="rounded border border-green-200 bg-green-50 px-4 py-3 text-green-800">@statusMessage</p>
+    }
+
+    <section class="rounded-lg bg-white p-6 shadow-sm">
+        <h2 class="text-lg font-semibold">Criar usuário</h2>
+        <form method="post" asp-page-handler="Add" class="mt-4 grid gap-4 md:grid-cols-2">
+            <div asp-validation-summary="ModelOnly" class="text-sm text-red-700 md:col-span-2"></div>
+
+            <div>
+                <label asp-for="Input.Email" class="block text-sm font-medium"></label>
+                <input asp-for="Input.Email" autocomplete="email" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+                <span asp-validation-for="Input.Email" class="text-sm text-red-700"></span>
+            </div>
+
+            <div>
+                <label asp-for="Input.Password" class="block text-sm font-medium"></label>
+                <input asp-for="Input.Password" autocomplete="new-password" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+                <span asp-validation-for="Input.Password" class="text-sm text-red-700"></span>
+            </div>
+
+            <p class="text-sm text-slate-600 md:col-span-2">Novos membros recebem o perfil Operador. Somente o administrador fundador pode gerenciar os membros desta organização.</p>
+
+            <div class="flex items-end">
+                <button type="submit" class="rounded bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700">Criar usuário</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="rounded-lg bg-white p-6 shadow-sm">
+        <h2 class="text-lg font-semibold">Usuários cadastrados</h2>
+        <div class="mt-4 overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead class="border-b border-slate-200 text-slate-600">
+                    <tr><th class="py-2 pr-4">E-mail</th><th class="py-2 pr-4">Situação</th><th class="py-2">Ações</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Users)
+                    {
+                        <tr class="border-b border-slate-100">
+                            <td class="py-3 pr-4">@user.Email</td>
+                            <td class="py-3 pr-4">@(user.IsOwner ? "Administrador" : user.IsActive ? "Ativo" : "Removido")</td>
+                            <td class="py-3">
+                                @if (!user.IsOwner && user.IsActive)
+                                {
+                                    <form method="post" asp-page-handler="Remove">
+                                        <input type="hidden" name="memberId" value="@user.UserId" />
+                                        <button type="submit" class="text-red-700 underline">Remover acesso</button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

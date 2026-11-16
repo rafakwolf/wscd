@@ -5,6 +5,7 @@ services:
     working_dir: /workspace
     volumes:
       - ..:/workspace:cached
+    env_file:
+      - .env
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: Host=wolf-server.local;Port=5432;Database=wscd

@@ -8,6 +8,14 @@
       "version": "24"
     }
   },
+  "customizations": {
+    "vscode": {
+        "extensions": [
+            "ms-dotnettools.csdevkit",
+            "zignd.html-css-class-completion"
+        ]
+    }
+  },
   "forwardPorts": [5080],
   "portsAttributes": {
     "5080": {
@@ -15,5 +23,5 @@
       "onAutoForward": "openBrowser"
     }
   },
-  "postCreateCommand": "dotnet restore web/Wscd.sln && npm ci --prefix web/Wscd.Web && npm run css:build --prefix web/Wscd.Web"
+  "postCreateCommand": "dotnet restore web/Wscd.sln && dotnet tool restore --tool-manifest web/.config/dotnet-tools.json && npm ci --prefix web/Wscd.Web && npm run css:build --prefix web/Wscd.Web"
 }
