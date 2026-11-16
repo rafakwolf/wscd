@@ -1,0 +1,66 @@
+@model Wscd.Web.Pages.Catalogs.CatalogListViewModel
+
+<div class="space-y-6">
+    <div>
+        <h1 class="text-2xl font-semibold">@Model.Title</h1>
+    </div>
+
+    @if (Model.StatusMessage is not null)
+    {
+        <p class="rounded border border-green-200 bg-green-50 px-4 py-3 text-green-800">@Model.StatusMessage</p>
+    }
+    @if (Model.ErrorMessage is not null)
+    {
+        <p class="rounded border border-red-200 bg-red-50 px-4 py-3 text-red-800">@Model.ErrorMessage</p>
+    }
+
+    <section class="rounded-lg bg-white p-6 shadow-sm">
+        <form method="get" class="flex gap-2">
+            <input name="Search" value="@Model.Search" placeholder="Filtrar por nome ou descrição" class="w-full max-w-lg rounded border border-slate-300 px-3 py-2" />
+            <button type="submit" class="rounded border border-slate-300 px-4 py-2">Buscar</button>
+            <a asp-page="./Index" class="rounded border border-slate-300 px-4 py-2">Limpar</a>
+        </form>
+
+        <div class="mt-5 overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead class="border-b border-slate-200 text-slate-600">
+                    <tr>
+                        <th class="py-2 pr-4">ID</th>
+                        <th class="py-2 pr-4">Nome / descrição</th>
+                        <th class="py-2 pr-4">Situação</th>
+                        <th class="py-2">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in Model.Rows)
+                    {
+                        <tr class="border-b border-slate-100">
+                            <td class="py-3 pr-4">@row.Id</td>
+                            <td class="py-3 pr-4">@row.Name</td>
+                            <td class="py-3 pr-4">@row.Status</td>
+                            <td class="py-3">
+                                <div class="flex gap-3">
+                                    <form method="post" asp-page-handler="Edit">
+                                        <input type="hidden" name="id" value="@row.Id" />
+                                        <button type="submit" class="text-blue-700 underline">Editar</button>
+                                    </form>
+                                    @if (Model.CanDelete)
+                                    {
+                                        <form method="post" asp-page-handler="Delete">
+                                            <input type="hidden" name="id" value="@row.Id" />
+                                            <button type="submit" class="text-red-700 underline">Excluir</button>
+                                        </form>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Rows.Count == 0)
+                    {
+                        <tr><td colspan="4" class="py-6 text-center text-slate-500">Nenhum cadastro encontrado.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>

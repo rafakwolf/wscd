@@ -32,7 +32,7 @@ flowchart LR
 
 O Dev Container fornece .NET e Node no desenvolvimento; o PostgreSQL fica fora do container. A aplicação deverá ser publicada como container Docker em uma VPS gerenciada. Credenciais são locais e não fazem parte deste documento. Os testes de integração não dependem do banco de desenvolvimento.
 
-## Organizações e módulos planejados
+## Organizações e módulos
 
 ```mermaid
 flowchart LR
@@ -63,7 +63,7 @@ flowchart LR
     Boundary --> Relatorios[Relatórios]
 ```
 
-O autoatendimento cria a organização junto com seu primeiro administrador em uma transação. A conta administrativa já existente cria a organização inicial uma única vez, informando seu nome após entrar. Somente o fundador pode adicionar membros ou remover seu acesso; remoção desativa a conta para manter referências históricas. A gestão de usuários filtra pelo vínculo da organização. Toda futura entidade de negócio deve implementar `IOrganizationScoped`, que recebe filtro global pelo contexto da organização autenticada. O banco foi atualizado com a migration `AddOrganizations`; falta o administrador atual concluir o nome da organização inicial pela tela de configuração.
+O autoatendimento cria a organização junto com seu primeiro administrador em uma transação. A conta administrativa inicial já concluiu a configuração da organização. Somente o fundador pode adicionar membros ou remover seu acesso; remoção desativa a conta para manter referências históricas. A gestão de usuários filtra pelo vínculo da organização. Toda entidade de negócio deve implementar `IOrganizationScoped`, que recebe filtro global pelo contexto da organização autenticada. O banco contém as migrations `AddOrganizations` e `AddCatalogs`.
 
 ## Módulos e relações de negócio planejadas
 
@@ -107,3 +107,5 @@ flowchart LR
 ```
 
 As setas representam o fluxo alvo. Orçamentos e rascunhos de compra não movimentam estoque nem financeiro; a compra movimenta os dois ao ser concluída. Concluir uma venda de balcão baixa o estoque e lança pagamentos e eventual saldo a prazo de forma atômica. Cancelar ou devolver estorna os movimentos correspondentes, repõe apenas mercadorias efetivamente devolvidas e preserva o histórico. A branch `delphi` contém as telas e procedures antigas; elas servem para inventário, não para copiar regras de negócio ao banco novo. O relatório de comissão por vendedor permanece no escopo. Relatórios consultam os módulos e não são fonte de alteração operacional.
+
+Os oito cadastros da Fase 5 já têm modelos, serviços, persistência e páginas Razor. O produto tem FKs compostas com `IDOrganization`, `IDSupplier`, `IDProductGroup` e `IDUnit`, impedindo referências cruzadas entre organizações. A tela de cliente e fornecedor ainda usa cidade como texto; a referência fixa de cidades e a regra de idade mínima dependente da configuração global permanecem pendentes nesta fase.

@@ -1,0 +1,59 @@
+@page
+@model Wscd.Web.Pages.Catalogs.Customers.IndexModel
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<partial name="~/Pages/Catalogs/_CatalogList.cshtml" model="Model.ListView" />
+
+<section id="form" class="mt-6 rounded-lg bg-white p-6 shadow-sm">
+    <h2 class="text-lg font-semibold">@(Model.Input.Id == 0 ? "Novo cliente" : "Editar cliente")</h2>
+    <form method="post" asp-page-handler="Save" class="mt-4 space-y-6">
+        <input asp-for="Input.Id" type="hidden" />
+        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Identificação</legend>
+            <div><label asp-for="Input.Type" class="block text-sm">Tipo</label><select asp-for="Input.Type" class="mt-1 w-full rounded border px-3 py-2"><option value="F">Pessoa física</option><option value="J">Pessoa jurídica</option></select></div>
+            <div class="md:col-span-2"><label asp-for="Input.Name" class="block text-sm">Nome</label><input asp-for="Input.Name" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.TaxNumber" class="block text-sm">CPF/CNPJ</label><input asp-for="Input.TaxNumber" maxlength="20" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.StateRegistrationOrIdentity" class="block text-sm">RG/IE</label><input asp-for="Input.StateRegistrationOrIdentity" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.BirthDate" class="block text-sm">Data de nascimento</label><input asp-for="Input.BirthDate" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Birthplace" class="block text-sm">Naturalidade</label><input asp-for="Input.Birthplace" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Contato e endereço</legend>
+            <div class="md:col-span-2"><label asp-for="Input.Address" class="block text-sm">Endereço</label><input asp-for="Input.Address" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Neighborhood" class="block text-sm">Bairro</label><input asp-for="Input.Neighborhood" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.City" class="block text-sm">Cidade</label><input asp-for="Input.City" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.State" class="block text-sm">UF</label><input asp-for="Input.State" maxlength="2" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.PostalCode" class="block text-sm">CEP</label><input asp-for="Input.PostalCode" maxlength="10" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Phone" class="block text-sm">Telefone</label><input asp-for="Input.Phone" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Fax" class="block text-sm">Fax</label><input asp-for="Input.Fax" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Email" class="block text-sm">E-mail</label><input asp-for="Input.Email" maxlength="80" type="email" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Dados adicionais</legend>
+            <div><label asp-for="Input.RegistrationDate" class="block text-sm">Data de cadastro</label><input asp-for="Input.RegistrationDate" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.CreditLimit" class="block text-sm">Limite de crédito</label><input asp-for="Input.CreditLimit" type="number" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.MaritalStatus" class="block text-sm">Estado civil</label><select asp-for="Input.MaritalStatus" class="mt-1 w-full rounded border px-3 py-2"><option value="">Não informado</option><option value="S">Solteiro(a)</option><option value="C">Casado(a)</option><option value="A">Amasiado(a)</option><option value="V">Viúvo(a)</option></select></div>
+            <div><label asp-for="Input.Spouse" class="block text-sm">Cônjuge</label><input asp-for="Input.Spouse" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Father" class="block text-sm">Pai</label><input asp-for="Input.Father" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Mother" class="block text-sm">Mãe</label><input asp-for="Input.Mother" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.PreviousAddress" class="block text-sm">Endereço anterior</label><input asp-for="Input.PreviousAddress" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Workplace" class="block text-sm">Local de trabalho</label><input asp-for="Input.Workplace" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Position" class="block text-sm">Cargo</label><input asp-for="Input.Position" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.EmploymentStartDate" class="block text-sm">Início no trabalho</label><input asp-for="Input.EmploymentStartDate" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Salary" class="block text-sm">Salário</label><input asp-for="Input.Salary" type="number" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.PersonalReferences" class="block text-sm">Referências pessoais</label><textarea asp-for="Input.PersonalReferences" rows="2" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
+            <div><label asp-for="Input.BusinessReferences" class="block text-sm">Referências comerciais</label><textarea asp-for="Input.BusinessReferences" rows="2" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
+            <div><label asp-for="Input.BusinessPhone" class="block text-sm">Telefone comercial</label><input asp-for="Input.BusinessPhone" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.TimeAtAddress" class="block text-sm">Tempo de moradia</label><input asp-for="Input.TimeAtAddress" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div class="md:col-span-3"><label asp-for="Input.Notes" class="block text-sm">Observações</label><textarea asp-for="Input.Notes" rows="3" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
+        </fieldset>
+
+        <div><button type="submit" class="rounded bg-slate-900 px-4 py-2 text-white">Salvar</button> @if (Model.Input.Id != 0) { <a asp-page="./Index" class="ml-2 text-slate-700 underline">Cancelar edição</a> }</div>
+    </form>
+</section>

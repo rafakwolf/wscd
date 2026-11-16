@@ -1,0 +1,47 @@
+@page
+@model Wscd.Web.Pages.Catalogs.Products.IndexModel
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<partial name="~/Pages/Catalogs/_CatalogList.cshtml" model="Model.ListView" />
+
+<section id="form" class="mt-6 rounded-lg bg-white p-6 shadow-sm">
+    <h2 class="text-lg font-semibold">@(Model.Input.Id == 0 ? "Novo produto" : "Editar produto")</h2>
+    <form method="post" asp-page-handler="Save" class="mt-4 space-y-6">
+        <input asp-for="Input.Id" type="hidden" />
+        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Identificação</legend>
+            <div><label asp-for="Input.Barcode" class="block text-sm">Código de barras</label><input asp-for="Input.Barcode" maxlength="13" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Reference" class="block text-sm">Referência</label><input asp-for="Input.Reference" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Name" class="block text-sm">Descrição</label><input asp-for="Input.Name" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Abbreviation" class="block text-sm">Abreviação</label><input asp-for="Input.Abbreviation" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Classificação</legend>
+            <div><label asp-for="Input.SupplierId" class="block text-sm">Fornecedor</label><select asp-for="Input.SupplierId" class="mt-1 w-full rounded border px-3 py-2"><option value="">Não informado</option>@foreach (var item in Model.Suppliers) { <option value="@item.Id">@item.Name</option> }</select></div>
+            <div><label asp-for="Input.ProductGroupId" class="block text-sm">Grupo</label><select asp-for="Input.ProductGroupId" class="mt-1 w-full rounded border px-3 py-2"><option value="">Não informado</option>@foreach (var item in Model.Groups) { <option value="@item.Id">@item.Name</option> }</select></div>
+            <div><label asp-for="Input.UnitId" class="block text-sm">Unidade</label><select asp-for="Input.UnitId" class="mt-1 w-full rounded border px-3 py-2"><option value="">Não informada</option>@foreach (var item in Model.Units) { <option value="@item.Id">@item.Name</option> }</select></div>
+            <div><label asp-for="Input.ExpirationDate" class="block text-sm">Validade</label><input asp-for="Input.ExpirationDate" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Weight" class="block text-sm">Peso</label><input asp-for="Input.Weight" type="number" step="0.001" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Preços e estoque</legend>
+            <div><label asp-for="Input.Cost" class="block text-sm">Custo</label><input asp-for="Input.Cost" type="number" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.MarginPercent" class="block text-sm">Margem (%)</label><input asp-for="Input.MarginPercent" type="number" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.SalePrice" class="block text-sm">Preço de venda</label><input asp-for="Input.SalePrice" type="number" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.PromotionPrice" class="block text-sm">Preço promocional</label><input asp-for="Input.PromotionPrice" type="number" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Stock" class="block text-sm">Estoque</label><input asp-for="Input.Stock" type="number" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.MinimumStock" class="block text-sm">Estoque mínimo</label><input asp-for="Input.MinimumStock" type="number" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.QuantityReceived" class="block text-sm">Quantidade recebida</label><input asp-for="Input.QuantityReceived" type="number" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.ReceivedDate" class="block text-sm">Data de recebimento</label><input asp-for="Input.ReceivedDate" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <div><label asp-for="Input.Notes" class="block text-sm">Observações</label><textarea asp-for="Input.Notes" rows="3" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
+        <div><button type="submit" class="rounded bg-slate-900 px-4 py-2 text-white">Salvar</button> @if (Model.Input.Id != 0) { <a asp-page="./Index" class="ml-2 text-slate-700 underline">Cancelar edição</a> }</div>
+    </form>
+</section>

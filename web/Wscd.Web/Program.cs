@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Wscd.Data;
 using Wscd.Data.Identity;
+using Wscd.Services.Catalogs;
 using Wscd.Services.Organizations;
 using Wscd.Web.Organizations;
 
@@ -10,6 +11,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddWscdData(connectionString);
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
+builder.Services.AddScoped(typeof(ICatalogService<>), typeof(CatalogService<>));
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentOrganization, HttpCurrentOrganization>();
 builder.Services.AddIdentityCore<ApplicationUser>(options =>
