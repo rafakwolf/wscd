@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using Wscd.Data.Identity;
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Organizations;
+using Wscd.Domain.Purchases;
 using Wscd.Services.Organizations;
 
 namespace Wscd.Data;
@@ -22,6 +23,9 @@ public sealed class WscdDbContext(
     public DbSet<Seller> Sellers => Set<Seller>();
     public DbSet<Bank> Banks => Set<Bank>();
     public DbSet<CashAccount> CashAccounts => Set<CashAccount>();
+    public DbSet<Purchase> Purchases => Set<Purchase>();
+    public DbSet<PurchaseItem> PurchaseItems => Set<PurchaseItem>();
+    public DbSet<AccountPayable> AccountsPayable => Set<AccountPayable>();
 
     public Guid? CurrentOrganizationId => currentOrganization.OrganizationId;
 
@@ -150,6 +154,92 @@ public sealed class WscdDbContext(
 
         builder.Entity<Seller>(entity => entity.Property(seller => seller.IsActive).HasDefaultValue(true));
         builder.Entity<CashAccount>(entity => entity.Property(account => account.IsInactive).HasDefaultValue(false));
+
+        builder.Entity<Purchase>(entity =>
+        {
+            entity.ToTable("Purchases");
+            entity.HasKey(purchase => purchase.Id).HasName("PK_Purchases");
+            entity.Property(purchase => purchase.Id).HasColumnName("ID").ValueGeneratedOnAdd();
+            entity.Property(purchase => purchase.OrganizationId).HasColumnName("IDOrganization").IsRequired();
+            entity.Property(purchase => purchase.SupplierId).HasColumnName("IDSupplier");
+            entity.Property(purchase => purchase.PurchaseDate).HasColumnName("PurchaseDate");
+            entity.Property(purchase => purchase.DueDate).HasColumnName("DueDate");
+            entity.Property(purchase => purchase.Notes).HasColumnType("text");
+            entity.Property(purchase => purchase.Total).HasPrecision(12, 2);
+            entity.Property(purchase => purchase.IsCompleted).HasDefaultValue(false);
+            entity.HasAlternateKey(purchase => new { purchase.OrganizationId, purchase.Id });
+            entity.HasIndex(purchase => new { purchase.OrganizationId, purchase.PurchaseDate });
+            entity.HasIndex(purchase => new { purchase.OrganizationId, purchase.IsCompleted });
+            entity.HasOne<Organization>()
+                .WithMany()
+                .HasForeignKey(purchase => purchase.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(purchase => purchase.Supplier)
+                .WithMany()
+                .HasForeignKey(purchase => new { purchase.OrganizationId, purchase.SupplierId })
+                .HasPrincipalKey(supplier => new { supplier.OrganizationId, supplier.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<PurchaseItem>(entity =>
+        {
+            entity.ToTable("PurchaseItems", table =>
+                table.HasCheckConstraint("CK_PurchaseItems_Quantity", "\"Quantity\" > 0"));
+            entity.HasKey(item => item.Id).HasName("PK_PurchaseItems");
+            entity.Property(item => item.Id).HasColumnName("ID").ValueGeneratedOnAdd();
+            entity.Property(item => item.OrganizationId).HasColumnName("IDOrganization").IsRequired();
+            entity.Property(item => item.PurchaseId).HasColumnName("IDPurchase");
+            entity.Property(item => item.ProductId).HasColumnName("IDProduct");
+            entity.Property(item => item.Quantity).IsRequired();
+            entity.Property(item => item.UnitCost).HasPrecision(12, 2);
+            entity.HasAlternateKey(item => new { item.OrganizationId, item.Id });
+            entity.HasIndex(item => new { item.OrganizationId, item.PurchaseId, item.ProductId }).IsUnique();
+            entity.HasIndex(item => new { item.OrganizationId, item.ProductId });
+            entity.HasOne<Organization>()
+                .WithMany()
+                .HasForeignKey(item => item.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(item => item.Purchase)
+                .WithMany(purchase => purchase.Items)
+                .HasForeignKey(item => new { item.OrganizationId, item.PurchaseId })
+                .HasPrincipalKey(purchase => new { purchase.OrganizationId, purchase.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(item => item.Product)
+                .WithMany()
+                .HasForeignKey(item => new { item.OrganizationId, item.ProductId })
+                .HasPrincipalKey(product => new { product.OrganizationId, product.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<AccountPayable>(entity =>
+        {
+            entity.ToTable("AccountsPayable");
+            entity.HasKey(payable => payable.Id).HasName("PK_AccountsPayable");
+            entity.Property(payable => payable.Id).HasColumnName("ID").ValueGeneratedOnAdd();
+            entity.Property(payable => payable.OrganizationId).HasColumnName("IDOrganization").IsRequired();
+            entity.Property(payable => payable.PurchaseId).HasColumnName("IDPurchase");
+            entity.Property(payable => payable.SupplierId).HasColumnName("IDSupplier");
+            entity.Property(payable => payable.CreatedDate).HasColumnName("CreatedDate");
+            entity.Property(payable => payable.DueDate).HasColumnName("DueDate");
+            entity.Property(payable => payable.Amount).HasPrecision(12, 2);
+            entity.Property(payable => payable.IsPaid).HasDefaultValue(false);
+            entity.HasAlternateKey(payable => new { payable.OrganizationId, payable.Id });
+            entity.HasIndex(payable => new { payable.OrganizationId, payable.PurchaseId }).IsUnique();
+            entity.HasOne<Organization>()
+                .WithMany()
+                .HasForeignKey(payable => payable.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne<Purchase>()
+                .WithMany()
+                .HasForeignKey(payable => new { payable.OrganizationId, payable.PurchaseId })
+                .HasPrincipalKey(purchase => new { purchase.OrganizationId, purchase.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne<Supplier>()
+                .WithMany()
+                .HasForeignKey(payable => new { payable.OrganizationId, payable.SupplierId })
+                .HasPrincipalKey(supplier => new { supplier.OrganizationId, supplier.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
 
         foreach (var entityType in builder.Model.GetEntityTypes()
                      .Where(type => typeof(IOrganizationScoped).IsAssignableFrom(type.ClrType)))
