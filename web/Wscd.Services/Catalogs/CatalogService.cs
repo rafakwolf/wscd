@@ -34,6 +34,13 @@ public sealed class CatalogService<TEntity>(
             case Customer customer:
                 customer.TaxNumber = NullIfBlank(customer.TaxNumber);
                 customer.StateRegistrationOrIdentity = NullIfBlank(customer.StateRegistrationOrIdentity);
+                var previousCustomer = customer.Id == 0 ? null : await store.FindAsync(customer.Id) as Customer;
+                customer.City = NullIfBlank(customer.City);
+                if (customer.City is not null && !CityCatalog.Contains(customer.City) &&
+                    !string.Equals(customer.City, previousCustomer?.City?.Trim(), StringComparison.OrdinalIgnoreCase))
+                {
+                    return false;
+                }
                 if (customer.Id == 0 && customer.RegistrationDate == default)
                 {
                     customer.RegistrationDate = DateOnly.FromDateTime(DateTime.Today);
@@ -41,6 +48,13 @@ public sealed class CatalogService<TEntity>(
                 break;
             case Supplier supplier:
                 supplier.TaxNumber = NullIfBlank(supplier.TaxNumber);
+                var previousSupplier = supplier.Id == 0 ? null : await store.FindAsync(supplier.Id) as Supplier;
+                supplier.City = NullIfBlank(supplier.City);
+                if (supplier.City is not null && !CityCatalog.Contains(supplier.City) &&
+                    !string.Equals(supplier.City, previousSupplier?.City?.Trim(), StringComparison.OrdinalIgnoreCase))
+                {
+                    return false;
+                }
                 if (supplier.Id == 0 && supplier.RegistrationDate is null)
                 {
                     supplier.RegistrationDate = DateOnly.FromDateTime(DateTime.Today);

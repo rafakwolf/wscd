@@ -30,6 +30,15 @@ public abstract class CatalogPageModel<TEntity> : PageModel
     public string? ErrorMessage { get; private set; }
     public string Title { get; protected set; } = "Cadastros";
     public bool CanDelete { get; protected set; } = true;
+    public IReadOnlyList<string> Cities => CityCatalog.Names;
+    public string? UnlistedCity => Input switch
+    {
+        Customer customer when !string.IsNullOrWhiteSpace(customer.City) &&
+                               !Cities.Contains(customer.City, StringComparer.Ordinal) => customer.City,
+        Supplier supplier when !string.IsNullOrWhiteSpace(supplier.City) &&
+                               !Cities.Contains(supplier.City, StringComparer.Ordinal) => supplier.City,
+        _ => null
+    };
 
     public CatalogListViewModel ListView => new(
         Title,
@@ -77,7 +86,7 @@ public abstract class CatalogPageModel<TEntity> : PageModel
         await PrepareToSaveAsync();
         if (!await catalog.SaveAsync(Input))
         {
-            ModelState.AddModelError(string.Empty, "Não foi possível salvar. Verifique os dados duplicados ou referências usadas por outros cadastros.");
+            ModelState.AddModelError(string.Empty, "Não foi possível salvar. Verifique a cidade selecionada, dados duplicados ou referências usadas por outros cadastros.");
             await LoadAsync();
             return Page();
         }

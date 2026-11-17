@@ -26,7 +26,7 @@
             <legend class="mb-2 font-medium">Contato e endereço</legend>
             <div class="md:col-span-2"><label asp-for="Input.Address" class="block text-sm">Endereço</label><input asp-for="Input.Address" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
             <div><label asp-for="Input.Neighborhood" class="block text-sm">Bairro</label><input asp-for="Input.Neighborhood" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
-            <div><label asp-for="Input.City" class="block text-sm">Cidade</label><input asp-for="Input.City" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.City" class="block text-sm">Cidade</label><select asp-for="Input.City" class="mt-1 w-full rounded border px-3 py-2"><option value="">Não informado</option>@if (Model.UnlistedCity is { } cityAnterior) { <option value="@cityAnterior">@cityAnterior (valor anterior)</option> }@foreach (var city in Model.Cities) { <option value="@city">@city</option> }</select></div>
             <div><label asp-for="Input.State" class="block text-sm">UF</label><input asp-for="Input.State" maxlength="2" class="mt-1 w-full rounded border px-3 py-2" /></div>
             <div><label asp-for="Input.PostalCode" class="block text-sm">CEP</label><input asp-for="Input.PostalCode" maxlength="10" class="mt-1 w-full rounded border px-3 py-2" /></div>
             <div><label asp-for="Input.Phone" class="block text-sm">Telefone</label><input asp-for="Input.Phone" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
