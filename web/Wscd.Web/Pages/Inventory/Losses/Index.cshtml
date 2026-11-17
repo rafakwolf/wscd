@@ -1,0 +1,57 @@
+@page
+@using System.Globalization
+@model Wscd.Web.Pages.Inventory.Losses.IndexModel
+@{
+    ViewData["Title"] = "Perdas de estoque";
+    var ptBr = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">Perdas de estoque</h1>
+            <p class="mt-1 text-sm text-slate-600">Cada lançamento registra o motivo e o custo, e baixa a quantidade do estoque.</p>
+        </div>
+        <a asp-page="./Index" asp-route-create="true" class="rounded bg-slate-900 px-4 py-2 text-white">Registrar perda</a>
+    </div>
+
+    @if (Model.StatusMessage is not null)
+    {
+        <p class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@Model.StatusMessage</p>
+    }
+
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-3">
+        <div><label asp-for="From" class="block text-sm">De</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="To" class="block text-sm">Até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div class="flex items-end"><button class="rounded border px-4 py-2">Filtrar</button></div>
+    </form>
+
+    <div class="mt-5 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+            <thead><tr class="border-b text-slate-600"><th class="py-2">Data</th><th>Produto</th><th>Motivo</th><th>Quantidade</th><th>Custo unitário</th><th>Observações</th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr class="border-b last:border-0"><td class="py-2">@item.LossDate.ToString("dd/MM/yyyy")</td><td>@item.ProductName</td><td>@IndexModel.ReasonLabel(item.Reason)</td><td>@item.Quantity</td><td>R$ @item.UnitCost.ToString("N2", ptBr)</td><td>@item.Notes</td></tr>
+            }
+            </tbody>
+        </table>
+        @if (Model.Items.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhuma perda encontrada.</p> }
+    </div>
+</section>
+
+@if (Model.Create)
+{
+    <section class="mt-6 rounded-lg bg-white p-6 shadow-sm">
+        <h2 class="text-lg font-semibold">Registrar perda</h2>
+        <div asp-validation-summary="ModelOnly" class="mt-3 text-sm text-red-700"></div>
+        <form method="post" asp-page-handler="Create" asp-route-create="true" asp-route-from="@Model.From" asp-route-to="@Model.To" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="sm:col-span-2"><label asp-for="ProductId" class="block text-sm">Produto</label><select asp-for="ProductId" class="mt-1 w-full rounded border px-3 py-2" required><option value="">Selecione</option>@foreach (var product in Model.Products) { <option value="@product.Id">@product.Name — estoque: @product.Stock</option> }</select></div>
+            <div><label asp-for="Quantity" class="block text-sm">Quantidade</label><input asp-for="Quantity" type="number" min="1" class="mt-1 w-full rounded border px-3 py-2" required /></div>
+            <div><label asp-for="LossDate" class="block text-sm">Data</label><input asp-for="LossDate" type="date" class="mt-1 w-full rounded border px-3 py-2" required /></div>
+            <div><label asp-for="Reason" class="block text-sm">Motivo</label><select asp-for="Reason" class="mt-1 w-full rounded border px-3 py-2" required><option value="">Selecione</option><option value="D">Danificado</option><option value="V">Vencido</option><option value="F">Furto</option><option value="P">Perda de peso</option><option value="O">Outro</option></select></div>
+            <div class="sm:col-span-2 lg:col-span-3"><label asp-for="Notes" class="block text-sm">Observações</label><textarea asp-for="Notes" rows="2" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
+            <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar perda</button></div>
+        </form>
+    </section>
+}

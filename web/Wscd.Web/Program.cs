@@ -4,6 +4,7 @@ using Wscd.Data.Identity;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Organizations;
 using Wscd.Services.Purchases;
+using Wscd.Services.Inventory;
 using Wscd.Web.Organizations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddWscdData(connectionString);
 builder.Services.AddScoped<IOrganizationService, OrganizationService>();
 builder.Services.AddScoped(typeof(ICatalogService<>), typeof(CatalogService<>));
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+builder.Services.AddScoped<IStockLossService, StockLossService>();
+builder.Services.AddScoped<IPromotionService, PromotionService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentOrganization, HttpCurrentOrganization>();
 builder.Services.AddIdentityCore<ApplicationUser>(options =>

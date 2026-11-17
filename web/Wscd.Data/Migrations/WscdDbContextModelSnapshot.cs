@@ -421,57 +421,6 @@ namespace Wscd.Data.Migrations
                     b.ToTable("Customers", (string)null);
                 });
 
-            modelBuilder.Entity("Wscd.Domain.Purchases.AccountPayable", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("ID");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("Amount")
-                        .HasPrecision(12, 2)
-                        .HasColumnType("numeric(12,2)");
-
-                    b.Property<DateOnly>("CreatedDate")
-                        .HasColumnType("date");
-
-                    b.Property<DateOnly>("DueDate")
-                        .HasColumnType("date");
-
-                    b.Property<bool>("IsPaid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
-
-                    b.Property<Guid>("OrganizationId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("IDOrganization");
-
-                    b.Property<int>("PurchaseId")
-                        .HasColumnType("integer")
-                        .HasColumnName("IDPurchase");
-
-                    b.Property<int>("SupplierId")
-                        .HasColumnType("integer")
-                        .HasColumnName("IDSupplier");
-
-                    b.HasKey("Id")
-                        .HasName("PK_AccountsPayable");
-
-                    b.HasAlternateKey("OrganizationId", "Id");
-
-                    b.HasIndex("OrganizationId", "PurchaseId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_AccountsPayable_IDOrganization_IDPurchase");
-
-                    b.HasIndex("OrganizationId", "SupplierId")
-                        .HasDatabaseName("IX_AccountsPayable_IDOrganization_IDSupplier");
-
-                    b.ToTable("AccountsPayable", (string)null);
-                });
-
             modelBuilder.Entity("Wscd.Domain.Catalogs.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -555,8 +504,6 @@ namespace Wscd.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_Products");
 
-                    b.HasAlternateKey("OrganizationId", "Id");
-
                     b.HasIndex("OrganizationId", "Barcode")
                         .IsUnique()
                         .HasFilter("\"Barcode\" IS NOT NULL");
@@ -568,104 +515,6 @@ namespace Wscd.Data.Migrations
                     b.HasIndex("OrganizationId", "UnitId");
 
                     b.ToTable("Products", (string)null);
-                });
-
-            modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("ID");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateOnly?>("CompletedDate")
-                        .HasColumnType("date");
-
-                    b.Property<DateOnly?>("DueDate")
-                        .HasColumnType("date");
-
-                    b.Property<bool>("IsCompleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("OrganizationId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("IDOrganization");
-
-                    b.Property<DateOnly>("PurchaseDate")
-                        .HasColumnType("date");
-
-                    b.Property<int>("SupplierId")
-                        .HasColumnType("integer")
-                        .HasColumnName("IDSupplier");
-
-                    b.Property<decimal>("Total")
-                        .HasPrecision(12, 2)
-                        .HasColumnType("numeric(12,2)");
-
-                    b.HasKey("Id")
-                        .HasName("PK_Purchases");
-
-                    b.HasAlternateKey("OrganizationId", "Id");
-
-                    b.HasIndex("OrganizationId", "PurchaseDate")
-                        .HasDatabaseName("IX_Purchases_IDOrganization_PurchaseDate");
-
-                    b.HasIndex("OrganizationId", "IsCompleted")
-                        .HasDatabaseName("IX_Purchases_IDOrganization_IsCompleted");
-
-                    b.HasIndex("OrganizationId", "SupplierId")
-                        .HasDatabaseName("IX_Purchases_IDOrganization_IDSupplier");
-
-                    b.ToTable("Purchases", (string)null);
-                });
-
-            modelBuilder.Entity("Wscd.Domain.Purchases.PurchaseItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("ID");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<Guid>("OrganizationId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("IDOrganization");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer")
-                        .HasColumnName("IDProduct");
-
-                    b.Property<int>("PurchaseId")
-                        .HasColumnType("integer")
-                        .HasColumnName("IDPurchase");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("UnitCost")
-                        .HasPrecision(12, 2)
-                        .HasColumnType("numeric(12,2)");
-
-                    b.HasKey("Id")
-                        .HasName("PK_PurchaseItems");
-
-                    b.HasAlternateKey("OrganizationId", "Id");
-
-                    b.HasIndex("OrganizationId", "ProductId")
-                        .HasDatabaseName("IX_PurchaseItems_IDOrganization_IDProduct");
-
-                    b.HasIndex("OrganizationId", "PurchaseId", "ProductId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_PurchaseItems_IDOrganization_IDPurchase_IDProduct");
-
-                    b.ToTable("PurchaseItems", t => t.HasCheckConstraint("CK_PurchaseItems_Quantity", "\"Quantity\" > 0"));
                 });
 
             modelBuilder.Entity("Wscd.Domain.Catalogs.ProductGroup", b =>
@@ -842,6 +691,115 @@ namespace Wscd.Data.Migrations
                     b.ToTable("Units", (string)null);
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Inventory.Promotion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("DiscountPercent")
+                        .HasPrecision(6, 2)
+                        .HasColumnType("numeric(6,2)");
+
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDProduct");
+
+                    b.Property<decimal>("PromotionPrice")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.Property<decimal>("RegularPrice")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date");
+
+                    b.HasKey("Id")
+                        .HasName("PK_Promotions");
+
+                    b.HasAlternateKey("OrganizationId", "Id");
+
+                    b.HasIndex("OrganizationId", "ProductId")
+                        .IsUnique();
+
+                    b.ToTable("Promotions", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Promotions_DateRange", "\"StartDate\" <= \"EndDate\"");
+
+                            t.HasCheckConstraint("CK_Promotions_DiscountPercent", "\"DiscountPercent\" > 0 AND \"DiscountPercent\" < 100");
+
+                            t.HasCheckConstraint("CK_Promotions_PromotionPrice", "\"PromotionPrice\" > 0 AND \"PromotionPrice\" < \"RegularPrice\"");
+
+                            t.HasCheckConstraint("CK_Promotions_RegularPrice", "\"RegularPrice\" > 0");
+                        });
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Inventory.StockLoss", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly>("LossDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDProduct");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("character(1)");
+
+                    b.Property<decimal>("UnitCost")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.HasKey("Id")
+                        .HasName("PK_StockLosses");
+
+                    b.HasAlternateKey("OrganizationId", "Id");
+
+                    b.HasIndex("OrganizationId", "LossDate");
+
+                    b.HasIndex("OrganizationId", "ProductId");
+
+                    b.ToTable("StockLosses", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_StockLosses_Quantity", "\"Quantity\" > 0");
+
+                            t.HasCheckConstraint("CK_StockLosses_Reason", "\"Reason\" IN ('D', 'V', 'F', 'P', 'O')");
+
+                            t.HasCheckConstraint("CK_StockLosses_UnitCost", "\"UnitCost\" >= 0");
+                        });
+                });
+
             modelBuilder.Entity("Wscd.Domain.Organizations.Organization", b =>
                 {
                     b.Property<Guid>("Id")
@@ -868,6 +826,153 @@ namespace Wscd.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Organizations", (string)null);
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.AccountPayable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.Property<DateOnly>("CreatedDate")
+                        .HasColumnType("date")
+                        .HasColumnName("CreatedDate");
+
+                    b.Property<DateOnly>("DueDate")
+                        .HasColumnType("date")
+                        .HasColumnName("DueDate");
+
+                    b.Property<bool>("IsPaid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("PurchaseId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDPurchase");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSupplier");
+
+                    b.HasKey("Id")
+                        .HasName("PK_AccountsPayable");
+
+                    b.HasAlternateKey("OrganizationId", "Id");
+
+                    b.HasIndex("OrganizationId", "PurchaseId")
+                        .IsUnique();
+
+                    b.HasIndex("OrganizationId", "SupplierId");
+
+                    b.ToTable("AccountsPayable", (string)null);
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly?>("CompletedDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly?>("DueDate")
+                        .HasColumnType("date")
+                        .HasColumnName("DueDate");
+
+                    b.Property<bool>("IsCompleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<DateOnly>("PurchaseDate")
+                        .HasColumnType("date")
+                        .HasColumnName("PurchaseDate");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSupplier");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.HasKey("Id")
+                        .HasName("PK_Purchases");
+
+                    b.HasIndex("OrganizationId", "IsCompleted");
+
+                    b.HasIndex("OrganizationId", "PurchaseDate");
+
+                    b.HasIndex("OrganizationId", "SupplierId");
+
+                    b.ToTable("Purchases", (string)null);
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.PurchaseItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDProduct");
+
+                    b.Property<int>("PurchaseId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDPurchase");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("UnitCost")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.HasKey("Id")
+                        .HasName("PK_PurchaseItems");
+
+                    b.HasAlternateKey("OrganizationId", "Id");
+
+                    b.HasIndex("OrganizationId", "ProductId");
+
+                    b.HasIndex("OrganizationId", "PurchaseId", "ProductId")
+                        .IsUnique();
+
+                    b.ToTable("PurchaseItems", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_PurchaseItems_Quantity", "\"Quantity\" > 0");
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -956,29 +1061,6 @@ namespace Wscd.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Wscd.Domain.Purchases.AccountPayable", b =>
-                {
-                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
-                        .WithMany()
-                        .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Wscd.Domain.Purchases.Purchase", null)
-                        .WithMany()
-                        .HasForeignKey("OrganizationId", "PurchaseId")
-                        .HasPrincipalKey("OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Wscd.Domain.Catalogs.Supplier", null)
-                        .WithMany()
-                        .HasForeignKey("OrganizationId", "SupplierId")
-                        .HasPrincipalKey("OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Wscd.Domain.Catalogs.Product", b =>
                 {
                     b.HasOne("Wscd.Domain.Organizations.Organization", null)
@@ -1015,45 +1097,6 @@ namespace Wscd.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
-                {
-                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
-                        .WithMany()
-                        .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Wscd.Domain.Catalogs.Supplier", "Supplier")
-                        .WithMany()
-                        .HasForeignKey("OrganizationId", "SupplierId")
-                        .HasPrincipalKey("OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Wscd.Domain.Purchases.PurchaseItem", b =>
-                {
-                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
-                        .WithMany()
-                        .HasForeignKey("OrganizationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Wscd.Domain.Catalogs.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("OrganizationId", "ProductId")
-                        .HasPrincipalKey("OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Wscd.Domain.Purchases.Purchase", "Purchase")
-                        .WithMany("Items")
-                        .HasForeignKey("OrganizationId", "PurchaseId")
-                        .HasPrincipalKey("OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Wscd.Domain.Catalogs.Seller", b =>
                 {
                     b.HasOne("Wscd.Domain.Organizations.Organization", null)
@@ -1081,12 +1124,121 @@ namespace Wscd.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Inventory.Promotion", b =>
+                {
+                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "ProductId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Inventory.StockLoss", b =>
+                {
+                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "ProductId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Wscd.Domain.Organizations.Organization", b =>
                 {
                     b.HasOne("Wscd.Data.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("OwnerUserId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.AccountPayable", b =>
+                {
+                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Purchases.Purchase", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "PurchaseId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Supplier", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "SupplierId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
+                {
+                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "SupplierId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.PurchaseItem", b =>
+                {
+                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "ProductId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Purchases.Purchase", "Purchase")
+                        .WithMany("Items")
+                        .HasForeignKey("OrganizationId", "PurchaseId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Purchase");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

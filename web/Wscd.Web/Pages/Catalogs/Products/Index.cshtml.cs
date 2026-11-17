@@ -31,4 +31,5 @@ public sealed class IndexModel : CatalogPageModel<Product>
         Units = await units.ListAsync(null);
         Suppliers = await suppliers.ListAsync(null);
     }
+
 }

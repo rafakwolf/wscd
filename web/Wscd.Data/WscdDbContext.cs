@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Wscd.Data.Identity;
 using Wscd.Domain.Catalogs;
+using Wscd.Domain.Inventory;
 using Wscd.Domain.Organizations;
 using Wscd.Domain.Purchases;
 using Wscd.Services.Organizations;
@@ -26,6 +27,8 @@ public sealed class WscdDbContext(
     public DbSet<Purchase> Purchases => Set<Purchase>();
     public DbSet<PurchaseItem> PurchaseItems => Set<PurchaseItem>();
     public DbSet<AccountPayable> AccountsPayable => Set<AccountPayable>();
+    public DbSet<StockLoss> StockLosses => Set<StockLoss>();
+    public DbSet<Promotion> Promotions => Set<Promotion>();
 
     public Guid? CurrentOrganizationId => currentOrganization.OrganizationId;
 
@@ -238,6 +241,68 @@ public sealed class WscdDbContext(
                 .WithMany()
                 .HasForeignKey(payable => new { payable.OrganizationId, payable.SupplierId })
                 .HasPrincipalKey(supplier => new { supplier.OrganizationId, supplier.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<StockLoss>(entity =>
+        {
+            entity.ToTable("StockLosses", table =>
+            {
+                table.HasCheckConstraint("CK_StockLosses_Quantity", "\"Quantity\" > 0");
+                table.HasCheckConstraint("CK_StockLosses_UnitCost", "\"UnitCost\" >= 0");
+                table.HasCheckConstraint("CK_StockLosses_Reason", "\"Reason\" IN ('D', 'V', 'F', 'P', 'O')");
+            });
+            entity.HasKey(loss => loss.Id).HasName("PK_StockLosses");
+            entity.Property(loss => loss.Id).HasColumnName("ID").ValueGeneratedOnAdd();
+            entity.Property(loss => loss.OrganizationId).HasColumnName("IDOrganization").IsRequired();
+            entity.Property(loss => loss.ProductId).HasColumnName("IDProduct");
+            entity.Property(loss => loss.Quantity).IsRequired();
+            entity.Property(loss => loss.UnitCost).HasPrecision(12, 2);
+            entity.Property(loss => loss.LossDate).IsRequired();
+            entity.Property(loss => loss.Reason).HasColumnType("character(1)").HasMaxLength(1).IsRequired();
+            entity.Property(loss => loss.Notes).HasColumnType("text");
+            entity.HasAlternateKey(loss => new { loss.OrganizationId, loss.Id });
+            entity.HasIndex(loss => new { loss.OrganizationId, loss.LossDate });
+            entity.HasIndex(loss => new { loss.OrganizationId, loss.ProductId });
+            entity.HasOne<Organization>()
+                .WithMany()
+                .HasForeignKey(loss => loss.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(loss => loss.Product)
+                .WithMany()
+                .HasForeignKey(loss => new { loss.OrganizationId, loss.ProductId })
+                .HasPrincipalKey(product => new { product.OrganizationId, product.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<Promotion>(entity =>
+        {
+            entity.ToTable("Promotions", table =>
+            {
+                table.HasCheckConstraint("CK_Promotions_RegularPrice", "\"RegularPrice\" > 0");
+                table.HasCheckConstraint("CK_Promotions_DiscountPercent", "\"DiscountPercent\" > 0 AND \"DiscountPercent\" < 100");
+                table.HasCheckConstraint("CK_Promotions_PromotionPrice", "\"PromotionPrice\" > 0 AND \"PromotionPrice\" < \"RegularPrice\"");
+                table.HasCheckConstraint("CK_Promotions_DateRange", "\"StartDate\" <= \"EndDate\"");
+            });
+            entity.HasKey(promotion => promotion.Id).HasName("PK_Promotions");
+            entity.Property(promotion => promotion.Id).HasColumnName("ID").ValueGeneratedOnAdd();
+            entity.Property(promotion => promotion.OrganizationId).HasColumnName("IDOrganization").IsRequired();
+            entity.Property(promotion => promotion.ProductId).HasColumnName("IDProduct");
+            entity.Property(promotion => promotion.RegularPrice).HasPrecision(12, 2);
+            entity.Property(promotion => promotion.DiscountPercent).HasPrecision(6, 2);
+            entity.Property(promotion => promotion.PromotionPrice).HasPrecision(12, 2);
+            entity.Property(promotion => promotion.StartDate).IsRequired();
+            entity.Property(promotion => promotion.EndDate).IsRequired();
+            entity.HasAlternateKey(promotion => new { promotion.OrganizationId, promotion.Id });
+            entity.HasIndex(promotion => new { promotion.OrganizationId, promotion.ProductId }).IsUnique();
+            entity.HasOne<Organization>()
+                .WithMany()
+                .HasForeignKey(promotion => promotion.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(promotion => promotion.Product)
+                .WithMany()
+                .HasForeignKey(promotion => new { promotion.OrganizationId, promotion.ProductId })
+                .HasPrincipalKey(product => new { product.OrganizationId, product.Id })
                 .OnDelete(DeleteBehavior.Restrict);
         });
 

@@ -22,6 +22,7 @@ public sealed class CatalogService<TEntity>(
             case Product product:
                 product.Barcode = NullIfBlank(product.Barcode);
                 var previousProduct = product.Id == 0 ? null : await store.FindAsync(product.Id) as Product;
+                product.PromotionPrice = previousProduct?.PromotionPrice;
                 if ((previousProduct is null && product.SalePrice == 0) ||
                     (previousProduct is not null && (previousProduct.Cost != product.Cost || previousProduct.MarginPercent != product.MarginPercent)))
                 {
