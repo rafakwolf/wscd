@@ -1,0 +1,45 @@
+@page
+@model Wscd.Web.Pages.Reports.StockMinimum.IndexModel
+@{
+    ViewData["Title"] = "Produtos com estoque mínimo";
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">Produtos com estoque mínimo</h1>
+            <p class="mt-1 text-sm text-slate-600">Produtos cujo estoque está igual ou abaixo do mínimo cadastrado.</p>
+        </div>
+        @if (Model.Report is not null)
+        {
+            <button type="button" onclick="window.print()" class="rounded border px-4 py-2 print:hidden">Imprimir / Salvar PDF</button>
+        }
+    </div>
+
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 print:hidden">
+        <div><label asp-for="SupplierId" class="block text-sm">Fornecedor</label><select asp-for="SupplierId" class="mt-1 w-full rounded border px-3 py-2" required><option value="">Selecione</option>@foreach (var supplier in Model.Suppliers) { <option value="@supplier.Id">@supplier.Name</option> }</select></div>
+        <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Gerar relatório</button></div>
+    </form>
+
+    @if (Model.Report is not null)
+    {
+        <div class="mt-6">
+            <div class="flex flex-wrap justify-between gap-2 border-b pb-3">
+                <h2 class="text-lg font-semibold">@Model.Report.SupplierName</h2>
+                <p class="text-sm text-slate-600">Gerado em @Model.ReportDate.ToString("dd/MM/yyyy") · @Model.Report.Products.Count produto(s)</p>
+            </div>
+            <div class="mt-3 overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead><tr class="border-b text-slate-600"><th class="py-2">Código de barras</th><th>Produto</th><th class="text-right">Estoque atual</th><th class="text-right">Estoque mínimo</th></tr></thead>
+                    <tbody>
+                    @foreach (var product in Model.Report.Products)
+                    {
+                        <tr class="border-b last:border-0"><td class="py-2">@product.Barcode</td><td>@product.Name</td><td class="text-right">@product.Stock</td><td class="text-right">@product.MinimumStock</td></tr>
+                    }
+                    </tbody>
+                </table>
+                @if (Model.Report.Products.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhum produto deste fornecedor está no estoque mínimo.</p> }
+            </div>
+        </div>
+    }
+</section>

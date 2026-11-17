@@ -4,11 +4,13 @@ using Wscd.Data.Organizations;
 using Wscd.Data.Catalogs;
 using Wscd.Data.Purchases;
 using Wscd.Data.Inventory;
+using Wscd.Data.Reports;
 using Wscd.Domain.Catalogs;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Organizations;
 using Wscd.Services.Purchases;
 using Wscd.Services.Inventory;
+using Wscd.Services.Reports;
 
 namespace Wscd.Data;
 
@@ -22,6 +24,7 @@ public static class DependencyInjection
         services.AddScoped<IPurchaseStore, PurchaseStore>();
         services.AddScoped<IStockLossStore, StockLossStore>();
         services.AddScoped<IPromotionStore, PromotionStore>();
+        services.AddScoped<IStockReportStore, StockReportStore>();
         return services;
     }
 }

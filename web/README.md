@@ -35,6 +35,10 @@ O CSS pode ser gerado uma vez com:
 npm run css:build --prefix web/Wscd.Web
 ```
 
+## Dados de demonstração
+
+No ambiente Development, entre no app e acesse **Dados fictícios para testes** na página inicial. A carga garante 10 registros em cada cadastro e cria 10 compras (5 rascunhos e 5 concluídas), 10 perdas e 10 promoções na organização da sessão. Compras concluídas geram contas a pagar. A carga pode ser repetida sem duplicar os registros de demonstração; ela não roda ao iniciar o app, não apaga dados e não cria usuários. Vendas ainda não estão implementadas.
+
 ## Banco de dados e migrations
 
 Os comandos abaixo usam a connection string configurada no ambiente. Execute-os dentro do Dev Container e confira que ela aponta para o banco desejado antes de aplicar alterações.
