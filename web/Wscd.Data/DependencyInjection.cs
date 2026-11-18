@@ -6,6 +6,7 @@ using Wscd.Data.Purchases;
 using Wscd.Data.Inventory;
 using Wscd.Data.Reports;
 using Wscd.Data.Quotations;
+using Wscd.Data.Sales;
 using Wscd.Domain.Catalogs;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Organizations;
@@ -13,6 +14,7 @@ using Wscd.Services.Purchases;
 using Wscd.Services.Inventory;
 using Wscd.Services.Reports;
 using Wscd.Services.Quotations;
+using Wscd.Services.Sales;
 
 namespace Wscd.Data;
 
@@ -28,6 +30,7 @@ public static class DependencyInjection
         services.AddScoped<IPromotionStore, PromotionStore>();
         services.AddScoped<IStockReportStore, StockReportStore>();
         services.AddScoped<IQuotationStore, QuotationStore>();
+        services.AddScoped<ISaleStore, SaleStore>();
         return services;
     }
 }

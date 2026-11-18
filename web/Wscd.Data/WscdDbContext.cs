@@ -7,6 +7,7 @@ using Wscd.Domain.Inventory;
 using Wscd.Domain.Organizations;
 using Wscd.Domain.Purchases;
 using Wscd.Domain.Quotations;
+using Wscd.Domain.Sales;
 using Wscd.Services.Organizations;
 
 namespace Wscd.Data;
@@ -31,6 +32,7 @@ public sealed class WscdDbContext(
     public DbSet<StockLoss> StockLosses => Set<StockLoss>();
     public DbSet<Promotion> Promotions => Set<Promotion>();
     public DbSet<Quotation> Quotations => Set<Quotation>();
+    public DbSet<Sale> Sales => Set<Sale>();
 
     public Guid? CurrentOrganizationId => currentOrganization.OrganizationId;
 
@@ -352,6 +354,76 @@ public sealed class WscdDbContext(
             entity.HasOne<Product>().WithMany()
                 .HasForeignKey(item => new { item.OrganizationId, item.ProductId })
                 .HasPrincipalKey(product => new { product.OrganizationId, product.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<Sale>(entity =>
+        {
+            entity.ToTable("Sales");
+            entity.Property(sale => sale.Id).HasColumnName("ID");
+            entity.Property(sale => sale.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(sale => sale.CustomerId).HasColumnName("IDCustomer");
+            entity.Property(sale => sale.SellerId).HasColumnName("IDSeller");
+            entity.Property(sale => sale.QuotationId).HasColumnName("IDQuotation");
+            entity.Property(sale => sale.Revision).IsConcurrencyToken();
+            entity.HasIndex(sale => new { sale.OrganizationId, sale.Date });
+            entity.HasOne<Organization>().WithMany().HasForeignKey(sale => sale.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(sale => sale.Customer).WithMany()
+                .HasForeignKey(sale => new { sale.OrganizationId, sale.CustomerId })
+                .HasPrincipalKey(customer => new { customer.OrganizationId, customer.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(sale => sale.Seller).WithMany()
+                .HasForeignKey(sale => new { sale.OrganizationId, sale.SellerId })
+                .HasPrincipalKey(seller => new { seller.OrganizationId, seller.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(sale => sale.Quotation).WithOne(quote => quote.Sale)
+                .HasForeignKey<Sale>(sale => new { sale.OrganizationId, sale.QuotationId })
+                .HasPrincipalKey<Quotation>(quote => new { quote.OrganizationId, quote.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<SaleItem>(entity =>
+        {
+            entity.ToTable("SaleItems", table =>
+            {
+                table.HasCheckConstraint("CK_SaleItems_Quantity", "\"Quantity\" > 0");
+                table.HasCheckConstraint("CK_SaleItems_Price", "\"UnitPrice\" >= 0 AND \"Total\" >= 0");
+                table.HasCheckConstraint("CK_SaleItems_Discount", "\"DiscountPercent\" BETWEEN 0 AND 100");
+            });
+            entity.Property(item => item.Id).HasColumnName("ID");
+            entity.Property(item => item.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(item => item.SaleId).HasColumnName("IDSale");
+            entity.Property(item => item.ProductId).HasColumnName("IDProduct");
+            entity.Property(item => item.ProductName).HasMaxLength(80);
+            entity.Property(item => item.UnitPrice).HasPrecision(12, 2);
+            entity.Property(item => item.DiscountPercent).HasPrecision(5, 2);
+            entity.Property(item => item.Total).HasPrecision(12, 2);
+            entity.HasIndex(item => new { item.OrganizationId, item.SaleId, item.ProductId }).IsUnique();
+            entity.HasOne<Sale>().WithMany(sale => sale.Items)
+                .HasForeignKey(item => new { item.OrganizationId, item.SaleId })
+                .HasPrincipalKey(sale => new { sale.OrganizationId, sale.Id });
+            entity.HasOne<Product>().WithMany()
+                .HasForeignKey(item => new { item.OrganizationId, item.ProductId })
+                .HasPrincipalKey(product => new { product.OrganizationId, product.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<SalePayment>(entity =>
+        {
+            entity.ToTable("SalePayments", table => table.HasCheckConstraint("CK_SalePayments_Amount", "\"Amount\" > 0"));
+            entity.Property(payment => payment.Id).HasColumnName("ID");
+            entity.Property(payment => payment.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(payment => payment.SaleId).HasColumnName("IDSale");
+            entity.Property(payment => payment.CashAccountId).HasColumnName("IDCashAccount");
+            entity.Property(payment => payment.Amount).HasPrecision(14, 2);
+            entity.HasOne<Sale>().WithOne(sale => sale.Payment)
+                .HasForeignKey<SalePayment>(payment => new { payment.OrganizationId, payment.SaleId })
+                .HasPrincipalKey<Sale>(sale => new { sale.OrganizationId, sale.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(payment => payment.CashAccount).WithMany()
+                .HasForeignKey(payment => new { payment.OrganizationId, payment.CashAccountId })
+                .HasPrincipalKey(account => new { account.OrganizationId, account.Id })
                 .OnDelete(DeleteBehavior.Restrict);
         });
 

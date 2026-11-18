@@ -29,13 +29,14 @@ public sealed class QuotationStore(WscdDbContext db) : IQuotationStore
 
         return await query.OrderByDescending(quotation => quotation.Date).ThenByDescending(quotation => quotation.Id)
             .Select(quotation => new QuotationSummary(quotation.Id, quotation.Date, quotation.Customer.Name,
-                quotation.Items.Sum(item => item.Total), quotation.IsCompleted))
+                quotation.Items.Sum(item => item.Total), quotation.IsCompleted, quotation.Sale != null))
             .ToListAsync();
     }
 
     public Task<Quotation?> FindAsync(int id) => db.Quotations.AsNoTracking()
         .Include(quotation => quotation.Customer)
         .Include(quotation => quotation.Seller)
+        .Include(quotation => quotation.Sale)
         .Include(quotation => quotation.Items.OrderBy(item => item.Id))
         .SingleOrDefaultAsync(quotation => quotation.Id == id);
 
@@ -47,7 +48,7 @@ public sealed class QuotationStore(WscdDbContext db) : IQuotationStore
 
     public async Task<bool> UpdateAsync(int id, Func<Quotation, bool> change)
     {
-        var quotation = await db.Quotations.Include(quotation => quotation.Items)
+        var quotation = await db.Quotations.Include(quotation => quotation.Items).Include(quotation => quotation.Sale)
             .SingleOrDefaultAsync(quotation => quotation.Id == id);
         return quotation is not null && change(quotation) && await SaveAsync(quotation);
     }

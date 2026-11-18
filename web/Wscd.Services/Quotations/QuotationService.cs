@@ -14,8 +14,6 @@ public sealed class QuotationService(
     IPromotionStore promotions,
     ICurrentOrganization currentOrganization)
 {
-    private const decimal MaxLineTotal = 9_999_999_999.99m;
-
     public Task<IReadOnlyList<QuotationSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed) =>
         store.ListAsync(search?.Trim(), from, to, completed);
 
@@ -55,12 +53,11 @@ public sealed class QuotationService(
 
     public async Task<bool> AddItemAsync(int id, int productId, int quantity, decimal discountPercent)
     {
-        if (quantity <= 0 || discountPercent is < 0 or > 100 || await products.FindAsync(productId) is not { } product)
+        if (!ItemPricing.IsValid(quantity, discountPercent) || await products.FindAsync(productId) is not { } product)
         {
             return false;
         }
 
-        discountPercent = RoundMoney(discountPercent);
         var promotion = await promotions.FindByProductAsync(productId);
         return await store.UpdateAsync(id, quotation =>
         {
@@ -69,11 +66,7 @@ public sealed class QuotationService(
                 return false;
             }
 
-            var price = promotion is not null && quotation.Date >= promotion.StartDate && quotation.Date <= promotion.EndDate
-                ? promotion.PromotionPrice
-                : product.SalePrice;
-            var total = RoundMoney(quantity * price * (100 - discountPercent) / 100);
-            if (price < 0 || total > MaxLineTotal)
+            if (ItemPricing.Calculate(product, promotion, quotation.Date, quantity, discountPercent) is not { } pricing)
             {
                 return false;
             }
@@ -84,9 +77,9 @@ public sealed class QuotationService(
                 ProductId = product.Id,
                 ProductName = product.Name,
                 Quantity = quantity,
-                UnitPrice = price,
-                DiscountPercent = discountPercent,
-                Total = total
+                UnitPrice = pricing.Price,
+                DiscountPercent = pricing.Discount,
+                Total = pricing.Total
             });
             return true;
         });
@@ -98,7 +91,7 @@ public sealed class QuotationService(
 
     public Task<bool> SetCompletedAsync(int id, bool completed) => store.UpdateAsync(id, quotation =>
     {
-        if (quotation.IsCompleted == completed || (completed && quotation.Items.Count == 0))
+        if (quotation.Sale is not null || quotation.IsCompleted == completed || (completed && quotation.Items.Count == 0))
         {
             return false;
         }
@@ -106,6 +99,4 @@ public sealed class QuotationService(
         quotation.IsCompleted = completed;
         return true;
     });
-
-    private static decimal RoundMoney(decimal value) => decimal.Round(value, 2, MidpointRounding.AwayFromZero);
 }

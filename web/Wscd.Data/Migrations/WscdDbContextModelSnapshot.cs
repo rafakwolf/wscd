@@ -281,8 +281,6 @@ namespace Wscd.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_CashAccounts");
 
-                    b.HasAlternateKey("OrganizationId", "Id");
-
                     b.ToTable("CashAccounts", (string)null);
                 });
 
@@ -1074,6 +1072,154 @@ namespace Wscd.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Sales.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset?>("CompletedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDCustomer");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int?>("QuotationId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDQuotation");
+
+                    b.Property<Guid>("Revision")
+                        .IsConcurrencyToken()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("SellerId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSeller");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "CustomerId");
+
+                    b.HasIndex("OrganizationId", "Date");
+
+                    b.HasIndex("OrganizationId", "QuotationId")
+                        .IsUnique();
+
+                    b.HasIndex("OrganizationId", "SellerId");
+
+                    b.ToTable("Sales", (string)null);
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.SaleItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("DiscountPercent")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDProduct");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SaleId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSale");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "ProductId");
+
+                    b.HasIndex("OrganizationId", "SaleId", "ProductId")
+                        .IsUnique();
+
+                    b.ToTable("SaleItems", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_SaleItems_Discount", "\"DiscountPercent\" BETWEEN 0 AND 100");
+
+                            t.HasCheckConstraint("CK_SaleItems_Price", "\"UnitPrice\" >= 0 AND \"Total\" >= 0");
+
+                            t.HasCheckConstraint("CK_SaleItems_Quantity", "\"Quantity\" > 0");
+                        });
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.SalePayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("numeric(14,2)");
+
+                    b.Property<int>("CashAccountId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDCashAccount");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("SaleId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSale");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "CashAccountId");
+
+                    b.HasIndex("OrganizationId", "SaleId")
+                        .IsUnique();
+
+                    b.ToTable("SalePayments", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_SalePayments_Amount", "\"Amount\" > 0");
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1379,6 +1525,77 @@ namespace Wscd.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Sales.Sale", b =>
+                {
+                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "CustomerId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Quotations.Quotation", "Quotation")
+                        .WithOne("Sale")
+                        .HasForeignKey("Wscd.Domain.Sales.Sale", "OrganizationId", "QuotationId")
+                        .HasPrincipalKey("Wscd.Domain.Quotations.Quotation", "OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Wscd.Domain.Catalogs.Seller", "Seller")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "SellerId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Quotation");
+
+                    b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.SaleItem", b =>
+                {
+                    b.HasOne("Wscd.Domain.Catalogs.Product", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "ProductId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Sales.Sale", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrganizationId", "SaleId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.SalePayment", b =>
+                {
+                    b.HasOne("Wscd.Domain.Catalogs.CashAccount", "CashAccount")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "CashAccountId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Sales.Sale", null)
+                        .WithOne("Payment")
+                        .HasForeignKey("Wscd.Domain.Sales.SalePayment", "OrganizationId", "SaleId")
+                        .HasPrincipalKey("Wscd.Domain.Sales.Sale", "OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CashAccount");
+                });
+
             modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
                 {
                     b.Navigation("Items");
@@ -1387,6 +1604,15 @@ namespace Wscd.Data.Migrations
             modelBuilder.Entity("Wscd.Domain.Quotations.Quotation", b =>
                 {
                     b.Navigation("Items");
+
+                    b.Navigation("Sale");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.Sale", b =>
+                {
+                    b.Navigation("Items");
+
+                    b.Navigation("Payment");
                 });
 #pragma warning restore 612, 618
         }

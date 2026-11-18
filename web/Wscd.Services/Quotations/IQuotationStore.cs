@@ -10,4 +10,4 @@ public interface IQuotationStore
     Task<bool> UpdateAsync(int id, Func<Quotation, bool> change);
 }
 
-public sealed record QuotationSummary(int Id, DateOnly Date, string CustomerName, decimal Total, bool IsCompleted);
+public sealed record QuotationSummary(int Id, DateOnly Date, string CustomerName, decimal Total, bool IsCompleted, bool IsConverted);

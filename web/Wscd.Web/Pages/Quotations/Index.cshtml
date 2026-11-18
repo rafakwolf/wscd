@@ -36,7 +36,7 @@
         <div><label asp-for="Search" class="block text-sm">Cliente</label><input asp-for="Search" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="From" class="block text-sm">De</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="To" class="block text-sm">Até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
-        <div><label asp-for="Completed" class="block text-sm">Situação</label><select asp-for="Completed" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="false">Rascunho</option><option value="true">Concluído</option></select></div>
+        <div><label asp-for="Completed" class="block text-sm">Situação</label><select asp-for="Completed" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="false">Rascunho</option><option value="true">Concluído ou convertido</option></select></div>
         <div class="flex items-end gap-2"><button class="rounded border px-4 py-2">Filtrar</button><a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a></div>
     </form>
 
@@ -48,7 +48,7 @@
             {
                 <tr class="border-b last:border-0">
                     <td class="py-2">@quotation.Id</td><td>@quotation.Date.ToString("dd/MM/yyyy")</td><td>@quotation.CustomerName</td><td>@quotation.Total.ToString("C", culture)</td>
-                    <td>@(quotation.IsCompleted ? "Concluído" : "Rascunho")</td>
+                    <td>@(quotation.IsConverted ? "Convertido" : quotation.IsCompleted ? "Concluído" : "Rascunho")</td>
                     <td class="text-right"><a asp-page="./Index" asp-all-route-data="filters" asp-route-id="@quotation.Id" aria-label="Abrir orçamento nº @quotation.Id" class="underline">Abrir</a></td>
                 </tr>
             }
@@ -112,11 +112,20 @@
                     <button class="rounded bg-green-700 px-4 py-2 text-white disabled:opacity-50" disabled="@(current.Items.Count == 0)">Concluir orçamento</button>
                 </form>
             }
+            else if (current.Sale is { } sale)
+            {
+                <p class="mt-4 text-right"><a asp-page="/Sales/Index" asp-route-id="@sale.Id" class="underline">Abrir venda nº @sale.Id</a></p>
+            }
             else
             {
-                <form method="post" asp-page-handler="Reopen" asp-all-route-data="filters" asp-route-id="@current.Id" class="mt-4 text-right">
-                    <button class="rounded border px-4 py-2">Reabrir orçamento</button>
-                </form>
+                <div class="mt-4 flex flex-wrap justify-end gap-2">
+                    <form method="post" asp-page-handler="Reopen" asp-all-route-data="filters" asp-route-id="@current.Id">
+                        <button class="rounded border px-4 py-2">Reabrir orçamento</button>
+                    </form>
+                    <form method="post" asp-page-handler="Convert" asp-all-route-data="filters" asp-route-id="@current.Id">
+                        <button class="rounded bg-slate-900 px-4 py-2 text-white">Converter em venda</button>
+                    </form>
+                </div>
             }
         }
     </section>

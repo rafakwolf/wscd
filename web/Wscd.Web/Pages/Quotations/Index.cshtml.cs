@@ -4,11 +4,13 @@ using Wscd.Domain.Catalogs;
 using Wscd.Domain.Quotations;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Quotations;
+using Wscd.Services.Sales;
 
 namespace Wscd.Web.Pages.Quotations;
 
 public sealed class IndexModel(
     QuotationService quotations,
+    SaleService sales,
     ICatalogService<Customer> customers,
     ICatalogService<Seller> sellers,
     ICatalogService<Product> products) : PageModel
@@ -68,7 +70,24 @@ public sealed class IndexModel(
         "Para concluir, o orçamento deve estar em rascunho e ter ao menos um produto.");
 
     public Task<IActionResult> OnPostReopenAsync() => ChangeAsync(
-        id => quotations.SetCompletedAsync(id, false), "Orçamento reaberto.", "Só é possível reabrir um orçamento concluído.");
+        id => quotations.SetCompletedAsync(id, false), "Orçamento reaberto.", "Só é possível reabrir um orçamento concluído que ainda não foi convertido.");
+
+    public async Task<IActionResult> OnPostConvertAsync()
+    {
+        if (Id is not int id)
+        {
+            return NotFound();
+        }
+        if (ModelState.IsValid && await sales.ConvertQuotationAsync(id, DateOnly.FromDateTime(DateTime.Today)) is int saleId)
+        {
+            TempData["StatusMessage"] = "Venda aberta com os itens e preços do orçamento. Estoque e caixa só mudam na conclusão.";
+            return RedirectToPage("/Sales/Index", new { id = saleId });
+        }
+
+        Error = "Não foi possível converter. Confira se o orçamento está concluído e tente novamente.";
+        await LoadAsync();
+        return Current is null ? NotFound() : Page();
+    }
 
     private async Task<IActionResult> ChangeAsync(Func<int, Task<bool>> change, string message, string error)
     {

@@ -6,8 +6,8 @@
 
 <section class="mx-auto max-w-2xl rounded-lg bg-white p-6 shadow-sm">
     <h1 class="text-2xl font-semibold">Dados de demonstração</h1>
-    <p class="mt-2 text-sm text-slate-600">Garante 10 cadastros fictícios por módulo na organização da sua sessão. Também cria 10 compras e 10 orçamentos (5 rascunhos e 5 concluídos de cada), 10 perdas e 10 promoções. As compras concluídas geram contas a pagar.</p>
-    <p class="mt-2 text-sm text-slate-600">A carga pode ser repetida; não apaga nem altera os demais registros. Vendas ainda não estão implementadas.</p>
+    <p class="mt-2 text-sm text-slate-600">Garante 10 cadastros fictícios por módulo na organização da sua sessão. Também cria 10 compras, 10 orçamentos e 10 vendas (5 rascunhos e 5 concluídos de cada), 10 perdas e 10 promoções. As vendas concluídas baixam estoque e registram recebimentos fictícios.</p>
+    <p class="mt-2 text-sm text-slate-600">Use a carga em uma organização de testes. Ela pode ser repetida e não apaga registros.</p>
 
     @if (Model.StatusMessage is not null)
     {

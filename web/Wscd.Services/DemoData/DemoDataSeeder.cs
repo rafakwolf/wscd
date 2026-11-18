@@ -1,10 +1,12 @@
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Purchases;
 using Wscd.Domain.Quotations;
+using Wscd.Domain.Sales;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Inventory;
 using Wscd.Services.Purchases;
 using Wscd.Services.Quotations;
+using Wscd.Services.Sales;
 
 namespace Wscd.Services.DemoData;
 
@@ -20,7 +22,8 @@ public sealed class DemoDataSeeder(
     IPurchaseService purchases,
     IStockLossService losses,
     IPromotionService promotions,
-    QuotationService quotations)
+    QuotationService quotations,
+    SaleService sales)
 {
     private const string Prefix = "DEMO · ";
     private const string CompletedPurchaseMarker = "Carga de demonstração WSCD: compra concluída";
@@ -69,7 +72,7 @@ public sealed class DemoDataSeeder(
         {
             Name = index == 1 ? Prefix + "Banco" : $"{Prefix}Banco {index:00}"
         });
-        await EnsureManyAsync(cashAccounts, index => new CashAccount
+        var demoCashAccounts = await EnsureManyAsync(cashAccounts, index => new CashAccount
         {
             Name = index == 1 ? Prefix + "Caixa principal" : $"{Prefix}Caixa {index:00}"
         });
@@ -170,6 +173,35 @@ public sealed class DemoDataSeeder(
                 (index % 2 == 1 && !await quotations.SetCompletedAsync(id, true)))
             {
                 throw new InvalidOperationException($"Não foi possível criar o orçamento fictício {index + 1:00}.");
+            }
+        }
+
+        for (var index = 0; index < demoProducts.Count; index++)
+        {
+            var customer = demoCustomers[index];
+            var marker = $"Carga de demonstração WSCD: venda {index + 1:00}";
+            Sale? sale = null;
+            foreach (var summary in await sales.ListAsync(customer.Name, null, null, null))
+            {
+                if (await sales.FindAsync(summary.Id) is { } candidate && candidate.Notes == marker)
+                {
+                    sale = candidate;
+                    break;
+                }
+            }
+
+            var id = sale?.Id ?? await sales.SaveAsync(0, customer.Id, demoSellers[index].Id, today.AddDays(-index), marker);
+            if (id is not int saleId ||
+                ((sale is null || sale.Items.Count == 0) && !await sales.AddItemAsync(saleId, demoProducts[index].Id, 1, 0)))
+            {
+                throw new InvalidOperationException($"Não foi possível criar a venda fictícia {index + 1:00}.");
+            }
+
+            if (index % 2 == 1 && sale?.IsCompleted != true &&
+                (await sales.FindAsync(saleId) is not { } draft ||
+                    await sales.CheckoutAsync(saleId, demoCashAccounts[index].Id, draft.Revision) != SaleCheckout.Completed))
+            {
+                throw new InvalidOperationException($"Não foi possível concluir a venda fictícia {index + 1:00}. Confira o estoque e a conta caixa de demonstração.");
             }
         }
     }

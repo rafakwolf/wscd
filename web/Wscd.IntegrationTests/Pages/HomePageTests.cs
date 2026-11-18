@@ -9,6 +9,7 @@ public sealed class HomePageTests(WebApplicationFactory<Program> factory)
     [Theory]
     [InlineData("/")]
     [InlineData("/orcamentos")]
+    [InlineData("/vendas")]
     public async Task AnonymousProtectedPage_RedirectsToLogin(string path)
     {
         using var client = factory.CreateClient(new WebApplicationFactoryClientOptions

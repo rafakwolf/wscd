@@ -1,5 +1,6 @@
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Organizations;
+using Wscd.Domain.Sales;
 
 namespace Wscd.Domain.Quotations;
 
@@ -14,6 +15,7 @@ public sealed class Quotation : IOrganizationScoped
     public DateOnly Date { get; set; }
     public string? Notes { get; set; }
     public bool IsCompleted { get; set; }
+    public Sale? Sale { get; set; }
     public Guid Revision { get; set; }
     public List<QuotationItem> Items { get; } = [];
     public decimal Total => Items.Sum(item => item.Total);
