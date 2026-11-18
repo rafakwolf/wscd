@@ -382,6 +382,9 @@
   .bg-red-50 {
     background-color: var(--color-red-50);
   }
+  .bg-red-700 {
+    background-color: var(--color-red-700);
+  }
   .bg-slate-50 {
     background-color: var(--color-slate-50);
   }

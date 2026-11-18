@@ -42,14 +42,18 @@ public sealed class SalePayment : IOrganizationScoped
 {
     public int Id { get; set; }
     public Guid OrganizationId { get; set; }
-    public int SaleId { get; set; }
-    public Sale Sale { get; set; } = null!;
+    public int? SaleId { get; set; }
+    public Sale? Sale { get; set; }
     public int CashAccountId { get; set; }
     public CashAccount CashAccount { get; set; } = null!;
     public PaymentMethod Method { get; set; }
     public decimal Amount { get; set; }
     public DateTimeOffset ReceivedAtUtc { get; set; }
     public int? AccountReceivableId { get; set; }
+    public AccountReceivable? Receivable { get; set; }
+    public DateTimeOffset? ReversedAtUtc { get; set; }
+    public string? ReversalReason { get; set; }
+    public string? ReversedByUserId { get; set; }
 }
 
 public enum PaymentMethod { Cash = 1, Pix = 2, DebitCard = 3, CreditCard = 4 }

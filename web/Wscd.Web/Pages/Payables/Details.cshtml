@@ -1,0 +1,81 @@
+@page "/contas-a-pagar/{id:int}"
+@using System.Globalization
+@using Wscd.Services.Reports
+@using Wscd.Web.Pages
+@model Wscd.Web.Pages.Payables.DetailsModel
+@{
+    ViewData["Title"] = $"Conta a pagar nº {Model.Id}";
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+    var account = Model.Account!;
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <p class="text-sm text-slate-600">
+        @account.Supplier.Name ·
+        @if (account.PurchaseId is int purchaseId)
+        {
+            <a asp-page="/Purchases/Edit" asp-route-id="@purchaseId" class="underline">Compra nº @purchaseId</a>
+        }
+        else
+        {
+            <span>Lançamento manual: @account.Description</span>
+        }
+    </p>
+    <p class="mt-2 text-sm text-slate-600">Emissão: @account.CreatedDate.ToString("dd/MM/yyyy") @if (account.Document is not null) { <span>· Documento: @account.Document</span> }</p>
+    <dl class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div><dt class="text-sm text-slate-600">Vencimento</dt><dd class="font-semibold">@account.DueDate.ToString("dd/MM/yyyy")</dd></div>
+        <div><dt class="text-sm text-slate-600">Situação</dt><dd class="font-semibold">@Model.StatusLabel(account.DueDate, account.Balance)</dd></div>
+        <div><dt class="text-sm text-slate-600">Valor original</dt><dd class="font-semibold">@account.Amount.ToString("C", culture)</dd></div>
+        <div><dt class="text-sm text-slate-600">Saldo a pagar</dt><dd class="font-semibold">@account.Balance.ToString("C", culture)</dd></div>
+    </dl>
+    @if (TempData["StatusMessage"] is string status)
+    {
+        <p role="status" class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
+    }
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+
+    @if (account.Balance > 0)
+    {
+        <partial name="_PayForm" model="Model" />
+    }
+
+    <h2 class="mt-6 text-lg font-semibold">Histórico de pagamentos</h2>
+    @if (account.Payments.Count == 0)
+    {
+        <p class="mt-2 text-sm text-slate-600">Nenhum pagamento registrado para este título.</p>
+    }
+    else
+    {
+        <div class="mt-3 overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Pago em (Brasília)</th><th scope="col">Meio</th><th scope="col">Conta caixa</th><th scope="col" class="text-right">Valor</th><th scope="col">Situação</th></tr></thead>
+                <tbody>
+                @foreach (var payment in account.Payments)
+                {
+                    <tr class="border-b last:border-0">
+                        <td class="py-2">@CashReportService.InBrasilia(payment.PaidAtUtc).ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td>
+                        <td class="text-right">@payment.Amount.ToString("C", culture)</td>
+                        <td>
+                            @if (payment.ReversedAtUtc is DateTimeOffset reversedAt)
+                            {
+                                <span>Estornada em @CashReportService.InBrasilia(reversedAt).ToString("dd/MM/yyyy HH:mm")</span>
+                                <p class="text-slate-600">Motivo: @payment.ReversalReason</p>
+                            }
+                            else
+                            {
+                                <a asp-page="./Reverse" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" asp-route-paymentId="@payment.Id" class="text-red-700 underline">Estornar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

@@ -41,9 +41,11 @@ No ambiente Development, entre em uma organização de testes e acesse **Dados f
 
 Em **Vendas**, registre dinheiro, Pix, débito ou crédito à vista para cada valor pago. Para deixar um saldo no crediário, informe o vencimento; para deixar a venda toda a prazo, desmarque **Registrar valor recebido agora**. A venda concluída gera uma conta a receber pelo saldo, sem lançar esse valor no Caixa antes da baixa.
 
-Em **Contas a receber**, filtre por cliente, vencimento ou situação e abra o título para registrar um recebimento parcial ou integral em uma conta caixa ativa. O crediário usa um vencimento por venda, sem juros ou bloqueio automático de limite de crédito. O ERP não processa pagamentos nem concilia repasses, taxas ou depósitos.
+Em **Contas a receber** e **Contas a pagar**, use **Nova conta** para registrar um título manual, sem venda ou compra vinculada. Informe cliente ou fornecedor, descrição, emissão, vencimento e valor; o documento é opcional. Títulos manuais e automáticos ficam na mesma listagem. No detalhe, registre uma baixa parcial ou integral em uma conta caixa ativa. O título só movimenta o Caixa quando baixado.
 
-Em **Caixa**, consulte os recebimentos por conta e período. Cada recebimento aparece com seu meio, mesmo quando vários pertencem à mesma venda. O filtro usa o dia do recebimento no horário de Brasília, independentemente da data da venda. O total é o das entradas encontradas, não o saldo da conta, e pode ser impresso ou salvo em PDF pelo navegador.
+Para corrigir uma baixa, abra o título e selecione **Estornar** no histórico. Informe o motivo e confirme. O estorno recompõe o saldo pelo valor integral daquela baixa, preserva o lançamento original e aparece no Caixa na data em que foi registrado. Isso não cancela vendas ou compras e não movimenta dinheiro fora do ERP.
+
+Em **Caixa**, consulte entradas e saídas por conta e período, no horário de Brasília. A diferença entre entradas e saídas não é saldo da conta. A consulta pode ser impressa ou salva em PDF pelo navegador. O ERP não processa os pagamentos nem concilia repasses, taxas ou depósitos.
 
 ## Banco de dados e migrations
 
@@ -65,7 +67,7 @@ dotnet ef migrations add NomeDaMigration --project Wscd.Data --startup-project W
 
 Em seguida, aplique-a com `dotnet ef database update --project Wscd.Data --startup-project Wscd.Web`.
 
-Atualize o banco até `AddAccountsReceivable` antes de usar **Vendas**, **Caixa**, **Contas a receber** ou a carga de demonstração. Os recebimentos já registrados mantêm seus valores, meios e datas. Voltar ao esquema anterior é bloqueado quando já existem títulos de crediário, pois ele não preserva o histórico dessas contas.
+Atualize o banco até `AddSettlementReversals`. A migração mantém as baixas existentes e não cria estornos retroativos. Voltar ao esquema anterior é bloqueado depois do primeiro estorno, pois o histórico da correção não seria preservado.
 
 ## Build e testes
 

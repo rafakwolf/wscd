@@ -12,7 +12,18 @@
 <partial name="_MaintenanceHeader" model="Model.ListFilters" />
 
 <section class="rounded-lg bg-white p-6 shadow-sm">
-    <p class="text-sm text-slate-600">@account.Sale.Customer.Name · <a asp-page="/Sales/Edit" asp-route-id="@account.SaleId" class="underline">Venda nº @account.SaleId</a></p>
+    <p class="text-sm text-slate-600">
+        @account.Customer.Name ·
+        @if (account.SaleId is int saleId)
+        {
+            <a asp-page="/Sales/Edit" asp-route-id="@saleId" class="underline">Venda nº @saleId</a>
+        }
+        else
+        {
+            <span>Lançamento manual: @account.Description</span>
+        }
+    </p>
+    <p class="mt-2 text-sm text-slate-600">Emissão: @account.IssueDate.ToString("dd/MM/yyyy") @if (account.Document is not null) { <span>· Documento: @account.Document</span> }</p>
     <dl class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div><dt class="text-sm text-slate-600">Vencimento</dt><dd class="font-semibold">@account.DueDate.ToString("dd/MM/yyyy")</dd></div>
         <div><dt class="text-sm text-slate-600">Situação</dt><dd class="font-semibold">@Model.StatusLabel(account.DueDate, account.Balance)</dd></div>
@@ -42,11 +53,26 @@
     {
         <div class="mt-3 overflow-x-auto">
             <table class="w-full text-left text-sm">
-                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Recebido em (Brasília)</th><th scope="col">Meio</th><th scope="col">Conta caixa</th><th scope="col" class="text-right">Valor</th></tr></thead>
+                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Recebido em (Brasília)</th><th scope="col">Meio</th><th scope="col">Conta caixa</th><th scope="col" class="text-right">Valor</th><th scope="col">Situação</th></tr></thead>
                 <tbody>
                 @foreach (var payment in account.Payments)
                 {
-                    <tr class="border-b last:border-0"><td class="py-2">@CashReportService.InBrasilia(payment.ReceivedAtUtc).ToString("dd/MM/yyyy HH:mm")</td><td>@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td><td class="text-right">@payment.Amount.ToString("C", culture)</td></tr>
+                    <tr class="border-b last:border-0">
+                        <td class="py-2">@CashReportService.InBrasilia(payment.ReceivedAtUtc).ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td>
+                        <td class="text-right">@payment.Amount.ToString("C", culture)</td>
+                        <td>
+                            @if (payment.ReversedAtUtc is DateTimeOffset reversedAt)
+                            {
+                                <span>Estornada em @CashReportService.InBrasilia(reversedAt).ToString("dd/MM/yyyy HH:mm")</span>
+                                <p class="text-slate-600">Motivo: @payment.ReversalReason</p>
+                            }
+                            else
+                            {
+                                <a asp-page="./Reverse" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" asp-route-paymentId="@payment.Id" class="text-red-700 underline">Estornar</a>
+                            }
+                        </td>
+                    </tr>
                 }
                 </tbody>
             </table>

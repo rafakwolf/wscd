@@ -835,26 +835,36 @@ namespace Wscd.Data.Migrations
                         .HasPrecision(12, 2)
                         .HasColumnType("numeric(12,2)");
 
+                    b.Property<decimal>("Balance")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
                     b.Property<DateOnly>("CreatedDate")
                         .HasColumnType("date")
                         .HasColumnName("CreatedDate");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(160)
+                        .HasColumnType("character varying(160)");
+
+                    b.Property<string>("Document")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
 
                     b.Property<DateOnly>("DueDate")
                         .HasColumnType("date")
                         .HasColumnName("DueDate");
 
-                    b.Property<bool>("IsPaid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
-
                     b.Property<Guid>("OrganizationId")
                         .HasColumnType("uuid")
                         .HasColumnName("IDOrganization");
 
-                    b.Property<int>("PurchaseId")
+                    b.Property<int?>("PurchaseId")
                         .HasColumnType("integer")
                         .HasColumnName("IDPurchase");
+
+                    b.Property<Guid>("Revision")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("SupplierId")
                         .HasColumnType("integer")
@@ -863,14 +873,75 @@ namespace Wscd.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_AccountsPayable");
 
-                    b.HasAlternateKey("OrganizationId", "Id");
+                    b.HasIndex("OrganizationId", "DueDate");
 
                     b.HasIndex("OrganizationId", "PurchaseId")
                         .IsUnique();
 
                     b.HasIndex("OrganizationId", "SupplierId");
 
-                    b.ToTable("AccountsPayable", (string)null);
+                    b.ToTable("AccountsPayable", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_AccountsPayable_Balance", "\"Balance\" BETWEEN 0 AND \"Amount\"");
+                        });
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.PayablePayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccountPayableId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDAccountPayable");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.Property<int>("CashAccountId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDCashAccount");
+
+                    b.Property<int>("Method")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<DateTimeOffset>("PaidAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ReversalReason")
+                        .HasMaxLength(240)
+                        .HasColumnType("character varying(240)");
+
+                    b.Property<DateTimeOffset?>("ReversedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ReversedByUserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("character varying(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "AccountPayableId");
+
+                    b.HasIndex("OrganizationId", "CashAccountId");
+
+                    b.ToTable("PayablePayments", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_PayablePayments_Amount", "\"Amount\" > 0");
+
+                            t.HasCheckConstraint("CK_PayablePayments_Method", "\"Method\" IN (1, 2, 3, 4)");
+
+                            t.HasCheckConstraint("CK_PayablePayments_Reversal", "(\"ReversedAtUtc\" IS NULL) = (\"ReversalReason\" IS NULL) AND (\"ReversedAtUtc\" IS NULL) = (\"ReversedByUserId\" IS NULL)");
+                        });
                 });
 
             modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
@@ -1089,18 +1160,38 @@ namespace Wscd.Data.Migrations
                         .HasPrecision(14, 2)
                         .HasColumnType("numeric(14,2)");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDCustomer");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(160)
+                        .HasColumnType("character varying(160)");
+
+                    b.Property<string>("Document")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
+
                     b.Property<DateOnly>("DueDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("IssueDate")
                         .HasColumnType("date");
 
                     b.Property<Guid>("OrganizationId")
                         .HasColumnType("uuid")
                         .HasColumnName("IDOrganization");
 
-                    b.Property<int>("SaleId")
+                    b.Property<Guid>("Revision")
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("SaleId")
                         .HasColumnType("integer")
                         .HasColumnName("IDSale");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "CustomerId");
 
                     b.HasIndex("OrganizationId", "DueDate");
 
@@ -1254,21 +1345,38 @@ namespace Wscd.Data.Migrations
                     b.Property<DateTimeOffset>("ReceivedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("SaleId")
+                    b.Property<string>("ReversalReason")
+                        .HasMaxLength(240)
+                        .HasColumnType("character varying(240)");
+
+                    b.Property<DateTimeOffset?>("ReversedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ReversedByUserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("character varying(450)");
+
+                    b.Property<int?>("SaleId")
                         .HasColumnType("integer")
                         .HasColumnName("IDSale");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OrganizationId", "AccountReceivableId");
+
                     b.HasIndex("OrganizationId", "CashAccountId");
 
-                    b.HasIndex("OrganizationId", "SaleId", "AccountReceivableId");
+                    b.HasIndex("OrganizationId", "SaleId");
 
                     b.ToTable("SalePayments", null, t =>
                         {
                             t.HasCheckConstraint("CK_SalePayments_Amount", "\"Amount\" > 0");
 
                             t.HasCheckConstraint("CK_SalePayments_Method", "\"Method\" IN (1, 2, 3, 4)");
+
+                            t.HasCheckConstraint("CK_SalePayments_Origin", "(\"IDSale\" IS NULL) <> (\"IDAccountReceivable\" IS NULL)");
+
+                            t.HasCheckConstraint("CK_SalePayments_Reversal", "((\"ReversedAtUtc\" IS NULL) = (\"ReversalReason\" IS NULL) AND (\"ReversedAtUtc\" IS NULL) = (\"ReversedByUserId\" IS NULL)) AND (\"ReversedAtUtc\" IS NULL OR \"IDAccountReceivable\" IS NOT NULL)");
                         });
                 });
 
@@ -1477,15 +1585,37 @@ namespace Wscd.Data.Migrations
                         .WithMany()
                         .HasForeignKey("OrganizationId", "PurchaseId")
                         .HasPrincipalKey("OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Wscd.Domain.Catalogs.Supplier", null)
+                    b.HasOne("Wscd.Domain.Catalogs.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("OrganizationId", "SupplierId")
                         .HasPrincipalKey("OrganizationId", "Id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.PayablePayment", b =>
+                {
+                    b.HasOne("Wscd.Domain.Purchases.AccountPayable", "Payable")
+                        .WithMany("Payments")
+                        .HasForeignKey("OrganizationId", "AccountPayableId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.CashAccount", "CashAccount")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "CashAccountId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CashAccount");
+
+                    b.Navigation("Payable");
                 });
 
             modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
@@ -1579,12 +1709,20 @@ namespace Wscd.Data.Migrations
 
             modelBuilder.Entity("Wscd.Domain.Sales.AccountReceivable", b =>
                 {
+                    b.HasOne("Wscd.Domain.Catalogs.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "CustomerId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("Wscd.Domain.Sales.Sale", "Sale")
                         .WithOne("Receivable")
                         .HasForeignKey("Wscd.Domain.Sales.AccountReceivable", "OrganizationId", "SaleId")
                         .HasPrincipalKey("Wscd.Domain.Sales.Sale", "OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Customer");
 
                     b.Navigation("Sale");
                 });
@@ -1643,6 +1781,12 @@ namespace Wscd.Data.Migrations
 
             modelBuilder.Entity("Wscd.Domain.Sales.SalePayment", b =>
                 {
+                    b.HasOne("Wscd.Domain.Sales.AccountReceivable", "Receivable")
+                        .WithMany("Payments")
+                        .HasForeignKey("OrganizationId", "AccountReceivableId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Wscd.Domain.Catalogs.CashAccount", "CashAccount")
                         .WithMany()
                         .HasForeignKey("OrganizationId", "CashAccountId")
@@ -1654,18 +1798,18 @@ namespace Wscd.Data.Migrations
                         .WithMany("Payments")
                         .HasForeignKey("OrganizationId", "SaleId")
                         .HasPrincipalKey("OrganizationId", "Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Wscd.Domain.Sales.AccountReceivable", null)
-                        .WithMany("Payments")
-                        .HasForeignKey("OrganizationId", "SaleId", "AccountReceivableId")
-                        .HasPrincipalKey("OrganizationId", "SaleId", "Id")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("CashAccount");
 
+                    b.Navigation("Receivable");
+
                     b.Navigation("Sale");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Purchases.AccountPayable", b =>
+                {
+                    b.Navigation("Payments");
                 });
 
             modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>

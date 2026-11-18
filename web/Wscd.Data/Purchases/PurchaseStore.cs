@@ -202,7 +202,8 @@ public sealed class PurchaseStore(WscdDbContext db) : IPurchaseStore
                 SupplierId = purchase.SupplierId,
                 CreatedDate = receivedDate,
                 DueDate = dueDate,
-                Amount = purchase.Total
+                Amount = purchase.Total,
+                Balance = purchase.Total
             });
 
             await db.SaveChangesAsync();

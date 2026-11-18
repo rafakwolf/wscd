@@ -29,10 +29,11 @@ public static class DependencyInjection
         services.AddScoped<IStockLossStore, StockLossStore>();
         services.AddScoped<IPromotionStore, PromotionStore>();
         services.AddScoped<IStockReportStore, StockReportStore>();
-        services.AddScoped<ICashReceiptStore, CashReceiptStore>();
+        services.AddScoped<ICashMovementStore, CashMovementStore>();
         services.AddScoped<IQuotationStore, QuotationStore>();
         services.AddScoped<ISaleStore, SaleStore>();
         services.AddScoped<IReceivableStore, ReceivableStore>();
+        services.AddScoped<IPayableStore, PayableStore>();
         return services;
     }
 }

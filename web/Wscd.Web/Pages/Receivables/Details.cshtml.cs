@@ -28,12 +28,12 @@ public sealed class DetailsModel(ReceivableService receivables, ICatalogService<
         return Page();
     }
 
-    public async Task<IActionResult> OnPostReceiveAsync(decimal? expectedBalance)
+    public async Task<IActionResult> OnPostReceiveAsync(Guid? expectedRevision)
     {
-        var result = ModelState.IsValid && expectedBalance.HasValue
-            ? await receivables.ReceiveAsync(Id, Payment, expectedBalance.Value)
-            : ReceivableSettlement.InvalidPayment;
-        if (result == ReceivableSettlement.Received)
+        var result = ModelState.IsValid && expectedRevision.HasValue
+            ? await receivables.ReceiveAsync(Id, Payment, expectedRevision.Value)
+            : TitleSettlement.InvalidPayment;
+        if (result == TitleSettlement.Recorded)
         {
             TempData["StatusMessage"] = "Recebimento registrado no Caixa e saldo atualizado.";
             return RedirectToPage("./Details", new RouteValueDictionary(ListFilters) { ["id"] = Id });
@@ -41,8 +41,8 @@ public sealed class DetailsModel(ReceivableService receivables, ICatalogService<
 
         Error = result switch
         {
-            ReceivableSettlement.InvalidCashAccount => "Selecione uma conta caixa ativa da organização.",
-            ReceivableSettlement.Conflict => "O saldo mudou. Confira o valor atualizado antes de registrar outro recebimento.",
+            TitleSettlement.InvalidCashAccount => "Selecione uma conta caixa ativa da organização.",
+            TitleSettlement.Conflict => "O saldo mudou. Confira o valor atualizado antes de registrar outro recebimento.",
             _ => "Informe o meio, a conta caixa e um valor positivo de até duas casas decimais, sem ultrapassar o saldo."
         };
         await LoadAsync();

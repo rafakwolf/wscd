@@ -1,6 +1,6 @@
 namespace Wscd.Services.Reports;
 
-public sealed class CashReportService(ICashReceiptStore store)
+public sealed class CashReportService(ICashMovementStore store)
 {
     private static readonly TimeZoneInfo Brasilia = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
 
@@ -15,13 +15,13 @@ public sealed class CashReportService(ICashReceiptStore store)
             return null;
         }
 
-        var receipts = await store.ListAsync(cashAccountId,
+        var movements = await store.ListAsync(cashAccountId,
             from is DateOnly start ? StartOfDayUtc(start) : null,
             to is DateOnly end && end != DateOnly.MaxValue ? StartOfDayUtc(end.AddDays(1)) : null);
 
-        return new CashReport(receipts.Select(receipt => receipt with
+        return new CashReport(movements.OrderByDescending(movement => movement.OccurredAt).Select(movement => movement with
         {
-            ReceivedAt = InBrasilia(receipt.ReceivedAt)
+            OccurredAt = InBrasilia(movement.OccurredAt)
         }).ToArray());
     }
 
@@ -37,7 +37,8 @@ public sealed class CashReportService(ICashReceiptStore store)
     }
 }
 
-public sealed record CashReport(IReadOnlyList<CashReceipt> Receipts)
+public sealed record CashReport(IReadOnlyList<CashMovement> Movements)
 {
-    public decimal Total => Receipts.Sum(receipt => receipt.Amount);
+    public decimal TotalEntries => Movements.Where(item => !item.IsExpense).Sum(item => item.Amount);
+    public decimal TotalExpenses => Movements.Where(item => item.IsExpense).Sum(item => item.Amount);
 }

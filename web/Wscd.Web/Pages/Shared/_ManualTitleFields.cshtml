@@ -1,0 +1,12 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model Wscd.Services.Sales.ManualTitleInput
+@{
+    var parties = (IEnumerable<SelectListItem>)ViewData["Parties"]!;
+}
+
+<div><label asp-for="PartyId" class="block text-sm">@ViewData["PartyLabel"]</label><select asp-for="PartyId" asp-items="parties" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option></select></div>
+<div><label asp-for="Document" class="block text-sm">Documento (opcional)</label><input asp-for="Document" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+<div class="sm:col-span-2"><label asp-for="Description" class="block text-sm">Descrição</label><input asp-for="Description" maxlength="160" required class="mt-1 w-full rounded border px-3 py-2" /></div>
+<div><label asp-for="IssueDate" class="block text-sm">Emissão</label><input asp-for="IssueDate" type="date" required class="mt-1 w-full rounded border px-3 py-2" /></div>
+<div><label asp-for="DueDate" class="block text-sm">Vencimento</label><input asp-for="DueDate" type="date" required class="mt-1 w-full rounded border px-3 py-2" /></div>
+<div><label asp-for="Amount" class="block text-sm">Valor (R$)</label><input asp-for="Amount" type="number" inputmode="decimal" min="0.01" step="0.01" required class="mt-1 w-full rounded border px-3 py-2" /></div>

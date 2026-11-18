@@ -13,6 +13,12 @@ public sealed class HomePageTests(WebApplicationFactory<Program> factory)
     [InlineData("/caixa")]
     [InlineData("/contas-a-receber")]
     [InlineData("/contas-a-receber/1")]
+    [InlineData("/contas-a-receber/nova")]
+    [InlineData("/contas-a-pagar")]
+    [InlineData("/contas-a-pagar/nova")]
+    [InlineData("/contas-a-pagar/1")]
+    [InlineData("/contas-a-receber/1/estornar/1")]
+    [InlineData("/contas-a-pagar/1/estornar/1")]
     [InlineData("/vendas/manutencao")]
     [InlineData("/Admin/Users/Create")]
     public async Task AnonymousProtectedPage_RedirectsToLogin(string path)

@@ -1,0 +1,23 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Wscd.Domain.Sales
+@using Wscd.Web.Pages
+@model Wscd.Services.Sales.SalePaymentInput
+@{
+    var balance = (string)ViewData["Balance"]!;
+    var accounts = (IEnumerable<SelectListItem>)ViewData["CashAccounts"]!;
+}
+<input type="hidden" name="expectedRevision" value="@ViewData["Revision"]" />
+<div>
+    <label asp-for="Method" class="block text-sm">@(ViewData["MethodLabel"] ?? "Meio de recebimento")</label>
+    <select asp-for="Method" required class="mt-1 w-full rounded border px-3 py-2">
+        <option value="">Selecione</option>
+        @foreach (var method in Enum.GetValues<PaymentMethod>()) { <option value="@((int)method)">@PaymentLabels.For(method)</option> }
+    </select>
+</div>
+<div>
+    <label asp-for="CashAccountId" class="block text-sm">Conta caixa</label>
+    <select asp-for="CashAccountId" asp-items="accounts" required class="mt-1 w-full rounded border px-3 py-2">
+        <option value="">Selecione</option>
+    </select>
+</div>
+<div><label asp-for="Amount" class="block text-sm">@(ViewData["AmountLabel"] ?? "Valor recebido (R$)")</label><input asp-for="Amount" type="number" inputmode="decimal" min="0.01" max="@balance" step="0.01" required class="mt-1 w-full rounded border px-3 py-2" /></div>

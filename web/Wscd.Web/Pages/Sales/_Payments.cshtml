@@ -6,6 +6,7 @@
 @{
     var current = Model.Current!;
     var culture = CultureInfo.GetCultureInfo("pt-BR");
+    var payments = current.Payments.Concat(current.Receivable?.Payments ?? []).OrderBy(payment => payment.ReceivedAtUtc).ThenBy(payment => payment.Id).ToArray();
 }
 
 <section class="mt-6 border-t pt-4" aria-labelledby="payment-heading">
@@ -16,7 +17,7 @@
         <a asp-page="/Receivables/Details" asp-route-id="@receivable.Id" class="mt-2 inline-block text-sm underline">Consultar conta a receber</a>
     }
 
-    @if (current.IsCompleted && current.Payments.Count == 0)
+    @if (current.IsCompleted && payments.Length == 0)
     {
         <p class="mt-3 text-sm text-slate-600">Nenhum recebimento registrado.</p>
     }
@@ -26,9 +27,9 @@
             <table class="w-full text-left text-sm">
                 <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Meio</th><th scope="col">Conta caixa</th><th scope="col">Origem</th><th scope="col" class="text-right">Valor recebido</th></tr></thead>
                 <tbody>
-                @foreach (var payment in current.Payments)
+                @foreach (var payment in payments)
                 {
-                    <tr class="border-b last:border-0"><td class="py-2">@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td><td>@(payment.AccountReceivableId is null ? "Na venda" : "Baixa do crediário")</td><td class="text-right">@payment.Amount.ToString("C", culture)</td></tr>
+                    <tr class="border-b last:border-0"><td class="py-2">@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td><td>@(payment.AccountReceivableId is null ? "Na venda" : payment.ReversedAtUtc is null ? "Baixa do crediário" : "Baixa do crediário estornada")</td><td class="text-right">@payment.Amount.ToString("C", culture)</td></tr>
                 }
                 </tbody>
             </table>

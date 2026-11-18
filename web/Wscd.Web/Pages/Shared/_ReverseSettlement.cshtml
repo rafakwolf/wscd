@@ -1,0 +1,37 @@
+@using System.Globalization
+@using Wscd.Web.Pages
+@model SettlementReversalView
+@{
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+    <h1 class="text-2xl font-semibold">@ViewData["Title"]</h1>
+    <a asp-page="./Details" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="rounded border px-4 py-2 text-slate-700">Voltar ao título</a>
+</div>
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <p class="font-semibold">@Model.Amount.ToString("C", culture) · @PaymentLabels.For(Model.Method) · @Model.CashAccountName</p>
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    @if (Model.IsReversed)
+    {
+        @if (Model.Error is null)
+        {
+            <p class="mt-3 text-sm text-slate-600">Esta baixa já foi estornada.</p>
+        }
+    }
+    else
+    {
+        <p class="mt-3 text-sm text-slate-600">O saldo do título será recomposto. O Caixa manterá a baixa original e registrará uma @(Model.IsPayable ? "entrada" : "saída") de estorno na mesma conta. O ERP não movimenta dinheiro automaticamente.</p>
+        <form method="post" asp-page="./Reverse" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" asp-route-paymentId="@Model.PaymentId" class="mt-4 space-y-4">
+            <input asp-for="Input.Revision" type="hidden" />
+            <div>
+                <label asp-for="Input.Reason" class="block text-sm font-medium">Motivo do estorno</label>
+                <textarea asp-for="Input.Reason" maxlength="240" rows="3" required class="mt-1 w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <button class="rounded bg-red-700 px-4 py-2 text-white">Confirmar estorno</button>
+        </form>
+    }
+</section>

@@ -29,6 +29,7 @@ public sealed class WscdDbContext(
     public DbSet<Purchase> Purchases => Set<Purchase>();
     public DbSet<PurchaseItem> PurchaseItems => Set<PurchaseItem>();
     public DbSet<AccountPayable> AccountsPayable => Set<AccountPayable>();
+    public DbSet<PayablePayment> PayablePayments => Set<PayablePayment>();
     public DbSet<StockLoss> StockLosses => Set<StockLoss>();
     public DbSet<Promotion> Promotions => Set<Promotion>();
     public DbSet<Quotation> Quotations => Set<Quotation>();
@@ -222,7 +223,8 @@ public sealed class WscdDbContext(
 
         builder.Entity<AccountPayable>(entity =>
         {
-            entity.ToTable("AccountsPayable");
+            entity.ToTable("AccountsPayable", table =>
+                table.HasCheckConstraint("CK_AccountsPayable_Balance", "\"Balance\" BETWEEN 0 AND \"Amount\""));
             entity.HasKey(payable => payable.Id).HasName("PK_AccountsPayable");
             entity.Property(payable => payable.Id).HasColumnName("ID").ValueGeneratedOnAdd();
             entity.Property(payable => payable.OrganizationId).HasColumnName("IDOrganization").IsRequired();
@@ -231,9 +233,12 @@ public sealed class WscdDbContext(
             entity.Property(payable => payable.CreatedDate).HasColumnName("CreatedDate");
             entity.Property(payable => payable.DueDate).HasColumnName("DueDate");
             entity.Property(payable => payable.Amount).HasPrecision(12, 2);
-            entity.Property(payable => payable.IsPaid).HasDefaultValue(false);
+            entity.Property(payable => payable.Balance).HasPrecision(12, 2);
+            entity.Property(payable => payable.Description).HasMaxLength(160);
+            entity.Property(payable => payable.Document).HasMaxLength(80);
             entity.HasAlternateKey(payable => new { payable.OrganizationId, payable.Id });
             entity.HasIndex(payable => new { payable.OrganizationId, payable.PurchaseId }).IsUnique();
+            entity.HasIndex(payable => new { payable.OrganizationId, payable.DueDate });
             entity.HasOne<Organization>()
                 .WithMany()
                 .HasForeignKey(payable => payable.OrganizationId)
@@ -243,10 +248,35 @@ public sealed class WscdDbContext(
                 .HasForeignKey(payable => new { payable.OrganizationId, payable.PurchaseId })
                 .HasPrincipalKey(purchase => new { purchase.OrganizationId, purchase.Id })
                 .OnDelete(DeleteBehavior.Restrict);
-            entity.HasOne<Supplier>()
+            entity.HasOne(payable => payable.Supplier)
                 .WithMany()
                 .HasForeignKey(payable => new { payable.OrganizationId, payable.SupplierId })
                 .HasPrincipalKey(supplier => new { supplier.OrganizationId, supplier.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<PayablePayment>(entity =>
+        {
+            entity.ToTable("PayablePayments", table =>
+            {
+                table.HasCheckConstraint("CK_PayablePayments_Amount", "\"Amount\" > 0");
+                table.HasCheckConstraint("CK_PayablePayments_Method", "\"Method\" IN (1, 2, 3, 4)");
+                table.HasCheckConstraint("CK_PayablePayments_Reversal", ReversalCheck);
+            });
+            entity.Property(payment => payment.Id).HasColumnName("ID");
+            entity.Property(payment => payment.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(payment => payment.AccountPayableId).HasColumnName("IDAccountPayable");
+            entity.Property(payment => payment.CashAccountId).HasColumnName("IDCashAccount");
+            entity.Property(payment => payment.Amount).HasPrecision(12, 2);
+            entity.Property(payment => payment.ReversalReason).HasMaxLength(240);
+            entity.Property(payment => payment.ReversedByUserId).HasMaxLength(450);
+            entity.HasOne(payment => payment.Payable).WithMany(account => account.Payments)
+                .HasForeignKey(payment => new { payment.OrganizationId, payment.AccountPayableId })
+                .HasPrincipalKey(account => new { account.OrganizationId, account.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(payment => payment.CashAccount).WithMany()
+                .HasForeignKey(payment => new { payment.OrganizationId, payment.CashAccountId })
+                .HasPrincipalKey(account => new { account.OrganizationId, account.Id })
                 .OnDelete(DeleteBehavior.Restrict);
         });
 
@@ -418,12 +448,19 @@ public sealed class WscdDbContext(
             entity.Property(account => account.Id).HasColumnName("ID");
             entity.Property(account => account.OrganizationId).HasColumnName("IDOrganization");
             entity.Property(account => account.SaleId).HasColumnName("IDSale");
+            entity.Property(account => account.CustomerId).HasColumnName("IDCustomer");
+            entity.Property(account => account.Description).HasMaxLength(160);
+            entity.Property(account => account.Document).HasMaxLength(80);
             entity.Property(account => account.Amount).HasPrecision(14, 2);
             entity.Property(account => account.Balance).HasPrecision(14, 2);
             entity.HasIndex(account => new { account.OrganizationId, account.DueDate });
             entity.HasOne(account => account.Sale).WithOne(sale => sale.Receivable)
                 .HasForeignKey<AccountReceivable>(account => new { account.OrganizationId, account.SaleId })
                 .HasPrincipalKey<Sale>(sale => new { sale.OrganizationId, sale.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(account => account.Customer).WithMany()
+                .HasForeignKey(account => new { account.OrganizationId, account.CustomerId })
+                .HasPrincipalKey(customer => new { customer.OrganizationId, customer.Id })
                 .OnDelete(DeleteBehavior.Restrict);
         });
 
@@ -433,6 +470,8 @@ public sealed class WscdDbContext(
             {
                 table.HasCheckConstraint("CK_SalePayments_Amount", "\"Amount\" > 0");
                 table.HasCheckConstraint("CK_SalePayments_Method", "\"Method\" IN (1, 2, 3, 4)");
+                table.HasCheckConstraint("CK_SalePayments_Origin", "(\"IDSale\" IS NULL) <> (\"IDAccountReceivable\" IS NULL)");
+                table.HasCheckConstraint("CK_SalePayments_Reversal", $"({ReversalCheck}) AND (\"ReversedAtUtc\" IS NULL OR \"IDAccountReceivable\" IS NOT NULL)");
             });
             entity.Property(payment => payment.Id).HasColumnName("ID");
             entity.Property(payment => payment.OrganizationId).HasColumnName("IDOrganization");
@@ -440,13 +479,15 @@ public sealed class WscdDbContext(
             entity.Property(payment => payment.CashAccountId).HasColumnName("IDCashAccount");
             entity.Property(payment => payment.AccountReceivableId).HasColumnName("IDAccountReceivable");
             entity.Property(payment => payment.Amount).HasPrecision(14, 2);
+            entity.Property(payment => payment.ReversalReason).HasMaxLength(240);
+            entity.Property(payment => payment.ReversedByUserId).HasMaxLength(450);
             entity.HasOne(payment => payment.Sale).WithMany(sale => sale.Payments)
                 .HasForeignKey(payment => new { payment.OrganizationId, payment.SaleId })
                 .HasPrincipalKey(sale => new { sale.OrganizationId, sale.Id })
                 .OnDelete(DeleteBehavior.Restrict);
-            entity.HasOne<AccountReceivable>().WithMany(account => account.Payments)
-                .HasForeignKey(payment => new { payment.OrganizationId, payment.SaleId, payment.AccountReceivableId })
-                .HasPrincipalKey(account => new { account.OrganizationId, account.SaleId, account.Id })
+            entity.HasOne(payment => payment.Receivable).WithMany(account => account.Payments)
+                .HasForeignKey(payment => new { payment.OrganizationId, payment.AccountReceivableId })
+                .HasPrincipalKey(account => new { account.OrganizationId, account.Id })
                 .OnDelete(DeleteBehavior.Restrict);
             entity.HasOne(payment => payment.CashAccount).WithMany()
                 .HasForeignKey(payment => new { payment.OrganizationId, payment.CashAccountId })
@@ -475,6 +516,9 @@ public sealed class WscdDbContext(
             builder.Entity(entityType.ClrType).HasQueryFilter(filter);
         }
     }
+
+    private const string ReversalCheck = "(\"ReversedAtUtc\" IS NULL) = (\"ReversalReason\" IS NULL) AND " +
+        "(\"ReversedAtUtc\" IS NULL) = (\"ReversedByUserId\" IS NULL)";
 
     private static void ConfigureCatalog<TEntity>(ModelBuilder builder, string table, int nameLength)
         where TEntity : class, ICatalogEntity

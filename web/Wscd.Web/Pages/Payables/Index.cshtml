@@ -1,0 +1,50 @@
+@page "/contas-a-pagar"
+@using System.Globalization
+@model Wscd.Web.Pages.Payables.IndexModel
+@{
+    ViewData["Title"] = "Contas a pagar";
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div><h1 class="text-2xl font-semibold">Contas a pagar</h1><p class="mt-1 text-sm text-slate-600">Consulte títulos manuais e de compras e registre pagamentos.</p></div>
+        <a asp-page="./Create" asp-all-route-data="Model.ListFilters" class="rounded bg-slate-900 px-4 py-2 text-white">Nova conta a pagar</a>
+    </div>
+
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div><label asp-for="Supplier" class="block text-sm">Fornecedor</label><input asp-for="Supplier" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="From" class="block text-sm">Vencimento de</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="To" class="block text-sm">Vencimento até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="Status" class="block text-sm">Situação</label><select asp-for="Status" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="Open">Em aberto</option><option value="Overdue">Vencidas</option><option value="Paid">Quitadas</option></select></div>
+        <div class="flex items-end gap-2"><button class="rounded border px-4 py-2">Filtrar</button><a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a></div>
+    </form>
+
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    else if (Model.Accounts.Count == 0)
+    {
+        <p class="py-6 text-center text-sm text-slate-500">Nenhuma conta a pagar encontrada.</p>
+    }
+    else
+    {
+        <p class="mt-5 text-right font-semibold">Saldo dos títulos listados: @Model.Accounts.Sum(account => account.Balance).ToString("C", culture)</p>
+        <div class="mt-3 overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Fornecedor</th><th scope="col">Origem</th><th scope="col">Vencimento</th><th scope="col">Valor</th><th scope="col">Saldo</th><th scope="col">Situação</th><th scope="col" class="sr-only">Ação</th></tr></thead>
+                <tbody>
+                @foreach (var account in Model.Accounts)
+                {
+                    <tr class="border-b last:border-0">
+                        <td class="py-2">@account.SupplierName</td><td>@(account.PurchaseId is int purchaseId ? $"Compra nº {purchaseId}" : account.Description)</td><td>@account.DueDate.ToString("dd/MM/yyyy")</td>
+                        <td>@account.Amount.ToString("C", culture)</td><td>@account.Balance.ToString("C", culture)</td><td>@Model.StatusLabel(account.DueDate, account.Balance)</td>
+                        <td class="text-right"><a asp-page="./Details" asp-all-route-data="Model.ListFilters" asp-route-id="@account.Id" aria-label="Consultar conta a pagar nº @account.Id" class="underline">Consultar</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

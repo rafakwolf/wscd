@@ -12,4 +12,6 @@
 - **Conta caixa**: conta usada para identificar onde o comércio recebeu ou pagou valores.
 - **Recebimento de venda**: registro de um valor pago pelo cliente, com seu meio de recebimento e a conta caixa escolhida. Uma venda pode ter mais de um recebimento; a data é a do pagamento, não a data informada no rascunho.
 - **Crediário**: parte ou todo o valor da venda que o cliente se compromete a pagar em uma data futura ou combinada com o comércio.
-- **Conta a receber**: título que registra o valor e o vencimento do saldo de uma venda no crediário. Cada baixa registra um recebimento e reduz o saldo; a conta fica quitada quando ele chega a zero.
+- **Conta a receber**: título que registra um valor devido por um cliente, lançado manualmente ou gerado pelo saldo de uma venda no crediário. Cada baixa registra uma entrada e reduz o saldo.
+- **Conta a pagar**: título que registra um valor devido a um fornecedor, lançado manualmente ou gerado pela conclusão de uma compra. Cada baixa registra uma saída e reduz o saldo.
+- **Estorno de baixa**: correção que recompõe o saldo do título pelo valor de uma baixa já registrada. O lançamento original permanece no histórico e o Caixa recebe uma contrapartida na data do estorno.

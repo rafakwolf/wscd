@@ -158,6 +158,8 @@ public sealed class SaleService(
         {
             OrganizationId = sale.OrganizationId,
             SaleId = sale.Id,
+            CustomerId = sale.CustomerId,
+            IssueDate = sale.Date,
             DueDate = date,
             Amount = remaining,
             Balance = remaining

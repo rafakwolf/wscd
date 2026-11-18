@@ -1,0 +1,19 @@
+@page "/contas-a-pagar/nova"
+@model Wscd.Web.Pages.Payables.CreateModel
+@{
+    ViewData["Title"] = "Nova conta a pagar";
+    ViewData["PartyLabel"] = "Fornecedor";
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <p class="text-sm text-slate-600">O lançamento não movimenta estoque nem Caixa. O Caixa é atualizado quando a baixa for registrada.</p>
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    <form method="post" asp-page="./Create" asp-all-route-data="Model.ListFilters" class="mt-4 grid gap-3 sm:grid-cols-2">
+        <partial name="_ManualTitleFields" for="Input" />
+        <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar título</button></div>
+    </form>
+</section>

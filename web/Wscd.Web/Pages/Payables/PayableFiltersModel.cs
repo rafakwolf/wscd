@@ -1,0 +1,27 @@
+using System.Globalization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Wscd.Services.Reports;
+using Wscd.Services.Sales;
+
+namespace Wscd.Web.Pages.Payables;
+
+public abstract class PayableFiltersModel : PageModel
+{
+    [BindProperty(SupportsGet = true)] public string? Supplier { get; set; }
+    [BindProperty(SupportsGet = true)] public DateOnly? From { get; set; }
+    [BindProperty(SupportsGet = true)] public DateOnly? To { get; set; }
+    [BindProperty(SupportsGet = true)] public TitleStatus? Status { get; set; }
+
+    public DateOnly Today { get; } = CashReportService.Today;
+    public Dictionary<string, string?> ListFilters => new()
+    {
+        ["Supplier"] = Supplier,
+        ["From"] = From?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+        ["To"] = To?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+        ["Status"] = Status?.ToString()
+    };
+
+    public string StatusLabel(DateOnly dueDate, decimal balance) =>
+        balance == 0 ? "Quitada" : dueDate < Today ? "Vencida" : "Em aberto";
+}

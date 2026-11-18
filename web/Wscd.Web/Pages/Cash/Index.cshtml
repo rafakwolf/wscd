@@ -11,11 +11,11 @@
     <div class="flex flex-wrap items-center justify-between gap-3">
         <div>
             <h1 class="text-2xl font-semibold">Caixa</h1>
-            <p class="mt-1 text-sm text-slate-600">Entradas geradas por vendas concluídas. O total do período não representa o saldo da conta.</p>
+            <p class="mt-1 text-sm text-slate-600">Entradas e saídas efetivamente registradas. A diferença no período não representa o saldo da conta.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2 print:hidden">
             <a asp-page="/Catalogs/CashAccounts/Index" class="rounded border px-4 py-2">Gerenciar contas caixa</a>
-            @if (Model.Report is { Receipts.Count: > 0 })
+            @if (Model.Report is { Movements.Count: > 0 })
             {
                 <button type="button" onclick="window.print()" class="rounded border px-4 py-2">Imprimir / Salvar PDF</button>
             }
@@ -50,37 +50,43 @@
         <div class="mt-6">
             <p class="mb-3 text-sm text-slate-600">Conta caixa: @(Model.AccountName ?? "todas") · De @(Model.From?.ToString("dd/MM/yyyy") ?? "sem limite inicial") até @(Model.To?.ToString("dd/MM/yyyy") ?? "sem limite final") · Horário de Brasília</p>
             <div class="flex flex-wrap justify-between gap-2 border-b pb-3">
-                <p class="text-sm text-slate-600">@(report.Receipts.Count == 1 ? "1 recebimento" : $"{report.Receipts.Count} recebimentos")</p>
-                <p class="font-semibold">Total de entradas no período: @report.Total.ToString("C", culture)</p>
+                <p class="font-semibold">Entradas: @report.TotalEntries.ToString("C", culture)</p>
+                <p class="font-semibold">Saídas: @report.TotalExpenses.ToString("C", culture)</p>
+                <p class="font-semibold">Diferença no período: @((report.TotalEntries - report.TotalExpenses).ToString("C", culture))</p>
             </div>
-            @if (report.Receipts.Count == 0)
+            @if (report.Movements.Count == 0)
             {
-                <p class="py-6 text-center text-sm text-slate-500">Nenhum recebimento encontrado para os filtros informados.</p>
+                <p class="py-6 text-center text-sm text-slate-500">Nenhum lançamento encontrado para os filtros informados.</p>
             }
             else
             {
                 <div class="mt-3 overflow-x-auto">
                     <table class="w-full text-left text-sm">
-                        <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Recebido em</th><th scope="col">Conta caixa</th><th scope="col">Meio</th><th scope="col">Origem</th><th scope="col">Cliente</th><th scope="col" class="text-right">Valor recebido</th></tr></thead>
+                        <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Data</th><th scope="col">Tipo</th><th scope="col">Conta caixa</th><th scope="col">Meio</th><th scope="col">Origem</th><th scope="col">Cliente / fornecedor</th><th scope="col" class="text-right">Valor</th></tr></thead>
                         <tbody>
-                        @foreach (var receipt in report.Receipts)
+                        @foreach (var movement in report.Movements)
                         {
                             <tr class="border-b last:border-0">
-                                <td class="py-2">@receipt.ReceivedAt.ToString("dd/MM/yyyy HH:mm", culture)</td>
-                                <td>@receipt.CashAccountName</td>
-                                <td>@PaymentLabels.For(receipt.Method)</td>
+                                <td class="py-2">@movement.OccurredAt.ToString("dd/MM/yyyy HH:mm", culture)</td>
+                                <td>@(movement.IsExpense ? "Saída" : "Entrada")</td>
+                                <td>@movement.CashAccountName</td>
+                                <td>@PaymentLabels.For(movement.Method)</td>
                                 <td>
-                                    @if (receipt.AccountReceivableId is int receivableId)
+                                    @if (movement.AccountPayableId is int payableId)
                                     {
-                                        <a asp-page="/Receivables/Details" asp-route-id="@receivableId" class="underline">Baixa do crediário da venda nº @receipt.SaleId</a>
+                                        <a asp-page="/Payables/Details" asp-route-id="@payableId" class="underline">@(movement.IsReversal ? "Estorno da baixa" : "Baixa") da conta a pagar nº @payableId</a>
+                                    }
+                                    else if (movement.AccountReceivableId is int receivableId)
+                                    {
+                                        <a asp-page="/Receivables/Details" asp-route-id="@receivableId" class="underline">@(movement.IsReversal ? "Estorno da baixa" : "Baixa") da conta a receber nº @receivableId</a>
                                     }
                                     else
                                     {
-                                        <a asp-page="/Sales/Edit" asp-route-id="@receipt.SaleId" class="underline">Venda nº @receipt.SaleId</a>
+                                        <a asp-page="/Sales/Edit" asp-route-id="@movement.SaleId" class="underline">Venda nº @movement.SaleId</a>
                                     }
                                 </td>
-                                <td>@receipt.CustomerName</td>
-                                <td class="text-right">@receipt.Amount.ToString("C", culture)</td>
+                                <td>@movement.PartyName</td>
+                                <td class="text-right">@movement.Amount.ToString("C", culture)</td>
                             </tr>
                         }
                         </tbody>

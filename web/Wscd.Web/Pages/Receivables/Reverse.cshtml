@@ -1,0 +1,7 @@
+@page "/contas-a-receber/{id:int}/estornar/{paymentId:int}"
+@model Wscd.Web.Pages.Receivables.ReverseModel
+@{
+    ViewData["Title"] = "Estornar recebimento";
+}
+
+<partial name="_ReverseSettlement" model="Model.Review" />

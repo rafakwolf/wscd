@@ -39,6 +39,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         .Include(sale => sale.Items.OrderBy(item => item.Id))
         .Include(sale => sale.Payments.OrderBy(payment => payment.Id)).ThenInclude(payment => payment.CashAccount)
         .Include(sale => sale.Receivable)
+            .ThenInclude(account => account!.Payments).ThenInclude(payment => payment.CashAccount)
         .AsSingleQuery()
         .SingleOrDefaultAsync(sale => sale.Id == id);
 
@@ -68,7 +69,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             }
             return true;
         }
-        catch (Exception exception) when (SalesPersistence.IsWriteConflict(exception))
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
         {
             db.ChangeTracker.Clear();
             return false;
@@ -89,7 +90,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             await db.SaveChangesAsync();
             return true;
         }
-        catch (Exception exception) when (SalesPersistence.IsWriteConflict(exception))
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
         {
             db.ChangeTracker.Clear();
             return false;
@@ -139,7 +140,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             await transaction.CommitAsync();
             return SaleCheckout.Completed;
         }
-        catch (Exception exception) when (SalesPersistence.IsWriteConflict(exception))
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
         {
             db.ChangeTracker.Clear();
             return SaleCheckout.Conflict;
