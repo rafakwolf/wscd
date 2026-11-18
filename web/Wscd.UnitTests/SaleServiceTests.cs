@@ -26,7 +26,7 @@ public sealed class SaleServiceTests
         Assert.Equal(quote.CustomerId, sale.CustomerId);
         Assert.Equal(quote.SellerId, sale.SellerId);
         Assert.False(sale.IsCompleted);
-        Assert.Null(sale.Payment);
+        Assert.Empty(sale.Payments);
         var item = Assert.Single(sale.Items);
         Assert.Equal(12.50m, item.UnitPrice);
         Assert.Equal(20m, item.DiscountPercent);
@@ -38,7 +38,7 @@ public sealed class SaleServiceTests
     }
 
     [Fact]
-    public async Task CheckoutRejectsStaleDraftAndDerivesAmountFromStoredItems()
+    public async Task CheckoutRejectsInvalidPaymentsAndRequiresExactTotalFromStoredItems()
     {
         var sale = new Sale { Id = 1, OrganizationId = Guid.NewGuid(), Revision = Guid.NewGuid() };
         sale.Items.Add(new SaleItem { Total = 8.20m });
@@ -46,20 +46,36 @@ public sealed class SaleServiceTests
         var store = new Store { Sale = sale };
         var service = new SaleService(store, null!, null!, null!, null!, null!, null!);
 
-        Assert.Equal(SaleCheckout.Conflict, await service.CheckoutAsync(sale.Id, 4, Guid.NewGuid()));
-        Assert.Null(store.Payment);
-        Assert.Equal(SaleCheckout.Completed, await service.CheckoutAsync(sale.Id, 4, sale.Revision));
-        var payment = Assert.IsType<SalePayment>(store.Payment);
-        Assert.Equal(14.50m, payment.Amount);
-        Assert.Equal(4, payment.CashAccountId);
-        Assert.Equal(sale.Id, payment.SaleId);
-        Assert.Equal(sale.OrganizationId, payment.OrganizationId);
+        var cash = new SalePaymentInput { Method = PaymentMethod.Cash, CashAccountId = 4, Amount = 8.20m };
+        var pix = new SalePaymentInput { Method = PaymentMethod.Pix, CashAccountId = 5, Amount = 6.30m };
+
+        Assert.Equal(SaleCheckout.Conflict, await service.CheckoutAsync(sale.Id, [cash, pix], Guid.NewGuid()));
+        Assert.Equal(SaleCheckout.InvalidPayments, await service.CheckoutAsync(sale.Id, [], sale.Revision));
+        Assert.Equal(SaleCheckout.PaymentTotalMismatch, await service.CheckoutAsync(sale.Id, [cash], sale.Revision));
+        pix.Amount = 6.31m;
+        Assert.Equal(SaleCheckout.PaymentTotalMismatch, await service.CheckoutAsync(sale.Id, [cash, pix], sale.Revision));
+        pix.Amount = 6.301m;
+        Assert.Equal(SaleCheckout.InvalidPayments, await service.CheckoutAsync(sale.Id, [cash, pix], sale.Revision));
+        pix.Amount = 6.30m;
+        pix.Method = (PaymentMethod)99;
+        Assert.Equal(SaleCheckout.InvalidPayments, await service.CheckoutAsync(sale.Id, [cash, pix], sale.Revision));
+        Assert.Empty(store.Payments);
+
+        pix.Method = PaymentMethod.Pix;
+        Assert.Equal(SaleCheckout.Completed, await service.CheckoutAsync(sale.Id, [cash, pix], sale.Revision));
+        Assert.Equal(new[] { (4, PaymentMethod.Cash, 8.20m), (5, PaymentMethod.Pix, 6.30m) },
+            store.Payments.Select(payment => (payment.CashAccountId, payment.Method, payment.Amount)));
+        Assert.All(store.Payments, payment =>
+        {
+            Assert.Equal(sale.Id, payment.SaleId);
+            Assert.Equal(sale.OrganizationId, payment.OrganizationId);
+        });
     }
 
     private sealed class Store : ISaleStore
     {
         public Sale? Sale { get; set; }
-        public SalePayment? Payment { get; private set; }
+        public IReadOnlyList<SalePayment> Payments { get; private set; } = [];
         public Guid? QuotationRevision { get; private set; }
         public int Creations { get; private set; }
 
@@ -72,9 +88,9 @@ public sealed class SaleServiceTests
             return Task.FromResult(true);
         }
 
-        public Task<SaleCheckout> CheckoutAsync(Sale sale, SalePayment payment, DateTimeOffset completedAt)
+        public Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, DateTimeOffset completedAt)
         {
-            Payment = payment;
+            Payments = payments;
             return Task.FromResult(SaleCheckout.Completed);
         }
 

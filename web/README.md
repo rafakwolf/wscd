@@ -39,7 +39,9 @@ npm run css:build --prefix web/Wscd.Web
 
 No ambiente Development, entre em uma organização de testes e acesse **Dados fictícios para testes** na página inicial. A carga garante 10 registros em cada cadastro, 10 compras, 10 orçamentos e 10 vendas (5 rascunhos e 5 concluídos de cada), 10 perdas e 10 promoções. Compras concluídas geram contas a pagar; vendas concluídas baixam estoque e lançam recebimentos fictícios nas contas caixa de demonstração. A carga pode ser repetida, não roda ao iniciar o app e não apaga dados nem cria usuários.
 
-Em **Caixa**, consulte os recebimentos dessas vendas por conta e período. O filtro usa o dia do recebimento no horário de Brasília, independentemente da data da venda. A tela mostra o total de entradas encontradas, não o saldo da conta, e permite imprimir ou salvar em PDF pelo navegador.
+Em **Vendas**, registre um recebimento ou combine dinheiro, Pix, cartão de débito e cartão de crédito à vista. Informe uma conta caixa e um valor para cada recebimento; os valores devem fechar o total da venda. O ERP não processa o pagamento nem concilia repasses, taxas ou depósitos.
+
+Em **Caixa**, consulte os recebimentos por conta e período. Cada recebimento aparece com seu meio, mesmo quando vários pertencem à mesma venda. O filtro usa o dia do recebimento no horário de Brasília, independentemente da data da venda. O total é o das entradas encontradas, não o saldo da conta, e pode ser impresso ou salvo em PDF pelo navegador.
 
 ## Banco de dados e migrations
 
@@ -61,7 +63,7 @@ dotnet ef migrations add NomeDaMigration --project Wscd.Data --startup-project W
 
 Em seguida, aplique-a com `dotnet ef database update --project Wscd.Data --startup-project Wscd.Web`.
 
-Atualize o banco até `AddSales` antes de usar **Orçamentos**, **Vendas** ou a carga de demonstração.
+Atualize o banco até `AddSplitSalePayments` antes de usar **Vendas**, **Caixa** ou a carga de demonstração. Os recebimentos anteriores continuam registrados como dinheiro. A reversão para `AddSales` é bloqueada se houver recebimentos divididos ou em outros meios, pois o esquema anterior não os preserva.
 
 ## Build e testes
 

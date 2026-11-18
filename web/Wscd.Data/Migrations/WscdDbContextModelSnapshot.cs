@@ -1199,6 +1199,9 @@ namespace Wscd.Data.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("IDCashAccount");
 
+                    b.Property<int>("Method")
+                        .HasColumnType("integer");
+
                     b.Property<Guid>("OrganizationId")
                         .HasColumnType("uuid")
                         .HasColumnName("IDOrganization");
@@ -1211,12 +1214,13 @@ namespace Wscd.Data.Migrations
 
                     b.HasIndex("OrganizationId", "CashAccountId");
 
-                    b.HasIndex("OrganizationId", "SaleId")
-                        .IsUnique();
+                    b.HasIndex("OrganizationId", "SaleId");
 
                     b.ToTable("SalePayments", null, t =>
                         {
                             t.HasCheckConstraint("CK_SalePayments_Amount", "\"Amount\" > 0");
+
+                            t.HasCheckConstraint("CK_SalePayments_Method", "\"Method\" IN (1, 2, 3, 4)");
                         });
                 });
 
@@ -1586,14 +1590,16 @@ namespace Wscd.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Wscd.Domain.Sales.Sale", null)
-                        .WithOne("Payment")
-                        .HasForeignKey("Wscd.Domain.Sales.SalePayment", "OrganizationId", "SaleId")
-                        .HasPrincipalKey("Wscd.Domain.Sales.Sale", "OrganizationId", "Id")
+                    b.HasOne("Wscd.Domain.Sales.Sale", "Sale")
+                        .WithMany("Payments")
+                        .HasForeignKey("OrganizationId", "SaleId")
+                        .HasPrincipalKey("OrganizationId", "Id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("CashAccount");
+
+                    b.Navigation("Sale");
                 });
 
             modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
@@ -1612,7 +1618,7 @@ namespace Wscd.Data.Migrations
                 {
                     b.Navigation("Items");
 
-                    b.Navigation("Payment");
+                    b.Navigation("Payments");
                 });
 #pragma warning restore 612, 618
         }

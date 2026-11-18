@@ -1,3 +1,4 @@
+using Wscd.Domain.Sales;
 using Wscd.Services.Reports;
 
 namespace Wscd.UnitTests;
@@ -14,16 +15,17 @@ public sealed class CashReportServiceTests
         var start = new DateTimeOffset(date.ToDateTime(new TimeOnly(startHour, 0)), TimeSpan.Zero);
         var end = new DateTimeOffset(date.AddDays(1).ToDateTime(new TimeOnly(endHour, 0)), TimeSpan.Zero);
         var store = new Store([
-            new CashReceipt(1, start.AddSeconds(-1), "Caixa", "Cliente", 10m),
-            new CashReceipt(2, start, "Caixa", "Cliente", 20.15m),
-            new CashReceipt(3, end.AddSeconds(-1), "Caixa", "Cliente", 5.10m),
-            new CashReceipt(4, end, "Caixa", "Cliente", 50m)
+            new CashReceipt(1, start.AddSeconds(-1), "Caixa", "Cliente", PaymentMethod.Cash, 10m),
+            new CashReceipt(2, start, "Caixa", "Cliente", PaymentMethod.Pix, 20.15m),
+            new CashReceipt(2, end.AddSeconds(-1), "Caixa", "Cliente", PaymentMethod.Cash, 5.10m),
+            new CashReceipt(4, end, "Caixa", "Cliente", PaymentMethod.Cash, 50m)
         ]);
 
         var report = Assert.IsType<CashReport>(await new CashReportService(store).GetAsync(7, date, date));
 
         Assert.Equal(7, store.AccountId);
-        Assert.Equal([2, 3], report.Receipts.Select(receipt => receipt.SaleId));
+        Assert.Equal([2, 2], report.Receipts.Select(receipt => receipt.SaleId));
+        Assert.Equal([PaymentMethod.Pix, PaymentMethod.Cash], report.Receipts.Select(receipt => receipt.Method));
         Assert.Equal(localStartHour, report.Receipts[0].ReceivedAt.Hour);
         Assert.Equal(date, DateOnly.FromDateTime(report.Receipts[1].ReceivedAt.DateTime));
         Assert.Equal(25.25m, report.Total);

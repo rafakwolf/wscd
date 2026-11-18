@@ -1,3 +1,5 @@
+using Wscd.Domain.Sales;
+
 namespace Wscd.Services.Reports;
 
 public interface ICashReceiptStore
@@ -5,4 +7,4 @@ public interface ICashReceiptStore
     Task<IReadOnlyList<CashReceipt>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive);
 }
 
-public sealed record CashReceipt(int SaleId, DateTimeOffset ReceivedAt, string CashAccountName, string CustomerName, decimal Amount);
+public sealed record CashReceipt(int SaleId, DateTimeOffset ReceivedAt, string CashAccountName, string CustomerName, PaymentMethod Method, decimal Amount);

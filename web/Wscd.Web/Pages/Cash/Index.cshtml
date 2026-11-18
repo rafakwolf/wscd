@@ -1,5 +1,6 @@
 @page "/caixa"
 @using System.Globalization
+@using Wscd.Web.Pages
 @model Wscd.Web.Pages.Cash.IndexModel
 @{
     ViewData["Title"] = "Caixa";
@@ -60,13 +61,14 @@
             {
                 <div class="mt-3 overflow-x-auto">
                     <table class="w-full text-left text-sm">
-                        <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Recebido em</th><th scope="col">Conta caixa</th><th scope="col">Venda</th><th scope="col">Cliente</th><th scope="col" class="text-right">Valor recebido</th></tr></thead>
+                        <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Recebido em</th><th scope="col">Conta caixa</th><th scope="col">Meio</th><th scope="col">Venda</th><th scope="col">Cliente</th><th scope="col" class="text-right">Valor recebido</th></tr></thead>
                         <tbody>
                         @foreach (var receipt in report.Receipts)
                         {
                             <tr class="border-b last:border-0">
                                 <td class="py-2">@receipt.ReceivedAt.ToString("dd/MM/yyyy HH:mm", culture)</td>
                                 <td>@receipt.CashAccountName</td>
+                                <td>@PaymentLabels.For(receipt.Method)</td>
                                 <td><a asp-page="/Sales/Edit" asp-route-id="@receipt.SaleId" class="underline">Venda nº @receipt.SaleId</a></td>
                                 <td>@receipt.CustomerName</td>
                                 <td class="text-right">@receipt.Amount.ToString("C", culture)</td>

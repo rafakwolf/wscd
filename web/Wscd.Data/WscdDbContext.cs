@@ -33,6 +33,7 @@ public sealed class WscdDbContext(
     public DbSet<Promotion> Promotions => Set<Promotion>();
     public DbSet<Quotation> Quotations => Set<Quotation>();
     public DbSet<Sale> Sales => Set<Sale>();
+    public DbSet<SalePayment> SalePayments => Set<SalePayment>();
 
     public Guid? CurrentOrganizationId => currentOrganization.OrganizationId;
 
@@ -411,15 +412,19 @@ public sealed class WscdDbContext(
 
         builder.Entity<SalePayment>(entity =>
         {
-            entity.ToTable("SalePayments", table => table.HasCheckConstraint("CK_SalePayments_Amount", "\"Amount\" > 0"));
+            entity.ToTable("SalePayments", table =>
+            {
+                table.HasCheckConstraint("CK_SalePayments_Amount", "\"Amount\" > 0");
+                table.HasCheckConstraint("CK_SalePayments_Method", "\"Method\" IN (1, 2, 3, 4)");
+            });
             entity.Property(payment => payment.Id).HasColumnName("ID");
             entity.Property(payment => payment.OrganizationId).HasColumnName("IDOrganization");
             entity.Property(payment => payment.SaleId).HasColumnName("IDSale");
             entity.Property(payment => payment.CashAccountId).HasColumnName("IDCashAccount");
             entity.Property(payment => payment.Amount).HasPrecision(14, 2);
-            entity.HasOne<Sale>().WithOne(sale => sale.Payment)
-                .HasForeignKey<SalePayment>(payment => new { payment.OrganizationId, payment.SaleId })
-                .HasPrincipalKey<Sale>(sale => new { sale.OrganizationId, sale.Id })
+            entity.HasOne(payment => payment.Sale).WithMany(sale => sale.Payments)
+                .HasForeignKey(payment => new { payment.OrganizationId, payment.SaleId })
+                .HasPrincipalKey(sale => new { sale.OrganizationId, sale.Id })
                 .OnDelete(DeleteBehavior.Restrict);
             entity.HasOne(payment => payment.CashAccount).WithMany()
                 .HasForeignKey(payment => new { payment.OrganizationId, payment.CashAccountId })

@@ -16,6 +16,10 @@ public sealed class SaleService(
     IPromotionStore promotions,
     ICurrentOrganization currentOrganization)
 {
+    // shortcut: limit checkout to ten payment lines for small retail sales.
+    public const int MaxPayments = 10;
+    private const decimal MaxSaleTotal = 999_999_999_999.99m;
+
     public Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed) =>
         store.ListAsync(search?.Trim(), from, to, completed);
 
@@ -123,10 +127,10 @@ public sealed class SaleService(
     public Task<bool> RemoveItemAsync(int id, int itemId) => store.UpdateAsync(id, sale =>
         CanChange(sale) && sale.Items.SingleOrDefault(item => item.Id == itemId) is { } item && sale.Items.Remove(item));
 
-    public async Task<SaleCheckout> CheckoutAsync(int id, int cashAccountId, Guid expectedRevision)
+    public async Task<SaleCheckout> CheckoutAsync(int id, IReadOnlyList<SalePaymentInput> payments, Guid expectedRevision)
     {
         if (await store.FindAsync(id) is not { IsCompleted: false, Items.Count: > 0 } sale ||
-            sale.Total is <= 0 or > 999_999_999_999.99m)
+            sale.Total is <= 0 or > MaxSaleTotal)
         {
             return SaleCheckout.InvalidSale;
         }
@@ -135,14 +139,26 @@ public sealed class SaleService(
             return SaleCheckout.Conflict;
         }
 
-        var payment = new SalePayment
+        if (payments.Count is < 1 or > MaxPayments || payments.Any(payment =>
+            !Enum.IsDefined(payment.Method) || payment.CashAccountId <= 0 ||
+            payment.Amount is <= 0 or > MaxSaleTotal || decimal.Round(payment.Amount, 2) != payment.Amount))
+        {
+            return SaleCheckout.InvalidPayments;
+        }
+        if (payments.Sum(payment => payment.Amount) != sale.Total)
+        {
+            return SaleCheckout.PaymentTotalMismatch;
+        }
+
+        var receipts = payments.Select(payment => new SalePayment
         {
             OrganizationId = sale.OrganizationId,
             SaleId = sale.Id,
-            CashAccountId = cashAccountId,
-            Amount = sale.Total
-        };
-        return await store.CheckoutAsync(sale, payment, DateTimeOffset.UtcNow);
+            CashAccountId = payment.CashAccountId,
+            Method = payment.Method,
+            Amount = payment.Amount
+        }).ToArray();
+        return await store.CheckoutAsync(sale, receipts, DateTimeOffset.UtcNow);
     }
 
     private static bool CanChange(Sale sale) => !sale.IsCompleted && sale.QuotationId is null;

@@ -38,7 +38,8 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         .Include(sale => sale.Customer)
         .Include(sale => sale.Seller)
         .Include(sale => sale.Items.OrderBy(item => item.Id))
-        .Include(sale => sale.Payment).ThenInclude(payment => payment!.CashAccount)
+        .Include(sale => sale.Payments.OrderBy(payment => payment.Id)).ThenInclude(payment => payment.CashAccount)
+        .AsSingleQuery()
         .SingleOrDefaultAsync(sale => sale.Id == id);
 
     public async Task<bool> CreateAsync(Sale sale, Guid? quotationRevision)
@@ -95,7 +96,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         }
     }
 
-    public async Task<SaleCheckout> CheckoutAsync(Sale sale, SalePayment payment, DateTimeOffset completedAt)
+    public async Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, DateTimeOffset completedAt)
     {
         await using var transaction = await db.Database.BeginTransactionAsync();
         try
@@ -110,15 +111,18 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
                 return SaleCheckout.Conflict;
             }
 
-            // Hold the account open until the receipt is committed, without modifying it.
-            var account = await db.CashAccounts.FromSql($"""
-                SELECT * FROM "CashAccounts"
-                WHERE "IDOrganization" = {sale.OrganizationId} AND "ID" = {payment.CashAccountId}
-                FOR SHARE
-                """).AsNoTracking().SingleOrDefaultAsync();
-            if (account is not { IsInactive: false })
+            // Lock the selected accounts in a consistent order until all receipts are committed.
+            foreach (var accountId in payments.Select(payment => payment.CashAccountId).Distinct().Order())
             {
-                return SaleCheckout.InvalidCashAccount;
+                var account = await db.CashAccounts.FromSql($"""
+                    SELECT * FROM "CashAccounts"
+                    WHERE "IDOrganization" = {sale.OrganizationId} AND "ID" = {accountId}
+                    FOR SHARE
+                    """).AsNoTracking().SingleOrDefaultAsync();
+                if (account is not { IsInactive: false })
+                {
+                    return SaleCheckout.InvalidCashAccount;
+                }
             }
 
             foreach (var item in sale.Items.OrderBy(item => item.ProductId))
@@ -131,7 +135,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
                 }
             }
 
-            db.Add(payment);
+            db.SalePayments.AddRange(payments);
             await db.SaveChangesAsync();
             await transaction.CommitAsync();
             return SaleCheckout.Completed;

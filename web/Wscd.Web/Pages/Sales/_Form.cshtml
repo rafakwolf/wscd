@@ -56,21 +56,6 @@
                 <div><button class="rounded border px-4 py-2">Adicionar produto</button></div>
             </form>
         }
-        @if (current.Payment is { } payment)
-        {
-            <p class="mt-5 rounded bg-green-50 p-3 text-sm text-green-800">Concluída. Recebimento em dinheiro de @payment.Amount.ToString("C", culture) registrado em @payment.CashAccount.Name.</p>
-        }
-        else if (!current.IsCompleted)
-        {
-            <form method="post" asp-page="./Edit" asp-page-handler="Checkout" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id" class="mt-5 flex flex-wrap items-end gap-3 border-t pt-4">
-                <input type="hidden" name="revision" value="@current.Revision" />
-                <div><label for="cashAccountId" class="block text-sm">Conta caixa do recebimento</label><select id="cashAccountId" name="cashAccountId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var account in Model.CashAccounts) { <option value="@account.Id">@account.Name</option> }</select></div>
-                <button class="rounded bg-green-700 px-4 py-2 text-white disabled:opacity-50" disabled="@(current.Total <= 0 || Model.CashAccounts.Count == 0)">Concluir e registrar recebimento</button>
-            </form>
-            @if (Model.CashAccounts.Count == 0)
-            {
-                <p class="mt-2 text-sm text-slate-600">Cadastre ou reative uma <a asp-page="/Catalogs/CashAccounts/Index" class="underline">conta caixa</a> para receber.</p>
-            }
-        }
+        <partial name="_Payments" model="Model" />
     }
 </section>

@@ -10,4 +10,4 @@
 - **Administrador da organização**: primeiro usuário criado junto com a organização; é o único membro autorizado a adicionar ou remover outros membros.
 - **Operador**: membro que usa as operações do ERP sem poder adicionar ou remover membros da organização.
 - **Conta caixa**: conta usada para identificar onde o comércio recebeu ou pagou valores.
-- **Recebimento de venda**: entrada do valor pago pelo cliente na conta caixa escolhida. Sua data é a do pagamento, não a data informada no rascunho da venda.
+- **Recebimento de venda**: registro de um valor pago pelo cliente, com seu meio de recebimento e a conta caixa escolhida. Uma venda pode ter mais de um recebimento; a data é a do pagamento, não a data informada no rascunho.

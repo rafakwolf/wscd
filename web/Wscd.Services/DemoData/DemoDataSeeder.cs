@@ -199,7 +199,12 @@ public sealed class DemoDataSeeder(
 
             if (index % 2 == 1 && sale?.IsCompleted != true &&
                 (await sales.FindAsync(saleId) is not { } draft ||
-                    await sales.CheckoutAsync(saleId, demoCashAccounts[index].Id, draft.Revision) != SaleCheckout.Completed))
+                    await sales.CheckoutAsync(saleId, [new SalePaymentInput
+                    {
+                        CashAccountId = demoCashAccounts[index].Id,
+                        Method = PaymentMethod.Cash,
+                        Amount = draft.Total
+                    }], draft.Revision) != SaleCheckout.Completed))
             {
                 throw new InvalidOperationException($"Não foi possível concluir a venda fictícia {index + 1:00}. Confira o estoque e a conta caixa de demonstração.");
             }

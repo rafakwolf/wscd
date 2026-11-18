@@ -19,7 +19,7 @@ public sealed class Sale : IOrganizationScoped
     public DateTimeOffset? CompletedAtUtc { get; set; }
     public Guid Revision { get; set; }
     public List<SaleItem> Items { get; } = [];
-    public SalePayment? Payment { get; set; }
+    public List<SalePayment> Payments { get; } = [];
     public decimal Total => Items.Sum(item => item.Total);
     public bool IsCompleted => CompletedAtUtc is not null;
 }
@@ -42,7 +42,11 @@ public sealed class SalePayment : IOrganizationScoped
     public int Id { get; set; }
     public Guid OrganizationId { get; set; }
     public int SaleId { get; set; }
+    public Sale Sale { get; set; } = null!;
     public int CashAccountId { get; set; }
     public CashAccount CashAccount { get; set; } = null!;
+    public PaymentMethod Method { get; set; }
     public decimal Amount { get; set; }
 }
+
+public enum PaymentMethod { Cash = 1, Pix = 2, DebitCard = 3, CreditCard = 4 }

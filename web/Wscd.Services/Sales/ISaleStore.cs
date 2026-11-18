@@ -8,9 +8,16 @@ public interface ISaleStore
     Task<Sale?> FindAsync(int id);
     Task<bool> CreateAsync(Sale sale, Guid? quotationRevision = null);
     Task<bool> UpdateAsync(int id, Func<Sale, bool> change);
-    Task<SaleCheckout> CheckoutAsync(Sale sale, SalePayment payment, DateTimeOffset completedAt);
+    Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, DateTimeOffset completedAt);
 }
 
 public sealed record SaleSummary(int Id, DateOnly Date, string CustomerName, decimal Total, bool IsCompleted);
 
-public enum SaleCheckout { Completed, InvalidSale, InvalidCashAccount, InsufficientStock, Conflict }
+public sealed class SalePaymentInput
+{
+    public PaymentMethod Method { get; set; }
+    public int CashAccountId { get; set; }
+    public decimal Amount { get; set; }
+}
+
+public enum SaleCheckout { Completed, InvalidSale, InvalidCashAccount, InvalidPayments, PaymentTotalMismatch, InsufficientStock, Conflict }
