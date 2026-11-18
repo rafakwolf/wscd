@@ -177,6 +177,28 @@ public sealed class SaleServiceTests
         Assert.Equal(SaleCancellation.HasReturns, await service.CancelAsync(1, input, input.ReceivableRevision, "user"));
     }
 
+    [Fact]
+    public async Task ItemCommissionCanBeSetOnAConvertedDraftButNotAfterCheckout()
+    {
+        var sale = new Sale { Id = 1, QuotationId = 3, Revision = Guid.NewGuid() };
+        var item = new SaleItem { Id = 2, Total = 30m };
+        sale.Items.Add(item);
+        var service = new SaleService(new Store { Sale = sale }, null!, null!, null!, null!, null!, null!);
+        var revision = sale.Revision;
+
+        Assert.False(await service.SetItemCommissionAsync(1, 2, -1m, revision));
+        Assert.False(await service.SetItemCommissionAsync(1, 2, 100.01m, revision));
+        Assert.False(await service.SetItemCommissionAsync(1, 2, 1.001m, revision));
+        Assert.False(await service.SetItemCommissionAsync(1, 99, 10m, revision));
+        Assert.True(await service.SetItemCommissionAsync(1, 2, 7.25m, revision));
+        Assert.Equal(30m, sale.Total);
+        Assert.False(await service.SetItemCommissionAsync(1, 2, 10m, revision));
+
+        sale.CompletedAtUtc = DateTimeOffset.UtcNow;
+        Assert.False(await service.SetItemCommissionAsync(1, 2, 10m, sale.Revision));
+        Assert.Equal(7.25m, item.CommissionPercent);
+    }
+
     private sealed class Store : ISaleStore
     {
         public Sale? Sale { get; set; }
@@ -205,7 +227,15 @@ public sealed class SaleServiceTests
         }
 
         public Task<Sale?> FindAsync(int id) => Task.FromResult(Sale?.Id == id ? Sale : null);
-        public Task<bool> UpdateAsync(int id, Func<Sale, bool> change) => throw new NotSupportedException();
+        public Task<bool> UpdateAsync(int id, Func<Sale, bool> change)
+        {
+            if (Sale is not { } sale || sale.Id != id || !change(sale))
+            {
+                return Task.FromResult(false);
+            }
+            sale.Revision = Guid.NewGuid();
+            return Task.FromResult(true);
+        }
         public Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, SaleStatus? status) => throw new NotSupportedException();
 
         public Task<SaleCancellation> CancelAsync(Sale sale, SettlementReversal cancellation)

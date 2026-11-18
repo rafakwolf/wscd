@@ -22,6 +22,7 @@ public sealed class HomePageTests(WebApplicationFactory<Program> factory)
     [InlineData("/vendas/manutencao")]
     [InlineData("/vendas/1/cancelar")]
     [InlineData("/vendas/1/devolver")]
+    [InlineData("/relatorios/comissao-vendedores")]
     [InlineData("/Admin/Users/Create")]
     public async Task AnonymousProtectedPage_RedirectsToLogin(string path)
     {

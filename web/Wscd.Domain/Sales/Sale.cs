@@ -42,6 +42,7 @@ public sealed class SaleItem : IOrganizationScoped
     public int Quantity { get; set; }
     public decimal UnitPrice { get; set; }
     public decimal DiscountPercent { get; set; }
+    public decimal CommissionPercent { get; set; }
     public decimal Total { get; set; }
 }
 

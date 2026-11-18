@@ -30,12 +30,29 @@
     {
         <div class="mt-6 overflow-x-auto">
             <table class="w-full text-left text-sm">
-                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Produto</th><th scope="col">Quantidade</th><th scope="col">Preço unitário</th><th scope="col">Desconto</th><th scope="col">Total</th>@if (Model.CanEdit) { <th scope="col" class="sr-only">Ação</th> }</tr></thead>
+                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Produto</th><th scope="col">Quantidade</th><th scope="col">Preço unitário</th><th scope="col">Desconto</th><th scope="col">Total</th><th scope="col">Comissão (%)</th>@if (Model.CanEdit) { <th scope="col" class="sr-only">Ação</th> }</tr></thead>
                 <tbody>
                 @foreach (var item in current.Items)
                 {
                     <tr class="border-b last:border-0">
                         <td class="py-2">@item.ProductName</td><td>@item.Quantity</td><td>@item.UnitPrice.ToString("C", culture)</td><td>@(item.DiscountPercent.ToString("0.##", culture))%</td><td>@item.Total.ToString("C", culture)</td>
+                        <td>
+                            @if (!current.IsCompleted)
+                            {
+                                <form method="post" asp-page="./Edit" asp-page-handler="SetCommission" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id" class="flex items-center gap-2">
+                                    <input type="hidden" name="itemId" value="@item.Id" />
+                                    <input type="hidden" name="revision" value="@current.Revision" />
+                                    <input type="hidden" name="__Invariant" value="commissionPercent" />
+                                    <input type="number" name="commissionPercent" value="@item.CommissionPercent.ToString("0.##", CultureInfo.InvariantCulture)"
+                                           min="0" max="100" step="0.01" required aria-label="Comissão de @item.ProductName em porcentagem" class="w-24 rounded border px-2 py-1" />
+                                    <button aria-label="Salvar comissão de @item.ProductName" class="underline">Salvar</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span>@item.CommissionPercent.ToString("0.##", culture)%</span>
+                            }
+                        </td>
                         @if (Model.CanEdit)
                         {
                             <td class="text-right"><form method="post" asp-page="./Edit" asp-page-handler="RemoveItem" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id"><input type="hidden" name="itemId" value="@item.Id" /><button aria-label="Remover @item.ProductName" class="text-red-700 underline">Remover</button></form></td>

@@ -430,6 +430,7 @@ public sealed class WscdDbContext(
                 table.HasCheckConstraint("CK_SaleItems_Quantity", "\"Quantity\" > 0");
                 table.HasCheckConstraint("CK_SaleItems_Price", "\"UnitPrice\" >= 0 AND \"Total\" >= 0");
                 table.HasCheckConstraint("CK_SaleItems_Discount", "\"DiscountPercent\" BETWEEN 0 AND 100");
+                table.HasCheckConstraint("CK_SaleItems_Commission", "\"CommissionPercent\" BETWEEN 0 AND 100");
             });
             entity.Property(item => item.Id).HasColumnName("ID");
             entity.Property(item => item.OrganizationId).HasColumnName("IDOrganization");
@@ -438,6 +439,7 @@ public sealed class WscdDbContext(
             entity.Property(item => item.ProductName).HasMaxLength(80);
             entity.Property(item => item.UnitPrice).HasPrecision(12, 2);
             entity.Property(item => item.DiscountPercent).HasPrecision(5, 2);
+            entity.Property(item => item.CommissionPercent).HasPrecision(5, 2).HasDefaultValue(0m);
             entity.Property(item => item.Total).HasPrecision(12, 2);
             entity.HasIndex(item => new { item.OrganizationId, item.SaleId, item.ProductId }).IsUnique();
             entity.HasOne<Sale>().WithMany(sale => sale.Items)

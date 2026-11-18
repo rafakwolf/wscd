@@ -30,6 +30,7 @@ public static class DependencyInjection
         services.AddScoped<IPromotionStore, PromotionStore>();
         services.AddScoped<IStockReportStore, StockReportStore>();
         services.AddScoped<ICashMovementStore, CashMovementStore>();
+        services.AddScoped<ISellerCommissionStore, SellerCommissionStore>();
         services.AddScoped<IQuotationStore, QuotationStore>();
         services.AddScoped<ISaleStore, SaleStore>();
         services.AddScoped<IReceivableStore, ReceivableStore>();

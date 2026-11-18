@@ -127,6 +127,26 @@ public sealed class SaleService(
     public Task<bool> RemoveItemAsync(int id, int itemId) => store.UpdateAsync(id, sale =>
         CanChange(sale) && sale.Items.SingleOrDefault(item => item.Id == itemId) is { } item && sale.Items.Remove(item));
 
+    public Task<bool> SetItemCommissionAsync(int id, int itemId, decimal percent, Guid expectedRevision)
+    {
+        if (percent is < 0 or > 100 || decimal.Round(percent, 2) != percent)
+        {
+            return Task.FromResult(false);
+        }
+
+        return store.UpdateAsync(id, sale =>
+        {
+            if (sale.IsCompleted || sale.Revision != expectedRevision ||
+                sale.Items.SingleOrDefault(item => item.Id == itemId) is not { } item)
+            {
+                return false;
+            }
+
+            item.CommissionPercent = percent;
+            return true;
+        });
+    }
+
     public async Task<SaleCheckout> CheckoutAsync(int id, IReadOnlyList<SalePaymentInput> payments, Guid expectedRevision, DateOnly? dueDate = null)
     {
         if (await store.FindAsync(id) is not { IsCompleted: false, Items.Count: > 0 } sale ||

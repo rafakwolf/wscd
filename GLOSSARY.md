@@ -17,3 +17,4 @@
 - **Estorno de baixa**: correção que recompõe o saldo do título pelo valor de uma baixa já registrada. O lançamento original permanece no histórico e o Caixa recebe uma contrapartida na data do estorno.
 - **Cancelamento de venda**: desfaz integralmente uma venda concluída depois da devolução dos produtos e dos valores aplicáveis. Recompõe o estoque, encerra o crediário e compensa no Caixa os recebimentos ainda não estornados, sem apagar o histórico.
 - **Devolução de itens**: aceita quantidades de uma venda concluída pelo valor líquido original. Repõe somente o que o operador indicar, abate primeiro o saldo do crediário e registra no Caixa apenas a parte devolvida ao cliente. A venda e suas baixas continuam no histórico.
+- **Comissão por vendedor**: percentual registrado no item da venda e travado na conclusão. O relatório soma, por produto, as comissões calculadas sobre os valores com desconto e líquidos de devoluções; não registra pagamento ao vendedor.

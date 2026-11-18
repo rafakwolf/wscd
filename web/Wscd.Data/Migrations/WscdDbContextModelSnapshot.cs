@@ -1279,6 +1279,12 @@ namespace Wscd.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<decimal>("CommissionPercent")
+                        .ValueGeneratedOnAdd()
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)")
+                        .HasDefaultValue(0m);
+
                     b.Property<decimal>("DiscountPercent")
                         .HasPrecision(5, 2)
                         .HasColumnType("numeric(5,2)");
@@ -1320,6 +1326,8 @@ namespace Wscd.Data.Migrations
 
                     b.ToTable("SaleItems", null, t =>
                         {
+                            t.HasCheckConstraint("CK_SaleItems_Commission", "\"CommissionPercent\" BETWEEN 0 AND 100");
+
                             t.HasCheckConstraint("CK_SaleItems_Discount", "\"DiscountPercent\" BETWEEN 0 AND 100");
 
                             t.HasCheckConstraint("CK_SaleItems_Price", "\"UnitPrice\" >= 0 AND \"Total\" >= 0");

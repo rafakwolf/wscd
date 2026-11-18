@@ -54,6 +54,10 @@ public sealed class EditModel(
     public Task<IActionResult> OnPostRemoveItemAsync(int itemId) => ChangeItemsAsync(
         id => sales.RemoveItemAsync(id, itemId), "Produto removido.", "Não foi possível remover o produto desta venda.");
 
+    public Task<IActionResult> OnPostSetCommissionAsync(int itemId, decimal? commissionPercent, Guid revision) => ChangeItemsAsync(
+        id => commissionPercent is decimal percent ? sales.SetItemCommissionAsync(id, itemId, percent, revision) : Task.FromResult(false),
+        "Comissão do item atualizada.", "Não foi possível salvar a comissão. Informe um percentual de 0 a 100 com até duas casas decimais.");
+
     public async Task<IActionResult> OnPostCheckoutAsync(Guid revision)
     {
         if (Id is not int id)

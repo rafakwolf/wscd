@@ -41,6 +41,8 @@ No ambiente Development, entre em uma organização de testes e acesse **Dados f
 
 Em **Vendas**, registre dinheiro, Pix, débito ou crédito à vista para cada valor pago. Para deixar um saldo no crediário, informe o vencimento; para deixar a venda toda a prazo, desmarque **Registrar valor recebido agora**. A venda concluída gera uma conta a receber pelo saldo, sem lançar esse valor no Caixa antes da baixa.
 
+No rascunho, salve o percentual de **Comissão (%)** em cada item aplicável. Depois da conclusão, consulte **Comissão por vendedor** em Vendas: filtre pelo vendedor e pela data da venda, confira o total líquido e imprima ou salve como PDF. Cancelamentos são excluídos e devoluções reduzem a base mesmo quando registradas depois do período selecionado. O relatório não lança o pagamento da comissão.
+
 Para desfazer uma venda concluída, abra **Consultar** e selecione **Cancelar venda**. Confira os recebimentos, receba os produtos de volta e devolva os valores aplicáveis fora do ERP antes de confirmar com o motivo. O cancelamento recompõe o estoque, encerra o crediário e lança a contrapartida dos recebimentos não estornados. A venda continua disponível para consulta, como **Cancelada**.
 
 Para devolver itens sem apagar a venda, abra **Consultar → Registrar devolução**. Informe as quantidades, o motivo e quais itens podem voltar ao estoque. Na conferência, o ERP mostra o abatimento do saldo do crediário e, se sobrar valor, quanto devolver ao cliente. Efetue o reembolso fora do ERP e informe o meio e a conta caixa usados (uma conta por devolução). Depois da primeira devolução, use esse mesmo fluxo para os itens restantes em vez de cancelar a venda.
@@ -71,7 +73,7 @@ dotnet ef migrations add NomeDaMigration --project Wscd.Data --startup-project W
 
 Em seguida, aplique-a com `dotnet ef database update --project Wscd.Data --startup-project Wscd.Web`.
 
-Atualize o banco até `AddSaleReturns`. Vendas e baixas existentes são preservadas; nenhum cancelamento, estorno ou devolução é criado retroativamente. As migrações bloqueiam a volta a um esquema que não preserve o histórico já registrado.
+Atualize o banco até `AddSaleItemCommission`. Itens de vendas existentes ficam com comissão de 0%, sem cálculo retroativo do percentual. As migrações bloqueiam a volta a um esquema que não preserve o histórico já registrado.
 
 ## Build e testes
 
