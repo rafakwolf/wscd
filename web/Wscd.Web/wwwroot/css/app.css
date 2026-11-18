@@ -263,6 +263,9 @@
   .inline {
     display: inline;
   }
+  .inline-block {
+    display: inline-block;
+  }
   .min-h-screen {
     min-height: 100vh;
   }

@@ -18,6 +18,8 @@ public sealed class EditModel(
     [BindProperty] public HeaderInput Header { get; set; } = new();
     [BindProperty] public ItemInput Line { get; set; } = new();
     [BindProperty] public List<SalePaymentInput> Payments { get; set; } = [];
+    [BindProperty] public bool ReceiveNow { get; set; } = true;
+    [BindProperty] public DateOnly? CreditDueDate { get; set; }
 
     public Sale? Current { get; private set; }
     public bool CanEdit => Current is { IsCompleted: false, QuotationId: null };
@@ -60,18 +62,25 @@ public sealed class EditModel(
         }
         if (!ModelState.IsValid)
         {
-            return await ShowErrorAsync("Confira os meios de recebimento, as contas caixa e os valores informados.");
+            return await ShowErrorAsync("Confira os meios de recebimento, os valores e a data de vencimento informados.");
+        }
+        if (!ReceiveNow && CreditDueDate is null)
+        {
+            return await ShowErrorAsync("Informe o vencimento para concluir a venda integralmente no crediário.");
         }
 
-        var result = await sales.CheckoutAsync(id, Payments, revision);
+        var result = await sales.CheckoutAsync(id, ReceiveNow ? Payments : [], revision, CreditDueDate);
         return result == SaleCheckout.Completed
-            ? Saved(id, "Venda concluída. Estoque baixado e recebimentos registrados.")
+            ? Saved(id, CreditDueDate.HasValue
+                ? "Venda concluída. O saldo foi lançado em Contas a receber."
+                : "Venda concluída. Estoque baixado e recebimentos registrados.")
             : await ShowErrorAsync(result switch
             {
                 SaleCheckout.InsufficientStock => "Estoque insuficiente para pelo menos um produto. A venda não foi concluída e nenhum recebimento foi lançado.",
                 SaleCheckout.InvalidCashAccount => "Selecione uma conta caixa ativa da organização em cada recebimento.",
                 SaleCheckout.InvalidPayments => "Informe um meio, uma conta caixa e um valor positivo com até duas casas decimais em cada recebimento.",
-                SaleCheckout.PaymentTotalMismatch => "A soma dos recebimentos deve ser igual ao total da venda.",
+                SaleCheckout.PaymentTotalMismatch => "Os recebimentos não podem ultrapassar o total. Se restar saldo, informe o vencimento do crediário.",
+                SaleCheckout.InvalidDueDate => "Informe um vencimento igual ou posterior à data da venda, apenas quando houver saldo no crediário.",
                 SaleCheckout.InvalidSale => "A venda precisa estar em rascunho, incluir produtos e ter um total positivo dentro do limite permitido.",
                 _ => "A venda mudou desde a última consulta. Confira o total atualizado e tente novamente."
             });
@@ -107,7 +116,12 @@ public sealed class EditModel(
         if (Current is { IsCompleted: false })
         {
             CashAccounts = (await cashAccounts.ListAsync(null)).Where(account => !account.IsInactive).ToArray();
-            if (Payments.Count == 0)
+            if (CashAccounts.Count == 0)
+            {
+                ReceiveNow = false;
+                Payments.Clear();
+            }
+            else if (Payments.Count == 0)
             {
                 Payments.Add(new SalePaymentInput { Method = PaymentMethod.Cash, Amount = Current.Total });
             }

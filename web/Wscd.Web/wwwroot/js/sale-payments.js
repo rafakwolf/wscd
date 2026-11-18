@@ -2,6 +2,9 @@ const paymentForm = document.querySelector('[data-sale-payments]');
 
 if (paymentForm) {
     const entries = paymentForm.querySelector('[data-payment-entries]');
+    const fields = paymentForm.querySelector('[data-payment-fields]');
+    const receiveNow = paymentForm.querySelector('[data-receive-now]');
+    const dueDate = paymentForm.querySelector('[data-credit-due]');
     const addButton = paymentForm.querySelector('[data-add-payment]');
     const status = paymentForm.querySelector('[data-payment-status]');
     const total = Number(paymentForm.dataset.totalCents);
@@ -9,6 +12,8 @@ if (paymentForm) {
     const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
     function difference() {
+        if (!receiveNow?.checked) return total;
+
         return [...entries.querySelectorAll('[data-payment-amount]')].reduce((remaining, input) => {
             const cents = Math.round(input.valueAsNumber * 100);
             return remaining - (Number.isSafeInteger(cents) ? cents : 0);
@@ -18,7 +23,7 @@ if (paymentForm) {
     function updateStatus() {
         const remaining = difference();
         status.textContent = remaining === 0 ? 'Total conferido.' :
-            `${remaining > 0 ? 'Falta informar' : 'Valor excedente'}: ${currency.format(Math.abs(remaining) / 100)}.`;
+            `${remaining < 0 ? 'Valor excedente' : dueDate.value ? 'Saldo no crediário' : 'Falta informar'}: ${currency.format(Math.abs(remaining) / 100)}.`;
     }
 
     function reindexRows() {
@@ -63,5 +68,10 @@ if (paymentForm) {
         addButton.focus();
     });
     entries.addEventListener('input', updateStatus);
+    dueDate.addEventListener('input', updateStatus);
+    receiveNow?.addEventListener('change', () => {
+        fields.hidden = fields.disabled = !receiveNow.checked;
+        updateStatus();
+    });
     reindexRows();
 }

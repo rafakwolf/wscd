@@ -11,3 +11,5 @@
 - **Operador**: membro que usa as operações do ERP sem poder adicionar ou remover membros da organização.
 - **Conta caixa**: conta usada para identificar onde o comércio recebeu ou pagou valores.
 - **Recebimento de venda**: registro de um valor pago pelo cliente, com seu meio de recebimento e a conta caixa escolhida. Uma venda pode ter mais de um recebimento; a data é a do pagamento, não a data informada no rascunho.
+- **Crediário**: parte ou todo o valor da venda que o cliente se compromete a pagar em uma data futura ou combinada com o comércio.
+- **Conta a receber**: título que registra o valor e o vencimento do saldo de uma venda no crediário. Cada baixa registra um recebimento e reduz o saldo; a conta fica quitada quando ele chega a zero.

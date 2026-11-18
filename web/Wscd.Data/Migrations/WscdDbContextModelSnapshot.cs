@@ -1072,6 +1072,47 @@ namespace Wscd.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Sales.AccountReceivable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("numeric(14,2)");
+
+                    b.Property<decimal>("Balance")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("numeric(14,2)");
+
+                    b.Property<DateOnly>("DueDate")
+                        .HasColumnType("date");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("SaleId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSale");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "DueDate");
+
+                    b.HasIndex("OrganizationId", "SaleId")
+                        .IsUnique();
+
+                    b.ToTable("AccountsReceivable", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_AccountsReceivable_Balance", "\"Amount\" > 0 AND \"Balance\" BETWEEN 0 AND \"Amount\"");
+                        });
+                });
+
             modelBuilder.Entity("Wscd.Domain.Sales.Sale", b =>
                 {
                     b.Property<int>("Id")
@@ -1191,6 +1232,10 @@ namespace Wscd.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AccountReceivableId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDAccountReceivable");
+
                     b.Property<decimal>("Amount")
                         .HasPrecision(14, 2)
                         .HasColumnType("numeric(14,2)");
@@ -1206,6 +1251,9 @@ namespace Wscd.Data.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("IDOrganization");
 
+                    b.Property<DateTimeOffset>("ReceivedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("SaleId")
                         .HasColumnType("integer")
                         .HasColumnName("IDSale");
@@ -1214,7 +1262,7 @@ namespace Wscd.Data.Migrations
 
                     b.HasIndex("OrganizationId", "CashAccountId");
 
-                    b.HasIndex("OrganizationId", "SaleId");
+                    b.HasIndex("OrganizationId", "SaleId", "AccountReceivableId");
 
                     b.ToTable("SalePayments", null, t =>
                         {
@@ -1529,6 +1577,18 @@ namespace Wscd.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Sales.AccountReceivable", b =>
+                {
+                    b.HasOne("Wscd.Domain.Sales.Sale", "Sale")
+                        .WithOne("Receivable")
+                        .HasForeignKey("Wscd.Domain.Sales.AccountReceivable", "OrganizationId", "SaleId")
+                        .HasPrincipalKey("Wscd.Domain.Sales.Sale", "OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Sale");
+                });
+
             modelBuilder.Entity("Wscd.Domain.Sales.Sale", b =>
                 {
                     b.HasOne("Wscd.Domain.Organizations.Organization", null)
@@ -1597,6 +1657,12 @@ namespace Wscd.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Wscd.Domain.Sales.AccountReceivable", null)
+                        .WithMany("Payments")
+                        .HasForeignKey("OrganizationId", "SaleId", "AccountReceivableId")
+                        .HasPrincipalKey("OrganizationId", "SaleId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("CashAccount");
 
                     b.Navigation("Sale");
@@ -1614,11 +1680,18 @@ namespace Wscd.Data.Migrations
                     b.Navigation("Sale");
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Sales.AccountReceivable", b =>
+                {
+                    b.Navigation("Payments");
+                });
+
             modelBuilder.Entity("Wscd.Domain.Sales.Sale", b =>
                 {
                     b.Navigation("Items");
 
                     b.Navigation("Payments");
+
+                    b.Navigation("Receivable");
                 });
 #pragma warning restore 612, 618
         }

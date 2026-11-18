@@ -1,0 +1,55 @@
+@page "/contas-a-receber/{id:int}"
+@using System.Globalization
+@using Wscd.Services.Reports
+@using Wscd.Web.Pages
+@model Wscd.Web.Pages.Receivables.DetailsModel
+@{
+    ViewData["Title"] = $"Conta a receber nº {Model.Id}";
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+    var account = Model.Account!;
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <p class="text-sm text-slate-600">@account.Sale.Customer.Name · <a asp-page="/Sales/Edit" asp-route-id="@account.SaleId" class="underline">Venda nº @account.SaleId</a></p>
+    <dl class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div><dt class="text-sm text-slate-600">Vencimento</dt><dd class="font-semibold">@account.DueDate.ToString("dd/MM/yyyy")</dd></div>
+        <div><dt class="text-sm text-slate-600">Situação</dt><dd class="font-semibold">@Model.StatusLabel(account.DueDate, account.Balance)</dd></div>
+        <div><dt class="text-sm text-slate-600">Valor original</dt><dd class="font-semibold">@account.Amount.ToString("C", culture)</dd></div>
+        <div><dt class="text-sm text-slate-600">Saldo a receber</dt><dd class="font-semibold">@account.Balance.ToString("C", culture)</dd></div>
+    </dl>
+    @if (TempData["StatusMessage"] is string status)
+    {
+        <p role="status" class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
+    }
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+
+    @if (account.Balance > 0)
+    {
+        <partial name="_ReceiveForm" model="Model" />
+    }
+
+    <h2 class="mt-6 text-lg font-semibold">Histórico de recebimentos</h2>
+    @if (account.Payments.Count == 0)
+    {
+        <p class="mt-2 text-sm text-slate-600">Nenhum recebimento registrado para este título.</p>
+    }
+    else
+    {
+        <div class="mt-3 overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Recebido em (Brasília)</th><th scope="col">Meio</th><th scope="col">Conta caixa</th><th scope="col" class="text-right">Valor</th></tr></thead>
+                <tbody>
+                @foreach (var payment in account.Payments)
+                {
+                    <tr class="border-b last:border-0"><td class="py-2">@CashReportService.InBrasilia(payment.ReceivedAtUtc).ToString("dd/MM/yyyy HH:mm")</td><td>@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td><td class="text-right">@payment.Amount.ToString("C", culture)</td></tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

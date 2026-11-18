@@ -25,6 +25,7 @@ builder.Services.AddScoped<IStockReportService, StockReportService>();
 builder.Services.AddScoped<CashReportService>();
 builder.Services.AddScoped<QuotationService>();
 builder.Services.AddScoped<SaleService>();
+builder.Services.AddScoped<ReceivableService>();
 builder.Services.AddScoped<DemoDataSeeder>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentOrganization, HttpCurrentOrganization>();

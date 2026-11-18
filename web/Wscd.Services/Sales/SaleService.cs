@@ -127,7 +127,7 @@ public sealed class SaleService(
     public Task<bool> RemoveItemAsync(int id, int itemId) => store.UpdateAsync(id, sale =>
         CanChange(sale) && sale.Items.SingleOrDefault(item => item.Id == itemId) is { } item && sale.Items.Remove(item));
 
-    public async Task<SaleCheckout> CheckoutAsync(int id, IReadOnlyList<SalePaymentInput> payments, Guid expectedRevision)
+    public async Task<SaleCheckout> CheckoutAsync(int id, IReadOnlyList<SalePaymentInput> payments, Guid expectedRevision, DateOnly? dueDate = null)
     {
         if (await store.FindAsync(id) is not { IsCompleted: false, Items.Count: > 0 } sale ||
             sale.Total is <= 0 or > MaxSaleTotal)
@@ -139,26 +139,41 @@ public sealed class SaleService(
             return SaleCheckout.Conflict;
         }
 
-        if (payments.Count is < 1 or > MaxPayments || payments.Any(payment =>
-            !Enum.IsDefined(payment.Method) || payment.CashAccountId <= 0 ||
-            payment.Amount is <= 0 or > MaxSaleTotal || decimal.Round(payment.Amount, 2) != payment.Amount))
+        if ((payments.Count == 0 && dueDate is null) || payments.Count > MaxPayments || payments.Any(payment => !payment.IsValid(MaxSaleTotal)))
         {
             return SaleCheckout.InvalidPayments;
         }
-        if (payments.Sum(payment => payment.Amount) != sale.Total)
+        var remaining = sale.Total - payments.Sum(payment => payment.Amount);
+        if (remaining < 0 || (remaining > 0 && dueDate is null))
         {
             return SaleCheckout.PaymentTotalMismatch;
         }
+        if (dueDate is DateOnly due && (remaining == 0 || due == DateOnly.MinValue || due < sale.Date))
+        {
+            return SaleCheckout.InvalidDueDate;
+        }
 
+        // shortcut: one due date per sale; add installments when a payment schedule is needed.
+        var receivable = dueDate is DateOnly date ? new AccountReceivable
+        {
+            OrganizationId = sale.OrganizationId,
+            SaleId = sale.Id,
+            DueDate = date,
+            Amount = remaining,
+            Balance = remaining
+        } : null;
+
+        var completedAt = DateTimeOffset.UtcNow;
         var receipts = payments.Select(payment => new SalePayment
         {
             OrganizationId = sale.OrganizationId,
             SaleId = sale.Id,
             CashAccountId = payment.CashAccountId,
             Method = payment.Method,
-            Amount = payment.Amount
+            Amount = payment.Amount,
+            ReceivedAtUtc = completedAt
         }).ToArray();
-        return await store.CheckoutAsync(sale, receipts, DateTimeOffset.UtcNow);
+        return await store.CheckoutAsync(sale, receipts, receivable, completedAt);
     }
 
     private static bool CanChange(Sale sale) => !sale.IsCompleted && sale.QuotationId is null;

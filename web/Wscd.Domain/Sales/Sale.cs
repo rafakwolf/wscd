@@ -20,6 +20,7 @@ public sealed class Sale : IOrganizationScoped
     public Guid Revision { get; set; }
     public List<SaleItem> Items { get; } = [];
     public List<SalePayment> Payments { get; } = [];
+    public AccountReceivable? Receivable { get; set; }
     public decimal Total => Items.Sum(item => item.Total);
     public bool IsCompleted => CompletedAtUtc is not null;
 }
@@ -47,6 +48,8 @@ public sealed class SalePayment : IOrganizationScoped
     public CashAccount CashAccount { get; set; } = null!;
     public PaymentMethod Method { get; set; }
     public decimal Amount { get; set; }
+    public DateTimeOffset ReceivedAtUtc { get; set; }
+    public int? AccountReceivableId { get; set; }
 }
 
 public enum PaymentMethod { Cash = 1, Pix = 2, DebitCard = 3, CreditCard = 4 }

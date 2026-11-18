@@ -4,7 +4,9 @@ public sealed class CashReportService(ICashReceiptStore store)
 {
     private static readonly TimeZoneInfo Brasilia = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
 
-    public static DateOnly Today => DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, Brasilia).DateTime);
+    public static DateTimeOffset InBrasilia(DateTimeOffset timestamp) => TimeZoneInfo.ConvertTime(timestamp, Brasilia);
+
+    public static DateOnly Today => DateOnly.FromDateTime(InBrasilia(DateTimeOffset.UtcNow).DateTime);
 
     public async Task<CashReport?> GetAsync(int? cashAccountId, DateOnly? from, DateOnly? to)
     {
@@ -19,7 +21,7 @@ public sealed class CashReportService(ICashReceiptStore store)
 
         return new CashReport(receipts.Select(receipt => receipt with
         {
-            ReceivedAt = TimeZoneInfo.ConvertTime(receipt.ReceivedAt, Brasilia)
+            ReceivedAt = InBrasilia(receipt.ReceivedAt)
         }).ToArray());
     }
 

@@ -14,17 +14,17 @@ public sealed class CashReceiptStore(WscdDbContext db) : ICashReceiptStore
         }
         if (fromUtc is DateTimeOffset start)
         {
-            query = query.Where(payment => payment.Sale.CompletedAtUtc >= start);
+            query = query.Where(payment => payment.ReceivedAtUtc >= start);
         }
         if (toUtcExclusive is DateTimeOffset end)
         {
-            query = query.Where(payment => payment.Sale.CompletedAtUtc < end);
+            query = query.Where(payment => payment.ReceivedAtUtc < end);
         }
 
         // shortcut: one query loads the filtered report; paginate if cash volume outgrows the period filter.
-        return await query.OrderByDescending(payment => payment.Sale.CompletedAtUtc).ThenByDescending(payment => payment.Id)
-            .Select(payment => new CashReceipt(payment.SaleId, payment.Sale.CompletedAtUtc!.Value, payment.CashAccount.Name,
-                payment.Sale.Customer.Name, payment.Method, payment.Amount))
+        return await query.OrderByDescending(payment => payment.ReceivedAtUtc).ThenByDescending(payment => payment.Id)
+            .Select(payment => new CashReceipt(payment.SaleId, payment.ReceivedAtUtc, payment.CashAccount.Name,
+                payment.Sale.Customer.Name, payment.Method, payment.Amount, payment.AccountReceivableId))
             .ToListAsync();
     }
 }

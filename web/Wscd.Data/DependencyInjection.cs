@@ -32,6 +32,7 @@ public static class DependencyInjection
         services.AddScoped<ICashReceiptStore, CashReceiptStore>();
         services.AddScoped<IQuotationStore, QuotationStore>();
         services.AddScoped<ISaleStore, SaleStore>();
+        services.AddScoped<IReceivableStore, ReceivableStore>();
         return services;
     }
 }

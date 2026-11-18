@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Npgsql;
 using Wscd.Domain.Sales;
 using Wscd.Services.Sales;
 
@@ -39,6 +38,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         .Include(sale => sale.Seller)
         .Include(sale => sale.Items.OrderBy(item => item.Id))
         .Include(sale => sale.Payments.OrderBy(payment => payment.Id)).ThenInclude(payment => payment.CashAccount)
+        .Include(sale => sale.Receivable)
         .AsSingleQuery()
         .SingleOrDefaultAsync(sale => sale.Id == id);
 
@@ -68,7 +68,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             }
             return true;
         }
-        catch (Exception exception) when (IsWriteConflict(exception))
+        catch (Exception exception) when (SalesPersistence.IsWriteConflict(exception))
         {
             db.ChangeTracker.Clear();
             return false;
@@ -89,14 +89,14 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             await db.SaveChangesAsync();
             return true;
         }
-        catch (Exception exception) when (IsWriteConflict(exception))
+        catch (Exception exception) when (SalesPersistence.IsWriteConflict(exception))
         {
             db.ChangeTracker.Clear();
             return false;
         }
     }
 
-    public async Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, DateTimeOffset completedAt)
+    public async Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, AccountReceivable? receivable, DateTimeOffset completedAt)
     {
         await using var transaction = await db.Database.BeginTransactionAsync();
         try
@@ -114,12 +114,7 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             // Lock the selected accounts in a consistent order until all receipts are committed.
             foreach (var accountId in payments.Select(payment => payment.CashAccountId).Distinct().Order())
             {
-                var account = await db.CashAccounts.FromSql($"""
-                    SELECT * FROM "CashAccounts"
-                    WHERE "IDOrganization" = {sale.OrganizationId} AND "ID" = {accountId}
-                    FOR SHARE
-                    """).AsNoTracking().SingleOrDefaultAsync();
-                if (account is not { IsInactive: false })
+                if (!await db.LockActiveCashAccountAsync(sale.OrganizationId, accountId))
                 {
                     return SaleCheckout.InvalidCashAccount;
                 }
@@ -136,21 +131,18 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             }
 
             db.SalePayments.AddRange(payments);
+            if (receivable is not null)
+            {
+                db.AccountsReceivable.Add(receivable);
+            }
             await db.SaveChangesAsync();
             await transaction.CommitAsync();
             return SaleCheckout.Completed;
         }
-        catch (Exception exception) when (IsWriteConflict(exception))
+        catch (Exception exception) when (SalesPersistence.IsWriteConflict(exception))
         {
             db.ChangeTracker.Clear();
             return SaleCheckout.Conflict;
         }
     }
-
-    private static bool IsWriteConflict(Exception exception) => exception is DbUpdateConcurrencyException ||
-        (exception as PostgresException ?? exception.InnerException as PostgresException) is
-        {
-            SqlState: PostgresErrorCodes.ForeignKeyViolation or PostgresErrorCodes.UniqueViolation or
-            PostgresErrorCodes.DeadlockDetected or PostgresErrorCodes.SerializationFailure
-        };
 }

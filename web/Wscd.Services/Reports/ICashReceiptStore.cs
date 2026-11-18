@@ -7,4 +7,5 @@ public interface ICashReceiptStore
     Task<IReadOnlyList<CashReceipt>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive);
 }
 
-public sealed record CashReceipt(int SaleId, DateTimeOffset ReceivedAt, string CashAccountName, string CustomerName, PaymentMethod Method, decimal Amount);
+public sealed record CashReceipt(int SaleId, DateTimeOffset ReceivedAt, string CashAccountName, string CustomerName,
+    PaymentMethod Method, decimal Amount, int? AccountReceivableId = null);

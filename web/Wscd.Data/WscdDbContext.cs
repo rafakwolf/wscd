@@ -34,6 +34,7 @@ public sealed class WscdDbContext(
     public DbSet<Quotation> Quotations => Set<Quotation>();
     public DbSet<Sale> Sales => Set<Sale>();
     public DbSet<SalePayment> SalePayments => Set<SalePayment>();
+    public DbSet<AccountReceivable> AccountsReceivable => Set<AccountReceivable>();
 
     public Guid? CurrentOrganizationId => currentOrganization.OrganizationId;
 
@@ -410,6 +411,22 @@ public sealed class WscdDbContext(
                 .OnDelete(DeleteBehavior.Restrict);
         });
 
+        builder.Entity<AccountReceivable>(entity =>
+        {
+            entity.ToTable("AccountsReceivable", table =>
+                table.HasCheckConstraint("CK_AccountsReceivable_Balance", "\"Amount\" > 0 AND \"Balance\" BETWEEN 0 AND \"Amount\""));
+            entity.Property(account => account.Id).HasColumnName("ID");
+            entity.Property(account => account.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(account => account.SaleId).HasColumnName("IDSale");
+            entity.Property(account => account.Amount).HasPrecision(14, 2);
+            entity.Property(account => account.Balance).HasPrecision(14, 2);
+            entity.HasIndex(account => new { account.OrganizationId, account.DueDate });
+            entity.HasOne(account => account.Sale).WithOne(sale => sale.Receivable)
+                .HasForeignKey<AccountReceivable>(account => new { account.OrganizationId, account.SaleId })
+                .HasPrincipalKey<Sale>(sale => new { sale.OrganizationId, sale.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
         builder.Entity<SalePayment>(entity =>
         {
             entity.ToTable("SalePayments", table =>
@@ -421,10 +438,15 @@ public sealed class WscdDbContext(
             entity.Property(payment => payment.OrganizationId).HasColumnName("IDOrganization");
             entity.Property(payment => payment.SaleId).HasColumnName("IDSale");
             entity.Property(payment => payment.CashAccountId).HasColumnName("IDCashAccount");
+            entity.Property(payment => payment.AccountReceivableId).HasColumnName("IDAccountReceivable");
             entity.Property(payment => payment.Amount).HasPrecision(14, 2);
             entity.HasOne(payment => payment.Sale).WithMany(sale => sale.Payments)
                 .HasForeignKey(payment => new { payment.OrganizationId, payment.SaleId })
                 .HasPrincipalKey(sale => new { sale.OrganizationId, sale.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne<AccountReceivable>().WithMany(account => account.Payments)
+                .HasForeignKey(payment => new { payment.OrganizationId, payment.SaleId, payment.AccountReceivableId })
+                .HasPrincipalKey(account => new { account.OrganizationId, account.SaleId, account.Id })
                 .OnDelete(DeleteBehavior.Restrict);
             entity.HasOne(payment => payment.CashAccount).WithMany()
                 .HasForeignKey(payment => new { payment.OrganizationId, payment.CashAccountId })
