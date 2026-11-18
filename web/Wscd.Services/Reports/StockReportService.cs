@@ -1,22 +1,15 @@
-using Wscd.Domain.Catalogs;
-using Wscd.Services.Catalogs;
-
 namespace Wscd.Services.Reports;
 
-public sealed class StockReportService(
-    IStockReportStore store,
-    ICatalogService<Supplier> suppliers) : IStockReportService
+public sealed class StockReportService(IStockReportStore store) : IStockReportService
 {
-    public async Task<MinimumStockReport?> GetMinimumStockBySupplierAsync(int supplierId)
+    public async Task<StockPositionReport?> GetPositionAsync(string? search, int? groupId, int? supplierId, StockPositionFilter status)
     {
-        var supplier = await suppliers.FindAsync(supplierId);
-        if (supplier is null)
+        if (groupId is <= 0 || supplierId is <= 0 || !Enum.IsDefined(status))
         {
             return null;
         }
 
-        return new MinimumStockReport(
-            supplier.Name,
-            await store.ListBelowMinimumBySupplierAsync(supplierId));
+        return new StockPositionReport(await store.ListPositionAsync(
+            string.IsNullOrWhiteSpace(search) ? null : search.Trim(), groupId, supplierId, status));
     }
 }

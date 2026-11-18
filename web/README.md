@@ -59,6 +59,8 @@ Para corrigir uma baixa, abra o título e selecione **Estornar** no histórico. 
 
 Em **Caixa**, consulte entradas e saídas por conta e período, no horário de Brasília. A diferença entre entradas e saídas não é saldo da conta. A consulta pode ser impressa ou salva em PDF pelo navegador. O ERP não processa os pagamentos nem concilia repasses, taxas ou depósitos.
 
+Na tela inicial, abra **Posição de estoque** para conferir a quantidade atual, o mínimo e a unidade de cada produto. Filtre por nome ou código de barras, grupo, fornecedor ou situação. **No mínimo ou abaixo** também inclui os produtos sem estoque que atendam ao limite cadastrado. A consulta pode ser impressa ou salva em PDF e não reconstitui quantidades históricas.
+
 ## Banco de dados e migrations
 
 Os comandos abaixo usam a connection string configurada no ambiente. Execute-os dentro do Dev Container e confira que ela aponta para o banco desejado antes de aplicar alterações.
