@@ -51,6 +51,8 @@ Para devolver itens sem apagar a venda, abra **Consultar → Registrar devoluç�
 
 Em **Contas a receber** e **Contas a pagar**, use **Nova conta** para registrar um título manual, sem venda ou compra vinculada. Informe cliente ou fornecedor, descrição, emissão, vencimento e valor; o documento é opcional. Títulos manuais e automáticos ficam na mesma listagem. No detalhe, registre uma baixa parcial ou integral em uma conta caixa ativa. O título só movimenta o Caixa quando baixado.
 
+Nos dois módulos, **Posição de contas** lista os títulos em aberto e separa os saldos vencidos, os que vencem hoje e os que ainda vão vencer. Filtre por cliente ou fornecedor, intervalo de vencimentos ou somente vencidas, e use **Imprimir / Salvar PDF**. A consulta usa o saldo de hoje, já descontadas as baixas e os abatimentos; não é uma posição histórica.
+
 Para corrigir uma baixa, abra o título e selecione **Estornar** no histórico. Informe o motivo e confirme. O estorno recompõe o saldo pelo valor integral daquela baixa, preserva o lançamento original e aparece no Caixa na data em que foi registrado. Isso não cancela vendas ou compras e não movimenta dinheiro fora do ERP.
 
 Em **Caixa**, consulte entradas e saídas por conta e período, no horário de Brasília. A diferença entre entradas e saídas não é saldo da conta. A consulta pode ser impressa ou salva em PDF pelo navegador. O ERP não processa os pagamentos nem concilia repasses, taxas ou depósitos.
