@@ -39,6 +39,8 @@ npm run css:build --prefix web/Wscd.Web
 
 No ambiente Development, entre em uma organização de testes e acesse **Dados fictícios para testes** na página inicial. A carga garante 10 registros em cada cadastro, 10 compras, 10 orçamentos e 10 vendas (5 rascunhos e 5 concluídos de cada), 10 perdas e 10 promoções. Compras concluídas geram contas a pagar; vendas concluídas baixam estoque e lançam recebimentos fictícios nas contas caixa de demonstração. A carga pode ser repetida, não roda ao iniciar o app e não apaga dados nem cria usuários.
 
+Em **Caixa**, consulte os recebimentos dessas vendas por conta e período. O filtro usa o dia do recebimento no horário de Brasília, independentemente da data da venda. A tela mostra o total de entradas encontradas, não o saldo da conta, e permite imprimir ou salvar em PDF pelo navegador.
+
 ## Banco de dados e migrations
 
 Os comandos abaixo usam a connection string configurada no ambiente. Execute-os dentro do Dev Container e confira que ela aponta para o banco desejado antes de aplicar alterações.
