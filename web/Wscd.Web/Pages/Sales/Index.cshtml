@@ -14,6 +14,7 @@
             <p class="mt-1 text-sm text-slate-600">Registre vendas de balcão à vista ou no crediário. Rascunhos não alteram estoque nem caixa.</p>
         </div>
         <div class="flex flex-wrap gap-2">
+            <a asp-page="/Reports/Sales/Index" class="rounded border px-4 py-2">Vendas por período</a>
             <a asp-page="/Reports/SellerCommissions/Index" class="rounded border px-4 py-2">Comissão por vendedor</a>
             <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" class="rounded bg-slate-900 px-4 py-2 text-white">Nova venda</a>
         </div>

@@ -41,6 +41,8 @@ No ambiente Development, entre em uma organização de testes e acesse **Dados f
 
 Em **Vendas**, registre dinheiro, Pix, débito ou crédito à vista para cada valor pago. Para deixar um saldo no crediário, informe o vencimento; para deixar a venda toda a prazo, desmarque **Registrar valor recebido agora**. A venda concluída gera uma conta a receber pelo saldo, sem lançar esse valor no Caixa antes da baixa.
 
+Em **Vendas → Vendas por período**, consulte vendas concluídas e não canceladas pela data da venda, com filtros opcionais de cliente e vendedor. O relatório separa os descontos originais, o total após descontos e as devoluções, mesmo feitas depois do período. A venda totalmente devolvida continua listada com valor líquido zero. Use **Imprimir / Salvar PDF** para levar a consulta; os totais não representam recebimentos no Caixa.
+
 No rascunho, salve o percentual de **Comissão (%)** em cada item aplicável. Depois da conclusão, consulte **Comissão por vendedor** em Vendas: filtre pelo vendedor e pela data da venda, confira o total líquido e imprima ou salve como PDF. Cancelamentos são excluídos e devoluções reduzem a base mesmo quando registradas depois do período selecionado. O relatório não lança o pagamento da comissão.
 
 Para desfazer uma venda concluída, abra **Consultar** e selecione **Cancelar venda**. Confira os recebimentos, receba os produtos de volta e devolva os valores aplicáveis fora do ERP antes de confirmar com o motivo. O cancelamento recompõe o estoque, encerra o crediário e lança a contrapartida dos recebimentos não estornados. A venda continua disponível para consulta, como **Cancelada**.

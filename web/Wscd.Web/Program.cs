@@ -24,6 +24,7 @@ builder.Services.AddScoped<IPromotionService, PromotionService>();
 builder.Services.AddScoped<IStockReportService, StockReportService>();
 builder.Services.AddScoped<CashReportService>();
 builder.Services.AddScoped<SellerCommissionService>();
+builder.Services.AddScoped<PeriodSalesReportService>();
 builder.Services.AddScoped<QuotationService>();
 builder.Services.AddScoped<SaleService>();
 builder.Services.AddScoped<ReceivableService>();
