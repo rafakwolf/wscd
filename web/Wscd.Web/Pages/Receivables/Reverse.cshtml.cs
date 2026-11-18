@@ -37,7 +37,8 @@ public sealed class ReverseModel(ReceivableService titles) : ReceivableFiltersMo
     private async Task<bool> LoadAsync(bool prefill = false, string? error = null)
     {
         var title = await titles.FindAsync(Id);
-        if (title?.Payments.SingleOrDefault(payment => payment.Id == PaymentId) is not { } original)
+        if (title is not { IsCancelled: false } ||
+            title.Payments.SingleOrDefault(payment => payment.Id == PaymentId) is not { } original)
         {
             return false;
         }

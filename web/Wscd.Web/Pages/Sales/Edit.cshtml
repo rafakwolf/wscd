@@ -1,4 +1,5 @@
 @page "/vendas/manutencao/{id:int?}"
+@using Wscd.Services.Reports
 @model Wscd.Web.Pages.Sales.EditModel
 @{
     ViewData["Title"] = Model.Id is int id ? $"Venda nº {id}" : "Nova venda";
@@ -12,6 +13,16 @@
 @if (Model.Error is not null)
 {
     <p role="alert" class="mb-3 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+}
+@if (Model.Current?.CancelledAtUtc is DateTimeOffset cancelledAt)
+{
+    <p class="mb-3 rounded bg-slate-100 p-3 text-sm text-slate-800">
+        Cancelada em @CashReportService.InBrasilia(cancelledAt).ToString("dd/MM/yyyy HH:mm") (Brasília). Motivo: @Model.Current.CancellationReason
+    </p>
+}
+else if (Model.Current is { IsCompleted: true } sale)
+{
+    <a asp-page="./Cancel" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" class="mb-3 inline-block rounded border border-red-700 px-4 py-2 text-red-700">Cancelar venda</a>
 }
 <partial name="_Form" model="Model" />
 

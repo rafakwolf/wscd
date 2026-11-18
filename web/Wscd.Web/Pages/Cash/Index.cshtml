@@ -72,7 +72,11 @@
                                 <td>@movement.CashAccountName</td>
                                 <td>@PaymentLabels.For(movement.Method)</td>
                                 <td>
-                                    @if (movement.AccountPayableId is int payableId)
+                                    @if (movement.IsSaleCancellation && movement.SaleId is int cancelledSaleId)
+                                    {
+                                        <a asp-page="/Sales/Edit" asp-route-id="@cancelledSaleId" class="underline">Cancelamento da venda nº @cancelledSaleId</a>
+                                    }
+                                    else if (movement.AccountPayableId is int payableId)
                                     {
                                         <a asp-page="/Payables/Details" asp-route-id="@payableId" class="underline">@(movement.IsReversal ? "Estorno da baixa" : "Baixa") da conta a pagar nº @payableId</a>
                                     }

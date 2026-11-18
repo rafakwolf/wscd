@@ -15,3 +15,4 @@
 - **Conta a receber**: título que registra um valor devido por um cliente, lançado manualmente ou gerado pelo saldo de uma venda no crediário. Cada baixa registra uma entrada e reduz o saldo.
 - **Conta a pagar**: título que registra um valor devido a um fornecedor, lançado manualmente ou gerado pela conclusão de uma compra. Cada baixa registra uma saída e reduz o saldo.
 - **Estorno de baixa**: correção que recompõe o saldo do título pelo valor de uma baixa já registrada. O lançamento original permanece no histórico e o Caixa recebe uma contrapartida na data do estorno.
+- **Cancelamento de venda**: desfaz integralmente uma venda concluída depois da devolução dos produtos e dos valores aplicáveis. Recompõe o estoque, encerra o crediário e compensa no Caixa os recebimentos ainda não estornados, sem apagar o histórico.

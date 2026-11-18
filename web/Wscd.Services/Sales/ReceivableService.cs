@@ -41,6 +41,10 @@ public sealed class ReceivableService(IReceivableStore store, ICatalogService<Cu
         {
             return TitleSettlement.NotFound;
         }
+        if (account.IsCancelled)
+        {
+            return TitleSettlement.CancelledTitle;
+        }
         if (account.Revision != expectedRevision)
         {
             return TitleSettlement.Conflict;
@@ -72,6 +76,10 @@ public sealed class ReceivableService(IReceivableStore store, ICatalogService<Cu
         if (account?.Payments.SingleOrDefault(payment => payment.Id == paymentId) is not { } original)
         {
             return TitleSettlement.NotFound;
+        }
+        if (account.IsCancelled)
+        {
+            return TitleSettlement.CancelledTitle;
         }
         if (original.ReversedAtUtc.HasValue)
         {

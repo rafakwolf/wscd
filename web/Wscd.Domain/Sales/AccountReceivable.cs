@@ -19,4 +19,5 @@ public sealed class AccountReceivable : IOrganizationScoped
     public decimal Balance { get; set; }
     public Guid Revision { get; set; }
     public List<SalePayment> Payments { get; } = [];
+    public bool IsCancelled => Sale?.IsCancelled == true;
 }

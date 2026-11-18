@@ -20,8 +20,8 @@ public sealed class SaleService(
     public const int MaxPayments = 10;
     private const decimal MaxSaleTotal = 999_999_999_999.99m;
 
-    public Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed) =>
-        store.ListAsync(search?.Trim(), from, to, completed);
+    public Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, SaleStatus? status) =>
+        store.ListAsync(search?.Trim(), from, to, status);
 
     public Task<Sale?> FindAsync(int id) => store.FindAsync(id);
 
@@ -176,6 +176,29 @@ public sealed class SaleService(
             ReceivedAtUtc = completedAt
         }).ToArray();
         return await store.CheckoutAsync(sale, receipts, receivable, completedAt);
+    }
+
+    public async Task<SaleCancellation> CancelAsync(int id, ReversalInput input, Guid? receivableRevision, string? userId)
+    {
+        var sale = await store.FindAsync(id);
+        if (sale is null)
+        {
+            return SaleCancellation.NotFound;
+        }
+        if (!sale.IsCompleted || sale.IsCancelled)
+        {
+            return SaleCancellation.InvalidSale;
+        }
+        if (input.Build(userId) is not { } cancellation)
+        {
+            return SaleCancellation.InvalidReason;
+        }
+        if (sale.Revision != input.Revision || sale.Receivable?.Revision != receivableRevision)
+        {
+            return SaleCancellation.Conflict;
+        }
+
+        return await store.CancelAsync(sale, cancellation);
     }
 
     private static bool CanChange(Sale sale) => !sale.IsCompleted && sale.QuotationId is null;

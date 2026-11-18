@@ -12,7 +12,7 @@ public interface IReceivableStore
     Task<TitleSettlement> ReverseAsync(AccountReceivable account, SalePayment payment, SettlementReversal reversal);
 }
 
-public enum TitleStatus { Open, Overdue, Paid }
-public enum TitleSettlement { Recorded, NotFound, InvalidPayment, InvalidCashAccount, Conflict, AlreadyReversed, InvalidReversal }
+public enum TitleStatus { Open, Overdue, Paid, Cancelled }
+public enum TitleSettlement { Recorded, NotFound, InvalidPayment, InvalidCashAccount, Conflict, AlreadyReversed, InvalidReversal, CancelledTitle }
 
-public sealed record ReceivableSummary(int Id, int? SaleId, string CustomerName, string? Description, DateOnly DueDate, decimal Amount, decimal Balance);
+public sealed record ReceivableSummary(int Id, int? SaleId, string CustomerName, string? Description, DateOnly DueDate, decimal Amount, decimal Balance, bool IsCancelled);

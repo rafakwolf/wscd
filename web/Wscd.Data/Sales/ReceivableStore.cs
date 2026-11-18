@@ -27,18 +27,22 @@ public sealed class ReceivableStore(WscdDbContext db) : IReceivableStore
         {
             TitleStatus.Open => query.Where(account => account.Balance > 0),
             TitleStatus.Overdue => query.Where(account => account.Balance > 0 && account.DueDate < today),
-            TitleStatus.Paid => query.Where(account => account.Balance == 0),
+            TitleStatus.Paid => query.Where(account => account.Balance == 0 &&
+                (account.Sale == null || account.Sale.CancelledAtUtc == null)),
+            TitleStatus.Cancelled => query.Where(account => account.Sale != null && account.Sale.CancelledAtUtc != null),
             _ => query
         };
 
         return await query.OrderBy(account => account.Balance == 0).ThenBy(account => account.DueDate).ThenBy(account => account.Id)
             .Select(account => new ReceivableSummary(account.Id, account.SaleId, account.Customer.Name,
-                account.Description, account.DueDate, account.Amount, account.Balance))
+                account.Description, account.DueDate, account.Amount, account.Balance,
+                account.Sale != null && account.Sale.CancelledAtUtc != null))
             .ToListAsync();
     }
 
     public Task<AccountReceivable?> FindAsync(int id) => db.AccountsReceivable.AsNoTracking()
         .Include(account => account.Customer)
+        .Include(account => account.Sale)
         .Include(account => account.Payments.OrderByDescending(payment => payment.Id)).ThenInclude(payment => payment.CashAccount)
         .SingleOrDefaultAsync(account => account.Id == id);
 

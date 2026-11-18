@@ -41,6 +41,8 @@ No ambiente Development, entre em uma organização de testes e acesse **Dados f
 
 Em **Vendas**, registre dinheiro, Pix, débito ou crédito à vista para cada valor pago. Para deixar um saldo no crediário, informe o vencimento; para deixar a venda toda a prazo, desmarque **Registrar valor recebido agora**. A venda concluída gera uma conta a receber pelo saldo, sem lançar esse valor no Caixa antes da baixa.
 
+Para desfazer uma venda concluída, abra **Consultar** e selecione **Cancelar venda**. Confira os recebimentos, receba os produtos de volta e devolva os valores aplicáveis fora do ERP antes de confirmar com o motivo. O cancelamento recompõe o estoque, encerra o crediário e lança a contrapartida dos recebimentos não estornados. A venda continua disponível para consulta, como **Cancelada**.
+
 Em **Contas a receber** e **Contas a pagar**, use **Nova conta** para registrar um título manual, sem venda ou compra vinculada. Informe cliente ou fornecedor, descrição, emissão, vencimento e valor; o documento é opcional. Títulos manuais e automáticos ficam na mesma listagem. No detalhe, registre uma baixa parcial ou integral em uma conta caixa ativa. O título só movimenta o Caixa quando baixado.
 
 Para corrigir uma baixa, abra o título e selecione **Estornar** no histórico. Informe o motivo e confirme. O estorno recompõe o saldo pelo valor integral daquela baixa, preserva o lançamento original e aparece no Caixa na data em que foi registrado. Isso não cancela vendas ou compras e não movimenta dinheiro fora do ERP.
@@ -67,7 +69,7 @@ dotnet ef migrations add NomeDaMigration --project Wscd.Data --startup-project W
 
 Em seguida, aplique-a com `dotnet ef database update --project Wscd.Data --startup-project Wscd.Web`.
 
-Atualize o banco até `AddSettlementReversals`. A migração mantém as baixas existentes e não cria estornos retroativos. Voltar ao esquema anterior é bloqueado depois do primeiro estorno, pois o histórico da correção não seria preservado.
+Atualize o banco até `AddSaleCancellation`. Vendas e baixas existentes são preservadas; nenhum cancelamento ou estorno é criado retroativamente. As migrações bloqueiam a volta a um esquema que não preserve o histórico já registrado.
 
 ## Build e testes
 
@@ -79,3 +81,5 @@ dotnet test web/Wscd.sln
 ```
 
 Os testes de integração não dependem do PostgreSQL de desenvolvimento.
+
+O [GitHub Actions](../.github/workflows/unit-tests.yml) roda apenas os testes unitários a cada push e pull request, sem PostgreSQL ou segredos.

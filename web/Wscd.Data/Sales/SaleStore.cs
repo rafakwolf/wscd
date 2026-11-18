@@ -6,7 +6,7 @@ namespace Wscd.Data.Sales;
 
 public sealed class SaleStore(WscdDbContext db) : ISaleStore
 {
-    public async Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed)
+    public async Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, SaleStatus? status)
     {
         var query = db.Sales.AsNoTracking();
         if (!string.IsNullOrEmpty(search))
@@ -22,14 +22,18 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         {
             query = query.Where(sale => sale.Date <= end);
         }
-        if (completed is bool isCompleted)
+        query = status switch
         {
-            query = query.Where(sale => (sale.CompletedAtUtc != null) == isCompleted);
-        }
+            SaleStatus.Draft => query.Where(sale => sale.CompletedAtUtc == null),
+            SaleStatus.Completed => query.Where(sale => sale.CompletedAtUtc != null && sale.CancelledAtUtc == null),
+            SaleStatus.Cancelled => query.Where(sale => sale.CancelledAtUtc != null),
+            _ => query
+        };
 
         return await query.OrderByDescending(sale => sale.Date).ThenByDescending(sale => sale.Id)
             .Select(sale => new SaleSummary(sale.Id, sale.Date, sale.Customer.Name,
-                sale.Items.Sum(item => item.Total), sale.CompletedAtUtc != null))
+                sale.Items.Sum(item => item.Total), sale.CancelledAtUtc != null ? SaleStatus.Cancelled :
+                    sale.CompletedAtUtc != null ? SaleStatus.Completed : SaleStatus.Draft))
             .ToListAsync();
     }
 
@@ -144,6 +148,51 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         {
             db.ChangeTracker.Clear();
             return SaleCheckout.Conflict;
+        }
+    }
+
+    public async Task<SaleCancellation> CancelAsync(Sale sale, SettlementReversal cancellation)
+    {
+        await using var transaction = await db.Database.BeginTransactionAsync();
+        try
+        {
+            var claimed = await db.Sales.Where(current => current.Id == sale.Id &&
+                    current.CompletedAtUtc != null && current.CancelledAtUtc == null && current.Revision == sale.Revision)
+                .ExecuteUpdateAsync(update => update
+                    .SetProperty(current => current.CancelledAtUtc, cancellation.AtUtc)
+                    .SetProperty(current => current.CancellationReason, cancellation.Reason)
+                    .SetProperty(current => current.CancelledByUserId, cancellation.UserId)
+                    .SetProperty(current => current.Revision, Guid.NewGuid()));
+            if (claimed != 1)
+            {
+                return SaleCancellation.Conflict;
+            }
+
+            if (sale.Receivable is { } account &&
+                await db.AccountsReceivable.Where(current => current.Id == account.Id && current.Revision == account.Revision)
+                    .ExecuteUpdateAsync(update => update.SetProperty(current => current.Balance, 0m)
+                        .SetProperty(current => current.Revision, Guid.NewGuid())) != 1)
+            {
+                return SaleCancellation.Conflict;
+            }
+
+            foreach (var item in sale.Items.OrderBy(item => item.ProductId))
+            {
+                var updated = await db.Products.Where(product => product.Id == item.ProductId &&
+                        product.Stock <= int.MaxValue - item.Quantity)
+                    .ExecuteUpdateAsync(update => update.SetProperty(product => product.Stock, product => product.Stock + item.Quantity));
+                if (updated != 1)
+                {
+                    return SaleCancellation.Conflict;
+                }
+            }
+
+            await transaction.CommitAsync();
+            return SaleCancellation.Cancelled;
+        }
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
+        {
+            return SaleCancellation.Conflict;
         }
     }
 }

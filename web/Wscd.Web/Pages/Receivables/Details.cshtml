@@ -26,7 +26,7 @@
     <p class="mt-2 text-sm text-slate-600">Emissão: @account.IssueDate.ToString("dd/MM/yyyy") @if (account.Document is not null) { <span>· Documento: @account.Document</span> }</p>
     <dl class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div><dt class="text-sm text-slate-600">Vencimento</dt><dd class="font-semibold">@account.DueDate.ToString("dd/MM/yyyy")</dd></div>
-        <div><dt class="text-sm text-slate-600">Situação</dt><dd class="font-semibold">@Model.StatusLabel(account.DueDate, account.Balance)</dd></div>
+        <div><dt class="text-sm text-slate-600">Situação</dt><dd class="font-semibold">@(account.IsCancelled ? "Cancelada com a venda" : Model.StatusLabel(account.DueDate, account.Balance))</dd></div>
         <div><dt class="text-sm text-slate-600">Valor original</dt><dd class="font-semibold">@account.Amount.ToString("C", culture)</dd></div>
         <div><dt class="text-sm text-slate-600">Saldo a receber</dt><dd class="font-semibold">@account.Balance.ToString("C", culture)</dd></div>
     </dl>
@@ -39,7 +39,7 @@
         <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
     }
 
-    @if (account.Balance > 0)
+    @if (!account.IsCancelled && account.Balance > 0)
     {
         <partial name="_ReceiveForm" model="Model" />
     }
@@ -66,6 +66,10 @@
                             {
                                 <span>Estornada em @CashReportService.InBrasilia(reversedAt).ToString("dd/MM/yyyy HH:mm")</span>
                                 <p class="text-slate-600">Motivo: @payment.ReversalReason</p>
+                            }
+                            else if (account.IsCancelled)
+                            {
+                                <span>Estornada no cancelamento da venda</span>
                             }
                             else
                             {

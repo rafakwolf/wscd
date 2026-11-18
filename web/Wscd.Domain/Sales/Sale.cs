@@ -17,12 +17,16 @@ public sealed class Sale : IOrganizationScoped
     public DateOnly Date { get; set; }
     public string? Notes { get; set; }
     public DateTimeOffset? CompletedAtUtc { get; set; }
+    public DateTimeOffset? CancelledAtUtc { get; set; }
+    public string? CancellationReason { get; set; }
+    public string? CancelledByUserId { get; set; }
     public Guid Revision { get; set; }
     public List<SaleItem> Items { get; } = [];
     public List<SalePayment> Payments { get; } = [];
     public AccountReceivable? Receivable { get; set; }
     public decimal Total => Items.Sum(item => item.Total);
     public bool IsCompleted => CompletedAtUtc is not null;
+    public bool IsCancelled => CancelledAtUtc is not null;
 }
 
 public sealed class SaleItem : IOrganizationScoped

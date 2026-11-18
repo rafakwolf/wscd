@@ -11,5 +11,6 @@ public sealed record CashMovement(int? SaleId, DateTimeOffset OccurredAt, string
     PaymentMethod Method, decimal Amount, int? AccountReceivableId = null, int? AccountPayableId = null)
 {
     public bool IsReversal { get; init; }
+    public bool IsSaleCancellation { get; init; }
     public bool IsExpense => AccountPayableId.HasValue != IsReversal;
 }

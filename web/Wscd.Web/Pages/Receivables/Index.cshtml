@@ -16,7 +16,7 @@
         <div><label asp-for="Customer" class="block text-sm">Cliente</label><input asp-for="Customer" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="From" class="block text-sm">Vencimento de</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="To" class="block text-sm">Vencimento até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
-        <div><label asp-for="Status" class="block text-sm">Situação</label><select asp-for="Status" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="Open">Em aberto</option><option value="Overdue">Vencidas</option><option value="Paid">Quitadas</option></select></div>
+        <div><label asp-for="Status" class="block text-sm">Situação</label><select asp-for="Status" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="Open">Em aberto</option><option value="Overdue">Vencidas</option><option value="Paid">Quitadas</option><option value="Cancelled">Canceladas</option></select></div>
         <div class="flex items-end gap-2"><button class="rounded border px-4 py-2">Filtrar</button><a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a></div>
     </form>
 
@@ -39,7 +39,7 @@
                 {
                     <tr class="border-b last:border-0">
                         <td class="py-2">@account.CustomerName</td><td>@(account.SaleId is int saleId ? $"Venda nº {saleId}" : account.Description)</td><td>@account.DueDate.ToString("dd/MM/yyyy")</td>
-                        <td>@account.Amount.ToString("C", culture)</td><td>@account.Balance.ToString("C", culture)</td><td>@Model.StatusLabel(account.DueDate, account.Balance)</td>
+                        <td>@account.Amount.ToString("C", culture)</td><td>@account.Balance.ToString("C", culture)</td><td>@(account.IsCancelled ? "Cancelada" : Model.StatusLabel(account.DueDate, account.Balance))</td>
                         <td class="text-right"><a asp-page="./Details" asp-all-route-data="Model.ListFilters" asp-route-id="@account.Id" aria-label="Consultar conta a receber nº @account.Id" class="underline">Consultar</a></td>
                     </tr>
                 }

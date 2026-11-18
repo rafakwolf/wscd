@@ -100,6 +100,32 @@ public sealed class SaleServiceTests
         Assert.Equal(14.51m, store.Receivable!.Balance);
     }
 
+    [Fact]
+    public async Task CancellationRequiresACompletedSaleWithReasonAndCurrentReceivable()
+    {
+        var sale = new Sale { Id = 1, Revision = Guid.NewGuid(), Receivable = new() { Revision = Guid.NewGuid() } };
+        var store = new Store { Sale = sale };
+        var service = new SaleService(store, null!, null!, null!, null!, null!, null!);
+        var input = new ReversalInput { Revision = sale.Revision, Reason = "  Compra desfeita  " };
+        var titleRevision = sale.Receivable.Revision;
+
+        Assert.Equal(SaleCancellation.NotFound, await service.CancelAsync(99, input, titleRevision, "user"));
+        Assert.Equal(SaleCancellation.InvalidSale, await service.CancelAsync(sale.Id, input, titleRevision, "user"));
+        sale.CompletedAtUtc = DateTimeOffset.UtcNow;
+        Assert.Equal(SaleCancellation.InvalidReason, await service.CancelAsync(sale.Id, input, titleRevision, null));
+        Assert.Equal(SaleCancellation.InvalidReason, await service.CancelAsync(sale.Id,
+            new ReversalInput { Revision = sale.Revision, Reason = "  " }, titleRevision, "user"));
+        Assert.Equal(SaleCancellation.Conflict, await service.CancelAsync(sale.Id, input, null, "user"));
+        Assert.Equal(SaleCancellation.Conflict, await service.CancelAsync(sale.Id,
+            new ReversalInput { Revision = Guid.NewGuid(), Reason = input.Reason }, titleRevision, "user"));
+        Assert.Null(store.Cancellation);
+
+        Assert.Equal(SaleCancellation.Cancelled, await service.CancelAsync(sale.Id, input, titleRevision, "user"));
+        var cancellation = Assert.IsType<SettlementReversal>(store.Cancellation);
+        Assert.Equal(("Compra desfeita", "user"), (cancellation.Reason, cancellation.UserId));
+        Assert.Equal(SaleCancellation.InvalidSale, await service.CancelAsync(sale.Id, input, titleRevision, "user"));
+    }
+
     private sealed class Store : ISaleStore
     {
         public Sale? Sale { get; set; }
@@ -108,6 +134,7 @@ public sealed class SaleServiceTests
         public DateTimeOffset CompletedAt { get; private set; }
         public Guid? QuotationRevision { get; private set; }
         public int Creations { get; private set; }
+        public SettlementReversal? Cancellation { get; private set; }
 
         public Task<bool> CreateAsync(Sale sale, Guid? quotationRevision)
         {
@@ -128,7 +155,14 @@ public sealed class SaleServiceTests
 
         public Task<Sale?> FindAsync(int id) => Task.FromResult(Sale?.Id == id ? Sale : null);
         public Task<bool> UpdateAsync(int id, Func<Sale, bool> change) => throw new NotSupportedException();
-        public Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed) => throw new NotSupportedException();
+        public Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, SaleStatus? status) => throw new NotSupportedException();
+
+        public Task<SaleCancellation> CancelAsync(Sale sale, SettlementReversal cancellation)
+        {
+            Cancellation = cancellation;
+            sale.CancelledAtUtc = cancellation.AtUtc;
+            return Task.FromResult(SaleCancellation.Cancelled);
+        }
     }
 
     private sealed class Quotations(Quotation quote) : IQuotationStore

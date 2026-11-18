@@ -1213,6 +1213,17 @@ namespace Wscd.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CancellationReason")
+                        .HasMaxLength(240)
+                        .HasColumnType("character varying(240)");
+
+                    b.Property<DateTimeOffset?>("CancelledAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("CancelledByUserId")
+                        .HasMaxLength(450)
+                        .HasColumnType("character varying(450)");
+
                     b.Property<DateTimeOffset?>("CompletedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
@@ -1253,7 +1264,10 @@ namespace Wscd.Data.Migrations
 
                     b.HasIndex("OrganizationId", "SellerId");
 
-                    b.ToTable("Sales", (string)null);
+                    b.ToTable("Sales", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Sales_Cancellation", "(\"CancelledAtUtc\" IS NULL AND \"CancellationReason\" IS NULL AND \"CancelledByUserId\" IS NULL)\nOR (\"CancelledAtUtc\" IS NOT NULL AND \"CompletedAtUtc\" IS NOT NULL\n    AND \"CancellationReason\" IS NOT NULL AND \"CancelledByUserId\" IS NOT NULL)");
+                        });
                 });
 
             modelBuilder.Entity("Wscd.Domain.Sales.SaleItem", b =>

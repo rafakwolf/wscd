@@ -391,13 +391,20 @@ public sealed class WscdDbContext(
 
         builder.Entity<Sale>(entity =>
         {
-            entity.ToTable("Sales");
+            entity.ToTable("Sales", table => table.HasCheckConstraint("CK_Sales_Cancellation",
+                """
+                ("CancelledAtUtc" IS NULL AND "CancellationReason" IS NULL AND "CancelledByUserId" IS NULL)
+                OR ("CancelledAtUtc" IS NOT NULL AND "CompletedAtUtc" IS NOT NULL
+                    AND "CancellationReason" IS NOT NULL AND "CancelledByUserId" IS NOT NULL)
+                """));
             entity.Property(sale => sale.Id).HasColumnName("ID");
             entity.Property(sale => sale.OrganizationId).HasColumnName("IDOrganization");
             entity.Property(sale => sale.CustomerId).HasColumnName("IDCustomer");
             entity.Property(sale => sale.SellerId).HasColumnName("IDSeller");
             entity.Property(sale => sale.QuotationId).HasColumnName("IDQuotation");
             entity.Property(sale => sale.Revision).IsConcurrencyToken();
+            entity.Property(sale => sale.CancellationReason).HasMaxLength(240);
+            entity.Property(sale => sale.CancelledByUserId).HasMaxLength(450);
             entity.HasIndex(sale => new { sale.OrganizationId, sale.Date });
             entity.HasOne<Organization>().WithMany().HasForeignKey(sale => sale.OrganizationId)
                 .OnDelete(DeleteBehavior.Restrict);

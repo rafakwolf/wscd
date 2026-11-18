@@ -11,7 +11,7 @@ public sealed class EditModel(
     ICatalogService<Customer> customers,
     ICatalogService<Seller> sellers,
     ICatalogService<Product> products,
-    ICatalogService<CashAccount> cashAccounts) : DocumentFiltersModel
+    ICatalogService<CashAccount> cashAccounts) : SaleFiltersModel
 {
     [BindProperty(SupportsGet = true), FromRoute] public int? Id { get; set; }
 

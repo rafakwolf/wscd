@@ -1,5 +1,6 @@
 @page "/vendas"
 @using System.Globalization
+@using Wscd.Services.Sales
 @model Wscd.Web.Pages.Sales.IndexModel
 @{
     ViewData["Title"] = "Vendas";
@@ -26,7 +27,7 @@
         <div><label asp-for="Search" class="block text-sm">Cliente</label><input asp-for="Search" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="From" class="block text-sm">De</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="To" class="block text-sm">Até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
-        <div><label asp-for="Completed" class="block text-sm">Situação</label><select asp-for="Completed" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="false">Rascunho</option><option value="true">Concluída</option></select></div>
+        <div><label asp-for="Status" class="block text-sm">Situação</label><select asp-for="Status" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="Draft">Rascunho</option><option value="Completed">Concluída</option><option value="Cancelled">Cancelada</option></select></div>
         <div class="flex items-end gap-2"><button class="rounded border px-4 py-2">Filtrar</button><a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a></div>
     </form>
     <div class="mt-5 overflow-x-auto">
@@ -37,8 +38,8 @@
             {
                 <tr class="border-b last:border-0">
                     <td class="py-2">@sale.Id</td><td>@sale.Date.ToString("dd/MM/yyyy")</td><td>@sale.CustomerName</td><td>@sale.Total.ToString("C", culture)</td>
-                    <td>@(sale.IsCompleted ? "Concluída" : "Rascunho")</td>
-                    <td class="text-right"><a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" aria-label="Abrir venda nº @sale.Id" class="underline">@(sale.IsCompleted ? "Consultar" : "Editar")</a></td>
+                    <td>@(sale.Status == SaleStatus.Cancelled ? "Cancelada" : sale.Status == SaleStatus.Completed ? "Concluída" : "Rascunho")</td>
+                    <td class="text-right"><a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" aria-label="Abrir venda nº @sale.Id" class="underline">@(sale.Status == SaleStatus.Draft ? "Editar" : "Consultar")</a></td>
                 </tr>
             }
             </tbody>

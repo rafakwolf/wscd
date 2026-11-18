@@ -56,6 +56,26 @@ public sealed class ReceivableServiceTests
         Assert.Equal(TitleSettlement.AlreadyReversed, await service.ReverseAsync(title.Id, payment.Id, input, "operator"));
     }
 
+    [Fact]
+    public async Task CancelledSalePreventsReceivingOrReversingTheTitle()
+    {
+        var title = new AccountReceivable
+        {
+            Id = 1, Balance = 10m, Revision = Guid.NewGuid(),
+            Sale = new Sale { CancelledAtUtc = DateTimeOffset.UtcNow }
+        };
+        title.Payments.Add(new SalePayment { Id = 2, Amount = 5m });
+        var store = new Store(title);
+        var service = new ReceivableService(store, null!, null!);
+
+        Assert.Equal(TitleSettlement.CancelledTitle, await service.ReceiveAsync(title.Id,
+            new SalePaymentInput { Amount = 5m, CashAccountId = 3, Method = PaymentMethod.Pix }, title.Revision));
+        Assert.Equal(TitleSettlement.CancelledTitle, await service.ReverseAsync(title.Id, 2,
+            new ReversalInput { Revision = title.Revision, Reason = "Duplicado" }, "operator"));
+        Assert.Null(store.Payment);
+        Assert.Null(store.Reversal);
+    }
+
     private sealed class Store(AccountReceivable account) : IReceivableStore
     {
         public SalePayment? Payment { get; private set; }

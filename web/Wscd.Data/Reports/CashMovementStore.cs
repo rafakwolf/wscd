@@ -15,18 +15,30 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
             expenses = expenses.Where(payment => payment.CashAccountId == accountId);
         }
         // shortcut: load both filtered streams; page them together if volume outgrows the period filter.
-        var entries = await receipts.Where(payment =>
-                ((fromUtc == null || payment.ReceivedAtUtc >= fromUtc) && (toUtcExclusive == null || payment.ReceivedAtUtc < toUtcExclusive)) ||
-                (payment.ReversedAtUtc != null && (fromUtc == null || payment.ReversedAtUtc >= fromUtc) &&
-                    (toUtcExclusive == null || payment.ReversedAtUtc < toUtcExclusive)))
-            .OrderByDescending(payment => payment.Id)
-            .Select(payment => new
+        var entries = await receipts.Select(payment => new
             {
-                Original = new CashMovement(payment.Receivable != null ? payment.Receivable.SaleId : payment.SaleId,
-                    payment.ReceivedAtUtc, payment.CashAccount.Name,
-                    payment.Receivable != null ? payment.Receivable.Customer.Name : payment.Sale!.Customer.Name,
-                    payment.Method, payment.Amount, payment.AccountReceivableId, null),
-                payment.ReversedAtUtc
+                Payment = payment,
+                CancelledAtUtc = payment.Receivable != null ? payment.Receivable.Sale!.CancelledAtUtc : payment.Sale!.CancelledAtUtc
+            })
+            .Select(entry => new
+            {
+                entry.Payment,
+                ReversedAtUtc = entry.Payment.ReversedAtUtc ?? entry.CancelledAtUtc,
+                IsSaleCancellation = entry.Payment.ReversedAtUtc == null && entry.CancelledAtUtc != null
+            })
+            .Where(entry =>
+                ((fromUtc == null || entry.Payment.ReceivedAtUtc >= fromUtc) && (toUtcExclusive == null || entry.Payment.ReceivedAtUtc < toUtcExclusive)) ||
+                (entry.ReversedAtUtc != null && (fromUtc == null || entry.ReversedAtUtc >= fromUtc) &&
+                    (toUtcExclusive == null || entry.ReversedAtUtc < toUtcExclusive)))
+            .OrderByDescending(entry => entry.Payment.Id)
+            .Select(entry => new
+            {
+                Original = new CashMovement(entry.Payment.Receivable != null ? entry.Payment.Receivable.SaleId : entry.Payment.SaleId,
+                    entry.Payment.ReceivedAtUtc, entry.Payment.CashAccount.Name,
+                    entry.Payment.Receivable != null ? entry.Payment.Receivable.Customer.Name : entry.Payment.Sale!.Customer.Name,
+                    entry.Payment.Method, entry.Payment.Amount, entry.Payment.AccountReceivableId, null),
+                entry.ReversedAtUtc,
+                entry.IsSaleCancellation
             })
             .ToListAsync();
         var exits = await expenses.Where(payment =>
@@ -38,7 +50,8 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
             {
                 Original = new CashMovement(null, payment.PaidAtUtc, payment.CashAccount.Name,
                     payment.Payable.Supplier.Name, payment.Method, payment.Amount, null, payment.AccountPayableId),
-                payment.ReversedAtUtc
+                payment.ReversedAtUtc,
+                IsSaleCancellation = false
             })
             .ToListAsync();
 
@@ -52,7 +65,7 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
             }
             if (item.ReversedAtUtc is DateTimeOffset reversedAt && InPeriod(reversedAt))
             {
-                movements.Add(item.Original with { OccurredAt = reversedAt, IsReversal = true });
+                movements.Add(item.Original with { OccurredAt = reversedAt, IsReversal = true, IsSaleCancellation = item.IsSaleCancellation });
             }
         }
         return movements;

@@ -29,7 +29,11 @@
                 <tbody>
                 @foreach (var payment in payments)
                 {
-                    <tr class="border-b last:border-0"><td class="py-2">@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td><td>@(payment.AccountReceivableId is null ? "Na venda" : payment.ReversedAtUtc is null ? "Baixa do crediário" : "Baixa do crediário estornada")</td><td class="text-right">@payment.Amount.ToString("C", culture)</td></tr>
+                    <tr class="border-b last:border-0"><td class="py-2">@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td><td>
+                        @(payment.AccountReceivableId is null ? "Na venda" : "Baixa do crediário")
+                        @if (payment.ReversedAtUtc is not null) { <span>· Estornada</span> }
+                        else if (current.IsCancelled) { <span>· Estornado no cancelamento</span> }
+                    </td><td class="text-right">@payment.Amount.ToString("C", culture)</td></tr>
                 }
                 </tbody>
             </table>

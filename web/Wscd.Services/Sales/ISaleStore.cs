@@ -4,14 +4,18 @@ namespace Wscd.Services.Sales;
 
 public interface ISaleStore
 {
-    Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed);
+    Task<IReadOnlyList<SaleSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, SaleStatus? status);
     Task<Sale?> FindAsync(int id);
     Task<bool> CreateAsync(Sale sale, Guid? quotationRevision = null);
     Task<bool> UpdateAsync(int id, Func<Sale, bool> change);
     Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, AccountReceivable? receivable, DateTimeOffset completedAt);
+    Task<SaleCancellation> CancelAsync(Sale sale, SettlementReversal cancellation);
 }
 
-public sealed record SaleSummary(int Id, DateOnly Date, string CustomerName, decimal Total, bool IsCompleted);
+public sealed record SaleSummary(int Id, DateOnly Date, string CustomerName, decimal Total, SaleStatus Status);
+
+public enum SaleStatus { Draft, Completed, Cancelled }
+public enum SaleCancellation { Cancelled, NotFound, InvalidSale, InvalidReason, Conflict }
 
 public sealed class SalePaymentInput
 {

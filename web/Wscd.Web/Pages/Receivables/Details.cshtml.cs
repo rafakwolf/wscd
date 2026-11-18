@@ -43,6 +43,7 @@ public sealed class DetailsModel(ReceivableService receivables, ICatalogService<
         {
             TitleSettlement.InvalidCashAccount => "Selecione uma conta caixa ativa da organização.",
             TitleSettlement.Conflict => "O saldo mudou. Confira o valor atualizado antes de registrar outro recebimento.",
+            TitleSettlement.CancelledTitle => "Esta conta foi cancelada junto com a venda e não pode receber novas baixas.",
             _ => "Informe o meio, a conta caixa e um valor positivo de até duas casas decimais, sem ultrapassar o saldo."
         };
         await LoadAsync();
@@ -52,7 +53,7 @@ public sealed class DetailsModel(ReceivableService receivables, ICatalogService<
     private async Task LoadAsync()
     {
         Account = await receivables.FindAsync(Id);
-        if (Account is { Balance: > 0 })
+        if (Account is { IsCancelled: false, Balance: > 0 })
         {
             CashAccounts = (await cashAccounts.ListAsync(null)).Where(account => !account.IsInactive).ToArray();
         }

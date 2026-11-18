@@ -30,6 +30,7 @@ public sealed class PayableStore(WscdDbContext db) : IPayableStore
             TitleStatus.Open => query.Where(account => account.Balance > 0),
             TitleStatus.Overdue => query.Where(account => account.Balance > 0 && account.DueDate < today),
             TitleStatus.Paid => query.Where(account => account.Balance == 0),
+            TitleStatus.Cancelled => query.Where(_ => false),
             _ => query
         };
 

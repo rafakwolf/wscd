@@ -12,7 +12,7 @@ public abstract class DocumentFiltersModel : PageModel
     [BindProperty(SupportsGet = true)] public DateOnly? To { get; set; }
     [BindProperty(SupportsGet = true)] public string? Search { get; set; }
 
-    public Dictionary<string, string?> ListFilters => new()
+    public virtual Dictionary<string, string?> ListFilters => new()
     {
         ["Search"] = Search,
         ["From"] = From?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
