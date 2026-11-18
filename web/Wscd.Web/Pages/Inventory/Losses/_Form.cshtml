@@ -1,0 +1,13 @@
+@model Wscd.Web.Pages.Inventory.Losses.CreateModel
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div asp-validation-summary="All" class="mt-3 text-sm text-red-700"></div>
+    <form method="post" asp-page="./Create" asp-page-handler="Create" asp-all-route-data="Model.ListFilters" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="sm:col-span-2"><label asp-for="ProductId" class="block text-sm">Produto</label><select asp-for="ProductId" class="mt-1 w-full rounded border px-3 py-2" required><option value="">Selecione</option>@foreach (var product in Model.Products) { <option value="@product.Id">@product.Name — estoque: @product.Stock</option> }</select></div>
+        <div><label asp-for="Quantity" class="block text-sm">Quantidade</label><input asp-for="Quantity" type="number" min="1" class="mt-1 w-full rounded border px-3 py-2" required /></div>
+        <div><label asp-for="LossDate" class="block text-sm">Data</label><input asp-for="LossDate" type="date" class="mt-1 w-full rounded border px-3 py-2" required /></div>
+        <div><label asp-for="Reason" class="block text-sm">Motivo</label><select asp-for="Reason" class="mt-1 w-full rounded border px-3 py-2" required><option value="">Selecione</option><option value="D">Danificado</option><option value="V">Vencido</option><option value="F">Furto</option><option value="P">Perda de peso</option><option value="O">Outro</option></select></div>
+        <div class="sm:col-span-2 lg:col-span-3"><label asp-for="Notes" class="block text-sm">Observações</label><textarea asp-for="Notes" rows="2" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
+        <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar perda</button></div>
+    </form>
+</section>

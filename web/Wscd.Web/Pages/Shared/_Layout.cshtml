@@ -8,9 +8,9 @@
 </head>
 <body class="min-h-screen bg-slate-100 text-slate-900 antialiased">
     <header class="border-b border-slate-200 bg-white">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+        <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-3">
             <a class="text-xl font-semibold" asp-area="" asp-page="/Index">WSCD</a>
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
                 @if (User.Identity?.IsAuthenticated == true)
                 {
                     <a class="rounded px-3 py-2 text-sm text-slate-700 hover:bg-slate-100" asp-area="" asp-page="/Index">Início</a>
@@ -18,7 +18,7 @@
                     {
                         <a class="rounded px-3 py-2 text-sm text-slate-700 hover:bg-slate-100" asp-area="" asp-page="/Admin/Users/Index">Usuários</a>
                     }
-                    <span class="px-2 text-sm text-slate-600">@User.Identity.Name</span>
+                    <span class="hidden max-w-xs truncate px-2 text-sm text-slate-600 sm:block">@User.Identity.Name</span>
                     <form method="post" asp-area="" asp-page="/Account/Logout">
                         <button type="submit" class="rounded px-3 py-2 text-sm text-slate-700 hover:bg-slate-100">Sair</button>
                     </form>

@@ -5,7 +5,10 @@
 }
 
 <div class="space-y-6">
-    <h1 class="text-2xl font-semibold">Usuários</h1>
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <h1 class="text-2xl font-semibold">Usuários</h1>
+        <a asp-page="./Create" asp-route-search="@Model.Search" class="rounded bg-slate-900 px-4 py-2 text-white">Novo usuário</a>
+    </div>
 
     @if (TempData["StatusMessage"] is string statusMessage)
     {
@@ -13,32 +16,13 @@
     }
 
     <section class="rounded-lg bg-white p-6 shadow-sm">
-        <h2 class="text-lg font-semibold">Criar usuário</h2>
-        <form method="post" asp-page-handler="Add" class="mt-4 grid gap-4 md:grid-cols-2">
-            <div asp-validation-summary="ModelOnly" class="text-sm text-red-700 md:col-span-2"></div>
-
-            <div>
-                <label asp-for="Input.Email" class="block text-sm font-medium"></label>
-                <input asp-for="Input.Email" autocomplete="email" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
-                <span asp-validation-for="Input.Email" class="text-sm text-red-700"></span>
-            </div>
-
-            <div>
-                <label asp-for="Input.Password" class="block text-sm font-medium"></label>
-                <input asp-for="Input.Password" autocomplete="new-password" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
-                <span asp-validation-for="Input.Password" class="text-sm text-red-700"></span>
-            </div>
-
-            <p class="text-sm text-slate-600 md:col-span-2">Novos membros recebem o perfil Operador. Somente o administrador fundador pode gerenciar os membros desta organização.</p>
-
-            <div class="flex items-end">
-                <button type="submit" class="rounded bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700">Criar usuário</button>
-            </div>
+        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+        <form method="get" class="flex flex-wrap gap-2">
+            <label asp-for="Search" class="sr-only">E-mail</label>
+            <input asp-for="Search" placeholder="Filtrar por e-mail" class="w-full max-w-lg rounded border px-3 py-2" />
+            <button class="rounded border px-4 py-2">Filtrar</button>
+            <a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a>
         </form>
-    </section>
-
-    <section class="rounded-lg bg-white p-6 shadow-sm">
-        <h2 class="text-lg font-semibold">Usuários cadastrados</h2>
         <div class="mt-4 overflow-x-auto">
             <table class="w-full text-left text-sm">
                 <thead class="border-b border-slate-200 text-slate-600">
@@ -53,13 +37,17 @@
                             <td class="py-3">
                                 @if (!user.IsOwner && user.IsActive)
                                 {
-                                    <form method="post" asp-page-handler="Remove">
+                                    <form method="post" asp-page-handler="Remove" asp-route-search="@Model.Search">
                                         <input type="hidden" name="memberId" value="@user.UserId" />
                                         <button type="submit" class="text-red-700 underline">Remover acesso</button>
                                     </form>
                                 }
                             </td>
                         </tr>
+                    }
+                    @if (Model.Users.Count == 0)
+                    {
+                        <tr><td colspan="3" class="py-6 text-center text-slate-500">Nenhum usuário encontrado.</td></tr>
                     }
                 </tbody>
             </table>

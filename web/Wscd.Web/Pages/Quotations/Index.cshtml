@@ -4,14 +4,6 @@
 @{
     ViewData["Title"] = "Orçamentos";
     var culture = CultureInfo.GetCultureInfo("pt-BR");
-    var current = Model.Current;
-    var filters = new Dictionary<string, string?>
-    {
-        ["Search"] = Model.Search,
-        ["From"] = Model.From?.ToString("yyyy-MM-dd"),
-        ["To"] = Model.To?.ToString("yyyy-MM-dd"),
-        ["Completed"] = Model.Completed?.ToString()
-    };
 }
 
 <section class="rounded-lg bg-white p-6 shadow-sm">
@@ -20,7 +12,7 @@
             <h1 class="text-2xl font-semibold">Orçamentos</h1>
             <p class="mt-1 text-sm text-slate-600">Monte propostas para seus clientes sem movimentar estoque ou financeiro.</p>
         </div>
-        <a asp-page="./Index" asp-all-route-data="filters" asp-route-create="true" class="rounded bg-slate-900 px-4 py-2 text-white">Novo orçamento</a>
+        <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" class="rounded bg-slate-900 px-4 py-2 text-white">Novo orçamento</a>
     </div>
 
     @if (TempData["StatusMessage"] is string status)
@@ -49,7 +41,7 @@
                 <tr class="border-b last:border-0">
                     <td class="py-2">@quotation.Id</td><td>@quotation.Date.ToString("dd/MM/yyyy")</td><td>@quotation.CustomerName</td><td>@quotation.Total.ToString("C", culture)</td>
                     <td>@(quotation.IsConverted ? "Convertido" : quotation.IsCompleted ? "Concluído" : "Rascunho")</td>
-                    <td class="text-right"><a asp-page="./Index" asp-all-route-data="filters" asp-route-id="@quotation.Id" aria-label="Abrir orçamento nº @quotation.Id" class="underline">Abrir</a></td>
+                    <td class="text-right"><a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@quotation.Id" aria-label="Abrir orçamento nº @quotation.Id" class="underline">@(quotation.IsCompleted ? "Consultar" : "Editar")</a></td>
                 </tr>
             }
             </tbody>
@@ -57,76 +49,3 @@
         @if (Model.Quotations.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhum orçamento encontrado.</p> }
     </div>
 </section>
-
-@if (Model.Create || current is not null)
-{
-    <section class="mt-6 rounded-lg bg-white p-6 shadow-sm">
-        <h2 class="text-lg font-semibold">@(current is null ? "Novo orçamento" : $"Orçamento nº {current.Id}")</h2>
-        @if (current is { IsCompleted: true })
-        {
-            <p class="mt-3 text-sm text-slate-600">@current.Date.ToString("dd/MM/yyyy") · Cliente: @current.Customer.Name · Vendedor: @current.Seller.Name</p>
-            @if (current.Notes is not null) { <p class="mt-2 whitespace-pre-wrap text-sm">@current.Notes</p> }
-        }
-        else
-        {
-            <form method="post" asp-page-handler="Save" asp-all-route-data="filters" asp-route-id="@Model.Id" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <div><label asp-for="Header.CustomerId" class="block text-sm">Cliente</label><select asp-for="Header.CustomerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var customer in Model.Customers) { <option value="@customer.Id">@customer.Name</option> }</select></div>
-                <div><label asp-for="Header.SellerId" class="block text-sm">Vendedor</label><select asp-for="Header.SellerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var seller in Model.Sellers) { <option value="@seller.Id">@seller.Name</option> }</select></div>
-                <div><label asp-for="Header.Date" class="block text-sm">Data do orçamento</label><input asp-for="Header.Date" type="date" required class="mt-1 w-full rounded border px-3 py-2" /></div>
-                <div class="sm:col-span-2"><label asp-for="Header.Notes" class="block text-sm">Observações</label><textarea asp-for="Header.Notes" rows="2" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
-                <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar rascunho</button></div>
-            </form>
-        }
-
-        @if (current is not null)
-        {
-            <div class="mt-6 overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Produto</th><th scope="col">Quantidade</th><th scope="col">Preço unitário</th><th scope="col">Desconto</th><th scope="col">Total</th>@if (!current.IsCompleted) { <th scope="col" class="sr-only">Ação</th> }</tr></thead>
-                    <tbody>
-                    @foreach (var item in current.Items)
-                    {
-                        <tr class="border-b last:border-0">
-                            <td class="py-2">@item.ProductName</td><td>@item.Quantity</td><td>@item.UnitPrice.ToString("C", culture)</td><td>@(item.DiscountPercent.ToString("0.##", culture))%</td><td>@item.Total.ToString("C", culture)</td>
-                            @if (!current.IsCompleted)
-                            {
-                                <td class="text-right"><form method="post" asp-page-handler="RemoveItem" asp-all-route-data="filters" asp-route-id="@current.Id"><input type="hidden" name="itemId" value="@item.Id" /><button aria-label="Remover @item.ProductName" class="text-red-700 underline">Remover</button></form></td>
-                            }
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-                @if (current.Items.Count == 0) { <p class="py-4 text-sm text-slate-500">Nenhum produto adicionado.</p> }
-                <p class="mt-3 text-right font-semibold">Total: @current.Total.ToString("C", culture)</p>
-            </div>
-
-            @if (!current.IsCompleted)
-            {
-                <form method="post" asp-page-handler="AddItem" asp-all-route-data="filters" asp-route-id="@current.Id" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    <div class="sm:col-span-2"><label asp-for="Line.ProductId" class="block text-sm">Produto</label><select asp-for="Line.ProductId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var product in Model.Products) { <option value="@product.Id">@product.Name</option> }</select></div>
-                    <div><label asp-for="Line.Quantity" class="block text-sm">Quantidade</label><input asp-for="Line.Quantity" type="number" min="1" required class="mt-1 w-full rounded border px-3 py-2" /></div>
-                    <div><label asp-for="Line.DiscountPercent" class="block text-sm">Desconto (%)</label><input asp-for="Line.DiscountPercent" type="number" min="0" max="100" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
-                    <div><button class="rounded border px-4 py-2">Adicionar produto</button></div>
-                </form>
-                <form method="post" asp-page-handler="Complete" asp-all-route-data="filters" asp-route-id="@current.Id" class="mt-4 text-right">
-                    <button class="rounded bg-green-700 px-4 py-2 text-white disabled:opacity-50" disabled="@(current.Items.Count == 0)">Concluir orçamento</button>
-                </form>
-            }
-            else if (current.Sale is { } sale)
-            {
-                <p class="mt-4 text-right"><a asp-page="/Sales/Index" asp-route-id="@sale.Id" class="underline">Abrir venda nº @sale.Id</a></p>
-            }
-            else
-            {
-                <div class="mt-4 flex flex-wrap justify-end gap-2">
-                    <form method="post" asp-page-handler="Reopen" asp-all-route-data="filters" asp-route-id="@current.Id">
-                        <button class="rounded border px-4 py-2">Reabrir orçamento</button>
-                    </form>
-                    <form method="post" asp-page-handler="Convert" asp-all-route-data="filters" asp-route-id="@current.Id">
-                        <button class="rounded bg-slate-900 px-4 py-2 text-white">Converter em venda</button>
-                    </form>
-                </div>
-            }
-        }
-    </section>
-}

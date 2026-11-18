@@ -5,5 +5,9 @@ namespace Wscd.Web.Pages.Catalogs.Sellers;
 
 public sealed class IndexModel : CatalogPageModel<Seller>
 {
-    public IndexModel(ICatalogService<Seller> catalog) : base(catalog) => Title = "Vendedores";
+    public IndexModel(ICatalogService<Seller> catalog) : base(catalog)
+    {
+        Title = "Vendedores";
+        NewLabel = "Novo vendedor";
+    }
 }

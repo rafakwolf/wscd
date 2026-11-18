@@ -67,7 +67,7 @@
                             <tr class="border-b last:border-0">
                                 <td class="py-2">@receipt.ReceivedAt.ToString("dd/MM/yyyy HH:mm", culture)</td>
                                 <td>@receipt.CashAccountName</td>
-                                <td><a asp-page="/Sales/Index" asp-route-id="@receipt.SaleId" class="underline">Venda nº @receipt.SaleId</a></td>
+                                <td><a asp-page="/Sales/Edit" asp-route-id="@receipt.SaleId" class="underline">Venda nº @receipt.SaleId</a></td>
                                 <td>@receipt.CustomerName</td>
                                 <td class="text-right">@receipt.Amount.ToString("C", culture)</td>
                             </tr>

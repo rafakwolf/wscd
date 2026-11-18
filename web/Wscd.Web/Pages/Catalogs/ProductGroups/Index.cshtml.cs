@@ -5,5 +5,9 @@ namespace Wscd.Web.Pages.Catalogs.ProductGroups;
 
 public sealed class IndexModel : CatalogPageModel<ProductGroup>
 {
-    public IndexModel(ICatalogService<ProductGroup> catalog) : base(catalog) => Title = "Grupos de produtos";
+    public IndexModel(ICatalogService<ProductGroup> catalog) : base(catalog)
+    {
+        Title = "Grupos de produtos";
+        NewLabel = "Novo grupo de produtos";
+    }
 }

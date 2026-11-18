@@ -1,0 +1,8 @@
+@page "{id:int?}"
+@model Wscd.Web.Pages.Promotions.EditModel
+@{
+    ViewData["Title"] = Model.Current is null ? "Nova promoção" : $"Editar promoção de {Model.Current.Product.Name}";
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+<partial name="_Form" model="Model" />

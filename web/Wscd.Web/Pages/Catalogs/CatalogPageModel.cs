@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Wscd.Domain.Catalogs;
@@ -11,8 +10,6 @@ public abstract class CatalogPageModel<TEntity> : PageModel
 {
     private readonly ICatalogService<TEntity> catalog;
 
-    protected ICatalogService<TEntity> Catalog => catalog;
-
     protected CatalogPageModel(ICatalogService<TEntity> catalog)
     {
         this.catalog = catalog;
@@ -21,27 +18,17 @@ public abstract class CatalogPageModel<TEntity> : PageModel
     [BindProperty(SupportsGet = true)]
     public string? Search { get; set; }
 
-    [BindProperty]
-    public TEntity Input { get; set; } = new();
-
     public IReadOnlyList<TEntity> Items { get; private set; } = [];
 
     public string? StatusMessage { get; private set; }
     public string? ErrorMessage { get; private set; }
     public string Title { get; protected set; } = "Cadastros";
+    public string NewLabel { get; protected set; } = "Novo cadastro";
     public bool CanDelete { get; protected set; } = true;
-    public IReadOnlyList<string> Cities => CityCatalog.Names;
-    public string? UnlistedCity => Input switch
-    {
-        Customer customer when !string.IsNullOrWhiteSpace(customer.City) &&
-                               !Cities.Contains(customer.City, StringComparer.Ordinal) => customer.City,
-        Supplier supplier when !string.IsNullOrWhiteSpace(supplier.City) &&
-                               !Cities.Contains(supplier.City, StringComparer.Ordinal) => supplier.City,
-        _ => null
-    };
 
     public CatalogListViewModel ListView => new(
         Title,
+        NewLabel,
         Search,
         StatusMessage,
         ErrorMessage,
@@ -62,41 +49,12 @@ public abstract class CatalogPageModel<TEntity> : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostEditAsync(int id)
+    public async Task<IActionResult> OnPostDeleteAsync(int id)
     {
-        var item = await catalog.FindAsync(id);
-        if (item is null)
+        if (!CanDelete)
         {
             return NotFound();
         }
-
-        Input = item;
-        await LoadAsync();
-        return Page();
-    }
-
-    public async Task<IActionResult> OnPostSaveAsync()
-    {
-        if (!ModelState.IsValid)
-        {
-            await LoadAsync();
-            return Page();
-        }
-
-        await PrepareToSaveAsync();
-        if (!await catalog.SaveAsync(Input))
-        {
-            ModelState.AddModelError(string.Empty, "Não foi possível salvar. Verifique a cidade selecionada, dados duplicados ou referências usadas por outros cadastros.");
-            await LoadAsync();
-            return Page();
-        }
-
-        TempData["StatusMessage"] = "Cadastro salvo.";
-        return RedirectToPage();
-    }
-
-    public async Task<IActionResult> OnPostDeleteAsync(int id)
-    {
         if (!await catalog.DeleteAsync(id))
         {
             TempData["ErrorMessage"] = "Não foi possível excluir. O cadastro pode estar sendo usado por outro módulo.";
@@ -107,20 +65,17 @@ public abstract class CatalogPageModel<TEntity> : PageModel
         return RedirectToPage(new { Search });
     }
 
-    protected virtual Task PrepareToSaveAsync() => Task.CompletedTask;
-    protected virtual Task LoadAdditionalDataAsync() => Task.CompletedTask;
-
     private async Task LoadAsync()
     {
         Items = await catalog.ListAsync(Search);
         StatusMessage = TempData["StatusMessage"] as string;
         ErrorMessage = TempData["ErrorMessage"] as string;
-        await LoadAdditionalDataAsync();
     }
 }
 
 public sealed record CatalogListViewModel(
     string Title,
+    string NewLabel,
     string? Search,
     string? StatusMessage,
     string? ErrorMessage,

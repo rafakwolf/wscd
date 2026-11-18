@@ -12,7 +12,7 @@
             <h1 class="text-2xl font-semibold">Promoções</h1>
             <p class="mt-1 text-sm text-slate-600">O preço promocional é calculado a partir do desconto e aplicado ao produto.</p>
         </div>
-        <a asp-page="./Index" asp-route-create="true" class="rounded bg-slate-900 px-4 py-2 text-white">Nova promoção</a>
+        <a asp-page="./Edit" asp-route-search="@Model.Search" class="rounded bg-slate-900 px-4 py-2 text-white">Nova promoção</a>
     </div>
 
     @if (Model.StatusMessage is not null)
@@ -23,6 +23,13 @@
     {
         <p class="mt-4 rounded bg-red-50 p-3 text-sm text-red-800">@errorMessage</p>
     }
+
+    <form method="get" class="mt-5 flex flex-wrap gap-2">
+        <label asp-for="Search" class="sr-only">Produto</label>
+        <input asp-for="Search" placeholder="Filtrar por produto" class="w-full max-w-lg rounded border px-3 py-2" />
+        <button class="rounded border px-4 py-2">Filtrar</button>
+        <a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a>
+    </form>
 
     <div class="mt-5 overflow-x-auto">
         <table class="w-full text-left text-sm">
@@ -39,8 +46,8 @@
                     <td>@item.EndDate.ToString("dd/MM/yyyy")</td>
                     <td>@IndexModel.StatusLabel(item.StartDate, item.EndDate)</td>
                     <td class="text-right">
-                        <a asp-page="./Index" asp-route-id="@item.Id" class="underline">Editar</a>
-                        <form method="post" asp-page-handler="Delete" asp-route-promotionId="@item.Id" class="inline">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" asp-route-search="@Model.Search" class="underline">Editar</a>
+                        <form method="post" asp-page-handler="Delete" asp-route-search="@Model.Search" asp-route-promotionId="@item.Id" class="inline">
                             <button class="ml-2 text-red-700 underline">Remover</button>
                         </form>
                     </td>
@@ -48,21 +55,6 @@
             }
             </tbody>
         </table>
-        @if (Model.Items.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhuma promoção cadastrada.</p> }
+        @if (Model.Items.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhuma promoção encontrada.</p> }
     </div>
 </section>
-
-@if (Model.Create || Model.Current is not null)
-{
-    <section class="mt-6 rounded-lg bg-white p-6 shadow-sm">
-        <h2 class="text-lg font-semibold">@(Model.Current is null ? "Nova promoção" : $"Editar promoção de {Model.Current.Product.Name}")</h2>
-        <div asp-validation-summary="ModelOnly" class="mt-3 text-sm text-red-700"></div>
-        <form method="post" asp-page-handler="Save" asp-route-id="@Model.Id" asp-route-create="@Model.Create" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div class="sm:col-span-2"><label asp-for="Input.ProductId" class="block text-sm">Produto</label><select asp-for="Input.ProductId" class="mt-1 w-full rounded border px-3 py-2" disabled="@(Model.Id is not null ? "disabled" : null)" required><option value="">Selecione</option>@foreach (var product in Model.Products) { <option value="@product.Id">@product.Name — R$ @product.SalePrice.ToString("N2", ptBr)</option> }</select>@if (Model.Id is not null) { <input asp-for="Input.ProductId" type="hidden" /> }</div>
-            <div><label asp-for="Input.DiscountPercent" class="block text-sm">Desconto (%)</label><input asp-for="Input.DiscountPercent" type="number" min="0.01" max="99.99" step="0.01" class="mt-1 w-full rounded border px-3 py-2" required /></div>
-            <div><label asp-for="Input.StartDate" class="block text-sm">Início</label><input asp-for="Input.StartDate" type="date" class="mt-1 w-full rounded border px-3 py-2" required /></div>
-            <div><label asp-for="Input.EndDate" class="block text-sm">Fim</label><input asp-for="Input.EndDate" type="date" class="mt-1 w-full rounded border px-3 py-2" required /></div>
-            <div class="sm:col-span-2 lg:col-span-4"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar promoção</button></div>
-        </form>
-    </section>
-}

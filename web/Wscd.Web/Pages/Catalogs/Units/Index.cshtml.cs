@@ -5,5 +5,9 @@ namespace Wscd.Web.Pages.Catalogs.Units;
 
 public sealed class IndexModel : CatalogPageModel<Unit>
 {
-    public IndexModel(ICatalogService<Unit> catalog) : base(catalog) => Title = "Unidades";
+    public IndexModel(ICatalogService<Unit> catalog) : base(catalog)
+    {
+        Title = "Unidades";
+        NewLabel = "Nova unidade";
+    }
 }

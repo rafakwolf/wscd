@@ -5,18 +5,3 @@
 }
 
 <partial name="~/Pages/Catalogs/_CatalogList.cshtml" model="Model.ListView" />
-
-<section id="form" class="mt-6 rounded-lg bg-white p-6 shadow-sm">
-    <h2 class="text-lg font-semibold">@(Model.Input.Id == 0 ? "Novo vendedor" : "Editar vendedor")</h2>
-    <form method="post" asp-page-handler="Save" class="mt-4 max-w-lg space-y-4">
-        <input asp-for="Input.Id" type="hidden" />
-        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
-        <div>
-            <label asp-for="Input.Name" class="block text-sm font-medium">Nome</label>
-            <input asp-for="Input.Name" maxlength="80" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
-        </div>
-        <label class="flex items-center gap-2 text-sm"><input asp-for="Input.IsActive" /> Ativo</label>
-        <button type="submit" class="rounded bg-slate-900 px-4 py-2 text-white">Salvar</button>
-        @if (Model.Input.Id != 0) { <a asp-page="./Index" class="ml-2 text-slate-700 underline">Cancelar edição</a> }
-    </form>
-</section>

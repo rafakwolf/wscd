@@ -10,6 +10,8 @@ Mantenha as páginas focadas em apresentação e fluxo HTTP. Todas as regras de 
 
 Preserve a organização e os fluxos úteis da interface Delphi. Não faça redesenho amplo sem necessidade para a migração. Use Tailwind; não adicione Bootstrap nem jQuery. JavaScript deve ser vanilla. Edite `Styles/input.css` para mudar a entrada do Tailwind; `wwwroot/css/app.css` é gerado e não deve ser editado manualmente. A interface e mensagens para o usuário devem permanecer em português.
 
+Módulos de manutenção abrem em `Index` com listagem e filtros, sem formulário de cadastro ou edição. Use páginas próprias para **Novo/Nova** e **Editar/Consultar**, reutilizando o formulário em uma partial quando criação e edição compartilham campos. Mantenha na lista as ações de exclusão existentes e preserve os filtros nos links de retorno. Teste a usabilidade em telas pequenas.
+
 Use apenas os serviços necessários do ASP.NET Core Identity. Não gere nem altere a UI padrão: as telas próprias em português de login, logout e administração de usuários ficam em `Pages/Account/` e `Pages/Admin/Users/`.
 
 ## Ambiente, dados e comandos

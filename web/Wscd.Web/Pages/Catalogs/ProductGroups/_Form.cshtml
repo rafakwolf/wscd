@@ -1,0 +1,13 @@
+@model Wscd.Web.Pages.Catalogs.ProductGroups.EditModel
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <form method="post" asp-page="./Edit" asp-page-handler="Save" asp-route-search="@Model.Search" class="mt-4 max-w-lg space-y-4">
+        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+        <div>
+            <label asp-for="Input.Name" class="block text-sm font-medium">Descrição</label>
+            <input asp-for="Input.Name" maxlength="80" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+        </div>
+        <button type="submit" class="rounded bg-slate-900 px-4 py-2 text-white">Salvar</button>
+       
+    </form>
+</section>

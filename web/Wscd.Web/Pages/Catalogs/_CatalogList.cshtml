@@ -1,8 +1,9 @@
 @model Wscd.Web.Pages.Catalogs.CatalogListViewModel
 
 <div class="space-y-6">
-    <div>
+    <div class="flex flex-wrap items-center justify-between gap-3">
         <h1 class="text-2xl font-semibold">@Model.Title</h1>
+        <a asp-page="./Edit" asp-route-search="@Model.Search" class="rounded bg-slate-900 px-4 py-2 text-white">@Model.NewLabel</a>
     </div>
 
     @if (Model.StatusMessage is not null)
@@ -15,8 +16,9 @@
     }
 
     <section class="rounded-lg bg-white p-6 shadow-sm">
-        <form method="get" class="flex gap-2">
-            <input name="Search" value="@Model.Search" placeholder="Filtrar por nome ou descrição" class="w-full max-w-lg rounded border border-slate-300 px-3 py-2" />
+        <form method="get" class="flex flex-wrap gap-2">
+            <label for="Search" class="sr-only">Nome ou descrição</label>
+            <input id="Search" name="Search" value="@Model.Search" placeholder="Filtrar por nome ou descrição" class="w-full max-w-lg rounded border border-slate-300 px-3 py-2" />
             <button type="submit" class="rounded border border-slate-300 px-4 py-2">Buscar</button>
             <a asp-page="./Index" class="rounded border border-slate-300 px-4 py-2">Limpar</a>
         </form>
@@ -40,13 +42,10 @@
                             <td class="py-3 pr-4">@row.Status</td>
                             <td class="py-3">
                                 <div class="flex gap-3">
-                                    <form method="post" asp-page-handler="Edit">
-                                        <input type="hidden" name="id" value="@row.Id" />
-                                        <button type="submit" class="text-blue-700 underline">Editar</button>
-                                    </form>
+                                    <a asp-page="./Edit" asp-route-id="@row.Id" asp-route-search="@Model.Search" class="text-blue-700 underline">Editar</a>
                                     @if (Model.CanDelete)
                                     {
-                                        <form method="post" asp-page-handler="Delete">
+                                        <form method="post" asp-page="./Index" asp-page-handler="Delete" asp-route-search="@Model.Search">
                                             <input type="hidden" name="id" value="@row.Id" />
                                             <button type="submit" class="text-red-700 underline">Excluir</button>
                                         </form>
