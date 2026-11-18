@@ -68,6 +68,15 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
                 movements.Add(item.Original with { OccurredAt = reversedAt, IsReversal = true, IsSaleCancellation = item.IsSaleCancellation });
             }
         }
+        var refunds = await db.SaleReturns.AsNoTracking().Where(item => item.RefundAmount > 0
+                && (cashAccountId == null || item.CashAccountId == cashAccountId)
+                && (fromUtc == null || item.ReturnedAtUtc >= fromUtc)
+                && (toUtcExclusive == null || item.ReturnedAtUtc < toUtcExclusive))
+            .OrderByDescending(item => item.Id)
+            .Select(item => new CashMovement(item.SaleId, item.ReturnedAtUtc, item.CashAccount!.Name, item.Sale.Customer.Name,
+                item.RefundMethod!.Value, item.RefundAmount, null, null) { IsSaleReturn = true })
+            .ToListAsync();
+        movements.AddRange(refunds);
         return movements;
     }
 }

@@ -43,6 +43,8 @@ Em **Vendas**, registre dinheiro, Pix, débito ou crédito à vista para cada va
 
 Para desfazer uma venda concluída, abra **Consultar** e selecione **Cancelar venda**. Confira os recebimentos, receba os produtos de volta e devolva os valores aplicáveis fora do ERP antes de confirmar com o motivo. O cancelamento recompõe o estoque, encerra o crediário e lança a contrapartida dos recebimentos não estornados. A venda continua disponível para consulta, como **Cancelada**.
 
+Para devolver itens sem apagar a venda, abra **Consultar → Registrar devolução**. Informe as quantidades, o motivo e quais itens podem voltar ao estoque. Na conferência, o ERP mostra o abatimento do saldo do crediário e, se sobrar valor, quanto devolver ao cliente. Efetue o reembolso fora do ERP e informe o meio e a conta caixa usados (uma conta por devolução). Depois da primeira devolução, use esse mesmo fluxo para os itens restantes em vez de cancelar a venda.
+
 Em **Contas a receber** e **Contas a pagar**, use **Nova conta** para registrar um título manual, sem venda ou compra vinculada. Informe cliente ou fornecedor, descrição, emissão, vencimento e valor; o documento é opcional. Títulos manuais e automáticos ficam na mesma listagem. No detalhe, registre uma baixa parcial ou integral em uma conta caixa ativa. O título só movimenta o Caixa quando baixado.
 
 Para corrigir uma baixa, abra o título e selecione **Estornar** no histórico. Informe o motivo e confirme. O estorno recompõe o saldo pelo valor integral daquela baixa, preserva o lançamento original e aparece no Caixa na data em que foi registrado. Isso não cancela vendas ou compras e não movimenta dinheiro fora do ERP.
@@ -69,7 +71,7 @@ dotnet ef migrations add NomeDaMigration --project Wscd.Data --startup-project W
 
 Em seguida, aplique-a com `dotnet ef database update --project Wscd.Data --startup-project Wscd.Web`.
 
-Atualize o banco até `AddSaleCancellation`. Vendas e baixas existentes são preservadas; nenhum cancelamento ou estorno é criado retroativamente. As migrações bloqueiam a volta a um esquema que não preserve o histórico já registrado.
+Atualize o banco até `AddSaleReturns`. Vendas e baixas existentes são preservadas; nenhum cancelamento, estorno ou devolução é criado retroativamente. As migrações bloqueiam a volta a um esquema que não preserve o histórico já registrado.
 
 ## Build e testes
 

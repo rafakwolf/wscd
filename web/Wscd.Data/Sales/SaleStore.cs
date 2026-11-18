@@ -33,19 +33,29 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         return await query.OrderByDescending(sale => sale.Date).ThenByDescending(sale => sale.Id)
             .Select(sale => new SaleSummary(sale.Id, sale.Date, sale.Customer.Name,
                 sale.Items.Sum(item => item.Total), sale.CancelledAtUtc != null ? SaleStatus.Cancelled :
-                    sale.CompletedAtUtc != null ? SaleStatus.Completed : SaleStatus.Draft))
+                    sale.CompletedAtUtc != null ? SaleStatus.Completed : SaleStatus.Draft, sale.Returns.Any()))
             .ToListAsync();
     }
 
-    public Task<Sale?> FindAsync(int id) => db.Sales.AsNoTracking()
-        .Include(sale => sale.Customer)
-        .Include(sale => sale.Seller)
-        .Include(sale => sale.Items.OrderBy(item => item.Id))
-        .Include(sale => sale.Payments.OrderBy(payment => payment.Id)).ThenInclude(payment => payment.CashAccount)
-        .Include(sale => sale.Receivable)
-            .ThenInclude(account => account!.Payments).ThenInclude(payment => payment.CashAccount)
-        .AsSingleQuery()
-        .SingleOrDefaultAsync(sale => sale.Id == id);
+    public async Task<Sale?> FindAsync(int id)
+    {
+        var sale = await db.Sales.AsNoTracking()
+            .Include(sale => sale.Customer)
+            .Include(sale => sale.Seller)
+            .Include(sale => sale.Items.OrderBy(item => item.Id))
+            .Include(sale => sale.Payments.OrderBy(payment => payment.Id)).ThenInclude(payment => payment.CashAccount)
+            .Include(sale => sale.Receivable)
+                .ThenInclude(account => account!.Payments).ThenInclude(payment => payment.CashAccount)
+            .AsSingleQuery()
+            .SingleOrDefaultAsync(sale => sale.Id == id);
+        if (sale is { IsCompleted: true })
+        {
+            // Avoid multiplying the sale, receipts and return lines in one join.
+            sale.Returns.AddRange(await db.SaleReturns.AsNoTracking().Where(item => item.SaleId == id)
+                .Include(item => item.CashAccount).Include(item => item.Items).OrderByDescending(item => item.Id).ToListAsync());
+        }
+        return sale;
+    }
 
     public async Task<bool> CreateAsync(Sale sale, Guid? quotationRevision)
     {
@@ -193,6 +203,57 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
         catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
         {
             return SaleCancellation.Conflict;
+        }
+    }
+
+    public async Task<SaleReturnResult> ReturnAsync(Sale sale, SaleReturn saleReturn)
+    {
+        await using var transaction = await db.Database.BeginTransactionAsync();
+        try
+        {
+            var claimed = await db.Sales.Where(current => current.Id == sale.Id && current.CompletedAtUtc != null &&
+                    current.CancelledAtUtc == null && current.Revision == sale.Revision)
+                .ExecuteUpdateAsync(update => update.SetProperty(current => current.Revision, Guid.NewGuid()));
+            if (claimed != 1)
+            {
+                return SaleReturnResult.Conflict;
+            }
+
+            if (sale.Receivable is { } account &&
+                await db.AccountsReceivable.Where(current => current.Id == account.Id && current.Revision == account.Revision &&
+                        current.Balance >= saleReturn.ReceivableReduction)
+                    .ExecuteUpdateAsync(update => update.SetProperty(current => current.Balance, current => current.Balance - saleReturn.ReceivableReduction)
+                        .SetProperty(current => current.Revision, Guid.NewGuid())) != 1)
+            {
+                return SaleReturnResult.Conflict;
+            }
+
+            if (saleReturn.CashAccountId is int cashAccountId && !await db.LockActiveCashAccountAsync(sale.OrganizationId, cashAccountId))
+            {
+                return SaleReturnResult.InvalidRefund;
+            }
+
+            var restocks = saleReturn.Items.Where(item => item.Restock)
+                .Select(item => (sale.Items.Single(original => original.Id == item.SaleItemId).ProductId, item.Quantity));
+            foreach (var (productId, quantity) in restocks.OrderBy(item => item.ProductId))
+            {
+                var updated = await db.Products.Where(product => product.Id == productId && product.Stock <= int.MaxValue - quantity)
+                    .ExecuteUpdateAsync(update => update.SetProperty(product => product.Stock, product => product.Stock + quantity));
+                if (updated != 1)
+                {
+                    return SaleReturnResult.Conflict;
+                }
+            }
+
+            db.SaleReturns.Add(saleReturn);
+            await db.SaveChangesAsync();
+            await transaction.CommitAsync();
+            return SaleReturnResult.Recorded;
+        }
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
+        {
+            db.ChangeTracker.Clear();
+            return SaleReturnResult.Conflict;
         }
     }
 }

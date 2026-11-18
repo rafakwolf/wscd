@@ -126,6 +126,57 @@ public sealed class SaleServiceTests
         Assert.Equal(SaleCancellation.InvalidSale, await service.CancelAsync(sale.Id, input, titleRevision, "user"));
     }
 
+    [Fact]
+    public async Task ReturnsPreserveTheOriginalLineTotalAcrossPartialQuantities()
+    {
+        var sale = new Sale { Id = 1, CompletedAtUtc = DateTimeOffset.UtcNow, Revision = Guid.NewGuid(),
+            Receivable = new() { Balance = 4m, Revision = Guid.NewGuid() } };
+        sale.Items.Add(new SaleItem { Id = 2, Quantity = 3, Total = 10m });
+        var store = new Store { Sale = sale };
+        var service = new SaleService(store, null!, null!, null!, null!, null!, null!);
+        var line = new SaleReturnLineInput { SaleItemId = 2, Quantity = 1, Restock = true };
+        var input = new SaleReturnInput { Reason = " Cliente devolveu ", Revision = sale.Revision,
+            ReceivableRevision = sale.Receivable.Revision, Lines = [line] };
+
+        Assert.Equal(SaleReturnResult.Conflict, (await service.ReviewReturnAsync(1,
+            new SaleReturnInput { Revision = sale.Revision }, "user")).Result);
+        Assert.Equal(SaleReturnResult.InvalidReason, (await service.ReviewReturnAsync(1, input, null)).Result);
+        line.Quantity = 4;
+        Assert.Equal(SaleReturnResult.InvalidItems, (await service.ReviewReturnAsync(1, input, "user")).Result);
+        line.Quantity = 1;
+        input.Lines.Add(line);
+        Assert.Equal(SaleReturnResult.InvalidItems, (await service.ReviewReturnAsync(1, input, "user")).Result);
+        input.Lines.RemoveAt(1);
+
+        var first = await service.RegisterReturnAsync(1, input, "user");
+        Assert.Equal(SaleReturnResult.Recorded, first.Result);
+        Assert.Equal((3.33m, 0m), (first.Return!.ReceivableReduction, first.Return.RefundAmount));
+        Assert.True(Assert.Single(first.Return.Items).Restock);
+        Assert.Equal(SaleReturnResult.Conflict, (await service.RegisterReturnAsync(1, input, "user")).Result);
+
+        input.Revision = sale.Revision;
+        input.ReceivableRevision = sale.Receivable.Revision;
+        Assert.Equal(SaleReturnResult.InvalidRefund, (await service.RegisterReturnAsync(1, input, "user")).Result);
+        input.CashAccountId = 7;
+        input.RefundMethod = PaymentMethod.Pix;
+        line.Restock = false;
+        var second = await service.RegisterReturnAsync(1, input, "user");
+        Assert.Equal(SaleReturnResult.Recorded, second.Result);
+        Assert.Equal((0.67m, 2.67m, 7, PaymentMethod.Pix),
+            (second.Return!.ReceivableReduction, second.Return.RefundAmount, second.Return.CashAccountId, second.Return.RefundMethod));
+        Assert.False(Assert.Single(second.Return.Items).Restock);
+
+        input.Revision = sale.Revision;
+        input.ReceivableRevision = sale.Receivable.Revision;
+        Assert.Equal(SaleReturnResult.Recorded, (await service.RegisterReturnAsync(1, input, "user")).Result);
+        Assert.Equal(10m, sale.Returns.Sum(saleReturn => saleReturn.Total));
+        Assert.Equal(3, sale.ReturnedQuantity(2));
+        input.Revision = sale.Revision;
+        input.ReceivableRevision = sale.Receivable.Revision;
+        Assert.Equal(SaleReturnResult.InvalidItems, (await service.RegisterReturnAsync(1, input, "user")).Result);
+        Assert.Equal(SaleCancellation.HasReturns, await service.CancelAsync(1, input, input.ReceivableRevision, "user"));
+    }
+
     private sealed class Store : ISaleStore
     {
         public Sale? Sale { get; set; }
@@ -162,6 +213,18 @@ public sealed class SaleServiceTests
             Cancellation = cancellation;
             sale.CancelledAtUtc = cancellation.AtUtc;
             return Task.FromResult(SaleCancellation.Cancelled);
+        }
+
+        public Task<SaleReturnResult> ReturnAsync(Sale sale, SaleReturn saleReturn)
+        {
+            sale.Returns.Add(saleReturn);
+            sale.Revision = Guid.NewGuid();
+            if (sale.Receivable is { } title)
+            {
+                title.Balance -= saleReturn.ReceivableReduction;
+                title.Revision = Guid.NewGuid();
+            }
+            return Task.FromResult(SaleReturnResult.Recorded);
         }
     }
 

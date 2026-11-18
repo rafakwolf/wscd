@@ -10,12 +10,13 @@ public interface ISaleStore
     Task<bool> UpdateAsync(int id, Func<Sale, bool> change);
     Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, AccountReceivable? receivable, DateTimeOffset completedAt);
     Task<SaleCancellation> CancelAsync(Sale sale, SettlementReversal cancellation);
+    Task<SaleReturnResult> ReturnAsync(Sale sale, SaleReturn saleReturn);
 }
 
-public sealed record SaleSummary(int Id, DateOnly Date, string CustomerName, decimal Total, SaleStatus Status);
+public sealed record SaleSummary(int Id, DateOnly Date, string CustomerName, decimal Total, SaleStatus Status, bool HasReturns);
 
 public enum SaleStatus { Draft, Completed, Cancelled }
-public enum SaleCancellation { Cancelled, NotFound, InvalidSale, InvalidReason, Conflict }
+public enum SaleCancellation { Cancelled, NotFound, InvalidSale, InvalidReason, Conflict, HasReturns }
 
 public sealed class SalePaymentInput
 {

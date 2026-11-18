@@ -42,8 +42,10 @@ public sealed class ReceivableStore(WscdDbContext db) : IReceivableStore
 
     public Task<AccountReceivable?> FindAsync(int id) => db.AccountsReceivable.AsNoTracking()
         .Include(account => account.Customer)
-        .Include(account => account.Sale)
+        .Include(account => account.Sale).ThenInclude(sale => sale!.Payments)
+        .Include(account => account.Sale).ThenInclude(sale => sale!.Returns)
         .Include(account => account.Payments.OrderByDescending(payment => payment.Id)).ThenInclude(payment => payment.CashAccount)
+        .AsSingleQuery()
         .SingleOrDefaultAsync(account => account.Id == id);
 
     public Task<bool> CreateAsync(AccountReceivable account) => db.CreateTitleAsync(account);

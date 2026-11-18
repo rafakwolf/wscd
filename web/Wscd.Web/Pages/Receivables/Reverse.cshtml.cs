@@ -29,6 +29,7 @@ public sealed class ReverseModel(ReceivableService titles) : ReceivableFiltersMo
         {
             TitleSettlement.AlreadyReversed => "Esta baixa já foi estornada.",
             TitleSettlement.Conflict => "O título mudou. Volte ao título e confira o saldo antes de tentar novamente.",
+            TitleSettlement.RefundedSale => "Esta baixa não pode ser estornada: a devolução de itens já consumiu parte do valor recebido.",
             _ => "Informe um motivo válido, de até 240 caracteres."
         };
         return await LoadAsync(error: error) ? Page() : NotFound();

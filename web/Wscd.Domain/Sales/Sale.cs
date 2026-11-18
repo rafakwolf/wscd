@@ -23,10 +23,13 @@ public sealed class Sale : IOrganizationScoped
     public Guid Revision { get; set; }
     public List<SaleItem> Items { get; } = [];
     public List<SalePayment> Payments { get; } = [];
+    public List<SaleReturn> Returns { get; } = [];
     public AccountReceivable? Receivable { get; set; }
     public decimal Total => Items.Sum(item => item.Total);
     public bool IsCompleted => CompletedAtUtc is not null;
     public bool IsCancelled => CancelledAtUtc is not null;
+    public int ReturnedQuantity(int itemId) => Returns.SelectMany(saleReturn => saleReturn.Items)
+        .Where(item => item.SaleItemId == itemId).Sum(item => item.Quantity);
 }
 
 public sealed class SaleItem : IOrganizationScoped

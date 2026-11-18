@@ -47,6 +47,7 @@ public sealed class CancelModel(SaleService sales) : SaleFiltersModel
         {
             SaleCancellation.InvalidReason => "Informe um motivo válido, de até 240 caracteres.",
             SaleCancellation.Conflict => "Não foi possível cancelar. Volte à venda e confira os recebimentos e o estoque antes de tentar novamente.",
+            SaleCancellation.HasReturns => "O cancelamento integral não está disponível após uma devolução.",
             _ => "Somente vendas concluídas e ainda não canceladas podem ser canceladas."
         };
         return Page();

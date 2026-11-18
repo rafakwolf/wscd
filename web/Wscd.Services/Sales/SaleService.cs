@@ -189,6 +189,10 @@ public sealed class SaleService(
         {
             return SaleCancellation.InvalidSale;
         }
+        if (sale.Returns.Count != 0)
+        {
+            return SaleCancellation.HasReturns;
+        }
         if (input.Build(userId) is not { } cancellation)
         {
             return SaleCancellation.InvalidReason;
@@ -199,6 +203,83 @@ public sealed class SaleService(
         }
 
         return await store.CancelAsync(sale, cancellation);
+    }
+
+    public async Task<SaleReturnReview> ReviewReturnAsync(int id, SaleReturnInput input, string? userId)
+    {
+        var sale = await store.FindAsync(id);
+        if (sale is null)
+        {
+            return new(SaleReturnResult.NotFound, null);
+        }
+        if (!sale.IsCompleted || sale.IsCancelled)
+        {
+            return new(SaleReturnResult.InvalidSale, sale);
+        }
+        if (sale.Revision != input.Revision || sale.Receivable?.Revision != input.ReceivableRevision)
+        {
+            return new(SaleReturnResult.Conflict, sale);
+        }
+        if (input.Build(userId) is not { } audit)
+        {
+            return new(SaleReturnResult.InvalidReason, sale);
+        }
+
+        var result = new SaleReturn
+        {
+            SaleId = sale.Id, OrganizationId = sale.OrganizationId, ReturnedAtUtc = audit.AtUtc,
+            Reason = audit.Reason, UserId = audit.UserId
+        };
+        var selected = new HashSet<int>();
+        foreach (var line in input.Lines.Where(line => line.Quantity != 0))
+        {
+            var item = sale.Items.SingleOrDefault(item => item.Id == line.SaleItemId);
+            if (item is null || line.Quantity < 1 || !selected.Add(line.SaleItemId))
+            {
+                return new(SaleReturnResult.InvalidItems, sale);
+            }
+            var returned = sale.ReturnedQuantity(item.Id);
+            if (line.Quantity > item.Quantity - returned)
+            {
+                return new(SaleReturnResult.InvalidItems, sale);
+            }
+
+            // Round the cumulative amount so successive returns add up to the original line total.
+            decimal Cumulative(int quantity) => decimal.Round(item.Total * quantity / item.Quantity, 2, MidpointRounding.AwayFromZero);
+            result.Items.Add(new SaleReturnItem
+            {
+                OrganizationId = sale.OrganizationId, SaleItemId = item.Id, Quantity = line.Quantity, Restock = line.Restock,
+                Amount = Cumulative(returned + line.Quantity) - Cumulative(returned)
+            });
+        }
+        if (result.Items.Count == 0)
+        {
+            return new(SaleReturnResult.InvalidItems, sale);
+        }
+
+        var total = result.Items.Sum(item => item.Amount);
+        result.ReceivableReduction = Math.Min(total, sale.Receivable?.Balance ?? 0);
+        result.RefundAmount = total - result.ReceivableReduction;
+        return new(SaleReturnResult.Ready, sale, result);
+    }
+
+    public async Task<SaleReturnReview> RegisterReturnAsync(int id, SaleReturnInput input, string? userId)
+    {
+        var review = await ReviewReturnAsync(id, input, userId);
+        if (review.Sale is not { } sale || review.Return is not { } saleReturn)
+        {
+            return review;
+        }
+        if (saleReturn.RefundAmount > 0)
+        {
+            if (input.CashAccountId is not > 0 || input.RefundMethod is not PaymentMethod method || !Enum.IsDefined(method))
+            {
+                return review with { Result = SaleReturnResult.InvalidRefund };
+            }
+            saleReturn.CashAccountId = input.CashAccountId;
+            saleReturn.RefundMethod = method;
+        }
+        return review with { Result = await store.ReturnAsync(sale, saleReturn) };
     }
 
     private static bool CanChange(Sale sale) => !sale.IsCompleted && sale.QuotationId is null;

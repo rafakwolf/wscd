@@ -35,6 +35,7 @@ public sealed class WscdDbContext(
     public DbSet<Quotation> Quotations => Set<Quotation>();
     public DbSet<Sale> Sales => Set<Sale>();
     public DbSet<SalePayment> SalePayments => Set<SalePayment>();
+    public DbSet<SaleReturn> SaleReturns => Set<SaleReturn>();
     public DbSet<AccountReceivable> AccountsReceivable => Set<AccountReceivable>();
 
     public Guid? CurrentOrganizationId => currentOrganization.OrganizationId;
@@ -469,6 +470,47 @@ public sealed class WscdDbContext(
                 .HasForeignKey(account => new { account.OrganizationId, account.CustomerId })
                 .HasPrincipalKey(customer => new { customer.OrganizationId, customer.Id })
                 .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<SaleReturn>(entity =>
+        {
+            entity.ToTable("SaleReturns", table => table.HasCheckConstraint("CK_SaleReturns_Amounts",
+                """
+                "ReceivableReduction" >= 0 AND "RefundAmount" >= 0 AND (
+                    ("RefundAmount" = 0 AND "IDCashAccount" IS NULL AND "RefundMethod" IS NULL)
+                    OR ("RefundAmount" > 0 AND "IDCashAccount" IS NOT NULL AND "RefundMethod" IS NOT NULL AND "RefundMethod" IN (1, 2, 3, 4))
+                )
+                """));
+            entity.Property(item => item.Id).HasColumnName("ID");
+            entity.Property(item => item.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(item => item.SaleId).HasColumnName("IDSale");
+            entity.Property(item => item.CashAccountId).HasColumnName("IDCashAccount");
+            entity.Property(item => item.Reason).HasMaxLength(240);
+            entity.Property(item => item.UserId).HasMaxLength(450);
+            entity.Property(item => item.ReceivableReduction).HasPrecision(14, 2);
+            entity.Property(item => item.RefundAmount).HasPrecision(14, 2);
+            entity.HasOne(item => item.Sale).WithMany(sale => sale.Returns)
+                .HasForeignKey(item => new { item.OrganizationId, item.SaleId })
+                .HasPrincipalKey(sale => new { sale.OrganizationId, sale.Id }).OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(item => item.CashAccount).WithMany()
+                .HasForeignKey(item => new { item.OrganizationId, item.CashAccountId })
+                .HasPrincipalKey(account => new { account.OrganizationId, account.Id }).OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<SaleReturnItem>(entity =>
+        {
+            entity.ToTable("SaleReturnItems", table => table.HasCheckConstraint("CK_SaleReturnItems_Amount",
+                "\"Quantity\" > 0 AND \"Amount\" >= 0"));
+            entity.HasKey(item => new { item.SaleReturnId, item.SaleItemId });
+            entity.Property(item => item.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(item => item.SaleReturnId).HasColumnName("IDSaleReturn");
+            entity.Property(item => item.SaleItemId).HasColumnName("IDSaleItem");
+            entity.Property(item => item.Amount).HasPrecision(14, 2);
+            entity.HasOne<SaleReturn>().WithMany(saleReturn => saleReturn.Items)
+                .HasForeignKey(item => new { item.OrganizationId, item.SaleReturnId })
+                .HasPrincipalKey(saleReturn => new { saleReturn.OrganizationId, saleReturn.Id }).OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne<SaleItem>().WithMany().HasForeignKey(item => new { item.OrganizationId, item.SaleItemId })
+                .HasPrincipalKey(item => new { item.OrganizationId, item.Id }).OnDelete(DeleteBehavior.Restrict);
         });
 
         builder.Entity<SalePayment>(entity =>

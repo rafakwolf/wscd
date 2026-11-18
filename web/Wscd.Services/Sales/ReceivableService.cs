@@ -89,6 +89,15 @@ public sealed class ReceivableService(IReceivableStore store, ICatalogService<Cu
         {
             return TitleSettlement.Conflict;
         }
+        if (account.Sale is { Returns.Count: > 0 } sale)
+        {
+            var netReceived = sale.Payments.Concat(account.Payments).Where(payment => payment.ReversedAtUtc is null)
+                .Sum(payment => payment.Amount) - sale.Returns.Sum(saleReturn => saleReturn.RefundAmount);
+            if (original.Amount > netReceived)
+            {
+                return TitleSettlement.RefundedSale;
+            }
+        }
 
         return await store.ReverseAsync(account, original, reversal);
     }

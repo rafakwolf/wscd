@@ -22,9 +22,22 @@
 }
 else if (Model.Current is { IsCompleted: true } sale)
 {
-    <a asp-page="./Cancel" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" class="mb-3 inline-block rounded border border-red-700 px-4 py-2 text-red-700">Cancelar venda</a>
+    <div class="mb-3 flex flex-wrap gap-2">
+        @if (sale.Items.Any(item => item.Quantity > sale.ReturnedQuantity(item.Id)))
+        {
+            <a asp-page="./Return" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" class="rounded border px-4 py-2">Registrar devolução</a>
+        }
+        @if (sale.Returns.Count == 0)
+        {
+            <a asp-page="./Cancel" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" class="rounded border border-red-700 px-4 py-2 text-red-700">Cancelar venda</a>
+        }
+    </div>
 }
 <partial name="_Form" model="Model" />
+@if (Model.Current is { Returns.Count: > 0 } returnedSale)
+{
+    <partial name="_Returns" model="returnedSale" />
+}
 
 @section Scripts {
     <script src="~/js/sale-payments.js" asp-append-version="true" defer></script>

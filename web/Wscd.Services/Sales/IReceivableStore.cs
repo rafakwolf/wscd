@@ -13,6 +13,6 @@ public interface IReceivableStore
 }
 
 public enum TitleStatus { Open, Overdue, Paid, Cancelled }
-public enum TitleSettlement { Recorded, NotFound, InvalidPayment, InvalidCashAccount, Conflict, AlreadyReversed, InvalidReversal, CancelledTitle }
+public enum TitleSettlement { Recorded, NotFound, InvalidPayment, InvalidCashAccount, Conflict, AlreadyReversed, InvalidReversal, CancelledTitle, RefundedSale }
 
 public sealed record ReceivableSummary(int Id, int? SaleId, string CustomerName, string? Description, DateOnly DueDate, decimal Amount, decimal Balance, bool IsCancelled);

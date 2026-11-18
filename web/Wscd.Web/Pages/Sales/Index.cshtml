@@ -38,7 +38,10 @@
             {
                 <tr class="border-b last:border-0">
                     <td class="py-2">@sale.Id</td><td>@sale.Date.ToString("dd/MM/yyyy")</td><td>@sale.CustomerName</td><td>@sale.Total.ToString("C", culture)</td>
-                    <td>@(sale.Status == SaleStatus.Cancelled ? "Cancelada" : sale.Status == SaleStatus.Completed ? "Concluída" : "Rascunho")</td>
+                    <td>
+                        @(sale.Status == SaleStatus.Cancelled ? "Cancelada" : sale.Status == SaleStatus.Completed ? "Concluída" : "Rascunho")
+                        @if (sale.HasReturns) { <span class="block text-xs text-slate-600">Com devolução</span> }
+                    </td>
                     <td class="text-right"><a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" aria-label="Abrir venda nº @sale.Id" class="underline">@(sale.Status == SaleStatus.Draft ? "Editar" : "Consultar")</a></td>
                 </tr>
             }

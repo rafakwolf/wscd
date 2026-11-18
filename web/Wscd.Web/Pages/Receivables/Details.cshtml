@@ -30,6 +30,10 @@
         <div><dt class="text-sm text-slate-600">Valor original</dt><dd class="font-semibold">@account.Amount.ToString("C", culture)</dd></div>
         <div><dt class="text-sm text-slate-600">Saldo a receber</dt><dd class="font-semibold">@account.Balance.ToString("C", culture)</dd></div>
     </dl>
+    @if (account.Sale?.Returns.Sum(saleReturn => saleReturn.ReceivableReduction) is decimal reduction && reduction > 0m)
+    {
+        <p class="mt-3 text-sm text-slate-600">Abatimento por devoluções: @reduction.ToString("C", culture).</p>
+    }
     @if (TempData["StatusMessage"] is string status)
     {
         <p role="status" class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>

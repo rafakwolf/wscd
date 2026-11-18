@@ -1394,6 +1394,99 @@ namespace Wscd.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Sales.SaleReturn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CashAccountId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDCashAccount");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(240)
+                        .HasColumnType("character varying(240)");
+
+                    b.Property<decimal>("ReceivableReduction")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("numeric(14,2)");
+
+                    b.Property<decimal>("RefundAmount")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("numeric(14,2)");
+
+                    b.Property<int?>("RefundMethod")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTimeOffset>("ReturnedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("SaleId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSale");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("character varying(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "CashAccountId");
+
+                    b.HasIndex("OrganizationId", "SaleId");
+
+                    b.ToTable("SaleReturns", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_SaleReturns_Amounts", "\"ReceivableReduction\" >= 0 AND \"RefundAmount\" >= 0 AND (\n    (\"RefundAmount\" = 0 AND \"IDCashAccount\" IS NULL AND \"RefundMethod\" IS NULL)\n    OR (\"RefundAmount\" > 0 AND \"IDCashAccount\" IS NOT NULL AND \"RefundMethod\" IS NOT NULL AND \"RefundMethod\" IN (1, 2, 3, 4))\n)");
+                        });
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.SaleReturnItem", b =>
+                {
+                    b.Property<int>("SaleReturnId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSaleReturn");
+
+                    b.Property<int>("SaleItemId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSaleItem");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("numeric(14,2)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Restock")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("SaleReturnId", "SaleItemId");
+
+                    b.HasIndex("OrganizationId", "SaleItemId");
+
+                    b.HasIndex("OrganizationId", "SaleReturnId");
+
+                    b.ToTable("SaleReturnItems", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_SaleReturnItems_Amount", "\"Quantity\" > 0 AND \"Amount\" >= 0");
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1821,6 +1914,43 @@ namespace Wscd.Data.Migrations
                     b.Navigation("Sale");
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Sales.SaleReturn", b =>
+                {
+                    b.HasOne("Wscd.Domain.Catalogs.CashAccount", "CashAccount")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "CashAccountId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Wscd.Domain.Sales.Sale", "Sale")
+                        .WithMany("Returns")
+                        .HasForeignKey("OrganizationId", "SaleId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CashAccount");
+
+                    b.Navigation("Sale");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.SaleReturnItem", b =>
+                {
+                    b.HasOne("Wscd.Domain.Sales.SaleItem", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "SaleItemId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Sales.SaleReturn", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrganizationId", "SaleReturnId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Wscd.Domain.Purchases.AccountPayable", b =>
                 {
                     b.Navigation("Payments");
@@ -1850,6 +1980,13 @@ namespace Wscd.Data.Migrations
                     b.Navigation("Payments");
 
                     b.Navigation("Receivable");
+
+                    b.Navigation("Returns");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Sales.SaleReturn", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

@@ -76,6 +76,25 @@ public sealed class ReceivableServiceTests
         Assert.Null(store.Reversal);
     }
 
+    [Fact]
+    public async Task ARefundCanPreventReversalOfAReceiptThatExceedsNetCash()
+    {
+        var sale = new Sale();
+        sale.Payments.Add(new SalePayment { Amount = 3m });
+        var saleReturn = new SaleReturn { RefundAmount = 4m };
+        sale.Returns.Add(saleReturn);
+        var title = new AccountReceivable { Id = 1, Sale = sale, Revision = Guid.NewGuid() };
+        title.Payments.Add(new SalePayment { Id = 2, Amount = 5m });
+        var store = new Store(title);
+        var service = new ReceivableService(store, null!, null!);
+        var input = new ReversalInput { Revision = title.Revision, Reason = "Corrigir recebimento" };
+
+        Assert.Equal(TitleSettlement.RefundedSale, await service.ReverseAsync(1, 2, input, "user"));
+        Assert.Null(store.Reversal);
+        saleReturn.RefundAmount = 3m;
+        Assert.Equal(TitleSettlement.Recorded, await service.ReverseAsync(1, 2, input, "user"));
+    }
+
     private sealed class Store(AccountReceivable account) : IReceivableStore
     {
         public SalePayment? Payment { get; private set; }

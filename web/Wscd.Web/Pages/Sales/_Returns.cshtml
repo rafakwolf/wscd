@@ -1,0 +1,29 @@
+@using System.Globalization
+@using Wscd.Domain.Sales
+@using Wscd.Services.Reports
+@using Wscd.Web.Pages
+@model Sale
+@{
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="mt-4 rounded-lg bg-white p-6 shadow-sm">
+    <h2 class="text-lg font-semibold">Histórico de devoluções</h2>
+    <p class="mt-2 text-sm">Total devolvido: @Model.Returns.Sum(item => item.Total).ToString("C", culture).</p>
+    @foreach (var saleReturn in Model.Returns)
+    {
+        <article class="mt-3 border-t pt-3 text-sm">
+            <h3 class="font-semibold">Devolução nº @saleReturn.Id · @CashReportService.InBrasilia(saleReturn.ReturnedAtUtc).ToString("dd/MM/yyyy HH:mm") (Brasília)</h3>
+            <p class="mt-1">Motivo: @saleReturn.Reason</p>
+            <p class="mt-1">Abatimento: @saleReturn.ReceivableReduction.ToString("C", culture) · Saída no Caixa: @saleReturn.RefundAmount.ToString("C", culture)
+                @if (saleReturn.RefundMethod is PaymentMethod method) { <span> (@PaymentLabels.For(method) · @saleReturn.CashAccount?.Name)</span> }
+            </p>
+            <ul class="mt-2 list-disc pl-5">
+                @foreach (var line in saleReturn.Items)
+                {
+                    <li>@line.Quantity × @Model.Items.Single(item => item.Id == line.SaleItemId).ProductName · @line.Amount.ToString("C", culture) · @(line.Restock ? "Reposto" : "Não reposto")</li>
+                }
+            </ul>
+        </article>
+    }
+</section>
