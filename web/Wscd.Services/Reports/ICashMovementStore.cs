@@ -4,7 +4,8 @@ namespace Wscd.Services.Reports;
 
 public interface ICashMovementStore
 {
-    Task<IReadOnlyList<CashMovement>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive);
+    Task<IReadOnlyList<CashMovement>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive,
+        TitleSide? side = null, string? party = null);
 }
 
 public sealed record CashMovement(int? SaleId, DateTimeOffset OccurredAt, string CashAccountName, string PartyName,

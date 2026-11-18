@@ -24,9 +24,9 @@ public sealed class TitlePositionReportServiceTests
         var from = Today.AddDays(-5);
         var to = Today.AddDays(10);
         var report = Assert.IsType<TitlePositionReport>(
-            await Service(store).GetAsync(TitlePositionSide.Payable, " Fornecedor ", from, to, false, Today));
+            await Service(store).GetAsync(TitleSide.Payable, " Fornecedor ", from, to, false, Today));
 
-        Assert.Equal((TitlePositionSide.Payable, "Fornecedor", from, to, TitleStatus.Open, Today), store.Filter);
+        Assert.Equal((TitleSide.Payable, "Fornecedor", from, to, TitleStatus.Open, Today), store.Filter);
         Assert.Equal(Today, report.Today);
         Assert.Equal(20.30m, report.Overdue);
         Assert.Equal(35m, report.DueToday);
@@ -46,13 +46,13 @@ public sealed class TitlePositionReportServiceTests
             ]
         };
         var service = Service(store);
-        Assert.Null(await service.GetAsync(TitlePositionSide.Receivable, null, Today, Today.AddDays(-1), false, Today));
+        Assert.Null(await service.GetAsync(TitleSide.Receivable, null, Today, Today.AddDays(-1), false, Today));
         Assert.Null(store.Filter);
 
         var report = Assert.IsType<TitlePositionReport>(
-            await service.GetAsync(TitlePositionSide.Receivable, "Cliente", null, null, true, Today));
+            await service.GetAsync(TitleSide.Receivable, "Cliente", null, null, true, Today));
 
-        Assert.Equal((TitlePositionSide.Receivable, "Cliente", (DateOnly?)null, (DateOnly?)null, TitleStatus.Overdue, Today), store.Filter);
+        Assert.Equal((TitleSide.Receivable, "Cliente", (DateOnly?)null, (DateOnly?)null, TitleStatus.Overdue, Today), store.Filter);
         Assert.Equal(15, Assert.Single(report.Rows).SourceId);
         Assert.Equal(50m, report.TotalBalance);
         Assert.Equal(0m, report.DueToday);
@@ -65,19 +65,19 @@ public sealed class TitlePositionReportServiceTests
     {
         public IReadOnlyList<PayableSummary> Payables { get; init; } = [];
         public IReadOnlyList<ReceivableSummary> Receivables { get; init; } = [];
-        public (TitlePositionSide Side, string? Party, DateOnly? From, DateOnly? To, TitleStatus? Status, DateOnly Today)? Filter { get; private set; }
+        public (TitleSide Side, string? Party, DateOnly? From, DateOnly? To, TitleStatus? Status, DateOnly Today)? Filter { get; private set; }
 
         Task<IReadOnlyList<PayableSummary>> IPayableStore.ListAsync(string? supplier, DateOnly? from, DateOnly? to,
             TitleStatus? status, DateOnly today)
         {
-            Filter = (TitlePositionSide.Payable, supplier, from, to, status, today);
+            Filter = (TitleSide.Payable, supplier, from, to, status, today);
             return Task.FromResult(Payables);
         }
 
         Task<IReadOnlyList<ReceivableSummary>> IReceivableStore.ListAsync(string? customer, DateOnly? from, DateOnly? to,
             TitleStatus? status, DateOnly today)
         {
-            Filter = (TitlePositionSide.Receivable, customer, from, to, status, today);
+            Filter = (TitleSide.Receivable, customer, from, to, status, today);
             return Task.FromResult(Receivables);
         }
 

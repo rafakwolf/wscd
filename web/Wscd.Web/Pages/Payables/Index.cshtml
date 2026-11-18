@@ -11,6 +11,7 @@
         <div><h1 class="text-2xl font-semibold">Contas a pagar</h1><p class="mt-1 text-sm text-slate-600">Consulte títulos manuais e de compras e registre pagamentos.</p></div>
         <div class="flex flex-wrap gap-2">
             <a asp-page="/Reports/TitlePositions/Index" asp-route-kind="a-pagar" class="rounded border px-4 py-2">Posição de contas</a>
+            <a asp-page="/Reports/TitleSettlements/Index" asp-route-kind="a-pagar" class="rounded border px-4 py-2">Relatório de baixas</a>
             <a asp-page="./Create" asp-all-route-data="Model.ListFilters" class="rounded bg-slate-900 px-4 py-2 text-white">Nova conta a pagar</a>
         </div>
     </div>

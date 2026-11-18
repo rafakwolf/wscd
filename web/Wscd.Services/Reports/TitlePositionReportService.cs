@@ -5,7 +5,7 @@ namespace Wscd.Services.Reports;
 
 public sealed class TitlePositionReportService(PayableService payables, ReceivableService receivables)
 {
-    public async Task<TitlePositionReport?> GetAsync(TitlePositionSide side, string? party, DateOnly? from,
+    public async Task<TitlePositionReport?> GetAsync(TitleSide side, string? party, DateOnly? from,
         DateOnly? to, bool onlyOverdue, DateOnly today)
     {
         if (from > to)
@@ -16,10 +16,10 @@ public sealed class TitlePositionReportService(PayableService payables, Receivab
         var status = onlyOverdue ? TitleStatus.Overdue : TitleStatus.Open;
         var rows = side switch
         {
-            TitlePositionSide.Payable => (await payables.ListAsync(party, from, to, status, today))
+            TitleSide.Payable => (await payables.ListAsync(party, from, to, status, today))
                 .Select(account => new TitlePositionRow(account.Id, account.SupplierName, account.PurchaseId,
                     account.Description, account.DueDate, account.Amount, account.Balance)),
-            TitlePositionSide.Receivable => (await receivables.ListAsync(party, from, to, status, today))
+            TitleSide.Receivable => (await receivables.ListAsync(party, from, to, status, today))
                 .Where(account => !account.IsCancelled)
                 .Select(account => new TitlePositionRow(account.Id, account.CustomerName, account.SaleId,
                     account.Description, account.DueDate, account.Amount, account.Balance)),
@@ -29,8 +29,6 @@ public sealed class TitlePositionReportService(PayableService payables, Receivab
         return new TitlePositionReport(today, rows.ToArray());
     }
 }
-
-public enum TitlePositionSide { Payable, Receivable }
 
 public sealed record TitlePositionRow(int Id, string PartyName, int? SourceId, string? Description,
     DateOnly DueDate, decimal Amount, decimal Balance);

@@ -53,6 +53,8 @@ Em **Contas a receber** e **Contas a pagar**, use **Nova conta** para registrar 
 
 Nos dois módulos, **Posição de contas** lista os títulos em aberto e separa os saldos vencidos, os que vencem hoje e os que ainda vão vencer. Filtre por cliente ou fornecedor, intervalo de vencimentos ou somente vencidas, e use **Imprimir / Salvar PDF**. A consulta usa o saldo de hoje, já descontadas as baixas e os abatimentos; não é uma posição histórica.
 
+Abra **Relatório de baixas** para conferir pagamentos ou recebimentos de títulos por período, cliente ou fornecedor e conta caixa. O líquido é o total de baixas menos os estornos do período. Cada estorno aparece em sua própria data, inclusive quando decorre do cancelamento de uma venda no crediário. Recebimentos de balcão e reembolsos por devolução de itens não entram nessa consulta; consulte o **Caixa** para esses movimentos.
+
 Para corrigir uma baixa, abra o título e selecione **Estornar** no histórico. Informe o motivo e confirme. O estorno recompõe o saldo pelo valor integral daquela baixa, preserva o lançamento original e aparece no Caixa na data em que foi registrado. Isso não cancela vendas ou compras e não movimenta dinheiro fora do ERP.
 
 Em **Caixa**, consulte entradas e saídas por conta e período, no horário de Brasília. A diferença entre entradas e saídas não é saldo da conta. A consulta pode ser impressa ou salva em PDF pelo navegador. O ERP não processa os pagamentos nem concilia repasses, taxas ou depósitos.

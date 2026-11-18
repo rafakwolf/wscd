@@ -58,16 +58,63 @@ public sealed class CashReportServiceTests
         Assert.Null(store.AccountId);
     }
 
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task SettlementsUseTheirOwnDatesAndSubtractReversalsEvenWithoutTheOriginal(bool payable)
+    {
+        var day = new DateOnly(2026, 11, 18);
+        var midnight = new DateTimeOffset(2026, 11, 18, 3, 0, 0, TimeSpan.Zero);
+        var original = new CashMovement(null, midnight.AddSeconds(-1), "Caixa", "Pessoa", PaymentMethod.Pix, 20m,
+            AccountReceivableId: payable ? null : 1, AccountPayableId: payable ? 1 : null);
+        var store = new Store([
+            original,
+            original with { OccurredAt = midnight, IsReversal = true, IsSaleCancellation = !payable },
+            original with { OccurredAt = midnight.AddHours(1), Amount = 5.25m },
+            original with { OccurredAt = midnight.AddDays(1) },
+            original with { OccurredAt = midnight.AddHours(2), PartyName = "Outra parte" },
+            new CashMovement(1, midnight, "Caixa", "Pessoa", PaymentMethod.Pix, 500m),
+            new CashMovement(2, midnight, "Caixa", "Pessoa", PaymentMethod.Pix, 500m) { IsSaleReturn = true }
+        ]);
+        var service = new CashReportService(store);
+        var side = payable ? TitleSide.Payable : TitleSide.Receivable;
+        Assert.Null(await service.GetSettlementsAsync(side, null, 3, day.AddDays(1), day));
+        Assert.Null(store.AccountId);
+
+        var report = Assert.IsType<TitleSettlementReport>(await service.GetSettlementsAsync(side, " Pessoa ", 3, day, day));
+        Assert.Equal((3, side, "Pessoa"), (store.AccountId, store.Side, store.Party));
+        Assert.Equal(2, report.Movements.Count);
+        Assert.Equal(5.25m, report.Gross);
+        Assert.Equal(20m, report.Reversals);
+        Assert.Equal(-14.75m, report.Net);
+        var reversal = report.Movements[1];
+        Assert.True(reversal.IsReversal);
+        Assert.Equal(!payable, reversal.IsSaleCancellation);
+        Assert.Equal(TimeOnly.MinValue, TimeOnly.FromDateTime(reversal.OccurredAt.DateTime));
+    }
+
     private sealed class Store(IReadOnlyList<CashMovement> movements) : ICashMovementStore
     {
         public int? AccountId { get; private set; }
+        public TitleSide? Side { get; private set; }
+        public string? Party { get; private set; }
 
-        public Task<IReadOnlyList<CashMovement>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive)
+        public Task<IReadOnlyList<CashMovement>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive,
+            TitleSide? side = null, string? party = null)
         {
             AccountId = cashAccountId;
+            Side = side;
+            Party = party;
             return Task.FromResult<IReadOnlyList<CashMovement>>(movements.Where(movement =>
                 (fromUtc is null || movement.OccurredAt >= fromUtc) &&
-                (toUtcExclusive is null || movement.OccurredAt < toUtcExclusive)).ToArray());
+                (toUtcExclusive is null || movement.OccurredAt < toUtcExclusive) &&
+                (party is null || movement.PartyName.Contains(party)) &&
+                (side switch
+                {
+                    TitleSide.Payable => movement.AccountPayableId.HasValue,
+                    TitleSide.Receivable => movement.AccountReceivableId.HasValue,
+                    _ => true
+                })).ToArray());
         }
     }
 }

@@ -30,7 +30,7 @@ public sealed class IndexModel(TitlePositionReportService reports) : PageModel
         }
 
         Party = Party?.Trim();
-        Report = await reports.GetAsync(IsPayable ? TitlePositionSide.Payable : TitlePositionSide.Receivable,
+        Report = await reports.GetAsync(IsPayable ? TitleSide.Payable : TitleSide.Receivable,
             Party, From, To, OnlyOverdue, CashReportService.Today);
         if (Report is null)
         {

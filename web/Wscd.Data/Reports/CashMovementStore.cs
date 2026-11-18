@@ -5,17 +5,32 @@ namespace Wscd.Data.Reports;
 
 public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
 {
-    public async Task<IReadOnlyList<CashMovement>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive)
+    public async Task<IReadOnlyList<CashMovement>> ListAsync(int? cashAccountId, DateTimeOffset? fromUtc, DateTimeOffset? toUtcExclusive,
+        TitleSide? side = null, string? party = null)
     {
         var receipts = db.SalePayments.AsNoTracking().Where(payment => payment.Receivable != null || payment.Sale!.CompletedAtUtc != null);
         var expenses = db.PayablePayments.AsNoTracking();
+        if (side == TitleSide.Receivable)
+        {
+            receipts = receipts.Where(payment => payment.AccountReceivableId != null);
+            if (party is not null)
+            {
+                var search = party.ToLowerInvariant();
+                receipts = receipts.Where(payment => payment.Receivable!.Customer.Name.ToLower().Contains(search));
+            }
+        }
+        else if (side == TitleSide.Payable && party is not null)
+        {
+            var search = party.ToLowerInvariant();
+            expenses = expenses.Where(payment => payment.Payable.Supplier.Name.ToLower().Contains(search));
+        }
         if (cashAccountId is int accountId)
         {
             receipts = receipts.Where(payment => payment.CashAccountId == accountId);
             expenses = expenses.Where(payment => payment.CashAccountId == accountId);
         }
         // shortcut: load both filtered streams; page them together if volume outgrows the period filter.
-        var entries = await receipts.Select(payment => new
+        var entries = side == TitleSide.Payable ? [] : await receipts.Select(payment => new
             {
                 Payment = payment,
                 CancelledAtUtc = payment.Receivable != null ? payment.Receivable.Sale!.CancelledAtUtc : payment.Sale!.CancelledAtUtc
@@ -41,7 +56,7 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
                 entry.IsSaleCancellation
             })
             .ToListAsync();
-        var exits = await expenses.Where(payment =>
+        var exits = side == TitleSide.Receivable ? [] : await expenses.Where(payment =>
                 ((fromUtc == null || payment.PaidAtUtc >= fromUtc) && (toUtcExclusive == null || payment.PaidAtUtc < toUtcExclusive)) ||
                 (payment.ReversedAtUtc != null && (fromUtc == null || payment.ReversedAtUtc >= fromUtc) &&
                     (toUtcExclusive == null || payment.ReversedAtUtc < toUtcExclusive)))
@@ -67,6 +82,10 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
             {
                 movements.Add(item.Original with { OccurredAt = reversedAt, IsReversal = true, IsSaleCancellation = item.IsSaleCancellation });
             }
+        }
+        if (side is not null)
+        {
+            return movements;
         }
         var refunds = await db.SaleReturns.AsNoTracking().Where(item => item.RefundAmount > 0
                 && (cashAccountId == null || item.CashAccountId == cashAccountId)

@@ -26,6 +26,8 @@ public sealed class HomePageTests(WebApplicationFactory<Program> factory)
     [InlineData("/relatorios/vendas")]
     [InlineData("/relatorios/contas/a-pagar")]
     [InlineData("/relatorios/contas/a-receber")]
+    [InlineData("/relatorios/baixas/a-pagar")]
+    [InlineData("/relatorios/baixas/a-receber")]
     [InlineData("/Admin/Users/Create")]
     public async Task AnonymousProtectedPage_RedirectsToLogin(string path)
     {
