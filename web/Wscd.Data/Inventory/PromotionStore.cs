@@ -24,6 +24,9 @@ public sealed class PromotionStore(WscdDbContext db) : IPromotionStore
         .Include(promotion => promotion.Product)
         .SingleOrDefaultAsync(promotion => promotion.Id == id);
 
+    public Task<Promotion?> FindByProductAsync(int productId) => db.Promotions.AsNoTracking()
+        .SingleOrDefaultAsync(promotion => promotion.ProductId == productId);
+
     public async Task<bool> SaveAsync(Promotion promotion)
     {
         if (db.CurrentOrganizationId is not Guid organizationId)

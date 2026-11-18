@@ -7,6 +7,7 @@ using Wscd.Services.Purchases;
 using Wscd.Services.Inventory;
 using Wscd.Services.Reports;
 using Wscd.Services.DemoData;
+using Wscd.Services.Quotations;
 using Wscd.Web.Organizations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,7 @@ builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 builder.Services.AddScoped<IStockLossService, StockLossService>();
 builder.Services.AddScoped<IPromotionService, PromotionService>();
 builder.Services.AddScoped<IStockReportService, StockReportService>();
+builder.Services.AddScoped<QuotationService>();
 builder.Services.AddScoped<DemoDataSeeder>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentOrganization, HttpCurrentOrganization>();

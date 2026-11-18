@@ -37,7 +37,7 @@ npm run css:build --prefix web/Wscd.Web
 
 ## Dados de demonstração
 
-No ambiente Development, entre no app e acesse **Dados fictícios para testes** na página inicial. A carga garante 10 registros em cada cadastro e cria 10 compras (5 rascunhos e 5 concluídas), 10 perdas e 10 promoções na organização da sessão. Compras concluídas geram contas a pagar. A carga pode ser repetida sem duplicar os registros de demonstração; ela não roda ao iniciar o app, não apaga dados e não cria usuários. Vendas ainda não estão implementadas.
+No ambiente Development, entre no app e acesse **Dados fictícios para testes** na página inicial. A carga garante 10 registros em cada cadastro, 10 compras e 10 orçamentos (5 rascunhos e 5 concluídos de cada), 10 perdas e 10 promoções na organização da sessão. Compras concluídas geram contas a pagar; orçamentos não geram lançamentos. A carga pode ser repetida sem duplicar os registros de demonstração; ela não roda ao iniciar o app, não apaga dados e não cria usuários. Vendas ainda não estão implementadas.
 
 ## Banco de dados e migrations
 
@@ -58,6 +58,8 @@ dotnet ef migrations add NomeDaMigration --project Wscd.Data --startup-project W
 ```
 
 Em seguida, aplique-a com `dotnet ef database update --project Wscd.Data --startup-project Wscd.Web`.
+
+O módulo **Orçamentos** e sua carga de demonstração dependem da migração `AddQuotations`.
 
 ## Build e testes
 

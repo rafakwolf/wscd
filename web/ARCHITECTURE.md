@@ -1,6 +1,6 @@
 # Arquitetura do WSCD Web
 
-Este diagrama segue o [plano de migração](../MIGRATION_PLAN.md). Autenticação, organizações e isolamento da gestão de membros estão implementados; os módulos de negócio ainda serão migrados. Linhas contínuas mostram o fluxo em execução; pontilhadas mostram referências entre projetos. Toda regra de negócio, inclusive a hoje existente em stored procedures ou triggers Firebird, será implementada em `Wscd.Services`, não no PostgreSQL.
+Este diagrama segue o [plano de migração](../MIGRATION_PLAN.md). Autenticação, organizações, cadastros, compras, perdas, promoções, orçamentos e os primeiros relatórios estão implementados. Linhas contínuas mostram o fluxo em execução; pontilhadas mostram referências entre projetos. Toda regra de negócio, inclusive a existente em stored procedures ou triggers Firebird, é implementada em `Wscd.Services`, não no PostgreSQL.
 
 ## Aplicação e projetos
 
@@ -111,3 +111,5 @@ As setas representam o fluxo alvo. Orçamentos e rascunhos de compra não movime
 Os oito cadastros da Fase 5 já têm modelos, serviços, persistência e páginas Razor. O produto tem FKs compostas com `IDOrganization`, `IDSupplier`, `IDProductGroup` e `IDUnit`, impedindo referências cruzadas entre organizações. Clientes e fornecedores selecionam cidades da referência fixa da branch `delphi`; valores antigos fora da lista permanecem editáveis sem serem apagados. A regra de idade mínima dependente da configuração global ainda depende da configuração equivalente.
 
 A Fase 6 já implementa compras em rascunho, conclusão transacional, registro de perdas, promoções por produto, relatório HTML de compras concluídas por período e fornecedor, e relatório de produtos no estoque mínimo por fornecedor. O relatório de compras usa os filtros de data e busca de fornecedor da consulta existente e permite impressão/PDF pelo navegador. A conclusão da compra grava uma conta a pagar, atualiza quantidade, custo e preço do produto e preserva os itens como histórico. Perdas guardam motivo e custo unitário histórico e reduzem o estoque dentro da mesma transação; os lançamentos ficam preservados. Promoções calculam o preço com base no desconto e no preço de venda, respeitam o período informado e atualizam o preço promocional do produto. Os demais relatórios operacionais ainda serão migrados.
+
+A primeira fatia da Fase 7 implementa orçamentos com cliente, vendedor e itens da mesma organização. O item guarda o preço aplicado, não depende de consultar o preço atual para exibir o total e não altera estoque ou financeiro. A venda e a conversão de um orçamento concluído em venda ainda estão pendentes.

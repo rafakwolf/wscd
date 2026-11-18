@@ -6,6 +6,7 @@ public interface IPromotionStore
 {
     Task<IReadOnlyList<PromotionSummary>> ListAsync();
     Task<Promotion?> FindAsync(int id);
+    Task<Promotion?> FindByProductAsync(int productId);
     Task<bool> SaveAsync(Promotion promotion);
     Task<bool> DeleteAsync(int id);
 }

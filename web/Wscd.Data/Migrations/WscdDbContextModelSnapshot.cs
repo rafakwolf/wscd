@@ -408,8 +408,6 @@ namespace Wscd.Data.Migrations
                     b.HasKey("Id")
                         .HasName("PK_Customers");
 
-                    b.HasAlternateKey("OrganizationId", "Id");
-
                     b.HasIndex("OrganizationId", "StateRegistrationOrIdentity")
                         .IsUnique()
                         .HasFilter("\"StateRegistrationOrIdentity\" IS NOT NULL");
@@ -566,8 +564,6 @@ namespace Wscd.Data.Migrations
 
                     b.HasKey("Id")
                         .HasName("PK_Sellers");
-
-                    b.HasAlternateKey("OrganizationId", "Id");
 
                     b.ToTable("Sellers", (string)null);
                 });
@@ -975,6 +971,109 @@ namespace Wscd.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Quotations.Quotation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDCustomer");
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<Guid>("Revision")
+                        .IsConcurrencyToken()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("SellerId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDSeller");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "CustomerId");
+
+                    b.HasIndex("OrganizationId", "Date");
+
+                    b.HasIndex("OrganizationId", "SellerId");
+
+                    b.ToTable("Quotations", (string)null);
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Quotations.QuotationItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("ID");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("DiscountPercent")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("IDOrganization");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDProduct");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("QuotationId")
+                        .HasColumnType("integer")
+                        .HasColumnName("IDQuotation");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(12, 2)
+                        .HasColumnType("numeric(12,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrganizationId", "ProductId");
+
+                    b.HasIndex("OrganizationId", "QuotationId", "ProductId")
+                        .IsUnique();
+
+                    b.ToTable("QuotationItems", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_QuotationItems_Discount", "\"DiscountPercent\" BETWEEN 0 AND 100");
+
+                            t.HasCheckConstraint("CK_QuotationItems_Price", "\"UnitPrice\" >= 0 AND \"Total\" >= 0");
+
+                            t.HasCheckConstraint("CK_QuotationItems_Quantity", "\"Quantity\" > 0");
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1236,7 +1335,56 @@ namespace Wscd.Data.Migrations
                     b.Navigation("Purchase");
                 });
 
+            modelBuilder.Entity("Wscd.Domain.Quotations.Quotation", b =>
+                {
+                    b.HasOne("Wscd.Domain.Organizations.Organization", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "CustomerId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Catalogs.Seller", "Seller")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "SellerId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Quotations.QuotationItem", b =>
+                {
+                    b.HasOne("Wscd.Domain.Catalogs.Product", null)
+                        .WithMany()
+                        .HasForeignKey("OrganizationId", "ProductId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Wscd.Domain.Quotations.Quotation", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrganizationId", "QuotationId")
+                        .HasPrincipalKey("OrganizationId", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Wscd.Domain.Purchases.Purchase", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("Wscd.Domain.Quotations.Quotation", b =>
                 {
                     b.Navigation("Items");
                 });

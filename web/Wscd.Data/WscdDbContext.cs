@@ -6,6 +6,7 @@ using Wscd.Domain.Catalogs;
 using Wscd.Domain.Inventory;
 using Wscd.Domain.Organizations;
 using Wscd.Domain.Purchases;
+using Wscd.Domain.Quotations;
 using Wscd.Services.Organizations;
 
 namespace Wscd.Data;
@@ -29,6 +30,7 @@ public sealed class WscdDbContext(
     public DbSet<AccountPayable> AccountsPayable => Set<AccountPayable>();
     public DbSet<StockLoss> StockLosses => Set<StockLoss>();
     public DbSet<Promotion> Promotions => Set<Promotion>();
+    public DbSet<Quotation> Quotations => Set<Quotation>();
 
     public Guid? CurrentOrganizationId => currentOrganization.OrganizationId;
 
@@ -302,6 +304,53 @@ public sealed class WscdDbContext(
             entity.HasOne(promotion => promotion.Product)
                 .WithMany()
                 .HasForeignKey(promotion => new { promotion.OrganizationId, promotion.ProductId })
+                .HasPrincipalKey(product => new { product.OrganizationId, product.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<Quotation>(entity =>
+        {
+            entity.ToTable("Quotations");
+            entity.Property(quotation => quotation.Id).HasColumnName("ID");
+            entity.Property(quotation => quotation.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(quotation => quotation.CustomerId).HasColumnName("IDCustomer");
+            entity.Property(quotation => quotation.SellerId).HasColumnName("IDSeller");
+            entity.Property(quotation => quotation.Revision).IsConcurrencyToken();
+            entity.HasIndex(quotation => new { quotation.OrganizationId, quotation.Date });
+            entity.HasOne<Organization>().WithMany().HasForeignKey(quotation => quotation.OrganizationId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(quotation => quotation.Customer).WithMany()
+                .HasForeignKey(quotation => new { quotation.OrganizationId, quotation.CustomerId })
+                .HasPrincipalKey(customer => new { customer.OrganizationId, customer.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(quotation => quotation.Seller).WithMany()
+                .HasForeignKey(quotation => new { quotation.OrganizationId, quotation.SellerId })
+                .HasPrincipalKey(seller => new { seller.OrganizationId, seller.Id })
+                .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        builder.Entity<QuotationItem>(entity =>
+        {
+            entity.ToTable("QuotationItems", table =>
+            {
+                table.HasCheckConstraint("CK_QuotationItems_Quantity", "\"Quantity\" > 0");
+                table.HasCheckConstraint("CK_QuotationItems_Price", "\"UnitPrice\" >= 0 AND \"Total\" >= 0");
+                table.HasCheckConstraint("CK_QuotationItems_Discount", "\"DiscountPercent\" BETWEEN 0 AND 100");
+            });
+            entity.Property(item => item.Id).HasColumnName("ID");
+            entity.Property(item => item.OrganizationId).HasColumnName("IDOrganization");
+            entity.Property(item => item.QuotationId).HasColumnName("IDQuotation");
+            entity.Property(item => item.ProductId).HasColumnName("IDProduct");
+            entity.Property(item => item.ProductName).HasMaxLength(80);
+            entity.Property(item => item.UnitPrice).HasPrecision(12, 2);
+            entity.Property(item => item.DiscountPercent).HasPrecision(5, 2);
+            entity.Property(item => item.Total).HasPrecision(12, 2);
+            entity.HasIndex(item => new { item.OrganizationId, item.QuotationId, item.ProductId }).IsUnique();
+            entity.HasOne<Quotation>().WithMany(quotation => quotation.Items)
+                .HasForeignKey(item => new { item.OrganizationId, item.QuotationId })
+                .HasPrincipalKey(quotation => new { quotation.OrganizationId, quotation.Id });
+            entity.HasOne<Product>().WithMany()
+                .HasForeignKey(item => new { item.OrganizationId, item.ProductId })
                 .HasPrincipalKey(product => new { product.OrganizationId, product.Id })
                 .OnDelete(DeleteBehavior.Restrict);
         });

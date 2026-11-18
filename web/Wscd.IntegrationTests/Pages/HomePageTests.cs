@@ -6,14 +6,16 @@ namespace Wscd.IntegrationTests.Pages;
 public sealed class HomePageTests(WebApplicationFactory<Program> factory)
     : IClassFixture<WebApplicationFactory<Program>>
 {
-    [Fact]
-    public async Task AnonymousRoot_RedirectsToLogin()
+    [Theory]
+    [InlineData("/")]
+    [InlineData("/orcamentos")]
+    public async Task AnonymousProtectedPage_RedirectsToLogin(string path)
     {
         using var client = factory.CreateClient(new WebApplicationFactoryClientOptions
         {
             AllowAutoRedirect = false
         });
-        using var response = await client.GetAsync("/", TestContext.Current.CancellationToken);
+        using var response = await client.GetAsync(path, TestContext.Current.CancellationToken);
 
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         Assert.Contains("/Account/Login", response.Headers.Location?.ToString());

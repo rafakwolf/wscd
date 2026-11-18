@@ -1,8 +1,10 @@
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Purchases;
+using Wscd.Domain.Quotations;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Inventory;
 using Wscd.Services.Purchases;
+using Wscd.Services.Quotations;
 
 namespace Wscd.Services.DemoData;
 
@@ -17,7 +19,8 @@ public sealed class DemoDataSeeder(
     ICatalogService<Product> products,
     IPurchaseService purchases,
     IStockLossService losses,
-    IPromotionService promotions)
+    IPromotionService promotions,
+    QuotationService quotations)
 {
     private const string Prefix = "DEMO · ";
     private const string CompletedPurchaseMarker = "Carga de demonstração WSCD: compra concluída";
@@ -49,7 +52,7 @@ public sealed class DemoDataSeeder(
             Notes = "Registro fictício para testes."
         });
 
-        await EnsureManyAsync(customers, index => new Customer
+        var demoCustomers = await EnsureManyAsync(customers, index => new Customer
         {
             Name = index == 1 ? Prefix + "Cliente balcão" : $"{Prefix}Cliente {index:00}",
             Type = "F",
@@ -58,7 +61,7 @@ public sealed class DemoDataSeeder(
             RegistrationDate = DateOnly.FromDateTime(DateTime.Today).AddDays(-index),
             Notes = "Registro fictício para testes."
         });
-        await EnsureManyAsync(sellers, index => new Seller
+        var demoSellers = await EnsureManyAsync(sellers, index => new Seller
         {
             Name = index == 1 ? Prefix + "Vendedor" : $"{Prefix}Vendedor {index:00}"
         });
@@ -140,6 +143,33 @@ public sealed class DemoDataSeeder(
             if (!result.Succeeded)
             {
                 throw new InvalidOperationException($"Não foi possível criar a promoção fictícia {index + 1:00}.");
+            }
+        }
+
+        for (var index = 0; index < demoProducts.Count; index++)
+        {
+            var customer = demoCustomers[index];
+            var marker = $"Carga de demonstração WSCD: orçamento {index + 1:00}";
+            var existing = await quotations.ListAsync(customer.Name, null, null, null);
+            Quotation? draft = null;
+            foreach (var summary in existing)
+            {
+                if (await quotations.FindAsync(summary.Id) is { } candidate && candidate.Notes == marker)
+                {
+                    draft = candidate;
+                    break;
+                }
+            }
+            if (draft is { Items.Count: > 0 })
+            {
+                continue;
+            }
+
+            if ((draft?.Id ?? await quotations.SaveAsync(0, customer.Id, demoSellers[index].Id, today.AddDays(-index), marker)) is not int id ||
+                !await quotations.AddItemAsync(id, demoProducts[index].Id, index + 1, index) ||
+                (index % 2 == 1 && !await quotations.SetCompletedAsync(id, true)))
+            {
+                throw new InvalidOperationException($"Não foi possível criar o orçamento fictício {index + 1:00}.");
             }
         }
     }
