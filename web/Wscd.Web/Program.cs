@@ -63,7 +63,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
 });
 builder.Services.Configure<SecurityStampValidatorOptions>(options =>
-    options.ValidationInterval = TimeSpan.FromMinutes(5));
+    options.ValidationInterval = TimeSpan.FromSeconds(30));
 builder.Services.AddAuthorization(options => options.FallbackPolicy = options.DefaultPolicy);
 builder.Services.AddRazorPages(options =>
 {

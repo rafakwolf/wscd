@@ -51,6 +51,19 @@ public sealed class DetailsModel(PayableService payables, ICatalogService<CashAc
         return Account is null ? NotFound() : Page();
     }
 
+    public async Task<IActionResult> OnPostDeleteAsync(Guid? expectedRevision)
+    {
+        if (expectedRevision.HasValue && await payables.DeleteManualAsync(Id, expectedRevision.Value))
+        {
+            TempData["StatusMessage"] = "Conta a pagar excluída.";
+            return RedirectToPage("./Index", ListFilters);
+        }
+
+        Error = "Não foi possível excluir este título.";
+        await LoadAsync();
+        return Account is null ? NotFound() : Page();
+    }
+
     private async Task LoadAsync()
     {
         Account = await payables.FindAsync(Id);

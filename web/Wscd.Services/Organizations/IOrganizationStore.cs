@@ -10,4 +10,6 @@ public interface IOrganizationStore
     Task<IReadOnlyList<OrganizationMember>> GetMembersAsync(Guid organizationId);
     Task<OrganizationOperationResult> AddMemberAsync(Guid organizationId, string email, string password);
     Task<bool> RemoveMemberAsync(Guid organizationId, string memberId);
+    Task<bool> ReactivateMemberAsync(Guid organizationId, string memberId);
+    Task<OrganizationOperationResult> ResetMemberPasswordAsync(Guid organizationId, string memberId, string newPassword);
 }

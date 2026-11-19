@@ -46,6 +46,7 @@ public sealed class QuotationServiceTests
         public Task<bool> CreateAsync(Quotation quotation) => throw new NotSupportedException();
         public Task<Quotation?> FindAsync(int id) => throw new NotSupportedException();
         public Task<IReadOnlyList<QuotationSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed) => throw new NotSupportedException();
+        public Task<bool> DeleteAsync(int id) => throw new NotSupportedException();
     }
 
     private sealed class Products(Product product) : ICatalogService<Product>

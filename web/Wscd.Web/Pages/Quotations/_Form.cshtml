@@ -15,7 +15,7 @@
     {
         <form method="post" asp-page="./Edit" asp-page-handler="Save" asp-all-route-data="Model.ListFilters" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div><label asp-for="Header.CustomerId" class="block text-sm">Cliente</label><select asp-for="Header.CustomerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var customer in Model.Customers) { <option value="@customer.Id">@customer.Name</option> }</select></div>
-            <div><label asp-for="Header.SellerId" class="block text-sm">Vendedor</label><select asp-for="Header.SellerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var seller in Model.Sellers) { <option value="@seller.Id">@seller.Name</option> }</select></div>
+            <div><label asp-for="Header.SellerId" class="block text-sm">Vendedor</label><select asp-for="Header.SellerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var seller in Model.Sellers) { <option value="@seller.Id">@seller.Name@(seller.IsActive ? null : " (inativo)")</option> }</select></div>
             <div><label asp-for="Header.Date" class="block text-sm">Data do orçamento</label><input asp-for="Header.Date" type="date" required class="mt-1 w-full rounded border px-3 py-2" /></div>
             <div class="sm:col-span-2"><label asp-for="Header.Notes" class="block text-sm">Observações</label><textarea asp-for="Header.Notes" rows="2" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
             <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar rascunho</button></div>
@@ -58,7 +58,7 @@
         }
         else if (current.Sale is { } sale)
         {
-            <p class="mt-4 text-right"><a asp-page="/Sales/Edit" asp-route-id="@sale.Id" class="underline">Abrir venda nº @sale.Id</a></p>
+            <p class="mt-4 text-right"><a asp-page="/Sales/Edit" asp-route-id="@sale.Id" class="underline">Abrir venda nº @sale.Id@(sale.IsCancelled ? " (cancelada)" : null)</a></p>
         }
         else
         {

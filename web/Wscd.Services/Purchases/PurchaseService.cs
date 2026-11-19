@@ -1,6 +1,7 @@
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Purchases;
 using Wscd.Services.Catalogs;
+using Wscd.Services.Inventory;
 using Wscd.Services.Organizations;
 
 namespace Wscd.Services.Purchases;
@@ -9,8 +10,10 @@ public sealed class PurchaseService(
     IPurchaseStore store,
     ICatalogService<Supplier> suppliers,
     ICatalogService<Product> products,
-    ICurrentOrganization currentOrganization) : IPurchaseService
+    ICurrentOrganization currentOrganization,
+    IPromotionStore? promotions = null) : IPurchaseService
 {
+    private const decimal MaxPurchaseTotal = 9_999_999_999.99m;
     public Task<IReadOnlyList<PurchaseSummary>> ListAsync(bool? completed, DateOnly? from, DateOnly? to, string? search) =>
         store.ListAsync(completed, from, to, search?.Trim());
 
@@ -65,7 +68,13 @@ public sealed class PurchaseService(
         }
 
         var item = new PurchaseItem { ProductId = productId, Quantity = quantity, UnitCost = unitCost };
-        return await store.AddItemAsync(purchaseId, item, LineTotal(item))
+        var lineTotal = LineTotal(item);
+        if (lineTotal > MaxPurchaseTotal || purchase.Total + lineTotal > MaxPurchaseTotal)
+        {
+            return new PurchaseOperationResult(false, "InvalidItem");
+        }
+
+        return await store.AddItemAsync(purchaseId, item, lineTotal)
             ? new PurchaseOperationResult(true)
             : new PurchaseOperationResult(false, "PurchaseNotDraft");
     }
@@ -91,12 +100,14 @@ public sealed class PurchaseService(
         {
             return new PurchaseOperationResult(false, "PurchaseNotDraft");
         }
-        if (purchase.Items.Count == 0 || purchase.Total < 0 || purchase.DueDate is not DateOnly dueDate)
+        if (purchase.Items.Count == 0 || purchase.Total <= 0 || purchase.DueDate is not DateOnly dueDate)
         {
             return new PurchaseOperationResult(false, "PurchaseIncomplete");
         }
 
+        var receivedDate = BrasiliaClock.Today;
         var receipts = new List<ProductReceipt>(purchase.Items.Count);
+        var priceUpdates = new List<(int ProductId, decimal SalePrice)>();
         foreach (var item in purchase.Items)
         {
             var product = await products.FindAsync(item.ProductId);
@@ -105,17 +116,34 @@ public sealed class PurchaseService(
                 return new PurchaseOperationResult(false, "InvalidItem");
             }
 
-            var salePrice = decimal.Round(
-                item.UnitCost + item.UnitCost * product.MarginPercent / 100,
-                2,
-                MidpointRounding.AwayFromZero);
+            // Preserve manual SalePrice when MarginPercent is 0.
+            var salePrice = product.MarginPercent > 0
+                ? decimal.Round(item.UnitCost + item.UnitCost * product.MarginPercent / 100, 2, MidpointRounding.AwayFromZero)
+                : product.SalePrice;
+            if (salePrice != product.SalePrice)
+            {
+                priceUpdates.Add((product.Id, salePrice));
+            }
             receipts.Add(new ProductReceipt(item.ProductId, item.Quantity, item.UnitCost, product.MarginPercent, salePrice));
         }
 
-        return await store.CompleteAsync(id, dueDate, receipts)
+        if (!await store.CompleteAsync(id, dueDate, receivedDate, receipts))
+        {
+            return new PurchaseOperationResult(false, "PurchaseNotDraft");
+        }
+
+        foreach (var (productId, salePrice) in priceUpdates)
+        {
+            await PromotionService.SyncRegularPriceAsync(promotions, productId, salePrice);
+        }
+
+        return new PurchaseOperationResult(true);
+    }
+
+    public async Task<PurchaseOperationResult> DeleteDraftAsync(int id) =>
+        await store.DeleteDraftAsync(id)
             ? new PurchaseOperationResult(true)
             : new PurchaseOperationResult(false, "PurchaseNotDraft");
-    }
 
     private static decimal LineTotal(PurchaseItem item) =>
         decimal.Round(item.Quantity * item.UnitCost, 2, MidpointRounding.AwayFromZero);

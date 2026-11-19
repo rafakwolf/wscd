@@ -2,14 +2,17 @@ namespace Wscd.Services.Reports;
 
 public sealed class CashReportService(ICashMovementStore store)
 {
-    private static readonly TimeZoneInfo Brasilia = TimeZoneInfo.FindSystemTimeZoneById("America/Sao_Paulo");
+    public static DateTimeOffset InBrasilia(DateTimeOffset timestamp) => BrasiliaClock.InBrasilia(timestamp);
 
-    public static DateTimeOffset InBrasilia(DateTimeOffset timestamp) => TimeZoneInfo.ConvertTime(timestamp, Brasilia);
+    public static DateOnly Today => BrasiliaClock.Today;
 
-    public static DateOnly Today => DateOnly.FromDateTime(InBrasilia(DateTimeOffset.UtcNow).DateTime);
-
-    public async Task<CashReport?> GetAsync(int? cashAccountId, DateOnly? from, DateOnly? to) =>
-        await ReadAsync(cashAccountId, from, to) is { } movements ? new CashReport(movements) : null;
+    public async Task<CashReport?> GetAsync(int? cashAccountId, DateOnly? from, DateOnly? to,
+        bool? isExpense = null, string? search = null) =>
+        await ReadAsync(cashAccountId, from, to, party: string.IsNullOrWhiteSpace(search) ? null : search.Trim()) is { } movements
+            ? new CashReport(isExpense is bool expense
+                ? movements.Where(item => item.IsExpense == expense).ToArray()
+                : movements)
+            : null;
 
     public async Task<TitleSettlementReport?> GetSettlementsAsync(TitleSide side, string? party, int? cashAccountId, DateOnly? from, DateOnly? to) =>
         await ReadAsync(cashAccountId, from, to, side, string.IsNullOrWhiteSpace(party) ? null : party.Trim()) is { } movements
@@ -24,24 +27,13 @@ public sealed class CashReportService(ICashMovementStore store)
         }
 
         var movements = await store.ListAsync(cashAccountId,
-            from is DateOnly start ? StartOfDayUtc(start) : null,
-            to is DateOnly end && end != DateOnly.MaxValue ? StartOfDayUtc(end.AddDays(1)) : null, side, party);
+            from is DateOnly start ? BrasiliaClock.StartOfDayUtc(start) : null,
+            to is DateOnly end && end != DateOnly.MaxValue ? BrasiliaClock.StartOfDayUtc(end.AddDays(1)) : null, side, party);
 
         return movements.OrderByDescending(movement => movement.OccurredAt).Select(movement => movement with
         {
             OccurredAt = InBrasilia(movement.OccurredAt)
         }).ToArray();
-    }
-
-    private static DateTimeOffset StartOfDayUtc(DateOnly date)
-    {
-        var midnight = date.ToDateTime(TimeOnly.MinValue);
-        // Historical daylight saving transitions in Brasilia could skip midnight.
-        if (Brasilia.IsInvalidTime(midnight))
-        {
-            midnight = midnight.AddHours(1);
-        }
-        return TimeZoneInfo.ConvertTimeToUtc(midnight, Brasilia);
     }
 }
 

@@ -35,12 +35,32 @@
                             <td class="py-3 pr-4">@user.Email</td>
                             <td class="py-3 pr-4">@(user.IsOwner ? "Administrador" : user.IsActive ? "Ativo" : "Removido")</td>
                             <td class="py-3">
-                                @if (!user.IsOwner && user.IsActive)
+                                @if (!user.IsOwner)
                                 {
-                                    <form method="post" asp-page-handler="Remove" asp-route-search="@Model.Search">
-                                        <input type="hidden" name="memberId" value="@user.UserId" />
-                                        <button type="submit" class="text-red-700 underline">Remover acesso</button>
-                                    </form>
+                                    <div class="flex flex-wrap items-center gap-4">
+                                        @if (user.IsActive)
+                                        {
+                                            <form method="post" asp-page-handler="Remove" asp-route-search="@Model.Search">
+                                                <input type="hidden" name="memberId" value="@user.UserId" />
+                                                <button type="submit" class="text-red-700 underline">Remover acesso</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form method="post" asp-page-handler="Reactivate" asp-route-search="@Model.Search">
+                                                <input type="hidden" name="memberId" value="@user.UserId" />
+                                                <button type="submit" class="text-slate-900 underline">Reativar acesso</button>
+                                            </form>
+                                        }
+                                        <details>
+                                            <summary class="cursor-pointer underline">Redefinir senha</summary>
+                                            <form method="post" asp-page-handler="ResetPassword" asp-route-search="@Model.Search" class="mt-2 flex flex-wrap items-center gap-2">
+                                                <input type="hidden" name="memberId" value="@user.UserId" />
+                                                <input type="password" name="newPassword" minlength="12" required placeholder="Nova senha (mín. 12)" aria-label="Nova senha para @user.Email" class="rounded border px-2 py-1" />
+                                                <button type="submit" class="rounded bg-slate-900 px-3 py-1 text-white">Salvar</button>
+                                            </form>
+                                        </details>
+                                    </div>
                                 }
                             </td>
                         </tr>

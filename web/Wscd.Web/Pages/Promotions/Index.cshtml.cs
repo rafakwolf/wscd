@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Wscd.Services;
 using Wscd.Services.Inventory;
 
 namespace Wscd.Web.Pages.Promotions;
@@ -38,8 +39,7 @@ public sealed class IndexModel(IPromotionService promotions) : PageModel
 
     public static string StatusLabel(DateOnly startDate, DateOnly endDate)
     {
-        // shortcut: expired promotions stay until manually removed; add scheduled cleanup if automatic expiry is needed.
-        var today = DateOnly.FromDateTime(DateTime.Today);
+        var today = BrasiliaClock.Today;
         return endDate < today ? "Expirada" : startDate > today ? "Agendada" : "Em vigor";
     }
 }

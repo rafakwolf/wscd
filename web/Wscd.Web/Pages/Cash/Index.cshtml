@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 print:hidden">
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-6 print:hidden">
         <div>
             <label asp-for="CashAccountId" class="block text-sm">Conta caixa</label>
             <select asp-for="CashAccountId" class="mt-1 w-full rounded border px-3 py-2">
@@ -33,6 +33,15 @@
                 }
             </select>
         </div>
+        <div>
+            <label asp-for="IsExpense" class="block text-sm">Tipo</label>
+            <select asp-for="IsExpense" class="mt-1 w-full rounded border px-3 py-2">
+                <option value="">Todos</option>
+                <option value="false">Entradas</option>
+                <option value="true">Saídas</option>
+            </select>
+        </div>
+        <div><label asp-for="Search" class="block text-sm">Busca</label><input asp-for="Search" placeholder="Nome, descrição ou doc." class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="From" class="block text-sm">Data inicial</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div><label asp-for="To" class="block text-sm">Data final</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
         <div class="flex flex-wrap items-end gap-2">
@@ -91,6 +100,10 @@
                                     else
                                     {
                                         <a asp-page="/Sales/Edit" asp-route-id="@movement.SaleId" class="underline">Venda nº @movement.SaleId</a>
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(movement.Description) || !string.IsNullOrWhiteSpace(movement.Document))
+                                    {
+                                        <span class="block text-xs text-slate-600">@movement.Description@(!string.IsNullOrWhiteSpace(movement.Document) ? $" (Doc. {movement.Document})" : null)</span>
                                     }
                                 </td>
                                 <td>@movement.PartyName</td>

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Quotations;
+using Wscd.Services;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Quotations;
 using Wscd.Services.Sales;
@@ -27,7 +28,7 @@ public sealed class EditModel(
 
     public async Task<IActionResult> OnGetAsync()
     {
-        Header.Date = DateOnly.FromDateTime(DateTime.Today);
+        Header.Date = BrasiliaClock.Today;
         Line.Quantity = 1;
         await LoadAsync();
         return Id is not null && Current is null ? NotFound() : Page();
@@ -47,7 +48,7 @@ public sealed class EditModel(
     }
 
     public Task<IActionResult> OnPostAddItemAsync() => ChangeAsync(
-        id => quotations.AddItemAsync(id, Line.ProductId, Line.Quantity, Line.DiscountPercent),
+        id => quotations.AddItemAsync(id, Line.ProductId, Line.Quantity, Line.DiscountPercent ?? 0m),
         "Produto adicionado.", "Selecione um produto ainda não incluído, informe uma quantidade positiva e desconto de 0 a 100%. Confira o total e a situação do orçamento.");
 
     public Task<IActionResult> OnPostRemoveItemAsync(int itemId) => ChangeAsync(
@@ -66,13 +67,18 @@ public sealed class EditModel(
         {
             return NotFound();
         }
-        if (ModelState.IsValid && await sales.ConvertQuotationAsync(id, DateOnly.FromDateTime(DateTime.Today)) is int saleId)
+        if (ModelState.IsValid && await sales.ConvertQuotationAsync(id, BrasiliaClock.Today) is int saleId)
         {
+            var insufficient = await sales.GetInsufficientStockItemsAsync(saleId);
             TempData["StatusMessage"] = "Venda aberta com os itens e preços do orçamento. Estoque e caixa só mudam na conclusão.";
+            if (insufficient.Count > 0)
+            {
+                TempData["WarningMessage"] = $"Atenção: estoque insuficiente para concluir agora ({string.Join(", ", insufficient)}).";
+            }
             return RedirectToPage("/Sales/Edit", new { id = saleId });
         }
 
-        Error = "Não foi possível converter. Confira se o orçamento está concluído e tente novamente.";
+        Error = "Não foi possível converter. Confira se o orçamento está concluído, com total positivo e vendedor ativo.";
         await LoadAsync();
         return Current is null ? NotFound() : Page();
     }
@@ -108,7 +114,10 @@ public sealed class EditModel(
         }
 
         Customers = await customers.ListAsync(null);
-        Sellers = (await sellers.ListAsync(null)).Where(seller => seller.IsActive).ToArray();
+        var allSellers = await sellers.ListAsync(null);
+        Sellers = allSellers
+            .Where(seller => seller.IsActive || seller.Id == Current?.SellerId)
+            .ToArray();
         if (Current is not null)
         {
             Products = await products.ListAsync(null);
@@ -138,6 +147,6 @@ public sealed class EditModel(
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }
-        public decimal DiscountPercent { get; set; }
+        public decimal? DiscountPercent { get; set; }
     }
 }

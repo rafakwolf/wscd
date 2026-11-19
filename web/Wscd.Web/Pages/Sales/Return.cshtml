@@ -52,26 +52,36 @@
             }
             @if (preview.RefundAmount > 0)
             {
-                <p class="text-sm text-slate-600">Confirme só depois de devolver o valor fora do ERP. Informe a conta caixa e o meio que você usou para devolver.</p>
-                <div class="grid gap-3 sm:grid-cols-2">
-                    <div>
-                        <label asp-for="Input.CashAccountId" class="block text-sm">Conta caixa de saída</label>
-                        <select asp-for="Input.CashAccountId" required class="mt-1 w-full rounded border px-3 py-2">
-                            <option value="">Selecione</option>
-                            @foreach (var account in Model.CashAccounts) { <option value="@account.Id">@account.Name</option> }
-                        </select>
+                @if (Model.CashAccounts.Count == 0)
+                {
+                    <p role="alert" class="rounded bg-amber-50 p-3 text-sm text-amber-900">Não há nenhuma conta caixa ativa cadastrada na organização para registrar o reembolso.</p>
+                }
+                else
+                {
+                    <p class="text-sm text-slate-600">Confirme só depois de devolver o valor fora do ERP. Informe a conta caixa e o meio que você usou para devolver.</p>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                        <div>
+                            <label asp-for="Input.CashAccountId" class="block text-sm">Conta caixa de saída</label>
+                            <select asp-for="Input.CashAccountId" required class="mt-1 w-full rounded border px-3 py-2">
+                                <option value="">Selecione</option>
+                                @foreach (var account in Model.CashAccounts) { <option value="@account.Id">@account.Name</option> }
+                            </select>
+                        </div>
+                        <div>
+                            <label asp-for="Input.RefundMethod" class="block text-sm">Meio da devolução</label>
+                            <select asp-for="Input.RefundMethod" required class="mt-1 w-full rounded border px-3 py-2">
+                                <option value="">Selecione</option>
+                                @foreach (var method in Enum.GetValues<PaymentMethod>()) { <option value="@((int)method)">@PaymentLabels.For(method)</option> }
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        <label asp-for="Input.RefundMethod" class="block text-sm">Meio da devolução</label>
-                        <select asp-for="Input.RefundMethod" required class="mt-1 w-full rounded border px-3 py-2">
-                            <option value="">Selecione</option>
-                            @foreach (var method in Enum.GetValues<PaymentMethod>()) { <option value="@((int)method)">@PaymentLabels.For(method)</option> }
-                        </select>
-                    </div>
-                </div>
+                }
             }
             <div class="flex flex-wrap items-center gap-3">
-                <button class="rounded bg-slate-900 px-4 py-2 text-white">Confirmar devolução</button>
+                @if (preview.RefundAmount == 0 || Model.CashAccounts.Count > 0)
+                {
+                    <button class="rounded bg-slate-900 px-4 py-2 text-white">Confirmar devolução</button>
+                }
                 <a asp-page="./Return" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="underline">Alterar itens</a>
             </div>
         </form>

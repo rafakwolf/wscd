@@ -159,6 +159,61 @@ public sealed class OrganizationStore(
         return (await userManager.UpdateSecurityStampAsync(user)).Succeeded;
     }
 
+    public async Task<bool> ReactivateMemberAsync(Guid organizationId, string memberId)
+    {
+        var ownerId = await db.Organizations
+            .Where(organization => organization.Id == organizationId)
+            .Select(organization => organization.OwnerUserId)
+            .SingleOrDefaultAsync();
+        var user = await userManager.Users.SingleOrDefaultAsync(user =>
+            user.Id == memberId && user.OrganizationId == organizationId && user.Id != ownerId);
+
+        if (user is null || user.IsActive)
+        {
+            return false;
+        }
+
+        user.IsActive = true;
+        return (await userManager.UpdateSecurityStampAsync(user)).Succeeded;
+    }
+
+    public async Task<OrganizationOperationResult> ResetMemberPasswordAsync(Guid organizationId, string memberId, string newPassword)
+    {
+        var ownerId = await db.Organizations
+            .Where(organization => organization.Id == organizationId)
+            .Select(organization => organization.OwnerUserId)
+            .SingleOrDefaultAsync();
+        var user = await userManager.Users.SingleOrDefaultAsync(user =>
+            user.Id == memberId && user.OrganizationId == organizationId && user.Id != ownerId);
+
+        if (user is null)
+        {
+            return new OrganizationOperationResult(false, "MemberNotFound");
+        }
+
+        await using var transaction = await db.Database.BeginTransactionAsync();
+        if (await userManager.HasPasswordAsync(user))
+        {
+            var removed = await userManager.RemovePasswordAsync(user);
+            if (!removed.Succeeded)
+            {
+                await transaction.RollbackAsync();
+                return Failure(removed);
+            }
+        }
+
+        var added = await userManager.AddPasswordAsync(user, newPassword);
+        if (!added.Succeeded)
+        {
+            await transaction.RollbackAsync();
+            return Failure(added);
+        }
+
+        await userManager.UpdateSecurityStampAsync(user);
+        await transaction.CommitAsync();
+        return new OrganizationOperationResult(true, UserId: user.Id);
+    }
+
     private async Task<IdentityResult> AddRoleAsync(ApplicationUser user, string role)
     {
         if (await userManager.IsInRoleAsync(user, role))

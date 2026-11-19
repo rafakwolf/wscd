@@ -11,6 +11,8 @@ public interface ICashMovementStore
 public sealed record CashMovement(int? SaleId, DateTimeOffset OccurredAt, string CashAccountName, string PartyName,
     PaymentMethod Method, decimal Amount, int? AccountReceivableId = null, int? AccountPayableId = null)
 {
+    public string? Description { get; init; }
+    public string? Document { get; init; }
     public bool IsReversal { get; init; }
     public bool IsSaleCancellation { get; init; }
     public bool IsSaleReturn { get; init; }

@@ -23,6 +23,10 @@
     {
         <p role="status" class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
     }
+    @if (TempData["ErrorMessage"] is string errorMessage)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@errorMessage</p>
+    }
     @if (Model.Error is not null)
     {
         <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
@@ -46,7 +50,17 @@
                         @(sale.Status == SaleStatus.Cancelled ? "Cancelada" : sale.Status == SaleStatus.Completed ? "Concluída" : "Rascunho")
                         @if (sale.HasReturns) { <span class="block text-xs text-slate-600">Com devolução</span> }
                     </td>
-                    <td class="text-right"><a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" aria-label="Abrir venda nº @sale.Id" class="underline">@(sale.Status == SaleStatus.Draft ? "Editar" : "Consultar")</a></td>
+                    <td class="text-right">
+                        <div class="inline-flex items-center gap-3">
+                            <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" aria-label="Abrir venda nº @sale.Id" class="underline">@(sale.Status == SaleStatus.Draft ? "Editar" : "Consultar")</a>
+                            @if (sale.Status == SaleStatus.Draft)
+                            {
+                                <form method="post" asp-page-handler="Delete" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id">
+                                    <button type="submit" class="text-red-700 underline">Excluir</button>
+                                </form>
+                            }
+                        </div>
+                    </td>
                 </tr>
             }
             </tbody>

@@ -77,4 +77,35 @@ public sealed class PromotionService(
         await store.DeleteAsync(id)
             ? new PromotionResult(true)
             : new PromotionResult(false, "PromotionNotFound");
+
+    /// <summary>
+    /// Recalcula ou remove a promoção de um produto quando o preço regular é alterado.
+    /// </summary>
+    public static async Task SyncRegularPriceAsync(IPromotionStore? store, int productId, decimal newSalePrice)
+    {
+        if (store is null || await store.FindByProductAsync(productId) is not { } promotion)
+        {
+            return;
+        }
+
+        if (newSalePrice <= 0)
+        {
+            await store.DeleteAsync(promotion.Id);
+            return;
+        }
+
+        var recalculated = decimal.Round(
+            newSalePrice * (100 - promotion.DiscountPercent) / 100,
+            2,
+            MidpointRounding.AwayFromZero);
+        if (recalculated <= 0 || recalculated >= newSalePrice)
+        {
+            await store.DeleteAsync(promotion.Id);
+            return;
+        }
+
+        promotion.RegularPrice = newSalePrice;
+        promotion.PromotionPrice = recalculated;
+        await store.SaveAsync(promotion);
+    }
 }

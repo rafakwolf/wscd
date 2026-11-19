@@ -2,7 +2,7 @@
 
 <section class="rounded-lg bg-white p-6 shadow-sm">
     <form method="post" asp-page="./Edit" asp-page-handler="Save" asp-route-search="@Model.Search" class="mt-4 space-y-6">
-        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+        <div asp-validation-summary="All" class="text-sm text-red-700"></div>
 
         <fieldset class="grid gap-4 md:grid-cols-3">
             <legend class="mb-2 font-medium">Identificação</legend>

@@ -256,4 +256,32 @@ public sealed class SaleStore(WscdDbContext db) : ISaleStore
             return SaleReturnResult.Conflict;
         }
     }
+
+    public async Task<bool> DeleteDraftAsync(int id)
+    {
+        await using var transaction = await db.Database.BeginTransactionAsync();
+        try
+        {
+            await db.Set<SaleItem>()
+                .Where(item => item.SaleId == id && db.Sales.Any(sale => sale.Id == id && sale.CompletedAtUtc == null))
+                .ExecuteDeleteAsync();
+            var deleted = await db.Sales
+                .Where(sale => sale.Id == id && sale.CompletedAtUtc == null)
+                .ExecuteDeleteAsync();
+            if (deleted != 1)
+            {
+                await transaction.RollbackAsync();
+                return false;
+            }
+
+            await transaction.CommitAsync();
+            return true;
+        }
+        catch (DbUpdateException)
+        {
+            await transaction.RollbackAsync();
+            db.ChangeTracker.Clear();
+            return false;
+        }
+    }
 }

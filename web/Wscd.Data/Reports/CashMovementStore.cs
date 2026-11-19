@@ -13,16 +13,25 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
         if (side == TitleSide.Receivable)
         {
             receipts = receipts.Where(payment => payment.AccountReceivableId != null);
-            if (party is not null)
-            {
-                var search = party.ToLowerInvariant();
-                receipts = receipts.Where(payment => payment.Receivable!.Customer.Name.ToLower().Contains(search));
-            }
         }
-        else if (side == TitleSide.Payable && party is not null)
+        if (party is not null)
         {
             var search = party.ToLowerInvariant();
-            expenses = expenses.Where(payment => payment.Payable.Supplier.Name.ToLower().Contains(search));
+            if (side != TitleSide.Payable)
+            {
+                receipts = receipts.Where(payment => payment.Receivable != null
+                    ? payment.Receivable.Customer.Name.ToLower().Contains(search) ||
+                      (payment.Receivable.Description != null && payment.Receivable.Description.ToLower().Contains(search)) ||
+                      (payment.Receivable.Document != null && payment.Receivable.Document.ToLower().Contains(search))
+                    : payment.Sale!.Customer.Name.ToLower().Contains(search));
+            }
+            if (side != TitleSide.Receivable)
+            {
+                expenses = expenses.Where(payment =>
+                    payment.Payable.Supplier.Name.ToLower().Contains(search) ||
+                    (payment.Payable.Description != null && payment.Payable.Description.ToLower().Contains(search)) ||
+                    (payment.Payable.Document != null && payment.Payable.Document.ToLower().Contains(search)));
+            }
         }
         if (cashAccountId is int accountId)
         {
@@ -31,10 +40,10 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
         }
         // shortcut: load both filtered streams; page them together if volume outgrows the period filter.
         var entries = side == TitleSide.Payable ? [] : await receipts.Select(payment => new
-            {
-                Payment = payment,
-                CancelledAtUtc = payment.Receivable != null ? payment.Receivable.Sale!.CancelledAtUtc : payment.Sale!.CancelledAtUtc
-            })
+        {
+            Payment = payment,
+            CancelledAtUtc = payment.Receivable != null ? payment.Receivable.Sale!.CancelledAtUtc : payment.Sale!.CancelledAtUtc
+        })
             .Select(entry => new
             {
                 entry.Payment,
@@ -51,7 +60,11 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
                 Original = new CashMovement(entry.Payment.Receivable != null ? entry.Payment.Receivable.SaleId : entry.Payment.SaleId,
                     entry.Payment.ReceivedAtUtc, entry.Payment.CashAccount.Name,
                     entry.Payment.Receivable != null ? entry.Payment.Receivable.Customer.Name : entry.Payment.Sale!.Customer.Name,
-                    entry.Payment.Method, entry.Payment.Amount, entry.Payment.AccountReceivableId, null),
+                    entry.Payment.Method, entry.Payment.Amount, entry.Payment.AccountReceivableId, null)
+                {
+                    Description = entry.Payment.Receivable != null ? entry.Payment.Receivable.Description : null,
+                    Document = entry.Payment.Receivable != null ? entry.Payment.Receivable.Document : null
+                },
                 entry.ReversedAtUtc,
                 entry.IsSaleCancellation
             })
@@ -64,7 +77,11 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
             .Select(payment => new
             {
                 Original = new CashMovement(null, payment.PaidAtUtc, payment.CashAccount.Name,
-                    payment.Payable.Supplier.Name, payment.Method, payment.Amount, null, payment.AccountPayableId),
+                    payment.Payable.Supplier.Name, payment.Method, payment.Amount, null, payment.AccountPayableId)
+                {
+                    Description = payment.Payable.Description,
+                    Document = payment.Payable.Document
+                },
                 payment.ReversedAtUtc,
                 IsSaleCancellation = false
             })
@@ -87,13 +104,20 @@ public sealed class CashMovementStore(WscdDbContext db) : ICashMovementStore
         {
             return movements;
         }
-        var refunds = await db.SaleReturns.AsNoTracking().Where(item => item.RefundAmount > 0
+        var refundsQuery = db.SaleReturns.AsNoTracking().Where(item => item.RefundAmount > 0
                 && (cashAccountId == null || item.CashAccountId == cashAccountId)
                 && (fromUtc == null || item.ReturnedAtUtc >= fromUtc)
-                && (toUtcExclusive == null || item.ReturnedAtUtc < toUtcExclusive))
+                && (toUtcExclusive == null || item.ReturnedAtUtc < toUtcExclusive));
+        if (party is not null)
+        {
+            var search = party.ToLowerInvariant();
+            refundsQuery = refundsQuery.Where(item => item.Sale.Customer.Name.ToLower().Contains(search));
+        }
+        var refunds = await refundsQuery
             .OrderByDescending(item => item.Id)
             .Select(item => new CashMovement(item.SaleId, item.ReturnedAtUtc, item.CashAccount!.Name, item.Sale.Customer.Name,
-                item.RefundMethod!.Value, item.RefundAmount, null, null) { IsSaleReturn = true })
+                item.RefundMethod!.Value, item.RefundAmount, null, null)
+            { IsSaleReturn = true })
             .ToListAsync();
         movements.AddRange(refunds);
         return movements;

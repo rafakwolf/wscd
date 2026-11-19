@@ -27,11 +27,43 @@ public sealed class QuotationService(
             return null;
         }
 
+        Dictionary<int, (Product Product, Domain.Inventory.Promotion? Promotion)>? repricing = null;
+        if (id != 0 && await store.FindAsync(id) is { IsCompleted: false, Items.Count: > 0 } current && current.Date != date)
+        {
+            repricing = new Dictionary<int, (Product, Domain.Inventory.Promotion?)>(current.Items.Count);
+            foreach (var item in current.Items)
+            {
+                if (await products.FindAsync(item.ProductId) is not { } product)
+                {
+                    return null;
+                }
+                repricing[item.ProductId] = (product, await promotions.FindByProductAsync(item.ProductId));
+            }
+        }
+
         bool SetHeader(Quotation quotation)
         {
             if (quotation.IsCompleted)
             {
                 return false;
+            }
+
+            if (quotation.Items.Count > 0 && quotation.Date != date)
+            {
+                if (repricing is null)
+                {
+                    return false;
+                }
+                foreach (var item in quotation.Items)
+                {
+                    if (!repricing.TryGetValue(item.ProductId, out var source) ||
+                        ItemPricing.Calculate(source.Product, source.Promotion, date, item.Quantity, item.DiscountPercent) is not { } pricing)
+                    {
+                        return false;
+                    }
+                    item.UnitPrice = pricing.Price;
+                    item.Total = pricing.Total;
+                }
             }
 
             quotation.CustomerId = customerId;
@@ -91,7 +123,8 @@ public sealed class QuotationService(
 
     public Task<bool> SetCompletedAsync(int id, bool completed) => store.UpdateAsync(id, quotation =>
     {
-        if (quotation.Sale is not null || quotation.IsCompleted == completed || (completed && quotation.Items.Count == 0))
+        if (quotation.Sale is not null || quotation.IsCompleted == completed ||
+            (completed && (quotation.Items.Count == 0 || quotation.Total <= 0)))
         {
             return false;
         }
@@ -99,4 +132,6 @@ public sealed class QuotationService(
         quotation.IsCompleted = completed;
         return true;
     });
+
+    public Task<bool> DeleteAsync(int id) => store.DeleteAsync(id);
 }

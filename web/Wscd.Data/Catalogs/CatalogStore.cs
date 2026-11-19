@@ -77,8 +77,9 @@ public sealed class CatalogStore<TEntity>(WscdDbContext db) : ICatalogStore<TEnt
     {
         var entity = Expression.Parameter(typeof(TEntity), "entity");
         var name = Expression.Property(entity, typeof(TEntity).GetProperty(nameof(ICatalogEntity.Name))!);
+        var toLower = typeof(string).GetMethod(nameof(string.ToLower), Type.EmptyTypes)!;
         var contains = typeof(string).GetMethod(nameof(string.Contains), [typeof(string)])!;
-        var body = Expression.Call(name, contains, Expression.Constant(value));
+        var body = Expression.Call(Expression.Call(name, toLower), contains, Expression.Constant(value.ToLowerInvariant()));
         return Expression.Lambda<Func<TEntity, bool>>(body, entity);
     }
 

@@ -10,6 +10,7 @@ public interface IPurchaseService
     Task<PurchaseOperationResult> AddItemAsync(int purchaseId, int productId, int quantity, decimal unitCost);
     Task<PurchaseOperationResult> RemoveItemAsync(int purchaseId, int itemId);
     Task<PurchaseOperationResult> CompleteAsync(int id);
+    Task<PurchaseOperationResult> DeleteDraftAsync(int id);
 }
 
 public sealed record PurchaseSummary(int Id, DateOnly PurchaseDate, string SupplierName, decimal Total, bool IsCompleted);

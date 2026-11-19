@@ -1,5 +1,7 @@
+using Wscd.Domain.Catalogs;
 using Wscd.Domain.Quotations;
 using Wscd.Domain.Sales;
+using Wscd.Services.Catalogs;
 using Wscd.Services.Quotations;
 using Wscd.Services.Sales;
 
@@ -13,7 +15,7 @@ public sealed class SaleServiceTests
         var quote = new Quotation { Id = 1, OrganizationId = Guid.NewGuid(), CustomerId = 2, SellerId = 3, Revision = Guid.NewGuid() };
         quote.Items.Add(new QuotationItem { ProductId = 7, ProductName = "Cafe", Quantity = 2, UnitPrice = 12.50m, DiscountPercent = 20m, Total = 20m });
         var store = new Store();
-        var service = new SaleService(store, new Quotations(quote), null!, null!, null!, null!, null!);
+        var service = new SaleService(store, new Quotations(quote), null!, new Sellers(), null!, null!, null!);
         var date = new DateOnly(2026, 11, 18);
 
         Assert.Null(await service.ConvertQuotationAsync(quote.Id, date));
@@ -44,7 +46,7 @@ public sealed class SaleServiceTests
         sale.Items.Add(new SaleItem { Total = 8.20m });
         sale.Items.Add(new SaleItem { Total = 6.30m });
         var store = new Store { Sale = sale };
-        var service = new SaleService(store, null!, null!, null!, null!, null!, null!);
+        var service = new SaleService(store, null!, null!, new Sellers(), null!, null!, null!);
 
         var cash = new SalePaymentInput { Method = PaymentMethod.Cash, CashAccountId = 4, Amount = 8.20m };
         var pix = new SalePaymentInput { Method = PaymentMethod.Pix, CashAccountId = 5, Amount = 6.30m };
@@ -80,7 +82,7 @@ public sealed class SaleServiceTests
         var sale = new Sale { Id = 1, Date = new DateOnly(2026, 11, 18), OrganizationId = Guid.NewGuid(), Revision = Guid.NewGuid() };
         sale.Items.Add(new SaleItem { Total = 14.51m });
         var store = new Store { Sale = sale };
-        var service = new SaleService(store, null!, null!, null!, null!, null!, null!);
+        var service = new SaleService(store, null!, null!, new Sellers(), null!, null!, null!);
         var entry = new SalePaymentInput { Method = PaymentMethod.Pix, CashAccountId = 5, Amount = 4.50m };
         var due = sale.Date.AddDays(10);
 
@@ -105,7 +107,7 @@ public sealed class SaleServiceTests
     {
         var sale = new Sale { Id = 1, Revision = Guid.NewGuid(), Receivable = new() { Revision = Guid.NewGuid() } };
         var store = new Store { Sale = sale };
-        var service = new SaleService(store, null!, null!, null!, null!, null!, null!);
+        var service = new SaleService(store, null!, null!, new Sellers(), null!, null!, null!);
         var input = new ReversalInput { Revision = sale.Revision, Reason = "  Compra desfeita  " };
         var titleRevision = sale.Receivable.Revision;
 
@@ -129,14 +131,24 @@ public sealed class SaleServiceTests
     [Fact]
     public async Task ReturnsPreserveTheOriginalLineTotalAcrossPartialQuantities()
     {
-        var sale = new Sale { Id = 1, CompletedAtUtc = DateTimeOffset.UtcNow, Revision = Guid.NewGuid(),
-            Receivable = new() { Balance = 4m, Revision = Guid.NewGuid() } };
+        var sale = new Sale
+        {
+            Id = 1,
+            CompletedAtUtc = DateTimeOffset.UtcNow,
+            Revision = Guid.NewGuid(),
+            Receivable = new() { Balance = 4m, Revision = Guid.NewGuid() }
+        };
         sale.Items.Add(new SaleItem { Id = 2, Quantity = 3, Total = 10m });
         var store = new Store { Sale = sale };
-        var service = new SaleService(store, null!, null!, null!, null!, null!, null!);
+        var service = new SaleService(store, null!, null!, new Sellers(), null!, null!, null!);
         var line = new SaleReturnLineInput { SaleItemId = 2, Quantity = 1, Restock = true };
-        var input = new SaleReturnInput { Reason = " Cliente devolveu ", Revision = sale.Revision,
-            ReceivableRevision = sale.Receivable.Revision, Lines = [line] };
+        var input = new SaleReturnInput
+        {
+            Reason = " Cliente devolveu ",
+            Revision = sale.Revision,
+            ReceivableRevision = sale.Receivable.Revision,
+            Lines = [line]
+        };
 
         Assert.Equal(SaleReturnResult.Conflict, (await service.ReviewReturnAsync(1,
             new SaleReturnInput { Revision = sale.Revision }, "user")).Result);
@@ -199,6 +211,31 @@ public sealed class SaleServiceTests
         Assert.Equal(7.25m, item.CommissionPercent);
     }
 
+    [Fact]
+    public async Task InactiveSellerIsRejectedOnQuotationConversionAndCheckout()
+    {
+        var quote = new Quotation
+        {
+            Id = 1,
+            OrganizationId = Guid.NewGuid(),
+            CustomerId = 2,
+            SellerId = 99,
+            IsCompleted = true,
+            Revision = Guid.NewGuid()
+        };
+        quote.Items.Add(new QuotationItem { ProductId = 7, ProductName = "Cafe", Quantity = 1, UnitPrice = 10m, Total = 10m });
+        var sale = new Sale { Id = 1, SellerId = 99, OrganizationId = quote.OrganizationId, Revision = Guid.NewGuid() };
+        sale.Items.Add(new SaleItem { Total = 10m });
+        var store = new Store { Sale = sale };
+        var service = new SaleService(store, new Quotations(quote), null!, new Sellers(), null!, null!, null!);
+
+        Assert.Null(await service.ConvertQuotationAsync(quote.Id, new DateOnly(2026, 11, 18)));
+        Assert.Equal(SaleCheckout.InactiveSeller, await service.CheckoutAsync(
+            sale.Id,
+            [new SalePaymentInput { Method = PaymentMethod.Cash, CashAccountId = 1, Amount = 10m }],
+            sale.Revision));
+    }
+
     private sealed class Store : ISaleStore
     {
         public Sale? Sale { get; set; }
@@ -256,6 +293,8 @@ public sealed class SaleServiceTests
             }
             return Task.FromResult(SaleReturnResult.Recorded);
         }
+
+        public Task<bool> DeleteDraftAsync(int id) => throw new NotSupportedException();
     }
 
     private sealed class Quotations(Quotation quote) : IQuotationStore
@@ -264,5 +303,14 @@ public sealed class SaleServiceTests
         public Task<bool> UpdateAsync(int id, Func<Quotation, bool> change) => throw new NotSupportedException();
         public Task<bool> CreateAsync(Quotation quotation) => throw new NotSupportedException();
         public Task<IReadOnlyList<QuotationSummary>> ListAsync(string? search, DateOnly? from, DateOnly? to, bool? completed) => throw new NotSupportedException();
+        public Task<bool> DeleteAsync(int id) => throw new NotSupportedException();
+    }
+
+    private sealed class Sellers : ICatalogService<Seller>
+    {
+        public Task<Seller?> FindAsync(int id) => Task.FromResult<Seller?>(new Seller { Id = id, Name = "Vendedor", IsActive = id != 99 });
+        public Task<IReadOnlyList<Seller>> ListAsync(string? search) => throw new NotSupportedException();
+        public Task<bool> SaveAsync(Seller entity) => throw new NotSupportedException();
+        public Task<bool> DeleteAsync(int id) => throw new NotSupportedException();
     }
 }

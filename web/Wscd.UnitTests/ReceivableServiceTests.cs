@@ -61,7 +61,9 @@ public sealed class ReceivableServiceTests
     {
         var title = new AccountReceivable
         {
-            Id = 1, Balance = 10m, Revision = Guid.NewGuid(),
+            Id = 1,
+            Balance = 10m,
+            Revision = Guid.NewGuid(),
             Sale = new Sale { CancelledAtUtc = DateTimeOffset.UtcNow }
         };
         title.Payments.Add(new SalePayment { Id = 2, Amount = 5m });
@@ -102,6 +104,8 @@ public sealed class ReceivableServiceTests
 
         public Task<AccountReceivable?> FindAsync(int id) => Task.FromResult<AccountReceivable?>(id == account.Id ? account : null);
         public Task<bool> CreateAsync(AccountReceivable account) => throw new NotSupportedException();
+        public Task<bool> UpdateManualAsync(AccountReceivable account, Guid expectedRevision) => throw new NotSupportedException();
+        public Task<bool> DeleteManualAsync(int id, Guid expectedRevision) => throw new NotSupportedException();
 
         public Task<TitleSettlement> ReceiveAsync(AccountReceivable account, SalePayment payment)
         {

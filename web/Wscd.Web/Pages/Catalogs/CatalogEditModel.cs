@@ -17,13 +17,13 @@ public class CatalogEditModel<TEntity>(ICatalogService<TEntity> catalog) : PageM
     public string? UnlistedCity => Input switch
     {
         Customer customer when !string.IsNullOrWhiteSpace(customer.City) &&
-                               !Cities.Contains(customer.City, StringComparer.Ordinal) => customer.City,
+                               !Cities.Contains(customer.City, StringComparer.OrdinalIgnoreCase) => customer.City,
         Supplier supplier when !string.IsNullOrWhiteSpace(supplier.City) &&
-                               !Cities.Contains(supplier.City, StringComparer.Ordinal) => supplier.City,
+                               !Cities.Contains(supplier.City, StringComparer.OrdinalIgnoreCase) => supplier.City,
         _ => null
     };
 
-    public async Task<IActionResult> OnGetAsync([FromRoute] int? id)
+    public virtual async Task<IActionResult> OnGetAsync([FromRoute] int? id)
     {
         Id = id;
         if (id is int key)
@@ -40,7 +40,7 @@ public class CatalogEditModel<TEntity>(ICatalogService<TEntity> catalog) : PageM
         return Page();
     }
 
-    public async Task<IActionResult> OnPostSaveAsync([FromRoute] int? id)
+    public virtual async Task<IActionResult> OnPostSaveAsync([FromRoute] int? id)
     {
         if (id is <= 0)
         {

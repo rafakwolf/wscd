@@ -10,6 +10,10 @@
 {
     <p role="status" class="mb-3 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
 }
+@if (TempData["WarningMessage"] is string warning)
+{
+    <p role="alert" class="mb-3 rounded bg-amber-50 p-3 text-sm text-amber-900">@warning</p>
+}
 @if (Model.Error is not null)
 {
     <p role="alert" class="mb-3 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>

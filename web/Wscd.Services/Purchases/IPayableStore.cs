@@ -10,6 +10,8 @@ public interface IPayableStore
         TitleStatus? status, DateOnly today);
     Task<AccountPayable?> FindAsync(int id);
     Task<bool> CreateAsync(AccountPayable account);
+    Task<bool> UpdateManualAsync(AccountPayable account, Guid expectedRevision);
+    Task<bool> DeleteManualAsync(int id, Guid expectedRevision);
     Task<TitleSettlement> PayAsync(AccountPayable account, PayablePayment payment);
     Task<TitleSettlement> ReverseAsync(AccountPayable account, PayablePayment payment, SettlementReversal reversal);
 }

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Wscd.Domain.Inventory;
+using Wscd.Services;
 using Wscd.Services.Inventory;
 
 namespace Wscd.Data.Inventory;
@@ -37,10 +38,14 @@ public sealed class PromotionStore(WscdDbContext db) : IPromotionStore
         await using var transaction = await db.Database.BeginTransactionAsync();
         try
         {
+            var today = BrasiliaClock.Today;
+            decimal? activePrice = promotion.StartDate <= today && promotion.EndDate >= today
+                ? promotion.PromotionPrice
+                : null;
             var updated = await db.Products
                 .Where(product => product.Id == promotion.ProductId && product.SalePrice == promotion.RegularPrice)
                 .ExecuteUpdateAsync(update => update
-                    .SetProperty(product => product.PromotionPrice, promotion.PromotionPrice));
+                    .SetProperty(product => product.PromotionPrice, activePrice));
             if (updated != 1)
             {
                 return false;

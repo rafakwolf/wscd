@@ -23,4 +23,13 @@ public sealed class IndexModel(QuotationService quotations) : DocumentFiltersMod
         Quotations = await quotations.ListAsync(Search, From, To, Completed);
         return Page();
     }
+
+    public async Task<IActionResult> OnPostDeleteAsync(int id)
+    {
+        var deleted = await quotations.DeleteAsync(id);
+        TempData[deleted ? "StatusMessage" : "ErrorMessage"] = deleted
+            ? "Orçamento excluído."
+            : "Não foi possível excluir este orçamento.";
+        return RedirectToPage("./Index", ListFilters);
+    }
 }

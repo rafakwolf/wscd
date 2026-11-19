@@ -19,6 +19,10 @@
     {
         <p role="status" class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
     }
+    @if (TempData["ErrorMessage"] is string errorMessage)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@errorMessage</p>
+    }
     @if (Model.Error is not null)
     {
         <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
@@ -40,8 +44,18 @@
             {
                 <tr class="border-b last:border-0">
                     <td class="py-2">@quotation.Id</td><td>@quotation.Date.ToString("dd/MM/yyyy")</td><td>@quotation.CustomerName</td><td>@quotation.Total.ToString("C", culture)</td>
-                    <td>@(quotation.IsConverted ? "Convertido" : quotation.IsCompleted ? "Concluído" : "Rascunho")</td>
-                    <td class="text-right"><a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@quotation.Id" aria-label="Abrir orçamento nº @quotation.Id" class="underline">@(quotation.IsCompleted ? "Consultar" : "Editar")</a></td>
+                    <td>@(quotation.IsCancelledSale ? "Venda cancelada" : quotation.IsConverted ? "Convertido" : quotation.IsCompleted ? "Concluído" : "Rascunho")</td>
+                    <td class="text-right">
+                        <div class="inline-flex items-center gap-3">
+                            <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@quotation.Id" aria-label="Abrir orçamento nº @quotation.Id" class="underline">@(quotation.IsCompleted ? "Consultar" : "Editar")</a>
+                            @if (!quotation.IsCompleted && !quotation.IsConverted)
+                            {
+                                <form method="post" asp-page-handler="Delete" asp-all-route-data="Model.ListFilters" asp-route-id="@quotation.Id">
+                                    <button type="submit" class="text-red-700 underline">Excluir</button>
+                                </form>
+                            }
+                        </div>
+                    </td>
                 </tr>
             }
             </tbody>

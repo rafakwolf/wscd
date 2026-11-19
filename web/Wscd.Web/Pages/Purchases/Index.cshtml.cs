@@ -23,4 +23,13 @@ public sealed class IndexModel(IPurchaseService purchases) : DocumentFiltersMode
         Items = await purchases.ListAsync(Completed, From, To, Search);
         return Page();
     }
+
+    public async Task<IActionResult> OnPostDeleteAsync(int id)
+    {
+        var result = await purchases.DeleteDraftAsync(id);
+        TempData[result.Succeeded ? "StatusMessage" : "ErrorMessage"] = result.Succeeded
+            ? "Rascunho de compra excluído."
+            : "Não foi possível excluir esta compra.";
+        return RedirectToPage("./Index", ListFilters);
+    }
 }

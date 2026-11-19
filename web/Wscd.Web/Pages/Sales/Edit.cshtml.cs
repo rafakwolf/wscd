@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Sales;
+using Wscd.Services;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Sales;
 
@@ -31,15 +32,15 @@ public sealed class EditModel(
 
     public async Task<IActionResult> OnGetAsync()
     {
-        Header.Date = DateOnly.FromDateTime(DateTime.Today);
+        Header.Date = BrasiliaClock.Today;
         Line.Quantity = 1;
         await LoadAsync();
         return Id is not null && Current is null ? NotFound() : Page();
     }
 
-    public async Task<IActionResult> OnPostSaveAsync()
+    public async Task<IActionResult> OnPostSaveAsync(Guid? revision)
     {
-        if (ModelState.IsValid && await sales.SaveAsync(Id ?? 0, Header.CustomerId, Header.SellerId, Header.Date, Header.Notes) is int id)
+        if (ModelState.IsValid && await sales.SaveAsync(Id ?? 0, Header.CustomerId, Header.SellerId, Header.Date, Header.Notes, revision) is int id)
         {
             return Saved(id, "Rascunho salvo.");
         }
@@ -47,12 +48,12 @@ public sealed class EditModel(
         return await ShowErrorAsync("Não foi possível salvar. Confira o cliente, o vendedor ativo, a data e a situação da venda.", keepHeader: true);
     }
 
-    public Task<IActionResult> OnPostAddItemAsync() => ChangeItemsAsync(
-        id => sales.AddItemAsync(id, Line.ProductId, Line.Quantity, Line.DiscountPercent),
-        "Produto adicionado.", "Escolha um produto ainda não incluído, com quantidade positiva e desconto de 0 a 100%.");
+    public Task<IActionResult> OnPostAddItemAsync(Guid revision) => ChangeItemsAsync(
+        id => sales.AddItemAsync(id, Line.ProductId, Line.Quantity, Line.DiscountPercent ?? 0m, Line.CommissionPercent ?? 0m, revision),
+        "Produto adicionado.", "Escolha um produto ainda não incluído, com quantidade positiva, desconto e comissão de 0 a 100%.");
 
-    public Task<IActionResult> OnPostRemoveItemAsync(int itemId) => ChangeItemsAsync(
-        id => sales.RemoveItemAsync(id, itemId), "Produto removido.", "Não foi possível remover o produto desta venda.");
+    public Task<IActionResult> OnPostRemoveItemAsync(int itemId, Guid revision) => ChangeItemsAsync(
+        id => sales.RemoveItemAsync(id, itemId, revision), "Produto removido.", "Não foi possível remover o produto desta venda.");
 
     public Task<IActionResult> OnPostSetCommissionAsync(int itemId, decimal? commissionPercent, Guid revision) => ChangeItemsAsync(
         id => commissionPercent is decimal percent ? sales.SetItemCommissionAsync(id, itemId, percent, revision) : Task.FromResult(false),
@@ -81,6 +82,7 @@ public sealed class EditModel(
             : await ShowErrorAsync(result switch
             {
                 SaleCheckout.InsufficientStock => "Estoque insuficiente para pelo menos um produto. A venda não foi concluída e nenhum recebimento foi lançado.",
+                SaleCheckout.InactiveSeller => "O vendedor selecionado está inativo. Troque para um vendedor ativo antes de concluir.",
                 SaleCheckout.InvalidCashAccount => "Selecione uma conta caixa ativa da organização em cada recebimento.",
                 SaleCheckout.InvalidPayments => "Informe um meio, uma conta caixa e um valor positivo com até duas casas decimais em cada recebimento.",
                 SaleCheckout.PaymentTotalMismatch => "Os recebimentos não podem ultrapassar o total. Se restar saldo, informe o vencimento do crediário.",
@@ -140,7 +142,9 @@ public sealed class EditModel(
         }
 
         Customers = await customers.ListAsync(null);
-        Sellers = (await sellers.ListAsync(null)).Where(seller => seller.IsActive).ToArray();
+        Sellers = (await sellers.ListAsync(null))
+            .Where(seller => seller.IsActive || seller.Id == Current?.SellerId)
+            .ToArray();
         if (Current is { } sale)
         {
             Products = await products.ListAsync(null);
@@ -163,6 +167,7 @@ public sealed class EditModel(
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }
-        public decimal DiscountPercent { get; set; }
+        public decimal? DiscountPercent { get; set; }
+        public decimal? CommissionPercent { get; set; }
     }
 }

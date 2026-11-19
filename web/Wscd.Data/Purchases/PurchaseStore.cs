@@ -27,7 +27,8 @@ public sealed class PurchaseStore(WscdDbContext db) : IPurchaseStore
         }
         if (!string.IsNullOrWhiteSpace(search))
         {
-            query = query.Where(purchase => purchase.Supplier.Name.Contains(search));
+            var term = search.ToLowerInvariant();
+            query = query.Where(purchase => purchase.Supplier.Name.ToLower().Contains(term));
         }
 
         return await query
@@ -151,12 +152,11 @@ public sealed class PurchaseStore(WscdDbContext db) : IPurchaseStore
         }
     }
 
-    public async Task<bool> CompleteAsync(int id, DateOnly dueDate, IReadOnlyList<ProductReceipt> receipts)
+    public async Task<bool> CompleteAsync(int id, DateOnly dueDate, DateOnly receivedDate, IReadOnlyList<ProductReceipt> receipts)
     {
         await using var transaction = await db.Database.BeginTransactionAsync();
         try
         {
-            var receivedDate = DateOnly.FromDateTime(DateTime.Today);
             var completed = await db.Purchases
                 .Where(item => item.Id == id && !item.IsCompleted && item.DueDate == dueDate)
                 .ExecuteUpdateAsync(update => update
@@ -170,16 +170,18 @@ public sealed class PurchaseStore(WscdDbContext db) : IPurchaseStore
             var purchase = await db.Purchases.AsNoTracking()
                 .Include(item => item.Items)
                 .SingleAsync(item => item.Id == id);
-            if (purchase.Items.Count == 0 || purchase.Total < 0 || !ReceiptsMatch(purchase.Items, receipts))
+            if (purchase.Items.Count == 0 || purchase.Total <= 0 || !ReceiptsMatch(purchase.Items, receipts))
             {
                 await transaction.RollbackAsync();
                 return false;
             }
 
-            foreach (var receipt in receipts)
+            foreach (var receipt in receipts.OrderBy(item => item.ProductId))
             {
                 var updated = await db.Products
-                    .Where(product => product.Id == receipt.ProductId && product.MarginPercent == receipt.MarginPercent)
+                    .Where(product => product.Id == receipt.ProductId &&
+                        product.MarginPercent == receipt.MarginPercent &&
+                        product.Stock <= int.MaxValue - receipt.Quantity)
                     .ExecuteUpdateAsync(update => update
                         .SetProperty(product => product.Stock, product => product.Stock + receipt.Quantity)
                         .SetProperty(product => product.Cost, receipt.UnitCost)
@@ -200,13 +202,41 @@ public sealed class PurchaseStore(WscdDbContext db) : IPurchaseStore
                 OrganizationId = purchase.OrganizationId,
                 PurchaseId = purchase.Id,
                 SupplierId = purchase.SupplierId,
-                CreatedDate = receivedDate,
+                CreatedDate = receivedDate <= dueDate ? receivedDate : purchase.PurchaseDate,
                 DueDate = dueDate,
                 Amount = purchase.Total,
                 Balance = purchase.Total
             });
 
             await db.SaveChangesAsync();
+            await transaction.CommitAsync();
+            return true;
+        }
+        catch (DbUpdateException)
+        {
+            await transaction.RollbackAsync();
+            db.ChangeTracker.Clear();
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteDraftAsync(int id)
+    {
+        await using var transaction = await db.Database.BeginTransactionAsync();
+        try
+        {
+            var deletedItems = await db.PurchaseItems
+                .Where(item => item.PurchaseId == id && !item.Purchase.IsCompleted)
+                .ExecuteDeleteAsync();
+            var deletedPurchase = await db.Purchases
+                .Where(purchase => purchase.Id == id && !purchase.IsCompleted)
+                .ExecuteDeleteAsync();
+            if (deletedPurchase != 1)
+            {
+                await transaction.RollbackAsync();
+                return false;
+            }
+
             await transaction.CommitAsync();
             return true;
         }

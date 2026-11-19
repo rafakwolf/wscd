@@ -37,7 +37,7 @@ public sealed class LoginModel(
         }
 
         var result = await signInManager.PasswordSignInAsync(
-            Input.Email,
+            user,
             Input.Password,
             Input.RememberMe,
             lockoutOnFailure: true);

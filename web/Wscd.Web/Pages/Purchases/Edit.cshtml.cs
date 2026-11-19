@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Purchases;
+using Wscd.Services;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Purchases;
 
@@ -25,7 +26,7 @@ public sealed class EditModel(
 
     public async Task<IActionResult> OnGetAsync()
     {
-        Header.PurchaseDate = DateOnly.FromDateTime(DateTime.Today);
+        Header.PurchaseDate = BrasiliaClock.Today;
         Line.Quantity = 1;
         await LoadAsync();
         return Id is not null && Current is null ? NotFound() : Page();
@@ -96,11 +97,22 @@ public sealed class EditModel(
             return BadRequest();
         }
 
+        if (Header.SupplierId > 0 && Header.PurchaseDate != default)
+        {
+            var saved = await purchases.SaveDraftAsync(Id.Value, Header.SupplierId, Header.PurchaseDate, Header.DueDate, Header.Notes);
+            if (!saved.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, Message(saved.ErrorCode));
+                await LoadAsync(populateHeader: false);
+                return Id is not null && Current is null ? NotFound() : Page();
+            }
+        }
+
         var result = await purchases.CompleteAsync(Id.Value);
         if (!result.Succeeded)
         {
             ModelState.AddModelError(string.Empty, Message(result.ErrorCode));
-            await LoadAsync();
+            await LoadAsync(populateHeader: Header.SupplierId <= 0);
             return Id is not null && Current is null ? NotFound() : Page();
         }
 

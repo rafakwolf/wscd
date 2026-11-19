@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Wscd.Domain.Catalogs;
 using Wscd.Domain.Inventory;
+using Wscd.Services;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Inventory;
 
@@ -46,7 +47,7 @@ public sealed class EditModel(
         }
         else
         {
-            Input.StartDate = DateOnly.FromDateTime(DateTime.Today);
+            Input.StartDate = BrasiliaClock.Today;
             Input.EndDate = Input.StartDate;
         }
 

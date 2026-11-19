@@ -9,8 +9,9 @@
     @if (current is null || Model.CanEdit)
     {
         <form method="post" asp-page="./Edit" asp-page-handler="Save" asp-all-route-data="Model.ListFilters" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            @if (current is not null) { <input type="hidden" name="revision" value="@current.Revision" /> }
             <div><label asp-for="Header.CustomerId" class="block text-sm">Cliente</label><select asp-for="Header.CustomerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var customer in Model.Customers) { <option value="@customer.Id">@customer.Name</option> }</select></div>
-            <div><label asp-for="Header.SellerId" class="block text-sm">Vendedor</label><select asp-for="Header.SellerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var seller in Model.Sellers) { <option value="@seller.Id">@seller.Name</option> }</select></div>
+            <div><label asp-for="Header.SellerId" class="block text-sm">Vendedor</label><select asp-for="Header.SellerId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var seller in Model.Sellers) { <option value="@seller.Id">@seller.Name@(seller.IsActive ? null : " (inativo)")</option> }</select></div>
             <div><label asp-for="Header.Date" class="block text-sm">Data da venda</label><input asp-for="Header.Date" type="date" required class="mt-1 w-full rounded border px-3 py-2" /></div>
             <div class="sm:col-span-2"><label asp-for="Header.Notes" class="block text-sm">Observações</label><textarea asp-for="Header.Notes" rows="2" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
             <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar rascunho</button></div>
@@ -55,7 +56,7 @@
                         </td>
                         @if (Model.CanEdit)
                         {
-                            <td class="text-right"><form method="post" asp-page="./Edit" asp-page-handler="RemoveItem" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id"><input type="hidden" name="itemId" value="@item.Id" /><button aria-label="Remover @item.ProductName" class="text-red-700 underline">Remover</button></form></td>
+                            <td class="text-right"><form method="post" asp-page="./Edit" asp-page-handler="RemoveItem" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id"><input type="hidden" name="itemId" value="@item.Id" /><input type="hidden" name="revision" value="@current.Revision" /><button aria-label="Remover @item.ProductName" class="text-red-700 underline">Remover</button></form></td>
                         }
                     </tr>
                 }
@@ -66,10 +67,12 @@
         </div>
         @if (Model.CanEdit)
         {
-            <form method="post" asp-page="./Edit" asp-page-handler="AddItem" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <form method="post" asp-page="./Edit" asp-page-handler="AddItem" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                <input type="hidden" name="revision" value="@current.Revision" />
                 <div class="sm:col-span-2"><label asp-for="Line.ProductId" class="block text-sm">Produto</label><select asp-for="Line.ProductId" required class="mt-1 w-full rounded border px-3 py-2"><option value="">Selecione</option>@foreach (var product in Model.Products) { <option value="@product.Id">@product.Name (estoque: @product.Stock)</option> }</select></div>
                 <div><label asp-for="Line.Quantity" class="block text-sm">Quantidade</label><input asp-for="Line.Quantity" type="number" min="1" required class="mt-1 w-full rounded border px-3 py-2" /></div>
                 <div><label asp-for="Line.DiscountPercent" class="block text-sm">Desconto (%)</label><input asp-for="Line.DiscountPercent" type="number" min="0" max="100" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
+                <div><label asp-for="Line.CommissionPercent" class="block text-sm">Comissão (%)</label><input asp-for="Line.CommissionPercent" type="number" min="0" max="100" step="0.01" class="mt-1 w-full rounded border px-3 py-2" /></div>
                 <div><button class="rounded border px-4 py-2">Adicionar produto</button></div>
             </form>
         }

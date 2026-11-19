@@ -8,6 +8,8 @@ public interface IReceivableStore
         TitleStatus? status, DateOnly today);
     Task<AccountReceivable?> FindAsync(int id);
     Task<bool> CreateAsync(AccountReceivable account);
+    Task<bool> UpdateManualAsync(AccountReceivable account, Guid expectedRevision);
+    Task<bool> DeleteManualAsync(int id, Guid expectedRevision);
     Task<TitleSettlement> ReceiveAsync(AccountReceivable account, SalePayment payment);
     Task<TitleSettlement> ReverseAsync(AccountReceivable account, SalePayment payment, SettlementReversal reversal);
 }

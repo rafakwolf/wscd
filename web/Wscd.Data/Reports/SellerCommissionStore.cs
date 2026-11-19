@@ -13,12 +13,12 @@ public sealed class SellerCommissionStore(WscdDbContext db) : ISellerCommissionS
             sale.Date >= from && sale.Date <= to && sale.CompletedAtUtc != null && sale.CancelledAtUtc == null);
 
         return await (from item in sales.SelectMany(sale => sale.Items)
-            join product in db.Products.AsNoTracking()
-                on new { item.OrganizationId, Id = item.ProductId } equals new { product.OrganizationId, product.Id }
-            select new SellerCommissionLine(item.ProductId, product.Name, item.Quantity, item.Total,
-                item.CommissionPercent,
-                db.Set<SaleReturnItem>().Where(line => line.SaleItemId == item.Id).Sum(line => line.Quantity),
-                db.Set<SaleReturnItem>().Where(line => line.SaleItemId == item.Id).Sum(line => line.Amount)))
+                      join product in db.Products.AsNoTracking()
+                          on new { item.OrganizationId, Id = item.ProductId } equals new { product.OrganizationId, product.Id }
+                      select new SellerCommissionLine(item.ProductId, product.Name, item.Quantity, item.Total,
+                          item.CommissionPercent,
+                          db.Set<SaleReturnItem>().Where(line => line.SaleItemId == item.Id).Sum(line => line.Quantity),
+                          db.Set<SaleReturnItem>().Where(line => line.SaleItemId == item.Id).Sum(line => line.Amount)))
             .ToListAsync();
     }
 }

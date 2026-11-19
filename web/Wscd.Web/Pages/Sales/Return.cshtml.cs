@@ -35,8 +35,23 @@ public sealed class ReturnModel(SaleService sales, ICatalogService<CashAccount> 
     private async Task<IActionResult> HandleAsync(bool confirm)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        var review = !ModelState.IsValid ? new SaleReturnReview(SaleReturnResult.InvalidItems, await sales.FindAsync(Id)) :
-            confirm ? await sales.RegisterReturnAsync(Id, Input, userId) : await sales.ReviewReturnAsync(Id, Input, userId);
+        SaleReturnReview review;
+        if (!ModelState.IsValid)
+        {
+            review = confirm
+                ? await sales.ReviewReturnAsync(Id, Input, userId)
+                : new SaleReturnReview(SaleReturnResult.InvalidItems, await sales.FindAsync(Id));
+            if (confirm && review.Result == SaleReturnResult.Ready)
+            {
+                review = review with { Result = SaleReturnResult.InvalidRefund };
+            }
+        }
+        else
+        {
+            review = confirm
+                ? await sales.RegisterReturnAsync(Id, Input, userId)
+                : await sales.ReviewReturnAsync(Id, Input, userId);
+        }
         if (review.Result == SaleReturnResult.Recorded)
         {
             TempData["StatusMessage"] = "Devolução registrada.";

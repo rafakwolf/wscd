@@ -47,6 +47,46 @@ public sealed class PayableStore(WscdDbContext db) : IPayableStore
 
     public Task<bool> CreateAsync(AccountPayable account) => db.CreateTitleAsync(account);
 
+    public async Task<bool> UpdateManualAsync(AccountPayable account, Guid expectedRevision)
+    {
+        try
+        {
+            var updated = await db.AccountsPayable
+                .Where(current => current.Id == account.Id && current.PurchaseId == null &&
+                    current.Revision == expectedRevision && !current.Payments.Any())
+                .ExecuteUpdateAsync(update => update
+                    .SetProperty(current => current.SupplierId, account.SupplierId)
+                    .SetProperty(current => current.Description, account.Description)
+                    .SetProperty(current => current.Document, account.Document)
+                    .SetProperty(current => current.CreatedDate, account.CreatedDate)
+                    .SetProperty(current => current.DueDate, account.DueDate)
+                    .SetProperty(current => current.Amount, account.Amount)
+                    .SetProperty(current => current.Balance, account.Balance)
+                    .SetProperty(current => current.Revision, Guid.NewGuid()));
+            return updated == 1;
+        }
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteManualAsync(int id, Guid expectedRevision)
+    {
+        try
+        {
+            var deleted = await db.AccountsPayable
+                .Where(current => current.Id == id && current.PurchaseId == null &&
+                    current.Revision == expectedRevision && !current.Payments.Any())
+                .ExecuteDeleteAsync();
+            return deleted == 1;
+        }
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
+        {
+            return false;
+        }
+    }
+
     public Task<TitleSettlement> PayAsync(AccountPayable account, PayablePayment payment) =>
         db.RecordSettlementAsync(account.OrganizationId, payment.CashAccountId, () => db.AccountsPayable
             .Where(current => current.Id == account.Id && current.Revision == account.Revision && current.Balance >= payment.Amount)

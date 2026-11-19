@@ -40,6 +40,48 @@ public sealed class IndexModel(
         return RedirectToPage(new { Search });
     }
 
+    public async Task<IActionResult> OnPostReactivateAsync(string memberId)
+    {
+        var requesterId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (requesterId is null)
+        {
+            return Forbid();
+        }
+
+        var result = await organizationService.ReactivateMemberAsync(requesterId, memberId);
+        if (!result.Succeeded)
+        {
+            ModelState.AddModelError(string.Empty, "Não foi possível reativar esse membro.");
+            await LoadUsersAsync();
+            return Page();
+        }
+
+        TempData["StatusMessage"] = "Acesso do membro reativado.";
+        return RedirectToPage(new { Search });
+    }
+
+    public async Task<IActionResult> OnPostResetPasswordAsync(string memberId, string? newPassword)
+    {
+        var requesterId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (requesterId is null)
+        {
+            return Forbid();
+        }
+
+        var result = await organizationService.ResetMemberPasswordAsync(requesterId, memberId, newPassword ?? string.Empty);
+        if (!result.Succeeded)
+        {
+            ModelState.AddModelError(string.Empty, result.ErrorCode == "PasswordTooShort"
+                ? "A nova senha deve ter pelo menos 12 caracteres."
+                : "Não foi possível redefinir a senha desse membro.");
+            await LoadUsersAsync();
+            return Page();
+        }
+
+        TempData["StatusMessage"] = "Senha do membro redefinida.";
+        return RedirectToPage(new { Search });
+    }
+
     private async Task<bool> LoadUsersAsync()
     {
         var requesterId = User.FindFirstValue(ClaimTypes.NameIdentifier);

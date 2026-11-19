@@ -18,6 +18,10 @@
     {
         <p class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
     }
+    @if (TempData["ErrorMessage"] is string errorMessage)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@errorMessage</p>
+    }
 
     @if (Model.Error is not null)
     {
@@ -41,7 +45,17 @@
                 <tr class="border-b last:border-0">
                     <td class="py-2">@item.Id</td><td>@item.PurchaseDate.ToString("dd/MM/yyyy")</td><td>@item.SupplierName</td><td>R$ @item.Total.ToString("N2", CultureInfo.GetCultureInfo("pt-BR"))</td>
                     <td>@(item.IsCompleted ? "Concluída" : "Rascunho")</td>
-                    <td class="text-right"><a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@item.Id" class="text-slate-900 underline">@(item.IsCompleted ? "Consultar" : "Editar")</a></td>
+                    <td class="text-right">
+                        <div class="inline-flex items-center gap-3">
+                            <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@item.Id" class="text-slate-900 underline">@(item.IsCompleted ? "Consultar" : "Editar")</a>
+                            @if (!item.IsCompleted)
+                            {
+                                <form method="post" asp-page-handler="Delete" asp-all-route-data="Model.ListFilters" asp-route-id="@item.Id">
+                                    <button type="submit" class="text-red-700 underline">Excluir</button>
+                                </form>
+                            }
+                        </div>
+                    </td>
                 </tr>
             }
             </tbody>

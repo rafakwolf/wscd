@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Wscd.Domain.Catalogs;
+using Wscd.Services;
 using Wscd.Services.Catalogs;
 using Wscd.Services.Inventory;
 
@@ -40,7 +41,7 @@ public sealed class CreateModel(
     public async Task<IActionResult> OnGetAsync()
     {
         await LoadAsync();
-        LossDate = DateOnly.FromDateTime(DateTime.Today);
+        LossDate = BrasiliaClock.Today;
 
         return Page();
     }

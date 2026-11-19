@@ -50,6 +50,46 @@ public sealed class ReceivableStore(WscdDbContext db) : IReceivableStore
 
     public Task<bool> CreateAsync(AccountReceivable account) => db.CreateTitleAsync(account);
 
+    public async Task<bool> UpdateManualAsync(AccountReceivable account, Guid expectedRevision)
+    {
+        try
+        {
+            var updated = await db.AccountsReceivable
+                .Where(current => current.Id == account.Id && current.SaleId == null &&
+                    current.Revision == expectedRevision && !current.Payments.Any())
+                .ExecuteUpdateAsync(update => update
+                    .SetProperty(current => current.CustomerId, account.CustomerId)
+                    .SetProperty(current => current.Description, account.Description)
+                    .SetProperty(current => current.Document, account.Document)
+                    .SetProperty(current => current.IssueDate, account.IssueDate)
+                    .SetProperty(current => current.DueDate, account.DueDate)
+                    .SetProperty(current => current.Amount, account.Amount)
+                    .SetProperty(current => current.Balance, account.Balance)
+                    .SetProperty(current => current.Revision, Guid.NewGuid()));
+            return updated == 1;
+        }
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteManualAsync(int id, Guid expectedRevision)
+    {
+        try
+        {
+            var deleted = await db.AccountsReceivable
+                .Where(current => current.Id == id && current.SaleId == null &&
+                    current.Revision == expectedRevision && !current.Payments.Any())
+                .ExecuteDeleteAsync();
+            return deleted == 1;
+        }
+        catch (Exception exception) when (FinancePersistence.IsWriteConflict(exception))
+        {
+            return false;
+        }
+    }
+
     public Task<TitleSettlement> ReceiveAsync(AccountReceivable account, SalePayment payment) =>
         db.RecordSettlementAsync(account.OrganizationId, payment.CashAccountId, () => db.AccountsReceivable
             .Where(current => current.Id == account.Id && current.Revision == account.Revision && current.Balance >= payment.Amount)

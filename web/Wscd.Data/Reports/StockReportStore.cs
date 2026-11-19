@@ -13,7 +13,7 @@ public sealed class StockReportStore(WscdDbContext db) : IStockReportStore
         {
             var term = search.ToLowerInvariant();
             products = products.Where(product => product.Name.ToLower().Contains(term) ||
-                (product.Barcode != null && product.Barcode.Contains(term)));
+                (product.Barcode != null && product.Barcode.ToLower().Contains(term)));
         }
         if (groupId is int group)
         {

@@ -61,7 +61,7 @@ public sealed class DemoDataSeeder(
             Type = "F",
             Email = index == 1 ? "cliente@exemplo.invalid" : $"cliente{index:00}@exemplo.invalid",
             Phone = "0000000000",
-            RegistrationDate = DateOnly.FromDateTime(DateTime.Today).AddDays(-index),
+            RegistrationDate = BrasiliaClock.Today.AddDays(-index),
             Notes = "Registro fictício para testes."
         });
         var demoSellers = await EnsureManyAsync(sellers, index => new Seller
@@ -90,7 +90,7 @@ public sealed class DemoDataSeeder(
             MinimumStock = index switch { 1 => 5, 2 => 3, 3 => 2, _ when index % 2 == 0 => 3, _ => 5 }
         });
 
-        var today = DateOnly.FromDateTime(DateTime.Today);
+        var today = BrasiliaClock.Today;
         for (var index = 1; index <= 10; index++)
         {
             var completed = index % 2 == 0;

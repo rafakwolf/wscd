@@ -11,6 +11,7 @@ public interface ISaleStore
     Task<SaleCheckout> CheckoutAsync(Sale sale, IReadOnlyList<SalePayment> payments, AccountReceivable? receivable, DateTimeOffset completedAt);
     Task<SaleCancellation> CancelAsync(Sale sale, SettlementReversal cancellation);
     Task<SaleReturnResult> ReturnAsync(Sale sale, SaleReturn saleReturn);
+    Task<bool> DeleteDraftAsync(int id);
 }
 
 public sealed record SaleSummary(int Id, DateOnly Date, string CustomerName, decimal Total, SaleStatus Status, bool HasReturns);
@@ -28,4 +29,4 @@ public sealed class SalePaymentInput
         Amount > 0 && Amount <= maxAmount && decimal.Round(Amount, 2) == Amount;
 }
 
-public enum SaleCheckout { Completed, InvalidSale, InvalidCashAccount, InvalidPayments, PaymentTotalMismatch, InvalidDueDate, InsufficientStock, Conflict }
+public enum SaleCheckout { Completed, InvalidSale, InactiveSeller, InvalidCashAccount, InvalidPayments, PaymentTotalMismatch, InvalidDueDate, InsufficientStock, Conflict }

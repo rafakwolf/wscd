@@ -35,6 +35,28 @@ public sealed class PayableService(IPayableStore store, ICatalogService<Supplier
         return await store.CreateAsync(account) ? account.Id : null;
     }
 
+    public async Task<bool> UpdateManualAsync(int id, ManualTitleInput input, Guid expectedRevision)
+    {
+        if (!input.IsValid(9_999_999_999.99m) || await suppliers.FindAsync(input.PartyId) is null)
+        {
+            return false;
+        }
+
+        return await store.UpdateManualAsync(new AccountPayable
+        {
+            Id = id,
+            SupplierId = input.PartyId,
+            Description = input.Description!.Trim(),
+            Document = string.IsNullOrWhiteSpace(input.Document) ? null : input.Document.Trim(),
+            CreatedDate = input.IssueDate,
+            DueDate = input.DueDate,
+            Amount = input.Amount,
+            Balance = input.Amount
+        }, expectedRevision);
+    }
+
+    public Task<bool> DeleteManualAsync(int id, Guid expectedRevision) => store.DeleteManualAsync(id, expectedRevision);
+
     public async Task<TitleSettlement> PayAsync(int id, SalePaymentInput payment, Guid expectedRevision)
     {
         var account = await store.FindAsync(id);

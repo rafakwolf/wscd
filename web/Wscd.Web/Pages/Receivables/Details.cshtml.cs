@@ -50,6 +50,19 @@ public sealed class DetailsModel(ReceivableService receivables, ICatalogService<
         return Account is null ? NotFound() : Page();
     }
 
+    public async Task<IActionResult> OnPostDeleteAsync(Guid? expectedRevision)
+    {
+        if (expectedRevision.HasValue && await receivables.DeleteManualAsync(Id, expectedRevision.Value))
+        {
+            TempData["StatusMessage"] = "Conta a receber excluída.";
+            return RedirectToPage("./Index", ListFilters);
+        }
+
+        Error = "Não foi possível excluir este título.";
+        await LoadAsync();
+        return Account is null ? NotFound() : Page();
+    }
+
     private async Task LoadAsync()
     {
         Account = await receivables.FindAsync(Id);

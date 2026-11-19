@@ -73,4 +73,32 @@ public sealed class OrganizationService(IOrganizationStore store) : IOrganizatio
             ? new OrganizationOperationResult(true)
             : new OrganizationOperationResult(false, "MemberNotFound");
     }
+
+    public async Task<OrganizationOperationResult> ReactivateMemberAsync(string requesterId, string memberId)
+    {
+        var membership = await store.GetMemberContextAsync(requesterId);
+        if (membership is not { IsActive: true, IsOwner: true, OrganizationId: Guid organizationId })
+        {
+            return new OrganizationOperationResult(false, "Forbidden");
+        }
+
+        return await store.ReactivateMemberAsync(organizationId, memberId)
+            ? new OrganizationOperationResult(true)
+            : new OrganizationOperationResult(false, "MemberNotFound");
+    }
+
+    public async Task<OrganizationOperationResult> ResetMemberPasswordAsync(string requesterId, string memberId, string newPassword)
+    {
+        var membership = await store.GetMemberContextAsync(requesterId);
+        if (membership is not { IsActive: true, IsOwner: true, OrganizationId: Guid organizationId })
+        {
+            return new OrganizationOperationResult(false, "Forbidden");
+        }
+        if (string.IsNullOrEmpty(newPassword) || newPassword.Length < 12)
+        {
+            return new OrganizationOperationResult(false, "PasswordTooShort");
+        }
+
+        return await store.ResetMemberPasswordAsync(organizationId, memberId, newPassword);
+    }
 }

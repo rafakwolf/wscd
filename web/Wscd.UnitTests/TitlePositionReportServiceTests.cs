@@ -85,6 +85,10 @@ public sealed class TitlePositionReportServiceTests
         Task<AccountReceivable?> IReceivableStore.FindAsync(int id) => throw new NotSupportedException();
         public Task<bool> CreateAsync(AccountPayable account) => throw new NotSupportedException();
         public Task<bool> CreateAsync(AccountReceivable account) => throw new NotSupportedException();
+        public Task<bool> UpdateManualAsync(AccountPayable account, Guid expectedRevision) => throw new NotSupportedException();
+        Task<bool> IPayableStore.DeleteManualAsync(int id, Guid expectedRevision) => throw new NotSupportedException();
+        public Task<bool> UpdateManualAsync(AccountReceivable account, Guid expectedRevision) => throw new NotSupportedException();
+        Task<bool> IReceivableStore.DeleteManualAsync(int id, Guid expectedRevision) => throw new NotSupportedException();
         public Task<TitleSettlement> PayAsync(AccountPayable account, PayablePayment payment) => throw new NotSupportedException();
         public Task<TitleSettlement> ReceiveAsync(AccountReceivable account, SalePayment payment) => throw new NotSupportedException();
         public Task<TitleSettlement> ReverseAsync(AccountPayable account, PayablePayment payment, SettlementReversal reversal) => throw new NotSupportedException();

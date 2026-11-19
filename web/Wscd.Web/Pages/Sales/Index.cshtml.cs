@@ -28,4 +28,13 @@ public sealed class IndexModel(SaleService sales) : SaleFiltersModel
         }));
         return Page();
     }
+
+    public async Task<IActionResult> OnPostDeleteAsync(int id)
+    {
+        var deleted = await sales.DeleteDraftAsync(id);
+        TempData[deleted ? "StatusMessage" : "ErrorMessage"] = deleted
+            ? "Rascunho de venda excluído."
+            : "Não foi possível excluir esta venda.";
+        return RedirectToPage("./Index", ListFilters);
+    }
 }

@@ -1,0 +1,23 @@
+@page "/contas-a-receber/{id:int}/editar"
+@using Microsoft.AspNetCore.Routing
+@model Wscd.Web.Pages.Receivables.EditModel
+@{
+    ViewData["Title"] = $"Editar conta a receber nº {Model.Id}";
+    ViewData["PartyLabel"] = "Cliente";
+}
+
+<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+    <h1 class="text-2xl font-semibold">@ViewData["Title"]</h1>
+    <a asp-page="./Details" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="rounded border px-4 py-2 text-slate-700">Voltar ao título</a>
+</div>
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mb-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    <form method="post" asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="grid gap-3 sm:grid-cols-2">
+        <input type="hidden" asp-for="Revision" />
+        <partial name="_ManualTitleFields" for="Input" />
+        <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar alterações</button></div>
+    </form>
+</section>

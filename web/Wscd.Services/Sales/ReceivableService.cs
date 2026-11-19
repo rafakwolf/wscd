@@ -34,6 +34,28 @@ public sealed class ReceivableService(IReceivableStore store, ICatalogService<Cu
         return await store.CreateAsync(account) ? account.Id : null;
     }
 
+    public async Task<bool> UpdateManualAsync(int id, ManualTitleInput input, Guid expectedRevision)
+    {
+        if (!input.IsValid(999_999_999_999.99m) || await customers.FindAsync(input.PartyId) is null)
+        {
+            return false;
+        }
+
+        return await store.UpdateManualAsync(new AccountReceivable
+        {
+            Id = id,
+            CustomerId = input.PartyId,
+            Description = input.Description!.Trim(),
+            Document = string.IsNullOrWhiteSpace(input.Document) ? null : input.Document.Trim(),
+            IssueDate = input.IssueDate,
+            DueDate = input.DueDate,
+            Amount = input.Amount,
+            Balance = input.Amount
+        }, expectedRevision);
+    }
+
+    public Task<bool> DeleteManualAsync(int id, Guid expectedRevision) => store.DeleteManualAsync(id, expectedRevision);
+
     public async Task<TitleSettlement> ReceiveAsync(int id, SalePaymentInput payment, Guid expectedRevision)
     {
         var account = await store.FindAsync(id);

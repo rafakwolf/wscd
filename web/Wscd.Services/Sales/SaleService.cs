@@ -25,7 +25,7 @@ public sealed class SaleService(
 
     public Task<Sale?> FindAsync(int id) => store.FindAsync(id);
 
-    public async Task<int?> SaveAsync(int id, int customerId, int sellerId, DateOnly date, string? notes)
+    public async Task<int?> SaveAsync(int id, int customerId, int sellerId, DateOnly date, string? notes, Guid? expectedRevision = null)
     {
         if (currentOrganization.OrganizationId is not Guid organizationId || id < 0 || date == default ||
             await customers.FindAsync(customerId) is null || await sellers.FindAsync(sellerId) is not { IsActive: true })
@@ -33,11 +33,43 @@ public sealed class SaleService(
             return null;
         }
 
+        Dictionary<int, (Product Product, Domain.Inventory.Promotion? Promotion)>? repricing = null;
+        if (id != 0 && await store.FindAsync(id) is { IsCompleted: false, QuotationId: null, Items.Count: > 0 } current && current.Date != date)
+        {
+            repricing = new Dictionary<int, (Product, Domain.Inventory.Promotion?)>(current.Items.Count);
+            foreach (var item in current.Items)
+            {
+                if (await products.FindAsync(item.ProductId) is not { } product)
+                {
+                    return null;
+                }
+                repricing[item.ProductId] = (product, await promotions.FindByProductAsync(item.ProductId));
+            }
+        }
+
         bool SetHeader(Sale sale)
         {
-            if (!CanChange(sale))
+            if (!CanChange(sale) || (expectedRevision is Guid rev && sale.Revision != rev))
             {
                 return false;
+            }
+
+            if (sale.Items.Count > 0 && sale.Date != date)
+            {
+                if (repricing is null)
+                {
+                    return false;
+                }
+                foreach (var item in sale.Items)
+                {
+                    if (!repricing.TryGetValue(item.ProductId, out var source) ||
+                        ItemPricing.Calculate(source.Product, source.Promotion, date, item.Quantity, item.DiscountPercent) is not { } pricing)
+                    {
+                        return false;
+                    }
+                    item.UnitPrice = pricing.Price;
+                    item.Total = pricing.Total;
+                }
             }
 
             sale.CustomerId = customerId;
@@ -60,13 +92,17 @@ public sealed class SaleService(
     public async Task<int?> ConvertQuotationAsync(int quotationId, DateOnly date)
     {
         var quotation = await quotations.FindAsync(quotationId);
-        if (quotation is not { IsCompleted: true, Items.Count: > 0 } || date == default)
+        if (quotation is not { IsCompleted: true, Items.Count: > 0 } || quotation.Total <= 0 || date == default)
         {
             return null;
         }
         if (quotation.Sale is { } existing)
         {
             return existing.Id;
+        }
+        if (await sellers.FindAsync(quotation.SellerId) is not { IsActive: true })
+        {
+            return null;
         }
 
         var sale = new Sale
@@ -94,9 +130,31 @@ public sealed class SaleService(
             : (await quotations.FindAsync(quotationId))?.Sale?.Id;
     }
 
-    public async Task<bool> AddItemAsync(int id, int productId, int quantity, decimal discountPercent)
+    public async Task<IReadOnlyList<string>> GetInsufficientStockItemsAsync(int saleId)
     {
-        if (!ItemPricing.IsValid(quantity, discountPercent) || await products.FindAsync(productId) is not { } product)
+        if (await store.FindAsync(saleId) is not { } sale)
+        {
+            return [];
+        }
+
+        var insufficient = new List<string>();
+        foreach (var item in sale.Items)
+        {
+            var product = await products.FindAsync(item.ProductId);
+            if (product is null || product.Stock < item.Quantity)
+            {
+                insufficient.Add($"{item.ProductName} (pedido: {item.Quantity}, estoque: {product?.Stock ?? 0})");
+            }
+        }
+        return insufficient;
+    }
+
+    public async Task<bool> AddItemAsync(int id, int productId, int quantity, decimal discountPercent,
+        decimal commissionPercent = 0m, Guid? expectedRevision = null)
+    {
+        if (!ItemPricing.IsValid(quantity, discountPercent) ||
+            commissionPercent is < 0 or > 100 || decimal.Round(commissionPercent, 2) != commissionPercent ||
+            await products.FindAsync(productId) is not { } product)
         {
             return false;
         }
@@ -104,7 +162,8 @@ public sealed class SaleService(
         var promotion = await promotions.FindByProductAsync(productId);
         return await store.UpdateAsync(id, sale =>
         {
-            if (!CanChange(sale) || sale.Items.Any(item => item.ProductId == productId) ||
+            if (!CanChange(sale) || (expectedRevision is Guid rev && sale.Revision != rev) ||
+                sale.Items.Any(item => item.ProductId == productId) ||
                 ItemPricing.Calculate(product, promotion, sale.Date, quantity, discountPercent) is not { } pricing)
             {
                 return false;
@@ -118,14 +177,18 @@ public sealed class SaleService(
                 Quantity = quantity,
                 UnitPrice = pricing.Price,
                 DiscountPercent = pricing.Discount,
+                CommissionPercent = commissionPercent,
                 Total = pricing.Total
             });
             return true;
         });
     }
 
-    public Task<bool> RemoveItemAsync(int id, int itemId) => store.UpdateAsync(id, sale =>
-        CanChange(sale) && sale.Items.SingleOrDefault(item => item.Id == itemId) is { } item && sale.Items.Remove(item));
+    public Task<bool> RemoveItemAsync(int id, int itemId, Guid? expectedRevision = null) => store.UpdateAsync(id, sale =>
+        CanChange(sale) && (expectedRevision is null || sale.Revision == expectedRevision) &&
+        sale.Items.SingleOrDefault(item => item.Id == itemId) is { } item && sale.Items.Remove(item));
+
+    public Task<bool> DeleteDraftAsync(int id) => store.DeleteDraftAsync(id);
 
     public Task<bool> SetItemCommissionAsync(int id, int itemId, decimal percent, Guid expectedRevision)
     {
@@ -157,6 +220,10 @@ public sealed class SaleService(
         if (sale.Revision != expectedRevision)
         {
             return SaleCheckout.Conflict;
+        }
+        if (await sellers.FindAsync(sale.SellerId) is not { IsActive: true })
+        {
+            return SaleCheckout.InactiveSeller;
         }
 
         if ((payments.Count == 0 && dueDate is null) || payments.Count > MaxPayments || payments.Any(payment => !payment.IsValid(MaxSaleTotal)))
@@ -247,8 +314,11 @@ public sealed class SaleService(
 
         var result = new SaleReturn
         {
-            SaleId = sale.Id, OrganizationId = sale.OrganizationId, ReturnedAtUtc = audit.AtUtc,
-            Reason = audit.Reason, UserId = audit.UserId
+            SaleId = sale.Id,
+            OrganizationId = sale.OrganizationId,
+            ReturnedAtUtc = audit.AtUtc,
+            Reason = audit.Reason,
+            UserId = audit.UserId
         };
         var selected = new HashSet<int>();
         foreach (var line in input.Lines.Where(line => line.Quantity != 0))
@@ -268,7 +338,10 @@ public sealed class SaleService(
             decimal Cumulative(int quantity) => decimal.Round(item.Total * quantity / item.Quantity, 2, MidpointRounding.AwayFromZero);
             result.Items.Add(new SaleReturnItem
             {
-                OrganizationId = sale.OrganizationId, SaleItemId = item.Id, Quantity = line.Quantity, Restock = line.Restock,
+                OrganizationId = sale.OrganizationId,
+                SaleItemId = item.Id,
+                Quantity = line.Quantity,
+                Restock = line.Restock,
                 Amount = Cumulative(returned + line.Quantity) - Cumulative(returned)
             });
         }

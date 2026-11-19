@@ -29,7 +29,8 @@ public sealed class QuotationStore(WscdDbContext db) : IQuotationStore
 
         return await query.OrderByDescending(quotation => quotation.Date).ThenByDescending(quotation => quotation.Id)
             .Select(quotation => new QuotationSummary(quotation.Id, quotation.Date, quotation.Customer.Name,
-                quotation.Items.Sum(item => item.Total), quotation.IsCompleted, quotation.Sale != null))
+                quotation.Items.Sum(item => item.Total), quotation.IsCompleted, quotation.Sale != null,
+                quotation.Sale != null && quotation.Sale.CancelledAtUtc != null))
             .ToListAsync();
     }
 
@@ -51,6 +52,34 @@ public sealed class QuotationStore(WscdDbContext db) : IQuotationStore
         var quotation = await db.Quotations.Include(quotation => quotation.Items).Include(quotation => quotation.Sale)
             .SingleOrDefaultAsync(quotation => quotation.Id == id);
         return quotation is not null && change(quotation) && await SaveAsync(quotation);
+    }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+        await using var transaction = await db.Database.BeginTransactionAsync();
+        try
+        {
+            await db.Set<QuotationItem>()
+                .Where(item => item.QuotationId == id)
+                .ExecuteDeleteAsync();
+            var deleted = await db.Quotations
+                .Where(quotation => quotation.Id == id && !quotation.IsCompleted && quotation.Sale == null)
+                .ExecuteDeleteAsync();
+            if (deleted != 1)
+            {
+                await transaction.RollbackAsync();
+                return false;
+            }
+
+            await transaction.CommitAsync();
+            return true;
+        }
+        catch (DbUpdateException)
+        {
+            await transaction.RollbackAsync();
+            db.ChangeTracker.Clear();
+            return false;
+        }
     }
 
     private async Task<bool> SaveAsync(Quotation quotation)

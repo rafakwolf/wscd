@@ -66,6 +66,8 @@ public sealed class PayableServiceTests
         }
 
         public Task<AccountPayable?> FindAsync(int id) => Task.FromResult(Account?.Id == id ? Account : null);
+        public Task<bool> UpdateManualAsync(AccountPayable account, Guid expectedRevision) => throw new NotSupportedException();
+        public Task<bool> DeleteManualAsync(int id, Guid expectedRevision) => throw new NotSupportedException();
 
         public Task<TitleSettlement> PayAsync(AccountPayable account, PayablePayment payment)
         {

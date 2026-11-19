@@ -11,6 +11,8 @@ public sealed class IndexModel(CashReportService reports, ICatalogService<CashAc
     [BindProperty(SupportsGet = true)] public int? CashAccountId { get; set; }
     [BindProperty(SupportsGet = true)] public DateOnly? From { get; set; }
     [BindProperty(SupportsGet = true)] public DateOnly? To { get; set; }
+    [BindProperty(SupportsGet = true)] public bool? IsExpense { get; set; }
+    [BindProperty(SupportsGet = true)] public string? Search { get; set; }
 
     public IReadOnlyList<CashAccount> CashAccounts { get; private set; } = [];
     public string? AccountName { get; private set; }
@@ -44,7 +46,8 @@ public sealed class IndexModel(CashReportService reports, ICatalogService<CashAc
             To = today;
         }
 
-        Report = await reports.GetAsync(CashAccountId, From, To);
+        Search = Search?.Trim();
+        Report = await reports.GetAsync(CashAccountId, From, To, IsExpense, Search);
         if (Report is null)
         {
             Error = "A data inicial deve ser anterior ou igual à data final.";
