@@ -61,6 +61,8 @@ Em **Caixa**, consulte entradas e saídas por conta e período, no horário de B
 
 Na tela inicial, abra **Posição de estoque** para conferir a quantidade atual, o mínimo e a unidade de cada produto. Filtre por nome ou código de barras, grupo, fornecedor ou situação. **No mínimo ou abaixo** também inclui os produtos sem estoque que atendam ao limite cadastrado. A consulta pode ser impressa ou salva em PDF e não reconstitui quantidades históricas.
 
+Na tela inicial, abra **Lista de preços** para consultar o preço de venda cadastrado de cada produto. Ordene por descrição ou preço de venda e use **Imprimir / Salvar PDF**.
+
 ## Banco de dados e migrations
 
 Os comandos abaixo usam a connection string configurada no ambiente. Execute-os dentro do Dev Container e confira que ela aponta para o banco desejado antes de aplicar alterações.
