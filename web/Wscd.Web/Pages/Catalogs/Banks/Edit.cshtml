@@ -1,0 +1,8 @@
+@page "{id:int?}"
+@model Wscd.Web.Pages.Catalogs.Banks.EditModel
+@{
+    ViewData["Title"] = Model.Id is null ? "Novo banco" : "Editar banco";
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+<partial name="_Form" model="Model" />

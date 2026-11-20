@@ -1,0 +1,57 @@
+@using System.Globalization
+@model Wscd.Web.Pages.Purchases.EditModel
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div asp-validation-summary="ModelOnly" class="mt-3 text-sm text-red-700"></div>
+    <form id="purchase-header-form" method="post" asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-page-handler="Save" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div><label asp-for="Header.SupplierId" class="block text-sm">Fornecedor</label><select asp-for="Header.SupplierId" class="mt-1 w-full rounded border px-3 py-2" disabled="@(Model.Current?.IsCompleted == true ? "disabled" : null)" required><option value="">Selecione</option>@foreach (var supplier in Model.Suppliers) { <option value="@supplier.Id">@supplier.Name</option> }</select></div>
+        <div><label asp-for="Header.PurchaseDate" class="block text-sm">Data da compra</label><input asp-for="Header.PurchaseDate" type="date" class="mt-1 w-full rounded border px-3 py-2" readonly="@(Model.Current?.IsCompleted == true ? "readonly" : null)" required /></div>
+        <div><label asp-for="Header.DueDate" class="block text-sm">Vencimento</label><input asp-for="Header.DueDate" type="date" class="mt-1 w-full rounded border px-3 py-2" readonly="@(Model.Current?.IsCompleted == true ? "readonly" : null)" /></div>
+        <div class="sm:col-span-2 lg:col-span-3"><label asp-for="Header.Notes" class="block text-sm">Observações</label><textarea asp-for="Header.Notes" rows="2" class="mt-1 w-full rounded border px-3 py-2" readonly="@(Model.Current?.IsCompleted == true ? "readonly" : null)"></textarea></div>
+        @if (Model.Current?.IsCompleted != true)
+        {
+            <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Salvar rascunho</button></div>
+        }
+    </form>
+
+    @if (Model.Current is not null)
+    {
+        <div class="mt-6 overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead><tr class="border-b text-slate-600"><th class="py-2">Produto</th><th>Quantidade</th><th>Custo unitário</th><th>Total</th><th></th></tr></thead>
+                <tbody>
+                @foreach (var line in Model.Current.Items)
+                {
+                    <tr class="border-b last:border-0"><td class="py-2">@line.Product.Name</td><td>@line.Quantity</td><td>R$ @line.UnitCost.ToString("N2", CultureInfo.GetCultureInfo("pt-BR"))</td><td>R$ @((line.Quantity * line.UnitCost).ToString("N2", CultureInfo.GetCultureInfo("pt-BR")))</td>
+                        <td class="text-right">
+                            @if (!Model.Current.IsCompleted)
+                            {
+                                <form method="post" asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-page-handler="RemoveItem" asp-route-id="@Model.Id"><input type="hidden" name="itemId" value="@line.Id" /><button class="text-red-700 underline">Remover</button></form>
+                            }
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <p class="mt-3 text-right font-semibold">Total: R$ @Model.Current.Total.ToString("N2", CultureInfo.GetCultureInfo("pt-BR"))</p>
+        </div>
+
+        @if (!Model.Current.IsCompleted)
+        {
+            <form method="post" asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-page-handler="AddItem" asp-route-id="@Model.Id" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="sm:col-span-2"><label asp-for="Line.ProductId" class="block text-sm">Produto</label><select asp-for="Line.ProductId" class="mt-1 w-full rounded border px-3 py-2" required><option value="">Selecione</option>@foreach (var product in Model.Products) { <option value="@product.Id">@product.Name</option> }</select></div>
+                <div><label asp-for="Line.Quantity" class="block text-sm">Quantidade</label><input asp-for="Line.Quantity" type="number" min="1" class="mt-1 w-full rounded border px-3 py-2" required /></div>
+                <div><label asp-for="Line.UnitCost" class="block text-sm">Custo unitário</label><input asp-for="Line.UnitCost" type="number" min="0" step="0.01" class="mt-1 w-full rounded border px-3 py-2" required /></div>
+                <div class="sm:col-span-2 lg:col-span-4"><button class="rounded border px-4 py-2">Adicionar produto</button></div>
+            </form>
+            <div class="mt-4 text-right">
+                <button type="submit" form="purchase-header-form" asp-page-handler="Complete" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id"
+                        class="rounded bg-green-700 px-4 py-2 text-white disabled:opacity-50" disabled="@(Model.Current.Items.Count == 0 || Model.Current.Total <= 0)">Concluir compra</button>
+            </div>
+        }
+        else
+        {
+            <p class="mt-4 text-sm text-slate-600">Concluída em @Model.Current.CompletedDate?.ToString("dd/MM/yyyy"). Estoque atualizado e conta a pagar criada com vencimento em @Model.Current.DueDate?.ToString("dd/MM/yyyy").</p>
+        }
+    }
+</section>

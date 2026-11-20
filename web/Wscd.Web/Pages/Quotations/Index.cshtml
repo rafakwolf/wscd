@@ -1,0 +1,65 @@
+@page "/orcamentos"
+@using System.Globalization
+@model Wscd.Web.Pages.Quotations.IndexModel
+@{
+    ViewData["Title"] = "Orçamentos";
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">Orçamentos</h1>
+            <p class="mt-1 text-sm text-slate-600">Monte propostas para seus clientes sem movimentar estoque ou financeiro.</p>
+        </div>
+        <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" class="rounded bg-slate-900 px-4 py-2 text-white">Novo orçamento</a>
+    </div>
+
+    @if (TempData["StatusMessage"] is string status)
+    {
+        <p role="status" class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
+    }
+    @if (TempData["ErrorMessage"] is string errorMessage)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@errorMessage</p>
+    }
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div><label asp-for="Search" class="block text-sm">Cliente</label><input asp-for="Search" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="From" class="block text-sm">De</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="To" class="block text-sm">Até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="Completed" class="block text-sm">Situação</label><select asp-for="Completed" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="false">Rascunho</option><option value="true">Concluído ou convertido</option></select></div>
+        <div class="flex items-end gap-2"><button class="rounded border px-4 py-2">Filtrar</button><a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a></div>
+    </form>
+
+    <div class="mt-5 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+            <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Número</th><th scope="col">Data</th><th scope="col">Cliente</th><th scope="col">Total</th><th scope="col">Situação</th><th scope="col" class="sr-only">Ação</th></tr></thead>
+            <tbody>
+            @foreach (var quotation in Model.Quotations)
+            {
+                <tr class="border-b last:border-0">
+                    <td class="py-2">@quotation.Id</td><td>@quotation.Date.ToString("dd/MM/yyyy")</td><td>@quotation.CustomerName</td><td>@quotation.Total.ToString("C", culture)</td>
+                    <td>@(quotation.IsCancelledSale ? "Venda cancelada" : quotation.IsConverted ? "Convertido" : quotation.IsCompleted ? "Concluído" : "Rascunho")</td>
+                    <td class="text-right">
+                        <div class="inline-flex items-center gap-3">
+                            <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@quotation.Id" aria-label="Abrir orçamento nº @quotation.Id" class="underline">@(quotation.IsCompleted ? "Consultar" : "Editar")</a>
+                            @if (!quotation.IsCompleted && !quotation.IsConverted)
+                            {
+                                <form method="post" asp-page-handler="Delete" asp-all-route-data="Model.ListFilters" asp-route-id="@quotation.Id">
+                                    <button type="submit" class="text-red-700 underline">Excluir</button>
+                                </form>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        @if (Model.Quotations.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhum orçamento encontrado.</p> }
+    </div>
+</section>

@@ -1,0 +1,24 @@
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model Wscd.Web.Pages.Receivables.DetailsModel
+@{
+    ViewData["Balance"] = Model.Account!.Balance.ToString(CultureInfo.InvariantCulture);
+    ViewData["Revision"] = Model.Account.Revision;
+    ViewData["CashAccounts"] = Model.CashAccounts.Select(account =>
+        new SelectListItem(account.Name, account.Id.ToString(CultureInfo.InvariantCulture))).ToArray();
+}
+
+<section class="mt-6 border-t pt-4" aria-labelledby="receive-title">
+    <h2 id="receive-title" class="text-lg font-semibold">Registrar recebimento</h2>
+    @if (Model.CashAccounts.Count == 0)
+    {
+        <p class="mt-2 text-sm text-slate-600">Cadastre ou reative uma <a asp-page="/Catalogs/CashAccounts/Index" class="underline">conta caixa</a> para receber.</p>
+    }
+    else
+    {
+        <form method="post" asp-page="./Details" asp-page-handler="Receive" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <partial name="_SettlementFields" for="Payment" />
+            <div class="flex items-end"><button class="rounded bg-green-700 px-4 py-2 text-white">Registrar recebimento</button></div>
+        </form>
+    }
+</section>

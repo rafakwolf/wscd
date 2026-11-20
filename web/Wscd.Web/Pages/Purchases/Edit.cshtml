@@ -1,0 +1,12 @@
+@page "{id:int?}"
+@model Wscd.Web.Pages.Purchases.EditModel
+@{
+    ViewData["Title"] = Model.Id is int id ? $"Compra nº {id}" : "Nova compra";
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+@if (TempData["StatusMessage"] is string status)
+{
+    <p role="status" class="mb-3 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
+}
+<partial name="_Form" model="Model" />

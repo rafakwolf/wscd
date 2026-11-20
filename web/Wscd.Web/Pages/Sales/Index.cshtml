@@ -1,0 +1,70 @@
+@page "/vendas"
+@using System.Globalization
+@using Wscd.Services.Sales
+@model Wscd.Web.Pages.Sales.IndexModel
+@{
+    ViewData["Title"] = "Vendas";
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">Vendas</h1>
+            <p class="mt-1 text-sm text-slate-600">Registre vendas de balcão à vista ou no crediário. Rascunhos não alteram estoque nem caixa.</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+            <a asp-page="/Reports/Sales/Index" class="rounded border px-4 py-2">Vendas por período</a>
+            <a asp-page="/Reports/SellerCommissions/Index" class="rounded border px-4 py-2">Comissão por vendedor</a>
+            <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" class="rounded bg-slate-900 px-4 py-2 text-white">Nova venda</a>
+        </div>
+    </div>
+    @if (TempData["StatusMessage"] is string status)
+    {
+        <p role="status" class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
+    }
+    @if (TempData["ErrorMessage"] is string errorMessage)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@errorMessage</p>
+    }
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div><label asp-for="Search" class="block text-sm">Cliente</label><input asp-for="Search" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="From" class="block text-sm">De</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="To" class="block text-sm">Até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="Status" class="block text-sm">Situação</label><select asp-for="Status" class="mt-1 w-full rounded border px-3 py-2"><option value="">Todas</option><option value="Draft">Rascunho</option><option value="Completed">Concluída</option><option value="Cancelled">Cancelada</option></select></div>
+        <div class="flex items-end gap-2"><button class="rounded border px-4 py-2">Filtrar</button><a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a></div>
+    </form>
+    <div class="mt-5 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+            <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Número</th><th scope="col">Data</th><th scope="col">Cliente</th><th scope="col">Total</th><th scope="col">Situação</th><th scope="col" class="sr-only">Ação</th></tr></thead>
+            <tbody>
+            @foreach (var sale in Model.Sales)
+            {
+                <tr class="border-b last:border-0">
+                    <td class="py-2">@sale.Id</td><td>@sale.Date.ToString("dd/MM/yyyy")</td><td>@sale.CustomerName</td><td>@sale.Total.ToString("C", culture)</td>
+                    <td>
+                        @(sale.Status == SaleStatus.Cancelled ? "Cancelada" : sale.Status == SaleStatus.Completed ? "Concluída" : "Rascunho")
+                        @if (sale.HasReturns) { <span class="block text-xs text-slate-600">Com devolução</span> }
+                    </td>
+                    <td class="text-right">
+                        <div class="inline-flex items-center gap-3">
+                            <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" aria-label="Abrir venda nº @sale.Id" class="underline">@(sale.Status == SaleStatus.Draft ? "Editar" : "Consultar")</a>
+                            @if (sale.Status == SaleStatus.Draft)
+                            {
+                                <form method="post" asp-page-handler="Delete" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id">
+                                    <button type="submit" class="text-red-700 underline">Excluir</button>
+                                </form>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        @if (Model.Sales.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhuma venda encontrada.</p> }
+    </div>
+</section>

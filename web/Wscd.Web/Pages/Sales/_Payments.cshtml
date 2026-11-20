@@ -1,0 +1,106 @@
+@using System.Globalization
+@using Wscd.Domain.Sales
+@using Wscd.Services.Sales
+@using Wscd.Web.Pages
+@model Wscd.Web.Pages.Sales.EditModel
+@{
+    var current = Model.Current!;
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+    var payments = current.Payments.Concat(current.Receivable?.Payments ?? []).OrderBy(payment => payment.ReceivedAtUtc).ThenBy(payment => payment.Id).ToArray();
+}
+
+<section class="mt-6 border-t pt-4" aria-labelledby="payment-heading">
+    <h2 id="payment-heading" class="text-lg font-semibold">Recebimentos</h2>
+    @if (current.Receivable is { } receivable)
+    {
+        <p class="mt-2 text-sm">Crediário: @receivable.Amount.ToString("C", culture) · Vencimento: @receivable.DueDate.ToString("dd/MM/yyyy") · Saldo: @receivable.Balance.ToString("C", culture).</p>
+        <a asp-page="/Receivables/Details" asp-route-id="@receivable.Id" class="mt-2 inline-block text-sm underline">Consultar conta a receber</a>
+    }
+
+    @if (current.IsCompleted && payments.Length == 0)
+    {
+        <p class="mt-3 text-sm text-slate-600">Nenhum recebimento registrado.</p>
+    }
+    else if (current.IsCompleted)
+    {
+        <div class="mt-3 overflow-x-auto">
+            <table class="w-full text-left text-sm">
+                <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Meio</th><th scope="col">Conta caixa</th><th scope="col">Origem</th><th scope="col" class="text-right">Valor recebido</th></tr></thead>
+                <tbody>
+                @foreach (var payment in payments)
+                {
+                    <tr class="border-b last:border-0"><td class="py-2">@PaymentLabels.For(payment.Method)</td><td>@payment.CashAccount.Name</td><td>
+                        @(payment.AccountReceivableId is null ? "Na venda" : "Baixa do crediário")
+                        @if (payment.ReversedAtUtc is not null) { <span>· Estornada</span> }
+                        else if (current.IsCancelled) { <span>· Estornado no cancelamento</span> }
+                    </td><td class="text-right">@payment.Amount.ToString("C", culture)</td></tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+    else if (current.Total > 0)
+    {
+        <p class="mt-2 text-sm text-slate-600">Registre o que foi pago agora. Para deixar um saldo no crediário, informe o vencimento.</p>
+        <form method="post" asp-page="./Edit" asp-page-handler="Checkout" asp-all-route-data="Model.ListFilters" asp-route-id="@current.Id"
+              data-sale-payments data-max-payments="@SaleService.MaxPayments" data-total-cents="@((current.Total * 100).ToString("0", CultureInfo.InvariantCulture))" class="mt-4">
+            <input type="hidden" name="revision" value="@current.Revision" />
+            @if (Model.CashAccounts.Count > 0)
+            {
+                <label class="mb-3 flex items-center gap-2 text-sm"><input asp-for="ReceiveNow" data-receive-now /> Registrar valor recebido agora</label>
+            }
+            else
+            {
+                <input type="hidden" name="ReceiveNow" value="false" />
+                <p class="mb-3 text-sm text-slate-600">Sem conta caixa ativa, a venda só pode ser concluída no crediário.</p>
+            }
+            <fieldset data-payment-fields hidden="@(!Model.ReceiveNow)" disabled="@(!Model.ReceiveNow)">
+                <div data-payment-entries class="space-y-2">
+                    @for (var index = 0; index < Model.Payments.Count; index++)
+                    {
+                        <div data-payment-row class="grid gap-3 rounded border p-3 sm:grid-cols-2 lg:grid-cols-4">
+                            <div>
+                                <label asp-for="Payments[index].Method" class="block text-sm">Meio de recebimento</label>
+                                <select asp-for="Payments[index].Method" required class="mt-1 w-full rounded border px-3 py-2">
+                                    <option value="">Selecione</option>
+                                    @foreach (var method in Enum.GetValues<PaymentMethod>())
+                                    {
+                                        <option value="@((int)method)">@PaymentLabels.For(method)</option>
+                                    }
+                                </select>
+                            </div>
+                            <div>
+                                <label asp-for="Payments[index].CashAccountId" class="block text-sm">Conta caixa</label>
+                                <select asp-for="Payments[index].CashAccountId" required class="mt-1 w-full rounded border px-3 py-2">
+                                    <option value="">Selecione</option>
+                                    @foreach (var account in Model.CashAccounts)
+                                    {
+                                        <option value="@account.Id">@account.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div>
+                                <label asp-for="Payments[index].Amount" class="block text-sm">Valor recebido (R$)</label>
+                                <input asp-for="Payments[index].Amount" data-payment-amount type="number" inputmode="decimal" min="0.01" step="0.01" required class="mt-1 w-full rounded border px-3 py-2" />
+                            </div>
+                            <div class="flex items-end">
+                                <button type="button" data-remove-payment hidden class="rounded border px-3 py-2 text-red-700">Remover recebimento</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <button type="button" data-add-payment hidden class="mt-3 rounded border px-4 py-2 disabled:opacity-50">Adicionar meio de pagamento</button>
+            </fieldset>
+            <div class="mt-4 max-w-xs">
+                <label asp-for="CreditDueDate" class="block text-sm">Vencimento no crediário (se houver saldo)</label>
+                <input asp-for="CreditDueDate" data-credit-due type="date" min="@current.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" class="mt-1 w-full rounded border px-3 py-2" />
+            </div>
+            <p data-payment-status role="status" class="mt-2 text-sm text-slate-600"></p>
+            <button class="mt-4 rounded bg-green-700 px-4 py-2 text-white">Concluir venda</button>
+        </form>
+    }
+    else
+    {
+        <p class="mt-2 text-sm text-slate-600">A venda precisa ter um total positivo para registrar recebimentos.</p>
+    }
+</section>

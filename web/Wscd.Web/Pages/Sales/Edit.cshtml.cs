@@ -1,0 +1,173 @@
+using Microsoft.AspNetCore.Mvc;
+using Wscd.Domain.Catalogs;
+using Wscd.Domain.Sales;
+using Wscd.Services;
+using Wscd.Services.Catalogs;
+using Wscd.Services.Sales;
+
+namespace Wscd.Web.Pages.Sales;
+
+public sealed class EditModel(
+    SaleService sales,
+    ICatalogService<Customer> customers,
+    ICatalogService<Seller> sellers,
+    ICatalogService<Product> products,
+    ICatalogService<CashAccount> cashAccounts) : SaleFiltersModel
+{
+    [BindProperty(SupportsGet = true), FromRoute] public int? Id { get; set; }
+
+    [BindProperty] public HeaderInput Header { get; set; } = new();
+    [BindProperty] public ItemInput Line { get; set; } = new();
+    [BindProperty] public List<SalePaymentInput> Payments { get; set; } = [];
+    [BindProperty] public bool ReceiveNow { get; set; } = true;
+    [BindProperty] public DateOnly? CreditDueDate { get; set; }
+
+    public Sale? Current { get; private set; }
+    public bool CanEdit => Current is { IsCompleted: false, QuotationId: null };
+    public IReadOnlyList<Customer> Customers { get; private set; } = [];
+    public IReadOnlyList<Seller> Sellers { get; private set; } = [];
+    public IReadOnlyList<Product> Products { get; private set; } = [];
+    public IReadOnlyList<CashAccount> CashAccounts { get; private set; } = [];
+    public string? Error { get; private set; }
+
+    public async Task<IActionResult> OnGetAsync()
+    {
+        Header.Date = BrasiliaClock.Today;
+        Line.Quantity = 1;
+        await LoadAsync();
+        return Id is not null && Current is null ? NotFound() : Page();
+    }
+
+    public async Task<IActionResult> OnPostSaveAsync(Guid? revision)
+    {
+        if (ModelState.IsValid && await sales.SaveAsync(Id ?? 0, Header.CustomerId, Header.SellerId, Header.Date, Header.Notes, revision) is int id)
+        {
+            return Saved(id, "Rascunho salvo.");
+        }
+
+        return await ShowErrorAsync("Não foi possível salvar. Confira o cliente, o vendedor ativo, a data e a situação da venda.", keepHeader: true);
+    }
+
+    public Task<IActionResult> OnPostAddItemAsync(Guid revision) => ChangeItemsAsync(
+        id => sales.AddItemAsync(id, Line.ProductId, Line.Quantity, Line.DiscountPercent ?? 0m, Line.CommissionPercent ?? 0m, revision),
+        "Produto adicionado.", "Escolha um produto ainda não incluído, com quantidade positiva, desconto e comissão de 0 a 100%.");
+
+    public Task<IActionResult> OnPostRemoveItemAsync(int itemId, Guid revision) => ChangeItemsAsync(
+        id => sales.RemoveItemAsync(id, itemId, revision), "Produto removido.", "Não foi possível remover o produto desta venda.");
+
+    public Task<IActionResult> OnPostSetCommissionAsync(int itemId, decimal? commissionPercent, Guid revision) => ChangeItemsAsync(
+        id => commissionPercent is decimal percent ? sales.SetItemCommissionAsync(id, itemId, percent, revision) : Task.FromResult(false),
+        "Comissão do item atualizada.", "Não foi possível salvar a comissão. Informe um percentual de 0 a 100 com até duas casas decimais.");
+
+    public async Task<IActionResult> OnPostCheckoutAsync(Guid revision)
+    {
+        if (Id is not int id)
+        {
+            return NotFound();
+        }
+        if (!ModelState.IsValid)
+        {
+            return await ShowErrorAsync("Confira os meios de recebimento, os valores e a data de vencimento informados.");
+        }
+        if (!ReceiveNow && CreditDueDate is null)
+        {
+            return await ShowErrorAsync("Informe o vencimento para concluir a venda integralmente no crediário.");
+        }
+
+        var result = await sales.CheckoutAsync(id, ReceiveNow ? Payments : [], revision, CreditDueDate);
+        return result == SaleCheckout.Completed
+            ? Saved(id, CreditDueDate.HasValue
+                ? "Venda concluída. O saldo foi lançado em Contas a receber."
+                : "Venda concluída. Estoque baixado e recebimentos registrados.")
+            : await ShowErrorAsync(result switch
+            {
+                SaleCheckout.InsufficientStock => "Estoque insuficiente para pelo menos um produto. A venda não foi concluída e nenhum recebimento foi lançado.",
+                SaleCheckout.InactiveSeller => "O vendedor selecionado está inativo. Troque para um vendedor ativo antes de concluir.",
+                SaleCheckout.InvalidCashAccount => "Selecione uma conta caixa ativa da organização em cada recebimento.",
+                SaleCheckout.InvalidPayments => "Informe um meio, uma conta caixa e um valor positivo com até duas casas decimais em cada recebimento.",
+                SaleCheckout.PaymentTotalMismatch => "Os recebimentos não podem ultrapassar o total. Se restar saldo, informe o vencimento do crediário.",
+                SaleCheckout.InvalidDueDate => "Informe um vencimento igual ou posterior à data da venda, apenas quando houver saldo no crediário.",
+                SaleCheckout.InvalidSale => "A venda precisa estar em rascunho, incluir produtos e ter um total positivo dentro do limite permitido.",
+                _ => "A venda mudou desde a última consulta. Confira o total atualizado e tente novamente."
+            });
+    }
+
+    private async Task<IActionResult> ChangeItemsAsync(Func<int, Task<bool>> change, string message, string error)
+    {
+        if (Id is not int id)
+        {
+            return NotFound();
+        }
+        return ModelState.IsValid && await change(id)
+            ? Saved(id, message)
+            : await ShowErrorAsync($"{error} Confira também a situação da venda.");
+    }
+
+    private IActionResult Saved(int id, string message)
+    {
+        TempData["StatusMessage"] = message;
+        return RedirectToPage("./Edit", MaintenanceRoute(id));
+    }
+
+    private async Task<IActionResult> ShowErrorAsync(string message, bool keepHeader = false)
+    {
+        Error = message;
+        await LoadAsync(keepHeader);
+        return Id is not null && Current is null ? NotFound() : Page();
+    }
+
+    private async Task LoadAsync(bool keepHeader = false)
+    {
+        Current = Id is int id ? await sales.FindAsync(id) : null;
+        if (Current is { IsCompleted: false })
+        {
+            CashAccounts = (await cashAccounts.ListAsync(null)).Where(account => !account.IsInactive).ToArray();
+            if (CashAccounts.Count == 0)
+            {
+                ReceiveNow = false;
+                Payments.Clear();
+            }
+            else if (Payments.Count == 0)
+            {
+                Payments.Add(new SalePaymentInput { Method = PaymentMethod.Cash, Amount = Current.Total });
+            }
+            else if (Payments.Count > SaleService.MaxPayments)
+            {
+                Payments = Payments.Take(SaleService.MaxPayments).ToList();
+            }
+        }
+        if (!CanEdit && Id is not null)
+        {
+            return;
+        }
+
+        Customers = await customers.ListAsync(null);
+        Sellers = (await sellers.ListAsync(null))
+            .Where(seller => seller.IsActive || seller.Id == Current?.SellerId)
+            .ToArray();
+        if (Current is { } sale)
+        {
+            Products = await products.ListAsync(null);
+            if (!keepHeader)
+            {
+                Header = new HeaderInput { CustomerId = sale.CustomerId, SellerId = sale.SellerId, Date = sale.Date, Notes = sale.Notes };
+            }
+        }
+    }
+
+    public sealed class HeaderInput
+    {
+        public int CustomerId { get; set; }
+        public int SellerId { get; set; }
+        public DateOnly Date { get; set; }
+        public string? Notes { get; set; }
+    }
+
+    public sealed class ItemInput
+    {
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+        public decimal? DiscountPercent { get; set; }
+        public decimal? CommissionPercent { get; set; }
+    }
+}

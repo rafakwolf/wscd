@@ -1,0 +1,13 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Erro";
+}
+
+<h1 class="text-xl font-semibold text-red-700">Ocorreu um erro.</h1>
+<h2 class="mt-2 text-slate-700">Não foi possível processar sua solicitação.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p class="mt-4 text-sm text-slate-600"><strong>Identificador:</strong> <code>@Model.RequestId</code></p>
+}

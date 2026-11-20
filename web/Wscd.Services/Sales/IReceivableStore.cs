@@ -1,0 +1,20 @@
+using Wscd.Domain.Sales;
+
+namespace Wscd.Services.Sales;
+
+public interface IReceivableStore
+{
+    Task<IReadOnlyList<ReceivableSummary>> ListAsync(string? customer, DateOnly? from, DateOnly? to,
+        TitleStatus? status, DateOnly today);
+    Task<AccountReceivable?> FindAsync(int id);
+    Task<bool> CreateAsync(AccountReceivable account);
+    Task<bool> UpdateManualAsync(AccountReceivable account, Guid expectedRevision);
+    Task<bool> DeleteManualAsync(int id, Guid expectedRevision);
+    Task<TitleSettlement> ReceiveAsync(AccountReceivable account, SalePayment payment);
+    Task<TitleSettlement> ReverseAsync(AccountReceivable account, SalePayment payment, SettlementReversal reversal);
+}
+
+public enum TitleStatus { Open, Overdue, Paid, Cancelled }
+public enum TitleSettlement { Recorded, NotFound, InvalidPayment, InvalidCashAccount, Conflict, AlreadyReversed, InvalidReversal, CancelledTitle, RefundedSale }
+
+public sealed record ReceivableSummary(int Id, int? SaleId, string CustomerName, string? Description, DateOnly DueDate, decimal Amount, decimal Balance, bool IsCancelled);

@@ -1,0 +1,41 @@
+﻿@page
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Environment
+@model IndexModel
+@{
+    ViewData["Title"] = "Início";
+}
+
+<section class="mx-auto max-w-3xl rounded-lg bg-white p-8 shadow-sm">
+    <h1 class="text-3xl font-semibold tracking-tight">WSCD</h1>
+    <p class="mt-3 text-slate-600">Cadastros e operações da organização.</p>
+
+    <nav class="mt-6 grid gap-3 sm:grid-cols-2">
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/Products/Index">Produtos</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/ProductGroups/Index">Grupos de produtos</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/Units/Index">Unidades</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/Customers/Index">Clientes</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/Suppliers/Index">Fornecedores</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/Sellers/Index">Vendedores</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/Banks/Index">Bancos</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Catalogs/CashAccounts/Index">Contas caixa</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Purchases/Index">Compras</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Quotations/Index">Orçamentos</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Sales/Index">Vendas</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Cash/Index">Caixa</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Receivables/Index">Contas a receber</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Payables/Index">Contas a pagar</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Inventory/Losses/Index">Perdas de estoque</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Promotions/Index">Promoções</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Reports/StockPosition/Index">Posição de estoque</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Reports/PriceList/Index">Lista de preços</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Reports/ProductsByGroup/Index">Produtos por grupo</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Reports/ProductExpirations/Index">Validade de produtos</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Reports/Purchases/Index">Relatório de compras</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Reports/Sales/Index">Vendas por período</a>
+        <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Reports/SellerCommissions/Index">Comissão por vendedor</a>
+        @if (Environment.IsDevelopment())
+        {
+            <a class="rounded border border-slate-200 px-4 py-3 hover:bg-slate-50" asp-page="/Development/DemoData">Dados fictícios para testes</a>
+        }
+    </nav>
+</section>

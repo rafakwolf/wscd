@@ -1,0 +1,21 @@
+@page
+@model Wscd.Web.Pages.Development.DemoDataModel
+@{
+    ViewData["Title"] = "Dados de demonstração";
+}
+
+<section class="mx-auto max-w-2xl rounded-lg bg-white p-6 shadow-sm">
+    <h1 class="text-2xl font-semibold">Dados de demonstração</h1>
+    <p class="mt-2 text-sm text-slate-600">Garante 10 cadastros fictícios por módulo na organização da sua sessão. Também cria 10 compras, 10 orçamentos e 10 vendas (5 rascunhos e 5 concluídos de cada), 10 perdas e 10 promoções. As vendas concluídas baixam estoque e registram recebimentos fictícios.</p>
+    <p class="mt-2 text-sm text-slate-600">Use a carga em uma organização de testes. Ela pode ser repetida e não apaga registros.</p>
+
+    @if (Model.StatusMessage is not null)
+    {
+        <p class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@Model.StatusMessage</p>
+    }
+    <div asp-validation-summary="All" class="mt-4 text-sm text-red-700"></div>
+
+    <form method="post" asp-page-handler="Seed" class="mt-5">
+        <button class="rounded bg-slate-900 px-4 py-2 text-white">Criar dados fictícios</button>
+    </form>
+</section>

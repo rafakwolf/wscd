@@ -1,0 +1,48 @@
+@page "/vendas/manutencao/{id:int?}"
+@using Wscd.Services.Reports
+@model Wscd.Web.Pages.Sales.EditModel
+@{
+    ViewData["Title"] = Model.Id is int id ? $"Venda nº {id}" : "Nova venda";
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+@if (TempData["StatusMessage"] is string status)
+{
+    <p role="status" class="mb-3 rounded bg-green-50 p-3 text-sm text-green-800">@status</p>
+}
+@if (TempData["WarningMessage"] is string warning)
+{
+    <p role="alert" class="mb-3 rounded bg-amber-50 p-3 text-sm text-amber-900">@warning</p>
+}
+@if (Model.Error is not null)
+{
+    <p role="alert" class="mb-3 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+}
+@if (Model.Current?.CancelledAtUtc is DateTimeOffset cancelledAt)
+{
+    <p class="mb-3 rounded bg-slate-100 p-3 text-sm text-slate-800">
+        Cancelada em @CashReportService.InBrasilia(cancelledAt).ToString("dd/MM/yyyy HH:mm") (Brasília). Motivo: @Model.Current.CancellationReason
+    </p>
+}
+else if (Model.Current is { IsCompleted: true } sale)
+{
+    <div class="mb-3 flex flex-wrap gap-2">
+        @if (sale.Items.Any(item => item.Quantity > sale.ReturnedQuantity(item.Id)))
+        {
+            <a asp-page="./Return" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" class="rounded border px-4 py-2">Registrar devolução</a>
+        }
+        @if (sale.Returns.Count == 0)
+        {
+            <a asp-page="./Cancel" asp-all-route-data="Model.ListFilters" asp-route-id="@sale.Id" class="rounded border border-red-700 px-4 py-2 text-red-700">Cancelar venda</a>
+        }
+    </div>
+}
+<partial name="_Form" model="Model" />
+@if (Model.Current is { Returns.Count: > 0 } returnedSale)
+{
+    <partial name="_Returns" model="returnedSale" />
+}
+
+@section Scripts {
+    <script src="~/js/sale-payments.js" asp-append-version="true" defer></script>
+}

@@ -1,0 +1,124 @@
+@page "/vendas/{id:int}/devolver"
+@using System.Globalization
+@using Wscd.Domain.Sales
+@using Wscd.Web.Pages
+@model Wscd.Web.Pages.Sales.ReturnModel
+@{
+    ViewData["Title"] = $"Registrar devolução da venda nº {Model.Id}";
+    var sale = Model.Current!;
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+    var available = sale.Items.Where(item => item.Quantity > sale.ReturnedQuantity(item.Id)).ToArray();
+}
+
+<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+    <h1 class="text-2xl font-semibold">@ViewData["Title"]</h1>
+    <a asp-page="./Edit" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="rounded border px-4 py-2 text-slate-700">Voltar à venda</a>
+</div>
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <p class="font-semibold">Cliente: @sale.Customer.Name</p>
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-3 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    @if (!sale.IsCompleted || sale.IsCancelled || available.Length == 0)
+    {
+        <p class="mt-3 text-sm text-slate-600">Não há itens disponíveis para devolução nesta venda.</p>
+    }
+    else if (!Model.NeedsReview && Model.Preview is { } preview)
+    {
+        <h2 class="mt-4 text-lg font-semibold">Confira a devolução</h2>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
+            @foreach (var line in preview.Items)
+            {
+                <li>@line.Quantity × @sale.Items.Single(item => item.Id == line.SaleItemId).ProductName · @line.Amount.ToString("C", culture) · @(line.Restock ? "Volta ao estoque" : "Não volta ao estoque")</li>
+            }
+        </ul>
+        <p class="mt-3 text-sm">Motivo: @preview.Reason</p>
+        <dl class="mt-4 grid gap-3 border-y py-3 text-sm sm:grid-cols-3">
+            <div><dt>Valor dos itens devolvidos</dt><dd class="font-semibold">@preview.Total.ToString("C", culture)</dd></div>
+            <div><dt>Abatimento no crediário</dt><dd class="font-semibold">@preview.ReceivableReduction.ToString("C", culture)</dd></div>
+            <div><dt>Valor a devolver ao cliente</dt><dd class="font-semibold">@preview.RefundAmount.ToString("C", culture)</dd></div>
+        </dl>
+        <form method="post" asp-page-handler="Confirm" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="mt-4 space-y-4">
+            <input type="hidden" asp-for="Input.Revision" />
+            <input type="hidden" asp-for="Input.ReceivableRevision" />
+            <input type="hidden" asp-for="Input.Reason" />
+            @for (var i = 0; i < preview.Items.Count; i++)
+            {
+                var line = preview.Items[i];
+                <input type="hidden" name="Input.Lines[@i].SaleItemId" value="@line.SaleItemId" />
+                <input type="hidden" name="Input.Lines[@i].Quantity" value="@line.Quantity" />
+                <input type="hidden" name="Input.Lines[@i].Restock" value="@line.Restock.ToString()" />
+            }
+            @if (preview.RefundAmount > 0)
+            {
+                @if (Model.CashAccounts.Count == 0)
+                {
+                    <p role="alert" class="rounded bg-amber-50 p-3 text-sm text-amber-900">Não há nenhuma conta caixa ativa cadastrada na organização para registrar o reembolso.</p>
+                }
+                else
+                {
+                    <p class="text-sm text-slate-600">Confirme só depois de devolver o valor fora do ERP. Informe a conta caixa e o meio que você usou para devolver.</p>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                        <div>
+                            <label asp-for="Input.CashAccountId" class="block text-sm">Conta caixa de saída</label>
+                            <select asp-for="Input.CashAccountId" required class="mt-1 w-full rounded border px-3 py-2">
+                                <option value="">Selecione</option>
+                                @foreach (var account in Model.CashAccounts) { <option value="@account.Id">@account.Name</option> }
+                            </select>
+                        </div>
+                        <div>
+                            <label asp-for="Input.RefundMethod" class="block text-sm">Meio da devolução</label>
+                            <select asp-for="Input.RefundMethod" required class="mt-1 w-full rounded border px-3 py-2">
+                                <option value="">Selecione</option>
+                                @foreach (var method in Enum.GetValues<PaymentMethod>()) { <option value="@((int)method)">@PaymentLabels.For(method)</option> }
+                            </select>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="flex flex-wrap items-center gap-3">
+                @if (preview.RefundAmount == 0 || Model.CashAccounts.Count > 0)
+                {
+                    <button class="rounded bg-slate-900 px-4 py-2 text-white">Confirmar devolução</button>
+                }
+                <a asp-page="./Return" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="underline">Alterar itens</a>
+            </div>
+        </form>
+    }
+    else if (!Model.NeedsReview)
+    {
+        <p class="mt-2 text-sm text-slate-600">Informe a quantidade devolvida e marque a reposição só para mercadorias que podem voltar ao estoque.</p>
+        <form method="post" asp-page-handler="Review" asp-all-route-data="Model.ListFilters" asp-route-id="@Model.Id" class="mt-4 space-y-4">
+            <input type="hidden" asp-for="Input.Revision" />
+            <input type="hidden" asp-for="Input.ReceivableRevision" />
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Produto</th><th scope="col">Ainda disponível</th><th scope="col">Quantidade a devolver</th><th scope="col">Repor no estoque</th></tr></thead>
+                    <tbody>
+                    @for (var i = 0; i < available.Length; i++)
+                    {
+                        var item = available[i];
+                        var remaining = item.Quantity - sale.ReturnedQuantity(item.Id);
+                        var entered = Model.Input.Lines.FirstOrDefault(line => line.SaleItemId == item.Id);
+                        <tr class="border-b">
+                            <td class="py-2">@item.ProductName</td><td>@remaining</td>
+                            <td>
+                                <input type="hidden" name="Input.Lines[@i].SaleItemId" value="@item.Id" />
+                                <input type="number" name="Input.Lines[@i].Quantity" value="@(entered?.Quantity ?? 0)" min="0" max="@remaining" required
+                                       aria-label="Quantidade a devolver de @item.ProductName" class="w-24 rounded border px-2 py-1" />
+                            </td>
+                            <td><input type="checkbox" name="Input.Lines[@i].Restock" value="true" checked="@(entered?.Restock == true)" aria-label="Repor @item.ProductName no estoque" /></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <label asp-for="Input.Reason" class="block text-sm font-medium">Motivo da devolução</label>
+                <textarea asp-for="Input.Reason" maxlength="240" rows="3" required class="mt-1 w-full rounded border px-3 py-2"></textarea>
+            </div>
+            <button class="rounded bg-slate-900 px-4 py-2 text-white">Conferir devolução</button>
+        </form>
+    }
+</section>

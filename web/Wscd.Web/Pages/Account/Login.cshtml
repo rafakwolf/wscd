@@ -1,0 +1,36 @@
+@page
+@model Wscd.Web.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Entrar";
+}
+
+<section class="mx-auto max-w-md rounded-lg bg-white p-8 shadow-sm">
+    <h1 class="text-2xl font-semibold">Entrar no WSCD</h1>
+    <p class="mt-2 text-sm text-slate-600">Informe seu e-mail e sua senha.</p>
+
+    <form method="post" class="mt-6 space-y-4">
+        <input type="hidden" asp-for="ReturnUrl" />
+        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+
+        <div>
+            <label asp-for="Input.Email" class="block text-sm font-medium"></label>
+            <input asp-for="Input.Email" autocomplete="username" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+            <span asp-validation-for="Input.Email" class="text-sm text-red-700"></span>
+        </div>
+
+        <div>
+            <label asp-for="Input.Password" class="block text-sm font-medium"></label>
+            <input asp-for="Input.Password" autocomplete="current-password" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+            <span asp-validation-for="Input.Password" class="text-sm text-red-700"></span>
+        </div>
+
+        <label class="flex items-center gap-2 text-sm text-slate-700">
+            <input asp-for="Input.RememberMe" class="rounded border-slate-300" />
+            Permanecer conectado
+        </label>
+
+        <button type="submit" class="w-full rounded bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700">
+            Entrar
+        </button>
+    </form>
+</section>

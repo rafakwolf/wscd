@@ -1,0 +1,12 @@
+{
+  "name": "wscd-web-assets",
+  "private": true,
+  "scripts": {
+    "css:build": "tailwindcss -i ./Styles/input.css -o ./wwwroot/css/app.css",
+    "css:watch": "tailwindcss -i ./Styles/input.css -o ./wwwroot/css/app.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  }
+}

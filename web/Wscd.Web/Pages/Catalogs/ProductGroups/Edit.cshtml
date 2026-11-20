@@ -1,0 +1,8 @@
+@page "{id:int?}"
+@model Wscd.Web.Pages.Catalogs.ProductGroups.EditModel
+@{
+    ViewData["Title"] = Model.Id is null ? "Novo grupo de produtos" : "Editar grupo de produtos";
+}
+
+<partial name="_MaintenanceHeader" model="Model.ListFilters" />
+<partial name="_Form" model="Model" />

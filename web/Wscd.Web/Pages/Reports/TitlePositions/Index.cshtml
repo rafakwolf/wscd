@@ -1,0 +1,87 @@
+@page "/relatorios/contas/{kind}"
+@using System.Globalization
+@model Wscd.Web.Pages.Reports.TitlePositions.IndexModel
+@{
+    ViewData["Title"] = Model.IsPayable ? "Posição de contas a pagar" : "Posição de contas a receber";
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+    var partyLabel = Model.IsPayable ? "Fornecedor" : "Cliente";
+    var detailsPage = Model.IsPayable ? "/Payables/Details" : "/Receivables/Details";
+    var listPage = Model.IsPayable ? "/Payables/Index" : "/Receivables/Index";
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">@ViewData["Title"]</h1>
+            <p class="mt-1 text-sm text-slate-600">Saldo atual dos títulos em aberto. As datas do filtro são de vencimento, não de uma posição histórica.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 print:hidden">
+            <a asp-page="@listPage" class="rounded border px-4 py-2">Voltar às contas</a>
+            @if (Model.Report is { Rows.Count: > 0 })
+            {
+                <button type="button" onclick="window.print()" class="rounded border px-4 py-2">Imprimir / Salvar PDF</button>
+            }
+        </div>
+    </div>
+
+    <form method="get" asp-page="./Index" asp-route-kind="@Model.Kind" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 print:hidden">
+        <div><label asp-for="Party" class="block text-sm">@partyLabel</label><input asp-for="Party" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="From" class="block text-sm">Vencimento de</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="To" class="block text-sm">Vencimento até</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <label class="flex items-center gap-2 text-sm"><input asp-for="OnlyOverdue" /> Somente vencidas</label>
+        <div class="flex flex-wrap items-center gap-2 sm:col-span-2">
+            <button class="rounded bg-slate-900 px-4 py-2 text-white">Gerar relatório</button>
+            <a asp-page="./Index" asp-route-kind="@Model.Kind" class="px-2 py-2 text-slate-600 underline">Limpar filtros</a>
+        </div>
+    </form>
+
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    else if (Model.Report is { } report)
+    {
+        <div class="mt-6">
+            <p class="mb-3 text-sm text-slate-600">
+                Posição em @report.Today.ToString("dd/MM/yyyy", culture) (Brasília).
+                @partyLabel: @(string.IsNullOrEmpty(Model.Party) ? "todos" : Model.Party) ·
+                Vencimento de @(Model.From?.ToString("dd/MM/yyyy", culture) ?? "sem limite inicial") até @(Model.To?.ToString("dd/MM/yyyy", culture) ?? "sem limite final") ·
+                @(Model.OnlyOverdue ? "Somente vencidas" : "Todas em aberto").
+            </p>
+            <dl class="grid gap-3 border-y py-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+                <div><dt>Vencidas</dt><dd class="font-semibold">@report.Overdue.ToString("C", culture)</dd></div>
+                <div><dt>Vencem hoje</dt><dd class="font-semibold">@report.DueToday.ToString("C", culture)</dd></div>
+                <div><dt>A vencer</dt><dd class="font-semibold">@report.Upcoming.ToString("C", culture)</dd></div>
+                <div><dt>Saldo total</dt><dd class="font-semibold">@report.TotalBalance.ToString("C", culture)</dd></div>
+            </dl>
+            @if (report.Rows.Count == 0)
+            {
+                <p class="py-6 text-center text-sm text-slate-500">Nenhum título em aberto para os filtros informados.</p>
+            }
+            else
+            {
+                <div class="mt-3 overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead><tr class="border-b text-slate-600">
+                            <th scope="col" class="py-2">Título</th><th scope="col">@partyLabel</th><th scope="col">Origem</th>
+                            <th scope="col">Vencimento</th><th scope="col">Situação</th><th scope="col" class="text-right">Valor original</th>
+                            <th scope="col" class="text-right">Saldo</th>
+                        </tr></thead>
+                        <tbody>
+                        @foreach (var row in report.Rows)
+                        {
+                            <tr class="border-b last:border-0">
+                                <td class="py-2"><a asp-page="@detailsPage" asp-route-id="@row.Id" aria-label="Consultar título nº @row.Id" class="underline">#@row.Id</a></td>
+                                <td>@row.PartyName</td><td>@(row.SourceId is int sourceId ? $"{(Model.IsPayable ? "Compra" : "Venda")} nº {sourceId}" : row.Description)</td>
+                                <td>@row.DueDate.ToString("dd/MM/yyyy", culture)</td>
+                                <td>@(row.DueDate < report.Today ? "Vencida" : row.DueDate == report.Today ? "Vence hoje" : "A vencer")</td>
+                                <td class="text-right">@row.Amount.ToString("C", culture)</td><td class="text-right">@row.Balance.ToString("C", culture)</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    }
+</section>

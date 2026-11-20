@@ -1,0 +1,30 @@
+@page
+@model Wscd.Web.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Criar organização";
+}
+
+<section class="mx-auto max-w-md rounded-lg bg-white p-8 shadow-sm">
+    <h1 class="text-2xl font-semibold">Criar organização</h1>
+    <p class="mt-2 text-sm text-slate-600">O cadastro cria a organização e seu primeiro usuário administrador.</p>
+
+    <form method="post" class="mt-6 space-y-4">
+        <div asp-validation-summary="ModelOnly" class="text-sm text-red-700"></div>
+        <div>
+            <label asp-for="Input.OrganizationName" class="block text-sm font-medium"></label>
+            <input asp-for="Input.OrganizationName" autocomplete="organization" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+            <span asp-validation-for="Input.OrganizationName" class="text-sm text-red-700"></span>
+        </div>
+        <div>
+            <label asp-for="Input.Email" class="block text-sm font-medium"></label>
+            <input asp-for="Input.Email" autocomplete="email" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+            <span asp-validation-for="Input.Email" class="text-sm text-red-700"></span>
+        </div>
+        <div>
+            <label asp-for="Input.Password" class="block text-sm font-medium"></label>
+            <input asp-for="Input.Password" autocomplete="new-password" class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+            <span asp-validation-for="Input.Password" class="text-sm text-red-700"></span>
+        </div>
+        <button type="submit" class="w-full rounded bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-700">Criar conta</button>
+    </form>
+</section>

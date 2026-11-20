@@ -1,0 +1,60 @@
+@page
+@using System.Globalization
+@model Wscd.Web.Pages.Promotions.IndexModel
+@{
+    ViewData["Title"] = "Promoções";
+    var ptBr = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">Promoções</h1>
+            <p class="mt-1 text-sm text-slate-600">O preço promocional é calculado a partir do desconto e aplicado ao produto.</p>
+        </div>
+        <a asp-page="./Edit" asp-route-search="@Model.Search" class="rounded bg-slate-900 px-4 py-2 text-white">Nova promoção</a>
+    </div>
+
+    @if (Model.StatusMessage is not null)
+    {
+        <p class="mt-4 rounded bg-green-50 p-3 text-sm text-green-800">@Model.StatusMessage</p>
+    }
+    @if (ViewData["ErrorMessage"] is string errorMessage)
+    {
+        <p class="mt-4 rounded bg-red-50 p-3 text-sm text-red-800">@errorMessage</p>
+    }
+
+    <form method="get" class="mt-5 flex flex-wrap gap-2">
+        <label asp-for="Search" class="sr-only">Produto</label>
+        <input asp-for="Search" placeholder="Filtrar por produto" class="w-full max-w-lg rounded border px-3 py-2" />
+        <button class="rounded border px-4 py-2">Filtrar</button>
+        <a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Limpar</a>
+    </form>
+
+    <div class="mt-5 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+            <thead><tr class="border-b text-slate-600"><th class="py-2">Produto</th><th>Preço normal</th><th>Desconto</th><th>Preço promocional</th><th>Início</th><th>Fim</th><th>Situação</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr class="border-b last:border-0">
+                    <td class="py-2">@item.ProductName</td>
+                    <td>R$ @item.RegularPrice.ToString("N2", ptBr)</td>
+                    <td>@item.DiscountPercent.ToString("N2", ptBr)%</td>
+                    <td>R$ @item.PromotionPrice.ToString("N2", ptBr)</td>
+                    <td>@item.StartDate.ToString("dd/MM/yyyy")</td>
+                    <td>@item.EndDate.ToString("dd/MM/yyyy")</td>
+                    <td>@IndexModel.StatusLabel(item.StartDate, item.EndDate)</td>
+                    <td class="text-right">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" asp-route-search="@Model.Search" class="underline">Editar</a>
+                        <form method="post" asp-page-handler="Delete" asp-route-search="@Model.Search" asp-route-promotionId="@item.Id" class="inline">
+                            <button class="ml-2 text-red-700 underline">Remover</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        @if (Model.Items.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhuma promoção encontrada.</p> }
+    </div>
+</section>

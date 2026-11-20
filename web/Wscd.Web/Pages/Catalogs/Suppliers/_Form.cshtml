@@ -1,0 +1,39 @@
+@model Wscd.Web.Pages.Catalogs.Suppliers.EditModel
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <form method="post" asp-page="./Edit" asp-page-handler="Save" asp-route-search="@Model.Search" class="mt-4 space-y-6">
+        <div asp-validation-summary="All" class="text-sm text-red-700"></div>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Identificação</legend>
+            <div><label asp-for="Input.Type" class="block text-sm">Tipo</label><select asp-for="Input.Type" class="mt-1 w-full rounded border px-3 py-2"><option value="J">Pessoa jurídica</option><option value="F">Pessoa física</option></select></div>
+            <div><label asp-for="Input.Name" class="block text-sm">Razão social</label><input asp-for="Input.Name" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.LegalName" class="block text-sm">Nome fantasia</label><input asp-for="Input.LegalName" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.TaxNumber" class="block text-sm">CNPJ/CPF</label><input asp-for="Input.TaxNumber" maxlength="20" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.StateRegistration" class="block text-sm">Inscrição estadual</label><input asp-for="Input.StateRegistration" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.RegistrationDate" class="block text-sm">Data de cadastro</label><input asp-for="Input.RegistrationDate" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Contato e endereço</legend>
+            <div class="md:col-span-2"><label asp-for="Input.Address" class="block text-sm">Endereço</label><input asp-for="Input.Address" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Neighborhood" class="block text-sm">Bairro</label><input asp-for="Input.Neighborhood" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.City" class="block text-sm">Cidade</label><select asp-for="Input.City" class="mt-1 w-full rounded border px-3 py-2"><option value="">Não informado</option>@if (Model.UnlistedCity is { } cityAnterior) { <option value="@cityAnterior">@cityAnterior (valor anterior)</option> }@foreach (var city in Model.Cities) { <option value="@city">@city</option> }</select></div>
+            <div><label asp-for="Input.State" class="block text-sm">UF</label><input asp-for="Input.State" maxlength="2" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.PostalCode" class="block text-sm">CEP</label><input asp-for="Input.PostalCode" maxlength="10" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Phone" class="block text-sm">Telefone</label><input asp-for="Input.Phone" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Fax" class="block text-sm">Fax</label><input asp-for="Input.Fax" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.Email" class="block text-sm">E-mail</label><input asp-for="Input.Email" maxlength="80" type="email" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <fieldset class="grid gap-4 md:grid-cols-3">
+            <legend class="mb-2 font-medium">Contato comercial</legend>
+            <div><label asp-for="Input.SalesContact" class="block text-sm">Vendedor/contato</label><input asp-for="Input.SalesContact" maxlength="80" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.SalesContactPhone" class="block text-sm">Telefone do contato</label><input asp-for="Input.SalesContactPhone" maxlength="30" class="mt-1 w-full rounded border px-3 py-2" /></div>
+            <div><label asp-for="Input.SalesContactEmail" class="block text-sm">E-mail do contato</label><input asp-for="Input.SalesContactEmail" maxlength="80" type="email" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        </fieldset>
+
+        <div><label asp-for="Input.Notes" class="block text-sm">Observações</label><textarea asp-for="Input.Notes" rows="3" class="mt-1 w-full rounded border px-3 py-2"></textarea></div>
+        <div><button type="submit" class="rounded bg-slate-900 px-4 py-2 text-white">Salvar</button></div>
+    </form>
+</section>

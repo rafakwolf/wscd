@@ -1,0 +1,119 @@
+@page "/caixa"
+@using System.Globalization
+@using Wscd.Web.Pages
+@model Wscd.Web.Pages.Cash.IndexModel
+@{
+    ViewData["Title"] = "Caixa";
+    var culture = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">Caixa</h1>
+            <p class="mt-1 text-sm text-slate-600">Entradas e saídas efetivamente registradas. A diferença no período não representa o saldo da conta.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 print:hidden">
+            <a asp-page="/Catalogs/CashAccounts/Index" class="rounded border px-4 py-2">Gerenciar contas caixa</a>
+            @if (Model.Report is { Movements.Count: > 0 })
+            {
+                <button type="button" onclick="window.print()" class="rounded border px-4 py-2">Imprimir / Salvar PDF</button>
+            }
+        </div>
+    </div>
+
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-6 print:hidden">
+        <div>
+            <label asp-for="CashAccountId" class="block text-sm">Conta caixa</label>
+            <select asp-for="CashAccountId" class="mt-1 w-full rounded border px-3 py-2">
+                <option value="">Todas</option>
+                @foreach (var account in Model.CashAccounts)
+                {
+                    <option value="@account.Id">@account.Name@(account.IsInactive ? " (inativa)" : null)</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label asp-for="IsExpense" class="block text-sm">Tipo</label>
+            <select asp-for="IsExpense" class="mt-1 w-full rounded border px-3 py-2">
+                <option value="">Todos</option>
+                <option value="false">Entradas</option>
+                <option value="true">Saídas</option>
+            </select>
+        </div>
+        <div><label asp-for="Search" class="block text-sm">Busca</label><input asp-for="Search" placeholder="Nome, descrição ou doc." class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="From" class="block text-sm">Data inicial</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="To" class="block text-sm">Data final</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div class="flex flex-wrap items-end gap-2">
+            <button class="rounded bg-slate-900 px-4 py-2 text-white">Filtrar</button>
+            <a asp-page="./Index" class="px-2 py-2 text-slate-600 underline">Mês atual</a>
+        </div>
+    </form>
+
+    @if (Model.Error is not null)
+    {
+        <p role="alert" class="mt-4 rounded bg-red-50 p-3 text-sm text-red-700">@Model.Error</p>
+    }
+    @if (Model.Report is { } report)
+    {
+        <div class="mt-6">
+            <p class="mb-3 text-sm text-slate-600">Conta caixa: @(Model.AccountName ?? "todas") · De @(Model.From?.ToString("dd/MM/yyyy") ?? "sem limite inicial") até @(Model.To?.ToString("dd/MM/yyyy") ?? "sem limite final") · Horário de Brasília</p>
+            <div class="flex flex-wrap justify-between gap-2 border-b pb-3">
+                <p class="font-semibold">Entradas: @report.TotalEntries.ToString("C", culture)</p>
+                <p class="font-semibold">Saídas: @report.TotalExpenses.ToString("C", culture)</p>
+                <p class="font-semibold">Diferença no período: @((report.TotalEntries - report.TotalExpenses).ToString("C", culture))</p>
+            </div>
+            @if (report.Movements.Count == 0)
+            {
+                <p class="py-6 text-center text-sm text-slate-500">Nenhum lançamento encontrado para os filtros informados.</p>
+            }
+            else
+            {
+                <div class="mt-3 overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead><tr class="border-b text-slate-600"><th scope="col" class="py-2">Data</th><th scope="col">Tipo</th><th scope="col">Conta caixa</th><th scope="col">Meio</th><th scope="col">Origem</th><th scope="col">Cliente / fornecedor</th><th scope="col" class="text-right">Valor</th></tr></thead>
+                        <tbody>
+                        @foreach (var movement in report.Movements)
+                        {
+                            <tr class="border-b last:border-0">
+                                <td class="py-2">@movement.OccurredAt.ToString("dd/MM/yyyy HH:mm", culture)</td>
+                                <td>@(movement.IsExpense ? "Saída" : "Entrada")</td>
+                                <td>@movement.CashAccountName</td>
+                                <td>@PaymentLabels.For(movement.Method)</td>
+                                <td>
+                                    @if (movement.IsSaleReturn)
+                                    {
+                                        <a asp-page="/Sales/Edit" asp-route-id="@movement.SaleId" class="underline">Devolução da venda nº @movement.SaleId</a>
+                                    }
+                                    else if (movement.IsSaleCancellation && movement.SaleId is int cancelledSaleId)
+                                    {
+                                        <a asp-page="/Sales/Edit" asp-route-id="@cancelledSaleId" class="underline">Cancelamento da venda nº @cancelledSaleId</a>
+                                    }
+                                    else if (movement.AccountPayableId is int payableId)
+                                    {
+                                        <a asp-page="/Payables/Details" asp-route-id="@payableId" class="underline">@(movement.IsReversal ? "Estorno da baixa" : "Baixa") da conta a pagar nº @payableId</a>
+                                    }
+                                    else if (movement.AccountReceivableId is int receivableId)
+                                    {
+                                        <a asp-page="/Receivables/Details" asp-route-id="@receivableId" class="underline">@(movement.IsReversal ? "Estorno da baixa" : "Baixa") da conta a receber nº @receivableId</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-page="/Sales/Edit" asp-route-id="@movement.SaleId" class="underline">Venda nº @movement.SaleId</a>
+                                    }
+                                    @if (!string.IsNullOrWhiteSpace(movement.Description) || !string.IsNullOrWhiteSpace(movement.Document))
+                                    {
+                                        <span class="block text-xs text-slate-600">@movement.Description@(!string.IsNullOrWhiteSpace(movement.Document) ? $" (Doc. {movement.Document})" : null)</span>
+                                    }
+                                </td>
+                                <td>@movement.PartyName</td>
+                                <td class="text-right">@movement.Amount.ToString("C", culture)</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    }
+</section>

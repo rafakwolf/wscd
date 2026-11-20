@@ -1,0 +1,52 @@
+@page
+@using System.Globalization
+@model Wscd.Web.Pages.Reports.Purchases.IndexModel
+@{
+    ViewData["Title"] = "Relatório de compras";
+    var ptBr = CultureInfo.GetCultureInfo("pt-BR");
+}
+
+<section class="rounded-lg bg-white p-6 shadow-sm">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+            <h1 class="text-2xl font-semibold">Relatório de compras</h1>
+            <p class="mt-1 text-sm text-slate-600">Compras concluídas por período e fornecedor.</p>
+        </div>
+        @if (Model.ModelState.IsValid)
+        {
+            <button type="button" onclick="window.print()" class="rounded border px-4 py-2 print:hidden">Imprimir / Salvar PDF</button>
+        }
+    </div>
+
+    <form method="get" class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 print:hidden">
+        <div><label asp-for="From" class="block text-sm">Data inicial</label><input asp-for="From" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="To" class="block text-sm">Data final</label><input asp-for="To" type="date" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div><label asp-for="Supplier" class="block text-sm">Fornecedor</label><input asp-for="Supplier" class="mt-1 w-full rounded border px-3 py-2" /></div>
+        <div class="flex items-end"><button class="rounded bg-slate-900 px-4 py-2 text-white">Gerar relatório</button></div>
+    </form>
+
+    <div asp-validation-summary="All" class="mt-4 text-sm text-red-700"></div>
+
+    @if (Model.ModelState.IsValid)
+    {
+        <div class="mt-6">
+            <p class="mb-3 text-sm text-slate-600">Período: @(Model.From?.ToString("dd/MM/yyyy") ?? "sem limite") a @(Model.To?.ToString("dd/MM/yyyy") ?? "sem limite") · Fornecedor: @(string.IsNullOrWhiteSpace(Model.Supplier) ? "todos" : Model.Supplier)</p>
+            <div class="flex flex-wrap justify-between gap-2 border-b pb-3">
+                <p class="text-sm text-slate-600">@Model.Items.Count compra(s) concluída(s)</p>
+                <p class="font-semibold">Total: R$ @Model.Total.ToString("N2", ptBr)</p>
+            </div>
+            <div class="mt-3 overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead><tr class="border-b text-slate-600"><th class="py-2">Data</th><th>Fornecedor</th><th class="text-right">Total</th></tr></thead>
+                    <tbody>
+                    @foreach (var purchase in Model.Items)
+                    {
+                        <tr class="border-b last:border-0"><td class="py-2">@purchase.PurchaseDate.ToString("dd/MM/yyyy")</td><td>@purchase.SupplierName</td><td class="text-right">R$ @purchase.Total.ToString("N2", ptBr)</td></tr>
+                    }
+                    </tbody>
+                </table>
+                @if (Model.Items.Count == 0) { <p class="py-6 text-center text-sm text-slate-500">Nenhuma compra concluída encontrada para os filtros informados.</p> }
+            </div>
+        </div>
+    }
+</section>
