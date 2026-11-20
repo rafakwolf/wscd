@@ -50,4 +50,19 @@ public sealed class StockReportStore(WscdDbContext db) : IStockReportStore
                     .FirstOrDefault(),
                 product.Cost, product.MarginPercent, product.SalePrice, product.Stock))
             .ToListAsync();
+
+    public async Task<IReadOnlyList<ProductExpirationRow>> ListExpirationsAsync(DateOnly through, int? unitId, int? groupId,
+        int? supplierId) =>
+        await db.Products.AsNoTracking()
+            .Where(product => product.ExpirationDate <= through &&
+                (unitId == null || product.UnitId == unitId) &&
+                (groupId == null || product.ProductGroupId == groupId) &&
+                (supplierId == null || product.SupplierId == supplierId))
+            .OrderBy(product => product.ExpirationDate).ThenBy(product => product.Name).ThenBy(product => product.Id)
+            .Select(product => new ProductExpirationRow(product.Name, product.Barcode,
+                db.Suppliers.Where(supplier => supplier.Id == product.SupplierId)
+                    .Select(supplier => string.IsNullOrEmpty(supplier.LegalName) ? supplier.Name : supplier.LegalName)
+                    .FirstOrDefault(),
+                product.ExpirationDate!.Value, product.Cost))
+            .ToListAsync();
 }

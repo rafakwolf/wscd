@@ -65,6 +65,8 @@ Na tela inicial, abra **Lista de preços** para consultar o preço de venda cada
 
 Abra **Produtos por grupo** e selecione um grupo para consultar código de barras, produto, fornecedor, custo, margem, preço de venda cadastrado e estoque atual. O relatório inclui produtos sem estoque e pode ser impresso ou salvo em PDF.
 
+Em **Validade de produtos**, o limite inicial é a data de hoje em Brasília. A consulta inclui as validades até essa data, inclusive, e aceita filtros combinados de unidade, grupo e fornecedor. A soma considera o custo unitário de cada produto listado, sem multiplicá-lo pelo estoque. Use **Imprimir / Salvar PDF** para exportar a consulta.
+
 ## Banco de dados e migrations
 
 Os comandos abaixo usam a connection string configurada no ambiente. Execute-os dentro do Dev Container e confira que ela aponta para o banco desejado antes de aplicar alterações.

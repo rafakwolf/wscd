@@ -4,9 +4,17 @@ public interface IStockReportStore
 {
     Task<IReadOnlyList<StockPositionProduct>> ListPositionAsync(string? search, int? groupId, int? supplierId, StockPositionFilter status);
     Task<IReadOnlyList<ProductGroupReportRow>> ListProductsByGroupAsync(int groupId);
+    Task<IReadOnlyList<ProductExpirationRow>> ListExpirationsAsync(DateOnly through, int? unitId, int? groupId, int? supplierId);
 }
 
 public enum StockPositionFilter { All, AtOrBelowMinimum, OutOfStock }
+
+public sealed record ProductExpirationRow(
+    string Name,
+    string? Barcode,
+    string? SupplierName,
+    DateOnly ExpirationDate,
+    decimal UnitCost);
 
 public sealed record ProductGroupReportRow(
     string Name,

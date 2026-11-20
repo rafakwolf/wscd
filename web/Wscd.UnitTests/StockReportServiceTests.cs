@@ -52,11 +52,31 @@ public sealed class StockReportServiceTests
         Assert.Equal(7, store.RequestedGroupId);
     }
 
+    [Fact]
+    public async Task ExpirationsForwardFiltersAndSumUnitCosts()
+    {
+        var through = new DateOnly(2026, 11, 20);
+        var store = new Store([])
+        {
+            ExpirationRows = [new("Cafe", null, null, through.AddDays(-1), 10.25m), new("Leite", null, null, through, 4.60m)]
+        };
+        var service = new StockReportService(store);
+
+        Assert.Null(await service.GetExpirationsAsync(through, 0, null, null));
+        Assert.Null(store.ExpirationFilter);
+        var report = Assert.IsType<ProductExpirationReport>(await service.GetExpirationsAsync(through, 7, 8, 9));
+
+        Assert.Equal((through, 7, 8, 9), store.ExpirationFilter);
+        Assert.Equal(14.85m, report.TotalUnitCost);
+    }
+
     private sealed class Store(IReadOnlyList<StockPositionProduct> products) : IStockReportStore
     {
         public (string? Search, int? GroupId, int? SupplierId, StockPositionFilter Status)? Filter { get; private set; }
         public IReadOnlyList<ProductGroupReportRow> GroupRows { get; init; } = [];
         public int? RequestedGroupId { get; private set; }
+        public IReadOnlyList<ProductExpirationRow> ExpirationRows { get; init; } = [];
+        public (DateOnly Through, int? UnitId, int? GroupId, int? SupplierId)? ExpirationFilter { get; private set; }
 
         public Task<IReadOnlyList<StockPositionProduct>> ListPositionAsync(string? search, int? groupId, int? supplierId,
             StockPositionFilter status)
@@ -69,6 +89,13 @@ public sealed class StockReportServiceTests
         {
             RequestedGroupId = groupId;
             return Task.FromResult(GroupRows);
+        }
+
+        public Task<IReadOnlyList<ProductExpirationRow>> ListExpirationsAsync(DateOnly through, int? unitId, int? groupId,
+            int? supplierId)
+        {
+            ExpirationFilter = (through, unitId, groupId, supplierId);
+            return Task.FromResult(ExpirationRows);
         }
     }
 }

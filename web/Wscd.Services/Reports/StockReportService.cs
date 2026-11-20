@@ -15,4 +15,14 @@ public sealed class StockReportService(IStockReportStore store) : IStockReportSe
 
     public async Task<IReadOnlyList<ProductGroupReportRow>?> GetProductsByGroupAsync(int groupId) =>
         groupId > 0 ? await store.ListProductsByGroupAsync(groupId) : null;
+
+    public async Task<ProductExpirationReport?> GetExpirationsAsync(DateOnly through, int? unitId, int? groupId, int? supplierId)
+    {
+        if (unitId is <= 0 || groupId is <= 0 || supplierId is <= 0)
+        {
+            return null;
+        }
+
+        return new ProductExpirationReport(await store.ListExpirationsAsync(through, unitId, groupId, supplierId));
+    }
 }
