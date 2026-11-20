@@ -3,9 +3,19 @@ namespace Wscd.Services.Reports;
 public interface IStockReportStore
 {
     Task<IReadOnlyList<StockPositionProduct>> ListPositionAsync(string? search, int? groupId, int? supplierId, StockPositionFilter status);
+    Task<IReadOnlyList<ProductGroupReportRow>> ListProductsByGroupAsync(int groupId);
 }
 
 public enum StockPositionFilter { All, AtOrBelowMinimum, OutOfStock }
+
+public sealed record ProductGroupReportRow(
+    string Name,
+    string? Barcode,
+    string? SupplierName,
+    decimal Cost,
+    decimal MarginPercent,
+    decimal SalePrice,
+    int Stock);
 
 public sealed record StockPositionProduct(
     int Id,

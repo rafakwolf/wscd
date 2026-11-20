@@ -39,4 +39,15 @@ public sealed class StockReportStore(WscdDbContext db) : IStockReportStore
                 product.Stock, product.MinimumStock))
             .ToListAsync();
     }
+
+    public async Task<IReadOnlyList<ProductGroupReportRow>> ListProductsByGroupAsync(int groupId) =>
+        await db.Products.AsNoTracking()
+            .Where(product => product.ProductGroupId == groupId)
+            .OrderBy(product => product.Name).ThenBy(product => product.Id)
+            .Select(product => new ProductGroupReportRow(product.Name, product.Barcode,
+                db.Suppliers.Where(supplier => supplier.Id == product.SupplierId)
+                    .Select(supplier => string.IsNullOrEmpty(supplier.LegalName) ? supplier.Name : supplier.LegalName)
+                    .FirstOrDefault(),
+                product.Cost, product.MarginPercent, product.SalePrice, product.Stock))
+            .ToListAsync();
 }

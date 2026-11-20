@@ -63,6 +63,8 @@ Na tela inicial, abra **Posição de estoque** para conferir a quantidade atual,
 
 Na tela inicial, abra **Lista de preços** para consultar o preço de venda cadastrado de cada produto. Ordene por descrição ou preço de venda e use **Imprimir / Salvar PDF**.
 
+Abra **Produtos por grupo** e selecione um grupo para consultar código de barras, produto, fornecedor, custo, margem, preço de venda cadastrado e estoque atual. O relatório inclui produtos sem estoque e pode ser impresso ou salvo em PDF.
+
 ## Banco de dados e migrations
 
 Os comandos abaixo usam a connection string configurada no ambiente. Execute-os dentro do Dev Container e confira que ela aponta para o banco desejado antes de aplicar alterações.

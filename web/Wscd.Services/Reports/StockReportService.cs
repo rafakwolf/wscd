@@ -12,4 +12,7 @@ public sealed class StockReportService(IStockReportStore store) : IStockReportSe
         return new StockPositionReport(await store.ListPositionAsync(
             string.IsNullOrWhiteSpace(search) ? null : search.Trim(), groupId, supplierId, status));
     }
+
+    public async Task<IReadOnlyList<ProductGroupReportRow>?> GetProductsByGroupAsync(int groupId) =>
+        groupId > 0 ? await store.ListProductsByGroupAsync(groupId) : null;
 }

@@ -38,15 +38,37 @@ public sealed class StockReportServiceTests
         Assert.Equal(((string?)null, (int?)null, (int?)null, StockPositionFilter.OutOfStock), store.Filter);
     }
 
+    [Fact]
+    public async Task ProductsByGroupQueriesOnlyTheSelectedGroup()
+    {
+        var expected = new ProductGroupReportRow("Cafe", "7890000000001", "Fornecedor", 10m, 25m, 12.50m, 0);
+        var store = new Store([]) { GroupRows = [expected] };
+        var service = new StockReportService(store);
+
+        Assert.Null(await service.GetProductsByGroupAsync(0));
+        Assert.Null(store.RequestedGroupId);
+
+        Assert.Equal(expected, Assert.Single((await service.GetProductsByGroupAsync(7))!));
+        Assert.Equal(7, store.RequestedGroupId);
+    }
+
     private sealed class Store(IReadOnlyList<StockPositionProduct> products) : IStockReportStore
     {
         public (string? Search, int? GroupId, int? SupplierId, StockPositionFilter Status)? Filter { get; private set; }
+        public IReadOnlyList<ProductGroupReportRow> GroupRows { get; init; } = [];
+        public int? RequestedGroupId { get; private set; }
 
         public Task<IReadOnlyList<StockPositionProduct>> ListPositionAsync(string? search, int? groupId, int? supplierId,
             StockPositionFilter status)
         {
             Filter = (search, groupId, supplierId, status);
             return Task.FromResult(products);
+        }
+
+        public Task<IReadOnlyList<ProductGroupReportRow>> ListProductsByGroupAsync(int groupId)
+        {
+            RequestedGroupId = groupId;
+            return Task.FromResult(GroupRows);
         }
     }
 }
